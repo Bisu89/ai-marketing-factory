@@ -22,7 +22,8 @@ def create_download(
     db: Session = Depends(get_db),
     engine: DownloadEngine = Depends(get_download_engine),
 ):
-    job_id = engine.enqueue(str(payload.url))
+    metadata = payload.metadata.model_dump() if payload.metadata else None
+    job_id = engine.enqueue(str(payload.url), metadata=metadata)
     return _get_job_or_404(db, job_id)
 
 

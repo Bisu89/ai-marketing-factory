@@ -22,6 +22,7 @@ async def lifespan(app: FastAPI):
     download_engine = DownloadEngine(
         downloader=HttpDownloader(),
         download_dir=Path(settings.download_dir),
+        library_dir=Path(settings.library_dir),
         max_workers=settings.max_concurrent_downloads,
     )
     download_engine.start()

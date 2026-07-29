@@ -15,6 +15,7 @@ class Settings(BaseSettings):
     log_level: str = "INFO"
 
     download_dir: str = "./data/downloads"
+    library_dir: str = "./data/library"
     max_concurrent_downloads: int = 3
 
 

@@ -1,13 +1,16 @@
+import json
 import logging
 import queue
 import threading
 import time
+from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import urlparse
 
 from app.db.session import SessionLocal
 from app.models.download_job import DownloadJob
 from app.services.download.downloader import Downloader, DownloadCancelled, DownloadPaused
+from app.services.library.organizer import VideoMetadata, organize_completed_download
 
 logger = logging.getLogger(__name__)
 
@@ -29,9 +32,10 @@ class DownloadEngine:
     the FastAPI request/response cycle never blocks on any of it.
     """
 
-    def __init__(self, downloader: Downloader, download_dir: Path, max_workers: int):
+    def __init__(self, downloader: Downloader, download_dir: Path, library_dir: Path, max_workers: int):
         self._downloader = downloader
         self._download_dir = download_dir
+        self._library_dir = library_dir
         self._max_workers = max_workers
 
         self._queue: "queue.Queue[int | None]" = queue.Queue()
@@ -42,6 +46,7 @@ class DownloadEngine:
 
     def start(self) -> None:
         self._download_dir.mkdir(parents=True, exist_ok=True)
+        self._library_dir.mkdir(parents=True, exist_ok=True)
         self._recover_pending_jobs()
 
         for i in range(self._max_workers):
@@ -57,10 +62,22 @@ class DownloadEngine:
 
     # --- public control API -------------------------------------------------
 
-    def enqueue(self, url: str) -> int:
+    def enqueue(self, url: str, metadata: dict | None = None) -> int:
         db = SessionLocal()
         try:
             job = DownloadJob(url=url, destination_path="", status="queued")
+            if metadata:
+                job.platform = metadata.get("platform")
+                job.video_id = metadata.get("video_id")
+                job.channel_name = metadata.get("channel_name")
+                job.title = metadata.get("title")
+                job.original_url = metadata.get("original_url", url)
+                job.thumbnail_url = metadata.get("thumbnail_url")
+                job.views = metadata.get("views")
+                job.likes = metadata.get("likes")
+                job.duration_sec = metadata.get("duration_sec")
+                job.upload_date = metadata.get("upload_date")
+                job.tags_json = json.dumps(metadata.get("tags") or [])
             db.add(job)
             db.commit()
             db.refresh(job)
@@ -170,6 +187,7 @@ class DownloadEngine:
 
             url = job.url
             destination = Path(job.destination_path)
+            video_metadata = self._extract_metadata(job)
         finally:
             db.close()
 
@@ -201,7 +219,31 @@ class DownloadEngine:
             self._set_status(job_id, "failed", error_message=str(exc))
             return
 
-        self._set_status(job_id, "completed", progress_pct=100.0)
+        # The downloader's own final on_progress call carries the true final byte
+        # count, but _write_progress throttles DB writes -- force this one through
+        # so downloaded_bytes/total_bytes never lag behind a "completed" status.
+        final_size = destination.stat().st_size if destination.exists() else 0
+        self._write_progress(job_id, final_size, final_size, 0.0, 0.0, 100.0, force=True)
+
+        if video_metadata is None:
+            self._set_status(job_id, "completed", progress_pct=100.0)
+            return
+
+        downloaded_at = datetime.now(timezone.utc)
+        try:
+            final_path = organize_completed_download(destination, self._library_dir, video_metadata, downloaded_at)
+        except Exception as exc:
+            logger.exception("Failed to organize completed download for job %s", job_id)
+            self._set_status(job_id, "failed", error_message=f"Download OK but organizing into library failed: {exc}")
+            return
+
+        self._set_status(
+            job_id,
+            "completed",
+            progress_pct=100.0,
+            destination_path=str(final_path),
+            downloaded_at=downloaded_at,
+        )
 
     def _write_progress(
         self,
@@ -211,10 +253,11 @@ class DownloadEngine:
         speed: float,
         eta: float | None,
         progress_pct: float | None,
+        force: bool = False,
     ) -> None:
         now = time.monotonic()
         last = self._last_db_write.get(job_id, 0.0)
-        if now - last < DB_WRITE_INTERVAL_SEC:
+        if not force and now - last < DB_WRITE_INTERVAL_SEC:
             return
         self._last_db_write[job_id] = now
 
@@ -244,6 +287,23 @@ class DownloadEngine:
             db.commit()
         finally:
             db.close()
+
+    def _extract_metadata(self, job: DownloadJob) -> VideoMetadata | None:
+        if not (job.platform and job.video_id and job.channel_name):
+            return None
+        return VideoMetadata(
+            platform=job.platform,
+            video_id=job.video_id,
+            channel_name=job.channel_name,
+            title=job.title or job.video_id,
+            original_url=job.original_url or job.url,
+            thumbnail_url=job.thumbnail_url,
+            views=job.views,
+            likes=job.likes,
+            duration_sec=job.duration_sec,
+            upload_date=job.upload_date,
+            tags=json.loads(job.tags_json or "[]"),
+        )
 
     def _resolve_destination(self, job_id: int, url: str) -> Path:
         name = Path(urlparse(url).path).name or "download.bin"
