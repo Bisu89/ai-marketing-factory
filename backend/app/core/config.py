@@ -14,6 +14,9 @@ class Settings(BaseSettings):
 
     log_level: str = "INFO"
 
+    download_dir: str = "./data/downloads"
+    max_concurrent_downloads: int = 3
+
 
 @lru_cache
 def get_settings() -> Settings:
