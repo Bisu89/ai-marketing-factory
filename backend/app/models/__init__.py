@@ -1,3 +1,24 @@
-from app.models.download_job import DownloadJob
+from app.models.category import Category
+from app.models.channel import Channel
+from app.models.download_history import DownloadHistory
+from app.models.download_task import DownloadTask
+from app.models.favorite import Favorite
+from app.models.platform import Platform
+from app.models.playlist import Playlist, PlaylistVideo
+from app.models.tag import Tag
+from app.models.video import Video
+from app.models.video_tag import VideoTag
 
-__all__ = ["DownloadJob"]
+__all__ = [
+    "Platform",
+    "Channel",
+    "Category",
+    "Tag",
+    "VideoTag",
+    "Favorite",
+    "Playlist",
+    "PlaylistVideo",
+    "Video",
+    "DownloadTask",
+    "DownloadHistory",
+]
