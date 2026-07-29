@@ -1,0 +1,34 @@
+.platform-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.platform-badge--youtube {
+  background: rgba(239, 68, 68, 0.12);
+  color: #ef4444;
+}
+
+.platform-badge--tiktok {
+  background: rgba(20, 20, 20, 0.1);
+  color: #333648;
+}
+
+.platform-badge--facebook {
+  background: rgba(59, 130, 246, 0.12);
+  color: #3b82f6;
+}
+
+.platform-badge--instagram {
+  background: rgba(217, 70, 160, 0.12);
+  color: #d946a0;
+}
+
+.platform-badge--unknown {
+  background: var(--surface-alt);
+  color: var(--text-muted);
+}
