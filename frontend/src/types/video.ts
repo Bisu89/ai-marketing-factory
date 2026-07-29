@@ -10,6 +10,7 @@ export interface VideoInfo {
   views: number;
   uploadDate: string;
   durationSec: number;
+  originalUrl: string;
 }
 
 export interface SingleVideoResult {

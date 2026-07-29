@@ -2,6 +2,7 @@ from contextlib import asynccontextmanager
 from pathlib import Path
 
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 import app.models  # noqa: F401  (registers ORM models on Base.metadata)
 from app.api.v1.router import api_router
@@ -12,7 +13,7 @@ from app.db.base import Base
 from app.db.seed import seed_initial_data
 from app.db.session import SessionLocal, engine
 from app.services.download.engine import DownloadEngine
-from app.services.download.http_downloader import HttpDownloader
+from app.services.download.ytdlp_downloader import YtdlpDownloader
 
 
 @asynccontextmanager
@@ -35,7 +36,7 @@ async def lifespan(app: FastAPI):
     # DownloadEngine or any core model required. See app/modules/README.md.
 
     download_engine = DownloadEngine(
-        downloader=HttpDownloader(),
+        downloader=YtdlpDownloader(),
         download_dir=Path(settings.download_dir),
         library_dir=Path(settings.library_dir),
         max_workers=settings.max_concurrent_downloads,
@@ -52,6 +53,12 @@ async def lifespan(app: FastAPI):
 def create_app() -> FastAPI:
     settings = get_settings()
     app = FastAPI(title=settings.app_name, debug=settings.debug, lifespan=lifespan)
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
     app.include_router(api_router, prefix=settings.api_v1_prefix)
     return app
 

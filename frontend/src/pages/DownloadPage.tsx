@@ -3,7 +3,8 @@ import { Search, Loader2, CheckCircle2 } from "lucide-react";
 import { PageHeader } from "../components/PageHeader";
 import { VideoResultCard } from "../components/VideoResultCard";
 import { ChannelVideoTable } from "../components/ChannelVideoTable";
-import { analyzeUrl } from "../mock/analyzeUrl";
+import { detectUrl } from "../api/detect";
+import { enqueueDownload } from "../api/downloads";
 import type { AnalyzeResult } from "../types/video";
 import "./DownloadPage.css";
 
@@ -25,7 +26,7 @@ export function DownloadPage() {
     setQueuedMessage(null);
 
     try {
-      const analyzed = await analyzeUrl(url.trim());
+      const analyzed = await detectUrl(url.trim());
       setResult(analyzed);
       setStatus("idle");
     } catch {
@@ -34,16 +35,38 @@ export function DownloadPage() {
     }
   }
 
-  function handleDownloadSingle() {
-    setQueuedMessage("Đã thêm 1 video vào hàng đợi tải.");
+  async function handleDownloadSingle() {
+    if (!result || result.contentType !== "video") return;
+    try {
+      await enqueueDownload(result.platform, result.video);
+      setQueuedMessage("Đã thêm 1 video vào hàng đợi tải.");
+    } catch {
+      setErrorMessage("Không thêm được video vào hàng đợi tải.");
+      setStatus("error");
+    }
   }
 
-  function handleDownloadAll(limit: number) {
-    setQueuedMessage(`Đã thêm ${limit} video vào hàng đợi tải.`);
+  async function handleDownloadAll(limit: number) {
+    if (!result || result.contentType === "video") return;
+    try {
+      await Promise.all(result.videos.slice(0, limit).map((video) => enqueueDownload(result.platform, video)));
+      setQueuedMessage(`Đã thêm ${limit} video vào hàng đợi tải.`);
+    } catch {
+      setErrorMessage("Không thêm được video vào hàng đợi tải.");
+      setStatus("error");
+    }
   }
 
-  function handleDownloadSelected(videoIds: string[]) {
-    setQueuedMessage(`Đã thêm ${videoIds.length} video đã chọn vào hàng đợi tải.`);
+  async function handleDownloadSelected(videoIds: string[]) {
+    if (!result || result.contentType === "video") return;
+    try {
+      const selected = result.videos.filter((video) => videoIds.includes(video.id));
+      await Promise.all(selected.map((video) => enqueueDownload(result.platform, video)));
+      setQueuedMessage(`Đã thêm ${videoIds.length} video đã chọn vào hàng đợi tải.`);
+    } catch {
+      setErrorMessage("Không thêm được video vào hàng đợi tải.");
+      setStatus("error");
+    }
   }
 
   return (
