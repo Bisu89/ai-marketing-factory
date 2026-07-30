@@ -1,9 +1,11 @@
 import logging
-import math
 import queue
+import shutil
 import threading
+import uuid
 from datetime import datetime, timezone
 from pathlib import Path
+from typing import BinaryIO
 
 from scenedetect import SceneManager, open_video, split_video_ffmpeg
 from scenedetect.detectors import ContentDetector
@@ -35,6 +37,7 @@ class SceneCutterService:
 
     def start(self) -> None:
         (self._library_dir / "_local_files").mkdir(parents=True, exist_ok=True)
+        (self._library_dir / "_uploads").mkdir(parents=True, exist_ok=True)
         self._worker = threading.Thread(target=self._worker_loop, name="scene-cutter-worker", daemon=True)
         self._worker.start()
         self._recover_pending_jobs()
@@ -46,6 +49,19 @@ class SceneCutterService:
 
     # --- public API -----------------------------------------------------------
 
+    def save_uploaded_file(self, filename: str, file_obj: BinaryIO) -> Path:
+        """Stages an uploaded video under library_dir/_uploads/ with a random
+        name (avoids collisions/overwrites between uploads, and sidesteps
+        having to sanitize a client-supplied filename for the filesystem).
+        Kept inside library_dir so it -- and, via source_path, its scenes --
+        stay reachable through the /media static mount.
+        """
+        suffix = Path(filename).suffix or ".mp4"
+        destination = self._library_dir / "_uploads" / f"{uuid.uuid4().hex}{suffix}"
+        with open(destination, "wb") as out:
+            shutil.copyfileobj(file_obj, out)
+        return destination
+
     def enqueue(
         self,
         video_id: int | None,
@@ -53,6 +69,7 @@ class SceneCutterService:
         threshold: float,
         min_scene_len_sec: float,
         trim_sec: float,
+        requested_output_dir: str | None = None,
     ) -> int:
         db = SessionLocal()
         try:
@@ -62,6 +79,7 @@ class SceneCutterService:
                 threshold=threshold,
                 min_scene_len_sec=min_scene_len_sec,
                 trim_sec=trim_sec,
+                requested_output_dir=requested_output_dir,
                 status="queued",
             )
             db.add(job)
@@ -101,10 +119,13 @@ class SceneCutterService:
             threshold = job.threshold
             min_scene_len_sec = job.min_scene_len_sec
             trim_sec = job.trim_sec
+            requested_output_dir = job.requested_output_dir
         finally:
             db.close()
 
-        input_path, output_dir, resolve_error = self._resolve_paths(job_id, video_id, source_path)
+        input_path, output_dir, resolve_error = self._resolve_paths(
+            job_id, video_id, source_path, requested_output_dir
+        )
         if resolve_error is not None:
             self._set_status(job_id, "failed", error_message=resolve_error)
             return
@@ -129,12 +150,25 @@ class SceneCutterService:
         self._set_status(job_id, "splitting")
 
         output_dir.mkdir(parents=True, exist_ok=True)
+
+        # Random filenames (not scene-001.mp4, scene-002.mp4, ...) -- the
+        # scene's position/order is already captured in scene_number and the
+        # start/end timecodes on SceneCutResult, so the filename itself
+        # doesn't need to encode it. Generated up front so the exact same
+        # names used by the custom formatter below are also what gets
+        # written to SceneCutResult.file_path -- no guessing/reverse-
+        # engineering ffmpeg's own naming scheme required.
+        scene_filenames = [f"{uuid.uuid4().hex}.mp4" for _ in scenes]
+
+        def _formatter(_video_metadata, scene_metadata) -> str:
+            return scene_filenames[scene_metadata.index]
+
         try:
             split_video_ffmpeg(
                 str(input_path),
                 scenes,
                 output_dir=str(output_dir),
-                output_file_template="scene-$SCENE_NUMBER.mp4",
+                formatter=_formatter,
                 show_progress=False,
             )
         except Exception as exc:
@@ -142,18 +176,13 @@ class SceneCutterService:
             self._set_status(job_id, "failed", error_message=str(exc))
             return
 
-        # Matches pyscenedetect's own $SCENE_NUMBER padding exactly (see
-        # scenedetect.video_splitter.split_video_ffmpeg) so the file_path we
-        # record here always matches what ffmpeg actually wrote to disk.
-        padding = max(3, math.floor(math.log(len(scenes), 10)) + 1)
-
         db = SessionLocal()
         try:
             job = db.get(SceneCutJob, job_id)
             if job is None:
                 return
             for i, (start, end) in enumerate(scenes, start=1):
-                file_path = output_dir / f"scene-{i:0{padding}d}.mp4"
+                file_path = output_dir / scene_filenames[i - 1]
                 db.add(
                     SceneCutResult(
                         job_id=job_id,
@@ -172,7 +201,11 @@ class SceneCutterService:
             db.close()
 
     def _resolve_paths(
-        self, job_id: int, video_id: int | None, source_path: str | None
+        self,
+        job_id: int,
+        video_id: int | None,
+        source_path: str | None,
+        requested_output_dir: str | None,
     ) -> tuple[Path | None, Path | None, str | None]:
         if video_id is not None:
             db = SessionLocal()
@@ -183,13 +216,14 @@ class SceneCutterService:
             finally:
                 db.close()
             input_path = Path(video.video_path)
-            output_dir = input_path.parent / "scenes" / f"job_{job_id}"
-            return input_path, output_dir, None
+            default_output_dir = input_path.parent / "scenes" / f"job_{job_id}"
+        else:
+            input_path = Path(source_path)
+            if not input_path.exists():
+                return None, None, f"Không tìm thấy file: {input_path}"
+            default_output_dir = self._library_dir / "_local_files" / f"job_{job_id}"
 
-        input_path = Path(source_path)
-        if not input_path.exists():
-            return None, None, f"Không tìm thấy file: {input_path}"
-        output_dir = self._library_dir / "_local_files" / f"job_{job_id}"
+        output_dir = Path(requested_output_dir) if requested_output_dir else default_output_dir
         return input_path, output_dir, None
 
     @staticmethod

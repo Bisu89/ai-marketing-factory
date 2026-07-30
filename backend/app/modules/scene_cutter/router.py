@@ -1,10 +1,13 @@
+import os
+import subprocess
+import sys
 from pathlib import Path
 
-from fastapi import APIRouter, Depends, Request
+from fastapi import APIRouter, Depends, File, Form, Request, UploadFile
 from sqlalchemy.orm import Session, selectinload
 
 from app.core.config import Settings, get_settings
-from app.core.exceptions import NotFoundError
+from app.core.exceptions import FileOperationError, NotFoundError
 from app.db.session import get_db
 from app.modules.scene_cutter.models import SceneCutJob
 from app.modules.scene_cutter.schemas import SceneCutJobCreateIn, SceneCutJobOut, job_to_out
@@ -42,6 +45,30 @@ def create_scene_job(
         threshold=payload.threshold,
         min_scene_len_sec=payload.min_scene_len_sec,
         trim_sec=payload.trim_sec,
+        requested_output_dir=payload.output_dir,
+    )
+    return job_to_out(_get_job_or_404(db, job_id), Path(settings.library_dir))
+
+
+@router.post("/scene-jobs/upload", response_model=SceneCutJobOut, status_code=201)
+def upload_scene_job(
+    file: UploadFile = File(...),
+    threshold: float = Form(46.0),
+    min_scene_len_sec: float = Form(0.6),
+    trim_sec: float = Form(0.0),
+    output_dir: str | None = Form(None),
+    db: Session = Depends(get_db),
+    settings: Settings = Depends(get_settings),
+    service: SceneCutterService = Depends(get_scene_cutter_service),
+):
+    staged_path = service.save_uploaded_file(file.filename or "upload.mp4", file.file)
+    job_id = service.enqueue(
+        video_id=None,
+        source_path=str(staged_path),
+        threshold=threshold,
+        min_scene_len_sec=min_scene_len_sec,
+        trim_sec=trim_sec,
+        requested_output_dir=output_dir,
     )
     return job_to_out(_get_job_or_404(db, job_id), Path(settings.library_dir))
 
@@ -66,3 +93,24 @@ def get_scene_job(
     settings: Settings = Depends(get_settings),
 ):
     return job_to_out(_get_job_or_404(db, job_id), Path(settings.library_dir))
+
+
+@router.post("/scene-jobs/{job_id}/open-folder", status_code=204)
+def open_scene_job_folder(job_id: int, db: Session = Depends(get_db)):
+    job = _get_job_or_404(db, job_id)
+    if not job.output_dir:
+        raise FileOperationError("Tác vụ chưa hoàn tất, chưa có thư mục kết quả")
+
+    folder = Path(job.output_dir)
+    if not folder.exists():
+        raise FileOperationError(f"Không tìm thấy thư mục: {folder}")
+
+    try:
+        if sys.platform == "win32":
+            os.startfile(folder)  # noqa: S606 -- path is server-controlled (from DB), not client input
+        elif sys.platform == "darwin":
+            subprocess.Popen(["open", str(folder)])
+        else:
+            subprocess.Popen(["xdg-open", str(folder)])
+    except OSError as exc:
+        raise FileOperationError(f"Could not open folder {folder}: {exc}") from exc

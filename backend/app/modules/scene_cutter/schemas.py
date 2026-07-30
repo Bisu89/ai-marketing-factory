@@ -12,6 +12,7 @@ class SceneCutJobCreateIn(BaseModel):
     threshold: float = 46.0
     min_scene_len_sec: float = 0.6
     trim_sec: float = 0.0
+    output_dir: str | None = None
 
     @model_validator(mode="after")
     def _exactly_one_source(self) -> "SceneCutJobCreateIn":
@@ -56,8 +57,10 @@ class SceneCutJobOut(BaseModel):
     threshold: float
     min_scene_len_sec: float
     trim_sec: float
+    requested_output_dir: str | None
     status: str
     scene_count: int | None
+    output_dir: str | None
     error_message: str | None
     created_at: datetime
     completed_at: datetime | None

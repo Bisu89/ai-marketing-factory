@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { Scissors, Search, Loader2, FolderOpen } from "lucide-react";
+import { Scissors, Search, Loader2, FolderOpen, Upload } from "lucide-react";
 import { PageHeader } from "../components/PageHeader";
 import { EmptyState } from "../components/EmptyState";
 import { fetchVideos } from "../api/videos";
-import { createSceneJob, listSceneJobs } from "../api/sceneCutter";
+import { createSceneJob, listSceneJobs, openSceneJobFolder, uploadSceneJob } from "../api/sceneCutter";
 import { mediaUrl } from "../api/client";
 import type { VideoOut } from "../features/library/types";
 import type { SceneCutJob } from "../types/sceneCutter";
@@ -11,7 +11,7 @@ import "./SceneCutterPage.css";
 
 const POLL_INTERVAL_MS = 2000;
 
-type SourceMode = "library" | "path";
+type SourceMode = "library" | "path" | "upload";
 
 const STATUS_LABEL: Record<SceneCutJob["status"], string> = {
   queued: "Trong hàng đợi",
@@ -29,6 +29,9 @@ export function SceneCutterPage() {
   const [selectedVideo, setSelectedVideo] = useState<VideoOut | null>(null);
 
   const [sourcePath, setSourcePath] = useState("");
+  const [uploadFile, setUploadFile] = useState<File | null>(null);
+
+  const [outputDir, setOutputDir] = useState("");
 
   const [threshold, setThreshold] = useState(46);
   const [minSceneLen, setMinSceneLen] = useState(0.6);
@@ -81,25 +84,42 @@ export function SceneCutterPage() {
     };
   }, []);
 
-  const canSubmit = sourceMode === "library" ? selectedVideo != null : sourcePath.trim().length > 0;
+  const canSubmit =
+    sourceMode === "library"
+      ? selectedVideo != null
+      : sourceMode === "path"
+        ? sourcePath.trim().length > 0
+        : uploadFile != null;
 
   async function handleSubmit() {
     if (!canSubmit || submitting) return;
     setSubmitting(true);
     setSubmitError(null);
     try {
-      await createSceneJob({
-        video_id: sourceMode === "library" ? selectedVideo!.id : undefined,
-        source_path: sourceMode === "path" ? sourcePath.trim() : undefined,
-        threshold,
-        min_scene_len_sec: minSceneLen,
-        trim_sec: trim,
-      });
+      if (sourceMode === "upload") {
+        await uploadSceneJob({
+          file: uploadFile!,
+          threshold,
+          min_scene_len_sec: minSceneLen,
+          trim_sec: trim,
+          output_dir: outputDir.trim() || undefined,
+        });
+      } else {
+        await createSceneJob({
+          video_id: sourceMode === "library" ? selectedVideo!.id : undefined,
+          source_path: sourceMode === "path" ? sourcePath.trim() : undefined,
+          threshold,
+          min_scene_len_sec: minSceneLen,
+          trim_sec: trim,
+          output_dir: outputDir.trim() || undefined,
+        });
+      }
       const data = await listSceneJobs();
       setJobs(data);
       setSelectedVideo(null);
       setVideoQuery("");
       setSourcePath("");
+      setUploadFile(null);
     } catch (err) {
       setSubmitError(err instanceof Error ? err.message : "Không tạo được tác vụ cắt cảnh.");
     } finally {
@@ -123,6 +143,12 @@ export function SceneCutterPage() {
             Chọn từ Library
           </button>
           <button
+            className={`scene-cutter-tab${sourceMode === "upload" ? " active" : ""}`}
+            onClick={() => setSourceMode("upload")}
+          >
+            Upload video
+          </button>
+          <button
             className={`scene-cutter-tab${sourceMode === "path" ? " active" : ""}`}
             onClick={() => setSourceMode("path")}
           >
@@ -130,7 +156,7 @@ export function SceneCutterPage() {
           </button>
         </div>
 
-        {sourceMode === "library" ? (
+        {sourceMode === "library" && (
           <div className="scene-cutter-video-picker">
             <div className="scene-cutter-search-row">
               <Search size={15} />
@@ -162,7 +188,9 @@ export function SceneCutterPage() {
               </ul>
             )}
           </div>
-        ) : (
+        )}
+
+        {sourceMode === "path" && (
           <input
             className="scene-cutter-path-input"
             type="text"
@@ -171,6 +199,28 @@ export function SceneCutterPage() {
             onChange={(e) => setSourcePath(e.target.value)}
           />
         )}
+
+        {sourceMode === "upload" && (
+          <label className="scene-cutter-upload-row">
+            <Upload size={15} />
+            <span>{uploadFile ? uploadFile.name : "Chọn file video từ máy để tải lên..."}</span>
+            <input
+              type="file"
+              accept="video/*"
+              onChange={(e) => setUploadFile(e.target.files?.[0] ?? null)}
+            />
+          </label>
+        )}
+
+        <label className="scene-cutter-output-dir">
+          Thư mục lưu kết quả (tuỳ chọn, để trống dùng mặc định)
+          <input
+            type="text"
+            placeholder="VD: D:\CanhDaCat"
+            value={outputDir}
+            onChange={(e) => setOutputDir(e.target.value)}
+          />
+        </label>
 
         <div className="scene-cutter-params">
           <label>
@@ -227,6 +277,16 @@ export function SceneCutterPage() {
 function SceneJobCard({ job }: { job: SceneCutJob }) {
   const label = STATUS_LABEL[job.status];
   const source = job.video_id != null ? `Video #${job.video_id}` : job.source_path;
+  const [openError, setOpenError] = useState<string | null>(null);
+
+  async function handleOpenFolder() {
+    setOpenError(null);
+    try {
+      await openSceneJobFolder(job.id);
+    } catch {
+      setOpenError("Không mở được thư mục.");
+    }
+  }
 
   return (
     <div className="scene-job-card">
@@ -241,7 +301,15 @@ function SceneJobCard({ job }: { job: SceneCutJob }) {
             {job.scene_count != null && ` — ${job.scene_count} cảnh`}
           </div>
         </div>
+        {job.status === "completed" && job.output_dir && (
+          <button className="btn btn-secondary" onClick={handleOpenFolder}>
+            <FolderOpen size={14} />
+            Mở thư mục
+          </button>
+        )}
       </div>
+
+      {openError && <div className="scene-cutter-alert scene-cutter-alert-error">{openError}</div>}
 
       {job.status === "failed" && job.error_message && (
         <div className="scene-cutter-alert scene-cutter-alert-error">{job.error_message}</div>

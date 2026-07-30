@@ -31,6 +31,12 @@ class SceneCutJob(Base):
     min_scene_len_sec: Mapped[float] = mapped_column(Float, nullable=False, default=0.6)
     trim_sec: Mapped[float] = mapped_column(Float, nullable=False, default=0.0)
 
+    # User-chosen destination folder for the cut scene files. None means
+    # "use the default location" (see SceneCutterService._resolve_paths):
+    # next to the video for a Library source, or library_dir/_local_files/
+    # for an uploaded/arbitrary-path source.
+    requested_output_dir: Mapped[str | None] = mapped_column(String, nullable=True)
+
     status: Mapped[str] = mapped_column(String, nullable=False, default="queued")
     scene_count: Mapped[int | None] = mapped_column(Integer, nullable=True)
     output_dir: Mapped[str | None] = mapped_column(String, nullable=True)

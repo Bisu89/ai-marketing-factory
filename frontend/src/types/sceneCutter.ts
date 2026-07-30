@@ -15,8 +15,10 @@ export interface SceneCutJob {
   threshold: number;
   min_scene_len_sec: number;
   trim_sec: number;
+  requested_output_dir: string | null;
   status: SceneCutStatus;
   scene_count: number | null;
+  output_dir: string | null;
   error_message: string | null;
   created_at: string;
   completed_at: string | null;
@@ -29,4 +31,5 @@ export interface CreateSceneJobInput {
   threshold: number;
   min_scene_len_sec: number;
   trim_sec: number;
+  output_dir?: string;
 }
