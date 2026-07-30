@@ -1,23 +1,29 @@
 # 10 — Scene Cutter (automatic scene-detection video splitting)
 
-**Commit:** `ca44c91` "Add Scene Cutter: background scene-detection video
-splitting feature"
+**Commits:** `ca44c91` "Add Scene Cutter: background scene-detection video
+splitting feature" (initial), `bfb8399` "Add video upload, custom output
+folder, and random scene filenames to Scene Cutter" (follow-up).
 
 ## What it does
 
 Lets a user cut a video into per-scene clips from the web UI, using
 PySceneDetect (content-aware cut detection) + ffmpeg (actual splitting),
-without leaving the app or touching a terminal. Source can be either an
-existing Library video or an arbitrary local file path the user types in.
-Runs as a background job (`queued` → `analyzing` → `splitting` →
-`completed`/`failed`) so a multi-minute video doesn't block the request or
-the UI; the frontend polls job status every 2s, same pattern as the History
-page's download polling.
+without leaving the app or touching a terminal. Source is one of:
+
+- an existing Library video,
+- a local file path typed in, or
+- a video file uploaded straight from the browser,
+
+and the user can optionally pick a custom destination folder for the cut
+scenes (default: next to the source video). Runs as a background job
+(`queued` → `analyzing` → `splitting` → `completed`/`failed`) so a
+multi-minute video doesn't block the request or the UI; the frontend polls
+job status every 2s, same pattern as the History page's download polling.
 
 This wraps the same detection/splitting logic already written as the
 standalone `tools/cat_canh.py` script (an interactive-menu CLI tool added
 earlier the same day), now exposed as a real in-app feature per the user's
-follow-up request.
+follow-up requests.
 
 ## Architecture
 
@@ -40,60 +46,106 @@ several at once on a desktop-local tool isn't worth the complexity.
 
 - `scene_cut_job` -- one row per cut request: `video_id` (FK, nullable) XOR
   `source_path` (nullable), `threshold`/`min_scene_len_sec`/`trim_sec`
-  params, `status`, `scene_count`, `output_dir`, `error_message`,
+  params, `requested_output_dir` (nullable -- the user's custom destination
+  folder, if given), `status`, `scene_count`, `output_dir` (the actual
+  folder used, set once the job reaches `splitting`), `error_message`,
   timestamps. Exactly one of `video_id`/`source_path` is enforced by a
   Pydantic `model_validator`, not a DB constraint (SQLite `CHECK` support is
   limited).
 - `scene_cut_result` -- one row per output scene file: `job_id` FK,
   `scene_number`, `start_timecode`, `end_timecode`, `file_path`.
 
+No Alembic in this project yet (see
+[05-database-normalization.md](05-database-normalization.md)), so
+`requested_output_dir` was added to the already-existing dev table with a
+plain `ALTER TABLE ... ADD COLUMN` rather than a migration script.
+
 ## Output location
 
-- Library video source: `library/<platform>/<channel>/<video_id>/scenes/job_<id>/scene-NNN.mp4`
+- Custom folder requested: whatever absolute path the user typed, created
+  if missing. Scenes there won't have a `media_url` (null) unless that path
+  happens to be inside `library_dir` -- browser preview needs the `/media`
+  static mount, but the files are still on disk and reachable via "Mở thư
+  mục" regardless.
+- Library video source, no custom folder: `library/<platform>/<channel>/<video_id>/scenes/job_<id>/`
   -- lands next to the video it came from, per the "artifacts live with
   their video" convention.
-- Arbitrary local file source: `library/_local_files/job_<id>/scene-NNN.mp4`
+- Local-path or uploaded source, no custom folder: `library/_local_files/job_<id>/`
   -- placed under `library_dir` specifically so it's still reachable
   through the existing `/media` static mount and previewable in the
-  browser, even though the source file itself lives outside the library.
+  browser, even though the source file itself may live outside the library.
+- Uploaded files themselves are staged at `library/_uploads/<random>.mp4`
+  before cutting (kept, not deleted after -- same "everything for one video
+  stays together" spirit as the rest of the library).
+
+Scene filenames are random (`<uuid4-hex>.mp4`), not `scene-001.mp4` --
+order is already captured by `scene_number`/`start_timecode`/`end_timecode`
+on `scene_cut_result`, so the filename itself doesn't need to encode it.
 
 ## Endpoints
 
 ```
-POST /scene-jobs              {video_id | source_path, threshold, min_scene_len_sec, trim_sec}
-GET  /scene-jobs?video_id=     list jobs (optionally scoped to one video)
-GET  /scene-jobs/{job_id}      status + scenes (once completed)
+POST /scene-jobs                {video_id | source_path, threshold, min_scene_len_sec, trim_sec, output_dir?}
+POST /scene-jobs/upload         multipart: file, threshold, min_scene_len_sec, trim_sec, output_dir?
+GET  /scene-jobs?video_id=      list jobs (optionally scoped to one video)
+GET  /scene-jobs/{job_id}       status + scenes (once completed)
+POST /scene-jobs/{job_id}/open-folder   opens job.output_dir in the OS file explorer
 ```
 
 ## Frontend
 
-New Sidebar entry "Scene Cutter" (`/scene-cutter`,
-`frontend/src/pages/SceneCutterPage.tsx`): a form to pick a video (live
-search against `/videos?search=`, debounced 300ms) or type a local path,
-tune threshold/min-scene-length/trim, and submit; below it, a polled list
-of past/running jobs, each rendering its scenes as real `<video>` previews
-once completed.
+Sidebar entry "Scene Cutter" (`/scene-cutter`,
+`frontend/src/pages/SceneCutterPage.tsx`): three source tabs (pick a
+Library video via live search, upload a file, or type a local path), an
+optional output-folder text field, threshold/min-scene-length/trim inputs,
+and a submit button; below it, a polled list of past/running jobs, each
+rendering its scenes as real `<video>` previews once completed (or a
+folder icon placeholder when the scene isn't under `library_dir` and so has
+no browser-servable `media_url`), plus a "Mở thư mục" button once done.
 
-## Non-obvious design decision
+## Non-obvious design decisions
 
-The output filename padding (`scene-001.mp4` vs `scene-0001.mp4` for
-1000+ scenes) is computed with the exact same formula PySceneDetect's own
-`split_video_ffmpeg` uses internally
-(`max(3, floor(log10(scene_count)) + 1)` digits) rather than a hardcoded
-3-digit guess -- otherwise the `scene_cut_result.file_path` rows written to
-the DB could silently point at filenames ffmpeg never actually produced for
-very high scene counts.
+- **Random filenames via a custom `formatter` callback.** PySceneDetect's
+  `split_video_ffmpeg` accepts a `formatter(video_metadata, scene_metadata) -> str`
+  callback instead of its default `$SCENE_NUMBER` template. The service
+  generates the random names up front (before calling ffmpeg) and has the
+  formatter just look them up by scene index -- so the exact same names used
+  by ffmpeg are also what gets written to `scene_cut_result.file_path`,
+  with no risk of the DB and disk disagreeing.
+- **No folder-picker dialog.** A browser's File System Access API
+  (`showDirectoryPicker()`) deliberately never exposes an absolute
+  filesystem path back to JS, for security reasons -- there's no way to get
+  a real path the backend could use for ffmpeg output from that API. Since
+  this app already asks for typed absolute paths elsewhere (Library
+  "import existing file", Scene Cutter's own local-path mode), a plain text
+  input for the output folder was the consistent choice, not a workaround.
 
 ## Verification
 
-Real end-to-end test, not just code review: built a 3-scene test video with
-ffmpeg (red/blue/green), ran both source paths (`source_path` and
-`video_id`, the latter via a real imported Library video) through the real
-API with curl, confirmed jobs reached `completed` with 3 correctly-timed
-scenes and that the output `.mp4` files actually exist on disk and are
-servable via `/media`. Then drove the real page with Playwright against a
-real Vite dev server + real backend: submitted a job through the UI,
-confirmed it reached "Hoàn tất — 3 cảnh" with 3 playable scene previews and
-zero console errors, and confirmed the failed-job error state renders
-correctly too (caught for free from an earlier bad manual test request).
-All test data/files removed afterward.
+Real end-to-end test, not just code review, for both the initial version
+and this follow-up:
+
+- Built a 3-scene test video with ffmpeg (red/blue/green), exercised all
+  three source modes (`source_path`, `video_id` via a real imported Library
+  video, and multipart `upload`) through the real API with curl, plus a
+  custom `output_dir` outside `library_dir` -- confirmed jobs reached
+  `completed` with correctly-timed scenes, random filenames matching
+  between DB and disk, `media_url` correctly null for out-of-library
+  output, and the `open-folder` endpoint returning 204.
+- Drove the real page with Playwright against a real Vite dev server + real
+  backend: uploaded a file through the UI with a custom output folder,
+  confirmed "Hoàn tất — 3 cảnh", clicked "Mở thư mục" without error, and
+  confirmed zero console errors.
+- While testing, discovered the user was independently exercising the same
+  feature live, in their own browser, against the same dev database, with
+  real uploaded videos (jobs with real multi-scene content unrelated to any
+  test fixture) -- confirmed the feature holds up under genuine concurrent
+  use. Cleanup afterward specifically targeted only the job IDs and files
+  this testing session created (matched by known source paths/hashes)
+  rather than clearing the table, to avoid touching the user's own live
+  data.
+- Also hit an unrelated environment hiccup mid-session: the running
+  `--reload` dev server stopped responding to any request (health check
+  included). Root cause wasn't pinned down for certain -- restarted the
+  process rather than debugging a black-box hang further; no data was lost
+  since all state lives in SQLite, committed per-request.
