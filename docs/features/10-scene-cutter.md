@@ -1,8 +1,8 @@
 # 10 — Scene Cutter (automatic scene-detection video splitting)
 
-**Commits:** `ca44c91` "Add Scene Cutter: background scene-detection video
-splitting feature" (initial), `bfb8399` "Add video upload, custom output
-folder, and random scene filenames to Scene Cutter" (follow-up).
+**Commits:** `ca44c91` (initial), `bfb8399` (upload + custom output folder +
+random filenames), `75a4de7` "Add native folder-picker button to Scene
+Cutter's output folder field" (follow-ups).
 
 ## What it does
 
@@ -90,6 +90,7 @@ POST /scene-jobs/upload         multipart: file, threshold, min_scene_len_sec, t
 GET  /scene-jobs?video_id=      list jobs (optionally scoped to one video)
 GET  /scene-jobs/{job_id}       status + scenes (once completed)
 POST /scene-jobs/{job_id}/open-folder   opens job.output_dir in the OS file explorer
+POST /scene-jobs/pick-folder            opens a native folder-picker dialog, returns {path}
 ```
 
 ## Frontend
@@ -97,11 +98,13 @@ POST /scene-jobs/{job_id}/open-folder   opens job.output_dir in the OS file expl
 Sidebar entry "Scene Cutter" (`/scene-cutter`,
 `frontend/src/pages/SceneCutterPage.tsx`): three source tabs (pick a
 Library video via live search, upload a file, or type a local path), an
-optional output-folder text field, threshold/min-scene-length/trim inputs,
-and a submit button; below it, a polled list of past/running jobs, each
-rendering its scenes as real `<video>` previews once completed (or a
-folder icon placeholder when the scene isn't under `library_dir` and so has
-no browser-servable `media_url`), plus a "Mở thư mục" button once done.
+optional output-folder field (typed manually, or filled in by clicking
+"Chọn thư mục..." which calls `pick-folder`), threshold/min-scene-length/
+trim inputs, and a submit button; below it, a polled list of past/running
+jobs, each rendering its scenes as real `<video>` previews once completed
+(or a folder icon placeholder when the scene isn't under `library_dir` and
+so has no browser-servable `media_url`), plus a "Mở thư mục" button once
+done.
 
 ## Non-obvious design decisions
 
@@ -112,13 +115,25 @@ no browser-servable `media_url`), plus a "Mở thư mục" button once done.
   formatter just look them up by scene index -- so the exact same names used
   by ffmpeg are also what gets written to `scene_cut_result.file_path`,
   with no risk of the DB and disk disagreeing.
-- **No folder-picker dialog.** A browser's File System Access API
-  (`showDirectoryPicker()`) deliberately never exposes an absolute
-  filesystem path back to JS, for security reasons -- there's no way to get
-  a real path the backend could use for ffmpeg output from that API. Since
-  this app already asks for typed absolute paths elsewhere (Library
-  "import existing file", Scene Cutter's own local-path mode), a plain text
-  input for the output folder was the consistent choice, not a workaround.
+- **Folder picker runs server-side, not in the browser.** A browser's File
+  System Access API (`showDirectoryPicker()`) deliberately never exposes an
+  absolute filesystem path back to JS, for security reasons -- there's no
+  way to get a real path the backend could use for ffmpeg output from that
+  API. `POST /scene-jobs/pick-folder` instead pops a native `tkinter`
+  directory dialog *on the backend process* and returns the chosen path as
+  a string. This only works because this is a desktop-local app where the
+  backend and the browser are on the same machine and the same user is
+  sitting at both -- it would make no sense for a hosted web app. Windows-only
+  for now (raises a clear error otherwise), matching the existing
+  `os.startfile`-based open-folder endpoints elsewhere in this app, which
+  are similarly Windows-only.
+- **A custom `output_dir` is used exactly as given, never nested under a
+  `job_<id>/` subfolder** (unlike the two default locations, which are
+  nested for collision-avoidance across jobs run against the same video or
+  the same default `_local_files` bucket). Once a user has explicitly
+  chosen "put my cut scenes here," adding an extra unrequested subfolder
+  layer would be surprising; random scene filenames already make
+  cross-job collisions inside that folder essentially impossible.
 
 ## Verification
 
@@ -144,6 +159,12 @@ and this follow-up:
   this testing session created (matched by known source paths/hashes)
   rather than clearing the table, to avoid touching the user's own live
   data.
+- The `pick-folder` dialog itself was verified by code review + route
+  registration + confirming the button renders, not by actually clicking it
+  in an automated test -- it opens a real native OS window on whatever
+  machine the backend runs on, which would have popped up unprompted and
+  blocked waiting for a human to interact with it. Manual click-test still
+  needed by an actual user.
 - Also hit an unrelated environment hiccup mid-session: the running
   `--reload` dev server stopped responding to any request (health check
   included). Root cause wasn't pinned down for certain -- restarted the
