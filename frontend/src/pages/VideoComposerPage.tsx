@@ -43,6 +43,9 @@ export function VideoComposerPage() {
 
   const [jobs, setJobs] = useState<VideoComposeJob[]>([]);
 
+  const [clipsDragOver, setClipsDragOver] = useState(false);
+  const [musicDragOver, setMusicDragOver] = useState(false);
+
   useEffect(() => {
     let cancelled = false;
 
@@ -65,7 +68,11 @@ export function VideoComposerPage() {
 
   function handleAddClips(fileList: FileList | null) {
     if (!fileList) return;
-    setClips((prev) => [...prev, ...Array.from(fileList)]);
+    // Dropped content isn't pre-filtered by an `accept` attribute the way
+    // the file-picker dialog is, so filter out anything that isn't a video
+    // (e.g. if a folder containing mixed files got dragged in).
+    const videos = Array.from(fileList).filter((f) => f.type.startsWith("video/") || f.type === "");
+    setClips((prev) => [...prev, ...videos]);
   }
 
   function moveClip(index: number, direction: -1 | 1) {
@@ -136,9 +143,21 @@ export function VideoComposerPage() {
 
         <div className="vc-field">
           <span>Video (theo thứ tự ghép)</span>
-          <label className="vc-upload-row">
+          <label
+            className={`vc-upload-row${clipsDragOver ? " vc-drag-over" : ""}`}
+            onDragOver={(e) => {
+              e.preventDefault();
+              setClipsDragOver(true);
+            }}
+            onDragLeave={() => setClipsDragOver(false)}
+            onDrop={(e) => {
+              e.preventDefault();
+              setClipsDragOver(false);
+              handleAddClips(e.dataTransfer.files);
+            }}
+          >
             <Film size={15} />
-            <span>Thêm video...</span>
+            <span>Thêm video... (hoặc kéo thả file vào đây)</span>
             <input type="file" accept="video/*" multiple onChange={(e) => handleAddClips(e.target.files)} />
           </label>
 
@@ -147,6 +166,7 @@ export function VideoComposerPage() {
               {clips.map((clip, index) => (
                 <li key={`${clip.name}-${index}`} className="vc-clip-row">
                   <span className="vc-clip-index">{index + 1}</span>
+                  <ClipThumbnail file={clip} />
                   <span className="vc-clip-name">{clip.name}</span>
                   <div className="vc-clip-actions">
                     <button type="button" onClick={() => moveClip(index, -1)} disabled={index === 0} title="Lên">
@@ -170,9 +190,22 @@ export function VideoComposerPage() {
           )}
         </div>
 
-        <label className="vc-upload-row vc-music-row">
+        <label
+          className={`vc-upload-row vc-music-row${musicDragOver ? " vc-drag-over" : ""}`}
+          onDragOver={(e) => {
+            e.preventDefault();
+            setMusicDragOver(true);
+          }}
+          onDragLeave={() => setMusicDragOver(false)}
+          onDrop={(e) => {
+            e.preventDefault();
+            setMusicDragOver(false);
+            const file = e.dataTransfer.files?.[0];
+            if (file && (file.type.startsWith("audio/") || file.type === "")) setMusic(file);
+          }}
+        >
           <Music size={15} />
-          <span>{music ? music.name : "Nhạc nền (tuỳ chọn)..."}</span>
+          <span>{music ? music.name : "Nhạc nền (tuỳ chọn, hoặc kéo thả vào đây)..."}</span>
           <input type="file" accept="audio/*" onChange={(e) => setMusic(e.target.files?.[0] ?? null)} />
         </label>
 
@@ -228,6 +261,41 @@ export function VideoComposerPage() {
         </div>
       )}
     </>
+  );
+}
+
+function ClipThumbnail({ file }: { file: File }) {
+  const [url, setUrl] = useState<string | null>(null);
+
+  useEffect(() => {
+    // Create AND revoke inside the same effect (not a useState lazy
+    // initializer + separate cleanup) so React 19 StrictMode's dev-only
+    // mount->cleanup->mount replay can't revoke a blob URL that a later
+    // invocation is still relying on -- each invocation's URL is only ever
+    // torn down by that same invocation's own cleanup.
+    const objectUrl = URL.createObjectURL(file);
+    setUrl(objectUrl);
+    return () => URL.revokeObjectURL(objectUrl);
+  }, [file]);
+
+  if (!url) {
+    return <div className="vc-clip-thumb" />;
+  }
+
+  return (
+    <video
+      className="vc-clip-thumb"
+      src={url}
+      muted
+      playsInline
+      preload="metadata"
+      // Chrome/Edge often render a blank frame at t=0 until an explicit
+      // seek happens -- nudging to 0.1s forces a real decoded frame to show
+      // as the thumbnail instead of a black box.
+      onLoadedMetadata={(e) => {
+        e.currentTarget.currentTime = 0.1;
+      }}
+    />
   );
 }
 

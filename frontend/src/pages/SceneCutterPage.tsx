@@ -36,6 +36,7 @@ export function SceneCutterPage() {
 
   const [sourcePath, setSourcePath] = useState("");
   const [uploadFile, setUploadFile] = useState<File | null>(null);
+  const [uploadDragOver, setUploadDragOver] = useState(false);
 
   const [outputDir, setOutputDir] = useState("");
 
@@ -222,9 +223,22 @@ export function SceneCutterPage() {
         )}
 
         {sourceMode === "upload" && (
-          <label className="scene-cutter-upload-row">
+          <label
+            className={`scene-cutter-upload-row${uploadDragOver ? " scene-cutter-drag-over" : ""}`}
+            onDragOver={(e) => {
+              e.preventDefault();
+              setUploadDragOver(true);
+            }}
+            onDragLeave={() => setUploadDragOver(false)}
+            onDrop={(e) => {
+              e.preventDefault();
+              setUploadDragOver(false);
+              const file = e.dataTransfer.files?.[0];
+              if (file && (file.type.startsWith("video/") || file.type === "")) setUploadFile(file);
+            }}
+          >
             <Upload size={15} />
-            <span>{uploadFile ? uploadFile.name : "Chọn file video từ máy để tải lên..."}</span>
+            <span>{uploadFile ? uploadFile.name : "Chọn file video, hoặc kéo thả vào đây..."}</span>
             <input
               type="file"
               accept="video/*"

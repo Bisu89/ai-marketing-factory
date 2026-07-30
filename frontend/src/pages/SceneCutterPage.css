@@ -120,6 +120,12 @@
   display: none;
 }
 
+.scene-cutter-upload-row.scene-cutter-drag-over {
+  border-color: var(--accent);
+  background: var(--accent-bg);
+  color: var(--accent);
+}
+
 .scene-cutter-output-dir {
   display: flex;
   flex-direction: column;
