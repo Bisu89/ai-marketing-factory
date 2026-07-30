@@ -1,3 +1,7 @@
+import os
+import sys
+from pathlib import Path
+
 from fastapi import APIRouter, Depends, HTTPException, Response
 from sqlalchemy.orm import Session
 
@@ -138,3 +142,19 @@ def cancel_download(
     engine.cancel(task_id)
     db.expire_all()
     return _get_task_or_404(db, task_id)
+
+
+@router.post("/downloads/{task_id}/open-folder")
+def open_download_folder(task_id: int, db: Session = Depends(get_db)):
+    task = _get_task_or_404(db, task_id)
+    if not task.video.video_path:
+        raise HTTPException(status_code=409, detail="Video chưa tải xong")
+
+    folder = Path(task.video.video_path).resolve().parent
+    if not folder.exists():
+        raise HTTPException(status_code=404, detail="Không tìm thấy thư mục")
+
+    if sys.platform.startswith("win"):
+        os.startfile(str(folder))  # noqa: S606 -- path is server-resolved from DB, not client input
+
+    return {"path": str(folder)}

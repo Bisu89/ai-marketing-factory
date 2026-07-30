@@ -16,7 +16,7 @@ from app.db.base import Base
 from app.db.seed import seed_initial_data
 from app.db.session import SessionLocal, engine
 from app.services.download.engine import DownloadEngine
-from app.services.download.http_downloader import HttpDownloader
+from app.services.download.ytdlp_downloader import YtdlpDownloader
 
 
 @asynccontextmanager
@@ -39,7 +39,7 @@ async def lifespan(app: FastAPI):
     # DownloadEngine or any core model required. See app/modules/README.md.
 
     download_engine = DownloadEngine(
-        downloader=HttpDownloader(),
+        downloader=YtdlpDownloader(),
         download_dir=Path(settings.download_dir),
         library_dir=Path(settings.library_dir),
         max_workers=settings.max_concurrent_downloads,
