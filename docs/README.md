@@ -22,7 +22,7 @@ SQLite.
 8. [Library backend API](features/08-library-backend-api.md) — Repository/Service layers, `/videos` `/categories` `/tags` REST endpoints, search/filter/sort/pagination
 9. [Library frontend UI](features/09-library-frontend-ui.md) — Grid/Table views, video cards, preview drawer, static media serving
 10. [Scene Cutter](features/10-scene-cutter.md) — automatic scene-detection video splitting (PySceneDetect + ffmpeg), background job + polling UI
-11. [Video Composer](features/11-video-composer.md) — merge multiple uploaded clips with swipe-left transitions, title overlay, TTS narration + karaoke subtitles
+11. [Video Composer](features/11-video-composer.md) — merge multiple uploaded clips with swipe-left transitions, title overlay, optional background music
 
 ## Keeping this up to date
 
