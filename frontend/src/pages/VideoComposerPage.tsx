@@ -1,8 +1,13 @@
 import { useEffect, useState } from "react";
-import { Film, ArrowUp, ArrowDown, X, Loader2, FolderOpen, Music } from "lucide-react";
+import { Film, ArrowUp, ArrowDown, X, Loader2, FolderOpen, FolderInput, Music } from "lucide-react";
 import { PageHeader } from "../components/PageHeader";
 import { EmptyState } from "../components/EmptyState";
-import { createVideoComposeJob, listVideoComposeJobs, openVideoComposeJobFolder } from "../api/videoComposer";
+import {
+  createVideoComposeJob,
+  listVideoComposeJobs,
+  openVideoComposeJobFolder,
+  pickVideoComposeOutputFolder,
+} from "../api/videoComposer";
 import { mediaUrl } from "../api/client";
 import type { VideoComposeJob } from "../types/videoComposer";
 import "./VideoComposerPage.css";
@@ -12,31 +17,21 @@ const POLL_INTERVAL_MS = 2000;
 const STATUS_LABEL: Record<VideoComposeJob["status"], string> = {
   queued: "Trong hàng đợi",
   merging: "Đang ghép video (chuyển cảnh swipe-left)",
-  narrating: "Đang tạo giọng đọc",
-  subtitling: "Đang tạo phụ đề karaoke",
-  mixing_audio: "Đang trộn âm thanh",
   finalizing: "Đang hoàn thiện",
   completed: "Hoàn tất",
   failed: "Lỗi",
 };
 
-const IN_PROGRESS_STATUSES: VideoComposeJob["status"][] = [
-  "queued",
-  "merging",
-  "narrating",
-  "subtitling",
-  "mixing_audio",
-  "finalizing",
-];
+const IN_PROGRESS_STATUSES: VideoComposeJob["status"][] = ["queued", "merging", "finalizing"];
 
 export function VideoComposerPage() {
   const [clips, setClips] = useState<File[]>([]);
   const [title, setTitle] = useState("");
-  const [script, setScript] = useState("");
   const [music, setMusic] = useState<File | null>(null);
   const [musicVolume, setMusicVolume] = useState(0.15);
   const [transitionDuration, setTransitionDuration] = useState(0.5);
-  const [burnSubtitles, setBurnSubtitles] = useState(true);
+  const [outputDir, setOutputDir] = useState("");
+  const [pickingFolder, setPickingFolder] = useState(false);
 
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
@@ -89,7 +84,7 @@ export function VideoComposerPage() {
     setClips((prev) => prev.filter((_, i) => i !== index));
   }
 
-  const canSubmit = clips.length > 0 && title.trim().length > 0 && script.trim().length > 0;
+  const canSubmit = clips.length > 0 && title.trim().length > 0;
 
   async function handleSubmit() {
     if (!canSubmit || submitting) return;
@@ -98,18 +93,16 @@ export function VideoComposerPage() {
     try {
       await createVideoComposeJob({
         title: title.trim(),
-        script: script.trim(),
         files: clips,
         music,
         musicVolume,
         transitionDuration,
-        burnSubtitles,
+        outputDir: outputDir.trim() || undefined,
       });
       const data = await listVideoComposeJobs();
       setJobs(data);
       setClips([]);
       setTitle("");
-      setScript("");
       setMusic(null);
     } catch (err) {
       setSubmitError(err instanceof Error ? err.message : "Không tạo được tác vụ ghép video.");
@@ -118,27 +111,30 @@ export function VideoComposerPage() {
     }
   }
 
+  async function handlePickFolder() {
+    setPickingFolder(true);
+    setSubmitError(null);
+    try {
+      const path = await pickVideoComposeOutputFolder();
+      if (path) setOutputDir(path);
+    } catch (err) {
+      setSubmitError(err instanceof Error ? err.message : "Không mở được hộp thoại chọn thư mục.");
+    } finally {
+      setPickingFolder(false);
+    }
+  }
+
   return (
     <>
       <PageHeader
         title="Video Composer"
-        subtitle="Ghép nhiều video, chuyển cảnh swipe-left, chèn tiêu đề, tự tạo giọng đọc + phụ đề tiếng Tây Ban Nha"
+        subtitle="Ghép nhiều video, chuyển cảnh swipe-left, chèn tiêu đề"
       />
 
       <div className="vc-form">
         <label className="vc-field">
           Tiêu đề (hiển thị cố định đầu video)
           <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="VD: Canal de Prueba" />
-        </label>
-
-        <label className="vc-field">
-          Kịch bản (tiếng Tây Ban Nha, dùng để tạo giọng đọc + phụ đề)
-          <textarea
-            rows={5}
-            value={script}
-            onChange={(e) => setScript(e.target.value)}
-            placeholder="Hola a todos, bienvenidos..."
-          />
         </label>
 
         <div className="vc-field">
@@ -209,6 +205,22 @@ export function VideoComposerPage() {
           <input type="file" accept="audio/*" onChange={(e) => setMusic(e.target.files?.[0] ?? null)} />
         </label>
 
+        <label className="vc-field">
+          Thư mục lưu kết quả (tuỳ chọn, để trống dùng mặc định)
+          <div className="vc-output-dir-row">
+            <input
+              type="text"
+              placeholder="VD: D:\VideoDaGhep"
+              value={outputDir}
+              onChange={(e) => setOutputDir(e.target.value)}
+            />
+            <button type="button" className="btn btn-secondary" onClick={handlePickFolder} disabled={pickingFolder}>
+              {pickingFolder ? <Loader2 size={14} className="spin" /> : <FolderInput size={14} />}
+              Chọn thư mục...
+            </button>
+          </div>
+        </label>
+
         <div className="vc-params">
           <label>
             Âm lượng nhạc nền
@@ -231,10 +243,6 @@ export function VideoComposerPage() {
               onChange={(e) => setTransitionDuration(Number(e.target.value))}
             />
           </label>
-          <label className="vc-checkbox-field">
-            <input type="checkbox" checked={burnSubtitles} onChange={(e) => setBurnSubtitles(e.target.checked)} />
-            Chèn phụ đề vào video
-          </label>
         </div>
 
         {submitError && <div className="vc-alert vc-alert-error">{submitError}</div>}
@@ -251,7 +259,7 @@ export function VideoComposerPage() {
         <EmptyState
           icon={Film}
           title="Chưa có tác vụ nào"
-          description="Thêm video, nhập tiêu đề và kịch bản rồi bấm 'Ghép video' để bắt đầu."
+          description="Thêm video, nhập tiêu đề rồi bấm 'Ghép video' để bắt đầu."
         />
       ) : (
         <div className="vc-jobs">

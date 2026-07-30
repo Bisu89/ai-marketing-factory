@@ -10,7 +10,7 @@ from app.core.config import Settings, get_settings
 from app.core.exceptions import FileOperationError, NotFoundError, ValidationError
 from app.db.session import get_db
 from app.modules.video_composer.models import VideoComposeJob
-from app.modules.video_composer.schemas import VideoComposeJobOut, job_to_out
+from app.modules.video_composer.schemas import PickFolderOut, VideoComposeJobOut, job_to_out
 from app.modules.video_composer.service import VideoComposerService
 
 router = APIRouter()
@@ -32,14 +32,38 @@ def _get_job_or_404(db: Session, job_id: int) -> VideoComposeJob:
     return job
 
 
+@router.post("/video-compose-jobs/pick-folder", response_model=PickFolderOut)
+def pick_output_folder():
+    """Opens a native OS folder-picker dialog and returns the chosen path.
+
+    Duplicated (not imported) from app.modules.scene_cutter.router's
+    identical endpoint -- per app/modules/README.md, a module may never
+    import another module; the composition-root wiring only ever points
+    inward from core, never sideways between modules.
+    """
+    if sys.platform != "win32":
+        raise ValidationError("Folder picker is only supported on Windows")
+
+    import tkinter as tk
+    from tkinter import filedialog
+
+    root = tk.Tk()
+    root.withdraw()
+    root.attributes("-topmost", True)
+    try:
+        selected = filedialog.askdirectory(title="Chọn thư mục lưu video đã ghép")
+    finally:
+        root.destroy()
+
+    return PickFolderOut(path=selected or None)
+
+
 @router.post("/video-compose-jobs", response_model=VideoComposeJobOut, status_code=201)
 def create_video_compose_job(
     title: str = Form(...),
-    script: str = Form(...),
-    voice: str = Form("es-ES-AlvaroNeural"),
     music_volume: float = Form(0.15),
     transition_duration: float = Form(0.5),
-    burn_subtitles: bool = Form(True),
+    output_dir: str | None = Form(None),
     files: list[UploadFile] = File(...),
     music: UploadFile | None = File(None),
     db: Session = Depends(get_db),
@@ -48,16 +72,12 @@ def create_video_compose_job(
 ):
     if not files:
         raise ValidationError("Cần ít nhất 1 video để ghép")
-    if not script.strip():
-        raise ValidationError("Kịch bản không được để trống")
 
     job_id = service.create_job(
         title=title,
-        script_text=script,
-        voice=voice,
         music_volume=music_volume,
         transition_duration=transition_duration,
-        burn_subtitles=burn_subtitles,
+        requested_output_dir=output_dir,
     )
 
     # Order matters here: `files` arrives in the exact order the frontend

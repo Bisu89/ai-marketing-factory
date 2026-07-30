@@ -19,10 +19,9 @@ class VideoComposeJobOut(BaseModel):
 
     id: int
     title: str
-    voice: str
     music_volume: float
     transition_duration: float
-    burn_subtitles: bool
+    requested_output_dir: str | None
     status: str
     clip_count: int
     output_path: str | None
@@ -36,3 +35,7 @@ def job_to_out(job: VideoComposeJob, library_dir: Path) -> VideoComposeJobOut:
     base = VideoComposeJobOut.model_validate(job)
     output_media_url = _to_media_url(job.output_path, library_dir) if job.output_path else None
     return base.model_copy(update={"output_media_url": output_media_url})
+
+
+class PickFolderOut(BaseModel):
+    path: str | None
