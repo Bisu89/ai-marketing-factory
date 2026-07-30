@@ -1,0 +1,217 @@
+.scene-cutter-form {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.scene-cutter-source-tabs {
+  display: flex;
+  gap: 6px;
+}
+
+.scene-cutter-tab {
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface-alt);
+  color: var(--text-muted);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.scene-cutter-tab.active {
+  background: var(--accent-bg);
+  border-color: var(--accent);
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.scene-cutter-search-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--text-muted);
+}
+
+.scene-cutter-search-row input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--text-heading);
+  font-size: 13.5px;
+}
+
+.scene-cutter-video-picker {
+  position: relative;
+}
+
+.scene-cutter-video-results {
+  list-style: none;
+  margin: 6px 0 0;
+  padding: 4px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  box-shadow: var(--shadow-md);
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.scene-cutter-video-results button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 8px;
+  border: none;
+  background: transparent;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  text-align: left;
+  color: var(--text);
+  font-size: 13px;
+}
+
+.scene-cutter-video-results button:hover {
+  background: var(--surface-alt);
+}
+
+.scene-cutter-video-results img {
+  width: 48px;
+  height: 32px;
+  object-fit: cover;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.scene-cutter-path-input {
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--text-heading);
+  font-size: 13.5px;
+}
+
+.scene-cutter-params {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.scene-cutter-params label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+
+.scene-cutter-params input {
+  width: 120px;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--text-heading);
+  font-size: 13px;
+}
+
+.scene-cutter-alert {
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+}
+
+.scene-cutter-alert-error {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--danger);
+}
+
+.scene-cutter-jobs-title {
+  font-size: 15px;
+  margin-bottom: 12px;
+}
+
+.scene-cutter-jobs {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.scene-job-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 16px;
+}
+
+.scene-job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.scene-job-source {
+  font-weight: 500;
+  color: var(--text-heading);
+  font-size: 13.5px;
+  word-break: break-all;
+}
+
+.scene-job-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.scene-job-status--completed {
+  color: var(--success);
+}
+
+.scene-job-status--failed {
+  color: var(--danger);
+}
+
+.scene-job-scenes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.scene-job-scene video {
+  width: 100%;
+  border-radius: var(--radius-sm);
+  background: #000;
+  aspect-ratio: 16 / 9;
+}
+
+.scene-job-scene-nopreview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 16 / 9;
+  background: var(--surface-alt);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+}
+
+.scene-job-scene-label {
+  margin-top: 6px;
+  font-size: 11.5px;
+  color: var(--text-muted);
+}

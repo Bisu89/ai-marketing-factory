@@ -1,1 +1,1 @@
-scenedetect[opencv]
+scenedetect==0.7.1

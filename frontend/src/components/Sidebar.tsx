@@ -1,4 +1,4 @@
-import { LayoutDashboard, Download, Library, History, Settings, Film } from "lucide-react";
+import { LayoutDashboard, Download, Library, History, Settings, Film, Scissors } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import "./Sidebar.css";
 
@@ -7,6 +7,7 @@ const NAV_ITEMS = [
   { to: "/download", label: "Download", icon: Download },
   { to: "/library", label: "Library", icon: Library },
   { to: "/history", label: "History", icon: History },
+  { to: "/scene-cutter", label: "Scene Cutter", icon: Scissors },
   { to: "/settings", label: "Settings", icon: Settings },
 ];
 

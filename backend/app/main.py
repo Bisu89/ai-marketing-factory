@@ -15,6 +15,7 @@ from app.core.logging import configure_logging
 from app.db.base import Base
 from app.db.seed import seed_initial_data
 from app.db.session import SessionLocal, engine
+from app.modules.scene_cutter.service import SceneCutterService
 from app.services.download.engine import DownloadEngine
 from app.services.download.ytdlp_downloader import YtdlpDownloader
 
@@ -48,9 +49,14 @@ async def lifespan(app: FastAPI):
     download_engine.start()
     app.state.download_engine = download_engine
 
+    scene_cutter_service = SceneCutterService(library_dir=Path(settings.library_dir))
+    scene_cutter_service.start()
+    app.state.scene_cutter_service = scene_cutter_service
+
     yield
 
     download_engine.shutdown()
+    scene_cutter_service.shutdown()
 
 
 def create_app() -> FastAPI:
