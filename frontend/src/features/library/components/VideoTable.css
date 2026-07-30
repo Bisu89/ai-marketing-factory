@@ -1,0 +1,140 @@
+.video-table-wrap {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: auto;
+  box-shadow: var(--shadow-sm);
+}
+
+.video-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.video-table thead th {
+  position: sticky;
+  top: 0;
+  background: var(--surface-alt);
+  text-align: left;
+  padding: 10px 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.video-table tbody td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.video-table tbody tr {
+  cursor: pointer;
+}
+
+.video-table tbody tr:hover {
+  background: var(--surface-alt);
+}
+
+.video-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.video-table-fav-col {
+  width: 36px;
+}
+
+.video-table-favorite {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border: none;
+  background: none;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.video-table-favorite.is-favorite {
+  color: #f5b400;
+}
+
+.video-table-video-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 320px;
+}
+
+.video-table-video-cell img,
+.video-table-thumb-placeholder {
+  width: 56px;
+  height: 32px;
+  object-fit: cover;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.video-table-thumb-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface-alt);
+  color: var(--text-muted);
+}
+
+.video-table-title {
+  font-weight: 500;
+  color: var(--text-heading);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 240px;
+}
+
+.video-table-channel {
+  font-size: 11.5px;
+  color: var(--text-muted);
+}
+
+.video-table-tags-cell {
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.video-table-actions-col {
+  width: 110px;
+}
+
+.video-table-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.video-table-actions button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.video-table-actions button:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}

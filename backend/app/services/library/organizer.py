@@ -56,22 +56,7 @@ def _download_thumbnail(url: str, destination: Path) -> bool:
         return False
 
 
-def organize_completed_download(
-    video_path: Path,
-    library_dir: Path,
-    metadata: VideoMetadata,
-    downloaded_at: datetime,
-) -> Path:
-    """Moves a completed download into library_dir/<platform>/<channel_name>/<video_id>/
-    as video.mp4, fetches thumbnail.jpg (best-effort), and writes metadata.json.
-    Returns the final path of video.mp4.
-    """
-    # Order matters: write everything that can fail (thumbnail, metadata.json)
-    # *before* moving the video file. If anything raises, the video stays at its
-    # original staging path and the job's destination_path is still valid for a retry.
-    video_dir = build_video_dir(library_dir, metadata)
-    video_dir.mkdir(parents=True, exist_ok=True)
-
+def _write_thumbnail_and_metadata(video_dir: Path, metadata: VideoMetadata, downloaded_at: datetime) -> None:
     if metadata.thumbnail_url:
         _download_thumbnail(metadata.thumbnail_url, video_dir / "thumbnail.jpg")
 
@@ -90,7 +75,47 @@ def organize_completed_download(
     with open(video_dir / "metadata.json", "w", encoding="utf-8") as f:
         json.dump(metadata_json, f, ensure_ascii=False, indent=2)
 
+
+def organize_completed_download(
+    video_path: Path,
+    library_dir: Path,
+    metadata: VideoMetadata,
+    downloaded_at: datetime,
+) -> Path:
+    """Moves a completed download into library_dir/<platform>/<channel_name>/<video_id>/
+    as video.mp4, fetches thumbnail.jpg (best-effort), and writes metadata.json.
+    Returns the final path of video.mp4.
+    """
+    # Order matters: write everything that can fail (thumbnail, metadata.json)
+    # *before* moving the video file. If anything raises, the video stays at its
+    # original staging path and the job's destination_path is still valid for a retry.
+    video_dir = build_video_dir(library_dir, metadata)
+    video_dir.mkdir(parents=True, exist_ok=True)
+
+    _write_thumbnail_and_metadata(video_dir, metadata, downloaded_at)
+
     final_video_path = video_dir / "video.mp4"
     shutil.move(str(video_path), str(final_video_path))
+
+    return final_video_path
+
+
+def organize_imported_file(
+    source_path: Path,
+    library_dir: Path,
+    metadata: VideoMetadata,
+    imported_at: datetime,
+) -> Path:
+    """Like organize_completed_download, but COPIES source_path instead of
+    moving it -- an imported file is the user's pre-existing file elsewhere on
+    disk, not a temporary download artifact, so their original is left intact.
+    """
+    video_dir = build_video_dir(library_dir, metadata)
+    video_dir.mkdir(parents=True, exist_ok=True)
+
+    _write_thumbnail_and_metadata(video_dir, metadata, imported_at)
+
+    final_video_path = video_dir / "video.mp4"
+    shutil.copy2(str(source_path), str(final_video_path))
 
     return final_video_path

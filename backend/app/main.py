@@ -1,12 +1,16 @@
 from contextlib import asynccontextmanager
 from pathlib import Path
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
+from fastapi.staticfiles import StaticFiles
 
 import app.models  # noqa: F401  (registers ORM models on Base.metadata)
 from app.api.v1.router import api_router
 from app.core.config import get_settings
 from app.core.events import EventBus
+from app.core.exceptions import FileOperationError, NotFoundError, ValidationError
 from app.core.logging import configure_logging
 from app.db.base import Base
 from app.db.seed import seed_initial_data
@@ -53,6 +57,38 @@ def create_app() -> FastAPI:
     settings = get_settings()
     app = FastAPI(title=settings.app_name, debug=settings.debug, lifespan=lifespan)
     app.include_router(api_router, prefix=settings.api_v1_prefix)
+
+    # Local-only desktop app: the frontend dev server (Vite, typically :5173)
+    # and this API (typically :8000) are different origins in the browser's
+    # eyes even though both run on the same machine -- CORS must allow it.
+    app.add_middleware(
+        CORSMiddleware,
+        # Vite picks the next free port if 5173 is busy, so match any
+        # localhost port rather than hardcoding one -- still local-only safe.
+        allow_origin_regex=r"http://(localhost|127\.0\.0\.1):\d+",
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
+
+    # StaticFiles requires the directory to exist at mount time, which happens
+    # before the lifespan startup that would otherwise create it -- ensure it
+    # exists here too (idempotent, DownloadEngine.start() also does this).
+    library_dir = Path(settings.library_dir)
+    library_dir.mkdir(parents=True, exist_ok=True)
+    app.mount("/media", StaticFiles(directory=library_dir), name="media")
+
+    @app.exception_handler(NotFoundError)
+    async def handle_not_found(request: Request, exc: NotFoundError) -> JSONResponse:
+        return JSONResponse(status_code=404, content={"detail": str(exc)})
+
+    @app.exception_handler(ValidationError)
+    async def handle_validation(request: Request, exc: ValidationError) -> JSONResponse:
+        return JSONResponse(status_code=400, content={"detail": str(exc)})
+
+    @app.exception_handler(FileOperationError)
+    async def handle_file_operation(request: Request, exc: FileOperationError) -> JSONResponse:
+        return JSONResponse(status_code=500, content={"detail": f"File operation failed: {exc}"})
+
     return app
 
 
