@@ -16,6 +16,7 @@ from app.db.base import Base
 from app.db.seed import seed_initial_data
 from app.db.session import SessionLocal, engine
 from app.modules.scene_cutter.service import SceneCutterService
+from app.modules.video_composer.service import VideoComposerService
 from app.services.download.engine import DownloadEngine
 from app.services.download.ytdlp_downloader import YtdlpDownloader
 
@@ -53,10 +54,15 @@ async def lifespan(app: FastAPI):
     scene_cutter_service.start()
     app.state.scene_cutter_service = scene_cutter_service
 
+    video_composer_service = VideoComposerService(library_dir=Path(settings.library_dir))
+    video_composer_service.start()
+    app.state.video_composer_service = video_composer_service
+
     yield
 
     download_engine.shutdown()
     scene_cutter_service.shutdown()
+    video_composer_service.shutdown()
 
 
 def create_app() -> FastAPI:
