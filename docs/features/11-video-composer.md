@@ -104,13 +104,21 @@ POST /video-compose-jobs/{job_id}/open-folder
 
 Sidebar entry "Video Composer" (`/video-composer`,
 `frontend/src/pages/VideoComposerPage.tsx`): a "Thêm video..." multi-file
-picker whose selections accumulate into a reorderable list (up/down/remove
-buttons per row, not native drag-and-drop -- simpler to get right and just
-as usable for a handful of clips), title input, script textarea, optional
-music file + volume, transition-duration and burn-subtitles controls, and
-submit. Below it, a polled job list showing the current pipeline phase in
-Vietnamese and, once completed, a real `<video>` preview of the final
-composed file plus a "Mở thư mục" button.
+picker (click to browse, or drag files in from Explorer -- both add to the
+same list) whose selections accumulate into a reorderable list (up/down/
+remove buttons per row, not native HTML5 drag-to-reorder -- simpler to get
+right and just as usable for a handful of clips), title input, script
+textarea, optional music file + volume (also drag-and-drop-able), transition-
+duration and burn-subtitles controls, and submit. Below it, a polled job
+list showing the current pipeline phase in Vietnamese and, once completed,
+a real `<video>` preview of the final composed file plus a "Mở thư mục"
+button.
+
+Each row in the reorder list renders an actual decoded video-frame
+thumbnail (a muted `<video>` on a `URL.createObjectURL(file)` blob, seeked
+to 0.1s so Chrome/Edge don't just show a black first frame) rather than
+only the filename -- Scene Cutter output filenames are opaque random hex,
+effectively unreadable when picking which clip is which to reorder.
 
 ## Verification
 
@@ -138,3 +146,19 @@ before relying on it:
   proving the reorder UI genuinely changes the output, not just the list
   display. Zero console errors.
 - All test jobs, output files, and DB rows removed afterward.
+
+Drag-and-drop + thumbnails (added in a follow-up commit) were verified by
+dispatching real synthetic `drop` events carrying an actual `DataTransfer`/
+`File` built from real file bytes (Playwright has no built-in OS-level file
+drag simulation), against both the Video Composer clip picker and the Scene
+Cutter upload tab -- confirmed the drag-over highlight class toggles and
+the dropped file is genuinely added to state, not just visually.
+
+**Bug caught during this verification, not by reading the code**: the first
+thumbnail implementation created the blob URL in a `useState` lazy
+initializer and revoked it in a separate cleanup-only `useEffect`. Every
+thumbnail rendered solid black in the real (non-headless-safe) test. Root
+cause: React 19 StrictMode's dev-only mount→cleanup→mount replay ran the
+cleanup (revoking the blob URL) before the `<video>` element ever got to
+use it, since the create call wasn't tied to that same replay cycle. Fixed
+by creating and revoking the object URL inside the same effect invocation.

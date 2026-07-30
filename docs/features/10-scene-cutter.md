@@ -97,7 +97,8 @@ POST /scene-jobs/pick-folder            opens a native folder-picker dialog, ret
 
 Sidebar entry "Scene Cutter" (`/scene-cutter`,
 `frontend/src/pages/SceneCutterPage.tsx`): three source tabs (pick a
-Library video via live search, upload a file, or type a local path), an
+Library video via live search, upload a file -- either via the file dialog
+or by dragging it in from Explorer -- or type a local path), an
 optional output-folder field (typed manually, or filled in by clicking
 "Chọn thư mục..." which calls `pick-folder`), threshold/min-scene-length/
 trim inputs, and a submit button; below it, a polled list of past/running
