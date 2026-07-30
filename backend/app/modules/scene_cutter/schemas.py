@@ -6,6 +6,10 @@ from pydantic import BaseModel, ConfigDict, model_validator
 from app.modules.scene_cutter.models import SceneCutJob, SceneCutResult
 
 
+class PickFolderOut(BaseModel):
+    path: str | None
+
+
 class SceneCutJobCreateIn(BaseModel):
     video_id: int | None = None
     source_path: str | None = None

@@ -44,3 +44,8 @@ export function getSceneJob(jobId: number): Promise<SceneCutJob> {
 export function openSceneJobFolder(jobId: number): Promise<void> {
   return apiPost(`/scene-jobs/${jobId}/open-folder`);
 }
+
+export async function pickOutputFolder(): Promise<string | null> {
+  const result = await apiPost<{ path: string | null }>("/scene-jobs/pick-folder");
+  return result.path;
+}

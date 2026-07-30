@@ -1,9 +1,15 @@
 import { useEffect, useState } from "react";
-import { Scissors, Search, Loader2, FolderOpen, Upload } from "lucide-react";
+import { Scissors, Search, Loader2, FolderOpen, FolderInput, Upload } from "lucide-react";
 import { PageHeader } from "../components/PageHeader";
 import { EmptyState } from "../components/EmptyState";
 import { fetchVideos } from "../api/videos";
-import { createSceneJob, listSceneJobs, openSceneJobFolder, uploadSceneJob } from "../api/sceneCutter";
+import {
+  createSceneJob,
+  listSceneJobs,
+  openSceneJobFolder,
+  pickOutputFolder,
+  uploadSceneJob,
+} from "../api/sceneCutter";
 import { mediaUrl } from "../api/client";
 import type { VideoOut } from "../features/library/types";
 import type { SceneCutJob } from "../types/sceneCutter";
@@ -36,6 +42,8 @@ export function SceneCutterPage() {
   const [threshold, setThreshold] = useState(46);
   const [minSceneLen, setMinSceneLen] = useState(0.6);
   const [trim, setTrim] = useState(0);
+
+  const [pickingFolder, setPickingFolder] = useState(false);
 
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
@@ -83,6 +91,19 @@ export function SceneCutterPage() {
       clearInterval(interval);
     };
   }, []);
+
+  async function handlePickFolder() {
+    setPickingFolder(true);
+    setSubmitError(null);
+    try {
+      const path = await pickOutputFolder();
+      if (path) setOutputDir(path);
+    } catch (err) {
+      setSubmitError(err instanceof Error ? err.message : "Không mở được hộp thoại chọn thư mục.");
+    } finally {
+      setPickingFolder(false);
+    }
+  }
 
   const canSubmit =
     sourceMode === "library"
@@ -214,12 +235,18 @@ export function SceneCutterPage() {
 
         <label className="scene-cutter-output-dir">
           Thư mục lưu kết quả (tuỳ chọn, để trống dùng mặc định)
-          <input
-            type="text"
-            placeholder="VD: D:\CanhDaCat"
-            value={outputDir}
-            onChange={(e) => setOutputDir(e.target.value)}
-          />
+          <div className="scene-cutter-output-dir-row">
+            <input
+              type="text"
+              placeholder="VD: D:\CanhDaCat"
+              value={outputDir}
+              onChange={(e) => setOutputDir(e.target.value)}
+            />
+            <button type="button" className="btn btn-secondary" onClick={handlePickFolder} disabled={pickingFolder}>
+              {pickingFolder ? <Loader2 size={14} className="spin" /> : <FolderInput size={14} />}
+              Chọn thư mục...
+            </button>
+          </div>
         </label>
 
         <div className="scene-cutter-params">

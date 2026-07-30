@@ -7,13 +7,41 @@ from fastapi import APIRouter, Depends, File, Form, Request, UploadFile
 from sqlalchemy.orm import Session, selectinload
 
 from app.core.config import Settings, get_settings
-from app.core.exceptions import FileOperationError, NotFoundError
+from app.core.exceptions import FileOperationError, NotFoundError, ValidationError
 from app.db.session import get_db
 from app.modules.scene_cutter.models import SceneCutJob
-from app.modules.scene_cutter.schemas import SceneCutJobCreateIn, SceneCutJobOut, job_to_out
+from app.modules.scene_cutter.schemas import PickFolderOut, SceneCutJobCreateIn, SceneCutJobOut, job_to_out
 from app.modules.scene_cutter.service import SceneCutterService
 
 router = APIRouter()
+
+
+@router.post("/scene-jobs/pick-folder", response_model=PickFolderOut)
+def pick_output_folder():
+    """Opens a native OS folder-picker dialog and returns the chosen path.
+
+    Only meaningful because this is a desktop-local app where the backend
+    and the user sit on the same machine -- a plain web app has no way to
+    get a real filesystem path out of a browser folder picker (the File
+    System Access API deliberately never exposes one, for security). Runs
+    server-side via tkinter instead, same rationale as os.startfile for
+    open-folder elsewhere in this module.
+    """
+    if sys.platform != "win32":
+        raise ValidationError("Folder picker is only supported on Windows")
+
+    import tkinter as tk
+    from tkinter import filedialog
+
+    root = tk.Tk()
+    root.withdraw()
+    root.attributes("-topmost", True)
+    try:
+        selected = filedialog.askdirectory(title="Chọn thư mục lưu cảnh đã cắt")
+    finally:
+        root.destroy()
+
+    return PickFolderOut(path=selected or None)
 
 
 def get_scene_cutter_service(request: Request) -> SceneCutterService:

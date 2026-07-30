@@ -128,7 +128,13 @@
   color: var(--text-muted);
 }
 
-.scene-cutter-output-dir input {
+.scene-cutter-output-dir-row {
+  display: flex;
+  gap: 8px;
+}
+
+.scene-cutter-output-dir-row input {
+  flex: 1;
   padding: 9px 14px;
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
