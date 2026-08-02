@@ -178,6 +178,12 @@
 }
 
 
+.vc-checkbox-field {
+  flex-direction: row !important;
+  align-items: center;
+  gap: 8px !important;
+}
+
 .vc-alert {
   padding: 10px 14px;
   border-radius: var(--radius-sm);

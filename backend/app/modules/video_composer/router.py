@@ -61,8 +61,11 @@ def pick_output_folder():
 @router.post("/video-compose-jobs", response_model=VideoComposeJobOut, status_code=201)
 def create_video_compose_job(
     title: str = Form(...),
+    script: str = Form(...),
+    voice: str = Form("es-ES-AlvaroNeural"),
     music_volume: float = Form(0.15),
     transition_duration: float = Form(0.5),
+    burn_subtitles: bool = Form(True),
     output_dir: str | None = Form(None),
     files: list[UploadFile] = File(...),
     music: UploadFile | None = File(None),
@@ -72,11 +75,16 @@ def create_video_compose_job(
 ):
     if not files:
         raise ValidationError("Cần ít nhất 1 video để ghép")
+    if not script.strip():
+        raise ValidationError("Kịch bản không được để trống")
 
     job_id = service.create_job(
         title=title,
+        script_text=script,
+        voice=voice,
         music_volume=music_volume,
         transition_duration=transition_duration,
+        burn_subtitles=burn_subtitles,
         requested_output_dir=output_dir,
     )
 

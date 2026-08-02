@@ -17,19 +17,31 @@ const POLL_INTERVAL_MS = 2000;
 const STATUS_LABEL: Record<VideoComposeJob["status"], string> = {
   queued: "Trong hàng đợi",
   merging: "Đang ghép video (chuyển cảnh swipe-left)",
+  narrating: "Đang tạo giọng đọc",
+  subtitling: "Đang tạo phụ đề karaoke",
+  mixing_audio: "Đang trộn âm thanh",
   finalizing: "Đang hoàn thiện",
   completed: "Hoàn tất",
   failed: "Lỗi",
 };
 
-const IN_PROGRESS_STATUSES: VideoComposeJob["status"][] = ["queued", "merging", "finalizing"];
+const IN_PROGRESS_STATUSES: VideoComposeJob["status"][] = [
+  "queued",
+  "merging",
+  "narrating",
+  "subtitling",
+  "mixing_audio",
+  "finalizing",
+];
 
 export function VideoComposerPage() {
   const [clips, setClips] = useState<File[]>([]);
   const [title, setTitle] = useState("");
+  const [script, setScript] = useState("");
   const [music, setMusic] = useState<File | null>(null);
   const [musicVolume, setMusicVolume] = useState(0.15);
   const [transitionDuration, setTransitionDuration] = useState(0.5);
+  const [burnSubtitles, setBurnSubtitles] = useState(true);
   const [outputDir, setOutputDir] = useState("");
   const [pickingFolder, setPickingFolder] = useState(false);
 
@@ -84,7 +96,7 @@ export function VideoComposerPage() {
     setClips((prev) => prev.filter((_, i) => i !== index));
   }
 
-  const canSubmit = clips.length > 0 && title.trim().length > 0;
+  const canSubmit = clips.length > 0 && title.trim().length > 0 && script.trim().length > 0;
 
   async function handleSubmit() {
     if (!canSubmit || submitting) return;
@@ -93,16 +105,19 @@ export function VideoComposerPage() {
     try {
       await createVideoComposeJob({
         title: title.trim(),
+        script: script.trim(),
         files: clips,
         music,
         musicVolume,
         transitionDuration,
+        burnSubtitles,
         outputDir: outputDir.trim() || undefined,
       });
       const data = await listVideoComposeJobs();
       setJobs(data);
       setClips([]);
       setTitle("");
+      setScript("");
       setMusic(null);
     } catch (err) {
       setSubmitError(err instanceof Error ? err.message : "Không tạo được tác vụ ghép video.");
@@ -128,13 +143,23 @@ export function VideoComposerPage() {
     <>
       <PageHeader
         title="Video Composer"
-        subtitle="Ghép nhiều video, chuyển cảnh swipe-left, chèn tiêu đề"
+        subtitle="Ghép nhiều video, chuyển cảnh swipe-left, chèn tiêu đề, tự tạo giọng đọc + phụ đề tiếng Tây Ban Nha"
       />
 
       <div className="vc-form">
         <label className="vc-field">
           Tiêu đề (hiển thị cố định đầu video)
           <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="VD: Canal de Prueba" />
+        </label>
+
+        <label className="vc-field">
+          Kịch bản (tiếng Tây Ban Nha, dùng để tạo giọng đọc + phụ đề)
+          <textarea
+            rows={5}
+            value={script}
+            onChange={(e) => setScript(e.target.value)}
+            placeholder="Hola a todos, bienvenidos..."
+          />
         </label>
 
         <div className="vc-field">
@@ -243,6 +268,10 @@ export function VideoComposerPage() {
               onChange={(e) => setTransitionDuration(Number(e.target.value))}
             />
           </label>
+          <label className="vc-checkbox-field">
+            <input type="checkbox" checked={burnSubtitles} onChange={(e) => setBurnSubtitles(e.target.checked)} />
+            Chèn phụ đề vào video
+          </label>
         </div>
 
         {submitError && <div className="vc-alert vc-alert-error">{submitError}</div>}
@@ -259,7 +288,7 @@ export function VideoComposerPage() {
         <EmptyState
           icon={Film}
           title="Chưa có tác vụ nào"
-          description="Thêm video, nhập tiêu đề rồi bấm 'Ghép video' để bắt đầu."
+          description="Thêm video, nhập tiêu đề và kịch bản rồi bấm 'Ghép video' để bắt đầu."
         />
       ) : (
         <div className="vc-jobs">

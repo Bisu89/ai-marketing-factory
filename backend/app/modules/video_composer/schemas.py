@@ -19,8 +19,10 @@ class VideoComposeJobOut(BaseModel):
 
     id: int
     title: str
+    voice: str
     music_volume: float
     transition_duration: float
+    burn_subtitles: bool
     requested_output_dir: str | None
     status: str
     clip_count: int
