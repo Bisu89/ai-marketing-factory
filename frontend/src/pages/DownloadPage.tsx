@@ -35,38 +35,63 @@ export function DownloadPage() {
     }
   }
 
+  function reportQueueOutcome(outcomes: PromiseSettledResult<void>[]) {
+    const succeeded = outcomes.filter((o) => o.status === "fulfilled").length;
+    const alreadyDownloaded = outcomes.filter(
+      (o) => o.status === "rejected" && String((o.reason as Error)?.message ?? "").includes("already downloaded"),
+    ).length;
+    const failed = outcomes.length - succeeded - alreadyDownloaded;
+
+    const parts = [`Đã thêm ${succeeded}/${outcomes.length} video vào hàng đợi tải.`];
+    if (alreadyDownloaded > 0) parts.push(`${alreadyDownloaded} video đã tải trước đó.`);
+    if (failed > 0) parts.push(`${failed} video lỗi.`);
+    const text = parts.join(" ");
+
+    if (succeeded === 0 && alreadyDownloaded === 0) {
+      setErrorMessage(text);
+      setStatus("error");
+    } else {
+      setQueuedMessage(text);
+      setStatus("idle");
+    }
+  }
+
   async function handleDownloadSingle() {
     if (!result || result.contentType !== "video") return;
+    setErrorMessage(null);
+    setQueuedMessage(null);
     try {
       await enqueueDownload(result.platform, result.video);
       setQueuedMessage("Đã thêm 1 video vào hàng đợi tải.");
-    } catch {
-      setErrorMessage("Không thêm được video vào hàng đợi tải.");
-      setStatus("error");
+      setStatus("idle");
+    } catch (err) {
+      if (err instanceof Error && err.message.includes("already downloaded")) {
+        setQueuedMessage("Video này đã được tải trước đó.");
+        setStatus("idle");
+      } else {
+        setErrorMessage("Không thêm được video vào hàng đợi tải.");
+        setStatus("error");
+      }
     }
   }
 
   async function handleDownloadAll(limit: number) {
     if (!result || result.contentType === "video") return;
-    try {
-      await Promise.all(result.videos.slice(0, limit).map((video) => enqueueDownload(result.platform, video)));
-      setQueuedMessage(`Đã thêm ${limit} video vào hàng đợi tải.`);
-    } catch {
-      setErrorMessage("Không thêm được video vào hàng đợi tải.");
-      setStatus("error");
-    }
+    setErrorMessage(null);
+    setQueuedMessage(null);
+    const outcomes = await Promise.allSettled(
+      result.videos.slice(0, limit).map((video) => enqueueDownload(result.platform, video)),
+    );
+    reportQueueOutcome(outcomes);
   }
 
   async function handleDownloadSelected(videoIds: string[]) {
     if (!result || result.contentType === "video") return;
-    try {
-      const selected = result.videos.filter((video) => videoIds.includes(video.id));
-      await Promise.all(selected.map((video) => enqueueDownload(result.platform, video)));
-      setQueuedMessage(`Đã thêm ${videoIds.length} video đã chọn vào hàng đợi tải.`);
-    } catch {
-      setErrorMessage("Không thêm được video vào hàng đợi tải.");
-      setStatus("error");
-    }
+    setErrorMessage(null);
+    setQueuedMessage(null);
+    const selected = result.videos.filter((video) => videoIds.includes(video.id));
+    const outcomes = await Promise.allSettled(selected.map((video) => enqueueDownload(result.platform, video)));
+    reportQueueOutcome(outcomes);
   }
 
   return (

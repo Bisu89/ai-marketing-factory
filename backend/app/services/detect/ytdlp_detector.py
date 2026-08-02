@@ -9,6 +9,7 @@ _TIKTOK_RE = re.compile(r"tiktok\.com", re.IGNORECASE)
 _FACEBOOK_RE = re.compile(r"facebook\.com|fb\.watch", re.IGNORECASE)
 _INSTAGRAM_RE = re.compile(r"instagram\.com", re.IGNORECASE)
 _CHANNEL_RE = re.compile(r"/channel/|/@|/c/", re.IGNORECASE)
+_CHANNEL_TAB_RE = re.compile(r"/(videos|shorts|streams|playlists|community|about)(?:[/?]|$)", re.IGNORECASE)
 
 
 class DetectionError(Exception):
@@ -25,6 +26,19 @@ def _detect_platform(url: str) -> str:
     if _INSTAGRAM_RE.search(url):
         return "instagram"
     return "unknown"
+
+
+def _normalize_channel_url(url: str, platform: str) -> str:
+    """A bare YouTube channel URL (no /videos, /shorts, ... tab) resolves via
+    yt-dlp's flat extraction to the channel's *tabs* themselves (three fake
+    "videos" named "<Channel> - Videos/Live/Shorts") rather than actual
+    videos -- explicitly targeting the Videos tab is what makes "download the
+    whole channel" return real videos. Other platforms' profile URLs (e.g.
+    TikTok's /@handle) have no such tab concept, so only YouTube is adjusted.
+    """
+    if platform != "youtube" or not _CHANNEL_RE.search(url) or _CHANNEL_TAB_RE.search(url):
+        return url
+    return url.rstrip("/") + "/videos"
 
 
 def _best_thumbnail(entry: dict) -> str:
@@ -50,6 +64,7 @@ def _to_video_info(entry: dict, fallback_author: str) -> VideoInfoOut:
 
 def detect_url(url: str) -> SingleVideoResultOut | CollectionResultOut:
     platform = _detect_platform(url)
+    target_url = _normalize_channel_url(url, platform)
 
     ydl_opts = {
         "quiet": True,
@@ -60,7 +75,7 @@ def detect_url(url: str) -> SingleVideoResultOut | CollectionResultOut:
 
     try:
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-            info = ydl.extract_info(url, download=False)
+            info = ydl.extract_info(target_url, download=False)
     except yt_dlp.utils.DownloadError as exc:
         raise DetectionError(str(exc)) from exc
 
