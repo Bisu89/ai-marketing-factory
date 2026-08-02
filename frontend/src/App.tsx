@@ -4,6 +4,7 @@ import { DashboardPage } from "./pages/DashboardPage";
 import { DownloadPage } from "./pages/DownloadPage";
 import { LibraryPage } from "./pages/LibraryPage";
 import { HistoryPage } from "./pages/HistoryPage";
+import { InsightsPage } from "./pages/InsightsPage";
 import { SceneCutterPage } from "./pages/SceneCutterPage";
 import { VideoComposerPage } from "./pages/VideoComposerPage";
 import { SettingsPage } from "./pages/SettingsPage";
@@ -17,6 +18,7 @@ function App() {
         <Route path="download" element={<DownloadPage />} />
         <Route path="library" element={<LibraryPage />} />
         <Route path="history" element={<HistoryPage />} />
+        <Route path="insights" element={<InsightsPage />} />
         <Route path="scene-cutter" element={<SceneCutterPage />} />
         <Route path="video-composer" element={<VideoComposerPage />} />
         <Route path="settings" element={<SettingsPage />} />

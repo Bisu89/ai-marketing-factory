@@ -1,0 +1,238 @@
+.insight-upload-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.insight-upload-btn {
+  cursor: pointer;
+}
+
+.insight-upload-btn.is-disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.insight-upload-select {
+  flex: 1;
+  min-width: 240px;
+  max-width: 480px;
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--text-heading);
+  font-size: 13px;
+}
+
+.insight-alert {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+.insight-alert-error {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--danger);
+}
+
+.insight-alert-success {
+  background: rgba(22, 163, 74, 0.1);
+  color: var(--success);
+}
+
+.insight-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.insight-stat-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+  box-shadow: var(--shadow-sm);
+}
+
+.insight-stat-card-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-sm);
+  background: var(--accent-bg);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.insight-stat-card-value {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-heading);
+}
+
+.insight-stat-card-label {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.insight-chart-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.insight-chart {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: 16px 18px;
+}
+
+.insight-chart-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-heading);
+  margin-bottom: 10px;
+}
+
+.insight-chart-body {
+  position: relative;
+}
+
+.insight-chart-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+.insight-chart-baseline {
+  stroke: var(--border);
+  stroke-width: 1;
+}
+
+.insight-chart-line {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.insight-chart-dot {
+  fill: var(--surface);
+  stroke: var(--accent);
+  stroke-width: 2;
+  cursor: pointer;
+}
+
+.insight-chart-dot:hover {
+  fill: var(--accent);
+}
+
+.insight-chart-tooltip {
+  position: absolute;
+  transform: translate(-50%, -130%);
+  background: var(--text-heading);
+  color: var(--surface);
+  border-radius: var(--radius-sm);
+  padding: 6px 9px;
+  font-size: 11.5px;
+  line-height: 1.4;
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: var(--shadow-md);
+}
+
+.insight-chart-empty {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  padding: 24px 0;
+  text-align: center;
+}
+
+.insight-section {
+  margin-bottom: 24px;
+}
+
+.insight-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.insight-section-header h3 {
+  font-size: 15px;
+}
+
+.insight-sort-toggle {
+  display: flex;
+  gap: 8px;
+}
+
+.insight-table-wrap {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.insight-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.insight-table thead th {
+  text-align: left;
+  padding: 10px 16px;
+  font-weight: 600;
+  color: var(--text-muted);
+  font-size: 12px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-alt);
+}
+
+.insight-table tbody td {
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+}
+
+.insight-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.insight-table-title-cell {
+  max-width: 360px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.insight-table-title-cell a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.insight-table-title-cell a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}

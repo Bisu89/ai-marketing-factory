@@ -3,6 +3,8 @@ from app.models.channel import Channel
 from app.models.download_history import DownloadHistory
 from app.models.download_task import DownloadTask
 from app.models.favorite import Favorite
+from app.models.insight_post import InsightPostSnapshot
+from app.models.insight_upload import InsightUpload
 from app.models.platform import Platform
 from app.models.playlist import Playlist, PlaylistVideo
 from app.models.tag import Tag
@@ -21,4 +23,6 @@ __all__ = [
     "Video",
     "DownloadTask",
     "DownloadHistory",
+    "InsightUpload",
+    "InsightPostSnapshot",
 ]
