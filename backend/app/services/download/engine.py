@@ -97,6 +97,10 @@ class DownloadEngine:
         self._queue.put(task_id)
         return task_id
 
+    def set_library_dir(self, path: Path) -> None:
+        path.mkdir(parents=True, exist_ok=True)
+        self._library_dir = path
+
     def pause(self, task_id: int) -> None:
         control = self._controls.get(task_id)
         if control is not None:

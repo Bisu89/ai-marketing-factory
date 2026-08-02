@@ -1,5 +1,6 @@
 from functools import lru_cache
 
+from dotenv import set_key
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -22,3 +23,8 @@ class Settings(BaseSettings):
 @lru_cache
 def get_settings() -> Settings:
     return Settings()
+
+
+def update_library_dir(new_path: str) -> None:
+    set_key(".env", "APP_LIBRARY_DIR", new_path)
+    get_settings.cache_clear()
