@@ -13,7 +13,13 @@ from app.models.download_task import DownloadTask
 from app.models.video import VIDEO_STATUSES, Video
 from app.services.library import catalog
 from app.services.library.organizer import VideoMetadata, organize_imported_file
-from app.services.library.repository import CategoryRepository, TagRepository, VideoFilters, VideoRepository
+from app.services.library.repository import (
+    CategoryRepository,
+    EmotionRepository,
+    TagRepository,
+    VideoFilters,
+    VideoRepository,
+)
 
 
 def _utcnow() -> datetime:
@@ -27,6 +33,7 @@ class VideoLibraryService:
         self.videos = VideoRepository(db)
         self.tags = TagRepository(db)
         self.categories = CategoryRepository(db)
+        self.emotions = EmotionRepository(db)
 
     def list_videos(
         self,
@@ -34,6 +41,7 @@ class VideoLibraryService:
         platform: str | None = None,
         status: str | None = None,
         category_id: int | None = None,
+        emotion_id: int | None = None,
         tag: str | None = None,
         favorite: bool | None = None,
         duration: str | None = None,
@@ -47,6 +55,7 @@ class VideoLibraryService:
             platform=platform,
             status=status,
             category_id=category_id,
+            emotion_id=emotion_id,
             tag=tag,
             favorite=favorite,
             duration=duration,
@@ -92,6 +101,7 @@ class VideoLibraryService:
         video_id: int,
         status: str | None = None,
         category_id: int | None = None,
+        emotion_id: int | None = None,
         notes: str | None = None,
     ) -> Video:
         video = self.get_video(video_id)
@@ -105,6 +115,11 @@ class VideoLibraryService:
             if self.categories.get(category_id) is None:
                 raise NotFoundError("Category", category_id)
             video.category_id = category_id
+
+        if emotion_id is not None:
+            if self.emotions.get(emotion_id) is None:
+                raise NotFoundError("Emotion", emotion_id)
+            video.emotion_id = emotion_id
 
         if notes is not None:
             video.notes = notes
@@ -230,6 +245,14 @@ class CategoryService:
 
     def list(self):
         return self.categories.list()
+
+
+class EmotionService:
+    def __init__(self, db: Session):
+        self.emotions = EmotionRepository(db)
+
+    def list(self):
+        return self.emotions.list()
 
 
 class TagService:

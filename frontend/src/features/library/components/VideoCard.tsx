@@ -11,13 +11,12 @@ import "./VideoCard.css";
 
 interface VideoCardProps {
   video: VideoOut;
-  categoryName?: string;
   onToggleFavorite: () => void;
   onOpenFolder: () => void;
   onPreview: () => void;
 }
 
-export function VideoCard({ video, categoryName, onToggleFavorite, onOpenFolder, onPreview }: VideoCardProps) {
+export function VideoCard({ video, onToggleFavorite, onOpenFolder, onPreview }: VideoCardProps) {
   function copyUrl(e: MouseEvent) {
     e.stopPropagation();
     navigator.clipboard.writeText(video.original_url);
@@ -72,12 +71,13 @@ export function VideoCard({ video, categoryName, onToggleFavorite, onOpenFolder,
           <span>{formatShortDate(video.downloaded_at)}</span>
         </div>
 
-        {(categoryName || video.tags.length > 0) && (
+        {(video.category || video.emotion || video.tags.length > 0) && (
           <div className="video-card-tags">
-            {categoryName && <span className="video-card-category">{categoryName}</span>}
+            {video.category && <span className="video-card-category">{video.category}</span>}
+            {video.emotion && <span className="video-card-emotion">{video.emotion}</span>}
             {video.tags.map((tag) => (
-              <span key={tag} className="video-card-tag">
-                #{tag}
+              <span key={tag.id} className="video-card-tag">
+                #{tag.name}
               </span>
             ))}
           </div>

@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { openFolder, setFavorite } from "../../../api/videos";
+import { addVideoTags, openFolder, removeVideoTag, setFavorite, updateVideo } from "../../../api/videos";
 
 export function useToggleFavorite() {
   const queryClient = useQueryClient();
@@ -15,5 +15,42 @@ export function useToggleFavorite() {
 export function useOpenFolder() {
   return useMutation({
     mutationFn: (videoId: number) => openFolder(videoId),
+  });
+}
+
+export function useUpdateVideo() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: ({
+      videoId,
+      patch,
+    }: {
+      videoId: number;
+      patch: { status?: string; category_id?: number; emotion_id?: number; notes?: string };
+    }) => updateVideo(videoId, patch),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["videos"] });
+    },
+  });
+}
+
+export function useAddTags() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: ({ videoId, tagNames }: { videoId: number; tagNames: string[] }) =>
+      addVideoTags(videoId, tagNames),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["videos"] });
+    },
+  });
+}
+
+export function useRemoveTag() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: ({ videoId, tagId }: { videoId: number; tagId: number }) => removeVideoTag(videoId, tagId),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["videos"] });
+    },
   });
 }

@@ -5,6 +5,7 @@ from sqlalchemy.orm import Session
 
 from app.models.category import Category
 from app.models.channel import Channel
+from app.models.emotion import Emotion
 from app.models.favorite import Favorite
 from app.models.platform import Platform
 from app.models.tag import Tag
@@ -42,6 +43,7 @@ class VideoFilters:
     platform: str | None = None
     status: str | None = None
     category_id: int | None = None
+    emotion_id: int | None = None
     tag: str | None = None
     favorite: bool | None = None
     duration: str | None = None
@@ -85,6 +87,9 @@ class VideoRepository:
 
         if filters.category_id is not None:
             query = query.filter(Video.category_id == filters.category_id)
+
+        if filters.emotion_id is not None:
+            query = query.filter(Video.emotion_id == filters.emotion_id)
 
         if filters.tag:
             query = query.filter(
@@ -156,6 +161,17 @@ class CategoryRepository:
 
     def get(self, category_id: int) -> Category | None:
         return self.db.get(Category, category_id)
+
+
+class EmotionRepository:
+    def __init__(self, db: Session):
+        self.db = db
+
+    def list(self) -> list[Emotion]:
+        return self.db.query(Emotion).order_by(Emotion.name).all()
+
+    def get(self, emotion_id: int) -> Emotion | None:
+        return self.db.get(Emotion, emotion_id)
 
 
 class TagRepository:

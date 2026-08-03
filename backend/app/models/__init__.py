@@ -2,6 +2,7 @@ from app.models.category import Category
 from app.models.channel import Channel
 from app.models.download_history import DownloadHistory
 from app.models.download_task import DownloadTask
+from app.models.emotion import Emotion
 from app.models.favorite import Favorite
 from app.models.insight_post import InsightPostSnapshot
 from app.models.insight_upload import InsightUpload
@@ -15,6 +16,7 @@ __all__ = [
     "Platform",
     "Channel",
     "Category",
+    "Emotion",
     "Tag",
     "VideoTag",
     "Favorite",

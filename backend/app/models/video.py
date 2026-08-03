@@ -6,11 +6,16 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 from app.db.base import Base
 from app.models.category import Category
 from app.models.channel import Channel
+from app.models.emotion import Emotion
 from app.models.favorite import Favorite
 from app.models.platform import Platform
 from app.models.tag import Tag
 
-VIDEO_STATUSES = ("unused", "processing", "published", "archived", "deleted")
+# Content workflow, not download state: a video starts life the moment its
+# file lands in the library and moves forward as a person actually curates
+# it for publishing. "deleted" is a soft-delete marker outside the visible
+# workflow (see VideoLibraryService.delete_video), not a step in it.
+VIDEO_STATUSES = ("downloaded", "ready", "published", "archived", "deleted")
 
 
 def _utcnow() -> datetime:
@@ -49,8 +54,9 @@ class Video(Base):
     duration_sec: Mapped[int | None] = mapped_column(Integer, nullable=True)
     upload_date: Mapped[str | None] = mapped_column(String, nullable=True)
 
-    status: Mapped[str] = mapped_column(String, nullable=False, default="unused")
+    status: Mapped[str] = mapped_column(String, nullable=False, default="downloaded")
     category_id: Mapped[int | None] = mapped_column(ForeignKey("category.id"), nullable=True)
+    emotion_id: Mapped[int | None] = mapped_column(ForeignKey("emotion.id"), nullable=True)
     notes: Mapped[str | None] = mapped_column(String, nullable=True)
     resolution: Mapped[str | None] = mapped_column(String, nullable=True)
     filesize_bytes: Mapped[int | None] = mapped_column(Integer, nullable=True)
@@ -65,6 +71,7 @@ class Video(Base):
     platform: Mapped[Platform] = relationship("Platform", lazy="joined")
     channel: Mapped[Channel] = relationship("Channel", lazy="joined")
     category: Mapped[Category | None] = relationship("Category", lazy="joined")
+    emotion: Mapped[Emotion | None] = relationship("Emotion", lazy="joined")
     favorite: Mapped[Favorite | None] = relationship("Favorite", lazy="joined", uselist=False)
     tags: Mapped[list[Tag]] = relationship("Tag", secondary="video_tag", lazy="joined")
 
@@ -77,9 +84,13 @@ class Video(Base):
         return self.platform.name
 
     @property
-    def is_favorite(self) -> bool:
-        return self.favorite is not None
+    def category_name(self) -> str | None:
+        return self.category.name if self.category else None
 
     @property
-    def tag_names(self) -> list[str]:
-        return [tag.name for tag in self.tags]
+    def emotion_name(self) -> str | None:
+        return self.emotion.name if self.emotion else None
+
+    @property
+    def is_favorite(self) -> bool:
+        return self.favorite is not None

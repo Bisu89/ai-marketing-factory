@@ -6,6 +6,13 @@ from pydantic import BaseModel, ConfigDict, Field
 from app.models.video import Video
 
 
+class VideoTagOut(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: int
+    name: str
+
+
 class VideoOut(BaseModel):
     model_config = ConfigDict(from_attributes=True, populate_by_name=True)
 
@@ -32,12 +39,17 @@ class VideoOut(BaseModel):
 
     status: str
     category_id: int | None
+    category: str | None = Field(default=None, validation_alias="category_name")
+    emotion_id: int | None
+    emotion: str | None = Field(default=None, validation_alias="emotion_name")
     notes: str | None
     resolution: str | None
     filesize_bytes: int | None
     file_hash: str | None
     is_favorite: bool
-    tags: list[str] = Field(default_factory=list, validation_alias="tag_names")
+    # Full {id, name} objects, not just names -- the frontend needs the tag
+    # id to call DELETE /videos/{id}/tags/{tag_id} for tag removal.
+    tags: list[VideoTagOut] = Field(default_factory=list)
 
     is_downloaded: bool
     downloaded_at: datetime | None
@@ -75,6 +87,7 @@ class VideoListResponse(BaseModel):
 class VideoUpdateIn(BaseModel):
     status: str | None = None
     category_id: int | None = None
+    emotion_id: int | None = None
     notes: str | None = None
 
 

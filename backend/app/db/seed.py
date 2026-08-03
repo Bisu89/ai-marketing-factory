@@ -1,10 +1,12 @@
 from sqlalchemy.orm import Session
 
 from app.models.category import Category
+from app.models.emotion import Emotion
 from app.models.platform import Platform
 
 PLATFORMS = ["youtube", "tiktok", "facebook", "instagram"]
 CATEGORIES = ["Couple", "Family", "Military", "Proposal", "Transformation", "Comedy", "Other"]
+EMOTIONS = ["Vui", "Cảm động", "Hài hước", "Buồn", "Kịch tính", "Trung tính"]
 
 
 def seed_initial_data(db: Session) -> None:
@@ -18,5 +20,10 @@ def seed_initial_data(db: Session) -> None:
     for name in CATEGORIES:
         if name not in existing_categories:
             db.add(Category(name=name))
+
+    existing_emotions = {e.name for e in db.query(Emotion).all()}
+    for name in EMOTIONS:
+        if name not in existing_emotions:
+            db.add(Emotion(name=name))
 
     db.commit()

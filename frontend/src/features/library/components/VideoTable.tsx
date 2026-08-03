@@ -3,22 +3,19 @@ import { mediaUrl } from "../../../api/client";
 import { PlatformBadge } from "../../../components/PlatformBadge";
 import type { Platform } from "../../../types/video";
 import { formatDuration } from "../../../utils/format";
-import type { CategoryOut, VideoOut } from "../types";
+import type { VideoOut } from "../types";
 import { formatFileSize, formatShortDate } from "../utils";
 import { StatusBadge } from "./StatusBadge";
 import "./VideoTable.css";
 
 interface VideoTableProps {
   videos: VideoOut[];
-  categories: CategoryOut[];
   onToggleFavorite: (videoId: number, favorite: boolean) => void;
   onOpenFolder: (videoId: number) => void;
   onPreview: (videoId: number) => void;
 }
 
-export function VideoTable({ videos, categories, onToggleFavorite, onOpenFolder, onPreview }: VideoTableProps) {
-  const categoryNameById = new Map(categories.map((c) => [c.id, c.name]));
-
+export function VideoTable({ videos, onToggleFavorite, onOpenFolder, onPreview }: VideoTableProps) {
   return (
     <div className="video-table-wrap">
       <table className="video-table">
@@ -32,7 +29,8 @@ export function VideoTable({ videos, categories, onToggleFavorite, onOpenFolder,
             <th>Size</th>
             <th>Downloaded</th>
             <th>Status</th>
-            <th>Category</th>
+            <th>Topic</th>
+            <th>Emotion</th>
             <th>Tags</th>
             <th className="video-table-actions-col">Actions</th>
           </tr>
@@ -77,9 +75,10 @@ export function VideoTable({ videos, categories, onToggleFavorite, onOpenFolder,
               <td>
                 <StatusBadge status={video.status} />
               </td>
-              <td>{video.category_id != null ? categoryNameById.get(video.category_id) ?? "—" : "—"}</td>
+              <td>{video.category ?? "—"}</td>
+              <td>{video.emotion ?? "—"}</td>
               <td className="video-table-tags-cell">
-                {video.tags.length > 0 ? video.tags.map((t) => `#${t}`).join(" ") : "—"}
+                {video.tags.length > 0 ? video.tags.map((t) => `#${t.name}`).join(" ") : "—"}
               </td>
               <td className="video-table-actions-col">
                 <div className="video-table-actions">

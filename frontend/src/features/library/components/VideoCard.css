@@ -120,6 +120,15 @@
   font-weight: 600;
 }
 
+.video-card-emotion {
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: rgba(245, 158, 11, 0.14);
+  color: #f59e0b;
+  font-size: 10.5px;
+  font-weight: 600;
+}
+
 .video-card-tag {
   padding: 1px 7px;
   border-radius: 999px;

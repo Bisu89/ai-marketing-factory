@@ -14,6 +14,7 @@ def list_videos(
     platform: str | None = None,
     status: str | None = None,
     category_id: int | None = None,
+    emotion_id: int | None = None,
     tag: str | None = None,
     favorite: bool | None = None,
     duration: str | None = None,
@@ -28,6 +29,7 @@ def list_videos(
         platform=platform,
         status=status,
         category_id=category_id,
+        emotion_id=emotion_id,
         tag=tag,
         favorite=favorite,
         duration=duration,
@@ -71,7 +73,11 @@ def update_video(
     service: VideoLibraryService = Depends(get_video_library_service),
 ):
     video = service.update_video(
-        video_id, status=payload.status, category_id=payload.category_id, notes=payload.notes
+        video_id,
+        status=payload.status,
+        category_id=payload.category_id,
+        emotion_id=payload.emotion_id,
+        notes=payload.notes,
     )
     return video_to_out(video, service.library_dir)
 

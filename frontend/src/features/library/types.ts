@@ -1,5 +1,10 @@
 export type ViewMode = "grid" | "table";
 
+export interface VideoTagOut {
+  id: number;
+  name: string;
+}
+
 export interface VideoOut {
   id: number;
   platform: string;
@@ -19,12 +24,15 @@ export interface VideoOut {
   upload_date: string | null;
   status: string;
   category_id: number | null;
+  category: string | null;
+  emotion_id: number | null;
+  emotion: string | null;
   notes: string | null;
   resolution: string | null;
   filesize_bytes: number | null;
   file_hash: string | null;
   is_favorite: boolean;
-  tags: string[];
+  tags: VideoTagOut[];
   is_downloaded: boolean;
   downloaded_at: string | null;
   created_at: string;
@@ -46,6 +54,7 @@ export interface VideoListParams {
   platform?: string;
   status?: string;
   category_id?: number;
+  emotion_id?: number;
   tag?: string;
   favorite?: boolean;
   duration?: string;
@@ -53,6 +62,12 @@ export interface VideoListParams {
 }
 
 export interface CategoryOut {
+  id: number;
+  name: string;
+  created_at: string;
+}
+
+export interface EmotionOut {
   id: number;
   name: string;
   created_at: string;
