@@ -1,6 +1,7 @@
 # 14 — Desktop packaging (sellable Windows installer)
 
-**Commit:** pending (see `git log` for the actual hash once committed).
+**Commit:** `6ae40ee` "Package the app as a sellable no-admin Windows
+installer".
 
 ## What it does and why
 
