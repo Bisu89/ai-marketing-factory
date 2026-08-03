@@ -1,6 +1,7 @@
 # 13 — AI Story (Claude-generated Spanish marketing narration scripts)
 
-**Commit:** pending (see `git log` for the actual hash once committed).
+**Commit:** `5ad708b` "Epic 13: AI Story -- generate Spanish marketing
+narration scripts via Claude".
 
 ## What it does
 
