@@ -1,0 +1,6 @@
+# Build-only tooling for producing the packaged Windows desktop installer
+# (see docs/features/14-desktop-packaging.md). Not needed to run the app in
+# dev mode, and not bundled into the frozen app itself -- only used on the
+# machine that runs build_installer.ps1.
+-r requirements.txt
+pyinstaller==6.21.0

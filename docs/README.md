@@ -25,6 +25,7 @@ SQLite.
 11. [Video Composer](features/11-video-composer.md) — merge multiple uploaded clips with swipe-left transitions, title overlay, optional background music
 12. [Content Workflow](features/12-content-workflow.md) — editable status/topic/emotion/tags/notes in the Library drawer, plus real search & filter
 13. [AI Story](features/13-ai-story.md) — Claude Sonnet 5 generates 2 Spanish marketing narration script variants per video, synchronous (no background job)
+14. [Desktop packaging](features/14-desktop-packaging.md) — PyInstaller + pywebview + Inno Setup turn the app into a no-admin Windows installer, with bundled ffmpeg
 
 ## Keeping this up to date
 

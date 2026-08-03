@@ -1,14 +1,15 @@
+import os
 from contextlib import asynccontextmanager
 from pathlib import Path
 
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 
 import app.models  # noqa: F401  (registers ORM models on Base.metadata)
 from app.api.v1.router import api_router
-from app.core.config import get_settings
+from app.core.config import get_settings, resource_path
 from app.core.events import EventBus
 from app.core.exceptions import ExternalServiceError, FileOperationError, NotFoundError, ValidationError
 from app.core.logging import configure_logging
@@ -65,7 +66,24 @@ async def lifespan(app: FastAPI):
     video_composer_service.shutdown()
 
 
+def _prepend_bundled_ffmpeg_to_path() -> None:
+    """Packaged builds ship ffmpeg.exe/ffprobe.exe under resources/ffmpeg/ so
+    a customer never has to install ffmpeg themselves. Every ffmpeg/ffprobe
+    call in this app -- the direct subprocess.run(["ffmpeg", ...]) calls in
+    video_composer/service.py, and PySceneDetect's own internal ffmpeg call
+    inside scene_cutter/service.py -- resolves the binary via PATH, so fixing
+    it once here (before anything can invoke either) covers both without
+    touching either module. In dev, resources/ffmpeg/ doesn't exist, so this
+    is a no-op and the system's own ffmpeg (if any) is used as before.
+    """
+    ffmpeg_dir = resource_path("resources/ffmpeg")
+    if ffmpeg_dir.exists():
+        os.environ["PATH"] = str(ffmpeg_dir) + os.pathsep + os.environ.get("PATH", "")
+
+
 def create_app() -> FastAPI:
+    _prepend_bundled_ffmpeg_to_path()
+
     settings = get_settings()
     app = FastAPI(title=settings.app_name, debug=settings.debug, lifespan=lifespan)
     app.include_router(api_router, prefix=settings.api_v1_prefix)
@@ -104,6 +122,30 @@ def create_app() -> FastAPI:
     @app.exception_handler(ExternalServiceError)
     async def handle_external_service(request: Request, exc: ExternalServiceError) -> JSONResponse:
         return JSONResponse(status_code=502, content={"detail": str(exc)})
+
+    # Packaged builds bundle the frontend's `npm run build` output (see
+    # docs/features/14-desktop-packaging.md) and this API serves it directly
+    # -- no separate Node/Vite process needed at runtime. In dev, frontend/
+    # dist/ doesn't exist (the separate `npm run dev` server is used
+    # instead), so this whole block is a no-op and today's dev workflow is
+    # unaffected. Registered last so it never shadows /api/v1/* or /media/*
+    # (Starlette matches routes in registration order).
+    frontend_dir = resource_path("frontend/dist")
+    if frontend_dir.exists():
+        assets_dir = frontend_dir / "assets"
+        if assets_dir.exists():
+            app.mount("/assets", StaticFiles(directory=assets_dir), name="frontend-assets")
+
+        @app.get("/{full_path:path}")
+        async def serve_spa(full_path: str) -> FileResponse:
+            # A real static file (favicon, manifest, etc.) is served as-is;
+            # anything else (a client-side route like /story) falls back to
+            # index.html so react-router can handle it after load, including
+            # on a hard refresh.
+            candidate = frontend_dir / full_path
+            if full_path and candidate.is_file():
+                return FileResponse(candidate)
+            return FileResponse(frontend_dir / "index.html")
 
     return app
 
