@@ -24,6 +24,7 @@ SQLite.
 10. [Scene Cutter](features/10-scene-cutter.md) — automatic scene-detection video splitting (PySceneDetect + ffmpeg), background job + polling UI
 11. [Video Composer](features/11-video-composer.md) — merge multiple uploaded clips with swipe-left transitions, title overlay, optional background music
 12. [Content Workflow](features/12-content-workflow.md) — editable status/topic/emotion/tags/notes in the Library drawer, plus real search & filter
+13. [AI Story](features/13-ai-story.md) — Claude Sonnet 5 generates 2 Spanish marketing narration script variants per video, synchronous (no background job)
 
 ## Keeping this up to date
 

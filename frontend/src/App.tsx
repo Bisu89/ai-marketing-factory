@@ -7,6 +7,7 @@ import { HistoryPage } from "./pages/HistoryPage";
 import { InsightsPage } from "./pages/InsightsPage";
 import { SceneCutterPage } from "./pages/SceneCutterPage";
 import { VideoComposerPage } from "./pages/VideoComposerPage";
+import { StoryPage } from "./pages/StoryPage";
 import { SettingsPage } from "./pages/SettingsPage";
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path="insights" element={<InsightsPage />} />
         <Route path="scene-cutter" element={<SceneCutterPage />} />
         <Route path="video-composer" element={<VideoComposerPage />} />
+        <Route path="story" element={<StoryPage />} />
         <Route path="settings" element={<SettingsPage />} />
         <Route path="*" element={<Navigate to="/dashboard" replace />} />
       </Route>

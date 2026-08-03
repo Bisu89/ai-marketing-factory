@@ -20,7 +20,9 @@ video
   ├─ favorite (video_id FK == PK)                zero-or-one ("is favorited")
   ├─ tag  via video_tag (video_id, tag_id)        many-to-many
   ├─ download_task (video_id FK)                  one-to-many (lifecycle/queue)
-  └─ download_history (video_id FK, task_id FK)   one-to-many (append-only log)
+  ├─ download_history (video_id FK, task_id FK)   one-to-many (append-only log)
+  └─ story_job (video_id FK)                      one-to-many
+       └─ story_version (story_job_id FK)         one-to-many (2 per job)
 ```
 
 ## Why `video.platform_id` duplicates `channel.platform_id`
@@ -110,3 +112,12 @@ any UI yet -- schema-ready for when playlist-level browsing/download is built.
 One row per terminal transition (`completed` / `failed` / `cancelled`) with
 `video_id`, `task_id`, `error_message`, `occurred_at`. Kept separate from
 `download_task` so history survives even if task rows are ever pruned.
+
+### `story_job` / `story_version` — AI Story generations (`app/modules/story/`)
+One `story_job` row per generation request (`video_id` FK, `style`, `status`
+`completed`/`failed`, `error_message`), with 2 `story_version` rows per
+completed job (`title`, `script_text`, `is_selected`). Written synchronously
+inside the same request that calls Claude -- there is no background
+queue/worker for this module, unlike Scene Cutter/Video Composer, because an
+LLM text call is fast enough to not need one (see
+[13-ai-story.md](features/13-ai-story.md)).

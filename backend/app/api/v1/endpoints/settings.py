@@ -6,7 +6,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
 
 from app.api.deps import get_download_engine
-from app.core.config import Settings, get_settings, update_library_dir
+from app.core.config import Settings, get_settings, update_anthropic_api_key, update_library_dir
 from app.services.download.engine import DownloadEngine
 
 router = APIRouter()
@@ -14,6 +14,10 @@ router = APIRouter()
 
 class LibraryDirIn(BaseModel):
     path: str
+
+
+class AnthropicApiKeyIn(BaseModel):
+    api_key: str
 
 
 class FolderEntry(BaseModel):
@@ -33,7 +37,18 @@ def read_settings(settings: Settings = Depends(get_settings)):
         "library_dir": settings.library_dir,
         "download_dir": settings.download_dir,
         "max_concurrent_downloads": settings.max_concurrent_downloads,
+        # Never echo the key itself back to the client -- only whether one is set.
+        "has_anthropic_key": bool(settings.anthropic_api_key),
     }
+
+
+@router.put("/settings/anthropic-key")
+def set_anthropic_api_key(payload: AnthropicApiKeyIn):
+    key = payload.api_key.strip()
+    if not key:
+        raise HTTPException(status_code=400, detail="API key khong duoc de trong")
+    update_anthropic_api_key(key)
+    return {"has_anthropic_key": True}
 
 
 @router.put("/settings/library-dir")

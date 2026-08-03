@@ -23,3 +23,14 @@ class FileOperationError(LibraryError):
 
     def __init__(self, message: str):
         super().__init__(message)
+
+
+class ExternalServiceError(LibraryError):
+    """A third-party API call failed or returned something unusable (LLM
+    refusal/timeout/rate limit, malformed structured output, etc.) -- distinct
+    from FileOperationError so the client can tell "your disk/files" apart
+    from "an external network dependency."
+    """
+
+    def __init__(self, message: str):
+        super().__init__(message)

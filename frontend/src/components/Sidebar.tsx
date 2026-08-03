@@ -8,6 +8,7 @@ import {
   Scissors,
   Clapperboard,
   BarChart3,
+  Sparkles,
 } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import "./Sidebar.css";
@@ -20,6 +21,7 @@ const NAV_ITEMS = [
   { to: "/insights", label: "Insights", icon: BarChart3 },
   { to: "/scene-cutter", label: "Scene Cutter", icon: Scissors },
   { to: "/video-composer", label: "Video Composer", icon: Clapperboard },
+  { to: "/story", label: "AI Story", icon: Sparkles },
   { to: "/settings", label: "Settings", icon: Settings },
 ];
 

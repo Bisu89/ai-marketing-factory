@@ -9,6 +9,10 @@ export async function updateLibraryDir(path: string): Promise<{ library_dir: str
   return apiPut<{ library_dir: string }>("/settings/library-dir", { path });
 }
 
+export async function updateAnthropicApiKey(apiKey: string): Promise<{ has_anthropic_key: boolean }> {
+  return apiPut<{ has_anthropic_key: boolean }>("/settings/anthropic-key", { api_key: apiKey });
+}
+
 export async function browseFolders(path?: string): Promise<BrowseFoldersResult> {
   const query = path ? `?path=${encodeURIComponent(path)}` : "";
   return apiGet<BrowseFoldersResult>(`/settings/browse-folders${query}`);

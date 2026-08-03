@@ -22,6 +22,10 @@ export function fetchVideos(params: VideoListParams): Promise<VideoListResponse>
   return apiGet(`/videos?${buildQuery(params)}`);
 }
 
+export function fetchVideo(videoId: number): Promise<VideoOut> {
+  return apiGet(`/videos/${videoId}`);
+}
+
 export function fetchCategories(): Promise<CategoryOut[]> {
   return apiGet(`/categories`);
 }

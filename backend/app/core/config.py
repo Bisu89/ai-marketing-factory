@@ -19,6 +19,8 @@ class Settings(BaseSettings):
     library_dir: str = "./data/library"
     max_concurrent_downloads: int = 3
 
+    anthropic_api_key: str | None = None
+
 
 @lru_cache
 def get_settings() -> Settings:
@@ -27,4 +29,9 @@ def get_settings() -> Settings:
 
 def update_library_dir(new_path: str) -> None:
     set_key(".env", "APP_LIBRARY_DIR", new_path)
+    get_settings.cache_clear()
+
+
+def update_anthropic_api_key(key: str) -> None:
+    set_key(".env", "APP_ANTHROPIC_API_KEY", key)
     get_settings.cache_clear()

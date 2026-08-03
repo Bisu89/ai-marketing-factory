@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { CheckCircle2, FolderOpen } from "lucide-react";
 import { PageHeader } from "../components/PageHeader";
 import { FolderBrowserModal } from "../components/FolderBrowserModal";
-import { getSettings, updateLibraryDir } from "../api/settings";
+import { getSettings, updateAnthropicApiKey, updateLibraryDir } from "../api/settings";
 import "./SettingsPage.css";
 
 export function SettingsPage() {
@@ -13,11 +13,35 @@ export function SettingsPage() {
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
+  const [hasAnthropicKey, setHasAnthropicKey] = useState(false);
+  const [anthropicKeyInput, setAnthropicKeyInput] = useState("");
+  const [savingKey, setSavingKey] = useState(false);
+
   useEffect(() => {
     getSettings()
-      .then((settings) => setLibraryDir(settings.library_dir))
+      .then((settings) => {
+        setLibraryDir(settings.library_dir);
+        setHasAnthropicKey(settings.has_anthropic_key);
+      })
       .catch(() => setError("Không đọc được cấu hình hiện tại."));
   }, []);
+
+  async function handleSaveAnthropicKey() {
+    if (!anthropicKeyInput.trim() || savingKey) return;
+    setSavingKey(true);
+    setError(null);
+    setMessage(null);
+    try {
+      const result = await updateAnthropicApiKey(anthropicKeyInput.trim());
+      setHasAnthropicKey(result.has_anthropic_key);
+      setAnthropicKeyInput("");
+      setMessage("Đã lưu Anthropic API key.");
+    } catch {
+      setError("Không lưu được API key.");
+    } finally {
+      setSavingKey(false);
+    }
+  }
 
   async function handleSelectFolder(path: string) {
     setShowBrowser(false);
@@ -86,6 +110,30 @@ export function SettingsPage() {
             <option value="720p">720p</option>
             <option value="480p">480p</option>
           </select>
+        </div>
+
+        <div className="settings-row">
+          <label className="settings-label" htmlFor="anthropic-key">
+            Anthropic API Key (dùng cho AI Story)
+          </label>
+          <div className="settings-folder-picker">
+            <input
+              id="anthropic-key"
+              type="password"
+              className="settings-input"
+              placeholder={hasAnthropicKey ? "•••••••••••••• (đã cấu hình)" : "sk-ant-..."}
+              value={anthropicKeyInput}
+              onChange={(e) => setAnthropicKeyInput(e.target.value)}
+            />
+            <button
+              className="btn btn-secondary"
+              onClick={handleSaveAnthropicKey}
+              disabled={!anthropicKeyInput.trim() || savingKey}
+            >
+              {hasAnthropicKey && <CheckCircle2 size={14} />}
+              Lưu
+            </button>
+          </div>
         </div>
       </div>
 

@@ -10,7 +10,7 @@ import app.models  # noqa: F401  (registers ORM models on Base.metadata)
 from app.api.v1.router import api_router
 from app.core.config import get_settings
 from app.core.events import EventBus
-from app.core.exceptions import FileOperationError, NotFoundError, ValidationError
+from app.core.exceptions import ExternalServiceError, FileOperationError, NotFoundError, ValidationError
 from app.core.logging import configure_logging
 from app.db.base import Base
 from app.db.seed import seed_initial_data
@@ -100,6 +100,10 @@ def create_app() -> FastAPI:
     @app.exception_handler(FileOperationError)
     async def handle_file_operation(request: Request, exc: FileOperationError) -> JSONResponse:
         return JSONResponse(status_code=500, content={"detail": f"File operation failed: {exc}"})
+
+    @app.exception_handler(ExternalServiceError)
+    async def handle_external_service(request: Request, exc: ExternalServiceError) -> JSONResponse:
+        return JSONResponse(status_code=502, content={"detail": str(exc)})
 
     return app
 
