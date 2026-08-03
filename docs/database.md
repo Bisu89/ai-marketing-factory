@@ -2,7 +2,7 @@
 
 SQLite, no migration framework yet -- `Base.metadata.create_all()` runs at
 startup (additive only; it won't drop/alter existing columns). `app/db/seed.py`
-idempotently seeds `platform` and `category` on every startup.
+idempotently seeds `platform`, `category`, and `emotion` on every startup.
 
 ## Entity overview
 
@@ -15,7 +15,8 @@ platform (youtube/tiktok/facebook/instagram, seeded)
             └─ playlist_video (playlist_id, video_id)  join table
 
 video
-  ├─ category (category_id FK, nullable)        many-to-one
+  ├─ category (category_id FK, nullable)        many-to-one -- labeled "Topic" in the UI
+  ├─ emotion (emotion_id FK, nullable)           many-to-one
   ├─ favorite (video_id FK == PK)                zero-or-one ("is favorited")
   ├─ tag  via video_tag (video_id, tag_id)        many-to-many
   ├─ download_task (video_id FK)                  one-to-many (lifecycle/queue)
@@ -58,8 +59,9 @@ across calls -- a deliberate, documented exception, not an oversight.
 | thumbnail_url | nullable | source URL (e.g. YouTube's CDN thumbnail) |
 | thumbnail_path, video_path | nullable | **server filesystem paths**, set once downloaded/organized. Not directly browser-loadable -- see `thumbnail_media_url`/`video_media_url` in the API. |
 | views, likes, duration_sec, upload_date | nullable | source metadata |
-| status | default `unused` | `unused / processing / published / archived / deleted` |
-| category_id | FK → category, nullable | |
+| status | default `downloaded` | content workflow: `downloaded / ready / published / archived`, plus `deleted` as a soft-delete marker outside the visible workflow |
+| category_id | FK → category, nullable | labeled "Topic" in the UI (see [12-content-workflow.md](features/12-content-workflow.md)) |
+| emotion_id | FK → emotion, nullable | |
 | notes | nullable | free text (markdown, per UI) |
 | resolution | nullable | not auto-populated yet (would need ffprobe) |
 | filesize_bytes | nullable | populated from the real file at organize time |
@@ -71,7 +73,13 @@ additionally checks it at the service layer before enqueuing a download so a
 duplicate returns a clean `409` instead of a raw DB error.
 
 ### `category` — seeded, fixed set for now
-Couple, Family, Military, Proposal, Transformation, Comedy, Other.
+Couple, Family, Military, Proposal, Transformation, Comedy, Other. Labeled
+"Topic" in the UI (see [12-content-workflow.md](features/12-content-workflow.md)
+for why the table wasn't renamed to match).
+
+### `emotion` — seeded, fixed set for now
+Vui, Cảm động, Hài hước, Buồn, Kịch tính, Trung tính. Same read-only-lookup
+shape as `category` (GET-only, seeded once, no create/edit endpoint).
 
 ### `tag` / `video_tag`
 Free-form, user-created tags, many-to-many with video. Created on first use
