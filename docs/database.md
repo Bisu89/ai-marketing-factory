@@ -21,8 +21,12 @@ video
   ├─ tag  via video_tag (video_id, tag_id)        many-to-many
   ├─ download_task (video_id FK)                  one-to-many (lifecycle/queue)
   ├─ download_history (video_id FK, task_id FK)   one-to-many (append-only log)
-  └─ story_job (video_id FK)                      one-to-many
-       └─ story_version (story_job_id FK)         one-to-many (2 per job)
+  ├─ story_job (video_id FK)                      one-to-many
+  │    └─ story_version (story_job_id FK)         one-to-many (2 per job)
+  └─ publish_log (video_id FK)                    one-to-many
+       linked by post_id/page_id, not a FK, to ->
+       insight_upload (CSV upload)
+         └─ insight_post_snapshot (upload_id FK)  one-to-many (1 per post per upload)
 ```
 
 ## Why `video.platform_id` duplicates `channel.platform_id`
@@ -121,3 +125,24 @@ inside the same request that calls Claude -- there is no background
 queue/worker for this module, unlike Scene Cutter/Video Composer, because an
 LLM text call is fast enough to not need one (see
 [13-ai-story.md](features/13-ai-story.md)).
+
+### `insight_upload` / `insight_post_snapshot` — Meta Business Suite CSV imports
+One `insight_upload` row per CSV file uploaded on the Insights page; one
+`insight_post_snapshot` row per post *per upload* (`app/services/insights/`,
+`csv_parser.py`). A real-world post gets a new snapshot row on every
+re-upload (cumulative/lifetime totals as of that moment), so growth over
+time is read by comparing snapshots across uploads, not by mutating one row.
+Not FK'd to `video` -- see `publish_log` below.
+
+### `publish_log` — links a Library video to real published-post performance
+One row per "I published this video" event, created manually (see
+[15-performance-intelligence.md](features/15-performance-intelligence.md)):
+`video_id` FK, platform/page_name, `hook_type`/`story_style` (creative
+metadata no analytics export carries), `ai_story_job_id` (a bare int
+reference into `story_job`, deliberately not an FK/relationship -- core
+must never import `app/modules/*`), affiliate_* fields, and `post_id`/
+`page_id` -- filled in *after* the fact, linking this row to whichever
+`insight_post_snapshot` rows share that `post_id`/`page_id` (stable across
+every snapshot of the same real-world post, so one link covers all of
+them). Real performance numbers (views/interactions) are never stored here
+-- always resolved live from the latest matching snapshot.

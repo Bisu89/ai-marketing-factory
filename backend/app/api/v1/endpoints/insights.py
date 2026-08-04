@@ -1,14 +1,16 @@
 from fastapi import APIRouter, Depends, HTTPException, UploadFile
 
-from app.api.deps import get_insight_service
+from app.api.deps import get_insight_service, get_publish_log_service
 from app.schemas.insight import (
     InsightPostOut,
     InsightSummaryOut,
     InsightUploadOut,
     PostTypeBreakdownOut,
     TrendPointOut,
+    UnlinkedPostOut,
 )
 from app.services.insights.csv_parser import InsightCsvError, parse_insight_csv
+from app.services.insights.publish_log_service import PublishLogService
 from app.services.insights.service import InsightService
 
 router = APIRouter()
@@ -90,3 +92,22 @@ def get_by_post_type(upload_id: int | None = None, service: InsightService = Dep
 @router.get("/insights/trend", response_model=list[TrendPointOut])
 def get_trend(service: InsightService = Depends(get_insight_service)):
     return service.get_trend()
+
+
+@router.get("/insights/unlinked-posts", response_model=list[UnlinkedPostOut])
+def get_unlinked_posts(service: PublishLogService = Depends(get_publish_log_service)):
+    """Latest snapshot per real-world post that has no PublishLog pointing
+    at it yet -- candidates for the "gắn với video" picker on the Insights
+    page (see docs/features/15-performance-intelligence.md).
+    """
+    return [
+        UnlinkedPostOut(
+            post_id=post.post_id,
+            page_id=post.page_id,
+            page_name=post.page_name,
+            title=post.title,
+            posted_at=post.posted_at,
+            views=post.views,
+        )
+        for post in service.list_unlinked_posts()
+    ]

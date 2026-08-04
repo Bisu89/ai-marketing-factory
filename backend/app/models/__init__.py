@@ -8,6 +8,7 @@ from app.models.insight_post import InsightPostSnapshot
 from app.models.insight_upload import InsightUpload
 from app.models.platform import Platform
 from app.models.playlist import Playlist, PlaylistVideo
+from app.models.publish_log import PublishLog
 from app.models.tag import Tag
 from app.models.video import Video
 from app.models.video_tag import VideoTag
@@ -27,4 +28,5 @@ __all__ = [
     "DownloadHistory",
     "InsightUpload",
     "InsightPostSnapshot",
+    "PublishLog",
 ]

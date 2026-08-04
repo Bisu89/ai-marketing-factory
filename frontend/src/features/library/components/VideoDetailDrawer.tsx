@@ -5,6 +5,7 @@ import { PlatformBadge } from "../../../components/PlatformBadge";
 import type { Platform } from "../../../types/video";
 import { formatDuration } from "../../../utils/format";
 import { STATUS_LABELS, STATUS_ORDER } from "./StatusBadge";
+import { PublishLogSection } from "./PublishLogSection";
 import type { CategoryOut, EmotionOut, VideoOut } from "../types";
 import { formatFileSize, formatShortDate } from "../utils";
 import "./VideoDetailDrawer.css";
@@ -211,6 +212,8 @@ export function VideoDetailDrawer({
               </button>
             )}
           </div>
+
+          <PublishLogSection videoId={video.id} />
         </div>
       </aside>
     </div>

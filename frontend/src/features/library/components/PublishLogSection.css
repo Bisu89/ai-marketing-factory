@@ -1,0 +1,135 @@
+.publish-log-section {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+}
+
+.publish-log-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.publish-log-add-btn {
+  padding: 5px 10px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.publish-log-empty {
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+
+.publish-log-error {
+  font-size: 12.5px;
+  color: var(--danger);
+  margin-bottom: 8px;
+}
+
+.publish-log-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.publish-log-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  background: var(--surface-alt);
+}
+
+.publish-log-card-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.publish-log-platform {
+  font-weight: 600;
+  color: var(--text-heading);
+  text-transform: capitalize;
+}
+
+.publish-log-date {
+  color: var(--text-muted);
+  margin-left: auto;
+}
+
+.publish-log-delete {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 2px;
+}
+
+.publish-log-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 11.5px;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+.publish-log-stats {
+  display: flex;
+  gap: 14px;
+  margin-top: 8px;
+  font-size: 12.5px;
+  color: var(--text-heading);
+}
+
+.publish-log-stats span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.publish-log-unlinked {
+  margin-top: 8px;
+  font-size: 11.5px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.publish-log-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface-alt);
+}
+
+.publish-log-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.publish-log-form input,
+.publish-log-form select {
+  padding: 7px 9px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--text-heading);
+  font-size: 12.5px;
+}
+
+.publish-log-affiliate-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}

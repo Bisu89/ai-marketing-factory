@@ -55,3 +55,12 @@ class TrendPointOut(BaseModel):
     filename: str
     total_views: int
     total_interactions: int
+
+
+class UnlinkedPostOut(BaseModel):
+    post_id: str
+    page_id: str
+    page_name: str
+    title: str
+    posted_at: datetime | None
+    views: int
