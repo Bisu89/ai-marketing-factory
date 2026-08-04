@@ -1,6 +1,7 @@
 # 15 — Performance Intelligence, Phase 1 (link real performance data to videos)
 
-**Commit:** pending (see `git log` for the actual hash once committed).
+**Commit:** `4ab46f4` "Performance Intelligence Phase 1: link real
+performance data to videos".
 
 ## What it does and why
 
