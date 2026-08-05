@@ -27,6 +27,7 @@ SQLite.
 13. [AI Story](features/13-ai-story.md) — Claude Sonnet 5 generates 2 Spanish marketing narration script variants per video, synchronous (no background job)
 14. [Desktop packaging](features/14-desktop-packaging.md) — PyInstaller + pywebview + Inno Setup turn the app into a no-admin Windows installer, with bundled ffmpeg
 15. [Performance Intelligence, Phase 1](features/15-performance-intelligence.md) — links Insights CSV data to real Library videos (PublishLog), real-data dashboard by topic/emotion/hook/story-style, winners/losers
+16. [AI Content Platform](features/16-ai-content-platform.md) — unified `app/modules/ai` (Story relocated + new Hook/Caption generators), shared Claude client + generation history
 
 ## Keeping this up to date
 

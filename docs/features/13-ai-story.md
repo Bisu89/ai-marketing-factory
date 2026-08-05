@@ -1,5 +1,10 @@
 # 13 — AI Story (Claude-generated Spanish marketing narration scripts)
 
+> **Note:** the module now lives at `app/modules/ai/story/` (moved as part
+> of [16-ai-content-platform.md](16-ai-content-platform.md)); URL paths and
+> table names are unchanged. The rest of this doc describes the original
+> `app/modules/story/` location and is otherwise still accurate.
+
 **Commit:** `5ad708b` "Epic 13: AI Story -- generate Spanish marketing
 narration scripts via Claude".
 

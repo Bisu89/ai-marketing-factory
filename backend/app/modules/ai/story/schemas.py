@@ -2,7 +2,7 @@ from datetime import datetime
 
 from pydantic import BaseModel, ConfigDict, field_validator
 
-from app.modules.story.models import STORY_STYLES, StoryJob, StoryVersion
+from app.modules.ai.story.models import STORY_STYLES, StoryJob, StoryVersion
 
 
 class StoryGenerateIn(BaseModel):

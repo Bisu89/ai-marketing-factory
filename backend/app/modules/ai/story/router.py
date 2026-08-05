@@ -3,8 +3,8 @@ from sqlalchemy.orm import Session
 
 from app.core.config import Settings, get_settings
 from app.db.session import get_db
-from app.modules.story.schemas import StoryGenerateIn, StoryJobOut, job_to_out
-from app.modules.story.service import StoryService
+from app.modules.ai.story.schemas import StoryGenerateIn, StoryJobOut, job_to_out
+from app.modules.ai.story.service import StoryService
 
 router = APIRouter()
 

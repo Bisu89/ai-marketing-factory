@@ -6,11 +6,12 @@ from sqlalchemy.orm import Session, selectinload
 
 from app.core.exceptions import ExternalServiceError, NotFoundError, ValidationError
 from app.models.video import Video
-from app.modules.story.models import StoryJob, StoryVersion
+from app.modules.ai import history
+from app.modules.ai.claude_client import MODEL, call_structured
+from app.modules.ai.story.models import StoryJob, StoryVersion
 
 logger = logging.getLogger(__name__)
 
-MODEL = "claude-sonnet-5"
 MAX_TOKENS = 4096
 VERSIONS_PER_GENERATION = 2
 
@@ -136,35 +137,49 @@ class StoryService:
                 "Chua cau hinh Anthropic API key. Vao Settings de nhap key truoc khi tao story."
             )
 
-        client = anthropic.Anthropic(api_key=self.api_key)
+        system_prompt = _build_system_prompt(style)
+        user_message = _build_user_message(video)
+
+        def _fail(message: str, latency_ms: int = 0, raw: str | None = None) -> None:
+            job = StoryJob(video_id=video_id, style=style, status="failed", error_message=message)
+            self.db.add(job)
+            history.record(
+                self.db,
+                kind="story",
+                job_id=None,
+                video_id=video_id,
+                model=MODEL,
+                prompt_system=system_prompt,
+                prompt_user=user_message,
+                response_raw=raw,
+                latency_ms=latency_ms,
+                error_message=message,
+            )
+            self.db.commit()
 
         try:
-            response = client.messages.create(
-                model=MODEL,
+            result = call_structured(
+                self.api_key,
+                system=system_prompt,
+                user_message=user_message,
+                output_schema=OUTPUT_SCHEMA,
                 max_tokens=MAX_TOKENS,
-                system=_build_system_prompt(style),
-                messages=[{"role": "user", "content": _build_user_message(video)}],
-                output_config={"format": OUTPUT_SCHEMA},
             )
         except anthropic.APIError as exc:
-            job = StoryJob(video_id=video_id, style=style, status="failed", error_message=str(exc))
-            self.db.add(job)
-            self.db.commit()
+            _fail(f"Goi Anthropic API that bai: {exc}")
             raise ExternalServiceError(f"Goi Anthropic API that bai: {exc}") from exc
+
+        response = result.response
 
         if response.stop_reason == "refusal":
             message = "Yeu cau bi tu choi boi bo loc an toan cua model."
-            job = StoryJob(video_id=video_id, style=style, status="failed", error_message=message)
-            self.db.add(job)
-            self.db.commit()
+            _fail(message, result.latency_ms)
             raise ExternalServiceError(message)
 
         text_block = next((b for b in response.content if b.type == "text"), None)
         if text_block is None:
             message = "Model khong tra ve noi dung van ban."
-            job = StoryJob(video_id=video_id, style=style, status="failed", error_message=message)
-            self.db.add(job)
-            self.db.commit()
+            _fail(message, result.latency_ms)
             raise ExternalServiceError(message)
 
         try:
@@ -174,9 +189,7 @@ class StoryService:
                 raise ValueError(f"Expected {VERSIONS_PER_GENERATION} variants, got {len(variants)}")
         except (json.JSONDecodeError, KeyError, TypeError, ValueError) as exc:
             message = f"Khong doc duoc ket qua tra ve tu model: {exc}"
-            job = StoryJob(video_id=video_id, style=style, status="failed", error_message=message)
-            self.db.add(job)
-            self.db.commit()
+            _fail(message, result.latency_ms, raw=text_block.text)
             raise ExternalServiceError(message) from exc
 
         job = StoryJob(video_id=video_id, style=style, status="completed")
@@ -192,6 +205,20 @@ class StoryService:
                     script_text=variant["script_text"],
                 )
             )
+
+        history.record(
+            self.db,
+            kind="story",
+            job_id=job.id,
+            video_id=video_id,
+            model=MODEL,
+            prompt_system=system_prompt,
+            prompt_user=user_message,
+            response_raw=text_block.text,
+            latency_ms=result.latency_ms,
+            input_tokens=getattr(response.usage, "input_tokens", None),
+            output_tokens=getattr(response.usage, "output_tokens", None),
+        )
 
         self.db.commit()
         self.db.refresh(job)

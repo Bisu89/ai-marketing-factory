@@ -23,10 +23,17 @@ video
   ├─ download_history (video_id FK, task_id FK)   one-to-many (append-only log)
   ├─ story_job (video_id FK)                      one-to-many
   │    └─ story_version (story_job_id FK)         one-to-many (2 per job)
+  ├─ hook_job (video_id FK)                       one-to-many
+  │    └─ hook_version (hook_job_id FK)           one-to-many (5-10 per job)
+  ├─ caption_job (video_id FK)                    one-to-many
+  │    └─ caption_version (caption_job_id FK)     one-to-many (2 per job)
   └─ publish_log (video_id FK)                    one-to-many
        linked by post_id/page_id, not a FK, to ->
        insight_upload (CSV upload)
          └─ insight_post_snapshot (upload_id FK)  one-to-many (1 per post per upload)
+
+ai_generation_history                              one row per Claude call
+  job_id (bare int, not FK -- points at story_job/hook_job/caption_job by `kind`)
 ```
 
 ## Why `video.platform_id` duplicates `channel.platform_id`
@@ -117,7 +124,7 @@ One row per terminal transition (`completed` / `failed` / `cancelled`) with
 `video_id`, `task_id`, `error_message`, `occurred_at`. Kept separate from
 `download_task` so history survives even if task rows are ever pruned.
 
-### `story_job` / `story_version` — AI Story generations (`app/modules/story/`)
+### `story_job` / `story_version` — AI Story generations (`app/modules/ai/story/`)
 One `story_job` row per generation request (`video_id` FK, `style`, `status`
 `completed`/`failed`, `error_message`), with 2 `story_version` rows per
 completed job (`title`, `script_text`, `is_selected`). Written synchronously
@@ -125,6 +132,29 @@ inside the same request that calls Claude -- there is no background
 queue/worker for this module, unlike Scene Cutter/Video Composer, because an
 LLM text call is fast enough to not need one (see
 [13-ai-story.md](features/13-ai-story.md)).
+
+### `hook_job` / `hook_version` — Hook generations (`app/modules/ai/hook/`)
+One `hook_job` row per generation request (`video_id` FK, `status`,
+`error_message`), with 5-10 `hook_version` rows per completed job (`text`,
+`is_favorite`). Regenerating creates a new `hook_job` rather than mutating
+the previous one, so past batches stay visible (see
+[16-ai-content-platform.md](features/16-ai-content-platform.md)).
+
+### `caption_job` / `caption_version` — Caption generations (`app/modules/ai/caption/`)
+One `caption_job` row per generation request, with 2 `caption_version` rows
+per completed job, each carrying all five fields together
+(`facebook_caption`, `instagram_caption`, `youtube_description`,
+`pinned_comment`, `cta`, `is_selected`) since they're generated with shared
+context in one Claude call (see
+[16-ai-content-platform.md](features/16-ai-content-platform.md)).
+
+### `ai_generation_history` — one row per Claude call (`app/modules/ai/history.py`)
+Shared across Story/Hook/Caption: `kind` (story/hook/caption), `job_id`
+(bare `Integer`, deliberately not an FK since it must point at three
+different tables depending on `kind`), `video_id` FK, `provider`, `model`,
+`prompt_system`, `prompt_user`, `response_raw`, `latency_ms`,
+`input_tokens`/`output_tokens`, `created_at`. Written for both success and
+failure calls.
 
 ### `insight_upload` / `insight_post_snapshot` — Meta Business Suite CSV imports
 One `insight_upload` row per CSV file uploaded on the Insights page; one

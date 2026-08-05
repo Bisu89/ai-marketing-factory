@@ -21,7 +21,7 @@ const NAV_ITEMS = [
   { to: "/insights", label: "Insights", icon: BarChart3 },
   { to: "/scene-cutter", label: "Scene Cutter", icon: Scissors },
   { to: "/video-composer", label: "Video Composer", icon: Clapperboard },
-  { to: "/story", label: "AI Story", icon: Sparkles },
+  { to: "/ai", label: "AI Content", icon: Sparkles },
   { to: "/settings", label: "Settings", icon: Settings },
 ];
 
