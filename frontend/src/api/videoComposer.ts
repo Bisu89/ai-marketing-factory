@@ -5,6 +5,7 @@ import type { VideoComposeJob } from "../types/videoComposer";
 export interface CreateVideoComposeJobInput {
   title: string;
   script: string;
+  voice: string;
   files: File[];
   music?: File | null;
   musicVolume: number;
@@ -17,6 +18,7 @@ export async function createVideoComposeJob(input: CreateVideoComposeJobInput): 
   const form = new FormData();
   form.set("title", input.title);
   form.set("script", input.script);
+  form.set("voice", input.voice);
   form.set("music_volume", String(input.musicVolume));
   form.set("transition_duration", String(input.transitionDuration));
   form.set("burn_subtitles", String(input.burnSubtitles));

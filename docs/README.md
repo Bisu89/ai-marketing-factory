@@ -29,6 +29,7 @@ SQLite.
 15. [Performance Intelligence, Phase 1](features/15-performance-intelligence.md) — links Insights CSV data to real Library videos (PublishLog), real-data dashboard by topic/emotion/hook/story-style, winners/losers
 16. [AI Content Platform](features/16-ai-content-platform.md) — unified `app/modules/ai` (Story relocated + new Hook/Caption generators), shared Claude client + generation history
 17. [Karaoke highlight box](features/17-karaoke-highlight-box.md) — trend-style captions: white text always, colored box slides behind the active word instead of recoloring it
+18. [Narration language option](features/18-narration-language-option.md) — AI Story + Video Composer switch from hardcoded Spanish to a language/voice picker (English default)
 
 ## Keeping this up to date
 

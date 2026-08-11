@@ -2,18 +2,26 @@ from datetime import datetime
 
 from pydantic import BaseModel, ConfigDict, field_validator
 
-from app.modules.ai.story.models import STORY_STYLES, StoryJob, StoryVersion
+from app.modules.ai.story.models import STORY_LANGUAGES, STORY_STYLES, StoryJob, StoryVersion
 
 
 class StoryGenerateIn(BaseModel):
     video_id: int
     style: str
+    language: str = "english"
 
     @field_validator("style")
     @classmethod
     def _valid_style(cls, value: str) -> str:
         if value not in STORY_STYLES:
             raise ValueError(f"Invalid style {value!r}, must be one of {STORY_STYLES}")
+        return value
+
+    @field_validator("language")
+    @classmethod
+    def _valid_language(cls, value: str) -> str:
+        if value not in STORY_LANGUAGES:
+            raise ValueError(f"Invalid language {value!r}, must be one of {STORY_LANGUAGES}")
         return value
 
 
@@ -33,6 +41,7 @@ class StoryJobOut(BaseModel):
     id: int
     video_id: int
     style: str
+    language: str
     status: str
     error_message: str | None
     created_at: datetime

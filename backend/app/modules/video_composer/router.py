@@ -62,7 +62,7 @@ def pick_output_folder():
 def create_video_compose_job(
     title: str = Form(...),
     script: str = Form(...),
-    voice: str = Form("es-ES-AlvaroNeural"),
+    voice: str = Form("en-US-GuyNeural"),
     music_volume: float = Form(0.15),
     transition_duration: float = Form(0.5),
     burn_subtitles: bool = Form(True),

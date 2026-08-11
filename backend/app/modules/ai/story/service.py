@@ -15,16 +15,25 @@ logger = logging.getLogger(__name__)
 MAX_TOKENS = 4096
 VERSIONS_PER_GENERATION = 2
 
-# Prompt-only descriptions of each style preset, in Spanish, so the model's
-# instructions and its output are both in the target language. The enum
-# values persisted on StoryJob.style stay the stable English keys.
+# Tone description per style preset. Written in English -- this only feeds
+# the *instructions* to Claude, not the generated script, so it doesn't need
+# to match STORY_LANGUAGES. The enum values persisted on StoryJob.style stay
+# the stable English keys.
 STYLE_DESCRIPTIONS = {
-    "emotional": "emocional y conmovedor, que conecte con los sentimientos del espectador",
-    "humorous": "humoristico y divertido, ligero y entretenido",
-    "inspirational": "inspirador y motivador, que anime a la accion o a la reflexion",
-    "dramatic": "dramatico e intenso, con tension narrativa",
-    "educational": "educativo e informativo, claro y didactico",
-    "sales": "persuasivo de venta/marketing, orientado a la conversion",
+    "emotional": "emotional and moving, connecting with the viewer's feelings",
+    "humorous": "humorous and fun, light and entertaining",
+    "inspirational": "inspirational and motivating, encouraging action or reflection",
+    "dramatic": "dramatic and intense, with narrative tension",
+    "educational": "educational and informative, clear and instructive",
+    "sales": "persuasive sales/marketing copy, geared toward conversion",
+}
+
+# Display name for the target script language, used both in the prompt and
+# to remind the model not to mix languages. Keys are STORY_LANGUAGES.
+LANGUAGE_NAMES = {
+    "english": "English",
+    "spanish": "Spanish",
+    "vietnamese": "Vietnamese",
 }
 
 OUTPUT_SCHEMA = {
@@ -51,33 +60,32 @@ OUTPUT_SCHEMA = {
 }
 
 
-def _build_system_prompt(style: str) -> str:
+def _build_system_prompt(style: str, language: str) -> str:
     tone = STYLE_DESCRIPTIONS[style]
+    language_name = LANGUAGE_NAMES[language]
     return (
-        "Eres un guionista experto en marketing de contenido en video para redes sociales, "
-        "especializado en narraciones en espanol.\n\n"
-        "Tu tarea: escribir un guion de narracion en ESPANOL para un video, basado unicamente "
-        "en los metadatos que te proporcione el usuario. El guion debe:\n"
-        "- Tener una duracion de narracion hablada de entre 30 y 90 segundos "
-        "(aproximadamente 75-200 palabras a un ritmo natural).\n"
-        f"- Usar un tono {tone}.\n"
-        "- Basarse solo en los hechos y el tono sugeridos por los metadatos proporcionados -- "
-        "no inventes hechos, cifras, nombres o eventos que no esten en los metadatos.\n"
-        "- Estar escrito para ser leido en voz alta (narracion), no como texto para pantalla.\n"
-        "- Estar completamente en espanol, sin mezclar idiomas.\n\n"
-        f"Genera exactamente {VERSIONS_PER_GENERATION} variantes distintas del guion, cada una "
-        "con un titulo corto y el texto del guion."
+        "You are an expert scriptwriter for social-media video content marketing.\n\n"
+        f"Your task: write a video narration script entirely in {language_name}, based only on "
+        "the metadata the user provides. The script must:\n"
+        "- Run 30-90 seconds when read aloud (roughly 75-200 words at a natural pace).\n"
+        f"- Use a {tone} tone.\n"
+        "- Stick only to the facts and tone suggested by the provided metadata -- do not invent "
+        "facts, figures, names, or events that aren't in the metadata.\n"
+        "- Be written to be read aloud (narration), not as on-screen text.\n"
+        f"- Be entirely in {language_name}, with no mixing of languages.\n\n"
+        f"Generate exactly {VERSIONS_PER_GENERATION} distinct variants of the script, each with "
+        "a short title and the script text."
     )
 
 
 def _build_user_message(video: Video) -> str:
     tag_names = ", ".join(t.name for t in video.tags) if video.tags else "N/A"
     return (
-        f"Titulo del video: {video.title}\n"
-        f"Tema: {video.category_name or 'N/A'}\n"
-        f"Emocion: {video.emotion_name or 'N/A'}\n"
-        f"Etiquetas: {tag_names}\n"
-        f"Notas: {video.notes or 'N/A'}"
+        f"Video title: {video.title}\n"
+        f"Topic: {video.category_name or 'N/A'}\n"
+        f"Emotion: {video.emotion_name or 'N/A'}\n"
+        f"Tags: {tag_names}\n"
+        f"Notes: {video.notes or 'N/A'}"
     )
 
 
@@ -129,7 +137,7 @@ class StoryService:
         self.db.refresh(job)
         return job
 
-    def generate(self, video_id: int, style: str) -> StoryJob:
+    def generate(self, video_id: int, style: str, language: str = "english") -> StoryJob:
         video = self._get_video(video_id)
 
         if not self.api_key:
@@ -137,11 +145,11 @@ class StoryService:
                 "Chua cau hinh Anthropic API key. Vao Settings de nhap key truoc khi tao story."
             )
 
-        system_prompt = _build_system_prompt(style)
+        system_prompt = _build_system_prompt(style, language)
         user_message = _build_user_message(video)
 
         def _fail(message: str, latency_ms: int = 0, raw: str | None = None) -> None:
-            job = StoryJob(video_id=video_id, style=style, status="failed", error_message=message)
+            job = StoryJob(video_id=video_id, style=style, language=language, status="failed", error_message=message)
             self.db.add(job)
             history.record(
                 self.db,
@@ -192,7 +200,7 @@ class StoryService:
             _fail(message, result.latency_ms, raw=text_block.text)
             raise ExternalServiceError(message) from exc
 
-        job = StoryJob(video_id=video_id, style=style, status="completed")
+        job = StoryJob(video_id=video_id, style=style, language=language, status="completed")
         self.db.add(job)
         self.db.flush()
 

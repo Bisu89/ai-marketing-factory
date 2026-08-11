@@ -21,7 +21,7 @@ def create_story_job(
     payload: StoryGenerateIn,
     service: StoryService = Depends(get_story_service),
 ):
-    job = service.generate(video_id=payload.video_id, style=payload.style)
+    job = service.generate(video_id=payload.video_id, style=payload.style, language=payload.language)
     return job_to_out(job)
 
 

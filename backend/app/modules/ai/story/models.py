@@ -6,6 +6,7 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 from app.db.base import Base
 
 STORY_STYLES = ("emotional", "humorous", "inspirational", "dramatic", "educational", "sales")
+STORY_LANGUAGES = ("english", "spanish", "vietnamese")
 STORY_JOB_STATUSES = ("completed", "failed")
 
 
@@ -29,6 +30,7 @@ class StoryJob(Base):
     video_id: Mapped[int] = mapped_column(ForeignKey("video.id"), nullable=False)
 
     style: Mapped[str] = mapped_column(String, nullable=False)
+    language: Mapped[str] = mapped_column(String, nullable=False, default="english")
     status: Mapped[str] = mapped_column(String, nullable=False, default="completed")
     error_message: Mapped[str | None] = mapped_column(String, nullable=True)
 

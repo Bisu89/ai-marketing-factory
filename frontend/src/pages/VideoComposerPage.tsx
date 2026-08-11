@@ -14,6 +14,15 @@ import "./VideoComposerPage.css";
 
 const POLL_INTERVAL_MS = 2000;
 
+const VOICE_OPTIONS: { value: string; label: string }[] = [
+  { value: "en-US-GuyNeural", label: "Tiếng Anh (Nam)" },
+  { value: "en-US-AriaNeural", label: "Tiếng Anh (Nữ)" },
+  { value: "es-ES-AlvaroNeural", label: "Tiếng Tây Ban Nha (Nam)" },
+  { value: "es-ES-ElviraNeural", label: "Tiếng Tây Ban Nha (Nữ)" },
+  { value: "vi-VN-NamMinhNeural", label: "Tiếng Việt (Nam)" },
+  { value: "vi-VN-HoaiMyNeural", label: "Tiếng Việt (Nữ)" },
+];
+
 const STATUS_LABEL: Record<VideoComposeJob["status"], string> = {
   queued: "Trong hàng đợi",
   merging: "Đang ghép video (chuyển cảnh swipe-left)",
@@ -38,6 +47,7 @@ export function VideoComposerPage() {
   const [clips, setClips] = useState<File[]>([]);
   const [title, setTitle] = useState("");
   const [script, setScript] = useState("");
+  const [voice, setVoice] = useState(VOICE_OPTIONS[0].value);
   const [music, setMusic] = useState<File | null>(null);
   const [musicVolume, setMusicVolume] = useState(0.15);
   const [transitionDuration, setTransitionDuration] = useState(0.5);
@@ -106,6 +116,7 @@ export function VideoComposerPage() {
       await createVideoComposeJob({
         title: title.trim(),
         script: script.trim(),
+        voice,
         files: clips,
         music,
         musicVolume,
@@ -143,7 +154,7 @@ export function VideoComposerPage() {
     <>
       <PageHeader
         title="Video Composer"
-        subtitle="Ghép nhiều video, chuyển cảnh swipe-left, chèn tiêu đề, tự tạo giọng đọc + phụ đề tiếng Tây Ban Nha"
+        subtitle="Ghép nhiều video, chuyển cảnh swipe-left, chèn tiêu đề, tự tạo giọng đọc + phụ đề"
       />
 
       <div className="vc-form">
@@ -153,13 +164,24 @@ export function VideoComposerPage() {
         </label>
 
         <label className="vc-field">
-          Kịch bản (tiếng Tây Ban Nha, dùng để tạo giọng đọc + phụ đề)
+          Kịch bản (dùng để tạo giọng đọc + phụ đề)
           <textarea
             rows={5}
             value={script}
             onChange={(e) => setScript(e.target.value)}
-            placeholder="Hola a todos, bienvenidos..."
+            placeholder="Hi everyone, welcome..."
           />
+        </label>
+
+        <label className="vc-field">
+          Giọng đọc
+          <select value={voice} onChange={(e) => setVoice(e.target.value)}>
+            {VOICE_OPTIONS.map((v) => (
+              <option key={v.value} value={v.value}>
+                {v.label}
+              </option>
+            ))}
+          </select>
         </label>
 
         <div className="vc-field">

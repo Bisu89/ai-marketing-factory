@@ -46,8 +46,9 @@ HIGHLIGHT_COLORS = [
 class VideoComposerService:
     """Background video-composition engine: merges uploaded clips (in the
     user's chosen order) with a swipe-left transition, overlays a title,
-    generates Spanish TTS narration + burned-in karaoke subtitles from a
-    typed script, and mixes in optional background music.
+    generates TTS narration (any edge-tts voice/language the caller picks)
+    + burned-in karaoke subtitles from a typed script, and mixes in optional
+    background music.
 
     Its own queue + worker thread, independent of DownloadEngine and
     SceneCutterService (see app/modules/README.md) -- ffmpeg/TTS work here

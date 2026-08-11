@@ -10,12 +10,13 @@ import { deleteCaptionJob, generateCaptions, listCaptionJobs, selectCaptionVersi
 import { getSettings } from "../api/settings";
 import { mediaUrl } from "../api/client";
 import type { VideoOut } from "../features/library/types";
-import { STORY_STYLE_LABELS, type StoryJob, type StoryStyle } from "../types/story";
+import { STORY_LANGUAGE_LABELS, STORY_STYLE_LABELS, type StoryJob, type StoryLanguage, type StoryStyle } from "../types/story";
 import type { HookJob } from "../types/hook";
 import type { CaptionJob } from "../types/caption";
 import "./AIContentPage.css";
 
 const STYLES = Object.keys(STORY_STYLE_LABELS) as StoryStyle[];
+const LANGUAGES = Object.keys(STORY_LANGUAGE_LABELS) as StoryLanguage[];
 type Tab = "story" | "hook" | "caption";
 
 export function AIContentPage() {
@@ -145,6 +146,7 @@ export function AIContentPage() {
 
 function StoryTab({ video, disabled }: { video: VideoOut; disabled: boolean }) {
   const [style, setStyle] = useState<StoryStyle>("emotional");
+  const [language, setLanguage] = useState<StoryLanguage>("english");
   const [generating, setGenerating] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [jobs, setJobs] = useState<StoryJob[]>([]);
@@ -160,7 +162,7 @@ function StoryTab({ video, disabled }: { video: VideoOut; disabled: boolean }) {
     setGenerating(true);
     setError(null);
     try {
-      await generateStory({ video_id: video.id, style });
+      await generateStory({ video_id: video.id, style, language });
       load();
     } catch (err) {
       setError(err instanceof Error ? err.message : "Không tạo được story.");
@@ -200,6 +202,17 @@ function StoryTab({ video, disabled }: { video: VideoOut; disabled: boolean }) {
         </select>
       </label>
 
+      <label className="ai-style-select">
+        Ngôn ngữ kịch bản
+        <select value={language} onChange={(e) => setLanguage(e.target.value as StoryLanguage)}>
+          {LANGUAGES.map((l) => (
+            <option key={l} value={l}>
+              {STORY_LANGUAGE_LABELS[l]}
+            </option>
+          ))}
+        </select>
+      </label>
+
       {error && <div className="ai-alert ai-alert-error">{error}</div>}
 
       <button className="btn btn-primary" onClick={handleGenerate} disabled={disabled || generating}>
@@ -213,7 +226,9 @@ function StoryTab({ video, disabled }: { video: VideoOut; disabled: boolean }) {
         jobs.map((job) => (
           <div key={job.id} className="ai-job-card">
             <div className="ai-job-header">
-              <span>{STORY_STYLE_LABELS[job.style]}</span>
+              <span>
+                {STORY_STYLE_LABELS[job.style]} · {STORY_LANGUAGE_LABELS[job.language]}
+              </span>
               <span className="ai-job-date">{new Date(job.created_at).toLocaleString("vi-VN")}</span>
               <button className="ai-job-delete" onClick={() => handleDelete(job.id)}>
                 <Trash2 size={13} />
