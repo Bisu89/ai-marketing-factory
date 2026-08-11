@@ -21,6 +21,11 @@ class VideoComposeJobOut(BaseModel):
     title: str
     voice: str
     music_volume: float
+    narration_volume: float
+    music_ducking_ratio: float
+    fade_in_sec: float
+    fade_out_sec: float
+    caption_preset: str
     transition_duration: float
     burn_subtitles: bool
     requested_output_dir: str | None

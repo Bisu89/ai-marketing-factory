@@ -1,9 +1,11 @@
 from datetime import datetime, timezone
 
-from sqlalchemy import Boolean, DateTime, Float, ForeignKey, Integer, String
+from sqlalchemy import JSON, Boolean, DateTime, Float, ForeignKey, Integer, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.db.base import Base
+
+CAPTION_PRESETS = ("emotional", "cinematic", "word_highlight", "big_statement", "quote")
 
 VIDEO_COMPOSE_STATUSES = (
     "queued",
@@ -44,6 +46,26 @@ class VideoComposeJob(Base):
     music_volume: Mapped[float] = mapped_column(Float, nullable=False, default=0.15)
     transition_duration: Mapped[float] = mapped_column(Float, nullable=False, default=0.5)
     burn_subtitles: Mapped[bool] = mapped_column(Boolean, nullable=False, default=True)
+
+    # Audio/caption controls (Epic: Video Factory audio + captions). Kept as
+    # job-level columns, not request-time-only parameters, so a crash mid-job
+    # can still be recovered and re-rendered with the same settings by
+    # _recover_pending_jobs() -- the same reasoning voice/music_volume/etc.
+    # are already columns, not just constructor arguments.
+    narration_volume: Mapped[float] = mapped_column(Float, nullable=False, default=1.0)
+    # Mirrors ffmpeg's own sidechaincompress "ratio" parameter directly
+    # (1.0 = no ducking, 20.0 = ffmpeg's own maximum) -- see
+    # VideoComposerService._mix_audio.
+    music_ducking_ratio: Mapped[float] = mapped_column(Float, nullable=False, default=8.0)
+    fade_in_sec: Mapped[float] = mapped_column(Float, nullable=False, default=0.0)
+    fade_out_sec: Mapped[float] = mapped_column(Float, nullable=False, default=0.0)
+    caption_preset: Mapped[str] = mapped_column(String, nullable=False, default="emotional")
+    # One row per SFX cue: [{"path": str, "start_sec": float, "volume": float}, ...].
+    # A JSON column, not a child table, matching the precedent in
+    # app/modules/asset/models.py (Asset.tags/extra_metadata) for small,
+    # non-relational per-row structured data that doesn't need its own
+    # queryable identity.
+    sfx_cues: Mapped[list | None] = mapped_column(JSON, nullable=True)
 
     # User-chosen destination folder for the final video. None means "use
     # the default location" (library/_video_composer/job_<id>/output/) --

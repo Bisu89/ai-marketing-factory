@@ -1,0 +1,105 @@
+{
+  "video_id": null,
+  "narration_script": "Meet Anna and Tom, two travelers who found each other on the open road. Together they crossed misty mountains, chasing sunrises no map could show them. Every city they wandered through added a new color to their story. But it was the quiet, ordinary moments that they came to treasure most. Now it's your turn -- join their next adventure today.",
+  "voice": "en-US-GuyNeural",
+  "language": "english",
+  "narration_volume": 1.0,
+  "music_path": "examples/video_factory/assets/background_music.mp3",
+  "music_volume": 0.15,
+  "music_ducking_ratio": 8.0,
+  "fade_in_sec": 0.5,
+  "fade_out_sec": 0.5,
+  "caption_preset": "emotional",
+  "scenes": [
+    {
+      "id": "beat_01",
+      "order": 1,
+      "beat_id": "beat_01",
+      "duration": 4.0,
+      "source_asset_id": 1,
+      "motion": {
+        "preset_name": "slow_push_in",
+        "scale": { "start": 1.0, "end": 1.08 },
+        "position": { "x_start": 0.5, "y_start": 0.5, "x_end": 0.52, "y_end": 0.48 },
+        "rotation": { "start": 0.0, "end": 0.0 },
+        "easing": "ease_in_out"
+      },
+      "caption": { "text": "Meet Anna and Tom", "preset": "big_statement" },
+      "audio": { "sfx": "whoosh_in.mp3", "sfx_volume": 1.0 },
+      "transition": { "type": "cut", "duration": 0.0 },
+      "output_format": { "width": 1080, "height": 1920, "fps": 30 }
+    },
+    {
+      "id": "beat_02",
+      "order": 2,
+      "beat_id": "beat_02",
+      "duration": 8.0,
+      "source_asset_id": 2,
+      "motion": {
+        "preset_name": "pan_left",
+        "scale": { "start": 1.15, "end": 1.15 },
+        "position": { "x_start": 0.6, "y_start": 0.5, "x_end": 0.4, "y_end": 0.5 },
+        "rotation": { "start": 0.0, "end": 0.0 },
+        "easing": "ease_in_out"
+      },
+      "caption": { "text": "Chasing sunrises together", "preset": "emotional" },
+      "audio": { "sfx": null, "sfx_volume": 1.0 },
+      "transition": { "type": "crossfade", "duration": 0.4 },
+      "output_format": { "width": 1080, "height": 1920, "fps": 30 }
+    },
+    {
+      "id": "beat_03",
+      "order": 3,
+      "beat_id": "beat_03",
+      "duration": 8.0,
+      "source_asset_id": 3,
+      "motion": {
+        "preset_name": "zoom_and_pan",
+        "scale": { "start": 1.0, "end": 1.15 },
+        "position": { "x_start": 0.5, "y_start": 0.5, "x_end": 0.6, "y_end": 0.4 },
+        "rotation": { "start": 0.0, "end": 0.0 },
+        "easing": "ease_in_out"
+      },
+      "caption": { "text": "A new color to their story", "preset": "emotional" },
+      "audio": { "sfx": null, "sfx_volume": 1.0 },
+      "transition": { "type": "crossfade", "duration": 0.4 },
+      "output_format": { "width": 1080, "height": 1920, "fps": 30 }
+    },
+    {
+      "id": "beat_04",
+      "order": 4,
+      "beat_id": "beat_04",
+      "duration": 6.0,
+      "source_asset_id": 4,
+      "motion": {
+        "preset_name": "subtle_rotate",
+        "scale": { "start": 1.05, "end": 1.05 },
+        "position": { "x_start": 0.5, "y_start": 0.5, "x_end": 0.5, "y_end": 0.5 },
+        "rotation": { "start": -3.0, "end": 3.0 },
+        "easing": "ease_in_out"
+      },
+      "caption": { "text": "The quiet moments, treasured most", "preset": "word_highlight" },
+      "audio": { "sfx": null, "sfx_volume": 1.0 },
+      "transition": { "type": "crossfade", "duration": 0.4 },
+      "output_format": { "width": 1080, "height": 1920, "fps": 30 }
+    },
+    {
+      "id": "beat_05",
+      "order": 5,
+      "beat_id": "beat_05",
+      "duration": 4.0,
+      "source_asset_id": 5,
+      "motion": {
+        "preset_name": "slow_pull_out",
+        "scale": { "start": 1.08, "end": 1.0 },
+        "position": { "x_start": 0.52, "y_start": 0.48, "x_end": 0.5, "y_end": 0.5 },
+        "rotation": { "start": 0.0, "end": 0.0 },
+        "easing": "ease_in_out"
+      },
+      "caption": { "text": "Join their next adventure", "preset": "quote" },
+      "audio": { "sfx": null, "sfx_volume": 1.0 },
+      "transition": { "type": "crossfade", "duration": 0.4 },
+      "output_format": { "width": 1080, "height": 1920, "fps": 30 }
+    }
+  ]
+}

@@ -9,7 +9,7 @@ from sqlalchemy.orm import Session, selectinload
 from app.core.config import Settings, get_settings
 from app.core.exceptions import FileOperationError, NotFoundError, ValidationError
 from app.db.session import get_db
-from app.modules.video_composer.models import VideoComposeJob
+from app.modules.video_composer.models import CAPTION_PRESETS, VideoComposeJob
 from app.modules.video_composer.schemas import PickFolderOut, VideoComposeJobOut, job_to_out
 from app.modules.video_composer.service import VideoComposerService
 
@@ -64,6 +64,11 @@ def create_video_compose_job(
     script: str = Form(...),
     voice: str = Form("en-US-GuyNeural"),
     music_volume: float = Form(0.15),
+    narration_volume: float = Form(1.0),
+    music_ducking_ratio: float = Form(8.0),
+    fade_in_sec: float = Form(0.0),
+    fade_out_sec: float = Form(0.0),
+    caption_preset: str = Form("emotional"),
     transition_duration: float = Form(0.5),
     burn_subtitles: bool = Form(True),
     output_dir: str | None = Form(None),
@@ -77,12 +82,19 @@ def create_video_compose_job(
         raise ValidationError("Cần ít nhất 1 video để ghép")
     if not script.strip():
         raise ValidationError("Kịch bản không được để trống")
+    if caption_preset not in CAPTION_PRESETS:
+        raise ValidationError(f"Invalid caption_preset {caption_preset!r}, must be one of {CAPTION_PRESETS}")
 
     job_id = service.create_job(
         title=title,
         script_text=script,
         voice=voice,
         music_volume=music_volume,
+        narration_volume=narration_volume,
+        music_ducking_ratio=music_ducking_ratio,
+        fade_in_sec=fade_in_sec,
+        fade_out_sec=fade_out_sec,
+        caption_preset=caption_preset,
         transition_duration=transition_duration,
         burn_subtitles=burn_subtitles,
         requested_output_dir=output_dir,

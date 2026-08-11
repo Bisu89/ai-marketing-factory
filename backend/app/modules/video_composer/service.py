@@ -1,9 +1,11 @@
+import json
 import logging
 import queue
 import random
 import shutil
 import subprocess
 import threading
+import time
 import uuid
 from datetime import datetime, timezone
 from pathlib import Path
@@ -13,7 +15,7 @@ import edge_tts
 from PIL import ImageFont
 
 from app.db.session import SessionLocal
-from app.modules.video_composer.models import VideoComposeClip, VideoComposeJob
+from app.modules.video_composer.models import CAPTION_PRESETS, VideoComposeClip, VideoComposeJob
 
 logger = logging.getLogger(__name__)
 
@@ -41,6 +43,20 @@ HIGHLIGHT_COLORS = [
     "FF6EC7",
     "F0E000",
 ]
+
+# Per-preset caption styling (see _write_subtitles). `alignment`/`margin_v_frac`
+# use ASS's own numpad alignment convention: 2 = bottom-center, 5 = middle-
+# center. `font_scale` multiplies the caller-supplied base font_size, so
+# "big_statement" reads as dramatically larger without a second font-sizing
+# system.
+CAPTION_PRESET_CONFIG = {
+    "emotional": {"font_bold": True, "italic": False, "font_scale": 1.0, "margin_v_frac": 0.11, "alignment": 2},
+    "cinematic": {"font_bold": False, "italic": False, "font_scale": 0.85, "margin_v_frac": 0.08, "alignment": 2},
+    "word_highlight": {"font_bold": True, "italic": False, "font_scale": 1.0, "margin_v_frac": 0.11, "alignment": 2},
+    "big_statement": {"font_bold": True, "italic": False, "font_scale": 1.8, "margin_v_frac": 0.45, "alignment": 5},
+    "quote": {"font_bold": False, "italic": True, "font_scale": 0.9, "margin_v_frac": 0.45, "alignment": 5},
+}
+assert set(CAPTION_PRESET_CONFIG) == set(CAPTION_PRESETS)
 
 
 class VideoComposerService:
@@ -86,6 +102,12 @@ class VideoComposerService:
         transition_duration: float,
         burn_subtitles: bool,
         requested_output_dir: str | None,
+        narration_volume: float = 1.0,
+        music_ducking_ratio: float = 8.0,
+        fade_in_sec: float = 0.0,
+        fade_out_sec: float = 0.0,
+        caption_preset: str = "emotional",
+        sfx_cues: list[dict] | None = None,
     ) -> int:
         db = SessionLocal()
         try:
@@ -94,6 +116,12 @@ class VideoComposerService:
                 script_text=script_text,
                 voice=voice,
                 music_volume=music_volume,
+                narration_volume=narration_volume,
+                music_ducking_ratio=music_ducking_ratio,
+                fade_in_sec=fade_in_sec,
+                fade_out_sec=fade_out_sec,
+                caption_preset=caption_preset,
+                sfx_cues=sfx_cues,
                 transition_duration=transition_duration,
                 burn_subtitles=burn_subtitles,
                 requested_output_dir=requested_output_dir,
@@ -122,6 +150,38 @@ class VideoComposerService:
                     shutil.copyfileobj(file_obj, out)
                 db.add(VideoComposeClip(job_id=job_id, position=position, file_path=str(destination)))
             db.commit()
+        finally:
+            db.close()
+
+    def save_clip_paths(self, job_id: int, paths: list[Path]) -> None:
+        """Registers already-on-disk clip files as a job's ordered input
+        clips, without copying them -- unlike save_input_clips, which
+        exists for browser multipart uploads that must be copied to disk
+        first. This is the extension point a composition-plan renderer
+        (see app/api/v1/endpoints/composition_render.py) uses to hand off
+        clips it already produced/located on disk, without this module
+        needing to know anything about where they came from.
+        """
+        db = SessionLocal()
+        try:
+            for position, path in enumerate(paths):
+                db.add(VideoComposeClip(job_id=job_id, position=position, file_path=str(path)))
+            db.commit()
+        finally:
+            db.close()
+
+    def set_music_path(self, job_id: int, path: str) -> None:
+        """Like save_clip_paths relative to save_input_clips: registers an
+        already-on-disk music file directly, without copying it -- for a
+        caller (e.g. a composition-plan renderer) that already has a real
+        path, as opposed to save_music's browser-upload copy step.
+        """
+        db = SessionLocal()
+        try:
+            job = db.get(VideoComposeJob, job_id)
+            if job is not None:
+                job.music_path = path
+                db.commit()
         finally:
             db.close()
 
@@ -173,6 +233,12 @@ class VideoComposerService:
             voice = job.voice
             music_path = job.music_path
             music_volume = job.music_volume
+            narration_volume = job.narration_volume
+            music_ducking_ratio = job.music_ducking_ratio
+            fade_in_sec = job.fade_in_sec
+            fade_out_sec = job.fade_out_sec
+            caption_preset = job.caption_preset
+            sfx_cues = job.sfx_cues
             transition_duration = job.transition_duration
             burn_subtitles = job.burn_subtitles
             requested_output_dir = job.requested_output_dir
@@ -202,6 +268,7 @@ class VideoComposerService:
         subtitle_srt = output_dir / "phu_de.srt"
         final_video = output_dir / "video_hoan_chinh.mp4"
 
+        render_start = time.monotonic()
         try:
             self._set_status(job_id, "merging")
             width, height, fps = self._probe_video_info(clip_paths[0])
@@ -220,11 +287,22 @@ class VideoComposerService:
             self._set_status(job_id, "subtitling")
             lines = self._group_words_into_lines(words)
             font_size = max(28, int(height * 0.045))
-            self._write_subtitles(lines, subtitle_ass, subtitle_srt, width, height, font_size)
+            self._write_subtitles(lines, subtitle_ass, subtitle_srt, width, height, font_size, caption_preset)
 
             self._set_status(job_id, "mixing_audio")
             video_duration = self._probe_duration(merged_video)
-            self._mix_audio(narration_audio, music_path, music_volume, video_duration, mixed_audio)
+            self._mix_audio(
+                narration_audio,
+                music_path,
+                music_volume,
+                narration_volume,
+                music_ducking_ratio,
+                fade_in_sec,
+                fade_out_sec,
+                video_duration,
+                mixed_audio,
+                sfx_cues=sfx_cues,
+            )
 
             self._set_status(job_id, "finalizing")
             self._finalize(merged_video, mixed_audio, title, subtitle_ass, burn_subtitles, final_video, width)
@@ -234,6 +312,9 @@ class VideoComposerService:
             return
         finally:
             shutil.rmtree(tmp_dir, ignore_errors=True)
+
+        render_seconds = time.monotonic() - render_start
+        self._write_render_metadata(final_video, video_duration, render_seconds)
 
         db = SessionLocal()
         try:
@@ -252,8 +333,15 @@ class VideoComposerService:
 
     @staticmethod
     def _run_ffmpeg(args: list[str]) -> None:
-        command = ["ffmpeg", "-y", "-hide_banner", "-loglevel", "error"] + args
-        result = subprocess.run(command, capture_output=True, text=True)
+        # -nostdin + stdin=DEVNULL: ffmpeg reads stdin by default for
+        # interactive key commands; run as a subprocess with an inherited/
+        # piped stdin that never delivers EOF, it can block indefinitely on
+        # certain inputs instead of failing fast (confirmed as a real,
+        # reproducible hang while building app/modules/motion/renderer.py --
+        # see docs/features/23-local-motion-renderer.md's "Real bugs" -- and
+        # flagged there as a latent gap in this exact method).
+        command = ["ffmpeg", "-y", "-nostdin", "-hide_banner", "-loglevel", "error"] + args
+        result = subprocess.run(command, capture_output=True, text=True, stdin=subprocess.DEVNULL)
         if result.returncode != 0:
             raise RuntimeError(f"ffmpeg failed: {result.stderr.strip()[-2000:]}")
 
@@ -265,7 +353,7 @@ class VideoComposerService:
             "-of", "default=noprint_wrappers=1:nokey=1",
             str(path),
         ]
-        result = subprocess.run(command, capture_output=True, text=True)
+        result = subprocess.run(command, capture_output=True, text=True, stdin=subprocess.DEVNULL)
         return float(result.stdout.strip())
 
     @staticmethod
@@ -277,7 +365,7 @@ class VideoComposerService:
             "-of", "csv=p=0:s=x",
             str(path),
         ]
-        result = subprocess.run(command, capture_output=True, text=True)
+        result = subprocess.run(command, capture_output=True, text=True, stdin=subprocess.DEVNULL)
         width_str, height_str, fps_str = result.stdout.strip().split("x")
         num, _, den = fps_str.partition("/")
         fps = float(num) / float(den or 1)
@@ -445,24 +533,97 @@ class VideoComposerService:
         width: int,
         height: int,
         font_size: int,
+        caption_preset: str = "emotional",
     ) -> None:
-        # Trend-style captions: text stays plain white at all times: instead
-        # of recolouring the spoken word (the old \k karaoke fill), a solid
-        # rounded box is drawn behind whichever word is being spoken right
-        # now. The box needs a real x position per word, which ASS's \k tag
-        # can't give us (it only knows to fill left-to-right inside one
-        # Dialogue line) -- so word widths are measured with the same bold
-        # TTF (style below sets Bold=1, so this must match or the box drifts
-        # off the word) libass renders with, laid out left-to-right around
-        # the row's centred x, and each word gets its own timed Dialogue
-        # event carrying just the box (Layer 0, drawn first / behind). The
-        # row's text is a second, separate Dialogue spanning the whole row
-        # (Layer 1, drawn on top) so it never itself changes color.
-        font = ImageFont.truetype(FONT_PATH_BOLD, font_size)
+        """Burns word-timed captions to `ass_path` (+ a plain `srt_path`
+        alongside, unchanged regardless of preset -- it's a reference/
+        accessibility artifact, not what actually gets burned in), styled
+        per `caption_preset`. All 5 presets share the same word-boundary
+        timing data and the same `_split_line_for_width` row-wrapping --
+        only the Dialogue layout strategy and ASS Style differ. "emotional"
+        is exactly the original, already-shipped karaoke-highlight-box
+        behavior (see 17-karaoke-highlight-box.md), now one case among five
+        instead of the only option.
+        """
+        if caption_preset not in CAPTION_PRESET_CONFIG:
+            raise ValueError(f"Unknown caption preset {caption_preset!r}, must be one of {CAPTION_PRESETS}")
+        config = CAPTION_PRESET_CONFIG[caption_preset]
+
+        scaled_font_size = max(20, int(font_size * config["font_scale"]))
+        font_path = FONT_PATH_BOLD if config["font_bold"] else FONT_PATH
+        font = ImageFont.truetype(font_path, scaled_font_size)
         space_width = font.getlength(" ")
         margin_x = 40
-        margin_v = int(height * 0.11)
+        margin_v = int(height * config["margin_v_frac"])
         available_width = width - 2 * margin_x
+
+        if caption_preset == "emotional":
+            ass_lines = self._ass_events_emotional(lines, font, space_width, available_width, width, margin_v, scaled_font_size)
+        elif caption_preset == "word_highlight":
+            ass_lines = self._ass_events_word_highlight(lines, font, space_width, available_width)
+        elif caption_preset == "cinematic":
+            ass_lines = self._ass_events_static_lines(lines, font, space_width, available_width)
+        elif caption_preset == "big_statement":
+            ass_lines = self._ass_events_big_statement(lines)
+        else:  # "quote"
+            ass_lines = self._ass_events_quote(lines, font, space_width, available_width)
+
+        style_line = (
+            f"Style: Karaoke,Arial,{scaled_font_size},&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,"
+            f"{1 if config['font_bold'] else 0},{1 if config['italic'] else 0},0,0,100,100,0,0,1,3,0,"
+            f"{config['alignment']},{margin_x},{margin_x},{margin_v},1"
+        )
+        ass_content = (
+            f"""[Script Info]
+Title: Phu de {caption_preset}
+ScriptType: v4.00+
+WrapStyle: 2
+PlayResX: {width}
+PlayResY: {height}
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+{style_line}
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+"""
+            + "\n".join(ass_lines)
+            + "\n"
+        )
+        ass_path.write_text(ass_content, encoding="utf-8")
+
+        srt_lines = []
+        for i, line in enumerate(lines, start=1):
+            plain_text = " ".join(word["text"] for word in line)
+            srt_lines.append(
+                f"{i}\n{self._format_srt_time(line[0]['start'])} --> "
+                f"{self._format_srt_time(line[-1]['end'])}\n{plain_text}\n"
+            )
+        srt_path.write_text("\n".join(srt_lines), encoding="utf-8")
+
+    def _ass_events_emotional(
+        self,
+        lines: list[list[dict]],
+        font: ImageFont.FreeTypeFont,
+        space_width: float,
+        available_width: float,
+        width: int,
+        margin_v: int,
+        font_size: int,
+    ) -> list[str]:
+        """The original karaoke-highlight-box preset (see
+        17-karaoke-highlight-box.md), unchanged: a solid rounded box slides
+        behind whichever word is being spoken; text itself stays plain
+        white. The box needs a real x position per word, which ASS's \\k
+        tag can't give us (it only fills left-to-right inside one Dialogue
+        line) -- so word widths are measured with the same bold TTF the
+        Style below renders with, laid out left-to-right around the row's
+        centred x, and each word gets its own timed Dialogue event carrying
+        just the box (Layer 0, drawn first/behind). The row's text is a
+        second, separate Dialogue spanning the whole row (Layer 1, on top).
+        """
         box_height = font_size * 1.35
         box_top = margin_v - font_size * 0.14
         pad_x = font_size * 0.22
@@ -494,36 +655,97 @@ class VideoComposerService:
                     f"Dialogue: 1,{self._format_ass_time(row_start)},{self._format_ass_time(row_end)},"
                     f"Karaoke,,0,0,0,,{plain_text}"
                 )
+        return ass_lines
 
-        ass_content = (
-            f"""[Script Info]
-Title: Phu de karaoke
-ScriptType: v4.00+
-WrapStyle: 2
-PlayResX: {width}
-PlayResY: {height}
-ScaledBorderAndShadow: yes
+    def _ass_events_word_highlight(
+        self,
+        lines: list[list[dict]],
+        font: ImageFont.FreeTypeFont,
+        space_width: float,
+        available_width: float,
+    ) -> list[str]:
+        """Simpler alternative to "emotional": no box, just recolours the
+        active word inline within the row's own text via an ASS `\\c`
+        override, reset back to white immediately after -- one Dialogue
+        event per word, each carrying the full row so the rest of the row
+        is visible throughout, not just the active word.
+        """
+        ass_lines = []
+        for line in lines:
+            for row in self._split_line_for_width(line, font, space_width, available_width):
+                words_text = [word["text"] for word in row]
+                for i, word in enumerate(row):
+                    color = random.choice(HIGHLIGHT_COLORS)
+                    rendered = " ".join(
+                        f"{{\\c&H{color}&}}{text}{{\\c&HFFFFFF&}}" if j == i else text
+                        for j, text in enumerate(words_text)
+                    )
+                    ass_lines.append(
+                        f"Dialogue: 0,{self._format_ass_time(word['start'])},{self._format_ass_time(word['end'])},"
+                        f"Karaoke,,0,0,0,,{rendered}"
+                    )
+        return ass_lines
 
-[V4+ Styles]
-Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: Karaoke,Arial,{font_size},&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,1,0,0,0,100,100,0,0,1,3,0,8,{margin_x},{margin_x},{margin_v},1
+    def _ass_events_static_lines(
+        self,
+        lines: list[list[dict]],
+        font: ImageFont.FreeTypeFont,
+        space_width: float,
+        available_width: float,
+    ) -> list[str]:
+        """"cinematic" preset: clean, elegant movie-subtitle look -- one
+        static Dialogue per row spanning its whole start..end span, no
+        per-word timing/animation at all.
+        """
+        ass_lines = []
+        for line in lines:
+            for row in self._split_line_for_width(line, font, space_width, available_width):
+                plain_text = " ".join(word["text"] for word in row)
+                ass_lines.append(
+                    f"Dialogue: 0,{self._format_ass_time(row[0]['start'])},{self._format_ass_time(row[-1]['end'])},"
+                    f"Karaoke,,0,0,0,,{plain_text}"
+                )
+        return ass_lines
 
-[Events]
-Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
-"""
-            + "\n".join(ass_lines)
-            + "\n"
-        )
-        ass_path.write_text(ass_content, encoding="utf-8")
+    @staticmethod
+    def _ass_events_big_statement(lines: list[list[dict]]) -> list[str]:
+        """"big_statement" preset: one or two words at a time, upper-cased,
+        for a fast-cut, high-impact look -- position/size come entirely
+        from the Style block (large font, middle-center alignment), not
+        per-event overrides.
+        """
+        ass_lines = []
+        for line in lines:
+            for i in range(0, len(line), 2):
+                chunk = line[i : i + 2]
+                text = " ".join(word["text"] for word in chunk).upper()
+                ass_lines.append(
+                    f"Dialogue: 0,{VideoComposerService._format_ass_time(chunk[0]['start'])},"
+                    f"{VideoComposerService._format_ass_time(chunk[-1]['end'])},Karaoke,,0,0,0,,{text}"
+                )
+        return ass_lines
 
-        srt_lines = []
-        for i, line in enumerate(lines, start=1):
-            plain_text = " ".join(word["text"] for word in line)
-            srt_lines.append(
-                f"{i}\n{self._format_srt_time(line[0]['start'])} --> "
-                f"{self._format_srt_time(line[-1]['end'])}\n{plain_text}\n"
-            )
-        srt_path.write_text("\n".join(srt_lines), encoding="utf-8")
+    def _ass_events_quote(
+        self,
+        lines: list[list[dict]],
+        font: ImageFont.FreeTypeFont,
+        space_width: float,
+        available_width: float,
+    ) -> list[str]:
+        """"quote" preset: each row wrapped in curly quotation marks; the
+        Style block sets Italic=1 for the elegant look. Reuses row-wrapping
+        (rather than showing a whole `line` unbroken) so a long narration
+        chunk still fits the frame width.
+        """
+        ass_lines = []
+        for line in lines:
+            for row in self._split_line_for_width(line, font, space_width, available_width):
+                plain_text = " ".join(word["text"] for word in row)
+                ass_lines.append(
+                    f"Dialogue: 0,{self._format_ass_time(row[0]['start'])},{self._format_ass_time(row[-1]['end'])},"
+                    f"Karaoke,,0,0,0,,“{plain_text}”"
+                )
+        return ass_lines
 
     # --- audio mixing + final composition -----------------------------------
 
@@ -532,34 +754,98 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
         narration_path: Path,
         music_path: str | None,
         music_volume: float,
+        narration_volume: float,
+        music_ducking_ratio: float,
+        fade_in_sec: float,
+        fade_out_sec: float,
         video_duration: float,
         output_path: Path,
+        sfx_cues: list[dict] | None = None,
     ) -> None:
+        """Mixes narration (always present) with optional background music
+        (ducked under narration via ffmpeg's sidechaincompress -- real,
+        dynamic ducking keyed off the narration's own level, not just a
+        lower static volume) and optional SFX cues (each played once,
+        delayed to its own start offset), then applies optional fade in/out
+        to the combined result. `-t {video_duration}` on the output is the
+        same hard, deterministic-duration safety net the original version
+        of this method already used -- unchanged regardless of how many
+        optional layers are mixed in.
+        """
+        sfx_cues = sfx_cues or []
+
+        inputs: list[str] = ["-i", str(narration_path)]
+        # apad's own default (no explicit target) pads only a small,
+        # ffmpeg-internal amount -- not reliably "the rest of video_duration"
+        # once amix/sidechaincompress are also in the graph (confirmed by a
+        # real test failure while building this pipeline: narration+music
+        # with a multi-second gap between narration and video length
+        # silently truncated to narration's own raw length instead of
+        # video_duration). whole_dur makes the target explicit and
+        # deterministic regardless of what else is in the filter chain.
+        filters: list[str] = [f"[0:a]volume={narration_volume},apad=whole_dur={video_duration}[narration]"]
+        mix_labels = ["narration"]
+        next_index = 1
+
         if music_path:
-            self._run_ffmpeg(
-                [
-                    "-i", str(narration_path),
-                    "-stream_loop", "-1",
-                    "-i", music_path,
-                    "-filter_complex",
-                    f"[0:a]apad[narration];"
-                    f"[1:a]volume={music_volume}[music];"
-                    f"[narration][music]amix=inputs=2:duration=first:dropout_transition=0[a]",
-                    "-map", "[a]",
-                    "-t", str(video_duration),
-                    str(output_path),
-                ]
+            inputs += ["-stream_loop", "-1", "-i", music_path]
+            filters.append(f"[{next_index}:a]volume={music_volume}[music_pre]")
+            # sidechaincompress: music (main input) is compressed using
+            # narration (sidechain input) as the trigger -- music level
+            # drops automatically whenever narration is actually speaking,
+            # and returns to normal during silence. threshold/attack/release
+            # are fixed, sensible defaults for speech-over-music; `ratio`
+            # (ffmpeg's own parameter, 1.0=no effect..20.0=max) is the one
+            # knob exposed as music_ducking_ratio.
+            filters.append(
+                f"[music_pre][narration]sidechaincompress=threshold=0.05:"
+                f"ratio={music_ducking_ratio}:attack=5:release=300[ducked]"
             )
+            mix_labels.append("ducked")
+            next_index += 1
+
+        for i, cue in enumerate(sfx_cues):
+            inputs += ["-i", str(cue["path"])]
+            delay_ms = max(0, int(round(cue.get("start_sec", 0.0) * 1000)))
+            cue_volume = cue.get("volume", 1.0)
+            label = f"sfx{i}"
+            filters.append(f"[{next_index}:a]volume={cue_volume},adelay={delay_ms}|{delay_ms}[{label}]")
+            mix_labels.append(label)
+            next_index += 1
+
+        if len(mix_labels) > 1:
+            mix_inputs = "".join(f"[{label}]" for label in mix_labels)
+            filters.append(f"{mix_inputs}amix=inputs={len(mix_labels)}:duration=first:dropout_transition=0[mixed]")
+            last_label = "mixed"
         else:
-            self._run_ffmpeg(
-                [
-                    "-i", str(narration_path),
-                    "-filter_complex", "[0:a]apad[a]",
-                    "-map", "[a]",
-                    "-t", str(video_duration),
-                    str(output_path),
-                ]
-            )
+            last_label = "narration"
+
+        # Final apad=whole_dur, always applied: sidechaincompress was found
+        # (by a real test failure while building this pipeline) to truncate
+        # its output back to narration's *raw*, pre-padding length even
+        # when fed an already-apad-padded sidechain input -- padding
+        # narration alone before compression isn't reliably enough. Padding
+        # the fully-combined output here, right before the end, is: whole_dur
+        # only ever *adds* silence if the stream is shorter than
+        # video_duration, never trims, so it's a safe no-op once the stream
+        # is already long enough. The outer -t below remains the final trim.
+        final_ops = [f"apad=whole_dur={video_duration}"]
+        if fade_in_sec > 0:
+            final_ops.append(f"afade=t=in:st=0:d={fade_in_sec}")
+        if fade_out_sec > 0:
+            fade_out_start = max(0.0, video_duration - fade_out_sec)
+            final_ops.append(f"afade=t=out:st={fade_out_start}:d={fade_out_sec}")
+        filters.append(f"[{last_label}]{','.join(final_ops)}[a]")
+
+        self._run_ffmpeg(
+            inputs
+            + [
+                "-filter_complex", ";".join(filters),
+                "-map", "[a]",
+                "-t", str(video_duration),
+                str(output_path),
+            ]
+        )
 
     @staticmethod
     def _escape_for_ffmpeg_filter(path: Path) -> str:
@@ -603,6 +889,28 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
                 str(output_path),
             ]
         )
+
+    @staticmethod
+    def _write_render_metadata(final_video: Path, video_duration: float, render_seconds: float) -> None:
+        """Lightweight render metadata (Video Factory Epic, Task 10) -- a
+        JSON sidecar next to the finished video, not a new DB column or a
+        billing system. `ai_cost` is always 0.0 here: this pipeline's only
+        "AI" step is `edge_tts` narration, which is Microsoft's free,
+        unofficial API (no key, no billed usage) -- see
+        docs/features/28-video-factory-e2e-pipeline.md for why a nonzero
+        cost would only make sense once a *paid* provider (e.g. a real AI
+        image/video generator) is ever wired in, which this app's
+        RenderPolicy (app/core/render_policy.py) currently forbids anyway.
+        """
+        metadata = {
+            "render_time_seconds": round(render_seconds, 2),
+            "ai_cost": 0.0,
+            "render_mode": "local",
+            "duration": round(video_duration, 2),
+            "output_size_mb": round(final_video.stat().st_size / (1024 * 1024), 2),
+        }
+        metadata_path = final_video.with_name("render_metadata.json")
+        metadata_path.write_text(json.dumps(metadata, indent=2), encoding="utf-8")
 
     # --- status/recovery -----------------------------------------------------
 

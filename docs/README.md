@@ -30,6 +30,16 @@ SQLite.
 16. [AI Content Platform](features/16-ai-content-platform.md) — unified `app/modules/ai` (Story relocated + new Hook/Caption generators), shared Claude client + generation history
 17. [Karaoke highlight box](features/17-karaoke-highlight-box.md) — trend-style captions: white text always, colored box slides behind the active word instead of recoloring it
 18. [Narration language option](features/18-narration-language-option.md) — AI Story + Video Composer switch from hardcoded Spanish to a language/voice picker (English default)
+19. [Beat domain contract](features/19-beat-domain-contract.md) — framework-independent Beat/BeatPlan Pydantic contract for the future Video Factory, serialized to `beats.json`, no DB table yet
+20. [Asset module](features/20-asset-module.md) — self-contained local asset library (register/tag/search/lookup image/video/audio files) for the future Video Factory
+21. [Motion domain and presets](features/21-motion-domain-presets.md) — deterministic, declarative Ken-Burns-style motion contract + 9 presets for the future Video Factory, no rendering yet
+22. [Composition contract](features/22-composition-contract.md) — declarative `CompositionPlan`/`Scene` contract combining beat/asset/motion/caption/audio into a renderable plan, no rendering, no module-to-module imports
+23. [Local motion renderer](features/23-local-motion-renderer.md) — turns a still image + MotionPlan into an MP4 via a local ffmpeg Ken-Burns pipeline, no AI video generation, no cloud service
+24. [Composition ↔ Video Composer integration](features/24-composition-video-composer-integration.md) — renders a CompositionPlan's image scenes via the motion renderer and hands them to video_composer's existing, unmodified pipeline through a new adapter endpoint
+25. [Video Factory audio + caption pipeline](features/25-video-factory-audio-captions.md) — configurable narration volume, real sidechain music ducking, fade in/out, optional per-scene SFX cues, and 5 caption presets, extending video_composer's existing audio mixer and ASS caption renderer
+26. [Video Factory frontend workflow](features/26-video-factory-frontend.md) — a single new page (script → beats → assets → captions/audio → render → output) driving the existing backend pipeline end-to-end; verified with a real Playwright run against a real render
+27. [Video Factory golden sample](features/27-video-factory-golden-sample.md) — a canonical example project (5 beats, 30s, 5 motion presets, captions, narration, music) proving the Beat/Asset/Motion/Composition contracts compose correctly, with chain-integrity tests, before any end-to-end rendering exists
+28. [Video Factory end-to-end pipeline](features/28-video-factory-e2e-pipeline.md) — enforced local-only rendering policy, lightweight render metadata/cost tracking, and a real ffprobe-verified render of the golden sample proving Story→Beat→Asset→Motion→Composition→FFmpeg→final.mp4 works end to end
 
 ## Keeping this up to date
 

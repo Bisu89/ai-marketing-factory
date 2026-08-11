@@ -13,6 +13,11 @@ export interface VideoComposeJob {
   title: string;
   voice: string;
   music_volume: number;
+  narration_volume: number;
+  music_ducking_ratio: number;
+  fade_in_sec: number;
+  fade_out_sec: number;
+  caption_preset: string;
   transition_duration: number;
   burn_subtitles: boolean;
   requested_output_dir: string | null;

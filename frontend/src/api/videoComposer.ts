@@ -43,6 +43,10 @@ export function listVideoComposeJobs(): Promise<VideoComposeJob[]> {
   return apiGet("/video-compose-jobs");
 }
 
+export function getVideoComposeJob(jobId: number): Promise<VideoComposeJob> {
+  return apiGet(`/video-compose-jobs/${jobId}`);
+}
+
 export function openVideoComposeJobFolder(jobId: number): Promise<void> {
   return apiPost(`/video-compose-jobs/${jobId}/open-folder`);
 }
