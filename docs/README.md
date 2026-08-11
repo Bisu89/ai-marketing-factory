@@ -28,6 +28,7 @@ SQLite.
 14. [Desktop packaging](features/14-desktop-packaging.md) — PyInstaller + pywebview + Inno Setup turn the app into a no-admin Windows installer, with bundled ffmpeg
 15. [Performance Intelligence, Phase 1](features/15-performance-intelligence.md) — links Insights CSV data to real Library videos (PublishLog), real-data dashboard by topic/emotion/hook/story-style, winners/losers
 16. [AI Content Platform](features/16-ai-content-platform.md) — unified `app/modules/ai` (Story relocated + new Hook/Caption generators), shared Claude client + generation history
+17. [Karaoke highlight box](features/17-karaoke-highlight-box.md) — trend-style captions: white text always, colored box slides behind the active word instead of recoloring it
 
 ## Keeping this up to date
 

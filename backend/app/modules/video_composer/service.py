@@ -10,6 +10,7 @@ from pathlib import Path
 from typing import BinaryIO
 
 import edge_tts
+from PIL import ImageFont
 
 from app.db.session import SessionLocal
 from app.modules.video_composer.models import VideoComposeClip, VideoComposeJob
@@ -19,13 +20,18 @@ logger = logging.getLogger(__name__)
 PENDING_STATUSES = ("queued", "merging", "narrating", "subtitling", "mixing_audio", "finalizing")
 
 FONT_PATH = "C:/Windows/Fonts/arial.ttf"
+# The karaoke subtitle style below renders Bold=1, so word widths must be
+# measured with the bold metrics or the highlight box drifts off the word.
+FONT_PATH_BOLD = "C:/Windows/Fonts/arialbd.ttf"
 TRANSITION_STYLE = "slideleft"
 
 MAX_WORDS_PER_LINE = 5
 MAX_LINE_DURATION_SEC = 4.5
 LINE_BREAK_GAP_SEC = 0.6
 
-KARAOKE_COLORS = [
+# Background box colour behind the word currently being spoken. Text itself
+# always stays white -- ASS &HBBGGRR& order (reversed from usual RRGGBB).
+HIGHLIGHT_COLORS = [
     "00FFFF",
     "FFFF00",
     "9314FF",
@@ -388,6 +394,48 @@ class VideoComposerService:
         millis = int(round((seconds % 1) * 1000))
         return f"{hours:02d}:{minutes:02d}:{secs:02d},{millis:03d}"
 
+    @staticmethod
+    def _rounded_rect_drawing(w: float, h: float, r: float) -> str:
+        """ASS \\p vector-drawing path for a filled rounded rectangle spanning
+        (0,0) to (w,h) -- used as the highlight box behind the active word."""
+        r = min(r, w / 2, h / 2)
+        return (
+            f"m {r:.1f} 0 "
+            f"l {w - r:.1f} 0 "
+            f"b {w:.1f} 0 {w:.1f} 0 {w:.1f} {r:.1f} "
+            f"l {w:.1f} {h - r:.1f} "
+            f"b {w:.1f} {h:.1f} {w:.1f} {h:.1f} {w - r:.1f} {h:.1f} "
+            f"l {r:.1f} {h:.1f} "
+            f"b 0 {h:.1f} 0 {h:.1f} 0 {h - r:.1f} "
+            f"l 0 {r:.1f} "
+            f"b 0 0 0 0 {r:.1f} 0"
+        )
+
+    @staticmethod
+    def _split_line_for_width(line: list[dict], font: ImageFont.FreeTypeFont, space_width: float, available_width: float) -> list[list[dict]]:
+        """Re-break a line's words wherever the cumulative rendered width
+        would exceed the box a single unwrapped row can occupy. The box
+        layout below assumes each `line` it's handed renders on exactly one
+        row -- libass's own auto-wrap can't be relied on for that (it wraps
+        at whatever width fits, independent of these word-timed boxes), so
+        wrapping has to happen here, using the same width math."""
+        rows: list[list[dict]] = []
+        current: list[dict] = []
+        current_width = 0.0
+        for word in line:
+            word_width = font.getlength(word["text"])
+            added = word_width if not current else word_width + space_width
+            if current and current_width + added > available_width:
+                rows.append(current)
+                current = []
+                added = word_width
+                current_width = 0.0
+            current.append(word)
+            current_width += added
+        if current:
+            rows.append(current)
+        return rows
+
     def _write_subtitles(
         self,
         lines: list[list[dict]],
@@ -397,36 +445,67 @@ class VideoComposerService:
         height: int,
         font_size: int,
     ) -> None:
+        # Trend-style captions: text stays plain white at all times: instead
+        # of recolouring the spoken word (the old \k karaoke fill), a solid
+        # rounded box is drawn behind whichever word is being spoken right
+        # now. The box needs a real x position per word, which ASS's \k tag
+        # can't give us (it only knows to fill left-to-right inside one
+        # Dialogue line) -- so word widths are measured with the same bold
+        # TTF (style below sets Bold=1, so this must match or the box drifts
+        # off the word) libass renders with, laid out left-to-right around
+        # the row's centred x, and each word gets its own timed Dialogue
+        # event carrying just the box (Layer 0, drawn first / behind). The
+        # row's text is a second, separate Dialogue spanning the whole row
+        # (Layer 1, drawn on top) so it never itself changes color.
+        font = ImageFont.truetype(FONT_PATH_BOLD, font_size)
+        space_width = font.getlength(" ")
+        margin_x = 40
+        margin_v = int(height * 0.11)
+        available_width = width - 2 * margin_x
+        box_height = font_size * 1.35
+        box_top = margin_v - font_size * 0.14
+        pad_x = font_size * 0.22
+        radius = font_size * 0.22
+
         ass_lines = []
         for line in lines:
-            line_start = line[0]["start"]
-            line_end = line[-1]["end"]
-            karaoke_parts = []
-            cursor = line_start
-            for word in line:
-                gap_cs = max(0, round((word["start"] - cursor) * 100))
-                duration_cs = max(1, round((word["end"] - word["start"]) * 100) + gap_cs)
-                karaoke_parts.append(f"{{\\k{duration_cs}}}{word['text']} ")
-                cursor = word["end"]
-            color = random.choice(KARAOKE_COLORS)
-            text = f"{{\\1c&H{color}&}}" + "".join(karaoke_parts).rstrip()
-            ass_lines.append(
-                f"Dialogue: 0,{self._format_ass_time(line_start)},{self._format_ass_time(line_end)},"
-                f"Karaoke,,0,0,0,,{text}"
-            )
+            for row in self._split_line_for_width(line, font, space_width, available_width):
+                row_start = row[0]["start"]
+                row_end = row[-1]["end"]
+                plain_text = " ".join(word["text"] for word in row)
+
+                word_widths = [font.getlength(word["text"]) for word in row]
+                total_width = sum(word_widths) + space_width * (len(row) - 1)
+                cursor_x = width / 2 - total_width / 2
+                color = random.choice(HIGHLIGHT_COLORS)
+                for word, word_width in zip(row, word_widths):
+                    box_x = cursor_x - pad_x
+                    box_w = word_width + pad_x * 2
+                    drawing = self._rounded_rect_drawing(box_w, box_height, radius)
+                    ass_lines.append(
+                        f"Dialogue: 0,{self._format_ass_time(word['start'])},{self._format_ass_time(word['end'])},"
+                        f"Karaoke,,0,0,0,,{{\\an7\\pos({box_x:.1f},{box_top:.1f})\\bord0\\shad0"
+                        f"\\1c&H{color}&\\1a&H00&\\p1}}{drawing}{{\\p0}}"
+                    )
+                    cursor_x += word_width + space_width
+
+                ass_lines.append(
+                    f"Dialogue: 1,{self._format_ass_time(row_start)},{self._format_ass_time(row_end)},"
+                    f"Karaoke,,0,0,0,,{plain_text}"
+                )
 
         ass_content = (
             f"""[Script Info]
 Title: Phu de karaoke
 ScriptType: v4.00+
-WrapStyle: 0
+WrapStyle: 2
 PlayResX: {width}
 PlayResY: {height}
 ScaledBorderAndShadow: yes
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: Karaoke,Arial,{font_size},&H0000FFFF,&H00FFFFFF,&H00000000,&H00000000,1,0,0,0,100,100,0,0,1,3,0,8,40,40,{int(height * 0.11)},1
+Style: Karaoke,Arial,{font_size},&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,1,0,0,0,100,100,0,0,1,3,0,8,{margin_x},{margin_x},{margin_v},1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
