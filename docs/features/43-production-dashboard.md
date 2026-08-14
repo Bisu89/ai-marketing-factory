@@ -1,6 +1,6 @@
 # 43 — Production Dashboard: Factory Control Center
 
-**Commit:** _(fill in after commit)_
+**Commit:** `5297708`
 
 Repurposes the previously-unbuilt `/dashboard` landing page (4 hardcoded
 zero-value stat cards for the old Library app) into a real production
