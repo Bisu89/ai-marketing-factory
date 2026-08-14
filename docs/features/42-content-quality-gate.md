@@ -1,6 +1,6 @@
 # 42 — Content Quality Gate: Beat Quality + Visual Coverage Score
 
-**Commit:** _(fill in after commit)_
+**Commit:** `e653dfe`
 
 Before rendering, scores a project's BeatPlan across 6 dimensions
 (narrative, pacing, visual, motion, audio, captions) and returns
