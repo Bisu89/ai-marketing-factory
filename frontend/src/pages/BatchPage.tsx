@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { Layers, Loader2, Plus, Upload, X } from "lucide-react";
 import { PageHeader } from "../components/PageHeader";
 import { EmptyState } from "../components/EmptyState";
@@ -26,9 +26,23 @@ function itemSummary(batch: Batch): string {
 
 export function BatchPage() {
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [batches, setBatches] = useState<Batch[]>([]);
   const [loadError, setLoadError] = useState<string | null>(null);
-  const [createOpen, setCreateOpen] = useState(false);
+  // Deep-link support for the Production Dashboard's "New Batch" CTA
+  // (see docs/features/43-production-dashboard.md) -- opens the exact
+  // same modal below, no separate creation flow.
+  const [createOpen, setCreateOpen] = useState(searchParams.get("new") === "1");
+
+  useEffect(() => {
+    if (searchParams.get("new") === "1") {
+      setSearchParams((params) => {
+        params.delete("new");
+        return params;
+      }, { replace: true });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   async function refresh() {
     try {
