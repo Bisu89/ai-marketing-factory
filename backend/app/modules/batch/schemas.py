@@ -51,6 +51,13 @@ class BatchItemOut(BaseModel):
     # missing asset, so it's always recomputed fresh, never stale.
     eligible: bool | None = None
     ineligible_reason: str | None = None
+    # Task 16 (see docs/features/42-content-quality-gate.md) -- same
+    # "computed fresh by the composition root, never stale, None outside
+    # GET /batches/{id}" shape as eligible/ineligible_reason above. Plain
+    # str/int (not a real app.modules.quality.QualityReport import) --
+    # this module must never import app.modules.quality.
+    quality_status: str | None = None
+    quality_score: int | None = None
 
 
 class BatchOut(BaseModel):
@@ -89,4 +96,6 @@ class BatchPreview(BaseModel):
 
 
 assert set(BATCH_STATUSES) == {"DRAFT", "PROCESSING", "COMPLETED", "PARTIAL_FAILURE", "FAILED", "CANCELLED"}
-assert len(BATCH_ITEM_STATUSES) == 9
+# 9 original (Task 13) + NEEDS_REVIEW (Task 16 -- see
+# docs/features/42-content-quality-gate.md).
+assert len(BATCH_ITEM_STATUSES) == 10

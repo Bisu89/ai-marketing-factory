@@ -1,0 +1,409 @@
+"""Pure, deterministic Quality Gate analysis (Task 16 -- see
+docs/features/42-content-quality-gate.md). No FFmpeg, no AI/LLM/embedding
+calls, no DB, no filesystem access -- every function here takes already-
+resolved app.modules.quality.schemas input and returns a QualityReport (or
+a piece of one). Mirrors app.modules.composition.service's own "thin,
+pure, no cross-module orchestration" shape.
+
+Three conceptual analyzers (section 3), implemented as plain functions
+rather than classes (matching this codebase's existing preference for
+functions over service objects when there's no state/session to hold --
+see app.modules.batch.schemas.parse_scripts, app.modules.asset.ingest.*):
+
+- analyze_narrative / analyze_pacing  -> BeatPlanQualityAnalyzer
+- analyze_visual                      -> VisualCoverageAnalyzer
+- analyze_motion / analyze_audio / analyze_captions + evaluate_readiness -> ReadinessEvaluator
+"""
+
+import re
+import statistics
+from collections import Counter
+
+from app.modules.quality.schemas import (
+    BeatAnalysisInput,
+    ProjectAudioConfigInput,
+    ProjectCaptionConfigInput,
+    QualityAnalysisInput,
+    QualityDimensions,
+    QualityIssue,
+    QualityReport,
+    VisualCoverageMetrics,
+)
+
+# -- Configurable, documented constants (section 8: "deterministic,
+# explainable, configurable") ----------------------------------------------
+
+# A beat more than this many times the project's mean duration (or less
+# than 1/this) counts as a pacing outlier. 2.3 is the smallest round value
+# that still catches section 7's own literal example (durations 2.0, 4.2,
+# 2.1, 2.0, 9.8 -- mean 4.02s, the 9.8s beat is 2.44x the mean).
+PACING_OUTLIER_RATIO = 2.3
+# 3+ consecutive beats sharing the same narrative purpose is flagged
+# (section 10's own literal example).
+CONSECUTIVE_PURPOSE_WARNING_THRESHOLD = 3
+# unique_purposes / total_beats at or below this (with >=3 beats) is "very
+# low diversity" (section 9's own literal example: 5x HOOK = 1/5 = 0.20).
+LOW_PURPOSE_DIVERSITY_RATIO = 0.34
+
+_CONFIDENCE_WEIGHT = {"HIGH": 1.0, "MEDIUM": 0.7, "LOW": 0.4}
+_SUITABILITY_WEIGHT = {"EXCELLENT": 1.0, "GOOD": 0.9, "CROP_REQUIRED": 0.75, "LOW_RESOLUTION": 0.5}
+# Visual is weighted highest -- a missing/wrong asset is the single most
+# visible defect in a finished video; confidence and resolution are softer,
+# secondary signals about *how good* an already-present asset is.
+_VISUAL_WEIGHTS = {"coverage": 0.6, "confidence": 0.25, "suitability": 0.15}
+
+# Overall score = weighted sum of the 6 dimensions (sections 23-24) -- sums
+# to 1.0. Visual carries the most weight (the thing a viewer notices
+# first); pacing/captions the least (already-bounded, rarely catastrophic).
+DIMENSION_WEIGHTS = {
+    "narrative": 0.20,
+    "pacing": 0.15,
+    "visual": 0.30,
+    "motion": 0.10,
+    "audio": 0.15,
+    "captions": 0.10,
+}
+
+READY_THRESHOLD = 90
+NEEDS_REVIEW_THRESHOLD = 70
+
+
+def _beat_label(beat: BeatAnalysisInput) -> str:
+    return f"Beat {beat.order:02d}"
+
+
+def _clamp(value: float, low: int = 0, high: int = 100) -> int:
+    return max(low, min(high, round(value)))
+
+
+def _normalize_narration(text: str) -> str:
+    """lowercase + strip punctuation + collapse whitespace (section 12) --
+    no embeddings, no fuzzy similarity model, just exact-after-normalization
+    matching (section 12's own "do NOT add embeddings").
+    """
+    text = text.strip().lower()
+    text = re.sub(r"[^\w\s]", "", text)
+    text = re.sub(r"\s+", " ", text)
+    return text
+
+
+# -- BeatPlanQualityAnalyzer: narrative structure + pacing -----------------
+
+
+def analyze_narrative(beats: list[BeatAnalysisInput]) -> tuple[int, list[QualityIssue]]:
+    if not beats:
+        return 0, [QualityIssue(code="NO_BEATS", severity="error", message="This project has no beats yet.")]
+
+    issues: list[QualityIssue] = []
+    score = 100.0
+
+    purposes = [beat.type for beat in beats]
+    if len(purposes) >= 3:
+        unique_ratio = len(set(purposes)) / len(purposes)
+        if unique_ratio <= LOW_PURPOSE_DIVERSITY_RATIO:
+            issues.append(
+                QualityIssue(
+                    code="LOW_PURPOSE_DIVERSITY",
+                    severity="warning",
+                    message=(
+                        f"Narrative purpose diversity is very low "
+                        f"({len(set(purposes))} unique purpose(s) across {len(purposes)} beats)."
+                    ),
+                )
+            )
+            score -= 15
+
+    # Consecutive-run detection (section 10) -- every run of
+    # CONSECUTIVE_PURPOSE_WARNING_THRESHOLD+ identical, adjacent purposes.
+    run_start = 0
+    for i in range(1, len(purposes) + 1):
+        if i == len(purposes) or purposes[i] != purposes[run_start]:
+            run_length = i - run_start
+            if run_length >= CONSECUTIVE_PURPOSE_WARNING_THRESHOLD:
+                issues.append(
+                    QualityIssue(
+                        code="PURPOSE_DUPLICATION",
+                        severity="warning",
+                        beat_id=beats[run_start].id,
+                        message=f"{run_length} consecutive {purposes[run_start]} beats starting at {_beat_label(beats[run_start])}.",
+                    )
+                )
+                score -= 10
+            run_start = i
+
+    # Duplicate narration (sections 11-12) -- exact match after normalization.
+    groups: dict[str, list[BeatAnalysisInput]] = {}
+    for beat in beats:
+        if beat.narration and beat.narration.strip():
+            groups.setdefault(_normalize_narration(beat.narration), []).append(beat)
+    for group in groups.values():
+        if len(group) > 1:
+            labels = ", ".join(_beat_label(beat) for beat in group)
+            issues.append(
+                QualityIssue(
+                    code="DUPLICATE_NARRATION",
+                    severity="warning",
+                    beat_id=group[0].id,
+                    message=f"Repeated narration detected across {labels}.",
+                )
+            )
+            score -= 10
+
+    return _clamp(score), issues
+
+
+def analyze_pacing(beats: list[BeatAnalysisInput]) -> tuple[int, list[QualityIssue], dict]:
+    if not beats:
+        return 0, [], {}
+
+    durations = [beat.duration for beat in beats]
+    mean = statistics.fmean(durations)
+    stdev = statistics.pstdev(durations) if len(durations) > 1 else 0.0
+    coefficient_of_variation = (stdev / mean) if mean > 0 else 0.0
+
+    issues: list[QualityIssue] = []
+    outlier_count = 0
+    for beat in beats:
+        if mean > 0 and (beat.duration > mean * PACING_OUTLIER_RATIO or beat.duration < mean / PACING_OUTLIER_RATIO):
+            outlier_count += 1
+            issues.append(
+                QualityIssue(
+                    code="PACING_OUTLIER",
+                    severity="warning",
+                    beat_id=beat.id,
+                    message=(
+                        f"{_beat_label(beat)} ({beat.duration:.1f}s) is significantly different from "
+                        f"the project average ({mean:.1f}s)."
+                    ),
+                )
+            )
+
+    score = 100.0 - min(50, outlier_count * 15) - min(30, coefficient_of_variation * 40)
+    metrics = {
+        "average": round(mean, 2),
+        "minimum": round(min(durations), 2),
+        "maximum": round(max(durations), 2),
+        "stdev": round(stdev, 2),
+        "coefficient_of_variation": round(coefficient_of_variation, 3),
+    }
+    return _clamp(score), issues, metrics
+
+
+# -- VisualCoverageAnalyzer --------------------------------------------------
+
+
+def analyze_visual(beats: list[BeatAnalysisInput]) -> tuple[int, list[QualityIssue], VisualCoverageMetrics]:
+    if not beats:
+        return 0, [], VisualCoverageMetrics(coverage=0.0)
+
+    issues: list[QualityIssue] = []
+    valid_count = high = medium = low = missing = 0
+    confidence_scores: list[float] = []
+    suitability_scores: list[float] = []
+
+    for beat in beats:
+        info = beat.asset
+        if not info.has_asset:
+            missing += 1
+            issues.append(
+                QualityIssue(
+                    code="MISSING_VISUAL_ASSET",
+                    severity="error",
+                    beat_id=beat.id,
+                    message=f"{_beat_label(beat)} has no assigned visual asset.",
+                )
+            )
+            continue
+        if not info.asset_valid:
+            missing += 1
+            issues.append(
+                QualityIssue(
+                    code="MISSING_VISUAL_FILE",
+                    severity="error",
+                    beat_id=beat.id,
+                    message=f"{_beat_label(beat)}'s visual asset file is missing or invalid.",
+                )
+            )
+            continue
+
+        valid_count += 1
+        confidence_scores.append(_CONFIDENCE_WEIGHT.get(info.asset_confidence or "MEDIUM", 0.7))
+        if info.asset_confidence == "LOW":
+            low += 1
+            issues.append(
+                QualityIssue(
+                    code="LOW_VISUAL_CONFIDENCE",
+                    severity="warning",
+                    beat_id=beat.id,
+                    message=f"{_beat_label(beat)} has a weak visual match for its visual intent.",
+                )
+            )
+        elif info.asset_confidence == "MEDIUM":
+            medium += 1
+        else:
+            high += 1
+
+        if info.portrait_suitability:
+            suitability_scores.append(_SUITABILITY_WEIGHT.get(info.portrait_suitability, 0.8))
+            if info.portrait_suitability == "LOW_RESOLUTION":
+                issues.append(
+                    QualityIssue(
+                        code="LOW_RESOLUTION_ASSET",
+                        severity="warning",
+                        beat_id=beat.id,
+                        message=f"{_beat_label(beat)}'s visual asset is low resolution for this project's render profile.",
+                    )
+                )
+
+    coverage = valid_count / len(beats)
+    avg_confidence = statistics.fmean(confidence_scores) if confidence_scores else 0.0
+    # No penalty when suitability is simply unknown (e.g. a legacy asset
+    # with no recorded width/height) -- absence of data isn't a defect.
+    avg_suitability = statistics.fmean(suitability_scores) if suitability_scores else 1.0
+
+    score = (
+        coverage * 100 * _VISUAL_WEIGHTS["coverage"]
+        + avg_confidence * 100 * _VISUAL_WEIGHTS["confidence"]
+        + avg_suitability * 100 * _VISUAL_WEIGHTS["suitability"]
+    )
+    metrics = VisualCoverageMetrics(
+        coverage=round(coverage, 3), high_confidence=high, medium_confidence=medium, low_confidence=low, missing=missing
+    )
+    return _clamp(score), issues, metrics
+
+
+# -- ReadinessEvaluator: motion / audio / captions + final decision --------
+
+
+def analyze_motion(beats: list[BeatAnalysisInput], default_motion_preset: str | None) -> tuple[int, list[QualityIssue]]:
+    if not beats:
+        return 0, []
+    issues: list[QualityIssue] = []
+    unresolved = 0
+    for beat in beats:
+        effective = beat.motion_preset or default_motion_preset
+        if not effective:
+            unresolved += 1
+            issues.append(
+                QualityIssue(
+                    code="MISSING_MOTION",
+                    severity="error",
+                    beat_id=beat.id,
+                    message=f"{_beat_label(beat)} has no motion preset and no project default is configured.",
+                )
+            )
+    if unresolved == 0:
+        return 100, issues
+    return _clamp(100 * (len(beats) - unresolved) / len(beats)), issues
+
+
+def analyze_audio(beats: list[BeatAnalysisInput], config: ProjectAudioConfigInput) -> tuple[int, list[QualityIssue]]:
+    if not config.narration_enabled:
+        # Silent beats are explicitly supported at the project level (Task
+        # 12's own AudioProjectConfig.narration_enabled) -- section 13's
+        # "if silent Beats are supported, respect it."
+        return 100, []
+    if not beats:
+        return 0, []
+
+    missing = [beat for beat in beats if not (beat.narration and beat.narration.strip())]
+    issues: list[QualityIssue] = []
+    if len(missing) == len(beats):
+        issues.append(
+            QualityIssue(
+                code="INVALID_AUDIO_CONFIG",
+                severity="error",
+                message="Narration is enabled for this project, but no beat has any narration text.",
+            )
+        )
+    for beat in missing:
+        issues.append(
+            QualityIssue(
+                code="MISSING_NARRATION",
+                severity="error",
+                beat_id=beat.id,
+                message=f"{_beat_label(beat)} has no narration text, but narration is enabled for this project.",
+            )
+        )
+    score = _clamp(100 * (len(beats) - len(missing)) / len(beats))
+    return score, issues
+
+
+def analyze_captions(
+    beats: list[BeatAnalysisInput], config: ProjectCaptionConfigInput
+) -> tuple[int, list[QualityIssue]]:
+    if not config.enabled:
+        return 100, []
+    if not config.preset_valid:
+        return 0, [QualityIssue(code="INVALID_CAPTION_CONFIG", severity="error", message="Caption preset is invalid.")]
+    if not any(beat.narration and beat.narration.strip() for beat in beats):
+        return 0, [
+            QualityIssue(
+                code="INVALID_CAPTION_CONFIG",
+                severity="error",
+                message="Captions are enabled, but there is no narration text anywhere to caption.",
+            )
+        ]
+    return 100, []
+
+
+def evaluate_readiness(analysis_input: QualityAnalysisInput) -> QualityReport:
+    """The final combination step (section 25): blocking issues always
+    override the numeric score -- a 95 with a missing asset is still
+    BLOCKED, never READY. In STRICT mode, NEEDS_REVIEW is not
+    override-able (section 28: "serious warnings can prevent render") --
+    it becomes BLOCKED outright rather than something "Render Anyway" can
+    bypass.
+    """
+    beats = analysis_input.beats
+
+    narrative_score, narrative_issues = analyze_narrative(beats)
+    pacing_score, pacing_issues, pacing_metrics = analyze_pacing(beats)
+    visual_score, visual_issues, visual_metrics = analyze_visual(beats)
+    motion_score, motion_issues = analyze_motion(beats, analysis_input.default_motion_preset)
+    audio_score, audio_issues = analyze_audio(beats, analysis_input.audio)
+    caption_score, caption_issues = analyze_captions(beats, analysis_input.captions)
+
+    all_issues = narrative_issues + pacing_issues + visual_issues + motion_issues + audio_issues + caption_issues
+    errors = [issue for issue in all_issues if issue.severity == "error"]
+    warnings = [issue for issue in all_issues if issue.severity == "warning"]
+
+    dimensions = QualityDimensions(
+        narrative=narrative_score,
+        pacing=pacing_score,
+        visual=visual_score,
+        motion=motion_score,
+        audio=audio_score,
+        captions=caption_score,
+    )
+    overall = _clamp(sum(getattr(dimensions, key) * weight for key, weight in DIMENSION_WEIGHTS.items()))
+
+    if errors:
+        status = "BLOCKED"
+    elif overall < NEEDS_REVIEW_THRESHOLD:
+        status = "BLOCKED"
+    elif warnings or overall < READY_THRESHOLD:
+        # READY requires a *clean* plan (score >= 90 AND zero warnings), not
+        # just a high score -- with several beats, a single real, human-
+        # noticeable problem (one weak visual match, one duplicate line of
+        # narration) barely moves a weighted average built from 6
+        # dimensions, so a pure score threshold would silently let a real,
+        # known issue slide through as READY. A single flagged beat should
+        # always surface for a look, even if its score impact rounds away
+        # to nothing -- never silently swallowed into a 99/100.
+        status = "NEEDS_REVIEW"
+    else:
+        status = "READY"
+
+    if status == "NEEDS_REVIEW" and analysis_input.mode == "STRICT":
+        status = "BLOCKED"
+
+    return QualityReport(
+        status=status,
+        score=overall,
+        dimensions=dimensions,
+        issues=errors,
+        warnings=warnings,
+        visual=visual_metrics,
+        metrics={"pacing": pacing_metrics, "purpose_distribution": dict(Counter(beat.type for beat in beats))},
+    )

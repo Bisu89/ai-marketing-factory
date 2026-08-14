@@ -1,9 +1,22 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { ArrowLeft, Ban, CheckCircle2, Clapperboard, Loader2, RotateCcw, Sparkles, XCircle } from "lucide-react";
+import {
+  AlertTriangle,
+  ArrowLeft,
+  Ban,
+  CheckCircle2,
+  Clapperboard,
+  ClipboardCheck,
+  Loader2,
+  RotateCcw,
+  Sparkles,
+  XCircle,
+} from "lucide-react";
 import { PageHeader } from "../components/PageHeader";
 import { cancelBatch, generateBeatsForBatch, getBatch, renderBatch, retryBatch } from "../api/batch";
+import { checkBatchQuality } from "../api/quality";
 import type { Batch, BatchItem, BatchItemStatus } from "../types/batch";
+import type { BatchQualitySummary } from "../types/quality";
 import "./BatchDetailPage.css";
 
 const POLL_INTERVAL_MS = 2000;
@@ -13,6 +26,7 @@ const STATUS_LABEL: Record<BatchItemStatus, string> = {
   PROJECT_CREATED: "Project created",
   BEATS_READY: "Beats ready",
   READY_TO_RENDER: "Ready to render",
+  NEEDS_REVIEW: "Needs review",
   RENDERING: "Rendering",
   COMPLETED: "Completed",
   FAILED: "Failed",
@@ -44,6 +58,14 @@ export function BatchDetailPage() {
   const [actionError, setActionError] = useState<string | null>(null);
   const [busyAction, setBusyAction] = useState<string | null>(null);
   const pollRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  // Task 16 (see docs/features/42-content-quality-gate.md) -- a pure,
+  // read-only dry run over the batch's current items; never fetched
+  // automatically (it costs a real analysis pass per item), only on
+  // request via the "Check Quality" button below.
+  const [qualitySummary, setQualitySummary] = useState<BatchQualitySummary | null>(null);
+  const [qualityChecking, setQualityChecking] = useState(false);
+  const [qualityError, setQualityError] = useState<string | null>(null);
 
   const refresh = useCallback(async () => {
     try {
@@ -82,6 +104,18 @@ export function BatchDetailPage() {
       setActionError(err instanceof Error ? err.message : `Could not ${name} this batch.`);
     } finally {
       setBusyAction(null);
+    }
+  }
+
+  async function handleCheckQuality() {
+    setQualityChecking(true);
+    setQualityError(null);
+    try {
+      setQualitySummary(await checkBatchQuality(id));
+    } catch (err) {
+      setQualityError(err instanceof Error ? err.message : "Could not check batch quality.");
+    } finally {
+      setQualityChecking(false);
     }
   }
 
@@ -156,7 +190,38 @@ export function BatchDetailPage() {
           {busyAction === "cancel" ? <Loader2 size={14} className="spin" /> : <Ban size={14} />}
           Cancel Batch
         </button>
+        <button
+          className="btn btn-secondary"
+          disabled={readyToRender === 0 || qualityChecking}
+          onClick={handleCheckQuality}
+        >
+          {qualityChecking ? <Loader2 size={14} className="spin" /> : <ClipboardCheck size={14} />}
+          Check Quality
+        </button>
       </div>
+
+      {qualityError && <div className="batch-alert batch-alert-error">{qualityError}</div>}
+
+      {qualitySummary && (
+        <div className="bd-quality-summary">
+          <h3>Batch Quality</h3>
+          <p>{qualitySummary.items.length} project{qualitySummary.items.length === 1 ? "" : "s"} checked</p>
+          <div className="bd-quality-counts">
+            <span className="bd-quality-count bd-quality-count--ready">
+              <CheckCircle2 size={13} /> READY {qualitySummary.ready}
+            </span>
+            <span className="bd-quality-count bd-quality-count--review">
+              <AlertTriangle size={13} /> NEEDS_REVIEW {qualitySummary.needs_review}
+            </span>
+            <span className="bd-quality-count bd-quality-count--blocked">
+              <XCircle size={13} /> BLOCKED {qualitySummary.blocked}
+            </span>
+          </div>
+          <p className="bd-quality-hint">
+            "Render All" above only enqueues the READY ones -- NEEDS_REVIEW/BLOCKED items are never rendered silently.
+          </p>
+        </div>
+      )}
 
       <div className="bd-table-wrap">
         <table className="bd-table">
@@ -203,6 +268,11 @@ function ItemRow({ item, batchId }: { item: BatchItem; batchId: number }) {
         {item.status === "BEATS_READY" && item.eligible === true && (
           <div className="bd-eligible">
             <CheckCircle2 size={12} /> Ready to render
+          </div>
+        )}
+        {item.status === "BEATS_READY" && item.quality_status && item.quality_status !== "READY" && (
+          <div className="bd-ineligible">
+            <AlertTriangle size={12} /> Quality Gate: {item.quality_status} (score {item.quality_score})
           </div>
         )}
       </td>

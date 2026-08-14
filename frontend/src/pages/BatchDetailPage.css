@@ -104,8 +104,64 @@
   color: var(--text-muted);
 }
 
+.bd-status--NEEDS_REVIEW {
+  color: #d97706;
+}
+
 .bd-open-btn {
   padding: 5px 10px;
   font-size: 12px;
   white-space: nowrap;
+}
+
+/* -- Task 16: Batch Quality summary (docs/features/42-content-quality-gate.md) */
+
+.bd-quality-summary {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: 14px 16px;
+  margin-bottom: 16px;
+}
+
+.bd-quality-summary h3 {
+  margin: 0 0 4px;
+  font-size: 14px;
+}
+
+.bd-quality-summary p {
+  margin: 0 0 10px;
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+
+.bd-quality-counts {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.bd-quality-count {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.bd-quality-count--ready {
+  color: var(--success);
+}
+
+.bd-quality-count--review {
+  color: #d97706;
+}
+
+.bd-quality-count--blocked {
+  color: var(--danger);
+}
+
+.bd-quality-hint {
+  margin-top: 10px !important;
 }

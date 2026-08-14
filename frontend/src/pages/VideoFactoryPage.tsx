@@ -31,6 +31,7 @@ import { EmptyState } from "../components/EmptyState";
 import { AssetBrowserModal } from "../components/AssetBrowserModal";
 import { assetFileUrl, getAsset } from "../api/asset";
 import { generateBeatPlan, getProject, loadBeatPlan, renderBeatPreview, saveBeatPlan, saveProjectBeatPlan } from "../api/beat";
+import { checkPlanQuality } from "../api/quality";
 import { createTemplate, listTemplates } from "../api/template";
 import {
   cancelVideoComposeJob,
@@ -43,6 +44,8 @@ import { renderComposition } from "../api/videoFactory";
 import { mediaUrl } from "../api/client";
 import type { Asset } from "../types/asset";
 import type { RenderPhase, VideoComposeJob } from "../types/videoComposer";
+import { DIMENSION_LABELS } from "../types/quality";
+import type { QualityReport } from "../types/quality";
 import {
   BEAT_MOTION_PRESET_DESCRIPTIONS,
   BEAT_MOTION_PRESET_LABELS,
@@ -437,6 +440,14 @@ export function VideoFactoryPage() {
   const [retryError, setRetryError] = useState<string | null>(null);
   const [recentJobs, setRecentJobs] = useState<VideoComposeJob[]>([]);
 
+  // Task 16 -- Production Check (see docs/features/42-content-quality-gate.md).
+  // qualityReport is only ever non-null while the modal is showing a
+  // NEEDS_REVIEW/BLOCKED result -- a READY check never opens it at all.
+  const [qualityChecking, setQualityChecking] = useState(false);
+  const [qualityReport, setQualityReport] = useState<QualityReport | null>(null);
+  const [qualityCheckOpen, setQualityCheckOpen] = useState(false);
+  const [qualityCheckError, setQualityCheckError] = useState<string | null>(null);
+
   async function refreshRecentJobs() {
     try {
       const jobs = await listVideoComposeJobs();
@@ -645,10 +656,40 @@ export function VideoFactoryPage() {
     }
   }
 
-  async function handleSubmitRender() {
+  // Task 16 (see docs/features/42-content-quality-gate.md, sections 29/33):
+  // runs the Quality Gate before every render submission. A READY result
+  // proceeds straight through (no interruption -- the report is only
+  // actionable feedback, not friction when everything's already fine).
+  // NEEDS_REVIEW/BLOCKED opens the Production Check modal and stops here;
+  // the modal's own "Render Anyway" button (NEEDS_REVIEW only -- BLOCKED
+  // has no such button, matching acceptance criterion #15) re-calls this
+  // function with bypassQualityCheck=true.
+  async function handleSubmitRender(bypassQualityCheck = false) {
     const errors = validatePlan(beats, script);
     setValidationErrors(errors);
     if (errors.length > 0) return;
+
+    if (!bypassQualityCheck) {
+      setQualityChecking(true);
+      setQualityCheckError(null);
+      try {
+        const planForCheck = buildBeatPlanForSave(beats, script, projectName, buildProjectConfigForSave());
+        const report = await checkPlanQuality(planForCheck);
+        setQualityReport(report);
+        if (report.status !== "READY") {
+          setQualityCheckOpen(true);
+          return;
+        }
+      } catch (err) {
+        // The check itself failing (e.g. a transient network hiccup)
+        // shouldn't block rendering outright -- the existing render-time
+        // preflight is still the real safety net underneath this, exactly
+        // as it was before this task.
+        setQualityCheckError(err instanceof Error ? err.message : "Could not run the production check.");
+      } finally {
+        setQualityChecking(false);
+      }
+    }
 
     setSubmitting(true);
     setSubmitError(null);
@@ -847,8 +888,8 @@ export function VideoFactoryPage() {
               </button>
             )}
             {beats.length > 0 && canSubmit && (
-              <button className="btn btn-primary" onClick={handleQuickRender} disabled={submitting}>
-                {submitting ? <Loader2 size={14} className="spin" /> : <Zap size={14} />}
+              <button className="btn btn-primary" onClick={handleQuickRender} disabled={submitting || qualityChecking}>
+                {submitting || qualityChecking ? <Loader2 size={14} className="spin" /> : <Zap size={14} />}
                 Quick Render
               </button>
             )}
@@ -1447,12 +1488,36 @@ export function VideoFactoryPage() {
             Next
           </button>
         ) : (
-          <button className="btn btn-primary vf-render-btn" onClick={handleSubmitRender} disabled={!canSubmit}>
-            {submitting ? <Loader2 size={16} className="spin" /> : <Wand2 size={16} />}
-            Render Video
+          <button
+            className="btn btn-primary vf-render-btn"
+            onClick={() => handleSubmitRender()}
+            disabled={!canSubmit || qualityChecking}
+          >
+            {submitting || qualityChecking ? <Loader2 size={16} className="spin" /> : <Wand2 size={16} />}
+            {qualityChecking ? "Checking..." : "Render Video"}
           </button>
         )}
       </div>
+
+      {qualityCheckError && <div className="vf-alert vf-alert-error">{qualityCheckError}</div>}
+
+      {qualityCheckOpen && qualityReport && (
+        <ProductionCheckModal
+          report={qualityReport}
+          submitting={submitting}
+          onSelectBeat={(beatId) => {
+            const beat = beats.find((b) => b.id === beatId);
+            if (beat) setSelectedBeatId(beat.id);
+            setStep(2);
+            setQualityCheckOpen(false);
+          }}
+          onRenderAnyway={() => {
+            setQualityCheckOpen(false);
+            handleSubmitRender(true);
+          }}
+          onClose={() => setQualityCheckOpen(false)}
+        />
+      )}
 
       {templatePickerOpen && (
         <TemplatePickerModal
@@ -1509,6 +1574,106 @@ export function VideoFactoryPage() {
           </div>
         </div>
       )}
+    </div>
+  );
+}
+
+// -- Task 16: Production Check (see docs/features/42-content-quality-gate.md) --
+
+interface ProductionCheckModalProps {
+  report: QualityReport;
+  submitting: boolean;
+  onSelectBeat: (beatId: string) => void;
+  onRenderAnyway: () => void;
+  onClose: () => void;
+}
+
+const DIMENSION_KEYS: (keyof QualityReport["dimensions"])[] = [
+  "narrative", "pacing", "visual", "motion", "audio", "captions",
+];
+
+function ProductionCheckModal({ report, submitting, onSelectBeat, onRenderAnyway, onClose }: ProductionCheckModalProps) {
+  const blocked = report.status === "BLOCKED";
+  return (
+    <div className="vf-modal-backdrop" onClick={onClose}>
+      <div className="vf-modal vf-quality-modal" onClick={(e) => e.stopPropagation()}>
+        <div className="vf-modal-header">
+          <h3>{blocked ? "Production Blocked" : "Production Check"}</h3>
+          <button className="btn btn-icon" onClick={onClose}>
+            <X size={16} />
+          </button>
+        </div>
+
+        {!blocked && (
+          <div className="vf-quality-score">
+            <span className="vf-quality-score-value">{report.score}</span>
+            <span className="vf-quality-score-max">/ 100</span>
+            <span className="vf-quality-score-label">Readiness Score</span>
+          </div>
+        )}
+
+        {!blocked && (
+          <div className="vf-quality-dimensions">
+            {DIMENSION_KEYS.map((key) => {
+              const value = report.dimensions[key];
+              const ok = value >= 90;
+              return (
+                <div key={key} className={`vf-quality-dimension${ok ? " ok" : " warn"}`}>
+                  {ok ? <Check size={13} /> : <AlertTriangle size={13} />}
+                  <span>{DIMENSION_LABELS[key]}</span>
+                  <span className="vf-quality-dimension-value">{value}</span>
+                </div>
+              );
+            })}
+          </div>
+        )}
+
+        {report.issues.length > 0 && (
+          <div className="vf-quality-issue-group">
+            <h4>{report.issues.length} Critical</h4>
+            {report.issues.map((issue, i) => (
+              <button
+                key={i}
+                className="vf-quality-issue vf-quality-issue-error"
+                onClick={() => issue.beat_id && onSelectBeat(issue.beat_id)}
+                disabled={!issue.beat_id}
+              >
+                <XCircle size={13} />
+                {issue.message}
+              </button>
+            ))}
+          </div>
+        )}
+
+        {report.warnings.length > 0 && (
+          <div className="vf-quality-issue-group">
+            <h4>{report.warnings.length} Warning{report.warnings.length === 1 ? "" : "s"}</h4>
+            {report.warnings.map((warning, i) => (
+              <button
+                key={i}
+                className="vf-quality-issue vf-quality-issue-warning"
+                onClick={() => warning.beat_id && onSelectBeat(warning.beat_id)}
+                disabled={!warning.beat_id}
+              >
+                <AlertTriangle size={13} />
+                {warning.message}
+              </button>
+            ))}
+          </div>
+        )}
+
+        <div className="vf-modal-actions">
+          <button className="btn btn-secondary" onClick={onClose}>
+            {blocked ? "Fix Issues" : "Review"}
+          </button>
+          {!blocked && (
+            <button className="btn btn-primary" onClick={onRenderAnyway} disabled={submitting}>
+              {submitting ? <Loader2 size={14} className="spin" /> : null}
+              Render Anyway
+            </button>
+          )}
+        </div>
+      </div>
     </div>
   );
 }

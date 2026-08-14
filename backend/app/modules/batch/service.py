@@ -94,7 +94,10 @@ def recompute_batch_status(batch_id: int) -> str:
 
         # Order matters -- each branch below is checked only after the
         # previous ones ruled it out:
-        _AT_REST = ("PENDING", "PROJECT_CREATED", "BEATS_READY")
+        # NEEDS_REVIEW (Task 16 -- see docs/features/42-content-quality-gate.md)
+        # is "waiting for a human to look at it," the same at-rest shape as
+        # BEATS_READY (not yet rendered, not a permanent failure).
+        _AT_REST = ("PENDING", "PROJECT_CREATED", "BEATS_READY", "NEEDS_REVIEW")
         if not statuses:
             new_status = "DRAFT"
         elif any(s == "RENDERING" for s in statuses):

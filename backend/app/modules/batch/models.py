@@ -28,6 +28,13 @@ BATCH_ITEM_STATUSES = (
     "PROJECT_CREATED",
     "BEATS_READY",
     "READY_TO_RENDER",
+    # Task 16 (see docs/features/42-content-quality-gate.md) -- the Quality
+    # Gate looked at this item's BeatPlan during "Render All" and returned
+    # NEEDS_REVIEW (readiness issues, but not a hard blocker); the default
+    # batch policy is to skip rendering it, not render it silently. Distinct
+    # from SKIPPED, which means "can never render as-is" (BLOCKED, or the
+    # existing structural-ineligibility check failed).
+    "NEEDS_REVIEW",
     "RENDERING",
     "COMPLETED",
     "FAILED",

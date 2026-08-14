@@ -13,6 +13,7 @@ from app.api.v1.endpoints import (
     insights,
     performance,
     publish_log,
+    quality_gate,
     settings,
     tags,
     videos,
@@ -50,3 +51,4 @@ api_router.include_router(beat_generate.router, tags=["beat-generate"])
 api_router.include_router(beat_preview.router, tags=["beat-preview"])
 api_router.include_router(batch_router, tags=["batch"])
 api_router.include_router(batch_render.router, tags=["batch-render"])
+api_router.include_router(quality_gate.router, tags=["quality-gate"])

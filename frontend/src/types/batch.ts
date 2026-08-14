@@ -16,6 +16,11 @@ export type BatchItemStatus =
   | "PROJECT_CREATED"
   | "BEATS_READY"
   | "READY_TO_RENDER"
+  // Task 16 (see docs/features/42-content-quality-gate.md) -- the Quality
+  // Gate looked at this item during "Render All" and returned NEEDS_REVIEW
+  // (real, non-blocking issues, but not READY either); this batch's
+  // default policy skips rendering it until a human reviews it.
+  | "NEEDS_REVIEW"
   | "RENDERING"
   | "COMPLETED"
   | "FAILED"
@@ -36,6 +41,10 @@ export interface BatchItem {
   // every time, never a stored/stale flag.
   eligible: boolean | null;
   ineligible_reason: string | null;
+  // Task 16 -- same "computed fresh, None outside GET /batches/{id}" shape
+  // as eligible/ineligible_reason above.
+  quality_status: string | null;
+  quality_score: number | null;
 }
 
 export interface Batch {

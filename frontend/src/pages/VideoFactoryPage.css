@@ -859,3 +859,106 @@
   margin-top: 4px;
   justify-content: center;
 }
+
+/* -- Task 16: Production Check (docs/features/42-content-quality-gate.md) */
+
+.vf-quality-modal {
+  width: min(560px, 92vw);
+}
+
+.vf-quality-score {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  padding: 12px 0;
+}
+
+.vf-quality-score-value {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--text-heading);
+}
+
+.vf-quality-score-max {
+  font-size: 16px;
+  color: var(--text-muted);
+}
+
+.vf-quality-score-label {
+  margin-left: 8px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.vf-quality-dimensions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px 20px;
+}
+
+.vf-quality-dimension {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.vf-quality-dimension.ok {
+  color: var(--success);
+}
+
+.vf-quality-dimension.warn {
+  color: #d97706;
+}
+
+.vf-quality-dimension span:nth-child(2) {
+  color: var(--text);
+  flex: 1;
+}
+
+.vf-quality-dimension-value {
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted) !important;
+}
+
+.vf-quality-issue-group {
+  border-top: 1px solid var(--border);
+  padding-top: 10px;
+}
+
+.vf-quality-issue-group h4 {
+  margin: 0 0 6px;
+  font-size: 12.5px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.vf-quality-issue {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  text-align: left;
+  padding: 6px 8px;
+  border: none;
+  background: none;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.vf-quality-issue:hover:not(:disabled) {
+  background: var(--surface-alt);
+}
+
+.vf-quality-issue:disabled {
+  cursor: default;
+}
+
+.vf-quality-issue-error {
+  color: var(--danger);
+}
+
+.vf-quality-issue-warning {
+  color: #d97706;
+}

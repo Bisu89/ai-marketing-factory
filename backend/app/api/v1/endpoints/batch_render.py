@@ -29,11 +29,13 @@ import threading
 from pathlib import Path
 
 from fastapi import APIRouter, Depends, Request
+from pydantic import BaseModel, Field
 from pydantic import ValidationError as PydanticValidationError
 from sqlalchemy.orm import Session
 
 from app.api.v1.endpoints.beat_generate import generate_beat_plan
 from app.api.v1.endpoints.composition_render import render_composition
+from app.api.v1.endpoints.quality_gate import run_quality_check
 from app.core.config import Settings, get_settings
 from app.core.exceptions import FileOperationError, NotFoundError, ValidationError
 from app.core.render_profile import get_render_profile
@@ -343,6 +345,26 @@ def render_batch(
             set_item_fields(item.id, status="SKIPPED", error_message=str(exc))
             continue
 
+        # Task 16 (see docs/features/42-content-quality-gate.md): a plan
+        # that builds successfully can still be a bad idea to render --
+        # BLOCKED is never enqueued; NEEDS_REVIEW is skipped by this
+        # batch's own default policy (section 30's own explicit "skip until
+        # reviewed," not silently rendered). Neither status touches
+        # render_job_id or the render queue at all.
+        quality_report = run_quality_check(plan.beats, plan.config, asset_service)
+        if quality_report.status == "BLOCKED":
+            set_item_fields(
+                item.id, status="SKIPPED",
+                error_message="Quality Gate: " + "; ".join(issue.message for issue in quality_report.issues),
+            )
+            continue
+        if quality_report.status == "NEEDS_REVIEW":
+            set_item_fields(
+                item.id, status="NEEDS_REVIEW",
+                error_message="Quality Gate: " + "; ".join(issue.message for issue in quality_report.warnings),
+            )
+            continue
+
         try:
             job_id = render_composition(
                 composition_plan, asset_paths, service,
@@ -401,7 +423,81 @@ def get_batch_detail(batch_id: int, db: Session = Depends(get_db)) -> BatchOut:
     for item_out in out.items:
         if item_out.status == "BEATS_READY" and item_out.project_id is not None:
             item_out.eligible, item_out.ineligible_reason = _check_eligibility(item_out.project_id, asset_service)
+            item_out.quality_status, item_out.quality_score = _check_quality_summary(item_out.project_id, asset_service)
     return out
+
+
+def _check_quality_summary(project_id: int, asset_service: AssetService) -> tuple[str | None, int | None]:
+    """Best-effort quality snapshot for the item list (Task 16) -- eligible/
+    ineligible_reason (above) already explains an outright-broken plan;
+    this is skipped rather than double-reported if that lookup itself
+    fails (e.g. the project has no beats yet).
+    """
+    try:
+        plan = get_project_beat_plan(project_id)
+        report = run_quality_check(plan.beats, plan.config, asset_service)
+        return report.status, report.score
+    except Exception:
+        return None, None
+
+
+class BatchItemQualityOut(BaseModel):
+    item_id: int
+    project_id: int | None
+    status: str  # READY | NEEDS_REVIEW | BLOCKED | NOT_READY (no beats yet / plan couldn't be built)
+    score: int | None
+    issues: list[dict] = Field(default_factory=list)
+    warnings: list[dict] = Field(default_factory=list)
+
+
+class BatchQualitySummary(BaseModel):
+    batch_id: int
+    ready: int
+    needs_review: int
+    blocked: int
+    items: list[BatchItemQualityOut]
+
+
+@router.post("/batches/{batch_id}/quality-check", response_model=BatchQualitySummary)
+def check_batch_quality(batch_id: int, db: Session = Depends(get_db)) -> BatchQualitySummary:
+    """Section 31/32's "Batch Quality" preview -- a pure, read-only dry run
+    (no status changes, no RenderJobs) over every item that could plausibly
+    be rendered right now (BEATS_READY) or is already waiting on a human
+    (NEEDS_REVIEW), so re-checking after a fix shows the updated verdict.
+    """
+    batch = get_batch_row(batch_id)
+    asset_service = AssetService(db)
+    counts = {"READY": 0, "NEEDS_REVIEW": 0, "BLOCKED": 0}
+    items: list[BatchItemQualityOut] = []
+
+    for item in batch.items:
+        if item.project_id is None or item.status not in ("BEATS_READY", "NEEDS_REVIEW"):
+            continue
+        try:
+            plan = get_project_beat_plan(item.project_id)
+            report = run_quality_check(plan.beats, plan.config, asset_service)
+        except (ValidationError, NotFoundError, FileOperationError, PydanticValidationError) as exc:
+            items.append(
+                BatchItemQualityOut(
+                    item_id=item.id, project_id=item.project_id, status="NOT_READY", score=None,
+                    issues=[{"code": "NOT_READY", "severity": "error", "message": str(exc), "beat_id": None}],
+                )
+            )
+            counts["BLOCKED"] += 1
+            continue
+
+        counts[report.status] += 1
+        items.append(
+            BatchItemQualityOut(
+                item_id=item.id, project_id=item.project_id, status=report.status, score=report.score,
+                issues=[issue.model_dump() for issue in report.issues],
+                warnings=[issue.model_dump() for issue in report.warnings],
+            )
+        )
+
+    return BatchQualitySummary(
+        batch_id=batch_id, ready=counts["READY"], needs_review=counts["NEEDS_REVIEW"], blocked=counts["BLOCKED"], items=items
+    )
 
 
 # -- Cancel + retry --------------------------------------------------------
