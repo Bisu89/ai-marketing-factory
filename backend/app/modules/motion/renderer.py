@@ -31,9 +31,10 @@ free, rather than needing nine hand-written special cases.
 import logging
 import shutil
 import subprocess
+from collections.abc import Callable
 from pathlib import Path
 
-from app.core.exceptions import FileOperationError, ValidationError
+from app.core.exceptions import FileOperationError, RenderCancelled, ValidationError
 from app.modules.motion.schemas import MAX_DURATION, MIN_DURATION, Easing, MotionPlan
 
 logger = logging.getLogger(__name__)
@@ -56,7 +57,17 @@ DEFAULT_HEIGHT = 1920
 # jittery motion. Pre-scaling the source up substantially first gives it
 # enough sub-output-pixel precision to look smooth -- a standard,
 # widely-documented zoompan technique, not specific to this app.
-_PRESCALE_WIDTH = 8000
+#
+# Multiplies the *target* width/height (not a fixed absolute size) so the
+# prescaled canvas always has the exact same aspect ratio as the output.
+# This matters beyond resolution: zoompan crops a window whose aspect
+# ratio always equals its input's aspect ratio (iw/ih), regardless of
+# zoom level, then scales that window to `s=WxH`. If the prescaled input's
+# aspect ratio doesn't already match width:height, every single frame
+# gets stretched non-uniformly -- a real bug found during this task's own
+# manual verification (a circle rendered as an ellipse) -- see
+# docs/features/34-local-motion-renderer.md.
+_PRESCALE_FACTOR = 6
 
 # -nostdin: ffmpeg reads stdin by default for interactive key commands
 # (e.g. "press q to stop"); run non-interactively as a subprocess, an
@@ -104,17 +115,35 @@ def build_filter_graph(motion_plan: MotionPlan, duration: float, fps: float, wid
     render. No I/O, no subprocess -- safe and fast to unit test directly.
     """
     frame_count = max(1, round(duration * fps))
-    stages = [f"scale={_PRESCALE_WIDTH}:-2"]
 
     if _is_static(motion_plan):
         # No scale/position/rotation change at all -- skip zoompan/rotate
         # entirely rather than running a no-op pass through them, the same
         # "skip the redundant filter pass" spirit as
         # video_composer's single-clip merge skip (see
-        # docs/features/11-video-composer.md).
-        stages.append(f"scale={width}:{height}:force_original_aspect_ratio=decrease")
-        stages.append(f"pad={width}:{height}:(ow-iw)/2:(oh-ih)/2")
+        # docs/features/11-video-composer.md). No zoompan headroom is
+        # needed here (nothing pans/zooms), so this scales straight to
+        # "cover" the target frame -- force_original_aspect_ratio=increase
+        # (fills both dimensions, may overshoot one) + a centered crop back
+        # down to exactly width x height. This is the fix for a real bug
+        # (docs/features/34-local-motion-renderer.md): the previous
+        # decrease+pad recipe was "contain", not "cover", and produced
+        # visible black bars whenever the source aspect ratio didn't
+        # already match the output exactly.
+        stages = [
+            f"scale={width}:{height}:force_original_aspect_ratio=increase",
+            f"crop={width}:{height}",
+        ]
     else:
+        # Cover-crop to the *output's* aspect ratio at high resolution --
+        # see _PRESCALE_FACTOR's comment for why this must be the target
+        # aspect ratio, not the source's own.
+        prescale_width = width * _PRESCALE_FACTOR
+        prescale_height = height * _PRESCALE_FACTOR
+        stages = [
+            f"scale={prescale_width}:{prescale_height}:force_original_aspect_ratio=increase",
+            f"crop={prescale_width}:{prescale_height}",
+        ]
         on_progress = f"on/{max(frame_count - 1, 1)}"
         eased_on = _apply_easing(on_progress, motion_plan.easing)
         zoom_expr = _lerp(motion_plan.scale.start, motion_plan.scale.end, eased_on)
@@ -233,6 +262,8 @@ def render_motion_clip(
     fps: float = DEFAULT_FPS,
     width: int = DEFAULT_WIDTH,
     height: int = DEFAULT_HEIGHT,
+    on_process_start: Callable[[subprocess.Popen], None] | None = None,
+    is_cancelled: Callable[[], bool] | None = None,
 ) -> Path:
     """Render one still image + MotionPlan into an MP4 at `output_path`.
 
@@ -248,6 +279,22 @@ def render_motion_clip(
     deterministic duration and frame rate -- meant to be handed to
     app.modules.video_composer's existing, unmodified multi-clip merge
     contract as one of its `files[]` inputs.
+
+    `on_process_start`/`is_cancelled`, if given, support cancelling an
+    in-flight render (Task 11 -- see docs/features/38-render-job-hardening.md)
+    without this module needing to know anything about jobs, queues, or
+    cancellation tokens: `on_process_start` is called with the live
+    `subprocess.Popen` right after it's spawned, so a caller can register it
+    somewhere it can call `.terminate()` on; `is_cancelled` is polled once,
+    only if ffmpeg then exits non-zero, to decide whether that exit was a
+    real ffmpeg failure or this function's own process having just been
+    terminated by the caller. A `.terminate()`'d process's exit code isn't a
+    reliable cancellation signal by itself on Windows (unlike POSIX's
+    negative-signal convention, `TerminateProcess`'s exit code is
+    indistinguishable from an ordinary ffmpeg error code) -- `is_cancelled`
+    is what actually disambiguates the two, raising RenderCancelled instead
+    of FileOperationError so a cancelled render is never reported to the
+    user as an ffmpeg error.
     """
     image_path = Path(image_path)
     output_path = Path(output_path)
@@ -297,13 +344,21 @@ def render_motion_clip(
     )
 
     try:
-        result = subprocess.run(command, capture_output=True, text=True, stdin=subprocess.DEVNULL)
+        process = subprocess.Popen(
+            command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, stdin=subprocess.DEVNULL
+        )
     except FileNotFoundError as exc:
         raise FileOperationError("ffmpeg was not found on PATH -- is it installed/bundled?") from exc
 
-    if result.returncode != 0:
-        logger.error("ffmpeg failed rendering %s: %s", image_path, result.stderr[-2000:])
-        raise FileOperationError(f"ffmpeg failed to render motion clip: {result.stderr.strip()[-2000:]}")
+    if on_process_start is not None:
+        on_process_start(process)
+    stdout, stderr = process.communicate()
+
+    if process.returncode != 0:
+        if is_cancelled is not None and is_cancelled():
+            raise RenderCancelled(f"Motion render for {image_path} was cancelled")
+        logger.error("ffmpeg failed rendering %s: %s", image_path, stderr[-2000:])
+        raise FileOperationError(f"ffmpeg failed to render motion clip: {stderr.strip()[-2000:]}")
 
     if not output_path.exists():
         raise FileOperationError(f"ffmpeg reported success but produced no output file: {output_path}")

@@ -7,6 +7,12 @@ export interface CompositionRenderRequest {
   asset_paths: Record<number, string>;
   title: string;
   output_dir?: string | null;
+  narration_asset_paths?: Record<number, string>;
+  // Names an app.core.render_profile.RenderProfile (see that module) --
+  // "SOCIAL_VERTICAL" (default) or "PREVIEW". Validated server-side;
+  // recorded on the job for reporting. Does not override each Scene's own
+  // output_format (see render_composition's docstring).
+  profile?: string;
 }
 
 // Mirrors backend/app/api/v1/endpoints/composition_render.py's

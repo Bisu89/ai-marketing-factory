@@ -72,18 +72,12 @@ class BeatsJsonValidationTests(unittest.TestCase):
     def test_every_beat_has_narration_text(self):
         plan = _load_beat_plan()
         for beat in plan.beats:
-            self.assertTrue(beat.narration.strip(), f"{beat.id} has no narration")
+            self.assertTrue(beat.narration and beat.narration.strip(), f"{beat.id} has no narration")
 
-    def test_every_beat_has_a_caption_configured(self):
+    def test_every_beat_has_a_visual_hint(self):
         plan = _load_beat_plan()
         for beat in plan.beats:
-            self.assertIsNotNone(beat.caption.text, f"{beat.id} has no caption text")
-            self.assertIsNotNone(beat.caption.preset, f"{beat.id} has no caption preset")
-
-    def test_every_beat_has_a_motion_preset_configured(self):
-        plan = _load_beat_plan()
-        for beat in plan.beats:
-            self.assertIsNotNone(beat.motion.preset, f"{beat.id} has no motion preset")
+            self.assertTrue(beat.visual_hint and beat.visual_hint.strip(), f"{beat.id} has no visual_hint")
 
 
 class AssetsJsonValidationTests(unittest.TestCase):
@@ -144,9 +138,14 @@ class CompositionJsonValidationTests(unittest.TestCase):
 
 
 class ChainIntegrityTests(unittest.TestCase):
-    """beats.json -> asset resolution -> motion contract -> composition.json:
-    proves the four files aren't just independently-valid, but actually
-    describe the *same* five-beat video, consistently, end to end.
+    """beats.json -> motion contract -> composition.json: proves the four
+    files aren't just independently-valid, but actually describe the *same*
+    five-beat video, consistently, end to end. Beat no longer carries a
+    resolved asset_id/motion preset/caption/sfx (those are Composition/Scene
+    concerns, assigned by a later pipeline step) -- what's still checked
+    here is id/order/duration/narration agreement between beats.json and
+    composition.json, plus composition.json's own internal consistency with
+    motion.json.
     """
 
     def setUp(self):
@@ -172,14 +171,6 @@ class ChainIntegrityTests(unittest.TestCase):
             self.assertIn(
                 scene.source_asset_id, self.assets_by_id, f"{scene.id} references unknown asset {scene.source_asset_id}"
             )
-
-    def test_scene_asset_resolution_matches_beat_visual_asset_id(self):
-        # The "asset resolution" step: each beat's VisualRequirement.asset_id
-        # (Task 02's bare, unresolved reference) must resolve to the exact
-        # same asset the corresponding Scene ultimately uses.
-        for scene in self.composition.scenes:
-            beat = self.beats_by_id[scene.beat_id]
-            self.assertEqual(beat.visual.asset_id, scene.source_asset_id)
 
     def test_scene_duration_matches_beat_duration(self):
         for scene in self.composition.scenes:
@@ -229,17 +220,6 @@ class ChainIntegrityTests(unittest.TestCase):
     def test_narration_script_contains_every_beat_narration(self):
         for beat in self.beat_plan.beats:
             self.assertIn(beat.narration, self.composition.narration_script)
-
-    def test_scene_caption_matches_beat_caption(self):
-        for scene in self.composition.scenes:
-            beat = self.beats_by_id[scene.beat_id]
-            self.assertEqual(scene.caption.text, beat.caption.text)
-            self.assertEqual(scene.caption.preset.value, beat.caption.preset)
-
-    def test_scene_sfx_matches_beat_audio_sfx(self):
-        for scene in self.composition.scenes:
-            beat = self.beats_by_id[scene.beat_id]
-            self.assertEqual(scene.audio.sfx, beat.audio.sfx)
 
 
 class InvalidVariantsAreRejectedTests(unittest.TestCase):

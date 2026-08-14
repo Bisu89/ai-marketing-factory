@@ -5,13 +5,13 @@
 // value bounds must match the Pydantic contract exactly or the backend
 // rejects the request with a 422.
 //
-// There is no backend beat-generation endpoint (app.modules.beat is a
-// contract-only module with no router -- see
-// docs/features/19-beat-domain-contract.md) and no backend endpoint
-// listing motion/caption presets (both are small, stable, already-
-// documented sets). Per this task's "keep it simple, do not overbuild"
-// instruction, beat generation and preset option lists are implemented
-// client-side instead of adding new backend endpoints for them.
+// Beat generation itself is a real backend call now (POST /beats/generate,
+// see api/beat.ts and docs/features/30-generate-beats.md) -- app.modules.beat
+// is still a contract-only module with no router of its own, but
+// app/api/v1/endpoints/beat_generate.py adapts it with the existing AI
+// infrastructure. There is still no backend endpoint listing motion/caption
+// presets (both are small, stable, already-documented sets), so those stay
+// client-side per this feature's original "keep it simple" convention.
 
 export type MotionPresetName =
   | "static"
@@ -62,9 +62,51 @@ export const CAPTION_PRESET_LABELS: Record<CaptionPreset, string> = {
 
 export type Easing = "linear" | "ease_in" | "ease_out" | "ease_in_out";
 export type TransitionType = "cut" | "crossfade" | "slide_left" | "slide_right" | "fade_to_black";
-export type BeatType = "hook" | "body" | "cta" | "outro";
 
-export const BEAT_TYPES: BeatType[] = ["hook", "body", "cta", "outro"];
+// Mirrors backend/app/modules/beat/schemas.py's BeatType exactly (see
+// docs/features/29-beat-domain-contract-v2.md) -- values are the literal
+// strings the backend serializes/accepts.
+export type BeatType = "HOOK" | "SETUP" | "BUILD" | "REVEAL" | "REACTION" | "ENDING" | "BODY";
+
+export const BEAT_TYPES: BeatType[] = ["HOOK", "SETUP", "BUILD", "REVEAL", "REACTION", "ENDING", "BODY"];
+
+// Mirrors backend/app/modules/beat/schemas.py's BeatMotionPreset exactly
+// (see docs/features/33-motion-presets-beat-motion-assignment.md) -- the
+// six presets a Beat itself can declare, persisted via beats.json. This is
+// deliberately NOT the same set as MotionPresetName/MOTION_PRESET_DEFAULTS
+// below (9 lowercase presets used to build a render-time Scene.motion) --
+// see that section's comment for how the two relate. All 6 values here are
+// a strict subset of MOTION_PRESET_DEFAULTS' keys (same spelling, just
+// upper vs lower case), so resolving one into the other is a plain
+// `.toLowerCase()`, not a lookup table.
+export type BeatMotionPreset = "STATIC" | "SLOW_PUSH_IN" | "SLOW_PULL_OUT" | "PAN_LEFT" | "PAN_RIGHT" | "ZOOM_AND_PAN";
+
+export const BEAT_MOTION_PRESETS: BeatMotionPreset[] = [
+  "STATIC",
+  "SLOW_PUSH_IN",
+  "SLOW_PULL_OUT",
+  "PAN_LEFT",
+  "PAN_RIGHT",
+  "ZOOM_AND_PAN",
+];
+
+export const BEAT_MOTION_PRESET_LABELS: Record<BeatMotionPreset, string> = {
+  STATIC: "Static",
+  SLOW_PUSH_IN: "Slow Push In",
+  SLOW_PULL_OUT: "Slow Pull Out",
+  PAN_LEFT: "Pan Left",
+  PAN_RIGHT: "Pan Right",
+  ZOOM_AND_PAN: "Zoom + Pan",
+};
+
+export const BEAT_MOTION_PRESET_DESCRIPTIONS: Record<BeatMotionPreset, string> = {
+  STATIC: "No camera movement.",
+  SLOW_PUSH_IN: "Gradually zoom toward the image.",
+  SLOW_PULL_OUT: "Gradually zoom away.",
+  PAN_LEFT: "Camera moves from right to left.",
+  PAN_RIGHT: "Camera moves from left to right.",
+  ZOOM_AND_PAN: "Slow zoom combined with subtle camera movement.",
+};
 
 // -- Scene contract (mirrors app.modules.composition.schemas) ----------------
 
@@ -101,6 +143,7 @@ export interface SceneCaption {
 export interface SceneAudio {
   sfx: string | null;
   sfx_volume: number;
+  narration_asset_id: number | null;
 }
 
 export interface SceneTransition {
@@ -203,6 +246,134 @@ export const MOTION_PRESET_DEFAULTS: Record<
   },
 };
 
+// -- AI beat generation (mirrors backend/app/modules/beat/schemas.py's
+// Beat/BeatPlan, as returned by POST /beats/generate) -------------------
+
+export interface GeneratedBeat {
+  id: string;
+  order: number;
+  type: BeatType;
+  narration: string | null;
+  duration: number;
+  visual_hint: string | null;
+  asset_id: number | null;
+  // null = "not explicitly set -- inherit ProjectConfig.motion.default_preset"
+  // (Task 12, see docs/features/39-project-templates.md and
+  // effectiveMotionPreset() below); AI-generated beats always arrive this
+  // way (beat generation never assigns a motion preset).
+  motion_preset: BeatMotionPreset | null;
+  // A local, pre-recorded narration audio Asset (type="audio") for this
+  // beat -- see docs/features/36-audio-pipeline.md. null means "no local
+  // narration for this beat" (silence in local mode, or -- if no beat in
+  // the plan has one set -- this beat's `narration` text spoken via the
+  // existing TTS path instead).
+  narration_asset_id: number | null;
+}
+
+// -- Project configuration + templates (Task 12) -----------------------------
+// Mirrors backend/app/modules/beat/schemas.py's ProjectConfig/Template
+// exactly -- see docs/features/39-project-templates.md.
+
+export interface RenderProjectConfig {
+  profile: string;
+}
+
+export interface MotionProjectConfig {
+  default_preset: BeatMotionPreset;
+}
+
+export interface CaptionsProjectConfig {
+  enabled: boolean;
+  preset: CaptionPreset;
+}
+
+export interface AudioProjectConfig {
+  narration_enabled: boolean;
+  music_enabled: boolean;
+  music_volume: number;
+  ducking: boolean;
+}
+
+export interface ProjectConfig {
+  render: RenderProjectConfig;
+  motion: MotionProjectConfig;
+  captions: CaptionsProjectConfig;
+  audio: AudioProjectConfig;
+  template_id: string | null;
+  template_version: number | null;
+}
+
+export interface Template {
+  id: string;
+  name: string;
+  description: string;
+  version: number;
+  builtin: boolean;
+  config: ProjectConfig;
+}
+
+export const SYSTEM_DEFAULT_PROJECT_CONFIG: ProjectConfig = {
+  render: { profile: "SOCIAL_VERTICAL" },
+  motion: { default_preset: "STATIC" },
+  captions: { enabled: true, preset: "emotional" },
+  audio: { narration_enabled: true, music_enabled: true, music_volume: 0.15, ducking: true },
+  template_id: null,
+  template_version: null,
+};
+
+// Beat override > Project default > System default (Task 12 section 11) --
+// mirrors backend/app/modules/beat/schemas.py's effective_motion_preset()
+// exactly. Kept as this one function (not spread across UI components) so
+// every place that needs "what motion does this beat actually use" agrees.
+export function effectiveMotionPreset(
+  beatMotionPreset: BeatMotionPreset | null,
+  config: ProjectConfig,
+): BeatMotionPreset {
+  return beatMotionPreset ?? config.motion.default_preset;
+}
+
+// Mirrors backend/app/api/v1/endpoints/beat_preview.py's request/response
+// shapes (see docs/features/34-local-motion-renderer.md).
+export interface BeatPreviewRequest {
+  asset_id: number;
+  motion_preset: BeatMotionPreset;
+  duration: number;
+}
+
+export interface BeatPreviewResult {
+  preview_media_url: string;
+  duration: number;
+  width: number;
+  height: number;
+  fps: number;
+  render_time_seconds: number;
+}
+
+export interface GeneratedBeatPlan {
+  video_id: number | null;
+  script_text: string | null;
+  beats: GeneratedBeat[];
+  total_duration: number;
+  // Task 12 -- both default (via the backend's own Field default_factory)
+  // when absent, so an old, pre-Task-12 saved beats.json still loads fine.
+  project_name?: string | null;
+  config?: ProjectConfig;
+}
+
+// -- Multi-project store (Task 13) ---------------------------------------
+// Mirrors backend/app/modules/beat/schemas.py's ProjectOut -- a real,
+// independently-addressable project (see docs/features/40-batch-video-creation.md),
+// separate from the single "current" beats.json plan GeneratedBeatPlan
+// represents above. Same shape plus id/slug/render_job_id, and `beats` can
+// legitimately be empty (a just-created batch project has none until
+// "Generate Beats" runs) -- unlike GeneratedBeatPlan there's no min-length
+// expectation here.
+export interface Project extends GeneratedBeatPlan {
+  id: number;
+  slug: string;
+  render_job_id: number | null;
+}
+
 // -- Frontend-only working model for a beat, before it becomes a Scene -------
 
 export type AssetAssignmentStatus = "unregistered" | "registering" | "registered" | "error";
@@ -213,9 +384,23 @@ export interface WorkingBeat {
   type: BeatType;
   narration: string;
   duration: number;
-  motionPreset: MotionPresetName;
+  visualHint: string | null;
+  // The Beat-level, persisted preset (6 values) -- see BeatMotionPreset
+  // above. null means "inherit the project's default" (Task 12,
+  // effectiveMotionPreset()) -- resolved to a concrete value for display
+  // and, via one of MOTION_PRESET_DEFAULTS' 9 lowercase entries, at the
+  // point a Scene is built for rendering (buildScene() in
+  // VideoFactoryPage.tsx). Never silently upgraded to a concrete value
+  // just by being displayed -- only an explicit user choice sets it.
+  motionPreset: BeatMotionPreset | null;
   assetPath: string;
   assetId: number | null;
   assetStatus: AssetAssignmentStatus;
   assetError: string | null;
+  // Local narration audio for this beat -- same "path resolved separately
+  // from id" shape as assetPath/assetId/assetStatus/assetError above.
+  narrationAssetPath: string;
+  narrationAssetId: number | null;
+  narrationAssetStatus: AssetAssignmentStatus;
+  narrationAssetError: string | null;
 }

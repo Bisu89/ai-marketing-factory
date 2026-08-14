@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
-import { CheckCircle2, FolderOpen } from "lucide-react";
+import { CheckCircle2, FolderOpen, LayoutTemplate, Trash2 } from "lucide-react";
 import { PageHeader } from "../components/PageHeader";
 import { FolderBrowserModal } from "../components/FolderBrowserModal";
 import { getSettings, updateAnthropicApiKey, updateLibraryDir } from "../api/settings";
+import { deleteTemplate, listTemplates } from "../api/template";
+import type { Template } from "../types/videoFactory";
 import "./SettingsPage.css";
 
 export function SettingsPage() {
@@ -17,6 +19,17 @@ export function SettingsPage() {
   const [anthropicKeyInput, setAnthropicKeyInput] = useState("");
   const [savingKey, setSavingKey] = useState(false);
 
+  // Video Factory templates (Task 12 -- see docs/features/39-project-templates.md).
+  const [templates, setTemplates] = useState<Template[]>([]);
+  const [templatesError, setTemplatesError] = useState<string | null>(null);
+  const [deletingTemplateId, setDeletingTemplateId] = useState<string | null>(null);
+
+  function refreshTemplates() {
+    listTemplates()
+      .then(setTemplates)
+      .catch((err) => setTemplatesError(err instanceof Error ? err.message : "Could not load templates."));
+  }
+
   useEffect(() => {
     getSettings()
       .then((settings) => {
@@ -24,7 +37,23 @@ export function SettingsPage() {
         setHasAnthropicKey(settings.has_anthropic_key);
       })
       .catch(() => setError("Không đọc được cấu hình hiện tại."));
+    refreshTemplates();
   }, []);
+
+  async function handleDeleteTemplate(template: Template) {
+    if (deletingTemplateId) return;
+    if (!window.confirm(`Delete template "${template.name}"? This cannot be undone.`)) return;
+    setDeletingTemplateId(template.id);
+    setTemplatesError(null);
+    try {
+      await deleteTemplate(template.id);
+      refreshTemplates();
+    } catch (err) {
+      setTemplatesError(err instanceof Error ? err.message : "Could not delete template.");
+    } finally {
+      setDeletingTemplateId(null);
+    }
+  }
 
   async function handleSaveAnthropicKey() {
     if (!anthropicKeyInput.trim() || savingKey) return;
@@ -135,6 +164,37 @@ export function SettingsPage() {
             </button>
           </div>
         </div>
+      </div>
+
+      <div className="settings-card">
+        <div className="settings-row settings-row-header">
+          <label className="settings-label">
+            <LayoutTemplate size={14} /> Video Factory Templates
+          </label>
+        </div>
+        {templatesError && <div className="settings-alert settings-alert-error">{templatesError}</div>}
+        <ul className="settings-template-list">
+          {templates.map((template) => (
+            <li key={template.id}>
+              <span className="settings-template-name">
+                {template.name}
+                <span className={`settings-template-badge ${template.builtin ? "builtin" : "custom"}`}>
+                  {template.builtin ? "Built-in" : "Custom"}
+                </span>
+              </span>
+              <span className="settings-template-desc">{template.description}</span>
+              {!template.builtin && (
+                <button
+                  className="btn btn-secondary"
+                  onClick={() => handleDeleteTemplate(template)}
+                  disabled={deletingTemplateId === template.id}
+                >
+                  <Trash2 size={13} />
+                </button>
+              )}
+            </li>
+          ))}
+        </ul>
       </div>
 
       {showBrowser && (

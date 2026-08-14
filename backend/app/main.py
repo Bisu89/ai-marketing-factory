@@ -8,6 +8,7 @@ from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 
 import app.models  # noqa: F401  (registers ORM models on Base.metadata)
+from app.api.v1.endpoints.composition_render import render_beats_for_job
 from app.api.v1.router import api_router
 from app.core.config import get_settings, resource_path
 from app.core.events import EventBus
@@ -55,7 +56,17 @@ async def lifespan(app: FastAPI):
     scene_cutter_service.start()
     app.state.scene_cutter_service = scene_cutter_service
 
-    video_composer_service = VideoComposerService(library_dir=Path(settings.library_dir))
+    # beat_renderer is injected here, not imported by video_composer itself
+    # (see app/modules/README.md) -- same pluggable-strategy shape as
+    # DownloadEngine(downloader=YtdlpDownloader()) above. render_beats_for_job
+    # lives in the composition root (app/api/v1/endpoints/composition_render.py),
+    # which alone is allowed to know about both app.modules.motion and
+    # app.modules.composition. See docs/features/38-render-job-hardening.md.
+    video_composer_service = VideoComposerService(
+        library_dir=Path(settings.library_dir),
+        beat_renderer=render_beats_for_job,
+        event_bus=event_bus,
+    )
     video_composer_service.start()
     app.state.video_composer_service = video_composer_service
 

@@ -2,6 +2,13 @@ import { config } from "../config/env";
 
 async function extractErrorMessage(response: Response): Promise<string> {
   const body = await response.json().catch(() => null);
+  if (Array.isArray(body?.detail)) {
+    // FastAPI's own request-body-validation shape (a Pydantic model failing
+    // to validate): a list of {loc, msg, ...} objects. Join their messages
+    // instead of dumping the raw JSON array on the user.
+    const messages = body.detail.map((item: { msg?: string }) => item?.msg).filter(Boolean);
+    if (messages.length > 0) return messages.join("\n");
+  }
   if (body?.detail) {
     return typeof body.detail === "string" ? body.detail : JSON.stringify(body.detail);
   }

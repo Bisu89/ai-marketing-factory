@@ -134,6 +134,41 @@ def get_video_compose_job(
     return job_to_out(_get_job_or_404(db, job_id), Path(settings.library_dir))
 
 
+@router.post("/video-compose-jobs/{job_id}/cancel", response_model=VideoComposeJobOut)
+def cancel_video_compose_job(
+    job_id: int,
+    db: Session = Depends(get_db),
+    settings: Settings = Depends(get_settings),
+    service: VideoComposerService = Depends(get_video_composer_service),
+):
+    """Cancels a QUEUED or RUNNING job (Task 11 -- see
+    docs/features/38-render-job-hardening.md). A COMPLETED/FAILED/already-
+    CANCELLED job cannot be cancelled -- returns 400 via ValidationError,
+    matching this app's existing error-handling convention, rather than a
+    silent no-op that would look like it worked.
+    """
+    if not service.cancel_job(job_id):
+        _get_job_or_404(db, job_id)  # 404 if it doesn't exist at all
+        raise ValidationError("This job is already finished and cannot be cancelled.")
+    return job_to_out(_get_job_or_404(db, job_id), Path(settings.library_dir))
+
+
+@router.post("/video-compose-jobs/{job_id}/retry", response_model=VideoComposeJobOut, status_code=201)
+def retry_video_compose_job(
+    job_id: int,
+    db: Session = Depends(get_db),
+    settings: Settings = Depends(get_settings),
+    service: VideoComposerService = Depends(get_video_composer_service),
+):
+    """Creates a fresh render attempt from a failed/cancelled job's stored
+    request (Task 11) -- only jobs created via the Video Factory composition
+    flow have one (see VideoComposerService.create_job's
+    composition_request_json). Never mutates the original job row.
+    """
+    new_job_id = service.retry_job(job_id)
+    return job_to_out(_get_job_or_404(db, new_job_id), Path(settings.library_dir))
+
+
 @router.post("/video-compose-jobs/{job_id}/open-folder", status_code=204)
 def open_video_compose_job_folder(job_id: int, db: Session = Depends(get_db)):
     job = _get_job_or_404(db, job_id)

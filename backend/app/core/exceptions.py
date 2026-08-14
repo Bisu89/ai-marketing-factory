@@ -34,3 +34,17 @@ class ExternalServiceError(LibraryError):
 
     def __init__(self, message: str):
         super().__init__(message)
+
+
+class RenderCancelled(LibraryError):
+    """A user explicitly cancelled an in-progress render (Task 11 -- see
+    docs/features/38-render-job-hardening.md). Raised by whichever step
+    (beat motion rendering, an ffmpeg phase) observes a cancellation
+    request, caught by the render worker to transition the job to
+    "cancelled" instead of "failed" -- distinct from every other
+    LibraryError subclass specifically so a cancelled render is never
+    reported to the user as an error.
+    """
+
+    def __init__(self, message: str = "Render was cancelled"):
+        super().__init__(message)

@@ -81,3 +81,67 @@
   background: rgba(22, 163, 74, 0.1);
   color: var(--success);
 }
+
+/* -- Task 12: Video Factory templates ------------------------------------ */
+
+.settings-row-header {
+  border-bottom: none;
+  padding-bottom: 6px;
+}
+
+.settings-template-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0 0 12px;
+  padding: 0;
+  list-style: none;
+}
+
+.settings-template-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+}
+
+.settings-template-list li:last-child {
+  border-bottom: none;
+}
+
+.settings-template-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  color: var(--text-heading);
+}
+
+.settings-template-desc {
+  flex: 1;
+  color: var(--text-muted);
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.settings-template-badge {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 999px;
+}
+
+.settings-template-badge.builtin {
+  background: rgba(99, 102, 241, 0.15);
+  color: #6366f1;
+}
+
+.settings-template-badge.custom {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--success);
+}

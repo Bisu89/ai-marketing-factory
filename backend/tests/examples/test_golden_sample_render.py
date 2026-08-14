@@ -25,7 +25,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import selectinload, sessionmaker
 from sqlalchemy.pool import StaticPool
 
-from app.api.v1.endpoints.composition_render import render_composition
+from app.api.v1.endpoints.composition_render import render_beats_for_job, render_composition
 from app.db.base import Base
 from app.modules.composition.schemas import CompositionPlan
 from app.modules.video_composer.models import VideoComposeClip, VideoComposeJob
@@ -75,7 +75,7 @@ class GoldenSampleRenderAcceptanceTest(unittest.TestCase):
         self.session_patcher = patch("app.modules.video_composer.service.SessionLocal", self.TestSessionLocal)
         self.session_patcher.start()
 
-        self.service = VideoComposerService(library_dir=self.tmp_path)
+        self.service = VideoComposerService(library_dir=self.tmp_path, beat_renderer=render_beats_for_job)
 
     def tearDown(self):
         self.session_patcher.stop()
@@ -174,6 +174,10 @@ class GoldenSampleRenderAcceptanceTest(unittest.TestCase):
         self.assertGreater(metadata["render_time_seconds"], 0)
         self.assertAlmostEqual(metadata["duration"], output_duration, delta=0.5)
         self.assertGreater(metadata["output_size_mb"], 0)
+        self.assertEqual(metadata["width"], 1080)
+        self.assertEqual(metadata["height"], 1920)
+        self.assertEqual(metadata["fps"], 30)
+        self.assertEqual(metadata["clip_count"], 5)
 
         output_size_mb = output_path.stat().st_size / (1024 * 1024)
         print(

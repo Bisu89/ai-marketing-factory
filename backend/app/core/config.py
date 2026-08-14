@@ -80,6 +80,21 @@ class Settings(BaseSettings):
     library_dir: str = Field(default_factory=_default_library_dir)
     max_concurrent_downloads: int = 3
 
+    # Render job hardening (Task 11 -- see
+    # docs/features/38-render-job-hardening.md). A conservative fixed
+    # floor, not a real per-video size estimate (deliberately out of
+    # scope -- see that doc's "disk-space preflight" section): below this,
+    # a render is rejected before it starts rather than failing partway
+    # through with a cryptic ffmpeg I/O error.
+    min_free_disk_mb: int = 500
+
+    # Batch video creation (Task 13 -- see
+    # docs/features/40-batch-video-creation.md). Caps how many "Generate
+    # Beats for Batch" Claude calls run at once -- a conservative default,
+    # not a real Anthropic-reported rate limit (this app has no such
+    # config to reuse), configurable per this task's own instruction.
+    max_concurrent_ai_generation: int = 2
+
     anthropic_api_key: str | None = None
 
 

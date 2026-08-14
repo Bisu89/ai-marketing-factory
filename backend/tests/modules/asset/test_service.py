@@ -108,6 +108,28 @@ class MissingAssetTests(AssetServiceTestCase):
             self.service.get(asset.id)
 
 
+class GetImageTests(AssetServiceTestCase):
+    def test_get_image_returns_an_image_asset(self):
+        asset = self._register("woman_portrait.jpg", type="image")
+        fetched = self.service.get_image(asset.id)
+        self.assertEqual(fetched.id, asset.id)
+        self.assertEqual(fetched.type, "image")
+
+    def test_get_image_for_missing_asset_raises_not_found(self):
+        with self.assertRaises(NotFoundError):
+            self.service.get_image(999)
+
+    def test_get_image_for_video_asset_is_rejected(self):
+        asset = self._register("clip.mp4", type="video")
+        with self.assertRaises(ValidationError):
+            self.service.get_image(asset.id)
+
+    def test_get_image_for_audio_asset_is_rejected(self):
+        asset = self._register("voice.mp3", type="audio")
+        with self.assertRaises(ValidationError):
+            self.service.get_image(asset.id)
+
+
 class SearchAndRankingTests(AssetServiceTestCase):
     def setUp(self):
         super().setUp()

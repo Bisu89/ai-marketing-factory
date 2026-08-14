@@ -51,6 +51,19 @@ export function openVideoComposeJobFolder(jobId: number): Promise<void> {
   return apiPost(`/video-compose-jobs/${jobId}/open-folder`);
 }
 
+// Task 11 -- see docs/features/38-render-job-hardening.md. Cancels a
+// QUEUED or RUNNING job; 400s (thrown as an Error by apiPost) if the job
+// is already in a terminal state.
+export function cancelVideoComposeJob(jobId: number): Promise<VideoComposeJob> {
+  return apiPost(`/video-compose-jobs/${jobId}/cancel`);
+}
+
+// Creates a fresh render attempt from a failed/cancelled job's stored
+// request -- only jobs created via the Video Factory Render step have one.
+export function retryVideoComposeJob(jobId: number): Promise<VideoComposeJob> {
+  return apiPost(`/video-compose-jobs/${jobId}/retry`);
+}
+
 export async function pickVideoComposeOutputFolder(): Promise<string | null> {
   const result = await apiPost<{ path: string | null }>("/video-compose-jobs/pick-folder");
   return result.path;

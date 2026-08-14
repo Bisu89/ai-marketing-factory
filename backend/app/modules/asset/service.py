@@ -100,6 +100,20 @@ class AssetService:
             raise NotFoundError("Asset", asset_id)
         return asset
 
+    def get_image(self, asset_id: int) -> Asset:
+        """Same as get(), plus the one extra check every current caller of
+        an image-only flow (Beat -> Visual asset selection/preview) needs:
+        the Video Factory only supports image assets so far (see
+        docs/features/32-asset-library-beat-visual-assignment.md) --
+        rejecting a video/audio asset here, in the one shared place that
+        matters, keeps that rule from needing to be re-checked by every
+        caller individually.
+        """
+        asset = self.get(asset_id)
+        if asset.type != "image":
+            raise ValidationError(f"Asset {asset_id} is a {asset.type!r} asset, not an image")
+        return asset
+
     def delete(self, asset_id: int) -> None:
         asset = self.get(asset_id)
         self.db.delete(asset)

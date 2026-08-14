@@ -1,82 +1,87 @@
 """The Beat domain contract: a declarative description of one segment of a
-video (ordering, duration, narration, visual/motion/caption/audio
-requirements) -- never the video itself, and never responsible for
-rendering it. See docs/features/video_factory_architecture.md.
+video (ordering, duration, narration, a plain-text hint of what should be on
+screen) -- never the video itself, and never responsible for rendering it.
+See docs/features/video_factory_architecture.md.
+
+A Beat does not know about FFmpeg and does not call an AI provider --
+rendering is a later pipeline step that consumes a Beat, not a field on
+Beat itself. `asset_id`, `motion_preset`, and `narration_asset_id` are the
+exceptions: bare, unconstrained references a Beat carries but never
+resolves itself. `asset_id` (no FK, no import of app.modules.asset) is
+whichever local image a Visual-selection step picked. `motion_preset` is a
+semantic label only -- "SLOW_PUSH_IN", not a zoom curve or FFmpeg filter
+graph. `narration_asset_id` (same no-FK convention as `asset_id`) is an
+optional local pre-recorded audio file for this beat's narration --
+resolving any of these three into real render parameters/files is entirely
+a future rendering step's job, never Beat's own.
+
+`motion_preset` is intentionally its own small enum here, not an import of
+app.modules.motion.schemas.MotionPresetName (that module already exists,
+with 9 lowercase presets used by the composition/rendering side of this
+pipeline -- see docs/features/21-motion-domain-presets.md). Importing it
+would violate this module's isolation rule below; duplicating just the 6
+presets this task calls for, in Beat's own uppercase style (matching
+`type` above), is the same deliberate boundary-duplication this codebase
+already uses everywhere a Python value needs to be understood on both
+sides of a module boundary it can't import across.
 
 This module intentionally has no models.py/SQLAlchemy table: a Beat isn't
 persisted state that changes over time via business rules, it's a
-serializable plan produced once and handed to whichever future module
-(asset/motion/video_composer) renders it. Pydantic already gives everything
-a "framework-independent contract" needs -- validation, serialization,
-deserialization -- without any FastAPI or SQLAlchemy dependency, so these
-BaseModels are the domain model, not a second copy of one. The filesystem
-artifact (beats.json, see service.py) is the source of truth, not a table.
+serializable plan. Pydantic already gives everything a "framework-independent
+contract" needs -- validation, serialization, deserialization -- without any
+FastAPI or SQLAlchemy dependency, so these BaseModels are the domain model,
+not a second copy of one. The filesystem artifact (beats.json, see
+service.py) is the source of truth, not a table.
 
 Per app/modules/README.md, this module must never import
 app.modules.asset, app.modules.motion, app.modules.video_composer, or
-app.modules.ai -- visual_query/asset_id/motion.preset/caption.preset below
-are plain strings/ints, not references into those modules' schemas.
+app.modules.ai.
 """
 
 from enum import Enum
 
-from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
+from pydantic import BaseModel, ConfigDict, Field, computed_field, field_validator, model_validator
+
+from app.core.render_profile import DEFAULT_RENDER_PROFILE_NAME, RENDER_PROFILES
+
+MIN_DURATION = 0.1
+# Matches app.modules.motion.schemas.MAX_DURATION / app.modules.composition
+# .schemas.MAX_DURATION -- the same upper bound already established for one
+# renderable segment elsewhere in this pipeline, reused here rather than
+# inventing a new, disagreeing limit.
+MAX_DURATION = 120.0
 
 
 class BeatType(str, Enum):
     """The role a beat plays in a short-form video's structure."""
 
-    HOOK = "hook"
-    BODY = "body"
-    CTA = "cta"
-    OUTRO = "outro"
+    HOOK = "HOOK"
+    SETUP = "SETUP"
+    BUILD = "BUILD"
+    REVEAL = "REVEAL"
+    REACTION = "REACTION"
+    ENDING = "ENDING"
+    BODY = "BODY"
 
 
-class VisualRequirement(BaseModel):
-    """What this beat needs on screen. `asset_id` is a bare, unconstrained
-    reference (no FK -- this module never imports app.modules.asset) to
-    whichever Asset a future asset-matching step assigns; `asset_query` is
-    the keyword hint used to find one until then.
+class BeatMotionPreset(str, Enum):
+    """A deterministic, local camera-movement preset -- the six this task
+    scopes to. Not app.modules.motion.schemas.MotionPresetName; see module
+    docstring for why these are deliberately separate, same-spirit enums.
     """
 
-    model_config = ConfigDict(extra="forbid")
-
-    asset_query: list[str] = Field(default_factory=list)
-    asset_id: int | None = None
-
-
-class MotionConfig(BaseModel):
-    """Which motion preset (e.g. "slow_push_in", "pan_left") a future
-    motion-rendering step should apply. `None` means static/no motion.
-    The preset name is opaque here -- this module doesn't know or care what
-    presets exist, that's app.modules.motion's concern.
-    """
-
-    model_config = ConfigDict(extra="forbid")
-
-    preset: str | None = None
+    STATIC = "STATIC"
+    SLOW_PUSH_IN = "SLOW_PUSH_IN"
+    SLOW_PULL_OUT = "SLOW_PULL_OUT"
+    PAN_LEFT = "PAN_LEFT"
+    PAN_RIGHT = "PAN_RIGHT"
+    ZOOM_AND_PAN = "ZOOM_AND_PAN"
 
 
-class CaptionConfig(BaseModel):
-    """Caption text/style for this beat. `text` defaults to the beat's own
-    narration when unset (a caption doesn't have to repeat narration
-    verbatim -- e.g. a shortened on-screen version).
-    """
-
-    model_config = ConfigDict(extra="forbid")
-
-    text: str | None = None
-    preset: str | None = None
-
-
-class AudioConfig(BaseModel):
-    """Optional sound-effect cue for this beat. `sfx` is an opaque
-    name/path a future audio-mixing step resolves -- not validated here.
-    """
-
-    model_config = ConfigDict(extra="forbid")
-
-    sfx: str | None = None
+def _reject_blank_if_provided(value: str | None) -> str | None:
+    if value is not None and not value.strip():
+        raise ValueError("must not be blank/whitespace-only if provided")
+    return value
 
 
 class Beat(BaseModel):
@@ -88,13 +93,31 @@ class Beat(BaseModel):
 
     id: str
     order: int
-    duration: float
     type: BeatType
-    narration: str = ""
-    visual: VisualRequirement = Field(default_factory=VisualRequirement)
-    motion: MotionConfig = Field(default_factory=MotionConfig)
-    caption: CaptionConfig = Field(default_factory=CaptionConfig)
-    audio: AudioConfig = Field(default_factory=AudioConfig)
+    narration: str | None = None
+    duration: float
+    visual_hint: str | None = None
+    # A bare app.modules.asset.models.Asset.id -- see module docstring for
+    # why this is the one field on Beat that reaches toward another module,
+    # and only as an opaque int, never a real FK/import.
+    asset_id: int | None = None
+    # None means "not explicitly set -- inherit ProjectConfig.motion.default_preset"
+    # (Task 12, see effective_motion_preset() below and
+    # docs/features/39-project-templates.md); a real enum value means the
+    # user (or an explicit STATIC choice) overrode that default for this
+    # one beat. Backward compatible: an old beats.json with an explicit
+    # "motion_preset": "STATIC" (or any other value) still means exactly
+    # what it always meant -- only a beat that never had the key at all
+    # (or had it explicitly set to null) resolves through the project
+    # default now, which for a pre-Task-12 project is STATIC anyway (see
+    # DEFAULT_PROJECT_CONFIG), so no existing beat's rendered look changes.
+    motion_preset: BeatMotionPreset | None = None
+    # A bare app.modules.asset.models.Asset.id (type="audio") -- a local,
+    # pre-recorded narration clip for this beat. None means "no local
+    # narration for this beat" (silence in local-narration mode, or this
+    # beat's `narration` text spoken via the existing TTS path when no beat
+    # in the plan has one set at all -- see docs/features/36-audio-pipeline.md).
+    narration_asset_id: int | None = None
 
     @field_validator("id")
     @classmethod
@@ -112,27 +135,272 @@ class Beat(BaseModel):
 
     @field_validator("duration")
     @classmethod
-    def _duration_is_positive(cls, value: float) -> float:
-        if value <= 0:
-            raise ValueError("Beat.duration must be > 0 seconds")
+    def _duration_within_bounds(cls, value: float) -> float:
+        if not (MIN_DURATION <= value <= MAX_DURATION):
+            raise ValueError(f"Beat.duration must be between {MIN_DURATION} and {MAX_DURATION} seconds, got {value}")
+        return value
+
+    @field_validator("narration", "visual_hint")
+    @classmethod
+    def _optional_text_not_blank(cls, value: str | None) -> str | None:
+        return _reject_blank_if_provided(value)
+
+    @field_validator("asset_id", "narration_asset_id")
+    @classmethod
+    def _asset_id_positive(cls, value: int | None) -> int | None:
+        if value is not None and value <= 0:
+            raise ValueError("asset id fields must be a positive integer if provided")
         return value
 
 
-class BeatPlan(BaseModel):
-    """An ordered set of Beats derived from one script. `video_id` is a
-    bare, unconstrained reference (no FK -- see module docstring) to the
-    Library video this plan was made for, if any; a plan can equally be made
-    from a script that was never attached to a video.
+
+# -- Project configuration + templates (Task 12) -----------------------------
+#
+# See docs/features/39-project-templates.md. A Template is pure
+# configuration -- render profile, motion default, caption style, audio
+# defaults -- never a second pipeline, never asset/beat/job IDs. Creating a
+# project from a template just snapshots this config onto BeatPlan.config
+# (below); after that, the project's own copy is authoritative and the
+# template it came from can change (or a custom one be deleted) without
+# affecting it. `app.core.render_profile` is imported directly (not
+# duplicated) since it's app.core, not another app.modules/* package --
+# the one dependency every module is already allowed to have.
+
+# Mirrors app.modules.video_composer.models.CAPTION_PRESETS by value, not
+# by import (same "duplicate the pattern" convention
+# app.modules.composition.schemas.CaptionPreset already uses for the exact
+# same set) -- video_composer owns the real ASS rendering for each of
+# these; this module only needs to know the set of valid names.
+CAPTION_PRESETS = ("emotional", "cinematic", "word_highlight", "big_statement", "quote")
+
+MIN_VOLUME = 0.0
+MAX_VOLUME = 2.0
+
+
+class RenderProjectConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    profile: str = DEFAULT_RENDER_PROFILE_NAME
+
+    @field_validator("profile")
+    @classmethod
+    def _known_profile(cls, value: str) -> str:
+        if value not in RENDER_PROFILES:
+            raise ValueError(f"Unknown render profile {value!r}. Available profiles: {sorted(RENDER_PROFILES)}")
+        return value
+
+
+class MotionProjectConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    # STATIC, not one of the "cinematic" presets, is the system default --
+    # a template is what opts a project into motion by default (see
+    # BUILTIN_TEMPLATES below); this bare ProjectConfig() default must
+    # match Beat.motion_preset's own pre-Task-12 behavior exactly (see that
+    # field's docstring) so an old, template-less project's resolved
+    # motion never changes.
+    default_preset: BeatMotionPreset = BeatMotionPreset.STATIC
+
+
+class CaptionsProjectConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    enabled: bool = True
+    preset: str = "emotional"
+
+    @field_validator("preset")
+    @classmethod
+    def _known_preset(cls, value: str) -> str:
+        if value not in CAPTION_PRESETS:
+            raise ValueError(f"Unknown caption preset {value!r}, must be one of {CAPTION_PRESETS}")
+        return value
+
+
+class AudioProjectConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    narration_enabled: bool = True
+    music_enabled: bool = True
+    music_volume: float = 0.15
+    ducking: bool = True
+
+    @field_validator("music_volume")
+    @classmethod
+    def _volume_within_bounds(cls, value: float) -> float:
+        if not (MIN_VOLUME <= value <= MAX_VOLUME):
+            raise ValueError(f"music_volume must be between {MIN_VOLUME} and {MAX_VOLUME}, got {value}")
+        return value
+
+
+class ProjectConfig(BaseModel):
+    """The one, unified configuration object -- render/motion/captions/audio
+    -- shared by templates and projects alike (Task 12's own "do not
+    duplicate render/audio/caption config across multiple unrelated files"
+    instruction). A Template's `config` and a project's (BeatPlan.config)
+    are both exactly this same shape; the only difference is what wraps it
+    (a Template also carries id/name/version/builtin, see below).
     """
 
     model_config = ConfigDict(extra="forbid")
 
+    render: RenderProjectConfig = Field(default_factory=RenderProjectConfig)
+    motion: MotionProjectConfig = Field(default_factory=MotionProjectConfig)
+    captions: CaptionsProjectConfig = Field(default_factory=CaptionsProjectConfig)
+    audio: AudioProjectConfig = Field(default_factory=AudioProjectConfig)
+    # Provenance only, like Beat.asset_id -- which Template (and which
+    # version of it) this config was snapshotted from, if any. A project
+    # created without choosing a template (or a pre-Task-12 project) has
+    # both as None. Never used to look anything up at render time; the
+    # config fields above are always the full, self-contained truth.
+    template_id: str | None = None
+    template_version: int | None = None
+
+
+DEFAULT_PROJECT_CONFIG = ProjectConfig()
+
+
+def effective_motion_preset(beat: Beat, config: ProjectConfig) -> BeatMotionPreset:
+    """Beat override > Project default > System default (Task 12 section
+    11). `config.motion.default_preset` -- not a hardcoded STATIC -- IS the
+    system default at this point, since it already defaults to STATIC on a
+    bare/template-less ProjectConfig (see MotionProjectConfig above), so
+    there's only ever two tiers to actually implement here, not three.
+    """
+    return beat.motion_preset if beat.motion_preset is not None else config.motion.default_preset
+
+
+class Template(BaseModel):
+    """A named, reusable ProjectConfig. `builtin=True` templates
+    (BUILTIN_TEMPLATES below) are fixed Python constants, never persisted
+    or mutated -- creating a project from one only ever copies `config`
+    (see effective_motion_preset's caller / VideoFactoryPage.tsx's
+    "Use Template"), so nothing a user does to their project can reach
+    back and change the template itself. `builtin=False` templates are
+    user-created (see docs/features/39-project-templates.md's "Save as
+    Template") and persisted in templates.json (app.modules.beat.service).
+    """
+
+    model_config = ConfigDict(extra="forbid")
+
+    id: str
+    name: str
+    description: str = ""
+    version: int = 1
+    builtin: bool = False
+    config: ProjectConfig = Field(default_factory=ProjectConfig)
+
+    @field_validator("id")
+    @classmethod
+    def _id_not_blank(cls, value: str) -> str:
+        if not value.strip():
+            raise ValueError("Template.id must not be blank")
+        return value
+
+    @field_validator("name")
+    @classmethod
+    def _name_not_blank(cls, value: str) -> str:
+        if not value.strip():
+            raise ValueError("Template.name must not be blank")
+        return value
+
+
+EMOTIONAL_STORY_TEMPLATE = Template(
+    id="emotional_story",
+    name="Emotional Story",
+    description="Short emotional storytelling video -- bold captions, gentle push-in motion.",
+    version=1,
+    builtin=True,
+    config=ProjectConfig(
+        render=RenderProjectConfig(profile="SOCIAL_VERTICAL"),
+        motion=MotionProjectConfig(default_preset=BeatMotionPreset.SLOW_PUSH_IN),
+        captions=CaptionsProjectConfig(enabled=True, preset="big_statement"),
+        audio=AudioProjectConfig(narration_enabled=True, music_enabled=True, music_volume=0.18, ducking=True),
+        template_id="emotional_story",
+        template_version=1,
+    ),
+)
+
+COUPLE_STORY_TEMPLATE = Template(
+    id="couple_story",
+    name="Couple Story",
+    description="Relationship/love/reunion/proposal stories -- subtle motion, emotional captions.",
+    version=1,
+    builtin=True,
+    config=ProjectConfig(
+        render=RenderProjectConfig(profile="SOCIAL_VERTICAL"),
+        motion=MotionProjectConfig(default_preset=BeatMotionPreset.SLOW_PUSH_IN),
+        captions=CaptionsProjectConfig(enabled=True, preset="emotional"),
+        audio=AudioProjectConfig(narration_enabled=True, music_enabled=True, music_volume=0.15, ducking=True),
+        template_id="couple_story",
+        template_version=1,
+    ),
+)
+
+CUSTOM_TEMPLATE = Template(
+    id="custom",
+    name="Custom",
+    description="Start from blank -- plain system defaults, no assumptions.",
+    version=1,
+    builtin=True,
+    config=ProjectConfig(template_id="custom", template_version=1),
+)
+
+# Note: BUILTIN_TEMPLATES' own `id`s ("emotional_story"/"couple_story"/
+# "custom") are reserved -- template_service.save_custom_templates below
+# rejects a custom template trying to reuse one, so a built-in can never be
+# shadowed or overwritten by user data.
+BUILTIN_TEMPLATES: list[Template] = [EMOTIONAL_STORY_TEMPLATE, COUPLE_STORY_TEMPLATE, CUSTOM_TEMPLATE]
+BUILTIN_TEMPLATE_IDS = frozenset(t.id for t in BUILTIN_TEMPLATES)
+
+
+def sanitize_project_config_for_template(config: ProjectConfig) -> ProjectConfig:
+    """Project -> Template (Task 12 section 23, "Save as Template"). A
+    ProjectConfig never contains asset/beat/render-job IDs or output paths
+    in the first place (see ProjectConfig's own docstring/fields) -- it's
+    only render/motion/captions/audio settings -- so "sanitizing" is
+    exactly a deep copy with template provenance cleared, not a field-by-
+    field strip list that could silently miss a newly-added sensitive
+    field later.
+    """
+    return config.model_copy(deep=True, update={"template_id": None, "template_version": None})
+
+
+class BeatPlan(BaseModel):
+    """An ordered, non-empty set of Beats derived from one script. `video_id`
+    is a bare, unconstrained reference (no FK -- see module docstring) to the
+    Library video this plan was made for, if any.
+    """
+
+    # Beat itself stays extra="forbid" (validating real input), but BeatPlan
+    # tolerates unknown keys so that a BeatPlan this class just serialized
+    # (model_dump_json() includes the computed `total_duration` below) can be
+    # fed straight back into model_validate_json() without the caller having
+    # to strip that key out first -- total_duration isn't a settable field,
+    # just a derived value that happens to be present in its own JSON output.
+    model_config = ConfigDict(extra="ignore")
+
     video_id: int | None = None
     script_text: str | None = None
-    beats: list[Beat] = Field(default_factory=list)
+    beats: list[Beat] = Field(default_factory=list, min_length=1)
+    # Task 12 (see docs/features/39-project-templates.md) -- project_name is
+    # a plain display label (this app has no multi-project store; "the
+    # project" is this one BeatPlan). `config` defaults to DEFAULT_PROJECT_CONFIG
+    # via default_factory, so a pre-Task-12 beats.json with neither key at
+    # all loads with zero migration, exactly like motion_preset above.
+    project_name: str | None = None
+    config: ProjectConfig = Field(default_factory=lambda: DEFAULT_PROJECT_CONFIG.model_copy(deep=True))
+
+    @computed_field
+    @property
+    def total_duration(self) -> float:
+        return sum(beat.duration for beat in self.beats)
 
     @model_validator(mode="after")
-    def _validate_contiguous_ordering(self) -> "BeatPlan":
+    def _validate_beats(self) -> "BeatPlan":
+        ids = [beat.id for beat in self.beats]
+        if len(ids) != len(set(ids)):
+            raise ValueError(f"BeatPlan.beats contains duplicate ids: {ids}")
+
         orders = sorted(beat.order for beat in self.beats)
         expected = list(range(1, len(self.beats) + 1))
         if orders != expected:
@@ -142,9 +410,58 @@ class BeatPlan(BaseModel):
             )
         return self
 
+    def ordered_beats(self) -> list[Beat]:
+        return sorted(self.beats, key=lambda beat: beat.order)
+
+
+# -- Projects (Task 13 -- see docs/features/40-batch-video-creation.md) ------
+
+
+class ProjectOut(BaseModel):
+    """A Project's content, shaped exactly like BeatPlan (script_text/beats/
+    project_name/config) but WITHOUT BeatPlan's `min_length=1` invariant on
+    `beats`. A freshly batch-created project legitimately has zero beats
+    until "Generate Beats for Batch" runs -- that's a real, valid lifecycle
+    state for a Project (not yet ready to render), even though an empty
+    BeatPlan is correctly rejected as a thing you could ever save from the
+    interactive single-project editor (see BeatPlan's own
+    test_empty_beats_list_rejected). Keeping these as two distinct
+    contracts, rather than loosening BeatPlan itself, preserves that
+    already-tested invariant exactly as-is.
+
+    `PUT /projects/{id}/beat-plan` (see router.py) still validates its
+    incoming body as a real, strict BeatPlan -- by the time a human is
+    saving edits through the beat editor, "at least one beat" is exactly
+    as true for a Project as it already is for the singleton beats.json.
+    """
+
+    model_config = ConfigDict(extra="ignore")
+
+    id: int
+    slug: str
+    video_id: int | None = None
+    script_text: str | None = None
+    beats: list[Beat] = Field(default_factory=list)
+    project_name: str | None = None
+    config: ProjectConfig = Field(default_factory=lambda: DEFAULT_PROJECT_CONFIG.model_copy(deep=True))
+    render_job_id: int | None = None
+
+    @computed_field
     @property
     def total_duration(self) -> float:
         return sum(beat.duration for beat in self.beats)
 
-    def ordered_beats(self) -> list[Beat]:
-        return sorted(self.beats, key=lambda beat: beat.order)
+
+def new_project_draft(script_text: str, project_name: str, config: ProjectConfig) -> dict:
+    """The initial `Project.beat_plan_json` for a just-created project --
+    valid ProjectOut shape, deliberately NOT a valid BeatPlan yet (no
+    beats). "Generate Beats for Batch" (the composition-root batch
+    orchestrator) is what turns this into one plan.beats.append() at a
+    time, same as the interactive Beat Editor does for the singleton flow.
+    """
+    return {
+        "script_text": script_text,
+        "beats": [],
+        "project_name": project_name,
+        "config": config.model_dump(mode="json"),
+    }

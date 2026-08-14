@@ -25,22 +25,27 @@ const VOICE_OPTIONS: { value: string; label: string }[] = [
 
 const STATUS_LABEL: Record<VideoComposeJob["status"], string> = {
   queued: "Trong hàng đợi",
+  rendering_beats: "Đang dựng cảnh",
   merging: "Đang ghép video (chuyển cảnh swipe-left)",
   narrating: "Đang tạo giọng đọc",
   subtitling: "Đang tạo phụ đề karaoke",
   mixing_audio: "Đang trộn âm thanh",
   finalizing: "Đang hoàn thiện",
+  validating: "Đang kiểm tra kết quả",
   completed: "Hoàn tất",
   failed: "Lỗi",
+  cancelled: "Đã huỷ",
 };
 
 const IN_PROGRESS_STATUSES: VideoComposeJob["status"][] = [
   "queued",
+  "rendering_beats",
   "merging",
   "narrating",
   "subtitling",
   "mixing_audio",
   "finalizing",
+  "validating",
 ];
 
 export function VideoComposerPage() {

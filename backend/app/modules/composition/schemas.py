@@ -153,22 +153,35 @@ MAX_VOLUME = 2.0
 
 
 class SceneAudio(BaseModel):
-    """Per-scene sound-effect cue. Narration is composition-wide, not
-    per-scene (see CompositionPlan.narration_script), matching the single
-    `script`/`voice` contract app.modules.video_composer already exposes --
-    see the feature doc for why that hand-off shape is deliberate.
+    """Per-scene sound-effect cue, and (since
+    docs/features/36-audio-pipeline.md) an optional per-scene local
+    narration asset -- mirrors `app.modules.beat.schemas.Beat.narration_asset_id`
+    without importing it (same "duplicate the pattern" convention as
+    SceneMotion/SceneCaption above). Composition-wide TTS narration (see
+    CompositionPlan.narration_script) is still the fallback: a renderer
+    uses per-scene local narration when *any* scene has one, otherwise the
+    existing single script/voice TTS contract, unchanged -- see the feature
+    doc for why mixing the two per-scene is out of scope.
     """
 
     model_config = ConfigDict(extra="forbid")
 
     sfx: str | None = None
     sfx_volume: float = 1.0
+    narration_asset_id: int | None = None
 
     @field_validator("sfx_volume")
     @classmethod
     def _sfx_volume_within_bounds(cls, value: float) -> float:
         if not (MIN_VOLUME <= value <= MAX_VOLUME):
             raise ValueError(f"sfx_volume must be between {MIN_VOLUME} and {MAX_VOLUME}, got {value}")
+        return value
+
+    @field_validator("narration_asset_id")
+    @classmethod
+    def _narration_asset_id_positive(cls, value: int | None) -> int | None:
+        if value is not None and value <= 0:
+            raise ValueError("narration_asset_id must be a positive integer if provided")
         return value
 
 

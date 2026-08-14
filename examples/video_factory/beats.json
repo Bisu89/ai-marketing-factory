@@ -6,71 +6,41 @@
       "id": "beat_01",
       "order": 1,
       "duration": 4.0,
-      "type": "hook",
+      "type": "HOOK",
       "narration": "Meet Anna and Tom, two travelers who found each other on the open road.",
-      "visual": {
-        "asset_query": ["couple", "road trip", "hook"],
-        "asset_id": 1
-      },
-      "motion": { "preset": "slow_push_in" },
-      "caption": { "text": "Meet Anna and Tom", "preset": "big_statement" },
-      "audio": { "sfx": "whoosh_in.mp3" }
+      "visual_hint": "emotional couple starting a road trip together"
     },
     {
       "id": "beat_02",
       "order": 2,
       "duration": 8.0,
-      "type": "body",
+      "type": "SETUP",
       "narration": "Together they crossed misty mountains, chasing sunrises no map could show them.",
-      "visual": {
-        "asset_query": ["mountains", "sunrise", "travel"],
-        "asset_id": 2
-      },
-      "motion": { "preset": "pan_left" },
-      "caption": { "text": "Chasing sunrises together", "preset": "emotional" },
-      "audio": { "sfx": null }
+      "visual_hint": "misty mountains at sunrise, two travelers walking"
     },
     {
       "id": "beat_03",
       "order": 3,
       "duration": 8.0,
-      "type": "body",
+      "type": "BUILD",
       "narration": "Every city they wandered through added a new color to their story.",
-      "visual": {
-        "asset_query": ["city", "wander", "color"],
-        "asset_id": 3
-      },
-      "motion": { "preset": "zoom_and_pan" },
-      "caption": { "text": "A new color to their story", "preset": "emotional" },
-      "audio": { "sfx": null }
+      "visual_hint": "colorful city street, wandering couple"
     },
     {
       "id": "beat_04",
       "order": 4,
       "duration": 6.0,
-      "type": "body",
+      "type": "REACTION",
       "narration": "But it was the quiet, ordinary moments that they came to treasure most.",
-      "visual": {
-        "asset_query": ["quiet", "moment", "candid"],
-        "asset_id": 4
-      },
-      "motion": { "preset": "subtle_rotate" },
-      "caption": { "text": "The quiet moments, treasured most", "preset": "word_highlight" },
-      "audio": { "sfx": null }
+      "visual_hint": "quiet candid moment, couple sitting together"
     },
     {
       "id": "beat_05",
       "order": 5,
       "duration": 4.0,
-      "type": "cta",
+      "type": "ENDING",
       "narration": "Now it's your turn -- join their next adventure today.",
-      "visual": {
-        "asset_query": ["invitation", "adventure", "call to action"],
-        "asset_id": 5
-      },
-      "motion": { "preset": "slow_pull_out" },
-      "caption": { "text": "Join their next adventure", "preset": "quote" },
-      "audio": { "sfx": null }
+      "visual_hint": "inviting adventure scene, call to action"
     }
   ]
 }

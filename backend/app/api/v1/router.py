@@ -1,6 +1,9 @@
 from fastapi import APIRouter
 
 from app.api.v1.endpoints import (
+    batch_render,
+    beat_generate,
+    beat_preview,
     categories,
     composition_render,
     detect,
@@ -18,6 +21,8 @@ from app.modules.ai.caption.router import router as caption_router
 from app.modules.ai.hook.router import router as hook_router
 from app.modules.ai.story.router import router as story_router
 from app.modules.asset.router import router as asset_router
+from app.modules.batch.router import router as batch_router
+from app.modules.beat.router import router as beat_router
 from app.modules.scene_cutter.router import router as scene_cutter_router
 from app.modules.video_composer.router import router as video_composer_router
 
@@ -39,4 +44,9 @@ api_router.include_router(story_router, tags=["story"])
 api_router.include_router(hook_router, tags=["hook"])
 api_router.include_router(caption_router, tags=["caption"])
 api_router.include_router(asset_router, tags=["asset"])
+api_router.include_router(beat_router, tags=["beat"])
 api_router.include_router(composition_render.router, tags=["composition-render"])
+api_router.include_router(beat_generate.router, tags=["beat-generate"])
+api_router.include_router(beat_preview.router, tags=["beat-preview"])
+api_router.include_router(batch_router, tags=["batch"])
+api_router.include_router(batch_render.router, tags=["batch-render"])

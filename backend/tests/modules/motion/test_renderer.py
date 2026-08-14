@@ -41,10 +41,22 @@ class FilterGraphGenerationTests(unittest.TestCase):
         graph = build_filter_graph(plan, duration=4.0, fps=30.0, width=1080, height=1920)
         self.assertNotIn("zoompan", graph)
         self.assertNotIn("rotate=", graph)
-        self.assertIn("scale=1080:1920", graph)
-        self.assertIn("pad=1080:1920", graph)
         self.assertIn("format=yuv420p", graph)
         self.assertIn("fps=30.0", graph)
+
+    def test_static_preset_covers_the_frame_instead_of_letterboxing(self):
+        # Regression test for a real bug (see
+        # docs/features/34-local-motion-renderer.md): STATIC used to scale
+        # with force_original_aspect_ratio=decrease + pad, which is
+        # "contain" (letterboxed, black bars) not "cover". It must now
+        # scale to fill (increase) and crop back to the exact target size,
+        # with no pad filter (which is what produces black bars) at all.
+        plan = build_motion_plan(MotionPresetName.STATIC, duration=4.0)
+        graph = build_filter_graph(plan, duration=4.0, fps=30.0, width=1080, height=1920)
+        self.assertIn("force_original_aspect_ratio=increase", graph)
+        self.assertIn("crop=1080:1920", graph)
+        self.assertNotIn("pad=", graph)
+        self.assertNotIn("force_original_aspect_ratio=decrease", graph)
 
     def test_slow_push_in_uses_zoompan_with_on_and_zoom_variables(self):
         plan = build_motion_plan(MotionPresetName.SLOW_PUSH_IN, duration=4.0)
@@ -278,6 +290,30 @@ class RenderMotionClipIntegrationTests(unittest.TestCase):
         output_path = self._render(MotionPresetName.STATIC, duration=1.5)
         self._assert_valid_output(output_path, expected_duration=1.5, fps=12.0, width=320, height=568)
 
+    def test_static_preset_cover_crop_produces_no_black_corners(self):
+        # Content-level regression test for the letterbox bug fixed in
+        # docs/features/34-local-motion-renderer.md: width/height alone
+        # can't catch it (ffmpeg reports the padded canvas size either
+        # way), so this actually inspects pixels. The source (setUp) is a
+        # solid, no-black color at a mismatched aspect ratio (800x600 ->
+        # 320x568) -- a letterboxed corner would be pure black; a properly
+        # cover-cropped one stays the source's solid color.
+        output_path = self._render(MotionPresetName.STATIC, duration=1.0)
+        frame_path = self.tmp_path / "frame.png"
+        subprocess.run(
+            [
+                "ffmpeg", "-y", "-nostdin", "-hide_banner", "-loglevel", "error",
+                "-i", str(output_path), "-vframes", "1", str(frame_path),
+            ],
+            check=True,
+            stdin=subprocess.DEVNULL,
+        )
+        frame = Image.open(frame_path).convert("RGB")
+        width, height = frame.size
+        for corner in [(0, 0), (width - 1, 0), (0, height - 1), (width - 1, height - 1)]:
+            r, g, b = frame.getpixel(corner)
+            self.assertFalse(r < 10 and g < 10 and b < 10, f"corner {corner} is black {(r, g, b)} -- letterbox bar")
+
     def test_zoompan_only_preset_renders_a_valid_mp4(self):
         output_path = self._render(MotionPresetName.SLOW_PUSH_IN, duration=1.5)
         self._assert_valid_output(output_path, expected_duration=1.5, fps=12.0, width=320, height=568)
@@ -299,6 +335,50 @@ class RenderMotionClipIntegrationTests(unittest.TestCase):
         plan = build_motion_plan(MotionPresetName.STATIC, duration=1.0)
         with self.assertRaises(FileOperationError):
             render_motion_clip(corrupt_image, plan, self.tmp_path / "should_not_exist.mp4")
+
+    def test_zoompan_preset_does_not_distort_a_mismatched_aspect_source(self):
+        # Regression test for a real bug (see
+        # docs/features/34-local-motion-renderer.md): zoompan crops a
+        # window whose aspect ratio equals its *input's* aspect ratio
+        # regardless of zoom, so prescaling to the source's own aspect
+        # ratio (instead of the output's) stretched every frame -- a
+        # circle rendered as a visibly flattened ellipse. A circle drawn
+        # on a source whose aspect ratio does NOT match the 9:16-ish
+        # output (1600x1200, 4:3) makes that distortion directly
+        # measurable: its rendered bounding box must still be ~square.
+        from PIL import ImageDraw
+
+        circle_source = self.tmp_path / "circle.png"
+        img = Image.new("RGB", (1600, 1200), color=(30, 90, 160))
+        ImageDraw.Draw(img).ellipse([700, 500, 900, 700], fill=(255, 255, 255))
+        img.save(circle_source)
+
+        plan = build_motion_plan(MotionPresetName.SLOW_PUSH_IN, duration=1.0)
+        output_path = self.tmp_path / "circle_push_in.mp4"
+        render_motion_clip(circle_source, plan, output_path, fps=12.0, width=360, height=640)
+
+        frame_path = self.tmp_path / "circle_frame.png"
+        subprocess.run(
+            [
+                "ffmpeg", "-y", "-nostdin", "-hide_banner", "-loglevel", "error",
+                "-ss", "0", "-i", str(output_path), "-vframes", "1", str(frame_path),
+            ],
+            check=True,
+            stdin=subprocess.DEVNULL,
+        )
+        frame = Image.open(frame_path).convert("RGB")
+        xs, ys = [], []
+        for x in range(frame.width):
+            for y in range(frame.height):
+                r, g, b = frame.getpixel((x, y))
+                if r > 230 and g > 230 and b > 230:
+                    xs.append(x)
+                    ys.append(y)
+        self.assertTrue(xs and ys, "white circle not found in rendered frame")
+        circle_w = max(xs) - min(xs)
+        circle_h = max(ys) - min(ys)
+        ratio = circle_w / circle_h
+        self.assertAlmostEqual(ratio, 1.0, delta=0.15, msg=f"circle bounding box {circle_w}x{circle_h} is not round (ratio={ratio:.2f}) -- frame is stretched")
 
     def test_png_and_jpeg_sources_produce_identical_pixel_format(self):
         png_path = self.tmp_path / "source.png"

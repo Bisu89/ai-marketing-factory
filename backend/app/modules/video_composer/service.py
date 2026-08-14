@@ -7,6 +7,7 @@ import subprocess
 import threading
 import time
 import uuid
+from collections.abc import Callable
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import BinaryIO
@@ -14,12 +15,45 @@ from typing import BinaryIO
 import edge_tts
 from PIL import ImageFont
 
+from app.core import render_errors
+from app.core.config import get_settings
+from app.core.events import EventBus
+from app.core.exceptions import NotFoundError, RenderCancelled, ValidationError
 from app.db.session import SessionLocal
 from app.modules.video_composer.models import CAPTION_PRESETS, VideoComposeClip, VideoComposeJob
 
 logger = logging.getLogger(__name__)
 
-PENDING_STATUSES = ("queued", "merging", "narrating", "subtitling", "mixing_audio", "finalizing")
+# Statuses a job can be found in when the app starts back up -- anything
+# other than a terminal state (completed/failed/cancelled). "queued" means
+# it never actually started (safe to just re-queue); everything else means
+# it was genuinely RUNNING when the process died (see _recover_pending_jobs,
+# Task 11 -- docs/features/38-render-job-hardening.md).
+PENDING_STATUSES = (
+    "queued", "rendering_beats", "merging", "narrating", "subtitling", "mixing_audio", "finalizing", "validating",
+)
+_RUNNING_STATUSES = tuple(s for s in PENDING_STATUSES if s != "queued")
+
+# A callable that does the actual per-beat motion rendering for a
+# composition-originated job: (composition_request, scenes_dir, is_cancelled,
+# on_progress) -> ordered clip paths. Injected at construction time (see
+# app/main.py) exactly the way app.services.download.engine.DownloadEngine
+# takes a pluggable `Downloader` -- this file never imports
+# app.modules.motion or app.modules.composition to implement it; the real
+# implementation lives in app/api/v1/endpoints/composition_render.py (the
+# composition root, allowed to import all three).
+BeatRenderer = Callable[
+    [dict, Path, Callable[[], bool], Callable[[int, int], None], Callable[[subprocess.Popen | None], None]],
+    list[Path],
+]
+
+# Duration validation tolerance for the finished output vs. the merged
+# clips' own probed duration (Task 10 hardening -- see
+# docs/features/37-e2e-pipeline-hardening.md's "Final validation"). A
+# container/encoder can shift the reported duration by a small fraction of
+# a second without anything actually being wrong; this is not an allowance
+# for narration/mixing genuinely changing the video's length.
+_OUTPUT_DURATION_TOLERANCE_SEC = 0.5
 
 FONT_PATH = "C:/Windows/Fonts/arial.ttf"
 # The karaoke subtitle style below renders Bold=1, so word widths must be
@@ -74,11 +108,29 @@ class VideoComposerService:
     desktop-local tool run by one user at a time.
     """
 
-    def __init__(self, library_dir: Path):
+    def __init__(
+        self,
+        library_dir: Path,
+        beat_renderer: BeatRenderer | None = None,
+        event_bus: EventBus | None = None,
+    ):
         self._library_dir = library_dir
         self._root = library_dir / "_video_composer"
         self._queue: "queue.Queue[int | None]" = queue.Queue()
         self._worker: threading.Thread | None = None
+        self._beat_renderer = beat_renderer
+        self._event_bus = event_bus
+
+        # Runtime-only job-control state (Task 11 -- see
+        # docs/features/38-render-job-hardening.md), never persisted to
+        # SQLite: a cancellation flag per in-flight job, and whichever
+        # ffmpeg subprocess that job currently owns (if any), so cancel_job
+        # can terminate it immediately rather than only at the next
+        # checkpoint. Mirrors app.services.download.engine.DownloadEngine's
+        # JobControl -- same shape, independent instance (never shared).
+        self._cancel_events: dict[int, threading.Event] = {}
+        self._active_processes: dict[int, subprocess.Popen] = {}
+        self._runtime_lock = threading.Lock()
 
     def start(self) -> None:
         self._root.mkdir(parents=True, exist_ok=True)
@@ -87,6 +139,10 @@ class VideoComposerService:
         self._recover_pending_jobs()
 
     def shutdown(self, timeout: float = 5.0) -> None:
+        # Stop accepting new work first, then let whatever's already
+        # RUNNING finish (or be cancelled by the user before shutdown) --
+        # this is a graceful stop, not a kill; the worker thread exits
+        # after its current _run_job call returns.
         self._queue.put(None)
         if self._worker is not None:
             self._worker.join(timeout=timeout)
@@ -108,6 +164,11 @@ class VideoComposerService:
         fade_out_sec: float = 0.0,
         caption_preset: str = "emotional",
         sfx_cues: list[dict] | None = None,
+        narration_mode: str = "tts",
+        beat_narration_specs: list[dict] | None = None,
+        render_profile: str = "SOCIAL_VERTICAL",
+        preflight_seconds: float | None = None,
+        composition_request_json: dict | None = None,
     ) -> int:
         db = SessionLocal()
         try:
@@ -122,9 +183,18 @@ class VideoComposerService:
                 fade_out_sec=fade_out_sec,
                 caption_preset=caption_preset,
                 sfx_cues=sfx_cues,
+                narration_mode=narration_mode,
+                beat_narration_specs=beat_narration_specs,
                 transition_duration=transition_duration,
                 burn_subtitles=burn_subtitles,
                 requested_output_dir=requested_output_dir,
+                render_profile=render_profile,
+                preflight_seconds=preflight_seconds,
+                # Persisted so the worker can do beat rendering itself
+                # (see BeatRenderer above) and so retry_job can rebuild an
+                # equivalent request -- None for the plain upload-based
+                # Video Composer flow, which has real clips already.
+                composition_request_json=composition_request_json,
                 status="queued",
             )
             db.add(job)
@@ -133,6 +203,112 @@ class VideoComposerService:
             return job.id
         finally:
             db.close()
+
+    def set_beat_render_seconds(self, job_id: int, seconds: float) -> None:
+        """Records how long the RENDER_BEATS phase took for this job. As of
+        Task 11 (docs/features/38-render-job-hardening.md) this phase runs
+        on the worker itself (_run_beat_rendering_phase, below), not on the
+        HTTP request thread -- kept as its own small setter (rather than
+        folding into _set_status) since it's timing data, not a status
+        transition.
+        """
+        self._set_fields(job_id, beat_render_seconds=seconds)
+
+    def set_beat_progress(self, job_id: int, current: int, total: int) -> None:
+        """Live progress during RENDER_BEATS only -- always a real, known
+        count (never a guessed percentage), per this task's own "never fake
+        progress" instruction.
+        """
+        self._set_fields(job_id, render_progress_current=current, render_progress_total=total)
+        self._publish("render.job.progress", {"job_id": job_id, "current": current, "total": total})
+
+    def cancel_job(self, job_id: int) -> bool:
+        """Cancels a QUEUED or RUNNING job. Returns False if the job doesn't
+        exist or is already in a terminal state (completed/failed/cancelled
+        cannot be cancelled). A QUEUED job (never picked up by the worker
+        yet) is cancelled immediately here; a RUNNING job is signalled via
+        an in-memory cancel event (observed at the next phase/beat
+        checkpoint -- see _is_cancelled) and has its currently-owned ffmpeg
+        process (if any) terminated right away, rather than waiting for
+        that checkpoint. Only the process this specific job registered is
+        ever touched -- never an unrelated OS process.
+        """
+        db = SessionLocal()
+        try:
+            job = db.get(VideoComposeJob, job_id)
+            if job is None:
+                return False
+            status = job.status
+            if status == "queued":
+                job.status = "cancelled"
+                job.completed_at = datetime.now(timezone.utc)
+                db.commit()
+                self._write_render_report(self._library_dir, job_id, status="cancelled", failed_phase=None, timing={})
+                self._publish("render.job.cancelled", {"job_id": job_id})
+                return True
+            if status not in _RUNNING_STATUSES:
+                return False  # completed/failed/cancelled -- nothing to do
+        finally:
+            db.close()
+
+        with self._runtime_lock:
+            self._cancel_events.setdefault(job_id, threading.Event()).set()
+            process = self._active_processes.get(job_id)
+        if process is not None and process.poll() is None:
+            process.terminate()
+        return True
+
+    def retry_job(self, job_id: int) -> int:
+        """Creates a fresh RenderJob attempt for a failed/cancelled job,
+        reusing its stored render request (composition_request_json --
+        None for the plain upload-based flow, which has no stored request
+        to replay and so cannot be retried this way). Never mutates the
+        original job row -- retrying creates job N+1, job N keeps its own
+        final status/report/log exactly as they were, per this task's "do
+        not corrupt the previous job record" instruction.
+        """
+        db = SessionLocal()
+        try:
+            original = db.get(VideoComposeJob, job_id)
+            if original is None:
+                raise NotFoundError("Video compose job", job_id)
+            if original.composition_request_json is None:
+                raise ValidationError("This job has no stored render request and cannot be retried.")
+            if original.status not in ("failed", "cancelled"):
+                raise ValidationError(
+                    f"Only a failed or cancelled job can be retried (current status: {original.status})."
+                )
+            new_job = VideoComposeJob(
+                title=original.title,
+                script_text=original.script_text,
+                voice=original.voice,
+                music_path=original.music_path,
+                music_volume=original.music_volume,
+                narration_volume=original.narration_volume,
+                music_ducking_ratio=original.music_ducking_ratio,
+                fade_in_sec=original.fade_in_sec,
+                fade_out_sec=original.fade_out_sec,
+                caption_preset=original.caption_preset,
+                sfx_cues=original.sfx_cues,
+                narration_mode=original.narration_mode,
+                beat_narration_specs=original.beat_narration_specs,
+                transition_duration=original.transition_duration,
+                burn_subtitles=original.burn_subtitles,
+                requested_output_dir=original.requested_output_dir,
+                render_profile=original.render_profile,
+                composition_request_json=original.composition_request_json,
+                previous_job_id=original.id,
+                status="queued",
+            )
+            db.add(new_job)
+            db.commit()
+            db.refresh(new_job)
+            new_job_id = new_job.id
+        finally:
+            db.close()
+
+        self.enqueue(new_job_id)
+        return new_job_id
 
     def job_dir(self, job_id: int) -> Path:
         return self._root / f"job_{job_id}"
@@ -219,9 +395,75 @@ class VideoComposerService:
                 logger.exception("Unhandled error running video-compose job %s", job_id)
                 self._set_status(job_id, "failed", error_message="Internal error")
             finally:
+                with self._runtime_lock:
+                    self._cancel_events.pop(job_id, None)
+                    self._active_processes.pop(job_id, None)
                 self._queue.task_done()
 
+    def _run_beat_rendering_phase(self, job_id: int, composition_request: dict) -> list[Path] | None:
+        """RENDER_BEATS, run on the worker (Task 11 moved this off the HTTP
+        request thread -- see docs/features/38-render-job-hardening.md).
+        Delegates the actual motion rendering to the injected
+        `self._beat_renderer` (implemented in composition_render.py, which
+        alone is allowed to import both app.modules.motion and
+        app.modules.composition). Returns None (having already marked the
+        job failed/cancelled itself) if rendering didn't produce clips.
+        """
+        if self._beat_renderer is None:
+            self._fail_job(job_id, "rendering_beats", "This job requires beat rendering but none is configured.")
+            return None
+
+        self._set_status(job_id, "rendering_beats")
+        self._log(job_id, "phase started: RENDER_BEATS")
+        self._publish("render.job.phase_changed", {"job_id": job_id, "phase": "RENDER_BEATS"})
+        scenes_dir = self.job_dir(job_id) / "scenes"
+        scenes_dir.mkdir(parents=True, exist_ok=True)
+
+        start = time.monotonic()
+        try:
+            clip_paths = self._beat_renderer(
+                composition_request,
+                scenes_dir,
+                lambda: self._is_cancelled(job_id),
+                lambda current, total: self.set_beat_progress(job_id, current, total),
+                lambda process: self._register_process(job_id, process)
+                if process is not None
+                else self._unregister_process(job_id),
+            )
+        except RenderCancelled:
+            self._finish_cancelled(job_id, "rendering_beats")
+            return None
+        except Exception as exc:
+            logger.exception("Beat rendering failed for job %s", job_id)
+            self._fail_job(job_id, "rendering_beats", str(exc))
+            return None
+
+        beat_render_seconds = time.monotonic() - start
+        self.save_clip_paths(job_id, clip_paths)
+        self.set_beat_render_seconds(job_id, beat_render_seconds)
+        self._log(job_id, f"phase completed: RENDER_BEATS ({beat_render_seconds:.2f}s, {len(clip_paths)} clips)")
+        return clip_paths
+
     def _run_job(self, job_id: int) -> None:
+        db = SessionLocal()
+        try:
+            job = db.get(VideoComposeJob, job_id)
+            if job is None:
+                return
+            if job.status == "cancelled":
+                return  # cancelled while still queued -- the worker never actually starts it
+            composition_request = job.composition_request_json
+            has_clips = bool(job.clips)
+        finally:
+            db.close()
+
+        self._log(job_id, "job started")
+        self._publish("render.job.started", {"job_id": job_id})
+
+        if not has_clips and composition_request is not None:
+            if self._run_beat_rendering_phase(job_id, composition_request) is None:
+                return  # already marked failed/cancelled
+
         db = SessionLocal()
         try:
             job = db.get(VideoComposeJob, job_id)
@@ -239,18 +481,22 @@ class VideoComposerService:
             fade_out_sec = job.fade_out_sec
             caption_preset = job.caption_preset
             sfx_cues = job.sfx_cues
+            narration_mode = job.narration_mode
+            beat_narration_specs = job.beat_narration_specs
             transition_duration = job.transition_duration
             burn_subtitles = job.burn_subtitles
             requested_output_dir = job.requested_output_dir
+            preflight_seconds = job.preflight_seconds
+            beat_render_seconds = job.beat_render_seconds
         finally:
             db.close()
 
         if not clip_paths:
-            self._set_status(job_id, "failed", error_message="Không có video nào để ghép")
+            self._fail_job(job_id, "merging", "Không có video nào để ghép")
             return
         for clip in clip_paths:
             if not clip.exists():
-                self._set_status(job_id, "failed", error_message=f"Không tìm thấy file: {clip}")
+                self._fail_job(job_id, "merging", f"Không tìm thấy file: {clip}")
                 return
 
         work_dir = self.job_dir(job_id)
@@ -262,15 +508,43 @@ class VideoComposerService:
         output_dir.mkdir(parents=True, exist_ok=True)
 
         merged_video = tmp_dir / "merged.mp4"
-        narration_audio = tmp_dir / "narration.mp3"
+        # Extension matches actual content: edge_tts (_run_narration) writes
+        # real MP3 bytes; the local-narration timeline concatenates AAC
+        # segments with "-c copy" (see _build_narration_timeline), which
+        # needs an AAC/MP4-family container, not an MP3 one.
+        narration_audio = tmp_dir / ("narration_timeline.m4a" if narration_mode == "local" else "narration.mp3")
         mixed_audio = tmp_dir / "mixed_audio.m4a"
         subtitle_ass = output_dir / "phu_de_karaoke.ass"
         subtitle_srt = output_dir / "phu_de.srt"
         final_video = output_dir / "video_hoan_chinh.mp4"
+        # Never expose final_video until it's been validated (Task 10
+        # hardening -- "atomic output"): ffmpeg writes into this temp name
+        # first; only a successful _validate_final_output triggers the
+        # atomic rename onto final_video, below. If anything fails first,
+        # this is deleted and final_video never exists for this job.
+        tmp_final_video = output_dir / ".video_hoan_chinh.tmp.mp4"
 
         render_start = time.monotonic()
+        composition_seconds = narrating_seconds = subtitling_seconds = 0.0
+        mixing_seconds = finalizing_seconds = validation_seconds = 0.0
+
+        def _checkpoint() -> None:
+            # Phase-boundary cancellation (Task 11): each phase below is a
+            # handful of seconds at most (see the Task 10 benchmark), so
+            # checking here -- rather than mid-ffmpeg-call -- keeps worst-
+            # case cancel latency bounded to "however long the current
+            # phase's ffmpeg call takes" without needing every _run_ffmpeg
+            # call site to track/kill its own Popen. RENDER_BEATS (the one
+            # phase long enough for that gap to matter) gets live process
+            # termination instead -- see _run_beat_rendering_phase.
+            if self._is_cancelled(job_id):
+                raise RenderCancelled()
+
         try:
+            _checkpoint()
             self._set_status(job_id, "merging")
+            self._log(job_id, "phase started: COMPOSE_VIDEO")
+            stage_start = time.monotonic()
             width, height, fps = self._probe_video_info(clip_paths[0])
             if len(clip_paths) > 1:
                 self._merge_clips_with_transitions(clip_paths, merged_video, transition_duration, width, height, fps)
@@ -280,16 +554,35 @@ class VideoComposerService:
                 # original upload straight into narration/subtitle/finalize.
                 # Saves a redundant re-encode and keeps the source quality.
                 merged_video = clip_paths[0]
+            composition_seconds = time.monotonic() - stage_start
+            self._log(job_id, f"phase completed: COMPOSE_VIDEO ({composition_seconds:.2f}s)")
 
+            _checkpoint()
             self._set_status(job_id, "narrating")
-            words = self._run_narration(script_text, voice, narration_audio)
+            self._log(job_id, "phase started: BUILD_AUDIO")
+            stage_start = time.monotonic()
+            if narration_mode == "local":
+                # No network call, no transcript -- a pre-recorded local
+                # clip has no word-boundary data to caption from (this
+                # task's own scope excludes captions anyway). Beats with no
+                # narration asset assigned get pure silence for their full
+                # duration, never TTS -- see docs/features/36-audio-pipeline.md.
+                self._build_narration_timeline(beat_narration_specs or [], tmp_dir / "narration_segments", narration_audio)
+                words: list[dict] = []
+            else:
+                words = self._run_narration(script_text, voice, narration_audio)
+            narrating_seconds = time.monotonic() - stage_start
 
             self._set_status(job_id, "subtitling")
+            stage_start = time.monotonic()
             lines = self._group_words_into_lines(words)
             font_size = max(28, int(height * 0.045))
             self._write_subtitles(lines, subtitle_ass, subtitle_srt, width, height, font_size, caption_preset)
+            subtitling_seconds = time.monotonic() - stage_start
 
+            _checkpoint()
             self._set_status(job_id, "mixing_audio")
+            stage_start = time.monotonic()
             video_duration = self._probe_duration(merged_video)
             self._mix_audio(
                 narration_audio,
@@ -303,18 +596,85 @@ class VideoComposerService:
                 mixed_audio,
                 sfx_cues=sfx_cues,
             )
+            mixing_seconds = time.monotonic() - stage_start
+            self._log(job_id, f"phase completed: BUILD_AUDIO ({narrating_seconds + mixing_seconds:.2f}s)")
 
+            _checkpoint()
             self._set_status(job_id, "finalizing")
-            self._finalize(merged_video, mixed_audio, title, subtitle_ass, burn_subtitles, final_video, width)
+            self._log(job_id, "phase started: BURN_CAPTIONS")
+            stage_start = time.monotonic()
+            self._finalize(merged_video, mixed_audio, title, subtitle_ass, burn_subtitles, tmp_final_video, width)
+            finalizing_seconds = time.monotonic() - stage_start
+            self._log(job_id, f"phase completed: BURN_CAPTIONS ({subtitling_seconds + finalizing_seconds:.2f}s)")
+
+            _checkpoint()
+            self._set_status(job_id, "validating")
+            self._log(job_id, "phase started: VALIDATE_OUTPUT")
+            stage_start = time.monotonic()
+            self._validate_final_output(
+                tmp_final_video, expected_duration=video_duration, width=width, height=height, fps=fps
+            )
+            tmp_final_video.replace(final_video)
+            validation_seconds = time.monotonic() - stage_start
+            self._log(job_id, f"phase completed: VALIDATE_OUTPUT ({validation_seconds:.2f}s)")
+        except RenderCancelled:
+            tmp_final_video.unlink(missing_ok=True)
+            self._finish_cancelled(job_id, self._get_status(job_id) or "unknown")
+            return
         except Exception as exc:
-            logger.exception("Video-compose job %s failed", job_id)
-            self._set_status(job_id, "failed", error_message=str(exc))
+            failed_phase = self._get_status(job_id) or "unknown"
+            logger.exception("Video-compose job %s failed in phase %s", job_id, failed_phase)
+            tmp_final_video.unlink(missing_ok=True)
+            self._fail_job(
+                job_id,
+                failed_phase,
+                str(exc),
+                timing={
+                    "preflight": preflight_seconds,
+                    "beat_render": beat_render_seconds,
+                    "composition": round(composition_seconds, 2) or None,
+                    "audio": round(narrating_seconds + mixing_seconds, 2) or None,
+                    "captions": round(subtitling_seconds + finalizing_seconds, 2) or None,
+                    "validation": round(validation_seconds, 2) or None,
+                },
+            )
             return
         finally:
-            shutil.rmtree(tmp_dir, ignore_errors=True)
+            if not get_settings().debug:
+                shutil.rmtree(tmp_dir, ignore_errors=True)
 
         render_seconds = time.monotonic() - render_start
-        self._write_render_metadata(final_video, video_duration, render_seconds)
+        self._write_render_metadata(
+            final_video,
+            video_duration,
+            render_seconds,
+            width=width,
+            height=height,
+            fps=fps,
+            clip_count=len(clip_paths),
+        )
+        self._write_render_report(
+            self._library_dir,
+            job_id,
+            status="completed",
+            final_video=final_video,
+            video_duration=video_duration,
+            clip_count=len(clip_paths),
+            width=width,
+            height=height,
+            fps=fps,
+            caption_enabled=burn_subtitles,
+            narration_mode=narration_mode,
+            timing={
+                "preflight": preflight_seconds,
+                "beat_render": beat_render_seconds,
+                "composition": round(composition_seconds, 2),
+                "audio": round(narrating_seconds + mixing_seconds, 2),
+                "captions": round(subtitling_seconds + finalizing_seconds, 2),
+                "validation": round(validation_seconds, 2),
+                "total": round(render_seconds, 2),
+            },
+        )
 
         db = SessionLocal()
         try:
@@ -328,6 +688,8 @@ class VideoComposerService:
             db.commit()
         finally:
             db.close()
+        self._log(job_id, f"job completed ({render_seconds:.2f}s)")
+        self._publish("render.job.completed", {"job_id": job_id, "output_path": str(final_video)})
 
     # --- ffmpeg/ffprobe helpers --------------------------------------------
 
@@ -447,6 +809,70 @@ class VideoComposerService:
             return words
 
         return asyncio.run(_generate())
+
+    @staticmethod
+    def _build_narration_timeline(specs: list[dict], segments_dir: Path, output_path: Path) -> None:
+        """Builds one continuous local narration track from per-beat
+        pre-recorded audio, preserving Beat boundaries exactly: each entry
+        in `specs` (`{"duration": float, "path": str | None}`, one per
+        Beat, in order) occupies exactly `duration` seconds in the output
+        -- its own audio (silence-padded if shorter -- validating it isn't
+        *longer* is the caller's job, see composition_render.py's
+        preflight) or pure silence if `path` is None. This is what makes
+        local narration a drop-in replacement for _run_narration's output:
+        the same single "one narration file" contract _mix_audio already
+        expects, so nothing downstream needs to change.
+        """
+        segments_dir.mkdir(parents=True, exist_ok=True)
+        segment_paths: list[Path] = []
+        for index, spec in enumerate(specs):
+            duration = float(spec["duration"])
+            source_path = spec.get("path")
+            segment_path = segments_dir / f"segment_{index:03d}.m4a"
+            if source_path:
+                VideoComposerService._run_ffmpeg(
+                    [
+                        "-i", str(source_path),
+                        "-af", f"apad=whole_dur={duration}",
+                        "-t", str(duration),
+                        "-c:a", "aac",
+                        str(segment_path),
+                    ]
+                )
+            else:
+                VideoComposerService._run_ffmpeg(
+                    [
+                        "-f", "lavfi", "-i", "anullsrc=r=44100:cl=mono",
+                        "-t", str(duration),
+                        "-c:a", "aac",
+                        str(segment_path),
+                    ]
+                )
+            segment_paths.append(segment_path)
+
+        if not segment_paths:
+            # No beats at all -- shouldn't happen (an empty CompositionPlan
+            # is already rejected before rendering starts), but produce a
+            # trivially short silent file rather than leaving no narration
+            # input at all for _mix_audio to read.
+            VideoComposerService._run_ffmpeg(
+                ["-f", "lavfi", "-i", "anullsrc=r=44100:cl=mono", "-t", "0.1", "-c:a", "aac", str(output_path)]
+            )
+            return
+
+        concat_list = segments_dir / "concat.txt"
+        concat_list.write_text(
+            # ffmpeg's concat demuxer resolves relative "file" entries
+            # against the *list file's own directory*, not the process cwd.
+            # segment_path is relative to cwd (job_dir is built from a
+            # relative library root) -- writing that same relative path
+            # verbatim doubles it up with segments_dir's own path, producing
+            # a nonexistent nested path. Resolve to an absolute path instead.
+            "\n".join(f"file '{path.resolve().as_posix()}'" for path in segment_paths), encoding="utf-8"
+        )
+        VideoComposerService._run_ffmpeg(
+            ["-f", "concat", "-safe", "0", "-i", str(concat_list), "-c", "copy", str(output_path)]
+        )
 
     @staticmethod
     def _group_words_into_lines(words: list[dict]) -> list[list[dict]]:
@@ -884,6 +1310,16 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
                 "-map", "[v]",
                 "-map", "1:a",
                 "-c:v", "libx264",
+                # Without an explicit output pixel format, libx264 just
+                # keeps whatever the filter chain produced -- drawtext/
+                # subtitles here can end up yuv444p depending on the input,
+                # which is invalid/unplayable on plenty of real players
+                # (this is a real, previously-undetected bug: no test ever
+                # checked the *final* output's pixel format before -- see
+                # docs/features/35-multi-beat-composition.md). yuv420p is
+                # this app's own documented final-output spec everywhere
+                # else (Task 06's motion renderer, Task 10's golden sample).
+                "-pix_fmt", "yuv420p",
                 "-c:a", "aac",
                 "-shortest",
                 str(output_path),
@@ -891,16 +1327,28 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
         )
 
     @staticmethod
-    def _write_render_metadata(final_video: Path, video_duration: float, render_seconds: float) -> None:
-        """Lightweight render metadata (Video Factory Epic, Task 10) -- a
-        JSON sidecar next to the finished video, not a new DB column or a
-        billing system. `ai_cost` is always 0.0 here: this pipeline's only
-        "AI" step is `edge_tts` narration, which is Microsoft's free,
-        unofficial API (no key, no billed usage) -- see
-        docs/features/28-video-factory-e2e-pipeline.md for why a nonzero
-        cost would only make sense once a *paid* provider (e.g. a real AI
-        image/video generator) is ever wired in, which this app's
-        RenderPolicy (app/core/render_policy.py) currently forbids anyway.
+    def _write_render_metadata(
+        final_video: Path,
+        video_duration: float,
+        render_seconds: float,
+        *,
+        width: int,
+        height: int,
+        fps: float,
+        clip_count: int,
+    ) -> None:
+        """Lightweight render metadata (Video Factory Epic, Task 10, +width/
+        height/fps/clip_count in Task 34) -- a JSON sidecar next to the
+        finished video, not a new DB column or a billing system. `ai_cost`
+        is always 0.0 here: this pipeline's only "AI" step is `edge_tts`
+        narration, which is Microsoft's free, unofficial API (no key, no
+        billed usage) -- see docs/features/28-video-factory-e2e-pipeline.md
+        for why a nonzero cost would only make sense once a *paid* provider
+        (e.g. a real AI image/video generator) is ever wired in, which this
+        app's RenderPolicy (app/core/render_policy.py) currently forbids
+        anyway. `clip_count` is this job's own vocabulary (it renders
+        `clip_paths`, plural inputs -- it has no notion of a "Beat"); for a
+        Video-Factory-originated job this is exactly the beat count.
         """
         metadata = {
             "render_time_seconds": round(render_seconds, 2),
@@ -908,11 +1356,291 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
             "render_mode": "local",
             "duration": round(video_duration, 2),
             "output_size_mb": round(final_video.stat().st_size / (1024 * 1024), 2),
+            "width": width,
+            "height": height,
+            "fps": fps,
+            "clip_count": clip_count,
         }
         metadata_path = final_video.with_name("render_metadata.json")
         metadata_path.write_text(json.dumps(metadata, indent=2), encoding="utf-8")
 
+    @staticmethod
+    def _validate_final_output(path: Path, *, expected_duration: float, width: int, height: int, fps: float) -> None:
+        """Final validation (Task 10 hardening -- see
+        docs/features/37-e2e-pipeline-hardening.md): a render only counts as
+        successful once its actual output file is inspected with ffprobe,
+        not merely because every ffmpeg subprocess in the pipeline exited
+        with code 0 (a prior real bug -- yuv444p output that no test or
+        runtime check ever caught, see docs/features/35-multi-beat-composition.md
+        -- shows exit-code-0 alone isn't enough).
+
+        Validates against `width`/`height`/`fps` (already probed from this
+        job's own clip_paths[0] and passed to every ffmpeg call in this
+        pipeline) rather than a hardcoded app.core.render_profile.RenderProfile
+        -- the plain upload-based Video Composer flow (unlike Video Factory)
+        legitimately renders whatever resolution its input clips already
+        are, so validating self-consistently ("did the pipeline actually
+        produce what it told ffmpeg to produce") is correct for every job,
+        Video-Factory-originated or not. Video/audio codec and pixel format
+        are validated against fixed constants because _finalize's ffmpeg
+        command hardcodes them the same way for every job regardless of
+        caller (`-c:v libx264 -pix_fmt yuv420p -c:a aac`).
+
+        Caption "burned in" verification is NOT attempted here: ffprobe can
+        report streams/codecs/duration but has no way to confirm burned-in
+        pixels actually contain readable text, and this codebase has no
+        OCR/frame-inspection tooling. The nearest available guarantee is
+        that `_write_subtitles` succeeded and `_finalize`'s `subtitles=`
+        filter ran without ffmpeg raising -- both already required for this
+        method to even be reached.
+        """
+        if not path.exists():
+            raise RuntimeError(f"{render_errors.OUTPUT_VALIDATION_FAILED}: rendered file does not exist: {path}")
+
+        probe = subprocess.run(
+            [
+                "ffprobe", "-v", "error",
+                "-show_entries", "stream=codec_type,codec_name,width,height,r_frame_rate,pix_fmt",
+                "-show_entries", "format=duration",
+                "-of", "json",
+                str(path),
+            ],
+            capture_output=True, text=True, stdin=subprocess.DEVNULL,
+        )
+        if probe.returncode != 0:
+            raise RuntimeError(
+                f"{render_errors.OUTPUT_VALIDATION_FAILED}: ffprobe failed on rendered output: "
+                f"{probe.stderr.strip()[-500:]}"
+            )
+        try:
+            data = json.loads(probe.stdout)
+        except json.JSONDecodeError as exc:
+            raise RuntimeError(
+                f"{render_errors.OUTPUT_VALIDATION_FAILED}: ffprobe returned unparsable output for {path}"
+            ) from exc
+
+        streams = data.get("streams", [])
+        video_stream = next((s for s in streams if s.get("codec_type") == "video"), None)
+        if video_stream is None:
+            raise RuntimeError(f"{render_errors.OUTPUT_VALIDATION_FAILED}: no video stream in rendered output")
+        audio_stream = next((s for s in streams if s.get("codec_type") == "audio"), None)
+        if audio_stream is None:
+            raise RuntimeError(f"{render_errors.OUTPUT_VALIDATION_FAILED}: no audio stream in rendered output")
+
+        try:
+            actual_duration = float(data.get("format", {}).get("duration", 0.0))
+        except (TypeError, ValueError):
+            actual_duration = 0.0
+        diff = abs(actual_duration - expected_duration)
+        logger.info(
+            "Duration validation: expected=%.2fs actual=%.2fs diff=%.2fs (tolerance=%.2fs)",
+            expected_duration, actual_duration, diff, _OUTPUT_DURATION_TOLERANCE_SEC,
+        )
+        if actual_duration <= 0:
+            raise RuntimeError(f"{render_errors.OUTPUT_VALIDATION_FAILED}: rendered output has zero/invalid duration")
+        if diff > _OUTPUT_DURATION_TOLERANCE_SEC:
+            raise RuntimeError(
+                f"{render_errors.OUTPUT_VALIDATION_FAILED}: rendered duration {actual_duration:.2f}s differs from "
+                f"expected {expected_duration:.2f}s by {diff:.2f}s (tolerance {_OUTPUT_DURATION_TOLERANCE_SEC}s)"
+            )
+
+        if int(video_stream.get("width", 0)) != width or int(video_stream.get("height", 0)) != height:
+            raise RuntimeError(
+                f"{render_errors.OUTPUT_VALIDATION_FAILED}: resolution "
+                f"{video_stream.get('width')}x{video_stream.get('height')} does not match expected {width}x{height}"
+            )
+        num, _, den = str(video_stream.get("r_frame_rate", "0/1")).partition("/")
+        try:
+            actual_fps = float(num) / float(den or 1)
+        except (ValueError, ZeroDivisionError):
+            actual_fps = 0.0
+        if actual_fps <= 0 or abs(actual_fps - fps) > 0.5:
+            raise RuntimeError(
+                f"{render_errors.OUTPUT_VALIDATION_FAILED}: fps {actual_fps} does not match expected {fps}"
+            )
+        if video_stream.get("codec_name") != "h264":
+            raise RuntimeError(
+                f"{render_errors.OUTPUT_VALIDATION_FAILED}: video codec {video_stream.get('codec_name')!r} != h264"
+            )
+        if video_stream.get("pix_fmt") != "yuv420p":
+            raise RuntimeError(
+                f"{render_errors.OUTPUT_VALIDATION_FAILED}: pixel format {video_stream.get('pix_fmt')!r} != yuv420p"
+            )
+        if audio_stream.get("codec_name") != "aac":
+            raise RuntimeError(
+                f"{render_errors.OUTPUT_VALIDATION_FAILED}: audio codec {audio_stream.get('codec_name')!r} != aac"
+            )
+
+    @staticmethod
+    def _write_render_report(
+        library_dir: Path,
+        job_id: int,
+        *,
+        status: str,
+        final_video: Path | None = None,
+        video_duration: float | None = None,
+        clip_count: int | None = None,
+        width: int | None = None,
+        height: int | None = None,
+        fps: float | None = None,
+        caption_enabled: bool = False,
+        narration_mode: str = "tts",
+        timing: dict | None = None,
+        error_code: str | None = None,
+        error_message: str | None = None,
+        failed_phase: str | None = None,
+    ) -> None:
+        """Writes `.render/job_<id>/report.json` under the app's own
+        library_dir (Task 10 -- see docs/features/37-e2e-pipeline-hardening.md),
+        independent of `requested_output_dir` (which may be an external,
+        user-chosen folder that's fine for the final video but shouldn't
+        also be where this app stores its own render bookkeeping). On
+        success this is a superset of the pre-existing `render_metadata.json`
+        sidecar (_write_render_metadata, unchanged, still written next to
+        the video for backward compatibility) -- this method additionally
+        tracks external API accounting and per-phase timing, and also
+        writes on *failure*, which render_metadata.json never did.
+
+        `external_api_calls`/`external_api_cost_estimate`: this pipeline's
+        only external network call is edge_tts narration (narration_mode=
+        "tts"). Per this task's own explicit accounting rules, an
+        unofficial free API is still an external call (1), with an honestly
+        unknown cost (null) -- not invented, not silently reported as the
+        old always-0.0 `ai_cost` did. Local narration (narration_mode=
+        "local") makes zero external calls, so both fields are 0.
+        """
+        report_dir = library_dir / ".render" / f"job_{job_id}"
+        report_dir.mkdir(parents=True, exist_ok=True)
+
+        if status == "completed":
+            external_api_calls = 0 if narration_mode == "local" else 1
+            report = {
+                "status": "completed",
+                "job_id": job_id,
+                "job": {"id": job_id, "status": "completed"},
+                "video": {
+                    "path": str(final_video),
+                    "duration": round(video_duration, 2),
+                    "width": width,
+                    "height": height,
+                    "fps": fps,
+                    "video_codec": "h264",
+                    "audio_codec": "aac",
+                    "size_bytes": final_video.stat().st_size,
+                },
+                "beats": clip_count,
+                "captions": caption_enabled,
+                "external_api_calls": external_api_calls,
+                "external_api_cost_estimate": 0 if external_api_calls == 0 else None,
+                "timing": timing or {},
+            }
+        else:
+            # "failed" or "cancelled" (Task 11) -- same shape either way,
+            # per this task's own "do not create a second report format"
+            # instruction; error_code/message are simply None for a
+            # cancellation, which was never an error.
+            report = {
+                "status": status,
+                "job_id": job_id,
+                "job": {"id": job_id, "status": status},
+                "error_code": error_code,
+                "message": error_message,
+                "failed_phase": failed_phase,
+                "timing": timing or {},
+            }
+        (report_dir / "report.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
+
+    def _log(self, job_id: int, message: str) -> None:
+        """`.render/job_<id>/render.log` (Task 11 -- see
+        docs/features/38-render-job-hardening.md): a dedicated, append-only
+        log per job, next to its report.json. Deliberately small (phase
+        lifecycle only, one line each -- job started/phase started/phase
+        completed/job completed) rather than a full ffmpeg-stderr transcript:
+        that's already captured on failure (error_message/report.json's
+        "message", plus this process's own `logger.exception` output) --
+        duplicating raw stderr into a third location wasn't worth the extra
+        surface area for this task. Never logs secrets/API keys -- there
+        are none anywhere in this pipeline's ffmpeg-only, local-only
+        commands to begin with.
+        """
+        log_dir = self._library_dir / ".render" / f"job_{job_id}"
+        log_dir.mkdir(parents=True, exist_ok=True)
+        timestamp = datetime.now(timezone.utc).isoformat()
+        with open(log_dir / "render.log", "a", encoding="utf-8") as f:
+            f.write(f"[{timestamp}] {message}\n")
+
+    def _publish(self, event_name: str, payload: dict) -> None:
+        if self._event_bus is not None:
+            self._event_bus.publish(event_name, payload)
+
+    def _is_cancelled(self, job_id: int) -> bool:
+        event = self._cancel_events.get(job_id)
+        return event is not None and event.is_set()
+
+    def _register_process(self, job_id: int, process: subprocess.Popen) -> None:
+        """Tracks the ffmpeg subprocess a job currently owns, so cancel_job
+        can terminate it immediately instead of only at the next phase/beat
+        checkpoint -- see BeatRenderer's `register_process` callback
+        (composition_render.render_beats_for_job is the real caller).
+        """
+        with self._runtime_lock:
+            self._active_processes[job_id] = process
+
+    def _unregister_process(self, job_id: int) -> None:
+        with self._runtime_lock:
+            self._active_processes.pop(job_id, None)
+
+    def _set_fields(self, job_id: int, **fields) -> None:
+        db = SessionLocal()
+        try:
+            job = db.get(VideoComposeJob, job_id)
+            if job is None:
+                return
+            for key, value in fields.items():
+                setattr(job, key, value)
+            db.commit()
+        finally:
+            db.close()
+
+    def _fail_job(self, job_id: int, failed_phase: str, message: str, timing: dict | None = None) -> None:
+        error_code = render_errors.PHASE_TO_ERROR_CODE.get(failed_phase, render_errors.RENDER_FAILED)
+        self._set_status(job_id, "failed", error_message=message)
+        self._write_render_report(
+            self._library_dir, job_id, status="failed",
+            error_code=error_code, error_message=message, failed_phase=failed_phase, timing=timing,
+        )
+        self._log(job_id, f"job failed in phase {failed_phase}: {message}")
+        self._publish("render.job.failed", {"job_id": job_id, "error_code": error_code, "phase": failed_phase})
+
+    def _finish_cancelled(self, job_id: int, cancelled_phase: str) -> None:
+        db = SessionLocal()
+        try:
+            job = db.get(VideoComposeJob, job_id)
+            if job is not None:
+                job.status = "cancelled"
+                job.completed_at = datetime.now(timezone.utc)
+                db.commit()
+        finally:
+            db.close()
+        # Never delete source assets/library files -- only this job's own
+        # scratch space (motion clips it rendered, ffmpeg tmp files).
+        shutil.rmtree(self.job_dir(job_id) / "scenes", ignore_errors=True)
+        shutil.rmtree(self.job_dir(job_id) / "tmp", ignore_errors=True)
+        self._write_render_report(
+            self._library_dir, job_id, status="cancelled", failed_phase=cancelled_phase, timing={}
+        )
+        self._log(job_id, f"job cancelled in phase {cancelled_phase}")
+        self._publish("render.job.cancelled", {"job_id": job_id, "phase": cancelled_phase})
+
     # --- status/recovery -----------------------------------------------------
+
+    def _get_status(self, job_id: int) -> str | None:
+        db = SessionLocal()
+        try:
+            job = db.get(VideoComposeJob, job_id)
+            return job.status if job is not None else None
+        finally:
+            db.close()
 
     def _set_status(self, job_id: int, status: str, **fields) -> None:
         db = SessionLocal()
@@ -926,17 +1654,44 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
             db.commit()
         finally:
             db.close()
+        self._publish("render.job.phase_changed", {"job_id": job_id, "status": status})
 
     def _recover_pending_jobs(self) -> None:
+        """Startup recovery (Task 11 -- see
+        docs/features/38-render-job-hardening.md). A job still "queued"
+        never actually started -- safe to just re-queue, same as before
+        this task. A job in any other PENDING_STATUSES value was genuinely
+        RUNNING when the process died: an ffmpeg encode killed mid-write
+        can leave corrupt/partial intermediates (unlike a resumable HTTP
+        download, which is why app.services.download.engine.DownloadEngine's
+        equivalent recovery silently re-queues instead), so these are
+        marked FAILED with error_code=RENDER_INTERRUPTED instead -- an
+        explicit, informed user Retry (see retry_job) is safer than an
+        automatic silent re-run.
+        """
         db = SessionLocal()
         try:
-            pending = db.query(VideoComposeJob).filter(VideoComposeJob.status.in_(PENDING_STATUSES)).all()
-            job_ids = [job.id for job in pending]
-            for job in pending:
-                job.status = "queued"
+            queued = db.query(VideoComposeJob).filter(VideoComposeJob.status == "queued").all()
+            queued_ids = [job.id for job in queued]
+
+            interrupted = db.query(VideoComposeJob).filter(VideoComposeJob.status.in_(_RUNNING_STATUSES)).all()
+            interrupted_ids = [job.id for job in interrupted]
+            for job in interrupted:
+                job.status = "failed"
+                job.error_message = "Render was interrupted by an application restart."
+                job.completed_at = datetime.now(timezone.utc)
             db.commit()
         finally:
             db.close()
 
-        for job_id in job_ids:
+        for job_id in interrupted_ids:
+            self._write_render_report(
+                self._library_dir, job_id, status="failed",
+                error_code=render_errors.RENDER_INTERRUPTED,
+                error_message="Render was interrupted by an application restart.",
+                failed_phase="unknown", timing={},
+            )
+            self._log(job_id, "job recovered as failed: interrupted by application restart")
+
+        for job_id in queued_ids:
             self._queue.put(job_id)

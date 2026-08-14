@@ -9,14 +9,58 @@ CAPTION_PRESETS = ("emotional", "cinematic", "word_highlight", "big_statement", 
 
 VIDEO_COMPOSE_STATUSES = (
     "queued",
+    "rendering_beats",
     "merging",
     "narrating",
     "subtitling",
     "mixing_audio",
     "finalizing",
+    "validating",
     "completed",
     "failed",
+    "cancelled",
 )
+
+# Coarse status (Task 11 -- see docs/features/38-render-job-hardening.md):
+# every fine-grained status above collapses to exactly one of these 5. The
+# fine statuses remain the persisted source of truth (existing tests, the
+# progress UI, and _recover_pending_jobs all key off them) -- this mapping
+# is purely a derived, API-facing view (see VideoComposeJobOut.job_status).
+COARSE_STATUS = {
+    "queued": "QUEUED",
+    "rendering_beats": "RUNNING",
+    "merging": "RUNNING",
+    "narrating": "RUNNING",
+    "subtitling": "RUNNING",
+    "mixing_audio": "RUNNING",
+    "finalizing": "RUNNING",
+    "validating": "RUNNING",
+    "completed": "COMPLETED",
+    "failed": "FAILED",
+    "cancelled": "CANCELLED",
+}
+
+# Render phase (Task 11): the 7-phase vocabulary the brief asks for.
+# PREFLIGHT has no entry -- it runs synchronously before a job row even
+# exists (see composition_render.py's render_composition), so it's never a
+# job's own persisted phase; the frontend shows "Preparing..." for that
+# window instead (see docs/features/38-render-job-hardening.md).
+RENDER_PHASE = {
+    "rendering_beats": "RENDER_BEATS",
+    "merging": "COMPOSE_VIDEO",
+    "narrating": "BUILD_AUDIO",
+    "mixing_audio": "BUILD_AUDIO",
+    "subtitling": "BURN_CAPTIONS",
+    "finalizing": "BURN_CAPTIONS",
+    "validating": "VALIDATE_OUTPUT",
+}
+
+# A RUNNING job interrupted by a crash is recovered into this state on next
+# startup (see VideoComposerService._recover_pending_jobs) -- never
+# silently re-queued: an ffmpeg process killed mid-encode can leave
+# corrupt/partial intermediates (unlike a resumable HTTP download), so a
+# fresh, explicit user Retry is safer than an automatic re-run.
+RENDER_INTERRUPTED_ERROR_CODE = "RENDER_INTERRUPTED"
 
 
 def _utcnow() -> datetime:
@@ -67,10 +111,62 @@ class VideoComposeJob(Base):
     # queryable identity.
     sfx_cues: Mapped[list | None] = mapped_column(JSON, nullable=True)
 
+    # Audio pipeline (Video Factory Epic, Task 36). "tts" (default) is the
+    # existing, unchanged behavior: one composition-wide script_text/voice
+    # fed to edge_tts. "local" builds a per-beat narration timeline from
+    # already-recorded audio files instead -- no network call. "none" skips
+    # narration audio entirely (silence for the whole video). Every caller
+    # that predates this column (the plain upload-based Video Composer
+    # flow) gets "tts" via the column default, so its behavior is
+    # unchanged with zero migration.
+    narration_mode: Mapped[str] = mapped_column(String, nullable=False, default="tts")
+    # One entry per beat, in order: [{"duration": float, "path": str|null}, ...]
+    # -- only used when narration_mode="local". Same "JSON column, not a
+    # child table" reasoning as sfx_cues above.
+    beat_narration_specs: Mapped[list | None] = mapped_column(JSON, nullable=True)
+
     # User-chosen destination folder for the final video. None means "use
     # the default location" (library/_video_composer/job_<id>/output/) --
     # same convention as SceneCutJob.requested_output_dir.
     requested_output_dir: Mapped[str | None] = mapped_column(String, nullable=True)
+
+    # End-to-end pipeline hardening (Task 10 -- see
+    # docs/features/37-e2e-pipeline-hardening.md). render_profile names
+    # which app.core.render_profile.RenderProfile this job's output must
+    # match (checked by _validate_final_output). preflight_seconds is timed
+    # by the composition-root adapter (app/api/v1/endpoints/composition_render.py)
+    # *before* this job even exists (preflight is a fast, synchronous check
+    # run before the job row is created, so a bad request fails immediately
+    # instead of queuing a doomed job) -- passed in at create time rather
+    # than timed here. beat_render_seconds is now timed by the worker
+    # itself (Task 11 moved beat rendering off the request thread and onto
+    # the worker -- see RENDER_BEATS in RENDER_PHASE above). Both are None
+    # for jobs created via the plain upload-based Video Composer flow.
+    render_profile: Mapped[str] = mapped_column(String, nullable=False, default="SOCIAL_VERTICAL")
+    preflight_seconds: Mapped[float | None] = mapped_column(Float, nullable=True)
+    beat_render_seconds: Mapped[float | None] = mapped_column(Float, nullable=True)
+
+    # Render job hardening (Task 11). The full original render request
+    # (CompositionRenderRequest as a plain dict: plan/asset_paths/
+    # narration_asset_paths/profile) -- lets the worker do the actual
+    # per-beat motion rendering itself (composition_render.render_beats_for_job,
+    # injected into VideoComposerService as `beat_renderer`, mirroring how
+    # app/services/download/engine.py's DownloadEngine takes a pluggable
+    # `Downloader` -- see app/main.py) instead of blocking the HTTP request,
+    # and lets retry_job() rebuild an equivalent fresh request. None for
+    # plain-upload jobs (already have real clips, nothing to re-render) and
+    # for jobs created before this task.
+    composition_request_json: Mapped[dict | None] = mapped_column(JSON, nullable=True)
+    # Bare int, no FK (the same "cross-reference within this app without a
+    # relationship" convention this codebase already uses for cross-module
+    # references -- here it's simply informational, not worth a real FK for
+    # a same-table self-reference). Set on a job created via retry_job().
+    previous_job_id: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    # Live progress during the RENDER_BEATS phase only -- {"current": 3,
+    # "total": 5}. Both None outside that phase. Only ever set to real,
+    # known counts (never a guessed/interpolated percentage).
+    render_progress_current: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    render_progress_total: Mapped[int | None] = mapped_column(Integer, nullable=True)
 
     status: Mapped[str] = mapped_column(String, nullable=False, default="queued")
     output_path: Mapped[str | None] = mapped_column(String, nullable=True)

@@ -8,6 +8,7 @@ import {
   Scissors,
   Clapperboard,
   BarChart3,
+  Layers,
   Sparkles,
   Wand2,
 } from "lucide-react";
@@ -24,6 +25,7 @@ const NAV_ITEMS = [
   { to: "/video-composer", label: "Video Composer", icon: Clapperboard },
   { to: "/ai", label: "AI Content", icon: Sparkles },
   { to: "/video-factory", label: "Video Factory", icon: Wand2 },
+  { to: "/batches", label: "Batches", icon: Layers },
   { to: "/settings", label: "Settings", icon: Settings },
 ];
 

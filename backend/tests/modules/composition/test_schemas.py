@@ -83,6 +83,22 @@ class SceneMotionValidationTests(unittest.TestCase):
         self.assertEqual(motion.preset_name, "some_future_preset_this_contract_has_never_heard_of")
 
 
+class SceneAudioNarrationAssetTests(unittest.TestCase):
+    def test_narration_asset_id_defaults_to_none(self):
+        self.assertIsNone(SceneAudio().narration_asset_id)
+
+    def test_valid_positive_narration_asset_id_accepted(self):
+        self.assertEqual(SceneAudio(narration_asset_id=5).narration_asset_id, 5)
+
+    def test_zero_narration_asset_id_rejected(self):
+        with self.assertRaises(ValidationError):
+            SceneAudio(narration_asset_id=0)
+
+    def test_negative_narration_asset_id_rejected(self):
+        with self.assertRaises(ValidationError):
+            SceneAudio(narration_asset_id=-1)
+
+
 class SceneValidationTests(unittest.TestCase):
     def test_valid_scene(self):
         scene = _scene()

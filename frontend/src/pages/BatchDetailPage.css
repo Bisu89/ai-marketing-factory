@@ -1,0 +1,111 @@
+.bd-loading {
+  display: flex;
+  justify-content: center;
+  padding: 48px 0;
+  color: var(--text-muted);
+}
+
+.bd-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.bd-table-wrap {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.bd-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.bd-table thead th {
+  text-align: left;
+  padding: 10px 16px;
+  font-weight: 600;
+  color: var(--text-muted);
+  font-size: 12px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-alt);
+}
+
+.bd-table tbody td {
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  vertical-align: top;
+}
+
+.bd-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.bd-script-preview {
+  max-width: 480px;
+  color: var(--text);
+}
+
+.bd-error-message {
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--danger);
+}
+
+.bd-ineligible,
+.bd-eligible {
+  margin-top: 4px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.bd-ineligible {
+  color: var(--danger);
+}
+
+.bd-eligible {
+  color: var(--success);
+}
+
+.bd-status {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.bd-status--COMPLETED {
+  color: var(--success);
+}
+
+.bd-status--FAILED {
+  color: var(--danger);
+}
+
+.bd-status--RENDERING,
+.bd-status--PROJECT_CREATED {
+  color: var(--accent);
+}
+
+.bd-status--SKIPPED {
+  color: #d97706;
+}
+
+.bd-status--PENDING,
+.bd-status--BEATS_READY,
+.bd-status--READY_TO_RENDER,
+.bd-status--CANCELLED {
+  color: var(--text-muted);
+}
+
+.bd-open-btn {
+  padding: 5px 10px;
+  font-size: 12px;
+  white-space: nowrap;
+}
