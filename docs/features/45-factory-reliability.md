@@ -1,6 +1,6 @@
 # 45 — Factory Reliability: Persistent Checkpoints + Crash-Safe Resume
 
-**Commit:** _(fill in after commit)_
+**Commit:** `7652e3a`
 
 Hardens Task 18's `FactoryRun` orchestration to survive an app crash or
 Windows restart mid-production without losing work or silently repeating
