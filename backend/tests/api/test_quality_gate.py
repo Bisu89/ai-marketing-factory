@@ -15,7 +15,7 @@ from sqlalchemy.orm import Session, sessionmaker
 
 from app.api.v1.endpoints.quality_gate import (
     QualityCheckRequest,
-    _compute_asset_confidence,
+    compute_asset_confidence,
     _resolve_beat_asset_info,
     check_plan_quality,
     check_project_quality,
@@ -62,27 +62,27 @@ class ComputeAssetConfidenceTests(unittest.TestCase):
     def test_no_hint_or_narration_is_high_confidence(self):
         asset = _register(self.service, self.tmp_path, "photo.jpg", tags=["mountain"])
         beat = _beat(narration=None, visual_hint=None)
-        self.assertEqual(_compute_asset_confidence(beat, asset), "HIGH")
+        self.assertEqual(compute_asset_confidence(beat, asset), "HIGH")
 
     def test_strong_tag_overlap_is_high_confidence(self):
         asset = _register(self.service, self.tmp_path, "photo.jpg", tags=["woman", "gift", "surprise"])
         beat = _beat(visual_hint="woman opening a gift, surprise")
-        self.assertEqual(_compute_asset_confidence(beat, asset), "HIGH")
+        self.assertEqual(compute_asset_confidence(beat, asset), "HIGH")
 
     def test_partial_overlap_is_medium_confidence(self):
         asset = _register(self.service, self.tmp_path, "photo.jpg", tags=["woman"])
         beat = _beat(visual_hint="woman opening a mysterious ancient chest slowly")
-        self.assertEqual(_compute_asset_confidence(beat, asset), "MEDIUM")
+        self.assertEqual(compute_asset_confidence(beat, asset), "MEDIUM")
 
     def test_zero_overlap_is_low_confidence(self):
         asset = _register(self.service, self.tmp_path, "mountain_sunrise.jpg", tags=["mountain", "sunrise"])
         beat = _beat(visual_hint="woman opening a gift with surprise")
-        self.assertEqual(_compute_asset_confidence(beat, asset), "LOW")
+        self.assertEqual(compute_asset_confidence(beat, asset), "LOW")
 
     def test_filename_tokens_also_count_toward_overlap(self):
         asset = _register(self.service, self.tmp_path, "woman_gift_surprise.jpg", tags=[])
         beat = _beat(visual_hint="woman opening a gift, surprise")
-        self.assertEqual(_compute_asset_confidence(beat, asset), "HIGH")
+        self.assertEqual(compute_asset_confidence(beat, asset), "HIGH")
 
     def test_punctuation_in_narration_does_not_break_matching(self):
         asset = _register(self.service, self.tmp_path, "photo.jpg", tags=["home"])
@@ -92,7 +92,7 @@ class ComputeAssetConfidenceTests(unittest.TestCase):
         # "home" only after Path().stem strips it as a fake extension,
         # which is exactly the fragile behavior this dedicated prose
         # tokenizer avoids relying on.
-        self.assertEqual(_compute_asset_confidence(beat, asset), "HIGH")
+        self.assertEqual(compute_asset_confidence(beat, asset), "HIGH")
 
 
 class ResolveBeatAssetInfoTests(unittest.TestCase):

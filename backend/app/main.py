@@ -9,6 +9,7 @@ from fastapi.staticfiles import StaticFiles
 
 import app.models  # noqa: F401  (registers ORM models on Base.metadata)
 from app.api.v1.endpoints.composition_render import render_beats_for_job
+from app.api.v1.endpoints.factory_pipeline import reconcile_factory_runs_on_startup, register_factory_event_handlers
 from app.api.v1.router import api_router
 from app.core.config import get_settings, resource_path
 from app.core.events import EventBus
@@ -71,6 +72,15 @@ async def lifespan(app: FastAPI):
     )
     video_composer_service.start()
     app.state.video_composer_service = video_composer_service
+
+    # Task 18 (see docs/features/44-one-click-factory-pipeline.md) --
+    # register FactoryRun's render.job.* subscriptions the same way this
+    # comment block above already invites future modules to, then
+    # reconcile any FactoryRun left in an active status by a previous
+    # process, *after* video_composer_service.start() has already settled
+    # every VideoComposeJob's own state via its own crash recovery.
+    register_factory_event_handlers(event_bus)
+    reconcile_factory_runs_on_startup(settings)
 
     yield
 

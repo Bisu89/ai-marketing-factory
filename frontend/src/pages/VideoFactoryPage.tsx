@@ -27,6 +27,7 @@ import {
   Zap,
 } from "lucide-react";
 import { PageHeader } from "../components/PageHeader";
+import { ProductionProgress } from "../components/ProductionProgress";
 import { EmptyState } from "../components/EmptyState";
 import { AssetBrowserModal } from "../components/AssetBrowserModal";
 import { assetFileUrl, getAsset } from "../api/asset";
@@ -390,6 +391,7 @@ export function VideoFactoryPage() {
   const [generating, setGenerating] = useState(false);
   const [generateError, setGenerateError] = useState<string | null>(null);
   const [loadError, setLoadError] = useState<string | null>(null);
+  const [projectDataLoaded, setProjectDataLoaded] = useState(false);
   const [dirty, setDirty] = useState(false);
   const [saving, setSaving] = useState(false);
   const [saveError, setSaveError] = useState<string | null>(null);
@@ -514,6 +516,15 @@ export function VideoFactoryPage() {
         setDirty(false);
       } catch (err) {
         if (!cancelled) setLoadError(err instanceof Error ? err.message : "Could not load saved beat plan.");
+      } finally {
+        // Task 18 -- see docs/features/44-one-click-factory-pipeline.md.
+        // ProductionProgress's own render-job-ready handoff (setJobId +
+        // setStep(5)) must never race ahead of this effect: it fetches the
+        // FactoryRun independently and can resolve before this project
+        // load does, which would otherwise land Step 5 on this page's
+        // still-empty initial `beats` state (0 beats, 0 duration) instead
+        // of the real, just-loaded project.
+        if (!cancelled) setProjectDataLoaded(true);
       }
     })();
     return () => {
@@ -898,6 +909,20 @@ export function VideoFactoryPage() {
       />
 
       <StepIndicator current={step} onSelect={goToStep} beatsReady={beats.length > 0} />
+
+      {projectId != null && projectDataLoaded && (
+        <ProductionProgress
+          projectId={projectId}
+          onRenderJobReady={(readyJobId) => {
+            setJobId(readyJobId);
+            setStep(5);
+          }}
+          onReviewBeat={(beatId) => {
+            setSelectedBeatId(beatId);
+            setStep(2);
+          }}
+        />
+      )}
 
       {step === 1 && (
         <section className="vf-step-panel">

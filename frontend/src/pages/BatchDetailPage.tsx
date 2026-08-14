@@ -10,11 +10,13 @@ import {
   Loader2,
   RotateCcw,
   Sparkles,
+  Wand2,
   XCircle,
 } from "lucide-react";
 import { PageHeader } from "../components/PageHeader";
 import { cancelBatch, generateBeatsForBatch, getBatch, renderBatch, retryBatch } from "../api/batch";
 import { checkBatchQuality } from "../api/quality";
+import { continueBatchProduction, produceBatch } from "../api/factory";
 import type { Batch, BatchItem, BatchItemStatus } from "../types/batch";
 import type { BatchQualitySummary } from "../types/quality";
 import "./BatchDetailPage.css";
@@ -119,6 +121,38 @@ export function BatchDetailPage() {
     }
   }
 
+  // Task 18 -- see docs/features/44-one-click-factory-pipeline.md. Not a
+  // second render trigger: produceBatch/continueBatchProduction call
+  // FactoryPipeline.run_project() per eligible item, which itself only
+  // ever creates a RenderJob through the same existing LocalRenderQueue
+  // Render All (above) already uses -- this just adds Beat generation +
+  // visual assignment + Quality Gate ahead of that, automatically.
+  async function handleProduce() {
+    setBusyAction("produce");
+    setActionError(null);
+    try {
+      await produceBatch(id);
+      await refresh();
+    } catch (err) {
+      setActionError(err instanceof Error ? err.message : "Could not produce this batch.");
+    } finally {
+      setBusyAction(null);
+    }
+  }
+
+  async function handleContinueBatch() {
+    setBusyAction("continue");
+    setActionError(null);
+    try {
+      await continueBatchProduction(id);
+      await refresh();
+    } catch (err) {
+      setActionError(err instanceof Error ? err.message : "Could not continue this batch.");
+    } finally {
+      setBusyAction(null);
+    }
+  }
+
   if (loadError && !batch) {
     return (
       <>
@@ -142,6 +176,10 @@ export function BatchDetailPage() {
   const pendingBeats = batch.items.filter((i) => i.status === "PROJECT_CREATED").length;
   const readyToRender = batch.items.filter((i) => i.status === "BEATS_READY").length;
   const retryable = batch.items.filter((i) => i.status === "FAILED" || i.status === "SKIPPED").length;
+  const producible = batch.items.filter((i) =>
+    ["PENDING", "PROJECT_CREATED", "BEATS_READY"].includes(i.status)
+  ).length;
+  const continuable = batch.items.filter((i) => i.status === "NEEDS_REVIEW" || i.status === "FAILED").length;
   const cancellable = batch.items.some((i) =>
     ["PENDING", "PROJECT_CREATED", "BEATS_READY", "RENDERING"].includes(i.status)
   );
@@ -158,6 +196,22 @@ export function BatchDetailPage() {
       {actionError && <div className="batch-alert batch-alert-error">{actionError}</div>}
 
       <div className="bd-actions">
+        <button
+          className="btn btn-primary"
+          disabled={producible === 0 || busyAction != null}
+          onClick={handleProduce}
+        >
+          {busyAction === "produce" ? <Loader2 size={14} className="spin" /> : <Wand2 size={14} />}
+          Produce ({producible})
+        </button>
+        <button
+          className="btn btn-secondary"
+          disabled={continuable === 0 || busyAction != null}
+          onClick={handleContinueBatch}
+        >
+          {busyAction === "continue" ? <Loader2 size={14} className="spin" /> : <RotateCcw size={14} />}
+          Continue Batch ({continuable})
+        </button>
         <button
           className="btn btn-secondary"
           disabled={pendingBeats === 0 || busyAction != null}

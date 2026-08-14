@@ -235,7 +235,10 @@ class SaveProjectAsTemplateTests(unittest.TestCase):
         # template provenance, by construction, not by a strip-list that
         # could miss something.
         fields = set(ProjectConfig.model_fields.keys())
-        self.assertEqual(fields, {"render", "motion", "captions", "audio", "template_id", "template_version"})
+        # Task 18 added `factory` (see docs/features/44-one-click-factory-pipeline.md)
+        # -- plain booleans only, no asset_id/beat_id/job_id/output_path, so
+        # this invariant still holds with it included.
+        self.assertEqual(fields, {"render", "motion", "captions", "audio", "factory", "template_id", "template_version"})
 
 
 class BackwardCompatibilityTests(unittest.TestCase):

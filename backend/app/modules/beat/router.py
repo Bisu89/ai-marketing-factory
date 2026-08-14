@@ -21,7 +21,7 @@ from pydantic import BaseModel, ValidationError as PydanticValidationError
 
 from app.core.config import Settings, get_settings
 from app.core.exceptions import NotFoundError, ValidationError
-from app.modules.beat.project_service import get_project_draft, update_project_beat_plan
+from app.modules.beat.project_service import create_project, get_project_draft, update_project_beat_plan
 from app.modules.beat.schemas import BUILTIN_TEMPLATE_IDS, BUILTIN_TEMPLATES, BeatPlan, ProjectConfig, ProjectOut, Template
 from app.modules.beat.service import (
     delete_custom_template,
@@ -75,6 +75,40 @@ def put_beat_plan(payload: BeatPlan, settings: Settings = Depends(get_settings))
 # time by id, via app.modules.beat.project_service -- it has no idea a
 # Batch/BatchItem exists (app.modules.beat must never import
 # app.modules.batch).
+
+
+class CreateProjectRequest(BaseModel):
+    name: str
+    script_text: str
+    template_id: str = "custom"
+
+
+def _resolve_template_config(template_id: str, settings: Settings) -> ProjectConfig:
+    templates = {t.id: t for t in [*BUILTIN_TEMPLATES, *load_custom_templates(_templates_json_path(settings))]}
+    if template_id not in templates:
+        raise NotFoundError("Template", template_id)
+    return templates[template_id].config.model_copy(deep=True)
+
+
+@router.post("/projects", response_model=ProjectOut, status_code=201)
+def create_project_endpoint(payload: CreateProjectRequest, settings: Settings = Depends(get_settings)) -> ProjectOut:
+    """A single-project counterpart to batch creation's own per-item Project
+    row (see app/api/v1/endpoints/batch_render.py's create_batch) -- reuses
+    the exact same app.modules.beat.project_service.create_project this
+    codebase already has, just called for one project outside of a batch
+    (Task 18's "New Video" one-click flow needs a real, id-addressable
+    Project to attach a FactoryRun to; the classic singleton beats.json
+    flow above has no id at all). No beats yet (a real, valid lifecycle
+    state -- see ProjectOut's own docstring); the caller generates them
+    next, either manually or via FactoryPipeline.
+    """
+    if not payload.name.strip():
+        raise ValidationError("Project name must not be blank.")
+    if not payload.script_text.strip():
+        raise ValidationError("Script must not be blank.")
+    config = _resolve_template_config(payload.template_id, settings)
+    project_id = create_project(payload.name, payload.script_text, config)
+    return get_project_draft(project_id)
 
 
 @router.get("/projects/{project_id}", response_model=ProjectOut)

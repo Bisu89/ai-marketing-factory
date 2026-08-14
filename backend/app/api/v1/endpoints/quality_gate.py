@@ -46,7 +46,7 @@ _HIGH_CONFIDENCE_OVERLAP_RATIO = 0.5
 _PUNCTUATION_RE = re.compile(r"[^\w\s]")
 
 
-def _tokenize_prose(text: str) -> set[str]:
+def tokenize_prose(text: str) -> set[str]:
     """tokenize_filename (Task 15) is built for filenames -- it splits on
     _/-/space but never strips sentence punctuation, so "home." would never
     match a clean "home" tag. Narration/visual_hint is prose, not a
@@ -55,7 +55,7 @@ def _tokenize_prose(text: str) -> set[str]:
     return set(tokenize_filename(_PUNCTUATION_RE.sub(" ", text), strip_stopwords=False))
 
 
-def _compute_asset_confidence(beat: Beat, asset: Asset) -> str:
+def compute_asset_confidence(beat: Beat, asset: Asset) -> str:
     """A deterministic, explainable stand-in for "how well does this
     assigned asset match what this beat is supposed to show" -- there is no
     real AssetMatcher/VisualIntent system in this codebase to ask (see this
@@ -75,8 +75,15 @@ def _compute_asset_confidence(beat: Beat, asset: Asset) -> str:
     all -> HIGH: there is genuinely no stated visual intent to contradict
     the assignment, so it is not penalized for a gap in the beat's own
     authored text.
+
+    Public (not `_`-prefixed), same reasoning as batch_render.py's own
+    project_composition_plan promotion: Task 18's
+    app/api/v1/endpoints/factory_pipeline.py -- another composition root --
+    reuses this (and tokenize_prose below) directly for its own auto-assign
+    stage's candidate search + confidence check, rather than a second
+    implementation of the same keyword-overlap logic.
     """
-    hint_tokens = _tokenize_prose(beat.visual_hint) if beat.visual_hint else set()
+    hint_tokens = tokenize_prose(beat.visual_hint) if beat.visual_hint else set()
     if not hint_tokens:
         return "HIGH"
 
@@ -110,7 +117,7 @@ def _resolve_beat_asset_info(beat: Beat, asset_service: AssetService) -> BeatAss
     return BeatAssetInfo(
         has_asset=True,
         asset_valid=True,
-        asset_confidence=_compute_asset_confidence(beat, asset),
+        asset_confidence=compute_asset_confidence(beat, asset),
         portrait_suitability=classify_portrait_suitability(asset.width, asset.height),
     )
 

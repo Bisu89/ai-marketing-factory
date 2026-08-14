@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Ban, CheckCircle2, Plus, RefreshCw, Wand2, XCircle } from "lucide-react";
 import { PageHeader } from "../components/PageHeader";
 import { EmptyState } from "../components/EmptyState";
+import { NewVideoModal } from "../components/NewVideoModal";
 import { getDashboard } from "../api/dashboard";
 import { cancelVideoComposeJob, retryVideoComposeJob } from "../api/videoComposer";
 import { mediaUrl } from "../api/client";
@@ -37,6 +38,7 @@ export function DashboardPage() {
   const [loading, setLoading] = useState(true);
   const [busyJobId, setBusyJobId] = useState<number | null>(null);
   const pollRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [newVideoOpen, setNewVideoOpen] = useState(false);
 
   const refresh = useCallback(async () => {
     try {
@@ -93,20 +95,23 @@ export function DashboardPage() {
 
   const headerActions = (
     <div className="dash-header-actions">
-      <Link className="btn btn-secondary" to="/video-factory">
+      <button className="btn btn-secondary" onClick={() => setNewVideoOpen(true)}>
         <Plus size={14} /> New Video
-      </Link>
+      </button>
       <Link className="btn btn-primary" to="/batches?new=1">
         <Plus size={14} /> New Batch
       </Link>
     </div>
   );
 
+  const newVideoModal = newVideoOpen && <NewVideoModal onClose={() => setNewVideoOpen(false)} />;
+
   if (loading) {
     return (
       <>
         <PageHeader title="Production Dashboard" actions={headerActions} />
         <div className="dash-loading">Loading production status...</div>
+        {newVideoModal}
       </>
     );
   }
@@ -121,6 +126,7 @@ export function DashboardPage() {
             <RefreshCw size={13} /> Retry
           </button>
         </div>
+        {newVideoModal}
       </>
     );
   }
@@ -136,6 +142,7 @@ export function DashboardPage() {
           title="Welcome to Video Factory"
           description="No active production yet. Create your first video or batch to see it here."
         />
+        {newVideoModal}
       </>
     );
   }
@@ -372,6 +379,7 @@ export function DashboardPage() {
           </ul>
         </section>
       </div>
+      {newVideoModal}
     </>
   );
 }

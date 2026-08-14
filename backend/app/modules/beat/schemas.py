@@ -232,6 +232,22 @@ class AudioProjectConfig(BaseModel):
         return value
 
 
+class FactoryProjectConfig(BaseModel):
+    """One-click production policy (Task 18 -- see
+    docs/features/44-one-click-factory-pipeline.md). Governs how
+    FactoryPipeline auto-assigns visuals and whether it renders
+    immediately once the Quality Gate passes; it does not change how the
+    Quality Gate itself scores anything (app.modules.quality is untouched).
+    """
+
+    model_config = ConfigDict(extra="forbid")
+
+    auto_assign_high_confidence: bool = True
+    require_review_for_medium_confidence: bool = True
+    require_review_for_low_confidence: bool = True
+    render_after_quality_pass: bool = True
+
+
 class ProjectConfig(BaseModel):
     """The one, unified configuration object -- render/motion/captions/audio
     -- shared by templates and projects alike (Task 12's own "do not
@@ -247,6 +263,7 @@ class ProjectConfig(BaseModel):
     motion: MotionProjectConfig = Field(default_factory=MotionProjectConfig)
     captions: CaptionsProjectConfig = Field(default_factory=CaptionsProjectConfig)
     audio: AudioProjectConfig = Field(default_factory=AudioProjectConfig)
+    factory: FactoryProjectConfig = Field(default_factory=FactoryProjectConfig)
     # Provenance only, like Beat.asset_id -- which Template (and which
     # version of it) this config was snapshotted from, if any. A project
     # created without choosing a template (or a pre-Task-12 project) has

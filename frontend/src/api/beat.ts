@@ -35,6 +35,21 @@ export function getProject(projectId: number): Promise<Project> {
   return apiGet(`/projects/${projectId}`);
 }
 
+// Task 18 -- see docs/features/44-one-click-factory-pipeline.md. A single-
+// project counterpart to createBatch (api/batch.ts): a real, id-addressable
+// Project row outside of a batch, needed so the "New Video" one-click flow
+// has something to attach a FactoryRun to (the classic loadBeatPlan/
+// saveBeatPlan singleton above has no id at all).
+export interface CreateProjectRequest {
+  name: string;
+  script_text: string;
+  template_id: string;
+}
+
+export function createProject(request: CreateProjectRequest): Promise<Project> {
+  return apiPost("/projects", request);
+}
+
 export function saveProjectBeatPlan(projectId: number, plan: GeneratedBeatPlan): Promise<GeneratedBeatPlan> {
   return apiPut(`/projects/${projectId}/beat-plan`, plan);
 }

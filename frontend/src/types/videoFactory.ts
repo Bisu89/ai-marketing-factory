@@ -294,11 +294,20 @@ export interface AudioProjectConfig {
   ducking: boolean;
 }
 
+// Task 18 -- see docs/features/44-one-click-factory-pipeline.md.
+export interface FactoryProjectConfig {
+  auto_assign_high_confidence: boolean;
+  require_review_for_medium_confidence: boolean;
+  require_review_for_low_confidence: boolean;
+  render_after_quality_pass: boolean;
+}
+
 export interface ProjectConfig {
   render: RenderProjectConfig;
   motion: MotionProjectConfig;
   captions: CaptionsProjectConfig;
   audio: AudioProjectConfig;
+  factory: FactoryProjectConfig;
   template_id: string | null;
   template_version: number | null;
 }
@@ -317,6 +326,12 @@ export const SYSTEM_DEFAULT_PROJECT_CONFIG: ProjectConfig = {
   motion: { default_preset: "STATIC" },
   captions: { enabled: true, preset: "emotional" },
   audio: { narration_enabled: true, music_enabled: true, music_volume: 0.15, ducking: true },
+  factory: {
+    auto_assign_high_confidence: true,
+    require_review_for_medium_confidence: true,
+    require_review_for_low_confidence: true,
+    render_after_quality_pass: true,
+  },
   template_id: null,
   template_version: null,
 };

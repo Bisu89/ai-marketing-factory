@@ -10,6 +10,7 @@ from app.api.v1.endpoints import (
     detect,
     downloads,
     emotions,
+    factory_pipeline,
     health,
     insights,
     performance,
@@ -54,3 +55,4 @@ api_router.include_router(batch_router, tags=["batch"])
 api_router.include_router(batch_render.router, tags=["batch-render"])
 api_router.include_router(quality_gate.router, tags=["quality-gate"])
 api_router.include_router(dashboard.router, tags=["dashboard"])
+api_router.include_router(factory_pipeline.router, tags=["factory-pipeline"])

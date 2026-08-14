@@ -112,7 +112,7 @@ def _validate_scripts(scripts_text: str) -> list[str]:
 # docstring) ------------------------------------------------------------
 
 
-def _beat_to_scene(beat, config, output_format: OutputFormat) -> Scene:
+def beat_to_scene(beat, config, output_format: OutputFormat) -> Scene:
     effective_preset = (beat.motion_preset.value if beat.motion_preset else config.motion.default_preset.value).lower()
     motion_plan = build_motion_plan(effective_preset, duration=beat.duration)
     return Scene(
@@ -138,7 +138,7 @@ def _beat_to_scene(beat, config, output_format: OutputFormat) -> Scene:
     )
 
 
-def _project_composition_plan(
+def project_composition_plan(
     plan: BeatPlan, asset_service: AssetService
 ) -> tuple[CompositionPlan, dict[int, str], dict[int, str]]:
     """Builds a real, renderable CompositionPlan from a Project's BeatPlan
@@ -149,6 +149,11 @@ def _project_composition_plan(
     partially-valid plan) -- this doubles as this task's own render-
     eligibility check (see _check_eligibility below): building the plan
     successfully *is* the check.
+
+    Public (not `_`-prefixed), same as beat_to_scene above: Task 18's
+    app/api/v1/endpoints/factory_pipeline.py -- another composition root --
+    reuses both directly for its own RENDER stage rather than duplicating
+    this Beat-plan-to-CompositionPlan translation a second time.
     """
     if not plan.beats:
         raise ValidationError("No beats generated yet.")
@@ -173,7 +178,7 @@ def _project_composition_plan(
                 raise FileOperationError(f"Beat {beat.order}: narration asset file is missing: {narration_asset.path}")
             narration_asset_paths[beat.narration_asset_id] = narration_asset.path
 
-        scenes.append(_beat_to_scene(beat, plan.config, output_format))
+        scenes.append(beat_to_scene(beat, plan.config, output_format))
 
     composition_plan = CompositionPlan(
         video_id=None,
@@ -203,7 +208,7 @@ def _check_eligibility(project_id: int, asset_service: AssetService) -> tuple[bo
         # (see ProjectOut's docstring), not a system error.
         return False, "No beats generated yet."
     try:
-        _project_composition_plan(plan, asset_service)
+        project_composition_plan(plan, asset_service)
     except (ValidationError, NotFoundError, FileOperationError) as exc:
         return False, str(exc)
     return True, None
@@ -340,7 +345,7 @@ def render_batch(
 
         try:
             plan = get_project_beat_plan(item.project_id)
-            composition_plan, asset_paths, narration_asset_paths = _project_composition_plan(plan, asset_service)
+            composition_plan, asset_paths, narration_asset_paths = project_composition_plan(plan, asset_service)
         except (ValidationError, NotFoundError, FileOperationError) as exc:
             set_item_fields(item.id, status="SKIPPED", error_message=str(exc))
             continue
