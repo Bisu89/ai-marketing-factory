@@ -21,7 +21,7 @@ stage instead of restarting from PREPARING every time).
 
 from datetime import datetime, timezone
 
-from sqlalchemy import JSON, Boolean, DateTime, Float, Integer, String
+from sqlalchemy import JSON, Boolean, DateTime, ForeignKey, Integer, String
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.db.base import Base
@@ -66,6 +66,14 @@ FACTORY_STAGES = (
 # per project is allowed at a time (section 44/45's locking requirement).
 FACTORY_RUN_ACTIVE_STATUSES = tuple(s for s in FACTORY_RUN_STATUSES if s not in ("COMPLETED", "FAILED", "CANCELLED"))
 
+# Task 19 (see docs/features/45-factory-reliability.md) section 26 -- purely
+# informational: this app has no automatic retry loop (every retry is a
+# user-triggered POST /factory-runs/{id}/retry -- see factory_pipeline.py),
+# so attempts are never blocked past this number. It only flags
+# FactoryRunOut.max_attempts_reached so the frontend can show a softer
+# "this keeps failing" hint instead of a plain Retry button.
+FACTORY_MAX_ATTEMPTS = 3
+
 
 def _utcnow() -> datetime:
     return datetime.now(timezone.utc)
@@ -76,13 +84,21 @@ class FactoryRun(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True)
     project_id: Mapped[int] = mapped_column(Integer, nullable=False, index=True)
-    status: Mapped[str] = mapped_column(String, nullable=False, default="PREPARING")
+    # Indexed (Task 19 section 43) -- reconcile_factory_runs_on_startup and
+    # list_active_runs both filter by status on every startup.
+    status: Mapped[str] = mapped_column(String, nullable=False, default="PREPARING", index=True)
     # Only set while status == "FAILED" -- which FACTORY_STAGES value was
     # active when the failure happened (section 24/25: Retry must resume
     # from here, not from the beginning).
     failed_stage: Mapped[str | None] = mapped_column(String, nullable=True)
     error_code: Mapped[str | None] = mapped_column(String, nullable=True)
     error_message: Mapped[str | None] = mapped_column(String, nullable=True)
+
+    # Task 19 section 26 -- how many times this run has been (re)started via
+    # retry_run(), including the original attempt (so a fresh run is 1, not
+    # 0). Never reset by Continue (NEEDS_REVIEW -> QUALITY_CHECK isn't a
+    # retry, it's the first real attempt at that stage), only by retry_run.
+    attempt: Mapped[int] = mapped_column(Integer, nullable=False, default=1)
 
     # Bare int, no FK (see module docstring) -- set once the RENDER stage
     # actually creates a real app.modules.video_composer.VideoComposeJob.
@@ -115,4 +131,64 @@ class FactoryRun(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow)
     started_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     completed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    # This IS the "last_checkpoint_at"/heartbeat field the Task 19 brief
+    # describes (section 5/19/20) -- it already updates on every single
+    # stage transition (every set_run_fields() call), so a second, duplicate
+    # column would carry the exact same information (see that section's own
+    # "if equivalent fields already exist: reuse them" instruction).
+    updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow, onupdate=_utcnow, index=True)
+
+
+# -- Task 19: per-stage checkpoints (see docs/features/45-factory-reliability.md) --
+
+CHECKPOINT_PENDING = "PENDING"
+CHECKPOINT_RUNNING = "RUNNING"
+CHECKPOINT_COMPLETED = "COMPLETED"
+CHECKPOINT_FAILED = "FAILED"
+CHECKPOINT_SKIPPED = "SKIPPED"
+
+FACTORY_CHECKPOINT_STATUSES = (
+    CHECKPOINT_PENDING, CHECKPOINT_RUNNING, CHECKPOINT_COMPLETED, CHECKPOINT_FAILED, CHECKPOINT_SKIPPED,
+)
+
+
+class FactoryCheckpoint(Base):
+    """A durable, per-(run, stage) audit record answering "what has
+    definitely completed" (section 8) independently of FactoryRun.status,
+    which only ever holds the *current* stage. A real FK to factory_run.id
+    is used here (unlike FactoryRun's own cross-*module* references) since
+    both tables live in this same module -- see app/modules/README.md.
+
+    One row per (factory_run_id, stage): start_checkpoint() creates it on
+    first entry and re-enters (bumping `attempt`, resetting timestamps) on
+    every retry of that same stage, rather than appending a new row per
+    attempt -- a run's own checkpoint history is small and stage-keyed by
+    nature (PREPARING/GENERATING_BEATS/.../RENDERING, see FACTORY_STAGES),
+    and "how many attempts has stage X had" is exactly `attempt` on its one
+    row, not something that needs a second query to derive.
+    """
+
+    __tablename__ = "factory_checkpoint"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    factory_run_id: Mapped[int] = mapped_column(ForeignKey("factory_run.id"), nullable=False, index=True)
+    stage: Mapped[str] = mapped_column(String, nullable=False, index=True)
+    status: Mapped[str] = mapped_column(String, nullable=False, default=CHECKPOINT_PENDING)
+    attempt: Mapped[int] = mapped_column(Integer, nullable=False, default=1)
+
+    started_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    completed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    error_code: Mapped[str | None] = mapped_column(String, nullable=True)
+    error_message: Mapped[str | None] = mapped_column(String, nullable=True)
+
+    # Small, non-sensitive stage facts only (e.g. {"beats_generated": true,
+    # "beat_count": 5} or {"assigned_count": 2, "auto_assigned": 1}) --
+    # never a full BeatPlan/thumbnail/log (section 44/46: no large payloads,
+    # no secrets, in SQLite).
+    checkpoint_metadata: Mapped[dict | None] = mapped_column(JSON, nullable=True)
+
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow)
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow, onupdate=_utcnow)
+
+
+assert set(FACTORY_CHECKPOINT_STATUSES) == {"PENDING", "RUNNING", "COMPLETED", "FAILED", "SKIPPED"}

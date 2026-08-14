@@ -4,9 +4,9 @@ why this module has no cross-module imports.
 
 from datetime import datetime
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, computed_field
 
-from app.modules.factory.models import FACTORY_RUN_STATUSES, FACTORY_STAGES
+from app.modules.factory.models import FACTORY_MAX_ATTEMPTS, FACTORY_RUN_STATUSES, FACTORY_STAGES
 
 # Factory-specific error codes (Task 18 section 24/53: stable codes, never
 # a raw stack trace). Distinct from app.core.render_errors -- those cover
@@ -25,6 +25,61 @@ FACTORY_ALREADY_RUNNING = "FACTORY_ALREADY_RUNNING"
 PROJECT_NOT_FOUND = "PROJECT_NOT_FOUND"
 NOT_RESUMABLE = "NOT_RESUMABLE"
 
+# Task 19 (see docs/features/45-factory-reliability.md) section 27/28 --
+# stable classification for every error_code this module (or a RenderJob it
+# handed off to, see app.core.render_errors) can ever set on a FactoryRun.
+# Never used to *block* a retry (this app has no automatic retry loop, so
+# there is no "automatic limit" to enforce -- see FACTORY_MAX_ATTEMPTS'
+# own docstring); purely so the frontend can phrase Retry correctly
+# ("try again" vs "fix this first, then retry").
+TRANSIENT = "TRANSIENT"
+PERMANENT = "PERMANENT"
+USER_ACTION_REQUIRED = "USER_ACTION_REQUIRED"
+
+ERROR_CLASSIFICATION: dict[str, str] = {
+    # This module's own codes.
+    BEAT_GENERATION_FAILED: TRANSIENT,  # usually an AI-provider timeout/error; a missing script is the rarer case
+    INVALID_EXISTING_BEAT_PLAN: USER_ACTION_REQUIRED,
+    ASSET_MATCH_FAILED: USER_ACTION_REQUIRED,
+    QUALITY_BLOCKED: USER_ACTION_REQUIRED,
+    RENDER_FAILED: TRANSIENT,
+    FACTORY_INTERRUPTED: TRANSIENT,
+    FACTORY_ALREADY_RUNNING: PERMANENT,
+    PROJECT_NOT_FOUND: PERMANENT,
+    NOT_RESUMABLE: PERMANENT,
+    "UNEXPECTED_ERROR": PERMANENT,
+    # app.core.render_errors codes -- a RENDERING-stage failure passes one
+    # of these straight through onto FactoryRun.error_code (see
+    # factory_pipeline.py's reconcile_factory_runs_on_startup/
+    # _on_render_job_failed), never re-mapped, so this module classifies
+    # them too rather than leaving a render failure unclassified.
+    # ("PROJECT_NOT_FOUND" is shared verbatim with this module's own code
+    # above, already covered.)
+    "INVALID_BEAT_PLAN": USER_ACTION_REQUIRED,
+    "MISSING_ASSET": USER_ACTION_REQUIRED,
+    "INVALID_MOTION": USER_ACTION_REQUIRED,
+    "MISSING_AUDIO": USER_ACTION_REQUIRED,
+    "INVALID_CAPTION_CONFIG": USER_ACTION_REQUIRED,
+    "FFMPEG_NOT_FOUND": PERMANENT,
+    "FFPROBE_NOT_FOUND": PERMANENT,
+    "OUTPUT_DIR_NOT_WRITABLE": USER_ACTION_REQUIRED,
+    "OUTPUT_VALIDATION_FAILED": TRANSIENT,
+    "CAPTION_RENDER_FAILED": TRANSIENT,
+    "AUDIO_RENDER_FAILED": TRANSIENT,
+    "INSUFFICIENT_DISK_SPACE": USER_ACTION_REQUIRED,
+    "RENDER_INTERRUPTED": TRANSIENT,
+}
+
+
+def classify_error(error_code: str | None) -> str | None:
+    """An error_code this map has never seen (a bug, or a brand-new code
+    added elsewhere without updating this table) classifies as PERMANENT --
+    the conservative default that never implies "just retry, it'll work."
+    """
+    if error_code is None:
+        return None
+    return ERROR_CLASSIFICATION.get(error_code, PERMANENT)
+
 
 class FactoryRunOut(BaseModel):
     model_config = ConfigDict(from_attributes=True)
@@ -41,9 +96,36 @@ class FactoryRunOut(BaseModel):
     requires_human_review: bool = False
     review_reason_count: int = 0
     metrics: dict = Field(default_factory=dict)
+    attempt: int = 1
     created_at: datetime
     started_at: datetime | None = None
     completed_at: datetime | None = None
+
+    @computed_field  # type: ignore[prop-decorator]
+    @property
+    def error_classification(self) -> str | None:
+        return classify_error(self.error_code)
+
+    @computed_field  # type: ignore[prop-decorator]
+    @property
+    def max_attempts_reached(self) -> bool:
+        return self.attempt >= FACTORY_MAX_ATTEMPTS
+
+
+class FactoryCheckpointOut(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: int
+    factory_run_id: int
+    stage: str
+    status: str
+    attempt: int
+    started_at: datetime | None = None
+    completed_at: datetime | None = None
+    error_code: str | None = None
+    error_message: str | None = None
+    checkpoint_metadata: dict | None = None
+    updated_at: datetime
 
 
 class FactoryRunRequest(BaseModel):

@@ -41,7 +41,7 @@ from app.modules.beat.models import Project
 from app.modules.beat.project_service import get_project_draft, update_project_beat_plan
 from app.modules.beat.schemas import Beat, BeatPlan, BeatType
 from app.modules.factory import service as factory_service
-from app.modules.factory.models import FactoryRun
+from app.modules.factory.models import FactoryCheckpoint, FactoryRun
 from app.modules.video_composer.models import VideoComposeClip, VideoComposeJob
 from app.modules.video_composer.service import VideoComposerService
 from tests.api.test_batch_render import FFMPEG_AVAILABLE, _make_solid_image
@@ -79,7 +79,8 @@ class _FactoryTestCase(unittest.TestCase):
             bind=self.engine,
             tables=[
                 Batch.__table__, BatchItem.__table__, Project.__table__,
-                VideoComposeJob.__table__, VideoComposeClip.__table__, Asset.__table__, FactoryRun.__table__,
+                VideoComposeJob.__table__, VideoComposeClip.__table__, Asset.__table__,
+                FactoryRun.__table__, FactoryCheckpoint.__table__,
             ],
         )
         self.TestSessionLocal = sessionmaker(bind=self.engine)

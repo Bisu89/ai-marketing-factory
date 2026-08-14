@@ -23,6 +23,10 @@ _NEW_COLUMNS: list[tuple[str, str, str]] = [
     ("asset", "emotion", "VARCHAR"),
     ("asset", "status", "VARCHAR"),
     ("asset", "thumbnail_path", "VARCHAR"),
+    # Task 19 -- see docs/features/45-factory-reliability.md. DEFAULT 1 (not
+    # bare INTEGER) so existing rows backfill to a real attempt count
+    # instead of NULL -- the ORM model declares this column NOT NULL.
+    ("factory_run", "attempt", "INTEGER DEFAULT 1"),
 ]
 
 

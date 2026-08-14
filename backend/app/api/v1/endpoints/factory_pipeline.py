@@ -68,10 +68,11 @@ from app.modules.beat.models import Project
 from app.modules.beat.project_service import get_project_draft, set_project_render_job_id, update_project_beat_plan
 from app.modules.beat.schemas import Beat, BeatPlan
 from app.modules.factory import service as factory_service
-from app.modules.factory.models import FactoryRun
+from app.modules.factory.models import FACTORY_STAGES, FactoryRun
 from app.modules.factory.schemas import (
     ASSET_MATCH_FAILED,
     BEAT_GENERATION_FAILED,
+    FactoryCheckpointOut,
     FactoryRunOut,
     INVALID_EXISTING_BEAT_PLAN,
     NOT_RESUMABLE,
@@ -310,7 +311,25 @@ def _run_quality_and_proceed(
         factory_service.set_run_fields(
             run_id, status="NEEDS_REVIEW", requires_human_review=True, review_reason_count=reason_count,
         )
+        # Section 13: this run's Quality checkpoint is COMPLETED here (the
+        # Gate itself produced a real, current report -- see section 13's
+        # "report corresponds to current project state," true by
+        # construction since it was just computed above from the live
+        # BeatPlan), even though the *run* pauses at NEEDS_REVIEW -- an
+        # unresolved review is an outcome of a valid check, not a failed
+        # one (mirrors section 12's identical distinction for Visual).
+        factory_service.complete_checkpoint(
+            run_id, "QUALITY_CHECK",
+            metadata={"outcome": "NEEDS_REVIEW", "score": report.score, "review_reason_count": reason_count},
+        )
         return
+
+    # Completed before the cancellation check below (not after) -- the
+    # Quality checkpoint's own outcome is already final at this point
+    # regardless of whether the run goes on to cancel before rendering.
+    factory_service.complete_checkpoint(
+        run_id, "QUALITY_CHECK", metadata={"outcome": "READY", "score": report.score},
+    )
 
     if _bail_if_cancelled(run_id, cancel_event):
         return
@@ -334,6 +353,7 @@ def _stage_render(
     register_factory_event_handlers below).
     """
     factory_service.set_run_fields(run_id, status="READY_TO_RENDER")
+    factory_service.start_checkpoint(run_id, "READY_TO_RENDER")
 
     db = SessionLocal()
     try:
@@ -344,7 +364,9 @@ def _stage_render(
             raise FactoryStageError("READY_TO_RENDER", ASSET_MATCH_FAILED, str(exc)) from exc
     finally:
         db.close()
+    factory_service.complete_checkpoint(run_id, "READY_TO_RENDER")
 
+    factory_service.start_checkpoint(run_id, "QUEUED")
     try:
         job_id = render_composition(
             composition_plan, asset_paths, service,
@@ -358,6 +380,12 @@ def _stage_render(
 
     set_project_render_job_id(project_id, job_id)
     factory_service.set_run_fields(run_id, status="QUEUED", render_job_id=job_id)
+    # Section 15: QUEUED itself is COMPLETED the instant a real RenderJob
+    # row exists -- "the job was successfully handed to the existing
+    # LocalRenderQueue," not "the render finished" (that's RENDERING's own
+    # checkpoint, settled by the render.job.* event handlers below, since
+    # this function is done once the job is queued -- see its own docstring).
+    factory_service.complete_checkpoint(run_id, "QUEUED", metadata={"render_job_id": job_id})
 
 
 # -- Orchestration entry points --------------------------------------------
@@ -376,15 +404,25 @@ def _execute_pipeline_sync(run_id: int, project_id: int, settings: Settings, ser
     current_stage = "PREPARING"
     try:
         factory_service.set_run_fields(run_id, status="PREPARING")
+        factory_service.start_checkpoint(run_id, "PREPARING")
+        factory_service.complete_checkpoint(run_id, "PREPARING")
         if _bail_if_cancelled(run_id, cancel_event):
             return
 
         current_stage = "GENERATING_BEATS"
         factory_service.set_run_fields(run_id, status=current_stage)
+        factory_service.start_checkpoint(run_id, current_stage)
         t0 = time.monotonic()
         plan, generated = _stage_generate_beats(project_id, settings)
         if generated:
             factory_service.merge_metrics(run_id, beat_generation_seconds=round(time.monotonic() - t0, 3))
+        # Section 11: reaching this line already proves BeatPlan exists,
+        # passed Pydantic validation, and has >=1 beat (BeatPlan itself
+        # enforces beats non-empty -- see beat/schemas.py) -- exactly the
+        # three conditions a COMPLETED Beat checkpoint requires.
+        factory_service.complete_checkpoint(
+            run_id, current_stage, metadata={"generated": generated, "beat_count": len(plan.beats)},
+        )
         if _bail_if_cancelled(run_id, cancel_event):
             return
 
@@ -397,14 +435,17 @@ def _execute_pipeline_sync(run_id: int, project_id: int, settings: Settings, ser
         # way there is nothing further to *generate* here (section 12's
         # "do not block the factory over an optional missing description")
         # -- ASSIGNING_ASSETS below already treats "no visual_hint" as
-        # "leave unassigned, let Quality Gate flag it" on its own.
+        # "leave unassigned, let Quality Gate flag it" on its own. Checkpoint
+        # SKIPPED, not COMPLETED -- there is genuinely no work to validate.
         current_stage = "PREPARING_VISUALS"
         factory_service.set_run_fields(run_id, status=current_stage)
+        factory_service.skip_checkpoint(run_id, current_stage)
         if _bail_if_cancelled(run_id, cancel_event):
             return
 
         current_stage = "ASSIGNING_ASSETS"
         factory_service.set_run_fields(run_id, status=current_stage)
+        factory_service.start_checkpoint(run_id, current_stage)
         t0 = time.monotonic()
         db = SessionLocal()
         try:
@@ -413,11 +454,22 @@ def _execute_pipeline_sync(run_id: int, project_id: int, settings: Settings, ser
             db.close()
         update_project_beat_plan(project_id, plan)
         factory_service.merge_metrics(run_id, visual_assignment_seconds=round(time.monotonic() - t0, 3))
+        # Section 12: an unassigned beat is not this *stage's* failure --
+        # assignment ran to completion and left it for the Quality
+        # Gate/factory review policy to flag (see _stage_assign_assets' own
+        # docstring) -- so "assignment ran" and "every beat got assigned"
+        # are deliberately different questions; only the former gates this
+        # checkpoint.
+        assigned_count = sum(1 for b in plan.ordered_beats() if b.asset_id is not None)
+        factory_service.complete_checkpoint(
+            run_id, current_stage, metadata={"beat_count": len(plan.beats), "assigned_count": assigned_count},
+        )
         if _bail_if_cancelled(run_id, cancel_event):
             return
 
         current_stage = "QUALITY_CHECK"
         factory_service.set_run_fields(run_id, status=current_stage)
+        factory_service.start_checkpoint(run_id, current_stage)
         _run_quality_and_proceed(run_id, project_id, plan, settings, cancel_event, service)
     except FactoryStageError as exc:
         _mark_failed(run_id, exc.stage, exc.code, exc.message)
@@ -429,9 +481,42 @@ def _execute_pipeline_sync(run_id: int, project_id: int, settings: Settings, ser
 
 
 def _mark_failed(run_id: int, stage: str, code: str, message: str) -> None:
+    """The single funnel for every failure path (FactoryStageError, an
+    unexpected exception, and reconcile_factory_runs_on_startup's own
+    interruption handling) -- always settles both FactoryRun (the
+    "current"/summary state) and that stage's own FactoryCheckpoint (Task
+    19's durable per-stage record) together, so the two can never disagree
+    about whether a given stage actually failed.
+    """
     factory_service.set_run_fields(
         run_id, status="FAILED", failed_stage=stage, error_code=code, error_message=message, completed_at=_utcnow(),
     )
+    if stage in FACTORY_STAGES:
+        factory_service.fail_checkpoint(run_id, stage, code, message)
+
+
+def _is_completed_run_stale(run: FactoryRun) -> bool:
+    """Task 19 sections 14/29-34: a COMPLETED run's own Quality/Render
+    result becomes stale once the project it rendered is edited afterward
+    (a Beat, an asset assignment, motion, audio, or captions -- all
+    serialized together in one Project.beat_plan_json, see that model's own
+    docstring, so one signal covers the whole dependency graph). No new
+    column is needed: Project.updated_at already bumps on every
+    update_project_beat_plan() call (including this *same* run's own
+    in-flight ASSIGNING_ASSETS stage, which always finishes chronologically
+    before that same run's own completed_at -- so a run's own work never
+    self-invalidates, only a *later*, independent edit does).
+    """
+    if run.completed_at is None:
+        return False
+    db = SessionLocal()
+    try:
+        project = db.get(Project, run.project_id)
+    finally:
+        db.close()
+    if project is None:
+        return False
+    return project.updated_at > run.completed_at
 
 
 def create_and_start_run(
@@ -444,10 +529,16 @@ def create_and_start_run(
     run in that case. A project with an already-*active* run always
     reuses it regardless of `force` (section 44 -- there is never a
     genuine reason to run the same project twice at once).
+
+    Task 19: a COMPLETED run edited afterward (see _is_completed_run_stale)
+    is treated the same as `force=True` -- the previous render can no
+    longer be trusted, so "Create & Produce" on an edited, already-produced
+    project starts a fresh run instead of silently handing back stale
+    output.
     """
     if not force:
         latest = factory_service.get_latest_run_for_project(project_id)
-        if latest is not None and latest.status == "COMPLETED":
+        if latest is not None and latest.status == "COMPLETED" and not _is_completed_run_stale(latest):
             return latest
 
     run, created = factory_service.create_run(project_id)
@@ -489,6 +580,7 @@ def continue_run(run_id: int, settings: Settings, service: VideoComposerService)
         raise ValidationError(f"{NOT_RESUMABLE}: only a NEEDS_REVIEW run can be continued (this run is {run.status}).")
 
     factory_service.set_run_fields(run_id, status="QUALITY_CHECK")
+    factory_service.start_checkpoint(run_id, "QUALITY_CHECK")
     thread = threading.Thread(
         target=_continue_run_sync, args=(run_id, run.project_id, settings, service), daemon=True
     )
@@ -514,12 +606,18 @@ def retry_run(run_id: int, settings: Settings, service: VideoComposerService) ->
     if run.status != "FAILED":
         raise ValidationError(f"{NOT_RESUMABLE}: only a FAILED run can be retried (this run is {run.status}).")
 
+    # Section 26: informational only -- this app has no automatic retry
+    # loop (see FACTORY_MAX_ATTEMPTS' own docstring), so a manual Retry is
+    # always allowed regardless of how many attempts have already happened.
+    factory_service.increment_attempt(run_id)
+
     if run.failed_stage in ("QUEUED", "RENDERING") and run.render_job_id is not None:
         new_job_id = service.retry_job(run.render_job_id)
         factory_service.set_run_fields(
             run_id, status="QUEUED", render_job_id=new_job_id,
             error_code=None, error_message=None, failed_stage=None, completed_at=None,
         )
+        factory_service.start_checkpoint(run_id, run.failed_stage)
         return factory_service.get_run(run_id)
 
     factory_service.set_run_fields(
@@ -620,14 +718,17 @@ def continue_batch_factory(batch_id: int, settings: Settings, service: VideoComp
     def _run_task(kind: str, run: FactoryRun) -> None:
         if kind == "continue":
             factory_service.set_run_fields(run.id, status="QUALITY_CHECK")
+            factory_service.start_checkpoint(run.id, "QUALITY_CHECK")
             _continue_run_sync(run.id, run.project_id, settings, service)
         else:
+            factory_service.increment_attempt(run.id)
             if run.failed_stage in ("QUEUED", "RENDERING") and run.render_job_id is not None:
                 new_job_id = service.retry_job(run.render_job_id)
                 factory_service.set_run_fields(
                     run.id, status="QUEUED", render_job_id=new_job_id,
                     error_code=None, error_message=None, failed_stage=None, completed_at=None,
                 )
+                factory_service.start_checkpoint(run.id, run.failed_stage)
             else:
                 factory_service.set_run_fields(
                     run.id, status="PREPARING", error_code=None, error_message=None,
@@ -669,11 +770,22 @@ def reconcile_factory_runs_on_startup(settings: Settings) -> int:
             if job is None:
                 _mark_failed(run.id, run.status, "FACTORY_INTERRUPTED", "The linked render job could not be found.")
             elif job.status == "completed":
+                # Section 15/16: job.status == "completed" already implies a
+                # real, ffprobe-validated final.mp4 (VideoComposerService's
+                # own _validate_final_output/atomic rename -- see
+                # docs/features/37-e2e-pipeline-hardening.md) -- a job can
+                # never reach "completed" with an invalid/partial output, so
+                # there is nothing further to (re-)validate here.
                 factory_service.set_run_fields(run.id, status="COMPLETED", completed_at=job.completed_at or _utcnow())
+                factory_service.force_checkpoint_status(run.id, "QUEUED", "COMPLETED")
+                factory_service.force_checkpoint_status(run.id, "RENDERING", "COMPLETED")
             elif job.status == "failed":
                 _mark_failed(run.id, "RENDERING", out.error_code or RENDER_FAILED, job.error_message or "Render failed.")
+                factory_service.force_checkpoint_status(run.id, "QUEUED", "COMPLETED")
             elif job.status == "cancelled":
                 factory_service.set_run_fields(run.id, status="CANCELLED", completed_at=job.completed_at or _utcnow())
+                factory_service.force_checkpoint_status(run.id, "QUEUED", "COMPLETED")
+                factory_service.force_checkpoint_status(run.id, "RENDERING", "SKIPPED")
             else:
                 # Still queued/running somehow -- shouldn't happen given
                 # video_composer's own recovery already ran, but never
@@ -712,12 +824,20 @@ def _on_render_job_started(payload: dict) -> None:
     run = _find_run_by_render_job(payload["job_id"])
     if run is not None and run.status == "QUEUED":
         factory_service.set_run_fields(run.id, status="RENDERING")
+        factory_service.start_checkpoint(run.id, "RENDERING")
 
 
 def _on_render_job_completed(payload: dict) -> None:
+    # Section 15/16: this event only ever fires for a job that reached
+    # VideoComposerService's own "completed" status, which already implies
+    # a real, ffprobe-validated final.mp4 (atomic rename past
+    # _validate_final_output -- see docs/features/37-e2e-pipeline-hardening.md)
+    # -- there is no path where an invalid/partial output produces this
+    # event, so FactoryRun is never marked COMPLETED on unvalidated output.
     run = _find_run_by_render_job(payload["job_id"])
     if run is not None:
         factory_service.set_run_fields(run.id, status="COMPLETED", completed_at=_utcnow())
+        factory_service.complete_checkpoint(run.id, "RENDERING")
 
 
 def _on_render_job_failed(payload: dict) -> None:
@@ -730,6 +850,7 @@ def _on_render_job_cancelled(payload: dict) -> None:
     run = _find_run_by_render_job(payload["job_id"])
     if run is not None:
         factory_service.set_run_fields(run.id, status="CANCELLED", completed_at=_utcnow())
+        factory_service.force_checkpoint_status(run.id, "RENDERING", "SKIPPED")
 
 
 def register_factory_event_handlers(event_bus: EventBus) -> None:
@@ -770,6 +891,16 @@ def get_latest_factory_run(project_id: int) -> FactoryRun | None:
 @router.get("/factory-runs/{run_id}", response_model=FactoryRunOut)
 def get_factory_run(run_id: int) -> FactoryRun:
     return _run_or_404(run_id)
+
+
+@router.get("/factory-runs/{run_id}/checkpoints", response_model=list[FactoryCheckpointOut])
+def get_factory_run_checkpoints(run_id: int) -> list:
+    """Task 19 section 42's own "Production Run" detail view -- per-stage
+    COMPLETED/FAILED/SKIPPED/RUNNING history, independent of FactoryRun's
+    own single current `status` field.
+    """
+    _run_or_404(run_id)
+    return factory_service.get_checkpoints(run_id)
 
 
 @router.post("/factory-runs/{run_id}/cancel", response_model=FactoryRunOut)
