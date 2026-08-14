@@ -1,15 +1,30 @@
 import { apiGet, apiPost } from "./client";
 import { config } from "../config/env";
-import type { Asset, AssetRegisterInput } from "../types/asset";
+import type { Asset, AssetImportJob, AssetImportRequest, AssetRegisterInput, RescanResult } from "../types/asset";
 
 export function registerAsset(input: AssetRegisterInput): Promise<Asset> {
   return apiPost("/assets", input);
 }
 
-export function searchAssets(query?: string, assetType?: string): Promise<Asset[]> {
+export interface SearchAssetsFilters {
+  assetType?: string;
+  orientation?: string;
+  category?: string;
+  emotion?: string;
+  source?: string;
+  missingOnly?: boolean;
+}
+
+export function searchAssets(query?: string, assetType?: string, filters?: SearchAssetsFilters): Promise<Asset[]> {
   const params = new URLSearchParams();
   if (query) params.set("q", query);
-  if (assetType) params.set("asset_type", assetType);
+  const resolvedType = filters?.assetType ?? assetType;
+  if (resolvedType) params.set("asset_type", resolvedType);
+  if (filters?.orientation) params.set("orientation", filters.orientation);
+  if (filters?.category) params.set("category", filters.category);
+  if (filters?.emotion) params.set("emotion", filters.emotion);
+  if (filters?.source) params.set("source", filters.source);
+  if (filters?.missingOnly) params.set("missing_only", "true");
   const qs = params.toString();
   return apiGet(`/assets${qs ? `?${qs}` : ""}`);
 }
@@ -25,4 +40,29 @@ export function getAsset(assetId: number): Promise<Asset> {
 // round trip.
 export function assetFileUrl(assetId: number): string {
   return `${config.apiBaseUrl}/assets/${assetId}/file`;
+}
+
+// Same reasoning as assetFileUrl -- a plain src URL for the small,
+// Task-15-generated preview image (library_dir/_asset/thumbnails/<id>.jpg),
+// not every asset has one (e.g. one registered before Task 15).
+export function assetThumbnailUrl(assetId: number): string {
+  return `${config.apiBaseUrl}/assets/${assetId}/thumbnail`;
+}
+
+// -- Bulk local import (Task 15 -- see docs/features/41-local-asset-ingestion.md) --
+
+export function importAssets(request: AssetImportRequest): Promise<AssetImportJob> {
+  return apiPost("/assets/import", request);
+}
+
+export function getAssetImportJob(jobId: number): Promise<AssetImportJob> {
+  return apiGet(`/assets/import/${jobId}`);
+}
+
+export function cancelAssetImportJob(jobId: number): Promise<AssetImportJob> {
+  return apiPost(`/assets/import/${jobId}/cancel`);
+}
+
+export function rescanAssets(): Promise<RescanResult> {
+  return apiPost("/assets/rescan");
 }

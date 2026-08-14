@@ -15,6 +15,7 @@ from app.core.events import EventBus
 from app.core.exceptions import ExternalServiceError, FileOperationError, NotFoundError, ValidationError
 from app.core.logging import configure_logging
 from app.db.base import Base
+from app.db.migrate import run_additive_column_migrations
 from app.db.seed import seed_initial_data
 from app.db.session import SessionLocal, engine
 from app.modules.scene_cutter.service import SceneCutterService
@@ -28,6 +29,7 @@ async def lifespan(app: FastAPI):
     settings = get_settings()
     configure_logging(settings)
     Base.metadata.create_all(bind=engine)
+    run_additive_column_migrations(engine)
 
     db = SessionLocal()
     try:

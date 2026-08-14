@@ -119,11 +119,44 @@ class AssetService:
         self.db.delete(asset)
         self.db.commit()
 
-    def search(self, query: list[str] | None = None, asset_type: str | None = None) -> list[Asset]:
+    def search(
+        self,
+        query: list[str] | None = None,
+        asset_type: str | None = None,
+        orientation: str | None = None,
+        category: str | None = None,
+        emotion: str | None = None,
+        source: str | None = None,
+        missing_only: bool = False,
+    ) -> list[Asset]:
+        """Task 15 (see docs/features/41-local-asset-ingestion.md) extends
+        this with the Smart Library filters section 32 asks for (type
+        already existed) -- each is a plain equality filter pushed into the
+        SQL query (backed by the indexes on Asset.__table_args__, added for
+        exactly these filters), not post-filtered in Python like the
+        keyword-scoring step below has to be. `orientation` filters on the
+        *stored* column (set at import time) rather than the computed
+        orientation_computed property, since that's what the new index
+        actually covers -- a pre-Task-15 asset with no stored orientation
+        simply won't match an orientation filter, which is correct (it
+        also doesn't show up in a category/emotion filter for the same
+        reason: nothing to filter on).
+        """
         db_query = self.db.query(Asset)
         if asset_type is not None:
             db_query = db_query.filter(Asset.type == asset_type)
+        if orientation is not None:
+            db_query = db_query.filter(Asset.orientation == orientation)
+        if category is not None:
+            db_query = db_query.filter(Asset.category == category)
+        if emotion is not None:
+            db_query = db_query.filter(Asset.emotion == emotion)
+        if source is not None:
+            db_query = db_query.filter(Asset.source == source)
         assets = db_query.all()
+
+        if missing_only:
+            assets = [asset for asset in assets if not asset.is_ready]
 
         terms = [term.strip().lower() for term in (query or []) if term and term.strip()]
         if not terms:

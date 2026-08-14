@@ -8,6 +8,7 @@ import {
   Scissors,
   Clapperboard,
   BarChart3,
+  Images,
   Layers,
   Sparkles,
   Wand2,
@@ -26,6 +27,7 @@ const NAV_ITEMS = [
   { to: "/ai", label: "AI Content", icon: Sparkles },
   { to: "/video-factory", label: "Video Factory", icon: Wand2 },
   { to: "/batches", label: "Batches", icon: Layers },
+  { to: "/asset-library", label: "Asset Library", icon: Images },
   { to: "/settings", label: "Settings", icon: Settings },
 ];
 

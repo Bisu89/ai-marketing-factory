@@ -11,6 +11,7 @@ import { AIContentPage } from "./pages/AIContentPage";
 import { VideoFactoryPage } from "./pages/VideoFactoryPage";
 import { BatchPage } from "./pages/BatchPage";
 import { BatchDetailPage } from "./pages/BatchDetailPage";
+import { AssetLibraryPage } from "./pages/AssetLibraryPage";
 import { SettingsPage } from "./pages/SettingsPage";
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
         <Route path="video-factory" element={<VideoFactoryPage />} />
         <Route path="batches" element={<BatchPage />} />
         <Route path="batches/:batchId" element={<BatchDetailPage />} />
+        <Route path="asset-library" element={<AssetLibraryPage />} />
         <Route path="settings" element={<SettingsPage />} />
         <Route path="*" element={<Navigate to="/dashboard" replace />} />
       </Route>
