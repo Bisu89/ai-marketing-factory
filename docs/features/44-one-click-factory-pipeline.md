@@ -1,6 +1,6 @@
 # 44 — One-Click Factory Pipeline: Script → Beat → Visual → Quality → Render
 
-**Commit:** _(fill in after commit)_
+**Commit:** `d202837`
 
 The orchestration layer that connects everything built in Tasks 12-17 into
 one "Create & Produce" action: generate/reuse Beats, auto-assign visual
