@@ -114,6 +114,12 @@ class Settings(BaseSettings):
     # future multi-worker render queue has an obvious place to plug in.
     max_parallel_renders: int = 1
 
+    # Content Engine (Task 21 -- see docs/features/47-content-brief-script-engine.md).
+    # Configurable speech rate for the Script word-count validator (section
+    # 13's own "do not hardcode one universal speech rate") -- a natural
+    # narration pace, not a precise TTS timing model (that's Task 22's job).
+    content_words_per_second: float = 2.2
+
     anthropic_api_key: str | None = None
 
 

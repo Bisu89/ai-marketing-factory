@@ -4,6 +4,7 @@ import { Layers, Loader2, Plus, Upload, X } from "lucide-react";
 import { PageHeader } from "../components/PageHeader";
 import { EmptyState } from "../components/EmptyState";
 import { createBatch, listBatches, previewBatch } from "../api/batch";
+import { produceBatch } from "../api/factory";
 import { listTemplates } from "../api/template";
 import type { Batch, BatchPreview } from "../types/batch";
 import type { Template } from "../types/videoFactory";
@@ -12,6 +13,8 @@ import "./BatchPage.css";
 const STATUS_LABEL: Record<Batch["status"], string> = {
   DRAFT: "Draft",
   PROCESSING: "Processing",
+  PAUSED: "Paused",
+  PAUSED_AFTER_RESTART: "Interrupted -- resume to continue",
   COMPLETED: "Completed",
   PARTIAL_FAILURE: "Partial failure",
   FAILED: "Failed",
@@ -126,11 +129,23 @@ function CreateBatchModal({ onClose, onCreated }: { onClose: () => void; onCreat
   const [templatesError, setTemplatesError] = useState<string | null>(null);
   const [name, setName] = useState("");
   const [templateId, setTemplateId] = useState("");
+  // Task 21 (see docs/features/47-content-brief-script-engine.md) -- Ideas
+  // (one per line, or a CSV with an idea column) is an alternative input to
+  // the existing Scripts textarea, not a second page/modal (section 44's
+  // own "do not create a separate application/page").
+  const [mode, setMode] = useState<"scripts" | "ideas">("scripts");
   const [scriptsText, setScriptsText] = useState("");
+  const [ideasText, setIdeasText] = useState("");
+  // Section 32 -- an explicit opt-in, never automatic: duplicates are
+  // always shown in the preview step regardless; this only controls
+  // whether Create actually drops them.
+  const [dedupe, setDedupe] = useState(false);
   const [preview, setPreview] = useState<BatchPreview | null>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
+
+  const inputText = mode === "scripts" ? scriptsText : ideasText;
 
   useEffect(() => {
     (async () => {
@@ -148,16 +163,23 @@ function CreateBatchModal({ onClose, onCreated }: { onClose: () => void; onCreat
     const file = e.target.files?.[0];
     if (!file) return;
     const text = await file.text();
-    setScriptsText(text);
+    if (mode === "scripts") setScriptsText(text);
+    else setIdeasText(text);
     if (fileInputRef.current) fileInputRef.current.value = "";
   }
 
+  function buildRequest() {
+    return mode === "scripts"
+      ? { name, template_id: templateId, scripts_text: scriptsText }
+      : { name, template_id: templateId, ideas_text: ideasText, dedupe };
+  }
+
   async function handlePreview() {
-    if (!name.trim() || !templateId || !scriptsText.trim() || busy) return;
+    if (!name.trim() || !templateId || !inputText.trim() || busy) return;
     setBusy(true);
     setError(null);
     try {
-      const result = await previewBatch({ name, template_id: templateId, scripts_text: scriptsText });
+      const result = await previewBatch(buildRequest());
       setPreview(result);
       setStep("preview");
     } catch (err) {
@@ -167,12 +189,15 @@ function CreateBatchModal({ onClose, onCreated }: { onClose: () => void; onCreat
     }
   }
 
-  async function handleCreate() {
+  async function handleCreate(autoProduce: boolean) {
     if (busy) return;
     setBusy(true);
     setError(null);
     try {
-      const batch = await createBatch({ name, template_id: templateId, scripts_text: scriptsText });
+      const batch = await createBatch(buildRequest());
+      if (autoProduce) {
+        await produceBatch(batch.id);
+      }
       onCreated(batch);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Could not create this batch.");
@@ -221,22 +246,60 @@ function CreateBatchModal({ onClose, onCreated }: { onClose: () => void; onCreat
               )}
             </label>
 
-            <label className="batch-field">
-              <div className="batch-field-row">
-                <span>Scripts (separate multiple scripts with a line containing only ---)</span>
-                <button className="btn btn-secondary batch-upload-btn" onClick={() => fileInputRef.current?.click()}>
-                  <Upload size={13} />
-                  Upload .txt
-                </button>
-                <input ref={fileInputRef} type="file" accept=".txt" hidden onChange={handleFileUpload} />
-              </div>
-              <textarea
-                rows={10}
-                placeholder={"First script.\n---\nSecond script.\n---\nThird script."}
-                value={scriptsText}
-                onChange={(e) => setScriptsText(e.target.value)}
-              />
-            </label>
+            <div className="batch-field-row batch-mode-toggle">
+              <button
+                type="button"
+                className={mode === "scripts" ? "btn btn-primary" : "btn btn-secondary"}
+                onClick={() => setMode("scripts")}
+              >
+                Scripts
+              </button>
+              <button
+                type="button"
+                className={mode === "ideas" ? "btn btn-primary" : "btn btn-secondary"}
+                onClick={() => setMode("ideas")}
+              >
+                Ideas
+              </button>
+            </div>
+
+            {mode === "scripts" ? (
+              <label className="batch-field">
+                <div className="batch-field-row">
+                  <span>Scripts (separate multiple scripts with a line containing only ---)</span>
+                  <button className="btn btn-secondary batch-upload-btn" onClick={() => fileInputRef.current?.click()}>
+                    <Upload size={13} />
+                    Upload .txt
+                  </button>
+                  <input ref={fileInputRef} type="file" accept=".txt" hidden onChange={handleFileUpload} />
+                </div>
+                <textarea
+                  rows={10}
+                  placeholder={"First script.\n---\nSecond script.\n---\nThird script."}
+                  value={scriptsText}
+                  onChange={(e) => setScriptsText(e.target.value)}
+                />
+              </label>
+            ) : (
+              <label className="batch-field">
+                <div className="batch-field-row">
+                  <span>Ideas (one per line -- Content Brief and Script are generated automatically)</span>
+                  <button className="btn btn-secondary batch-upload-btn" onClick={() => fileInputRef.current?.click()}>
+                    <Upload size={13} />
+                    Upload .txt/.csv
+                  </button>
+                  <input ref={fileInputRef} type="file" accept=".txt,.csv" hidden onChange={handleFileUpload} />
+                </div>
+                <textarea
+                  rows={10}
+                  placeholder={
+                    "Why couples stop talking after five years\n3 signs she is emotionally exhausted\nThe reason arguments keep repeating"
+                  }
+                  value={ideasText}
+                  onChange={(e) => setIdeasText(e.target.value)}
+                />
+              </label>
+            )}
 
             <div className="batch-modal-actions">
               <button className="btn btn-secondary" onClick={onClose}>
@@ -245,7 +308,7 @@ function CreateBatchModal({ onClose, onCreated }: { onClose: () => void; onCreat
               <button
                 className="btn btn-primary"
                 onClick={handlePreview}
-                disabled={busy || !name.trim() || !templateId || !scriptsText.trim()}
+                disabled={busy || !name.trim() || !templateId || !inputText.trim()}
               >
                 {busy ? <Loader2 size={14} className="spin" /> : null}
                 Preview
@@ -255,13 +318,41 @@ function CreateBatchModal({ onClose, onCreated }: { onClose: () => void; onCreat
         ) : (
           <>
             <p className="batch-field-label">
-              {preview?.script_count} script{preview?.script_count === 1 ? "" : "s"} will each become their own
-              project, all using the "{templates.find((t) => t.id === templateId)?.name ?? templateId}" template.
+              {preview?.script_count} {mode === "ideas" ? "idea" : "script"}
+              {preview?.script_count === 1 ? "" : "s"} will each become their own project, all using the "
+              {templates.find((t) => t.id === templateId)?.name ?? templateId}" template.
             </p>
+            {!!preview?.duplicate_count && (
+              <div className="batch-alert batch-alert-error">
+                {preview.duplicate_count} duplicate idea{preview.duplicate_count === 1 ? "" : "s"} detected (marked
+                below).
+                <label className="nvm-checkbox">
+                  <input
+                    type="checkbox"
+                    checked={dedupe}
+                    onChange={async (e) => {
+                      setDedupe(e.target.checked);
+                      setBusy(true);
+                      try {
+                        setPreview(await previewBatch({ ...buildRequest(), dedupe: e.target.checked }));
+                      } catch (err) {
+                        setError(err instanceof Error ? err.message : "Could not preview this batch.");
+                      } finally {
+                        setBusy(false);
+                      }
+                    }}
+                  />
+                  <span>Remove duplicates before creating</span>
+                </label>
+              </div>
+            )}
             <ul className="batch-preview-list">
               {preview?.items.map((item) => (
                 <li key={item.index}>
-                  <strong>{item.project_name}</strong>
+                  <strong>
+                    {item.project_name}
+                    {item.is_duplicate ? " (duplicate)" : ""}
+                  </strong>
                   <span>{item.script_preview}</span>
                 </li>
               ))}
@@ -270,9 +361,13 @@ function CreateBatchModal({ onClose, onCreated }: { onClose: () => void; onCreat
               <button className="btn btn-secondary" onClick={() => setStep("form")}>
                 Back
               </button>
-              <button className="btn btn-primary" onClick={handleCreate} disabled={busy}>
+              <button className="btn btn-secondary" onClick={() => handleCreate(false)} disabled={busy}>
                 {busy ? <Loader2 size={14} className="spin" /> : null}
                 Create {preview?.script_count} Project{preview?.script_count === 1 ? "" : "s"}
+              </button>
+              <button className="btn btn-primary" onClick={() => handleCreate(true)} disabled={busy}>
+                {busy ? <Loader2 size={14} className="spin" /> : null}
+                Create &amp; Produce
               </button>
             </div>
           </>

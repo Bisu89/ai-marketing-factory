@@ -25,6 +25,17 @@ FACTORY_ALREADY_RUNNING = "FACTORY_ALREADY_RUNNING"
 PROJECT_NOT_FOUND = "PROJECT_NOT_FOUND"
 NOT_RESUMABLE = "NOT_RESUMABLE"
 
+# Task 21 (see docs/features/47-content-brief-script-engine.md section 28)
+# -- app/api/v1/endpoints/content_generate.py's own error codes, passed
+# through onto FactoryRun.error_code exactly like a render-stage failure
+# already is (never re-mapped -- see that module's own exception classes).
+CONTENT_GENERATION_FAILED = "CONTENT_GENERATION_FAILED"
+CONTENT_PROVIDER_TIMEOUT = "CONTENT_PROVIDER_TIMEOUT"
+INVALID_CONTENT_RESPONSE = "INVALID_CONTENT_RESPONSE"
+SCRIPT_TOO_SHORT = "SCRIPT_TOO_SHORT"
+SCRIPT_TOO_LONG = "SCRIPT_TOO_LONG"
+SCRIPT_VALIDATION_FAILED = "SCRIPT_VALIDATION_FAILED"
+
 # Task 19 (see docs/features/45-factory-reliability.md) section 27/28 --
 # stable classification for every error_code this module (or a RenderJob it
 # handed off to, see app.core.render_errors) can ever set on a FactoryRun.
@@ -48,6 +59,13 @@ ERROR_CLASSIFICATION: dict[str, str] = {
     PROJECT_NOT_FOUND: PERMANENT,
     NOT_RESUMABLE: PERMANENT,
     "UNEXPECTED_ERROR": PERMANENT,
+    # Task 21's own content-stage codes.
+    CONTENT_GENERATION_FAILED: TRANSIENT,  # usually an AI-provider issue -- mirrors BEAT_GENERATION_FAILED's own reasoning
+    CONTENT_PROVIDER_TIMEOUT: TRANSIENT,
+    INVALID_CONTENT_RESPONSE: TRANSIENT,  # the model's own malformed output -- a retry with the same idea is worth trying
+    SCRIPT_TOO_SHORT: USER_ACTION_REQUIRED,  # the idea/template combination itself needs adjusting, not a blind retry
+    SCRIPT_TOO_LONG: USER_ACTION_REQUIRED,
+    SCRIPT_VALIDATION_FAILED: USER_ACTION_REQUIRED,
     # app.core.render_errors codes -- a RENDERING-stage failure passes one
     # of these straight through onto FactoryRun.error_code (see
     # factory_pipeline.py's reconcile_factory_runs_on_startup/
@@ -136,11 +154,11 @@ class FactoryRunRequest(BaseModel):
 
 
 assert set(FACTORY_RUN_STATUSES) == {
-    "DRAFT", "PREPARING", "GENERATING_BEATS", "PREPARING_VISUALS", "ASSIGNING_ASSETS",
+    "DRAFT", "PREPARING", "PREPARING_CONTENT", "GENERATING_BEATS", "PREPARING_VISUALS", "ASSIGNING_ASSETS",
     "QUALITY_CHECK", "NEEDS_REVIEW", "READY_TO_RENDER", "QUEUED", "RENDERING",
     "COMPLETED", "FAILED", "CANCELLED",
 }
 assert set(FACTORY_STAGES) == {
-    "PREPARING", "GENERATING_BEATS", "PREPARING_VISUALS", "ASSIGNING_ASSETS",
+    "PREPARING", "PREPARING_CONTENT", "GENERATING_BEATS", "PREPARING_VISUALS", "ASSIGNING_ASSETS",
     "QUALITY_CHECK", "READY_TO_RENDER", "QUEUED", "RENDERING",
 }

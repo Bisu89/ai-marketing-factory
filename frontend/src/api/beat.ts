@@ -40,9 +40,13 @@ export function getProject(projectId: number): Promise<Project> {
 // Project row outside of a batch, needed so the "New Video" one-click flow
 // has something to attach a FactoryRun to (the classic loadBeatPlan/
 // saveBeatPlan singleton above has no id at all).
+// Task 21 -- see docs/features/47-content-brief-script-engine.md. Exactly
+// one of script_text/idea must be provided; the backend validates this
+// (400 if both are blank).
 export interface CreateProjectRequest {
   name: string;
-  script_text: string;
+  script_text?: string | null;
+  idea?: string | null;
   template_id: string;
 }
 

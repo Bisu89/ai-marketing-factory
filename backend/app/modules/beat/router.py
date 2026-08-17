@@ -21,7 +21,13 @@ from pydantic import BaseModel, ValidationError as PydanticValidationError
 
 from app.core.config import Settings, get_settings
 from app.core.exceptions import NotFoundError, ValidationError
-from app.modules.beat.project_service import create_project, get_project_draft, update_project_beat_plan
+from app.modules.beat.project_service import (
+    create_project,
+    get_project_draft,
+    update_project_beat_plan,
+    update_project_idea,
+    update_project_script,
+)
 from app.modules.beat.schemas import BUILTIN_TEMPLATE_IDS, BUILTIN_TEMPLATES, BeatPlan, ProjectConfig, ProjectOut, Template
 from app.modules.beat.service import (
     delete_custom_template,
@@ -79,7 +85,12 @@ def put_beat_plan(payload: BeatPlan, settings: Settings = Depends(get_settings))
 
 class CreateProjectRequest(BaseModel):
     name: str
-    script_text: str
+    # Task 21: exactly one of these two must be non-blank -- a project
+    # starts from either a full script (classic flow, script_locked=True)
+    # or a one-line idea (FactoryPipeline's CONTENT stage produces the
+    # script before Beat generation ever runs -- see content_generate.py).
+    script_text: str | None = None
+    idea: str | None = None
     template_id: str = "custom"
 
 
@@ -104,15 +115,51 @@ def create_project_endpoint(payload: CreateProjectRequest, settings: Settings = 
     """
     if not payload.name.strip():
         raise ValidationError("Project name must not be blank.")
-    if not payload.script_text.strip():
-        raise ValidationError("Script must not be blank.")
+    script_text = (payload.script_text or "").strip() or None
+    idea = (payload.idea or "").strip() or None
+    if not script_text and not idea:
+        raise ValidationError("Either a Script or an Idea must be provided.")
     config = _resolve_template_config(payload.template_id, settings)
-    project_id = create_project(payload.name, payload.script_text, config)
+    project_id = create_project(payload.name, script_text, config, idea=idea)
     return get_project_draft(project_id)
 
 
 @router.get("/projects/{project_id}", response_model=ProjectOut)
 def get_project(project_id: int) -> ProjectOut:
+    return get_project_draft(project_id)
+
+
+class UpdateIdeaRequest(BaseModel):
+    idea: str
+
+
+@router.put("/projects/{project_id}/idea", response_model=ProjectOut)
+def put_project_idea(project_id: int, payload: UpdateIdeaRequest) -> ProjectOut:
+    """Task 21 section 16/50 -- a direct edit to the idea (not an AI call;
+    see POST /projects/{id}/regenerate-script in content_generate.py for
+    that). Invalidates Content/Script/Beat downstream unless the script is
+    locked -- see project_service.update_project_idea's own docstring.
+    """
+    if not payload.idea.strip():
+        raise ValidationError("Idea must not be blank.")
+    update_project_idea(project_id, payload.idea)
+    return get_project_draft(project_id)
+
+
+class UpdateScriptRequest(BaseModel):
+    script_text: str
+
+
+@router.put("/projects/{project_id}/script", response_model=ProjectOut)
+def put_project_script(project_id: int, payload: UpdateScriptRequest) -> ProjectOut:
+    """Task 21 section 16/17 -- a direct human edit of the script. Always
+    locks it (see project_service.update_project_script) so no later
+    automatic content generation can overwrite it, and invalidates Beat
+    downstream if the text actually changed.
+    """
+    if not payload.script_text.strip():
+        raise ValidationError("Script must not be blank.")
+    update_project_script(project_id, payload.script_text)
     return get_project_draft(project_id)
 
 

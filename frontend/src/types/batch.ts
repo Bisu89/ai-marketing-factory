@@ -71,20 +71,26 @@ export interface Batch {
   items: BatchItem[];
 }
 
+// Task 21 -- see docs/features/47-content-brief-script-engine.md. Exactly
+// one of scripts_text/ideas_text must be provided (backend validates this).
 export interface CreateBatchRequest {
   name: string;
   template_id: string;
-  scripts_text: string;
+  scripts_text?: string | null;
+  ideas_text?: string | null;
+  dedupe?: boolean;
 }
 
 export interface BatchPreviewItem {
   index: number;
   project_name: string;
   script_preview: string;
+  is_duplicate?: boolean;
 }
 
 export interface BatchPreview {
   template_id: string;
   script_count: number;
   items: BatchPreviewItem[];
+  duplicate_count?: number;
 }

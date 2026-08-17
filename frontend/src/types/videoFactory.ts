@@ -302,12 +302,25 @@ export interface FactoryProjectConfig {
   render_after_quality_pass: boolean;
 }
 
+// Task 21 -- see docs/features/47-content-brief-script-engine.md. The
+// Template-driven "content profile" Idea->ContentBrief->Script generation
+// reads (language/tone/style/target duration/audience/CTA).
+export interface ContentProjectConfig {
+  language: string;
+  tone: string;
+  style: string;
+  target_duration: number;
+  audience: string;
+  cta_enabled: boolean;
+}
+
 export interface ProjectConfig {
   render: RenderProjectConfig;
   motion: MotionProjectConfig;
   captions: CaptionsProjectConfig;
   audio: AudioProjectConfig;
   factory: FactoryProjectConfig;
+  content: ContentProjectConfig;
   template_id: string | null;
   template_version: number | null;
 }
@@ -331,6 +344,14 @@ export const SYSTEM_DEFAULT_PROJECT_CONFIG: ProjectConfig = {
     require_review_for_medium_confidence: true,
     require_review_for_low_confidence: true,
     render_after_quality_pass: true,
+  },
+  content: {
+    language: "en",
+    tone: "warm and reflective",
+    style: "storytelling",
+    target_duration: 30,
+    audience: "general audience",
+    cta_enabled: true,
   },
   template_id: null,
   template_version: null,
@@ -364,6 +385,22 @@ export interface BeatPreviewResult {
   render_time_seconds: number;
 }
 
+// Task 21 -- see docs/features/47-content-brief-script-engine.md. Not
+// editable through this page in this task (no UI surfaces it yet) --
+// carried through save round-trips purely so it's never silently dropped
+// (see GeneratedBeatPlan's own fields below).
+export interface ContentBrief {
+  topic: string;
+  audience: string;
+  angle: string;
+  emotion: string;
+  hook_strategy: string;
+  tone: string;
+  pacing: string;
+  core_message: string;
+  cta: string;
+}
+
 export interface GeneratedBeatPlan {
   video_id: number | null;
   script_text: string | null;
@@ -373,6 +410,11 @@ export interface GeneratedBeatPlan {
   // when absent, so an old, pre-Task-12 saved beats.json still loads fine.
   project_name?: string | null;
   config?: ProjectConfig;
+  // Task 21 -- see ContentBrief's own comment above; all optional/absent
+  // for every pre-Task-21 saved plan.
+  idea?: string | null;
+  content_brief?: ContentBrief | null;
+  script_locked?: boolean;
 }
 
 // -- Multi-project store (Task 13) ---------------------------------------

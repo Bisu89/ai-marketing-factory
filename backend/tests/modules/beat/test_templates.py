@@ -237,8 +237,13 @@ class SaveProjectAsTemplateTests(unittest.TestCase):
         fields = set(ProjectConfig.model_fields.keys())
         # Task 18 added `factory` (see docs/features/44-one-click-factory-pipeline.md)
         # -- plain booleans only, no asset_id/beat_id/job_id/output_path, so
-        # this invariant still holds with it included.
-        self.assertEqual(fields, {"render", "motion", "captions", "audio", "factory", "template_id", "template_version"})
+        # this invariant still holds with it included. Task 21 added
+        # `content` (see docs/features/47-content-brief-script-engine.md) --
+        # language/tone/style/target_duration/audience/cta_enabled, same
+        # "plain scalars only" shape, so the invariant holds with it too.
+        self.assertEqual(
+            fields, {"render", "motion", "captions", "audio", "factory", "content", "template_id", "template_version"}
+        )
 
 
 class BackwardCompatibilityTests(unittest.TestCase):

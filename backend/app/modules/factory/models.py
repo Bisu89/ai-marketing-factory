@@ -34,6 +34,13 @@ from app.db.base import Base
 FACTORY_RUN_STATUSES = (
     "DRAFT",
     "PREPARING",
+    # Task 21 (see docs/features/47-content-brief-script-engine.md) --
+    # Idea -> ContentBrief -> Script, ahead of Beat generation. A real,
+    # instantaneous no-op when the project already has a script (the exact
+    # same "reuse, don't regenerate" idempotency GENERATING_BEATS already
+    # established for beats -- see factory_pipeline.py's
+    # _stage_generate_content).
+    "PREPARING_CONTENT",
     "GENERATING_BEATS",
     "PREPARING_VISUALS",
     "ASSIGNING_ASSETS",
@@ -53,6 +60,7 @@ FACTORY_RUN_STATUSES = (
 # "stages", they're outcomes).
 FACTORY_STAGES = (
     "PREPARING",
+    "PREPARING_CONTENT",
     "GENERATING_BEATS",
     "PREPARING_VISUALS",
     "ASSIGNING_ASSETS",

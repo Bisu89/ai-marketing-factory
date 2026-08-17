@@ -43,7 +43,16 @@ from app.core.render_profile import get_render_profile
 from app.db.session import SessionLocal, get_db
 from app.modules.asset.service import AssetService
 from app.modules.batch.models import Batch, BatchItem
-from app.modules.batch.schemas import BatchOut, BatchPreview, BatchPreviewItem, CreateBatchRequest, parse_scripts
+from app.modules.batch.schemas import (
+    BatchOut,
+    BatchPreview,
+    BatchPreviewItem,
+    CreateBatchRequest,
+    find_duplicate_ideas,
+    normalize_idea,
+    parse_idea_rows,
+    parse_scripts,
+)
 from app.modules.batch.service import (
     get_batch as get_batch_row,
     project_name_for_item,
@@ -106,6 +115,30 @@ def _validate_scripts(scripts_text: str) -> list[str]:
     if not scripts:
         raise ValidationError("No scripts found -- paste at least one non-empty script, or separate several with a '---' line.")
     return scripts
+
+
+# -- Batch idea import (Task 21 -- see
+# docs/features/47-content-brief-script-engine.md sections 18-22) ----------
+
+
+def _validate_and_maybe_dedupe_ideas(ideas_text: str, dedupe: bool):
+    rows = parse_idea_rows(ideas_text)
+    if not rows:
+        raise ValidationError(
+            "No ideas found -- enter at least one idea (one per line), or a CSV with an 'idea' column."
+        )
+    duplicates = find_duplicate_ideas([row.idea for row in rows])
+    if dedupe and duplicates:
+        seen: set[str] = set()
+        deduped = []
+        for row in rows:
+            key = normalize_idea(row.idea)
+            if key in seen:
+                continue
+            seen.add(key)
+            deduped.append(row)
+        return deduped, {}
+    return rows, duplicates
 
 
 # -- Beat -> Scene conversion (server-side batch rendering has no frontend
@@ -221,52 +254,130 @@ def _check_eligibility(project_id: int, asset_service: AssetService) -> tuple[bo
 @router.post("/batches/preview", response_model=BatchPreview)
 def preview_batch(payload: CreateBatchRequest, settings: Settings = Depends(get_settings)) -> BatchPreview:
     _get_template_or_404(payload.template_id, settings)
-    scripts = _validate_scripts(payload.scripts_text)
-    items = [
-        BatchPreviewItem(
-            index=index,
-            project_name=project_name_for_item(payload.name, index),
-            script_preview=(script[:140] + "...") if len(script) > 140 else script,
+
+    if payload.scripts_text and payload.scripts_text.strip():
+        scripts = _validate_scripts(payload.scripts_text)
+        items = [
+            BatchPreviewItem(
+                index=index,
+                project_name=project_name_for_item(payload.name, index),
+                script_preview=(script[:140] + "...") if len(script) > 140 else script,
+            )
+            for index, script in enumerate(scripts, start=1)
+        ]
+        return BatchPreview(template_id=payload.template_id, script_count=len(scripts), items=items)
+
+    if payload.ideas_text and payload.ideas_text.strip():
+        rows, duplicates = _validate_and_maybe_dedupe_ideas(payload.ideas_text, payload.dedupe)
+        duplicate_positions = {pos for indexes in duplicates.values() for pos in indexes}
+        items = []
+        for pos, row in enumerate(rows):
+            index = pos + 1
+            preview_text = f"Idea: {row.idea}"
+            items.append(BatchPreviewItem(
+                index=index, project_name=project_name_for_item(payload.name, index),
+                script_preview=(preview_text[:140] + "...") if len(preview_text) > 140 else preview_text,
+                is_duplicate=pos in duplicate_positions,
+            ))
+        return BatchPreview(
+            template_id=payload.template_id, script_count=len(rows), items=items,
+            duplicate_count=len(duplicate_positions),
         )
-        for index, script in enumerate(scripts, start=1)
-    ]
-    return BatchPreview(template_id=payload.template_id, script_count=len(scripts), items=items)
+
+    raise ValidationError("Either scripts_text or ideas_text must be provided.")
 
 
 @router.post("/batches", response_model=BatchOut, status_code=201)
 def create_batch(payload: CreateBatchRequest, settings: Settings = Depends(get_settings)) -> BatchOut:
     template = _get_template_or_404(payload.template_id, settings)
-    scripts = _validate_scripts(payload.scripts_text)
 
-    db = SessionLocal()
-    try:
-        batch = Batch(name=payload.name, template_id=template.id, status="DRAFT")
-        db.add(batch)
-        db.flush()  # assigns batch.id without committing yet
+    if payload.scripts_text and payload.scripts_text.strip():
+        scripts = _validate_scripts(payload.scripts_text)
+        db = SessionLocal()
+        try:
+            batch = Batch(name=payload.name, template_id=template.id, status="DRAFT")
+            db.add(batch)
+            db.flush()  # assigns batch.id without committing yet
 
-        for index, script in enumerate(scripts, start=1):
-            project_name = project_name_for_item(payload.name, index)
-            config_snapshot = template.config.model_copy(deep=True)
-            project = Project(
-                name=project_name,
-                slug=unique_project_slug(project_name, db),
-                beat_plan_json=new_project_draft(script, project_name, config_snapshot),
-            )
-            db.add(project)
-            db.flush()  # assigns project.id
-            db.add(BatchItem(
-                batch_id=batch.id, index=index, script_text=script, project_id=project.id, status="PROJECT_CREATED"
-            ))
+            for index, script in enumerate(scripts, start=1):
+                project_name = project_name_for_item(payload.name, index)
+                config_snapshot = template.config.model_copy(deep=True)
+                project = Project(
+                    name=project_name,
+                    slug=unique_project_slug(project_name, db),
+                    beat_plan_json=new_project_draft(script, project_name, config_snapshot),
+                )
+                db.add(project)
+                db.flush()  # assigns project.id
+                db.add(BatchItem(
+                    batch_id=batch.id, index=index, script_text=script, project_id=project.id, status="PROJECT_CREATED"
+                ))
 
-        db.commit()
-        batch_id = batch.id
-    except Exception:
-        db.rollback()
-        raise
-    finally:
-        db.close()
+            db.commit()
+            batch_id = batch.id
+        except Exception:
+            db.rollback()
+            raise
+        finally:
+            db.close()
+        return BatchOut.model_validate(get_batch_row(batch_id), from_attributes=True)
 
-    return BatchOut.model_validate(get_batch_row(batch_id), from_attributes=True)
+    if payload.ideas_text and payload.ideas_text.strip():
+        rows, _duplicates = _validate_and_maybe_dedupe_ideas(payload.ideas_text, payload.dedupe)
+        templates_by_id = {t.id: t for t in [*BUILTIN_TEMPLATES, *load_custom_templates(_templates_json_path(settings))]}
+
+        db = SessionLocal()
+        try:
+            batch = Batch(name=payload.name, template_id=template.id, status="DRAFT")
+            db.add(batch)
+            db.flush()
+
+            for pos, row in enumerate(rows):
+                index = pos + 1
+                project_name = project_name_for_item(payload.name, index)
+                # Section 22's per-item overrides -- only ever set from a
+                # CSV row (plain one-idea-per-line rows have none, see
+                # parse_idea_rows); an unknown template id falls back to the
+                # batch's own default rather than failing the whole batch
+                # over one bad row (section 20: not a strict spreadsheet
+                # importer).
+                row_template = templates_by_id.get(row.template_id, template) if row.template_id else template
+                config_snapshot = row_template.config.model_copy(deep=True)
+                if row.language:
+                    config_snapshot.content.language = row.language
+                if row.target_duration:
+                    config_snapshot.content.target_duration = row.target_duration
+
+                project = Project(
+                    name=project_name,
+                    slug=unique_project_slug(project_name, db),
+                    beat_plan_json=new_project_draft(None, project_name, config_snapshot, idea=row.idea, script_locked=False),
+                )
+                db.add(project)
+                db.flush()
+                # BatchItem.script_text is NOT NULLABLE (the old script-based
+                # flow's own per-item raw-text column) -- for an idea-based
+                # item this holds the idea text itself, the closest
+                # equivalent of "what the user originally typed for this
+                # item." This batch's own content/beat generation runs
+                # through FactoryPipeline (see factory_pipeline.py's
+                # run_batch_factory), never batch_render.py's own
+                # _generate_beats_for_item/render_batch below, which only
+                # ever look at BatchItem.status, not this column's content.
+                db.add(BatchItem(
+                    batch_id=batch.id, index=index, script_text=row.idea, project_id=project.id, status="PROJECT_CREATED"
+                ))
+
+            db.commit()
+            batch_id = batch.id
+        except Exception:
+            db.rollback()
+            raise
+        finally:
+            db.close()
+        return BatchOut.model_validate(get_batch_row(batch_id), from_attributes=True)
+
+    raise ValidationError("Either scripts_text or ideas_text must be provided.")
 
 
 # -- Beat generation (bounded concurrency, background thread) -----------
@@ -293,6 +404,11 @@ def _generate_beats_for_item(item_id: int, project_id: int, script_text: str, ap
         full_plan = BeatPlan(
             script_text=generated.script_text, beats=generated.beats,
             project_name=draft.project_name, config=draft.config,
+            # Task 21 -- carried through so an idea-based item accidentally
+            # run through this older, script-only flow doesn't lose its
+            # idea/content_brief/lock (see factory_pipeline.py's own
+            # _stage_generate_beats for the identical fix and reasoning).
+            idea=draft.idea, content_brief=draft.content_brief, script_locked=draft.script_locked,
         )
         update_project_beat_plan(project_id, full_plan)
         set_item_fields(item_id, status="BEATS_READY", error_message=None)

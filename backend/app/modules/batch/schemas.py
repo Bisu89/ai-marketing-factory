@@ -4,6 +4,8 @@ dependency -- the parser in particular is exercised directly by unit tests
 with no server/DB involved at all.
 """
 
+import csv
+import io
 import re
 from datetime import datetime, timezone
 
@@ -33,6 +35,84 @@ def parse_scripts(raw_text: str) -> list[str]:
     else:
         blocks = [normalized]
     return [block.strip() for block in blocks if block.strip()]
+
+
+# -- Batch idea import (Task 21 -- see
+# docs/features/47-content-brief-script-engine.md sections 18-22, 30-33) ---
+
+
+def normalize_idea(text: str) -> str:
+    """Whitespace/casing/punctuation-insensitive normalization for exact
+    duplicate detection (section 32) -- never AI semantic similarity
+    (section 33's own explicit scope limit).
+    """
+    collapsed = re.sub(r"\s+", " ", text.strip().lower())
+    return collapsed.strip(" .,!?;:-")
+
+
+def parse_ideas(raw_text: str) -> list[str]:
+    """One idea per non-blank line (section 18/19) -- same CRLF-normalizing,
+    never-merge-or-dedupe shape as parse_scripts above.
+    """
+    normalized = raw_text.replace("\r\n", "\n").replace("\r", "\n")
+    return [line.strip() for line in normalized.split("\n") if line.strip()]
+
+
+class IdeaRow(BaseModel):
+    """One batch item's worth of input -- either just an idea (defaults
+    inherited from the batch/template, section 21) or an idea plus explicit
+    per-item overrides (section 22, only ever from CSV input).
+    """
+
+    idea: str
+    language: str | None = None
+    template_id: str | None = None
+    target_duration: float | None = None
+
+
+def parse_idea_rows(raw_text: str) -> list[IdeaRow]:
+    """Section 20: a lightweight sniff, not a spreadsheet importer -- if the
+    first non-blank line looks like a CSV header containing an "idea"
+    column, parse with the stdlib csv module (columns: idea, language,
+    template, duration -- all but idea optional, section 22's per-item
+    overrides); otherwise the plain one-idea-per-line format above.
+    """
+    normalized = raw_text.replace("\r\n", "\n").replace("\r", "\n").strip()
+    if not normalized:
+        return []
+
+    first_line = normalized.split("\n", 1)[0]
+    first_columns = [c.strip().lower() for c in first_line.split(",")]
+    if "idea" not in first_columns:
+        return [IdeaRow(idea=idea) for idea in parse_ideas(raw_text)]
+
+    rows: list[IdeaRow] = []
+    for raw_row in csv.DictReader(io.StringIO(normalized)):
+        row = {(k or "").strip().lower(): (v or "").strip() for k, v in raw_row.items()}
+        idea = row.get("idea", "")
+        if not idea:
+            continue
+        duration_text = row.get("duration", "")
+        rows.append(IdeaRow(
+            idea=idea,
+            language=row.get("language") or None,
+            template_id=row.get("template") or None,
+            target_duration=float(duration_text) if duration_text else None,
+        ))
+    return rows
+
+
+def find_duplicate_ideas(ideas: list[str]) -> dict[str, list[int]]:
+    """Section 32: {normalized_idea: [0-based indexes]} for every group of
+    2+ ideas that normalize identically -- omits singletons entirely, so
+    `if find_duplicate_ideas(...)` is a trivial "were there any" check.
+    Never deletes anything itself (section 32's own "do not silently
+    delete" -- see CreateBatchRequest.dedupe for the explicit opt-in).
+    """
+    groups: dict[str, list[int]] = {}
+    for index, idea in enumerate(ideas):
+        groups.setdefault(normalize_idea(idea), []).append(index)
+    return {key: indexes for key, indexes in groups.items() if len(indexes) > 1}
 
 
 class BatchItemOut(BaseModel):
@@ -112,7 +192,16 @@ class BatchOut(BaseModel):
 class CreateBatchRequest(BaseModel):
     name: str
     template_id: str
-    scripts_text: str
+    # Task 21: exactly one of these two must be provided (validated by the
+    # composition root -- app.modules.batch must never import
+    # app.modules.beat to resolve idea-based Projects itself, same reason
+    # this module has never resolved templates directly).
+    scripts_text: str | None = None
+    ideas_text: str | None = None
+    # Section 32 -- an explicit opt-in, never the default: drop exact
+    # normalized-duplicate ideas (keeping the first occurrence of each)
+    # before creating anything.
+    dedupe: bool = False
 
     @field_validator("name")
     @classmethod
@@ -126,12 +215,17 @@ class BatchPreviewItem(BaseModel):
     index: int
     project_name: str
     script_preview: str
+    # Task 21 section 32 -- true when this item's (normalized) idea/script
+    # matches an earlier item in the same batch; never auto-removed, just
+    # surfaced so the user can decide (see CreateBatchRequest.dedupe).
+    is_duplicate: bool = False
 
 
 class BatchPreview(BaseModel):
     template_id: str
     script_count: int
     items: list[BatchPreviewItem]
+    duplicate_count: int = 0
 
 
 assert set(BATCH_STATUSES) == {

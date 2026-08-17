@@ -248,6 +248,45 @@ class FactoryProjectConfig(BaseModel):
     render_after_quality_pass: bool = True
 
 
+# ISO-ish short codes, matching section 36's own explicit examples -- never
+# inferred from user location, always the configured template/batch value.
+CONTENT_LANGUAGES = ("en", "es", "vi", "pt")
+
+
+class ContentProjectConfig(BaseModel):
+    """Task 21's "content profile" (see
+    docs/features/47-content-brief-script-engine.md section 9) -- the
+    lightweight, Template-driven configuration Idea->ContentBrief->Script
+    generation reads instead of a second global settings system. Same
+    "named sub-config hung off ProjectConfig" shape FactoryProjectConfig
+    already established (section 8: "Template determines language/duration/
+    tone/structure").
+    """
+
+    model_config = ConfigDict(extra="forbid")
+
+    language: str = "en"
+    tone: str = "warm and reflective"
+    style: str = "storytelling"
+    target_duration: float = 30.0
+    audience: str = "general audience"
+    cta_enabled: bool = True
+
+    @field_validator("language")
+    @classmethod
+    def _known_language(cls, value: str) -> str:
+        if value not in CONTENT_LANGUAGES:
+            raise ValueError(f"Unknown language {value!r}, must be one of {CONTENT_LANGUAGES}")
+        return value
+
+    @field_validator("target_duration")
+    @classmethod
+    def _duration_within_bounds(cls, value: float) -> float:
+        if not (MIN_DURATION <= value <= MAX_DURATION):
+            raise ValueError(f"target_duration must be between {MIN_DURATION} and {MAX_DURATION} seconds, got {value}")
+        return value
+
+
 class ProjectConfig(BaseModel):
     """The one, unified configuration object -- render/motion/captions/audio
     -- shared by templates and projects alike (Task 12's own "do not
@@ -264,6 +303,7 @@ class ProjectConfig(BaseModel):
     captions: CaptionsProjectConfig = Field(default_factory=CaptionsProjectConfig)
     audio: AudioProjectConfig = Field(default_factory=AudioProjectConfig)
     factory: FactoryProjectConfig = Field(default_factory=FactoryProjectConfig)
+    content: ContentProjectConfig = Field(default_factory=ContentProjectConfig)
     # Provenance only, like Beat.asset_id -- which Template (and which
     # version of it) this config was snapshotted from, if any. A project
     # created without choosing a template (or a pre-Task-12 project) has
@@ -332,6 +372,10 @@ EMOTIONAL_STORY_TEMPLATE = Template(
         motion=MotionProjectConfig(default_preset=BeatMotionPreset.SLOW_PUSH_IN),
         captions=CaptionsProjectConfig(enabled=True, preset="big_statement"),
         audio=AudioProjectConfig(narration_enabled=True, music_enabled=True, music_volume=0.18, ducking=True),
+        content=ContentProjectConfig(
+            language="en", tone="warm and emotional", style="storytelling",
+            target_duration=30.0, audience="general audience", cta_enabled=True,
+        ),
         template_id="emotional_story",
         template_version=1,
     ),
@@ -348,6 +392,10 @@ COUPLE_STORY_TEMPLATE = Template(
         motion=MotionProjectConfig(default_preset=BeatMotionPreset.SLOW_PUSH_IN),
         captions=CaptionsProjectConfig(enabled=True, preset="emotional"),
         audio=AudioProjectConfig(narration_enabled=True, music_enabled=True, music_volume=0.15, ducking=True),
+        content=ContentProjectConfig(
+            language="en", tone="tender and reflective", style="relationship story",
+            target_duration=30.0, audience="adults interested in relationships", cta_enabled=True,
+        ),
         template_id="couple_story",
         template_version=1,
     ),
@@ -382,6 +430,46 @@ def sanitize_project_config_for_template(config: ProjectConfig) -> ProjectConfig
     return config.model_copy(deep=True, update={"template_id": None, "template_version": None})
 
 
+# -- Content (Task 21 -- see docs/features/47-content-brief-script-engine.md) --
+#
+# Idea -> ContentBrief -> Script, ahead of Beat generation. ContentBrief is a
+# plain nested value object stored inside Project.beat_plan_json (same "one
+# JSON blob, not a dozen tables" convention BeatPlan.config already uses),
+# not a separate SQL table -- it has no independent lifecycle from the
+# Project it belongs to and no module outside app.modules.beat ever needs to
+# query it on its own.
+
+
+class ContentBrief(BaseModel):
+    """AI-produced (or manually edited -- section 16, "human edits always
+    win") creative direction for one video, generated from a short Idea
+    before Script generation. Deliberately narrower than the brief's own
+    full field list (section 5's "do not blindly create every field") --
+    `language`/`target_duration` are NOT part of this model since they're
+    already owned by ContentProjectConfig (the Template-driven profile),
+    not something the AI decides per-idea.
+    """
+
+    model_config = ConfigDict(extra="forbid")
+
+    topic: str
+    audience: str
+    angle: str
+    emotion: str
+    hook_strategy: str
+    tone: str
+    pacing: str
+    core_message: str
+    cta: str
+
+    @field_validator("topic", "audience", "angle", "emotion", "hook_strategy", "tone", "pacing", "core_message", "cta")
+    @classmethod
+    def _not_blank(cls, value: str) -> str:
+        if not value.strip():
+            raise ValueError("ContentBrief fields must not be blank")
+        return value
+
+
 class BeatPlan(BaseModel):
     """An ordered, non-empty set of Beats derived from one script. `video_id`
     is a bare, unconstrained reference (no FK -- see module docstring) to the
@@ -406,6 +494,17 @@ class BeatPlan(BaseModel):
     # all loads with zero migration, exactly like motion_preset above.
     project_name: str | None = None
     config: ProjectConfig = Field(default_factory=lambda: DEFAULT_PROJECT_CONFIG.model_copy(deep=True))
+    # Task 21 -- the raw one-line idea a project can be created from instead
+    # of a full script (section 3). None for every pre-Task-21 project/plan
+    # (backward compatible, same "absent means not applicable" convention as
+    # motion_preset/config above).
+    idea: str | None = None
+    content_brief: ContentBrief | None = None
+    # True once a human has directly written/edited script_text (section 17)
+    # -- FactoryPipeline's CONTENT stage (app/api/v1/endpoints/content_generate.py)
+    # must never overwrite script_text while this is set, regardless of
+    # whether the current text happens to pass validation.
+    script_locked: bool = False
 
     @computed_field
     @property
@@ -462,6 +561,11 @@ class ProjectOut(BaseModel):
     project_name: str | None = None
     config: ProjectConfig = Field(default_factory=lambda: DEFAULT_PROJECT_CONFIG.model_copy(deep=True))
     render_job_id: int | None = None
+    # Task 21 -- see BeatPlan's own matching fields above; ProjectOut mirrors
+    # them for the exact same reason it mirrors script_text/beats/config.
+    idea: str | None = None
+    content_brief: ContentBrief | None = None
+    script_locked: bool = False
 
     @computed_field
     @property
@@ -469,16 +573,31 @@ class ProjectOut(BaseModel):
         return sum(beat.duration for beat in self.beats)
 
 
-def new_project_draft(script_text: str, project_name: str, config: ProjectConfig) -> dict:
+def new_project_draft(
+    script_text: str | None, project_name: str, config: ProjectConfig,
+    *, idea: str | None = None, script_locked: bool = False,
+) -> dict:
     """The initial `Project.beat_plan_json` for a just-created project --
     valid ProjectOut shape, deliberately NOT a valid BeatPlan yet (no
     beats). "Generate Beats for Batch" (the composition-root batch
     orchestrator) is what turns this into one plan.beats.append() at a
     time, same as the interactive Beat Editor does for the singleton flow.
+
+    Task 21: `script_text` is now optional -- a project may instead start
+    from just an `idea`, with FactoryPipeline's own CONTENT stage
+    (app/api/v1/endpoints/content_generate.py) producing script_text before
+    Beat generation ever runs. `script_locked` defaults to True whenever a
+    real script_text is supplied directly (the classic flow -- a human typed
+    it, so it's already final, never touched by automatic content
+    generation) and False when only an idea is given (nothing to protect
+    yet -- see project_service.create_project's own caller-side default).
     """
     return {
         "script_text": script_text,
         "beats": [],
         "project_name": project_name,
         "config": config.model_dump(mode="json"),
+        "idea": idea,
+        "content_brief": None,
+        "script_locked": script_locked,
     }

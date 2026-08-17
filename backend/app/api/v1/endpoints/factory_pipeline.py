@@ -57,6 +57,14 @@ from sqlalchemy.orm import Session
 from app.api.v1.endpoints.batch_render import project_composition_plan
 from app.api.v1.endpoints.beat_generate import generate_beat_plan
 from app.api.v1.endpoints.composition_render import render_composition
+from app.api.v1.endpoints.content_generate import (
+    ContentProviderTimeout,
+    InvalidContentResponse,
+    ScriptValidationError,
+    generate_content_brief,
+    generate_script,
+    validate_script_text,
+)
 from app.api.v1.endpoints.quality_gate import compute_asset_confidence, run_quality_check, tokenize_prose
 from app.core.concurrency import ai_generation_semaphore
 from app.core.config import Settings, get_settings
@@ -69,15 +77,23 @@ from app.modules.batch.models import Batch
 from app.modules.batch.schemas import BatchOut
 from app.modules.batch.service import get_batch as get_batch_row
 from app.modules.beat.models import Project
-from app.modules.beat.project_service import get_project_draft, set_project_render_job_id, update_project_beat_plan
+from app.modules.beat.project_service import (
+    get_project_draft,
+    set_project_generated_content,
+    set_project_render_job_id,
+    update_project_beat_plan,
+)
 from app.modules.beat.schemas import Beat, BeatPlan
 from app.modules.factory import service as factory_service
 from app.modules.factory.models import FACTORY_STAGES, FactoryRun
 from app.modules.factory.schemas import (
     ASSET_MATCH_FAILED,
     BEAT_GENERATION_FAILED,
+    CONTENT_GENERATION_FAILED,
+    CONTENT_PROVIDER_TIMEOUT,
     FactoryCheckpointOut,
     FactoryRunOut,
+    INVALID_CONTENT_RESPONSE,
     INVALID_EXISTING_BEAT_PLAN,
     NOT_RESUMABLE,
     QUALITY_BLOCKED,
@@ -143,6 +159,58 @@ def _bail_if_cancelled(run_id: int, cancel_event: threading.Event) -> bool:
     return True
 
 
+# -- Stage: PREPARING_CONTENT (Task 21 -- see
+# docs/features/47-content-brief-script-engine.md) -------------------------
+
+
+def _stage_generate_content(project_id: int, settings: Settings) -> bool:
+    """Section 24/27: idempotent, the same reuse-before-regenerate shape
+    _stage_generate_beats already established for beats -- a project with a
+    real script_text already (or script_locked, section 17: "human edits
+    always win") skips this stage entirely; nothing is regenerated, nothing
+    overwritten. Returns whether the AI was actually called (same "missing
+    metrics key, not zero" convention _stage_generate_beats uses).
+
+    A project with neither a script nor an idea is deliberately left alone
+    here (not an error) -- GENERATING_BEATS' own existing, unmodified "no
+    script to generate beats from" check is still what surfaces that as a
+    real, user-facing BEAT_GENERATION_FAILED, exactly as it already did
+    before this stage existed.
+    """
+    draft = get_project_draft(project_id)
+
+    if draft.script_locked or (draft.script_text and draft.script_text.strip()):
+        return False
+
+    idea = (draft.idea or "").strip()
+    if not idea:
+        return False
+
+    content_config = draft.config.content
+    try:
+        brief = generate_content_brief(settings.anthropic_api_key, idea, content_config)
+        script = generate_script(settings.anthropic_api_key, brief, content_config)
+    except ContentProviderTimeout as exc:
+        raise FactoryStageError("PREPARING_CONTENT", CONTENT_PROVIDER_TIMEOUT, str(exc)) from exc
+    except InvalidContentResponse as exc:
+        raise FactoryStageError("PREPARING_CONTENT", INVALID_CONTENT_RESPONSE, str(exc)) from exc
+    except (ValidationError, ExternalServiceError) as exc:
+        raise FactoryStageError("PREPARING_CONTENT", CONTENT_GENERATION_FAILED, str(exc)) from exc
+
+    script_text = script.to_narration_text()
+    try:
+        validate_script_text(script_text, content_config.target_duration, settings.content_words_per_second)
+    except ScriptValidationError as exc:
+        raise FactoryStageError("PREPARING_CONTENT", exc.code, str(exc)) from exc
+
+    # Section 27: persist only after both the brief and the flattened
+    # script have already passed real validation above -- never checkpoint
+    # COMPLETED before this write, and never write before validating
+    # (Task 19's own "validate, then persist, then checkpoint" ordering).
+    set_project_generated_content(project_id, brief, script_text)
+    return True
+
+
 # -- Stage: GENERATING_BEATS ----------------------------------------------
 
 
@@ -162,6 +230,7 @@ def _stage_generate_beats(project_id: int, settings: Settings) -> tuple[BeatPlan
             plan = BeatPlan(
                 script_text=draft.script_text, beats=draft.beats,
                 project_name=draft.project_name, config=draft.config,
+                idea=draft.idea, content_brief=draft.content_brief, script_locked=draft.script_locked,
             )
         except PydanticValidationError as exc:
             raise FactoryStageError(
@@ -190,6 +259,7 @@ def _stage_generate_beats(project_id: int, settings: Settings) -> tuple[BeatPlan
     plan = BeatPlan(
         script_text=generated.script_text, beats=generated.beats,
         project_name=draft.project_name, config=draft.config,
+        idea=draft.idea, content_brief=draft.content_brief, script_locked=draft.script_locked,
     )
     update_project_beat_plan(project_id, plan)
     return plan, True
@@ -419,6 +489,21 @@ def _execute_pipeline_sync(run_id: int, project_id: int, settings: Settings, ser
         if _bail_if_cancelled(run_id, cancel_event):
             return
 
+        current_stage = "PREPARING_CONTENT"
+        factory_service.set_run_fields(run_id, status=current_stage)
+        factory_service.start_checkpoint(run_id, current_stage)
+        t0 = time.monotonic()
+        content_generated = _stage_generate_content(project_id, settings)
+        if content_generated:
+            factory_service.merge_metrics(run_id, content_generation_seconds=round(time.monotonic() - t0, 3))
+        # Section 27: reaching this line already proves either (a) a valid
+        # script_text now exists and passed validate_script_text, or (b)
+        # this stage correctly had nothing to do (already had a script/no
+        # idea at all) -- never "the AI request returned HTTP 200."
+        factory_service.complete_checkpoint(run_id, current_stage, metadata={"generated": content_generated})
+        if _bail_if_cancelled(run_id, cancel_event):
+            return
+
         current_stage = "GENERATING_BEATS"
         factory_service.set_run_fields(run_id, status=current_stage)
         factory_service.start_checkpoint(run_id, current_stage)
@@ -566,6 +651,7 @@ def _continue_run_sync(run_id: int, project_id: int, settings: Settings, service
         draft = get_project_draft(project_id)
         plan = BeatPlan(
             script_text=draft.script_text, beats=draft.beats, project_name=draft.project_name, config=draft.config,
+            idea=draft.idea, content_brief=draft.content_brief, script_locked=draft.script_locked,
         )
         _run_quality_and_proceed(run_id, project_id, plan, settings, cancel_event, service)
     except FactoryStageError as exc:

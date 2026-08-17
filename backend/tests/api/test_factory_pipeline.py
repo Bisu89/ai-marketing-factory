@@ -160,7 +160,7 @@ class _FactoryTestCase(unittest.TestCase):
     # render_composition actually run; a poll landing in that narrow
     # window is still "local stages in flight," not settled yet.
     _LOCAL_STAGES = (
-        "PREPARING", "GENERATING_BEATS", "PREPARING_VISUALS", "ASSIGNING_ASSETS",
+        "PREPARING", "PREPARING_CONTENT", "GENERATING_BEATS", "PREPARING_VISUALS", "ASSIGNING_ASSETS",
         "QUALITY_CHECK", "READY_TO_RENDER",
     )
 

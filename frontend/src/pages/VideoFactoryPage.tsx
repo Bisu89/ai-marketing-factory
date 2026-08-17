@@ -63,6 +63,7 @@ import type {
   BeatPreviewResult,
   BeatType,
   CaptionPreset,
+  ContentBrief,
   GeneratedBeat,
   GeneratedBeatPlan,
   MotionPresetName,
@@ -172,7 +173,7 @@ function makeBeat(overrides: Partial<WorkingBeat> = {}): WorkingBeat {
 // so a save-then-reload round trip doesn't silently change ids on every
 // beat. "Add beat manually" is the only case that goes through makeBeat()
 // without an id override, since it has no backend-assigned id to reuse.
-function workingBeatFromDTO(beat: GeneratedBeat, index: number): WorkingBeat {
+function workingBeatFromDTO(beat: GeneratedBeat): WorkingBeat {
   return makeBeat({
     id: beat.id,
     order: beat.order,
@@ -262,12 +263,23 @@ function buildBeatPlanForSave(
   beats: WorkingBeat[],
   script: string,
   projectName: string,
-  config: ProjectConfig
+  config: ProjectConfig,
+  // Task 21 -- preserved as-loaded (this page has no UI to edit them),
+  // never silently dropped on save. scriptLocked additionally auto-locks
+  // the instant the script text actually differs from what was loaded --
+  // "human edits always win" (section 17) shouldn't require a separate,
+  // not-yet-built lock toggle to take effect for the one real editing
+  // surface this page already has.
+  idea: string | null,
+  contentBrief: ContentBrief | null,
+  scriptLocked: boolean,
+  loadedScriptText: string | null
 ): GeneratedBeatPlan {
   // `order` is always derived from the beats array's current position, not
   // from any per-beat field kept in sync separately -- there is no other
   // source of truth for order, so it can never drift.
   const dtoBeats = beats.map((beat, index) => toBeatDTO(beat, index + 1));
+  const scriptChanged = script.trim() !== (loadedScriptText ?? "").trim();
   return {
     video_id: null,
     script_text: script.trim() ? script : null,
@@ -275,6 +287,9 @@ function buildBeatPlanForSave(
     total_duration: dtoBeats.reduce((sum, beat) => sum + beat.duration, 0),
     project_name: projectName.trim() ? projectName : null,
     config,
+    idea,
+    content_brief: contentBrief,
+    script_locked: scriptLocked || scriptChanged,
   };
 }
 
@@ -386,6 +401,17 @@ export function VideoFactoryPage() {
 
   const [step, setStep] = useState<Step>(1);
   const [script, setScript] = useState("");
+  // Task 21 -- see docs/features/47-content-brief-script-engine.md. This
+  // page has no UI to edit idea/content_brief yet -- these three exist
+  // purely so a Save here never silently wipes them (the same
+  // preserve-on-save shape buildProjectConfigForSave already uses for
+  // ProjectConfig.factory). loadedScriptText is what backs "did the user
+  // actually change the script" -> auto-lock on save (section 17: "human
+  // edits always win").
+  const [idea, setIdea] = useState<string | null>(null);
+  const [contentBrief, setContentBrief] = useState<ContentBrief | null>(null);
+  const [scriptLocked, setScriptLocked] = useState(false);
+  const [loadedScriptText, setLoadedScriptText] = useState<string | null>(null);
   const [beats, setBeats] = useState<WorkingBeat[]>([]);
   const [selectedBeatId, setSelectedBeatId] = useState<string | null>(null);
   const [generating, setGenerating] = useState(false);
@@ -497,10 +523,14 @@ export function VideoFactoryPage() {
           setTemplatePickerOpen(true);
           return;
         }
-        const loaded = plan.beats.map((beat, index) => workingBeatFromDTO(beat, index));
+        const loaded = plan.beats.map(workingBeatFromDTO);
         const resolved = await resolveAssetReferences(loaded);
         if (cancelled) return;
         setScript(plan.script_text ?? "");
+        setLoadedScriptText(plan.script_text ?? "");
+        setIdea(plan.idea ?? null);
+        setContentBrief(plan.content_brief ?? null);
+        setScriptLocked(plan.script_locked ?? false);
         setBeats(resolved);
         setSelectedBeatId(resolved[0]?.id ?? null);
         setProjectName(plan.project_name ?? "");
@@ -572,7 +602,7 @@ export function VideoFactoryPage() {
     setGenerateError(null);
     try {
       const result = await generateBeatPlan(script);
-      const generated = result.beats.map((beat, index) => workingBeatFromDTO(beat, index));
+      const generated = result.beats.map(workingBeatFromDTO);
       setBeats(generated);
       setSelectedBeatId(generated[0]?.id ?? null);
       setValidationErrors([]);
@@ -643,6 +673,12 @@ export function VideoFactoryPage() {
         music_volume: musicVolume,
         ducking: duckingRatio > 1,
       },
+      // Not sourced from any Step 4 control (this page has no factory-policy
+      // UI) -- preserved as-loaded so saving here never silently resets a
+      // project's own auto-assign/review policy back to defaults.
+      factory: projectConfig.factory,
+      // Same reasoning (Task 21) -- no content-profile UI on this page.
+      content: projectConfig.content,
       template_id: projectConfig.template_id,
       template_version: projectConfig.template_version,
     };
@@ -653,12 +689,16 @@ export function VideoFactoryPage() {
     setSaving(true);
     setSaveError(null);
     try {
-      const plan = buildBeatPlanForSave(beats, script, projectName, buildProjectConfigForSave());
+      const plan = buildBeatPlanForSave(
+        beats, script, projectName, buildProjectConfigForSave(), idea, contentBrief, scriptLocked, loadedScriptText
+      );
       if (projectId != null) {
         await saveProjectBeatPlan(projectId, plan);
       } else {
         await saveBeatPlan(plan);
       }
+      setScriptLocked(plan.script_locked ?? false);
+      setLoadedScriptText(plan.script_text ?? "");
       setDirty(false);
     } catch (err) {
       setSaveError(err instanceof Error ? err.message : "Could not save beat plan.");
@@ -684,7 +724,9 @@ export function VideoFactoryPage() {
       setQualityChecking(true);
       setQualityCheckError(null);
       try {
-        const planForCheck = buildBeatPlanForSave(beats, script, projectName, buildProjectConfigForSave());
+        const planForCheck = buildBeatPlanForSave(
+          beats, script, projectName, buildProjectConfigForSave(), idea, contentBrief, scriptLocked, loadedScriptText
+        );
         const report = await checkPlanQuality(planForCheck);
         setQualityReport(report);
         if (report.status !== "READY") {

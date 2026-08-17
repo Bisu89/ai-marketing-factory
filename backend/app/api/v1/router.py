@@ -6,6 +6,7 @@ from app.api.v1.endpoints import (
     beat_preview,
     categories,
     composition_render,
+    content_generate,
     dashboard,
     detect,
     downloads,
@@ -56,3 +57,4 @@ api_router.include_router(batch_render.router, tags=["batch-render"])
 api_router.include_router(quality_gate.router, tags=["quality-gate"])
 api_router.include_router(dashboard.router, tags=["dashboard"])
 api_router.include_router(factory_pipeline.router, tags=["factory-pipeline"])
+api_router.include_router(content_generate.router, tags=["content-generate"])
