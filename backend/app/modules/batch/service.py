@@ -8,6 +8,7 @@ processor, app/api/v1/endpoints/batch_render.py).
 
 from datetime import datetime, timezone
 
+from sqlalchemy import update
 from sqlalchemy.orm import selectinload
 
 from app.core.exceptions import NotFoundError
@@ -16,6 +17,13 @@ from app.modules.batch.models import BATCH_ITEM_TERMINAL_STATUSES, Batch, BatchI
 from app.modules.batch.schemas import parse_scripts
 
 MAX_BATCH_NAME_LEN = 120
+
+# Task 20 (see docs/features/46-factory-batch-engine.md) -- statuses the
+# Factory Batch Engine may claim an item *from*. Deliberately excludes
+# NEEDS_REVIEW/FAILED (those only ever restart via an explicit "Continue
+# Ready"/"Retry Failed" action, never the normal scheduling pass -- section
+# 15/45) and every terminal status.
+BATCH_ITEM_ENGINE_CLAIMABLE_STATUSES = ("PENDING", "PROJECT_CREATED", "BEATS_READY", "READY_TO_RENDER")
 
 
 def project_name_for_item(batch_name: str, index: int) -> str:
@@ -77,6 +85,73 @@ def set_item_fields(item_id: int, **fields) -> None:
         db.close()
 
 
+def claim_item(
+    item_id: int, new_status: str = "RUNNING", from_statuses: tuple[str, ...] = BATCH_ITEM_ENGINE_CLAIMABLE_STATUSES
+) -> bool:
+    """Task 20 section 27/28's own "atomic claim" -- a single UPDATE with a
+    status-guarded WHERE clause, not a read-then-write ORM round trip. Two
+    overlapping scheduling passes (a manual "Run Batch" click racing
+    startup recovery, a retry racing the engine's own next tick, etc.)
+    calling this for the same item can only ever have one of them see
+    rowcount == 1; the loser gets False and must not start any work.
+
+    `from_statuses` defaults to the normal scheduling pass's own claimable
+    set, but "Continue Ready" (NEEDS_REVIEW -> RUNNING) and "Retry Failed"
+    (FAILED -> RUNNING) are distinct, narrower claims -- see
+    factory_pipeline.py's continue_batch_factory/retry_batch_failed --
+    reusing this same atomic primitive rather than a second one.
+    """
+    db = SessionLocal()
+    try:
+        result = db.execute(
+            update(BatchItem)
+            .where(BatchItem.id == item_id, BatchItem.status.in_(from_statuses))
+            .values(status=new_status)
+        )
+        db.commit()
+        return result.rowcount == 1
+    finally:
+        db.close()
+
+
+def get_batch_item_by_project(project_id: int) -> BatchItem | None:
+    """Reverse lookup used by the Factory Batch Engine's render.job.*
+    handlers (see factory_pipeline.py) -- a render completion event only
+    carries a job id / the FactoryRun's project_id, never a batch_id.
+    Indexed on BatchItem.project_id (Task 20 -- see models.py).
+    """
+    db = SessionLocal()
+    try:
+        item = db.query(BatchItem).filter(BatchItem.project_id == project_id).order_by(BatchItem.id.desc()).first()
+        if item is not None:
+            db.expunge(item)
+        return item
+    finally:
+        db.close()
+
+
+def bulk_cancel_claimable_items(batch_id: int) -> int:
+    """Task 20 section 23/24: every item still in a claimable ("not started
+    yet") status becomes CANCELLED immediately and atomically -- this is
+    also what makes cancellation safe against a concurrently-running
+    engine tick: by the time any in-flight claim_item() call reaches this
+    item, it will no longer be in a claimable status, so the claim simply
+    fails (returns False) rather than racing a "start after cancel" bug.
+    Returns how many items were actually cancelled.
+    """
+    db = SessionLocal()
+    try:
+        result = db.execute(
+            update(BatchItem)
+            .where(BatchItem.batch_id == batch_id, BatchItem.status.in_(BATCH_ITEM_ENGINE_CLAIMABLE_STATUSES))
+            .values(status="CANCELLED")
+        )
+        db.commit()
+        return result.rowcount
+    finally:
+        db.close()
+
+
 def recompute_batch_status(batch_id: int) -> str:
     """Derives Batch.status purely from its items' own current statuses --
     never a separately-tracked flag that could drift. Called after every
@@ -100,8 +175,10 @@ def recompute_batch_status(batch_id: int) -> str:
         _AT_REST = ("PENDING", "PROJECT_CREATED", "BEATS_READY", "NEEDS_REVIEW")
         if not statuses:
             new_status = "DRAFT"
-        elif any(s == "RENDERING" for s in statuses):
-            # Actively rendering right now -- always PROCESSING, even if
+        elif any(s in ("RENDERING", "RUNNING") for s in statuses):
+            # Actively rendering (old script-based flow) or actively
+            # progressing through a FactoryRun (Task 20's batch engine, see
+            # factory_pipeline.py) right now -- always PROCESSING, even if
             # some other item already failed/completed; that's still
             # active work in flight.
             new_status = "PROCESSING"
@@ -147,5 +224,8 @@ __all__ = [
     "list_batches",
     "set_batch_status",
     "set_item_fields",
+    "claim_item",
+    "get_batch_item_by_project",
+    "bulk_cancel_claimable_items",
     "recompute_batch_status",
 ]

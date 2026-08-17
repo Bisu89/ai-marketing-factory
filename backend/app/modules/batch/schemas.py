@@ -5,10 +5,11 @@ with no server/DB involved at all.
 """
 
 import re
+from datetime import datetime, timezone
 
-from pydantic import BaseModel, ConfigDict, Field, field_validator
+from pydantic import BaseModel, ConfigDict, Field, computed_field, field_validator
 
-from app.modules.batch.models import BATCH_ITEM_STATUSES, BATCH_STATUSES
+from app.modules.batch.models import BATCH_ITEM_STATUSES, BATCH_ITEM_TERMINAL_STATUSES, BATCH_STATUSES
 
 # A line containing only "---" (optional surrounding whitespace) marks a
 # new script -- see docs/features/40-batch-video-creation.md's "text file
@@ -67,7 +68,45 @@ class BatchOut(BaseModel):
     name: str
     template_id: str | None
     status: str
+    created_at: datetime | None = None
+    completed_at: datetime | None = None
     items: list[BatchItemOut] = Field(default_factory=list)
+
+    # Task 20 section 32/34/52 -- real, measured progress counts (never a
+    # fabricated ETA -- see that section's own explicit "do not display a
+    # percentage/time remaining without a defensible calculation"). Derived
+    # purely from `items`, so this stays accurate for both the old
+    # script-based flow and the new Factory Batch Engine without either
+    # needing to maintain a separate counter.
+    @computed_field  # type: ignore[prop-decorator]
+    @property
+    def progress(self) -> dict[str, int]:
+        counts = {"total": len(self.items)}
+        for status in BATCH_ITEM_STATUSES:
+            counts[status] = sum(1 for item in self.items if item.status == status)
+        return counts
+
+    @computed_field  # type: ignore[prop-decorator]
+    @property
+    def videos_per_hour(self) -> float | None:
+        """None (never 0 or a guess) until there is at least one real
+        completed video and real elapsed wall-clock time to divide by --
+        section 33's "do not implement fake ETA" applies just as much to a
+        fabricated rate.
+        """
+        completed = sum(1 for item in self.items if item.status == "COMPLETED")
+        if completed == 0 or self.created_at is None:
+            return None
+        # SQLite round-trips DateTime(timezone=True) as naive (see Task 19's
+        # own finding on this) -- strip tzinfo on both sides so "now" (which
+        # datetime.now(timezone.utc) always returns aware) can be subtracted
+        # from a value that came back from the DB either way.
+        started = self.created_at.replace(tzinfo=None)
+        end = (self.completed_at or datetime.now(timezone.utc)).replace(tzinfo=None)
+        elapsed_hours = (end - started).total_seconds() / 3600.0
+        if elapsed_hours <= 0:
+            return None
+        return round(completed / elapsed_hours, 2)
 
 
 class CreateBatchRequest(BaseModel):
@@ -95,7 +134,10 @@ class BatchPreview(BaseModel):
     items: list[BatchPreviewItem]
 
 
-assert set(BATCH_STATUSES) == {"DRAFT", "PROCESSING", "COMPLETED", "PARTIAL_FAILURE", "FAILED", "CANCELLED"}
-# 9 original (Task 13) + NEEDS_REVIEW (Task 16 -- see
-# docs/features/42-content-quality-gate.md).
-assert len(BATCH_ITEM_STATUSES) == 10
+assert set(BATCH_STATUSES) == {
+    "DRAFT", "PROCESSING", "PAUSED", "PAUSED_AFTER_RESTART",
+    "COMPLETED", "PARTIAL_FAILURE", "FAILED", "CANCELLED",
+}
+# 9 original (Task 13) + NEEDS_REVIEW (Task 16) + RUNNING (Task 20).
+assert len(BATCH_ITEM_STATUSES) == 11
+assert BATCH_ITEM_TERMINAL_STATUSES == ("COMPLETED", "FAILED", "SKIPPED", "CANCELLED")

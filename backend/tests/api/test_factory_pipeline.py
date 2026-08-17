@@ -26,6 +26,7 @@ from app.api.v1.endpoints.factory_pipeline import (
     create_and_start_run,
     reconcile_factory_runs_on_startup,
     register_factory_event_handlers,
+    retry_batch_failed,
     retry_run,
     run_batch_factory,
 )
@@ -35,6 +36,7 @@ from app.db.base import Base
 from app.modules.asset.models import Asset
 from app.modules.asset.schemas import AssetRegisterIn
 from app.modules.asset.service import AssetService
+from app.modules.batch import service as batch_service
 from app.modules.batch.models import Batch, BatchItem
 from app.modules.batch.schemas import CreateBatchRequest
 from app.modules.beat.models import Project
@@ -121,6 +123,14 @@ class _FactoryTestCase(unittest.TestCase):
         # process lifetime, so this is test-isolation-only cleanup.
         with factory_pipeline_module._cancel_events_lock:
             factory_pipeline_module._cancel_events.clear()
+        # Task 20: _batch_pause_events is the exact same kind of
+        # module-global, id-keyed leak risk -- a batch left PAUSED (whose
+        # pause_event therefore stays .set()) never hits
+        # _drop_pause_event's own cleanup, so the same-numbered batch id in
+        # the next test's fresh DB would inherit an already-set event and
+        # silently no-op every item from the start.
+        with factory_pipeline_module._batch_pause_lock:
+            factory_pipeline_module._batch_pause_events.clear()
 
     def _db(self):
         return self.TestSessionLocal()
@@ -685,12 +695,21 @@ class BatchIntegrationTests(_FactoryTestCase):
         self.assertEqual(len(render_job_ids), 2)
 
     def test_continue_batch_only_touches_needs_review_and_failed(self):
+        # Task 20 (see docs/features/46-factory-batch-engine.md): the batch
+        # engine now sources eligibility from BatchItem.status (kept in
+        # sync with each item's own FactoryRun -- see
+        # _sync_batch_item_from_run), not by re-deriving it from FactoryRun
+        # directly, so this test sets both together, matching what the
+        # real engine itself would have already done. "[Continue Ready]"
+        # (NEEDS_REVIEW) and "[Retry Failed]" (FAILED) are now two separate
+        # actions/functions (continue_batch_factory / retry_batch_failed).
         batch = self._create_batch("Continue Batch", "One.\n---\nTwo.\n---\nThree.")
 
         # Item 1: already COMPLETED-equivalent (simulate a finished run) --
         # must be left completely untouched.
         completed_run, _ = factory_service.create_run(batch.items[0].project_id)
         factory_service.set_run_fields(completed_run.id, status="COMPLETED")
+        batch_service.set_item_fields(batch.items[0].id, status="COMPLETED")
 
         # Item 2: NEEDS_REVIEW, now fixed.
         draft2 = get_project_draft(batch.items[1].project_id)
@@ -701,6 +720,7 @@ class BatchIntegrationTests(_FactoryTestCase):
         update_project_beat_plan(batch.items[1].project_id, plan2)
         review_run, _ = factory_service.create_run(batch.items[1].project_id)
         factory_service.set_run_fields(review_run.id, status="NEEDS_REVIEW", requires_human_review=True)
+        batch_service.set_item_fields(batch.items[1].id, status="NEEDS_REVIEW")
 
         # Item 3: FAILED at asset stage, now fixed.
         draft3 = get_project_draft(batch.items[2].project_id)
@@ -711,13 +731,19 @@ class BatchIntegrationTests(_FactoryTestCase):
         update_project_beat_plan(batch.items[2].project_id, plan3)
         failed_run, _ = factory_service.create_run(batch.items[2].project_id)
         factory_service.set_run_fields(failed_run.id, status="FAILED", failed_stage="QUALITY_CHECK", error_code="QUALITY_BLOCKED")
+        batch_service.set_item_fields(batch.items[2].id, status="FAILED")
 
-        processed = continue_batch_factory(batch.id, self.settings, self.service)
-        self.assertEqual(processed, 2)
+        continued = continue_batch_factory(batch.id, self.settings, self.service)
+        self.assertEqual(continued, 1)
+        retried = retry_batch_failed(batch.id, self.settings, self.service)
+        self.assertEqual(retried, 1)
 
         self.assertEqual(self._get_run(completed_run.id).status, "COMPLETED")  # untouched
         self.assertEqual(self._get_run(review_run.id).status, "QUEUED")
         self.assertEqual(self._get_run(failed_run.id).status, "QUEUED")
+        self.assertEqual(batch_service.get_batch(batch.id).items[0].status, "COMPLETED")
+        self.assertEqual(batch_service.get_batch(batch.id).items[1].status, "RUNNING")
+        self.assertEqual(batch_service.get_batch(batch.id).items[2].status, "RUNNING")
 
 
 if __name__ == "__main__":

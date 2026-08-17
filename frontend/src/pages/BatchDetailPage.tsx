@@ -30,6 +30,7 @@ const STATUS_LABEL: Record<BatchItemStatus, string> = {
   READY_TO_RENDER: "Ready to render",
   NEEDS_REVIEW: "Needs review",
   RENDERING: "Rendering",
+  RUNNING: "Producing",
   COMPLETED: "Completed",
   FAILED: "Failed",
   SKIPPED: "Skipped",
@@ -39,6 +40,8 @@ const STATUS_LABEL: Record<BatchItemStatus, string> = {
 const BATCH_STATUS_LABEL: Record<Batch["status"], string> = {
   DRAFT: "Draft",
   PROCESSING: "Processing",
+  PAUSED: "Paused",
+  PAUSED_AFTER_RESTART: "Interrupted -- resume to continue",
   COMPLETED: "Completed",
   PARTIAL_FAILURE: "Partial failure",
   FAILED: "Failed",

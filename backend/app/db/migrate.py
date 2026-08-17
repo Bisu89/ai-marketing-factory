@@ -29,6 +29,15 @@ _NEW_COLUMNS: list[tuple[str, str, str]] = [
     ("factory_run", "attempt", "INTEGER DEFAULT 1"),
 ]
 
+# (index_name, table, column) -- Base.metadata.create_all() only creates
+# indexes for tables it creates from scratch; an already-existing table's
+# column that later gains index=True (Task 20's BatchItem.project_id) needs
+# its own explicit, idempotent CREATE INDEX here, same reasoning as
+# _NEW_COLUMNS above.
+_NEW_INDEXES: list[tuple[str, str, str]] = [
+    ("ix_batch_item_project_id", "batch_item", "project_id"),
+]
+
 
 def run_additive_column_migrations(engine: Engine) -> None:
     with engine.connect() as conn:
@@ -39,4 +48,10 @@ def run_additive_column_migrations(engine: Engine) -> None:
             existing_columns = {row[1] for row in conn.execute(text(f"PRAGMA table_info({table})")).fetchall()}
             if column not in existing_columns:
                 conn.execute(text(f"ALTER TABLE {table} ADD COLUMN {column} {sql_type}"))
+
+        for index_name, table, column in _NEW_INDEXES:
+            if table not in table_names:
+                continue  # a brand-new DB: create_all() already created this index with the table
+            conn.execute(text(f"CREATE INDEX IF NOT EXISTS {index_name} ON {table} ({column})"))
+
         conn.commit()

@@ -36,6 +36,7 @@ from sqlalchemy.orm import Session
 from app.api.v1.endpoints.beat_generate import generate_beat_plan
 from app.api.v1.endpoints.composition_render import render_composition
 from app.api.v1.endpoints.quality_gate import run_quality_check
+from app.core.concurrency import ai_generation_semaphore
 from app.core.config import Settings, get_settings
 from app.core.exceptions import FileOperationError, NotFoundError, ValidationError
 from app.core.render_profile import get_render_profile
@@ -273,7 +274,15 @@ def create_batch(payload: CreateBatchRequest, settings: Settings = Depends(get_s
 
 def _generate_beats_for_item(item_id: int, project_id: int, script_text: str, api_key: str | None) -> None:
     try:
-        generated = generate_beat_plan(api_key, script_text)
+        # Task 20: shares app.core.concurrency's process-wide AI semaphore
+        # with app/api/v1/endpoints/factory_pipeline.py's own Beat stage --
+        # this ThreadPoolExecutor's own max_workers=max_concurrent_ai_generation
+        # (see _run_batch_beat_generation) already bounds *this flow's own*
+        # concurrent calls; the shared semaphore additionally bounds the
+        # combined total if this flow and the factory batch engine both
+        # happen to be generating beats at the same time.
+        with ai_generation_semaphore:
+            generated = generate_beat_plan(api_key, script_text)
     except Exception as exc:
         logger.exception("Batch item %s beat generation failed", item_id)
         set_item_fields(item_id, status="FAILED", error_message=str(exc))

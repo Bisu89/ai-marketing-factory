@@ -4,6 +4,7 @@ file-backed SQLite with FactoryRun + FactoryCheckpoint tables already
 wired in there) rather than re-declaring a parallel one.
 """
 
+import time
 import unittest
 from unittest.mock import patch
 
@@ -274,6 +275,13 @@ class InvalidationTests(_FactoryTestCase):
         run = self._run_sync(project_id)
         factory_service.set_run_fields(run.id, status="COMPLETED", completed_at=factory_service._utcnow())
         completed = self._get_run(run.id)
+
+        # A tiny real delay -- SQLite's own DateTime round-trip precision
+        # (Task 19's own finding) can otherwise land completed_at and the
+        # edit's updated_at in the same rounded instant on a fast/loaded
+        # test run, which would make the ">" comparison this test is
+        # actually about spuriously false.
+        time.sleep(0.01)
 
         # A later, independent edit (real content change, not a no-op
         # rewrite of the same values -- Project.updated_at only bumps when

@@ -9,7 +9,11 @@ from fastapi.staticfiles import StaticFiles
 
 import app.models  # noqa: F401  (registers ORM models on Base.metadata)
 from app.api.v1.endpoints.composition_render import render_beats_for_job
-from app.api.v1.endpoints.factory_pipeline import reconcile_factory_runs_on_startup, register_factory_event_handlers
+from app.api.v1.endpoints.factory_pipeline import (
+    reconcile_batches_on_startup,
+    reconcile_factory_runs_on_startup,
+    register_factory_event_handlers,
+)
 from app.api.v1.router import api_router
 from app.core.config import get_settings, resource_path
 from app.core.events import EventBus
@@ -81,6 +85,11 @@ async def lifespan(app: FastAPI):
     # every VideoComposeJob's own state via its own crash recovery.
     register_factory_event_handlers(event_bus)
     reconcile_factory_runs_on_startup(settings)
+    # Task 20 (see docs/features/46-factory-batch-engine.md) -- must run
+    # after reconcile_factory_runs_on_startup, so every BatchItem still
+    # "RUNNING" syncs from its FactoryRun's already-settled outcome, not a
+    # stale in-flight one.
+    reconcile_batches_on_startup()
 
     yield
 

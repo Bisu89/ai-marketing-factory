@@ -21,7 +21,18 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.db.base import Base
 
-BATCH_STATUSES = ("DRAFT", "PROCESSING", "COMPLETED", "PARTIAL_FAILURE", "FAILED", "CANCELLED")
+# Task 20 (see docs/features/46-factory-batch-engine.md) adds PAUSED (user
+# clicked "Pause Batch" -- see factory_pipeline.py's pause_batch_engine)
+# and PAUSED_AFTER_RESTART (found "PROCESSING" at application startup --
+# see reconcile_batches_on_startup). Both mean "not currently starting new
+# work" without claiming any particular terminal outcome -- distinct from
+# every existing value, which are all either "not started yet"
+# (DRAFT/PROCESSING) or a real outcome (COMPLETED/PARTIAL_FAILURE/FAILED/
+# CANCELLED).
+BATCH_STATUSES = (
+    "DRAFT", "PROCESSING", "PAUSED", "PAUSED_AFTER_RESTART",
+    "COMPLETED", "PARTIAL_FAILURE", "FAILED", "CANCELLED",
+)
 
 BATCH_ITEM_STATUSES = (
     "PENDING",
@@ -36,6 +47,16 @@ BATCH_ITEM_STATUSES = (
     # existing structural-ineligibility check failed).
     "NEEDS_REVIEW",
     "RENDERING",
+    # Task 20 -- the Factory Batch Engine's own single "actively in flight"
+    # bucket, covering everything from PREPARING through RENDERING on the
+    # underlying FactoryRun (see factory_pipeline.py's _sync_batch_item_from_run).
+    # An item starts this flow from PENDING/PROJECT_CREATED/BEATS_READY/
+    # READY_TO_RENDER (reusing whatever "not started yet" state it's
+    # already in -- e.g. real existing beats are picked up, not
+    # regenerated) but only the new engine ever *sets* RUNNING; the old
+    # script-based flow's own RENDERING is a separate value it alone uses,
+    # so a batch's items never mix the two flows' in-flight markers.
+    "RUNNING",
     "COMPLETED",
     "FAILED",
     "SKIPPED",
@@ -90,7 +111,12 @@ class BatchItem(Base):
     # Beat.order, since items are never reordered after creation).
     index: Mapped[int] = mapped_column(Integer, nullable=False)
     script_text: Mapped[str] = mapped_column(String, nullable=False)
-    project_id: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    # Indexed (Task 20) -- the Factory Batch Engine's render.job.* handlers
+    # look up "which BatchItem does this project belong to" by project_id
+    # (see factory_pipeline.py's _find_batch_item_by_project), not just by
+    # batch_id, since a render completion event only carries the render
+    # job's project via its FactoryRun.
+    project_id: Mapped[int | None] = mapped_column(Integer, nullable=True, index=True)
     status: Mapped[str] = mapped_column(String, nullable=False, default="PENDING")
     error_message: Mapped[str | None] = mapped_column(String, nullable=True)
     render_job_id: Mapped[int | None] = mapped_column(Integer, nullable=True)

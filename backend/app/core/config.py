@@ -95,6 +95,25 @@ class Settings(BaseSettings):
     # config to reuse), configurable per this task's own instruction.
     max_concurrent_ai_generation: int = 2
 
+    # Factory Batch Engine (Task 20 -- see
+    # docs/features/46-factory-batch-engine.md). How many FactoryRuns may
+    # be actively progressing through their *local* stages (Beat/Visual/
+    # Quality) at once -- deliberately conservative for a desktop machine,
+    # and deliberately NOT the same knob as max_concurrent_ai_generation
+    # (a project can be "active" while waiting on other local work, not
+    # just an AI call) or max_parallel_renders (rendering is a completely
+    # separate, already-serial concern -- see that field's own docstring).
+    max_parallel_projects: int = 2
+
+    # Informational/reporting only -- app.modules.video_composer.VideoComposerService
+    # has exactly one worker thread (a single queue.Queue + one
+    # threading.Thread, see that module), so render concurrency is already
+    # 1 by construction and this setting does not currently control
+    # anything. Kept here (rather than omitted) so factory batch reporting
+    # has a real number to show alongside max_parallel_projects, and so a
+    # future multi-worker render queue has an obvious place to plug in.
+    max_parallel_renders: int = 1
+
     anthropic_api_key: str | None = None
 
 
