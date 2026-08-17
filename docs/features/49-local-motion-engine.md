@@ -1,6 +1,6 @@
 # 49 — Local Motion Engine: Beat Visual → Animated Clip → FFmpeg
 
-**Commit:** `TBD`
+**Commit:** `2ff11b8`
 
 Adds a new `GENERATING_MOTION` FactoryRun stage (after `GENERATING_VOICE`,
 before `QUALITY_CHECK`) that turns each Beat's visual `Asset` into a real,
