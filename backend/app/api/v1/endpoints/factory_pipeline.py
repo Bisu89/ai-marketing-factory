@@ -66,6 +66,7 @@ from app.api.v1.endpoints.content_generate import (
     validate_script_text,
 )
 from app.api.v1.endpoints.quality_gate import compute_asset_confidence, run_quality_check, tokenize_prose
+from app.api.v1.endpoints.voice_generate import generate_project_narration
 from app.core.concurrency import ai_generation_semaphore
 from app.core.config import Settings, get_settings
 from app.core.exceptions import ExternalServiceError, FileOperationError, NotFoundError, ValidationError
@@ -98,10 +99,12 @@ from app.modules.factory.schemas import (
     NOT_RESUMABLE,
     QUALITY_BLOCKED,
     RENDER_FAILED,
+    TTS_GENERATION_FAILED,
 )
 from app.modules.video_composer.models import VideoComposeJob
 from app.modules.video_composer.schemas import job_to_out
 from app.modules.video_composer.service import VideoComposerService
+from app.modules.voice.schemas import VoiceError
 
 logger = logging.getLogger(__name__)
 router = APIRouter()
@@ -363,6 +366,27 @@ def _count_beats_needing_policy_review(plan: BeatPlan, asset_service: AssetServi
     return count
 
 
+# -- Stage: GENERATING_VOICE (Task 22 -- see
+# docs/features/48-voice-factory-local-tts.md) ------------------------------
+
+
+def _stage_generate_voice(project_id: int, settings: Settings) -> bool:
+    """Thin adapter over voice_generate.generate_project_narration -- that
+    function already owns the full idempotent reuse-or-regenerate decision
+    (fingerprint over script text + voice settings, section 17/42's own
+    established shape), the real TTS call, timing, per-beat cutting, and
+    Asset registration. This stage's own job is purely translating a
+    VoiceError into a FactoryStageError with a stable code (section 38),
+    matching every other stage's own exception-translation shape.
+    """
+    try:
+        return generate_project_narration(project_id, settings)
+    except VoiceError as exc:
+        raise FactoryStageError("GENERATING_VOICE", exc.code, str(exc)) from exc
+    except (ValidationError, FileOperationError) as exc:
+        raise FactoryStageError("GENERATING_VOICE", TTS_GENERATION_FAILED, str(exc)) from exc
+
+
 # -- Stage: QUALITY_CHECK + render handoff ---------------------------------
 
 
@@ -559,6 +583,27 @@ def _execute_pipeline_sync(run_id: int, project_id: int, settings: Settings, ser
         factory_service.complete_checkpoint(
             run_id, current_stage, metadata={"beat_count": len(plan.beats), "assigned_count": assigned_count},
         )
+        if _bail_if_cancelled(run_id, cancel_event):
+            return
+
+        current_stage = "GENERATING_VOICE"
+        factory_service.set_run_fields(run_id, status=current_stage)
+        factory_service.start_checkpoint(run_id, current_stage)
+        t0 = time.monotonic()
+        voice_generated = _stage_generate_voice(project_id, settings)
+        if voice_generated:
+            factory_service.merge_metrics(run_id, voice_generation_seconds=round(time.monotonic() - t0, 3))
+        # Reload the plan -- generate_project_narration persists its own
+        # per-beat narration_asset_id/start/end/duration writes directly
+        # (see voice_generate.py), so `plan` here must be refreshed the
+        # same way _stage_assign_assets' own update_project_beat_plan
+        # already required a fresh read downstream.
+        draft = get_project_draft(project_id)
+        plan = BeatPlan(
+            script_text=draft.script_text, beats=draft.beats, project_name=draft.project_name, config=draft.config,
+            idea=draft.idea, content_brief=draft.content_brief, script_locked=draft.script_locked,
+        )
+        factory_service.complete_checkpoint(run_id, current_stage, metadata={"generated": voice_generated})
         if _bail_if_cancelled(run_id, cancel_event):
             return
 

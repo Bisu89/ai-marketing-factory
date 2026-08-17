@@ -314,6 +314,18 @@ export interface ContentProjectConfig {
   cta_enabled: boolean;
 }
 
+// Task 22 -- see docs/features/48-voice-factory-local-tts.md. `provider`
+// "local" is genuinely offline SAPI5 (this app's own default, no network
+// call); "edge_tts" is the existing, already-in-repo free-but-networked
+// engine, kept as an explicit opt-in, never the default.
+export interface VoiceProjectConfig {
+  provider: "local" | "edge_tts";
+  voice_id: string;
+  language: string;
+  speed: number;
+  pitch: number;
+}
+
 export interface ProjectConfig {
   render: RenderProjectConfig;
   motion: MotionProjectConfig;
@@ -321,6 +333,7 @@ export interface ProjectConfig {
   audio: AudioProjectConfig;
   factory: FactoryProjectConfig;
   content: ContentProjectConfig;
+  voice: VoiceProjectConfig;
   template_id: string | null;
   template_version: number | null;
 }
@@ -352,6 +365,13 @@ export const SYSTEM_DEFAULT_PROJECT_CONFIG: ProjectConfig = {
     target_duration: 30,
     audience: "general audience",
     cta_enabled: true,
+  },
+  voice: {
+    provider: "local",
+    voice_id: "default",
+    language: "en",
+    speed: 1.0,
+    pitch: 0,
   },
   template_id: null,
   template_version: null,

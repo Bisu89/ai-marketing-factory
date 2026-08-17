@@ -120,6 +120,13 @@ class Settings(BaseSettings):
     # narration pace, not a precise TTS timing model (that's Task 22's job).
     content_words_per_second: float = 2.2
 
+    # Voice Factory (Task 22 -- see docs/features/48-voice-factory-local-tts.md
+    # section 19). A configurable floor, not hardcoded -- prevents an
+    # unusably short beat window from real narration timing without ever
+    # silently deleting a beat (app.modules.voice.timing rebalances
+    # neighboring beats instead).
+    voice_min_beat_duration: float = 0.8
+
     anthropic_api_key: str | None = None
 
 

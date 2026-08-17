@@ -20,6 +20,7 @@ from app.api.v1.endpoints import (
     settings,
     tags,
     videos,
+    voice_generate,
 )
 from app.modules.ai.caption.router import router as caption_router
 from app.modules.ai.hook.router import router as hook_router
@@ -58,3 +59,4 @@ api_router.include_router(quality_gate.router, tags=["quality-gate"])
 api_router.include_router(dashboard.router, tags=["dashboard"])
 api_router.include_router(factory_pipeline.router, tags=["factory-pipeline"])
 api_router.include_router(content_generate.router, tags=["content-generate"])
+api_router.include_router(voice_generate.router, tags=["voice-generate"])

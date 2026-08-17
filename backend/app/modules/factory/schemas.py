@@ -36,6 +36,18 @@ SCRIPT_TOO_SHORT = "SCRIPT_TOO_SHORT"
 SCRIPT_TOO_LONG = "SCRIPT_TOO_LONG"
 SCRIPT_VALIDATION_FAILED = "SCRIPT_VALIDATION_FAILED"
 
+# Task 22 (see docs/features/48-voice-factory-local-tts.md section 38) --
+# app.modules.voice.schemas' own error codes, duplicated as plain string
+# constants here rather than imported (same "this module never imports
+# another module" reasoning as the render_errors codes below -- see that
+# section's own comment).
+TTS_PROVIDER_UNAVAILABLE = "TTS_PROVIDER_UNAVAILABLE"
+TTS_GENERATION_FAILED = "TTS_GENERATION_FAILED"
+TTS_INVALID_OUTPUT = "TTS_INVALID_OUTPUT"
+VOICE_SILENT = "VOICE_SILENT"
+VOICE_FORMAT_INVALID = "VOICE_FORMAT_INVALID"
+VOICE_TIMING_FAILED = "VOICE_TIMING_FAILED"
+
 # Task 19 (see docs/features/45-factory-reliability.md) section 27/28 --
 # stable classification for every error_code this module (or a RenderJob it
 # handed off to, see app.core.render_errors) can ever set on a FactoryRun.
@@ -66,6 +78,13 @@ ERROR_CLASSIFICATION: dict[str, str] = {
     SCRIPT_TOO_SHORT: USER_ACTION_REQUIRED,  # the idea/template combination itself needs adjusting, not a blind retry
     SCRIPT_TOO_LONG: USER_ACTION_REQUIRED,
     SCRIPT_VALIDATION_FAILED: USER_ACTION_REQUIRED,
+    # Task 22's own voice-stage codes.
+    TTS_PROVIDER_UNAVAILABLE: USER_ACTION_REQUIRED,  # missing voice/engine -- pick a different provider or install one
+    TTS_GENERATION_FAILED: TRANSIENT,
+    TTS_INVALID_OUTPUT: TRANSIENT,
+    VOICE_SILENT: USER_ACTION_REQUIRED,  # the script/voice combination itself produced nothing audible -- needs a look
+    VOICE_FORMAT_INVALID: TRANSIENT,
+    VOICE_TIMING_FAILED: PERMANENT,  # an algorithmic failure on well-formed input -- unlikely to fix itself on retry
     # app.core.render_errors codes -- a RENDERING-stage failure passes one
     # of these straight through onto FactoryRun.error_code (see
     # factory_pipeline.py's reconcile_factory_runs_on_startup/
@@ -155,10 +174,10 @@ class FactoryRunRequest(BaseModel):
 
 assert set(FACTORY_RUN_STATUSES) == {
     "DRAFT", "PREPARING", "PREPARING_CONTENT", "GENERATING_BEATS", "PREPARING_VISUALS", "ASSIGNING_ASSETS",
-    "QUALITY_CHECK", "NEEDS_REVIEW", "READY_TO_RENDER", "QUEUED", "RENDERING",
+    "GENERATING_VOICE", "QUALITY_CHECK", "NEEDS_REVIEW", "READY_TO_RENDER", "QUEUED", "RENDERING",
     "COMPLETED", "FAILED", "CANCELLED",
 }
 assert set(FACTORY_STAGES) == {
     "PREPARING", "PREPARING_CONTENT", "GENERATING_BEATS", "PREPARING_VISUALS", "ASSIGNING_ASSETS",
-    "QUALITY_CHECK", "READY_TO_RENDER", "QUEUED", "RENDERING",
+    "GENERATING_VOICE", "QUALITY_CHECK", "READY_TO_RENDER", "QUEUED", "RENDERING",
 }

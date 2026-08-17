@@ -241,8 +241,11 @@ class SaveProjectAsTemplateTests(unittest.TestCase):
         # `content` (see docs/features/47-content-brief-script-engine.md) --
         # language/tone/style/target_duration/audience/cta_enabled, same
         # "plain scalars only" shape, so the invariant holds with it too.
+        # Task 22 added `voice` (see docs/features/48-voice-factory-local-tts.md)
+        # -- provider/voice_id/language/speed/pitch, same shape again.
         self.assertEqual(
-            fields, {"render", "motion", "captions", "audio", "factory", "content", "template_id", "template_version"}
+            fields,
+            {"render", "motion", "captions", "audio", "factory", "content", "voice", "template_id", "template_version"},
         )
 
 

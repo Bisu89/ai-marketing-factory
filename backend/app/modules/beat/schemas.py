@@ -117,7 +117,24 @@ class Beat(BaseModel):
     # narration for this beat" (silence in local-narration mode, or this
     # beat's `narration` text spoken via the existing TTS path when no beat
     # in the plan has one set at all -- see docs/features/36-audio-pipeline.md).
+    # Task 22 (see docs/features/48-voice-factory-local-tts.md): the Voice
+    # Factory stage also writes this field, one real per-beat narration
+    # segment cut from the project's own narration.wav -- from the render
+    # pipeline's own point of view this is indistinguishable from a
+    # manually-uploaded local narration clip, which is exactly the point
+    # (zero changes needed to app.modules.video_composer's existing
+    # narration_mode="local" path).
     narration_asset_id: int | None = None
+    # Task 22 -- absolute position within the project's own narration
+    # timeline, in seconds (section 21/22: floating-point, never rounded
+    # internally). None for every beat that hasn't gone through the Voice
+    # stage yet (a freshly Beat-generated plan, or one edited by hand) --
+    # `duration` alone (already required, see above) is still enough to
+    # render such a beat; start/end are additive precision Voice provides
+    # once real narration timing exists, never a second, disagreeing
+    # duration field (section 21's own "do not duplicate timing fields").
+    start: float | None = None
+    end: float | None = None
 
     @field_validator("id")
     @classmethod
@@ -151,6 +168,12 @@ class Beat(BaseModel):
         if value is not None and value <= 0:
             raise ValueError("asset id fields must be a positive integer if provided")
         return value
+
+    @model_validator(mode="after")
+    def _timing_window_valid(self) -> "Beat":
+        if self.start is not None and self.end is not None and self.end <= self.start:
+            raise ValueError(f"Beat.end ({self.end}) must be greater than Beat.start ({self.start})")
+        return self
 
 
 
@@ -287,6 +310,57 @@ class ContentProjectConfig(BaseModel):
         return value
 
 
+# Task 22 (see docs/features/48-voice-factory-local-tts.md section 4/41) --
+# "local" (this app's own new, genuinely offline pyttsx3/SAPI5 provider) is
+# the default; "edge_tts" wraps the repo's pre-existing free-but-networked
+# engine as an explicit, non-default opt-in. Never a third value invented
+# here without a real provider behind it (app.modules.voice.providers.get_provider).
+VOICE_PROVIDERS = ("local", "edge_tts")
+MIN_VOICE_SPEED = 0.5
+MAX_VOICE_SPEED = 2.0
+
+
+class VoiceProjectConfig(BaseModel):
+    """Section 6/7's own "lightweight enough to select a local voice, not a
+    voice management system" -- one more named sub-config on ProjectConfig,
+    same shape as ContentProjectConfig/FactoryProjectConfig above. Language
+    intentionally mirrors ContentProjectConfig.language's own codes/default
+    (a project's script language and its narration language are the same
+    thing in practice) but is kept as its own field rather than reused
+    directly, since a user may reasonably want to narrate a script in a
+    different language than it was written for review purposes.
+    """
+
+    model_config = ConfigDict(extra="forbid")
+
+    provider: str = "local"
+    voice_id: str = "default"
+    language: str = "en"
+    speed: float = 1.0
+    pitch: int = 0
+
+    @field_validator("provider")
+    @classmethod
+    def _known_provider(cls, value: str) -> str:
+        if value not in VOICE_PROVIDERS:
+            raise ValueError(f"Unknown voice provider {value!r}, must be one of {VOICE_PROVIDERS}")
+        return value
+
+    @field_validator("language")
+    @classmethod
+    def _known_language(cls, value: str) -> str:
+        if value not in CONTENT_LANGUAGES:
+            raise ValueError(f"Unknown language {value!r}, must be one of {CONTENT_LANGUAGES}")
+        return value
+
+    @field_validator("speed")
+    @classmethod
+    def _speed_within_bounds(cls, value: float) -> float:
+        if not (MIN_VOICE_SPEED <= value <= MAX_VOICE_SPEED):
+            raise ValueError(f"speed must be between {MIN_VOICE_SPEED} and {MAX_VOICE_SPEED}, got {value}")
+        return value
+
+
 class ProjectConfig(BaseModel):
     """The one, unified configuration object -- render/motion/captions/audio
     -- shared by templates and projects alike (Task 12's own "do not
@@ -304,6 +378,7 @@ class ProjectConfig(BaseModel):
     audio: AudioProjectConfig = Field(default_factory=AudioProjectConfig)
     factory: FactoryProjectConfig = Field(default_factory=FactoryProjectConfig)
     content: ContentProjectConfig = Field(default_factory=ContentProjectConfig)
+    voice: VoiceProjectConfig = Field(default_factory=VoiceProjectConfig)
     # Provenance only, like Beat.asset_id -- which Template (and which
     # version of it) this config was snapshotted from, if any. A project
     # created without choosing a template (or a pre-Task-12 project) has
@@ -376,6 +451,7 @@ EMOTIONAL_STORY_TEMPLATE = Template(
             language="en", tone="warm and emotional", style="storytelling",
             target_duration=30.0, audience="general audience", cta_enabled=True,
         ),
+        voice=VoiceProjectConfig(provider="local", voice_id="default", language="en", speed=1.0),
         template_id="emotional_story",
         template_version=1,
     ),
@@ -396,6 +472,7 @@ COUPLE_STORY_TEMPLATE = Template(
             language="en", tone="tender and reflective", style="relationship story",
             target_duration=30.0, audience="adults interested in relationships", cta_enabled=True,
         ),
+        voice=VoiceProjectConfig(provider="local", voice_id="default", language="en", speed=0.95),
         template_id="couple_story",
         template_version=1,
     ),

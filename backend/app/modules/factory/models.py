@@ -44,6 +44,15 @@ FACTORY_RUN_STATUSES = (
     "GENERATING_BEATS",
     "PREPARING_VISUALS",
     "ASSIGNING_ASSETS",
+    # Task 22 (see docs/features/48-voice-factory-local-tts.md) -- Script ->
+    # local TTS -> narration.wav -> real per-beat timing, ahead of the
+    # Quality Gate. Placed after ASSIGNING_ASSETS (visuals) and before
+    # QUALITY_CHECK, matching that task's own target pipeline
+    # (CONTENT -> BEATS -> VISUALS -> VOICE -> QUALITY -> RENDER). Same
+    # idempotent "skip if a valid cached artifact already matches the
+    # current script/voice settings" shape every earlier stage already
+    # uses -- see factory_pipeline.py's _stage_generate_voice.
+    "GENERATING_VOICE",
     "QUALITY_CHECK",
     "NEEDS_REVIEW",
     "READY_TO_RENDER",
@@ -64,6 +73,7 @@ FACTORY_STAGES = (
     "GENERATING_BEATS",
     "PREPARING_VISUALS",
     "ASSIGNING_ASSETS",
+    "GENERATING_VOICE",
     "QUALITY_CHECK",
     "READY_TO_RENDER",
     "QUEUED",

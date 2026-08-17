@@ -34,6 +34,8 @@ import { assetFileUrl, getAsset } from "../api/asset";
 import { generateBeatPlan, getProject, loadBeatPlan, renderBeatPreview, saveBeatPlan, saveProjectBeatPlan } from "../api/beat";
 import { checkPlanQuality } from "../api/quality";
 import { createTemplate, listTemplates } from "../api/template";
+import { listLocalVoices } from "../api/voice";
+import type { LocalVoiceOption } from "../api/voice";
 import {
   cancelVideoComposeJob,
   getVideoComposeJob,
@@ -71,6 +73,7 @@ import type {
   ProjectConfig,
   Scene,
   Template,
+  VoiceProjectConfig,
   WorkingBeat,
 } from "../types/videoFactory";
 import type { CompositionPlan } from "../types/videoFactory";
@@ -456,6 +459,15 @@ export function VideoFactoryPage() {
   const [captionPreset, setCaptionPreset] = useState<CaptionPreset>("emotional");
   const [outputDir, setOutputDir] = useState("");
 
+  // Task 22 -- see docs/features/48-voice-factory-local-tts.md. "local"
+  // (genuinely offline SAPI5) is this app's own default; edge_tts stays an
+  // explicit opt-in, never auto-selected.
+  const [voiceProvider, setVoiceProvider] = useState<VoiceProjectConfig["provider"]>("local");
+  const [voiceId, setVoiceId] = useState("default");
+  const [voiceSpeed, setVoiceSpeed] = useState(1.0);
+  const [localVoices, setLocalVoices] = useState<LocalVoiceOption[]>([]);
+  const [localVoicesError, setLocalVoicesError] = useState<string | null>(null);
+
   const [validationErrors, setValidationErrors] = useState<string[]>([]);
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
@@ -503,6 +515,21 @@ export function VideoFactoryPage() {
     refreshTemplates();
   }, []);
 
+  // Task 22 -- see docs/features/48-voice-factory-local-tts.md section 45.
+  // Real, installed SAPI5 voices for the picker below -- fetched once
+  // (what's installed doesn't change mid-session); a fetch failure just
+  // leaves the picker on the plain "System Default" fallback rather than
+  // blocking the page.
+  useEffect(() => {
+    (async () => {
+      try {
+        setLocalVoices(await listLocalVoices());
+      } catch (err) {
+        setLocalVoicesError(err instanceof Error ? err.message : "Could not load local voices.");
+      }
+    })();
+  }, []);
+
   useEffect(() => {
     let cancelled = false;
     (async () => {
@@ -541,6 +568,11 @@ export function VideoFactoryPage() {
           setProjectConfig(plan.config);
           setCaptionPreset(plan.config.captions.preset);
           setMusicVolume(plan.config.audio.music_volume);
+          if (plan.config.voice) {
+            setVoiceProvider(plan.config.voice.provider);
+            setVoiceId(plan.config.voice.voice_id);
+            setVoiceSpeed(plan.config.voice.speed);
+          }
         }
         setStep(2);
         setDirty(false);
@@ -679,6 +711,16 @@ export function VideoFactoryPage() {
       factory: projectConfig.factory,
       // Same reasoning (Task 21) -- no content-profile UI on this page.
       content: projectConfig.content,
+      // Task 22 -- see docs/features/48-voice-factory-local-tts.md. Sourced
+      // from the Voice section below (Step 4), same shape as
+      // captions/audio's own "derived fresh from on-screen controls" above.
+      voice: {
+        provider: voiceProvider,
+        voice_id: voiceId,
+        language: projectConfig.voice.language,
+        speed: voiceSpeed,
+        pitch: projectConfig.voice.pitch,
+      },
       template_id: projectConfig.template_id,
       template_version: projectConfig.template_version,
     };
@@ -801,6 +843,11 @@ export function VideoFactoryPage() {
     setProjectConfig(snapshot);
     setCaptionPreset(snapshot.captions.preset);
     setMusicVolume(snapshot.audio.music_volume);
+    if (snapshot.voice) {
+      setVoiceProvider(snapshot.voice.provider);
+      setVoiceId(snapshot.voice.voice_id);
+      setVoiceSpeed(snapshot.voice.speed);
+    }
     setTemplatePickerOpen(false);
     setStep(1);
   }
@@ -1216,6 +1263,71 @@ export function VideoFactoryPage() {
                 step={0.05}
                 value={narrationVolume}
                 onChange={(e) => setNarrationVolume(Number(e.target.value))}
+              />
+            </label>
+          </div>
+
+          <h2 className="vf-section-title">Voice Factory (local narration)</h2>
+          <p className="vf-field-label">
+            One-Click Factory generates a real narration track from the script above using this voice, before Quality
+            Check -- separate from the text-to-speech fallback above, which only applies at render time for beats with
+            no narration audio assigned.
+          </p>
+          <div className="vf-grid">
+            <label className="vf-field">
+              <span>Provider</span>
+              <select
+                value={voiceProvider}
+                onChange={(e) => {
+                  const next = e.target.value as VoiceProjectConfig["provider"];
+                  setVoiceProvider(next);
+                  setVoiceId("default");
+                }}
+              >
+                <option value="local">Local (offline, no network)</option>
+                <option value="edge_tts">Edge TTS (free, requires network)</option>
+              </select>
+            </label>
+            {voiceProvider === "local" ? (
+              <label className="vf-field">
+                <span>Voice</span>
+                <select value={voiceId} onChange={(e) => setVoiceId(e.target.value)}>
+                  <option value="default">System Default</option>
+                  {localVoices.map((v) => (
+                    <option key={v.id} value={v.id}>
+                      {v.name}
+                    </option>
+                  ))}
+                </select>
+                {localVoicesError && (
+                  <div className="vf-alert vf-alert-error">
+                    <AlertTriangle size={14} />
+                    {localVoicesError}
+                  </div>
+                )}
+              </label>
+            ) : (
+              <label className="vf-field">
+                <span>Voice</span>
+                <select value={voiceId} onChange={(e) => setVoiceId(e.target.value)}>
+                  <option value="default">Default for language</option>
+                  {VOICE_OPTIONS.map((v) => (
+                    <option key={v.value} value={v.value}>
+                      {v.label}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            )}
+            <label className="vf-field">
+              <span>Speed ({voiceSpeed.toFixed(2)}x)</span>
+              <input
+                type="range"
+                min={0.5}
+                max={2}
+                step={0.05}
+                value={voiceSpeed}
+                onChange={(e) => setVoiceSpeed(Number(e.target.value))}
               />
             </label>
           </div>

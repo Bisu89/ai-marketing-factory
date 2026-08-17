@@ -11,3 +11,9 @@ edge-tts==7.2.8
 anthropic==0.120.2
 pywebview==6.2.1
 pillow==12.3.0
+# Task 22 -- see docs/features/48-voice-factory-local-tts.md. Genuinely
+# offline TTS (SAPI5 via pywin32 on this Windows-only desktop app -- see
+# AIContentLibrary.spec's own winforms/edgechromium bundling), unlike
+# edge-tts above (free, but a real network call to Microsoft's service).
+pyttsx3==2.99
+pywin32==312
