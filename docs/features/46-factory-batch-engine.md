@@ -1,6 +1,6 @@
 # 46 — Factory Batch Engine: Parallel Production with Safe Concurrency Limits
 
-**Commit:** _(fill in after commit)_
+**Commit:** `a35ea2e`
 
 Adds real, bounded concurrency to Task 18/19's `FactoryRun`-per-project
 batch orchestration: `settings.max_parallel_projects` (default 2) caps how
