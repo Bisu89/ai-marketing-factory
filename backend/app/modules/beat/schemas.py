@@ -65,9 +65,15 @@ class BeatType(str, Enum):
 
 
 class BeatMotionPreset(str, Enum):
-    """A deterministic, local camera-movement preset -- the six this task
-    scopes to. Not app.modules.motion.schemas.MotionPresetName; see module
-    docstring for why these are deliberately separate, same-spirit enums.
+    """A deterministic, local camera-movement preset. Not
+    app.modules.motion.schemas.MotionPresetName; see module docstring for
+    why these are deliberately separate, same-spirit enums (spelling
+    matches exactly, just case, so `.value.lower()` always resolves to a
+    real MotionPresetName -- see batch_render.py's beat_to_scene).
+
+    Task 23 (see docs/features/49-local-motion-engine.md section 6/58)
+    added PAN_UP/PAN_DOWN, matching motion.schemas.MotionPresetName's own
+    set (minus SUBTLE_ROTATE, out of this task's explicit minimum-8 list).
     """
 
     STATIC = "STATIC"
@@ -75,6 +81,8 @@ class BeatMotionPreset(str, Enum):
     SLOW_PULL_OUT = "SLOW_PULL_OUT"
     PAN_LEFT = "PAN_LEFT"
     PAN_RIGHT = "PAN_RIGHT"
+    PAN_UP = "PAN_UP"
+    PAN_DOWN = "PAN_DOWN"
     ZOOM_AND_PAN = "ZOOM_AND_PAN"
 
 
@@ -213,6 +221,15 @@ class RenderProjectConfig(BaseModel):
         return value
 
 
+# Task 23 (see docs/features/49-local-motion-engine.md sections 26/15) --
+# duplicated as plain string tuples rather than imported from
+# app.modules.motion.schemas.MotionIntensity/motion.renderer.SHORT_SOURCE_POLICIES
+# (module isolation, see module docstring -- same "duplicate a few values
+# across a module boundary" convention CAPTION_PRESETS above already uses).
+MOTION_INTENSITIES = ("SUBTLE", "MEDIUM", "STRONG")
+SHORT_VIDEO_POLICIES = ("LOOP", "FREEZE", "REJECT")
+
+
 class MotionProjectConfig(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
@@ -223,6 +240,33 @@ class MotionProjectConfig(BaseModel):
     # field's docstring) so an old, template-less project's resolved
     # motion never changes.
     default_preset: BeatMotionPreset = BeatMotionPreset.STATIC
+    # Task 23 section 29/59 -- when True, a beat with neither a manual
+    # `motion_preset` override nor a visual-intent keyword match cycles
+    # through a small deterministic rotation instead of every unset beat
+    # reusing this same `default_preset` (section 29's own explicit
+    # complaint about "every beat = zoom in"). False by default so no
+    # existing project's resolved motion changes.
+    auto_rotate: bool = False
+    intensity: str = "MEDIUM"
+    # Section 15 -- what a video-type Beat visual asset shorter than its
+    # Beat's own duration does; FREEZE (hold the last frame) is the
+    # least-surprising default (never silently shortens or rejects a beat
+    # a human already assigned a real, if short, video to).
+    short_video_policy: str = "FREEZE"
+
+    @field_validator("intensity")
+    @classmethod
+    def _known_intensity(cls, value: str) -> str:
+        if value not in MOTION_INTENSITIES:
+            raise ValueError(f"Unknown motion intensity {value!r}, must be one of {MOTION_INTENSITIES}")
+        return value
+
+    @field_validator("short_video_policy")
+    @classmethod
+    def _known_short_video_policy(cls, value: str) -> str:
+        if value not in SHORT_VIDEO_POLICIES:
+            raise ValueError(f"Unknown short_video_policy {value!r}, must be one of {SHORT_VIDEO_POLICIES}")
+        return value
 
 
 class CaptionsProjectConfig(BaseModel):

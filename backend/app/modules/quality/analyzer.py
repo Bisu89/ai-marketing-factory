@@ -280,6 +280,7 @@ def analyze_motion(beats: list[BeatAnalysisInput], default_motion_preset: str | 
         return 0, []
     issues: list[QualityIssue] = []
     unresolved = 0
+    artifact_missing = 0
     for beat in beats:
         effective = beat.motion_preset or default_motion_preset
         if not effective:
@@ -292,9 +293,26 @@ def analyze_motion(beats: list[BeatAnalysisInput], default_motion_preset: str | 
                     message=f"{_beat_label(beat)} has no motion preset and no project default is configured.",
                 )
             )
-    if unresolved == 0:
+        # Task 23 section 55 -- a real Beat/asset combination this GATE
+        # actually checked for a pre-rendered clip (motion_artifact_checked
+        # is only True when a real project_id was available, see
+        # quality_gate.py's build_quality_input) and found missing/invalid.
+        # A warning, not an error: the final render still falls back to
+        # rendering the clip on demand (composition_render.py's own
+        # render_beats_for_job), so a missing cache is slower, not broken.
+        elif beat.motion_artifact_checked and not beat.motion_artifact_valid and beat.asset.has_asset and beat.asset.asset_valid:
+            artifact_missing += 1
+            issues.append(
+                QualityIssue(
+                    code="MOTION_ARTIFACT_MISSING",
+                    severity="warning",
+                    beat_id=beat.id,
+                    message=f"{_beat_label(beat)} has no valid pre-rendered motion clip yet (will render on demand).",
+                )
+            )
+    if unresolved == 0 and artifact_missing == 0:
         return 100, issues
-    return _clamp(100 * (len(beats) - unresolved) / len(beats)), issues
+    return _clamp(100 * (len(beats) - unresolved - artifact_missing) / len(beats)), issues
 
 
 def analyze_audio(beats: list[BeatAnalysisInput], config: ProjectAudioConfigInput) -> tuple[int, list[QualityIssue]]:

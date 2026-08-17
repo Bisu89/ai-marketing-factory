@@ -68,6 +68,7 @@ import type {
   ContentBrief,
   GeneratedBeat,
   GeneratedBeatPlan,
+  MotionIntensity,
   MotionPresetName,
   OutputFormat,
   ProjectConfig,
@@ -1214,7 +1215,7 @@ export function VideoFactoryPage() {
                 onChange={(e) =>
                   setProjectConfig((prev) => ({
                     ...prev,
-                    motion: { default_preset: e.target.value as BeatMotionPreset },
+                    motion: { ...prev.motion, default_preset: e.target.value as BeatMotionPreset },
                   }))
                 }
               >
@@ -1224,6 +1225,35 @@ export function VideoFactoryPage() {
                   </option>
                 ))}
               </select>
+            </label>
+            <label className="vf-field">
+              <span>Motion intensity</span>
+              <select
+                value={projectConfig.motion.intensity}
+                onChange={(e) =>
+                  setProjectConfig((prev) => ({
+                    ...prev,
+                    motion: { ...prev.motion, intensity: e.target.value as MotionIntensity },
+                  }))
+                }
+              >
+                <option value="SUBTLE">Subtle</option>
+                <option value="MEDIUM">Medium</option>
+                <option value="STRONG">Strong</option>
+              </select>
+            </label>
+            <label className="vf-field" style={{ flexDirection: "row", alignItems: "center", gap: "0.5rem" }}>
+              <input
+                type="checkbox"
+                checked={projectConfig.motion.auto_rotate}
+                onChange={(e) =>
+                  setProjectConfig((prev) => ({
+                    ...prev,
+                    motion: { ...prev.motion, auto_rotate: e.target.checked },
+                  }))
+                }
+              />
+              <span>Vary motion automatically across beats with no motion chosen</span>
             </label>
           </div>
 

@@ -2,8 +2,8 @@ import unittest
 
 from pydantic import ValidationError
 
-from app.modules.motion.schemas import MAX_DURATION, MIN_DURATION, MotionPlan, MotionPresetName
-from app.modules.motion.service import build_motion_plan, list_presets
+from app.modules.motion.schemas import MAX_DURATION, MIN_DURATION, MotionIntensity, MotionPlan, MotionPresetName
+from app.modules.motion.service import build_motion_plan, list_presets, select_auto_motion
 
 
 class PresetRegistryTests(unittest.TestCase):
@@ -107,6 +107,108 @@ class BuildMotionPlanTests(unittest.TestCase):
         plan = build_motion_plan(MotionPresetName.ZOOM_AND_PAN, duration=5.0)
         restored = MotionPlan.model_validate_json(plan.model_dump_json())
         self.assertEqual(restored, plan)
+
+
+class IntensityTests(unittest.TestCase):
+    def test_medium_intensity_matches_original_hardcoded_numbers(self):
+        # Backward-compatibility guarantee (Task 23 -- see
+        # docs/features/49-local-motion-engine.md section 26): MEDIUM +
+        # center focal must be byte-identical to this module's own
+        # pre-Task-23 preset numbers.
+        plan = build_motion_plan(MotionPresetName.PAN_LEFT, intensity=MotionIntensity.MEDIUM)
+        self.assertEqual(plan.scale.start, 1.15)
+        self.assertEqual(plan.position.x_start, 0.6)
+        self.assertEqual(plan.position.x_end, 0.4)
+
+    def test_subtle_produces_a_smaller_delta_than_medium(self):
+        medium = build_motion_plan(MotionPresetName.SLOW_PUSH_IN, intensity=MotionIntensity.MEDIUM)
+        subtle = build_motion_plan(MotionPresetName.SLOW_PUSH_IN, intensity=MotionIntensity.SUBTLE)
+        self.assertLess(subtle.scale.end - 1.0, medium.scale.end - 1.0)
+
+    def test_strong_produces_a_larger_delta_than_medium(self):
+        medium = build_motion_plan(MotionPresetName.SLOW_PUSH_IN, intensity=MotionIntensity.MEDIUM)
+        strong = build_motion_plan(MotionPresetName.SLOW_PUSH_IN, intensity=MotionIntensity.STRONG)
+        self.assertGreater(strong.scale.end - 1.0, medium.scale.end - 1.0)
+
+    def test_intensity_accepts_plain_string(self):
+        plan = build_motion_plan(MotionPresetName.PAN_LEFT, intensity="STRONG")
+        self.assertGreater(plan.scale.start, 1.15)
+
+    def test_unknown_intensity_raises_value_error(self):
+        with self.assertRaises(ValueError):
+            build_motion_plan(MotionPresetName.PAN_LEFT, intensity="EXTREME")
+
+    def test_static_preset_is_unaffected_by_intensity(self):
+        subtle = build_motion_plan(MotionPresetName.STATIC, intensity=MotionIntensity.SUBTLE)
+        strong = build_motion_plan(MotionPresetName.STATIC, intensity=MotionIntensity.STRONG)
+        self.assertEqual(subtle, strong)
+
+    def test_scale_and_position_stay_within_documented_bounds_at_strong(self):
+        for preset in list_presets():
+            plan = build_motion_plan(preset, intensity=MotionIntensity.STRONG, focal_x=0.95, focal_y=0.05)
+            self.assertGreaterEqual(plan.scale.start, 1.0)
+            self.assertLessEqual(plan.scale.start, 4.0)
+            self.assertGreaterEqual(plan.scale.end, 1.0)
+            self.assertLessEqual(plan.scale.end, 4.0)
+            for value in (plan.position.x_start, plan.position.y_start, plan.position.x_end, plan.position.y_end):
+                self.assertGreaterEqual(value, 0.0)
+                self.assertLessEqual(value, 1.0)
+
+
+class FocalPointTests(unittest.TestCase):
+    def test_pan_preset_pivots_around_the_given_focal_point(self):
+        plan = build_motion_plan(MotionPresetName.PAN_LEFT, focal_x=0.8, focal_y=0.3)
+        self.assertAlmostEqual(plan.position.y_start, 0.3)
+        self.assertAlmostEqual(plan.position.y_end, 0.3)
+        # PAN_LEFT's own shape (start > end on x) is preserved around the
+        # new pivot, not collapsed to a fixed absolute position.
+        self.assertGreater(plan.position.x_start, plan.position.x_end)
+
+    def test_default_focal_point_is_frame_center(self):
+        explicit_center = build_motion_plan(MotionPresetName.ZOOM_AND_PAN, focal_x=0.5, focal_y=0.5)
+        default = build_motion_plan(MotionPresetName.ZOOM_AND_PAN)
+        self.assertEqual(explicit_center, default)
+
+    def test_focal_point_near_edge_is_clamped_not_out_of_bounds(self):
+        plan = build_motion_plan(MotionPresetName.PAN_RIGHT, focal_x=0.98, intensity=MotionIntensity.STRONG)
+        self.assertLessEqual(plan.position.x_start, 1.0)
+        self.assertLessEqual(plan.position.x_end, 1.0)
+        self.assertGreaterEqual(plan.position.x_start, 0.0)
+        self.assertGreaterEqual(plan.position.x_end, 0.0)
+
+
+class AutoMotionSelectionTests(unittest.TestCase):
+    def test_same_beat_order_and_hint_always_selects_the_same_preset(self):
+        first = select_auto_motion(3, "a quiet moment")
+        second = select_auto_motion(3, "a quiet moment")
+        self.assertEqual(first, second)
+
+    def test_emotional_keyword_selects_push_in(self):
+        self.assertEqual(select_auto_motion(5, "an emotional, intimate close-up"), MotionPresetName.SLOW_PUSH_IN)
+
+    def test_wide_establishing_keyword_selects_pull_out(self):
+        self.assertEqual(select_auto_motion(5, "a wide establishing shot of the skyline"), MotionPresetName.SLOW_PULL_OUT)
+
+    def test_static_information_keyword_selects_static(self):
+        self.assertEqual(select_auto_motion(5, "a static chart with information"), MotionPresetName.STATIC)
+
+    def test_no_keyword_match_falls_back_to_beat_order_rotation(self):
+        # Section 29's own worked example -- consecutive beats with no
+        # visual-intent match cycle through different presets, never the
+        # same one repeated ("every beat = zoom in").
+        selections = [select_auto_motion(i, None) for i in range(1, 8)]
+        self.assertEqual(len(set(selections)), len(selections))  # all 7 distinct within one full rotation
+
+    def test_rotation_wraps_around_after_a_full_cycle(self):
+        first_cycle = [select_auto_motion(i, None) for i in range(1, 8)]
+        second_cycle = [select_auto_motion(i, None) for i in range(8, 15)]
+        self.assertEqual(first_cycle, second_cycle)
+
+    def test_blank_hint_does_not_match_any_keyword_rule(self):
+        # An empty/whitespace-only hint must fall through to the rotation,
+        # not accidentally match a keyword via a substring of "".
+        result = select_auto_motion(1, "   ")
+        self.assertEqual(result, select_auto_motion(1, None))
 
 
 if __name__ == "__main__":

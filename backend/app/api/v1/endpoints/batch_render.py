@@ -35,6 +35,7 @@ from sqlalchemy.orm import Session
 
 from app.api.v1.endpoints.beat_generate import generate_beat_plan
 from app.api.v1.endpoints.composition_render import render_composition
+from app.api.v1.endpoints.motion_generate import resolve_effective_preset
 from app.api.v1.endpoints.quality_gate import run_quality_check
 from app.core.concurrency import ai_generation_semaphore
 from app.core.config import Settings, get_settings
@@ -147,8 +148,14 @@ def _validate_and_maybe_dedupe_ideas(ideas_text: str, dedupe: bool):
 
 
 def beat_to_scene(beat, config, output_format: OutputFormat) -> Scene:
-    effective_preset = (beat.motion_preset.value if beat.motion_preset else config.motion.default_preset.value).lower()
-    motion_plan = build_motion_plan(effective_preset, duration=beat.duration)
+    # Task 23 (see docs/features/49-local-motion-engine.md sections 8/29/58)
+    # -- manual Beat.motion_preset > deterministic auto-rotation (only when
+    # the project opted into MotionProjectConfig.auto_rotate) > the fixed
+    # project default. Every unset beat silently reusing the exact same
+    # default_preset (this function's own pre-Task-23 behavior) is the
+    # "every beat = zoom in" outcome section 29 explicitly calls out.
+    effective_preset = resolve_effective_preset(beat, config).value.lower()
+    motion_plan = build_motion_plan(effective_preset, duration=beat.duration, intensity=config.motion.intensity)
     return Scene(
         id=beat.id,
         order=beat.order,

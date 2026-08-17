@@ -48,6 +48,16 @@ VOICE_SILENT = "VOICE_SILENT"
 VOICE_FORMAT_INVALID = "VOICE_FORMAT_INVALID"
 VOICE_TIMING_FAILED = "VOICE_TIMING_FAILED"
 
+# Task 23 (see docs/features/49-local-motion-engine.md section 39) --
+# app.modules.motion.renderer raises this module's own app.core.exceptions
+# types (ValidationError/FileOperationError), not a VoiceError-style class
+# with its own stable code, so these two codes are this stage's own
+# translation of that generic distinction (see factory_pipeline.py's
+# _stage_generate_motion): a malformed request/config vs. a real FFmpeg/
+# filesystem runtime failure.
+MOTION_ASSET_INVALID = "MOTION_ASSET_INVALID"
+MOTION_GENERATION_FAILED = "MOTION_GENERATION_FAILED"
+
 # Task 19 (see docs/features/45-factory-reliability.md) section 27/28 --
 # stable classification for every error_code this module (or a RenderJob it
 # handed off to, see app.core.render_errors) can ever set on a FactoryRun.
@@ -85,6 +95,9 @@ ERROR_CLASSIFICATION: dict[str, str] = {
     VOICE_SILENT: USER_ACTION_REQUIRED,  # the script/voice combination itself produced nothing audible -- needs a look
     VOICE_FORMAT_INVALID: TRANSIENT,
     VOICE_TIMING_FAILED: PERMANENT,  # an algorithmic failure on well-formed input -- unlikely to fix itself on retry
+    # Task 23's own motion-stage codes.
+    MOTION_ASSET_INVALID: USER_ACTION_REQUIRED,  # a beat's source asset is missing/corrupt -- needs a different asset
+    MOTION_GENERATION_FAILED: TRANSIENT,  # usually a real FFmpeg/filesystem hiccup -- worth a plain retry
     # app.core.render_errors codes -- a RENDERING-stage failure passes one
     # of these straight through onto FactoryRun.error_code (see
     # factory_pipeline.py's reconcile_factory_runs_on_startup/
@@ -174,10 +187,10 @@ class FactoryRunRequest(BaseModel):
 
 assert set(FACTORY_RUN_STATUSES) == {
     "DRAFT", "PREPARING", "PREPARING_CONTENT", "GENERATING_BEATS", "PREPARING_VISUALS", "ASSIGNING_ASSETS",
-    "GENERATING_VOICE", "QUALITY_CHECK", "NEEDS_REVIEW", "READY_TO_RENDER", "QUEUED", "RENDERING",
-    "COMPLETED", "FAILED", "CANCELLED",
+    "GENERATING_MOTION", "GENERATING_VOICE", "QUALITY_CHECK", "NEEDS_REVIEW", "READY_TO_RENDER", "QUEUED",
+    "RENDERING", "COMPLETED", "FAILED", "CANCELLED",
 }
 assert set(FACTORY_STAGES) == {
     "PREPARING", "PREPARING_CONTENT", "GENERATING_BEATS", "PREPARING_VISUALS", "ASSIGNING_ASSETS",
-    "GENERATING_VOICE", "QUALITY_CHECK", "READY_TO_RENDER", "QUEUED", "RENDERING",
+    "GENERATING_MOTION", "GENERATING_VOICE", "QUALITY_CHECK", "READY_TO_RENDER", "QUEUED", "RENDERING",
 }

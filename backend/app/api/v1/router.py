@@ -16,6 +16,7 @@ from app.api.v1.endpoints import (
     insights,
     performance,
     publish_log,
+    motion_generate,
     quality_gate,
     settings,
     tags,
@@ -60,3 +61,4 @@ api_router.include_router(dashboard.router, tags=["dashboard"])
 api_router.include_router(factory_pipeline.router, tags=["factory-pipeline"])
 api_router.include_router(content_generate.router, tags=["content-generate"])
 api_router.include_router(voice_generate.router, tags=["voice-generate"])
+api_router.include_router(motion_generate.router, tags=["motion-generate"])

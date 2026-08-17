@@ -21,6 +21,9 @@ from fastapi import APIRouter, Depends
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
+from app.api.v1.endpoints.motion_generate import motion_artifact_for_beat, motion_was_attempted_for_beat
+from app.core.config import Settings, get_settings
+from app.core.render_profile import get_render_profile
 from app.db.session import get_db
 from app.modules.asset.ingest import classify_portrait_suitability, tokenize_filename
 from app.modules.asset.models import Asset
@@ -122,22 +125,51 @@ def _resolve_beat_asset_info(beat: Beat, asset_service: AssetService) -> BeatAss
     )
 
 
+def _resolve_motion_artifact_flags(
+    beat: Beat, config: ProjectConfig, project_id: int | None, settings: Settings | None,
+) -> tuple[bool, bool]:
+    """Task 23 section 55/62 -- (checked, valid). Only ever checks when a
+    real project_id/settings pair is available (a saved Project, not an
+    arbitrary in-editor BeatPlan -- see build_quality_input's own callers),
+    the beat actually has a visual asset to have animated in the first
+    place, AND a prior Motion stage run actually claimed to have rendered
+    this beat (motion_was_attempted_for_beat) -- a project that never ran
+    Motion at all has nothing stale to report; this is a *reconciliation*
+    check (section 62), never a "you must pre-render motion" requirement.
+    """
+    if project_id is None or settings is None or beat.asset_id is None:
+        return False, True
+    if not motion_was_attempted_for_beat(project_id, beat.id, settings.library_dir):
+        return False, True
+    render_profile = get_render_profile(config.render.profile)
+    artifact = motion_artifact_for_beat(
+        project_id, beat.id, settings.library_dir,
+        beat.duration, render_profile.width, render_profile.height, render_profile.fps,
+    )
+    return True, artifact is not None
+
+
 def build_quality_input(
-    beats: list[Beat], config: ProjectConfig, asset_service: AssetService, mode: str = "NORMAL"
+    beats: list[Beat], config: ProjectConfig, asset_service: AssetService, mode: str = "NORMAL",
+    project_id: int | None = None, settings: Settings | None = None,
 ) -> QualityAnalysisInput:
-    beats_input = [
-        BeatAnalysisInput(
-            id=beat.id,
-            order=beat.order,
-            type=beat.type.value,
-            narration=beat.narration,
-            duration=beat.duration,
-            visual_hint=beat.visual_hint,
-            motion_preset=beat.motion_preset.value if beat.motion_preset else None,
-            asset=_resolve_beat_asset_info(beat, asset_service),
+    beats_input = []
+    for beat in sorted(beats, key=lambda b: b.order):
+        checked, valid = _resolve_motion_artifact_flags(beat, config, project_id, settings)
+        beats_input.append(
+            BeatAnalysisInput(
+                id=beat.id,
+                order=beat.order,
+                type=beat.type.value,
+                narration=beat.narration,
+                duration=beat.duration,
+                visual_hint=beat.visual_hint,
+                motion_preset=beat.motion_preset.value if beat.motion_preset else None,
+                asset=_resolve_beat_asset_info(beat, asset_service),
+                motion_artifact_checked=checked,
+                motion_artifact_valid=valid,
+            )
         )
-        for beat in sorted(beats, key=lambda b: b.order)
-    ]
     return QualityAnalysisInput(
         beats=beats_input,
         default_motion_preset=config.motion.default_preset.value,
@@ -151,9 +183,10 @@ def build_quality_input(
 
 
 def run_quality_check(
-    beats: list[Beat], config: ProjectConfig, asset_service: AssetService, mode: str = "NORMAL"
+    beats: list[Beat], config: ProjectConfig, asset_service: AssetService, mode: str = "NORMAL",
+    project_id: int | None = None, settings: Settings | None = None,
 ) -> QualityReport:
-    return evaluate_readiness(build_quality_input(beats, config, asset_service, mode=mode))
+    return evaluate_readiness(build_quality_input(beats, config, asset_service, mode=mode, project_id=project_id, settings=settings))
 
 
 class QualityCheckRequest(BaseModel):
@@ -171,9 +204,11 @@ def check_plan_quality(payload: QualityCheckRequest, db: Session = Depends(get_d
 
 
 @router.post("/projects/{project_id}/quality-check", response_model=QualityReport)
-def check_project_quality(project_id: int, mode: str = "NORMAL", db: Session = Depends(get_db)) -> QualityReport:
+def check_project_quality(
+    project_id: int, mode: str = "NORMAL", db: Session = Depends(get_db), settings: Settings = Depends(get_settings),
+) -> QualityReport:
     """Checks a Project's currently-*saved* BeatPlan (the lenient draft --
     zero beats is a real, valid pre-"Generate Beats" state, reported as
     NO_BEATS/BLOCKED rather than a 4xx)."""
     draft = get_project_draft(project_id)
-    return run_quality_check(draft.beats, draft.config, AssetService(db), mode=mode)
+    return run_quality_check(draft.beats, draft.config, AssetService(db), mode=mode, project_id=project_id, settings=settings)

@@ -65,6 +65,7 @@ from app.api.v1.endpoints.content_generate import (
     generate_script,
     validate_script_text,
 )
+from app.api.v1.endpoints.motion_generate import generate_project_motion
 from app.api.v1.endpoints.quality_gate import compute_asset_confidence, run_quality_check, tokenize_prose
 from app.api.v1.endpoints.voice_generate import generate_project_narration
 from app.core.concurrency import ai_generation_semaphore
@@ -96,6 +97,8 @@ from app.modules.factory.schemas import (
     FactoryRunOut,
     INVALID_CONTENT_RESPONSE,
     INVALID_EXISTING_BEAT_PLAN,
+    MOTION_ASSET_INVALID,
+    MOTION_GENERATION_FAILED,
     NOT_RESUMABLE,
     QUALITY_BLOCKED,
     RENDER_FAILED,
@@ -366,6 +369,31 @@ def _count_beats_needing_policy_review(plan: BeatPlan, asset_service: AssetServi
     return count
 
 
+# -- Stage: GENERATING_MOTION (Task 23 -- see
+# docs/features/49-local-motion-engine.md) ----------------------------------
+
+
+def _stage_generate_motion(project_id: int, settings: Settings) -> bool:
+    """Thin adapter over motion_generate.generate_project_motion -- that
+    function already owns the full idempotent per-beat reuse-or-regenerate
+    decision (fingerprint over asset + preset + intensity + output format,
+    section 46), the real FFmpeg render, and ffprobe-based output
+    validation. This stage's own job is purely translating
+    app.core.exceptions into a FactoryStageError with a stable code
+    (app.modules.motion.renderer raises the same ValidationError/
+    FileOperationError vocabulary composition_render.py's own preflight
+    already uses, not a module-specific error class -- see
+    factory/schemas.py's own MOTION_ASSET_INVALID/MOTION_GENERATION_FAILED
+    docstring for why these two, and only these two, codes cover it).
+    """
+    try:
+        return generate_project_motion(project_id, settings)
+    except ValidationError as exc:
+        raise FactoryStageError("GENERATING_MOTION", MOTION_ASSET_INVALID, str(exc)) from exc
+    except FileOperationError as exc:
+        raise FactoryStageError("GENERATING_MOTION", MOTION_GENERATION_FAILED, str(exc)) from exc
+
+
 # -- Stage: GENERATING_VOICE (Task 22 -- see
 # docs/features/48-voice-factory-local-tts.md) ------------------------------
 
@@ -398,7 +426,7 @@ def _run_quality_and_proceed(
     try:
         asset_service = AssetService(db)
         t0 = time.monotonic()
-        report = run_quality_check(plan.beats, plan.config, asset_service)
+        report = run_quality_check(plan.beats, plan.config, asset_service, project_id=project_id, settings=settings)
         policy_review_count = _count_beats_needing_policy_review(plan, asset_service)
         factory_service.merge_metrics(run_id, quality_check_seconds=round(time.monotonic() - t0, 3))
     finally:
@@ -478,6 +506,8 @@ def _stage_render(
             narration_asset_paths=narration_asset_paths or None,
             profile=plan.config.render.profile,
             min_free_disk_mb=settings.min_free_disk_mb,
+            project_id=project_id,
+            library_dir=settings.library_dir,
         )
     except (ValidationError, FileOperationError) as exc:
         raise FactoryStageError("QUEUED", RENDER_FAILED, str(exc)) from exc
@@ -597,13 +627,27 @@ def _execute_pipeline_sync(run_id: int, project_id: int, settings: Settings, ser
         # per-beat narration_asset_id/start/end/duration writes directly
         # (see voice_generate.py), so `plan` here must be refreshed the
         # same way _stage_assign_assets' own update_project_beat_plan
-        # already required a fresh read downstream.
+        # already required a fresh read downstream. Critically, this is
+        # also *why* GENERATING_MOTION runs after this stage, not before
+        # (see models.py's own FACTORY_STAGES docstring) -- Motion needs
+        # this refreshed `beat.duration`, not the original pre-Voice guess.
         draft = get_project_draft(project_id)
         plan = BeatPlan(
             script_text=draft.script_text, beats=draft.beats, project_name=draft.project_name, config=draft.config,
             idea=draft.idea, content_brief=draft.content_brief, script_locked=draft.script_locked,
         )
         factory_service.complete_checkpoint(run_id, current_stage, metadata={"generated": voice_generated})
+        if _bail_if_cancelled(run_id, cancel_event):
+            return
+
+        current_stage = "GENERATING_MOTION"
+        factory_service.set_run_fields(run_id, status=current_stage)
+        factory_service.start_checkpoint(run_id, current_stage)
+        t0 = time.monotonic()
+        motion_generated = _stage_generate_motion(project_id, settings)
+        if motion_generated:
+            factory_service.merge_metrics(run_id, motion_generation_seconds=round(time.monotonic() - t0, 3))
+        factory_service.complete_checkpoint(run_id, current_stage, metadata={"generated": motion_generated})
         if _bail_if_cancelled(run_id, cancel_event):
             return
 

@@ -72,14 +72,23 @@ export const BEAT_TYPES: BeatType[] = ["HOOK", "SETUP", "BUILD", "REVEAL", "REAC
 
 // Mirrors backend/app/modules/beat/schemas.py's BeatMotionPreset exactly
 // (see docs/features/33-motion-presets-beat-motion-assignment.md) -- the
-// six presets a Beat itself can declare, persisted via beats.json. This is
+// presets a Beat itself can declare, persisted via beats.json. This is
 // deliberately NOT the same set as MotionPresetName/MOTION_PRESET_DEFAULTS
 // below (9 lowercase presets used to build a render-time Scene.motion) --
-// see that section's comment for how the two relate. All 6 values here are
-// a strict subset of MOTION_PRESET_DEFAULTS' keys (same spelling, just
-// upper vs lower case), so resolving one into the other is a plain
-// `.toLowerCase()`, not a lookup table.
-export type BeatMotionPreset = "STATIC" | "SLOW_PUSH_IN" | "SLOW_PULL_OUT" | "PAN_LEFT" | "PAN_RIGHT" | "ZOOM_AND_PAN";
+// see that section's comment for how the two relate. Every value here is a
+// strict subset of MOTION_PRESET_DEFAULTS' keys (same spelling, just upper
+// vs lower case), so resolving one into the other is a plain
+// `.toLowerCase()`, not a lookup table. PAN_UP/PAN_DOWN added in Task 23
+// (see docs/features/49-local-motion-engine.md section 6/58).
+export type BeatMotionPreset =
+  | "STATIC"
+  | "SLOW_PUSH_IN"
+  | "SLOW_PULL_OUT"
+  | "PAN_LEFT"
+  | "PAN_RIGHT"
+  | "PAN_UP"
+  | "PAN_DOWN"
+  | "ZOOM_AND_PAN";
 
 export const BEAT_MOTION_PRESETS: BeatMotionPreset[] = [
   "STATIC",
@@ -87,6 +96,8 @@ export const BEAT_MOTION_PRESETS: BeatMotionPreset[] = [
   "SLOW_PULL_OUT",
   "PAN_LEFT",
   "PAN_RIGHT",
+  "PAN_UP",
+  "PAN_DOWN",
   "ZOOM_AND_PAN",
 ];
 
@@ -96,6 +107,8 @@ export const BEAT_MOTION_PRESET_LABELS: Record<BeatMotionPreset, string> = {
   SLOW_PULL_OUT: "Slow Pull Out",
   PAN_LEFT: "Pan Left",
   PAN_RIGHT: "Pan Right",
+  PAN_UP: "Pan Up",
+  PAN_DOWN: "Pan Down",
   ZOOM_AND_PAN: "Zoom + Pan",
 };
 
@@ -105,6 +118,8 @@ export const BEAT_MOTION_PRESET_DESCRIPTIONS: Record<BeatMotionPreset, string> =
   SLOW_PULL_OUT: "Gradually zoom away.",
   PAN_LEFT: "Camera moves from right to left.",
   PAN_RIGHT: "Camera moves from left to right.",
+  PAN_UP: "Camera moves from bottom to top.",
+  PAN_DOWN: "Camera moves from top to bottom.",
   ZOOM_AND_PAN: "Slow zoom combined with subtle camera movement.",
 };
 
@@ -278,8 +293,15 @@ export interface RenderProjectConfig {
   profile: string;
 }
 
+// Task 23 -- see docs/features/49-local-motion-engine.md sections 26/29/58.
+export type MotionIntensity = "SUBTLE" | "MEDIUM" | "STRONG";
+export type ShortVideoPolicy = "LOOP" | "FREEZE" | "REJECT";
+
 export interface MotionProjectConfig {
   default_preset: BeatMotionPreset;
+  auto_rotate: boolean;
+  intensity: MotionIntensity;
+  short_video_policy: ShortVideoPolicy;
 }
 
 export interface CaptionsProjectConfig {
@@ -349,7 +371,7 @@ export interface Template {
 
 export const SYSTEM_DEFAULT_PROJECT_CONFIG: ProjectConfig = {
   render: { profile: "SOCIAL_VERTICAL" },
-  motion: { default_preset: "STATIC" },
+  motion: { default_preset: "STATIC", auto_rotate: false, intensity: "MEDIUM", short_video_policy: "FREEZE" },
   captions: { enabled: true, preset: "emotional" },
   audio: { narration_enabled: true, music_enabled: true, music_volume: 0.15, ducking: true },
   factory: {

@@ -43,6 +43,32 @@ class MotionPresetName(str, Enum):
     SUBTLE_ROTATE = "subtle_rotate"
 
 
+class MotionIntensity(str, Enum):
+    """Task 23 (see docs/features/49-local-motion-engine.md section 26) --
+    scales every preset's own zoom/pan/rotation delta uniformly. MEDIUM is
+    the baseline (== each preset's existing, already-tuned numbers, so
+    intensity=MEDIUM changes nothing about a pre-Task-23 project's
+    rendered output).
+    """
+
+    SUBTLE = "SUBTLE"
+    MEDIUM = "MEDIUM"
+    STRONG = "STRONG"
+
+
+# Multiplies each preset's own scale/position delta from its MEDIUM
+# baseline (never a second set of absolute numbers -- see build_motion_plan
+# in service.py). Chosen to land close to this task's own illustrative
+# SUBTLE/MEDIUM/STRONG push-in example (1.05/1.08/1.15, i.e. delta
+# 0.05/0.08/0.15 -- ratios ~0.625/1.0/1.875) without being a brittle,
+# preset-specific lookup table.
+INTENSITY_MULTIPLIERS: dict[MotionIntensity, float] = {
+    MotionIntensity.SUBTLE: 0.6,
+    MotionIntensity.MEDIUM: 1.0,
+    MotionIntensity.STRONG: 1.8,
+}
+
+
 # A Ken-Burns-style effect needs headroom to pan/rotate within the source
 # frame without ever revealing its edges, so scale can never go below 1.0
 # (the untouched source size). The upper bound is just a sanity cap against

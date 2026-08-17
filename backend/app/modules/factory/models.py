@@ -44,15 +44,22 @@ FACTORY_RUN_STATUSES = (
     "GENERATING_BEATS",
     "PREPARING_VISUALS",
     "ASSIGNING_ASSETS",
-    # Task 22 (see docs/features/48-voice-factory-local-tts.md) -- Script ->
-    # local TTS -> narration.wav -> real per-beat timing, ahead of the
-    # Quality Gate. Placed after ASSIGNING_ASSETS (visuals) and before
-    # QUALITY_CHECK, matching that task's own target pipeline
-    # (CONTENT -> BEATS -> VISUALS -> VOICE -> QUALITY -> RENDER). Same
-    # idempotent "skip if a valid cached artifact already matches the
-    # current script/voice settings" shape every earlier stage already
-    # uses -- see factory_pipeline.py's _stage_generate_voice.
     "GENERATING_VOICE",
+    # Task 23 (see docs/features/49-local-motion-engine.md) -- turns each
+    # Beat's assigned visual Asset into a real, cached, independently-
+    # retryable animated clip (FFmpeg Ken-Burns for images, trim/scale/crop
+    # for existing video) ahead of Quality/Render. Placed *after*
+    # GENERATING_VOICE, not before it as this task's own brief originally
+    # sketched (VISUAL -> MOTION -> VOICE) -- a real dependency discovered
+    # during this task's own verification: Voice recomputes each Beat's
+    # `duration` from real, measured narration timing (see
+    # voice_generate.py's generate_project_narration), which would silently
+    # invalidate -- wrong duration, failed ffprobe validation -- any Motion
+    # clip already rendered against the *original*, pre-Voice duration
+    # guess. Motion needs the Beat timing Voice produces to be final before
+    # it renders, exactly the "strong dependency reason to reorder" this
+    # task's own brief explicitly allows for.
+    "GENERATING_MOTION",
     "QUALITY_CHECK",
     "NEEDS_REVIEW",
     "READY_TO_RENDER",
@@ -74,6 +81,7 @@ FACTORY_STAGES = (
     "PREPARING_VISUALS",
     "ASSIGNING_ASSETS",
     "GENERATING_VOICE",
+    "GENERATING_MOTION",
     "QUALITY_CHECK",
     "READY_TO_RENDER",
     "QUEUED",

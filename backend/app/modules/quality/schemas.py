@@ -33,6 +33,7 @@ ISSUE_CODES = (
     "LOW_VISUAL_CONFIDENCE",
     "LOW_RESOLUTION_ASSET",
     "MISSING_MOTION",
+    "MOTION_ARTIFACT_MISSING",
     "MISSING_NARRATION",
     "DUPLICATE_NARRATION",
     "PACING_OUTLIER",
@@ -154,6 +155,15 @@ class BeatAnalysisInput(BaseModel):
     visual_hint: str | None = None
     motion_preset: str | None = None  # explicit override, or None to inherit the project default
     asset: BeatAssetInfo
+    # Task 23 (see docs/features/49-local-motion-engine.md section 55) --
+    # `motion_artifact_checked` is only True when the composition root
+    # actually had a real project_id to look a cached clip up against (an
+    # arbitrary, unsaved BeatPlan being checked via POST /quality-check has
+    # none, and is never penalized for it -- see quality_gate.py's own
+    # build_quality_input). `motion_artifact_valid` is meaningless unless
+    # `motion_artifact_checked` is True.
+    motion_artifact_checked: bool = False
+    motion_artifact_valid: bool = True
 
 
 class ProjectAudioConfigInput(BaseModel):

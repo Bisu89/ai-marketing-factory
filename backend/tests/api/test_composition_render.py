@@ -508,11 +508,16 @@ class CompositionPlanIntegrationTests(_VideoComposerIntegrationTestCase):
         _assert_close(_sample_color(2.9), (40, 200, 40), "beat 2 (green) mid-point")
         _assert_close(_sample_color(4.8), (40, 40, 200), "beat 3 (blue) mid-point")
 
-    def test_video_asset_scene_is_used_directly_without_motion_rendering(self):
-        # A Scene whose asset is already a video clip (e.g. sourced from
-        # Scene Cutter output) should be used as-is, not run through the
-        # motion renderer (which expects a still image).
-        video_clip = _make_color_clip(self.tmp_path / "already_a_clip.mp4", 1.0, "green", 320, 568, 12.0)
+    def test_video_asset_scene_is_trimmed_scaled_and_cropped_not_used_raw(self):
+        # Task 23 (see docs/features/49-local-motion-engine.md sections
+        # 12/15): a Scene whose asset is already a video clip (e.g. sourced
+        # from Scene Cutter output) is trimmed/scaled/cropped to the
+        # Scene's own duration/frame via app.modules.motion.renderer's own
+        # render_video_clip -- never zoompan'd like an image, but also no
+        # longer passed through completely untouched (the pre-Task-23
+        # behavior this test used to assert), since an untouched clip could
+        # silently mismatch the Beat's own duration/aspect ratio.
+        video_clip = _make_color_clip(self.tmp_path / "already_a_clip.mp4", 3.0, "green", 320, 568, 12.0)
         plan = CompositionPlan(
             scenes=[
                 _make_scene("scene_01", 1, 1.0, asset_id=101),
@@ -526,9 +531,16 @@ class CompositionPlanIntegrationTests(_VideoComposerIntegrationTestCase):
 
         job = self._get_job(job_id)
         ordered_clips = sorted(job.clips, key=lambda c: c.position)
-        # scene_02's clip path is the original video file itself, not a
-        # newly rendered one under the job's scenes/ directory.
-        self.assertEqual(ordered_clips[1].file_path, str(video_clip))
+        # scene_02's clip is a newly rendered one under the job's own
+        # scenes/ directory, not the original 3s source file untouched --
+        # trimmed to the Scene's own 1.0s duration.
+        self.assertNotEqual(ordered_clips[1].file_path, str(video_clip))
+        self.assertTrue(Path(ordered_clips[1].file_path).exists())
+        probe = subprocess.run(
+            ["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "default=noprint_wrappers=1:nokey=1", ordered_clips[1].file_path],
+            capture_output=True, text=True, stdin=subprocess.DEVNULL,
+        )
+        self.assertAlmostEqual(float(probe.stdout.strip()), 1.0, delta=0.15)
 
     def test_missing_asset_path_mapping_raises_validation_error(self):
         plan = CompositionPlan(scenes=[_make_scene("scene_01", 1, 1.0, asset_id=101)])

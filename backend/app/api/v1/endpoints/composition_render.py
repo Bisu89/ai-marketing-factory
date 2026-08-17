@@ -39,8 +39,9 @@ from app.core.exceptions import FileOperationError, NotFoundError, RenderCancell
 from app.core.render_policy import enforce_local_rendering_policy
 from app.core.render_profile import RenderProfile, get_render_profile
 from app.db.session import get_db
+from app.api.v1.endpoints.motion_generate import motion_artifact_for_beat
 from app.modules.composition.schemas import CompositionPlan, Scene, SceneMotion
-from app.modules.motion.renderer import render_motion_clip
+from app.modules.motion.renderer import render_motion_clip, render_video_clip
 from app.modules.motion.schemas import Easing as MotionEasing
 from app.modules.motion.schemas import MotionPlan, MotionPresetName
 from app.modules.motion.schemas import PositionRange as MotionPositionRange
@@ -396,6 +397,15 @@ def render_beats_for_job(
     """
     plan = CompositionPlan.model_validate(composition_request["plan"])
     asset_paths: dict[str, str] = composition_request["asset_paths"]
+    # Task 23 (see docs/features/49-local-motion-engine.md) -- only present
+    # when this job was created by factory_pipeline.py's own _stage_render
+    # (a Factory project, which may have already run the GENERATING_MOTION
+    # stage ahead of this render); the plain, non-Factory
+    # create_video_compose_job_from_composition endpoint below never sets
+    # these, so this whole cache-reuse path is a no-op for that flow --
+    # exactly the same render it always was.
+    project_id = composition_request.get("project_id")
+    library_dir = composition_request.get("library_dir")
     scenes = plan.ordered_scenes()
     total = len(scenes)
 
@@ -407,10 +417,25 @@ def render_beats_for_job(
         # asset_paths[...] and its existence were both already confirmed by
         # _run_preflight before this job was even created.
         source_path = Path(asset_paths[str(scene.source_asset_id)])
+        output_clip = scenes_dir / f"{scene.id}.mp4"
+
+        cached_clip = None
+        if project_id is not None and library_dir is not None:
+            cached_clip = motion_artifact_for_beat(
+                project_id, scene.id, library_dir,
+                scene.duration, scene.output_format.width, scene.output_format.height, scene.output_format.fps,
+            )
+        if cached_clip is not None:
+            # Section 46's own cache win: an already-valid, already-
+            # rendered artifact from a prior GENERATING_MOTION stage run,
+            # reused outright rather than re-rendered from scratch.
+            shutil.copyfile(cached_clip, output_clip)
+            clip_paths.append(output_clip)
+            on_progress(index + 1, total)
+            continue
 
         if _is_image_path(source_path):
             motion_plan = _scene_motion_to_motion_plan(scene.motion, scene.duration)
-            output_clip = scenes_dir / f"{scene.id}.mp4"
             try:
                 render_motion_clip(
                     source_path,
@@ -425,9 +450,25 @@ def render_beats_for_job(
                 )
             finally:
                 register_process(None)
-            clip_paths.append(output_clip)
         else:
-            clip_paths.append(source_path)
+            # Task 23 section 12/15: trim/scale/crop an existing video Beat
+            # asset to the Beat's own duration/frame instead of passing it
+            # through completely untouched (the previous behavior, which
+            # never corrected a mismatched length or aspect ratio at all).
+            try:
+                render_video_clip(
+                    source_path,
+                    output_clip,
+                    duration=scene.duration,
+                    fps=scene.output_format.fps,
+                    width=scene.output_format.width,
+                    height=scene.output_format.height,
+                    on_process_start=register_process,
+                    is_cancelled=is_cancelled,
+                )
+            finally:
+                register_process(None)
+        clip_paths.append(output_clip)
         on_progress(index + 1, total)
 
     return clip_paths
@@ -442,6 +483,8 @@ def render_composition(
     narration_asset_paths: dict[int, str] | None = None,
     profile: str = "SOCIAL_VERTICAL",
     min_free_disk_mb: int = 500,
+    project_id: int | None = None,
+    library_dir: str | None = None,
 ) -> int:
     """Turns a CompositionPlan into a persistent, queued VideoComposeJob --
     this app's `render_project`-equivalent single entry point (nothing else
@@ -466,6 +509,14 @@ def render_composition(
     modules this integration is about (composition, motion, video_composer),
     matching this task's "smallest safe change" instruction rather than
     also wiring in Asset lookups that weren't asked for.
+
+    `project_id`/`library_dir` (Task 23, both optional, default None) --
+    when given (factory_pipeline.py's own _stage_render always supplies
+    them; the plain create_video_compose_job_from_composition endpoint
+    below never does), render_beats_for_job checks for a cached, still-
+    valid GENERATING_MOTION-stage artifact for each beat before rendering
+    it fresh. None for either is a complete no-op for this cache-reuse path
+    -- the plain, non-Factory render flow is unchanged.
     """
     enforce_local_rendering_policy()
     # Validates `profile` is a real, known name (raises ValidationError
@@ -501,6 +552,8 @@ def render_composition(
         "asset_paths": {str(k): v for k, v in asset_paths.items()},
         "narration_asset_paths": {str(k): v for k, v in (narration_asset_paths or {}).items()},
         "profile": profile,
+        "project_id": project_id,
+        "library_dir": library_dir,
     }
 
     job_id = service.create_job(

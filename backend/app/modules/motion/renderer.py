@@ -32,6 +32,7 @@ import logging
 import shutil
 import subprocess
 from collections.abc import Callable
+from dataclasses import dataclass
 from pathlib import Path
 
 from app.core.exceptions import FileOperationError, RenderCancelled, ValidationError
@@ -68,6 +69,19 @@ DEFAULT_HEIGHT = 1920
 # manual verification (a circle rendered as an ellipse) -- see
 # docs/features/34-local-motion-renderer.md.
 _PRESCALE_FACTOR = 6
+
+# Task 23 -- see build_filter_graph's own docstring for the real,
+# pre-existing bug this fixes: ffmpeg's image2 demuxer decodes a
+# `-loop 1 -i` single-image source at a fixed internal rate, empirically
+# confirmed (via real pixel-sampled rendered output, not documentation) to
+# be ~25fps regardless of any `-framerate` flag or the caller's requested
+# output fps. zoompan's own `d`/`on` progression must be computed against
+# THIS rate, never the caller's output fps, or the pan/zoom animation
+# finishes early and visibly freezes for the remainder of the clip whenever
+# output fps < 25 (which is most of this app's own real usage -- see
+# DEFAULT_FPS below, and every test fixture using a lower fps for fast
+# rendering).
+_ZOOMPAN_REFERENCE_FPS = 25.0
 
 # -nostdin: ffmpeg reads stdin by default for interactive key commands
 # (e.g. "press q to stop"); run non-interactively as a subprocess, an
@@ -110,11 +124,40 @@ def _is_static(motion_plan: MotionPlan) -> bool:
     )
 
 
-def build_filter_graph(motion_plan: MotionPlan, duration: float, fps: float, width: int, height: int) -> str:
+def build_filter_graph(
+    motion_plan: MotionPlan, duration: float, fps: float, width: int, height: int,
+    focal_x: float = 0.5, focal_y: float = 0.5,
+) -> str:
     """Pure function: builds the `-vf` filter graph string for one motion
     render. No I/O, no subprocess -- safe and fast to unit test directly.
+
+    `focal_x`/`focal_y` (Task 23 -- see docs/features/49-local-motion-engine.md
+    section 32) only affect the STATIC/no-movement crop below -- every other
+    preset already bakes the focal point into its own zoompan x/y expression
+    via `motion_plan.position` (see app.modules.motion.service.build_motion_plan),
+    so this function never needs them for the zoompan branch.
+
+    Real bug found and fixed during Task 23's own manual verification
+    (see docs/features/49-local-motion-engine.md's own "Problems"/verification
+    section): zoompan's `on` counter advances once per frame *decoded from
+    the input*, and ffmpeg's image2 demuxer for a single `-loop 1 -i`
+    source decodes at a fixed internal rate empirically confirmed (via real
+    rendered-output pixel sampling across many fps/duration combinations)
+    to be ~25fps *regardless* of any `-framerate` flag or the caller's
+    requested output `fps` -- a pre-existing bug (present since this
+    renderer was first built, well before Task 23) that had nothing to do
+    with the Task 23 changes in this file. Computing `d`/the easing
+    denominator from the *output* fps (e.g. 10, 24, 30 -- whatever a caller
+    asked for) meant the pan/zoom animation reached its own endpoint after
+    only `output_fps/25` of the clip's real duration whenever output_fps <
+    25, then visibly froze in place for the remainder -- a real, previously
+    unnoticed video-quality defect. `_ZOOMPAN_REFERENCE_FPS` decouples the
+    zoompan cycle from the caller's requested output fps entirely; the
+    trailing `fps={fps}` stage below still produces the exact frame rate a
+    caller asked for, resampled from an already-smooth reference-rate
+    sequence rather than a truncated one.
     """
-    frame_count = max(1, round(duration * fps))
+    zoompan_frame_count = max(1, round(duration * _ZOOMPAN_REFERENCE_FPS))
 
     if _is_static(motion_plan):
         # No scale/position/rotation change at all -- skip zoompan/rotate
@@ -124,15 +167,26 @@ def build_filter_graph(motion_plan: MotionPlan, duration: float, fps: float, wid
         # docs/features/11-video-composer.md). No zoompan headroom is
         # needed here (nothing pans/zooms), so this scales straight to
         # "cover" the target frame -- force_original_aspect_ratio=increase
-        # (fills both dimensions, may overshoot one) + a centered crop back
-        # down to exactly width x height. This is the fix for a real bug
-        # (docs/features/34-local-motion-renderer.md): the previous
+        # (fills both dimensions, may overshoot one) + a crop back down to
+        # exactly width x height. This is the fix for a real bug (see
+        # docs/features/34-local-motion-renderer.md): the previous
         # decrease+pad recipe was "contain", not "cover", and produced
         # visible black bars whenever the source aspect ratio didn't
         # already match the output exactly.
+        #
+        # A plain `crop=W:H` (no x/y) is ffmpeg's own dead-center crop --
+        # kept exactly as-is (not rewritten to an equivalent 0.5/0.5
+        # expression) when the focal point is the default center, so a
+        # pre-Task-23 caller's filter graph string is byte-identical to
+        # before. A real, off-center focal point (section 32: "motion
+        # should preserve the focal area") instead crops around it.
+        if focal_x == 0.5 and focal_y == 0.5:
+            crop_stage = f"crop={width}:{height}"
+        else:
+            crop_stage = f"crop={width}:{height}:x='(in_w-{width})*{focal_x}':y='(in_h-{height})*{focal_y}'"
         stages = [
             f"scale={width}:{height}:force_original_aspect_ratio=increase",
-            f"crop={width}:{height}",
+            crop_stage,
         ]
     else:
         # Cover-crop to the *output's* aspect ratio at high resolution --
@@ -144,7 +198,7 @@ def build_filter_graph(motion_plan: MotionPlan, duration: float, fps: float, wid
             f"scale={prescale_width}:{prescale_height}:force_original_aspect_ratio=increase",
             f"crop={prescale_width}:{prescale_height}",
         ]
-        on_progress = f"on/{max(frame_count - 1, 1)}"
+        on_progress = f"on/{max(zoompan_frame_count - 1, 1)}"
         eased_on = _apply_easing(on_progress, motion_plan.easing)
         zoom_expr = _lerp(motion_plan.scale.start, motion_plan.scale.end, eased_on)
         cx_expr = _lerp(motion_plan.position.x_start, motion_plan.position.x_end, eased_on)
@@ -154,7 +208,7 @@ def build_filter_graph(motion_plan: MotionPlan, duration: float, fps: float, wid
         # point: crop-window top-left = focus_point_px - half_window_size.
         x_expr = f"(iw*({cx_expr})-(iw/zoom/2))"
         y_expr = f"(ih*({cy_expr})-(ih/zoom/2))"
-        stages.append(f"zoompan=z='{zoom_expr}':x='{x_expr}':y='{y_expr}':d={frame_count}:s={width}x{height}")
+        stages.append(f"zoompan=z='{zoom_expr}':x='{x_expr}':y='{y_expr}':d={zoompan_frame_count}:s={width}x{height}")
 
     if motion_plan.rotation.start != 0.0 or motion_plan.rotation.end != 0.0:
         # rotate's own expression syntax uses `t` (seconds elapsed), not
@@ -185,11 +239,13 @@ def build_ffmpeg_command(
     fps: float,
     width: int,
     height: int,
+    focal_x: float = 0.5,
+    focal_y: float = 0.5,
 ) -> list[str]:
     """Pure function: the complete, ready-to-run ffmpeg argv. No I/O, no
     subprocess -- safe and fast to unit test directly.
     """
-    filter_graph = build_filter_graph(motion_plan, duration, fps, width, height)
+    filter_graph = build_filter_graph(motion_plan, duration, fps, width, height, focal_x, focal_y)
     return _FFMPEG_PREFIX + [
         "-loop",
         "1",
@@ -262,10 +318,20 @@ def render_motion_clip(
     fps: float = DEFAULT_FPS,
     width: int = DEFAULT_WIDTH,
     height: int = DEFAULT_HEIGHT,
+    focal_x: float = 0.5,
+    focal_y: float = 0.5,
     on_process_start: Callable[[subprocess.Popen], None] | None = None,
     is_cancelled: Callable[[], bool] | None = None,
 ) -> Path:
     """Render one still image + MotionPlan into an MP4 at `output_path`.
+
+    `focal_x`/`focal_y` (Task 23) only change the STATIC-preset crop
+    center (see build_filter_graph) -- every panning/zooming preset
+    already has the focal point baked into its own MotionPlan.position
+    (see app.modules.motion.service.build_motion_plan), so passing a
+    focal point here alongside a non-STATIC motion_plan built with a
+    *different* focal point would disagree; callers should build both
+    from the same focal point.
 
     `duration` overrides `motion_plan.duration` when given -- MotionPlan
     can stand alone with its own duration (see
@@ -331,7 +397,9 @@ def render_motion_clip(
     except OSError as exc:
         raise FileOperationError(f"Cannot create output directory {output_path.parent}: {exc}") from exc
 
-    command = build_ffmpeg_command(image_path, output_path, motion_plan, effective_duration, fps, width, height)
+    command = build_ffmpeg_command(
+        image_path, output_path, motion_plan, effective_duration, fps, width, height, focal_x, focal_y
+    )
     logger.info(
         "Rendering motion clip: %s -> %s (preset=%s, duration=%.2fs, %sx%s@%sfps)",
         image_path,
@@ -364,3 +432,223 @@ def render_motion_clip(
         raise FileOperationError(f"ffmpeg reported success but produced no output file: {output_path}")
 
     return output_path
+
+
+# -- Existing-video Beat assets (Task 23 sections 12/15) --------------------
+#
+# An image becomes a clip via zoompan/rotate (render_motion_clip above); an
+# already-video asset is never run through those filters (section 12: "do
+# not apply image zoom filters to arbitrary videos unless supported
+# safely") -- only trim/scale/crop, i.e. exactly the same cover-crop
+# non-distorting strategy the STATIC branch of build_filter_graph already
+# uses for images, reused here for video's own "no pan/zoom, just fill the
+# frame" case.
+
+SHORT_SOURCE_POLICIES = ("LOOP", "FREEZE", "REJECT")
+DEFAULT_SHORT_SOURCE_POLICY = "FREEZE"
+
+
+def _probe_video_duration(video_path: Path) -> float:
+    command = [
+        "ffprobe", "-v", "error",
+        "-select_streams", "v:0",
+        "-show_entries", "format=duration",
+        "-of", "default=noprint_wrappers=1:nokey=1",
+        str(video_path),
+    ]
+    try:
+        result = subprocess.run(command, capture_output=True, text=True, stdin=subprocess.DEVNULL)
+    except FileNotFoundError as exc:
+        raise FileOperationError("ffprobe was not found on PATH -- is it installed/bundled?") from exc
+    try:
+        return float(result.stdout.strip())
+    except ValueError as exc:
+        raise FileOperationError(f"Invalid or unreadable video: {video_path}") from exc
+
+
+def build_video_clip_command(
+    video_path: Path, output_path: Path, duration: float, source_duration: float,
+    fps: float, width: int, height: int, short_source_policy: str,
+) -> list[str]:
+    """Pure function: the complete, ready-to-run ffmpeg argv for turning an
+    existing video asset into a Beat clip. No I/O, no subprocess.
+    """
+    is_short = source_duration < duration
+    input_args = ["-stream_loop", "-1", "-i", str(video_path)] if (is_short and short_source_policy == "LOOP") else ["-i", str(video_path)]
+
+    filter_stages = [
+        f"scale={width}:{height}:force_original_aspect_ratio=increase",
+        f"crop={width}:{height}",
+        "setsar=1",
+        "format=yuv420p",
+        f"fps={fps}",
+    ]
+    if is_short and short_source_policy == "FREEZE":
+        # Holds the last decoded frame for the remaining time instead of
+        # ending early -- section 15's own explicit "do not silently choose
+        # a surprising behavior": the clip is always exactly `duration`
+        # long regardless of which policy is active.
+        filter_stages.append(f"tpad=stop_mode=clone:stop_duration={max(0.0, duration - source_duration):.3f}")
+
+    return _FFMPEG_PREFIX + input_args + [
+        "-t", f"{duration}",
+        "-vf", ",".join(filter_stages),
+        "-an",
+        "-c:v", "libx264",
+        "-pix_fmt", "yuv420p",
+        "-color_range", "tv",
+        str(output_path),
+    ]
+
+
+def render_video_clip(
+    video_path: Path | str,
+    output_path: Path | str,
+    duration: float,
+    *,
+    fps: float = DEFAULT_FPS,
+    width: int = DEFAULT_WIDTH,
+    height: int = DEFAULT_HEIGHT,
+    short_source_policy: str = DEFAULT_SHORT_SOURCE_POLICY,
+    on_process_start: Callable[[subprocess.Popen], None] | None = None,
+    is_cancelled: Callable[[], bool] | None = None,
+) -> Path:
+    """Turns an existing video asset into a Beat clip: trim to `duration`
+    (section 14: Beat.duration is the source of truth, never an arbitrary
+    fallback) + cover-scale/crop to the target frame -- never zoompan/
+    rotate (section 12). If the source is shorter than `duration`,
+    `short_source_policy` (LOOP/FREEZE/REJECT, section 15) decides what
+    happens; there is no silent default beyond the one this function's own
+    caller explicitly configured (see app.modules.beat.schemas.
+    MotionProjectConfig.short_video_policy).
+    """
+    video_path = Path(video_path)
+    output_path = Path(output_path)
+
+    if short_source_policy not in SHORT_SOURCE_POLICIES:
+        raise ValidationError(f"Unknown short_source_policy {short_source_policy!r}; must be one of {SHORT_SOURCE_POLICIES}")
+    if not (MIN_DURATION <= duration <= MAX_DURATION):
+        raise ValidationError(f"duration must be between {MIN_DURATION} and {MAX_DURATION} seconds, got {duration}")
+    if width <= 0 or height <= 0 or width % 2 or height % 2:
+        raise ValidationError(f"width/height must both be positive and even, got {width}x{height}")
+    if not video_path.exists() or not video_path.is_file():
+        raise FileOperationError(f"Input video not found: {video_path}")
+    if shutil.which("ffmpeg") is None or shutil.which("ffprobe") is None:
+        raise FileOperationError("ffmpeg/ffprobe was not found on PATH -- is it installed/bundled?")
+
+    source_duration = _probe_video_duration(video_path)
+    if source_duration <= 0:
+        raise FileOperationError(f"Invalid or unreadable video (zero duration): {video_path}")
+    if source_duration < duration and short_source_policy == "REJECT":
+        raise ValidationError(
+            f"Video asset {video_path} is {source_duration:.2f}s, shorter than the required {duration:.2f}s "
+            "Beat duration, and short_source_policy is REJECT."
+        )
+
+    try:
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+    except OSError as exc:
+        raise FileOperationError(f"Cannot create output directory {output_path.parent}: {exc}") from exc
+
+    command = build_video_clip_command(video_path, output_path, duration, source_duration, fps, width, height, short_source_policy)
+    logger.info("Rendering video Beat clip: %s -> %s (duration=%.2fs, policy=%s)", video_path, output_path, duration, short_source_policy)
+
+    try:
+        process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, stdin=subprocess.DEVNULL)
+    except FileNotFoundError as exc:
+        raise FileOperationError("ffmpeg was not found on PATH -- is it installed/bundled?") from exc
+
+    if on_process_start is not None:
+        on_process_start(process)
+    stdout, stderr = process.communicate()
+
+    if process.returncode != 0:
+        if is_cancelled is not None and is_cancelled():
+            raise RenderCancelled(f"Video Beat clip render for {video_path} was cancelled")
+        logger.error("ffmpeg failed rendering video clip %s: %s", video_path, stderr[-2000:])
+        raise FileOperationError(f"ffmpeg failed to render video Beat clip: {stderr.strip()[-2000:]}")
+
+    if not output_path.exists():
+        raise FileOperationError(f"ffmpeg reported success but produced no output file: {output_path}")
+
+    return output_path
+
+
+# -- Output validation (Task 23 section 39/40) ------------------------------
+
+
+@dataclass
+class ClipProbe:
+    duration_sec: float
+    width: int
+    height: int
+    fps: float
+    codec: str
+
+
+def probe_clip(path: Path | str) -> ClipProbe:
+    """Full ffprobe-based validation of a rendered Beat clip -- never trust
+    ffmpeg's own exit code alone (section 39). Raises FileOperationError if
+    the file isn't a readable video at all.
+    """
+    path = Path(path)
+    command = [
+        "ffprobe", "-v", "error",
+        "-select_streams", "v:0",
+        "-show_entries", "stream=width,height,r_frame_rate,codec_name",
+        "-show_entries", "format=duration",
+        "-of", "default=noprint_wrappers=1",
+        str(path),
+    ]
+    result = subprocess.run(command, capture_output=True, text=True, stdin=subprocess.DEVNULL)
+    if result.returncode != 0 or not result.stdout.strip():
+        raise FileOperationError(f"Not a readable video file: {path}")
+
+    values: dict[str, str] = {}
+    for line in result.stdout.strip().splitlines():
+        if "=" in line:
+            key, _, value = line.partition("=")
+            values.setdefault(key.strip(), value.strip())
+
+    try:
+        duration = float(values["duration"])
+        width = int(values["width"])
+        height = int(values["height"])
+        codec = values["codec_name"]
+        num, _, den = values["r_frame_rate"].partition("/")
+        fps = float(num) / float(den) if den and float(den) != 0 else float(num)
+    except (KeyError, ValueError, ZeroDivisionError) as exc:
+        raise FileOperationError(f"Could not parse video format for {path}: {exc}") from exc
+
+    return ClipProbe(duration_sec=duration, width=width, height=height, fps=fps, codec=codec)
+
+
+# A tiny, frame-based allowance (section 40: "do not require exact
+# floating-point equality... use frame-based tolerance") -- container/
+# encoder rounding can shift the reported duration by a fraction of a
+# frame; this is not a real allowance for a genuinely wrong-length render.
+_DURATION_TOLERANCE_FRAMES = 2
+_FPS_TOLERANCE = 0.5
+
+
+def validate_clip_output(probe: ClipProbe, expected_duration: float, expected_width: int, expected_height: int, expected_fps: float) -> None:
+    """Section 39: duration/resolution/fps/codec, all checked -- raises
+    FileOperationError with a clear message on the first mismatch found.
+    """
+    tolerance = _DURATION_TOLERANCE_FRAMES / expected_fps if expected_fps > 0 else 0.1
+    if probe.duration_sec <= 0:
+        raise FileOperationError(f"Rendered clip has zero/invalid duration: {probe.duration_sec}")
+    if abs(probe.duration_sec - expected_duration) > tolerance:
+        raise FileOperationError(
+            f"Rendered clip duration {probe.duration_sec:.3f}s does not match the requested "
+            f"{expected_duration:.3f}s (tolerance {tolerance:.3f}s)."
+        )
+    if probe.width != expected_width or probe.height != expected_height:
+        raise FileOperationError(
+            f"Rendered clip resolution {probe.width}x{probe.height} does not match the requested "
+            f"{expected_width}x{expected_height}."
+        )
+    if abs(probe.fps - expected_fps) > _FPS_TOLERANCE:
+        raise FileOperationError(f"Rendered clip fps {probe.fps:.2f} does not match the requested {expected_fps:.2f}.")
+    if probe.codec not in ("h264",):
+        raise FileOperationError(f"Rendered clip uses an unexpected codec {probe.codec!r} (expected h264).")
