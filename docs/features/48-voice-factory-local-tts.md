@@ -1,6 +1,6 @@
 # 48 — Voice Factory: Local TTS → Beat Timing → Narration Track
 
-**Commit:** `TBD`
+**Commit:** `09b3f87`
 
 Adds a new `GENERATING_VOICE` FactoryRun stage (between `ASSIGNING_ASSETS`
 and `QUALITY_CHECK`) that turns the project's script into a real narration
