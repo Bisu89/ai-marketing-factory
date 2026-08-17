@@ -1,6 +1,6 @@
 # 47 — Content Engine: Idea → Content Brief → Script
 
-**Commit:** _(fill in after commit)_
+**Commit:** `f302447`
 
 Adds the missing front of the pipeline: a project can now start from a
 one-line **Idea** instead of a full **Script**. `FactoryPipeline` gains a
