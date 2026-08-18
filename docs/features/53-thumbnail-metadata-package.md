@@ -1,6 +1,6 @@
 # 53 — Thumbnail + Metadata: Final Video → Ready-to-Post Package
 
-**Commit:** `<pending>`
+**Commit:** `69effbf`
 
 Adds a new `PACKAGING` FactoryRun stage (after `RENDERING`, before
 `COMPLETED`) that turns a project's own `final.mp4` into a complete,
@@ -142,14 +142,16 @@ retry test confirming `render_job_id` survives unchanged.
 
 ## Tests
 
-67 new: `tests/modules/thumbnail/test_scoring.py` (19), `tests/modules/thumbnail/test_renderer.py`
+72 new: `tests/modules/thumbnail/test_scoring.py` (23, including the
+fallback-selection tests below), `tests/modules/thumbnail/test_renderer.py`
 (16, real ffmpeg/Pillow), `tests/modules/metadata/test_service.py` (32),
 `tests/api/test_package_stage.py` (16 — full pipeline, metadata field
 shape, manual overrides, cache, invalidation, incomplete package,
 independent regeneration, stage-error translation, crash recovery,
-batch). Full suite: 926/926 passing (two different pre-existing
-order/timing flakes surfaced across separate full-suite reruns, both
-confirmed unrelated by isolated rerun).
+batch), plus 1 in `test_pipeline_hardening.py` (unrelated, carried over
+from Task 26 bookkeeping). Full suite: 931/931 passing (several different
+pre-existing order/timing flakes surfaced across separate full-suite
+reruns, each confirmed unrelated by isolated rerun).
 
 Three *existing* end-to-end tests (`test_one_project_five_beats_local_assets_renders_final_mp4`,
 `test_running_after_completion_does_not_render_twice_unless_forced`,
