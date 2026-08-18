@@ -1,6 +1,6 @@
 # 52 — Final Composer: Beat Clips + Audio Master + Captions → final.mp4
 
-**Commit:** `<pending>`
+**Commit:** `fc9e555`
 
 Extends the existing `VideoComposerService`/`VideoComposeJob` renderer
 (never a second queue) with a new, single-pass composition mode for
