@@ -1,6 +1,6 @@
 # 50 — Audio Master: Narration + Local BGM → Ducking → Final Audio
 
-**Commit:** `TBD`
+**Commit:** `02d0f02`
 
 Adds a new `GENERATING_AUDIO` FactoryRun stage (after `GENERATING_MOTION`,
 before `QUALITY_CHECK`) that mixes narration with optional local BGM into
