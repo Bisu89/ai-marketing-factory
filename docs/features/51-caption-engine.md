@@ -1,6 +1,6 @@
 # 51 — Caption Engine: Script/Timing → Styled Captions → ASS
 
-**Commit:** `<pending>`
+**Commit:** `d48e6c3`
 
 Adds a new `GENERATING_CAPTIONS` FactoryRun stage (after `GENERATING_AUDIO`,
 before `QUALITY_CHECK`) that turns each Beat's own final narration text plus
