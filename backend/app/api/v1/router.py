@@ -5,6 +5,7 @@ from app.api.v1.endpoints import (
     batch_render,
     beat_generate,
     beat_preview,
+    caption_generate,
     categories,
     composition_render,
     content_generate,
@@ -64,3 +65,4 @@ api_router.include_router(content_generate.router, tags=["content-generate"])
 api_router.include_router(voice_generate.router, tags=["voice-generate"])
 api_router.include_router(motion_generate.router, tags=["motion-generate"])
 api_router.include_router(audio_generate.router, tags=["audio-generate"])
+api_router.include_router(caption_generate.router, tags=["caption-generate"])

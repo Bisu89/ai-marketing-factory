@@ -304,9 +304,16 @@ export interface MotionProjectConfig {
   short_video_policy: ShortVideoPolicy;
 }
 
+// Task 25 -- see docs/features/51-caption-engine.md sections 5/6/9/10.
 export interface CaptionsProjectConfig {
   enabled: boolean;
   preset: CaptionPreset;
+  max_words: number;
+  max_chars: number;
+  min_duration_sec: number;
+  max_duration_sec: number;
+  max_lines: number;
+  reading_speed_wps: number;
 }
 
 // Task 24 -- see docs/features/50-audio-master.md sections 7/8/9/33.
@@ -382,7 +389,10 @@ export interface Template {
 export const SYSTEM_DEFAULT_PROJECT_CONFIG: ProjectConfig = {
   render: { profile: "SOCIAL_VERTICAL" },
   motion: { default_preset: "STATIC", auto_rotate: false, intensity: "MEDIUM", short_video_policy: "FREEZE" },
-  captions: { enabled: true, preset: "emotional" },
+  captions: {
+    enabled: true, preset: "emotional", max_words: 7, max_chars: 42,
+    min_duration_sec: 0.8, max_duration_sec: 3.5, max_lines: 2, reading_speed_wps: 3.3,
+  },
   audio: {
     narration_enabled: true, music_enabled: true, music_volume: 0.15, ducking: true,
     bgm_mode: "AUTO", bgm_asset_id: null, ducking_ratio: 8.0, fade_in_sec: 0.5, fade_out_sec: 1.0,

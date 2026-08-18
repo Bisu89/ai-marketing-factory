@@ -35,6 +35,7 @@ ISSUE_CODES = (
     "MISSING_MOTION",
     "MOTION_ARTIFACT_MISSING",
     "AUDIO_MASTER_MISSING",
+    "CAPTIONS_ARTIFACT_MISSING",
     "MISSING_NARRATION",
     "DUPLICATE_NARRATION",
     "PACING_OUTLIER",
@@ -186,6 +187,13 @@ class ProjectCaptionConfigInput(BaseModel):
 
     enabled: bool = True
     preset_valid: bool = True
+    # Task 25 (see docs/features/51-caption-engine.md section 55) -- same
+    # "only checked when a real project_id was available, only a warning,
+    # never a hard block" reasoning as ProjectAudioConfigInput's own
+    # audio_master_checked/audio_master_valid (Task 24). Project-level, not
+    # per-beat, since captions.ass is one artifact for the whole project.
+    captions_artifact_checked: bool = False
+    captions_artifact_valid: bool = True
 
 
 class QualityAnalysisInput(BaseModel):

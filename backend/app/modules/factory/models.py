@@ -68,6 +68,14 @@ FACTORY_RUN_STATUSES = (
     # stages, right before Quality, matching this task's own target
     # pipeline order (VOICE -> AUDIO -> QUALITY -> RENDER).
     "GENERATING_AUDIO",
+    # Task 25 (see docs/features/51-caption-engine.md) -- turns each Beat's
+    # own final narration text + Voice-settled start/end timing into a
+    # real, cached `captions.ass`, no ASR/AI caption API. Depends only on
+    # Voice's own per-beat start/end (not on Motion or Audio, both
+    # independent) -- placed last among the local-artifact stages, right
+    # before Quality, matching this task's own target pipeline order
+    # (VOICE -> AUDIO -> CAPTIONS -> QUALITY -> RENDER).
+    "GENERATING_CAPTIONS",
     "QUALITY_CHECK",
     "NEEDS_REVIEW",
     "READY_TO_RENDER",
@@ -91,6 +99,7 @@ FACTORY_STAGES = (
     "GENERATING_VOICE",
     "GENERATING_MOTION",
     "GENERATING_AUDIO",
+    "GENERATING_CAPTIONS",
     "QUALITY_CHECK",
     "READY_TO_RENDER",
     "QUEUED",

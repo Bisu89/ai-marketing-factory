@@ -269,11 +269,39 @@ class MotionProjectConfig(BaseModel):
         return value
 
 
+# Task 25 (see docs/features/51-caption-engine.md sections 7/8/9/10/29) --
+# a reasonable, documented default per knob, not one arbitrary global
+# constant with no way to tune it per project/template.
+DEFAULT_CAPTION_MAX_WORDS = 7
+DEFAULT_CAPTION_MAX_CHARS = 42
+DEFAULT_CAPTION_MIN_DURATION_SEC = 0.8
+DEFAULT_CAPTION_MAX_DURATION_SEC = 3.5
+DEFAULT_CAPTION_MAX_LINES = 2
+# Words a viewer can comfortably *read* per second -- a distinct concern
+# from ContentProjectConfig/Settings.content_words_per_second (how fast
+# the script is *spoken*, Task 21); reading a short on-screen caption
+# tolerates a faster pace than natural speech does.
+DEFAULT_CAPTION_READING_SPEED_WPS = 3.3
+
+MIN_CAPTION_MAX_WORDS = 1
+MAX_CAPTION_MAX_WORDS = 20
+MIN_CAPTION_MAX_CHARS = 10
+MAX_CAPTION_MAX_CHARS = 120
+MIN_CAPTION_MAX_LINES = 1
+MAX_CAPTION_MAX_LINES = 3
+
+
 class CaptionsProjectConfig(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     enabled: bool = True
     preset: str = "emotional"
+    max_words: int = DEFAULT_CAPTION_MAX_WORDS
+    max_chars: int = DEFAULT_CAPTION_MAX_CHARS
+    min_duration_sec: float = DEFAULT_CAPTION_MIN_DURATION_SEC
+    max_duration_sec: float = DEFAULT_CAPTION_MAX_DURATION_SEC
+    max_lines: int = DEFAULT_CAPTION_MAX_LINES
+    reading_speed_wps: float = DEFAULT_CAPTION_READING_SPEED_WPS
 
     @field_validator("preset")
     @classmethod
@@ -281,6 +309,50 @@ class CaptionsProjectConfig(BaseModel):
         if value not in CAPTION_PRESETS:
             raise ValueError(f"Unknown caption preset {value!r}, must be one of {CAPTION_PRESETS}")
         return value
+
+    @field_validator("max_words")
+    @classmethod
+    def _max_words_within_bounds(cls, value: int) -> int:
+        if not (MIN_CAPTION_MAX_WORDS <= value <= MAX_CAPTION_MAX_WORDS):
+            raise ValueError(f"max_words must be between {MIN_CAPTION_MAX_WORDS} and {MAX_CAPTION_MAX_WORDS}, got {value}")
+        return value
+
+    @field_validator("max_chars")
+    @classmethod
+    def _max_chars_within_bounds(cls, value: int) -> int:
+        if not (MIN_CAPTION_MAX_CHARS <= value <= MAX_CAPTION_MAX_CHARS):
+            raise ValueError(f"max_chars must be between {MIN_CAPTION_MAX_CHARS} and {MAX_CAPTION_MAX_CHARS}, got {value}")
+        return value
+
+    @field_validator("max_lines")
+    @classmethod
+    def _max_lines_within_bounds(cls, value: int) -> int:
+        if not (MIN_CAPTION_MAX_LINES <= value <= MAX_CAPTION_MAX_LINES):
+            raise ValueError(f"max_lines must be between {MIN_CAPTION_MAX_LINES} and {MAX_CAPTION_MAX_LINES}, got {value}")
+        return value
+
+    @field_validator("min_duration_sec", "max_duration_sec")
+    @classmethod
+    def _duration_positive(cls, value: float) -> float:
+        if value <= 0:
+            raise ValueError(f"duration must be > 0, got {value}")
+        return value
+
+    @field_validator("reading_speed_wps")
+    @classmethod
+    def _reading_speed_positive(cls, value: float) -> float:
+        if value <= 0:
+            raise ValueError(f"reading_speed_wps must be > 0, got {value}")
+        return value
+
+    @model_validator(mode="after")
+    def _min_duration_not_above_max(self) -> "CaptionsProjectConfig":
+        if self.min_duration_sec > self.max_duration_sec:
+            raise ValueError(
+                f"min_duration_sec ({self.min_duration_sec}) must not be greater than "
+                f"max_duration_sec ({self.max_duration_sec})"
+            )
+        return self
 
 
 BGM_MODES = ("AUTO", "MANUAL")

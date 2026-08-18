@@ -379,7 +379,22 @@ def analyze_captions(
                 message="Captions are enabled, but there is no narration text anywhere to caption.",
             )
         ]
-    return 100, []
+
+    issues: list[QualityIssue] = []
+    # Task 25 section 55/62 -- same "only a warning, only when a real
+    # project_id was available and a prior run actually claimed this
+    # artifact" reasoning as analyze_audio's own AUDIO_MASTER_MISSING check
+    # above (captions_artifact_checked is only True in that circumstance,
+    # see quality_gate.py's build_quality_input).
+    if config.captions_artifact_checked and not config.captions_artifact_valid:
+        issues.append(
+            QualityIssue(
+                code="CAPTIONS_ARTIFACT_MISSING",
+                severity="warning",
+                message="This project's captions.ass is missing or stale and will need to be regenerated.",
+            )
+        )
+    return 100, issues
 
 
 def evaluate_readiness(analysis_input: QualityAnalysisInput) -> QualityReport:

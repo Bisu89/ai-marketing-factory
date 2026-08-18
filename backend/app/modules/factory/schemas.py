@@ -70,6 +70,17 @@ AUDIO_CLIPPING = "AUDIO_CLIPPING"
 AUDIO_SILENT = "AUDIO_SILENT"
 AUDIO_DURATION_MISMATCH = "AUDIO_DURATION_MISMATCH"
 
+# Task 25 (see docs/features/51-caption-engine.md section 48) --
+# app.modules.caption.schemas' own error codes, duplicated as plain string
+# constants here rather than imported (same "this module never imports
+# another module" reasoning as every earlier stage's own codes above).
+CAPTION_GENERATION_FAILED = "CAPTION_GENERATION_FAILED"
+CAPTION_TIMING_INVALID = "CAPTION_TIMING_INVALID"
+CAPTION_TEXT_INVALID = "CAPTION_TEXT_INVALID"
+CAPTION_ASS_INVALID = "CAPTION_ASS_INVALID"
+CAPTION_STYLE_INVALID = "CAPTION_STYLE_INVALID"
+CAPTION_GLYPH_UNSUPPORTED = "CAPTION_GLYPH_UNSUPPORTED"
+
 # Task 19 (see docs/features/45-factory-reliability.md) section 27/28 --
 # stable classification for every error_code this module (or a RenderJob it
 # handed off to, see app.core.render_errors) can ever set on a FactoryRun.
@@ -118,6 +129,13 @@ ERROR_CLASSIFICATION: dict[str, str] = {
     AUDIO_CLIPPING: TRANSIENT,  # loudnorm should already prevent this -- a retry is worth trying
     AUDIO_SILENT: USER_ACTION_REQUIRED,  # the narration/mix combination produced nothing audible -- needs a look
     AUDIO_DURATION_MISMATCH: TRANSIENT,
+    # Task 25's own caption-stage codes.
+    CAPTION_GENERATION_FAILED: TRANSIENT,  # usually a real filesystem/serialization hiccup -- worth a plain retry
+    CAPTION_TIMING_INVALID: PERMANENT,  # an algorithmic failure on well-formed input -- unlikely to fix itself on retry
+    CAPTION_TEXT_INVALID: USER_ACTION_REQUIRED,  # the narration text itself needs a look
+    CAPTION_ASS_INVALID: TRANSIENT,
+    CAPTION_STYLE_INVALID: USER_ACTION_REQUIRED,  # an unknown/misconfigured preset -- pick a valid one
+    CAPTION_GLYPH_UNSUPPORTED: USER_ACTION_REQUIRED,  # the chosen font can't render this text's script -- needs a different font/preset
     # app.core.render_errors codes -- a RENDERING-stage failure passes one
     # of these straight through onto FactoryRun.error_code (see
     # factory_pipeline.py's reconcile_factory_runs_on_startup/
@@ -207,11 +225,11 @@ class FactoryRunRequest(BaseModel):
 
 assert set(FACTORY_RUN_STATUSES) == {
     "DRAFT", "PREPARING", "PREPARING_CONTENT", "GENERATING_BEATS", "PREPARING_VISUALS", "ASSIGNING_ASSETS",
-    "GENERATING_MOTION", "GENERATING_VOICE", "GENERATING_AUDIO", "QUALITY_CHECK", "NEEDS_REVIEW",
+    "GENERATING_MOTION", "GENERATING_VOICE", "GENERATING_AUDIO", "GENERATING_CAPTIONS", "QUALITY_CHECK", "NEEDS_REVIEW",
     "READY_TO_RENDER", "QUEUED", "RENDERING", "COMPLETED", "FAILED", "CANCELLED",
 }
 assert set(FACTORY_STAGES) == {
     "PREPARING", "PREPARING_CONTENT", "GENERATING_BEATS", "PREPARING_VISUALS", "ASSIGNING_ASSETS",
-    "GENERATING_MOTION", "GENERATING_VOICE", "GENERATING_AUDIO", "QUALITY_CHECK", "READY_TO_RENDER",
+    "GENERATING_MOTION", "GENERATING_VOICE", "GENERATING_AUDIO", "GENERATING_CAPTIONS", "QUALITY_CHECK", "READY_TO_RENDER",
     "QUEUED", "RENDERING",
 }

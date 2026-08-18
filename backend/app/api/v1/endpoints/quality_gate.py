@@ -22,6 +22,7 @@ from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
 from app.api.v1.endpoints.audio_generate import audio_master_is_valid, audio_was_attempted
+from app.api.v1.endpoints.caption_generate import captions_is_valid, captions_was_attempted
 from app.api.v1.endpoints.motion_generate import motion_artifact_for_beat, motion_was_attempted_for_beat
 from app.core.config import Settings, get_settings
 from app.core.render_profile import get_render_profile
@@ -163,6 +164,19 @@ def _resolve_audio_master_flags(project_id: int | None, settings: Settings | Non
     return True, audio_master_is_valid(project_id, settings)
 
 
+def _resolve_captions_artifact_flags(project_id: int | None, settings: Settings | None) -> tuple[bool, bool]:
+    """Task 25 section 55/62 -- (checked, valid). Same reasoning as
+    _resolve_audio_master_flags above: only checked with a real
+    project_id/settings pair, and only when a prior Caption stage run
+    actually claimed to have produced a captions.ass.
+    """
+    if project_id is None or settings is None:
+        return False, True
+    if not captions_was_attempted(project_id, settings.library_dir):
+        return False, True
+    return True, captions_is_valid(project_id, settings)
+
+
 def build_quality_input(
     beats: list[Beat], config: ProjectConfig, asset_service: AssetService, mode: str = "NORMAL",
     project_id: int | None = None, settings: Settings | None = None,
@@ -185,6 +199,7 @@ def build_quality_input(
             )
         )
     audio_checked, audio_valid = _resolve_audio_master_flags(project_id, settings)
+    captions_checked, captions_valid = _resolve_captions_artifact_flags(project_id, settings)
     return QualityAnalysisInput(
         beats=beats_input,
         default_motion_preset=config.motion.default_preset.value,
@@ -195,7 +210,10 @@ def build_quality_input(
         # CaptionsProjectConfig.preset is already Pydantic-validated against
         # the known preset set at load time -- if this config object exists
         # at all, its preset is valid by construction.
-        captions=ProjectCaptionConfigInput(enabled=config.captions.enabled, preset_valid=True),
+        captions=ProjectCaptionConfigInput(
+            enabled=config.captions.enabled, preset_valid=True,
+            captions_artifact_checked=captions_checked, captions_artifact_valid=captions_valid,
+        ),
         mode=mode,
     )
 

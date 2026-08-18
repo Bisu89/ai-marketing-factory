@@ -164,7 +164,8 @@ class _FactoryTestCase(unittest.TestCase):
     # window is still "local stages in flight," not settled yet.
     _LOCAL_STAGES = (
         "PREPARING", "PREPARING_CONTENT", "GENERATING_BEATS", "PREPARING_VISUALS", "ASSIGNING_ASSETS",
-        "GENERATING_VOICE", "GENERATING_MOTION", "GENERATING_AUDIO", "QUALITY_CHECK", "READY_TO_RENDER",
+        "GENERATING_VOICE", "GENERATING_MOTION", "GENERATING_AUDIO", "GENERATING_CAPTIONS", "QUALITY_CHECK",
+        "READY_TO_RENDER",
     )
 
     def _wait_for_run_settled(self, run_id: int, timeout: float = 30.0) -> FactoryRun:

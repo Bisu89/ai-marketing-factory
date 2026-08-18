@@ -458,6 +458,13 @@ export function VideoFactoryPage() {
   const [fadeIn, setFadeIn] = useState(0.0);
   const [fadeOut, setFadeOut] = useState(0.0);
   const [captionPreset, setCaptionPreset] = useState<CaptionPreset>("emotional");
+  // Task 25 -- see docs/features/51-caption-engine.md. max_chars/min_duration_sec/
+  // max_duration_sec/reading_speed_wps keep SYSTEM_DEFAULT_PROJECT_CONFIG's own
+  // values (no dedicated UI yet -- max_words/max_lines are the two knobs most
+  // likely to matter to a user picking a caption style).
+  const [captionsEnabled, setCaptionsEnabled] = useState(true);
+  const [captionMaxWords, setCaptionMaxWords] = useState(SYSTEM_DEFAULT_PROJECT_CONFIG.captions.max_words);
+  const [captionMaxLines, setCaptionMaxLines] = useState(SYSTEM_DEFAULT_PROJECT_CONFIG.captions.max_lines);
   const [outputDir, setOutputDir] = useState("");
 
   // Task 22 -- see docs/features/48-voice-factory-local-tts.md. "local"
@@ -568,6 +575,9 @@ export function VideoFactoryPage() {
         if (plan.config) {
           setProjectConfig(plan.config);
           setCaptionPreset(plan.config.captions.preset);
+          setCaptionsEnabled(plan.config.captions.enabled);
+          if (typeof plan.config.captions.max_words === "number") setCaptionMaxWords(plan.config.captions.max_words);
+          if (typeof plan.config.captions.max_lines === "number") setCaptionMaxLines(plan.config.captions.max_lines);
           setMusicVolume(plan.config.audio.music_volume);
           // Task 24 -- see docs/features/50-audio-master.md. These three
           // already drove the classic render's own composition plan but
@@ -709,7 +719,14 @@ export function VideoFactoryPage() {
     return {
       render: projectConfig.render,
       motion: projectConfig.motion,
-      captions: { enabled: true, preset: captionPreset },
+      captions: {
+        enabled: captionsEnabled, preset: captionPreset,
+        max_words: captionMaxWords, max_chars: SYSTEM_DEFAULT_PROJECT_CONFIG.captions.max_chars,
+        min_duration_sec: SYSTEM_DEFAULT_PROJECT_CONFIG.captions.min_duration_sec,
+        max_duration_sec: SYSTEM_DEFAULT_PROJECT_CONFIG.captions.max_duration_sec,
+        max_lines: captionMaxLines,
+        reading_speed_wps: SYSTEM_DEFAULT_PROJECT_CONFIG.captions.reading_speed_wps,
+      },
       audio: {
         narration_enabled:
           beats.some((b) => b.narrationAssetId != null) || beats.some((b) => b.narration.trim().length > 0),
@@ -867,6 +884,9 @@ export function VideoFactoryPage() {
     const snapshot: ProjectConfig = JSON.parse(JSON.stringify(template.config));
     setProjectConfig(snapshot);
     setCaptionPreset(snapshot.captions.preset);
+    setCaptionsEnabled(snapshot.captions.enabled);
+    setCaptionMaxWords(snapshot.captions.max_words);
+    setCaptionMaxLines(snapshot.captions.max_lines);
     setMusicVolume(snapshot.audio.music_volume);
     setDuckingRatio(snapshot.audio.ducking_ratio);
     setFadeIn(snapshot.audio.fade_in_sec);
@@ -1289,9 +1309,17 @@ export function VideoFactoryPage() {
             Each beat's narration audio is chosen on the left. Beats with none set fall back to text-to-speech using
             the voice below.
           </p>
+          <label className="vf-field" style={{ flexDirection: "row", alignItems: "center", gap: "0.5rem" }}>
+            <input type="checkbox" checked={captionsEnabled} onChange={(e) => setCaptionsEnabled(e.target.checked)} />
+            <span>Generate captions (Caption Engine)</span>
+          </label>
           <label className="vf-field">
             <span>Caption style</span>
-            <select value={captionPreset} onChange={(e) => setCaptionPreset(e.target.value as CaptionPreset)}>
+            <select
+              value={captionPreset}
+              onChange={(e) => setCaptionPreset(e.target.value as CaptionPreset)}
+              disabled={!captionsEnabled}
+            >
               {CAPTION_PRESETS.map((preset) => (
                 <option key={preset} value={preset}>
                   {CAPTION_PRESET_LABELS[preset]}
@@ -1299,6 +1327,32 @@ export function VideoFactoryPage() {
               ))}
             </select>
           </label>
+          <div className="vf-grid">
+            <label className="vf-field">
+              <span>Max words per caption ({captionMaxWords})</span>
+              <input
+                type="range"
+                min={1}
+                max={20}
+                step={1}
+                value={captionMaxWords}
+                disabled={!captionsEnabled}
+                onChange={(e) => setCaptionMaxWords(Number(e.target.value))}
+              />
+            </label>
+            <label className="vf-field">
+              <span>Max lines per caption</span>
+              <select
+                value={captionMaxLines}
+                disabled={!captionsEnabled}
+                onChange={(e) => setCaptionMaxLines(Number(e.target.value))}
+              >
+                <option value={1}>1</option>
+                <option value={2}>2</option>
+                <option value={3}>3</option>
+              </select>
+            </label>
+          </div>
 
           <div className="vf-grid">
             <label className="vf-field">
