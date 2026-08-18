@@ -1,6 +1,6 @@
 # 54 — Final QA + Ready-to-Post: Validate the Finished Package
 
-**Commit:** _(fill in after commit)_
+**Commit:** `15e1949`
 
 Adds a new `FINAL_QA` FactoryRun stage (after `PACKAGING`, before
 `COMPLETED`): a read-only, deterministic re-verification of the finished
