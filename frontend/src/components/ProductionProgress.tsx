@@ -1,9 +1,11 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { AlertTriangle, Ban, CheckCircle2, Circle, Loader2, XCircle } from "lucide-react";
 import { cancelFactoryRun, continueFactoryRun, getLatestFactoryRun, retryFactoryRun } from "../api/factory";
+import { getProjectFinalQa } from "../api/finalQa";
 import { checkProjectQuality } from "../api/quality";
 import { PRODUCTION_STEPS, isActiveFactoryRun, stepIndexForStatus } from "../types/factory";
 import type { FactoryRun } from "../types/factory";
+import type { QAReport } from "../types/finalQa";
 import type { QualityReport } from "../types/quality";
 import "./ProductionProgress.css";
 
@@ -27,6 +29,7 @@ export function ProductionProgress({ projectId, onRenderJobReady, onReviewBeat }
   const [run, setRun] = useState<FactoryRun | null>(null);
   const [loaded, setLoaded] = useState(false);
   const [report, setReport] = useState<QualityReport | null>(null);
+  const [qaReport, setQaReport] = useState<QAReport | null>(null);
   const [busy, setBusy] = useState(false);
   const [actionError, setActionError] = useState<string | null>(null);
   const pollRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -67,12 +70,21 @@ export function ProductionProgress({ projectId, onRenderJobReady, onReviewBeat }
   }, [run?.render_job_id]);
 
   useEffect(() => {
-    if (run?.status === "NEEDS_REVIEW") {
+    // Task 28: a NEEDS_REVIEW caused by a post-render Final QA FAIL
+    // (failed_stage === "FINAL_QA") has no pre-render QualityReport to show
+    // -- that stage already passed, or this run wouldn't have a
+    // render_job_id at all -- so it fetches the QAReport instead.
+    if (run?.status === "NEEDS_REVIEW" && run.failed_stage === "FINAL_QA") {
+      getProjectFinalQa(projectId).then((res) => setQaReport(res.report)).catch(() => setQaReport(null));
+      setReport(null);
+    } else if (run?.status === "NEEDS_REVIEW") {
       checkProjectQuality(projectId).then(setReport).catch(() => setReport(null));
+      setQaReport(null);
     } else {
       setReport(null);
+      setQaReport(null);
     }
-  }, [run?.status, projectId]);
+  }, [run?.status, run?.failed_stage, projectId]);
 
   async function handleContinue() {
     if (run == null) return;
@@ -116,8 +128,49 @@ export function ProductionProgress({ projectId, onRenderJobReady, onReviewBeat }
   if (!loaded || run == null) return null;
   // Once a RenderJob exists, VideoFactoryPage's own Step 5 already shows
   // full render status/progress/preview -- showing it a second time here
-  // would just be a duplicate, staler view of the same thing.
-  if (run.render_job_id != null) return null;
+  // would just be a duplicate, staler view of the same thing. The one
+  // exception (Task 28) is a post-render Final QA FAIL: that pause has no
+  // display surface anywhere else (ReadyToPostCard only ever shows a
+  // *complete* package, and Step 5's own render view has already finished
+  // by the time FINAL_QA runs), so this component stays visible for it.
+  const isQaReview = run.status === "NEEDS_REVIEW" && run.failed_stage === "FINAL_QA";
+  if (run.render_job_id != null && !isQaReview) return null;
+
+  if (isQaReview) {
+    const failures = qaReport?.checks.filter((c) => c.status === "FAIL") ?? [];
+    const warnings = qaReport?.checks.filter((c) => c.status === "WARN") ?? [];
+    return (
+      <div className="pp-card pp-card--review">
+        <div className="pp-header">
+          <AlertTriangle size={16} />
+          <h3>Final QA Found a Problem</h3>
+          {qaReport && <span className="pp-score">QA Score: {qaReport.score}/100</span>}
+        </div>
+        <p className="pp-subtitle">
+          {run.review_reason_count} issue{run.review_reason_count === 1 ? "" : "s"} found in the finished package.
+        </p>
+        {(failures.length > 0 || warnings.length > 0) && (
+          <ul className="pp-issue-list">
+            {[...failures, ...warnings].map((check, i) => (
+              <li key={i} className={`pp-issue pp-issue--${check.severity}`}>
+                {check.message}
+                {check.repair_stage && check.repair_stage !== "UNKNOWN" && (
+                  <span className="pp-issue-repair"> (fix: {check.repair_stage})</span>
+                )}
+              </li>
+            ))}
+          </ul>
+        )}
+        {actionError && <div className="pp-alert">{actionError}</div>}
+        <div className="pp-actions">
+          <button className="btn btn-primary" disabled={busy} onClick={handleContinue}>
+            {busy ? <Loader2 size={14} className="spin" /> : null}
+            Re-check Final QA
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   if (run.status === "NEEDS_REVIEW") {
     return (

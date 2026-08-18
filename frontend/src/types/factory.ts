@@ -15,6 +15,10 @@ export type FactoryRunStatus =
   // Task 27 -- see docs/features/53-thumbnail-metadata-package.md.
   // final.mp4 -> thumbnail.jpg + metadata.json, right before COMPLETED.
   | "PACKAGING"
+  // Task 28 -- see docs/features/54-final-qa.md. A read-only re-verification
+  // of the finished package; a FAIL routes back to NEEDS_REVIEW (see
+  // failed_stage === "FINAL_QA") instead of COMPLETED.
+  | "FINAL_QA"
   | "COMPLETED"
   | "FAILED"
   | "CANCELLED";
@@ -29,6 +33,8 @@ export interface FactoryRun {
   render_job_id: number | null;
   quality_status: string | null;
   quality_score: number | null;
+  qa_status: string | null;
+  qa_score: number | null;
   requires_human_review: boolean;
   review_reason_count: number;
   metrics: Record<string, number>;
@@ -54,10 +60,12 @@ const STEP_FOR_STATUS: Record<FactoryRunStatus, number> = {
   READY_TO_RENDER: 4,
   QUEUED: 4,
   RENDERING: 4,
-  // Task 27 -- grouped with the "Render" step rather than adding a 7th
+  // Task 27/28 -- grouped with the "Render" step rather than adding a 7th/8th
   // checklist entry; the dedicated Ready-to-Post section (VideoFactoryPage)
-  // is where a completed package is actually shown in detail.
+  // is where a completed package (and its QA outcome) is actually shown in
+  // detail.
   PACKAGING: 4,
+  FINAL_QA: 4,
   COMPLETED: 5,
   FAILED: -1,
   CANCELLED: -1,

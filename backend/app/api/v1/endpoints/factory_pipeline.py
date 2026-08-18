@@ -67,6 +67,7 @@ from app.api.v1.endpoints.content_generate import (
 )
 from app.api.v1.endpoints.audio_generate import audio_master_is_valid, audio_master_path, generate_project_audio_master
 from app.api.v1.endpoints.caption_generate import captions_ass_path, captions_is_valid, generate_project_captions
+from app.api.v1.endpoints.final_qa import run_final_qa
 from app.api.v1.endpoints.motion_generate import generate_project_motion
 from app.api.v1.endpoints.package_generate import PackageError, generate_project_package
 from app.api.v1.endpoints.quality_gate import compute_asset_confidence, run_quality_check, tokenize_prose
@@ -103,6 +104,7 @@ from app.modules.factory.schemas import (
     CONTENT_PROVIDER_TIMEOUT,
     FactoryCheckpointOut,
     FactoryRunOut,
+    FINAL_QA_FAILED,
     INVALID_CONTENT_RESPONSE,
     INVALID_EXISTING_BEAT_PLAN,
     MOTION_ASSET_INVALID,
@@ -112,6 +114,7 @@ from app.modules.factory.schemas import (
     RENDER_FAILED,
     TTS_GENERATION_FAILED,
 )
+from app.modules.postqa.schemas import QAReport
 from app.modules.video_composer.models import VideoComposeJob
 from app.modules.video_composer.schemas import job_to_out
 from app.modules.video_composer.service import VideoComposerService
@@ -643,6 +646,73 @@ def _stage_package(run_id: int, project_id: int, settings: Settings) -> None:
         raise FactoryStageError("PACKAGING", exc.code, str(exc)) from exc
 
 
+# -- Stage: FINAL_QA (Task 28 -- see docs/features/54-final-qa.md) ---------
+
+
+def _stage_final_qa(project_id: int, settings: Settings) -> QAReport:
+    """Thin adapter over final_qa.run_final_qa -- that function already
+    owns the full read-only check (section 38), never raising for any
+    expected outcome (a QA FAIL is a normal, valid QAReport, not an
+    exception -- see its own docstring). This stage's own job is purely
+    settling the FactoryRun afterward (see _settle_after_final_qa), the
+    same "thin adapter" shape as every other stage in this file.
+    """
+    return run_final_qa(project_id, settings)
+
+
+def _settle_after_final_qa(run_id: int, report: QAReport) -> None:
+    """Section 76's own explicit state diagram: FINAL_QA -> FAIL routes to
+    NEEDS_REVIEW (never FAILED -- a QA failure is a valid, completed check
+    that found a real problem, not a crash), with failed_stage="FINAL_QA"
+    naming the repair entry point and error_code carrying the first FAIL
+    check's own code so the frontend/Retry-classification machinery (see
+    factory/schemas.py's own ERROR_CLASSIFICATION) has something concrete
+    to show. This mirrors _run_quality_and_proceed's identical NEEDS_REVIEW
+    handling for the pre-render Quality Gate (section 13's own "an
+    unresolved review is an outcome of a valid check, not a failed one").
+
+    PASS/PASS_WITH_WARNINGS both settle the run to COMPLETED -- a warning
+    never blocks Ready-to-Post, matching every other soft-failure decision
+    already made across this Factory (BGM-missing, Motion-cache-miss,
+    Thumbnail-fallback-frame).
+    """
+    if report.status == "FAIL":
+        first_fail = report.failures[0] if report.failures else None
+        reason_count = max(len(report.failures) + len(report.warnings), 1)
+        factory_service.set_run_fields(
+            run_id, status="NEEDS_REVIEW", qa_status=report.status, qa_score=report.score,
+            requires_human_review=True, review_reason_count=reason_count, failed_stage="FINAL_QA",
+            error_code=first_fail.code if first_fail else FINAL_QA_FAILED,
+            error_message=first_fail.message if first_fail else "Final QA found a problem with this project's package.",
+        )
+        factory_service.complete_checkpoint(
+            run_id, "FINAL_QA",
+            metadata={"outcome": "NEEDS_REVIEW", "score": report.score, "review_reason_count": reason_count},
+        )
+        return
+
+    factory_service.set_run_fields(
+        run_id, status="COMPLETED", completed_at=_utcnow(), qa_status=report.status, qa_score=report.score,
+    )
+    factory_service.complete_checkpoint(run_id, "FINAL_QA", metadata={"outcome": report.status, "score": report.score})
+
+
+def _run_final_qa_and_settle(run_id: int, project_id: int, settings: Settings) -> None:
+    """Shared by the render-completion handler (_on_render_job_completed)
+    and every resume/retry path (continue_run, retry_run, and the batch
+    equivalents) so "run FINAL_QA, then settle the run" is never
+    duplicated -- the FINAL_QA checkpoint must already be started (status
+    set to "FINAL_QA") by the caller before this runs.
+    """
+    try:
+        report = _stage_final_qa(project_id, settings)
+    except Exception as exc:  # noqa: BLE001 -- never a raw stack trace to the user (section 24)
+        logger.exception("FactoryRun %s failed unexpectedly during FINAL_QA", run_id)
+        _mark_failed(run_id, "FINAL_QA", "UNEXPECTED_ERROR", str(exc))
+        return
+    _settle_after_final_qa(run_id, report)
+
+
 # -- Orchestration entry points --------------------------------------------
 
 
@@ -895,17 +965,41 @@ def _continue_run_sync(run_id: int, project_id: int, settings: Settings, service
         _drop_cancel_event(run_id)
 
 
+def _continue_final_qa_sync(run_id: int, project_id: int, settings: Settings) -> None:
+    _run_final_qa_and_settle(run_id, project_id, settings)
+    _sync_batch_after_run_settled(run_id, project_id)
+
+
 def continue_run(run_id: int, settings: Settings, service: VideoComposerService) -> FactoryRun:
-    """Section 17/18: resumes a paused run from QUALITY_CHECK only --
-    Beat generation and asset assignment are never re-run. Whatever the
-    user fixed (typically a manual asset assignment via the Beat editor)
-    is picked up simply by re-reading the project's current BeatPlan.
+    """Section 17/18: resumes a paused run from QUALITY_CHECK -- Beat
+    generation and asset assignment are never re-run. Whatever the user
+    fixed (typically a manual asset assignment via the Beat editor) is
+    picked up simply by re-reading the project's current BeatPlan.
+
+    Task 28: a NEEDS_REVIEW caused by a *post-render* Final QA FAIL
+    (failed_stage == "FINAL_QA") is a different kind of pause -- the
+    render already happened, so "Continue" here means "re-check the
+    finished package," never "re-run the pre-render Quality Gate" (that
+    stage already passed, or this run wouldn't have a render_job_id at
+    all).
     """
     run = factory_service.get_run(run_id)
     if run is None:
         raise NotFoundError("FactoryRun", run_id)
     if run.status != "NEEDS_REVIEW":
         raise ValidationError(f"{NOT_RESUMABLE}: only a NEEDS_REVIEW run can be continued (this run is {run.status}).")
+
+    if run.failed_stage == "FINAL_QA":
+        factory_service.set_run_fields(
+            run_id, status="FINAL_QA", error_code=None, error_message=None, failed_stage=None,
+            requires_human_review=False, review_reason_count=0,
+        )
+        factory_service.start_checkpoint(run_id, "FINAL_QA")
+        thread = threading.Thread(
+            target=_continue_final_qa_sync, args=(run_id, run.project_id, settings), daemon=True
+        )
+        thread.start()
+        return factory_service.get_run(run_id)
 
     factory_service.set_run_fields(run_id, status="QUALITY_CHECK")
     factory_service.start_checkpoint(run_id, "QUALITY_CHECK")
@@ -968,7 +1062,26 @@ def retry_run(run_id: int, settings: Settings, service: VideoComposerService) ->
             _mark_failed(run_id, "PACKAGING", "UNEXPECTED_ERROR", str(exc))
         else:
             factory_service.complete_checkpoint(run_id, "PACKAGING")
-            factory_service.set_run_fields(run_id, status="COMPLETED", completed_at=_utcnow())
+            # Task 28: a PACKAGING retry that now succeeds still has to pass
+            # through FINAL_QA before this run can settle -- never a
+            # shortcut straight to COMPLETED (that would ship a package
+            # nothing has actually re-verified).
+            factory_service.set_run_fields(run_id, status="FINAL_QA")
+            factory_service.start_checkpoint(run_id, "FINAL_QA")
+            _run_final_qa_and_settle(run_id, run.project_id, settings)
+        _sync_batch_after_run_settled(run_id, run.project_id)
+        return factory_service.get_run(run_id)
+
+    if run.failed_stage == "FINAL_QA":
+        # Task 28: an UNEXPECTED_ERROR that aborted the QA check itself
+        # (never a QA FAIL outcome -- that routes to NEEDS_REVIEW, not
+        # FAILED, see run_final_qa's own docstring) -- a genuine crash-
+        # recovery case, so this just re-runs the check fresh.
+        factory_service.set_run_fields(
+            run_id, status="FINAL_QA", error_code=None, error_message=None, failed_stage=None, completed_at=None,
+        )
+        factory_service.start_checkpoint(run_id, "FINAL_QA")
+        _run_final_qa_and_settle(run_id, run.project_id, settings)
         _sync_batch_after_run_settled(run_id, run.project_id)
         return factory_service.get_run(run_id)
 
@@ -1191,6 +1304,18 @@ def continue_batch_factory(batch_id: int, settings: Settings, service: VideoComp
             if run is None or run.status != "NEEDS_REVIEW":
                 batch_service.set_item_fields(item_id, status="NEEDS_REVIEW")  # nothing to continue -- put it back
                 return False
+            if run.failed_stage == "FINAL_QA":
+                # Task 28 -- same reasoning as continue_run's own identical
+                # branch: a post-render QA FAIL resumes by re-checking QA,
+                # never the pre-render Quality Gate.
+                factory_service.set_run_fields(
+                    run.id, status="FINAL_QA", error_code=None, error_message=None, failed_stage=None,
+                    requires_human_review=False, review_reason_count=0,
+                )
+                factory_service.start_checkpoint(run.id, "FINAL_QA")
+                _run_final_qa_and_settle(run.id, project_id, settings)
+                _sync_batch_item_from_run(item_id, factory_service.get_run(run.id))
+                return True
             factory_service.set_run_fields(run.id, status="QUALITY_CHECK")
             factory_service.start_checkpoint(run.id, "QUALITY_CHECK")
             _continue_run_sync(run.id, project_id, settings, service)
@@ -1270,7 +1395,23 @@ def retry_batch_failed(batch_id: int, settings: Settings, service: VideoComposer
                     _mark_failed(run.id, exc.stage, exc.code, exc.message)
                 else:
                     factory_service.complete_checkpoint(run.id, "PACKAGING")
-                    factory_service.set_run_fields(run.id, status="COMPLETED", completed_at=_utcnow())
+                    # Task 28: still has to pass through FINAL_QA before
+                    # settling -- same reasoning as retry_run's own
+                    # identical branch.
+                    factory_service.set_run_fields(run.id, status="FINAL_QA")
+                    factory_service.start_checkpoint(run.id, "FINAL_QA")
+                    _run_final_qa_and_settle(run.id, project_id, settings)
+                _sync_batch_item_from_run(item_id, factory_service.get_run(run.id))
+            elif run.failed_stage == "FINAL_QA":
+                # Task 28: an UNEXPECTED_ERROR that aborted the QA check
+                # itself -- same reasoning as retry_run's own identical
+                # branch.
+                factory_service.set_run_fields(
+                    run.id, status="FINAL_QA", error_code=None, error_message=None,
+                    failed_stage=None, completed_at=None,
+                )
+                factory_service.start_checkpoint(run.id, "FINAL_QA")
+                _run_final_qa_and_settle(run.id, project_id, settings)
                 _sync_batch_item_from_run(item_id, factory_service.get_run(run.id))
             else:
                 factory_service.set_run_fields(
@@ -1498,7 +1639,9 @@ def _on_render_job_completed(payload: dict) -> None:
     # 42): RENDERING no longer jumps straight to COMPLETED -- PACKAGING
     # (thumbnail.jpg + metadata.json) runs here first, synchronously, on
     # this same call stack (EventBus.publish's own "handlers run
-    # synchronously" contract -- see app/core/events.py). This is still
+    # synchronously" contract -- see app/core/events.py), and Task 28's own
+    # FINAL_QA runs immediately after PACKAGING succeeds, same call stack,
+    # before the run is ever allowed to reach COMPLETED. This is still
     # VideoComposerService's own single worker thread underneath (the
     # publish() call that reaches this handler happens from inside that
     # worker's own _run_job/_run_final_composition), so running lightweight
@@ -1523,7 +1666,15 @@ def _on_render_job_completed(payload: dict) -> None:
         _sync_batch_after_run_settled(run.id, run.project_id)
         return
     factory_service.complete_checkpoint(run.id, "PACKAGING")
-    factory_service.set_run_fields(run.id, status="COMPLETED", completed_at=_utcnow())
+
+    # Task 28: FINAL_QA runs here next, still synchronously on this same
+    # call stack (same reasoning as PACKAGING's own comment above) -- a
+    # completed Factory run always means "a real, freshly re-verified
+    # package," never "Render + Packaging finished and nobody looked at it
+    # again."
+    factory_service.set_run_fields(run.id, status="FINAL_QA")
+    factory_service.start_checkpoint(run.id, "FINAL_QA")
+    _run_final_qa_and_settle(run.id, run.project_id, get_settings())
     _sync_batch_after_run_settled(run.id, run.project_id)
 
 

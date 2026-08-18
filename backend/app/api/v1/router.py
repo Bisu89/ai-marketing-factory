@@ -14,6 +14,7 @@ from app.api.v1.endpoints import (
     downloads,
     emotions,
     factory_pipeline,
+    final_qa,
     health,
     insights,
     performance,
@@ -68,3 +69,4 @@ api_router.include_router(motion_generate.router, tags=["motion-generate"])
 api_router.include_router(audio_generate.router, tags=["audio-generate"])
 api_router.include_router(caption_generate.router, tags=["caption-generate"])
 api_router.include_router(package_generate.router, tags=["package-generate"])
+api_router.include_router(final_qa.router, tags=["final-qa"])

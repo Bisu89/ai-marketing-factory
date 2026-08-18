@@ -97,6 +97,30 @@ HASHTAG_INVALID = "HASHTAG_INVALID"
 PACKAGE_INCOMPLETE = "PACKAGE_INCOMPLETE"
 PACKAGE_VALIDATION_FAILED = "PACKAGE_VALIDATION_FAILED"
 
+# Task 28 (see docs/features/54-final-qa.md) -- app.modules.postqa.schemas'
+# own CHECK_CODES, duplicated as plain string constants here rather than
+# imported (same "this module never imports another module" reasoning as
+# every earlier stage's own codes above). Several of postqa's own check
+# codes intentionally reuse code strings this file already defines --
+# AUDIO_SILENT/AUDIO_CLIPPING (Task 24), THUMBNAIL_INVALID (Task 27),
+# PACKAGE_INCOMPLETE (Task 27), FINAL_DURATION_MISMATCH/FINAL_STREAM_INVALID
+# (Task 26's render_errors) -- since a QA check re-verifying the same real-
+# world condition should carry the same code, not a synonym. Only the
+# genuinely new checks get new constants below.
+FINAL_VIDEO_MISSING = "FINAL_VIDEO_MISSING"
+FINAL_VIDEO_INVALID = "FINAL_VIDEO_INVALID"
+FINAL_RESOLUTION_MISMATCH = "FINAL_RESOLUTION_MISMATCH"
+FINAL_FPS_MISMATCH = "FINAL_FPS_MISMATCH"
+THUMBNAIL_LOW_QUALITY = "THUMBNAIL_LOW_QUALITY"
+METADATA_INVALID = "METADATA_INVALID"
+CAPTIONS_INVALID = "CAPTIONS_INVALID"
+CAPTIONS_TIMING_INVALID = "CAPTIONS_TIMING_INVALID"
+BEAT_ARTIFACT_MISSING = "BEAT_ARTIFACT_MISSING"
+STALE_DEPENDENCY = "STALE_DEPENDENCY"
+STALE_RENDER_VERSION = "STALE_RENDER_VERSION"
+STALE_PACKAGE_VERSION = "STALE_PACKAGE_VERSION"
+FINAL_QA_FAILED = "FINAL_QA_FAILED"
+
 # Task 19 (see docs/features/45-factory-reliability.md) section 27/28 --
 # stable classification for every error_code this module (or a RenderJob it
 # handed off to, see app.core.render_errors) can ever set on a FactoryRun.
@@ -162,6 +186,23 @@ ERROR_CLASSIFICATION: dict[str, str] = {
     HASHTAG_INVALID: USER_ACTION_REQUIRED,
     PACKAGE_INCOMPLETE: TRANSIENT,  # usually just "Render hasn't produced a valid final video yet" -- resolves once Render completes
     PACKAGE_VALIDATION_FAILED: TRANSIENT,
+    # Task 28's own Final QA codes. A QA FAIL normally routes to
+    # NEEDS_REVIEW rather than FAILED (see run_final_qa's own docstring),
+    # so these classifications mostly inform how the frontend should phrase
+    # the review reason, not whether Retry is offered.
+    FINAL_VIDEO_MISSING: TRANSIENT,  # usually means Render hasn't produced final.mp4 yet, or it was deleted -- re-render fixes it
+    FINAL_VIDEO_INVALID: TRANSIENT,  # a corrupt/unreadable output -- worth a plain re-render
+    FINAL_RESOLUTION_MISMATCH: PERMANENT,  # an algorithmic/pipeline consistency problem on well-formed input -- unlikely to fix itself on retry
+    FINAL_FPS_MISMATCH: PERMANENT,
+    THUMBNAIL_LOW_QUALITY: USER_ACTION_REQUIRED,  # a technically-valid but visually weak frame -- the source video needs a look
+    METADATA_INVALID: USER_ACTION_REQUIRED,  # a bad manual override, or missing content to derive from -- needs a look
+    CAPTIONS_INVALID: TRANSIENT,
+    CAPTIONS_TIMING_INVALID: PERMANENT,  # an algorithmic failure on well-formed input -- unlikely to fix itself on retry
+    BEAT_ARTIFACT_MISSING: TRANSIENT,  # informational (WARN-only, see check_beat_completeness) -- never the sole cause of a FAIL
+    STALE_DEPENDENCY: TRANSIENT,  # audio/captions changed after the last render -- a re-render picks up the newer artifact
+    STALE_RENDER_VERSION: TRANSIENT,
+    STALE_PACKAGE_VERSION: TRANSIENT,  # informational (WARN-only, see check_package_version) -- never the sole cause of a FAIL
+    FINAL_QA_FAILED: TRANSIENT,  # generic fallback for an unclassified QA check code -- see classify_error's own default reasoning
     # app.core.render_errors codes -- a RENDERING-stage failure passes one
     # of these straight through onto FactoryRun.error_code (see
     # factory_pipeline.py's reconcile_factory_runs_on_startup/
@@ -219,6 +260,8 @@ class FactoryRunOut(BaseModel):
     render_job_id: int | None = None
     quality_status: str | None = None
     quality_score: int | None = None
+    qa_status: str | None = None
+    qa_score: int | None = None
     requires_human_review: bool = False
     review_reason_count: int = 0
     metrics: dict = Field(default_factory=dict)
@@ -264,10 +307,10 @@ class FactoryRunRequest(BaseModel):
 assert set(FACTORY_RUN_STATUSES) == {
     "DRAFT", "PREPARING", "PREPARING_CONTENT", "GENERATING_BEATS", "PREPARING_VISUALS", "ASSIGNING_ASSETS",
     "GENERATING_MOTION", "GENERATING_VOICE", "GENERATING_AUDIO", "GENERATING_CAPTIONS", "QUALITY_CHECK", "NEEDS_REVIEW",
-    "READY_TO_RENDER", "QUEUED", "RENDERING", "PACKAGING", "COMPLETED", "FAILED", "CANCELLED",
+    "READY_TO_RENDER", "QUEUED", "RENDERING", "PACKAGING", "FINAL_QA", "COMPLETED", "FAILED", "CANCELLED",
 }
 assert set(FACTORY_STAGES) == {
     "PREPARING", "PREPARING_CONTENT", "GENERATING_BEATS", "PREPARING_VISUALS", "ASSIGNING_ASSETS",
     "GENERATING_MOTION", "GENERATING_VOICE", "GENERATING_AUDIO", "GENERATING_CAPTIONS", "QUALITY_CHECK", "READY_TO_RENDER",
-    "QUEUED", "RENDERING", "PACKAGING",
+    "QUEUED", "RENDERING", "PACKAGING", "FINAL_QA",
 }

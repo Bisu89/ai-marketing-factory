@@ -89,6 +89,15 @@ FACTORY_RUN_STATUSES = (
     # right before COMPLETED, matching this task's own target pipeline
     # order (RENDER -> PACKAGE -> QA/COMPLETED).
     "PACKAGING",
+    # Task 28 (see docs/features/54-final-qa.md) -- a read-only safety net
+    # over the finished package (video/audio/thumbnail/metadata/captions
+    # integrity + cross-artifact freshness) before a run is ever allowed
+    # to reach COMPLETED. A FAIL pauses the run at NEEDS_REVIEW (with
+    # failed_stage="FINAL_QA" -- section 76's own explicit "FAIL,
+    # NEEDS_REVIEW, repair_stage" test spec), never silently completing on
+    # a broken package; PASS/PASS_WITH_WARNINGS both proceed to COMPLETED
+    # (section 5: only a hard FAIL blocks readiness).
+    "FINAL_QA",
     "COMPLETED",
     "FAILED",
     "CANCELLED",
@@ -113,6 +122,7 @@ FACTORY_STAGES = (
     "QUEUED",
     "RENDERING",
     "PACKAGING",
+    "FINAL_QA",
 )
 
 # A run in any of these statuses is "still doing something" -- exactly one
@@ -162,6 +172,16 @@ class FactoryRun(Base):
     # never re-derived from this instead of the real, live Quality Gate.
     quality_status: Mapped[str | None] = mapped_column(String, nullable=True)
     quality_score: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    # Task 28 (see docs/features/54-final-qa.md) -- same "cached from the
+    # last real run, purely for cheap reporting" shape as quality_status/
+    # quality_score above, deliberately a *separate* pair of columns
+    # rather than reusing those: this is the POST-render Final QA outcome
+    # (PASS/PASS_WITH_WARNINGS/FAIL), a genuinely different check than the
+    # PRE-render Quality Gate's own READY/NEEDS_REVIEW/BLOCKED -- reusing
+    # the same columns would silently overwrite one project-readiness
+    # signal with an unrelated one.
+    qa_status: Mapped[str | None] = mapped_column(String, nullable=True)
+    qa_score: Mapped[int | None] = mapped_column(Integer, nullable=True)
 
     # Section 42 -- a lifetime flag: once a run has ever needed a human
     # (entered NEEDS_REVIEW at least once), this stays true even after

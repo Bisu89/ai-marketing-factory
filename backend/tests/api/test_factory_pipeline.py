@@ -88,6 +88,7 @@ class _FactoryTestCase(unittest.TestCase):
             ],
         )
         self.TestSessionLocal = sessionmaker(bind=self.engine)
+        self.settings = Settings(library_dir=str(self.tmp_path), anthropic_api_key="fake-test-key")
 
         self.patchers = [
             patch("app.modules.batch.service.SessionLocal", self.TestSessionLocal),
@@ -100,11 +101,23 @@ class _FactoryTestCase(unittest.TestCase):
             patch("app.api.v1.endpoints.motion_generate.SessionLocal", self.TestSessionLocal),
             patch("app.api.v1.endpoints.audio_generate.SessionLocal", self.TestSessionLocal),
             patch("app.api.v1.endpoints.package_generate.SessionLocal", self.TestSessionLocal),
+            # Task 28: _on_render_job_completed (an EventBus subscriber with
+            # no per-request DI context) resolves settings via a direct
+            # get_settings() call, same as production -- in production
+            # that's a real singleton so it always agrees with whatever
+            # Settings the rest of the pipeline used; in this test harness
+            # self.settings is a plain, separately-constructed instance
+            # (see above) that get_settings()'s own real/cached value would
+            # never match, so this patch is what keeps them the same
+            # object here. Only actually observable once a stage depends on
+            # settings.library_dir -- PACKAGING (Task 27) never did (its
+            # paths all derive from the render job's own output_path), but
+            # FINAL_QA's own captions_ass_path/audio_master_path lookups
+            # (Task 28) do.
+            patch("app.api.v1.endpoints.factory_pipeline.get_settings", lambda: self.settings),
         ]
         for p in self.patchers:
             p.start()
-
-        self.settings = Settings(library_dir=str(self.tmp_path), anthropic_api_key="fake-test-key")
         self.event_bus = EventBus()
         register_factory_event_handlers(self.event_bus)
         self.service = VideoComposerService(
