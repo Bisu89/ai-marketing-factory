@@ -344,6 +344,23 @@ def analyze_audio(beats: list[BeatAnalysisInput], config: ProjectAudioConfigInpu
             )
         )
     score = _clamp(100 * (len(beats) - len(missing)) / len(beats))
+
+    # Task 24 section 55/62 -- a real, previously-attempted Audio Master
+    # (audio_master_checked is only True when a real project_id was
+    # available, see quality_gate.py's build_quality_input) that's now
+    # missing/invalid. A warning, not an error: this dimension's score
+    # already reflects narration readiness on its own merits; a stale
+    # Audio Master is a reconciliation signal (section 62), not proof the
+    # project itself is unready.
+    if config.audio_master_checked and not config.audio_master_valid:
+        issues.append(
+            QualityIssue(
+                code="AUDIO_MASTER_MISSING",
+                severity="warning",
+                message="This project's Audio Master is missing or stale and will need to be regenerated.",
+            )
+        )
+
     return score, issues
 
 

@@ -569,6 +569,17 @@ export function VideoFactoryPage() {
           setProjectConfig(plan.config);
           setCaptionPreset(plan.config.captions.preset);
           setMusicVolume(plan.config.audio.music_volume);
+          // Task 24 -- see docs/features/50-audio-master.md. These three
+          // already drove the classic render's own composition plan but
+          // were never restored from a saved project's config, silently
+          // resetting to their hardcoded defaults on reopen; now that they
+          // also drive AudioProjectConfig.ducking_ratio/fade_in_sec/
+          // fade_out_sec (see buildProjectConfigForSave), a stale value
+          // here would silently overwrite what was actually saved on the
+          // very next save.
+          if (typeof plan.config.audio.ducking_ratio === "number") setDuckingRatio(plan.config.audio.ducking_ratio);
+          if (typeof plan.config.audio.fade_in_sec === "number") setFadeIn(plan.config.audio.fade_in_sec);
+          if (typeof plan.config.audio.fade_out_sec === "number") setFadeOut(plan.config.audio.fade_out_sec);
           if (plan.config.voice) {
             setVoiceProvider(plan.config.voice.provider);
             setVoiceId(plan.config.voice.voice_id);
@@ -705,6 +716,19 @@ export function VideoFactoryPage() {
         music_enabled: musicPath.trim().length > 0,
         music_volume: musicVolume,
         ducking: duckingRatio > 1,
+        // Task 24 -- see docs/features/50-audio-master.md. The same
+        // "Choose Music" picker above already drives the classic render's
+        // own music_path; when it resolved to a real Asset (not just a
+        // hand-typed path), that asset is also this project's manual BGM
+        // selection for the Factory's own Audio Master stage. No asset id
+        // yet (a hand-typed path, or no music chosen) falls back to AUTO
+        // selection rather than a MANUAL mode with nothing to reference.
+        bgm_mode: musicAssetId != null ? "MANUAL" : "AUTO",
+        bgm_asset_id: musicAssetId,
+        ducking_ratio: duckingRatio,
+        fade_in_sec: fadeIn,
+        fade_out_sec: fadeOut,
+        bgm_missing_policy: projectConfig.audio.bgm_missing_policy,
       },
       // Not sourced from any Step 4 control (this page has no factory-policy
       // UI) -- preserved as-loaded so saving here never silently resets a
@@ -844,6 +868,9 @@ export function VideoFactoryPage() {
     setProjectConfig(snapshot);
     setCaptionPreset(snapshot.captions.preset);
     setMusicVolume(snapshot.audio.music_volume);
+    setDuckingRatio(snapshot.audio.ducking_ratio);
+    setFadeIn(snapshot.audio.fade_in_sec);
+    setFadeOut(snapshot.audio.fade_out_sec);
     if (snapshot.voice) {
       setVoiceProvider(snapshot.voice.provider);
       setVoiceId(snapshot.voice.voice_id);
@@ -1391,6 +1418,22 @@ export function VideoFactoryPage() {
               )}
             </div>
             {musicAssetId != null && <audio className="vf-audio-preview" src={assetFileUrl(musicAssetId)} controls preload="none" />}
+            {/* Task 24 -- see docs/features/50-audio-master.md. One-Click
+                Factory's own Audio Master stage reuses this exact same
+                picker: a track chosen from the library is that project's
+                manual BGM selection; nothing chosen means the factory picks
+                one automatically (by content tone, deterministically
+                rotating through the library); a hand-typed path (no library
+                asset behind it) only drives the manual multi-step render
+                below and falls back to automatic selection for One-Click
+                Factory. */}
+            <span className="vf-field-label">
+              {musicAssetId != null
+                ? "One-Click Factory will use this exact track."
+                : musicPath.trim()
+                  ? "One-Click Factory can't reference a hand-typed path -- it will pick a track automatically instead."
+                  : "One-Click Factory will pick a track from your library automatically, based on tone."}
+            </span>
           </label>
 
           <div className="vf-grid">

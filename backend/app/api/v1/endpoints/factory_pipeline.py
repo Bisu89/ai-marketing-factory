@@ -65,6 +65,7 @@ from app.api.v1.endpoints.content_generate import (
     generate_script,
     validate_script_text,
 )
+from app.api.v1.endpoints.audio_generate import generate_project_audio_master
 from app.api.v1.endpoints.motion_generate import generate_project_motion
 from app.api.v1.endpoints.quality_gate import compute_asset_confidence, run_quality_check, tokenize_prose
 from app.api.v1.endpoints.voice_generate import generate_project_narration
@@ -74,6 +75,7 @@ from app.core.exceptions import ExternalServiceError, FileOperationError, NotFou
 from app.core.events import EventBus
 from app.db.session import SessionLocal, get_db
 from app.modules.asset.service import AssetService
+from app.modules.audio.schemas import AudioError
 from app.modules.batch import service as batch_service
 from app.modules.batch.models import Batch
 from app.modules.batch.schemas import BatchOut
@@ -415,6 +417,25 @@ def _stage_generate_voice(project_id: int, settings: Settings) -> bool:
         raise FactoryStageError("GENERATING_VOICE", TTS_GENERATION_FAILED, str(exc)) from exc
 
 
+# -- Stage: GENERATING_AUDIO (Task 24 -- see
+# docs/features/50-audio-master.md) ------------------------------------
+
+
+def _stage_generate_audio(project_id: int, settings: Settings) -> bool:
+    """Thin adapter over audio_generate.generate_project_audio_master --
+    that function already owns the full idempotent reuse-or-regenerate
+    decision (fingerprint over narration + BGM selection + mix config,
+    section 26/27), BGM selection, the real ffmpeg mix, and output
+    validation. This stage's own job is purely translating an AudioError
+    into a FactoryStageError with a stable code (section 52), matching
+    every other stage's own exception-translation shape.
+    """
+    try:
+        return generate_project_audio_master(project_id, settings)
+    except AudioError as exc:
+        raise FactoryStageError("GENERATING_AUDIO", exc.code, str(exc)) from exc
+
+
 # -- Stage: QUALITY_CHECK + render handoff ---------------------------------
 
 
@@ -648,6 +669,17 @@ def _execute_pipeline_sync(run_id: int, project_id: int, settings: Settings, ser
         if motion_generated:
             factory_service.merge_metrics(run_id, motion_generation_seconds=round(time.monotonic() - t0, 3))
         factory_service.complete_checkpoint(run_id, current_stage, metadata={"generated": motion_generated})
+        if _bail_if_cancelled(run_id, cancel_event):
+            return
+
+        current_stage = "GENERATING_AUDIO"
+        factory_service.set_run_fields(run_id, status=current_stage)
+        factory_service.start_checkpoint(run_id, current_stage)
+        t0 = time.monotonic()
+        audio_generated = _stage_generate_audio(project_id, settings)
+        if audio_generated:
+            factory_service.merge_metrics(run_id, audio_generation_seconds=round(time.monotonic() - t0, 3))
+        factory_service.complete_checkpoint(run_id, current_stage, metadata={"generated": audio_generated})
         if _bail_if_cancelled(run_id, cancel_event):
             return
 

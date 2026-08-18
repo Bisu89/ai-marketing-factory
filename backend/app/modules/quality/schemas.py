@@ -34,6 +34,7 @@ ISSUE_CODES = (
     "LOW_RESOLUTION_ASSET",
     "MISSING_MOTION",
     "MOTION_ARTIFACT_MISSING",
+    "AUDIO_MASTER_MISSING",
     "MISSING_NARRATION",
     "DUPLICATE_NARRATION",
     "PACING_OUTLIER",
@@ -170,6 +171,14 @@ class ProjectAudioConfigInput(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     narration_enabled: bool = True
+    # Task 24 (see docs/features/50-audio-master.md section 55) -- same
+    # "only checked when a real project_id was available, only a warning,
+    # never a hard block" reasoning as BeatAnalysisInput's own
+    # motion_artifact_checked/motion_artifact_valid (Task 23). This is
+    # project-level, not per-beat, since audio_master.wav is one artifact
+    # for the whole project, not one per beat.
+    audio_master_checked: bool = False
+    audio_master_valid: bool = True
 
 
 class ProjectCaptionConfigInput(BaseModel):

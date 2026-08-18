@@ -60,6 +60,14 @@ FACTORY_RUN_STATUSES = (
     # it renders, exactly the "strong dependency reason to reorder" this
     # task's own brief explicitly allows for.
     "GENERATING_MOTION",
+    # Task 24 (see docs/features/50-audio-master.md) -- mixes narration
+    # (Task 22) with optional local BGM, ducked under narration via ffmpeg
+    # sidechaincompress, into one real, cached `audio_master.wav`. Depends
+    # only on Voice's own narration.wav (not on Motion, which runs
+    # immediately before this) -- placed last among the local-artifact
+    # stages, right before Quality, matching this task's own target
+    # pipeline order (VOICE -> AUDIO -> QUALITY -> RENDER).
+    "GENERATING_AUDIO",
     "QUALITY_CHECK",
     "NEEDS_REVIEW",
     "READY_TO_RENDER",
@@ -82,6 +90,7 @@ FACTORY_STAGES = (
     "ASSIGNING_ASSETS",
     "GENERATING_VOICE",
     "GENERATING_MOTION",
+    "GENERATING_AUDIO",
     "QUALITY_CHECK",
     "READY_TO_RENDER",
     "QUEUED",

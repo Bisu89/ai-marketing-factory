@@ -309,11 +309,21 @@ export interface CaptionsProjectConfig {
   preset: CaptionPreset;
 }
 
+// Task 24 -- see docs/features/50-audio-master.md sections 7/8/9/33.
+export type BgmMode = "AUTO" | "MANUAL";
+export type BgmMissingPolicy = "OFF" | "NEEDS_REVIEW";
+
 export interface AudioProjectConfig {
   narration_enabled: boolean;
   music_enabled: boolean;
   music_volume: number;
   ducking: boolean;
+  bgm_mode: BgmMode;
+  bgm_asset_id: number | null;
+  ducking_ratio: number;
+  fade_in_sec: number;
+  fade_out_sec: number;
+  bgm_missing_policy: BgmMissingPolicy;
 }
 
 // Task 18 -- see docs/features/44-one-click-factory-pipeline.md.
@@ -373,7 +383,11 @@ export const SYSTEM_DEFAULT_PROJECT_CONFIG: ProjectConfig = {
   render: { profile: "SOCIAL_VERTICAL" },
   motion: { default_preset: "STATIC", auto_rotate: false, intensity: "MEDIUM", short_video_policy: "FREEZE" },
   captions: { enabled: true, preset: "emotional" },
-  audio: { narration_enabled: true, music_enabled: true, music_volume: 0.15, ducking: true },
+  audio: {
+    narration_enabled: true, music_enabled: true, music_volume: 0.15, ducking: true,
+    bgm_mode: "AUTO", bgm_asset_id: null, ducking_ratio: 8.0, fade_in_sec: 0.5, fade_out_sec: 1.0,
+    bgm_missing_policy: "OFF",
+  },
   factory: {
     auto_assign_high_confidence: true,
     require_review_for_medium_confidence: true,

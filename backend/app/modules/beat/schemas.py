@@ -283,6 +283,13 @@ class CaptionsProjectConfig(BaseModel):
         return value
 
 
+BGM_MODES = ("AUTO", "MANUAL")
+BGM_MISSING_POLICIES = ("OFF", "NEEDS_REVIEW")
+MIN_DUCKING_RATIO = 1.0  # ffmpeg sidechaincompress's own "no effect" floor
+MAX_DUCKING_RATIO = 20.0  # ffmpeg sidechaincompress's own documented ceiling
+MAX_FADE_SECONDS = 10.0  # section 12's own "do not make fades excessively long"
+
+
 class AudioProjectConfig(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
@@ -290,12 +297,68 @@ class AudioProjectConfig(BaseModel):
     music_enabled: bool = True
     music_volume: float = 0.15
     ducking: bool = True
+    # Task 24 (see docs/features/50-audio-master.md) -- BGM selection mode.
+    # Only meaningful while music_enabled=True; music_enabled=False is this
+    # config's own pre-existing, complete "BGM off" switch (section 9), not
+    # duplicated here as a third bgm_mode value.
+    bgm_mode: str = "AUTO"
+    # Only meaningful when bgm_mode="MANUAL" -- a bare Asset.id (no FK, same
+    # no-FK convention as Beat.asset_id) the user explicitly chose. Manual
+    # selection always overrides automatic selection (section 8) -- the
+    # composition root never re-runs auto-selection while this is set.
+    bgm_asset_id: int | None = None
+    # The ffmpeg sidechaincompress `ratio` parameter -- how hard the BGM
+    # ducks under narration (section 15/16: never let BGM dominate). Only
+    # applied while `ducking=True`.
+    ducking_ratio: float = 8.0
+    fade_in_sec: float = 0.5
+    fade_out_sec: float = 1.0
+    # Section 33/34 -- what AUTO selection does when no suitable BGM asset
+    # exists at all. OFF (default): proceed narration-only, never block the
+    # near-$0 factory over an unavailable music library. NEEDS_REVIEW: flag
+    # it for a human instead of silently shipping without music.
+    bgm_missing_policy: str = "OFF"
 
     @field_validator("music_volume")
     @classmethod
     def _volume_within_bounds(cls, value: float) -> float:
         if not (MIN_VOLUME <= value <= MAX_VOLUME):
             raise ValueError(f"music_volume must be between {MIN_VOLUME} and {MAX_VOLUME}, got {value}")
+        return value
+
+    @field_validator("bgm_mode")
+    @classmethod
+    def _known_bgm_mode(cls, value: str) -> str:
+        if value not in BGM_MODES:
+            raise ValueError(f"Unknown bgm_mode {value!r}, must be one of {BGM_MODES}")
+        return value
+
+    @field_validator("bgm_missing_policy")
+    @classmethod
+    def _known_bgm_missing_policy(cls, value: str) -> str:
+        if value not in BGM_MISSING_POLICIES:
+            raise ValueError(f"Unknown bgm_missing_policy {value!r}, must be one of {BGM_MISSING_POLICIES}")
+        return value
+
+    @field_validator("ducking_ratio")
+    @classmethod
+    def _ducking_ratio_within_bounds(cls, value: float) -> float:
+        if not (MIN_DUCKING_RATIO <= value <= MAX_DUCKING_RATIO):
+            raise ValueError(f"ducking_ratio must be between {MIN_DUCKING_RATIO} and {MAX_DUCKING_RATIO}, got {value}")
+        return value
+
+    @field_validator("fade_in_sec", "fade_out_sec")
+    @classmethod
+    def _fade_within_bounds(cls, value: float) -> float:
+        if not (0.0 <= value <= MAX_FADE_SECONDS):
+            raise ValueError(f"fade must be between 0 and {MAX_FADE_SECONDS} seconds, got {value}")
+        return value
+
+    @field_validator("bgm_asset_id")
+    @classmethod
+    def _bgm_asset_id_positive(cls, value: int | None) -> int | None:
+        if value is not None and value <= 0:
+            raise ValueError("bgm_asset_id must be a positive integer if provided")
         return value
 
 

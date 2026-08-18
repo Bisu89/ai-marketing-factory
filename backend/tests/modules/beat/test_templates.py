@@ -95,14 +95,30 @@ class BuiltinTemplateTests(unittest.TestCase):
         self.assertEqual(CUSTOM_TEMPLATE.config.captions.preset, ProjectConfig().captions.preset)
 
     def test_no_builtin_template_carries_asset_beat_or_job_ids(self):
-        # ProjectConfig's schema has no such fields at all -- this test
-        # guards against a future field addition accidentally introducing
-        # one (Task 12 section 5's explicit "do NOT put asset/project/beat/
-        # render job IDs inside the built-in template").
+        # Guards against a future field addition accidentally introducing a
+        # real, populated asset/project/beat/render job id inside a
+        # built-in template (Task 12 section 5's explicit "do NOT put
+        # asset/project/beat/render job IDs inside the built-in template").
+        # Checks field *values*, not raw JSON text -- Task 24 added a real,
+        # legitimately-named `AudioProjectConfig.bgm_asset_id` field (always
+        # None here, meaning "no manual override") that a blunt substring
+        # check on the dumped JSON would otherwise flag as a false positive
+        # merely for existing and being null.
+        def _walk(value, path=""):
+            if isinstance(value, dict):
+                for key, sub in value.items():
+                    _walk(sub, f"{path}.{key}" if path else key)
+            elif isinstance(value, list):
+                for i, item in enumerate(value):
+                    _walk(item, f"{path}[{i}]")
+            else:
+                field_name = path.rsplit(".", 1)[-1]
+                for forbidden in ("asset_id", "project_id", "beat_id", "render_job_id", "job_id"):
+                    if field_name == forbidden or field_name.endswith(f"_{forbidden}"):
+                        self.assertIsNone(value, f"{path} unexpectedly carries a real id: {value!r}")
+
         for template in BUILTIN_TEMPLATES:
-            dumped = template.config.model_dump()
-            for forbidden in ("asset_id", "project_id", "beat_id", "render_job_id", "job_id"):
-                self.assertNotIn(forbidden, json.dumps(dumped))
+            _walk(template.config.model_dump())
 
 
 class TemplateApplicationTests(unittest.TestCase):

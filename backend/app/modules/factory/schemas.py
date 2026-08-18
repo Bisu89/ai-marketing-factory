@@ -58,6 +58,18 @@ VOICE_TIMING_FAILED = "VOICE_TIMING_FAILED"
 MOTION_ASSET_INVALID = "MOTION_ASSET_INVALID"
 MOTION_GENERATION_FAILED = "MOTION_GENERATION_FAILED"
 
+# Task 24 (see docs/features/50-audio-master.md section 52) --
+# app.modules.audio.schemas' own error codes, duplicated as plain string
+# constants here rather than imported (same "this module never imports
+# another module" reasoning as every earlier stage's own codes above).
+AUDIO_MIX_FAILED = "AUDIO_MIX_FAILED"
+BGM_NOT_FOUND = "BGM_NOT_FOUND"
+BGM_INVALID = "BGM_INVALID"
+AUDIO_OUTPUT_INVALID = "AUDIO_OUTPUT_INVALID"
+AUDIO_CLIPPING = "AUDIO_CLIPPING"
+AUDIO_SILENT = "AUDIO_SILENT"
+AUDIO_DURATION_MISMATCH = "AUDIO_DURATION_MISMATCH"
+
 # Task 19 (see docs/features/45-factory-reliability.md) section 27/28 --
 # stable classification for every error_code this module (or a RenderJob it
 # handed off to, see app.core.render_errors) can ever set on a FactoryRun.
@@ -98,6 +110,14 @@ ERROR_CLASSIFICATION: dict[str, str] = {
     # Task 23's own motion-stage codes.
     MOTION_ASSET_INVALID: USER_ACTION_REQUIRED,  # a beat's source asset is missing/corrupt -- needs a different asset
     MOTION_GENERATION_FAILED: TRANSIENT,  # usually a real FFmpeg/filesystem hiccup -- worth a plain retry
+    # Task 24's own audio-stage codes.
+    AUDIO_MIX_FAILED: TRANSIENT,  # usually a real FFmpeg/filesystem hiccup -- worth a plain retry
+    BGM_NOT_FOUND: USER_ACTION_REQUIRED,  # a manually-selected BGM asset no longer exists -- pick a different one
+    BGM_INVALID: USER_ACTION_REQUIRED,
+    AUDIO_OUTPUT_INVALID: TRANSIENT,
+    AUDIO_CLIPPING: TRANSIENT,  # loudnorm should already prevent this -- a retry is worth trying
+    AUDIO_SILENT: USER_ACTION_REQUIRED,  # the narration/mix combination produced nothing audible -- needs a look
+    AUDIO_DURATION_MISMATCH: TRANSIENT,
     # app.core.render_errors codes -- a RENDERING-stage failure passes one
     # of these straight through onto FactoryRun.error_code (see
     # factory_pipeline.py's reconcile_factory_runs_on_startup/
@@ -187,10 +207,11 @@ class FactoryRunRequest(BaseModel):
 
 assert set(FACTORY_RUN_STATUSES) == {
     "DRAFT", "PREPARING", "PREPARING_CONTENT", "GENERATING_BEATS", "PREPARING_VISUALS", "ASSIGNING_ASSETS",
-    "GENERATING_MOTION", "GENERATING_VOICE", "QUALITY_CHECK", "NEEDS_REVIEW", "READY_TO_RENDER", "QUEUED",
-    "RENDERING", "COMPLETED", "FAILED", "CANCELLED",
+    "GENERATING_MOTION", "GENERATING_VOICE", "GENERATING_AUDIO", "QUALITY_CHECK", "NEEDS_REVIEW",
+    "READY_TO_RENDER", "QUEUED", "RENDERING", "COMPLETED", "FAILED", "CANCELLED",
 }
 assert set(FACTORY_STAGES) == {
     "PREPARING", "PREPARING_CONTENT", "GENERATING_BEATS", "PREPARING_VISUALS", "ASSIGNING_ASSETS",
-    "GENERATING_MOTION", "GENERATING_VOICE", "QUALITY_CHECK", "READY_TO_RENDER", "QUEUED", "RENDERING",
+    "GENERATING_MOTION", "GENERATING_VOICE", "GENERATING_AUDIO", "QUALITY_CHECK", "READY_TO_RENDER",
+    "QUEUED", "RENDERING",
 }

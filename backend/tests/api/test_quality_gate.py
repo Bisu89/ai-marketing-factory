@@ -21,6 +21,7 @@ from app.api.v1.endpoints.quality_gate import (
     check_project_quality,
     run_quality_check,
 )
+from app.core.config import Settings
 from app.db.base import Base
 from app.modules.asset.models import Asset
 from app.modules.asset.schemas import AssetRegisterIn
@@ -208,7 +209,20 @@ class QualityCheckEndpointTests(unittest.TestCase):
             from app.modules.beat.schemas import ProjectConfig
 
             project_id = create_project("My Project", "Some script.", ProjectConfig())
-            report = check_project_quality(project_id, mode="NORMAL", db=self.db)
+            with tempfile.TemporaryDirectory() as tmp_dir:
+                # A real Settings instance, not FastAPI's own unresolved
+                # Depends(get_settings) sentinel -- this test calls the
+                # route handler directly as a plain function (this file's
+                # own established convention, see module docstring), which
+                # never triggers FastAPI's dependency injection. Task 24's
+                # own project-level (always-invoked, even for zero beats)
+                # _resolve_audio_master_flags is the first caller in this
+                # chain to actually *read* settings.library_dir rather than
+                # merely accept the parameter -- Task 23's own per-beat
+                # motion check never surfaced this because it short-circuits
+                # before touching settings whenever a beat has no asset_id,
+                # which this test's own zero-beat project always satisfies.
+                report = check_project_quality(project_id, mode="NORMAL", db=self.db, settings=Settings(library_dir=tmp_dir))
             # A freshly-created project has zero beats -- a real, valid
             # pre-"Generate Beats" state (section 32: "no beats yet" is a
             # legitimate lifecycle state, not an HTTP error).

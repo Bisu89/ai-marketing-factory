@@ -21,6 +21,7 @@ from fastapi import APIRouter, Depends
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
+from app.api.v1.endpoints.audio_generate import audio_master_is_valid, audio_was_attempted
 from app.api.v1.endpoints.motion_generate import motion_artifact_for_beat, motion_was_attempted_for_beat
 from app.core.config import Settings, get_settings
 from app.core.render_profile import get_render_profile
@@ -149,6 +150,19 @@ def _resolve_motion_artifact_flags(
     return True, artifact is not None
 
 
+def _resolve_audio_master_flags(project_id: int | None, settings: Settings | None) -> tuple[bool, bool]:
+    """Task 24 section 55/62 -- (checked, valid). Same reasoning as
+    _resolve_motion_artifact_flags above: only checked with a real
+    project_id/settings pair, and only when a prior Audio stage run
+    actually claimed to have produced an audio_master.wav.
+    """
+    if project_id is None or settings is None:
+        return False, True
+    if not audio_was_attempted(project_id, settings.library_dir):
+        return False, True
+    return True, audio_master_is_valid(project_id, settings)
+
+
 def build_quality_input(
     beats: list[Beat], config: ProjectConfig, asset_service: AssetService, mode: str = "NORMAL",
     project_id: int | None = None, settings: Settings | None = None,
@@ -170,10 +184,14 @@ def build_quality_input(
                 motion_artifact_valid=valid,
             )
         )
+    audio_checked, audio_valid = _resolve_audio_master_flags(project_id, settings)
     return QualityAnalysisInput(
         beats=beats_input,
         default_motion_preset=config.motion.default_preset.value,
-        audio=ProjectAudioConfigInput(narration_enabled=config.audio.narration_enabled),
+        audio=ProjectAudioConfigInput(
+            narration_enabled=config.audio.narration_enabled,
+            audio_master_checked=audio_checked, audio_master_valid=audio_valid,
+        ),
         # CaptionsProjectConfig.preset is already Pydantic-validated against
         # the known preset set at load time -- if this config object exists
         # at all, its preset is valid by construction.

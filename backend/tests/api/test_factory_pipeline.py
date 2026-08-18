@@ -96,6 +96,7 @@ class _FactoryTestCase(unittest.TestCase):
             patch("app.api.v1.endpoints.factory_pipeline.SessionLocal", self.TestSessionLocal),
             patch("app.api.v1.endpoints.voice_generate.SessionLocal", self.TestSessionLocal),
             patch("app.api.v1.endpoints.motion_generate.SessionLocal", self.TestSessionLocal),
+            patch("app.api.v1.endpoints.audio_generate.SessionLocal", self.TestSessionLocal),
         ]
         for p in self.patchers:
             p.start()
@@ -163,7 +164,7 @@ class _FactoryTestCase(unittest.TestCase):
     # window is still "local stages in flight," not settled yet.
     _LOCAL_STAGES = (
         "PREPARING", "PREPARING_CONTENT", "GENERATING_BEATS", "PREPARING_VISUALS", "ASSIGNING_ASSETS",
-        "GENERATING_MOTION", "GENERATING_VOICE", "QUALITY_CHECK", "READY_TO_RENDER",
+        "GENERATING_VOICE", "GENERATING_MOTION", "GENERATING_AUDIO", "QUALITY_CHECK", "READY_TO_RENDER",
     )
 
     def _wait_for_run_settled(self, run_id: int, timeout: float = 30.0) -> FactoryRun:
