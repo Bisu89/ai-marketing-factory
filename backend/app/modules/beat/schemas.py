@@ -509,6 +509,62 @@ class WatermarkProjectConfig(BaseModel):
         return value
 
 
+# Task 27 (see docs/features/53-thumbnail-metadata-package.md section 6/28/32)
+# -- reasonable, documented defaults per knob, matching the same "no
+# arbitrary global constant with no way to tune it" reasoning as Task 25's
+# own DEFAULT_CAPTION_* constants.
+DEFAULT_THUMBNAIL_CANDIDATE_COUNT = 6
+DEFAULT_MAX_HASHTAGS = 8
+MIN_THUMBNAIL_CANDIDATE_COUNT = 1
+MAX_THUMBNAIL_CANDIDATE_COUNT = 12
+MIN_MAX_HASHTAGS = 1
+MAX_MAX_HASHTAGS = 20
+# Section 32 -- a plain label, never branched on for platform-specific
+# publishing logic (out of this task's scope). "general" is the
+# no-platform-chosen-yet default.
+PLATFORM_PROFILES = ("general", "youtube_shorts", "tiktok", "instagram_reels", "facebook_reels")
+
+
+class PackageProjectConfig(BaseModel):
+    """Section 3/32 -- settings for the Ready-to-Post Package stage
+    (Thumbnail + Metadata). `platform_profile` is carried straight through
+    into metadata.json as a label only (section 32: "do not build
+    platform-specific publishing logic here") -- nothing in this task
+    branches on its value.
+    """
+
+    model_config = ConfigDict(extra="forbid")
+
+    thumbnail_headline_enabled: bool = True
+    thumbnail_candidate_count: int = DEFAULT_THUMBNAIL_CANDIDATE_COUNT
+    max_hashtags: int = DEFAULT_MAX_HASHTAGS
+    platform_profile: str = "general"
+
+    @field_validator("thumbnail_candidate_count")
+    @classmethod
+    def _candidate_count_within_bounds(cls, value: int) -> int:
+        if not (MIN_THUMBNAIL_CANDIDATE_COUNT <= value <= MAX_THUMBNAIL_CANDIDATE_COUNT):
+            raise ValueError(
+                f"thumbnail_candidate_count must be between {MIN_THUMBNAIL_CANDIDATE_COUNT} and "
+                f"{MAX_THUMBNAIL_CANDIDATE_COUNT}, got {value}"
+            )
+        return value
+
+    @field_validator("max_hashtags")
+    @classmethod
+    def _max_hashtags_within_bounds(cls, value: int) -> int:
+        if not (MIN_MAX_HASHTAGS <= value <= MAX_MAX_HASHTAGS):
+            raise ValueError(f"max_hashtags must be between {MIN_MAX_HASHTAGS} and {MAX_MAX_HASHTAGS}, got {value}")
+        return value
+
+    @field_validator("platform_profile")
+    @classmethod
+    def _known_platform_profile(cls, value: str) -> str:
+        if value not in PLATFORM_PROFILES:
+            raise ValueError(f"Unknown platform_profile {value!r}, must be one of {PLATFORM_PROFILES}")
+        return value
+
+
 class FactoryProjectConfig(BaseModel):
     """One-click production policy (Task 18 -- see
     docs/features/44-one-click-factory-pipeline.md). Governs how
@@ -631,6 +687,7 @@ class ProjectConfig(BaseModel):
     captions: CaptionsProjectConfig = Field(default_factory=CaptionsProjectConfig)
     audio: AudioProjectConfig = Field(default_factory=AudioProjectConfig)
     watermark: WatermarkProjectConfig = Field(default_factory=WatermarkProjectConfig)
+    package: PackageProjectConfig = Field(default_factory=PackageProjectConfig)
     factory: FactoryProjectConfig = Field(default_factory=FactoryProjectConfig)
     content: ContentProjectConfig = Field(default_factory=ContentProjectConfig)
     voice: VoiceProjectConfig = Field(default_factory=VoiceProjectConfig)
@@ -837,6 +894,15 @@ class BeatPlan(BaseModel):
     # must never overwrite script_text while this is set, regardless of
     # whether the current text happens to pass validation.
     script_locked: bool = False
+    # Task 27 (see docs/features/53-thumbnail-metadata-package.md section
+    # 21/48) -- None means "no override, derive it"; once set, these always
+    # win over the Metadata Engine's own generated title/description/
+    # hashtags, and are never auto-cleared by a script/idea/content edit
+    # (same "sticky until the user changes it" convention as
+    # AudioProjectConfig.bgm_asset_id).
+    manual_title: str | None = None
+    manual_description: str | None = None
+    manual_hashtags: list[str] | None = None
 
     @computed_field
     @property
@@ -898,6 +964,10 @@ class ProjectOut(BaseModel):
     idea: str | None = None
     content_brief: ContentBrief | None = None
     script_locked: bool = False
+    # Task 27 -- see BeatPlan's own matching fields above.
+    manual_title: str | None = None
+    manual_description: str | None = None
+    manual_hashtags: list[str] | None = None
 
     @computed_field
     @property

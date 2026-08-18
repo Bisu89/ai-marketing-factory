@@ -12,6 +12,9 @@ export type FactoryRunStatus =
   | "READY_TO_RENDER"
   | "QUEUED"
   | "RENDERING"
+  // Task 27 -- see docs/features/53-thumbnail-metadata-package.md.
+  // final.mp4 -> thumbnail.jpg + metadata.json, right before COMPLETED.
+  | "PACKAGING"
   | "COMPLETED"
   | "FAILED"
   | "CANCELLED";
@@ -51,6 +54,10 @@ const STEP_FOR_STATUS: Record<FactoryRunStatus, number> = {
   READY_TO_RENDER: 4,
   QUEUED: 4,
   RENDERING: 4,
+  // Task 27 -- grouped with the "Render" step rather than adding a 7th
+  // checklist entry; the dedicated Ready-to-Post section (VideoFactoryPage)
+  // is where a completed package is actually shown in detail.
+  PACKAGING: 4,
   COMPLETED: 5,
   FAILED: -1,
   CANCELLED: -1,

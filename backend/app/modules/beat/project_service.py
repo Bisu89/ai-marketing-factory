@@ -13,6 +13,11 @@ from app.db.session import SessionLocal
 from app.modules.beat.models import Project
 from app.modules.beat.schemas import BeatPlan, ContentBrief, ProjectConfig, ProjectOut, new_project_draft
 
+# Task 27 -- see set_project_package_overrides's own docstring for why
+# "not passed" (leave untouched) must be distinguishable from "passed as
+# None" (explicitly clear this override).
+_UNSET = object()
+
 
 def slugify(text: str) -> str:
     slug = "".join(c.lower() if c.isalnum() else "-" for c in text.strip()).strip("-") or "project"
@@ -197,6 +202,40 @@ def set_project_generated_content(project_id: int, content_brief: ContentBrief, 
         data["content_brief"] = content_brief.model_dump(mode="json")
         data["script_text"] = script_text
         data["beats"] = []
+        project.beat_plan_json = data
+        db.commit()
+    finally:
+        db.close()
+
+
+def set_project_package_overrides(
+    project_id: int, *, title: str | None | object = _UNSET, description: str | None | object = _UNSET,
+    hashtags: list[str] | None | object = _UNSET,
+) -> None:
+    """Task 27 section 21/48/49 -- explicit manual overrides for the
+    Package stage's own generated title/description/hashtags. Each
+    parameter defaults to the `_UNSET` sentinel (leave that field
+    untouched) rather than `None`, since `None` here is itself a
+    meaningful, explicit value ("clear this override, go back to
+    generated") -- a caller wanting to clear only `title` must not also
+    silently blank out `description`/`hashtags` it never mentioned.
+    Deliberately never touches script_text/beats/content_brief -- a
+    metadata edit has no downstream effect on Content/Script/Beat/Visual/
+    Motion/Voice/Audio/Captions/Render (section 41's own explicit "do NOT
+    invalidate" list).
+    """
+    db = SessionLocal()
+    try:
+        project = db.get(Project, project_id)
+        if project is None:
+            raise NotFoundError("Project", project_id)
+        data = dict(project.beat_plan_json)
+        if title is not _UNSET:
+            data["manual_title"] = title
+        if description is not _UNSET:
+            data["manual_description"] = description
+        if hashtags is not _UNSET:
+            data["manual_hashtags"] = hashtags
         project.beat_plan_json = data
         db.commit()
     finally:

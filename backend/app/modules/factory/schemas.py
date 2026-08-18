@@ -81,6 +81,22 @@ CAPTION_ASS_INVALID = "CAPTION_ASS_INVALID"
 CAPTION_STYLE_INVALID = "CAPTION_STYLE_INVALID"
 CAPTION_GLYPH_UNSUPPORTED = "CAPTION_GLYPH_UNSUPPORTED"
 
+# Task 27 (see docs/features/53-thumbnail-metadata-package.md section 50)
+# -- app.modules.thumbnail.schemas'/app.modules.metadata.schemas' own error
+# codes, plus package_generate.py's own PACKAGE_INCOMPLETE/
+# PACKAGE_VALIDATION_FAILED, duplicated as plain string constants here
+# rather than imported (same "this module never imports another module"
+# reasoning as every earlier stage's own codes above).
+THUMBNAIL_GENERATION_FAILED = "THUMBNAIL_GENERATION_FAILED"
+THUMBNAIL_INVALID = "THUMBNAIL_INVALID"
+THUMBNAIL_NO_VALID_FRAME = "THUMBNAIL_NO_VALID_FRAME"
+METADATA_GENERATION_FAILED = "METADATA_GENERATION_FAILED"
+TITLE_INVALID = "TITLE_INVALID"
+DESCRIPTION_INVALID = "DESCRIPTION_INVALID"
+HASHTAG_INVALID = "HASHTAG_INVALID"
+PACKAGE_INCOMPLETE = "PACKAGE_INCOMPLETE"
+PACKAGE_VALIDATION_FAILED = "PACKAGE_VALIDATION_FAILED"
+
 # Task 19 (see docs/features/45-factory-reliability.md) section 27/28 --
 # stable classification for every error_code this module (or a RenderJob it
 # handed off to, see app.core.render_errors) can ever set on a FactoryRun.
@@ -136,6 +152,16 @@ ERROR_CLASSIFICATION: dict[str, str] = {
     CAPTION_ASS_INVALID: TRANSIENT,
     CAPTION_STYLE_INVALID: USER_ACTION_REQUIRED,  # an unknown/misconfigured preset -- pick a valid one
     CAPTION_GLYPH_UNSUPPORTED: USER_ACTION_REQUIRED,  # the chosen font can't render this text's script -- needs a different font/preset
+    # Task 27's own thumbnail/metadata/package-stage codes.
+    THUMBNAIL_GENERATION_FAILED: TRANSIENT,  # usually a real ffmpeg/Pillow/filesystem hiccup -- worth a plain retry
+    THUMBNAIL_INVALID: TRANSIENT,
+    THUMBNAIL_NO_VALID_FRAME: USER_ACTION_REQUIRED,  # every candidate frame was too dark/bright/flat -- the video itself needs a look
+    METADATA_GENERATION_FAILED: TRANSIENT,
+    TITLE_INVALID: USER_ACTION_REQUIRED,  # no content available to derive a title from, or a bad manual override -- needs a look
+    DESCRIPTION_INVALID: USER_ACTION_REQUIRED,
+    HASHTAG_INVALID: USER_ACTION_REQUIRED,
+    PACKAGE_INCOMPLETE: TRANSIENT,  # usually just "Render hasn't produced a valid final video yet" -- resolves once Render completes
+    PACKAGE_VALIDATION_FAILED: TRANSIENT,
     # app.core.render_errors codes -- a RENDERING-stage failure passes one
     # of these straight through onto FactoryRun.error_code (see
     # factory_pipeline.py's reconcile_factory_runs_on_startup/
@@ -238,10 +264,10 @@ class FactoryRunRequest(BaseModel):
 assert set(FACTORY_RUN_STATUSES) == {
     "DRAFT", "PREPARING", "PREPARING_CONTENT", "GENERATING_BEATS", "PREPARING_VISUALS", "ASSIGNING_ASSETS",
     "GENERATING_MOTION", "GENERATING_VOICE", "GENERATING_AUDIO", "GENERATING_CAPTIONS", "QUALITY_CHECK", "NEEDS_REVIEW",
-    "READY_TO_RENDER", "QUEUED", "RENDERING", "COMPLETED", "FAILED", "CANCELLED",
+    "READY_TO_RENDER", "QUEUED", "RENDERING", "PACKAGING", "COMPLETED", "FAILED", "CANCELLED",
 }
 assert set(FACTORY_STAGES) == {
     "PREPARING", "PREPARING_CONTENT", "GENERATING_BEATS", "PREPARING_VISUALS", "ASSIGNING_ASSETS",
     "GENERATING_MOTION", "GENERATING_VOICE", "GENERATING_AUDIO", "GENERATING_CAPTIONS", "QUALITY_CHECK", "READY_TO_RENDER",
-    "QUEUED", "RENDERING",
+    "QUEUED", "RENDERING", "PACKAGING",
 }

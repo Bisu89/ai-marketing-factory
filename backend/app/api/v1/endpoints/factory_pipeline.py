@@ -68,6 +68,7 @@ from app.api.v1.endpoints.content_generate import (
 from app.api.v1.endpoints.audio_generate import audio_master_is_valid, audio_master_path, generate_project_audio_master
 from app.api.v1.endpoints.caption_generate import captions_ass_path, captions_is_valid, generate_project_captions
 from app.api.v1.endpoints.motion_generate import generate_project_motion
+from app.api.v1.endpoints.package_generate import PackageError, generate_project_package
 from app.api.v1.endpoints.quality_gate import compute_asset_confidence, run_quality_check, tokenize_prose
 from app.api.v1.endpoints.voice_generate import generate_project_narration
 from app.core import render_errors
@@ -91,6 +92,8 @@ from app.modules.beat.project_service import (
     update_project_beat_plan,
 )
 from app.modules.beat.schemas import Beat, BeatPlan
+from app.modules.metadata.schemas import MetadataError
+from app.modules.thumbnail.schemas import ThumbnailError
 from app.modules.factory import service as factory_service
 from app.modules.factory.models import FACTORY_STAGES, FactoryRun
 from app.modules.factory.schemas import (
@@ -620,6 +623,26 @@ def _stage_render(
     factory_service.complete_checkpoint(run_id, "QUEUED", metadata={"render_job_id": job_id})
 
 
+# -- Stage: PACKAGING (Task 27 -- see
+# docs/features/53-thumbnail-metadata-package.md) --------------------------
+
+
+def _stage_package(run_id: int, project_id: int, settings: Settings) -> None:
+    """Thin adapter over package_generate.generate_project_package -- that
+    function already owns the full idempotent reuse-or-regenerate decision
+    (independent fingerprints for the thumbnail and metadata.json, section
+    40/41), frame extraction/scoring, title/description/hashtag
+    derivation, and output validation. This stage's own job is purely
+    translating a ThumbnailError/MetadataError/PackageError into a
+    FactoryStageError with a stable code, matching every other stage's own
+    exception-translation shape.
+    """
+    try:
+        generate_project_package(project_id, settings)
+    except (ThumbnailError, MetadataError, PackageError) as exc:
+        raise FactoryStageError("PACKAGING", exc.code, str(exc)) from exc
+
+
 # -- Orchestration entry points --------------------------------------------
 
 
@@ -898,12 +921,18 @@ def retry_run(run_id: int, settings: Settings, service: VideoComposerService) ->
     RenderJob-stage failures (QUEUED/RENDERING) delegate to
     VideoComposerService's own existing retry_job() -- a fresh RenderJob,
     never a second render pipeline -- and skip Beat/asset/quality work
-    entirely, since those already passed. Every earlier-stage failure
-    simply re-invokes the full pipeline from the top; each stage's own
-    reuse-detection (section 10) means already-completed work (existing
-    beats, existing assignments) is free, so this naturally "resumes from
-    the earliest invalid stage" without a second, parallel resume-logic
-    implementation.
+    entirely, since those already passed. A PACKAGING failure (Task 27 --
+    see docs/features/53-thumbnail-metadata-package.md section 52) re-runs
+    only _stage_package, synchronously, right here -- never re-rendering
+    the video (there is no render-level cache, see docs/features/
+    52-final-composer.md's own "Problems" section, so replaying the full
+    pipeline would genuinely re-render from scratch, which section 52's
+    own explicit "do not rerender the video" forbids). Every earlier-stage
+    failure simply re-invokes the full pipeline from the top; each stage's
+    own reuse-detection (section 10) means already-completed work
+    (existing beats, existing assignments) is free, so this naturally
+    "resumes from the earliest invalid stage" without a second, parallel
+    resume-logic implementation.
     """
     run = factory_service.get_run(run_id)
     if run is None:
@@ -923,6 +952,24 @@ def retry_run(run_id: int, settings: Settings, service: VideoComposerService) ->
             error_code=None, error_message=None, failed_stage=None, completed_at=None,
         )
         factory_service.start_checkpoint(run_id, run.failed_stage)
+        return factory_service.get_run(run_id)
+
+    if run.failed_stage == "PACKAGING":
+        factory_service.set_run_fields(
+            run_id, status="PACKAGING", error_code=None, error_message=None, failed_stage=None, completed_at=None,
+        )
+        factory_service.start_checkpoint(run_id, "PACKAGING")
+        try:
+            _stage_package(run_id, run.project_id, settings)
+        except FactoryStageError as exc:
+            _mark_failed(run_id, exc.stage, exc.code, exc.message)
+        except Exception as exc:  # noqa: BLE001 -- never a raw stack trace to the user (section 24)
+            logger.exception("FactoryRun %s failed unexpectedly during PACKAGING retry", run_id)
+            _mark_failed(run_id, "PACKAGING", "UNEXPECTED_ERROR", str(exc))
+        else:
+            factory_service.complete_checkpoint(run_id, "PACKAGING")
+            factory_service.set_run_fields(run_id, status="COMPLETED", completed_at=_utcnow())
+        _sync_batch_after_run_settled(run_id, run.project_id)
         return factory_service.get_run(run_id)
 
     factory_service.set_run_fields(
@@ -1208,6 +1255,23 @@ def retry_batch_failed(batch_id: int, settings: Settings, service: VideoComposer
                 )
                 factory_service.start_checkpoint(run.id, run.failed_stage)
                 _sync_batch_item_from_run(item_id, factory_service.get_run(run.id))
+            elif run.failed_stage == "PACKAGING":
+                # Task 27 section 52 -- resume Packaging only, never
+                # re-render the video (same reasoning as retry_run's own
+                # identical branch).
+                factory_service.set_run_fields(
+                    run.id, status="PACKAGING", error_code=None, error_message=None,
+                    failed_stage=None, completed_at=None,
+                )
+                factory_service.start_checkpoint(run.id, "PACKAGING")
+                try:
+                    _stage_package(run.id, project_id, settings)
+                except FactoryStageError as exc:
+                    _mark_failed(run.id, exc.stage, exc.code, exc.message)
+                else:
+                    factory_service.complete_checkpoint(run.id, "PACKAGING")
+                    factory_service.set_run_fields(run.id, status="COMPLETED", completed_at=_utcnow())
+                _sync_batch_item_from_run(item_id, factory_service.get_run(run.id))
             else:
                 factory_service.set_run_fields(
                     run.id, status="PREPARING", error_code=None, error_message=None,
@@ -1428,12 +1492,39 @@ def _on_render_job_completed(payload: dict) -> None:
     # a real, ffprobe-validated final.mp4 (atomic rename past
     # _validate_final_output -- see docs/features/37-e2e-pipeline-hardening.md)
     # -- there is no path where an invalid/partial output produces this
-    # event, so FactoryRun is never marked COMPLETED on unvalidated output.
+    # event, so PACKAGING never starts against unvalidated output.
+    #
+    # Task 27 (see docs/features/53-thumbnail-metadata-package.md section
+    # 42): RENDERING no longer jumps straight to COMPLETED -- PACKAGING
+    # (thumbnail.jpg + metadata.json) runs here first, synchronously, on
+    # this same call stack (EventBus.publish's own "handlers run
+    # synchronously" contract -- see app/core/events.py). This is still
+    # VideoComposerService's own single worker thread underneath (the
+    # publish() call that reaches this handler happens from inside that
+    # worker's own _run_job/_run_final_composition), so running lightweight
+    # local work here delays only the *next* queued render job's start by
+    # a few seconds, never anything else -- exactly section 55's own "reuse
+    # existing resource management, do not create a ThumbnailQueue."
     run = _find_run_by_render_job(payload["job_id"])
-    if run is not None:
-        factory_service.set_run_fields(run.id, status="COMPLETED", completed_at=_utcnow())
-        factory_service.complete_checkpoint(run.id, "RENDERING")
+    if run is None:
+        return
+    factory_service.complete_checkpoint(run.id, "RENDERING")
+    factory_service.set_run_fields(run.id, status="PACKAGING")
+    factory_service.start_checkpoint(run.id, "PACKAGING")
+    try:
+        _stage_package(run.id, run.project_id, get_settings())
+    except FactoryStageError as exc:
+        _mark_failed(run.id, exc.stage, exc.code, exc.message)
         _sync_batch_after_run_settled(run.id, run.project_id)
+        return
+    except Exception as exc:  # noqa: BLE001 -- never a raw stack trace to the user (section 24)
+        logger.exception("FactoryRun %s failed unexpectedly during PACKAGING", run.id)
+        _mark_failed(run.id, "PACKAGING", "UNEXPECTED_ERROR", str(exc))
+        _sync_batch_after_run_settled(run.id, run.project_id)
+        return
+    factory_service.complete_checkpoint(run.id, "PACKAGING")
+    factory_service.set_run_fields(run.id, status="COMPLETED", completed_at=_utcnow())
+    _sync_batch_after_run_settled(run.id, run.project_id)
 
 
 def _on_render_job_failed(payload: dict) -> None:

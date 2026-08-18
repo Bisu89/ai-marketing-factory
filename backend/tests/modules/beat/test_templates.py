@@ -265,10 +265,13 @@ class SaveProjectAsTemplateTests(unittest.TestCase):
         # Task 24, itself already a project-specific identifier this
         # invariant's own docstring doesn't literally hold for -- sanitize
         # does not strip it either, matching bgm_asset_id's own precedent).
+        # Task 27 added `package` (see docs/features/53-thumbnail-metadata
+        # -package.md) -- thumbnail_headline_enabled/thumbnail_candidate_count/
+        # max_hashtags/platform_profile, plain scalars only.
         self.assertEqual(
             fields,
             {
-                "render", "motion", "captions", "audio", "watermark", "factory", "content", "voice",
+                "render", "motion", "captions", "audio", "watermark", "package", "factory", "content", "voice",
                 "template_id", "template_version",
             },
         )

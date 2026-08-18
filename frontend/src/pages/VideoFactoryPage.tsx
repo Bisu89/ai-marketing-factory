@@ -28,6 +28,7 @@ import {
 } from "lucide-react";
 import { PageHeader } from "../components/PageHeader";
 import { ProductionProgress } from "../components/ProductionProgress";
+import { ReadyToPostCard } from "../components/ReadyToPostCard";
 import { EmptyState } from "../components/EmptyState";
 import { AssetBrowserModal } from "../components/AssetBrowserModal";
 import { assetFileUrl, getAsset } from "../api/asset";
@@ -1859,6 +1860,11 @@ export function VideoFactoryPage() {
                       {openFolderError}
                     </div>
                   )}
+                  {/* Task 27 -- see docs/features/53-thumbnail-metadata-package.md.
+                      A no-op for a plain manual/upload-based render (never has a
+                      package); shows itself only once a Factory-driven render's
+                      own PACKAGING stage has actually produced one. */}
+                  {projectId != null && <ReadyToPostCard projectId={projectId} jobId={job.id} />}
                 </>
               )}
               {(job.status === "failed" || job.status === "cancelled") && (

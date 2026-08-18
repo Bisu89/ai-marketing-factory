@@ -99,6 +99,7 @@ class _FactoryTestCase(unittest.TestCase):
             patch("app.api.v1.endpoints.voice_generate.SessionLocal", self.TestSessionLocal),
             patch("app.api.v1.endpoints.motion_generate.SessionLocal", self.TestSessionLocal),
             patch("app.api.v1.endpoints.audio_generate.SessionLocal", self.TestSessionLocal),
+            patch("app.api.v1.endpoints.package_generate.SessionLocal", self.TestSessionLocal),
         ]
         for p in self.patchers:
             p.start()

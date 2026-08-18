@@ -81,6 +81,14 @@ FACTORY_RUN_STATUSES = (
     "READY_TO_RENDER",
     "QUEUED",
     "RENDERING",
+    # Task 27 (see docs/features/53-thumbnail-metadata-package.md) --
+    # final.mp4 (Task 26) -> thumbnail.jpg + metadata.json, entirely local
+    # (frame extraction/scoring + deterministic title/description/hashtag
+    # templates, no AI image generation, no LLM call). Runs only after a
+    # real, completed render exists -- placed immediately after RENDERING,
+    # right before COMPLETED, matching this task's own target pipeline
+    # order (RENDER -> PACKAGE -> QA/COMPLETED).
+    "PACKAGING",
     "COMPLETED",
     "FAILED",
     "CANCELLED",
@@ -104,6 +112,7 @@ FACTORY_STAGES = (
     "READY_TO_RENDER",
     "QUEUED",
     "RENDERING",
+    "PACKAGING",
 )
 
 # A run in any of these statuses is "still doing something" -- exactly one
