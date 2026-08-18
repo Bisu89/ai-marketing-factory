@@ -15,8 +15,10 @@ from unittest.mock import patch
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
+from app.api.v1.endpoints.audio_generate import generate_project_audio_master
 from app.api.v1.endpoints.beat_generate import generate_beat_plan  # noqa: F401 (patched by name below)
 from app.api.v1.endpoints.composition_render import render_beats_for_job
+from app.api.v1.endpoints.voice_generate import generate_project_narration
 from app.api.v1.endpoints import factory_pipeline as factory_pipeline_module
 from app.api.v1.endpoints.factory_pipeline import (
     _execute_pipeline_sync,
@@ -715,13 +717,20 @@ class BatchIntegrationTests(_FactoryTestCase):
         factory_service.set_run_fields(completed_run.id, status="COMPLETED")
         batch_service.set_item_fields(batch.items[0].id, status="COMPLETED")
 
-        # Item 2: NEEDS_REVIEW, now fixed.
+        # Item 2: NEEDS_REVIEW, now fixed. Continuing this run all the way
+        # to QUEUED (asserted below) now requires a real Audio Master
+        # (Task 26 -- see docs/features/52-final-composer.md section 59:
+        # "Audio Master is required by default"), so Voice + Audio actually
+        # run for real here, matching _AudioStageTestCase's own established
+        # "exercise the real engine" pattern rather than a fabricated stub.
         draft2 = get_project_draft(batch.items[1].project_id)
         plan2 = BeatPlan(
             script_text=draft2.script_text, project_name=draft2.project_name, config=draft2.config,
             beats=[Beat(id="b1", order=1, type=BeatType.BODY, narration="Hi.", duration=1.0, asset_id=self.asset_id)],
         )
         update_project_beat_plan(batch.items[1].project_id, plan2)
+        generate_project_narration(batch.items[1].project_id, self.settings)
+        generate_project_audio_master(batch.items[1].project_id, self.settings)
         review_run, _ = factory_service.create_run(batch.items[1].project_id)
         factory_service.set_run_fields(review_run.id, status="NEEDS_REVIEW", requires_human_review=True)
         batch_service.set_item_fields(batch.items[1].id, status="NEEDS_REVIEW")

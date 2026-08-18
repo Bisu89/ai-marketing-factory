@@ -35,6 +35,25 @@ INSUFFICIENT_DISK_SPACE = "INSUFFICIENT_DISK_SPACE"
 # "we don't know if this would have succeeded."
 RENDER_INTERRUPTED = "RENDER_INTERRUPTED"
 
+# Task 26 (see docs/features/52-final-composer.md section 45) -- the Final
+# Composer's own stable codes, for a VideoComposeJob whose `audio_master_path`
+# is set (built entirely from already-produced Beat clips + Audio Master +
+# Captions, never TTS/live mixing). FINAL_COMPOSITION_FAILED is this
+# pipeline's phase-level default (PHASE_TO_ERROR_CODE["composing_final"]
+# below); the rest are raised directly, embedded as a message prefix, the
+# same way OUTPUT_VALIDATION_FAILED already is for "validating" -- see
+# VideoComposerService._validate_final_output.
+FINAL_COMPOSITION_FAILED = "FINAL_COMPOSITION_FAILED"
+MISSING_BEAT_ARTIFACT = "MISSING_BEAT_ARTIFACT"
+INVALID_BEAT_ARTIFACT = "INVALID_BEAT_ARTIFACT"
+AUDIO_MASTER_MISSING = "AUDIO_MASTER_MISSING"
+CAPTION_ARTIFACT_MISSING = "CAPTION_ARTIFACT_MISSING"
+WATERMARK_ARTIFACT_MISSING = "WATERMARK_ARTIFACT_MISSING"
+FINAL_OUTPUT_INVALID = "FINAL_OUTPUT_INVALID"
+FINAL_DURATION_MISMATCH = "FINAL_DURATION_MISMATCH"
+FINAL_STREAM_INVALID = "FINAL_STREAM_INVALID"
+FINAL_ENCODING_FAILED = "FINAL_ENCODING_FAILED"
+
 # Maps a VideoComposeJob.status value (the phase that was running when a job
 # failed) to the error code its report.json should carry. "queued" has no
 # entry -- a job can't fail before it starts running.
@@ -46,4 +65,6 @@ PHASE_TO_ERROR_CODE = {
     "mixing_audio": AUDIO_RENDER_FAILED,
     "finalizing": CAPTION_RENDER_FAILED,
     "validating": OUTPUT_VALIDATION_FAILED,
+    # Task 26 -- the Final Composer's own single one-pass phase.
+    "composing_final": FINAL_COMPOSITION_FAILED,
 }

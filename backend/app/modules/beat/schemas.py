@@ -434,6 +434,81 @@ class AudioProjectConfig(BaseModel):
         return value
 
 
+# Task 26 (see docs/features/52-final-composer.md sections 18-23) -- ffmpeg's
+# own `overlay` filter exposes W/H (main video)/w/h (overlay) directly, so a
+# position is just a named corner, not a free-form coordinate pair (section
+# 18's own "keep the MVP simple, do not build a watermark editor").
+WATERMARK_POSITIONS = ("top-left", "top-right", "bottom-left", "bottom-right")
+MIN_WATERMARK_OPACITY = 0.05
+MAX_WATERMARK_OPACITY = 1.0
+MIN_WATERMARK_SCALE = 0.02
+MAX_WATERMARK_SCALE = 0.6
+MAX_WATERMARK_MARGIN = 500
+
+
+class WatermarkProjectConfig(BaseModel):
+    """Section 18/19 -- an optional brand mark burned into the Final
+    Composer's own output. `asset_id` (no FK, same bare-reference
+    convention as AudioProjectConfig.bgm_asset_id) is deliberately the only
+    way to point at a watermark image -- section 19's own "do not accept
+    arbitrary frontend filesystem paths"; the composition root resolves it
+    against the existing Asset Library, exactly like BGM selection already
+    does.
+    """
+
+    model_config = ConfigDict(extra="forbid")
+
+    enabled: bool = False
+    asset_id: int | None = None
+    position: str = "bottom-right"
+    # Section 21 -- configurable, never one hardcoded brand-specific value.
+    opacity: float = 0.8
+    # Section 18 -- the watermark's rendered width as a fraction of the
+    # output video's own width (aspect-preserving); resolution-independent
+    # across SOCIAL_VERTICAL/landscape/square profiles alike.
+    scale: float = 0.15
+    # Section 22 -- keeps the mark off the frame edge ("safe area").
+    margin_x: int = 24
+    margin_y: int = 24
+
+    @field_validator("position")
+    @classmethod
+    def _known_position(cls, value: str) -> str:
+        if value not in WATERMARK_POSITIONS:
+            raise ValueError(f"Unknown watermark position {value!r}, must be one of {WATERMARK_POSITIONS}")
+        return value
+
+    @field_validator("opacity")
+    @classmethod
+    def _opacity_within_bounds(cls, value: float) -> float:
+        if not (MIN_WATERMARK_OPACITY <= value <= MAX_WATERMARK_OPACITY):
+            raise ValueError(
+                f"opacity must be between {MIN_WATERMARK_OPACITY} and {MAX_WATERMARK_OPACITY}, got {value}"
+            )
+        return value
+
+    @field_validator("scale")
+    @classmethod
+    def _scale_within_bounds(cls, value: float) -> float:
+        if not (MIN_WATERMARK_SCALE <= value <= MAX_WATERMARK_SCALE):
+            raise ValueError(f"scale must be between {MIN_WATERMARK_SCALE} and {MAX_WATERMARK_SCALE}, got {value}")
+        return value
+
+    @field_validator("margin_x", "margin_y")
+    @classmethod
+    def _margin_within_bounds(cls, value: int) -> int:
+        if not (0 <= value <= MAX_WATERMARK_MARGIN):
+            raise ValueError(f"margin must be between 0 and {MAX_WATERMARK_MARGIN}, got {value}")
+        return value
+
+    @field_validator("asset_id")
+    @classmethod
+    def _asset_id_positive(cls, value: int | None) -> int | None:
+        if value is not None and value <= 0:
+            raise ValueError("asset_id must be a positive integer if provided")
+        return value
+
+
 class FactoryProjectConfig(BaseModel):
     """One-click production policy (Task 18 -- see
     docs/features/44-one-click-factory-pipeline.md). Governs how
@@ -555,6 +630,7 @@ class ProjectConfig(BaseModel):
     motion: MotionProjectConfig = Field(default_factory=MotionProjectConfig)
     captions: CaptionsProjectConfig = Field(default_factory=CaptionsProjectConfig)
     audio: AudioProjectConfig = Field(default_factory=AudioProjectConfig)
+    watermark: WatermarkProjectConfig = Field(default_factory=WatermarkProjectConfig)
     factory: FactoryProjectConfig = Field(default_factory=FactoryProjectConfig)
     content: ContentProjectConfig = Field(default_factory=ContentProjectConfig)
     voice: VoiceProjectConfig = Field(default_factory=VoiceProjectConfig)

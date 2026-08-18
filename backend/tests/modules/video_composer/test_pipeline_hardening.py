@@ -78,7 +78,10 @@ class ValidateFinalOutputTests(unittest.TestCase):
         clip = _make_clip(self.tmp_path / "no_audio.mp4", 2.0, "red", 320, 568, 12.0, with_audio=False)
         with self.assertRaises(RuntimeError) as ctx:
             VideoComposerService._validate_final_output(clip, expected_duration=2.0, width=320, height=568, fps=12.0)
-        self.assertIn("OUTPUT_VALIDATION_FAILED", str(ctx.exception))
+        # Task 26 (see docs/features/52-final-composer.md section 42) --
+        # this check was tightened from "at least one audio stream" to
+        # "exactly one," which also gave it its own, more specific code.
+        self.assertIn("FINAL_STREAM_INVALID", str(ctx.exception))
         self.assertIn("audio", str(ctx.exception).lower())
 
 
@@ -108,6 +111,23 @@ class WriteRenderReportTests(unittest.TestCase):
         self.assertEqual(report["video"]["size_bytes"], 1024)
         self.assertEqual(report["beats"], 3)
         self.assertTrue(report["captions"])
+
+    def test_completed_report_precomposed_narration_has_zero_cost(self):
+        # Task 26 (see docs/features/52-final-composer.md) -- a real bug
+        # caught by manual verification: this method originally treated any
+        # narration_mode other than "local" as needing 1 external call,
+        # mis-billing every precomposed (Factory Final Composer) render even
+        # though narration/BGM/captions were all already produced locally.
+        video = self.library_dir / "final.mp4"
+        video.write_bytes(b"x" * 4096)
+        VideoComposerService._write_render_report(
+            self.library_dir, 4, status="completed", final_video=video, video_duration=6.0,
+            clip_count=3, width=1080, height=1920, fps=30.0, caption_enabled=True,
+            narration_mode="precomposed", timing={"composition": 1.0},
+        )
+        report = json.loads(self._report_path(4).read_text(encoding="utf-8"))
+        self.assertEqual(report["external_api_calls"], 0)
+        self.assertEqual(report["external_api_cost_estimate"], 0)
 
     def test_completed_report_tts_narration_reports_one_call_and_unknown_cost(self):
         video = self.library_dir / "final.mp4"

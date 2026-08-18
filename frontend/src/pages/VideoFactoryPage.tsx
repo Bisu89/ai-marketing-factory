@@ -58,6 +58,8 @@ import {
   CAPTION_PRESET_LABELS,
   MOTION_PRESET_DEFAULTS,
   SYSTEM_DEFAULT_PROJECT_CONFIG,
+  WATERMARK_POSITIONS,
+  WATERMARK_POSITION_LABELS,
   effectiveMotionPreset,
 } from "../types/videoFactory";
 import type {
@@ -75,6 +77,7 @@ import type {
   Scene,
   Template,
   VoiceProjectConfig,
+  WatermarkPosition,
   WorkingBeat,
 } from "../types/videoFactory";
 import type { CompositionPlan } from "../types/videoFactory";
@@ -104,6 +107,7 @@ const STATUS_LABEL: Record<VideoComposeJob["status"], string> = {
   subtitling: "Generating captions",
   mixing_audio: "Building audio",
   finalizing: "Burning captions",
+  composing_final: "Final composition",
   validating: "Validating output",
   completed: "Completed",
   failed: "Failed",
@@ -117,6 +121,7 @@ const IN_PROGRESS_STATUSES: VideoComposeJob["status"][] = [
   "subtitling",
   "mixing_audio",
   "finalizing",
+  "composing_final",
   "validating",
 ];
 
@@ -125,11 +130,19 @@ const IN_PROGRESS_STATUSES: VideoComposeJob["status"][] = [
 // Captions / Validating" checklist -- only phases the backend actually
 // reports (job.phase, job.progress_current/total) are ever shown; nothing
 // here is a guessed/interpolated percentage.
+// Task 26 -- see docs/features/52-final-composer.md. A Factory-driven
+// "Final Composer" render (narration_mode="precomposed") skips straight
+// from RENDER_BEATS to FINAL_COMPOSITION to VALIDATE_OUTPUT -- COMPOSE_VIDEO/
+// BUILD_AUDIO/BURN_CAPTIONS below are simply never that job's own
+// `job.phase`, so they stay "pending" until VALIDATE_OUTPUT flips the whole
+// list to "done" at once; a known, purely cosmetic quirk of this generic,
+// job-type-unaware checklist, not a functional issue.
 const PHASE_ORDER: { phase: RenderPhase; label: string }[] = [
   { phase: "RENDER_BEATS", label: "Rendering beats" },
   { phase: "COMPOSE_VIDEO", label: "Composing video" },
   { phase: "BUILD_AUDIO", label: "Building audio" },
   { phase: "BURN_CAPTIONS", label: "Burning captions" },
+  { phase: "FINAL_COMPOSITION", label: "Final composition" },
   { phase: "VALIDATE_OUTPUT", label: "Validating output" },
 ];
 
@@ -465,6 +478,17 @@ export function VideoFactoryPage() {
   const [captionsEnabled, setCaptionsEnabled] = useState(true);
   const [captionMaxWords, setCaptionMaxWords] = useState(SYSTEM_DEFAULT_PROJECT_CONFIG.captions.max_words);
   const [captionMaxLines, setCaptionMaxLines] = useState(SYSTEM_DEFAULT_PROJECT_CONFIG.captions.max_lines);
+  // Task 26 -- see docs/features/52-final-composer.md. watermarkAssetId
+  // mirrors musicAssetId's own convention: only a real, library-picked
+  // Asset can drive the Factory's own Final Composer (section 19 -- "do
+  // not accept arbitrary frontend filesystem paths"), so there is no
+  // hand-typed-path fallback here at all.
+  const [watermarkEnabled, setWatermarkEnabled] = useState(SYSTEM_DEFAULT_PROJECT_CONFIG.watermark.enabled);
+  const [watermarkAssetId, setWatermarkAssetId] = useState<number | null>(SYSTEM_DEFAULT_PROJECT_CONFIG.watermark.asset_id);
+  const [watermarkBrowserOpen, setWatermarkBrowserOpen] = useState(false);
+  const [watermarkPosition, setWatermarkPosition] = useState<WatermarkPosition>(SYSTEM_DEFAULT_PROJECT_CONFIG.watermark.position);
+  const [watermarkOpacity, setWatermarkOpacity] = useState(SYSTEM_DEFAULT_PROJECT_CONFIG.watermark.opacity);
+  const [watermarkScale, setWatermarkScale] = useState(SYSTEM_DEFAULT_PROJECT_CONFIG.watermark.scale);
   const [outputDir, setOutputDir] = useState("");
 
   // Task 22 -- see docs/features/48-voice-factory-local-tts.md. "local"
@@ -578,6 +602,13 @@ export function VideoFactoryPage() {
           setCaptionsEnabled(plan.config.captions.enabled);
           if (typeof plan.config.captions.max_words === "number") setCaptionMaxWords(plan.config.captions.max_words);
           if (typeof plan.config.captions.max_lines === "number") setCaptionMaxLines(plan.config.captions.max_lines);
+          if (plan.config.watermark) {
+            setWatermarkEnabled(plan.config.watermark.enabled);
+            setWatermarkAssetId(plan.config.watermark.asset_id);
+            setWatermarkPosition(plan.config.watermark.position);
+            setWatermarkOpacity(plan.config.watermark.opacity);
+            setWatermarkScale(plan.config.watermark.scale);
+          }
           setMusicVolume(plan.config.audio.music_volume);
           // Task 24 -- see docs/features/50-audio-master.md. These three
           // already drove the classic render's own composition plan but
@@ -747,6 +778,17 @@ export function VideoFactoryPage() {
         fade_out_sec: fadeOut,
         bgm_missing_policy: projectConfig.audio.bgm_missing_policy,
       },
+      // Task 26 -- see docs/features/52-final-composer.md. Same "derived
+      // fresh from on-screen controls" shape as captions/audio above.
+      watermark: {
+        enabled: watermarkEnabled,
+        asset_id: watermarkAssetId,
+        position: watermarkPosition,
+        opacity: watermarkOpacity,
+        scale: watermarkScale,
+        margin_x: SYSTEM_DEFAULT_PROJECT_CONFIG.watermark.margin_x,
+        margin_y: SYSTEM_DEFAULT_PROJECT_CONFIG.watermark.margin_y,
+      },
       // Not sourced from any Step 4 control (this page has no factory-policy
       // UI) -- preserved as-loaded so saving here never silently resets a
       // project's own auto-assign/review policy back to defaults.
@@ -887,6 +929,13 @@ export function VideoFactoryPage() {
     setCaptionsEnabled(snapshot.captions.enabled);
     setCaptionMaxWords(snapshot.captions.max_words);
     setCaptionMaxLines(snapshot.captions.max_lines);
+    if (snapshot.watermark) {
+      setWatermarkEnabled(snapshot.watermark.enabled);
+      setWatermarkAssetId(snapshot.watermark.asset_id);
+      setWatermarkPosition(snapshot.watermark.position);
+      setWatermarkOpacity(snapshot.watermark.opacity);
+      setWatermarkScale(snapshot.watermark.scale);
+    }
     setMusicVolume(snapshot.audio.music_volume);
     setDuckingRatio(snapshot.audio.ducking_ratio);
     setFadeIn(snapshot.audio.fade_in_sec);
@@ -1353,6 +1402,86 @@ export function VideoFactoryPage() {
               </select>
             </label>
           </div>
+
+          <h2 className="vf-section-title">Watermark</h2>
+          <p className="vf-field-label">
+            Optional brand mark burned into One-Click Factory's own Final Composer output. Pick a PNG (transparency
+            supported) from the Asset Library -- a hand-typed path is never accepted.
+          </p>
+          <label className="vf-field" style={{ flexDirection: "row", alignItems: "center", gap: "0.5rem" }}>
+            <input type="checkbox" checked={watermarkEnabled} onChange={(e) => setWatermarkEnabled(e.target.checked)} />
+            <span>Burn in a watermark</span>
+          </label>
+          <label className="vf-field">
+            <span>Watermark image</span>
+            <div className="vf-asset-row">
+              <button className="btn btn-secondary" onClick={() => setWatermarkBrowserOpen(true)} disabled={!watermarkEnabled}>
+                <ImageIcon size={14} />
+                Choose Watermark
+              </button>
+              {watermarkAssetId != null && (
+                <button className="btn btn-secondary" onClick={() => setWatermarkAssetId(null)} disabled={!watermarkEnabled}>
+                  <Trash2 size={14} />
+                </button>
+              )}
+            </div>
+            {watermarkAssetId != null && (
+              <img className="vf-watermark-preview" src={assetFileUrl(watermarkAssetId)} alt="Watermark preview" />
+            )}
+            {watermarkEnabled && watermarkAssetId == null && (
+              <span className="vf-field-label">No watermark chosen yet -- rendering will proceed without one.</span>
+            )}
+          </label>
+          <div className="vf-grid">
+            <label className="vf-field">
+              <span>Position</span>
+              <select
+                value={watermarkPosition}
+                disabled={!watermarkEnabled}
+                onChange={(e) => setWatermarkPosition(e.target.value as WatermarkPosition)}
+              >
+                {WATERMARK_POSITIONS.map((position) => (
+                  <option key={position} value={position}>
+                    {WATERMARK_POSITION_LABELS[position]}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label className="vf-field">
+              <span>Opacity ({watermarkOpacity.toFixed(2)})</span>
+              <input
+                type="range"
+                min={0.05}
+                max={1}
+                step={0.05}
+                value={watermarkOpacity}
+                disabled={!watermarkEnabled}
+                onChange={(e) => setWatermarkOpacity(Number(e.target.value))}
+              />
+            </label>
+            <label className="vf-field">
+              <span>Size ({Math.round(watermarkScale * 100)}% of video width)</span>
+              <input
+                type="range"
+                min={0.02}
+                max={0.6}
+                step={0.01}
+                value={watermarkScale}
+                disabled={!watermarkEnabled}
+                onChange={(e) => setWatermarkScale(Number(e.target.value))}
+              />
+            </label>
+          </div>
+          {watermarkBrowserOpen && (
+            <AssetBrowserModal
+              assetType="image"
+              onSelect={(asset) => {
+                setWatermarkAssetId(asset.id);
+                setWatermarkBrowserOpen(false);
+              }}
+              onClose={() => setWatermarkBrowserOpen(false)}
+            />
+          )}
 
           <div className="vf-grid">
             <label className="vf-field">

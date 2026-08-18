@@ -161,6 +161,9 @@ def _run_preflight(
     narration_asset_paths: dict[int, str] | None,
     output_dir: str | None,
     min_free_disk_mb: int = 500,
+    audio_master_path: str | None = None,
+    captions_ass_path: str | None = None,
+    watermark_path: str | None = None,
 ) -> None:
     """Validates everything cheap to check before any expensive ffmpeg work
     starts (Task 10 -- see docs/features/37-e2e-pipeline-hardening.md),
@@ -232,6 +235,18 @@ def _run_preflight(
 
     if plan.music_path and not Path(plan.music_path).exists():
         raise FileOperationError(f"{render_errors.MISSING_AUDIO}: Background music file not found: {plan.music_path}")
+
+    # Task 26 (see docs/features/52-final-composer.md section 6) -- Final
+    # Composer's own three project-level artifacts, when this render is
+    # driven by factory_pipeline.py's own _stage_render (audio_master_path
+    # set). All three come from validated artifact metadata resolved by
+    # that composition root, never a raw frontend-supplied path (section 19).
+    if audio_master_path is not None and not Path(audio_master_path).exists():
+        raise FileOperationError(f"{render_errors.AUDIO_MASTER_MISSING}: Audio Master file not found: {audio_master_path}")
+    if captions_ass_path is not None and not Path(captions_ass_path).exists():
+        raise FileOperationError(f"{render_errors.CAPTION_ARTIFACT_MISSING}: Captions file not found: {captions_ass_path}")
+    if watermark_path is not None and not Path(watermark_path).exists():
+        raise FileOperationError(f"{render_errors.WATERMARK_ARTIFACT_MISSING}: Watermark file not found: {watermark_path}")
 
     for font_path in (FONT_PATH, FONT_PATH_BOLD):
         if not Path(font_path).exists():
@@ -485,6 +500,14 @@ def render_composition(
     min_free_disk_mb: int = 500,
     project_id: int | None = None,
     library_dir: str | None = None,
+    audio_master_path: str | None = None,
+    captions_ass_path: str | None = None,
+    watermark_path: str | None = None,
+    watermark_position: str = "bottom-right",
+    watermark_opacity: float = 1.0,
+    watermark_scale: float = 0.15,
+    watermark_margin_x: int = 24,
+    watermark_margin_y: int = 24,
 ) -> int:
     """Turns a CompositionPlan into a persistent, queued VideoComposeJob --
     this app's `render_project`-equivalent single entry point (nothing else
@@ -517,6 +540,15 @@ def render_composition(
     valid GENERATING_MOTION-stage artifact for each beat before rendering
     it fresh. None for either is a complete no-op for this cache-reuse path
     -- the plain, non-Factory render flow is unchanged.
+
+    `audio_master_path` (Task 26 -- see docs/features/52-final-composer.md,
+    both optional, default None): when set (factory_pipeline.py's own
+    _stage_render always supplies it, a real, already-validated
+    audio_master.wav; the plain create_video_compose_job_from_composition
+    endpoint below never does), this render skips TTS/local-narration
+    generation and _mix_audio entirely -- the given file becomes the sole
+    final audio track, and `_resolve_narration` below is never even called.
+    `captions_ass_path`/`watermark_*` are only meaningful together with it.
     """
     enforce_local_rendering_policy()
     # Validates `profile` is a real, known name (raises ValidationError
@@ -534,12 +566,20 @@ def render_composition(
     render_profile = get_render_profile(profile)
 
     preflight_start = time.monotonic()
-    _run_preflight(plan, asset_paths, narration_asset_paths, output_dir, min_free_disk_mb)
+    _run_preflight(
+        plan, asset_paths, narration_asset_paths, output_dir, min_free_disk_mb,
+        audio_master_path=audio_master_path, captions_ass_path=captions_ass_path, watermark_path=watermark_path,
+    )
     preflight_seconds = time.monotonic() - preflight_start
 
     transition_duration = _derive_transition_duration(plan.scenes)
     sfx_cues = _build_sfx_cues(plan.scenes, transition_duration)
-    narration_mode, beat_narration_specs = _resolve_narration(plan, narration_asset_paths, transition_duration)
+    if audio_master_path is not None:
+        # Task 26 -- Final Composer supplies its own complete audio; no
+        # per-beat narration timeline to build, no TTS to run.
+        narration_mode, beat_narration_specs = "precomposed", None
+    else:
+        narration_mode, beat_narration_specs = _resolve_narration(plan, narration_asset_paths, transition_duration)
 
     # Persisted so the worker can render beats itself (render_beats_for_job
     # above) and so a later retry_job() can rebuild an equivalent request.
@@ -556,17 +596,23 @@ def render_composition(
         "library_dir": library_dir,
     }
 
+    # Section 14/17: captions are burned in only when a real ASS artifact is
+    # actually available -- for narration_mode="precomposed" that means
+    # `captions_ass_path` was actually given (Task 25's Caption Engine ran
+    # and produced a valid captions.ass); for "local" there's no word-
+    # boundary data to caption from at all (docs/features/36-audio-pipeline.md).
+    if narration_mode == "precomposed":
+        burn_subtitles = captions_ass_path is not None
+    else:
+        burn_subtitles = narration_mode != "local"
+
     job_id = service.create_job(
         title=title,
         script_text=plan.narration_script or "",
         voice=plan.voice,
         music_volume=plan.music_volume,
         transition_duration=transition_duration,
-        # No word-boundary data exists for local per-beat narration (see
-        # _resolve_narration), so there's nothing to burn captions from in
-        # that mode -- captions are out of this task's scope regardless
-        # (docs/features/36-audio-pipeline.md).
-        burn_subtitles=narration_mode != "local",
+        burn_subtitles=burn_subtitles,
         requested_output_dir=output_dir,
         narration_volume=plan.narration_volume,
         music_ducking_ratio=plan.music_ducking_ratio,
@@ -579,8 +625,20 @@ def render_composition(
         render_profile=render_profile.name,
         preflight_seconds=preflight_seconds,
         composition_request_json=composition_request_json,
+        audio_master_path=audio_master_path,
+        captions_ass_path=captions_ass_path,
+        watermark_enabled=watermark_path is not None,
+        watermark_path=watermark_path,
+        watermark_position=watermark_position,
+        watermark_opacity=watermark_opacity,
+        watermark_scale=watermark_scale,
+        watermark_margin_x=watermark_margin_x,
+        watermark_margin_y=watermark_margin_y,
     )
-    if plan.music_path:
+    # Task 26: a precomposed job's audio comes entirely from audio_master_path
+    # -- plan.music_path (the old per-job BGM field) is never separately
+    # attached, since Audio Master already contains BGM if any was mixed in.
+    if plan.music_path and narration_mode != "precomposed":
         service.set_music_path(job_id, plan.music_path)
 
     service.enqueue(job_id)

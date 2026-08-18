@@ -258,10 +258,19 @@ class SaveProjectAsTemplateTests(unittest.TestCase):
         # language/tone/style/target_duration/audience/cta_enabled, same
         # "plain scalars only" shape, so the invariant holds with it too.
         # Task 22 added `voice` (see docs/features/48-voice-factory-local-tts.md)
-        # -- provider/voice_id/language/speed/pitch, same shape again.
+        # -- provider/voice_id/language/speed/pitch, same shape again. Task 26
+        # added `watermark` (see docs/features/52-final-composer.md) --
+        # enabled/position/opacity/scale/margin_x/margin_y, plus `asset_id`
+        # (same bare-reference convention as AudioProjectConfig.bgm_asset_id,
+        # Task 24, itself already a project-specific identifier this
+        # invariant's own docstring doesn't literally hold for -- sanitize
+        # does not strip it either, matching bgm_asset_id's own precedent).
         self.assertEqual(
             fields,
-            {"render", "motion", "captions", "audio", "factory", "content", "voice", "template_id", "template_version"},
+            {
+                "render", "motion", "captions", "audio", "watermark", "factory", "content", "voice",
+                "template_id", "template_version",
+            },
         )
 
 

@@ -68,6 +68,10 @@ class VideoComposeJobOut(BaseModel):
     transition_duration: float
     burn_subtitles: bool
     requested_output_dir: str | None
+    # Task 26 -- see docs/features/52-final-composer.md. True only for a
+    # Factory-driven "Final Composer" job (narration_mode="precomposed");
+    # every plain upload-based Video Composer job is always False.
+    watermark_enabled: bool = False
     status: str
     # Task 11 coarse status/phase (see app.modules.video_composer.models.
     # COARSE_STATUS/RENDER_PHASE) -- `status` above remains the detailed,

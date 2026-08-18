@@ -156,6 +156,18 @@ ERROR_CLASSIFICATION: dict[str, str] = {
     "AUDIO_RENDER_FAILED": TRANSIENT,
     "INSUFFICIENT_DISK_SPACE": USER_ACTION_REQUIRED,
     "RENDER_INTERRUPTED": TRANSIENT,
+    # Task 26's own Final Composer codes (see docs/features/52-final-composer.md
+    # section 45) -- same render_errors passthrough reasoning as above.
+    "FINAL_COMPOSITION_FAILED": TRANSIENT,  # the phase-level default -- usually a real ffmpeg/filesystem hiccup
+    "MISSING_BEAT_ARTIFACT": TRANSIENT,  # a retry re-renders Beat clips fresh (or reuses the Motion cache)
+    "INVALID_BEAT_ARTIFACT": TRANSIENT,
+    "AUDIO_MASTER_MISSING": USER_ACTION_REQUIRED,  # the Audio stage needs to (re)run first -- a blind render retry won't fix it
+    "CAPTION_ARTIFACT_MISSING": TRANSIENT,  # a rare race between _stage_render's resolution and the worker actually running
+    "WATERMARK_ARTIFACT_MISSING": USER_ACTION_REQUIRED,  # a manually-selected watermark asset no longer exists -- pick a different one
+    "FINAL_OUTPUT_INVALID": TRANSIENT,
+    "FINAL_DURATION_MISMATCH": PERMANENT,  # an algorithmic/pipeline consistency problem on well-formed input -- unlikely to fix itself on retry
+    "FINAL_STREAM_INVALID": TRANSIENT,
+    "FINAL_ENCODING_FAILED": TRANSIENT,
 }
 
 

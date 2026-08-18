@@ -65,11 +65,12 @@ from app.api.v1.endpoints.content_generate import (
     generate_script,
     validate_script_text,
 )
-from app.api.v1.endpoints.audio_generate import generate_project_audio_master
-from app.api.v1.endpoints.caption_generate import generate_project_captions
+from app.api.v1.endpoints.audio_generate import audio_master_is_valid, audio_master_path, generate_project_audio_master
+from app.api.v1.endpoints.caption_generate import captions_ass_path, captions_is_valid, generate_project_captions
 from app.api.v1.endpoints.motion_generate import generate_project_motion
 from app.api.v1.endpoints.quality_gate import compute_asset_confidence, run_quality_check, tokenize_prose
 from app.api.v1.endpoints.voice_generate import generate_project_narration
+from app.core import render_errors
 from app.core.concurrency import ai_generation_semaphore
 from app.core.config import Settings, get_settings
 from app.core.exceptions import ExternalServiceError, FileOperationError, NotFoundError, ValidationError
@@ -525,9 +526,56 @@ def _stage_render(
     here on is entirely driven by VideoComposerService's own worker thread
     + the render.job.* events it already publishes (see
     register_factory_event_handlers below).
+
+    Task 26 (see docs/features/52-final-composer.md) -- a Factory render is
+    always the Final Composer: it resolves Audio Master (required, section
+    59) + Captions (optional, only when actually enabled and valid) +
+    Watermark (optional, only when actually enabled and its Asset exists)
+    up front, and hands all three straight to render_composition, which
+    puts the job on the exact same, single existing render queue/worker as
+    every other job -- never a second queue.
     """
     factory_service.set_run_fields(run_id, status="READY_TO_RENDER")
     factory_service.start_checkpoint(run_id, "READY_TO_RENDER")
+
+    # Section 59: the Final Composer always requires a real Audio Master --
+    # a Factory render never falls back to the old per-job TTS/local-
+    # narration mixing pathway.
+    if not audio_master_is_valid(project_id, settings):
+        raise FactoryStageError(
+            "READY_TO_RENDER", render_errors.AUDIO_MASTER_MISSING,
+            "This project has no valid Audio Master to compose the final video from.",
+        )
+    resolved_audio_master_path = str(audio_master_path(project_id, settings.library_dir))
+
+    # Section 14/17: captions are only wired in when actually enabled AND a
+    # real, valid captions.ass exists -- disabled or stale-and-unrecovered
+    # captions simply compose without them, never a hard failure at this
+    # stage (Quality Gate's own CAPTIONS_ARTIFACT_MISSING warning, Task 25,
+    # is what surfaces a stale artifact to the user).
+    resolved_captions_path = None
+    if plan.config.captions.enabled and captions_is_valid(project_id, settings):
+        resolved_captions_path = str(captions_ass_path(project_id, settings.library_dir))
+
+    # Section 18/19: watermark comes only from the Asset Library, never a
+    # raw path -- a manually-selected Asset that no longer exists is a
+    # genuine, user-facing problem (same reasoning as audio_generate.py's
+    # own resolve_bgm_asset raising BGM_NOT_FOUND for the identical case).
+    resolved_watermark_path = None
+    watermark_config = plan.config.watermark
+    if watermark_config.enabled and watermark_config.asset_id is not None:
+        db = SessionLocal()
+        try:
+            try:
+                watermark_asset = AssetService(db).get(watermark_config.asset_id)
+            except NotFoundError as exc:
+                raise FactoryStageError(
+                    "READY_TO_RENDER", render_errors.WATERMARK_ARTIFACT_MISSING,
+                    f"Selected watermark asset {watermark_config.asset_id} no longer exists.",
+                ) from exc
+            resolved_watermark_path = watermark_asset.path
+        finally:
+            db.close()
 
     db = SessionLocal()
     try:
@@ -550,6 +598,14 @@ def _stage_render(
             min_free_disk_mb=settings.min_free_disk_mb,
             project_id=project_id,
             library_dir=settings.library_dir,
+            audio_master_path=resolved_audio_master_path,
+            captions_ass_path=resolved_captions_path,
+            watermark_path=resolved_watermark_path,
+            watermark_position=watermark_config.position,
+            watermark_opacity=watermark_config.opacity,
+            watermark_scale=watermark_config.scale,
+            watermark_margin_x=watermark_config.margin_x,
+            watermark_margin_y=watermark_config.margin_y,
         )
     except (ValidationError, FileOperationError) as exc:
         raise FactoryStageError("QUEUED", RENDER_FAILED, str(exc)) from exc

@@ -6,6 +6,11 @@ export type VideoComposeStatus =
   | "subtitling"
   | "mixing_audio"
   | "finalizing"
+  // Task 26 -- see docs/features/52-final-composer.md. The Final
+  // Composer's own single one-pass phase (concat + captions + watermark +
+  // audio mux + encode at once) -- only entered for a Factory-driven
+  // render; every other job still goes through the phases above.
+  | "composing_final"
   | "validating"
   | "completed"
   | "failed"
@@ -20,6 +25,7 @@ export type RenderPhase =
   | "COMPOSE_VIDEO"
   | "BUILD_AUDIO"
   | "BURN_CAPTIONS"
+  | "FINAL_COMPOSITION"
   | "VALIDATE_OUTPUT";
 
 export interface VideoComposeJob {
@@ -35,6 +41,10 @@ export interface VideoComposeJob {
   transition_duration: number;
   burn_subtitles: boolean;
   requested_output_dir: string | null;
+  // Task 26 -- see docs/features/52-final-composer.md. True only for a
+  // Factory-driven "Final Composer" job; always false for a plain
+  // upload-based Video Composer job.
+  watermark_enabled: boolean;
   status: VideoComposeStatus;
   clip_count: number;
   output_path: string | null;

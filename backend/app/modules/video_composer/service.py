@@ -30,7 +30,8 @@ logger = logging.getLogger(__name__)
 # it was genuinely RUNNING when the process died (see _recover_pending_jobs,
 # Task 11 -- docs/features/38-render-job-hardening.md).
 PENDING_STATUSES = (
-    "queued", "rendering_beats", "merging", "narrating", "subtitling", "mixing_audio", "finalizing", "validating",
+    "queued", "rendering_beats", "merging", "narrating", "subtitling", "mixing_audio", "finalizing",
+    "composing_final", "validating",
 )
 _RUNNING_STATUSES = tuple(s for s in PENDING_STATUSES if s != "queued")
 
@@ -54,6 +55,14 @@ BeatRenderer = Callable[
 # a second without anything actually being wrong; this is not an allowance
 # for narration/mixing genuinely changing the video's length.
 _OUTPUT_DURATION_TOLERANCE_SEC = 0.5
+
+# Task 26 (see docs/features/52-final-composer.md section 13) -- video
+# duration is the sum of already-Voice-settled, already-frame-quantized
+# Beat clip durations (Task 23's own per-clip tolerance is 2 frames each);
+# across several beats that can add up to a few hundred ms without anything
+# actually being wrong. Not an allowance for a genuine timing disagreement
+# between Beat clips and the Audio Master.
+_FINAL_DURATION_TOLERANCE_SEC = 1.0
 
 FONT_PATH = "C:/Windows/Fonts/arial.ttf"
 # The karaoke subtitle style below renders Bold=1, so word widths must be
@@ -91,6 +100,19 @@ CAPTION_PRESET_CONFIG = {
     "quote": {"font_bold": False, "italic": True, "font_scale": 0.9, "margin_v_frac": 0.45, "alignment": 5},
 }
 assert set(CAPTION_PRESET_CONFIG) == set(CAPTION_PRESETS)
+
+# Task 26 (see docs/features/52-final-composer.md section 18/22) -- ffmpeg's
+# own `overlay` filter exposes W/H (main video) and w/h (overlay) as filter
+# expression variables directly, so position is just an (x, y) expression
+# pair per corner; margins keep the mark off the frame edge (section 22's
+# "safe area"), never flush against it.
+WATERMARK_POSITIONS = ("top-left", "top-right", "bottom-left", "bottom-right")
+_WATERMARK_POSITION_EXPR: dict[str, Callable[[int, int], tuple[str, str]]] = {
+    "top-left": lambda mx, my: (f"{mx}", f"{my}"),
+    "top-right": lambda mx, my: (f"W-w-{mx}", f"{my}"),
+    "bottom-left": lambda mx, my: (f"{mx}", f"H-h-{my}"),
+    "bottom-right": lambda mx, my: (f"W-w-{mx}", f"H-h-{my}"),
+}
 
 
 class VideoComposerService:
@@ -169,6 +191,15 @@ class VideoComposerService:
         render_profile: str = "SOCIAL_VERTICAL",
         preflight_seconds: float | None = None,
         composition_request_json: dict | None = None,
+        audio_master_path: str | None = None,
+        captions_ass_path: str | None = None,
+        watermark_enabled: bool = False,
+        watermark_path: str | None = None,
+        watermark_position: str = "bottom-right",
+        watermark_opacity: float = 1.0,
+        watermark_scale: float = 0.15,
+        watermark_margin_x: int = 24,
+        watermark_margin_y: int = 24,
     ) -> int:
         db = SessionLocal()
         try:
@@ -195,6 +226,16 @@ class VideoComposerService:
                 # equivalent request -- None for the plain upload-based
                 # Video Composer flow, which has real clips already.
                 composition_request_json=composition_request_json,
+                # Task 26 -- Final Composer (see docs/features/52-final-composer.md).
+                audio_master_path=audio_master_path,
+                captions_ass_path=captions_ass_path,
+                watermark_enabled=watermark_enabled,
+                watermark_path=watermark_path,
+                watermark_position=watermark_position,
+                watermark_opacity=watermark_opacity,
+                watermark_scale=watermark_scale,
+                watermark_margin_x=watermark_margin_x,
+                watermark_margin_y=watermark_margin_y,
                 status="queued",
             )
             db.add(job)
@@ -297,6 +338,15 @@ class VideoComposerService:
                 requested_output_dir=original.requested_output_dir,
                 render_profile=original.render_profile,
                 composition_request_json=original.composition_request_json,
+                audio_master_path=original.audio_master_path,
+                captions_ass_path=original.captions_ass_path,
+                watermark_enabled=original.watermark_enabled,
+                watermark_path=original.watermark_path,
+                watermark_position=original.watermark_position,
+                watermark_opacity=original.watermark_opacity,
+                watermark_scale=original.watermark_scale,
+                watermark_margin_x=original.watermark_margin_x,
+                watermark_margin_y=original.watermark_margin_y,
                 previous_job_id=original.id,
                 status="queued",
             )
@@ -488,6 +538,15 @@ class VideoComposerService:
             requested_output_dir = job.requested_output_dir
             preflight_seconds = job.preflight_seconds
             beat_render_seconds = job.beat_render_seconds
+            audio_master_path = job.audio_master_path
+            captions_ass_path = job.captions_ass_path
+            watermark_enabled = job.watermark_enabled
+            watermark_path = job.watermark_path
+            watermark_position = job.watermark_position
+            watermark_opacity = job.watermark_opacity
+            watermark_scale = job.watermark_scale
+            watermark_margin_x = job.watermark_margin_x
+            watermark_margin_y = job.watermark_margin_y
         finally:
             db.close()
 
@@ -506,6 +565,20 @@ class VideoComposerService:
         default_output_dir = work_dir / "output"
         output_dir = Path(requested_output_dir) if requested_output_dir else default_output_dir
         output_dir.mkdir(parents=True, exist_ok=True)
+
+        if narration_mode == "precomposed":
+            # Task 26 -- Final Composer (see docs/features/52-final-composer.md).
+            # A completely different, single-pass pipeline: no TTS, no
+            # local-narration timeline, no _mix_audio, no crossfade merge --
+            # every other narration_mode value below is entirely unaffected.
+            self._run_final_composition(
+                job_id, clip_paths, audio_master_path,
+                captions_ass_path if burn_subtitles else None,
+                watermark_path if watermark_enabled else None,
+                watermark_position, watermark_opacity, watermark_scale, watermark_margin_x, watermark_margin_y,
+                output_dir, tmp_dir, preflight_seconds, beat_render_seconds,
+            )
+            return
 
         merged_video = tmp_dir / "merged.mp4"
         # Extension matches actual content: edge_tts (_run_narration) writes
@@ -690,6 +763,273 @@ class VideoComposerService:
             db.close()
         self._log(job_id, f"job completed ({render_seconds:.2f}s)")
         self._publish("render.job.completed", {"job_id": job_id, "output_path": str(final_video)})
+
+    # --- Final Composer (Task 26 -- see docs/features/52-final-composer.md) --
+
+    def _run_final_composition(
+        self,
+        job_id: int,
+        clip_paths: list[Path],
+        audio_master_path: str,
+        captions_ass_path: str | None,
+        watermark_path: str | None,
+        watermark_position: str,
+        watermark_opacity: float,
+        watermark_scale: float,
+        watermark_margin_x: int,
+        watermark_margin_y: int,
+        output_dir: Path,
+        tmp_dir: Path,
+        preflight_seconds: float | None,
+        beat_render_seconds: float | None,
+    ) -> None:
+        """Beat clips + Audio Master + Captions + optional watermark ->
+        final.mp4 in ONE ffmpeg pass (section 33: "prefer one final
+        composition pass" -- no intermediate merged/captioned/watermarked
+        full-video file ever touches disk). Only ever called from _run_job
+        when narration_mode == "precomposed"; the original multi-pass
+        merge/narrate/subtitle/mix/finalize pipeline above is completely
+        untouched for every other job.
+
+        Section 6/8: every input is validated -- Beat clip existence/
+        readability/video-stream, Audio Master existence/readability,
+        Captions/Watermark existence when provided -- *before* the only
+        ffmpeg call this method makes (_compose_final); nothing partial is
+        ever written to the canonical output path.
+        """
+        final_video = output_dir / "video_hoan_chinh.mp4"
+        tmp_final_video = output_dir / ".video_hoan_chinh.tmp.mp4"
+
+        def _checkpoint() -> None:
+            if self._is_cancelled(job_id):
+                raise RenderCancelled()
+
+        render_start = time.monotonic()
+        composing_seconds = validation_seconds = 0.0
+        width = height = 0
+        fps = 0.0
+        audio_duration = 0.0
+        try:
+            _checkpoint()
+            self._set_status(job_id, "composing_final")
+            self._log(job_id, "phase started: FINAL_COMPOSITION")
+            stage_start = time.monotonic()
+
+            clip_durations: list[float] = []
+            for index, clip in enumerate(clip_paths):
+                if not clip.exists():
+                    raise RuntimeError(
+                        f"{render_errors.MISSING_BEAT_ARTIFACT}: Beat clip {index + 1}/{len(clip_paths)} "
+                        f"not found: {clip}"
+                    )
+                try:
+                    clip_width, clip_height, clip_fps = self._probe_video_info(clip)
+                    clip_duration = self._probe_duration(clip)
+                except (ValueError, ZeroDivisionError) as exc:
+                    raise RuntimeError(
+                        f"{render_errors.INVALID_BEAT_ARTIFACT}: Beat clip {index + 1}/{len(clip_paths)} "
+                        f"is not a readable video: {clip} ({exc})"
+                    ) from exc
+                if index == 0:
+                    width, height, fps = clip_width, clip_height, clip_fps
+                clip_durations.append(clip_duration)
+
+            if not Path(audio_master_path).exists():
+                raise RuntimeError(
+                    f"{render_errors.AUDIO_MASTER_MISSING}: Audio Master file not found: {audio_master_path}"
+                )
+            try:
+                audio_duration = self._probe_duration(Path(audio_master_path))
+            except ValueError as exc:
+                raise RuntimeError(
+                    f"{render_errors.AUDIO_MASTER_MISSING}: Audio Master is not a readable audio file: "
+                    f"{audio_master_path}"
+                ) from exc
+
+            if captions_ass_path is not None and not Path(captions_ass_path).exists():
+                raise RuntimeError(
+                    f"{render_errors.CAPTION_ARTIFACT_MISSING}: Captions file not found: {captions_ass_path}"
+                )
+            if watermark_path is not None and not Path(watermark_path).exists():
+                raise RuntimeError(
+                    f"{render_errors.WATERMARK_ARTIFACT_MISSING}: Watermark file not found: {watermark_path}"
+                )
+
+            # Section 9/13: video duration is the sum of Beat clip durations
+            # (gapless concat -- see _compose_final, no crossfade eaten
+            # time); Audio Master is authoritative for the final trim, but a
+            # real mismatch beyond tolerance means something upstream
+            # disagrees about timing, not something to silently paper over.
+            video_duration = sum(clip_durations)
+            duration_diff = abs(video_duration - audio_duration)
+            if duration_diff > _FINAL_DURATION_TOLERANCE_SEC:
+                raise RuntimeError(
+                    f"{render_errors.FINAL_DURATION_MISMATCH}: video={video_duration:.2f}s "
+                    f"audio={audio_duration:.2f}s diff={duration_diff:.2f}s "
+                    f"(tolerance {_FINAL_DURATION_TOLERANCE_SEC}s)"
+                )
+
+            _checkpoint()
+            try:
+                self._compose_final(
+                    clip_paths, Path(audio_master_path),
+                    Path(captions_ass_path) if captions_ass_path else None,
+                    Path(watermark_path) if watermark_path else None,
+                    watermark_position, watermark_opacity, watermark_scale, watermark_margin_x, watermark_margin_y,
+                    width, height, audio_duration, tmp_final_video,
+                )
+            except RuntimeError as exc:
+                raise RuntimeError(f"{render_errors.FINAL_ENCODING_FAILED}: {exc}") from exc
+            composing_seconds = time.monotonic() - stage_start
+            self._log(job_id, f"phase completed: FINAL_COMPOSITION ({composing_seconds:.2f}s)")
+
+            _checkpoint()
+            self._set_status(job_id, "validating")
+            self._log(job_id, "phase started: VALIDATE_OUTPUT")
+            stage_start = time.monotonic()
+            self._validate_final_output(
+                tmp_final_video, expected_duration=audio_duration, width=width, height=height, fps=fps
+            )
+            tmp_final_video.replace(final_video)
+            validation_seconds = time.monotonic() - stage_start
+            self._log(job_id, f"phase completed: VALIDATE_OUTPUT ({validation_seconds:.2f}s)")
+        except RenderCancelled:
+            tmp_final_video.unlink(missing_ok=True)
+            self._finish_cancelled(job_id, self._get_status(job_id) or "unknown")
+            return
+        except Exception as exc:
+            failed_phase = self._get_status(job_id) or "unknown"
+            logger.exception("Video-compose job %s failed in phase %s", job_id, failed_phase)
+            tmp_final_video.unlink(missing_ok=True)
+            self._fail_job(
+                job_id, failed_phase, str(exc),
+                timing={
+                    "preflight": preflight_seconds,
+                    "beat_render": beat_render_seconds,
+                    "composition": round(composing_seconds, 2) or None,
+                    "validation": round(validation_seconds, 2) or None,
+                },
+            )
+            return
+        finally:
+            if not get_settings().debug:
+                shutil.rmtree(tmp_dir, ignore_errors=True)
+
+        render_seconds = time.monotonic() - render_start
+        self._write_render_metadata(
+            final_video, audio_duration, render_seconds, width=width, height=height, fps=fps,
+            clip_count=len(clip_paths),
+        )
+        self._write_render_report(
+            self._library_dir, job_id, status="completed", final_video=final_video, video_duration=audio_duration,
+            clip_count=len(clip_paths), width=width, height=height, fps=fps,
+            caption_enabled=captions_ass_path is not None, narration_mode="precomposed",
+            timing={
+                "preflight": preflight_seconds,
+                "beat_render": beat_render_seconds,
+                "composition": round(composing_seconds, 2),
+                "validation": round(validation_seconds, 2),
+                "total": round(render_seconds, 2),
+            },
+        )
+
+        db = SessionLocal()
+        try:
+            job = db.get(VideoComposeJob, job_id)
+            if job is None:
+                return
+            job.status = "completed"
+            job.output_path = str(final_video)
+            job.completed_at = datetime.now(timezone.utc)
+            db.commit()
+        finally:
+            db.close()
+        self._log(job_id, f"job completed ({render_seconds:.2f}s)")
+        self._publish("render.job.completed", {"job_id": job_id, "output_path": str(final_video)})
+
+    def _compose_final(
+        self,
+        clip_paths: list[Path],
+        audio_path: Path,
+        captions_path: Path | None,
+        watermark_path: Path | None,
+        watermark_position: str,
+        watermark_opacity: float,
+        watermark_scale: float,
+        watermark_margin_x: int,
+        watermark_margin_y: int,
+        width: int,
+        height: int,
+        duration: float,
+        output_path: Path,
+    ) -> None:
+        """The one ffmpeg call (section 31/32): concat (gapless, via the
+        `concat` filter -- Beat clips are already normalized to the same
+        resolution/fps/pixel format by Task 23's own Motion renderer, so no
+        blind re-encode/re-scale pass is needed first, section 11) ->
+        captions -> watermark -> format -> encode. Audio is mapped straight
+        from Audio Master (section 12/29/30) -- every Beat clip is always
+        rendered `-an` (no audio stream at all, see app.modules.motion.
+        renderer), so there is no risk of accidentally keeping Beat-clip
+        audio in the final mix.
+        """
+        inputs: list[str] = []
+        for clip in clip_paths:
+            inputs += ["-i", str(clip)]
+        audio_input_index = len(clip_paths)
+        inputs += ["-i", str(audio_path)]
+
+        concat_labels = "".join(f"[{i}:v]" for i in range(len(clip_paths)))
+        filters = [f"{concat_labels}concat=n={len(clip_paths)}:v=1:a=0[vcat]"]
+        video_label = "vcat"
+
+        if captions_path is not None:
+            # Section 15: reuse this app's own established font resolution
+            # (FONT_PATH/FONT_PATH_BOLD -- the same Arial this service
+            # already relies on for _write_subtitles/_finalize's drawtext)
+            # rather than trusting ambient system font matching -- both
+            # video_composer's own ASS Style lines and app.modules.caption.
+            # ass_writer's own (Task 25) hardcode "Arial" as the font
+            # family, so pointing fontsdir at this known location is this
+            # app's one and only configured fallback, not a silent
+            # substitution.
+            fontsdir = self._escape_for_ffmpeg_filter(Path(FONT_PATH).parent)
+            escaped_ass = self._escape_for_ffmpeg_filter(captions_path)
+            filters.append(f"[{video_label}]subtitles='{escaped_ass}':fontsdir='{fontsdir}'[vcap]")
+            video_label = "vcap"
+
+        if watermark_path is not None:
+            watermark_input_index = audio_input_index + 1
+            inputs += ["-i", str(watermark_path)]
+            target_width = max(2, int(width * watermark_scale))
+            x_expr, y_expr = _WATERMARK_POSITION_EXPR[watermark_position](watermark_margin_x, watermark_margin_y)
+            filters.append(
+                f"[{watermark_input_index}:v]scale={target_width}:-1,format=rgba,"
+                f"colorchannelmixer=aa={watermark_opacity}[wm]"
+            )
+            filters.append(f"[{video_label}][wm]overlay=x={x_expr}:y={y_expr}[vwm]")
+            video_label = "vwm"
+
+        filters.append(f"[{video_label}]format=yuv420p[v]")
+
+        self._run_ffmpeg(
+            inputs
+            + [
+                "-filter_complex", ";".join(filters),
+                "-map", "[v]",
+                "-map", f"{audio_input_index}:a",
+                "-c:v", "libx264",
+                "-pix_fmt", "yuv420p",
+                "-c:a", "aac",
+                "-b:a", "192k",
+                # Audio Master's own duration is authoritative (section 12/13)
+                # -- a hard trim here, not a stretch: both streams are
+                # already within _FINAL_DURATION_TOLERANCE_SEC of this
+                # value by construction (checked before this call).
+                "-t", f"{duration}",
+                str(output_path),
+            ]
+        )
 
     # --- ffmpeg/ffprobe helpers --------------------------------------------
 
@@ -1420,12 +1760,22 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
             ) from exc
 
         streams = data.get("streams", [])
-        video_stream = next((s for s in streams if s.get("codec_type") == "video"), None)
-        if video_stream is None:
-            raise RuntimeError(f"{render_errors.OUTPUT_VALIDATION_FAILED}: no video stream in rendered output")
-        audio_stream = next((s for s in streams if s.get("codec_type") == "audio"), None)
-        if audio_stream is None:
-            raise RuntimeError(f"{render_errors.OUTPUT_VALIDATION_FAILED}: no audio stream in rendered output")
+        # Section 42: exactly one video stream, exactly one audio stream --
+        # not merely "at least one." Every caller of this method always
+        # explicitly `-map`s exactly one video + one audio stream (never a
+        # blanket `-map 0`), so this is a real guarantee, not just a hope.
+        video_streams = [s for s in streams if s.get("codec_type") == "video"]
+        if len(video_streams) != 1:
+            raise RuntimeError(
+                f"{render_errors.FINAL_STREAM_INVALID}: expected exactly 1 video stream, found {len(video_streams)}"
+            )
+        video_stream = video_streams[0]
+        audio_streams = [s for s in streams if s.get("codec_type") == "audio"]
+        if len(audio_streams) != 1:
+            raise RuntimeError(
+                f"{render_errors.FINAL_STREAM_INVALID}: expected exactly 1 audio stream, found {len(audio_streams)}"
+            )
+        audio_stream = audio_streams[0]
 
         try:
             actual_duration = float(data.get("format", {}).get("duration", 0.0))
@@ -1507,13 +1857,19 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
         unofficial free API is still an external call (1), with an honestly
         unknown cost (null) -- not invented, not silently reported as the
         old always-0.0 `ai_cost` did. Local narration (narration_mode=
-        "local") makes zero external calls, so both fields are 0.
+        "local") makes zero external calls, so both fields are 0. Task 26's
+        own "precomposed" mode (see docs/features/52-final-composer.md)
+        makes zero external calls here too -- narration/BGM/captions were
+        all already produced locally by earlier Factory stages before this
+        job ever started; a real bug (this method originally treated any
+        narration_mode other than "local" as needing 1 external call,
+        mis-billing every precomposed render) caught by manual verification.
         """
         report_dir = library_dir / ".render" / f"job_{job_id}"
         report_dir.mkdir(parents=True, exist_ok=True)
 
         if status == "completed":
-            external_api_calls = 0 if narration_mode == "local" else 1
+            external_api_calls = 0 if narration_mode in ("local", "precomposed") else 1
             report = {
                 "status": "completed",
                 "job_id": job_id,

@@ -316,6 +316,26 @@ export interface CaptionsProjectConfig {
   reading_speed_wps: number;
 }
 
+// Task 26 -- see docs/features/52-final-composer.md sections 18-23.
+export type WatermarkPosition = "top-left" | "top-right" | "bottom-left" | "bottom-right";
+export const WATERMARK_POSITIONS: WatermarkPosition[] = ["top-left", "top-right", "bottom-left", "bottom-right"];
+export const WATERMARK_POSITION_LABELS: Record<WatermarkPosition, string> = {
+  "top-left": "Top left",
+  "top-right": "Top right",
+  "bottom-left": "Bottom left",
+  "bottom-right": "Bottom right",
+};
+
+export interface WatermarkProjectConfig {
+  enabled: boolean;
+  asset_id: number | null;
+  position: WatermarkPosition;
+  opacity: number;
+  scale: number;
+  margin_x: number;
+  margin_y: number;
+}
+
 // Task 24 -- see docs/features/50-audio-master.md sections 7/8/9/33.
 export type BgmMode = "AUTO" | "MANUAL";
 export type BgmMissingPolicy = "OFF" | "NEEDS_REVIEW";
@@ -370,6 +390,7 @@ export interface ProjectConfig {
   motion: MotionProjectConfig;
   captions: CaptionsProjectConfig;
   audio: AudioProjectConfig;
+  watermark: WatermarkProjectConfig;
   factory: FactoryProjectConfig;
   content: ContentProjectConfig;
   voice: VoiceProjectConfig;
@@ -392,6 +413,9 @@ export const SYSTEM_DEFAULT_PROJECT_CONFIG: ProjectConfig = {
   captions: {
     enabled: true, preset: "emotional", max_words: 7, max_chars: 42,
     min_duration_sec: 0.8, max_duration_sec: 3.5, max_lines: 2, reading_speed_wps: 3.3,
+  },
+  watermark: {
+    enabled: false, asset_id: null, position: "bottom-right", opacity: 0.8, scale: 0.15, margin_x: 24, margin_y: 24,
   },
   audio: {
     narration_enabled: true, music_enabled: true, music_volume: 0.15, ducking: true,

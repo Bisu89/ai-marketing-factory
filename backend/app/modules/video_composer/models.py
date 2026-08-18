@@ -15,6 +15,13 @@ VIDEO_COMPOSE_STATUSES = (
     "subtitling",
     "mixing_audio",
     "finalizing",
+    # Task 26 (see docs/features/52-final-composer.md) -- the Final
+    # Composer's own single one-pass phase: concat + captions + watermark +
+    # audio mux + encode, all in one ffmpeg call. Only entered when
+    # VideoComposeJob.audio_master_path is set (a Factory-driven render);
+    # every other job still goes through merging/narrating/subtitling/
+    # mixing_audio/finalizing exactly as before, unchanged.
+    "composing_final",
     "validating",
     "completed",
     "failed",
@@ -34,6 +41,7 @@ COARSE_STATUS = {
     "subtitling": "RUNNING",
     "mixing_audio": "RUNNING",
     "finalizing": "RUNNING",
+    "composing_final": "RUNNING",
     "validating": "RUNNING",
     "completed": "COMPLETED",
     "failed": "FAILED",
@@ -52,6 +60,11 @@ RENDER_PHASE = {
     "mixing_audio": "BUILD_AUDIO",
     "subtitling": "BURN_CAPTIONS",
     "finalizing": "BURN_CAPTIONS",
+    # Task 26 -- one honest label for the Final Composer's own single pass
+    # (concat + captions + watermark + audio mux + encode at once), distinct
+    # from the older multi-pass COMPOSE_VIDEO/BURN_CAPTIONS phases above,
+    # which it never enters.
+    "composing_final": "FINAL_COMPOSITION",
     "validating": "VALIDATE_OUTPUT",
 }
 
@@ -167,6 +180,34 @@ class VideoComposeJob(Base):
     # known counts (never a guessed/interpolated percentage).
     render_progress_current: Mapped[int | None] = mapped_column(Integer, nullable=True)
     render_progress_total: Mapped[int | None] = mapped_column(Integer, nullable=True)
+
+    # Final Composer (Task 26 -- see docs/features/52-final-composer.md).
+    # When set, this job is entirely driven by already-produced Factory
+    # artifacts: no TTS, no local-narration timeline, no _mix_audio -- this
+    # file is used directly as the sole final audio track (section 12/30).
+    # A sibling of narration_mode "tts"/"local" -- this is
+    # narration_mode="precomposed"; every other narration_mode value keeps
+    # the original multi-pass pipeline (_run_job branches on this exact
+    # value) with zero behavior change.
+    audio_master_path: Mapped[str | None] = mapped_column(String, nullable=True)
+    # When set (only meaningful together with audio_master_path, and only
+    # burned in when burn_subtitles=True), this pre-built ASS file is used
+    # directly instead of one generated from word-boundary timing -- no
+    # word timestamps exist for a precomposed Audio Master (see
+    # app.modules.caption's own module docstring, Task 25).
+    captions_ass_path: Mapped[str | None] = mapped_column(String, nullable=True)
+    # Optional watermark overlay (section 18-23). Position is one of
+    # top-left/top-right/bottom-left/bottom-right; opacity in (0, 1];
+    # scale is the watermark's target width as a fraction of the output
+    # video's own width; margins are in pixels, keeping the mark off the
+    # frame edge (section 22's own "safe area").
+    watermark_enabled: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
+    watermark_path: Mapped[str | None] = mapped_column(String, nullable=True)
+    watermark_position: Mapped[str] = mapped_column(String, nullable=False, default="bottom-right")
+    watermark_opacity: Mapped[float] = mapped_column(Float, nullable=False, default=1.0)
+    watermark_scale: Mapped[float] = mapped_column(Float, nullable=False, default=0.15)
+    watermark_margin_x: Mapped[int] = mapped_column(Integer, nullable=False, default=24)
+    watermark_margin_y: Mapped[int] = mapped_column(Integer, nullable=False, default=24)
 
     status: Mapped[str] = mapped_column(String, nullable=False, default="queued")
     output_path: Mapped[str | None] = mapped_column(String, nullable=True)

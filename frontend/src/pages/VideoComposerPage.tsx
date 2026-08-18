@@ -31,6 +31,7 @@ const STATUS_LABEL: Record<VideoComposeJob["status"], string> = {
   subtitling: "Đang tạo phụ đề karaoke",
   mixing_audio: "Đang trộn âm thanh",
   finalizing: "Đang hoàn thiện",
+  composing_final: "Đang dựng video cuối cùng",
   validating: "Đang kiểm tra kết quả",
   completed: "Hoàn tất",
   failed: "Lỗi",
