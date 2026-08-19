@@ -76,6 +76,8 @@ SQLite.
 
 58. [Auto-Sync Beat Duration to Narration Length + Folder Browse Fixes](features/58-beat-duration-narration-sync.md) — attaching narration audio to a beat now bumps its duration up to fit, instead of only failing at render time; fixes a real `os.listdrives()` (Python 3.12+-only) crash in the folder-browse endpoint on this app's Python 3.11, and adds a "Browse..." folder picker to Asset Library's Import Folder tab
 
+59. [AI Image Generation: "Generate Full by AI"](features/59-ai-image-generation.md) — an opt-in per-project mode that generates a fresh OpenAI image per beat (`gpt-image-1-mini`, ≈$0.006/image) instead of matching one from the Asset Library, triggered by a new "Generate Full by AI" button; every existing project stays on the default `$0` "library" mode, unaffected
+
 ## Keeping this up to date
 
 See the "Documentation" section in `CLAUDE.md` at the repo root — every

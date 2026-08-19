@@ -68,6 +68,7 @@ from app.api.v1.endpoints.content_generate import (
 from app.api.v1.endpoints.audio_generate import audio_master_is_valid, audio_master_path, generate_project_audio_master
 from app.api.v1.endpoints.caption_generate import captions_ass_path, captions_is_valid, generate_project_captions
 from app.api.v1.endpoints.final_qa import run_final_qa
+from app.api.v1.endpoints.imagegen_generate import ImageGenerationResult, generate_project_images
 from app.api.v1.endpoints.motion_generate import generate_project_motion
 from app.api.v1.endpoints.package_generate import PackageError, generate_project_package
 from app.api.v1.endpoints.quality_gate import compute_asset_confidence, run_quality_check, tokenize_prose
@@ -93,6 +94,7 @@ from app.modules.beat.project_service import (
     update_project_beat_plan,
 )
 from app.modules.beat.schemas import Beat, BeatPlan
+from app.modules.ai.image_client import ImageGenError
 from app.modules.ai.llm_client import resolve_ai_credentials
 from app.modules.metadata.schemas import MetadataError
 from app.modules.thumbnail.schemas import ThumbnailError
@@ -106,6 +108,7 @@ from app.modules.factory.schemas import (
     FactoryCheckpointOut,
     FactoryRunOut,
     FINAL_QA_FAILED,
+    IMAGE_GENERATION_FAILED,
     INVALID_CONTENT_RESPONSE,
     INVALID_EXISTING_BEAT_PLAN,
     MOTION_ASSET_INVALID,
@@ -392,6 +395,29 @@ def _count_beats_needing_policy_review(plan: BeatPlan, asset_service: AssetServi
         elif confidence == "LOW" and config.require_review_for_low_confidence:
             count += 1
     return count
+
+
+# -- Stage: PREPARING_VISUALS, real "ai_generated" mode (Task 59 -- see
+# docs/features/59-ai-image-generation.md) ----------------------------------
+
+
+def _stage_generate_images(project_id: int, settings: Settings) -> ImageGenerationResult:
+    """Thin adapter over imagegen_generate.generate_project_images -- that
+    function already owns the full idempotent per-beat reuse-or-regenerate
+    decision (only beats with asset_id is None are ever touched), the real
+    OpenAI Images API call, per-beat soft-failure handling, and Asset
+    registration. This stage's own job is purely translating an
+    ImageGenError into a FactoryStageError with a stable code, matching
+    every other stage's own exception-translation shape. Only ever called
+    when plan.config.visual_generation.mode == "ai_generated" -- the
+    default "library" mode keeps today's exact pass-through/SKIPPED
+    behavior for this same PREPARING_VISUALS slot (see
+    _execute_pipeline_sync).
+    """
+    try:
+        return generate_project_images(project_id, settings)
+    except ImageGenError as exc:
+        raise FactoryStageError("PREPARING_VISUALS", IMAGE_GENERATION_FAILED, str(exc)) from exc
 
 
 # -- Stage: GENERATING_MOTION (Task 23 -- see
@@ -780,20 +806,52 @@ def _execute_pipeline_sync(run_id: int, project_id: int, settings: Settings, ser
         if _bail_if_cancelled(run_id, cancel_event):
             return
 
-        # PREPARING_VISUALS: a pass-through, not a real generation step in
-        # this codebase -- beat_generate.py's own Claude call already
-        # produces visual_hint for every beat as part of GENERATING_BEATS
-        # (see that file's OUTPUT_SCHEMA), and a beat authored/edited by a
-        # human may simply have none (Beat.visual_hint is Optional) with no
-        # separate AI visual-description generator to fall back to. Either
-        # way there is nothing further to *generate* here (section 12's
-        # "do not block the factory over an optional missing description")
-        # -- ASSIGNING_ASSETS below already treats "no visual_hint" as
-        # "leave unassigned, let Quality Gate flag it" on its own. Checkpoint
-        # SKIPPED, not COMPLETED -- there is genuinely no work to validate.
+        # PREPARING_VISUALS: a pass-through for the default "library" mode
+        # (unchanged from before Task 59) -- beat_generate.py's own AI call
+        # already produces visual_hint for every beat as part of
+        # GENERATING_BEATS (see that file's OUTPUT_SCHEMA), and a beat
+        # authored/edited by a human may simply have none (Beat.visual_hint
+        # is Optional). ASSIGNING_ASSETS below already treats "no
+        # visual_hint" as "leave unassigned, let Quality Gate flag it" on
+        # its own, so there is nothing further to generate here in that
+        # mode. Checkpoint SKIPPED, not COMPLETED.
+        #
+        # Task 59 (see docs/features/59-ai-image-generation.md): when this
+        # project opted into visual_generation.mode == "ai_generated" (the
+        # "Generate Full by AI" button), this same slot instead runs a
+        # real, checkpointed OpenAI image-generation stage -- ASSIGNING_
+        # ASSETS still runs immediately after either way, but for
+        # "ai_generated" it finds every beat already assigned (see
+        # _stage_assign_assets' own "never touch an already-assigned beat"
+        # rule) and simply has nothing left to do.
         current_stage = "PREPARING_VISUALS"
         factory_service.set_run_fields(run_id, status=current_stage)
-        factory_service.skip_checkpoint(run_id, current_stage)
+        if plan.config.visual_generation.mode == "ai_generated":
+            factory_service.start_checkpoint(run_id, current_stage)
+            t0 = time.monotonic()
+            image_result = _stage_generate_images(project_id, settings)
+            if image_result.generated:
+                factory_service.merge_metrics(run_id, visual_generation_seconds=round(time.monotonic() - t0, 3))
+                factory_service.set_run_fields(
+                    run_id,
+                    visual_generation_image_count=image_result.image_count,
+                    visual_generation_cost_usd=image_result.cost_usd,
+                )
+                # Beats were assigned real asset_ids above -- reload before
+                # ASSIGNING_ASSETS runs, same "generate_project_narration
+                # persists its own writes directly" refresh GENERATING_VOICE
+                # already requires below.
+                draft = get_project_draft(project_id)
+                plan = BeatPlan(
+                    script_text=draft.script_text, beats=draft.beats, project_name=draft.project_name,
+                    config=draft.config, idea=draft.idea, content_brief=draft.content_brief,
+                    script_locked=draft.script_locked,
+                )
+            factory_service.complete_checkpoint(
+                run_id, current_stage, metadata={"generated": image_result.generated, "image_count": image_result.image_count},
+            )
+        else:
+            factory_service.skip_checkpoint(run_id, current_stage)
         if _bail_if_cancelled(run_id, cancel_event):
             return
 

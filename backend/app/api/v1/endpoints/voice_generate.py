@@ -127,13 +127,22 @@ def _get_or_register_audio_asset(db, path: Path, duration_sec: float) -> int:
     same path would otherwise hit its own unique-path IntegrityError) --
     never leaves orphaned Asset rows accumulating across regenerations.
     """
-    existing = db.query(Asset).filter(Asset.path == str(path)).first()
+    # AssetService.register() always normalizes to an absolute, resolved
+    # path before storing (asset/service.py's own _normalize_path) --
+    # settings.library_dir defaults to a relative "./data/library" in dev
+    # (see config.py's _default_library_dir), so comparing against the raw,
+    # possibly-relative `path` here would never match an already-registered
+    # row, falling through to register() and hitting a real "already
+    # registered for path" IntegrityError on every regeneration. Resolve
+    # first so this check matches what's actually stored.
+    resolved = str(path.expanduser().resolve())
+    existing = db.query(Asset).filter(Asset.path == resolved).first()
     if existing is not None:
         existing.duration_sec = duration_sec
         db.commit()
         return existing.id
     asset = AssetService(db).register(
-        AssetRegisterIn(filename=path.name, path=str(path), type="audio", duration_sec=duration_sec, source="voice_factory")
+        AssetRegisterIn(filename=path.name, path=resolved, type="audio", duration_sec=duration_sec, source="voice_factory")
     )
     return asset.id
 

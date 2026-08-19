@@ -36,6 +36,13 @@ SCRIPT_TOO_SHORT = "SCRIPT_TOO_SHORT"
 SCRIPT_TOO_LONG = "SCRIPT_TOO_LONG"
 SCRIPT_VALIDATION_FAILED = "SCRIPT_VALIDATION_FAILED"
 
+# Task 59 (see docs/features/59-ai-image-generation.md) -- the
+# GENERATING_VISUALS stage's own error code, used only when
+# ProjectConfig.visual_generation.mode == "ai_generated" (the default
+# "library" mode never runs this stage at all -- see factory_pipeline.py's
+# _stage_generate_images).
+IMAGE_GENERATION_FAILED = "IMAGE_GENERATION_FAILED"
+
 # Task 22 (see docs/features/48-voice-factory-local-tts.md section 38) --
 # app.modules.voice.schemas' own error codes, duplicated as plain string
 # constants here rather than imported (same "this module never imports
@@ -151,6 +158,8 @@ ERROR_CLASSIFICATION: dict[str, str] = {
     SCRIPT_TOO_SHORT: USER_ACTION_REQUIRED,  # the idea/template combination itself needs adjusting, not a blind retry
     SCRIPT_TOO_LONG: USER_ACTION_REQUIRED,
     SCRIPT_VALIDATION_FAILED: USER_ACTION_REQUIRED,
+    # Task 59's own AI image generation stage code.
+    IMAGE_GENERATION_FAILED: TRANSIENT,  # usually a real OpenAI API/network hiccup -- worth a plain retry
     # Task 22's own voice-stage codes.
     TTS_PROVIDER_UNAVAILABLE: USER_ACTION_REQUIRED,  # missing voice/engine -- pick a different provider or install one
     TTS_GENERATION_FAILED: TRANSIENT,
@@ -262,6 +271,12 @@ class FactoryRunOut(BaseModel):
     quality_score: int | None = None
     qa_status: str | None = None
     qa_score: int | None = None
+    # Task 59 -- only ever set when this run's project used
+    # visual_generation.mode == "ai_generated"; None for every "library"
+    # mode run (the default), matching qa_status/qa_score's own
+    # "meaningfully absent, not zero" shape.
+    visual_generation_image_count: int | None = None
+    visual_generation_cost_usd: float | None = None
     requires_human_review: bool = False
     review_reason_count: int = 0
     metrics: dict = Field(default_factory=dict)

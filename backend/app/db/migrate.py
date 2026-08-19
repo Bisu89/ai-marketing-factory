@@ -44,6 +44,11 @@ _NEW_COLUMNS: list[tuple[str, str, str]] = [
     # checks, neither should overwrite the other's cached outcome).
     ("factory_run", "qa_status", "VARCHAR"),
     ("factory_run", "qa_score", "INTEGER"),
+    # Task 59 -- see docs/features/59-ai-image-generation.md. NULL for every
+    # "library" mode run (the default), same "meaningfully absent" shape as
+    # qa_status/qa_score above.
+    ("factory_run", "visual_generation_image_count", "INTEGER"),
+    ("factory_run", "visual_generation_cost_usd", "FLOAT"),
 ]
 
 # (index_name, table, column) -- Base.metadata.create_all() only creates

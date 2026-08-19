@@ -385,6 +385,14 @@ export interface VoiceProjectConfig {
   pitch: number;
 }
 
+// Task 59 -- see docs/features/59-ai-image-generation.md. "library" (the
+// default) is today's existing behavior unchanged -- ASSIGNING_ASSETS
+// matches an existing local Asset. "ai_generated" is the new opt-in
+// "Generate Full by AI" mode -- a fresh OpenAI image per beat instead.
+export interface VisualGenerationProjectConfig {
+  mode: "library" | "ai_generated";
+}
+
 export interface ProjectConfig {
   render: RenderProjectConfig;
   motion: MotionProjectConfig;
@@ -394,6 +402,7 @@ export interface ProjectConfig {
   factory: FactoryProjectConfig;
   content: ContentProjectConfig;
   voice: VoiceProjectConfig;
+  visual_generation: VisualGenerationProjectConfig;
   template_id: string | null;
   template_version: number | null;
 }
@@ -443,6 +452,7 @@ export const SYSTEM_DEFAULT_PROJECT_CONFIG: ProjectConfig = {
     speed: 1.0,
     pitch: 0,
   },
+  visual_generation: { mode: "library" },
   template_id: null,
   template_version: null,
 };

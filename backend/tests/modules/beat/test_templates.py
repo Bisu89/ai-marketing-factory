@@ -267,12 +267,16 @@ class SaveProjectAsTemplateTests(unittest.TestCase):
         # does not strip it either, matching bgm_asset_id's own precedent).
         # Task 27 added `package` (see docs/features/53-thumbnail-metadata
         # -package.md) -- thumbnail_headline_enabled/thumbnail_candidate_count/
-        # max_hashtags/platform_profile, plain scalars only.
+        # max_hashtags/platform_profile, plain scalars only. Task 59 added
+        # `visual_generation` (see docs/features/59-ai-image-generation.md)
+        # -- a single `mode` string ("library"/"ai_generated"), no
+        # asset_id/beat_id/job_id/output_path, same "plain scalars only"
+        # shape.
         self.assertEqual(
             fields,
             {
                 "render", "motion", "captions", "audio", "watermark", "package", "factory", "content", "voice",
-                "template_id", "template_version",
+                "visual_generation", "template_id", "template_version",
             },
         )
 

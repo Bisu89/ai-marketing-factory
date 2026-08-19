@@ -35,6 +35,11 @@ export interface FactoryRun {
   quality_score: number | null;
   qa_status: string | null;
   qa_score: number | null;
+  // Task 59 -- "Generate Full by AI": only ever non-null when this run's
+  // project used visual_generation.mode === "ai_generated" (the default
+  // "library" mode leaves both null, never 0).
+  visual_generation_image_count: number | null;
+  visual_generation_cost_usd: number | null;
   requires_human_review: boolean;
   review_reason_count: number;
   metrics: Record<string, number>;

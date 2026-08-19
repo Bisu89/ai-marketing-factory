@@ -806,6 +806,10 @@ export function VideoFactoryPage() {
         speed: voiceSpeed,
         pitch: projectConfig.voice.pitch,
       },
+      // Not sourced from any Step 4 control (this page has no visual-
+      // generation-mode UI) -- preserved as-loaded, same reasoning as
+      // factory/content above.
+      visual_generation: projectConfig.visual_generation,
       template_id: projectConfig.template_id,
       template_version: projectConfig.template_version,
     };

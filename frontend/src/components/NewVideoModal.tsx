@@ -1,11 +1,20 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Loader2, X } from "lucide-react";
+import { Loader2, Sparkles, X } from "lucide-react";
 import { createProject } from "../api/beat";
 import { listTemplates } from "../api/template";
 import { startFactoryRun } from "../api/factory";
+import { getSettings } from "../api/settings";
 import type { Template } from "../types/videoFactory";
 import "./NewVideoModal.css";
+
+// Task 59 -- see docs/features/59-ai-image-generation.md. Mirrors
+// app.modules.ai.image_client.IMAGE_COST_USD (backend is the source of
+// truth for the real per-image price; this is only a rough, static
+// pre-creation estimate shown before the real beat count is known --
+// the real, per-run count/cost is shown afterward on ReadyToPostCard).
+const IMAGE_COST_USD_ESTIMATE = 0.006;
+const TYPICAL_BEAT_COUNT_RANGE = [6, 8] as const;
 
 interface NewVideoModalProps {
   onClose: () => void;
@@ -42,6 +51,7 @@ export function NewVideoModal({ onClose }: NewVideoModalProps) {
   const [autoProduce, setAutoProduce] = useState(true);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [hasOpenAiKey, setHasOpenAiKey] = useState(true); // optimistic default -- avoids a flash of "disabled" before settings load
 
   useEffect(() => {
     (async () => {
@@ -53,9 +63,16 @@ export function NewVideoModal({ onClose }: NewVideoModalProps) {
         setTemplatesError(err instanceof Error ? err.message : "Could not load templates.");
       }
     })();
+    getSettings()
+      .then((s) => setHasOpenAiKey(s.has_openai_key))
+      .catch(() => setHasOpenAiKey(false));
   }, []);
 
   const hasContent = script.trim().length > 0 || idea.trim().length > 0;
+  const hasStory = script.trim().length > 0;
+  const [lowBeats, highBeats] = TYPICAL_BEAT_COUNT_RANGE;
+  const lowEstimate = (lowBeats * IMAGE_COST_USD_ESTIMATE).toFixed(2);
+  const highEstimate = (highBeats * IMAGE_COST_USD_ESTIMATE).toFixed(2);
 
   async function handleSubmit() {
     if (!name.trim() || !templateId || !hasContent || busy) return;
@@ -71,6 +88,29 @@ export function NewVideoModal({ onClose }: NewVideoModalProps) {
       if (autoProduce) {
         await startFactoryRun(project.id);
       }
+      navigate(`/video-factory?project=${project.id}`);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Could not create this project.");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  // Task 59 (see docs/features/59-ai-image-generation.md): a distinct
+  // entry point, not a checkbox on the existing flow -- "paste a full
+  // story, get a produced video back, with a fresh AI image per beat
+  // instead of matched from the Asset Library." Always produces
+  // automatically (no separate autoProduce choice for this button, per the
+  // user's own "I just input the story, you do the rest" request).
+  async function handleGenerateFullByAI() {
+    if (!name.trim() || !templateId || !hasStory || busy) return;
+    setBusy(true);
+    setError(null);
+    try {
+      const project = await createProject({
+        name, script_text: script, idea: null, template_id: templateId, visual_generation_mode: "ai_generated",
+      });
+      await startFactoryRun(project.id);
       navigate(`/video-factory?project=${project.id}`);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Could not create this project.");
@@ -147,6 +187,22 @@ export function NewVideoModal({ onClose }: NewVideoModalProps) {
             ? "Content (if starting from an Idea), beats, visuals, and quality check run automatically; render starts as soon as it's ready."
             : "Only the project is created -- generate content/beats and assign visuals yourself when ready."}
         </p>
+
+        <div className="nvm-ai-generate">
+          <button
+            className="btn btn-primary nvm-ai-generate-btn"
+            onClick={handleGenerateFullByAI}
+            disabled={busy || !name.trim() || !templateId || !hasStory || !hasOpenAiKey}
+          >
+            {busy ? <Loader2 size={14} className="spin" /> : <Sparkles size={14} />}
+            Generate Full by AI
+          </button>
+          <p className="nvm-hint">
+            {hasOpenAiKey
+              ? `Paste the whole story into Script above -- beats, a fresh AI image per beat (OpenAI), narration, and render all run automatically. Estimated image cost: ~$${lowEstimate}-$${highEstimate} for a typical ${lowBeats}-${highBeats} beat video.`
+              : "Requires an OpenAI API key -- add one in Settings to use AI image generation."}
+          </p>
+        </div>
 
         <div className="nvm-actions">
           <button className="btn btn-secondary" onClick={onClose}>

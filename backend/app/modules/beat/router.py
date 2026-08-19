@@ -28,7 +28,15 @@ from app.modules.beat.project_service import (
     update_project_idea,
     update_project_script,
 )
-from app.modules.beat.schemas import BUILTIN_TEMPLATE_IDS, BUILTIN_TEMPLATES, BeatPlan, ProjectConfig, ProjectOut, Template
+from app.modules.beat.schemas import (
+    BUILTIN_TEMPLATE_IDS,
+    BUILTIN_TEMPLATES,
+    VISUAL_GENERATION_MODES,
+    BeatPlan,
+    ProjectConfig,
+    ProjectOut,
+    Template,
+)
 from app.modules.beat.service import (
     delete_custom_template,
     load_beats_json,
@@ -92,6 +100,12 @@ class CreateProjectRequest(BaseModel):
     script_text: str | None = None
     idea: str | None = None
     template_id: str = "custom"
+    # Task 59 -- "Generate Full by AI": set once at creation time, same as
+    # template_id, rather than requiring a separate config-patch call
+    # afterward (a beat-less project has no BeatPlan yet -- BeatPlan.beats
+    # requires at least one beat -- so update_project_beat_plan can't be
+    # used to set this before GENERATING_BEATS has even run).
+    visual_generation_mode: str = "library"
 
 
 def _resolve_template_config(template_id: str, settings: Settings) -> ProjectConfig:
@@ -119,7 +133,14 @@ def create_project_endpoint(payload: CreateProjectRequest, settings: Settings = 
     idea = (payload.idea or "").strip() or None
     if not script_text and not idea:
         raise ValidationError("Either a Script or an Idea must be provided.")
+    if payload.visual_generation_mode not in VISUAL_GENERATION_MODES:
+        raise ValidationError(
+            f"Unknown visual_generation_mode {payload.visual_generation_mode!r}, must be one of {VISUAL_GENERATION_MODES}"
+        )
     config = _resolve_template_config(payload.template_id, settings)
+    config = config.model_copy(update={"visual_generation": config.visual_generation.model_copy(
+        update={"mode": payload.visual_generation_mode}
+    )})
     project_id = create_project(payload.name, script_text, config, idea=idea)
     return get_project_draft(project_id)
 

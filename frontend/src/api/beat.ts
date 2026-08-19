@@ -43,11 +43,15 @@ export function getProject(projectId: number): Promise<Project> {
 // Task 21 -- see docs/features/47-content-brief-script-engine.md. Exactly
 // one of script_text/idea must be provided; the backend validates this
 // (400 if both are blank).
+// Task 59 -- see docs/features/59-ai-image-generation.md. Set once at
+// creation time -- defaults to "library" (today's unchanged behavior) when
+// omitted.
 export interface CreateProjectRequest {
   name: string;
   script_text?: string | null;
   idea?: string | null;
   template_id: string;
+  visual_generation_mode?: "library" | "ai_generated";
 }
 
 export function createProject(request: CreateProjectRequest): Promise<Project> {

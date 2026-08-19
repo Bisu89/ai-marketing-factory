@@ -671,6 +671,30 @@ class VoiceProjectConfig(BaseModel):
         return value
 
 
+VISUAL_GENERATION_MODES = ("library", "ai_generated")
+
+
+class VisualGenerationProjectConfig(BaseModel):
+    """Task 59 -- "Generate Full by AI": opt-in per-project switch between
+    the default "library" mode (ASSIGNING_ASSETS matches an existing local
+    Asset, today's only behavior) and "ai_generated" (a new GENERATING_VISUALS
+    Factory stage generates a fresh OpenAI image per beat instead -- see
+    app/api/v1/endpoints/imagegen_generate.py). Defaults to "library" so
+    every existing/pre-Task-59 project is completely unaffected.
+    """
+
+    model_config = ConfigDict(extra="forbid")
+
+    mode: str = "library"
+
+    @field_validator("mode")
+    @classmethod
+    def _known_mode(cls, value: str) -> str:
+        if value not in VISUAL_GENERATION_MODES:
+            raise ValueError(f"Unknown visual generation mode {value!r}, must be one of {VISUAL_GENERATION_MODES}")
+        return value
+
+
 class ProjectConfig(BaseModel):
     """The one, unified configuration object -- render/motion/captions/audio
     -- shared by templates and projects alike (Task 12's own "do not
@@ -691,6 +715,7 @@ class ProjectConfig(BaseModel):
     factory: FactoryProjectConfig = Field(default_factory=FactoryProjectConfig)
     content: ContentProjectConfig = Field(default_factory=ContentProjectConfig)
     voice: VoiceProjectConfig = Field(default_factory=VoiceProjectConfig)
+    visual_generation: VisualGenerationProjectConfig = Field(default_factory=VisualGenerationProjectConfig)
     # Provenance only, like Beat.asset_id -- which Template (and which
     # version of it) this config was snapshotted from, if any. A project
     # created without choosing a template (or a pre-Task-12 project) has

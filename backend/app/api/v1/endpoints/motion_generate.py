@@ -159,13 +159,19 @@ def _get_or_register_clip_asset(db, path: Path, duration_sec: float) -> int:
     overwrites the file at the same deterministic path) rather than
     accumulating a duplicate row per re-render.
     """
-    existing = db.query(Asset).filter(Asset.path == str(path)).first()
+    # See voice_generate.py's own _get_or_register_audio_asset for why this
+    # must be resolved to an absolute path before comparing -- register()
+    # always normalizes, so comparing against a possibly-relative `path`
+    # (settings.library_dir defaults to relative in dev) never matches an
+    # already-registered row.
+    resolved = str(path.expanduser().resolve())
+    existing = db.query(Asset).filter(Asset.path == resolved).first()
     if existing is not None:
         existing.duration_sec = duration_sec
         db.commit()
         return existing.id
     asset = AssetService(db).register(
-        AssetRegisterIn(filename=path.name, path=str(path), type="video", duration_sec=duration_sec, source="motion_engine")
+        AssetRegisterIn(filename=path.name, path=resolved, type="video", duration_sec=duration_sec, source="motion_engine")
     )
     return asset.id
 

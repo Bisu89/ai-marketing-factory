@@ -21,7 +21,7 @@ stage instead of restarting from PREPARING every time).
 
 from datetime import datetime, timezone
 
-from sqlalchemy import JSON, Boolean, DateTime, ForeignKey, Integer, String
+from sqlalchemy import JSON, Boolean, DateTime, Float, ForeignKey, Integer, String
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.db.base import Base
@@ -182,6 +182,14 @@ class FactoryRun(Base):
     # signal with an unrelated one.
     qa_status: Mapped[str | None] = mapped_column(String, nullable=True)
     qa_score: Mapped[int | None] = mapped_column(Integer, nullable=True)
+
+    # Task 59 (see docs/features/59-ai-image-generation.md) -- only ever
+    # populated when this run's project used visual_generation.mode ==
+    # "ai_generated"; stays NULL for the default "library" mode (same
+    # "meaningfully absent, not zero" convention as qa_status/qa_score
+    # above), so a $0 "library" run never falsely reports a $0.00 AI cost.
+    visual_generation_image_count: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    visual_generation_cost_usd: Mapped[float | None] = mapped_column(Float, nullable=True)
 
     # Section 42 -- a lifetime flag: once a run has ever needed a human
     # (entered NEEDS_REVIEW at least once), this stays true even after
