@@ -74,6 +74,8 @@ SQLite.
 
 57. [Asset Library: Delete Action](features/57-asset-library-delete.md) — a "Delete" button in the asset detail panel wires up the backend's already-existing `DELETE /assets/{id}` endpoint for the first time; only unregisters the asset (the real file on disk is untouched)
 
+58. [Auto-Sync Beat Duration to Narration Length + Folder Browse Fixes](features/58-beat-duration-narration-sync.md) — attaching narration audio to a beat now bumps its duration up to fit, instead of only failing at render time; fixes a real `os.listdrives()` (Python 3.12+-only) crash in the folder-browse endpoint on this app's Python 3.11, and adds a "Browse..." folder picker to Asset Library's Import Folder tab
+
 ## Keeping this up to date
 
 See the "Documentation" section in `CLAUDE.md` at the repo root — every

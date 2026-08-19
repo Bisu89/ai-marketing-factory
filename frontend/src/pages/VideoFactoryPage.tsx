@@ -2481,12 +2481,24 @@ function NarrationEditor({ beat, onChange }: NarrationEditorProps) {
   const [browserOpen, setBrowserOpen] = useState(false);
 
   function handleNarrationSelected(asset: Asset) {
-    onChange({
+    // See docs/features/58-beat-duration-narration-sync.md -- render-time
+    // (composition_render.py's _resolve_narration) hard-rejects a beat
+    // whose narration audio outlasts its own duration; only bumping
+    // duration *up* to fit the real audio (never shrinking it) mirrors
+    // Task 22's own Voice Factory pattern (voice_generate.py sets
+    // Beat.duration from real, measured audio length) while still
+    // respecting a duration the user deliberately left longer than the
+    // narration (e.g. for a lingering shot after the line finishes).
+    const patch: Partial<WorkingBeat> = {
       narrationAssetId: asset.id,
       narrationAssetPath: asset.path,
       narrationAssetStatus: "registered",
       narrationAssetError: null,
-    });
+    };
+    if (asset.duration_sec != null && asset.duration_sec > beat.duration) {
+      patch.duration = Math.round((asset.duration_sec + 0.2) * 10) / 10;
+    }
+    onChange(patch);
     setBrowserOpen(false);
   }
 

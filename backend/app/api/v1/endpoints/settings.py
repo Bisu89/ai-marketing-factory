@@ -107,11 +107,20 @@ def set_library_dir(
     return {"library_dir": str(path)}
 
 
+def _list_windows_drives() -> list[str]:
+    # os.listdrives() (Python 3.12+) isn't available on this app's own
+    # pinned Python 3.11 -- a plain existence check per drive letter works
+    # identically on any Python version and needs no extra dependency.
+    import string
+
+    return [f"{letter}:\\" for letter in string.ascii_uppercase if os.path.exists(f"{letter}:\\")]
+
+
 @router.get("/settings/browse-folders", response_model=BrowseFoldersOut)
 def browse_folders(path: str | None = None):
     if path is None:
         if sys.platform.startswith("win"):
-            folders = [FolderEntry(name=drive, path=drive) for drive in os.listdrives()]
+            folders = [FolderEntry(name=drive, path=drive) for drive in _list_windows_drives()]
         else:
             folders = [FolderEntry(name="/", path="/")]
         return BrowseFoldersOut(current_path=None, parent_path=None, folders=folders)

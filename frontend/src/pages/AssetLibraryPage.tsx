@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { PageHeader } from "../components/PageHeader";
 import { EmptyState } from "../components/EmptyState";
+import { FolderBrowserModal } from "../components/FolderBrowserModal";
 import {
   assetFileUrl,
   assetThumbnailUrl,
@@ -446,6 +447,7 @@ function ImportModal({ onClose, onStarted }: { onClose: () => void; onStarted: (
   const [recursive, setRecursive] = useState(true);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [browserOpen, setBrowserOpen] = useState(false);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   async function handleSubmit() {
@@ -499,7 +501,17 @@ function ImportModal({ onClose, onStarted }: { onClose: () => void; onStarted: (
         {mode === "folder" ? (
           <>
             <label className="al-field">
-              <span>Folder path</span>
+              <div className="al-field-row">
+                <span>Folder path</span>
+                <button
+                  type="button"
+                  className="btn btn-secondary al-upload-btn"
+                  onClick={() => setBrowserOpen(true)}
+                >
+                  <FolderInput size={14} />
+                  Browse...
+                </button>
+              </div>
               <input
                 type="text"
                 placeholder="C:\VideoAssets\EmotionalStories"
@@ -511,6 +523,16 @@ function ImportModal({ onClose, onStarted }: { onClose: () => void; onStarted: (
               <input type="checkbox" checked={recursive} onChange={(e) => setRecursive(e.target.checked)} />
               Include subfolders
             </label>
+            {browserOpen && (
+              <FolderBrowserModal
+                initialPath={folder || undefined}
+                onSelect={(path) => {
+                  setFolder(path);
+                  setBrowserOpen(false);
+                }}
+                onClose={() => setBrowserOpen(false)}
+              />
+            )}
           </>
         ) : (
           <label className="al-field">
