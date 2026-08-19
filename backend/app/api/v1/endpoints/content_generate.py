@@ -1,13 +1,15 @@
 """Content Engine (Task 21 -- see docs/features/47-content-brief-script-engine.md):
-the composition-root adapter between the existing Claude infrastructure
-(app.modules.ai.claude_client) and the Project/BeatPlan domain contract
-(app.modules.beat.schemas) for the new Idea -> ContentBrief -> Script
-stages, ahead of Beat generation. Same "app/api/v1/endpoints/* may import
-both modules; the modules may never import each other" composition-root
-shape app/api/v1/endpoints/beat_generate.py already established for
-Script -> Beat -- this is that identical pattern one stage earlier.
+the composition-root adapter between the existing AI infrastructure
+(app.modules.ai.llm_client -- Claude or OpenAI, see
+docs/features/55-dual-ai-provider.md) and the Project/BeatPlan domain
+contract (app.modules.beat.schemas) for the new Idea -> ContentBrief ->
+Script stages, ahead of Beat generation. Same "app/api/v1/endpoints/* may
+import both modules; the modules may never import each other"
+composition-root shape app/api/v1/endpoints/beat_generate.py already
+established for Script -> Beat -- this is that identical pattern one stage
+earlier.
 
-    AI Client (app.modules.ai.claude_client.call_structured)
+    AI Client (app.modules.ai.llm_client.call_structured)
           |
     Content Service (generate_content_brief / generate_script, below)
           |
@@ -28,14 +30,13 @@ import json
 import logging
 import re
 
-import anthropic
 from fastapi import APIRouter, Depends
 from pydantic import BaseModel, ValidationError as PydanticValidationError, field_validator
 
 from app.core.concurrency import ai_generation_semaphore
 from app.core.config import Settings, get_settings
 from app.core.exceptions import ExternalServiceError, ValidationError
-from app.modules.ai.claude_client import call_structured
+from app.modules.ai.llm_client import AICredentials, AIProviderError, AIProviderTimeoutError, call_structured, resolve_ai_credentials
 from app.modules.beat.project_service import get_project_draft, set_project_generated_content
 from app.modules.beat.schemas import ContentBrief, ContentProjectConfig
 
@@ -44,6 +45,16 @@ router = APIRouter()
 
 MAX_TOKENS = 2048
 MAX_RETRIES = 1  # one bounded repair attempt, matching beat_generate.py's own convention
+
+# Section 12/13 -- shared between _build_script_system_prompt (states the
+# target as an explicit word count, not just seconds) and
+# validate_script_text (checks the same number) so the two can never drift
+# apart. Real OpenAI behavior observed in manual testing: leaving the
+# target as "approximately N seconds when read aloud" alone, with no
+# explicit word count, let gpt-5-mini write 2-3x the intended length even
+# though Claude generally stayed within tolerance from the same prompt --
+# stating the actual number removes the ambiguity for either provider.
+SCRIPT_LENGTH_TOLERANCE = 0.35
 
 # Task 21 section 28 -- stable, machine-readable codes; never a raw provider
 # error string surfaced to the UI (section 28's own explicit instruction).
@@ -175,7 +186,7 @@ def _build_brief_system_prompt(content: ContentProjectConfig) -> str:
     )
 
 
-def _call_brief(api_key: str, idea: str, content: ContentProjectConfig, repair_note: str | None) -> ContentBrief:
+def _call_brief(credentials: AICredentials, idea: str, content: ContentProjectConfig, repair_note: str | None) -> ContentBrief:
     system_prompt = _build_brief_system_prompt(content)
     if repair_note:
         system_prompt += f"\n\nYour previous response was invalid: {repair_note}\nFix it and return valid JSON only."
@@ -183,38 +194,36 @@ def _call_brief(api_key: str, idea: str, content: ContentProjectConfig, repair_n
     try:
         with ai_generation_semaphore:
             result = call_structured(
-                api_key, system=system_prompt, user_message=idea,
-                output_schema=BRIEF_OUTPUT_SCHEMA, max_tokens=MAX_TOKENS,
+                credentials, system=system_prompt, user_message=idea,
+                output_schema=BRIEF_OUTPUT_SCHEMA, max_tokens=MAX_TOKENS, schema_name="content_brief",
             )
-    except anthropic.APITimeoutError as exc:
-        raise ContentProviderTimeout(f"Anthropic API call timed out: {exc}") from exc
-    except anthropic.APIError as exc:
-        raise ExternalServiceError(f"Anthropic API call failed: {exc}") from exc
+    except AIProviderTimeoutError as exc:
+        raise ContentProviderTimeout(f"AI provider call timed out: {exc}") from exc
+    except AIProviderError as exc:
+        raise ExternalServiceError(f"AI provider call failed: {exc}") from exc
 
-    response = result.response
-    if response.stop_reason == "refusal":
+    if result.refused:
         raise ExternalServiceError("Request was refused by the model's safety filter.")
-    text_block = next((b for b in response.content if b.type == "text"), None)
-    if text_block is None:
+    if not result.text:
         raise ExternalServiceError("Model did not return any text content.")
 
     try:
-        parsed = json.loads(text_block.text)
+        parsed = json.loads(result.text)
         return ContentBrief.model_validate(parsed)
     except (json.JSONDecodeError, TypeError, PydanticValidationError) as exc:
         raise ValueError(f"generated JSON did not match the ContentBrief contract: {exc}") from exc
 
 
-def generate_content_brief(api_key: str | None, idea: str, content: ContentProjectConfig) -> ContentBrief:
-    if not api_key:
+def generate_content_brief(credentials: AICredentials | None, idea: str, content: ContentProjectConfig) -> ContentBrief:
+    if credentials is None:
         raise ValidationError(
-            "Anthropic API key not configured. Go to Settings to enter a key before generating content."
+            "No AI provider is configured. Go to Settings to choose a provider and enter an API key."
         )
     repair_note: str | None = None
     last_error: Exception | None = None
     for attempt in range(MAX_RETRIES + 1):
         try:
-            return _call_brief(api_key, idea, content, repair_note)
+            return _call_brief(credentials, idea, content, repair_note)
         except ValueError as exc:
             logger.warning("Content brief attempt %d/%d failed validation: %s", attempt + 1, MAX_RETRIES + 1, exc)
             last_error = exc
@@ -240,12 +249,15 @@ SCRIPT_OUTPUT_SCHEMA = {
 }
 
 
-def _build_script_system_prompt(brief: ContentBrief, content: ContentProjectConfig) -> str:
+def _build_script_system_prompt(brief: ContentBrief, content: ContentProjectConfig, words_per_second: float) -> str:
     language_name = LANGUAGE_NAMES.get(content.language, content.language)
     cta_instruction = (
         f'End with a clear call to action: "{brief.cta}".' if content.cta_enabled
         else "Do not include a call to action."
     )
+    target_words = content.target_duration * words_per_second
+    min_words = round(target_words * (1 - SCRIPT_LENGTH_TOLERANCE))
+    max_words = round(target_words * (1 + SCRIPT_LENGTH_TOLERANCE))
     return (
         "You are an expert scriptwriter for short-form social video narration. Write a narration script "
         "entirely from the creative brief below -- do not invent new facts, names, or claims not implied "
@@ -258,7 +270,10 @@ def _build_script_system_prompt(brief: ContentBrief, content: ContentProjectConf
         f"Tone: {brief.tone}\n"
         f"Pacing: {brief.pacing}\n"
         f"Core message: {brief.core_message}\n\n"
-        f"Target length: approximately {content.target_duration:.0f} seconds when read aloud at a natural pace.\n"
+        f"Target length: approximately {content.target_duration:.0f} seconds when read aloud at a natural pace, "
+        f"which means the hook + body + ending + cta combined must total roughly {target_words:.0f} words -- "
+        f"never fewer than {min_words} words and never more than {max_words} words. Count your words before "
+        f"answering; a script outside this range will be rejected.\n"
         f"Write entirely in {language_name}, with no mixing of languages.\n"
         f"{cta_instruction}\n\n"
         "Structure the response as:\n"
@@ -272,49 +287,63 @@ def _build_script_system_prompt(brief: ContentBrief, content: ContentProjectConf
 
 
 def _call_script(
-    api_key: str, brief: ContentBrief, content: ContentProjectConfig, repair_note: str | None
+    credentials: AICredentials, brief: ContentBrief, content: ContentProjectConfig, words_per_second: float,
+    repair_note: str | None,
 ) -> Script:
-    system_prompt = _build_script_system_prompt(brief, content)
+    system_prompt = _build_script_system_prompt(brief, content, words_per_second)
     if repair_note:
         system_prompt += f"\n\nYour previous response was invalid: {repair_note}\nFix it and return valid JSON only."
 
     try:
         with ai_generation_semaphore:
             result = call_structured(
-                api_key, system=system_prompt, user_message=brief.topic,
-                output_schema=SCRIPT_OUTPUT_SCHEMA, max_tokens=MAX_TOKENS,
+                credentials, system=system_prompt, user_message=brief.topic,
+                output_schema=SCRIPT_OUTPUT_SCHEMA, max_tokens=MAX_TOKENS, schema_name="script",
             )
-    except anthropic.APITimeoutError as exc:
-        raise ContentProviderTimeout(f"Anthropic API call timed out: {exc}") from exc
-    except anthropic.APIError as exc:
-        raise ExternalServiceError(f"Anthropic API call failed: {exc}") from exc
+    except AIProviderTimeoutError as exc:
+        raise ContentProviderTimeout(f"AI provider call timed out: {exc}") from exc
+    except AIProviderError as exc:
+        raise ExternalServiceError(f"AI provider call failed: {exc}") from exc
 
-    response = result.response
-    if response.stop_reason == "refusal":
+    if result.refused:
         raise ExternalServiceError("Request was refused by the model's safety filter.")
-    text_block = next((b for b in response.content if b.type == "text"), None)
-    if text_block is None:
+    if not result.text:
         raise ExternalServiceError("Model did not return any text content.")
 
     try:
-        parsed = json.loads(text_block.text)
+        parsed = json.loads(result.text)
         return Script.model_validate(parsed)
     except (json.JSONDecodeError, TypeError, PydanticValidationError) as exc:
         raise ValueError(f"generated JSON did not match the Script contract: {exc}") from exc
 
 
-def generate_script(api_key: str | None, brief: ContentBrief, content: ContentProjectConfig) -> Script:
-    if not api_key:
+def generate_script(
+    credentials: AICredentials | None, brief: ContentBrief, content: ContentProjectConfig, words_per_second: float,
+) -> Script:
+    if credentials is None:
         raise ValidationError(
-            "Anthropic API key not configured. Go to Settings to enter a key before generating content."
+            "No AI provider is configured. Go to Settings to choose a provider and enter an API key."
         )
     repair_note: str | None = None
     last_error: Exception | None = None
     for attempt in range(MAX_RETRIES + 1):
         try:
-            return _call_script(api_key, brief, content, repair_note)
+            script = _call_script(credentials, brief, content, words_per_second, repair_note)
+            # Real length misses observed in manual testing (see
+            # SCRIPT_LENGTH_TOLERANCE's own docstring) -- fed back into the
+            # same bounded repair-retry loop as a malformed-JSON failure,
+            # not left as a single-shot failure the user has to manually
+            # retry from scratch.
+            validate_script_text(script.to_narration_text(), content.target_duration, words_per_second)
+            return script
         except ValueError as exc:
             logger.warning("Script attempt %d/%d failed validation: %s", attempt + 1, MAX_RETRIES + 1, exc)
+            last_error = exc
+            repair_note = str(exc)
+        except ScriptValidationError as exc:
+            logger.warning("Script attempt %d/%d failed length validation: %s", attempt + 1, MAX_RETRIES + 1, exc)
+            if attempt == MAX_RETRIES:
+                raise  # preserve the real SCRIPT_TOO_LONG/SCRIPT_TOO_SHORT code for the caller
             last_error = exc
             repair_note = str(exc)
     raise InvalidContentResponse(f"Could not generate a valid script after {MAX_RETRIES + 1} attempts: {last_error}")
@@ -323,7 +352,9 @@ def generate_script(api_key: str | None, brief: ContentBrief, content: ContentPr
 # -- Script validation (section 12/13/14) -----------------------------------
 
 
-def validate_script_text(script_text: str, target_duration: float, words_per_second: float, tolerance: float = 0.35) -> None:
+def validate_script_text(
+    script_text: str, target_duration: float, words_per_second: float, tolerance: float = SCRIPT_LENGTH_TOLERANCE
+) -> None:
     """Section 12: hook/body/ending existence is already enforced by Script's
     own Pydantic validators before this is ever called (never a bare string
     with no structure -- see generate_script). This validates the *flattened*
@@ -395,8 +426,9 @@ def regenerate_script(project_id: int, settings: Settings = Depends(get_settings
         raise ValidationError("This project has no idea to regenerate a script from.")
 
     content_config = draft.config.content
-    brief = generate_content_brief(settings.anthropic_api_key, idea, content_config)
-    script = generate_script(settings.anthropic_api_key, brief, content_config)
+    credentials = resolve_ai_credentials(settings)
+    brief = generate_content_brief(credentials, idea, content_config)
+    script = generate_script(credentials, brief, content_config, settings.content_words_per_second)
     script_text = script.to_narration_text()
     validate_script_text(script_text, content_config.target_duration, settings.content_words_per_second)
 

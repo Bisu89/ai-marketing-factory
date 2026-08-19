@@ -5,6 +5,7 @@ from app.core.config import Settings, get_settings
 from app.db.session import get_db
 from app.modules.ai.hook.schemas import HookGenerateIn, HookJobOut, job_to_out
 from app.modules.ai.hook.service import HookService
+from app.modules.ai.llm_client import resolve_ai_credentials
 
 router = APIRouter()
 
@@ -13,7 +14,7 @@ def get_hook_service(
     db: Session = Depends(get_db),
     settings: Settings = Depends(get_settings),
 ) -> HookService:
-    return HookService(db, settings.anthropic_api_key)
+    return HookService(db, resolve_ai_credentials(settings))
 
 
 @router.post("/hook-jobs", response_model=HookJobOut, status_code=201)

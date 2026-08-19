@@ -1,13 +1,12 @@
 """Tests for the Beat-generation adapter (app/api/v1/endpoints/beat_generate.py):
 LLM response -> parse -> validate against BeatPlan -> bounded repair retry on
-validation failure. The Anthropic client is always mocked -- these tests
-never call the real Claude API (see app.modules.ai.claude_client.call_structured,
+validation failure. The AI provider client is always mocked -- these tests
+never call a real AI provider (see app.modules.ai.llm_client.call_structured,
 patched below).
 """
 
 import json
 import unittest
-from types import SimpleNamespace
 from unittest.mock import patch
 
 from pydantic import ValidationError as PydanticValidationError
@@ -17,13 +16,17 @@ from app.api.v1.endpoints.beat_generate import (
     generate_beat_plan,
 )
 from app.core.exceptions import ExternalServiceError, ValidationError
-from app.modules.ai.claude_client import ClaudeCallResult
+from app.modules.ai.llm_client import AICredentials, LLMCallResult
 from app.modules.beat.schemas import BeatPlan, BeatType
 
+FAKE_CREDENTIALS = AICredentials(provider="anthropic", api_key="fake-api-key")
 
-def _fake_result(text: str, stop_reason: str = "end_turn") -> ClaudeCallResult:
-    message = SimpleNamespace(stop_reason=stop_reason, content=[SimpleNamespace(type="text", text=text)])
-    return ClaudeCallResult(response=message, latency_ms=10)
+
+def _fake_result(text: str, refused: bool = False) -> LLMCallResult:
+    return LLMCallResult(
+        text=text, refused=refused, provider="anthropic", model="claude-sonnet-5",
+        input_tokens=None, output_tokens=None, latency_ms=10,
+    )
 
 
 VALID_BEATS_JSON = json.dumps(
@@ -62,7 +65,7 @@ class GenerateBeatPlanTests(unittest.TestCase):
     def test_valid_ai_response_becomes_a_valid_beat_plan(self, mock_call):
         mock_call.return_value = _fake_result(VALID_BEATS_JSON)
 
-        plan = generate_beat_plan("fake-api-key", "She thought he forgot their anniversary.")
+        plan = generate_beat_plan(FAKE_CREDENTIALS, "She thought he forgot their anniversary.")
 
         self.assertIsInstance(plan, BeatPlan)
         self.assertEqual(len(plan.beats), 5)
@@ -76,17 +79,17 @@ class GenerateBeatPlanTests(unittest.TestCase):
     def test_generated_beats_only_use_supported_types(self, mock_call):
         mock_call.return_value = _fake_result(VALID_BEATS_JSON)
 
-        plan = generate_beat_plan("fake-api-key", "A story script.")
+        plan = generate_beat_plan(FAKE_CREDENTIALS, "A story script.")
 
         for beat in plan.beats:
             self.assertIn(beat.type, list(BeatType))
 
     @patch("app.api.v1.endpoints.beat_generate.call_structured")
     def test_ai_refusal_raises_external_service_error_without_retry(self, mock_call):
-        mock_call.return_value = _fake_result("", stop_reason="refusal")
+        mock_call.return_value = _fake_result("", refused=True)
 
         with self.assertRaises(ExternalServiceError):
-            generate_beat_plan("fake-api-key", "A story script.")
+            generate_beat_plan(FAKE_CREDENTIALS, "A story script.")
 
         mock_call.assert_called_once()  # refusal is not retried
 
@@ -94,7 +97,7 @@ class GenerateBeatPlanTests(unittest.TestCase):
     def test_malformed_json_triggers_one_repair_retry_then_succeeds(self, mock_call):
         mock_call.side_effect = [_fake_result("not valid json{{{"), _fake_result(VALID_BEATS_JSON)]
 
-        plan = generate_beat_plan("fake-api-key", "A story script.")
+        plan = generate_beat_plan(FAKE_CREDENTIALS, "A story script.")
 
         self.assertEqual(len(plan.beats), 5)
         self.assertEqual(mock_call.call_count, 2)
@@ -110,7 +113,7 @@ class GenerateBeatPlanTests(unittest.TestCase):
         mock_call.return_value = _fake_result(bad_json)
 
         with self.assertRaises(ExternalServiceError):
-            generate_beat_plan("fake-api-key", "A story script.")
+            generate_beat_plan(FAKE_CREDENTIALS, "A story script.")
 
         self.assertEqual(mock_call.call_count, 2)  # initial + 1 bounded retry, both invalid
 
@@ -122,21 +125,21 @@ class GenerateBeatPlanTests(unittest.TestCase):
         mock_call.return_value = _fake_result(bad_json)
 
         with self.assertRaises(ExternalServiceError):
-            generate_beat_plan("fake-api-key", "A story script.")
+            generate_beat_plan(FAKE_CREDENTIALS, "A story script.")
 
     @patch("app.api.v1.endpoints.beat_generate.call_structured")
     def test_empty_beats_array_is_rejected(self, mock_call):
         mock_call.return_value = _fake_result(json.dumps({"beats": []}))
 
         with self.assertRaises(ExternalServiceError):
-            generate_beat_plan("fake-api-key", "A story script.")
+            generate_beat_plan(FAKE_CREDENTIALS, "A story script.")
 
     @patch("app.api.v1.endpoints.beat_generate.call_structured")
     def test_exhausted_retries_raise_external_service_error(self, mock_call):
         mock_call.return_value = _fake_result("still not valid json{{{")
 
         with self.assertRaises(ExternalServiceError):
-            generate_beat_plan("fake-api-key", "A story script.")
+            generate_beat_plan(FAKE_CREDENTIALS, "A story script.")
 
         self.assertEqual(mock_call.call_count, 2)
 

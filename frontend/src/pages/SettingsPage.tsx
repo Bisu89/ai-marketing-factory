@@ -2,8 +2,15 @@ import { useEffect, useState } from "react";
 import { CheckCircle2, FolderOpen, LayoutTemplate, Trash2 } from "lucide-react";
 import { PageHeader } from "../components/PageHeader";
 import { FolderBrowserModal } from "../components/FolderBrowserModal";
-import { getSettings, updateAnthropicApiKey, updateLibraryDir } from "../api/settings";
+import {
+  getSettings,
+  updateAiProvider,
+  updateAnthropicApiKey,
+  updateLibraryDir,
+  updateOpenAiApiKey,
+} from "../api/settings";
 import { deleteTemplate, listTemplates } from "../api/template";
+import type { AIProvider } from "../types/settings";
 import type { Template } from "../types/videoFactory";
 import "./SettingsPage.css";
 
@@ -15,9 +22,17 @@ export function SettingsPage() {
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
+  // Dual AI Provider (see docs/features/55-dual-ai-provider.md) -- both
+  // keys are always editable regardless of which provider is currently
+  // active, so switching back and forth never requires re-entering a key.
+  const [aiProvider, setAiProvider] = useState<AIProvider>("anthropic");
+  const [savingProvider, setSavingProvider] = useState(false);
   const [hasAnthropicKey, setHasAnthropicKey] = useState(false);
   const [anthropicKeyInput, setAnthropicKeyInput] = useState("");
   const [savingKey, setSavingKey] = useState(false);
+  const [hasOpenAiKey, setHasOpenAiKey] = useState(false);
+  const [openAiKeyInput, setOpenAiKeyInput] = useState("");
+  const [savingOpenAiKey, setSavingOpenAiKey] = useState(false);
 
   // Video Factory templates (Task 12 -- see docs/features/39-project-templates.md).
   const [templates, setTemplates] = useState<Template[]>([]);
@@ -34,7 +49,9 @@ export function SettingsPage() {
     getSettings()
       .then((settings) => {
         setLibraryDir(settings.library_dir);
+        setAiProvider(settings.ai_provider);
         setHasAnthropicKey(settings.has_anthropic_key);
+        setHasOpenAiKey(settings.has_openai_key);
       })
       .catch(() => setError("Không đọc được cấu hình hiện tại."));
     refreshTemplates();
@@ -69,6 +86,39 @@ export function SettingsPage() {
       setError("Không lưu được API key.");
     } finally {
       setSavingKey(false);
+    }
+  }
+
+  async function handleSaveOpenAiKey() {
+    if (!openAiKeyInput.trim() || savingOpenAiKey) return;
+    setSavingOpenAiKey(true);
+    setError(null);
+    setMessage(null);
+    try {
+      const result = await updateOpenAiApiKey(openAiKeyInput.trim());
+      setHasOpenAiKey(result.has_openai_key);
+      setOpenAiKeyInput("");
+      setMessage("Đã lưu OpenAI API key.");
+    } catch {
+      setError("Không lưu được API key.");
+    } finally {
+      setSavingOpenAiKey(false);
+    }
+  }
+
+  async function handleChangeProvider(provider: AIProvider) {
+    if (provider === aiProvider || savingProvider) return;
+    setSavingProvider(true);
+    setError(null);
+    setMessage(null);
+    try {
+      const result = await updateAiProvider(provider);
+      setAiProvider(result.ai_provider);
+      setMessage(result.ai_provider === "openai" ? "Đã chuyển sang OpenAI." : "Đã chuyển sang Claude (Anthropic).");
+    } catch {
+      setError("Không đổi được AI provider.");
+    } finally {
+      setSavingProvider(false);
     }
   }
 
@@ -142,8 +192,24 @@ export function SettingsPage() {
         </div>
 
         <div className="settings-row">
+          <label className="settings-label" htmlFor="ai-provider">
+            AI Provider (dùng cho Content/Beats/AI Story)
+          </label>
+          <select
+            id="ai-provider"
+            className="settings-input settings-input-narrow"
+            value={aiProvider}
+            disabled={savingProvider}
+            onChange={(e) => handleChangeProvider(e.target.value as AIProvider)}
+          >
+            <option value="anthropic">Claude (Anthropic)</option>
+            <option value="openai">OpenAI</option>
+          </select>
+        </div>
+
+        <div className="settings-row">
           <label className="settings-label" htmlFor="anthropic-key">
-            Anthropic API Key (dùng cho AI Story)
+            Anthropic API Key
           </label>
           <div className="settings-folder-picker">
             <input
@@ -160,6 +226,30 @@ export function SettingsPage() {
               disabled={!anthropicKeyInput.trim() || savingKey}
             >
               {hasAnthropicKey && <CheckCircle2 size={14} />}
+              Lưu
+            </button>
+          </div>
+        </div>
+
+        <div className="settings-row">
+          <label className="settings-label" htmlFor="openai-key">
+            OpenAI API Key
+          </label>
+          <div className="settings-folder-picker">
+            <input
+              id="openai-key"
+              type="password"
+              className="settings-input"
+              placeholder={hasOpenAiKey ? "•••••••••••••• (đã cấu hình)" : "sk-..."}
+              value={openAiKeyInput}
+              onChange={(e) => setOpenAiKeyInput(e.target.value)}
+            />
+            <button
+              className="btn btn-secondary"
+              onClick={handleSaveOpenAiKey}
+              disabled={!openAiKeyInput.trim() || savingOpenAiKey}
+            >
+              {hasOpenAiKey && <CheckCircle2 size={14} />}
               Lưu
             </button>
           </div>

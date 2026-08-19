@@ -3,6 +3,7 @@ from sqlalchemy.orm import Session
 
 from app.core.config import Settings, get_settings
 from app.db.session import get_db
+from app.modules.ai.llm_client import resolve_ai_credentials
 from app.modules.ai.story.schemas import StoryGenerateIn, StoryJobOut, job_to_out
 from app.modules.ai.story.service import StoryService
 
@@ -13,7 +14,7 @@ def get_story_service(
     db: Session = Depends(get_db),
     settings: Settings = Depends(get_settings),
 ) -> StoryService:
-    return StoryService(db, settings.anthropic_api_key)
+    return StoryService(db, resolve_ai_credentials(settings))
 
 
 @router.post("/story-jobs", response_model=StoryJobOut, status_code=201)

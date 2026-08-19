@@ -19,8 +19,9 @@ import threading
 
 from app.core.config import get_settings
 
-# Anthropic's own client is not otherwise concurrency-limited by this
-# codebase (app.modules.ai.claude_client.call_structured makes one
-# synchronous request per call) -- this is the one place that caps how many
-# such requests may be in flight across the whole process at once.
+# Neither AI provider's own client is otherwise concurrency-limited by this
+# codebase (app.modules.ai.llm_client.call_structured makes one synchronous
+# request per call, to whichever provider is configured) -- this is the one
+# place that caps how many such requests may be in flight across the whole
+# process at once.
 ai_generation_semaphore = threading.Semaphore(max(1, get_settings().max_concurrent_ai_generation))

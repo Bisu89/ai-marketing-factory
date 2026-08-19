@@ -1,14 +1,13 @@
 import json
 import logging
 
-import anthropic
 from sqlalchemy.orm import Session, selectinload
 
 from app.core.exceptions import ExternalServiceError, NotFoundError, ValidationError
 from app.models.video import Video
 from app.modules.ai import history
 from app.modules.ai.caption.models import CaptionJob, CaptionVersion
-from app.modules.ai.claude_client import MODEL, call_structured
+from app.modules.ai.llm_client import ANTHROPIC_MODEL, OPENAI_MODEL, AICredentials, AIProviderError, call_structured
 
 logger = logging.getLogger(__name__)
 
@@ -79,9 +78,9 @@ def _build_user_message(video: Video) -> str:
 
 
 class CaptionService:
-    def __init__(self, db: Session, api_key: str | None):
+    def __init__(self, db: Session, credentials: AICredentials | None):
         self.db = db
-        self.api_key = api_key
+        self.credentials = credentials
 
     def _get_video(self, video_id: int) -> Video:
         video = self.db.get(Video, video_id)
@@ -129,12 +128,17 @@ class CaptionService:
     def generate(self, video_id: int) -> CaptionJob:
         video = self._get_video(video_id)
 
-        if not self.api_key:
+        if self.credentials is None:
             raise ValidationError(
-                "Chua cau hinh Anthropic API key. Vao Settings de nhap key truoc khi tao caption."
+                "Chua cau hinh AI provider. Vao Settings de chon provider va nhap key truoc khi tao caption."
             )
 
         user_message = _build_user_message(video)
+        # A failed attempt still names which model it was attempting to use
+        # (self.credentials is already known not to be None here) --
+        # result.model isn't available yet in the AIProviderError branch
+        # below, since the call itself is what failed.
+        attempted_model = OPENAI_MODEL if self.credentials.provider == "openai" else ANTHROPIC_MODEL
 
         def _fail(message: str, latency_ms: int = 0, raw: str | None = None) -> None:
             job = CaptionJob(video_id=video_id, status="failed", error_message=message)
@@ -144,7 +148,8 @@ class CaptionService:
                 kind="caption",
                 job_id=None,
                 video_id=video_id,
-                model=MODEL,
+                model=attempted_model,
+                provider=self.credentials.provider,
                 prompt_system=SYSTEM_PROMPT,
                 prompt_user=user_message,
                 response_raw=raw,
@@ -155,37 +160,35 @@ class CaptionService:
 
         try:
             result = call_structured(
-                self.api_key,
+                self.credentials,
                 system=SYSTEM_PROMPT,
                 user_message=user_message,
                 output_schema=OUTPUT_SCHEMA,
                 max_tokens=MAX_TOKENS,
+                schema_name="caption_variants",
             )
-        except anthropic.APIError as exc:
-            _fail(f"Goi Anthropic API that bai: {exc}")
-            raise ExternalServiceError(f"Goi Anthropic API that bai: {exc}") from exc
+        except AIProviderError as exc:
+            _fail(f"Goi AI provider that bai: {exc}")
+            raise ExternalServiceError(f"Goi AI provider that bai: {exc}") from exc
 
-        response = result.response
-
-        if response.stop_reason == "refusal":
+        if result.refused:
             message = "Yeu cau bi tu choi boi bo loc an toan cua model."
             _fail(message, result.latency_ms)
             raise ExternalServiceError(message)
 
-        text_block = next((b for b in response.content if b.type == "text"), None)
-        if text_block is None:
+        if not result.text:
             message = "Model khong tra ve noi dung van ban."
             _fail(message, result.latency_ms)
             raise ExternalServiceError(message)
 
         try:
-            parsed = json.loads(text_block.text)
+            parsed = json.loads(result.text)
             variants = parsed["variants"]
             if len(variants) < VERSIONS_PER_GENERATION:
                 raise ValueError(f"Expected {VERSIONS_PER_GENERATION} variants, got {len(variants)}")
         except (json.JSONDecodeError, KeyError, TypeError, ValueError) as exc:
             message = f"Khong doc duoc ket qua tra ve tu model: {exc}"
-            _fail(message, result.latency_ms, raw=text_block.text)
+            _fail(message, result.latency_ms, raw=result.text)
             raise ExternalServiceError(message) from exc
 
         job = CaptionJob(video_id=video_id, status="completed")
@@ -210,13 +213,14 @@ class CaptionService:
             kind="caption",
             job_id=job.id,
             video_id=video_id,
-            model=MODEL,
+            model=result.model,
+            provider=result.provider,
             prompt_system=SYSTEM_PROMPT,
             prompt_user=user_message,
-            response_raw=text_block.text,
+            response_raw=result.text,
             latency_ms=result.latency_ms,
-            input_tokens=getattr(response.usage, "input_tokens", None),
-            output_tokens=getattr(response.usage, "output_tokens", None),
+            input_tokens=result.input_tokens,
+            output_tokens=result.output_tokens,
         )
 
         self.db.commit()

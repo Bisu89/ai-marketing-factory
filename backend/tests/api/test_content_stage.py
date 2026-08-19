@@ -49,7 +49,7 @@ def _fake_brief(api_key, idea, content_config):
 
 
 def _fake_script(word_count: int = 72):
-    def _make(api_key, brief, content_config):
+    def _make(credentials, brief, content_config, words_per_second):
         body_words = " ".join(["word"] * max(word_count - 12, 4))
         return Script(
             hook="This is the opening hook line.",

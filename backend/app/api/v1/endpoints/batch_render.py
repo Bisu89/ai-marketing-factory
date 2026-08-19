@@ -39,6 +39,7 @@ from app.api.v1.endpoints.motion_generate import resolve_effective_preset
 from app.api.v1.endpoints.quality_gate import run_quality_check
 from app.core.concurrency import ai_generation_semaphore
 from app.core.config import Settings, get_settings
+from app.modules.ai.llm_client import AICredentials, resolve_ai_credentials
 from app.core.exceptions import FileOperationError, NotFoundError, ValidationError
 from app.core.render_profile import get_render_profile
 from app.db.session import SessionLocal, get_db
@@ -390,7 +391,7 @@ def create_batch(payload: CreateBatchRequest, settings: Settings = Depends(get_s
 # -- Beat generation (bounded concurrency, background thread) -----------
 
 
-def _generate_beats_for_item(item_id: int, project_id: int, script_text: str, api_key: str | None) -> None:
+def _generate_beats_for_item(item_id: int, project_id: int, script_text: str, credentials: AICredentials | None) -> None:
     try:
         # Task 20: shares app.core.concurrency's process-wide AI semaphore
         # with app/api/v1/endpoints/factory_pipeline.py's own Beat stage --
@@ -400,7 +401,7 @@ def _generate_beats_for_item(item_id: int, project_id: int, script_text: str, ap
         # combined total if this flow and the factory batch engine both
         # happen to be generating beats at the same time.
         with ai_generation_semaphore:
-            generated = generate_beat_plan(api_key, script_text)
+            generated = generate_beat_plan(credentials, script_text)
     except Exception as exc:
         logger.exception("Batch item %s beat generation failed", item_id)
         set_item_fields(item_id, status="FAILED", error_message=str(exc))
@@ -424,18 +425,18 @@ def _generate_beats_for_item(item_id: int, project_id: int, script_text: str, ap
         set_item_fields(item_id, status="FAILED", error_message=str(exc))
 
 
-def _run_batch_beat_generation(batch_id: int, api_key: str | None, max_workers: int) -> None:
+def _run_batch_beat_generation(batch_id: int, credentials: AICredentials | None, max_workers: int) -> None:
     batch = get_batch_row(batch_id)
     pending = [item for item in batch.items if item.status == "PROJECT_CREATED"]
     if not pending:
         recompute_batch_status(batch_id)
         return
     # Bounded concurrency (Task 13 section 16): never more than
-    # max_concurrent_ai_generation Claude calls in flight at once,
+    # max_concurrent_ai_generation AI provider calls in flight at once,
     # regardless of how many items are pending.
     with concurrent.futures.ThreadPoolExecutor(max_workers=max(1, max_workers)) as executor:
         futures = [
-            executor.submit(_generate_beats_for_item, item.id, item.project_id, item.script_text, api_key)
+            executor.submit(_generate_beats_for_item, item.id, item.project_id, item.script_text, credentials)
             for item in pending
         ]
         concurrent.futures.wait(futures)
@@ -450,7 +451,7 @@ def generate_beats_for_batch(batch_id: int, settings: Settings = Depends(get_set
         set_batch_status(batch_id, "PROCESSING")
         thread = threading.Thread(
             target=_run_batch_beat_generation,
-            args=(batch_id, settings.anthropic_api_key, settings.max_concurrent_ai_generation),
+            args=(batch_id, resolve_ai_credentials(settings), settings.max_concurrent_ai_generation),
             daemon=True,
         )
         thread.start()
@@ -689,7 +690,7 @@ def retry_batch(
         set_batch_status(batch_id, "PROCESSING")
         thread = threading.Thread(
             target=_run_batch_beat_generation,
-            args=(batch_id, settings.anthropic_api_key, settings.max_concurrent_ai_generation),
+            args=(batch_id, resolve_ai_credentials(settings), settings.max_concurrent_ai_generation),
             daemon=True,
         )
         thread.start()

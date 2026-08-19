@@ -32,7 +32,7 @@ export function AIContentPage() {
 
   useEffect(() => {
     getSettings()
-      .then((settings) => setHasApiKey(settings.has_anthropic_key))
+      .then((settings) => setHasApiKey(settings.has_ai_key))
       .catch(() => setHasApiKey(false));
   }, []);
 
@@ -73,7 +73,7 @@ export function AIContentPage() {
       {hasApiKey === false && (
         <div className="ai-alert ai-alert-warning">
           <AlertTriangle size={16} />
-          Chưa cấu hình Anthropic API key. Vào <Link to="/settings">Settings</Link> để nhập key trước khi tạo nội dung.
+          Chưa cấu hình AI provider. Vào <Link to="/settings">Settings</Link> để chọn provider và nhập key trước khi tạo nội dung.
         </div>
       )}
 

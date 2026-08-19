@@ -1,6 +1,7 @@
 """AI-generated Beat plans -- the adapter boundary between the existing
-Claude infrastructure (app.modules.ai.claude_client) and the Beat domain
-contract (app.modules.beat.schemas). See docs/features/30-generate-beats.md.
+AI infrastructure (app.modules.ai.llm_client -- Claude or OpenAI, see
+docs/features/55-dual-ai-provider.md) and the Beat domain contract
+(app.modules.beat.schemas). See docs/features/30-generate-beats.md.
 
 Per app/modules/README.md, no module may import another module.
 app.modules.beat must not import app.modules.ai (or vice versa); something
@@ -19,13 +20,12 @@ Factory frontend keeps the result in local component state for now.
 import json
 import logging
 
-import anthropic
 from fastapi import APIRouter, Depends
 from pydantic import BaseModel, ValidationError as PydanticValidationError, field_validator
 
 from app.core.config import Settings, get_settings
 from app.core.exceptions import ExternalServiceError, ValidationError
-from app.modules.ai.claude_client import call_structured
+from app.modules.ai.llm_client import AICredentials, AIProviderError, call_structured, resolve_ai_credentials
 from app.modules.beat.schemas import Beat, BeatPlan, BeatType
 
 logger = logging.getLogger(__name__)
@@ -114,7 +114,7 @@ def _beats_from_raw(raw_beats: list[dict]) -> list[Beat]:
     ]
 
 
-def _call_and_validate(api_key: str, script: str, repair_note: str | None) -> BeatPlan:
+def _call_and_validate(credentials: AICredentials, script: str, repair_note: str | None) -> BeatPlan:
     system_prompt = SYSTEM_PROMPT
     if repair_note:
         system_prompt += (
@@ -124,29 +124,28 @@ def _call_and_validate(api_key: str, script: str, repair_note: str | None) -> Be
 
     try:
         result = call_structured(
-            api_key,
+            credentials,
             system=system_prompt,
             user_message=script,
             output_schema=OUTPUT_SCHEMA,
             max_tokens=MAX_TOKENS,
+            schema_name="beat_plan",
         )
-    except anthropic.APIError as exc:
-        raise ExternalServiceError(f"Anthropic API call failed: {exc}") from exc
+    except AIProviderError as exc:
+        raise ExternalServiceError(f"AI provider call failed: {exc}") from exc
 
-    response = result.response
-    if response.stop_reason == "refusal":
+    if result.refused:
         raise ExternalServiceError("Request was refused by the model's safety filter.")
 
-    text_block = next((b for b in response.content if b.type == "text"), None)
-    if text_block is None:
+    if not result.text:
         raise ExternalServiceError("Model did not return any text content.")
 
     # Everything below is "did the model's JSON match the Beat contract?",
     # not a transport/API failure -- these are the errors worth a bounded
-    # repair retry (see generate_beat_plan), unlike the anthropic.APIError /
+    # repair retry (see generate_beat_plan), unlike the AIProviderError /
     # refusal / empty-content cases above, which fail immediately.
     try:
-        parsed = json.loads(text_block.text)
+        parsed = json.loads(result.text)
         raw_beats = parsed["beats"]
         if not raw_beats:
             raise ValueError("model returned zero beats")
@@ -156,17 +155,17 @@ def _call_and_validate(api_key: str, script: str, repair_note: str | None) -> Be
         raise ValueError(f"generated JSON did not match the Beat contract: {exc}") from exc
 
 
-def generate_beat_plan(api_key: str | None, script: str) -> BeatPlan:
-    if not api_key:
+def generate_beat_plan(credentials: AICredentials | None, script: str) -> BeatPlan:
+    if credentials is None:
         raise ValidationError(
-            "Anthropic API key not configured. Go to Settings to enter a key before generating beats."
+            "No AI provider is configured. Go to Settings to choose a provider and enter an API key."
         )
 
     repair_note: str | None = None
     last_error: Exception | None = None
     for attempt in range(MAX_RETRIES + 1):
         try:
-            return _call_and_validate(api_key, script, repair_note)
+            return _call_and_validate(credentials, script, repair_note)
         except ValueError as exc:
             logger.warning("Beat generation attempt %d/%d failed validation: %s", attempt + 1, MAX_RETRIES + 1, exc)
             last_error = exc
@@ -177,4 +176,4 @@ def generate_beat_plan(api_key: str | None, script: str) -> BeatPlan:
 
 @router.post("/beats/generate", response_model=BeatPlan, status_code=201)
 def create_beat_plan(payload: BeatGenerateIn, settings: Settings = Depends(get_settings)) -> BeatPlan:
-    return generate_beat_plan(settings.anthropic_api_key, payload.script)
+    return generate_beat_plan(resolve_ai_credentials(settings), payload.script)

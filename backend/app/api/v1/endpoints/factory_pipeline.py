@@ -93,6 +93,7 @@ from app.modules.beat.project_service import (
     update_project_beat_plan,
 )
 from app.modules.beat.schemas import Beat, BeatPlan
+from app.modules.ai.llm_client import resolve_ai_credentials
 from app.modules.metadata.schemas import MetadataError
 from app.modules.thumbnail.schemas import ThumbnailError
 from app.modules.factory import service as factory_service
@@ -204,18 +205,31 @@ def _stage_generate_content(project_id: int, settings: Settings) -> bool:
         return False
 
     content_config = draft.config.content
+    credentials = resolve_ai_credentials(settings)
     try:
-        brief = generate_content_brief(settings.anthropic_api_key, idea, content_config)
-        script = generate_script(settings.anthropic_api_key, brief, content_config)
+        brief = generate_content_brief(credentials, idea, content_config)
+        script = generate_script(credentials, brief, content_config, settings.content_words_per_second)
     except ContentProviderTimeout as exc:
         raise FactoryStageError("PREPARING_CONTENT", CONTENT_PROVIDER_TIMEOUT, str(exc)) from exc
     except InvalidContentResponse as exc:
         raise FactoryStageError("PREPARING_CONTENT", INVALID_CONTENT_RESPONSE, str(exc)) from exc
+    except ScriptValidationError as exc:
+        # generate_script's own bounded repair-retry loop already tried to
+        # fix a too-long/too-short script (see content_generate.py's own
+        # docstring on this) -- this is only reached once those retries are
+        # exhausted, so exc.code (SCRIPT_TOO_LONG/SCRIPT_TOO_SHORT/...)
+        # still needs to surface distinctly, not collapse into the generic
+        # CONTENT_GENERATION_FAILED branch below (ScriptValidationError is
+        # itself a ValidationError subclass, so it must be caught first).
+        raise FactoryStageError("PREPARING_CONTENT", exc.code, str(exc)) from exc
     except (ValidationError, ExternalServiceError) as exc:
         raise FactoryStageError("PREPARING_CONTENT", CONTENT_GENERATION_FAILED, str(exc)) from exc
 
     script_text = script.to_narration_text()
     try:
+        # Redundant with generate_script's own internal check above (same
+        # script, same inputs) -- kept as a cheap defense-in-depth
+        # safety net, not because this is expected to ever actually fail.
         validate_script_text(script_text, content_config.target_duration, settings.content_words_per_second)
     except ScriptValidationError as exc:
         raise FactoryStageError("PREPARING_CONTENT", exc.code, str(exc)) from exc
@@ -269,7 +283,7 @@ def _stage_generate_beats(project_id: int, settings: Settings) -> tuple[BeatPlan
         # must never put more concurrent Claude calls in flight than this,
         # even if project-level concurrency is higher.
         with ai_generation_semaphore:
-            generated = generate_beat_plan(settings.anthropic_api_key, script)
+            generated = generate_beat_plan(resolve_ai_credentials(settings), script)
     except (ValidationError, ExternalServiceError) as exc:
         raise FactoryStageError("GENERATING_BEATS", BEAT_GENERATION_FAILED, str(exc)) from exc
 

@@ -5,6 +5,7 @@ from app.core.config import Settings, get_settings
 from app.db.session import get_db
 from app.modules.ai.caption.schemas import CaptionGenerateIn, CaptionJobOut, job_to_out
 from app.modules.ai.caption.service import CaptionService
+from app.modules.ai.llm_client import resolve_ai_credentials
 
 router = APIRouter()
 
@@ -13,7 +14,7 @@ def get_caption_service(
     db: Session = Depends(get_db),
     settings: Settings = Depends(get_settings),
 ) -> CaptionService:
-    return CaptionService(db, settings.anthropic_api_key)
+    return CaptionService(db, resolve_ai_credentials(settings))
 
 
 @router.post("/caption-jobs", response_model=CaptionJobOut, status_code=201)

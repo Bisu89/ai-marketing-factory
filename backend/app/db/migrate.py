@@ -27,6 +27,23 @@ _NEW_COLUMNS: list[tuple[str, str, str]] = [
     # bare INTEGER) so existing rows backfill to a real attempt count
     # instead of NULL -- the ORM model declares this column NOT NULL.
     ("factory_run", "attempt", "INTEGER DEFAULT 1"),
+    # Task 26 -- see docs/features/52-final-composer.md. The Final Composer's
+    # own Audio Master/Captions/watermark inputs, recorded on the RenderJob
+    # that used them.
+    ("video_compose_job", "audio_master_path", "VARCHAR"),
+    ("video_compose_job", "captions_ass_path", "VARCHAR"),
+    ("video_compose_job", "watermark_enabled", "BOOLEAN DEFAULT 0"),
+    ("video_compose_job", "watermark_path", "VARCHAR"),
+    ("video_compose_job", "watermark_position", "VARCHAR DEFAULT 'bottom-right'"),
+    ("video_compose_job", "watermark_opacity", "FLOAT DEFAULT 1.0"),
+    ("video_compose_job", "watermark_scale", "FLOAT DEFAULT 0.15"),
+    ("video_compose_job", "watermark_margin_x", "INTEGER DEFAULT 24"),
+    ("video_compose_job", "watermark_margin_y", "INTEGER DEFAULT 24"),
+    # Task 28 -- see docs/features/54-final-qa.md. Kept separate from the
+    # pre-render Quality Gate's own quality_status/quality_score (different
+    # checks, neither should overwrite the other's cached outcome).
+    ("factory_run", "qa_status", "VARCHAR"),
+    ("factory_run", "qa_score", "INTEGER"),
 ]
 
 # (index_name, table, column) -- Base.metadata.create_all() only creates

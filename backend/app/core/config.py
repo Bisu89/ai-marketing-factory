@@ -129,6 +129,14 @@ class Settings(BaseSettings):
 
     anthropic_api_key: str | None = None
 
+    # Dual AI Provider (see docs/features/55-dual-ai-provider.md) -- which
+    # provider app.modules.ai.llm_client.resolve_ai_credentials picks by
+    # default. Plain, unvalidated string (same as anthropic_api_key above);
+    # the PUT /settings/ai-provider endpoint is what actually validates
+    # against llm_client.AI_PROVIDERS before persisting.
+    ai_provider: str = "anthropic"
+    openai_api_key: str | None = None
+
 
 @lru_cache
 def get_settings() -> Settings:
@@ -142,4 +150,14 @@ def update_library_dir(new_path: str) -> None:
 
 def update_anthropic_api_key(key: str) -> None:
     set_key(ENV_FILE_PATH, "APP_ANTHROPIC_API_KEY", key)
+    get_settings.cache_clear()
+
+
+def update_openai_api_key(key: str) -> None:
+    set_key(ENV_FILE_PATH, "APP_OPENAI_API_KEY", key)
+    get_settings.cache_clear()
+
+
+def update_ai_provider(provider: str) -> None:
+    set_key(ENV_FILE_PATH, "APP_AI_PROVIDER", provider)
     get_settings.cache_clear()
