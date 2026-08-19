@@ -34,7 +34,7 @@ from pydantic import ValidationError as PydanticValidationError
 from sqlalchemy.orm import Session
 
 from app.api.v1.endpoints.beat_generate import generate_beat_plan
-from app.api.v1.endpoints.composition_render import render_composition
+from app.api.v1.endpoints.composition_render import _resolve_classic_render_captions, render_composition
 from app.api.v1.endpoints.motion_generate import resolve_effective_preset
 from app.api.v1.endpoints.quality_gate import run_quality_check
 from app.core.concurrency import ai_generation_semaphore
@@ -503,6 +503,13 @@ def render_batch(
             )
             continue
 
+        # See docs/features/56-classic-render-captions.md -- same fix as
+        # the classic Quick Render endpoint: without this, a local-voice
+        # Batch Render never burns captions even when the item's own
+        # project already has a valid captions.ass.
+        resolved_captions_path = _resolve_classic_render_captions(
+            item.project_id, plan.config.captions.enabled, settings
+        )
         try:
             job_id = render_composition(
                 composition_plan, asset_paths, service,
@@ -510,6 +517,9 @@ def render_batch(
                 narration_asset_paths=narration_asset_paths or None,
                 profile=plan.config.render.profile,
                 min_free_disk_mb=settings.min_free_disk_mb,
+                project_id=item.project_id,
+                library_dir=settings.library_dir,
+                captions_ass_path=resolved_captions_path,
             )
         except (ValidationError, FileOperationError) as exc:
             set_item_fields(item.id, status="SKIPPED", error_message=str(exc))

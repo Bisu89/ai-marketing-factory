@@ -126,7 +126,15 @@ class _BatchTestCase(unittest.TestCase):
         for p in self.patchers:
             p.start()
 
-        self.settings = Settings(library_dir=str(self.tmp_path), anthropic_api_key="fake-test-key")
+        # ai_provider/openai_api_key explicitly pinned -- see
+        # tests.api.test_factory_pipeline's own identical fix; Settings
+        # otherwise reads a developer's real, working .env configuration
+        # for these fields, silently overriding this test's own
+        # deliberately-fake Anthropic key.
+        self.settings = Settings(
+            library_dir=str(self.tmp_path), anthropic_api_key="fake-test-key",
+            ai_provider="anthropic", openai_api_key=None,
+        )
         # beat_renderer wired exactly like tests/api/test_composition_render.py's
         # own _VideoComposerIntegrationTestCase -- without it, the worker's
         # RENDER_BEATS phase fails immediately with "no beat renderer

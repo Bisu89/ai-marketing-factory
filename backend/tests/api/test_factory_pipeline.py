@@ -88,7 +88,17 @@ class _FactoryTestCase(unittest.TestCase):
             ],
         )
         self.TestSessionLocal = sessionmaker(bind=self.engine)
-        self.settings = Settings(library_dir=str(self.tmp_path), anthropic_api_key="fake-test-key")
+        # ai_provider/openai_api_key explicitly pinned -- Settings reads the
+        # real .env for any field not given here (see
+        # tests.modules.ai.test_llm_client's own identical fix), and a
+        # developer's real, working OpenAI configuration would otherwise
+        # silently override this test's own deliberately-fake Anthropic
+        # key, turning a fast, deterministic auth-failure path into a real,
+        # non-deterministic AI call.
+        self.settings = Settings(
+            library_dir=str(self.tmp_path), anthropic_api_key="fake-test-key",
+            ai_provider="anthropic", openai_api_key=None,
+        )
 
         self.patchers = [
             patch("app.modules.batch.service.SessionLocal", self.TestSessionLocal),

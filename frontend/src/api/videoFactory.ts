@@ -13,6 +13,13 @@ export interface CompositionRenderRequest {
   // recorded on the job for reporting. Does not override each Scene's own
   // output_format (see render_composition's docstring).
   profile?: string;
+  // See docs/features/56-classic-render-captions.md -- when this project
+  // is a real, id-addressable one (the classic singleton-beats.json flow
+  // has no project id at all), the backend resolves/generates a real
+  // captions.ass and burns it even for local-voice narration, which
+  // previously never got burned captions no matter this checkbox's state.
+  project_id?: number;
+  captions_enabled?: boolean;
 }
 
 // Mirrors backend/app/api/v1/endpoints/composition_render.py's

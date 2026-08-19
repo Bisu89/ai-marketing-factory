@@ -39,6 +39,7 @@ from app.core.exceptions import FileOperationError, NotFoundError, RenderCancell
 from app.core.render_policy import enforce_local_rendering_policy
 from app.core.render_profile import RenderProfile, get_render_profile
 from app.db.session import get_db
+from app.api.v1.endpoints.caption_generate import CaptionError, captions_ass_path, captions_is_valid, generate_project_captions
 from app.api.v1.endpoints.motion_generate import motion_artifact_for_beat
 from app.modules.composition.schemas import CompositionPlan, Scene, SceneMotion
 from app.modules.motion.renderer import render_motion_clip, render_video_clip
@@ -489,6 +490,32 @@ def render_beats_for_job(
     return clip_paths
 
 
+def _resolve_classic_render_captions(project_id: int | None, captions_enabled: bool, settings: Settings) -> str | None:
+    """Section: real fix for a real gap found in manual testing (see
+    docs/features/56-classic-render-captions.md) -- the classic Quick
+    Render / Batch Render paths never called Task 25's Caption Engine at
+    all, so a local-voice render (this app's own default) never had a
+    real captions.ass to burn even when the project already had one (its
+    own Factory pipeline's GENERATING_CAPTIONS stage may have already
+    produced it). Mirrors factory_pipeline.py's own _stage_render
+    resolution shape, but also *generates* first (idempotent -- a no-op
+    if a valid captions.ass already exists) rather than assuming a
+    separate stage already ran, since a classic-only project never has
+    one. Never blocks the render over a caption failure -- this
+    codebase's established "never block over a soft failure" precedent
+    (BGM-missing, Motion-cache-miss, Thumbnail-fallback-frame, etc.).
+    """
+    if project_id is None or not captions_enabled:
+        return None
+    try:
+        generate_project_captions(project_id, settings)
+    except CaptionError:
+        return None
+    if not captions_is_valid(project_id, settings):
+        return None
+    return str(captions_ass_path(project_id, settings.library_dir))
+
+
 def render_composition(
     plan: CompositionPlan,
     asset_paths: dict[int, str],
@@ -597,14 +624,21 @@ def render_composition(
     }
 
     # Section 14/17: captions are burned in only when a real ASS artifact is
-    # actually available -- for narration_mode="precomposed" that means
+    # actually available. For narration_mode="precomposed" that means
     # `captions_ass_path` was actually given (Task 25's Caption Engine ran
-    # and produced a valid captions.ass); for "local" there's no word-
-    # boundary data to caption from at all (docs/features/36-audio-pipeline.md).
+    # and produced a valid captions.ass). "local" narration itself has no
+    # live word-boundary data (docs/features/36-audio-pipeline.md) -- but a
+    # project-linked classic/batch render (see _resolve_classic_render_captions
+    # below) can still supply a real, already-generated captions_ass_path,
+    # which video_composer.service._run_job's own non-precomposed branch
+    # burns directly when given one (see docs/features/56-classic-render-captions.md);
+    # "tts" (edge_tts) always has real word-boundary data of its own.
     if narration_mode == "precomposed":
         burn_subtitles = captions_ass_path is not None
+    elif narration_mode == "local":
+        burn_subtitles = captions_ass_path is not None
     else:
-        burn_subtitles = narration_mode != "local"
+        burn_subtitles = True
 
     job_id = service.create_job(
         title=title,
@@ -652,6 +686,14 @@ class CompositionRenderRequest(BaseModel):
     output_dir: str | None = None
     narration_asset_paths: dict[int, str] | None = None
     profile: str = "SOCIAL_VERTICAL"
+    # See docs/features/56-classic-render-captions.md -- when a real
+    # project_id is given, a valid captions.ass is resolved (generating one
+    # first if none exists yet) and burned into the output, matching what
+    # the Factory pipeline's own render already does. None (the frontend's
+    # classic singleton-beats.json flow, which has no addressable Project
+    # row) simply skips this, exactly as before.
+    project_id: int | None = None
+    captions_enabled: bool = True
 
 
 def get_video_composer_service(request: Request) -> VideoComposerService:
@@ -665,6 +707,7 @@ def create_video_compose_job_from_composition(
     settings: Settings = Depends(get_settings),
     service: VideoComposerService = Depends(get_video_composer_service),
 ):
+    resolved_captions_path = _resolve_classic_render_captions(payload.project_id, payload.captions_enabled, settings)
     job_id = render_composition(
         payload.plan,
         payload.asset_paths,
@@ -674,6 +717,9 @@ def create_video_compose_job_from_composition(
         narration_asset_paths=payload.narration_asset_paths,
         profile=payload.profile,
         min_free_disk_mb=settings.min_free_disk_mb,
+        project_id=payload.project_id,
+        library_dir=settings.library_dir,
+        captions_ass_path=resolved_captions_path,
     )
     job = (
         db.query(VideoComposeJob)

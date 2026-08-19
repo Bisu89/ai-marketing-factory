@@ -636,10 +636,10 @@ class VideoComposerService:
             stage_start = time.monotonic()
             if narration_mode == "local":
                 # No network call, no transcript -- a pre-recorded local
-                # clip has no word-boundary data to caption from (this
-                # task's own scope excludes captions anyway). Beats with no
-                # narration asset assigned get pure silence for their full
-                # duration, never TTS -- see docs/features/36-audio-pipeline.md.
+                # clip has no live word-boundary data of its own. Beats
+                # with no narration asset assigned get pure silence for
+                # their full duration, never TTS -- see
+                # docs/features/36-audio-pipeline.md.
                 self._build_narration_timeline(beat_narration_specs or [], tmp_dir / "narration_segments", narration_audio)
                 words: list[dict] = []
             else:
@@ -648,9 +648,18 @@ class VideoComposerService:
 
             self._set_status(job_id, "subtitling")
             stage_start = time.monotonic()
-            lines = self._group_words_into_lines(words)
-            font_size = max(28, int(height * 0.045))
-            self._write_subtitles(lines, subtitle_ass, subtitle_srt, width, height, font_size, caption_preset)
+            if narration_mode == "local" and captions_ass_path is not None:
+                # See docs/features/56-classic-render-captions.md -- a real,
+                # already-resolved captions.ass (Task 25's Caption Engine,
+                # built from Beat.narration + Beat.start/end, independent
+                # of TTS engine) burns directly here instead of the empty
+                # file _write_subtitles([], ...) would otherwise produce
+                # from local narration's own lack of word-boundary data.
+                subtitle_ass = Path(captions_ass_path)
+            else:
+                lines = self._group_words_into_lines(words)
+                font_size = max(28, int(height * 0.045))
+                self._write_subtitles(lines, subtitle_ass, subtitle_srt, width, height, font_size, caption_preset)
             subtitling_seconds = time.monotonic() - stage_start
 
             _checkpoint()

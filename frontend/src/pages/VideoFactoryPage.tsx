@@ -899,6 +899,8 @@ export function VideoFactoryPage() {
         output_dir: outputDir.trim() || undefined,
         narration_asset_paths: Object.keys(narrationAssetPaths).length > 0 ? narrationAssetPaths : undefined,
         profile: projectConfig.render.profile,
+        project_id: projectId ?? undefined,
+        captions_enabled: captionsEnabled,
       });
       setJob(result);
       setJobId(result.id);
@@ -1199,7 +1201,24 @@ export function VideoFactoryPage() {
               </div>
             )}
 
-            {beats.length === 0 ? (
+            {beats.length === 0 && loadError ? (
+              // Distinct from the genuinely-empty-project case below --
+              // this project may already have real, saved beats that
+              // simply failed to load (a transient fetch error), which the
+              // generic "No beats yet" empty state would otherwise mask as
+              // if the project were actually blank.
+              <div className="vf-alert vf-alert-error">
+                <AlertTriangle size={16} />
+                <div>
+                  Could not load this project's beats: {loadError}
+                  <div className="vf-row" style={{ marginTop: 8 }}>
+                    <button className="btn btn-secondary" onClick={() => window.location.reload()}>
+                      Reload
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ) : beats.length === 0 ? (
               <EmptyState
                 icon={Wand2}
                 title="No beats yet"
@@ -1262,15 +1281,29 @@ export function VideoFactoryPage() {
                 description="Pick a beat from the list to edit it here."
               />
             ) : step === 2 ? (
-              <BeatDetailsEditor
-                beat={selectedBeat}
-                index={beats.findIndex((b) => b.id === selectedBeat.id)}
-                isFirst={beats[0]?.id === selectedBeat.id}
-                isLast={beats[beats.length - 1]?.id === selectedBeat.id}
-                onChange={(patch) => updateBeat(selectedBeat.id, patch)}
-                onRemove={() => removeBeat(selectedBeat.id)}
-                onMove={(direction) => moveBeat(selectedBeat.id, direction)}
-              />
+              <>
+                <BeatDetailsEditor
+                  beat={selectedBeat}
+                  index={beats.findIndex((b) => b.id === selectedBeat.id)}
+                  isFirst={beats[0]?.id === selectedBeat.id}
+                  isLast={beats[beats.length - 1]?.id === selectedBeat.id}
+                  onChange={(patch) => updateBeat(selectedBeat.id, patch)}
+                  onRemove={() => removeBeat(selectedBeat.id)}
+                  onMove={(direction) => moveBeat(selectedBeat.id, direction)}
+                />
+                {/* Image + motion-preset picker, previously only reachable
+                    by clicking "Next" to the separate Visuals step (3) --
+                    shown here too so a beat's visual is pickable/editable
+                    without leaving the Beats step. Step 3 itself is
+                    unchanged, still useful as a quick all-beats overview. */}
+                <VisualsEditor
+                  key={selectedBeat.id}
+                  beat={selectedBeat}
+                  job={job}
+                  projectConfig={projectConfig}
+                  onChange={(patch) => updateBeat(selectedBeat.id, patch)}
+                />
+              </>
             ) : step === 3 ? (
               <VisualsEditor
                 key={selectedBeat.id}
