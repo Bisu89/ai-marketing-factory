@@ -1,6 +1,6 @@
 # 60 — "Top" Caption Preset
 
-**Commit:** `TBD`
+**Commit:** `67bbde0`
 
 Found via a real user report: the 5 existing caption presets only ever
 placed text at the bottom (`emotional`/`cinematic`/`word_highlight`) or
