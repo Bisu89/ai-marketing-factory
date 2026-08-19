@@ -1,6 +1,6 @@
 # 56 — Classic Render: Burned Captions for Local-Voice Quick Render / Batch Render
 
-**Commit:** _(fill in after commit)_
+**Commit:** `1bb3da8`
 
 Real bug found in manual testing: a video rendered via "Quick Render" /
 "Render Anyway" (the classic render path, not the auto Factory pipeline)

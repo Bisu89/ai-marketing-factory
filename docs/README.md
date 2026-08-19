@@ -70,6 +70,8 @@ SQLite.
 
 55. [Dual AI Provider: Claude + OpenAI, Selectable in Settings](features/55-dual-ai-provider.md) — a new `app.modules.ai.llm_client` abstraction (mirrors the Voice module's own `TTSProvider`/`get_provider` pattern) lets every AI text-generation call use either Anthropic Claude or OpenAI, switchable anytime via a new Settings provider toggle; also fixes a real prompt issue where OpenAI models wrote scripts 2-3x the intended length until the target word count was stated explicitly
 
+56. [Classic Render: Burned Captions for Local-Voice Quick Render / Batch Render](features/56-classic-render-captions.md) — the classic Quick Render/Batch Render paths never called Task 25's Caption Engine, so local-voice narration (this app's own default) never got burned captions regardless of the "Enable captions" checkbox; also moves the image + motion-preset picker onto the Beats step itself so a beat's visual is editable without navigating to a separate step
+
 ## Keeping this up to date
 
 See the "Documentation" section in `CLAUDE.md` at the repo root — every
