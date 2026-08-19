@@ -1,6 +1,6 @@
 # 59 — "Generate Full by AI": per-beat OpenAI image generation
 
-**Commit:** `TBD`
+**Commit:** `5d52b09`
 
 A new, distinct "Generate Full by AI" button (New Video modal): paste a
 full story, and the whole pipeline (Beats -> Images -> Voice -> Motion ->
