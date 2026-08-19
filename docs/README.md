@@ -68,6 +68,8 @@ SQLite.
 
 54. [Final QA + Ready-to-Post: Validate the Finished Package](features/54-final-qa.md) — a new `FINAL_QA` FactoryRun stage re-verifies the finished package (video streams/resolution/fps/duration, audio silence/clipping, thumbnail/metadata/caption validity, dependency staleness) via real ffprobe/volumedetect/Pillow probes; a FAIL routes to `NEEDS_REVIEW` with a per-issue `repair_stage`, mirroring the pre-render Quality Gate's own review treatment
 
+55. [Dual AI Provider: Claude + OpenAI, Selectable in Settings](features/55-dual-ai-provider.md) — a new `app.modules.ai.llm_client` abstraction (mirrors the Voice module's own `TTSProvider`/`get_provider` pattern) lets every AI text-generation call use either Anthropic Claude or OpenAI, switchable anytime via a new Settings provider toggle; also fixes a real prompt issue where OpenAI models wrote scripts 2-3x the intended length until the target word count was stated explicitly
+
 ## Keeping this up to date
 
 See the "Documentation" section in `CLAUDE.md` at the repo root — every

@@ -1,6 +1,6 @@
 # 55 — Dual AI Provider: Claude + OpenAI, Selectable in Settings
 
-**Commit:** _(fill in after commit)_
+**Commit:** `4f6979d`
 
 Every AI text-generation call (Content Brief, Script, Beat Plan, plus the
 older AI Story/Hook/Caption features) was hardcoded to Anthropic Claude via
