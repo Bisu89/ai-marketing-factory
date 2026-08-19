@@ -72,6 +72,8 @@ SQLite.
 
 56. [Classic Render: Burned Captions for Local-Voice Quick Render / Batch Render](features/56-classic-render-captions.md) — the classic Quick Render/Batch Render paths never called Task 25's Caption Engine, so local-voice narration (this app's own default) never got burned captions regardless of the "Enable captions" checkbox; also moves the image + motion-preset picker onto the Beats step itself so a beat's visual is editable without navigating to a separate step
 
+57. [Asset Library: Delete Action](features/57-asset-library-delete.md) — a "Delete" button in the asset detail panel wires up the backend's already-existing `DELETE /assets/{id}` endpoint for the first time; only unregisters the asset (the real file on disk is untouched)
+
 ## Keeping this up to date
 
 See the "Documentation" section in `CLAUDE.md` at the repo root — every

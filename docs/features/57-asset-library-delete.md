@@ -1,6 +1,6 @@
 # 57 — Asset Library: Delete Action
 
-**Commit:** _(fill in after commit)_
+**Commit:** `0b3074e`
 
 The backend `DELETE /assets/{id}` endpoint already existed
 (`app/modules/asset/service.py`'s `delete()`) but had no frontend UI at
