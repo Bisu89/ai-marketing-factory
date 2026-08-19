@@ -98,6 +98,11 @@ CAPTION_PRESET_CONFIG = {
     "word_highlight": {"font_bold": True, "italic": False, "font_scale": 1.0, "margin_v_frac": 0.11, "alignment": 2},
     "big_statement": {"font_bold": True, "italic": False, "font_scale": 1.8, "margin_v_frac": 0.45, "alignment": 5},
     "quote": {"font_bold": False, "italic": True, "font_scale": 0.9, "margin_v_frac": 0.45, "alignment": 5},
+    # 8 = top-center (ASS numpad convention) -- a modest margin below the
+    # very top edge (clear of platform UI like TikTok's own top icons),
+    # smaller than the default "emotional" size so it reads as a caption,
+    # not a headline.
+    "top": {"font_bold": True, "italic": False, "font_scale": 0.85, "margin_v_frac": 0.09, "alignment": 8},
 }
 assert set(CAPTION_PRESET_CONFIG) == set(CAPTION_PRESETS)
 
@@ -1336,7 +1341,10 @@ class VideoComposerService:
             ass_lines = self._ass_events_emotional(lines, font, space_width, available_width, width, margin_v, scaled_font_size)
         elif caption_preset == "word_highlight":
             ass_lines = self._ass_events_word_highlight(lines, font, space_width, available_width)
-        elif caption_preset == "cinematic":
+        elif caption_preset in ("cinematic", "top"):
+            # "top" is the same plain, unadorned static-line layout as
+            # "cinematic" -- only the Style's own alignment/margin/font_scale
+            # (set via CAPTION_PRESET_CONFIG above) differ.
             ass_lines = self._ass_events_static_lines(lines, font, space_width, available_width)
         elif caption_preset == "big_statement":
             ass_lines = self._ass_events_big_statement(lines)

@@ -191,8 +191,10 @@ class CaptionPresetGenerationTests(unittest.TestCase):
         self.service._write_subtitles(self.lines, ass_path, srt_path, 480, 852, 32, preset)
         return ass_path.read_text(encoding="utf-8")
 
-    def test_all_five_presets_generate_valid_non_empty_ass(self):
-        self.assertEqual(set(CAPTION_PRESETS), {"emotional", "cinematic", "word_highlight", "big_statement", "quote"})
+    def test_all_six_presets_generate_valid_non_empty_ass(self):
+        self.assertEqual(
+            set(CAPTION_PRESETS), {"emotional", "cinematic", "word_highlight", "big_statement", "quote", "top"}
+        )
         for preset in CAPTION_PRESETS:
             content = self._write(preset)
             self.assertIn("[Script Info]", content)

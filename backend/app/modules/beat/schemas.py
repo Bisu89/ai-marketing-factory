@@ -202,7 +202,7 @@ class Beat(BaseModel):
 # app.modules.composition.schemas.CaptionPreset already uses for the exact
 # same set) -- video_composer owns the real ASS rendering for each of
 # these; this module only needs to know the set of valid names.
-CAPTION_PRESETS = ("emotional", "cinematic", "word_highlight", "big_statement", "quote")
+CAPTION_PRESETS = ("emotional", "cinematic", "word_highlight", "big_statement", "quote", "top")
 
 MIN_VOLUME = 0.0
 MAX_VOLUME = 2.0

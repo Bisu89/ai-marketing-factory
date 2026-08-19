@@ -97,7 +97,7 @@ class BasicGenerationTests(_CaptionStageTestCase):
 
 class PresetTests(_CaptionStageTestCase):
     def test_each_preset_produces_a_valid_ass_file(self):
-        for preset in ("emotional", "cinematic", "word_highlight", "big_statement", "quote"):
+        for preset in ("emotional", "cinematic", "word_highlight", "big_statement", "quote", "top"):
             project_id = self._project_with_narration(
                 f"Preset {preset}", ["Some narration text for this preset."],
                 captions=CaptionsProjectConfig(preset=preset),

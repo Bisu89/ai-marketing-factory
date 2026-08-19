@@ -130,6 +130,7 @@ class CaptionPreset(str, Enum):
     WORD_HIGHLIGHT = "word_highlight"
     BIG_STATEMENT = "big_statement"
     QUOTE = "quote"
+    TOP = "top"
 
 
 class SceneCaption(BaseModel):

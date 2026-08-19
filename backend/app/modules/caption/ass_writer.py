@@ -27,11 +27,11 @@ from app.modules.caption.schemas import (
     CaptionSegment,
 )
 
-CAPTION_PRESETS = ("emotional", "cinematic", "word_highlight", "big_statement", "quote")
+CAPTION_PRESETS = ("emotional", "cinematic", "word_highlight", "big_statement", "quote", "top")
 
 # Verbatim copy of video_composer.service.CAPTION_PRESET_CONFIG (section
 # 21/22: "the Template system should define caption style... only support
-# fields actually required by the renderer") -- same 5 presets, same
+# fields actually required by the renderer") -- same 6 presets, same
 # knobs, so a project's chosen preset looks the same whether it was burned
 # in by the live per-word renderer or this pre-computed engine.
 CAPTION_PRESET_CONFIG = {
@@ -40,6 +40,7 @@ CAPTION_PRESET_CONFIG = {
     "word_highlight": {"font_bold": True, "italic": False, "font_scale": 1.0, "margin_v_frac": 0.11, "alignment": 2},
     "big_statement": {"font_bold": True, "italic": False, "font_scale": 1.8, "margin_v_frac": 0.45, "alignment": 5},
     "quote": {"font_bold": False, "italic": True, "font_scale": 0.9, "margin_v_frac": 0.45, "alignment": 5},
+    "top": {"font_bold": True, "italic": False, "font_scale": 0.85, "margin_v_frac": 0.09, "alignment": 8},
 }
 assert set(CAPTION_PRESET_CONFIG) == set(CAPTION_PRESETS)
 

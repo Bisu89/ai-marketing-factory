@@ -48,9 +48,11 @@ export const MOTION_PRESET_LABELS: Record<MotionPresetName, string> = {
   subtle_rotate: "Subtle rotate",
 };
 
-export type CaptionPreset = "emotional" | "cinematic" | "word_highlight" | "big_statement" | "quote";
+export type CaptionPreset = "emotional" | "cinematic" | "word_highlight" | "big_statement" | "quote" | "top";
 
-export const CAPTION_PRESETS: CaptionPreset[] = ["emotional", "cinematic", "word_highlight", "big_statement", "quote"];
+export const CAPTION_PRESETS: CaptionPreset[] = [
+  "emotional", "cinematic", "word_highlight", "big_statement", "quote", "top",
+];
 
 export const CAPTION_PRESET_LABELS: Record<CaptionPreset, string> = {
   emotional: "Emotional (highlight box)",
@@ -58,6 +60,7 @@ export const CAPTION_PRESET_LABELS: Record<CaptionPreset, string> = {
   word_highlight: "Word highlight",
   big_statement: "Big statement",
   quote: "Quote",
+  top: "Top (small, below the top edge)",
 };
 
 export type Easing = "linear" | "ease_in" | "ease_out" | "ease_in_out";

@@ -78,6 +78,8 @@ SQLite.
 
 59. [AI Image Generation: "Generate Full by AI"](features/59-ai-image-generation.md) — an opt-in per-project mode that generates a fresh OpenAI image per beat (`gpt-image-1-mini`, ≈$0.006/image) instead of matching one from the Asset Library, triggered by a new "Generate Full by AI" button; every existing project stays on the default `$0` "library" mode, unaffected
 
+60. ["Top" Caption Preset](features/60-top-caption-preset.md) — a 6th caption preset placing text near the top edge (smaller font) instead of only bottom or dead-center, found missing via a real user complaint about `big_statement`'s large, centered text
+
 ## Keeping this up to date
 
 See the "Documentation" section in `CLAUDE.md` at the repo root — every
