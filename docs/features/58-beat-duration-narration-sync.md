@@ -1,6 +1,6 @@
 # 58 — Auto-Sync Beat Duration to Narration Length + Folder Browse Fixes
 
-**Commit:** _(fill in after commit)_
+**Commit:** `2cbe27a`
 
 Two small real fixes found in manual testing.
 
