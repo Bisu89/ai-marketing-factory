@@ -9,6 +9,7 @@ import {
   Music,
   Plus,
   RefreshCw,
+  Trash2,
   Video,
   X,
 } from "lucide-react";
@@ -18,6 +19,7 @@ import {
   assetFileUrl,
   assetThumbnailUrl,
   cancelAssetImportJob,
+  deleteAsset,
   getAssetImportJob,
   importAssets,
   rescanAssets,
@@ -235,7 +237,16 @@ export function AssetLibraryPage() {
         </div>
       )}
 
-      {selected && <AssetDetailPanel asset={selected} onClose={() => setSelected(null)} />}
+      {selected && (
+        <AssetDetailPanel
+          asset={selected}
+          onClose={() => setSelected(null)}
+          onDeleted={() => {
+            setSelected(null);
+            refresh();
+          }}
+        />
+      )}
 
       {importOpen && (
         <ImportModal
@@ -282,16 +293,59 @@ function AssetTile({ asset, onClick }: { asset: Asset; onClick: () => void }) {
   );
 }
 
-function AssetDetailPanel({ asset, onClose }: { asset: Asset; onClose: () => void }) {
+function AssetDetailPanel({
+  asset,
+  onClose,
+  onDeleted,
+}: {
+  asset: Asset;
+  onClose: () => void;
+  onDeleted: () => void;
+}) {
+  const [deleting, setDeleting] = useState(false);
+  const [deleteError, setDeleteError] = useState<string | null>(null);
+
+  async function handleDelete() {
+    if (deleting) return;
+    if (
+      !window.confirm(
+        `Remove "${asset.filename}" from the Asset Library? The file itself stays on disk -- this only unregisters it (any beat currently using it will show a broken reference).`
+      )
+    ) {
+      return;
+    }
+    setDeleting(true);
+    setDeleteError(null);
+    try {
+      await deleteAsset(asset.id);
+      onDeleted();
+    } catch (err) {
+      setDeleteError(err instanceof Error ? err.message : "Could not delete this asset.");
+      setDeleting(false);
+    }
+  }
+
   return (
     <div className="al-modal-backdrop" onClick={onClose}>
       <div className="al-detail-panel" onClick={(e) => e.stopPropagation()}>
         <div className="al-modal-header">
           <h3>{asset.filename}</h3>
-          <button className="btn btn-icon" onClick={onClose}>
-            <X size={16} />
-          </button>
+          <div className="al-modal-header-actions">
+            <button className="btn btn-secondary al-delete-btn" onClick={handleDelete} disabled={deleting}>
+              {deleting ? <Loader2 size={14} className="spin" /> : <Trash2 size={14} />}
+              Delete
+            </button>
+            <button className="btn btn-icon" onClick={onClose}>
+              <X size={16} />
+            </button>
+          </div>
         </div>
+
+        {deleteError && (
+          <div className="al-alert al-alert-error">
+            <AlertTriangle size={14} /> {deleteError}
+          </div>
+        )}
 
         {asset.type !== "audio" && asset.status === "ACTIVE" && (
           <img className="al-detail-preview" src={assetFileUrl(asset.id)} alt={asset.filename} />

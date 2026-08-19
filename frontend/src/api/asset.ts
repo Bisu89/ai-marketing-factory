@@ -1,4 +1,4 @@
-import { apiGet, apiPost } from "./client";
+import { apiDelete, apiGet, apiPost } from "./client";
 import { config } from "../config/env";
 import type { Asset, AssetImportJob, AssetImportRequest, AssetRegisterInput, RescanResult } from "../types/asset";
 
@@ -31,6 +31,12 @@ export function searchAssets(query?: string, assetType?: string, filters?: Searc
 
 export function getAsset(assetId: number): Promise<Asset> {
   return apiGet(`/assets/${assetId}`);
+}
+
+// Unregisters the asset from the library only -- the real file on disk is
+// never touched (see backend/app/modules/asset/service.py's own delete()).
+export function deleteAsset(assetId: number): Promise<void> {
+  return apiDelete(`/assets/${assetId}`);
 }
 
 // Asset.path can point anywhere on disk, so it isn't reachable through the

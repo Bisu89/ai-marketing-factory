@@ -181,6 +181,17 @@
   word-break: break-all;
 }
 
+.al-modal-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.al-delete-btn {
+  color: var(--danger);
+}
+
 .al-detail-panel,
 .al-import-modal {
   background: var(--surface);
