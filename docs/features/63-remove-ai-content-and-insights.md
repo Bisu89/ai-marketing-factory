@@ -1,5 +1,7 @@
 # 63. Remove AI Content (Story/Hook/Caption) + Insights
 
+**Commit:** `9e71326`
+
 Removed two unused features at the user's request: the legacy AI Content
 generator (`app/modules/ai/story|hook|caption`, `/ai` page) and the Insights
 CSV-import/performance analytics subsystem (`app/services/insights/service.py`,
