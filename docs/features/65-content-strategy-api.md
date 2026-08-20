@@ -1,6 +1,6 @@
 # 65. Content Strategy: Backend API (Pillar → Format → Idea)
 
-**Commit:** `pending`
+**Commit:** `2896884`
 
 REST API on top of Task 21's `app/modules/content_strategy/` models. Adds
 `repository.py` + `service.py` (Router → Service → Repository, matching
