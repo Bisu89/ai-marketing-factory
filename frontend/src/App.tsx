@@ -5,6 +5,8 @@ import { DownloadPage } from "./pages/DownloadPage";
 import { LibraryPage } from "./pages/LibraryPage";
 import { HistoryPage } from "./pages/HistoryPage";
 import { ContentStudioPage } from "./pages/ContentStudioPage";
+import { ContentBatchesPage } from "./pages/ContentBatchesPage";
+import { ContentBatchDetailPage } from "./pages/ContentBatchDetailPage";
 import { SceneCutterPage } from "./pages/SceneCutterPage";
 import { VideoComposerPage } from "./pages/VideoComposerPage";
 import { VideoFactoryPage } from "./pages/VideoFactoryPage";
@@ -23,6 +25,8 @@ function App() {
         <Route path="library" element={<LibraryPage />} />
         <Route path="history" element={<HistoryPage />} />
         <Route path="content-studio" element={<ContentStudioPage />} />
+        <Route path="content-batches" element={<ContentBatchesPage />} />
+        <Route path="content-batches/:batchId" element={<ContentBatchDetailPage />} />
         <Route path="scene-cutter" element={<SceneCutterPage />} />
         <Route path="video-composer" element={<VideoComposerPage />} />
         <Route path="video-factory" element={<VideoFactoryPage />} />

@@ -9,6 +9,7 @@ import {
   Clapperboard,
   Images,
   Layers,
+  ListChecks,
   Sparkles,
   Wand2,
 } from "lucide-react";
@@ -21,6 +22,7 @@ const NAV_ITEMS = [
   { to: "/library", label: "Library", icon: Library },
   { to: "/history", label: "History", icon: History },
   { to: "/content-studio", label: "Content Studio", icon: Sparkles },
+  { to: "/content-batches", label: "Content Batches", icon: ListChecks },
   { to: "/scene-cutter", label: "Scene Cutter", icon: Scissors },
   { to: "/video-composer", label: "Video Composer", icon: Clapperboard },
   { to: "/video-factory", label: "Video Factory", icon: Wand2 },

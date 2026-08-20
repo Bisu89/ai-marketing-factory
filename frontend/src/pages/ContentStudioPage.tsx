@@ -1,11 +1,14 @@
 import { useEffect, useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useQueryClient } from "@tanstack/react-query";
-import { Loader2, Sparkles } from "lucide-react";
+import { Layers, Loader2, Sparkles, X } from "lucide-react";
 import { PageHeader } from "../components/PageHeader";
 import { EmptyState } from "../components/EmptyState";
 import { Pagination } from "../features/library/components/Pagination";
 import { useEmotions } from "../features/library/hooks/useEmotions";
 import { createIdea } from "../api/contentStrategy";
+import { createContentBatch, runContentBatch } from "../api/contentBatch";
+import { fetchVideos } from "../api/videos";
 import { IdeaCard } from "../features/contentStudio/components/IdeaCard";
 import { useAllContentFormats } from "../features/contentStudio/hooks/useAllContentFormats";
 import { useContentFormats } from "../features/contentStudio/hooks/useContentFormats";
@@ -13,6 +16,8 @@ import { useContentIdeas } from "../features/contentStudio/hooks/useContentIdeas
 import { useContentPillars } from "../features/contentStudio/hooks/useContentPillars";
 import { useDeleteIdea, useUpdateIdea } from "../features/contentStudio/hooks/useIdeaMutations";
 import type { IdeaStatus, IdeaUpdateInput } from "../features/contentStudio/types";
+import { STORY_STYLE_LABELS, type StoryStyle } from "../types/publishLog";
+import type { VideoOut } from "../features/library/types";
 import "./ContentStudioPage.css";
 
 const PAGE_SIZE = 12;
@@ -24,8 +29,17 @@ const STATUS_LABELS: Record<IdeaStatus, string> = {
   used: "Đã dùng",
 };
 
+const STORY_STYLES = Object.keys(STORY_STYLE_LABELS) as StoryStyle[];
+
+const BATCH_LANGUAGE_LABELS: Record<string, string> = {
+  english: "Tiếng Anh",
+  spanish: "Tiếng Tây Ban Nha",
+  vietnamese: "Tiếng Việt",
+};
+
 export function ContentStudioPage() {
   const queryClient = useQueryClient();
+  const navigate = useNavigate();
 
   // -- Strategy selector (generate) ---------------------------------------
   const [genPillarId, setGenPillarId] = useState<number | undefined>(undefined);
@@ -44,6 +58,7 @@ export function ContentStudioPage() {
   const [bulkBusy, setBulkBusy] = useState(false);
   const [bulkError, setBulkError] = useState<string | null>(null);
   const [deletingId, setDeletingId] = useState<number | null>(null);
+  const [batchModalOpen, setBatchModalOpen] = useState(false);
 
   const pillarsQuery = useContentPillars();
   const allFormatsQuery = useAllContentFormats();
@@ -325,6 +340,10 @@ export function ContentStudioPage() {
               <button className="btn btn-secondary" disabled={bulkBusy} onClick={() => handleBulkStatus("used")}>
                 Đánh dấu đã dùng
               </button>
+              <button className="btn btn-primary" disabled={bulkBusy} onClick={() => setBatchModalOpen(true)}>
+                <Layers size={13} />
+                Tạo Story hàng loạt
+              </button>
             </div>
           </div>
         )}
@@ -366,6 +385,153 @@ export function ContentStudioPage() {
           </>
         )}
       </section>
+
+      {batchModalOpen && (
+        <CreateContentBatchModal
+          ideaIds={Array.from(selectedIds)}
+          onClose={() => setBatchModalOpen(false)}
+          onCreated={(batchId) => {
+            setBatchModalOpen(false);
+            navigate(`/content-batches/${batchId}`);
+          }}
+        />
+      )}
     </>
+  );
+}
+
+function CreateContentBatchModal({
+  ideaIds,
+  onClose,
+  onCreated,
+}: {
+  ideaIds: number[];
+  onClose: () => void;
+  onCreated: (batchId: number) => void;
+}) {
+  const [name, setName] = useState(`Batch ${new Date().toLocaleDateString("vi-VN")}`);
+  const [videos, setVideos] = useState<VideoOut[]>([]);
+  const [videosError, setVideosError] = useState<string | null>(null);
+  const [videoId, setVideoId] = useState<number | "">("");
+  const [style, setStyle] = useState<StoryStyle>("emotional");
+  const [language, setLanguage] = useState("english");
+  const [threshold, setThreshold] = useState(8.0);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    fetchVideos({ page: 1, page_size: 50, sort: "newest" })
+      .then((res) => {
+        setVideos(res.items);
+        if (res.items.length > 0) setVideoId(res.items[0].id);
+      })
+      .catch((err) => setVideosError(err instanceof Error ? err.message : "Không tải được danh sách video."));
+  }, []);
+
+  async function handleSubmit() {
+    if (!name.trim() || !videoId || submitting) return;
+    setSubmitting(true);
+    setError(null);
+    try {
+      const batch = await createContentBatch({
+        name: name.trim(),
+        video_id: Number(videoId),
+        idea_ids: ideaIds,
+        style,
+        language,
+        score_threshold: threshold,
+      });
+      await runContentBatch(batch.id);
+      onCreated(batch.id);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Không tạo được batch.");
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
+  return (
+    <div className="cs-modal-backdrop" onClick={onClose}>
+      <div className="cs-modal" onClick={(e) => e.stopPropagation()}>
+        <div className="cs-modal-header">
+          <h3>Tạo Story hàng loạt ({ideaIds.length} ý tưởng)</h3>
+          <button className="btn btn-secondary" onClick={onClose}>
+            <X size={16} />
+          </button>
+        </div>
+
+        {error && <div className="cs-alert cs-alert-error">{error}</div>}
+
+        <label className="cs-field">
+          <span>Tên batch</span>
+          <input value={name} onChange={(e) => setName(e.target.value)} />
+        </label>
+
+        <label className="cs-field">
+          <span>Video (mọi story trong batch sẽ gắn với video này)</span>
+          {videosError ? (
+            <span className="cs-field-error">{videosError}</span>
+          ) : (
+            <select value={videoId} onChange={(e) => setVideoId(e.target.value ? Number(e.target.value) : "")}>
+              {videos.length === 0 && <option value="">Chưa có video nào trong Library</option>}
+              {videos.map((v) => (
+                <option key={v.id} value={v.id}>
+                  {v.title}
+                </option>
+              ))}
+            </select>
+          )}
+        </label>
+
+        <label className="cs-field">
+          <span>Style</span>
+          <select value={style} onChange={(e) => setStyle(e.target.value as StoryStyle)}>
+            {STORY_STYLES.map((s) => (
+              <option key={s} value={s}>
+                {STORY_STYLE_LABELS[s]}
+              </option>
+            ))}
+          </select>
+        </label>
+
+        <label className="cs-field">
+          <span>Ngôn ngữ</span>
+          <select value={language} onChange={(e) => setLanguage(e.target.value)}>
+            {Object.entries(BATCH_LANGUAGE_LABELS).map(([value, label]) => (
+              <option key={value} value={value}>
+                {label}
+              </option>
+            ))}
+          </select>
+        </label>
+
+        <label className="cs-field">
+          <span>Ngưỡng điểm đạt ({threshold.toFixed(1)}/10)</span>
+          <input
+            type="number"
+            min={0}
+            max={10}
+            step={0.5}
+            value={threshold}
+            onChange={(e) => setThreshold(Number(e.target.value))}
+          />
+        </label>
+
+        <p className="cs-hint">
+          Mỗi ý tưởng sẽ được sinh 1 story rồi chấm điểm tự động. Story đạt từ ngưỡng trở lên sẽ được đánh dấu "Đạt",
+          dưới ngưỡng bị đánh dấu "Không đạt" — không có gì bị xoá, bạn xem lại được toàn bộ ở trang chi tiết batch.
+        </p>
+
+        <div className="cs-modal-actions">
+          <button className="btn btn-secondary" onClick={onClose}>
+            Huỷ
+          </button>
+          <button className="btn btn-primary" onClick={handleSubmit} disabled={submitting || !videoId}>
+            {submitting ? <Loader2 size={14} className="spin" /> : <Sparkles size={14} />}
+            Tạo và chạy batch
+          </button>
+        </div>
+      </div>
+    </div>
   );
 }

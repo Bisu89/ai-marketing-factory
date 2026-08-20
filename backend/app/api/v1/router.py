@@ -8,6 +8,7 @@ from app.api.v1.endpoints import (
     caption_generate,
     categories,
     composition_render,
+    content_batch_generate,
     content_generate,
     content_idea_generation,
     dashboard,
@@ -52,6 +53,7 @@ api_router.include_router(story_router, tags=["story"])
 api_router.include_router(hook_router, tags=["hook"])
 api_router.include_router(content_strategy_router, tags=["content-strategy"])
 api_router.include_router(content_idea_generation.router, tags=["content-idea-generation"])
+api_router.include_router(content_batch_generate.router, tags=["content-batch"])
 api_router.include_router(beat_router, tags=["beat"])
 api_router.include_router(composition_render.router, tags=["composition-render"])
 api_router.include_router(beat_generate.router, tags=["beat-generate"])

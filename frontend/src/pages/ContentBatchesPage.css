@@ -1,0 +1,79 @@
+.cbatch-alert {
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+.cbatch-alert-error {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--danger);
+}
+
+.cbatch-table-wrap {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.cbatch-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.cbatch-table thead th {
+  text-align: left;
+  padding: 10px 16px;
+  font-weight: 600;
+  color: var(--text-muted);
+  font-size: 12px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-alt);
+}
+
+.cbatch-table tbody td {
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  vertical-align: top;
+}
+
+.cbatch-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.cbatch-row-clickable {
+  cursor: pointer;
+}
+
+.cbatch-row-clickable:hover td {
+  background: var(--surface-alt);
+}
+
+.cbatch-status {
+  font-weight: 600;
+}
+
+.cbatch-status--COMPLETED {
+  color: var(--success);
+}
+
+.cbatch-status--FAILED {
+  color: var(--danger);
+}
+
+.cbatch-status--PARTIAL_FAILURE {
+  color: #d97706;
+}
+
+.cbatch-status--PROCESSING {
+  color: var(--accent);
+}
+
+.cbatch-status--DRAFT,
+.cbatch-status--CANCELLED {
+  color: var(--text-muted);
+}
