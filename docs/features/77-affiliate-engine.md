@@ -1,6 +1,6 @@
 # 77. Affiliate Engine
 
-**Commit:** `pending`
+**Commit:** `84b7759`
 
 Pipeline: Content → Audience → Product Category → Product → Affiliate
 Link → Click → Order → Commission.
