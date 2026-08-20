@@ -1,6 +1,6 @@
 # 71. Batch Content Generation (Idea → Story → Score → Approve)
 
-**Commit:** `pending`
+**Commit:** `60835d9`
 
 Batch: N selected `ContentIdea`s → generate a Story for each → score it →
 auto-approve/reject against a configurable threshold, all in the
