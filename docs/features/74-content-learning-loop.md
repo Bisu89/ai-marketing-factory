@@ -1,6 +1,6 @@
 # 74. AI Content Learning Loop
 
-**Commit:** `pending`
+**Commit:** `3937eab`
 
 Transparent, explainable "what should we generate next?" recommendation
 layer -- explicitly **not machine learning** (no model, no training, no
