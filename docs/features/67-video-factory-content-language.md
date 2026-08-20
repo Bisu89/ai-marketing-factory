@@ -1,6 +1,6 @@
 # 67. Video Factory: Content Language Picker
 
-**Commit:** `pending`
+**Commit:** `51de753`
 
 Real user report: AI-generated content always came out in English with no
 way to change it, and captions looked huge and centered.
