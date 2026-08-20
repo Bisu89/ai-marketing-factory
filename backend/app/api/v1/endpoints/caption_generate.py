@@ -90,20 +90,6 @@ def _segmentation_config(config: CaptionsProjectConfig) -> CaptionSegmentationCo
     )
 
 
-def _words_for_beat(beat: Beat, word_timestamps: list[WordTiming]) -> list[CaptionWordTiming]:
-    """Task 62 -- see docs/features/62-caption-real-word-timing.md.
-    word_timestamps is absolute (same timeline as narration.wav/Beat.start/
-    end); a half-open [beat.start, beat.end) filter assigns each word to
-    exactly one Beat even at an exact boundary (matching how
-    voice.timing._stitch_contiguous makes beat.end[i] == beat.start[i+1]).
-    """
-    return [
-        CaptionWordTiming(text=w.text, start=w.start, end=w.end)
-        for w in word_timestamps
-        if beat.start <= w.start < beat.end
-    ]
-
-
 def build_caption_segments(
     beats: list[Beat], config: CaptionsProjectConfig, word_timestamps: list[WordTiming] | None = None,
 ) -> list[CaptionSegment]:
@@ -115,19 +101,42 @@ def build_caption_segments(
 
     Task 62: word_timestamps (this project's own real, measured per-word
     timing, if this project's Voice stage captured any -- see
-    load_word_timestamps) is sliced per-Beat and handed to
-    split_beat_into_segments, which uses it for real acoustic positioning
-    instead of a generic weighted-text-length estimate whenever it lines
-    up with that Beat's own text.
+    load_word_timestamps) is sliced per-Beat by a running word-count
+    cursor -- the SAME sequential-count slicing
+    voice.timing._timing_from_word_timestamps already used to derive each
+    Beat's own start/end in the first place (see build_narration_text's
+    own "join every non-blank Beat's narration, in order"). This is
+    deliberately NOT a `beat.start <= w.start < beat.end` time-window
+    filter: a real bug found verifying this feature -- Voice's own
+    min-duration rebalancing (_rebalance_minimum_duration) can shift a
+    Beat's final time boundaries away from where its own words actually
+    are, so filtering by time silently dropped/misassigned words at a
+    beat boundary, undercounting a Beat's own real words and falling back
+    to the estimate for it. Cursor slicing is exact by construction --
+    it's the same partition Voice itself already computed.
     """
     seg_config = _segmentation_config(config)
     segments: list[CaptionSegment] = []
+    cursor = 0
     for beat in sorted(beats, key=lambda b: b.order):
+        has_narration = bool(beat.narration and beat.narration.strip())
+        count = len(beat.narration.split()) if has_narration else 0
+
+        beat_words: list[CaptionWordTiming] | None = None
+        if word_timestamps and has_narration:
+            candidate = word_timestamps[cursor:cursor + count]
+            if len(candidate) == count:
+                beat_words = [CaptionWordTiming(text=w.text, start=w.start, end=w.end) for w in candidate]
+        # Advance regardless of whether this Beat ends up captioned below
+        # (e.g. Voice hasn't settled its start/end yet) -- the cursor must
+        # track build_narration_text's own inclusion rule exactly, or
+        # every Beat after a skipped one would slice the wrong words.
+        cursor += count
+
         if beat.start is None or beat.end is None:
             continue
-        if not beat.narration or not beat.narration.strip():
+        if not has_narration:
             continue
-        beat_words = _words_for_beat(beat, word_timestamps) if word_timestamps else None
         segments.extend(
             split_beat_into_segments(beat.id, beat.narration, beat.start, beat.end, seg_config, words=beat_words)
         )

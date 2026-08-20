@@ -179,9 +179,15 @@ class RealWordTimingTests(unittest.TestCase):
     def test_segment_starts_exactly_when_its_own_first_real_word_does(self):
         config = CaptionSegmentationConfig(max_words=2, max_chars=200)
         # "Vợ bước" / "vào phòng," -- two 2-word chunks (max_words=2), with
-        # a real ~1s gap between "bước" ending and "vào" starting (a
+        # a real ~0.8s gap between "bước" ending and "vào" starting (a
         # natural mid-clause pause the weighted estimate has no way to
-        # know about).
+        # know about). The Beat's own official window (6.41..10.04) is
+        # deliberately wider than where the real words actually sit
+        # (7.41..9.20) -- Voice's own min-duration rebalancing can shift a
+        # Beat's boundary a little away from its real audio content, so
+        # the real (gapless-stitched) timeline is rescaled onto the Beat's
+        # own window rather than assumed to line up with it exactly (see
+        # _real_word_boundaries's own docstring).
         words = _words(("Vợ", 7.41, 7.65), ("bước", 7.65, 7.86), ("vào", 8.65, 8.83), ("phòng,", 8.83, 9.20))
         segments = split_beat_into_segments("b1", "Vợ bước vào phòng,", start=6.41, end=10.04, config=config, words=words)
         self.assertEqual(len(segments), 2)
@@ -189,11 +195,16 @@ class RealWordTimingTests(unittest.TestCase):
         # word's real start) -- nothing to caption yet, so the on-screen
         # text simply appears as soon as the Beat itself begins.
         self.assertAlmostEqual(segments[0].start, 6.41, places=6)
-        # Second segment starts exactly when "vào" is really spoken (8.65)
-        # -- NOT at some proportional estimate partway through the beat
+        # Second segment starts well past the beat's own halfway point
+        # (8.225s) -- reflecting the real ~0.8s pause between "bước" and
+        # "vào" -- NOT at a naive proportional-by-word-count estimate
         # (the actual bug: the old weighted model put this around 7.5s,
-        # over a second before the real audio even reached "vào").
-        self.assertAlmostEqual(segments[1].start, 8.65, places=6)
+        # long before the real audio even reached "vào"). Exact expected
+        # value: rescaling [7.41, 9.20] (real span) onto [6.41, 10.04]
+        # (Beat window) maps the real 8.65 boundary to 6.41 + (8.65-7.41)
+        # * ((10.04-6.41)/(9.20-7.41)) = 8.9246...
+        self.assertGreater(segments[1].start, 8.225)
+        self.assertAlmostEqual(segments[1].start, 8.9246, places=3)
         # Gapless: segment 1 fills the natural pause, ending exactly where
         # segment 2's own real word begins.
         self.assertAlmostEqual(segments[0].end, segments[1].start, places=6)
@@ -215,6 +226,26 @@ class RealWordTimingTests(unittest.TestCase):
         with_none = split_beat_into_segments("b1", text, 10.0, 16.0, config, words=None)
         with_default = split_beat_into_segments("b1", text, 10.0, 16.0, config)
         self.assertEqual([(s.start, s.end) for s in with_none], [(s.start, s.end) for s in with_default])
+
+    def test_last_words_real_start_past_the_beats_own_official_end_never_inverts(self):
+        # Regression test for a real bug found verifying this against a
+        # live project: Voice's own min-duration rebalancing can shift a
+        # Beat's official `end` a few ms *before* where its own last
+        # word's real audio actually starts. A naive hard clamp to `end`
+        # would then produce start > end for that last segment (or a
+        # near-zero sliver after the old "clamp then floor to +0.01"
+        # fallback) -- the rescale approach must never do either.
+        config = CaptionSegmentationConfig(max_words=2, max_chars=200)
+        words = _words(("Anh", 10.050, 10.287), ("ăn", 10.287, 10.450), ("tối", 10.450, 10.725), ("chưa?", 10.725, 11.037))
+        # Beat's own official end (10.0375) sits BEFORE "Anh" even starts
+        # (10.050) -- exactly the real drift found on the live project.
+        segments = split_beat_into_segments("b2", "Anh ăn tối chưa?", start=8.6625, end=10.0375, config=config, words=words)
+        self.assertEqual(len(segments), 2)
+        for seg in segments:
+            self.assertLess(seg.start, seg.end)  # never inverted
+            self.assertGreaterEqual(seg.duration, 0.01 - 1e-9)  # never a degenerate zero-length flash
+        self.assertAlmostEqual(segments[0].start, 8.6625, places=6)
+        self.assertAlmostEqual(segments[-1].end, 10.0375, places=6)
 
     def test_real_timing_still_respects_max_duration_sec(self):
         config = CaptionSegmentationConfig(max_words=20, max_chars=200, max_duration_sec=2.0)

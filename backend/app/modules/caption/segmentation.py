@@ -171,6 +171,20 @@ def _real_word_boundaries(
     same "don't trust a mismatched engine tokenization" caution
     app.modules.voice.timing._timing_from_word_timestamps already applies
     at the whole-Beat level, applied here one level down.
+
+    A real edge case found verifying this against a live project: the
+    Beat's own official [start, end] (settled by Voice, and possibly
+    shifted a few ms by its own min-duration rebalancing/gapless-stitching
+    -- see voice.timing._rebalance_minimum_duration/_stitch_contiguous)
+    does not always land *exactly* on where this Beat's own real first/
+    last word actually starts/ends. Clamping the real timeline hard to
+    [start, end] can then invert or collapse the last chunk's own segment
+    to a sliver. Instead, the real (gapless-stitched) timeline is
+    rescaled -- an affine map from [first real word's start, last real
+    word's end] onto [start, end] -- which preserves every real relative
+    pause/pace (the actual bug this function exists to fix) while
+    guaranteeing every result stays inside the Beat's own authoritative
+    window by construction (never escapes it, never inverts).
     """
     expected_counts = [len(c.split()) for c in chunks]
     if not words or len(words) != sum(expected_counts):
@@ -183,21 +197,31 @@ def _real_word_boundaries(
         cursor += count
         raw.append((chunk_words[0].start, chunk_words[-1].end))
 
-    # Gapless stitch (matching the weighted-estimate path's own "cursor ->
-    # seg_end" convention below): each segment runs from where the
-    # previous one ended (or the Beat's own start, for the first) through
-    # to where the NEXT segment's own first real word begins (or the
-    # Beat's own end, for the last) -- a natural pause between two clauses
-    # is folded into the segment *before* it rather than left as a gap
-    # with nothing on screen, and a caption switches at the exact instant
-    # the next word starts being spoken.
-    boundaries: list[tuple[float, float]] = []
+    real_start, real_end = raw[0][0], raw[-1][1]
+    real_span = max(real_end - real_start, 1e-6)
+    scale = (end - start) / real_span
+
+    # Gapless stitch, in the words' own real timeline first (each segment
+    # runs from where the previous one ended -- or this Beat's own first
+    # real word, for the first -- through to where the NEXT segment's own
+    # first real word begins -- or this Beat's own last real word's end,
+    # for the last): a natural pause between two clauses is folded into
+    # the segment *before* it rather than left as a gap with nothing on
+    # screen, and a caption switches at the exact instant the next word
+    # starts being spoken.
+    stitched: list[tuple[float, float]] = []
     for i in range(len(raw)):
-        seg_start = start if i == 0 else max(raw[i][0], boundaries[i - 1][1])
-        seg_end = end if i == len(raw) - 1 else raw[i + 1][0]
-        seg_end = min(seg_end, seg_start + max_duration_sec)
-        seg_end = max(seg_end, seg_start + 0.01)
-        boundaries.append((seg_start, seg_end))
+        seg_start = real_start if i == 0 else max(raw[i][0], stitched[i - 1][1])
+        seg_end = real_end if i == len(raw) - 1 else raw[i + 1][0]
+        stitched.append((seg_start, max(seg_end, seg_start + 1e-6)))
+
+    boundaries: list[tuple[float, float]] = []
+    for seg_start, seg_end in stitched:
+        mapped_start = start + (seg_start - real_start) * scale
+        mapped_end = start + (seg_end - real_start) * scale
+        mapped_end = min(mapped_end, mapped_start + max_duration_sec)
+        mapped_end = max(mapped_end, mapped_start + 0.01)
+        boundaries.append((mapped_start, mapped_end))
     return boundaries
 
 
