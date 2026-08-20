@@ -9,8 +9,10 @@ import { useEmotions } from "../features/library/hooks/useEmotions";
 import { createIdea } from "../api/contentStrategy";
 import { createContentBatch, runContentBatch } from "../api/contentBatch";
 import { getContentRecommendations } from "../api/recommendation";
+import { getCompetitorVideos } from "../api/competitorIntelligence";
 import { fetchVideos } from "../api/videos";
 import type { Recommendation } from "../types/recommendation";
+import type { CompetitorVideo } from "../types/competitorIntelligence";
 import { IdeaCard } from "../features/contentStudio/components/IdeaCard";
 import { useAllContentFormats } from "../features/contentStudio/hooks/useAllContentFormats";
 import { useContentFormats } from "../features/contentStudio/hooks/useContentFormats";
@@ -74,6 +76,19 @@ export function ContentStudioPage() {
       .then(setRecommendations)
       .catch((err) => setRecommendationsError(err instanceof Error ? err.message : "Không tải được gợi ý."))
       .finally(() => setRecommendationsLoading(false));
+  }, []);
+
+  // Competitor Content Analyzer (Task 11) -- same "read-only reference,
+  // never auto-applied" treatment as AI Content Recommendations above;
+  // only ever shows already-analyzed videos (analyzed_at set).
+  const [competitorPatterns, setCompetitorPatterns] = useState<CompetitorVideo[]>([]);
+  const [competitorPatternsLoading, setCompetitorPatternsLoading] = useState(true);
+
+  useEffect(() => {
+    getCompetitorVideos()
+      .then((videos) => setCompetitorPatterns(videos.filter((v) => v.analyzed_at)))
+      .catch(() => {})
+      .finally(() => setCompetitorPatternsLoading(false));
   }, []);
 
   const pillarsQuery = useContentPillars();
@@ -233,6 +248,30 @@ export function ContentStudioPage() {
           </div>
         )}
       </section>
+
+      {!competitorPatternsLoading && competitorPatterns.length > 0 && (
+        <section className="cs-section">
+          <h2 className="cs-section-title">Competitor Patterns (tham khảo)</h2>
+          <p className="cs-hint cs-hint-top">
+            Pattern trừu tượng trích xuất từ video đối thủ đã phân tích ở trang Competitor Analyzer -- chỉ để tham
+            khảo, không tự động áp dụng vào ý tưởng bên dưới.
+          </p>
+          <div className="cs-recommendation-list">
+            {competitorPatterns.map((c) => (
+              <div key={c.id} className="cs-recommendation-card">
+                <div className="cs-recommendation-top">
+                  <strong>{c.competitor_handle || c.author_name || "Đối thủ"}</strong>
+                </div>
+                <ul className="cs-recommendation-reasons">
+                  <li>Emotional pattern: {c.emotional_pattern}</li>
+                  <li>Hook structure: {c.hook_structure}</li>
+                  <li>Format: {c.estimated_format}</li>
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       <section className="cs-section">
         <h2 className="cs-section-title">Tạo ý tưởng</h2>

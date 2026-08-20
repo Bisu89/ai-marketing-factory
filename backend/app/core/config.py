@@ -137,6 +137,18 @@ class Settings(BaseSettings):
     ai_provider: str = "anthropic"
     openai_api_key: str | None = None
 
+    # Competitor Content Analyzer (Task 11 -- see
+    # docs/features/76-competitor-content-analyzer.md). TikTok Developer
+    # app credentials (one app, registered by the user on
+    # developers.tiktok.com) -- same "plain str field + dedicated
+    # update_x()" shape as anthropic_api_key/openai_api_key above.
+    # tiktok_redirect_uri must be an HTTPS URL registered with that TikTok
+    # app (TikTok's own requirement, not this app's choice); see the
+    # module's own setup doc for why a desktop-local app needs one.
+    tiktok_client_key: str | None = None
+    tiktok_client_secret: str | None = None
+    tiktok_redirect_uri: str | None = None
+
 
 @lru_cache
 def get_settings() -> Settings:
@@ -160,4 +172,19 @@ def update_openai_api_key(key: str) -> None:
 
 def update_ai_provider(provider: str) -> None:
     set_key(ENV_FILE_PATH, "APP_AI_PROVIDER", provider)
+    get_settings.cache_clear()
+
+
+def update_tiktok_client_key(key: str) -> None:
+    set_key(ENV_FILE_PATH, "APP_TIKTOK_CLIENT_KEY", key)
+    get_settings.cache_clear()
+
+
+def update_tiktok_client_secret(secret: str) -> None:
+    set_key(ENV_FILE_PATH, "APP_TIKTOK_CLIENT_SECRET", secret)
+    get_settings.cache_clear()
+
+
+def update_tiktok_redirect_uri(uri: str) -> None:
+    set_key(ENV_FILE_PATH, "APP_TIKTOK_REDIRECT_URI", uri)
     get_settings.cache_clear()

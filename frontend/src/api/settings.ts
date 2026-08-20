@@ -21,6 +21,18 @@ export async function updateAiProvider(provider: AIProvider): Promise<{ ai_provi
   return apiPut<{ ai_provider: AIProvider }>("/settings/ai-provider", { provider });
 }
 
+export async function updateTikTokClientKey(clientKey: string): Promise<{ has_tiktok_client_key: boolean }> {
+  return apiPut<{ has_tiktok_client_key: boolean }>("/settings/tiktok-client-key", { client_key: clientKey });
+}
+
+export async function updateTikTokClientSecret(clientSecret: string): Promise<{ has_tiktok_client_secret: boolean }> {
+  return apiPut<{ has_tiktok_client_secret: boolean }>("/settings/tiktok-client-secret", { client_secret: clientSecret });
+}
+
+export async function updateTikTokRedirectUri(redirectUri: string): Promise<{ tiktok_redirect_uri: string }> {
+  return apiPut<{ tiktok_redirect_uri: string }>("/settings/tiktok-redirect-uri", { redirect_uri: redirectUri });
+}
+
 export async function browseFolders(path?: string): Promise<BrowseFoldersResult> {
   const query = path ? `?path=${encodeURIComponent(path)}` : "";
   return apiGet<BrowseFoldersResult>(`/settings/browse-folders${query}`);

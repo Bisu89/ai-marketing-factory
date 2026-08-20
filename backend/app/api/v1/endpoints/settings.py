@@ -13,6 +13,9 @@ from app.core.config import (
     update_anthropic_api_key,
     update_library_dir,
     update_openai_api_key,
+    update_tiktok_client_key,
+    update_tiktok_client_secret,
+    update_tiktok_redirect_uri,
 )
 from app.modules.ai.llm_client import AI_PROVIDERS, resolve_ai_credentials
 from app.services.download.engine import DownloadEngine
@@ -34,6 +37,18 @@ class OpenAIApiKeyIn(BaseModel):
 
 class AIProviderIn(BaseModel):
     provider: str
+
+
+class TikTokClientKeyIn(BaseModel):
+    client_key: str
+
+
+class TikTokClientSecretIn(BaseModel):
+    client_secret: str
+
+
+class TikTokRedirectUriIn(BaseModel):
+    redirect_uri: str
 
 
 class FolderEntry(BaseModel):
@@ -62,6 +77,11 @@ def read_settings(settings: Settings = Depends(get_settings)):
         "has_anthropic_key": bool(settings.anthropic_api_key),
         "has_openai_key": bool(settings.openai_api_key),
         "has_ai_key": resolve_ai_credentials(settings) is not None,
+        # Competitor Content Analyzer (Task 11) -- same "never echo the
+        # secret, only whether it's set" convention as the AI keys above.
+        "has_tiktok_client_key": bool(settings.tiktok_client_key),
+        "has_tiktok_client_secret": bool(settings.tiktok_client_secret),
+        "tiktok_redirect_uri": settings.tiktok_redirect_uri,
     }
 
 
@@ -89,6 +109,33 @@ def set_ai_provider(payload: AIProviderIn):
         raise HTTPException(status_code=400, detail=f"Unknown provider {payload.provider!r}, must be one of {AI_PROVIDERS}")
     update_ai_provider(payload.provider)
     return {"ai_provider": payload.provider}
+
+
+@router.put("/settings/tiktok-client-key")
+def set_tiktok_client_key(payload: TikTokClientKeyIn):
+    key = payload.client_key.strip()
+    if not key:
+        raise HTTPException(status_code=400, detail="Client key khong duoc de trong")
+    update_tiktok_client_key(key)
+    return {"has_tiktok_client_key": True}
+
+
+@router.put("/settings/tiktok-client-secret")
+def set_tiktok_client_secret(payload: TikTokClientSecretIn):
+    secret = payload.client_secret.strip()
+    if not secret:
+        raise HTTPException(status_code=400, detail="Client secret khong duoc de trong")
+    update_tiktok_client_secret(secret)
+    return {"has_tiktok_client_secret": True}
+
+
+@router.put("/settings/tiktok-redirect-uri")
+def set_tiktok_redirect_uri(payload: TikTokRedirectUriIn):
+    uri = payload.redirect_uri.strip()
+    if not uri.startswith("https://"):
+        raise HTTPException(status_code=400, detail="Redirect URI phai la HTTPS -- TikTok khong chap nhan http://")
+    update_tiktok_redirect_uri(uri)
+    return {"tiktok_redirect_uri": uri}
 
 
 @router.put("/settings/library-dir")

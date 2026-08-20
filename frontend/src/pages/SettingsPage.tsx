@@ -8,6 +8,9 @@ import {
   updateAnthropicApiKey,
   updateLibraryDir,
   updateOpenAiApiKey,
+  updateTikTokClientKey,
+  updateTikTokClientSecret,
+  updateTikTokRedirectUri,
 } from "../api/settings";
 import { deleteTemplate, listTemplates } from "../api/template";
 import type { AIProvider } from "../types/settings";
@@ -34,6 +37,21 @@ export function SettingsPage() {
   const [openAiKeyInput, setOpenAiKeyInput] = useState("");
   const [savingOpenAiKey, setSavingOpenAiKey] = useState(false);
 
+  // Competitor Content Analyzer (Task 11 -- see
+  // docs/features/76-competitor-content-analyzer.md). A TikTok Developer
+  // app (client key/secret + an HTTPS redirect URI *you* register with
+  // TikTok) is a real setup requirement -- this app cannot create or
+  // approve one for you.
+  const [hasTikTokClientKey, setHasTikTokClientKey] = useState(false);
+  const [tiktokClientKeyInput, setTiktokClientKeyInput] = useState("");
+  const [savingTikTokClientKey, setSavingTikTokClientKey] = useState(false);
+  const [hasTikTokClientSecret, setHasTikTokClientSecret] = useState(false);
+  const [tiktokClientSecretInput, setTiktokClientSecretInput] = useState("");
+  const [savingTikTokClientSecret, setSavingTikTokClientSecret] = useState(false);
+  const [tiktokRedirectUri, setTiktokRedirectUri] = useState<string | null>(null);
+  const [tiktokRedirectUriInput, setTiktokRedirectUriInput] = useState("");
+  const [savingTikTokRedirectUri, setSavingTikTokRedirectUri] = useState(false);
+
   // Video Factory templates (Task 12 -- see docs/features/39-project-templates.md).
   const [templates, setTemplates] = useState<Template[]>([]);
   const [templatesError, setTemplatesError] = useState<string | null>(null);
@@ -52,6 +70,9 @@ export function SettingsPage() {
         setAiProvider(settings.ai_provider);
         setHasAnthropicKey(settings.has_anthropic_key);
         setHasOpenAiKey(settings.has_openai_key);
+        setHasTikTokClientKey(settings.has_tiktok_client_key);
+        setHasTikTokClientSecret(settings.has_tiktok_client_secret);
+        setTiktokRedirectUri(settings.tiktok_redirect_uri);
       })
       .catch(() => setError("Không đọc được cấu hình hiện tại."));
     refreshTemplates();
@@ -103,6 +124,57 @@ export function SettingsPage() {
       setError("Không lưu được API key.");
     } finally {
       setSavingOpenAiKey(false);
+    }
+  }
+
+  async function handleSaveTikTokClientKey() {
+    if (!tiktokClientKeyInput.trim() || savingTikTokClientKey) return;
+    setSavingTikTokClientKey(true);
+    setError(null);
+    setMessage(null);
+    try {
+      const result = await updateTikTokClientKey(tiktokClientKeyInput.trim());
+      setHasTikTokClientKey(result.has_tiktok_client_key);
+      setTiktokClientKeyInput("");
+      setMessage("Đã lưu TikTok Client Key.");
+    } catch {
+      setError("Không lưu được TikTok Client Key.");
+    } finally {
+      setSavingTikTokClientKey(false);
+    }
+  }
+
+  async function handleSaveTikTokClientSecret() {
+    if (!tiktokClientSecretInput.trim() || savingTikTokClientSecret) return;
+    setSavingTikTokClientSecret(true);
+    setError(null);
+    setMessage(null);
+    try {
+      const result = await updateTikTokClientSecret(tiktokClientSecretInput.trim());
+      setHasTikTokClientSecret(result.has_tiktok_client_secret);
+      setTiktokClientSecretInput("");
+      setMessage("Đã lưu TikTok Client Secret.");
+    } catch {
+      setError("Không lưu được TikTok Client Secret.");
+    } finally {
+      setSavingTikTokClientSecret(false);
+    }
+  }
+
+  async function handleSaveTikTokRedirectUri() {
+    if (!tiktokRedirectUriInput.trim() || savingTikTokRedirectUri) return;
+    setSavingTikTokRedirectUri(true);
+    setError(null);
+    setMessage(null);
+    try {
+      const result = await updateTikTokRedirectUri(tiktokRedirectUriInput.trim());
+      setTiktokRedirectUri(result.tiktok_redirect_uri);
+      setTiktokRedirectUriInput("");
+      setMessage("Đã lưu TikTok Redirect URI.");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Không lưu được TikTok Redirect URI.");
+    } finally {
+      setSavingTikTokRedirectUri(false);
     }
   }
 
@@ -250,6 +322,90 @@ export function SettingsPage() {
               disabled={!openAiKeyInput.trim() || savingOpenAiKey}
             >
               {hasOpenAiKey && <CheckCircle2 size={14} />}
+              Lưu
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div className="settings-card">
+        <div className="settings-row settings-row-header">
+          <label className="settings-label">TikTok (Competitor Content Analyzer)</label>
+        </div>
+        <p className="settings-hint">
+          Cần một TikTok Developer app do bạn tự đăng ký tại developers.tiktok.com (Client Key/Secret) và một Redirect
+          URI dạng HTTPS mà bạn đã đăng ký với app đó -- TikTok yêu cầu HTTPS, ứng dụng desktop này không thể tự tạo
+          hay phê duyệt bước này. App mới của bạn cũng cần được TikTok duyệt scope trước khi dùng được với tài khoản
+          thật (ngoài danh sách sandbox test user).
+        </p>
+
+        <div className="settings-row">
+          <label className="settings-label" htmlFor="tiktok-client-key">
+            TikTok Client Key
+          </label>
+          <div className="settings-folder-picker">
+            <input
+              id="tiktok-client-key"
+              type="password"
+              className="settings-input"
+              placeholder={hasTikTokClientKey ? "•••••••••••••• (đã cấu hình)" : "aw..."}
+              value={tiktokClientKeyInput}
+              onChange={(e) => setTiktokClientKeyInput(e.target.value)}
+            />
+            <button
+              className="btn btn-secondary"
+              onClick={handleSaveTikTokClientKey}
+              disabled={!tiktokClientKeyInput.trim() || savingTikTokClientKey}
+            >
+              {hasTikTokClientKey && <CheckCircle2 size={14} />}
+              Lưu
+            </button>
+          </div>
+        </div>
+
+        <div className="settings-row">
+          <label className="settings-label" htmlFor="tiktok-client-secret">
+            TikTok Client Secret
+          </label>
+          <div className="settings-folder-picker">
+            <input
+              id="tiktok-client-secret"
+              type="password"
+              className="settings-input"
+              placeholder={hasTikTokClientSecret ? "•••••••••••••• (đã cấu hình)" : "..."}
+              value={tiktokClientSecretInput}
+              onChange={(e) => setTiktokClientSecretInput(e.target.value)}
+            />
+            <button
+              className="btn btn-secondary"
+              onClick={handleSaveTikTokClientSecret}
+              disabled={!tiktokClientSecretInput.trim() || savingTikTokClientSecret}
+            >
+              {hasTikTokClientSecret && <CheckCircle2 size={14} />}
+              Lưu
+            </button>
+          </div>
+        </div>
+
+        <div className="settings-row">
+          <label className="settings-label" htmlFor="tiktok-redirect-uri">
+            TikTok Redirect URI
+          </label>
+          <div className="settings-folder-picker">
+            <input
+              id="tiktok-redirect-uri"
+              type="text"
+              className="settings-input"
+              placeholder={tiktokRedirectUri ?? "https://your-domain.example/tiktok/callback"}
+              value={tiktokRedirectUriInput}
+              onChange={(e) => setTiktokRedirectUriInput(e.target.value)}
+            />
+            <button
+              className="btn btn-secondary"
+              onClick={handleSaveTikTokRedirectUri}
+              disabled={!tiktokRedirectUriInput.trim() || savingTikTokRedirectUri}
+            >
+              {tiktokRedirectUri && <CheckCircle2 size={14} />}
               Lưu
             </button>
           </div>

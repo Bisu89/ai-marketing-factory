@@ -8,6 +8,7 @@ from app.api.v1.endpoints import (
     beat_preview,
     caption_generate,
     categories,
+    competitor_analysis,
     composition_render,
     content_batch_generate,
     content_generate,
@@ -37,6 +38,7 @@ from app.modules.ai.story.router import router as story_router
 from app.modules.asset.router import router as asset_router
 from app.modules.batch.router import router as batch_router
 from app.modules.beat.router import router as beat_router
+from app.modules.competitor_intelligence.router import router as competitor_intelligence_router
 from app.modules.content_strategy.router import router as content_strategy_router
 from app.modules.scene_cutter.router import router as scene_cutter_router
 from app.modules.video_composer.router import router as video_composer_router
@@ -56,6 +58,8 @@ api_router.include_router(performance_intelligence.router, tags=["performance-in
 api_router.include_router(winner_detection.router, tags=["winner-detection"])
 api_router.include_router(content_recommendations.router, tags=["content-recommendations"])
 api_router.include_router(ai_costs.router, tags=["ai-costs"])
+api_router.include_router(competitor_intelligence_router, tags=["competitor-intelligence"])
+api_router.include_router(competitor_analysis.router, tags=["competitor-analysis"])
 api_router.include_router(scene_cutter_router, tags=["scene-cutter"])
 api_router.include_router(video_composer_router, tags=["video-composer"])
 api_router.include_router(asset_router, tags=["asset"])

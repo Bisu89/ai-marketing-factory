@@ -9,6 +9,7 @@ import { ContentBatchesPage } from "./pages/ContentBatchesPage";
 import { ContentBatchDetailPage } from "./pages/ContentBatchDetailPage";
 import { WinnerDetectionPage } from "./pages/WinnerDetectionPage";
 import { AICostPage } from "./pages/AICostPage";
+import { CompetitorIntelligencePage } from "./pages/CompetitorIntelligencePage";
 import { SceneCutterPage } from "./pages/SceneCutterPage";
 import { VideoComposerPage } from "./pages/VideoComposerPage";
 import { VideoFactoryPage } from "./pages/VideoFactoryPage";
@@ -31,6 +32,7 @@ function App() {
         <Route path="content-batches/:batchId" element={<ContentBatchDetailPage />} />
         <Route path="winners" element={<WinnerDetectionPage />} />
         <Route path="ai-costs" element={<AICostPage />} />
+        <Route path="competitor-intelligence" element={<CompetitorIntelligencePage />} />
         <Route path="scene-cutter" element={<SceneCutterPage />} />
         <Route path="video-composer" element={<VideoComposerPage />} />
         <Route path="video-factory" element={<VideoFactoryPage />} />

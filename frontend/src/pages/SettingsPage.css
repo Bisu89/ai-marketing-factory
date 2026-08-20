@@ -16,6 +16,14 @@
   border-bottom: 1px solid var(--border);
 }
 
+.settings-hint {
+  font-size: 12px;
+  color: var(--text-muted);
+  padding: 4px 0 14px;
+  margin: 0;
+  line-height: 1.5;
+}
+
 .settings-row:last-child {
   border-bottom: none;
 }

@@ -1,0 +1,202 @@
+.ci-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: 18px 20px;
+  margin-bottom: 20px;
+}
+
+.ci-section-title {
+  font-size: 15px;
+  margin-bottom: 12px;
+}
+
+.ci-hint {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  margin: 4px 0 12px;
+}
+
+.ci-alert {
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  margin-bottom: 14px;
+}
+
+.ci-alert-error {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--danger);
+}
+
+.ci-loading {
+  display: flex;
+  justify-content: center;
+  padding: 30px 0;
+  color: var(--text-muted);
+}
+
+.ci-connect-card {
+  text-align: center;
+  padding: 24px;
+}
+
+.ci-account-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.ci-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.ci-account-sub {
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+
+.ci-account-actions {
+  margin-left: auto;
+  display: flex;
+  gap: 8px;
+}
+
+.ci-stats-row {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  font-size: 12.5px;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.ci-table-wrap {
+  overflow-x: auto;
+}
+
+.ci-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12.5px;
+  min-width: 600px;
+}
+
+.ci-table thead th {
+  text-align: left;
+  padding: 8px 10px;
+  font-weight: 600;
+  color: var(--text-muted);
+  font-size: 11.5px;
+  border-bottom: 1px solid var(--border);
+}
+
+.ci-table tbody td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.ci-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.ci-input {
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-size: 13px;
+}
+
+.ci-input-wide {
+  grid-column: 1 / -1;
+}
+
+.ci-competitor-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.ci-competitor-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+}
+
+.ci-competitor-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.ci-thumb {
+  width: 48px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+}
+
+.ci-competitor-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.ci-competitor-caption {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ci-competitor-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.ci-pattern-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 10px;
+  background: var(--accent-bg);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+}
+
+.ci-pattern-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ci-pattern-label {
+  font-size: 10.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.ci-pattern-value {
+  font-size: 12.5px;
+  color: var(--text);
+}
+
+.ci-reasoning {
+  grid-column: 1 / -1;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin: 6px 0 0;
+  font-style: italic;
+}

@@ -11,6 +11,11 @@ export interface AppSettings {
   // configured -- what most UI checks should read instead of assuming
   // Anthropic specifically.
   has_ai_key: boolean;
+  // Competitor Content Analyzer (Task 11) -- TikTok Developer app
+  // credentials, same "never echo the secret" shape as the AI keys above.
+  has_tiktok_client_key: boolean;
+  has_tiktok_client_secret: boolean;
+  tiktok_redirect_uri: string | null;
 }
 
 export interface FolderEntry {
