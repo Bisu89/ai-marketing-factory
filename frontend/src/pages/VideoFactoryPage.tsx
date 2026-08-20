@@ -35,7 +35,7 @@ import { assetFileUrl, getAsset } from "../api/asset";
 import { generateBeatPlan, getProject, loadBeatPlan, renderBeatPreview, saveBeatPlan, saveProjectBeatPlan } from "../api/beat";
 import { checkPlanQuality } from "../api/quality";
 import { createTemplate, listTemplates } from "../api/template";
-import { listLocalVoices } from "../api/voice";
+import { listLocalVoices, regenerateVoice } from "../api/voice";
 import type { LocalVoiceOption } from "../api/voice";
 import {
   cancelVideoComposeJob,
@@ -514,6 +514,17 @@ export function VideoFactoryPage() {
   const [voiceSpeed, setVoiceSpeed] = useState(1.0);
   const [localVoices, setLocalVoices] = useState<LocalVoiceOption[]>([]);
   const [localVoicesError, setLocalVoicesError] = useState<string | null>(null);
+  // Real user report: changing Provider/Voice/Speed/Content language above
+  // and clicking Render Again produced an unchanged video. Root cause: this
+  // page's Render Video/Quick Render submits the classic composition path
+  // (composition_render.py) using whatever narration file is *already*
+  // assigned to each beat -- it never re-synthesizes. Only the Factory
+  // pipeline's own GENERATING_VOICE stage (voice_generate.py) does that,
+  // and this page has no factory-run trigger at all. `regenerateVoice()`
+  // (POST /projects/{id}/regenerate-voice) already existed on the backend
+  // for exactly this -- it just had no button wired to it anywhere.
+  const [regeneratingVoice, setRegeneratingVoice] = useState(false);
+  const [regenerateVoiceError, setRegenerateVoiceError] = useState<string | null>(null);
 
   const [validationErrors, setValidationErrors] = useState<string[]>([]);
   const [submitting, setSubmitting] = useState(false);
@@ -856,6 +867,32 @@ export function VideoFactoryPage() {
       setSaveError(err instanceof Error ? err.message : "Could not save beat plan.");
     } finally {
       setSaving(false);
+    }
+  }
+
+  async function handleRegenerateVoice() {
+    if (projectId == null || beats.length === 0 || regeneratingVoice) return;
+    setRegeneratingVoice(true);
+    setRegenerateVoiceError(null);
+    try {
+      // regenerate-voice reads the project's *saved* config, not whatever
+      // is only sitting in this page's own React state -- save first so
+      // the current Provider/Voice/Speed/Content language picks actually
+      // take effect.
+      const plan = buildBeatPlanForSave(
+        beats, script, projectName, buildProjectConfigForSave(), idea, contentBrief, scriptLocked, loadedScriptText
+      );
+      await saveProjectBeatPlan(projectId, plan);
+      await regenerateVoice(projectId);
+      // Regeneration reassigns narration_asset_id/start/end (and can bump
+      // beat duration, see docs/features/58-beat-duration-narration-sync.md)
+      // on every beat -- reload to pick all of it back up, same recovery
+      // this page already uses elsewhere ("Could not load this project's
+      // beats" -> Reload, in the Step 2 error state below).
+      window.location.reload();
+    } catch (err) {
+      setRegenerateVoiceError(err instanceof Error ? err.message : "Could not regenerate narration.");
+      setRegeneratingVoice(false);
     }
   }
 
@@ -1663,6 +1700,29 @@ export function VideoFactoryPage() {
               />
             </label>
           </div>
+
+          <div className="vf-row">
+            <button
+              className="btn btn-secondary"
+              onClick={handleRegenerateVoice}
+              disabled={projectId == null || beats.length === 0 || regeneratingVoice}
+            >
+              {regeneratingVoice ? <Loader2 size={14} className="spin" /> : <RotateCcw size={14} />}
+              {regeneratingVoice ? "Regenerating..." : "Regenerate Narration"}
+            </button>
+          </div>
+          <p className="vf-field-label">
+            Changing Provider/Voice/Speed/Content language above does nothing on its own -- Render Video reuses
+            whatever narration audio is already assigned to each beat. Click Regenerate Narration to actually
+            re-synthesize with your new choices before rendering.
+            {projectId == null && " (Save this project first -- regeneration needs a saved project.)"}
+          </p>
+          {regenerateVoiceError && (
+            <div className="vf-alert vf-alert-error">
+              <AlertTriangle size={14} />
+              {regenerateVoiceError}
+            </div>
+          )}
 
           <label className="vf-field">
             <span>Background music</span>

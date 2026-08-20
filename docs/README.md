@@ -88,6 +88,7 @@ SQLite.
 65. [Content Strategy: Backend API](features/65-content-strategy-api.md) — `GET /content-pillars`, `GET /content-formats`, and full `GET/POST/PATCH/DELETE /content-ideas` (filters + pagination), Router → Service → Repository; no AI generation, no Format create endpoint yet
 66. [Content Studio Frontend](features/66-content-studio-frontend.md) — new `/content-studio` page (Pillar → Format → count → Generate → Review → Select), reusing `PageHeader`/`EmptyState`/`Pagination`/`useEmotions`; "Generate" loops `POST /content-ideas` into editable draft placeholders since no AI/bulk endpoint exists yet
 67. [Video Factory: Content Language Picker](features/67-video-factory-content-language.md) — real user report: AI content was always English with no way to change it (no UI existed at all); added a Content language dropdown to Step 1 that also auto-switches Step 4's Provider to Edge TTS for non-English. The reported huge/centered captions needed no code change — Step 4's existing preset dropdown already covers it
+68. ["Regenerate Narration" Button](features/68-video-factory-regenerate-narration.md) — real user report: changing the voice at Step 4 and re-rendering produced an unchanged video, because Render Video/Quick Render/Render Again reuse whatever narration is already assigned to each beat and never re-synthesize; wired the backend's already-existing `POST /projects/{id}/regenerate-voice` (previously unused by the frontend) to a new button
 
 ## Keeping this up to date
 
