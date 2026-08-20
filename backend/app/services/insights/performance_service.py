@@ -17,6 +17,7 @@ docstring for why 0 and "no data" must stay distinguishable.
 """
 
 from dataclasses import dataclass
+from datetime import datetime, timezone
 
 from sqlalchemy.orm import Session, selectinload
 
@@ -49,6 +50,8 @@ class VideoPerformance:
     page_name: str | None
     hook_type: str | None
     story_style: str | None
+    published_at: datetime
+    duration_sec: float | None  # from the linked snapshot if available, else Video.duration_sec
     linked: bool  # post_id/page_id set on the PublishLog at all
 
     views: int | None = None
@@ -60,10 +63,28 @@ class VideoPerformance:
     real_followers: int | None = None
 
     engagement_rate: float | None = None  # interactions / views
+    share_rate: float | None = None  # shares / views -- Task 08's own required metric
     follower_conversion_rate: float | None = None  # real_followers / views
 
     view_velocity_per_day: float | None = None
     view_velocity_note: str | None = None
+
+    # Task 08 -- "publication age if data supports it": views accumulated
+    # per day since PublishLog.published_at (not the same thing as
+    # view_velocity_per_day above, which is growth *between two
+    # snapshots*; this is total performance normalized for how long the
+    # post has simply been live).
+    views_per_day_since_publish: float | None = None
+    views_per_day_note: str | None = None
+
+    # Task 08 -- "account/platform context": views expressed as a multiple
+    # of this platform's own average linked views (1.0 = exactly average
+    # for that platform), computed once the full performance list is
+    # known -- see apply_platform_relative_views(). None until that runs,
+    # or when the platform has too few linked samples to average
+    # meaningfully.
+    platform_relative_views: float | None = None
+    platform_relative_note: str | None = None
 
     performance_score: float | None = None
     performance_score_note: str | None = None
@@ -80,6 +101,8 @@ def _compute_performance(log: PublishLog, db: Session) -> VideoPerformance:
         page_name=log.page_name,
         hook_type=log.hook_type,
         story_style=log.story_style,
+        published_at=log.published_at,
+        duration_sec=log.video.duration_sec,  # snapshot's own duration_sec (if linked) overrides below
         linked=bool(log.post_id and log.page_id),
     )
 
@@ -92,6 +115,9 @@ def _compute_performance(log: PublishLog, db: Session) -> VideoPerformance:
         perf.data_note = "Đã gắn post_id/page_id nhưng chưa có snapshot Insights nào khớp -- có thể upload đã bị xoá."
         return perf
 
+    if snapshot.duration_sec:
+        perf.duration_sec = snapshot.duration_sec
+
     perf.views = snapshot.views
     perf.interactions = snapshot.interactions
     perf.comments = snapshot.comments
@@ -102,9 +128,26 @@ def _compute_performance(log: PublishLog, db: Session) -> VideoPerformance:
 
     if snapshot.views > 0:
         perf.engagement_rate = round(snapshot.interactions / snapshot.views, 4)
+        perf.share_rate = round(snapshot.shares / snapshot.views, 5)
         perf.follower_conversion_rate = round(snapshot.real_followers / snapshot.views, 5)
     else:
-        perf.data_note = "Snapshot có 0 views -- engagement rate/follower conversion không tính được (chia cho 0)."
+        perf.data_note = "Snapshot có 0 views -- engagement/share rate/follower conversion không tính được (chia cho 0)."
+
+    # Publication-age normalization: views accrued per day since the post
+    # actually went live, measured up to when this snapshot's own upload
+    # was taken (not "now" -- that would make the same historical snapshot
+    # report a different rate every time this endpoint is called later).
+    latest_upload_at = snapshot.upload.uploaded_at
+    published_at = log.published_at
+    if published_at.tzinfo is None:
+        published_at = published_at.replace(tzinfo=timezone.utc)
+    if latest_upload_at.tzinfo is None:
+        latest_upload_at = latest_upload_at.replace(tzinfo=timezone.utc)
+    days_live = (latest_upload_at - published_at).total_seconds() / 86400
+    if days_live <= 0:
+        perf.views_per_day_note = "Ngày đăng (published_at) không sớm hơn thời điểm snapshot -- không tính được views/ngày."
+    else:
+        perf.views_per_day_since_publish = round(snapshot.views / days_live, 1)
 
     # View velocity needs at least 2 real, dated snapshots to measure a
     # rate of change -- a single snapshot is only a static total, not a
@@ -137,6 +180,44 @@ def _compute_performance(log: PublishLog, db: Session) -> VideoPerformance:
     )
 
     return perf
+
+
+_MIN_SAMPLES_FOR_PLATFORM_BASELINE = 2
+
+
+def apply_platform_relative_views(performances: list[VideoPerformance]) -> None:
+    """Task 08 -- "account/platform context" normalization: a raw view
+    count means something different on every platform (algorithm reach,
+    typical audience size), so comparing raw views across platforms isn't
+    a fair ranking. Expresses each linked video's views as a multiple of
+    its *own platform's* average linked views instead -- 1.8 means "1.8x
+    this platform's own average," comparable across platforms in a way
+    raw counts aren't. Mutates the list in place (called once, right
+    after all_performances() builds it) rather than returning a copy.
+    """
+    by_platform: dict[str, list[VideoPerformance]] = {}
+    for p in performances:
+        if p.views is not None:
+            by_platform.setdefault(p.platform, []).append(p)
+
+    platform_avg = {
+        platform: sum(p.views for p in items) / len(items)
+        for platform, items in by_platform.items()
+        if len(items) >= _MIN_SAMPLES_FOR_PLATFORM_BASELINE
+    }
+
+    for p in performances:
+        if p.views is None:
+            continue
+        avg = platform_avg.get(p.platform)
+        if avg is None or avg == 0:
+            linked_count = len(by_platform.get(p.platform, []))
+            p.platform_relative_note = (
+                f"Chỉ có {linked_count} video đã gắn dữ liệu trên nền tảng '{p.platform}' -- cần ít nhất "
+                f"{_MIN_SAMPLES_FOR_PLATFORM_BASELINE} để tính baseline trung bình của nền tảng."
+            )
+            continue
+        p.platform_relative_views = round(p.views / avg, 3)
 
 
 @dataclass
@@ -219,7 +300,9 @@ class PerformanceService:
         content_strategy, so it can't be computed inside this core-only
         service) without a second, duplicate query pass over PublishLog.
         """
-        return [_compute_performance(log, self.db) for log in self._all_logs()]
+        performances = [_compute_performance(log, self.db) for log in self._all_logs()]
+        apply_platform_relative_views(performances)
+        return performances
 
     # -- 1. Top videos --------------------------------------------------
 

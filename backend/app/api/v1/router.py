@@ -25,6 +25,7 @@ from app.api.v1.endpoints import (
     performance_intelligence,
     quality_gate,
     settings,
+    winner_detection,
     tags,
     videos,
     voice_generate,
@@ -50,6 +51,7 @@ api_router.include_router(settings.router, tags=["settings"])
 api_router.include_router(insights.router, tags=["insights"])
 api_router.include_router(publish_log.router, tags=["publish-log"])
 api_router.include_router(performance_intelligence.router, tags=["performance-intelligence"])
+api_router.include_router(winner_detection.router, tags=["winner-detection"])
 api_router.include_router(scene_cutter_router, tags=["scene-cutter"])
 api_router.include_router(video_composer_router, tags=["video-composer"])
 api_router.include_router(asset_router, tags=["asset"])
