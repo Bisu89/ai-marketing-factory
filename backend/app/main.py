@@ -15,6 +15,7 @@ from app.api.v1.endpoints.factory_pipeline import (
     register_factory_event_handlers,
 )
 from app.api.v1.router import api_router
+from app.modules.affiliate.router import redirect_router as affiliate_redirect_router
 from app.core.config import get_settings, resource_path
 from app.core.events import EventBus
 from app.core.exceptions import ExternalServiceError, FileOperationError, NotFoundError, ValidationError
@@ -121,6 +122,11 @@ def create_app() -> FastAPI:
     settings = get_settings()
     app = FastAPI(title=settings.app_name, debug=settings.debug, lifespan=lifespan)
     app.include_router(api_router, prefix=settings.api_v1_prefix)
+    # Real, short, shareable click-tracking link (Task 12 -- see
+    # docs/features/77-affiliate-engine.md) -- deliberately NOT nested
+    # under api_v1_prefix, since /r/{code} is meant to be pasted into a
+    # social post/bio, not called as an API client.
+    app.include_router(affiliate_redirect_router)
 
     # Local-only desktop app: the frontend dev server (Vite, typically :5173)
     # and this API (typically :8000) are different origins in the browser's

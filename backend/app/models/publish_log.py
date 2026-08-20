@@ -26,6 +26,15 @@ class PublishLog(Base):
     `post_id`/`page_id` are dormant leftovers from that removed Insights
     linking feature -- kept on the model (SQLite has no migration
     framework to drop them) but no longer set or read by any code.
+
+    `affiliate_link_id` (Task 12 -- see docs/features/77-affiliate-engine.md)
+    is a bare int, no FK/import (same "cross-reference without a real FK"
+    convention as `ai_story_job_id` above -- app.modules.affiliate.models.
+    AffiliateLink is a module table, and core must never import a module).
+    Null means this publish is organic; set means it's commercial and
+    attributes this row's own existing affiliate_sales/affiliate_revenue
+    (unchanged, still manually entered) to a specific tracked link --
+    never a second, duplicate set of sales/revenue fields.
     """
 
     __tablename__ = "publish_log"
@@ -50,6 +59,8 @@ class PublishLog(Base):
 
     post_id: Mapped[str | None] = mapped_column(String, nullable=True)
     page_id: Mapped[str | None] = mapped_column(String, nullable=True)
+
+    affiliate_link_id: Mapped[int | None] = mapped_column(Integer, nullable=True)
 
     notes: Mapped[str | None] = mapped_column(String, nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow)

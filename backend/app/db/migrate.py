@@ -49,6 +49,9 @@ _NEW_COLUMNS: list[tuple[str, str, str]] = [
     # qa_status/qa_score above.
     ("factory_run", "visual_generation_image_count", "INTEGER"),
     ("factory_run", "visual_generation_cost_usd", "FLOAT"),
+    # Task 12 -- see docs/features/77-affiliate-engine.md. NULL means
+    # organic (the pre-existing default for every row before this task).
+    ("publish_log", "affiliate_link_id", "INTEGER"),
 ]
 
 # (index_name, table, column) -- Base.metadata.create_all() only creates

@@ -16,6 +16,7 @@ class PublishLogCreateIn(BaseModel):
     affiliate_clicks: int = 0
     affiliate_sales: int = 0
     affiliate_revenue: float = 0
+    affiliate_link_id: int | None = None
     published_at: datetime | None = None
     status: str = "none"
     notes: str | None = None
@@ -36,6 +37,7 @@ class PublishLogUpdateIn(BaseModel):
     affiliate_clicks: int | None = None
     affiliate_sales: int | None = None
     affiliate_revenue: float | None = None
+    affiliate_link_id: int | None = None
     status: str | None = None
     notes: str | None = None
 
@@ -69,6 +71,7 @@ class PublishLogOut(BaseModel):
     affiliate_clicks: int
     affiliate_sales: int
     affiliate_revenue: float
+    affiliate_link_id: int | None
     published_at: datetime
     status: str
     post_id: str | None
@@ -98,6 +101,7 @@ def publish_log_to_out(log: PublishLog, views: int | None = None, interactions: 
         affiliate_clicks=log.affiliate_clicks,
         affiliate_sales=log.affiliate_sales,
         affiliate_revenue=log.affiliate_revenue,
+        affiliate_link_id=log.affiliate_link_id,
         published_at=log.published_at,
         status=log.status,
         post_id=log.post_id,
