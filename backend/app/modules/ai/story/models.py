@@ -1,6 +1,6 @@
 from datetime import datetime, timezone
 
-from sqlalchemy import Boolean, DateTime, ForeignKey, Integer, String
+from sqlalchemy import JSON, Boolean, DateTime, Float, ForeignKey, Integer, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.db.base import Base
@@ -8,6 +8,21 @@ from app.db.base import Base
 STORY_STYLES = ("emotional", "humorous", "inspirational", "dramatic", "educational", "sales")
 STORY_LANGUAGES = ("english", "spanish", "vietnamese")
 STORY_JOB_STATUSES = ("completed", "failed")
+
+# Task 05 -- see app/modules/ai/story/quality.py. Sum of the 9 dimension
+# scores (0-10 each), so the total range is 0-90; a version is worth
+# rendering once ai-generated content clears this bar. A deliberate,
+# documented judgment call (avg ~6.7/10 across every dimension), not a
+# value the AI itself decides per-call -- computed in Python from the
+# scores so the pass/fail line is consistent across every scoring call
+# and every provider, not subject to the model's own inconsistent notion
+# of "good enough."
+QUALITY_SCORE_DIMENSIONS = (
+    "hook", "curiosity", "emotion", "conflict", "twist",
+    "ending", "shareability", "originality", "commercial_fit",
+)
+QUALITY_PASS_THRESHOLD = 60
+QUALITY_RECOMMENDATIONS = ("pass", "fail")
 
 
 def _utcnow() -> datetime:
@@ -53,6 +68,25 @@ class StoryJob(Base):
 class StoryVersion(Base):
     """One of the (2, by default) narration-script variants produced by a
     single StoryJob generation call.
+
+    Task 05 (see app/modules/ai/story/quality.py) adds 3 nullable quality-
+    scoring columns directly here rather than a new table. Considered and
+    rejected: (1) a new `story_quality_score` table -- rejected because
+    there is no product need to keep more than the *latest* score per
+    version (re-scoring is meant to fully replace the old verdict, same
+    "regeneration atomically replaces" convention already used for
+    Voice/Motion/Captions elsewhere in this codebase, not to accumulate a
+    history no UI or workflow reads); (2) stuffing the score into
+    `ai_generation_history.response_raw` alone -- rejected because that
+    would make "does this version pass?" require parsing a JSON blob out
+    of history on every read instead of a plain indexed column, and
+    `ai_generation_history` is an append-only audit log, not meant to be
+    queried for current state. `quality_score`/`quality_recommendation`
+    are real columns (cheap to filter/sort by); the 9 individual dimension
+    scores + reasoning + suggestions are bundled into one JSON column
+    (`quality_breakdown`) since nothing needs to query a single dimension
+    on its own -- same "structured but not over-normalized" shape already
+    used by `Asset.extra_metadata`/`tags`.
     """
 
     __tablename__ = "story_version"
@@ -63,5 +97,14 @@ class StoryVersion(Base):
     title: Mapped[str] = mapped_column(String, nullable=False)
     script_text: Mapped[str] = mapped_column(String, nullable=False)
     is_selected: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
+
+    # Null until scored at least once. A failed scoring attempt never
+    # touches these -- see quality.py's own StoryQualityService.score()
+    # docstring -- so a bad/timed-out call can't clobber a previously
+    # valid score.
+    quality_score: Mapped[float | None] = mapped_column(Float, nullable=True)
+    quality_recommendation: Mapped[str | None] = mapped_column(String, nullable=True)
+    quality_breakdown: Mapped[dict | None] = mapped_column(JSON, nullable=True)
+    quality_scored_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
 
     job: Mapped[StoryJob] = relationship("StoryJob", back_populates="versions")

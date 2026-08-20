@@ -11,7 +11,7 @@ from sqlalchemy.orm import Mapped, Session, mapped_column
 
 from app.db.base import Base
 
-AI_GENERATION_KINDS = ("story", "hook", "caption")
+AI_GENERATION_KINDS = ("story", "hook", "caption", "quality_score")
 
 
 def _utcnow() -> datetime:
@@ -21,7 +21,10 @@ def _utcnow() -> datetime:
 class AIGenerationHistory(Base):
     """job_id is a loose reference (no FK) -- it points at story_job,
     hook_job, or caption_job depending on `kind`, and a single column can't
-    carry a real FK to three different tables.
+    carry a real FK to three different tables. Task 05 adds a 4th kind,
+    "quality_score" -- job_id there points at story_version.id (the score
+    is per-*version*, not per-job, since a StoryJob has multiple versions
+    with independent quality).
     """
 
     __tablename__ = "ai_generation_history"

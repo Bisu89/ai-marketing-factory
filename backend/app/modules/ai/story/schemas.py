@@ -33,6 +33,14 @@ class StoryVersionOut(BaseModel):
     title: str
     script_text: str
     is_selected: bool
+    # Task 05 -- null until POST .../score has been called at least once.
+    # quality_score is the 0-90 total (sum of 9 0-10 dimension scores);
+    # quality_breakdown carries the per-dimension scores, reasoning, and
+    # improvement suggestions (see StoryQualityService.score()).
+    quality_score: float | None = None
+    quality_recommendation: str | None = None
+    quality_breakdown: dict | None = None
+    quality_scored_at: datetime | None = None
 
 
 class StoryJobOut(BaseModel):
