@@ -1,6 +1,6 @@
 # 62 — Captions Use Real Word Timing Instead of an Estimate
 
-**Commit:** `TBD`
+**Commit:** `5588d31`
 
 Found via a real user report: captions could visibly disappear *before*
 their own words had even started being spoken, with the drift growing
