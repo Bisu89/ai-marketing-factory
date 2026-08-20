@@ -1,6 +1,6 @@
 # 72. Performance Intelligence
 
-**Commit:** `pending`
+**Commit:** `2f11ea3`
 
 Read-only analytics: real published-post performance (views/likes/
 comments/shares/follower conversion/engagement rate/view velocity/a
