@@ -1,6 +1,6 @@
 # 61 — Quality Gate False Positives for AI-Generated Images
 
-**Commit:** `TBD`
+**Commit:** `ad769e8`
 
 Found via a real user report: every "Generate Full by AI" (Task 59)
 project got permanently stuck at NEEDS_REVIEW, unable to ever pass
