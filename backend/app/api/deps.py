@@ -8,6 +8,7 @@ from app.core.events import EventBus
 from app.db.session import get_db
 from app.services.download.engine import DownloadEngine
 from app.services.insights.publish_log_service import PublishLogService
+from app.services.insights.service import InsightService
 from app.services.library.service import CategoryService, EmotionService, TagService, VideoLibraryService
 
 
@@ -42,6 +43,10 @@ def get_publish_log_service(db: Session = Depends(get_db)) -> PublishLogService:
     return PublishLogService(db)
 
 
+def get_insight_service(db: Session = Depends(get_db)) -> InsightService:
+    return InsightService(db)
+
+
 __all__ = [
     "get_db",
     "get_settings",
@@ -53,4 +58,5 @@ __all__ = [
     "get_category_service",
     "get_emotion_service",
     "get_publish_log_service",
+    "get_insight_service",
 ]

@@ -6,9 +6,18 @@
 [69-content-idea-story-hook-bridge.md](69-content-idea-story-hook-bridge.md)):**
 `ai/story` and `ai/hook` (+ the shared `ai/history.py`) were restored --
 a later task assumed they still existed, and the user chose to bring them
-back rather than redesign around their absence. `ai/caption` and the
-Insights subsystem below remain deleted; this note exists so this file
-doesn't read as still-currently-true.
+back rather than redesign around their absence. `ai/caption` remains
+deleted.
+
+**Update (Task 07, see
+[72-performance-intelligence.md](72-performance-intelligence.md)):** the
+Insights data layer below (`insight_upload`/`insight_post_snapshot`
+models, CSV parser, `InsightService`, `/insights/*` endpoints, and
+`PublishLog`'s link-to-post/unlink/views-interactions enrichment) was
+also restored, for the same reason -- a later task needed it and the user
+chose to bring it back. The frontend `/insights` page was deliberately
+**not** restored (backend only, per that task's own scope). This note
+exists so this file doesn't read as still-currently-true.
 
 Removed two unused features at the user's request: the legacy AI Content
 generator (`app/modules/ai/story|hook|caption`, `/ai` page) and the Insights

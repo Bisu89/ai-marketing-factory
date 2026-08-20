@@ -47,6 +47,11 @@ class PublishLogUpdateIn(BaseModel):
         return value
 
 
+class LinkPostIn(BaseModel):
+    post_id: str
+    page_id: str
+
+
 class PublishLogOut(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
@@ -66,11 +71,18 @@ class PublishLogOut(BaseModel):
     affiliate_revenue: float
     published_at: datetime
     status: str
+    post_id: str | None
+    page_id: str | None
     notes: str | None
     created_at: datetime
+    # Restored for Task 07 -- populated only when linked to a real
+    # InsightPostSnapshot, resolved live by the service layer, never
+    # stored here (see docs/features/72-performance-intelligence.md).
+    views: int | None = None
+    interactions: int | None = None
 
 
-def publish_log_to_out(log: PublishLog) -> PublishLogOut:
+def publish_log_to_out(log: PublishLog, views: int | None = None, interactions: int | None = None) -> PublishLogOut:
     return PublishLogOut(
         id=log.id,
         video_id=log.video_id,
@@ -88,6 +100,10 @@ def publish_log_to_out(log: PublishLog) -> PublishLogOut:
         affiliate_revenue=log.affiliate_revenue,
         published_at=log.published_at,
         status=log.status,
+        post_id=log.post_id,
+        page_id=log.page_id,
         notes=log.notes,
         created_at=log.created_at,
+        views=views,
+        interactions=interactions,
     )

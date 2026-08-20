@@ -18,9 +18,11 @@ from app.api.v1.endpoints import (
     factory_pipeline,
     final_qa,
     health,
+    insights,
     publish_log,
     motion_generate,
     package_generate,
+    performance_intelligence,
     quality_gate,
     settings,
     tags,
@@ -45,7 +47,9 @@ api_router.include_router(emotions.router, tags=["emotions"])
 api_router.include_router(tags.router, tags=["tags"])
 api_router.include_router(detect.router, tags=["detect"])
 api_router.include_router(settings.router, tags=["settings"])
+api_router.include_router(insights.router, tags=["insights"])
 api_router.include_router(publish_log.router, tags=["publish-log"])
+api_router.include_router(performance_intelligence.router, tags=["performance-intelligence"])
 api_router.include_router(scene_cutter_router, tags=["scene-cutter"])
 api_router.include_router(video_composer_router, tags=["video-composer"])
 api_router.include_router(asset_router, tags=["asset"])
