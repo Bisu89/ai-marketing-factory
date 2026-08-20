@@ -1,6 +1,6 @@
 # 70. AI Story Quality Scoring
 
-**Commit:** `pending`
+**Commit:** `5ace4b4`
 
 Pre-render quality gate for a `StoryVersion`: scores it on 9 dimensions
 (Hook, Curiosity, Emotion, Conflict, Twist, Ending, Shareability,
