@@ -4,10 +4,8 @@ import { DashboardPage } from "./pages/DashboardPage";
 import { DownloadPage } from "./pages/DownloadPage";
 import { LibraryPage } from "./pages/LibraryPage";
 import { HistoryPage } from "./pages/HistoryPage";
-import { InsightsPage } from "./pages/InsightsPage";
 import { SceneCutterPage } from "./pages/SceneCutterPage";
 import { VideoComposerPage } from "./pages/VideoComposerPage";
-import { AIContentPage } from "./pages/AIContentPage";
 import { VideoFactoryPage } from "./pages/VideoFactoryPage";
 import { BatchPage } from "./pages/BatchPage";
 import { BatchDetailPage } from "./pages/BatchDetailPage";
@@ -23,10 +21,8 @@ function App() {
         <Route path="download" element={<DownloadPage />} />
         <Route path="library" element={<LibraryPage />} />
         <Route path="history" element={<HistoryPage />} />
-        <Route path="insights" element={<InsightsPage />} />
         <Route path="scene-cutter" element={<SceneCutterPage />} />
         <Route path="video-composer" element={<VideoComposerPage />} />
-        <Route path="ai" element={<AIContentPage />} />
         <Route path="video-factory" element={<VideoFactoryPage />} />
         <Route path="batches" element={<BatchPage />} />
         <Route path="batches/:batchId" element={<BatchDetailPage />} />

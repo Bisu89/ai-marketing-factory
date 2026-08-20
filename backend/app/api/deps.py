@@ -7,9 +7,7 @@ from app.core.config import Settings, get_settings
 from app.core.events import EventBus
 from app.db.session import get_db
 from app.services.download.engine import DownloadEngine
-from app.services.insights.performance_service import PerformanceService
 from app.services.insights.publish_log_service import PublishLogService
-from app.services.insights.service import InsightService
 from app.services.library.service import CategoryService, EmotionService, TagService, VideoLibraryService
 
 
@@ -40,16 +38,8 @@ def get_emotion_service(db: Session = Depends(get_db)) -> EmotionService:
     return EmotionService(db)
 
 
-def get_insight_service(db: Session = Depends(get_db)) -> InsightService:
-    return InsightService(db)
-
-
 def get_publish_log_service(db: Session = Depends(get_db)) -> PublishLogService:
     return PublishLogService(db)
-
-
-def get_performance_service(db: Session = Depends(get_db)) -> PerformanceService:
-    return PerformanceService(db)
 
 
 __all__ = [
@@ -62,7 +52,5 @@ __all__ = [
     "get_tag_service",
     "get_category_service",
     "get_emotion_service",
-    "get_insight_service",
     "get_publish_log_service",
-    "get_performance_service",
 ]

@@ -7,6 +7,26 @@ export const PUBLISH_LOG_STATUS_LABELS: Record<PublishLogStatus, string> = {
   archived: "Đã lưu trữ",
 };
 
+// Kept here (not re-fetched from an AI Story module -- that generator was
+// removed, see docs/features/63-remove-ai-content-and-insights.md) purely
+// as manual labels for the free-text `story_style` field below.
+export type StoryStyle =
+  | "emotional"
+  | "humorous"
+  | "inspirational"
+  | "dramatic"
+  | "educational"
+  | "sales";
+
+export const STORY_STYLE_LABELS: Record<StoryStyle, string> = {
+  emotional: "Cảm động",
+  humorous: "Hài hước",
+  inspirational: "Truyền cảm hứng",
+  dramatic: "Kịch tính",
+  educational: "Giáo dục",
+  sales: "Bán hàng",
+};
+
 export interface PublishLog {
   id: number;
   video_id: number;
@@ -24,12 +44,8 @@ export interface PublishLog {
   affiliate_revenue: number;
   published_at: string;
   status: PublishLogStatus;
-  post_id: string | null;
-  page_id: string | null;
   notes: string | null;
   created_at: string;
-  views: number | null;
-  interactions: number | null;
 }
 
 export interface PublishLogCreateInput {
@@ -58,28 +74,4 @@ export interface PublishLogUpdateInput {
   affiliate_revenue?: number;
   status?: PublishLogStatus;
   notes?: string;
-}
-
-export interface UnlinkedPost {
-  post_id: string;
-  page_id: string;
-  page_name: string;
-  title: string;
-  posted_at: string | null;
-  views: number;
-}
-
-export interface DimensionBreakdown {
-  label: string;
-  post_count: number;
-  total_views: number;
-  avg_views: number;
-  total_interactions: number;
-}
-
-export interface PerformanceOverview {
-  by_topic: DimensionBreakdown[];
-  by_emotion: DimensionBreakdown[];
-  by_hook_type: DimensionBreakdown[];
-  by_story_style: DimensionBreakdown[];
 }

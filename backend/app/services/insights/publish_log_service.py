@@ -1,32 +1,14 @@
 from datetime import datetime, timezone
 
-from sqlalchemy import func
 from sqlalchemy.orm import Session, selectinload
 
-from app.core.exceptions import NotFoundError, ValidationError
-from app.models.insight_post import InsightPostSnapshot
+from app.core.exceptions import NotFoundError
 from app.models.publish_log import PublishLog
 from app.models.video import Video
 
 
 def _utcnow() -> datetime:
     return datetime.now(timezone.utc)
-
-
-def latest_snapshot_for(db: Session, post_id: str, page_id: str) -> InsightPostSnapshot | None:
-    """The InsightPostSnapshot with these post_id/page_id from the most
-    recent upload -- since a real-world post accumulates a growing-numbers
-    snapshot on every re-upload, "the latest one" is the current truth.
-    Ordered by id (autoincrement, assigned at insert time) rather than a
-    join back to InsightUpload.uploaded_at -- equivalent in practice since
-    rows are always inserted in upload order, and simpler.
-    """
-    return (
-        db.query(InsightPostSnapshot)
-        .filter(InsightPostSnapshot.post_id == post_id, InsightPostSnapshot.page_id == page_id)
-        .order_by(InsightPostSnapshot.id.desc())
-        .first()
-    )
 
 
 class PublishLogService:
@@ -132,47 +114,3 @@ class PublishLogService:
         log = self._get(log_id)
         self.db.delete(log)
         self.db.commit()
-
-    def link_to_post(self, log_id: int, post_id: str, page_id: str) -> PublishLog:
-        log = self._get(log_id)
-        snapshot = latest_snapshot_for(self.db, post_id, page_id)
-        if snapshot is None:
-            raise NotFoundError("Insight post", f"{post_id}/{page_id}")
-
-        already_linked = (
-            self.db.query(PublishLog)
-            .filter(PublishLog.post_id == post_id, PublishLog.page_id == page_id, PublishLog.id != log_id)
-            .first()
-        )
-        if already_linked is not None:
-            raise ValidationError("Bài đăng này đã được gắn với một video khác.")
-
-        log.post_id = post_id
-        log.page_id = page_id
-        self.db.commit()
-        self.db.refresh(log)
-        return log
-
-    def unlink(self, log_id: int) -> PublishLog:
-        log = self._get(log_id)
-        log.post_id = None
-        log.page_id = None
-        self.db.commit()
-        self.db.refresh(log)
-        return log
-
-    def list_unlinked_posts(self) -> list[InsightPostSnapshot]:
-        """Latest snapshot per (post_id, page_id) that has no PublishLog
-        pointing at it yet -- the candidates shown on the Insights page's
-        "gắn với video" picker.
-        """
-        linked = self.db.query(PublishLog.post_id, PublishLog.page_id).filter(PublishLog.post_id.isnot(None))
-        linked_pairs = {(row[0], row[1]) for row in linked}
-
-        latest_ids_subquery = self.db.query(func.max(InsightPostSnapshot.id)).group_by(
-            InsightPostSnapshot.post_id, InsightPostSnapshot.page_id
-        )
-        candidates = (
-            self.db.query(InsightPostSnapshot).filter(InsightPostSnapshot.id.in_(latest_ids_subquery)).all()
-        )
-        return [c for c in candidates if (c.post_id, c.page_id) not in linked_pairs]

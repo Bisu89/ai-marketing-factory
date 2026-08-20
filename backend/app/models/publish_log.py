@@ -19,20 +19,13 @@ class PublishLog(Base):
     own analytics export (hook_type, story_style, ai_story_job_id,
     affiliate_*) -- see docs/features/15-performance-intelligence.md.
 
-    `ai_story_job_id` is a plain int, deliberately NOT an ORM
-    relationship/FK constraint into app.modules.story -- per
-    app/modules/README.md, core (this file) must never import from a
-    module. The frontend resolves the actual StoryJob/StoryVersion via the
-    module's own existing API (GET /story-jobs?video_id=) when building the
-    publish-log form; this column is a bare traceability reference only.
-
-    `post_id`/`page_id` link this row to a real InsightPostSnapshot
-    (app/models/insight_post.py) -- set later via an explicit user action on
-    the Insights page, not at creation time, since a PublishLog is usually
-    created before any matching CSV data has been uploaded. Linking by
-    post_id (stable across every snapshot of the same real-world post)
-    rather than a video_id column on InsightPostSnapshot itself means one
-    link covers all past and future snapshots of that post.
+    `ai_story_job_id`/`story_style` are free-form traceability fields the
+    user can fill in manually; the AI Story generator module and the
+    Insights CSV-import feature that used to populate/link these were
+    removed (see docs/features/63-remove-ai-content-and-insights.md).
+    `post_id`/`page_id` are dormant leftovers from that removed Insights
+    linking feature -- kept on the model (SQLite has no migration
+    framework to drop them) but no longer set or read by any code.
     """
 
     __tablename__ = "publish_log"

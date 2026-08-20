@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
-import { Eye, Heart, Plus, Trash2 } from "lucide-react";
+import { Plus, Trash2 } from "lucide-react";
 import { createPublishLog, deletePublishLog, listPublishLogs } from "../../../api/publishLog";
-import { listStoryJobs } from "../../../api/story";
-import { STORY_STYLE_LABELS, type StoryJob, type StoryStyle } from "../../../types/story";
-import { PUBLISH_LOG_STATUS_LABELS, type PublishLog, type PublishLogStatus } from "../../../types/publishLog";
+import {
+  PUBLISH_LOG_STATUS_LABELS,
+  STORY_STYLE_LABELS,
+  type PublishLog,
+  type PublishLogStatus,
+  type StoryStyle,
+} from "../../../types/publishLog";
 import "./PublishLogSection.css";
 
 const STORY_STYLES = Object.keys(STORY_STYLE_LABELS) as StoryStyle[];
-
-function formatNumber(value: number): string {
-  return value.toLocaleString("vi-VN");
-}
 
 interface PublishLogSectionProps {
   videoId: number;
@@ -18,7 +18,6 @@ interface PublishLogSectionProps {
 
 export function PublishLogSection({ videoId }: PublishLogSectionProps) {
   const [logs, setLogs] = useState<PublishLog[]>([]);
-  const [storyJobs, setStoryJobs] = useState<StoryJob[]>([]);
   const [hookSuggestions, setHookSuggestions] = useState<string[]>([]);
   const [showForm, setShowForm] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -26,7 +25,6 @@ export function PublishLogSection({ videoId }: PublishLogSectionProps) {
   const [pageName, setPageName] = useState("");
   const [hookType, setHookType] = useState("");
   const [storyStyle, setStoryStyle] = useState<StoryStyle | "">("");
-  const [selectedStoryVersionId, setSelectedStoryVersionId] = useState<number | "">("");
   const [affiliateProduct, setAffiliateProduct] = useState("");
   const [affiliateClicks, setAffiliateClicks] = useState(0);
   const [affiliateSales, setAffiliateSales] = useState(0);
@@ -40,7 +38,6 @@ export function PublishLogSection({ videoId }: PublishLogSectionProps) {
 
   useEffect(() => {
     loadLogs();
-    listStoryJobs(videoId).then(setStoryJobs).catch(() => undefined);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [videoId]);
 
@@ -59,13 +56,6 @@ export function PublishLogSection({ videoId }: PublishLogSectionProps) {
     }
   }
 
-  function handlePickStoryVersion(versionId: number | "") {
-    setSelectedStoryVersionId(versionId);
-    if (versionId === "") return;
-    const job = storyJobs.find((j) => j.versions.some((v) => v.id === versionId));
-    if (job) setStoryStyle(job.style);
-  }
-
   async function handleSubmit() {
     setSubmitting(true);
     setError(null);
@@ -75,9 +65,6 @@ export function PublishLogSection({ videoId }: PublishLogSectionProps) {
         page_name: pageName.trim() || undefined,
         hook_type: hookType.trim() || undefined,
         story_style: storyStyle || undefined,
-        ai_story_job_id: selectedStoryVersionId
-          ? storyJobs.find((j) => j.versions.some((v) => v.id === selectedStoryVersionId))?.id
-          : undefined,
         affiliate_product: affiliateProduct.trim() || undefined,
         affiliate_clicks: affiliateClicks,
         affiliate_sales: affiliateSales,
@@ -88,7 +75,6 @@ export function PublishLogSection({ videoId }: PublishLogSectionProps) {
       setPageName("");
       setHookType("");
       setStoryStyle("");
-      setSelectedStoryVersionId("");
       setAffiliateProduct("");
       setAffiliateClicks(0);
       setAffiliateSales(0);
@@ -110,10 +96,6 @@ export function PublishLogSection({ videoId }: PublishLogSectionProps) {
       // Ignore transient failure; user can retry the click.
     }
   }
-
-  const allStoryVersions = storyJobs.flatMap((job) =>
-    job.versions.map((v) => ({ id: v.id, title: v.title, jobStyle: job.style })),
-  );
 
   return (
     <div className="publish-log-section">
@@ -145,18 +127,6 @@ export function PublishLogSection({ videoId }: PublishLogSectionProps) {
                 {log.story_style && <span>Story: {STORY_STYLE_LABELS[log.story_style as StoryStyle] ?? log.story_style}</span>}
                 <span>{PUBLISH_LOG_STATUS_LABELS[log.status]}</span>
               </div>
-              {log.post_id ? (
-                <div className="publish-log-stats">
-                  <span>
-                    <Eye size={12} /> {formatNumber(log.views ?? 0)}
-                  </span>
-                  <span>
-                    <Heart size={12} /> {formatNumber(log.interactions ?? 0)}
-                  </span>
-                </div>
-              ) : (
-                <div className="publish-log-unlinked">Chưa gắn với dữ liệu Insights</div>
-              )}
             </div>
           ))}
         </div>
@@ -178,23 +148,6 @@ export function PublishLogSection({ videoId }: PublishLogSectionProps) {
               list="hook-type-suggestions"
             />
           </label>
-
-          {allStoryVersions.length > 0 && (
-            <label>
-              Phiên bản AI Story đã dùng (tuỳ chọn)
-              <select
-                value={selectedStoryVersionId}
-                onChange={(e) => handlePickStoryVersion(e.target.value ? Number(e.target.value) : "")}
-              >
-                <option value="">Không dùng AI Story / tự viết</option>
-                {allStoryVersions.map((v) => (
-                  <option key={v.id} value={v.id}>
-                    {v.title} ({STORY_STYLE_LABELS[v.jobStyle]})
-                  </option>
-                ))}
-              </select>
-            </label>
-          )}
 
           <label>
             Story style

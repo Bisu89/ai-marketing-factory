@@ -16,8 +16,6 @@ from app.api.v1.endpoints import (
     factory_pipeline,
     final_qa,
     health,
-    insights,
-    performance,
     publish_log,
     motion_generate,
     package_generate,
@@ -27,9 +25,6 @@ from app.api.v1.endpoints import (
     videos,
     voice_generate,
 )
-from app.modules.ai.caption.router import router as caption_router
-from app.modules.ai.hook.router import router as hook_router
-from app.modules.ai.story.router import router as story_router
 from app.modules.asset.router import router as asset_router
 from app.modules.batch.router import router as batch_router
 from app.modules.beat.router import router as beat_router
@@ -45,14 +40,9 @@ api_router.include_router(emotions.router, tags=["emotions"])
 api_router.include_router(tags.router, tags=["tags"])
 api_router.include_router(detect.router, tags=["detect"])
 api_router.include_router(settings.router, tags=["settings"])
-api_router.include_router(insights.router, tags=["insights"])
 api_router.include_router(publish_log.router, tags=["publish-log"])
-api_router.include_router(performance.router, tags=["performance"])
 api_router.include_router(scene_cutter_router, tags=["scene-cutter"])
 api_router.include_router(video_composer_router, tags=["video-composer"])
-api_router.include_router(story_router, tags=["story"])
-api_router.include_router(hook_router, tags=["hook"])
-api_router.include_router(caption_router, tags=["caption"])
 api_router.include_router(asset_router, tags=["asset"])
 api_router.include_router(beat_router, tags=["beat"])
 api_router.include_router(composition_render.router, tags=["composition-render"])

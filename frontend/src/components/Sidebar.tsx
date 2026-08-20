@@ -7,10 +7,8 @@ import {
   Film,
   Scissors,
   Clapperboard,
-  BarChart3,
   Images,
   Layers,
-  Sparkles,
   Wand2,
 } from "lucide-react";
 import { NavLink } from "react-router-dom";
@@ -21,10 +19,8 @@ const NAV_ITEMS = [
   { to: "/download", label: "Download", icon: Download },
   { to: "/library", label: "Library", icon: Library },
   { to: "/history", label: "History", icon: History },
-  { to: "/insights", label: "Insights", icon: BarChart3 },
   { to: "/scene-cutter", label: "Scene Cutter", icon: Scissors },
   { to: "/video-composer", label: "Video Composer", icon: Clapperboard },
-  { to: "/ai", label: "AI Content", icon: Sparkles },
   { to: "/video-factory", label: "Video Factory", icon: Wand2 },
   { to: "/batches", label: "Batches", icon: Layers },
   { to: "/asset-library", label: "Asset Library", icon: Images },

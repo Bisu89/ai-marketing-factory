@@ -83,6 +83,7 @@ SQLite.
 61. [Quality Gate False Positives for AI-Generated Images](features/61-ai-image-quality-gate-fix.md) — every "Generate Full by AI" project was permanently stuck at NEEDS_REVIEW (Continue Production looped forever) because the pre-existing confidence/resolution checks always flag an AI-generated image as a defect; both now exempt `source == "ai_image_generator"` assets
 
 62. [Captions Use Real Word Timing Instead of an Estimate](features/62-caption-real-word-timing.md) — a real, reported bug: captions could disappear before their own words had even started being spoken (drift growing through a beat); the Caption Engine now uses edge_tts's own real per-word timestamps (already captured by the Voice stage, previously discarded) instead of a generic weighted-text-length estimate
+63. [Remove AI Content (Story/Hook/Caption) + Insights](features/63-remove-ai-content-and-insights.md) — deleted two unused features (neither referenced by the Factory pipeline/Dashboard); `PublishLog` in the Library feature stays but loses the AI-Story-version picker and the Insights views/interactions link, both replaced with plain manual fields
 
 ## Keeping this up to date
 
