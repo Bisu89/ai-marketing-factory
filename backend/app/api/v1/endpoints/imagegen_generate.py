@@ -32,17 +32,26 @@ from app.modules.asset.models import Asset
 from app.modules.asset.schemas import AssetRegisterIn
 from app.modules.asset.service import AssetService
 from app.modules.beat.project_service import get_project_draft, update_project_beat_plan
-from app.modules.beat.schemas import Beat, BeatPlan
+from app.modules.beat.schemas import Beat, BeatPlan, ContentProjectConfig
 
 logger = logging.getLogger(__name__)
 
-# Kept fixed and generic (not per-beat-customizable) on purpose -- the user's
+# The technical constraints stay fixed and generic on purpose -- the user's
 # own stated priority is visual consistency across a whole video over any
-# single image looking spectacular, so every beat's prompt shares the same
-# style anchor.
-_STYLE_SUFFIX = (
-    "Simple, consistent illustration style matching the rest of this video's "
-    "visuals, vertical 9:16 composition, no text or watermarks in the image."
+# single image looking spectacular, so every BEAT within one project still
+# shares the same anchor. But the anchor itself must vary per PROJECT
+# (real bug report: selecting a different Template had zero effect on
+# "Generate Full by AI" output -- every project's images looked identical
+# regardless of Template, because this constant never read the project's
+# own template-derived tone/style at all). See _image_prompt below --
+# content_config.tone/.style (ContentProjectConfig, set per Template --
+# e.g. Emotional Story's "warm and emotional"/"storytelling" vs. Couple
+# Story's "tender and reflective"/"relationship story") now folds into the
+# suffix instead of being ignored.
+_STYLE_SUFFIX_TEMPLATE = (
+    "Simple, consistent illustration style matching the rest of this video's visuals, "
+    "evoking a {tone} tone in a {style} style, "
+    "vertical 9:16 composition, no text or watermarks in the image."
 )
 
 
@@ -54,11 +63,12 @@ def _beat_image_path(project_id: int, beat_id: str, settings: Settings) -> Path:
     return _visuals_dir(project_id, settings) / f"beat_{beat_id}.png"
 
 
-def _image_prompt(beat: Beat) -> str:
+def _image_prompt(beat: Beat, content_config: ContentProjectConfig) -> str:
     base = (beat.visual_hint or beat.narration or "").strip()
     if not base:
         base = "An establishing shot fitting the surrounding story."
-    return f"{base}. {_STYLE_SUFFIX}"
+    style_suffix = _STYLE_SUFFIX_TEMPLATE.format(tone=content_config.tone, style=content_config.style)
+    return f"{base}. {style_suffix}"
 
 
 def _get_or_register_image_asset(db, path: Path) -> int:
@@ -116,7 +126,7 @@ def generate_project_images(project_id: int, settings: Settings) -> ImageGenerat
         for beat in pending:
             output_path = _beat_image_path(project_id, beat.id, settings)
             try:
-                generate_beat_image(settings.openai_api_key, _image_prompt(beat), output_path)
+                generate_beat_image(settings.openai_api_key, _image_prompt(beat, draft.config.content), output_path)
             except ImageGenError:
                 logger.warning(
                     "AI image generation failed for project %s beat %s -- left unassigned.", project_id, beat.id
