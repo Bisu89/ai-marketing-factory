@@ -1,14 +1,16 @@
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useQueryClient } from "@tanstack/react-query";
-import { Layers, Loader2, Sparkles, X } from "lucide-react";
+import { Layers, Loader2, Sparkles, TrendingDown, TrendingUp, X } from "lucide-react";
 import { PageHeader } from "../components/PageHeader";
 import { EmptyState } from "../components/EmptyState";
 import { Pagination } from "../features/library/components/Pagination";
 import { useEmotions } from "../features/library/hooks/useEmotions";
 import { createIdea } from "../api/contentStrategy";
 import { createContentBatch, runContentBatch } from "../api/contentBatch";
+import { getContentRecommendations } from "../api/recommendation";
 import { fetchVideos } from "../api/videos";
+import type { Recommendation } from "../types/recommendation";
 import { IdeaCard } from "../features/contentStudio/components/IdeaCard";
 import { useAllContentFormats } from "../features/contentStudio/hooks/useAllContentFormats";
 import { useContentFormats } from "../features/contentStudio/hooks/useContentFormats";
@@ -59,6 +61,20 @@ export function ContentStudioPage() {
   const [bulkError, setBulkError] = useState<string | null>(null);
   const [deletingId, setDeletingId] = useState<number | null>(null);
   const [batchModalOpen, setBatchModalOpen] = useState(false);
+
+  // AI Content Recommendations (Task 09) -- display-only advice, fetched
+  // once and never used to auto-fill/auto-trigger anything below; the
+  // user reads it, then still picks Pillar/Format/count themselves.
+  const [recommendations, setRecommendations] = useState<Recommendation[]>([]);
+  const [recommendationsError, setRecommendationsError] = useState<string | null>(null);
+  const [recommendationsLoading, setRecommendationsLoading] = useState(true);
+
+  useEffect(() => {
+    getContentRecommendations()
+      .then(setRecommendations)
+      .catch((err) => setRecommendationsError(err instanceof Error ? err.message : "Không tải được gợi ý."))
+      .finally(() => setRecommendationsLoading(false));
+  }, []);
 
   const pillarsQuery = useContentPillars();
   const allFormatsQuery = useAllContentFormats();
@@ -177,6 +193,46 @@ export function ContentStudioPage() {
         title="Content Studio"
         subtitle="Pillar → Format → số lượng ý tưởng → tạo → duyệt → chọn ý tưởng để đưa vào sản xuất."
       />
+
+      <section className="cs-section">
+        <h2 className="cs-section-title">AI Content Recommendations</h2>
+        <p className="cs-hint cs-hint-top">
+          Gợi ý dựa trên hiệu suất lịch sử thật (Winner Detection) -- chỉ mang tính tham khảo, không tự động áp dụng.
+          Bạn vẫn tự chọn Pillar/Format ở dưới như bình thường.
+        </p>
+        {recommendationsError && <div className="cs-alert cs-alert-error">{recommendationsError}</div>}
+        {recommendationsLoading ? (
+          <div className="cs-loading">
+            <Loader2 size={18} className="spin" />
+          </div>
+        ) : recommendations.length === 0 ? (
+          <p className="cs-hint">
+            Chưa đủ dữ liệu hiệu suất (video đã đăng + gắn Insights) để đưa ra gợi ý nào.
+          </p>
+        ) : (
+          <div className="cs-recommendation-list">
+            {recommendations.map((rec) => (
+              <div key={`${rec.dimension}-${rec.label}`} className="cs-recommendation-card">
+                <div className="cs-recommendation-top">
+                  {rec.trend === "rising" ? (
+                    <TrendingUp size={14} className="cs-recommendation-trend-up" />
+                  ) : rec.trend === "underperforming" ? (
+                    <TrendingDown size={14} className="cs-recommendation-trend-down" />
+                  ) : null}
+                  <strong>{rec.label}</strong>
+                  <span className="cs-recommendation-dimension">{rec.dimension}</span>
+                  <span className="cs-recommendation-weight">{rec.weight.toFixed(2)}</span>
+                </div>
+                <ul className="cs-recommendation-reasons">
+                  {rec.reasons.map((reason) => (
+                    <li key={reason}>{reason}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        )}
+      </section>
 
       <section className="cs-section">
         <h2 className="cs-section-title">Tạo ý tưởng</h2>

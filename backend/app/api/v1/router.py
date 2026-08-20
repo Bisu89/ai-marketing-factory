@@ -11,6 +11,7 @@ from app.api.v1.endpoints import (
     content_batch_generate,
     content_generate,
     content_idea_generation,
+    content_recommendations,
     dashboard,
     detect,
     downloads,
@@ -52,6 +53,7 @@ api_router.include_router(insights.router, tags=["insights"])
 api_router.include_router(publish_log.router, tags=["publish-log"])
 api_router.include_router(performance_intelligence.router, tags=["performance-intelligence"])
 api_router.include_router(winner_detection.router, tags=["winner-detection"])
+api_router.include_router(content_recommendations.router, tags=["content-recommendations"])
 api_router.include_router(scene_cutter_router, tags=["scene-cutter"])
 api_router.include_router(video_composer_router, tags=["video-composer"])
 api_router.include_router(asset_router, tags=["asset"])
