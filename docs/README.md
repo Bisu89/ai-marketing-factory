@@ -80,6 +80,8 @@ SQLite.
 
 60. ["Top" Caption Preset](features/60-top-caption-preset.md) — a 6th caption preset placing text near the top edge (smaller font) instead of only bottom or dead-center, found missing via a real user complaint about `big_statement`'s large, centered text
 
+61. [Quality Gate False Positives for AI-Generated Images](features/61-ai-image-quality-gate-fix.md) — every "Generate Full by AI" project was permanently stuck at NEEDS_REVIEW (Continue Production looped forever) because the pre-existing confidence/resolution checks always flag an AI-generated image as a defect; both now exempt `source == "ai_image_generator"` assets
+
 ## Keeping this up to date
 
 See the "Documentation" section in `CLAUDE.md` at the repo root — every

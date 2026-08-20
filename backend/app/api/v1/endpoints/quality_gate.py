@@ -87,7 +87,24 @@ def compute_asset_confidence(beat: Beat, asset: Asset) -> str:
     reuses this (and tokenize_prose below) directly for its own auto-assign
     stage's candidate search + confidence check, rather than a second
     implementation of the same keyword-overlap logic.
+
+    Task 59 (see docs/features/59-ai-image-generation.md): an AI-generated
+    image (source="ai_image_generator") was created FROM this exact beat's
+    own visual_hint/narration by the image-generation prompt itself -- a
+    real, deliberate, tailored match, unlike a keyword-searched stock
+    photo. It has no filename/tags to compare against by construction (see
+    imagegen_generate.py's own AssetRegisterIn call), so the keyword-
+    overlap heuristic below would always score it LOW/MEDIUM -- a false
+    negative, not a real quality signal -- which would otherwise leave
+    every "Generate Full by AI" project permanently stuck at NEEDS_REVIEW
+    (any warning forces that status, see quality.analyzer's own status
+    logic, with no user action able to raise a generated image's
+    "confidence"). Short-circuit here, same shape as the "no visual_hint at
+    all -> HIGH" case above: no real signal to contradict the assignment.
     """
+    if asset.source == "ai_image_generator":
+        return "HIGH"
+
     hint_tokens = tokenize_prose(beat.visual_hint) if beat.visual_hint else set()
     if not hint_tokens:
         return "HIGH"
@@ -119,11 +136,24 @@ def _resolve_beat_asset_info(beat: Beat, asset_service: AssetService) -> BeatAss
     if asset.effective_status != "ACTIVE":
         return BeatAssetInfo(has_asset=True, asset_valid=False)
 
+    # Task 59: an AI-generated image's resolution is a fixed, accepted
+    # property of the chosen model/size (gpt-image-1-mini's own portrait
+    # option, 1024x1536, is genuinely short of a 1080x1920 render profile's
+    # own "cover" scale -- see classify_portrait_suitability's own
+    # geometry) -- not a variable curation-quality problem a human can fix
+    # by picking a different local photo, the case this check exists for.
+    # None here (not the real classification) reuses the analyzer's own
+    # existing "no data = no penalty" rule (see analyzer.py's own comment
+    # on avg_suitability) rather than flagging every single beat of every
+    # AI-generated project as an unresolvable, permanent review item.
+    portrait_suitability = (
+        None if asset.source == "ai_image_generator" else classify_portrait_suitability(asset.width, asset.height)
+    )
     return BeatAssetInfo(
         has_asset=True,
         asset_valid=True,
         asset_confidence=compute_asset_confidence(beat, asset),
-        portrait_suitability=classify_portrait_suitability(asset.width, asset.height),
+        portrait_suitability=portrait_suitability,
     )
 
 

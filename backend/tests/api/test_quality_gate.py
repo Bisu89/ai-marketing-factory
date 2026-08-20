@@ -95,6 +95,21 @@ class ComputeAssetConfidenceTests(unittest.TestCase):
         # tokenizer avoids relying on.
         self.assertEqual(compute_asset_confidence(beat, asset), "HIGH")
 
+    def test_ai_generated_asset_is_always_high_confidence_despite_zero_overlap(self):
+        # Task 59 -- see docs/features/59-ai-image-generation.md. An
+        # AI-generated image has no tags/filename overlap with the beat's
+        # own visual_hint by construction (see imagegen_generate.py's own
+        # AssetRegisterIn call) -- without this override, every single
+        # "Generate Full by AI" project would score LOW here, permanently
+        # stuck at NEEDS_REVIEW (any warning forces that status -- see
+        # quality.analyzer's own status logic) with no user action able to
+        # raise a generated image's own "confidence".
+        asset = _register(
+            self.service, self.tmp_path, "beat_beat_01.png", tags=[], source="ai_image_generator",
+        )
+        beat = _beat(visual_hint="a lighthouse keeper watching a storm over dark water")
+        self.assertEqual(compute_asset_confidence(beat, asset), "HIGH")
+
 
 class ResolveBeatAssetInfoTests(unittest.TestCase):
     def setUp(self):
@@ -137,6 +152,32 @@ class ResolveBeatAssetInfoTests(unittest.TestCase):
         self.db.commit()
         info = _resolve_beat_asset_info(_beat(asset_id=asset.id), self.service)
         self.assertFalse(info.asset_valid)
+
+    def test_ai_generated_asset_skips_low_resolution_classification(self):
+        # Task 59: gpt-image-1-mini's own portrait size (1024x1536) is
+        # genuinely short of a 1080x1920 render profile's "cover" scale
+        # (see classify_portrait_suitability) -- a fixed, accepted property
+        # of the chosen model, not a variable curation-quality problem a
+        # human can fix by picking a different local photo. None here (not
+        # "LOW_RESOLUTION") reuses the analyzer's own existing "no data =
+        # no penalty" rule rather than flagging every beat of every
+        # AI-generated project as an unresolvable, permanent review item.
+        asset = _register(
+            self.service, self.tmp_path, "beat_beat_01.png",
+            source="ai_image_generator", width=1024, height=1536,
+        )
+        info = _resolve_beat_asset_info(_beat(asset_id=asset.id), self.service)
+        self.assertIsNone(info.portrait_suitability)
+
+    def test_non_ai_asset_still_gets_real_low_resolution_classification(self):
+        # Confirms the Task 59 exemption above is scoped to
+        # source="ai_image_generator" only -- an ordinary library asset at
+        # the exact same dimensions is still flagged, unchanged.
+        asset = _register(
+            self.service, self.tmp_path, "small_photo.jpg", width=1024, height=1536,
+        )
+        info = _resolve_beat_asset_info(_beat(asset_id=asset.id), self.service)
+        self.assertEqual(info.portrait_suitability, "LOW_RESOLUTION")
 
 
 class RunQualityCheckIntegrationTests(unittest.TestCase):
