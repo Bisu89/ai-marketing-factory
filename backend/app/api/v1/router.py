@@ -9,6 +9,7 @@ from app.api.v1.endpoints import (
     categories,
     composition_render,
     content_generate,
+    content_idea_generation,
     dashboard,
     detect,
     downloads,
@@ -25,6 +26,8 @@ from app.api.v1.endpoints import (
     videos,
     voice_generate,
 )
+from app.modules.ai.hook.router import router as hook_router
+from app.modules.ai.story.router import router as story_router
 from app.modules.asset.router import router as asset_router
 from app.modules.batch.router import router as batch_router
 from app.modules.beat.router import router as beat_router
@@ -45,7 +48,10 @@ api_router.include_router(publish_log.router, tags=["publish-log"])
 api_router.include_router(scene_cutter_router, tags=["scene-cutter"])
 api_router.include_router(video_composer_router, tags=["video-composer"])
 api_router.include_router(asset_router, tags=["asset"])
+api_router.include_router(story_router, tags=["story"])
+api_router.include_router(hook_router, tags=["hook"])
 api_router.include_router(content_strategy_router, tags=["content-strategy"])
+api_router.include_router(content_idea_generation.router, tags=["content-idea-generation"])
 api_router.include_router(beat_router, tags=["beat"])
 api_router.include_router(composition_render.router, tags=["composition-render"])
 api_router.include_router(beat_generate.router, tags=["beat-generate"])

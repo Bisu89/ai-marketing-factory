@@ -2,6 +2,14 @@
 
 **Commit:** `9e71326`
 
+**Update (Task 04, see
+[69-content-idea-story-hook-bridge.md](69-content-idea-story-hook-bridge.md)):**
+`ai/story` and `ai/hook` (+ the shared `ai/history.py`) were restored --
+a later task assumed they still existed, and the user chose to bring them
+back rather than redesign around their absence. `ai/caption` and the
+Insights subsystem below remain deleted; this note exists so this file
+doesn't read as still-currently-true.
+
 Removed two unused features at the user's request: the legacy AI Content
 generator (`app/modules/ai/story|hook|caption`, `/ai` page) and the Insights
 CSV-import/performance analytics subsystem (`app/services/insights/service.py`,
