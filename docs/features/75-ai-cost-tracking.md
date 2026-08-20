@@ -1,6 +1,6 @@
 # 75. AI Cost Tracking
 
-**Commit:** `pending`
+**Commit:** `b245c67`
 
 Observability/cost-accounting only, per this task's own instruction --
 no generation behavior changed, no revenue.
