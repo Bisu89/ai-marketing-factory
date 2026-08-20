@@ -105,3 +105,10 @@ class IdeaOut(BaseModel):
     status: str
     created_at: datetime
     updated_at: datetime
+
+
+class IdeaListResponse(BaseModel):
+    items: list[IdeaOut]
+    total: int
+    page: int
+    page_size: int

@@ -28,6 +28,7 @@ from app.api.v1.endpoints import (
 from app.modules.asset.router import router as asset_router
 from app.modules.batch.router import router as batch_router
 from app.modules.beat.router import router as beat_router
+from app.modules.content_strategy.router import router as content_strategy_router
 from app.modules.scene_cutter.router import router as scene_cutter_router
 from app.modules.video_composer.router import router as video_composer_router
 
@@ -44,6 +45,7 @@ api_router.include_router(publish_log.router, tags=["publish-log"])
 api_router.include_router(scene_cutter_router, tags=["scene-cutter"])
 api_router.include_router(video_composer_router, tags=["video-composer"])
 api_router.include_router(asset_router, tags=["asset"])
+api_router.include_router(content_strategy_router, tags=["content-strategy"])
 api_router.include_router(beat_router, tags=["beat"])
 api_router.include_router(composition_render.router, tags=["composition-render"])
 api_router.include_router(beat_generate.router, tags=["beat-generate"])
