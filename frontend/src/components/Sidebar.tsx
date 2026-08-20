@@ -1,6 +1,7 @@
 import {
   LayoutDashboard,
   Download,
+  DollarSign,
   Library,
   History,
   Settings,
@@ -25,6 +26,7 @@ const NAV_ITEMS = [
   { to: "/content-studio", label: "Content Studio", icon: Sparkles },
   { to: "/content-batches", label: "Content Batches", icon: ListChecks },
   { to: "/winners", label: "Winner Detection", icon: Trophy },
+  { to: "/ai-costs", label: "AI Cost Tracking", icon: DollarSign },
   { to: "/scene-cutter", label: "Scene Cutter", icon: Scissors },
   { to: "/video-composer", label: "Video Composer", icon: Clapperboard },
   { to: "/video-factory", label: "Video Factory", icon: Wand2 },
