@@ -24,6 +24,7 @@ from pathlib import Path
 
 from fastapi import APIRouter, Depends
 
+from app.api.v1.endpoints.voice_generate import load_word_timestamps
 from app.core.config import Settings, get_settings
 from app.core.render_profile import get_render_profile
 from app.modules.beat.project_service import get_project_draft
@@ -34,8 +35,10 @@ from app.modules.caption.schemas import (
     CaptionError,
     CaptionSegment,
     CaptionSegmentationConfig,
+    CaptionWordTiming,
 )
 from app.modules.caption.segmentation import split_beat_into_segments
+from app.modules.voice.schemas import WordTiming
 
 logger = logging.getLogger(__name__)
 router = APIRouter()
@@ -87,12 +90,35 @@ def _segmentation_config(config: CaptionsProjectConfig) -> CaptionSegmentationCo
     )
 
 
-def build_caption_segments(beats: list[Beat], config: CaptionsProjectConfig) -> list[CaptionSegment]:
+def _words_for_beat(beat: Beat, word_timestamps: list[WordTiming]) -> list[CaptionWordTiming]:
+    """Task 62 -- see docs/features/62-caption-real-word-timing.md.
+    word_timestamps is absolute (same timeline as narration.wav/Beat.start/
+    end); a half-open [beat.start, beat.end) filter assigns each word to
+    exactly one Beat even at an exact boundary (matching how
+    voice.timing._stitch_contiguous makes beat.end[i] == beat.start[i+1]).
+    """
+    return [
+        CaptionWordTiming(text=w.text, start=w.start, end=w.end)
+        for w in word_timestamps
+        if beat.start <= w.start < beat.end
+    ]
+
+
+def build_caption_segments(
+    beats: list[Beat], config: CaptionsProjectConfig, word_timestamps: list[WordTiming] | None = None,
+) -> list[CaptionSegment]:
     """Section 11/15: only Beats with real, Voice-settled timing
     (`start`/`end` both set) are captioned -- a beat Voice hasn't reached
     yet has nothing authoritative to time captions against, and is simply
     skipped (not an error; the stage as a whole reports "nothing to
     caption yet" via generate_project_captions' own empty-segments check).
+
+    Task 62: word_timestamps (this project's own real, measured per-word
+    timing, if this project's Voice stage captured any -- see
+    load_word_timestamps) is sliced per-Beat and handed to
+    split_beat_into_segments, which uses it for real acoustic positioning
+    instead of a generic weighted-text-length estimate whenever it lines
+    up with that Beat's own text.
     """
     seg_config = _segmentation_config(config)
     segments: list[CaptionSegment] = []
@@ -101,7 +127,10 @@ def build_caption_segments(beats: list[Beat], config: CaptionsProjectConfig) -> 
             continue
         if not beat.narration or not beat.narration.strip():
             continue
-        segments.extend(split_beat_into_segments(beat.id, beat.narration, beat.start, beat.end, seg_config))
+        beat_words = _words_for_beat(beat, word_timestamps) if word_timestamps else None
+        segments.extend(
+            split_beat_into_segments(beat.id, beat.narration, beat.start, beat.end, seg_config, words=beat_words)
+        )
     return segments
 
 
@@ -154,13 +183,19 @@ def caption_fingerprint(narration_identity: str, config: CaptionsProjectConfig) 
     return hashlib.sha256(payload.encode("utf-8")).hexdigest()
 
 
-def _narration_identity(beats: list[Beat]) -> str:
+def _narration_identity(beats: list[Beat], word_timestamps: list[WordTiming] | None) -> str:
     # Section 16/38/39: Beat.narration (the final, possibly manually-edited
     # script text) + Beat.start/end (Voice-settled timing) together are
     # the *whole* input this stage depends on -- a script edit or a Voice-
     # driven timing change both change this string, and nothing else does.
+    # Task 62: word_timestamps also folded in -- real per-word timing
+    # newly becoming available (or changing) for an otherwise-unchanged
+    # script/Beat-timing must still invalidate the cache, since it changes
+    # this stage's own output (real acoustic positioning vs. the weighted
+    # estimate).
     parts = [f"{b.id}:{b.narration or ''}:{b.start}:{b.end}" for b in sorted(beats, key=lambda x: x.order)]
-    return "|".join(parts)
+    words_part = "|".join(f"{w.text}:{w.start}:{w.end}" for w in word_timestamps) if word_timestamps else ""
+    return "|".join(parts) + "##" + words_part
 
 
 # -- The stage itself (section 32/33/40/46/47) -------------------------
@@ -186,7 +221,8 @@ def generate_project_captions(project_id: int, settings: Settings) -> bool:
     if not draft.beats:
         return False
 
-    narration_identity = _narration_identity(draft.beats)
+    word_timestamps = load_word_timestamps(project_id, settings)
+    narration_identity = _narration_identity(draft.beats, word_timestamps)
     fingerprint = caption_fingerprint(narration_identity, caption_config)
     output_path = captions_ass_path(project_id, settings.library_dir)
     metadata = _load_metadata(project_id, settings.library_dir)
@@ -194,7 +230,7 @@ def generate_project_captions(project_id: int, settings: Settings) -> bool:
     if metadata and metadata.get("fingerprint") == fingerprint and output_path.exists():
         return False  # section 37: identical inputs, valid cached artifact already in place
 
-    segments = build_caption_segments(draft.beats, caption_config)
+    segments = build_caption_segments(draft.beats, caption_config, word_timestamps)
     if not segments:
         return False  # nothing captionable yet (no beat has settled timing, or no narration text)
 

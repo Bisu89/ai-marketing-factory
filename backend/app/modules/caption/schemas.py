@@ -59,6 +59,23 @@ class CaptionSegment:
 
 
 @dataclass
+class CaptionWordTiming:
+    """One spoken word's real, measured position (absolute seconds, same
+    timeline as Beat.start/end) -- mirrors app.modules.voice.schemas.
+    WordTiming by shape, duplicated rather than imported (module
+    isolation, same convention as CAPTION_PRESETS elsewhere in this
+    codebase). Only ever populated for a provider that genuinely exposes
+    per-word boundaries (edge_tts); Task 62 (see docs/features/
+    62-caption-real-word-timing.md) is what lets segmentation.py use this
+    instead of a generic weighted-text-length estimate, when available.
+    """
+
+    text: str
+    start: float
+    end: float
+
+
+@dataclass
 class CaptionSegmentationConfig:
     """The subset of CaptionsProjectConfig (app.modules.beat.schemas) that
     segmentation.py actually needs -- this module never imports that

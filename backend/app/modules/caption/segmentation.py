@@ -21,6 +21,7 @@ from app.modules.caption.schemas import (
     CaptionError,
     CaptionSegment,
     CaptionSegmentationConfig,
+    CaptionWordTiming,
 )
 
 # Matches app.modules.voice.timing's own weighting constants exactly (same
@@ -149,18 +150,78 @@ def _rebalance_minimum_duration(raw_durations: list[float], total_duration: floa
     return durations
 
 
+def _real_word_boundaries(
+    chunks: list[str], words: list[CaptionWordTiming], start: float, end: float, max_duration_sec: float,
+) -> list[tuple[float, float]] | None:
+    """Task 62 (see docs/features/62-caption-real-word-timing.md): when
+    real, measured per-word timing is available (edge_tts's own
+    WordBoundary events, threaded through from the Voice stage -- see
+    caption_generate.py), position each chunk against where its own words
+    were ACTUALLY spoken instead of a generic weighted-text-length
+    estimate. The weighted estimate assumes a uniform words-per-second
+    pace across a whole Beat, which real speech never actually keeps
+    (natural pauses at commas/sentence-ends are longer than the model
+    assumes) -- for a beat with several short, punctuation-heavy clauses
+    this compounds into seconds of drift by the end of the beat (a real,
+    user-reported bug: a caption could disappear before its own words had
+    even started being spoken).
+
+    Returns None (falls back to the weighted estimate below) when the
+    supplied words don't correspond 1:1 with the chunks' own word count --
+    same "don't trust a mismatched engine tokenization" caution
+    app.modules.voice.timing._timing_from_word_timestamps already applies
+    at the whole-Beat level, applied here one level down.
+    """
+    expected_counts = [len(c.split()) for c in chunks]
+    if not words or len(words) != sum(expected_counts):
+        return None
+
+    cursor = 0
+    raw: list[tuple[float, float]] = []
+    for count in expected_counts:
+        chunk_words = words[cursor:cursor + count]
+        cursor += count
+        raw.append((chunk_words[0].start, chunk_words[-1].end))
+
+    # Gapless stitch (matching the weighted-estimate path's own "cursor ->
+    # seg_end" convention below): each segment runs from where the
+    # previous one ended (or the Beat's own start, for the first) through
+    # to where the NEXT segment's own first real word begins (or the
+    # Beat's own end, for the last) -- a natural pause between two clauses
+    # is folded into the segment *before* it rather than left as a gap
+    # with nothing on screen, and a caption switches at the exact instant
+    # the next word starts being spoken.
+    boundaries: list[tuple[float, float]] = []
+    for i in range(len(raw)):
+        seg_start = start if i == 0 else max(raw[i][0], boundaries[i - 1][1])
+        seg_end = end if i == len(raw) - 1 else raw[i + 1][0]
+        seg_end = min(seg_end, seg_start + max_duration_sec)
+        seg_end = max(seg_end, seg_start + 0.01)
+        boundaries.append((seg_start, seg_end))
+    return boundaries
+
+
 def split_beat_into_segments(
     beat_id: str, text: str, start: float, end: float, config: CaptionSegmentationConfig,
+    words: list[CaptionWordTiming] | None = None,
 ) -> list[CaptionSegment]:
     """Section 11/12/15: one Beat's narration -> N caption segments, each
     strictly inside [start, end] (section 15's own "caption.start >=
-    beat.start, caption.end <= beat.end"), weighted-distributed like
-    app.modules.voice.timing.compute_beat_timing (word count + punctuation
-    pause weight), then rebalanced for min_duration and capped at
+    beat.start, caption.end <= beat.end").
+
+    Task 62: when `words` (this Beat's own slice of real, measured
+    per-word timing) is supplied and its word count matches the text's
+    own, segments are positioned against that real timing (see
+    _real_word_boundaries above) -- far more accurate than an estimate.
+    Falls back to the original weighted-distribution model (word count +
+    punctuation pause weight, like app.modules.voice.timing.
+    compute_beat_timing) -- rebalanced for min_duration and capped at
     max_duration (section 10: a segment given more idle time than
     max_duration_sec by the weighted split is capped there, leaving a
     trailing gap rather than an oversized on-screen block -- section 14's
-    own "small gaps are acceptable if intentional").
+    own "small gaps are acceptable if intentional") -- whenever real
+    timing isn't available at all (the "local" SAPI5 provider has no
+    word-boundary data) or doesn't line up with this Beat's own text.
 
     Raises CaptionError(CAPTION_TIMING_INVALID) for a non-positive Beat
     window. Returns [] for blank/whitespace-only text (section 31: nothing
@@ -179,22 +240,31 @@ def split_beat_into_segments(
     if not chunks:
         return []
 
-    weights = [_weight_for_text(c) for c in chunks]
-    total_weight = sum(weights)
-    raw_durations = [w / total_weight * duration for w in weights]
+    real_boundaries = _real_word_boundaries(chunks, words, start, end, config.max_duration_sec) if words else None
 
-    min_duration = min(config.min_duration_sec, duration / len(chunks))
-    durations = _rebalance_minimum_duration(raw_durations, duration, min_duration)
-    # Cap after rebalancing (section 10) -- never below the just-enforced
-    # minimum (already guaranteed <= max_duration_sec in any realistic
-    # config; MAX_CAPTION checked at the config layer keeps min <= max).
-    durations = [min(d, config.max_duration_sec) for d in durations]
+    if real_boundaries is not None:
+        boundaries = real_boundaries
+    else:
+        weights = [_weight_for_text(c) for c in chunks]
+        total_weight = sum(weights)
+        raw_durations = [w / total_weight * duration for w in weights]
+
+        min_duration = min(config.min_duration_sec, duration / len(chunks))
+        durations = _rebalance_minimum_duration(raw_durations, duration, min_duration)
+        # Cap after rebalancing (section 10) -- never below the just-enforced
+        # minimum (already guaranteed <= max_duration_sec in any realistic
+        # config; MAX_CAPTION checked at the config layer keeps min <= max).
+        durations = [min(d, config.max_duration_sec) for d in durations]
+
+        boundaries = []
+        cursor = start
+        for chunk_duration in durations:
+            seg_start = cursor
+            seg_end = min(end, seg_start + chunk_duration)
+            boundaries.append((seg_start, seg_end))
+            cursor = seg_end
 
     segments: list[CaptionSegment] = []
-    cursor = start
-    for i, (chunk, chunk_duration) in enumerate(zip(chunks, durations)):
-        seg_start = cursor
-        seg_end = min(end, seg_start + chunk_duration)
+    for i, (chunk, (seg_start, seg_end)) in enumerate(zip(chunks, boundaries)):
         segments.append(CaptionSegment(id=f"{beat_id}_c{i + 1}", beat_id=beat_id, start=seg_start, end=seg_end, text=chunk))
-        cursor = seg_end
     return segments

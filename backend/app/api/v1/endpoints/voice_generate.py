@@ -35,7 +35,7 @@ from app.modules.beat.project_service import get_project_draft, update_project_b
 from app.modules.beat.schemas import Beat, BeatPlan, VoiceProjectConfig
 from app.modules.voice.audio_analysis import cut_segment, normalize_audio, probe_audio, validate_audio
 from app.modules.voice.providers import LocalTTSProvider, get_provider
-from app.modules.voice.schemas import BeatTimingInput
+from app.modules.voice.schemas import BeatTimingInput, WordTiming
 from app.modules.voice.timing import compute_beat_timing
 
 logger = logging.getLogger(__name__)
@@ -187,6 +187,14 @@ def generate_project_narration(project_id: int, settings: Settings) -> bool:
         # e.g. a retry that regenerated the audio once already but never
         # finished writing the per-beat Beat fields.
         probe = probe_audio(narration_wav)
+        # Task 62 (see docs/features/62-caption-real-word-timing.md):
+        # carry forward whatever real word timing the ORIGINAL synthesis
+        # captured -- this branch never re-synthesizes, so _save_metadata
+        # below must not clobber a previously-captured real timestamp
+        # list with an empty one just because this particular call
+        # skipped the actual TTS call.
+        if metadata and metadata.get("word_timestamps"):
+            word_timestamps = [WordTiming(**w) for w in metadata["word_timestamps"]]
     else:
         provider = get_provider(voice_config.provider)
         raw_output = _voice_dir(project_id, settings) / "narration.raw.tmp.wav"
@@ -233,6 +241,13 @@ def generate_project_narration(project_id: int, settings: Settings) -> bool:
         language=voice_config.language, speed=voice_config.speed, pitch=voice_config.pitch,
         duration_sec=probe.duration_sec, sample_rate=probe.sample_rate, channels=probe.channels,
         external_api_calls=1 if voice_config.provider == "edge_tts" else 0,
+        # Task 62 -- see docs/features/62-caption-real-word-timing.md.
+        # Absolute seconds within narration.wav's own timeline (the same
+        # timeline Beat.start/end already use) -- None for a provider with
+        # no word-boundary data (the default "local" SAPI5 engine).
+        word_timestamps=(
+            [{"text": w.text, "start": w.start, "end": w.end} for w in word_timestamps] if word_timestamps else None
+        ),
     )
     return True
 
@@ -253,6 +268,23 @@ def narration_is_valid(project_id: int, settings: Settings) -> bool:
     except Exception:
         return False
     return True
+
+
+def load_word_timestamps(project_id: int, settings: Settings) -> list[WordTiming] | None:
+    """Task 62 (see docs/features/62-caption-real-word-timing.md): real,
+    measured per-word timing from this project's own last real edge_tts
+    synthesis (absolute seconds within narration.wav's own timeline, same
+    convention as Beat.start/end) -- None for a project using the "local"
+    SAPI5 provider (no word-boundary data exists at all) or one that
+    hasn't run Voice yet. Public (not `_`-prefixed): caption_generate.py
+    (a different composition root) reads this directly, the same
+    "composition root importing another composition root" pattern
+    batch_render.py already uses for render_composition/generate_beat_plan.
+    """
+    metadata = _load_metadata(project_id, settings)
+    if not metadata or not metadata.get("word_timestamps"):
+        return None
+    return [WordTiming(text=w["text"], start=w["start"], end=w["end"]) for w in metadata["word_timestamps"]]
 
 
 # -- API: explicit "Regenerate Voice" + voice listing (sections 15/45/46) --

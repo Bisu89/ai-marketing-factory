@@ -23,6 +23,7 @@ from app.api.v1.endpoints.voice_generate import generate_project_narration
 from app.modules.beat.project_service import get_project_draft, update_project_beat_plan
 from app.modules.beat.schemas import Beat, BeatPlan, BeatType, CaptionsProjectConfig, ProjectConfig
 from app.modules.caption.schemas import CaptionError
+from app.modules.voice.schemas import WordTiming
 from tests.api.test_factory_pipeline import _FactoryTestCase
 
 
@@ -93,6 +94,61 @@ class BasicGenerationTests(_CaptionStageTestCase):
         # Voice was never run -- Beat.start/end are still None.
         generated = generate_project_captions(project_id, self.settings)
         self.assertFalse(generated)
+
+
+class RealWordTimingIntegrationTests(_CaptionStageTestCase):
+    """Task 62 -- see docs/features/62-caption-real-word-timing.md.
+    load_word_timestamps is mocked at the caption_generate module boundary
+    (the real LocalTTSProvider this harness otherwise uses has no
+    word-boundary data at all) -- exercises the real, end-to-end wiring:
+    generate_project_captions -> build_caption_segments -> per-beat
+    slicing -> split_beat_into_segments's own real-timing path.
+    """
+
+    def test_captions_use_real_word_timing_when_available(self):
+        # max_words=2 forces "Vợ bước vào phòng." into two 2-word chunks --
+        # a single chunk would just inherit the whole Beat window
+        # regardless of internal word gaps, telling us nothing.
+        project_id = self._project_with_narration(
+            "Real Timing", ["Vợ bước vào phòng."], captions=CaptionsProjectConfig(max_words=2),
+        )
+        draft = get_project_draft(project_id)
+        beat = draft.beats[0]
+        # A deliberately large, real gap between "bước" and "vào" -- the
+        # weighted estimate has no way to know about this natural pause;
+        # only real per-word timing positions "vào phòng." correctly.
+        half = beat.start + (beat.end - beat.start) * 0.2
+        words = [
+            WordTiming(text="Vợ", start=beat.start, end=beat.start + 0.2),
+            WordTiming(text="bước", start=beat.start + 0.2, end=half),
+            WordTiming(text="vào", start=beat.end - 0.4, end=beat.end - 0.2),
+            WordTiming(text="phòng.", start=beat.end - 0.2, end=beat.end),
+        ]
+
+        with patch("app.api.v1.endpoints.caption_generate.load_word_timestamps", return_value=words):
+            generated = generate_project_captions(project_id, self.settings)
+        self.assertTrue(generated)
+
+        content = captions_ass_path(project_id, self.settings.library_dir).read_text(encoding="utf-8")
+        dialogue_lines = [line for line in content.splitlines() if line.startswith("Dialogue:")]
+        self.assertGreaterEqual(len(dialogue_lines), 1)
+        # The real word "vào" starts at beat.end - 0.4 -- a segment
+        # containing it must start there too (within ASS's own centisecond
+        # rounding), not at some proportional midpoint estimate.
+        last_line = dialogue_lines[-1]
+        start_str = last_line.split(",")[1]
+        h, m, s = start_str.split(":")
+        last_start_seconds = int(h) * 3600 + int(m) * 60 + float(s)
+        self.assertAlmostEqual(last_start_seconds, beat.end - 0.4, delta=0.02)
+
+    def test_falls_back_cleanly_when_no_real_timing_available(self):
+        # The default LocalTTSProvider path (no mock) -- load_word_timestamps
+        # genuinely returns None, and captions still generate correctly via
+        # the pre-existing weighted-estimate path.
+        project_id = self._project_with_narration("No Real Timing", ["A short piece of narration text for one beat."])
+        generated = generate_project_captions(project_id, self.settings)
+        self.assertTrue(generated)
+        self.assertTrue(captions_is_valid(project_id, self.settings))
 
 
 class PresetTests(_CaptionStageTestCase):

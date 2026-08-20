@@ -7,13 +7,17 @@ CaptionSegment objects out).
 
 import unittest
 
-from app.modules.caption.schemas import CaptionError, CaptionSegmentationConfig
+from app.modules.caption.schemas import CaptionError, CaptionSegmentationConfig, CaptionWordTiming
 from app.modules.caption.segmentation import (
     _rebalance_minimum_duration,
     normalize_caption_text,
     split_beat_into_segments,
     split_text_into_chunks,
 )
+
+
+def _words(*specs: tuple[str, float, float]) -> list[CaptionWordTiming]:
+    return [CaptionWordTiming(text=t, start=s, end=e) for t, s, e in specs]
 
 
 class NormalizeTextTests(unittest.TestCase):
@@ -159,6 +163,68 @@ class SplitBeatIntoSegmentsTests(unittest.TestCase):
         self.assertGreaterEqual(len(segments), 3)
         starts = [s.start for s in segments]
         self.assertEqual(starts, sorted(starts))
+
+
+class RealWordTimingTests(unittest.TestCase):
+    """Task 62 -- see docs/features/62-caption-real-word-timing.md. A real,
+    reported bug: the weighted-text-length estimate below assumes a
+    uniform words-per-second pace across a whole Beat, which real speech
+    (natural pauses at commas/sentence-ends) never actually keeps -- a
+    caption could disappear before its own words had even started being
+    spoken. These tests confirm real per-word timing (when supplied and
+    matching the text's own word count) is what actually positions each
+    segment, not the estimate.
+    """
+
+    def test_segment_starts_exactly_when_its_own_first_real_word_does(self):
+        config = CaptionSegmentationConfig(max_words=2, max_chars=200)
+        # "Vợ bước" / "vào phòng," -- two 2-word chunks (max_words=2), with
+        # a real ~1s gap between "bước" ending and "vào" starting (a
+        # natural mid-clause pause the weighted estimate has no way to
+        # know about).
+        words = _words(("Vợ", 7.41, 7.65), ("bước", 7.65, 7.86), ("vào", 8.65, 8.83), ("phòng,", 8.83, 9.20))
+        segments = split_beat_into_segments("b1", "Vợ bước vào phòng,", start=6.41, end=10.04, config=config, words=words)
+        self.assertEqual(len(segments), 2)
+        # First segment starts at the Beat's own start (not its first
+        # word's real start) -- nothing to caption yet, so the on-screen
+        # text simply appears as soon as the Beat itself begins.
+        self.assertAlmostEqual(segments[0].start, 6.41, places=6)
+        # Second segment starts exactly when "vào" is really spoken (8.65)
+        # -- NOT at some proportional estimate partway through the beat
+        # (the actual bug: the old weighted model put this around 7.5s,
+        # over a second before the real audio even reached "vào").
+        self.assertAlmostEqual(segments[1].start, 8.65, places=6)
+        # Gapless: segment 1 fills the natural pause, ending exactly where
+        # segment 2's own real word begins.
+        self.assertAlmostEqual(segments[0].end, segments[1].start, places=6)
+        self.assertAlmostEqual(segments[1].end, 10.04, places=6)
+
+    def test_mismatched_word_count_falls_back_to_weighted_estimate(self):
+        config = CaptionSegmentationConfig(max_words=20, max_chars=200)
+        # Only 2 words supplied for 4-word text -- untrustworthy, must not
+        # silently misalign (same caution voice.timing._timing_from_word_
+        # timestamps already applies at the whole-Beat level).
+        words = _words(("Vợ", 7.41, 7.65), ("bước", 7.65, 7.86))
+        with_words = split_beat_into_segments("b1", "Vợ bước vào phòng", 6.41, 10.04, config, words=words)
+        without_words = split_beat_into_segments("b1", "Vợ bước vào phòng", 6.41, 10.04, config, words=None)
+        self.assertEqual([(s.start, s.end) for s in with_words], [(s.start, s.end) for s in without_words])
+
+    def test_no_words_supplied_uses_weighted_estimate_unchanged(self):
+        config = CaptionSegmentationConfig(max_words=4, max_chars=30)
+        text = "This is a reasonably long piece of narration text for one beat."
+        with_none = split_beat_into_segments("b1", text, 10.0, 16.0, config, words=None)
+        with_default = split_beat_into_segments("b1", text, 10.0, 16.0, config)
+        self.assertEqual([(s.start, s.end) for s in with_none], [(s.start, s.end) for s in with_default])
+
+    def test_real_timing_still_respects_max_duration_sec(self):
+        config = CaptionSegmentationConfig(max_words=20, max_chars=200, max_duration_sec=2.0)
+        # A long silent gap before the (only) next word would otherwise
+        # stretch this single-chunk segment's display far past a
+        # comfortable reading window.
+        words = _words(("Hi", 0.0, 0.3))
+        segments = split_beat_into_segments("b1", "Hi", 0.0, 30.0, config, words=words)
+        self.assertEqual(len(segments), 1)
+        self.assertLessEqual(segments[0].duration, 2.0 + 1e-6)
 
 
 if __name__ == "__main__":

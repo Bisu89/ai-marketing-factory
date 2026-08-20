@@ -15,6 +15,7 @@ from app.api.v1.endpoints.factory_pipeline import _stage_generate_voice, reconci
 from app.api.v1.endpoints.voice_generate import (
     build_narration_text,
     generate_project_narration,
+    load_word_timestamps,
     narration_is_valid,
     narration_wav_path,
     voice_fingerprint,
@@ -30,6 +31,8 @@ from app.modules.beat.schemas import (
     VoiceProjectConfig,
 )
 from app.modules.factory.schemas import VOICE_SILENT
+from app.modules.voice.providers import LocalTTSProvider
+from app.modules.voice.schemas import AudioResult, WordTiming
 from tests.api.test_factory_pipeline import _FactoryTestCase
 
 
@@ -218,6 +221,81 @@ class PipelineIntegrationTests(_VoiceStageTestCase):
         final_draft = get_project_draft(project_id)
         self.assertIsNotNone(final_draft.beats[0].narration_asset_id)
         self.assertTrue(narration_wav_path(project_id, self.settings).exists())
+
+
+def _fake_word_timestamps(text: str, total_duration: float) -> list[WordTiming]:
+    words = text.split()
+    step = total_duration / len(words)
+    return [WordTiming(text=w, start=i * step, end=(i + 1) * step) for i, w in enumerate(words)]
+
+
+class _FakeEdgeProvider:
+    """Delegates to the real, genuinely-offline LocalTTSProvider for a real,
+    valid WAV file (so probe_audio/validate_audio exercise real data), but
+    reports fake-but-plausible word_timestamps the way EdgeTTSProvider
+    genuinely would -- avoids a real network call in a unit test while
+    still exercising the real persistence/carry-forward code path.
+    """
+
+    def synthesize(self, text, voice_id, language, speed, output_path):
+        real = LocalTTSProvider().synthesize(text, "default", language, speed, output_path)
+        words = _fake_word_timestamps(text, real.duration_sec)
+        return AudioResult(
+            path=real.path, duration_sec=real.duration_sec, sample_rate=real.sample_rate,
+            channels=real.channels, word_timestamps=words,
+        )
+
+
+class WordTimestampPersistenceTests(_VoiceStageTestCase):
+    """Task 62 -- see docs/features/62-caption-real-word-timing.md."""
+
+    def test_real_word_timestamps_are_persisted_and_loadable(self):
+        project_id = self._project_with_beats(
+            "Word Timing Persist", ["Some narration text here."], voice=VoiceProjectConfig(provider="edge_tts"),
+        )
+        with patch("app.api.v1.endpoints.voice_generate.get_provider", return_value=_FakeEdgeProvider()):
+            generated = generate_project_narration(project_id, self.settings)
+        self.assertTrue(generated)
+
+        loaded = load_word_timestamps(project_id, self.settings)
+        self.assertIsNotNone(loaded)
+        self.assertEqual([w.text for w in loaded], "Some narration text here.".split())
+
+    def test_local_provider_never_persists_word_timestamps(self):
+        # The default "local" SAPI5 provider (no mock) -- genuinely has no
+        # word-boundary data; must never fabricate any.
+        project_id = self._project_with_beats("No Real Timing", ["Some narration text here."])
+        generate_project_narration(project_id, self.settings)
+        self.assertIsNone(load_word_timestamps(project_id, self.settings))
+
+    def test_cache_hit_run_does_not_clobber_previously_persisted_timestamps(self):
+        # Section 32/58's own "the cheap part still needs to run" branch --
+        # a second call that reuses the cached audio (fingerprint_matches)
+        # must not overwrite the sidecar's own word_timestamps with an
+        # empty value just because this particular call skipped synthesis.
+        project_id = self._project_with_beats(
+            "Word Timing Carry Forward", ["Some narration text here."], voice=VoiceProjectConfig(provider="edge_tts"),
+        )
+        with patch("app.api.v1.endpoints.voice_generate.get_provider", return_value=_FakeEdgeProvider()):
+            generate_project_narration(project_id, self.settings)
+        first = load_word_timestamps(project_id, self.settings)
+        self.assertIsNotNone(first)
+
+        # Force the "fingerprint matches, but not already_assigned" path --
+        # clear narration_asset_id on one beat so the cheap per-beat-cutting
+        # branch re-runs without a real resynthesis.
+        draft = get_project_draft(project_id)
+        beats = [b.model_copy(update={"narration_asset_id": None}) for b in draft.beats]
+        plan = BeatPlan(script_text=draft.script_text, beats=beats, project_name=draft.project_name, config=draft.config)
+        update_project_beat_plan(project_id, plan)
+
+        with patch("app.api.v1.endpoints.voice_generate.get_provider", return_value=_FakeEdgeProvider()) as mock_provider:
+            generate_project_narration(project_id, self.settings)
+            mock_provider.assert_not_called()  # confirms this really took the cache-hit branch, not a fresh synthesis
+
+        second = load_word_timestamps(project_id, self.settings)
+        self.assertIsNotNone(second)
+        self.assertEqual([w.text for w in second], [w.text for w in first])
 
 
 if __name__ == "__main__":
