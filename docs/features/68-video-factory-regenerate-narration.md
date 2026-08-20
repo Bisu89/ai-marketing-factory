@@ -1,6 +1,6 @@
 # 68. Video Factory: "Regenerate Narration" Button
 
-**Commit:** `pending`
+**Commit:** `e382828`
 
 Real user report (follow-up to Task 67): "I changed the voice at Step 4
 and re-rendered, but the output is still the same as before."
