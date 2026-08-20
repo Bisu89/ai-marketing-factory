@@ -1,6 +1,6 @@
 # 64. Content Strategy: Database Layer (Pillar → Format → Idea)
 
-**Commit:** `pending`
+**Commit:** `71882e7`
 
 Persistence-only layer for the future Content Strategy feature: a new
 `app/modules/content_strategy/` module with `ContentPillar` →
