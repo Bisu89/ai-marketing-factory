@@ -87,6 +87,7 @@ SQLite.
 64. [Content Strategy: Database Layer](features/64-content-strategy-database.md) — new `app/modules/content_strategy/` module (Pillar → Format → Idea), database/model layer only, no API/AI generation yet; reuses the existing `emotion` catalog instead of duplicating it
 65. [Content Strategy: Backend API](features/65-content-strategy-api.md) — `GET /content-pillars`, `GET /content-formats`, and full `GET/POST/PATCH/DELETE /content-ideas` (filters + pagination), Router → Service → Repository; no AI generation, no Format create endpoint yet
 66. [Content Studio Frontend](features/66-content-studio-frontend.md) — new `/content-studio` page (Pillar → Format → count → Generate → Review → Select), reusing `PageHeader`/`EmptyState`/`Pagination`/`useEmotions`; "Generate" loops `POST /content-ideas` into editable draft placeholders since no AI/bulk endpoint exists yet
+67. [Video Factory: Content Language Picker](features/67-video-factory-content-language.md) — real user report: AI content was always English with no way to change it (no UI existed at all); added a Content language dropdown to Step 1 that also auto-switches Step 4's Provider to Edge TTS for non-English. The reported huge/centered captions needed no code change — Step 4's existing preset dropdown already covers it
 
 ## Keeping this up to date
 

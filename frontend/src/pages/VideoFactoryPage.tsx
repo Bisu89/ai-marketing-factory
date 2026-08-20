@@ -57,6 +57,8 @@ import {
   BEAT_TYPES,
   CAPTION_PRESETS,
   CAPTION_PRESET_LABELS,
+  CONTENT_LANGUAGES,
+  CONTENT_LANGUAGE_LABELS,
   MOTION_PRESET_DEFAULTS,
   SYSTEM_DEFAULT_PROJECT_CONFIG,
   WATERMARK_POSITIONS,
@@ -69,6 +71,7 @@ import type {
   BeatType,
   CaptionPreset,
   ContentBrief,
+  ContentLanguage,
   GeneratedBeat,
   GeneratedBeatPlan,
   MotionIntensity,
@@ -492,9 +495,20 @@ export function VideoFactoryPage() {
   const [watermarkScale, setWatermarkScale] = useState(SYSTEM_DEFAULT_PROJECT_CONFIG.watermark.scale);
   const [outputDir, setOutputDir] = useState("");
 
+  // Content language: drives both content.language (AI-generated text) and
+  // voice.language (TTS pronunciation) together -- this page previously had
+  // no UI for either, so every project silently inherited whatever template
+  // it came from ("en" for both built-in templates), with no way to change
+  // it. Picking a non-English language here also switches Provider to
+  // Edge TTS below, since the default Local/SAPI5 engine only has a real
+  // voice for a language if the OS itself has that voice pack installed --
+  // still fully overridable via the Provider dropdown in Step 4.
+  const [contentLanguage, setContentLanguage] = useState<ContentLanguage>("en");
+
   // Task 22 -- see docs/features/48-voice-factory-local-tts.md. "local"
   // (genuinely offline SAPI5) is this app's own default; edge_tts stays an
-  // explicit opt-in, never auto-selected.
+  // explicit opt-in, never auto-selected -- except by the Content language
+  // field above, which switches it deliberately for the reason noted there.
   const [voiceProvider, setVoiceProvider] = useState<VoiceProjectConfig["provider"]>("local");
   const [voiceId, setVoiceId] = useState("default");
   const [voiceSpeed, setVoiceSpeed] = useState(1.0);
@@ -626,6 +640,9 @@ export function VideoFactoryPage() {
             setVoiceProvider(plan.config.voice.provider);
             setVoiceId(plan.config.voice.voice_id);
             setVoiceSpeed(plan.config.voice.speed);
+          }
+          if (plan.config.content) {
+            setContentLanguage(plan.config.content.language as ContentLanguage);
           }
         }
         setStep(2);
@@ -794,15 +811,19 @@ export function VideoFactoryPage() {
       // UI) -- preserved as-loaded so saving here never silently resets a
       // project's own auto-assign/review policy back to defaults.
       factory: projectConfig.factory,
-      // Same reasoning (Task 21) -- no content-profile UI on this page.
-      content: projectConfig.content,
+      // tone/style/target_duration/audience/cta_enabled still have no UI on
+      // this page (same reasoning as factory above) -- only language is
+      // sourced from a real control (the Content language field, Step 1).
+      content: { ...projectConfig.content, language: contentLanguage },
       // Task 22 -- see docs/features/48-voice-factory-local-tts.md. Sourced
       // from the Voice section below (Step 4), same shape as
       // captions/audio's own "derived fresh from on-screen controls" above.
       voice: {
         provider: voiceProvider,
         voice_id: voiceId,
-        language: projectConfig.voice.language,
+        // Kept in lockstep with content.language above -- see the
+        // Content language field's own comment (Step 1) for why.
+        language: contentLanguage,
         speed: voiceSpeed,
         pitch: projectConfig.voice.pitch,
       },
@@ -951,6 +972,9 @@ export function VideoFactoryPage() {
       setVoiceProvider(snapshot.voice.provider);
       setVoiceId(snapshot.voice.voice_id);
       setVoiceSpeed(snapshot.voice.speed);
+    }
+    if (snapshot.content) {
+      setContentLanguage(snapshot.content.language as ContentLanguage);
     }
     setTemplatePickerOpen(false);
     setStep(1);
@@ -1131,6 +1155,36 @@ export function VideoFactoryPage() {
                 setDirty(true);
               }}
             />
+          </label>
+          <label className="vf-field">
+            <span>Content language (script text + narration)</span>
+            <select
+              value={contentLanguage}
+              onChange={(e) => {
+                const next = e.target.value as ContentLanguage;
+                setContentLanguage(next);
+                // Local/SAPI5 (the default Voice Factory provider) only has
+                // a real voice for a language if the OS itself shipped that
+                // voice pack -- Edge TTS has a real voice for every language
+                // in CONTENT_LANGUAGES, so switch to it automatically for
+                // anything but English, while leaving Step 4's Provider
+                // dropdown fully free to switch back.
+                if (next !== "en") setVoiceProvider("edge_tts");
+                setDirty(true);
+              }}
+            >
+              {CONTENT_LANGUAGES.map((lang) => (
+                <option key={lang} value={lang}>
+                  {CONTENT_LANGUAGE_LABELS[lang]}
+                </option>
+              ))}
+            </select>
+            {contentLanguage !== "en" && voiceProvider === "local" && (
+              <p className="vf-field-label">
+                Local (offline) narration may not have a {CONTENT_LANGUAGE_LABELS[contentLanguage]} voice installed on
+                this machine -- Edge TTS (Step 4) has one for every supported language.
+              </p>
+            )}
           </label>
           <textarea
             className="vf-textarea"

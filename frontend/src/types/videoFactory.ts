@@ -54,6 +54,23 @@ export const CAPTION_PRESETS: CaptionPreset[] = [
   "emotional", "cinematic", "word_highlight", "big_statement", "quote", "top",
 ];
 
+// Mirrors backend CONTENT_LANGUAGES (app/modules/beat/schemas.py) exactly --
+// drives both ContentProjectConfig.language (AI-generated title/description/
+// script text) and VoiceProjectConfig.language (TTS pronunciation/voice
+// selection), which intentionally stay in lockstep from this one control
+// (see VideoFactoryPage's Content language field) even though the backend
+// keeps them as two separate fields for callers that want to diverge.
+export type ContentLanguage = "en" | "es" | "vi" | "pt";
+
+export const CONTENT_LANGUAGES: ContentLanguage[] = ["en", "es", "vi", "pt"];
+
+export const CONTENT_LANGUAGE_LABELS: Record<ContentLanguage, string> = {
+  en: "English",
+  vi: "Vietnamese",
+  es: "Spanish",
+  pt: "Portuguese",
+};
+
 export const CAPTION_PRESET_LABELS: Record<CaptionPreset, string> = {
   emotional: "Emotional (highlight box)",
   cinematic: "Cinematic (clean subtitle)",
