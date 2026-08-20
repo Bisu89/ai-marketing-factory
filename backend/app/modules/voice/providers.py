@@ -17,6 +17,8 @@ app.modules.beat.schemas already uses for BeatMotionPreset.
 import asyncio
 import logging
 import queue
+import re
+import shutil
 import subprocess
 import threading
 import wave
@@ -40,6 +42,95 @@ logger = logging.getLogger(__name__)
 _BASE_RATE_WPM = 180
 _MIN_RATE_WPM = 80
 _MAX_RATE_WPM = 400
+
+# Real user report: narration synthesized as one unbroken pass (the
+# original behavior of both providers below) reads as flat/monotone
+# regardless of voice choice, because there is no breath between
+# sentences at all -- neither SAPI5 nor edge_tts inserts one on its own
+# when handed one long string. Both providers now split narration into
+# sentences and synthesize each separately, then splice them back
+# together with a real, silent gap of this length -- a natural
+# inter-sentence pause length in human speech, short enough to still
+# read as one continuous narration. Hand-tunable, not user-configurable
+# (a pure audio-quality constant, not a product decision) -- see
+# _split_sentences/_concat_wav_with_pauses below.
+_INTER_SENTENCE_PAUSE_SEC = 0.35
+
+_SENTENCE_SPLIT_RE = re.compile(r"(?<=[.!?…])\s+")
+
+
+def _split_sentences(text: str) -> list[str]:
+    """Deliberately simple punctuation-based splitting, not real NLP
+    sentence segmentation -- good enough for narration scripts (short,
+    plain sentences), and a mis-split only ever moves a pause to a
+    slightly different spot, never breaks correctness. Always returns at
+    least one segment (the original text) so callers never need a
+    separate empty-list case.
+    """
+    stripped = text.strip()
+    if not stripped:
+        return [stripped]
+    sentences = [s.strip() for s in _SENTENCE_SPLIT_RE.split(stripped) if s.strip()]
+    return sentences or [stripped]
+
+
+# A tiny buffer kept after a segment's real last spoken word (when we know
+# where that is -- see EdgeTTSProvider) so trimming trailing silence never
+# clips the word's own natural decay.
+_TRAILING_WORD_BUFFER_SEC = 0.08
+
+
+def _concat_wav_with_pauses(segments: list[tuple[Path, float | None]], pause_sec: float, output_path: Path) -> None:
+    """Stitches already-synthesized WAV segments into one file with a real
+    silent gap between each pair -- pure stdlib `wave`, no ffmpeg needed
+    (this codebase already reads WAV headers this way, see _probe_wav).
+
+    Each entry is (wav_path, trim_to_duration_sec | None). Confirmed while
+    building this feature: edge_tts's own per-request output carries a
+    real, inconsistent amount of trailing silence after the last spoken
+    word -- up to ~0.85s on some segments, ~0.1s on others, from real
+    measurement -- which would otherwise stack unpredictably on top of
+    `pause_sec` and make the gap between sentences wildly inconsistent
+    (observed 0.2s-1.3s in testing before this trim was added). Passing a
+    trim duration (EdgeTTSProvider does, from its own real WordBoundary
+    data; LocalTTSProvider passes None, SAPI5 exposes no such data) makes
+    the actual gap length `pause_sec`, precisely, every time.
+
+    All segments must share the same format (they do here: same provider,
+    same voice/settings, produced back-to-back in one synthesize() call);
+    a mismatch is a real bug upstream, so this raises rather than
+    silently producing garbled audio.
+    """
+    paths = [p for p, _ in segments]
+    with wave.open(str(paths[0]), "rb") as first:
+        params = first.getparams()
+
+    for seg_path in paths[1:]:
+        with wave.open(str(seg_path), "rb") as seg:
+            seg_params = seg.getparams()
+        if (seg_params.framerate, seg_params.sampwidth, seg_params.nchannels) != (
+            params.framerate, params.sampwidth, params.nchannels,
+        ):
+            raise VoiceError(
+                TTS_GENERATION_FAILED,
+                f"TTS segments have inconsistent audio formats ({seg_path.name} vs {paths[0].name}) -- cannot splice.",
+            )
+
+    silence_frames = max(0, round(pause_sec * params.framerate))
+    silence_bytes = b"\x00" * (silence_frames * params.sampwidth * params.nchannels)
+
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    with wave.open(str(output_path), "wb") as out:
+        out.setparams(params)
+        for i, (seg_path, trim_to) in enumerate(segments):
+            with wave.open(str(seg_path), "rb") as seg:
+                total_frames = seg.getnframes()
+                frames_to_write = total_frames
+                if trim_to is not None:
+                    frames_to_write = min(total_frames, max(0, round(trim_to * params.framerate)))
+                out.writeframes(seg.readframes(frames_to_write))
+            if i < len(segments) - 1:
+                out.writeframes(silence_bytes)
 
 
 class _TTSWorker:
@@ -96,7 +187,7 @@ class _TTSWorker:
         finally:
             pythoncom.CoUninitialize()  # pragma: no cover -- this loop never returns in practice
 
-    def _synthesize_now(self, text: str, voice_id: str, language: str, speed: float, output_path: Path) -> AudioResult:
+    def _speak_one(self, text: str, voice_id: str, language: str, speed: float, output_path: Path) -> None:
         import pyttsx3
 
         engine = pyttsx3.init()
@@ -105,12 +196,53 @@ class _TTSWorker:
             engine.setProperty("voice", resolved_voice)
             rate = max(_MIN_RATE_WPM, min(_MAX_RATE_WPM, round(_BASE_RATE_WPM * speed)))
             engine.setProperty("rate", rate)
-
-            output_path.parent.mkdir(parents=True, exist_ok=True)
             engine.save_to_file(text, str(output_path))
             engine.runAndWait()
         finally:
             engine.stop()
+
+    def _synthesize_now(self, text: str, voice_id: str, language: str, speed: float, output_path: Path) -> AudioResult:
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        sentences = _split_sentences(text)
+
+        if len(sentences) <= 1:
+            # Single sentence (or empty/degenerate text) -- unchanged
+            # one-shot path, no segments/pauses to insert.
+            self._speak_one(text, voice_id, language, speed, output_path)
+        else:
+            import pythoncom
+
+            tmp_dir = output_path.parent / f".{output_path.stem}_segments"
+            tmp_dir.mkdir(parents=True, exist_ok=True)
+            try:
+                segment_paths = []
+                for i, sentence in enumerate(sentences):
+                    seg_path = tmp_dir / f"seg_{i:03d}.wav"
+                    # A full CoUninitialize/CoInitialize cycle -- not just a
+                    # fresh pyttsx3.init() -- between every segment.
+                    # Confirmed by real, guarded testing while building this
+                    # feature: SAPI5's "save to file" driver mode gets stuck
+                    # after one runAndWait() completes and a SECOND call
+                    # hangs indefinitely, even with a brand-new engine
+                    # instance in the same COM apartment; only tearing the
+                    # apartment down and rebuilding it between calls (safe
+                    # here even nested inside _run()'s own thread-lifetime
+                    # CoInitialize -- COM reference-counts these per thread)
+                    # actually resets it. This is a different bug from the
+                    # multi-THREAD deadlock _TTSWorker's own docstring
+                    # already documents; that fix (one dedicated thread)
+                    # does not, by itself, cover this one.
+                    pythoncom.CoUninitialize()
+                    pythoncom.CoInitialize()
+                    self._speak_one(sentence, voice_id, language, speed, seg_path)
+                    segment_paths.append(seg_path)
+                # SAPI5 exposes no word-boundary data, so there's no real
+                # last-word position to trim to -- None means "use the
+                # segment's own full length" (see _concat_wav_with_pauses's
+                # own docstring).
+                _concat_wav_with_pauses([(p, None) for p in segment_paths], _INTER_SENTENCE_PAUSE_SEC, output_path)
+            finally:
+                shutil.rmtree(tmp_dir, ignore_errors=True)
 
         if not output_path.exists() or output_path.stat().st_size == 0:
             raise VoiceError(TTS_GENERATION_FAILED, "Local TTS produced no audio output.")
@@ -254,10 +386,10 @@ class EdgeTTSProvider(TTSProvider):
         rate_str = f"{'+' if rate_percent >= 0 else ''}{rate_percent}%"
 
         output_path.parent.mkdir(parents=True, exist_ok=True)
-        tmp_mp3 = output_path.with_suffix(".mp3")
+        sentences = _split_sentences(text)
 
-        async def _generate() -> list[WordTiming]:
-            communicate = edge_tts.Communicate(text, resolved_voice, rate=rate_str, boundary="WordBoundary")
+        async def _generate_segment_once(segment_text: str, tmp_mp3: Path) -> list[WordTiming]:
+            communicate = edge_tts.Communicate(segment_text, resolved_voice, rate=rate_str, boundary="WordBoundary")
             words: list[WordTiming] = []
             with open(tmp_mp3, "wb") as f:
                 async for chunk in communicate.stream():
@@ -270,21 +402,94 @@ class EdgeTTSProvider(TTSProvider):
                         ))
             return words
 
-        try:
-            words = asyncio.run(_generate())
-        except Exception as exc:
-            raise VoiceError(TTS_GENERATION_FAILED, f"edge_tts synthesis failed: {exc}") from exc
+        # edge_tts's underlying WebSocket connection to Microsoft's (free,
+        # unofficial) service is genuinely flaky under back-to-back requests
+        # -- confirmed during this change's own verification: splitting one
+        # script into N per-sentence calls (necessary for real inter-sentence
+        # pauses, see _INTER_SENTENCE_PAUSE_SEC above) turns one network call
+        # into N, and real testing showed an intermittent NoAudioReceived
+        # failure roughly every few consecutive calls, unrelated to the text
+        # content itself. A single script-wide call (the pre-existing
+        # behavior, still used below when there's only one sentence) rarely
+        # hit this simply by making far fewer calls. Retrying the SAME
+        # segment a few times with backoff is the standard, necessary
+        # mitigation for an unofficial API like this -- without it, this
+        # change would make narration generation measurably less reliable
+        # overall, not just less monotone.
+        _SEGMENT_MAX_ATTEMPTS = 4
+        _SEGMENT_RETRY_BACKOFF_SEC = 1.5
 
-        if not tmp_mp3.exists() or tmp_mp3.stat().st_size == 0:
-            raise VoiceError(TTS_GENERATION_FAILED, "edge_tts produced no audio output.")
+        async def _generate_segment(segment_text: str, tmp_mp3: Path) -> list[WordTiming]:
+            last_exc: Exception | None = None
+            for attempt in range(_SEGMENT_MAX_ATTEMPTS):
+                try:
+                    words = await _generate_segment_once(segment_text, tmp_mp3)
+                    if tmp_mp3.exists() and tmp_mp3.stat().st_size > 0:
+                        return words
+                    last_exc = RuntimeError("edge_tts produced no audio bytes for this segment.")
+                except Exception as exc:  # noqa: BLE001 -- retried below regardless of exact edge_tts exception type
+                    last_exc = exc
+                if attempt < _SEGMENT_MAX_ATTEMPTS - 1:
+                    logger.warning(
+                        "edge_tts segment synthesis attempt %d/%d failed (%s) -- retrying.",
+                        attempt + 1, _SEGMENT_MAX_ATTEMPTS, last_exc,
+                    )
+                    await asyncio.sleep(_SEGMENT_RETRY_BACKOFF_SEC * (attempt + 1))
+            raise VoiceError(
+                TTS_GENERATION_FAILED,
+                f"edge_tts synthesis failed after {_SEGMENT_MAX_ATTEMPTS} attempts: {last_exc}",
+            )
 
-        # Convert to this pipeline's own canonical WAV container immediately
-        # (never leave an MP3 as the provider's own "output_path" artifact --
-        # audio_analysis.normalize_audio does the *format* normalization
-        # afterward regardless of provider, this is just "give the caller a
-        # real, readable file at the path it asked for").
-        _convert_to_wav(tmp_mp3, output_path)
-        tmp_mp3.unlink(missing_ok=True)
+        if len(sentences) <= 1:
+            # Single sentence (or empty/degenerate text) -- unchanged
+            # one-shot path, no segments/pauses to insert.
+            tmp_mp3 = output_path.with_suffix(".mp3")
+            words = asyncio.run(_generate_segment(text, tmp_mp3))
+            # Convert to this pipeline's own canonical WAV container
+            # immediately (never leave an MP3 as the provider's own
+            # "output_path" artifact -- audio_analysis.normalize_audio does
+            # the *format* normalization afterward regardless of provider,
+            # this is just "give the caller a real, readable file at the
+            # path it asked for").
+            _convert_to_wav(tmp_mp3, output_path)
+            tmp_mp3.unlink(missing_ok=True)
+        else:
+            tmp_dir = output_path.parent / f".{output_path.stem}_segments"
+            tmp_dir.mkdir(parents=True, exist_ok=True)
+            try:
+                segments: list[tuple[Path, float | None]] = []
+                all_words: list[WordTiming] = []
+                offset_sec = 0.0
+                for i, sentence in enumerate(sentences):
+                    tmp_mp3 = tmp_dir / f"seg_{i:03d}.mp3"
+                    tmp_wav = tmp_dir / f"seg_{i:03d}.wav"
+                    segment_words = asyncio.run(_generate_segment(sentence, tmp_mp3))
+                    _convert_to_wav(tmp_mp3, tmp_wav)
+                    seg_duration, _, _ = _probe_wav(tmp_wav)
+
+                    # Trim this segment's own trailing silence (see
+                    # _concat_wav_with_pauses's own docstring for why --
+                    # confirmed by real measurement, edge_tts pads this
+                    # inconsistently, up to ~0.85s on some segments) so the
+                    # actual gap heard between sentences is always
+                    # _INTER_SENTENCE_PAUSE_SEC, not that plus a random
+                    # extra padding amount.
+                    trim_to = seg_duration
+                    if segment_words:
+                        trim_to = min(seg_duration, segment_words[-1].end + _TRAILING_WORD_BUFFER_SEC)
+
+                    all_words.extend(
+                        WordTiming(text=w.text, start=w.start + offset_sec, end=w.end + offset_sec)
+                        for w in segment_words
+                    )
+                    segments.append((tmp_wav, trim_to))
+                    is_last = i == len(sentences) - 1
+                    offset_sec += trim_to + (0.0 if is_last else _INTER_SENTENCE_PAUSE_SEC)
+
+                _concat_wav_with_pauses(segments, _INTER_SENTENCE_PAUSE_SEC, output_path)
+                words = all_words
+            finally:
+                shutil.rmtree(tmp_dir, ignore_errors=True)
 
         duration_sec, sample_rate, channels = _probe_wav(output_path)
         return AudioResult(
