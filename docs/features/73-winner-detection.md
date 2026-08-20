@@ -1,6 +1,6 @@
 # 73. Content Winner Detection
 
-**Commit:** `pending`
+**Commit:** `06404f9`
 
 Statistically-aware "which content pattern actually performs better"
 analysis, built directly on Task 07's `PerformanceService.all_performances()`
