@@ -1,6 +1,6 @@
 # 69. Content Idea → Story → Hook Bridge
 
-**Commit:** `pending`
+**Commit:** `9fbe670`
 
 ## Restoring ai/story and ai/hook
 
