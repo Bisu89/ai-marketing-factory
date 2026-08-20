@@ -48,6 +48,15 @@ export async function apiPut<T>(path: string, body: unknown): Promise<T> {
   return handle<T>(response);
 }
 
+export async function apiPatch<T>(path: string, body: unknown): Promise<T> {
+  const response = await fetch(`${config.apiBaseUrl}${path}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  });
+  return handle<T>(response);
+}
+
 export async function apiUpload<T>(path: string, formData: FormData): Promise<T> {
   const response = await fetch(`${config.apiBaseUrl}${path}`, {
     method: "POST",

@@ -86,6 +86,7 @@ SQLite.
 63. [Remove AI Content (Story/Hook/Caption) + Insights](features/63-remove-ai-content-and-insights.md) — deleted two unused features (neither referenced by the Factory pipeline/Dashboard); `PublishLog` in the Library feature stays but loses the AI-Story-version picker and the Insights views/interactions link, both replaced with plain manual fields
 64. [Content Strategy: Database Layer](features/64-content-strategy-database.md) — new `app/modules/content_strategy/` module (Pillar → Format → Idea), database/model layer only, no API/AI generation yet; reuses the existing `emotion` catalog instead of duplicating it
 65. [Content Strategy: Backend API](features/65-content-strategy-api.md) — `GET /content-pillars`, `GET /content-formats`, and full `GET/POST/PATCH/DELETE /content-ideas` (filters + pagination), Router → Service → Repository; no AI generation, no Format create endpoint yet
+66. [Content Studio Frontend](features/66-content-studio-frontend.md) — new `/content-studio` page (Pillar → Format → count → Generate → Review → Select), reusing `PageHeader`/`EmptyState`/`Pagination`/`useEmotions`; "Generate" loops `POST /content-ideas` into editable draft placeholders since no AI/bulk endpoint exists yet
 
 ## Keeping this up to date
 
