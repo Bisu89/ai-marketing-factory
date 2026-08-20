@@ -58,6 +58,19 @@ _INTER_SENTENCE_PAUSE_SEC = 0.35
 
 _SENTENCE_SPLIT_RE = re.compile(r"(?<=[.!?…])\s+")
 
+# Real production report: a full multi-beat script (15-30+ sentences is
+# normal) synthesized one edge_tts network call per sentence took 5-10+
+# minutes end to end once the free service's own real, confirmed
+# flakiness kicked in (near-every segment needing a retry during one
+# live run) -- each retry adds real backoff seconds, and that multiplies
+# across every sentence with no cap. A real video's *beats* (a handful
+# per video, not "one per sentence") are the natural pacing unit anyway,
+# so segments are capped here and adjacent sentences merged evenly when
+# a script has more sentences than this -- bounds worst-case wall-clock
+# time regardless of script length, at the cost of skipping a pause
+# between two sentences inside the same merged segment on longer scripts.
+_MAX_TTS_SEGMENTS = 8
+
 
 def _split_sentences(text: str) -> list[str]:
     """Deliberately simple punctuation-based splitting, not real NLP
@@ -65,13 +78,33 @@ def _split_sentences(text: str) -> list[str]:
     plain sentences), and a mis-split only ever moves a pause to a
     slightly different spot, never breaks correctness. Always returns at
     least one segment (the original text) so callers never need a
-    separate empty-list case.
+    separate empty-list case. Capped at _MAX_TTS_SEGMENTS -- see that
+    constant's own comment.
     """
     stripped = text.strip()
     if not stripped:
         return [stripped]
     sentences = [s.strip() for s in _SENTENCE_SPLIT_RE.split(stripped) if s.strip()]
-    return sentences or [stripped]
+    if not sentences:
+        return [stripped]
+    return _cap_segment_count(sentences, _MAX_TTS_SEGMENTS)
+
+
+def _cap_segment_count(sentences: list[str], max_segments: int) -> list[str]:
+    if len(sentences) <= max_segments:
+        return sentences
+    # Evenly distribute sentences across exactly max_segments groups (the
+    # last groups absorb one extra sentence each when it doesn't divide
+    # evenly), then join each group back into one segment.
+    n = len(sentences)
+    base, extra = divmod(n, max_segments)
+    groups: list[list[str]] = []
+    i = 0
+    for g in range(max_segments):
+        size = base + (1 if g >= max_segments - extra else 0)
+        groups.append(sentences[i:i + size])
+        i += size
+    return [" ".join(g) for g in groups if g]
 
 
 # A tiny buffer kept after a segment's real last spoken word (when we know
