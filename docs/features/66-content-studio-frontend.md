@@ -1,6 +1,6 @@
 # 66. Content Studio Frontend (Pillar → Format → Idea)
 
-**Commit:** `pending`
+**Commit:** `b959d64`
 
 First UI for Task 22/23's Content Strategy API: a new `/content-studio`
 page (`frontend/src/pages/ContentStudioPage.tsx`), reusing existing
