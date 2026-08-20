@@ -1,6 +1,6 @@
 # 78. Narration Sentence Pauses (Fix Monotone Voice)
 
-**Commit:** `pending`
+**Commit:** `bfa8892`
 
 Real user report: narration ("giọng đọc") sounded flat/robotic
 ("đều đều không có hồn") regardless of voice choice. Root cause: both
