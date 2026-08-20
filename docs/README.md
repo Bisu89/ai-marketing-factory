@@ -84,6 +84,7 @@ SQLite.
 
 62. [Captions Use Real Word Timing Instead of an Estimate](features/62-caption-real-word-timing.md) — a real, reported bug: captions could disappear before their own words had even started being spoken (drift growing through a beat); the Caption Engine now uses edge_tts's own real per-word timestamps (already captured by the Voice stage, previously discarded) instead of a generic weighted-text-length estimate
 63. [Remove AI Content (Story/Hook/Caption) + Insights](features/63-remove-ai-content-and-insights.md) — deleted two unused features (neither referenced by the Factory pipeline/Dashboard); `PublishLog` in the Library feature stays but loses the AI-Story-version picker and the Insights views/interactions link, both replaced with plain manual fields
+64. [Content Strategy: Database Layer](features/64-content-strategy-database.md) — new `app/modules/content_strategy/` module (Pillar → Format → Idea), database/model layer only, no API/AI generation yet; reuses the existing `emotion` catalog instead of duplicating it
 
 ## Keeping this up to date
 

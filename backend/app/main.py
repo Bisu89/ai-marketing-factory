@@ -23,6 +23,7 @@ from app.db.base import Base
 from app.db.migrate import run_additive_column_migrations
 from app.db.seed import seed_initial_data
 from app.db.session import SessionLocal, engine
+from app.modules.content_strategy.seed import seed_default_pillars
 from app.modules.scene_cutter.service import SceneCutterService
 from app.modules.video_composer.service import VideoComposerService
 from app.services.download.engine import DownloadEngine
@@ -39,6 +40,7 @@ async def lifespan(app: FastAPI):
     db = SessionLocal()
     try:
         seed_initial_data(db)
+        seed_default_pillars(db)
     finally:
         db.close()
 
