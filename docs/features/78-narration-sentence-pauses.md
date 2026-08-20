@@ -1,6 +1,6 @@
 # 78. Narration Sentence Pauses (Fix Monotone Voice)
 
-**Commit:** `bfa8892`
+**Commit:** `bfa8892` (+ `b8f10d1` follow-up, see below)
 
 Real user report: narration ("giọng đọc") sounded flat/robotic
 ("đều đều không có hồn") regardless of voice choice. Root cause: both
@@ -62,3 +62,19 @@ regress per-beat timing, caption alignment, or the Factory pipeline's
 own Voice stage.
 
 `python -c "import app.main"` clean.
+
+## Follow-up (`b8f10d1`): cap segment count
+
+Real production report immediately after this shipped: "Regenerate
+Narration" stuck 5+ minutes on Edge TTS. Backend logs showed why -- a
+real script has 15-30+ sentences, and one edge_tts network call per
+sentence had no upper bound; combined with edge_tts's own confirmed
+flakiness (near-every segment needed a retry in that live run), total
+time scaled linearly with sentence count with no ceiling. Fixed by
+capping at `_MAX_TTS_SEGMENTS = 8` -- a longer script gets its sentences
+merged evenly into 8 segments instead of one per sentence, bounding
+worst-case wall-clock time regardless of script length. Scripts with 8
+sentences or fewer (unaffected, still one real pause per boundary). The
+in-flight request from the live stuck run wasn't lost -- confirmed via
+logs that uvicorn `--reload` let the old worker process finish it while
+the new process (with this fix) took over for anything after.
