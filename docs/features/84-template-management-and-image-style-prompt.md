@@ -1,6 +1,6 @@
 # 84. Template Edit UI + Per-Template Image Style Prompt
 
-**Commit:** (pending)
+**Commit:** `c286348`
 
 Real user report: no place to manage templates beyond create-via-snapshot
 and delete -- no way to rename/re-describe a saved template, or to set
