@@ -1,6 +1,8 @@
-import { useState } from "react";
-import { AlertTriangle, Loader2, Save, X } from "lucide-react";
+import { Fragment, useEffect, useState } from "react";
+import { AlertTriangle, Loader2, Music, Save, Trash2, X } from "lucide-react";
+import { assetFileUrl, getAsset } from "../api/asset";
 import { updateTemplate } from "../api/template";
+import { AssetBrowserModal } from "./AssetBrowserModal";
 import type { Template } from "../types/videoFactory";
 import "./EditTemplateModal.css";
 
@@ -12,16 +14,44 @@ interface EditTemplateModalProps {
 
 // Edit surface for an existing custom Template (Settings' "Video Factory
 // Templates" card was list+create-via-snapshot+delete only -- real user
-// report: no way to rename/re-describe a saved template, or to set an
-// image style prompt without recreating it from scratch). Reuses the
-// backend's existing upsert-by-id PUT /templates/{id} (router.py's
-// update_template) -- see docs/features/84-template-management-and-image-style-prompt.md.
+// report: no way to rename/re-describe a saved template, set an image
+// style prompt, or pick background music without recreating it from
+// scratch). Reuses the backend's existing upsert-by-id PUT /templates/{id}
+// (router.py's update_template) -- see
+// docs/features/84-template-management-and-image-style-prompt.md.
+//
+// The music picker mirrors VideoFactoryPage's own "Choose Music" widget
+// exactly (same AssetBrowserModal assetType="audio", same "nothing chosen
+// -> AUTO, a specific track -> MANUAL bgm_mode" semantics -- see real user
+// report in docs/features/86-narration-disabled-audio-master-failfast.md's
+// follow-up where AUTO mode picked a stray narration test file as "music"
+// for lack of any better signal) -- picking an exact track here is what
+// makes AUTO's ambiguity a non-issue for this template going forward.
+//
+// Rendered as a Fragment (not nested inside the edit modal's own backdrop
+// div) so a click dismissing the AssetBrowserModal's own backdrop doesn't
+// bubble up and also close this modal -- AssetBrowserModal's backdrop
+// onClick has no stopPropagation of its own, same as this modal's.
 export function EditTemplateModal({ template, onSaved, onClose }: EditTemplateModalProps) {
   const [name, setName] = useState(template.name);
   const [description, setDescription] = useState(template.description);
   const [imageStylePrompt, setImageStylePrompt] = useState(template.config.visual_generation.image_style_prompt);
+  const [musicEnabled, setMusicEnabled] = useState(template.config.audio.music_enabled);
+  const [musicAssetId, setMusicAssetId] = useState<number | null>(template.config.audio.bgm_asset_id);
+  const [musicAssetName, setMusicAssetName] = useState<string | null>(null);
+  const [musicBrowserOpen, setMusicBrowserOpen] = useState(false);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (musicAssetId == null) {
+      setMusicAssetName(null);
+      return;
+    }
+    getAsset(musicAssetId)
+      .then((asset) => setMusicAssetName(asset.filename))
+      .catch(() => setMusicAssetName(null));
+  }, [musicAssetId]);
 
   async function handleSave() {
     if (!name.trim() || saving) return;
@@ -34,6 +64,12 @@ export function EditTemplateModal({ template, onSaved, onClose }: EditTemplateMo
         config: {
           ...template.config,
           visual_generation: { ...template.config.visual_generation, image_style_prompt: imageStylePrompt },
+          audio: {
+            ...template.config.audio,
+            music_enabled: musicEnabled,
+            bgm_mode: musicAssetId != null ? "MANUAL" : "AUTO",
+            bgm_asset_id: musicAssetId,
+          },
         },
       });
       onSaved(updated);
@@ -45,58 +81,104 @@ export function EditTemplateModal({ template, onSaved, onClose }: EditTemplateMo
   }
 
   return (
-    <div className="edit-template-modal-overlay" onClick={onClose}>
-      <div className="edit-template-modal" onClick={(e) => e.stopPropagation()}>
-        <div className="edit-template-modal-header">
-          <span>Edit Template</span>
-          <button className="edit-template-modal-close" onClick={onClose}>
-            <X size={16} />
-          </button>
-        </div>
+    <Fragment>
+      <div className="edit-template-modal-overlay" onClick={onClose}>
+        <div className="edit-template-modal" onClick={(e) => e.stopPropagation()}>
+          <div className="edit-template-modal-header">
+            <span>Edit Template</span>
+            <button className="edit-template-modal-close" onClick={onClose}>
+              <X size={16} />
+            </button>
+          </div>
 
-        <div className="edit-template-modal-body">
-          <label className="edit-template-field">
-            <span>Name</span>
-            <input type="text" value={name} onChange={(e) => setName(e.target.value)} autoFocus />
-          </label>
+          <div className="edit-template-modal-body">
+            <label className="edit-template-field">
+              <span>Name</span>
+              <input type="text" value={name} onChange={(e) => setName(e.target.value)} autoFocus />
+            </label>
 
-          <label className="edit-template-field">
-            <span>Description</span>
-            <input type="text" value={description} onChange={(e) => setDescription(e.target.value)} />
-          </label>
+            <label className="edit-template-field">
+              <span>Description</span>
+              <input type="text" value={description} onChange={(e) => setDescription(e.target.value)} />
+            </label>
 
-          <label className="edit-template-field">
-            <span>Image style prompt</span>
-            <textarea
-              rows={3}
-              placeholder="e.g. watercolor illustration, soft pastel colors, hand-drawn feel"
-              value={imageStylePrompt}
-              onChange={(e) => setImageStylePrompt(e.target.value)}
-            />
-            <span className="edit-template-hint">
-              Appended to every AI-generated beat image for projects using this template. Free -- image
-              generation is a flat per-image fee regardless of prompt length.
-            </span>
-          </label>
+            <label className="edit-template-field">
+              <span>Image style prompt</span>
+              <textarea
+                rows={3}
+                placeholder="e.g. watercolor illustration, soft pastel colors, hand-drawn feel"
+                value={imageStylePrompt}
+                onChange={(e) => setImageStylePrompt(e.target.value)}
+              />
+              <span className="edit-template-hint">
+                Appended to every AI-generated beat image for projects using this template. Free -- image
+                generation is a flat per-image fee regardless of prompt length.
+              </span>
+            </label>
 
-          {error && (
-            <div className="edit-template-error">
-              <AlertTriangle size={14} />
-              {error}
-            </div>
-          )}
-        </div>
+            <label className="edit-template-checkbox">
+              <input type="checkbox" checked={musicEnabled} onChange={(e) => setMusicEnabled(e.target.checked)} />
+              <span>Background music</span>
+            </label>
 
-        <div className="edit-template-modal-actions">
-          <button className="btn btn-secondary" onClick={onClose}>
-            Cancel
-          </button>
-          <button className="btn btn-primary" onClick={handleSave} disabled={!name.trim() || saving}>
-            {saving ? <Loader2 size={14} className="spin" /> : <Save size={14} />}
-            Save
-          </button>
+            {musicEnabled && (
+              <div className="edit-template-field">
+                <span>Track</span>
+                <div className="edit-template-music-row">
+                  <span className="edit-template-music-name">
+                    {musicAssetId != null ? musicAssetName ?? `Asset #${musicAssetId}` : "Automatic (picked by tone)"}
+                  </span>
+                  <button className="btn btn-secondary" onClick={() => setMusicBrowserOpen(true)}>
+                    <Music size={13} />
+                    Choose Music
+                  </button>
+                  {musicAssetId != null && (
+                    <button className="btn btn-secondary" onClick={() => setMusicAssetId(null)}>
+                      <Trash2 size={13} />
+                    </button>
+                  )}
+                </div>
+                {musicAssetId != null && (
+                  <audio className="edit-template-audio-preview" src={assetFileUrl(musicAssetId)} controls preload="none" />
+                )}
+                <span className="edit-template-hint">
+                  {musicAssetId != null
+                    ? "Projects using this template will use this exact track."
+                    : "No track chosen -- projects will get a track picked automatically by content tone, which can pick unexpectedly if the library isn't curated."}
+                </span>
+              </div>
+            )}
+
+            {error && (
+              <div className="edit-template-error">
+                <AlertTriangle size={14} />
+                {error}
+              </div>
+            )}
+          </div>
+
+          <div className="edit-template-modal-actions">
+            <button className="btn btn-secondary" onClick={onClose}>
+              Cancel
+            </button>
+            <button className="btn btn-primary" onClick={handleSave} disabled={!name.trim() || saving}>
+              {saving ? <Loader2 size={14} className="spin" /> : <Save size={14} />}
+              Save
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+
+      {musicBrowserOpen && (
+        <AssetBrowserModal
+          assetType="audio"
+          onSelect={(asset) => {
+            setMusicAssetId(asset.id);
+            setMusicBrowserOpen(false);
+          }}
+          onClose={() => setMusicBrowserOpen(false)}
+        />
+      )}
+    </Fragment>
   );
 }

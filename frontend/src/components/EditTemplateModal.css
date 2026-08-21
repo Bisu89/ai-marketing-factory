@@ -79,6 +79,36 @@
   color: var(--text-muted);
 }
 
+.edit-template-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-heading);
+}
+
+.edit-template-music-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.edit-template-music-name {
+  flex: 1;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.edit-template-audio-preview {
+  width: 100%;
+  height: 36px;
+}
+
 .edit-template-error {
   display: flex;
   align-items: center;
