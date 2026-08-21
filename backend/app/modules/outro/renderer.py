@@ -39,9 +39,12 @@ FONT_PATH = "C:/Windows/Fonts/arial.ttf"
 # for the identical Windows-drive-letter-colon situation.
 _FONT_PATH_ESCAPED = FONT_PATH.replace(":", "\\:")
 
-_FONT_SIZE_DIVISOR = 32  # font_size = height / this
+_FONT_SIZE_DIVISOR = 32  # starting font_size = height / this, before auto-fit shrinking
+_MIN_FONT_SIZE = 22
+_FONT_SIZE_STEP = 4
 _LINE_SPACING_RATIO = 1.4
 _MAX_TEXT_WIDTH_RATIO = 0.85  # leave a margin either side of the frame
+_MAX_TEXT_HEIGHT_RATIO = 0.6  # leave headroom above/below so a many-line CTA never touches the frame edges
 _REVEAL_FRACTION = 0.7  # reveal finishes within this fraction of duration_sec, then holds
 
 
@@ -71,6 +74,27 @@ def _wrap_lines(text: str, font: ImageFont.FreeTypeFont, max_width_px: float) ->
     if current:
         lines.append(current)
     return lines or [""]
+
+
+def _fit_text(text: str, height: int, max_width_px: float, max_height_px: float) -> tuple[int, list[str]]:
+    """Real user report: a longer CTA could wrap onto enough lines that
+    the whole block ran past the top/bottom of the frame -- _wrap_lines
+    on its own only ever checked horizontal fit, never vertical.
+    Shrinks the font size (never below _MIN_FONT_SIZE) until the wrapped
+    block's own total height fits within max_height_px, re-wrapping at
+    each size since a smaller font also fits more words per line. Falls
+    back to _MIN_FONT_SIZE regardless if even that doesn't fit -- accepts
+    the block may still be tall for a truly pathological input, but never
+    silently keeps growing past a readable minimum.
+    """
+    font_size = max(28, height // _FONT_SIZE_DIVISOR)
+    while True:
+        font = ImageFont.truetype(FONT_PATH, font_size)
+        lines = _wrap_lines(text, font, max_width_px)
+        block_height = len(lines) * font_size * _LINE_SPACING_RATIO
+        if block_height <= max_height_px or font_size <= _MIN_FONT_SIZE:
+            return font_size, lines
+        font_size = max(_MIN_FONT_SIZE, font_size - _FONT_SIZE_STEP)
 
 
 def _reveal_tokens(text: str) -> list[str]:
@@ -116,13 +140,13 @@ def render_outro_clip(
     if shutil.which("ffmpeg") is None:
         raise FileOperationError("ffmpeg was not found on PATH -- is it installed/bundled?")
 
-    font_size = max(28, height // _FONT_SIZE_DIVISOR)
     try:
-        font = ImageFont.truetype(FONT_PATH, font_size)
+        font_size, lines = _fit_text(
+            text.strip(), height, width * _MAX_TEXT_WIDTH_RATIO, height * _MAX_TEXT_HEIGHT_RATIO
+        )
     except OSError as exc:
         raise OutroError(f"Could not load font for outro text: {FONT_PATH} ({exc})") from exc
 
-    lines = _wrap_lines(text.strip(), font, width * _MAX_TEXT_WIDTH_RATIO)
     line_height = font_size * _LINE_SPACING_RATIO
     block_top = (height - len(lines) * line_height) / 2
 

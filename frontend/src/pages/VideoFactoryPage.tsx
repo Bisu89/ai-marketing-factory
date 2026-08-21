@@ -1902,8 +1902,8 @@ export function VideoFactoryPage() {
           <label className="vf-field">
             <span>Ending text (outro)</span>
             <textarea
-              rows={2}
-              maxLength={80}
+              rows={3}
+              maxLength={200}
               placeholder="e.g. Theo doi de xem phan 2 nhe!"
               value={outroText}
               onChange={(e) => setOutroText(e.target.value)}

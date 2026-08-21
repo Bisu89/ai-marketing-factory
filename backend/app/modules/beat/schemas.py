@@ -511,7 +511,13 @@ class WatermarkProjectConfig(BaseModel):
 
 MIN_OUTRO_DURATION_SEC = 5.0
 MAX_OUTRO_DURATION_SEC = 7.0
-MAX_OUTRO_TEXT_LENGTH = 80
+# Real user report: 80 felt needlessly restrictive once the renderer
+# (app/modules/outro/renderer.py's own _fit_text) properly auto-wraps AND
+# shrinks font size to guarantee the block always fits the frame -- raised
+# now that overflow is no longer a risk. Still bounded (not unlimited): a
+# real ffmpeg filter chain has one drawtext filter per revealed character,
+# and a multi-paragraph CTA stops being a "quick CTA" at some point anyway.
+MAX_OUTRO_TEXT_LENGTH = 200
 
 
 class OutroProjectConfig(BaseModel):
