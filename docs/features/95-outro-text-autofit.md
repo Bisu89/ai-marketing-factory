@@ -1,6 +1,6 @@
 # 95. Outro Text: Auto-Shrink to Fit Instead of a Hard 80-Char Cap
 
-**Commit:** (pending)
+**Commit:** `6e7612f`
 
 Real user report: the outro CTA text field felt needlessly limited (80
 chars), and asked why longer text couldn't just wrap onto more lines
