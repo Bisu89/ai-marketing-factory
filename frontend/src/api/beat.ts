@@ -52,6 +52,10 @@ export interface CreateProjectRequest {
   idea?: string | null;
   template_id: string;
   visual_generation_mode?: "library" | "ai_generated";
+  // None/omitted means "use whatever the Template itself says" (unchanged
+  // default behavior) -- a real value overrides the Template's own
+  // language, same precedence VideoFactoryPage.tsx's Step 1 dropdown uses.
+  content_language?: string | null;
 }
 
 export function createProject(request: CreateProjectRequest): Promise<Project> {

@@ -31,6 +31,7 @@ from app.modules.beat.project_service import (
 from app.modules.beat.schemas import (
     BUILTIN_TEMPLATE_IDS,
     BUILTIN_TEMPLATES,
+    CONTENT_LANGUAGES,
     VISUAL_GENERATION_MODES,
     BeatPlan,
     ProjectConfig,
@@ -106,6 +107,18 @@ class CreateProjectRequest(BaseModel):
     # requires at least one beat -- so update_project_beat_plan can't be
     # used to set this before GENERATING_BEATS has even run).
     visual_generation_mode: str = "library"
+    # Real user report: the one-click "New Video" modal (this endpoint) had
+    # no language control at all -- every built-in Template hardcodes
+    # content.language="en"/voice.language="en" in its own stored config,
+    # so a project created here was always English regardless of Template,
+    # with no way to request e.g. Vietnamese before auto-produce started.
+    # None (the default) means "use whatever the template itself says" --
+    # unchanged behavior for every existing caller of this endpoint; a real
+    # value here overrides the template's own language, same precedence
+    # VideoFactoryPage.tsx's own Step 1 dropdown already established
+    # (see buildProjectConfigForSave -- the live dropdown always wins over
+    # the template's snapshot value).
+    content_language: str | None = None
 
 
 def _resolve_template_config(template_id: str, settings: Settings) -> ProjectConfig:
@@ -137,10 +150,29 @@ def create_project_endpoint(payload: CreateProjectRequest, settings: Settings = 
         raise ValidationError(
             f"Unknown visual_generation_mode {payload.visual_generation_mode!r}, must be one of {VISUAL_GENERATION_MODES}"
         )
+    if payload.content_language is not None and payload.content_language not in CONTENT_LANGUAGES:
+        raise ValidationError(f"Unknown content_language {payload.content_language!r}, must be one of {CONTENT_LANGUAGES}")
+
     config = _resolve_template_config(payload.template_id, settings)
     config = config.model_copy(update={"visual_generation": config.visual_generation.model_copy(
         update={"mode": payload.visual_generation_mode}
     )})
+    if payload.content_language is not None:
+        # Same override precedence VideoFactoryPage.tsx's own Step 1
+        # dropdown already established: an explicit language choice always
+        # wins over whatever the Template itself stored. Local/SAPI5 (the
+        # default Voice Factory provider) only has a real voice for a
+        # language if the OS shipped that voice pack -- Edge TTS has one
+        # for every CONTENT_LANGUAGES entry, so switch to it automatically
+        # for anything but English, matching that same dropdown's own
+        # auto-switch (VideoFactoryPage.tsx's own onChange handler).
+        config = config.model_copy(update={
+            "content": config.content.model_copy(update={"language": payload.content_language}),
+            "voice": config.voice.model_copy(update={
+                "language": payload.content_language,
+                "provider": "edge_tts" if payload.content_language != "en" else config.voice.provider,
+            }),
+        })
     project_id = create_project(payload.name, script_text, config, idea=idea)
     return get_project_draft(project_id)
 

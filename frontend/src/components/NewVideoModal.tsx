@@ -5,7 +5,8 @@ import { createProject } from "../api/beat";
 import { listTemplates } from "../api/template";
 import { startFactoryRun } from "../api/factory";
 import { getSettings } from "../api/settings";
-import type { Template } from "../types/videoFactory";
+import { CONTENT_LANGUAGES, CONTENT_LANGUAGE_LABELS } from "../types/videoFactory";
+import type { ContentLanguage, Template } from "../types/videoFactory";
 import "./NewVideoModal.css";
 
 // Task 59 -- see docs/features/59-ai-image-generation.md. Mirrors
@@ -40,6 +41,12 @@ export function NewVideoModal({ onClose }: NewVideoModalProps) {
   const [templates, setTemplates] = useState<Template[]>([]);
   const [templatesError, setTemplatesError] = useState<string | null>(null);
   const [templateId, setTemplateId] = useState("");
+  // Real user report: this modal had no language control at all, so every
+  // Template's own hardcoded "en" was the only possible outcome -- see
+  // docs/features/79-new-video-modal-language.md. Default "en" matches
+  // every built-in Template's own default, so leaving this untouched
+  // reproduces the exact pre-existing behavior.
+  const [contentLanguage, setContentLanguage] = useState<ContentLanguage>("en");
   const [name, setName] = useState("");
   // Task 21 (see docs/features/47-content-brief-script-engine.md) -- an
   // Idea and a Script are alternative inputs, not both required. Entering a
@@ -84,6 +91,7 @@ export function NewVideoModal({ onClose }: NewVideoModalProps) {
         script_text: script.trim() ? script : null,
         idea: script.trim() ? null : idea.trim() ? idea : null,
         template_id: templateId,
+        content_language: contentLanguage,
       });
       if (autoProduce) {
         await startFactoryRun(project.id);
@@ -109,6 +117,7 @@ export function NewVideoModal({ onClose }: NewVideoModalProps) {
     try {
       const project = await createProject({
         name, script_text: script, idea: null, template_id: templateId, visual_generation_mode: "ai_generated",
+        content_language: contentLanguage,
       });
       await startFactoryRun(project.id);
       navigate(`/video-factory?project=${project.id}`);
@@ -146,6 +155,23 @@ export function NewVideoModal({ onClose }: NewVideoModalProps) {
             </select>
           )}
         </label>
+
+        <label className="nvm-field">
+          <span>Content language (script text + narration)</span>
+          <select value={contentLanguage} onChange={(e) => setContentLanguage(e.target.value as ContentLanguage)}>
+            {CONTENT_LANGUAGES.map((lang) => (
+              <option key={lang} value={lang}>
+                {CONTENT_LANGUAGE_LABELS[lang]}
+              </option>
+            ))}
+          </select>
+        </label>
+        {contentLanguage !== "en" && (
+          <p className="nvm-hint">
+            Voice Factory automatically uses Edge TTS for non-English narration -- Local (offline) voices may not
+            have a {CONTENT_LANGUAGE_LABELS[contentLanguage]} voice installed on this machine.
+          </p>
+        )}
 
         <label className="nvm-field">
           <span>Project name</span>
