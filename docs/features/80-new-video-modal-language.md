@@ -1,6 +1,6 @@
 # 80. Content Language in the "New Video" Modal
 
-**Commit:** `pending`
+**Commit:** `5fc3ab4`
 
 Real user report: the Dashboard's one-click "New Video" modal
 (`NewVideoModal.tsx`) had no language control at all -- every built-in
