@@ -61,6 +61,23 @@ export function ProductionProgress({ projectId, onRenderJobReady, onReviewBeat }
     };
   }, [run, refresh]);
 
+  // Real user report: a render that finished while the browser tab was
+  // backgrounded/inactive didn't show up until the page was manually
+  // refreshed. Root cause -- browsers throttle setTimeout/setInterval in
+  // inactive tabs (can slow to once a minute or less), so this timer-based
+  // poll can sit stale for a long time; returning to the tab doesn't reset
+  // it, it just waits for whatever's left of the throttled delay. An
+  // immediate poll on tab-visible (document.visibilitychange, not window
+  // focus -- fires reliably across browsers for the "switched back to this
+  // tab" case) fixes it without changing the steady-state poll cadence.
+  useEffect(() => {
+    function handleVisibilityChange() {
+      if (document.visibilityState === "visible") refresh();
+    }
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () => document.removeEventListener("visibilitychange", handleVisibilityChange);
+  }, [refresh]);
+
   useEffect(() => {
     if (run?.render_job_id != null && handedOffJobId.current !== run.render_job_id) {
       handedOffJobId.current = run.render_job_id;

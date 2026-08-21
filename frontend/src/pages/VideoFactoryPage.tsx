@@ -726,11 +726,24 @@ export function VideoFactoryPage() {
       }
     }
 
+    // Real user report: a render that finished while the browser tab was
+    // backgrounded/inactive didn't show up until the page was manually
+    // refreshed -- browsers throttle setInterval in inactive tabs (can
+    // slow to once a minute or less), and returning to the tab doesn't
+    // reset it, it just waits out whatever's left of the throttled delay.
+    // An immediate poll on tab-visible fixes it without changing the
+    // steady-state 2s cadence.
+    function handleVisibilityChange() {
+      if (document.visibilityState === "visible") poll();
+    }
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
     poll();
     interval = setInterval(poll, POLL_INTERVAL_MS);
     return () => {
       cancelled = true;
       if (interval != null) clearInterval(interval);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
   }, [jobId]);
 
