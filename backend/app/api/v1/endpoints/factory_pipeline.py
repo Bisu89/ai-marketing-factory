@@ -789,6 +789,31 @@ def _execute_pipeline_sync(run_id: int, project_id: int, settings: Settings, ser
     try:
         factory_service.set_run_fields(run_id, status="PREPARING")
         factory_service.start_checkpoint(run_id, "PREPARING")
+
+        # Real user report: a project with audio.narration_enabled=False
+        # (inherited from a Template) sailed through every stage -- Voice
+        # and Audio both correctly no-op for a disabled narration (see
+        # voice_generate.py/audio_generate.py's own "nothing to do" logic),
+        # Quality Gate correctly scores it 100 ("silent beats are explicitly
+        # supported at the project level") -- only to hard-fail at the very
+        # last stage, READY_TO_RENDER, because _stage_render's Final
+        # Composer always requires a real Audio Master and one can never
+        # exist without a narration.wav. That's real, already-spent
+        # AI-image cost (PREPARING_VISUALS runs before this ever surfaces)
+        # wasted on a run that was doomed from the start. The classic manual
+        # Quick Render path (composition_render.py's own optional
+        # audio_master_path) has no such requirement -- only this automated
+        # Factory pipeline does -- so this is caught here, before any paid
+        # stage runs, rather than letting it fail late and expensively.
+        if not get_project_draft(project_id).config.audio.narration_enabled:
+            raise FactoryStageError(
+                "PREPARING", render_errors.AUDIO_MASTER_MISSING,
+                "Narration is disabled for this project (Audio step), but the Video Factory's "
+                "automated pipeline always renders through a narrated Audio Master -- there is no "
+                "silent-render path here. Enable narration, or fix the Template this project used, "
+                "before running.",
+            )
+
         factory_service.complete_checkpoint(run_id, "PREPARING")
         if _bail_if_cancelled(run_id, cancel_event):
             return

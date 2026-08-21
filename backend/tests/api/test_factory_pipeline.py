@@ -32,6 +32,7 @@ from app.api.v1.endpoints.factory_pipeline import (
     retry_run,
     run_batch_factory,
 )
+from app.core import render_errors
 from app.core.config import Settings
 from app.core.events import EventBus
 from app.db.base import Base
@@ -42,8 +43,8 @@ from app.modules.batch import service as batch_service
 from app.modules.batch.models import Batch, BatchItem
 from app.modules.batch.schemas import CreateBatchRequest
 from app.modules.beat.models import Project
-from app.modules.beat.project_service import get_project_draft, update_project_beat_plan
-from app.modules.beat.schemas import Beat, BeatPlan, BeatType
+from app.modules.beat.project_service import create_project, get_project_draft, update_project_beat_plan
+from app.modules.beat.schemas import AudioProjectConfig, Beat, BeatPlan, BeatType, ProjectConfig
 from app.modules.factory import service as factory_service
 from app.modules.factory.models import FactoryCheckpoint, FactoryRun
 from app.modules.video_composer.models import VideoComposeClip, VideoComposeJob
@@ -272,6 +273,31 @@ class StateMachineTests(_FactoryTestCase):
         run = self._run_sync(project_id)
         self.assertEqual(run.status, "READY_TO_RENDER")
         self.assertIsNone(run.render_job_id)
+
+    def test_narration_disabled_fails_fast_at_preparing_before_any_paid_stage(self):
+        # Real user report: a project whose Template had audio.
+        # narration_enabled=False sailed all the way through Beats/Visuals
+        # (real AI image cost already spent)/Voice/Audio/Quality Gate
+        # (correctly scored 100 -- "silent beats are explicitly supported")
+        # only to hard-fail at the very last stage, READY_TO_RENDER,
+        # because _stage_render's Final Composer always requires a real
+        # Audio Master, and one can never exist without a narration.wav
+        # (see audio_generate.py's generate_project_audio_master). Fixed by
+        # failing fast here instead, before PREPARING_VISUALS/
+        # GENERATING_BEATS ever run -- this asserts both the failure and
+        # that no later (paid) stage ever started.
+        with patch("app.modules.beat.project_service.SessionLocal", self.TestSessionLocal):
+            config = ProjectConfig(audio=AudioProjectConfig(narration_enabled=False))
+            project_id = create_project("Narration Disabled", "A short test script.", config)
+
+        run = self._run_sync(project_id)
+
+        self.assertEqual(run.status, "FAILED")
+        self.assertEqual(run.failed_stage, "PREPARING")
+        self.assertEqual(run.error_code, render_errors.AUDIO_MASTER_MISSING)
+
+        stages = [c.stage for c in factory_service.get_checkpoints(run.id)]
+        self.assertEqual(stages, ["PREPARING"])
 
     def test_no_beats_no_script_fails_at_generating_beats(self):
         project_id = self._create_project("Empty Script", script_text=" ")
