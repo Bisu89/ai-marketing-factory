@@ -1,6 +1,6 @@
 # 92. Fix: Captions Drifting Ahead of Narration (Accumulating Toward the Middle/End)
 
-**Commit:** (pending)
+**Commit:** `57c053a`
 
 Real user report: captions ran ahead of the narration voice, worse in
 the middle of longer videos -- correct at the start, increasingly out of
