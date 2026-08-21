@@ -1,6 +1,6 @@
 # 94. Outro Card: 1.5s Hold Before the CTA Instead of a Hard Cut
 
-**Commit:** (pending)
+**Commit:** `4a68a82`
 
 Real user report: narration ending and immediately hard-cutting to the
 Outro Card's own black background felt jarring, no breathing room.
