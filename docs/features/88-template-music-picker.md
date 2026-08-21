@@ -1,6 +1,6 @@
 # 88. Background Music Picker in the Template Editor
 
-**Commit:** (pending)
+**Commit:** `82b8466`
 
 Real user follow-up after the narration/BGM debugging session
 (docs/features/86): "does Settings have a place to pick music for a
