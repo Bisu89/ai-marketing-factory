@@ -1,6 +1,6 @@
 # 86. Fix: Narration-Disabled Projects Failed Late, After Paid Stages
 
-**Commit:** (pending)
+**Commit:** `78c2d0a`
 
 Real user report: a real project ("Một câu nói làm hôn nhân thay đổi",
 from the user's own "Vie V2" template) sailed through Beats, AI Visuals
