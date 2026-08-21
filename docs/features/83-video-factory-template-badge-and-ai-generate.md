@@ -1,6 +1,6 @@
 # 83. Video Factory: Template Badge + "Generate Full by AI"
 
-**Commit:** `pending`
+**Commit:** `bcb301e`
 
 Real user report on the classic Video Factory page (`/video-factory`,
 distinct from the Dashboard's quick "New Video" modal): (1) after
