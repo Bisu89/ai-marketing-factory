@@ -469,6 +469,7 @@ export function VideoFactoryPage() {
   const [templatesError, setTemplatesError] = useState<string | null>(null);
   const [saveTemplateOpen, setSaveTemplateOpen] = useState(false);
   const [saveTemplateName, setSaveTemplateName] = useState("");
+  const [saveTemplateImageStylePrompt, setSaveTemplateImageStylePrompt] = useState("");
   const [savingTemplate, setSavingTemplate] = useState(false);
   const [saveTemplateError, setSaveTemplateError] = useState<string | null>(null);
 
@@ -1054,7 +1055,9 @@ export function VideoFactoryPage() {
       // provenance -- the frontend just sends the current, resolved
       // ProjectConfig as-is; it never contains asset/beat/job IDs (see
       // ProjectConfig's own schema) so there is nothing else to strip.
-      await createTemplate({ name: saveTemplateName.trim(), config: buildProjectConfigForSave() });
+      const config = buildProjectConfigForSave();
+      config.visual_generation = { ...config.visual_generation, image_style_prompt: saveTemplateImageStylePrompt };
+      await createTemplate({ name: saveTemplateName.trim(), config });
       setSaveTemplateOpen(false);
       setSaveTemplateName("");
       await refreshTemplates();
@@ -1459,7 +1462,13 @@ export function VideoFactoryPage() {
                   <em className="vf-inherited-tag"> (from {templateNameById[projectConfig.template_id] ?? projectConfig.template_id})</em>
                 )}
               </span>
-              <button className="btn btn-secondary" onClick={() => setSaveTemplateOpen(true)}>
+              <button
+                className="btn btn-secondary"
+                onClick={() => {
+                  setSaveTemplateImageStylePrompt(projectConfig.visual_generation.image_style_prompt);
+                  setSaveTemplateOpen(true);
+                }}
+              >
                 <Save size={14} />
                 Save as Template
               </button>
@@ -2175,6 +2184,15 @@ export function VideoFactoryPage() {
                 value={saveTemplateName}
                 onChange={(e) => setSaveTemplateName(e.target.value)}
                 autoFocus
+              />
+            </label>
+            <label className="vf-field">
+              <span>Image style prompt (optional)</span>
+              <textarea
+                rows={3}
+                placeholder="e.g. watercolor illustration, soft pastel colors, hand-drawn feel"
+                value={saveTemplateImageStylePrompt}
+                onChange={(e) => setSaveTemplateImageStylePrompt(e.target.value)}
               />
             </label>
             {saveTemplateError && (

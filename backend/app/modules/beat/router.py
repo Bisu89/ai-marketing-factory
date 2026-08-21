@@ -238,6 +238,12 @@ class CreateTemplateRequest(BaseModel):
     config: ProjectConfig
 
 
+class UpdateTemplateRequest(BaseModel):
+    name: str
+    description: str = ""
+    config: ProjectConfig
+
+
 def _slugify(name: str) -> str:
     slug = "".join(c.lower() if c.isalnum() else "_" for c in name.strip()).strip("_") or "template"
     while "__" in slug:
@@ -265,6 +271,32 @@ def create_template(payload: CreateTemplateRequest, settings: Settings = Depends
     template = Template(
         id=template_id, name=payload.name, description=payload.description,
         version=1, builtin=False, config=payload.config,
+    )
+    save_custom_template(template, path)
+    return template
+
+
+@router.put("/templates/{template_id}", response_model=Template)
+def update_template(
+    template_id: str, payload: UpdateTemplateRequest, settings: Settings = Depends(get_settings)
+) -> Template:
+    if template_id in BUILTIN_TEMPLATE_IDS:
+        raise ValidationError(f"Template id {template_id!r} is a built-in template and cannot be edited.")
+    if not payload.name.strip():
+        raise ValidationError("Template name must not be blank.")
+
+    path = _templates_json_path(settings)
+    existing = {t.id: t for t in load_custom_templates(path)}
+    if template_id not in existing:
+        raise NotFoundError("Custom template", template_id)
+
+    # save_custom_template already upserts by id (app/modules/beat/service.py)
+    # -- editing is just "create with the same id", bumping version so any
+    # future migration/versioning system (out of scope today, same as
+    # create_template's own version=1) has real data to work from.
+    template = Template(
+        id=template_id, name=payload.name, description=payload.description,
+        version=existing[template_id].version + 1, builtin=False, config=payload.config,
     )
     save_custom_template(template, path)
     return template

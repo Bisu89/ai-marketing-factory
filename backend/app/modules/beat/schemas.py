@@ -686,6 +686,13 @@ class VisualGenerationProjectConfig(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     mode: str = "library"
+    # Free-text style guidance appended to every AI-generated beat image
+    # prompt for this project/template (e.g. "watercolor illustration,
+    # pastel colors, no text"). Optional -- blank means no change to the
+    # existing tone/style-derived prompt. Image generation is a flat
+    # per-image fee (see app/modules/imagegen/image_client.py), so a
+    # longer prompt here has no cost impact.
+    image_style_prompt: str = ""
 
     @field_validator("mode")
     @classmethod

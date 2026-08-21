@@ -411,6 +411,10 @@ export interface VoiceProjectConfig {
 // "Generate Full by AI" mode -- a fresh OpenAI image per beat instead.
 export interface VisualGenerationProjectConfig {
   mode: "library" | "ai_generated";
+  // Free-text style guidance appended to every AI-generated beat image
+  // prompt (e.g. "watercolor illustration, pastel colors"). Optional --
+  // costs nothing extra, image generation is a flat per-image fee.
+  image_style_prompt: string;
 }
 
 export interface ProjectConfig {
@@ -472,7 +476,7 @@ export const SYSTEM_DEFAULT_PROJECT_CONFIG: ProjectConfig = {
     speed: 1.0,
     pitch: 0,
   },
-  visual_generation: { mode: "library" },
+  visual_generation: { mode: "library", image_style_prompt: "" },
   template_id: null,
   template_version: null,
 };

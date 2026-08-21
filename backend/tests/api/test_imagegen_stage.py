@@ -63,6 +63,33 @@ class ImageGenerationTests(_ImageGenTestCase):
         for beat in draft.beats:
             self.assertIsNotNone(beat.asset_id)
 
+    def test_custom_image_style_prompt_is_appended_to_every_beat_prompt(self):
+        self.settings.openai_api_key = "fake-openai-key"
+        config = ProjectConfig(
+            visual_generation=VisualGenerationProjectConfig(
+                mode="ai_generated", image_style_prompt="watercolor illustration, pastel colors"
+            )
+        )
+        project_id = create_project("Styled", "A short test script.", config)
+        plan = _fake_beat_plan("A short test script.", 2).model_copy(update={"config": config})
+        update_project_beat_plan(project_id, plan)
+
+        captured_prompts = []
+
+        def _capture_and_write(api_key, prompt, output_path):
+            captured_prompts.append(prompt)
+            _fake_generate_beat_image_writes_a_file(api_key, prompt, output_path)
+
+        with (
+            patch("app.api.v1.endpoints.imagegen_generate.generate_beat_image", side_effect=_capture_and_write),
+            patch("app.api.v1.endpoints.imagegen_generate.SessionLocal", self.TestSessionLocal),
+        ):
+            generate_project_images(project_id, self.settings)
+
+        self.assertEqual(len(captured_prompts), 2)
+        for prompt in captured_prompts:
+            self.assertIn("watercolor illustration, pastel colors", prompt)
+
     def test_no_openai_key_configured_raises_image_gen_error(self):
         project_id = self._ai_generated_project("No Key")
         self.assertIsNone(self.settings.openai_api_key)

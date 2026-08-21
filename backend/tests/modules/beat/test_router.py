@@ -16,7 +16,16 @@ from pydantic import ValidationError as PydanticValidationError
 from app.core.config import Settings
 from app.core.exceptions import NotFoundError
 from app.core.exceptions import ValidationError as AppValidationError
-from app.modules.beat.router import CreateTemplateRequest, create_template, delete_template, get_beat_plan, list_templates, put_beat_plan
+from app.modules.beat.router import (
+    CreateTemplateRequest,
+    UpdateTemplateRequest,
+    create_template,
+    delete_template,
+    get_beat_plan,
+    list_templates,
+    put_beat_plan,
+    update_template,
+)
 from app.modules.beat.schemas import Beat, BeatPlan, BeatType, ProjectConfig
 
 
@@ -128,6 +137,44 @@ class TemplateRouterTests(unittest.TestCase):
     def test_delete_builtin_template_is_rejected(self):
         with self.assertRaises(AppValidationError):
             delete_template("custom", self.settings)
+
+    def test_update_changes_name_description_and_config_and_bumps_version(self):
+        created = create_template(CreateTemplateRequest(name="Original", config=ProjectConfig()), self.settings)
+        self.assertEqual(created.version, 1)
+
+        new_config = ProjectConfig()
+        new_config.visual_generation.image_style_prompt = "watercolor illustration"
+        updated = update_template(
+            created.id,
+            UpdateTemplateRequest(name="Renamed", description="new desc", config=new_config),
+            self.settings,
+        )
+
+        self.assertEqual(updated.id, created.id)
+        self.assertEqual(updated.name, "Renamed")
+        self.assertEqual(updated.description, "new desc")
+        self.assertEqual(updated.version, 2)
+        self.assertEqual(updated.config.visual_generation.image_style_prompt, "watercolor illustration")
+
+        templates = list_templates(self.settings)
+        self.assertEqual(len(templates), 4)
+        reloaded = next(t for t in templates if t.id == created.id)
+        self.assertEqual(reloaded.name, "Renamed")
+
+    def test_update_nonexistent_template_raises_not_found(self):
+        with self.assertRaises(NotFoundError):
+            update_template(
+                "does_not_exist", UpdateTemplateRequest(name="X", config=ProjectConfig()), self.settings
+            )
+
+    def test_update_builtin_template_is_rejected(self):
+        with self.assertRaises(AppValidationError):
+            update_template("custom", UpdateTemplateRequest(name="X", config=ProjectConfig()), self.settings)
+
+    def test_update_with_blank_name_is_rejected(self):
+        created = create_template(CreateTemplateRequest(name="Original", config=ProjectConfig()), self.settings)
+        with self.assertRaises(AppValidationError):
+            update_template(created.id, UpdateTemplateRequest(name="   ", config=ProjectConfig()), self.settings)
 
 
 if __name__ == "__main__":

@@ -32,7 +32,7 @@ from app.modules.asset.models import Asset
 from app.modules.asset.schemas import AssetRegisterIn
 from app.modules.asset.service import AssetService
 from app.modules.beat.project_service import get_project_draft, update_project_beat_plan
-from app.modules.beat.schemas import Beat, BeatPlan, ContentProjectConfig
+from app.modules.beat.schemas import Beat, BeatPlan, ContentProjectConfig, VisualGenerationProjectConfig
 
 logger = logging.getLogger(__name__)
 
@@ -63,11 +63,18 @@ def _beat_image_path(project_id: int, beat_id: str, settings: Settings) -> Path:
     return _visuals_dir(project_id, settings) / f"beat_{beat_id}.png"
 
 
-def _image_prompt(beat: Beat, content_config: ContentProjectConfig) -> str:
+def _image_prompt(beat: Beat, content_config: ContentProjectConfig, visual_config: VisualGenerationProjectConfig) -> str:
     base = (beat.visual_hint or beat.narration or "").strip()
     if not base:
         base = "An establishing shot fitting the surrounding story."
     style_suffix = _STYLE_SUFFIX_TEMPLATE.format(tone=content_config.tone, style=content_config.style)
+    # Template/project-level free-text style guidance (e.g. "watercolor
+    # illustration, pastel colors") -- appended rather than replacing the
+    # suffix above so the vertical/no-text/consistency instructions always
+    # still apply even when a user sets this.
+    custom_style = visual_config.image_style_prompt.strip()
+    if custom_style:
+        style_suffix = f"{style_suffix} {custom_style}"
     return f"{base}. {style_suffix}"
 
 
@@ -126,7 +133,8 @@ def generate_project_images(project_id: int, settings: Settings) -> ImageGenerat
         for beat in pending:
             output_path = _beat_image_path(project_id, beat.id, settings)
             try:
-                generate_beat_image(settings.openai_api_key, _image_prompt(beat, draft.config.content), output_path)
+                prompt = _image_prompt(beat, draft.config.content, draft.config.visual_generation)
+                generate_beat_image(settings.openai_api_key, prompt, output_path)
             except ImageGenError:
                 logger.warning(
                     "AI image generation failed for project %s beat %s -- left unassigned.", project_id, beat.id

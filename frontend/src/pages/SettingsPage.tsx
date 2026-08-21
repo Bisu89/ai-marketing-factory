@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { CheckCircle2, FolderOpen, LayoutTemplate, Trash2 } from "lucide-react";
+import { CheckCircle2, FolderOpen, LayoutTemplate, Pencil, Trash2 } from "lucide-react";
 import { PageHeader } from "../components/PageHeader";
 import { FolderBrowserModal } from "../components/FolderBrowserModal";
+import { EditTemplateModal } from "../components/EditTemplateModal";
 import {
   getSettings,
   updateAiProvider,
@@ -56,6 +57,7 @@ export function SettingsPage() {
   const [templates, setTemplates] = useState<Template[]>([]);
   const [templatesError, setTemplatesError] = useState<string | null>(null);
   const [deletingTemplateId, setDeletingTemplateId] = useState<string | null>(null);
+  const [editingTemplate, setEditingTemplate] = useState<Template | null>(null);
 
   function refreshTemplates() {
     listTemplates()
@@ -430,13 +432,18 @@ export function SettingsPage() {
               </span>
               <span className="settings-template-desc">{template.description}</span>
               {!template.builtin && (
-                <button
-                  className="btn btn-secondary"
-                  onClick={() => handleDeleteTemplate(template)}
-                  disabled={deletingTemplateId === template.id}
-                >
-                  <Trash2 size={13} />
-                </button>
+                <span className="settings-template-actions">
+                  <button className="btn btn-secondary" onClick={() => setEditingTemplate(template)}>
+                    <Pencil size={13} />
+                  </button>
+                  <button
+                    className="btn btn-secondary"
+                    onClick={() => handleDeleteTemplate(template)}
+                    disabled={deletingTemplateId === template.id}
+                  >
+                    <Trash2 size={13} />
+                  </button>
+                </span>
               )}
             </li>
           ))}
@@ -448,6 +455,17 @@ export function SettingsPage() {
           initialPath={libraryDir ?? undefined}
           onSelect={handleSelectFolder}
           onClose={() => setShowBrowser(false)}
+        />
+      )}
+
+      {editingTemplate && (
+        <EditTemplateModal
+          template={editingTemplate}
+          onSaved={() => {
+            setEditingTemplate(null);
+            refreshTemplates();
+          }}
+          onClose={() => setEditingTemplate(null)}
         />
       )}
     </>

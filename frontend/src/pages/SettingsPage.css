@@ -153,3 +153,8 @@
   background: rgba(16, 185, 129, 0.15);
   color: var(--success);
 }
+
+.settings-template-actions {
+  display: flex;
+  gap: 6px;
+}
