@@ -54,13 +54,32 @@ def compute_beat_timing(
     raw: list[BeatTiming] | None = None
     if word_timestamps:
         raw = _timing_from_word_timestamps(beats, word_timestamps, total_duration)
+    has_real_positions = raw is not None
     if raw is None:
         raw = _timing_from_weighted_estimate(beats, total_duration)
 
     durations = _rebalance_minimum_duration(
         [t.duration for t in raw], total_duration, min(min_beat_duration, total_duration / len(beats))
     )
-    return _stitch_contiguous(beats, durations, total_duration)
+    # Real user report: captions drifted increasingly ahead of the
+    # narration audio toward the middle/end of longer videos. Root cause --
+    # when real per-word timestamps are available, `raw[i].start`/`.end`
+    # are TRUE absolute positions within narration.wav, which (since Task
+    # 78's sentence-by-sentence synthesis) genuinely contains a real silent
+    # gap between beats. Previously this function threw that position data
+    # away and kept only `.duration`, so _stitch_contiguous rebuilt
+    # start/end as if every beat sat back-to-back with zero gap -- each
+    # beat's assigned start ended up earlier than its real first-word
+    # position by the sum of every prior gap, and
+    # caption/segmentation.py's own _real_word_boundaries rescales the
+    # (accurate) real per-word timeline onto exactly this (increasingly
+    # wrong) window, so every caption after the first beat was placed too
+    # early, worse deeper into the video. Passing the real inter-beat gaps
+    # through to _stitch_contiguous keeps that window's positions honest
+    # without changing anything about the weighted-estimate path (no real
+    # gap concept applies there -- gapless is still correct).
+    gaps = _real_gaps(raw) if has_real_positions else None
+    return _stitch_contiguous(beats, durations, total_duration, gaps)
 
 
 # -- Weighted text-based estimate (priority 3 -- always available) ---------
@@ -152,21 +171,59 @@ def _rebalance_minimum_duration(raw_durations: list[float], total_duration: floa
     return durations
 
 
-def _stitch_contiguous(beats: list[BeatTimingInput], durations: list[float], total_duration: float) -> list[BeatTiming]:
+def _real_gaps(raw: list[BeatTiming]) -> list[float]:
+    """The real silent gap that actually exists in narration.wav between
+    consecutive beats' own real word spans (Task 78's inter-sentence
+    pause, typically ~_INTER_SENTENCE_PAUSE_SEC in providers.py -- not
+    re-imported here since this module has no I/O/provider dependency;
+    the gap is measured directly from the real timestamps instead of
+    assumed to be that constant). One entry per boundary between beats
+    (len(raw) - 1 entries total).
+    """
+    return [max(0.0, raw[i].start - raw[i - 1].end) for i in range(1, len(raw))]
+
+
+def _stitch_contiguous(
+    beats: list[BeatTimingInput], durations: list[float], total_duration: float, gaps: list[float] | None = None,
+) -> list[BeatTiming]:
     """Section 18/22/23: builds the final start/end sequence directly from
     `durations` in order -- first.start == 0, each.start == previous.end
     by construction (not just validated after the fact), and the very
     last beat's `end` is forced to exactly `total_duration` so float
     rounding across many beats can never leave a gap before the real end
     of the narration.
+
+    When `gaps` is given (real word-timestamp positions were available --
+    see compute_beat_timing's own docstring), each non-last beat's `end`
+    extends through to the *next* beat's own real start -- i.e. its
+    `duration` absorbs the real silent gap (Task 78's inter-sentence
+    pause) that follows it, rather than stopping at its own last spoken
+    word. This is required for `sum(duration) == total_duration` to still
+    hold exactly (a real regression found verifying this fix: without it,
+    each beat's Motion clip length no longer covered its own trailing
+    gap, and the composed video ended up several seconds shorter than its
+    own Audio Master) -- the gap has to be visually "owned" by some beat's
+    own clip, and the beat right before it is the natural, least-jarring
+    choice (its own scene simply holds a little longer through the
+    pause). `start` itself still lands exactly on each beat's own real
+    first word regardless -- captions rely on that (see
+    caption/segmentation.py's own `_real_word_boundaries`, which now
+    treats "window wider than real content" as this trailing gap rather
+    than stretching captions to fill it).
     """
-    timings: list[BeatTiming] = []
+    starts: list[float] = []
     cursor = 0.0
-    for beat, duration in zip(beats, durations):
-        start = cursor
-        end = start + duration
-        timings.append(BeatTiming(beat_id=beat.beat_id, start=start, end=end, duration=duration))
-        cursor = end
+    for i, duration in enumerate(durations):
+        if gaps and i > 0:
+            cursor += gaps[i - 1]
+        starts.append(cursor)
+        cursor += duration
+
+    timings: list[BeatTiming] = []
+    for i, beat in enumerate(beats):
+        start = starts[i]
+        end = starts[i + 1] if gaps and i < len(beats) - 1 else start + durations[i]
+        timings.append(BeatTiming(beat_id=beat.beat_id, start=start, end=end, duration=end - start))
 
     last = timings[-1]
     timings[-1] = BeatTiming(beat_id=last.beat_id, start=last.start, end=total_duration, duration=total_duration - last.start)

@@ -148,6 +148,67 @@ class WordTimestampAlignmentTests(unittest.TestCase):
         self.assertEqual(timings[0].start, 0.0)
         self.assertAlmostEqual(timings[-1].end, 5.0, places=6)
 
+    def test_real_inter_sentence_gaps_are_preserved_not_collapsed(self):
+        # Real user report: captions drifted increasingly ahead of the
+        # narration audio toward the middle/end of longer videos. Root
+        # cause: this module used to discard the real absolute word
+        # positions and re-stitch every beat back-to-back with zero gap,
+        # even though Task 78's sentence-by-sentence synthesis puts a real
+        # ~0.35s silent gap between every beat in the actual narration.wav.
+        # Four beats, each two words, with a real 0.35s gap inserted
+        # before beats b/c/d -- exactly the shape real edge_tts/SAPI5
+        # output has after Task 78.
+        #
+        # A second real regression was found and fixed verifying this
+        # against a live project: naively giving each beat's `end` back to
+        # its own real last word (leaving the gap unassigned to any beat)
+        # broke video/audio duration matching, since Motion clip length is
+        # driven by Beat.duration and a real render's video ended up
+        # several seconds shorter than its own Audio Master. The fix:
+        # `start` lands exactly on each beat's own real first word (what
+        # captions need), but a non-last beat's `end`/`duration` extends
+        # through to the *next* beat's own real start -- absorbing the gap
+        # into its own duration -- so sum(duration) still equals
+        # total_duration exactly.
+        gap = 0.35
+        word_duration = 0.4
+        beats = [
+            BeatTimingInput(beat_id="a", text="one two"),
+            BeatTimingInput(beat_id="b", text="three four"),
+            BeatTimingInput(beat_id="c", text="five six"),
+            BeatTimingInput(beat_id="d", text="seven eight"),
+        ]
+        words: list[WordTiming] = []
+        t = 0.0
+        for i, w in enumerate(["one", "two", "three", "four", "five", "six", "seven", "eight"]):
+            if i in (2, 4, 6):  # first word of beats b/c/d -- a real gap precedes it
+                t += gap
+            words.append(WordTiming(text=w, start=t, end=t + word_duration))
+            t += word_duration
+        total_duration = words[-1].end
+
+        timings = compute_beat_timing(beats, total_duration=total_duration, word_timestamps=words)
+        by_id = {tm.beat_id: tm for tm in timings}
+
+        # Each beat's start must land at its own real first-word position
+        # -- not at the previous beat's end (which would silently drop the
+        # gap, reproducing the reported caption drift).
+        self.assertAlmostEqual(by_id["a"].start, 0.0, places=6)
+        self.assertAlmostEqual(by_id["b"].start, 2 * word_duration + gap, places=6)
+        self.assertAlmostEqual(by_id["c"].start, 4 * word_duration + 2 * gap, places=6)
+        self.assertAlmostEqual(by_id["d"].start, 6 * word_duration + 3 * gap, places=6)
+        self.assertAlmostEqual(by_id["d"].end, total_duration, places=6)
+
+        # Each non-last beat's own end extends through to the next beat's
+        # start (its clip visually holds through the gap) -- gapless by
+        # construction, and the video/audio duration invariant this
+        # codebase relies on everywhere else still holds exactly.
+        self.assertAlmostEqual(by_id["a"].end, by_id["b"].start, places=6)
+        self.assertAlmostEqual(by_id["b"].end, by_id["c"].start, places=6)
+        self.assertAlmostEqual(by_id["c"].end, by_id["d"].start, places=6)
+        total = sum(tm.duration for tm in timings)
+        self.assertAlmostEqual(total, total_duration, places=6)
+
 
 class ValidationTests(unittest.TestCase):
     def test_empty_beat_list_returns_empty_timing(self):
