@@ -205,10 +205,11 @@ class OutroCardTests(_FinalComposerTestCase):
         streams = self._ffprobe_streams(Path(job.output_path))
         final_duration = float(streams["format"]["duration"])
         # The main composition's own duration (narration-driven) plus the
-        # outro's own 5.0s -- real, both real ffmpeg-probed values, not a
-        # mocked stand-in (this codebase's own "exercise the real engine"
-        # precedent for this whole test file).
-        self.assertAlmostEqual(final_duration, job_without_outro_duration + 5.0, delta=1.0)
+        # pre-outro hold (docs/features/94-outro-pre-hold.md,
+        # _PRE_OUTRO_HOLD_SEC=1.5) plus the outro's own 5.0s -- real, both
+        # real ffmpeg-probed values, not a mocked stand-in (this codebase's
+        # own "exercise the real engine" precedent for this whole file).
+        self.assertAlmostEqual(final_duration, job_without_outro_duration + 1.5 + 5.0, delta=1.0)
 
     def test_blank_outro_text_is_treated_as_not_configured(self):
         project_id = self._full_pipeline_project(

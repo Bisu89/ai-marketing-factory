@@ -64,6 +64,17 @@ _OUTPUT_DURATION_TOLERANCE_SEC = 0.5
 # between Beat clips and the Audio Master.
 _FINAL_DURATION_TOLERANCE_SEC = 1.0
 
+# Real user report (docs/features/94-outro-pre-hold.md): narration ending
+# and immediately hard-cutting to the Outro Card's own black background
+# felt jarring, no breathing room. A brief hold on the main video's own
+# last frame (silent, same scene) before the outro begins -- see
+# _append_outro_clip below. Duplicated (not imported) in
+# app/api/v1/endpoints/final_qa.py's own expected-duration calculation --
+# app.modules.video_composer must never import app.modules.outro or vice
+# versa (module isolation), and final_qa.py is a composition root that
+# needs the same value to know the real, now-longer expected duration.
+_PRE_OUTRO_HOLD_SEC = 1.5
+
 FONT_PATH = "C:/Windows/Fonts/arial.ttf"
 # The karaoke subtitle style below renders Bold=1, so word widths must be
 # measured with the bold metrics or the highlight box drifts off the word.
@@ -928,7 +939,7 @@ class VideoComposerService:
             if outro_clip_path is not None and Path(outro_clip_path).exists():
                 _checkpoint()
                 self._log(job_id, "phase started: APPEND_OUTRO")
-                outro_duration = self._probe_duration(Path(outro_clip_path))
+                outro_duration = self._probe_duration(Path(outro_clip_path)) + _PRE_OUTRO_HOLD_SEC
                 tmp_with_outro = tmp_dir / ".video_hoan_chinh.outro.tmp.mp4"
                 self._append_outro_clip(final_video, Path(outro_clip_path), tmp_with_outro)
                 tmp_with_outro.replace(final_video)
@@ -1083,12 +1094,22 @@ class VideoComposerService:
         the filter decodes both and re-encodes fresh, so it's correct
         regardless of any such mismatch, at the cost of one more (still
         short, since the outro itself is 5-7s) re-encode pass.
+
+        Real user report (docs/features/94-outro-pre-hold.md): hard-cutting
+        from the last spoken word straight to the outro's own black
+        background felt jarring. `tpad`/`apad` hold the main video's own
+        last frame (silent, same scene -- freeze, not a fade) for
+        `_PRE_OUTRO_HOLD_SEC` before the concat, giving a brief breathing
+        room ahead of the CTA.
         """
         self._run_ffmpeg(
             [
                 "-i", str(main_video),
                 "-i", str(outro_clip),
-                "-filter_complex", "[0:v][0:a][1:v][1:a]concat=n=2:v=1:a=1[v][a]",
+                "-filter_complex",
+                f"[0:v]tpad=stop_mode=clone:stop_duration={_PRE_OUTRO_HOLD_SEC}[v0held];"
+                f"[0:a]apad=pad_dur={_PRE_OUTRO_HOLD_SEC}[a0held];"
+                "[v0held][a0held][1:v][1:a]concat=n=2:v=1:a=1[v][a]",
                 "-map", "[v]",
                 "-map", "[a]",
                 "-c:v", "libx264",

@@ -202,11 +202,16 @@ def build_qa_input(project_id: int, settings: Settings) -> QAInput:
     # found during this feature's own live verification, where a real
     # render with a real outro appended got flagged FINAL_DURATION_MISMATCH
     # here even though the extra length was entirely expected (the outro
-    # deliberately extends the video beyond narration's length).
+    # deliberately extends the video beyond narration's length). The
+    # pre-outro hold (docs/features/94-outro-pre-hold.md,
+    # video_composer/service.py's own _PRE_OUTRO_HOLD_SEC -- duplicated
+    # here, not imported: module isolation) adds further real length on
+    # top of the outro clip's own duration.
+    _PRE_OUTRO_HOLD_SEC = 1.5
     if expected_duration is not None and job.outro_clip_path and Path(job.outro_clip_path).exists():
         outro_duration = probe_final_video(Path(job.outro_clip_path)).duration
         if outro_duration:
-            expected_duration += outro_duration
+            expected_duration += outro_duration + _PRE_OUTRO_HOLD_SEC
 
     audio_level = probe_audio_levels(video_path) if video_info.file_exists else AudioLevelInfo(mean_volume_db=None, max_volume_db=None, probed=False)
 
