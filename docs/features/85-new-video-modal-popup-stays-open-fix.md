@@ -1,6 +1,6 @@
 # 85. Fix: "Generate Full by AI" Popup Stayed Open on Video Factory Page
 
-**Commit:** (pending)
+**Commit:** `08aaae5`
 
 Real user report: creating a video via `NewVideoModal` from the Video
 Factory page's "Generate Full by AI" button left the popup open on
