@@ -1,6 +1,6 @@
 # 90. Fix: "Generate Full by AI" Popup Closed on Outside Click
 
-**Commit:** (pending)
+**Commit:** `352d74f`
 
 Real user report: clicking outside `NewVideoModal` closed it and lost
 everything typed (name/idea/script/outro text). Removed the backdrop's
