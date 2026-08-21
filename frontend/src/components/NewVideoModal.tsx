@@ -96,6 +96,7 @@ export function NewVideoModal({ onClose }: NewVideoModalProps) {
       if (autoProduce) {
         await startFactoryRun(project.id);
       }
+      onClose();
       navigate(`/video-factory?project=${project.id}`);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Could not create this project.");
@@ -120,6 +121,7 @@ export function NewVideoModal({ onClose }: NewVideoModalProps) {
         content_language: contentLanguage,
       });
       await startFactoryRun(project.id);
+      onClose();
       navigate(`/video-factory?project=${project.id}`);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Could not create this project.");
