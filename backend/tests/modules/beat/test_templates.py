@@ -276,7 +276,7 @@ class SaveProjectAsTemplateTests(unittest.TestCase):
             fields,
             {
                 "render", "motion", "captions", "audio", "watermark", "package", "factory", "content", "voice",
-                "visual_generation", "template_id", "template_version",
+                "visual_generation", "outro", "template_id", "template_version",
             },
         )
 

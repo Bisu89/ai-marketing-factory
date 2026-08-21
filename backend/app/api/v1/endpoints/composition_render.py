@@ -535,6 +535,7 @@ def render_composition(
     watermark_scale: float = 0.15,
     watermark_margin_x: int = 24,
     watermark_margin_y: int = 24,
+    outro_clip_path: str | None = None,
 ) -> int:
     """Turns a CompositionPlan into a persistent, queued VideoComposeJob --
     this app's `render_project`-equivalent single entry point (nothing else
@@ -576,6 +577,12 @@ def render_composition(
     generation and _mix_audio entirely -- the given file becomes the sole
     final audio track, and `_resolve_narration` below is never even called.
     `captions_ass_path`/`watermark_*` are only meaningful together with it.
+
+    `outro_clip_path` (docs/features/89-outro-card.md, real user report:
+    videos cut off abruptly right when narration ends): same "only
+    factory_pipeline.py's own _stage_render ever supplies it" shape --
+    a pre-rendered short clip concatenated onto the end of the main
+    composition once it's fully composed and validated.
     """
     enforce_local_rendering_policy()
     # Validates `profile` is a real, known name (raises ValidationError
@@ -668,6 +675,7 @@ def render_composition(
         watermark_scale=watermark_scale,
         watermark_margin_x=watermark_margin_x,
         watermark_margin_y=watermark_margin_y,
+        outro_clip_path=outro_clip_path,
     )
     # Task 26: a precomposed job's audio comes entirely from audio_master_path
     # -- plan.music_path (the old per-job BGM field) is never separately

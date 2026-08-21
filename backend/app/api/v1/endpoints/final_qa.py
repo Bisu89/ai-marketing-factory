@@ -197,6 +197,17 @@ def build_qa_input(project_id: int, settings: Settings) -> QAInput:
     if not expected_duration:
         expected_duration = float(render_meta.get("duration") or 0.0) or None
 
+    # Outro Card (docs/features/89-outro-card.md): Audio Master's own
+    # duration only covers the main, narration-driven video -- a real bug
+    # found during this feature's own live verification, where a real
+    # render with a real outro appended got flagged FINAL_DURATION_MISMATCH
+    # here even though the extra length was entirely expected (the outro
+    # deliberately extends the video beyond narration's length).
+    if expected_duration is not None and job.outro_clip_path and Path(job.outro_clip_path).exists():
+        outro_duration = probe_final_video(Path(job.outro_clip_path)).duration
+        if outro_duration:
+            expected_duration += outro_duration
+
     audio_level = probe_audio_levels(video_path) if video_info.file_exists else AudioLevelInfo(mean_volume_db=None, max_volume_db=None, probed=False)
 
     thumb_path = thumbnail_path(job)

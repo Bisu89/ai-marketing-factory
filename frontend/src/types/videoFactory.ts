@@ -356,6 +356,18 @@ export interface WatermarkProjectConfig {
   margin_y: number;
 }
 
+// Outro Card -- see docs/features/89-outro-card.md. Real user report:
+// videos cut off abruptly right when narration ends. A short (5-7s)
+// trailing segment -- black background, `text` typed on screen
+// character-by-character, background music swelling to full volume --
+// appended after the main video. `text` is never AI-derived; blank means
+// no outro even if `enabled` is true.
+export interface OutroProjectConfig {
+  enabled: boolean;
+  text: string;
+  duration_sec: number;
+}
+
 // Task 24 -- see docs/features/50-audio-master.md sections 7/8/9/33.
 export type BgmMode = "AUTO" | "MANUAL";
 export type BgmMissingPolicy = "OFF" | "NEEDS_REVIEW";
@@ -423,6 +435,7 @@ export interface ProjectConfig {
   captions: CaptionsProjectConfig;
   audio: AudioProjectConfig;
   watermark: WatermarkProjectConfig;
+  outro: OutroProjectConfig;
   factory: FactoryProjectConfig;
   content: ContentProjectConfig;
   voice: VoiceProjectConfig;
@@ -450,6 +463,7 @@ export const SYSTEM_DEFAULT_PROJECT_CONFIG: ProjectConfig = {
   watermark: {
     enabled: false, asset_id: null, position: "bottom-right", opacity: 0.8, scale: 0.15, margin_x: 24, margin_y: 24,
   },
+  outro: { enabled: false, text: "", duration_sec: 6.0 },
   audio: {
     narration_enabled: true, music_enabled: true, music_volume: 0.15, ducking: true,
     bgm_mode: "AUTO", bgm_asset_id: null, ducking_ratio: 8.0, fade_in_sec: 0.5, fade_out_sec: 1.0,

@@ -70,6 +70,7 @@ from app.api.v1.endpoints.caption_generate import captions_ass_path, captions_is
 from app.api.v1.endpoints.final_qa import run_final_qa
 from app.api.v1.endpoints.imagegen_generate import ImageGenerationResult, generate_project_images
 from app.api.v1.endpoints.motion_generate import generate_project_motion
+from app.api.v1.endpoints.outro_generate import resolve_outro_clip
 from app.api.v1.endpoints.package_generate import PackageError, generate_project_package
 from app.api.v1.endpoints.quality_gate import compute_asset_confidence, run_quality_check, tokenize_prose
 from app.api.v1.endpoints.voice_generate import generate_project_narration
@@ -78,6 +79,8 @@ from app.core.concurrency import ai_generation_semaphore
 from app.core.config import Settings, get_settings
 from app.core.exceptions import ExternalServiceError, FileOperationError, NotFoundError, ValidationError
 from app.core.events import EventBus
+from app.core.render_profile import get_render_profile
+from app.modules.outro.schemas import OutroError
 from app.db.session import SessionLocal, get_db
 from app.modules.asset.service import AssetService
 from app.modules.audio.schemas import AudioError
@@ -651,6 +654,21 @@ def _stage_render(
             raise FactoryStageError("READY_TO_RENDER", ASSET_MATCH_FAILED, str(exc)) from exc
     finally:
         db.close()
+
+    # Real user report: videos cut off abruptly right when narration
+    # ends. An optional short trailing segment -- explicitly opted into
+    # (config.outro.enabled + real text), never AI-derived -- appended
+    # after the main composed video (see app/modules/outro's own
+    # docstring). None when not configured, which is every existing
+    # project (outro.enabled defaults False) -- render_composition/
+    # _run_final_composition below are both fully unaffected in that case.
+    try:
+        resolved_outro_clip_path = resolve_outro_clip(
+            project_id, plan.config, get_render_profile(plan.config.render.profile), settings
+        )
+    except OutroError as exc:
+        raise FactoryStageError("READY_TO_RENDER", render_errors.OUTRO_RENDER_FAILED, str(exc)) from exc
+
     factory_service.complete_checkpoint(run_id, "READY_TO_RENDER")
 
     factory_service.start_checkpoint(run_id, "QUEUED")
@@ -671,6 +689,7 @@ def _stage_render(
             watermark_scale=watermark_config.scale,
             watermark_margin_x=watermark_config.margin_x,
             watermark_margin_y=watermark_config.margin_y,
+            outro_clip_path=resolved_outro_clip_path,
         )
     except (ValidationError, FileOperationError) as exc:
         raise FactoryStageError("QUEUED", RENDER_FAILED, str(exc)) from exc

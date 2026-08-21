@@ -24,6 +24,7 @@ from app.modules.beat.schemas import (
     BeatPlan,
     BeatType,
     CaptionsProjectConfig,
+    OutroProjectConfig,
     ProjectConfig,
     WatermarkProjectConfig,
 )
@@ -49,7 +50,7 @@ class _FinalComposerTestCase(_FactoryTestCase):
 
     def _full_pipeline_project(
         self, name: str, texts: list[str], *, watermark: WatermarkProjectConfig | None = None,
-        captions: CaptionsProjectConfig | None = None,
+        captions: CaptionsProjectConfig | None = None, outro: OutroProjectConfig | None = None,
     ) -> int:
         """Beat -> real Voice -> real Motion (via _stage_render's own
         render_beats_for_job) -> real Audio Master -> real Captions, ready
@@ -66,6 +67,8 @@ class _FinalComposerTestCase(_FactoryTestCase):
             config = config.model_copy(update={"watermark": watermark})
         if captions is not None:
             config = config.model_copy(update={"captions": captions})
+        if outro is not None:
+            config = config.model_copy(update={"outro": outro})
         with patch("app.modules.beat.project_service.SessionLocal", self.TestSessionLocal):
             project_id = create_project(name, "placeholder script", config)
 
@@ -179,6 +182,47 @@ class WatermarkTests(_FinalComposerTestCase):
         self.assertEqual(job.status, "completed")
         self.assertTrue(job.watermark_enabled)
         self.assertTrue(Path(job.output_path).exists())
+
+
+class OutroCardTests(_FinalComposerTestCase):
+    def test_outro_disabled_by_default_no_extra_duration(self):
+        project_id = self._full_pipeline_project("Outro Off Final", ["Some narration text for the outro test."])
+        job = self._render_final(project_id)
+        self.assertEqual(job.status, "completed")
+        self.assertIsNone(job.outro_clip_path)
+
+    def test_outro_enabled_extends_final_video_by_its_own_duration(self):
+        project_id = self._full_pipeline_project(
+            "Outro On Final", ["Some narration text for the outro test."],
+            outro=OutroProjectConfig(enabled=True, text="Theo doi de xem phan 2 nhe!", duration_sec=5.0),
+        )
+        job_without_outro_duration = self._probe_narration_only_duration(project_id)
+        job = self._render_final(project_id)
+        self.assertEqual(job.status, "completed")
+        self.assertIsNotNone(job.outro_clip_path)
+        self.assertTrue(Path(job.outro_clip_path).exists())
+
+        streams = self._ffprobe_streams(Path(job.output_path))
+        final_duration = float(streams["format"]["duration"])
+        # The main composition's own duration (narration-driven) plus the
+        # outro's own 5.0s -- real, both real ffmpeg-probed values, not a
+        # mocked stand-in (this codebase's own "exercise the real engine"
+        # precedent for this whole test file).
+        self.assertAlmostEqual(final_duration, job_without_outro_duration + 5.0, delta=1.0)
+
+    def test_blank_outro_text_is_treated_as_not_configured(self):
+        project_id = self._full_pipeline_project(
+            "Outro Blank Text Final", ["Some narration text."],
+            outro=OutroProjectConfig(enabled=True, text="   ", duration_sec=5.0),
+        )
+        job = self._render_final(project_id)
+        self.assertEqual(job.status, "completed")
+        self.assertIsNone(job.outro_clip_path)
+
+    def _probe_narration_only_duration(self, project_id: int) -> float:
+        from app.api.v1.endpoints.audio_generate import audio_master_path
+
+        return self.service._probe_duration(audio_master_path(project_id, self.settings.library_dir))
 
 
 class MissingAudioMasterTests(_FinalComposerTestCase):

@@ -205,6 +205,7 @@ class VideoComposerService:
         watermark_scale: float = 0.15,
         watermark_margin_x: int = 24,
         watermark_margin_y: int = 24,
+        outro_clip_path: str | None = None,
     ) -> int:
         db = SessionLocal()
         try:
@@ -241,6 +242,7 @@ class VideoComposerService:
                 watermark_scale=watermark_scale,
                 watermark_margin_x=watermark_margin_x,
                 watermark_margin_y=watermark_margin_y,
+                outro_clip_path=outro_clip_path,
                 status="queued",
             )
             db.add(job)
@@ -352,6 +354,7 @@ class VideoComposerService:
                 watermark_scale=original.watermark_scale,
                 watermark_margin_x=original.watermark_margin_x,
                 watermark_margin_y=original.watermark_margin_y,
+                outro_clip_path=original.outro_clip_path,
                 previous_job_id=original.id,
                 status="queued",
             )
@@ -552,6 +555,7 @@ class VideoComposerService:
             watermark_scale = job.watermark_scale
             watermark_margin_x = job.watermark_margin_x
             watermark_margin_y = job.watermark_margin_y
+            outro_clip_path = job.outro_clip_path
         finally:
             db.close()
 
@@ -582,6 +586,7 @@ class VideoComposerService:
                 watermark_path if watermark_enabled else None,
                 watermark_position, watermark_opacity, watermark_scale, watermark_margin_x, watermark_margin_y,
                 output_dir, tmp_dir, preflight_seconds, beat_render_seconds,
+                outro_clip_path,
             )
             return
 
@@ -796,6 +801,7 @@ class VideoComposerService:
         tmp_dir: Path,
         preflight_seconds: float | None,
         beat_render_seconds: float | None,
+        outro_clip_path: str | None = None,
     ) -> None:
         """Beat clips + Audio Master + Captions + optional watermark ->
         final.mp4 in ONE ffmpeg pass (section 33: "prefer one final
@@ -804,6 +810,16 @@ class VideoComposerService:
         when narration_mode == "precomposed"; the original multi-pass
         merge/narrate/subtitle/mix/finalize pipeline above is completely
         untouched for every other job.
+
+        `outro_clip_path` (Outro Card -- see docs/features/89-outro-card.md,
+        real user report: videos cut off abruptly right when narration
+        ends), when given, is a separately pre-rendered short clip
+        (app.modules.outro's own renderer) concatenated onto the end of
+        this main composition, AFTER validation against Audio Master's own
+        duration below -- that check is only about the main video/audio
+        staying internally consistent with each other, so the outro
+        (deliberately extending the video beyond narration's length) never
+        needs to participate in it.
 
         Section 6/8: every input is validated -- Beat clip existence/
         readability/video-stream, Audio Master existence/readability,
@@ -907,6 +923,17 @@ class VideoComposerService:
             tmp_final_video.replace(final_video)
             validation_seconds = time.monotonic() - stage_start
             self._log(job_id, f"phase completed: VALIDATE_OUTPUT ({validation_seconds:.2f}s)")
+
+            outro_duration = 0.0
+            if outro_clip_path is not None and Path(outro_clip_path).exists():
+                _checkpoint()
+                self._log(job_id, "phase started: APPEND_OUTRO")
+                outro_duration = self._probe_duration(Path(outro_clip_path))
+                tmp_with_outro = tmp_dir / ".video_hoan_chinh.outro.tmp.mp4"
+                self._append_outro_clip(final_video, Path(outro_clip_path), tmp_with_outro)
+                tmp_with_outro.replace(final_video)
+                self._log(job_id, f"phase completed: APPEND_OUTRO (+{outro_duration:.2f}s)")
+                audio_duration += outro_duration
         except RenderCancelled:
             tmp_final_video.unlink(missing_ok=True)
             self._finish_cancelled(job_id, self._get_status(job_id) or "unknown")
@@ -1041,6 +1068,33 @@ class VideoComposerService:
                 # already within _FINAL_DURATION_TOLERANCE_SEC of this
                 # value by construction (checked before this call).
                 "-t", f"{duration}",
+                str(output_path),
+            ]
+        )
+
+    def _append_outro_clip(self, main_video: Path, outro_clip: Path, output_path: Path) -> None:
+        """Concatenates the Outro Card (docs/features/89-outro-card.md) onto
+        the end of the already-composed, already-validated main video.
+        Uses the `concat` *filter* (full re-encode of both inputs
+        together), not the concat *demuxer*'s `-c copy` -- the demuxer
+        requires the two inputs' codecs/params to already match exactly,
+        which two separately-invoked ffmpeg encodes (main composition here,
+        the outro's own render_outro_clip elsewhere) have no guarantee of;
+        the filter decodes both and re-encodes fresh, so it's correct
+        regardless of any such mismatch, at the cost of one more (still
+        short, since the outro itself is 5-7s) re-encode pass.
+        """
+        self._run_ffmpeg(
+            [
+                "-i", str(main_video),
+                "-i", str(outro_clip),
+                "-filter_complex", "[0:v][0:a][1:v][1:a]concat=n=2:v=1:a=1[v][a]",
+                "-map", "[v]",
+                "-map", "[a]",
+                "-c:v", "libx264",
+                "-pix_fmt", "yuv420p",
+                "-c:a", "aac",
+                "-b:a", "192k",
                 str(output_path),
             ]
         )

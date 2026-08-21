@@ -52,6 +52,11 @@ _NEW_COLUMNS: list[tuple[str, str, str]] = [
     # Task 12 -- see docs/features/77-affiliate-engine.md. NULL means
     # organic (the pre-existing default for every row before this task).
     ("publish_log", "affiliate_link_id", "INTEGER"),
+    # Outro Card -- see docs/features/89-outro-card.md. NULL for every
+    # project without an Outro configured (the pre-existing default for
+    # every row before this feature, and every project with
+    # config.outro.enabled=False).
+    ("video_compose_job", "outro_clip_path", "VARCHAR"),
 ]
 
 # (index_name, table, column) -- Base.metadata.create_all() only creates

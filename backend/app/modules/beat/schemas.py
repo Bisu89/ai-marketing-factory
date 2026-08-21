@@ -509,6 +509,46 @@ class WatermarkProjectConfig(BaseModel):
         return value
 
 
+MIN_OUTRO_DURATION_SEC = 5.0
+MAX_OUTRO_DURATION_SEC = 7.0
+MAX_OUTRO_TEXT_LENGTH = 80
+
+
+class OutroProjectConfig(BaseModel):
+    """Real user report: the video/audio cuts off the instant narration
+    ends, with no room for a closing CTA. An optional short (5-7s) trailing
+    segment appended after the main composed video -- solid black
+    background, `text` revealed character-by-character (never AI-derived
+    from the script -- always this exact, manually-typed string), and
+    background music swelling up to full volume across the whole segment
+    (see app.modules.outro's own renderer). `text` blank means nothing is
+    appended even if `enabled` -- this can't be a no-op-by-accident
+    footgun the other way (enabled=True with real text always renders).
+    """
+
+    model_config = ConfigDict(extra="forbid")
+
+    enabled: bool = False
+    text: str = ""
+    duration_sec: float = 6.0
+
+    @field_validator("text")
+    @classmethod
+    def _text_within_length(cls, value: str) -> str:
+        if len(value) > MAX_OUTRO_TEXT_LENGTH:
+            raise ValueError(f"Outro text must be at most {MAX_OUTRO_TEXT_LENGTH} characters, got {len(value)}")
+        return value
+
+    @field_validator("duration_sec")
+    @classmethod
+    def _duration_within_bounds(cls, value: float) -> float:
+        if not (MIN_OUTRO_DURATION_SEC <= value <= MAX_OUTRO_DURATION_SEC):
+            raise ValueError(
+                f"duration_sec must be between {MIN_OUTRO_DURATION_SEC} and {MAX_OUTRO_DURATION_SEC}, got {value}"
+            )
+        return value
+
+
 # Task 27 (see docs/features/53-thumbnail-metadata-package.md section 6/28/32)
 # -- reasonable, documented defaults per knob, matching the same "no
 # arbitrary global constant with no way to tune it" reasoning as Task 25's
@@ -718,6 +758,7 @@ class ProjectConfig(BaseModel):
     captions: CaptionsProjectConfig = Field(default_factory=CaptionsProjectConfig)
     audio: AudioProjectConfig = Field(default_factory=AudioProjectConfig)
     watermark: WatermarkProjectConfig = Field(default_factory=WatermarkProjectConfig)
+    outro: OutroProjectConfig = Field(default_factory=OutroProjectConfig)
     package: PackageProjectConfig = Field(default_factory=PackageProjectConfig)
     factory: FactoryProjectConfig = Field(default_factory=FactoryProjectConfig)
     content: ContentProjectConfig = Field(default_factory=ContentProjectConfig)

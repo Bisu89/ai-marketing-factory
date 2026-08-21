@@ -97,6 +97,29 @@ class EndToEndFinalQaTests(_PackageStageTestCase):
         package_check = next(c for c in report.checks if c.code == "PACKAGE_INCOMPLETE")
         self.assertEqual(package_check.status, "FAIL")
 
+    def test_outro_card_extended_duration_does_not_trigger_a_false_mismatch(self):
+        # Real bug found during docs/features/89-outro-card.md's own live
+        # verification: Final QA's expected_duration came straight from
+        # Audio Master's own (outro-unaware, shorter) duration, so a real
+        # render with a real outro correctly appended still got flagged
+        # FINAL_DURATION_MISMATCH for the outro's own length. Fixed by
+        # adding the outro clip's own probed duration to expected_duration
+        # whenever the completed job actually has one.
+        from app.modules.beat.schemas import OutroProjectConfig, ProjectConfig
+
+        config = ProjectConfig(outro=OutroProjectConfig(enabled=True, text="Theo doi de xem phan 2 nhe!", duration_sec=5.0))
+        project_id = self._full_pipeline_project(
+            "Outro Duration QA", ["Some narration text for the outro QA test."],
+            content_brief=self._content_brief(), config=config,
+        )
+        run = self._render_and_wait(project_id)
+        self.assertEqual(run.status, "COMPLETED")
+        self.assertIn(run.qa_status, ("PASS", "PASS_WITH_WARNINGS"))
+
+        data = json.loads(_artifact_paths(self, project_id)["report"].read_text(encoding="utf-8"))
+        duration_check = next(c for c in data["checks"] if c["code"] == "FINAL_DURATION_MISMATCH")
+        self.assertEqual(duration_check["status"], "PASS")
+
 
 @unittest.skipUnless(FFMPEG_AVAILABLE, "ffmpeg/ffprobe not found on PATH")
 class FinalQaFailureDetectionTests(_PackageStageTestCase):

@@ -509,6 +509,16 @@ export function VideoFactoryPage() {
   const [watermarkScale, setWatermarkScale] = useState(SYSTEM_DEFAULT_PROJECT_CONFIG.watermark.scale);
   const [outputDir, setOutputDir] = useState("");
 
+  // Outro Card -- real user report: videos cut off abruptly right when
+  // narration ends. A short trailing segment (black background, this
+  // text typed on screen character-by-character, background music
+  // swelling to full volume) appended after the main video. `enabled` is
+  // driven entirely by whether outroText is non-blank -- see
+  // buildProjectConfigForSave below -- so there is no separate checkbox
+  // to fall out of sync with the text field.
+  const [outroText, setOutroText] = useState(SYSTEM_DEFAULT_PROJECT_CONFIG.outro.text);
+  const [outroDurationSec, setOutroDurationSec] = useState(SYSTEM_DEFAULT_PROJECT_CONFIG.outro.duration_sec);
+
   // Content language: drives both content.language (AI-generated text) and
   // voice.language (TTS pronunciation) together -- this page previously had
   // no UI for either, so every project silently inherited whatever template
@@ -661,6 +671,10 @@ export function VideoFactoryPage() {
           if (typeof plan.config.audio.ducking_ratio === "number") setDuckingRatio(plan.config.audio.ducking_ratio);
           if (typeof plan.config.audio.fade_in_sec === "number") setFadeIn(plan.config.audio.fade_in_sec);
           if (typeof plan.config.audio.fade_out_sec === "number") setFadeOut(plan.config.audio.fade_out_sec);
+          if (plan.config.outro) {
+            setOutroText(plan.config.outro.text);
+            setOutroDurationSec(plan.config.outro.duration_sec);
+          }
           if (plan.config.voice) {
             setVoiceProvider(plan.config.voice.provider);
             setVoiceId(plan.config.voice.voice_id);
@@ -831,6 +845,14 @@ export function VideoFactoryPage() {
         scale: watermarkScale,
         margin_x: SYSTEM_DEFAULT_PROJECT_CONFIG.watermark.margin_x,
         margin_y: SYSTEM_DEFAULT_PROJECT_CONFIG.watermark.margin_y,
+      },
+      // Outro Card -- see docs/features/89-outro-card.md. enabled is
+      // derived from the text field itself (blank = off) rather than a
+      // separate checkbox, so the two can never disagree.
+      outro: {
+        enabled: outroText.trim().length > 0,
+        text: outroText.trim(),
+        duration_sec: outroDurationSec,
       },
       // Not sourced from any Step 4 control (this page has no factory-policy
       // UI) -- preserved as-loaded so saving here never silently resets a
@@ -1019,6 +1041,10 @@ export function VideoFactoryPage() {
     setDuckingRatio(snapshot.audio.ducking_ratio);
     setFadeIn(snapshot.audio.fade_in_sec);
     setFadeOut(snapshot.audio.fade_out_sec);
+    if (snapshot.outro) {
+      setOutroText(snapshot.outro.text);
+      setOutroDurationSec(snapshot.outro.duration_sec);
+    }
     if (snapshot.voice) {
       setVoiceProvider(snapshot.voice.provider);
       setVoiceId(snapshot.voice.voice_id);
@@ -1859,6 +1885,35 @@ export function VideoFactoryPage() {
               />
             </label>
           </div>
+
+          <label className="vf-field">
+            <span>Ending text (outro)</span>
+            <textarea
+              rows={2}
+              maxLength={80}
+              placeholder="e.g. Theo doi de xem phan 2 nhe!"
+              value={outroText}
+              onChange={(e) => setOutroText(e.target.value)}
+            />
+            <span className="vf-field-label">
+              {outroText.trim()
+                ? "Appended after the main video: black background, this text typed on screen, background music swelling to full volume. Never taken from the script."
+                : "Optional -- leave blank for no outro. When set, a short black-background card with this text (typed on screen) plays after the video ends, music swelling to full volume."}
+            </span>
+          </label>
+          {outroText.trim() && (
+            <label className="vf-field">
+              <span>Outro duration ({outroDurationSec.toFixed(1)}s)</span>
+              <input
+                type="range"
+                min={5}
+                max={7}
+                step={0.5}
+                value={outroDurationSec}
+                onChange={(e) => setOutroDurationSec(Number(e.target.value))}
+              />
+            </label>
+          )}
 
           {musicBrowserOpen && (
             <AssetBrowserModal

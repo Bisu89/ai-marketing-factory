@@ -208,6 +208,12 @@ class VideoComposeJob(Base):
     watermark_scale: Mapped[float] = mapped_column(Float, nullable=False, default=0.15)
     watermark_margin_x: Mapped[int] = mapped_column(Integer, nullable=False, default=24)
     watermark_margin_y: Mapped[int] = mapped_column(Integer, nullable=False, default=24)
+    # Optional Outro Card (real user report: videos cut off abruptly right
+    # when narration ends) -- a pre-rendered short clip (see
+    # app.modules.outro's own renderer) concatenated onto the end of the
+    # main composed video. Only ever set together with audio_master_path
+    # (Factory-driven renders) -- see app/api/v1/endpoints/outro_generate.py.
+    outro_clip_path: Mapped[str | None] = mapped_column(String, nullable=True)
 
     status: Mapped[str] = mapped_column(String, nullable=False, default="queued")
     output_path: Mapped[str | None] = mapped_column(String, nullable=True)
