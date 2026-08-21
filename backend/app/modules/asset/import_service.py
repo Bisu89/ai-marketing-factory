@@ -21,12 +21,14 @@ from sqlalchemy.exc import IntegrityError
 from app.core.exceptions import NotFoundError, ValidationError
 from app.db.session import SessionLocal
 from app.modules.asset.ingest import (
+    SUPPORTED_AUDIO_EXTENSIONS,
     SUPPORTED_EXTENSIONS,
     SUPPORTED_IMAGE_EXTENSIONS,
     SUPPORTED_VIDEO_EXTENSIONS,
     classify_orientation,
     classify_portrait_suitability,
     compute_file_hash,
+    extract_audio_metadata,
     extract_image_metadata,
     extract_video_metadata,
     folder_tags_from_path,
@@ -144,6 +146,8 @@ def _process_one_file(db, path: Path, import_root: Path | None, thumbnails_dir: 
         asset_type = "image"
     elif extension in SUPPORTED_VIDEO_EXTENSIONS:
         asset_type = "video"
+    elif extension in SUPPORTED_AUDIO_EXTENSIONS:
+        asset_type = "audio"
     else:
         raise ValidationError(f"Unsupported file type: {extension or '(no extension)'}")
 
@@ -162,10 +166,14 @@ def _process_one_file(db, path: Path, import_root: Path | None, thumbnails_dir: 
         metadata = extract_image_metadata(resolved_path)
         width, height, duration_sec = metadata.width, metadata.height, None
         orientation = metadata.orientation
-    else:
+    elif asset_type == "video":
         metadata = extract_video_metadata(resolved_path)
         width, height, duration_sec = metadata.width, metadata.height, metadata.duration_sec
         orientation = classify_orientation(width, height) if width and height else None
+    else:
+        audio_metadata = extract_audio_metadata(resolved_path)
+        width, height, duration_sec = None, None, audio_metadata.duration_sec
+        orientation = None
 
     filename_tokens = tokenize_filename(path.name)
     folder_tags = folder_tags_from_path(resolved_path, import_root) if import_root else []
@@ -204,6 +212,15 @@ def _process_one_file(db, path: Path, import_root: Path | None, thumbnails_dir: 
         # duplicate in every way that matters, just detected by path
         # instead of hash this one time.
         return "duplicate"
+
+    if asset_type == "audio":
+        # No thumbnail for audio -- AssetLibraryPage's own AssetTile already
+        # renders a dedicated Music icon whenever thumbnail_path is unset
+        # (see frontend/src/pages/AssetLibraryPage.tsx), matching every
+        # audio row this app has ever registered (voice_generate.py/
+        # audio_generate.py's narration/audio_master rows never set one
+        # either).
+        return "imported"
 
     thumbnail_dest = thumbnails_dir / f"{asset.id}.jpg"
     try:

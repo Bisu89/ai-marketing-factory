@@ -18,6 +18,7 @@ from app.modules.asset.ingest import (
     classify_orientation,
     classify_portrait_suitability,
     compute_file_hash,
+    extract_audio_metadata,
     extract_image_metadata,
     extract_video_metadata,
     folder_tags_from_path,
@@ -131,6 +132,40 @@ class VideoMetadataTests(unittest.TestCase):
         path.write_bytes(b"not a real video file")
         with self.assertRaises(FileOperationError):
             extract_video_metadata(path)
+
+
+class AudioMetadataTests(unittest.TestCase):
+    def setUp(self):
+        self.tmpdir = tempfile.TemporaryDirectory()
+        self.tmp_path = Path(self.tmpdir.name)
+
+    def tearDown(self):
+        self.tmpdir.cleanup()
+
+    def _make_track(self, name: str, duration=3.0) -> Path:
+        path = self.tmp_path / name
+        subprocess.run(
+            [
+                "ffmpeg", "-y", "-nostdin", "-hide_banner", "-loglevel", "error",
+                "-f", "lavfi", "-i", f"sine=frequency=440:duration={duration}",
+                "-c:a", "libmp3lame",
+                str(path),
+            ],
+            check=True, stdin=subprocess.DEVNULL,
+        )
+        return path
+
+    def test_extracts_duration_and_codec(self):
+        path = self._make_track("track.mp3", duration=3.0)
+        meta = extract_audio_metadata(path)
+        self.assertAlmostEqual(meta.duration_sec, 3.0, delta=0.2)
+        self.assertEqual(meta.codec, "mp3")
+
+    def test_invalid_audio_raises_file_operation_error(self):
+        path = self.tmp_path / "fake.mp3"
+        path.write_bytes(b"not a real audio file")
+        with self.assertRaises(FileOperationError):
+            extract_audio_metadata(path)
 
 
 class ThumbnailTests(unittest.TestCase):
