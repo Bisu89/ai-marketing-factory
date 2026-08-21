@@ -139,7 +139,7 @@ export function NewVideoModal({ onClose }: NewVideoModalProps) {
   }
 
   return (
-    <div className="nvm-backdrop" onClick={onClose}>
+    <div className="nvm-backdrop">
       <div className="nvm-modal" onClick={(e) => e.stopPropagation()}>
         <div className="nvm-header">
           <h3>New Video</h3>
