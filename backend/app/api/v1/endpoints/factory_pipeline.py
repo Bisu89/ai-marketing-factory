@@ -510,7 +510,23 @@ def _stage_generate_captions(project_id: int, settings: Settings) -> bool:
 def _run_quality_and_proceed(
     run_id: int, project_id: int, plan: BeatPlan, settings: Settings,
     cancel_event: threading.Event, service: VideoComposerService,
+    force: bool = False,
 ) -> None:
+    """`force=True` (real bug report: "Continue Production" re-runs this
+    exact check from scratch every time, so a warning that's still true --
+    e.g. one beat's duration genuinely differs from the project average --
+    re-pauses the run at NEEDS_REVIEW forever, with no way to actually
+    proceed short of editing the beat plan) -- lets a human who has
+    already SEEN this run's warnings once accept them and continue to
+    render anyway, matching this module's own long-standing "NEEDS_REVIEW
+    is override-able ('Render Anyway'), BLOCKED is not" doc comment
+    (evaluate_readiness's own docstring) -- that comment described the
+    intended behavior; forcing it through `continue_run`'s own `force`
+    flag is what actually implements it. A real BLOCKED result (a hard
+    content/asset problem, not a style/pacing preference) is never
+    bypassed by `force` -- only a NEEDS_REVIEW (warnings-only, by
+    construction: BLOCKED already raised above) pause is.
+    """
     db = SessionLocal()
     try:
         asset_service = AssetService(db)
@@ -527,7 +543,9 @@ def _run_quality_and_proceed(
         first_issue = report.issues[0].message if report.issues else "The Quality Gate blocked this project."
         raise FactoryStageError("QUALITY_CHECK", QUALITY_BLOCKED, first_issue)
 
-    if report.status == "NEEDS_REVIEW" or policy_review_count > 0:
+    needs_review = report.status == "NEEDS_REVIEW" or policy_review_count > 0
+
+    if needs_review and not force:
         reason_count = max(len(report.warnings) + policy_review_count, 1)
         factory_service.set_run_fields(
             run_id, status="NEEDS_REVIEW", requires_human_review=True, review_reason_count=reason_count,
@@ -549,7 +567,8 @@ def _run_quality_and_proceed(
     # Quality checkpoint's own outcome is already final at this point
     # regardless of whether the run goes on to cancel before rendering.
     factory_service.complete_checkpoint(
-        run_id, "QUALITY_CHECK", metadata={"outcome": "READY", "score": report.score},
+        run_id, "QUALITY_CHECK",
+        metadata={"outcome": "OVERRIDDEN" if needs_review else "READY", "score": report.score},
     )
 
     if _bail_if_cancelled(run_id, cancel_event):
@@ -1019,7 +1038,9 @@ def create_and_start_run(
     return run
 
 
-def _continue_run_sync(run_id: int, project_id: int, settings: Settings, service: VideoComposerService) -> None:
+def _continue_run_sync(
+    run_id: int, project_id: int, settings: Settings, service: VideoComposerService, force: bool = False
+) -> None:
     cancel_event = _cancel_event_for(run_id)
     try:
         draft = get_project_draft(project_id)
@@ -1027,7 +1048,7 @@ def _continue_run_sync(run_id: int, project_id: int, settings: Settings, service
             script_text=draft.script_text, beats=draft.beats, project_name=draft.project_name, config=draft.config,
             idea=draft.idea, content_brief=draft.content_brief, script_locked=draft.script_locked,
         )
-        _run_quality_and_proceed(run_id, project_id, plan, settings, cancel_event, service)
+        _run_quality_and_proceed(run_id, project_id, plan, settings, cancel_event, service, force=force)
     except FactoryStageError as exc:
         _mark_failed(run_id, exc.stage, exc.code, exc.message)
     except Exception as exc:  # noqa: BLE001
@@ -1042,11 +1063,21 @@ def _continue_final_qa_sync(run_id: int, project_id: int, settings: Settings) ->
     _sync_batch_after_run_settled(run_id, project_id)
 
 
-def continue_run(run_id: int, settings: Settings, service: VideoComposerService) -> FactoryRun:
+def continue_run(run_id: int, settings: Settings, service: VideoComposerService, force: bool = False) -> FactoryRun:
     """Section 17/18: resumes a paused run from QUALITY_CHECK -- Beat
     generation and asset assignment are never re-run. Whatever the user
     fixed (typically a manual asset assignment via the Beat editor) is
     picked up simply by re-reading the project's current BeatPlan.
+
+    `force=True` (real bug report, see _run_quality_and_proceed's own
+    docstring): accepts this run's current warnings and proceeds to
+    render even if the Quality Gate would otherwise re-flag the exact
+    same, still-true warning again -- without it, "Continue" on an
+    unfixed pacing/style warning can never actually get past
+    NEEDS_REVIEW, since nothing about the BeatPlan changed between
+    clicks. Ignored for the FINAL_QA branch below on purpose -- that
+    pause is "re-check the finished package," a fundamentally different
+    action from "accept this warning," not something this task extends.
 
     Task 28: a NEEDS_REVIEW caused by a *post-render* Final QA FAIL
     (failed_stage == "FINAL_QA") is a different kind of pause -- the
@@ -1076,7 +1107,7 @@ def continue_run(run_id: int, settings: Settings, service: VideoComposerService)
     factory_service.set_run_fields(run_id, status="QUALITY_CHECK")
     factory_service.start_checkpoint(run_id, "QUALITY_CHECK")
     thread = threading.Thread(
-        target=_continue_run_sync, args=(run_id, run.project_id, settings, service), daemon=True
+        target=_continue_run_sync, args=(run_id, run.project_id, settings, service, force), daemon=True
     )
     thread.start()
     return factory_service.get_run(run_id)
@@ -1847,10 +1878,10 @@ def retry_factory_run(
 
 @router.post("/factory-runs/{run_id}/continue", response_model=FactoryRunOut)
 def continue_factory_run(
-    run_id: int, settings: Settings = Depends(get_settings),
+    run_id: int, force: bool = False, settings: Settings = Depends(get_settings),
     service: VideoComposerService = Depends(get_video_composer_service),
 ) -> FactoryRun:
-    return continue_run(run_id, settings, service)
+    return continue_run(run_id, settings, service, force=force)
 
 
 @router.post("/batches/{batch_id}/factory-run", response_model=dict)

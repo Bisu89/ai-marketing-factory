@@ -457,6 +457,42 @@ class ReviewResumeTests(_FactoryTestCase):
         self.assertEqual(resumed.status, "QUEUED")
         self.assertIsNotNone(resumed.render_job_id)
 
+    def test_force_continue_proceeds_without_fixing_the_beat_plan(self):
+        """Real bug report: plain continue_run() re-runs the exact same
+        Quality Gate check, so an unfixed warning (nothing about the
+        BeatPlan changed) re-pauses the run at NEEDS_REVIEW every time --
+        an unescapable loop. force=True must proceed to render on the
+        SAME still-flawed plan instead of pausing again.
+        """
+        low_res_id = self._low_res_asset()
+        project_id = self._create_project("Force Continue Flow")
+        draft = get_project_draft(project_id)
+        plan = BeatPlan(
+            script_text=draft.script_text, project_name=draft.project_name, config=draft.config,
+            beats=[
+                Beat(
+                    id="b1", order=1, type=BeatType.BODY, narration="Real narration text.",
+                    duration=1.0, visual_hint="a totally different unrelated wording", asset_id=low_res_id,
+                )
+            ],
+        )
+        update_project_beat_plan(project_id, plan)
+
+        run = self._run_sync(project_id)
+        self.assertEqual(run.status, "NEEDS_REVIEW")
+
+        # No fix applied -- the exact same beat plan that produced
+        # NEEDS_REVIEW the first time is still in place.
+        continue_run(run.id, self.settings, self.service, force=True)
+        resumed = self._wait_for_run_settled(run.id)
+
+        self.assertEqual(resumed.status, "QUEUED")
+        self.assertIsNotNone(resumed.render_job_id)
+        # The lifetime "this run once needed a human" flag is unaffected by
+        # forcing through it -- force means "I saw it and I'm proceeding
+        # anyway," not "this never happened."
+        self.assertTrue(self._get_run(run.id).requires_human_review)
+
 
 class RetryTests(_FactoryTestCase):
     def test_asset_match_failure_retry_resumes_from_asset_stage_not_beats(self):

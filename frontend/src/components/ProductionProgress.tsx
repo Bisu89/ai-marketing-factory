@@ -86,12 +86,12 @@ export function ProductionProgress({ projectId, onRenderJobReady, onReviewBeat }
     }
   }, [run?.status, run?.failed_stage, projectId]);
 
-  async function handleContinue() {
+  async function handleContinue(force = false) {
     if (run == null) return;
     setBusy(true);
     setActionError(null);
     try {
-      setRun(await continueFactoryRun(run.id));
+      setRun(await continueFactoryRun(run.id, force));
     } catch (err) {
       setActionError(err instanceof Error ? err.message : "Could not continue production.");
     } finally {
@@ -163,7 +163,7 @@ export function ProductionProgress({ projectId, onRenderJobReady, onReviewBeat }
         )}
         {actionError && <div className="pp-alert">{actionError}</div>}
         <div className="pp-actions">
-          <button className="btn btn-primary" disabled={busy} onClick={handleContinue}>
+          <button className="btn btn-primary" disabled={busy} onClick={() => handleContinue(false)}>
             {busy ? <Loader2 size={14} className="spin" /> : null}
             Re-check Final QA
           </button>
@@ -204,9 +204,22 @@ export function ProductionProgress({ projectId, onRenderJobReady, onReviewBeat }
         )}
         {actionError && <div className="pp-alert">{actionError}</div>}
         <div className="pp-actions">
-          <button className="btn btn-primary" disabled={busy} onClick={handleContinue}>
+          <button className="btn btn-primary" disabled={busy} onClick={() => handleContinue(false)}>
             {busy ? <Loader2 size={14} className="spin" /> : null}
             Continue Production
+          </button>
+          {/* Real bug report: "Continue Production" re-runs the Quality
+              Gate from scratch, so a still-true warning (nothing about the
+              BeatPlan changed) re-pauses the run every time -- an
+              unescapable loop with no way to actually proceed short of
+              editing the beat plan. This button skips re-checking and
+              renders anyway, matching evaluate_readiness's own documented
+              (but previously unimplemented) "NEEDS_REVIEW is override-able"
+              intent -- never shown for a BLOCKED-severity result, since
+              report.issues (errors) only exist for that classification, not
+              a NEEDS_REVIEW pause like this one. */}
+          <button className="btn btn-secondary" disabled={busy} onClick={() => handleContinue(true)}>
+            Continue Anyway
           </button>
         </div>
       </div>
