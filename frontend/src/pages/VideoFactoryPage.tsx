@@ -14,6 +14,7 @@ import {
   Film,
   FolderOpen,
   Image as ImageIcon,
+  LayoutTemplate,
   Loader2,
   Music,
   Plus,
@@ -31,6 +32,7 @@ import { ProductionProgress } from "../components/ProductionProgress";
 import { ReadyToPostCard } from "../components/ReadyToPostCard";
 import { EmptyState } from "../components/EmptyState";
 import { AssetBrowserModal } from "../components/AssetBrowserModal";
+import { NewVideoModal } from "../components/NewVideoModal";
 import { assetFileUrl, getAsset } from "../api/asset";
 import { generateBeatPlan, getProject, loadBeatPlan, renderBeatPreview, saveBeatPlan, saveProjectBeatPlan } from "../api/beat";
 import { checkPlanQuality } from "../api/quality";
@@ -452,6 +454,17 @@ export function VideoFactoryPage() {
   const [projectName, setProjectName] = useState("");
   const [projectConfig, setProjectConfig] = useState<ProjectConfig>(SYSTEM_DEFAULT_PROJECT_CONFIG);
   const [templatePickerOpen, setTemplatePickerOpen] = useState(false);
+  // Real user report: this page's own "New Video" only ever starts the
+  // classic local-draft flow (TemplatePickerModal below, no real Project
+  // created until Save) -- it never had the Dashboard's "Generate Full by
+  // AI" one-click path (NewVideoModal.tsx, real POST /projects +
+  // startFactoryRun). Reusing that exact component here (rather than
+  // building a second, parallel creation flow) gives full parity; it
+  // navigates to `/video-factory?project=<id>` on success, which this
+  // page already handles via its own projectId-driven load path (getProject
+  // + ProductionProgress), whether that happens to be the page currently
+  // showing or not.
+  const [aiNewVideoOpen, setAiNewVideoOpen] = useState(false);
   const [templates, setTemplates] = useState<Template[]>([]);
   const [templatesError, setTemplatesError] = useState<string | null>(null);
   const [saveTemplateOpen, setSaveTemplateOpen] = useState(false);
@@ -1135,6 +1148,20 @@ export function VideoFactoryPage() {
         }
         actions={
           <div className="vf-header-actions">
+            {/* Real user report: after picking a Template (via the "New
+                Video" -> Choose Template flow below), nothing showed which
+                one was applied except a small note buried on Step 4 --
+                easy to miss, especially right after picking one on Step 1.
+                projectConfig.template_id is already real, persisted state
+                (see buildProjectConfigForSave/getProject) -- this just
+                surfaces it somewhere visible regardless of which step
+                you're on. */}
+            {projectConfig.template_id && (
+              <span className="vf-template-badge" title="Template applied to this project">
+                <LayoutTemplate size={13} />
+                {templateNameById[projectConfig.template_id] ?? projectConfig.template_id}
+              </span>
+            )}
             {beats.length > 0 && (
               <span className="vf-duration-badge">
                 {Math.round(totalDuration)}s &bull; {ASPECT_RATIO_LABEL}
@@ -1152,6 +1179,10 @@ export function VideoFactoryPage() {
                 New Video
               </button>
             )}
+            <button className="btn btn-secondary" onClick={() => setAiNewVideoOpen(true)}>
+              <Sparkles size={14} />
+              Generate Full by AI
+            </button>
             {beats.length > 0 && canSubmit && (
               <button className="btn btn-primary" onClick={handleQuickRender} disabled={submitting || qualityChecking}>
                 {submitting || qualityChecking ? <Loader2 size={14} className="spin" /> : <Zap size={14} />}
@@ -2120,6 +2151,8 @@ export function VideoFactoryPage() {
           onClose={() => setTemplatePickerOpen(false)}
         />
       )}
+
+      {aiNewVideoOpen && <NewVideoModal onClose={() => setAiNewVideoOpen(false)} />}
 
       {saveTemplateOpen && (
         <div className="vf-modal-backdrop" onClick={() => setSaveTemplateOpen(false)}>
