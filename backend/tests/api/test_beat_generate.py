@@ -13,6 +13,7 @@ from pydantic import ValidationError as PydanticValidationError
 
 from app.api.v1.endpoints.beat_generate import (
     BeatGenerateIn,
+    _merge_short_beats,
     generate_beat_plan,
 )
 from app.core.exceptions import ExternalServiceError, ValidationError
@@ -142,6 +143,89 @@ class GenerateBeatPlanTests(unittest.TestCase):
             generate_beat_plan(FAKE_CREDENTIALS, "A story script.")
 
         self.assertEqual(mock_call.call_count, 2)
+
+
+class MergeShortBeatsTests(unittest.TestCase):
+    """Real user report: two adjacent short beats (3.1s + 2.0s) each got
+    their own separately-billed AI-generated image for no visual benefit.
+    """
+
+    def _beat(self, narration: str, duration: float, visual_hint: str = "a shot", type_: str = "BODY") -> dict:
+        return {"type": type_, "narration": narration, "duration": duration, "visual_hint": visual_hint}
+
+    def test_two_adjacent_short_beats_merge_into_one(self):
+        beats = [
+            self._beat("Opening line.", 4.0),
+            self._beat("Middle setup.", 4.0),
+            self._beat("A short bit.", 3.1),
+            self._beat("Another short bit.", 2.0),
+            self._beat("Closing line.", 4.5),
+        ]
+
+        merged = _merge_short_beats(beats)
+
+        self.assertEqual(len(merged), 4)
+        self.assertEqual(merged[2]["narration"], "A short bit. Another short bit.")
+        self.assertAlmostEqual(merged[2]["duration"], 5.1)
+
+    def test_no_merge_when_every_beat_is_already_long_enough(self):
+        beats = [self._beat(f"Line {i}.", 4.0) for i in range(5)]
+        merged = _merge_short_beats(beats)
+        self.assertEqual(merged, beats)
+
+    def test_short_opening_beat_is_never_merged_forward(self):
+        beats = [
+            self._beat("Hook!", 1.5, type_="HOOK"),
+            self._beat("Setup line.", 4.0),
+            self._beat("Reveal line.", 4.0),
+            self._beat("Ending line.", 4.0),
+        ]
+        merged = _merge_short_beats(beats)
+        # Nothing precedes the first beat to fold it into -- left as-is.
+        self.assertEqual(len(merged), 4)
+        self.assertEqual(merged[0]["narration"], "Hook!")
+
+    def test_never_merges_below_the_minimum_total_beat_count(self):
+        # 4 beats, all short enough to want merging -- but collapsing all
+        # the way down to 1-2 beats is worse than leaving them alone.
+        beats = [self._beat(f"Bit {i}.", 1.0) for i in range(4)]
+        merged = _merge_short_beats(beats)
+        self.assertEqual(merged, beats)
+
+    def test_does_not_merge_past_the_max_combined_duration(self):
+        beats = [
+            self._beat("Long opener.", 4.0),
+            self._beat("Long middle.", 4.0),
+            self._beat("Already long enough on its own.", 8.0),
+            self._beat("A short trailing bit.", 2.0),
+            self._beat("Closer.", 4.0),
+        ]
+        # 8.0 + 2.0 = 10.0 exceeds the max merged duration -- left separate.
+        merged = _merge_short_beats(beats)
+        self.assertEqual(len(merged), 5)
+
+    @patch("app.api.v1.endpoints.beat_generate.call_structured")
+    def test_generate_beat_plan_merges_the_ai_response_end_to_end(self, mock_call):
+        raw = {
+            "beats": [
+                {"type": "HOOK", "narration": "She thought he forgot.", "duration": 4.0, "visual_hint": "woman waiting alone"},
+                {"type": "SETUP", "narration": "She waited all evening.", "duration": 4.0, "visual_hint": "clock ticking"},
+                {"type": "REVEAL", "narration": "A short bit.", "duration": 3.1, "visual_hint": "door opening"},
+                {"type": "REACTION", "narration": "Another short bit.", "duration": 2.0, "visual_hint": "man in doorway"},
+                {"type": "ENDING", "narration": "She started crying.", "duration": 4.5, "visual_hint": "woman crying"},
+            ]
+        }
+        mock_call.return_value = _fake_result(json.dumps(raw))
+
+        plan = generate_beat_plan(FAKE_CREDENTIALS, "A story script.")
+
+        self.assertEqual(len(plan.beats), 4)
+        self.assertEqual(plan.beats[2].narration, "A short bit. Another short bit.")
+        self.assertAlmostEqual(plan.beats[2].duration, 5.1)
+        # id/order stay purely mechanical post-merge, per _beats_from_raw's
+        # own contract -- never inherited from the pre-merge index.
+        self.assertEqual(plan.beats[2].id, "beat_03")
+        self.assertEqual(plan.beats[3].id, "beat_04")
 
 
 if __name__ == "__main__":
