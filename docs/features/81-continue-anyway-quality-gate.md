@@ -1,6 +1,6 @@
 # 81. "Continue Anyway" for Warning-Only NEEDS_REVIEW
 
-**Commit:** `pending`
+**Commit:** `8a24d32`
 
 Real user report: a project paused at NEEDS_REVIEW with a single
 `PACING_OUTLIER` warning ("Beat 05 (2.0s) is significantly different
