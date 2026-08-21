@@ -1,6 +1,6 @@
 # 87. Add Support for Importing Audio (Music) Assets
 
-**Commit:** (pending)
+**Commit:** `92edca0`
 
 Real user report: no way to import a music track for background music at
 all. Asset already treats `type="audio"` as first-class (narration/audio
