@@ -1,6 +1,6 @@
 # 82. Merge Short Adjacent Beats (Reduce AI Image Cost)
 
-**Commit:** `pending`
+**Commit:** `fdfd7de`
 
 Real user report: AI-generated Beats came out uneven -- e.g. Beat 4 =
 3.1s, Beat 5 = 2.0s -- adjacent short beats instead of one longer one.
