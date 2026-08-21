@@ -1,6 +1,6 @@
 # 93. Fix: Completed AI Render Didn't Show Until Manual Refresh
 
-**Commit:** (pending)
+**Commit:** `b38e3bb`
 
 Real user report: after "Generate Full by AI" finished rendering, the
 page didn't show it -- only F5 revealed the completed video.
