@@ -1,6 +1,6 @@
 # 89. Outro Card: Typed CTA + Music Swell After Narration Ends
 
-**Commit:** (pending)
+**Commit:** `6f8f63f`
 
 Real user report: videos cut off the instant narration finished, with no
 room for a closing CTA. Requested, confirmed via clarifying questions: a
