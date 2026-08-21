@@ -17,6 +17,15 @@ import "./NewVideoModal.css";
 const IMAGE_COST_USD_ESTIMATE = 0.006;
 const TYPICAL_BEAT_COUNT_RANGE = [6, 8] as const;
 
+// Real user report: Template and Content language reset to the hardcoded
+// default every time this modal reopens, forcing a re-pick on every single
+// video even though most users pick the same one repeatedly. Remembered
+// client-side (this modal has no per-user account/profile concept to
+// persist to server-side) -- read once on open, written back whenever
+// either changes.
+const LAST_TEMPLATE_ID_KEY = "nvm:lastTemplateId";
+const LAST_CONTENT_LANGUAGE_KEY = "nvm:lastContentLanguage";
+
 interface NewVideoModalProps {
   onClose: () => void;
 }
@@ -43,10 +52,15 @@ export function NewVideoModal({ onClose }: NewVideoModalProps) {
   const [templateId, setTemplateId] = useState("");
   // Real user report: this modal had no language control at all, so every
   // Template's own hardcoded "en" was the only possible outcome -- see
-  // docs/features/79-new-video-modal-language.md. Default "en" matches
-  // every built-in Template's own default, so leaving this untouched
-  // reproduces the exact pre-existing behavior.
-  const [contentLanguage, setContentLanguage] = useState<ContentLanguage>("en");
+  // docs/features/79-new-video-modal-language.md. Falls back to "en"
+  // (every built-in Template's own default) only when nothing was
+  // remembered yet from a previous open.
+  const [contentLanguage, setContentLanguage] = useState<ContentLanguage>(() => {
+    const remembered = localStorage.getItem(LAST_CONTENT_LANGUAGE_KEY);
+    return remembered && (CONTENT_LANGUAGES as readonly string[]).includes(remembered)
+      ? (remembered as ContentLanguage)
+      : "en";
+  });
   const [name, setName] = useState("");
   // Task 21 (see docs/features/47-content-brief-script-engine.md) -- an
   // Idea and a Script are alternative inputs, not both required. Entering a
@@ -72,7 +86,11 @@ export function NewVideoModal({ onClose }: NewVideoModalProps) {
       try {
         const list = await listTemplates();
         setTemplates(list);
-        if (list.length > 0) setTemplateId(list[0].id);
+        if (list.length > 0) {
+          const remembered = localStorage.getItem(LAST_TEMPLATE_ID_KEY);
+          const stillExists = remembered && list.some((t) => t.id === remembered);
+          setTemplateId(stillExists ? remembered! : list[0].id);
+        }
       } catch (err) {
         setTemplatesError(err instanceof Error ? err.message : "Could not load templates.");
       }
@@ -81,6 +99,14 @@ export function NewVideoModal({ onClose }: NewVideoModalProps) {
       .then((s) => setHasOpenAiKey(s.has_openai_key))
       .catch(() => setHasOpenAiKey(false));
   }, []);
+
+  useEffect(() => {
+    if (templateId) localStorage.setItem(LAST_TEMPLATE_ID_KEY, templateId);
+  }, [templateId]);
+
+  useEffect(() => {
+    localStorage.setItem(LAST_CONTENT_LANGUAGE_KEY, contentLanguage);
+  }, [contentLanguage]);
 
   const hasContent = script.trim().length > 0 || idea.trim().length > 0;
   const hasStory = script.trim().length > 0;
