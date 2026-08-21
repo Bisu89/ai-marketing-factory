@@ -56,6 +56,9 @@ export interface CreateProjectRequest {
   // default behavior) -- a real value overrides the Template's own
   // language, same precedence VideoFactoryPage.tsx's Step 1 dropdown uses.
   content_language?: string | null;
+  // Outro Card (docs/features/89-outro-card.md) -- blank/omitted means no
+  // outro, matching OutroProjectConfig's own default.
+  outro_text?: string | null;
 }
 
 export function createProject(request: CreateProjectRequest): Promise<Project> {

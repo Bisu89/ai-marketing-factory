@@ -55,6 +55,13 @@ export function NewVideoModal({ onClose }: NewVideoModalProps) {
   // script and vice versa -- exactly one of the two is ever sent.
   const [idea, setIdea] = useState("");
   const [script, setScript] = useState("");
+  // Outro Card (docs/features/89-outro-card.md) -- real user follow-up:
+  // "what about Generate Full by AI?" That flow creates the Project and
+  // starts the FactoryRun in one call, before there's ever a BeatPlan to
+  // attach a Step-4-style edit to, so this has to be settable here, at
+  // creation time, or not at all. Blank means no outro (unchanged
+  // behavior for the auto-produce/classic paths below).
+  const [outroText, setOutroText] = useState("");
   const [autoProduce, setAutoProduce] = useState(true);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -92,6 +99,7 @@ export function NewVideoModal({ onClose }: NewVideoModalProps) {
         idea: script.trim() ? null : idea.trim() ? idea : null,
         template_id: templateId,
         content_language: contentLanguage,
+        outro_text: outroText.trim() || null,
       });
       if (autoProduce) {
         await startFactoryRun(project.id);
@@ -118,7 +126,7 @@ export function NewVideoModal({ onClose }: NewVideoModalProps) {
     try {
       const project = await createProject({
         name, script_text: script, idea: null, template_id: templateId, visual_generation_mode: "ai_generated",
-        content_language: contentLanguage,
+        content_language: contentLanguage, outro_text: outroText.trim() || null,
       });
       await startFactoryRun(project.id);
       onClose();
@@ -205,6 +213,22 @@ export function NewVideoModal({ onClose }: NewVideoModalProps) {
             onChange={(e) => setScript(e.target.value)}
           />
         </label>
+
+        <label className="nvm-field">
+          <span>Ending text (outro, optional)</span>
+          <textarea
+            rows={2}
+            maxLength={80}
+            placeholder="e.g. Theo doi de xem phan 2 nhe!"
+            value={outroText}
+            onChange={(e) => setOutroText(e.target.value)}
+          />
+        </label>
+        <p className="nvm-hint">
+          {outroText.trim()
+            ? "Appended after the video: black background, this text typed on screen, background music swelling to full volume. Never taken from the script."
+            : "Optional -- leave blank for no outro. Fine-tune duration later on the project's own Audio step."}
+        </p>
 
         <label className="nvm-checkbox">
           <input type="checkbox" checked={autoProduce} onChange={(e) => setAutoProduce(e.target.checked)} />

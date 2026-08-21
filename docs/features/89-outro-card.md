@@ -104,10 +104,22 @@ unaffected. `text` blank is treated as not-configured even if
 
 Added to `VideoFactoryPage.tsx`'s Step 4 (Audio), next to the existing
 Background music controls -- one universal touchpoint that works for
-every project regardless of how it was created (not just "Generate Full
-by AI"), since every project eventually saves its config through this
-page. `enabled` is derived from the text field being non-blank (no
-separate checkbox to fall out of sync).
+every project regardless of how it was created, since every project
+eventually saves its config through this page. `enabled` is derived
+from the text field being non-blank (no separate checkbox to fall out
+of sync).
+
+### Follow-up: "what about Generate Full by AI?"
+
+That flow (`NewVideoModal.tsx`) creates the Project and starts the
+FactoryRun in one call, before there's ever a BeatPlan to attach a
+Step-4-style edit to -- unlike every other flow, there's no "create now,
+tune Step 4 later" opportunity before the render actually runs. Added a
+new optional `outro_text` field to `CreateProjectRequest`
+(`beat/router.py`, same "creation-time override" precedent
+`content_language`/`visual_generation_mode` already established) plus a
+matching "Ending text (outro, optional)" field in the modal itself, so
+this flow doesn't require editing after the fact to get an outro.
 
 ## Verification
 
@@ -133,3 +145,10 @@ fixed it, restarted the backend, retried -- completed with QA 100/100,
 real final duration 45.78s (39.74s narration + 6.04s outro), and a real
 extracted frame from the actual output file confirms the black-background
 typed CTA plays correctly at the end.
+
+The `CreateProjectRequest.outro_text` follow-up was verified directly
+too: a real Playwright run against the running app opened
+`NewVideoModal`, confirmed the new field, filled it in, submitted (with
+"Produce automatically" off to avoid AI spend), and a fresh `GET
+/projects/{id}` on the real created project confirmed
+`config.outro == {enabled: true, text: "...", duration_sec: 6.0}`.

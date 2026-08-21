@@ -17,7 +17,8 @@ only app.core (Settings/exceptions), same as every other module's router.
 from pathlib import Path
 
 from fastapi import APIRouter, Depends
-from pydantic import BaseModel, ValidationError as PydanticValidationError
+from pydantic import BaseModel, field_validator
+from pydantic import ValidationError as PydanticValidationError
 
 from app.core.config import Settings, get_settings
 from app.core.exceptions import NotFoundError, ValidationError
@@ -32,6 +33,7 @@ from app.modules.beat.schemas import (
     BUILTIN_TEMPLATE_IDS,
     BUILTIN_TEMPLATES,
     CONTENT_LANGUAGES,
+    MAX_OUTRO_TEXT_LENGTH,
     VISUAL_GENERATION_MODES,
     BeatPlan,
     ProjectConfig,
@@ -119,6 +121,22 @@ class CreateProjectRequest(BaseModel):
     # (see buildProjectConfigForSave -- the live dropdown always wins over
     # the template's snapshot value).
     content_language: str | None = None
+    # Real user follow-up to the Outro Card feature (docs/features/
+    # 89-outro-card.md): "what about Generate Full by AI?" -- that flow
+    # creates the Project and starts the FactoryRun in one call, before
+    # there's ever a BeatPlan to attach a Step-4-style edit to (same
+    # reasoning as visual_generation_mode above), so the outro has to be
+    # settable here, at creation time, or not at all for this flow. None
+    # (the default) means no outro, matching OutroProjectConfig's own
+    # default -- unchanged behavior for every existing caller.
+    outro_text: str | None = None
+
+    @field_validator("outro_text")
+    @classmethod
+    def _outro_text_within_length(cls, value: str | None) -> str | None:
+        if value is not None and len(value) > MAX_OUTRO_TEXT_LENGTH:
+            raise ValueError(f"outro_text must be at most {MAX_OUTRO_TEXT_LENGTH} characters, got {len(value)}")
+        return value
 
 
 def _resolve_template_config(template_id: str, settings: Settings) -> ProjectConfig:
@@ -172,6 +190,10 @@ def create_project_endpoint(payload: CreateProjectRequest, settings: Settings = 
                 "language": payload.content_language,
                 "provider": "edge_tts" if payload.content_language != "en" else config.voice.provider,
             }),
+        })
+    if payload.outro_text is not None and payload.outro_text.strip():
+        config = config.model_copy(update={
+            "outro": config.outro.model_copy(update={"enabled": True, "text": payload.outro_text.strip()}),
         })
     project_id = create_project(payload.name, script_text, config, idea=idea)
     return get_project_draft(project_id)
