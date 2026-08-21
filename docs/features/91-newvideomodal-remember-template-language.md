@@ -1,6 +1,6 @@
 # 91. "Generate Full by AI" Remembers Template + Content Language
 
-**Commit:** (pending)
+**Commit:** `c10c133`
 
 Real user report: Template and Content language reset to the hardcoded
 default (first template in the list, English) every time `NewVideoModal`
