@@ -1,6 +1,6 @@
 # 96. Thumbnail Headline: Shrink the Oversized Black Band
 
-**Commit:** (pending)
+**Commit:** `256a024`
 
 Real user report: the auto-generated thumbnail's headline looked cheap --
 big text sitting on a black band that covered too much of the frame
