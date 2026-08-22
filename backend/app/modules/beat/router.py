@@ -130,6 +130,13 @@ class CreateProjectRequest(BaseModel):
     # (the default) means no outro, matching OutroProjectConfig's own
     # default -- unchanged behavior for every existing caller.
     outro_text: str | None = None
+    # Real user report: the deterministic title/description/thumbnail text
+    # felt bland (see docs/features -- Package AI Metadata). This flow
+    # creates the Project (and, for "Generate Full by AI", starts the
+    # FactoryRun) in one call, same reasoning as outro_text above -- set
+    # once here or not at all. False (the default) is unchanged behavior
+    # for every existing caller of this endpoint.
+    ai_metadata_enabled: bool = False
 
     @field_validator("outro_text")
     @classmethod
@@ -194,6 +201,10 @@ def create_project_endpoint(payload: CreateProjectRequest, settings: Settings = 
     if payload.outro_text is not None and payload.outro_text.strip():
         config = config.model_copy(update={
             "outro": config.outro.model_copy(update={"enabled": True, "text": payload.outro_text.strip()}),
+        })
+    if payload.ai_metadata_enabled:
+        config = config.model_copy(update={
+            "package": config.package.model_copy(update={"ai_metadata_enabled": True}),
         })
     project_id = create_project(payload.name, script_text, config, idea=idea)
     return get_project_draft(project_id)

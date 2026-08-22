@@ -585,6 +585,12 @@ class PackageProjectConfig(BaseModel):
     thumbnail_candidate_count: int = DEFAULT_THUMBNAIL_CANDIDATE_COUNT
     max_hashtags: int = DEFAULT_MAX_HASHTAGS
     platform_profile: str = "general"
+    # Real user report: the deterministic title/description (a truncated
+    # core_message) felt bland, and the thumbnail always echoed the exact
+    # same text as the title. Opt-in and off by default -- unlike every
+    # other Package-stage artifact, this is a real, billed AI call (see
+    # package_generate.py's own _generate_ai_metadata).
+    ai_metadata_enabled: bool = False
 
     @field_validator("thumbnail_candidate_count")
     @classmethod

@@ -59,6 +59,10 @@ export interface CreateProjectRequest {
   // Outro Card (docs/features/89-outro-card.md) -- blank/omitted means no
   // outro, matching OutroProjectConfig's own default.
   outro_text?: string | null;
+  // Package AI Metadata -- real user report that the deterministic
+  // title/description/thumbnail text felt bland. Off by default (a real,
+  // billed AI call, unlike everything else this endpoint sets).
+  ai_metadata_enabled?: boolean;
 }
 
 export function createProject(request: CreateProjectRequest): Promise<Project> {

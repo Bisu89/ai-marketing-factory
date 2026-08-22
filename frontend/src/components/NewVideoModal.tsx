@@ -76,6 +76,14 @@ export function NewVideoModal({ onClose }: NewVideoModalProps) {
   // creation time, or not at all. Blank means no outro (unchanged
   // behavior for the auto-produce/classic paths below).
   const [outroText, setOutroText] = useState("");
+  // Package AI Metadata -- real user report that the deterministic
+  // title/description/thumbnail text felt bland (bland core_message
+  // truncation, thumbnail always echoing the exact same text as the
+  // title). Off by default -- a real, billed AI call, unlike everything
+  // else this modal sets. Not persisted across opens (unlike Template/
+  // Content language) -- same reasoning as autoProduce not being
+  // persisted either.
+  const [aiMetadataEnabled, setAiMetadataEnabled] = useState(false);
   const [autoProduce, setAutoProduce] = useState(true);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -126,6 +134,7 @@ export function NewVideoModal({ onClose }: NewVideoModalProps) {
         template_id: templateId,
         content_language: contentLanguage,
         outro_text: outroText.trim() || null,
+        ai_metadata_enabled: aiMetadataEnabled,
       });
       if (autoProduce) {
         await startFactoryRun(project.id);
@@ -153,6 +162,7 @@ export function NewVideoModal({ onClose }: NewVideoModalProps) {
       const project = await createProject({
         name, script_text: script, idea: null, template_id: templateId, visual_generation_mode: "ai_generated",
         content_language: contentLanguage, outro_text: outroText.trim() || null,
+        ai_metadata_enabled: aiMetadataEnabled,
       });
       await startFactoryRun(project.id);
       onClose();
@@ -267,6 +277,15 @@ export function NewVideoModal({ onClose }: NewVideoModalProps) {
         </p>
 
         <div className="nvm-ai-generate">
+          <label className="nvm-checkbox">
+            <input type="checkbox" checked={aiMetadataEnabled} onChange={(e) => setAiMetadataEnabled(e.target.checked)} />
+            <span>AI-write title, description &amp; thumbnail text</span>
+          </label>
+          <p className="nvm-hint">
+            Rewrites the title/description/thumbnail text for a punchier hook instead of the default (a plain
+            truncated summary). A small extra AI cost -- roughly $0.01 or less per video.
+          </p>
+
           <button
             className="btn btn-primary nvm-ai-generate-btn"
             onClick={handleGenerateFullByAI}

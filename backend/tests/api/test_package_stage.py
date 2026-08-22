@@ -33,11 +33,20 @@ from app.api.v1.endpoints.package_generate import (
     PackageOverridesIn,
 )
 from app.api.v1.endpoints.voice_generate import generate_project_narration
+from app.modules.ai.llm_client import AIProviderTimeoutError, LLMCallResult
 from app.modules.beat.project_service import get_project_draft, update_project_beat_plan
 from app.modules.beat.schemas import Beat, BeatPlan, BeatType, ContentBrief, ProjectConfig
 from app.modules.video_composer.models import VideoComposeJob
 from tests.api.test_batch_render import FFMPEG_AVAILABLE
 from tests.api.test_factory_pipeline import _FactoryTestCase
+
+
+def _fake_ai_metadata_result(title: str, description: str, thumbnail_text: str, refused: bool = False) -> LLMCallResult:
+    text = json.dumps({"title": title, "description": description, "thumbnail_text": thumbnail_text})
+    return LLMCallResult(
+        text=text, refused=refused, provider="anthropic", model="claude-sonnet-5",
+        input_tokens=100, output_tokens=50, latency_ms=10,
+    )
 
 
 def _make_textured_image(path: Path, seed: int, size: tuple[int, int] = (135, 240)) -> Path:
@@ -446,6 +455,89 @@ class BatchTests(_PackageStageTestCase):
             run = self._render_and_wait(project_id)
             self.assertEqual(run.status, "COMPLETED")
             self.assertTrue(package_is_valid(project_id, self.settings))
+
+
+class AIMetadataTests(_PackageStageTestCase):
+    """Real user follow-up to Task 27 -- opt-in AI-written title/description/
+    thumbnail text. The AI provider client is always mocked here (same
+    convention as tests/api/test_beat_generate.py's own docstring) -- these
+    tests never call a real AI provider. _FactoryTestCase's own self.settings
+    already carries a fake anthropic_api_key/ai_provider, so resolve_ai_
+    credentials() resolves real-looking (fake) credentials without any
+    extra patching.
+    """
+
+    def _ai_config(self) -> ProjectConfig:
+        config = ProjectConfig()
+        return config.model_copy(update={"package": config.package.model_copy(update={"ai_metadata_enabled": True})})
+
+    @patch("app.api.v1.endpoints.package_generate.call_structured")
+    def test_ai_metadata_enabled_uses_ai_title_and_description(self, mock_call):
+        mock_call.return_value = _fake_ai_metadata_result(
+            "AI Written Title", "AI written description. #tag1 #tag2", "AI THUMB TEXT",
+        )
+        project_id = self._full_pipeline_project(
+            "AI Metadata Enabled", ["Some narration text."], content_brief=self._content_brief(), config=self._ai_config(),
+        )
+        run = self._render_and_wait(project_id)
+        self.assertEqual(run.status, "COMPLETED")
+
+        pkg = get_project_package(project_id, self.settings)
+        self.assertEqual(pkg.title, "AI Written Title")
+        self.assertIn("AI written description", pkg.description)
+        mock_call.assert_called_once()
+
+    @patch("app.api.v1.endpoints.package_generate.call_structured")
+    def test_ai_call_failure_falls_back_to_deterministic_metadata(self, mock_call):
+        mock_call.side_effect = AIProviderTimeoutError("simulated timeout")
+        project_id = self._full_pipeline_project(
+            "AI Metadata Failure", ["Some narration text."], content_brief=self._content_brief(), config=self._ai_config(),
+        )
+        run = self._render_and_wait(project_id)
+        self.assertEqual(run.status, "COMPLETED")  # soft failure -- must not fail the whole Package stage
+
+        pkg = get_project_package(project_id, self.settings)
+        self.assertTrue(pkg.is_complete)
+        self.assertEqual(pkg.title, self._content_brief().core_message)
+
+    @patch("app.api.v1.endpoints.package_generate.call_structured")
+    def test_manual_title_override_still_wins_over_ai_metadata(self, mock_call):
+        mock_call.return_value = _fake_ai_metadata_result("AI Title", "AI description text here.", "AI THUMB")
+        project_id = self._full_pipeline_project(
+            "AI Metadata Manual Override", ["Some narration text."], content_brief=self._content_brief(), config=self._ai_config(),
+        )
+        set_package_overrides(project_id, PackageOverridesIn(title="Human Picked Title"))
+        run = self._render_and_wait(project_id)
+        self.assertEqual(run.status, "COMPLETED")
+
+        pkg = get_project_package(project_id, self.settings)
+        self.assertEqual(pkg.title, "Human Picked Title")
+
+    @patch("app.api.v1.endpoints.package_generate.call_structured")
+    def test_unchanged_script_does_not_call_ai_again_on_regenerate(self, mock_call):
+        mock_call.return_value = _fake_ai_metadata_result("AI Title", "AI description text here.", "AI THUMB")
+        project_id = self._full_pipeline_project(
+            "AI Metadata Cache Reuse", ["Some narration text."], content_brief=self._content_brief(), config=self._ai_config(),
+        )
+        run = self._render_and_wait(project_id)
+        self.assertEqual(run.status, "COMPLETED")
+        self.assertEqual(mock_call.call_count, 1)
+
+        # An explicit regenerate-metadata bypasses metadata.json's own
+        # cache, but must still reuse the separate, script-content-keyed
+        # AI-metadata cache rather than billing a second AI call for text
+        # that hasn't changed.
+        regenerate_metadata(project_id, self.settings)
+        self.assertEqual(mock_call.call_count, 1)
+
+    @patch("app.api.v1.endpoints.package_generate.call_structured")
+    def test_ai_metadata_disabled_by_default_never_calls_the_provider(self, mock_call):
+        project_id = self._full_pipeline_project(
+            "AI Metadata Disabled", ["Some narration text."], content_brief=self._content_brief(),
+        )
+        run = self._render_and_wait(project_id)
+        self.assertEqual(run.status, "COMPLETED")
+        mock_call.assert_not_called()
 
 
 if __name__ == "__main__":

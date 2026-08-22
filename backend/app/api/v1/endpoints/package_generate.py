@@ -6,9 +6,13 @@ Same composition-root shape as caption_generate.py/audio_generate.py.
 
 final.mp4 (Task 26's own Final Composer output) is the one and only
 source for the thumbnail (section 4/5 -- no AI image generation, ever);
-title/description/hashtags are derived entirely from content this Factory
-already produced (ContentBrief, the HOOK beat's own narration) or an
-explicit manual override -- never a new AI/LLM call (section 22/25).
+title/description/hashtags are, by default, derived entirely from content
+this Factory already produced (ContentBrief, the HOOK beat's own
+narration) or an explicit manual override -- never a new AI/LLM call
+(section 22/25). Real user follow-up: PackageProjectConfig.ai_metadata_enabled
+is an opt-in exception to that -- a real, billed LLM call rewriting
+title/description/thumbnail_text for a punchier result (see
+_generate_ai_metadata below); manual overrides still win over it.
 
 Produces two standalone, user-facing artifacts next to the project's own
 final.mp4 (`thumbnail.jpg`, `metadata.json`) plus a private cache sidecar
@@ -19,15 +23,17 @@ atomic tmp-then-replace write" convention exactly.
 import hashlib
 import json
 import logging
-from dataclasses import asdict
+from dataclasses import asdict, dataclass
 from pathlib import Path
 
 from fastapi import APIRouter, Depends
 from pydantic import BaseModel
 
+from app.core.concurrency import ai_generation_semaphore
 from app.core.config import Settings, get_settings
 from app.core.render_profile import get_render_profile
 from app.db.session import SessionLocal
+from app.modules.ai.llm_client import AIProviderError, AIProviderTimeoutError, call_structured, resolve_ai_credentials
 from app.modules.beat.project_service import _UNSET, get_project_draft, set_project_package_overrides
 from app.modules.beat.schemas import Beat, BeatType, PackageProjectConfig, ProjectOut
 from app.modules.metadata.schemas import ContentInputs, MetadataError, PackageMetadata
@@ -47,6 +53,7 @@ logger = logging.getLogger(__name__)
 router = APIRouter()
 
 METADATA_ENGINE_VERSION = "post-package-v1"
+AI_METADATA_ENGINE_VERSION = "package-ai-metadata-v1"
 
 _THUMBNAIL_FILENAME = "thumbnail.jpg"
 _METADATA_FILENAME = "metadata.json"
@@ -152,6 +159,152 @@ def build_content_inputs(draft: ProjectOut) -> ContentInputs:
     )
 
 
+# -- AI Metadata (opt-in) -- real user report ------------------------------
+#
+# Real user report: the deterministic title/description (a truncated
+# core_message) and the thumbnail's echoed-title headline all felt bland.
+# Opt-in via PackageProjectConfig.ai_metadata_enabled -- unlike every other
+# artifact this stage produces, this is a real, billed AI call, so it must
+# never run silently by default and must never be repeated for unchanged
+# content (see _resolve_ai_metadata's own cache-fingerprint reasoning).
+
+
+@dataclass
+class AIMetadata:
+    title: str
+    description: str
+    thumbnail_text: str
+
+
+_AI_METADATA_SCHEMA = {
+    "type": "json_schema",
+    "schema": {
+        "type": "object",
+        "properties": {
+            "title": {"type": "string"},
+            "description": {"type": "string"},
+            "thumbnail_text": {"type": "string"},
+        },
+        "required": ["title", "description", "thumbnail_text"],
+        "additionalProperties": False,
+    },
+}
+
+# Tuned via real, direct A/B calls against this app's own live project
+# scripts (not a first draft) -- the user asked for a more "giat gan"
+# (sensational/clickbait) tone, then for title/description to be shorter;
+# both rounds of feedback are baked into these instructions directly.
+_AI_METADATA_SYSTEM_PROMPT = (
+    "You are a viral short-form video copywriter for a Vietnamese storytelling channel about "
+    "relationships and emotional growth. Your style is SENSATIONAL and CLICKBAIT-driven (giat gan) -- "
+    "the kind that stops someone mid-scroll. Use techniques like: a shocking reveal teased but not "
+    "given away, a direct accusatory or confessional voice, numbers/timeframes, an unresolved "
+    "question, or a twist implied. Still must be earned by the actual script -- never invent plot "
+    "details it doesn't support.\n\n"
+    "BE RUTHLESSLY SHORT. Every extra word loses attention -- cut anything not essential to the hook.\n\n"
+    "Given the full narration script below, write:\n"
+    "- title: max 40 characters (hard limit), in the SAME language as the script. One sharp hook -- "
+    "a confession, a turning point, or a question. No sub-clauses, no dashes with extra clarification.\n"
+    "- description: max 120 characters (hard limit), ONE punchy sentence amplifying the emotional "
+    "stakes, in the SAME language as the script, then 3 relevant hashtags on the same or next line.\n"
+    "- thumbnail_text: max 5 words / 40 characters, ALL CAPS, the single most shocking/emotional line "
+    "possible for a thumbnail, in the SAME language as the script -- must NOT just copy the title "
+    "verbatim.\n\nReturn structured JSON only."
+)
+
+_AI_METADATA_MAX_TOKENS = 400
+
+
+def _generate_ai_metadata(script_text: str, settings: Settings) -> AIMetadata | None:
+    """Never raises -- a billed AI call going wrong (no credentials
+    configured, timeout, provider error, safety refusal, malformed JSON)
+    must fall back to the deterministic title/description/headline, not
+    hard-fail the whole Package stage (same "soft failure" precedent as
+    select_thumbnail_frame's own candidate-rejection fallback).
+    """
+    credentials = resolve_ai_credentials(settings)
+    if credentials is None or not script_text.strip():
+        return None
+    try:
+        with ai_generation_semaphore:
+            result = call_structured(
+                credentials, system=_AI_METADATA_SYSTEM_PROMPT, user_message=script_text.strip(),
+                output_schema=_AI_METADATA_SCHEMA, max_tokens=_AI_METADATA_MAX_TOKENS,
+                schema_name="package_ai_metadata",
+            )
+    except (AIProviderTimeoutError, AIProviderError) as exc:
+        logger.warning("Package AI metadata call failed (%s): %s", credentials.provider, exc)
+        return None
+    if result.refused or not result.text:
+        return None
+    try:
+        parsed = json.loads(result.text)
+        title = str(parsed["title"]).strip()
+        description = str(parsed["description"]).strip()
+        thumbnail_text = str(parsed["thumbnail_text"]).strip()
+    except (json.JSONDecodeError, KeyError, TypeError) as exc:
+        logger.warning("Package AI metadata call returned malformed JSON: %s", exc)
+        return None
+    if not title or not description or not thumbnail_text:
+        return None
+    return AIMetadata(title=title, description=description, thumbnail_text=thumbnail_text)
+
+
+def _ai_metadata_fingerprint(script_text: str) -> str:
+    return hashlib.sha256("|".join([script_text or "", AI_METADATA_ENGINE_VERSION]).encode("utf-8")).hexdigest()
+
+
+def _resolve_ai_metadata(job: VideoComposeJob, draft: ProjectOut, settings: Settings) -> tuple[AIMetadata | None, str | None]:
+    """Reuses a cached result keyed on the project's own script text so an
+    already-billed call is never repeated for unchanged content -- only a
+    real script edit, a fresh opt-in, or an explicit regenerate call with
+    no valid cache triggers a new one. A failed call is never cached (so
+    it retries next time rather than sticking with "no AI text" forever).
+    Returns (ai_metadata_or_None, fingerprint_to_persist_or_None).
+    """
+    if not draft.config.package.ai_metadata_enabled:
+        return None, None
+    script_text = draft.script_text or ""
+    fingerprint = _ai_metadata_fingerprint(script_text)
+    cache = _load_cache(job) or {}
+    if cache.get("ai_metadata_fingerprint") == fingerprint and cache.get("ai_metadata"):
+        return AIMetadata(**cache["ai_metadata"]), fingerprint
+    ai_metadata = _generate_ai_metadata(script_text, settings)
+    if ai_metadata is None:
+        return None, None
+    return ai_metadata, fingerprint
+
+
+def _resolve_title_text(inputs: ContentInputs, manual_title: str | None, ai_title: str | None, max_chars: int) -> str:
+    """Priority: manual (section 48) > AI-opt-in > deterministic template.
+    AI text that fails validation (too long/illegal chars) silently falls
+    through to the deterministic tier rather than raising -- a billed AI
+    response quirk must never be the reason this stage hard-fails.
+    """
+    if manual_title is not None and manual_title.strip():
+        return derive_title(inputs, manual_title, max_chars)
+    if ai_title:
+        try:
+            return derive_title(inputs, ai_title, max_chars)
+        except MetadataError:
+            pass
+    return derive_title(inputs, None, max_chars)
+
+
+def _resolve_description_text(
+    inputs: ContentInputs, manual_description: str | None, ai_description: str | None,
+    hashtags: list[str], *, cta_enabled: bool, max_chars: int,
+) -> str:
+    if manual_description is not None and manual_description.strip():
+        return derive_description(inputs, manual_description, hashtags, cta_enabled=cta_enabled, max_chars=max_chars)
+    if ai_description:
+        try:
+            return derive_description(inputs, ai_description, hashtags, cta_enabled=cta_enabled, max_chars=max_chars)
+        except MetadataError:
+            pass
+    return derive_description(inputs, None, hashtags, cta_enabled=cta_enabled, max_chars=max_chars)
+
+
 def _thumbnail_config(draft: ProjectOut, width: int, height: int, headline_text: str | None) -> ThumbnailConfig:
     package_config: PackageProjectConfig = draft.config.package
     count = max(1, package_config.thumbnail_candidate_count)
@@ -183,12 +336,17 @@ def thumbnail_fingerprint(video_path: Path, config: ThumbnailConfig) -> str:
 def metadata_fingerprint(
     inputs: ContentInputs, manual_title: str | None, manual_description: str | None,
     manual_hashtags: list[str] | None, package_config: PackageProjectConfig, language: str,
-    duration: float, width: int, height: int,
+    duration: float, width: int, height: int, ai_metadata: AIMetadata | None,
 ) -> str:
+    # ai_metadata's own content (not just whether it's enabled) must be
+    # part of this hash -- unlike every other input here, it is NOT a pure
+    # function of `inputs`, so two calls with identical `inputs` but a
+    # freshly (re)generated AI title/description must not collide.
     payload = "|".join([
         str(asdict(inputs)), manual_title or "", manual_description or "", ",".join(manual_hashtags or []),
         str(package_config.max_hashtags), package_config.platform_profile, language,
         f"{duration:.3f}", str(width), str(height), METADATA_ENGINE_VERSION,
+        str(package_config.ai_metadata_enabled), str(asdict(ai_metadata)) if ai_metadata else "",
     ])
     return hashlib.sha256(payload.encode("utf-8")).hexdigest()
 
@@ -228,12 +386,13 @@ def _generate_thumbnail(job: VideoComposeJob, config: ThumbnailConfig) -> None:
 
 def _generate_metadata(
     job: VideoComposeJob, draft: ProjectOut, inputs: ContentInputs, render_duration: float, width: int, height: int,
+    ai_metadata: AIMetadata | None,
 ) -> PackageMetadata:
     package_config: PackageProjectConfig = draft.config.package
     hashtags = derive_hashtags(inputs, draft.manual_hashtags, package_config.max_hashtags)
-    title = derive_title(inputs, draft.manual_title, max_chars=70)
-    description = derive_description(
-        inputs, draft.manual_description, hashtags,
+    title = _resolve_title_text(inputs, draft.manual_title, ai_metadata.title if ai_metadata else None, max_chars=70)
+    description = _resolve_description_text(
+        inputs, draft.manual_description, ai_metadata.description if ai_metadata else None, hashtags,
         cta_enabled=draft.config.content.cta_enabled, max_chars=500,
     )
     metadata = PackageMetadata(
@@ -280,21 +439,30 @@ def generate_project_package(project_id: int, settings: Settings) -> bool:
     width = int(render_meta.get("width") or get_render_profile(draft.config.render.profile).width)
     height = int(render_meta.get("height") or get_render_profile(draft.config.render.profile).height)
 
-    # The thumbnail headline and the metadata title are deliberately the
-    # SAME underlying message (section 14: "do not invent a completely
-    # different message") -- computed once, shortened+upper-cased only
-    # for the on-image overlay.
+    ai_metadata, ai_metadata_fp = _resolve_ai_metadata(job, draft, settings)
+
+    # Section 14's "thumbnail headline and metadata title are the SAME
+    # message" only holds for the deterministic path. AI Metadata (opt-in)
+    # deliberately writes a separate, punchier thumbnail_text instead --
+    # real user report that the shared-text headline felt repetitive once
+    # a dedicated hook line existed. A manual title override still wins
+    # over both (section 48's own "manual edits override generated
+    # values").
     try:
-        title_for_headline = derive_title(inputs, draft.manual_title, max_chars=70)
+        title_for_headline = _resolve_title_text(inputs, draft.manual_title, None, max_chars=70)
     except MetadataError:
         title_for_headline = None
-    headline_text = shorten_headline(title_for_headline, 40) if title_for_headline else None
+    manual_title_set = draft.manual_title is not None and draft.manual_title.strip()
+    if not manual_title_set and ai_metadata is not None:
+        headline_text = shorten_headline(ai_metadata.thumbnail_text, 40)
+    else:
+        headline_text = shorten_headline(title_for_headline, 40) if title_for_headline else None
 
     thumb_config = _thumbnail_config(draft, width, height, headline_text)
     thumb_fp = thumbnail_fingerprint(video_path, thumb_config)
     meta_fp = metadata_fingerprint(
         inputs, draft.manual_title, draft.manual_description, draft.manual_hashtags,
-        draft.config.package, draft.config.content.language, duration, width, height,
+        draft.config.package, draft.config.content.language, duration, width, height, ai_metadata,
     )
 
     cache = _load_cache(job)
@@ -315,12 +483,20 @@ def generate_project_package(project_id: int, settings: Settings) -> bool:
         changed = True
     if not meta_cached:
         try:
-            _generate_metadata(job, draft, inputs, duration, width, height)
+            _generate_metadata(job, draft, inputs, duration, width, height, ai_metadata)
         except MetadataError:
             raise
         changed = True
 
-    _save_cache(job, thumbnail_fingerprint=thumb_fp, metadata_fingerprint=meta_fp, engine_version=METADATA_ENGINE_VERSION)
+    cache_fields = dict(thumbnail_fingerprint=thumb_fp, metadata_fingerprint=meta_fp, engine_version=METADATA_ENGINE_VERSION)
+    if ai_metadata is not None and ai_metadata_fp is not None:
+        # Persisted so a re-run with an unchanged script reuses this
+        # already-billed result instead of calling the AI provider again
+        # (see _resolve_ai_metadata) -- lost if some other caller
+        # (e.g. regenerate-package) saves a cache without these two keys.
+        cache_fields["ai_metadata_fingerprint"] = ai_metadata_fp
+        cache_fields["ai_metadata"] = asdict(ai_metadata)
+    _save_cache(job, **cache_fields)
     return changed
 
 
