@@ -35,6 +35,16 @@ ENGINE_VERSION = "thumbnail-v1"
 
 _JPEG_QUALITY = 88
 
+# Real user report: the headline band looked "lởm" (cheap/tacky) -- the
+# opaque black band ate up to ~31% of frame height on a 2-line headline
+# because font size (0.085h) and its padding compounded. Shrunk both so a
+# 2-line headline now covers ~19% and a 1-line one ~13%, while staying
+# large enough to read at thumbnail scale. See _draw_headline's own
+# docstring for why the band stays full-width/fully-opaque regardless.
+_HEADLINE_FONT_SIZE_RATIO = 0.055
+_BAND_PADDING_RATIO = 0.4
+_BAND_BOTTOM_MARGIN_RATIO = 0.015
+
 
 def _run_ffmpeg(args: list[str]) -> None:
     command = ["ffmpeg", "-y", "-nostdin", "-hide_banner", "-loglevel", "error"] + args
@@ -180,7 +190,7 @@ def _draw_headline(img: Image.Image, headline: str, max_chars: int) -> Image.Ima
         return img
 
     width, height = img.size
-    font_size = max(24, round(height * 0.085))
+    font_size = max(20, round(height * _HEADLINE_FONT_SIZE_RATIO))
     font = ImageFont.truetype(FONT_PATH_BOLD, font_size)
     margin_x = round(width * 0.06)
     max_text_width = width - 2 * margin_x
@@ -190,7 +200,7 @@ def _draw_headline(img: Image.Image, headline: str, max_chars: int) -> Image.Ima
         return img
 
     line_height = font_size * 1.2
-    band_padding = round(font_size * 0.5)
+    band_padding = round(font_size * _BAND_PADDING_RATIO)
     total_height = line_height * len(lines)
     # Extends to the very bottom edge, not just a safe-margin line above it
     # -- this app's own default caption presets sit as low as ~2-3% from
@@ -198,7 +208,7 @@ def _draw_headline(img: Image.Image, headline: str, max_chars: int) -> Image.Ima
     # stops higher than that still lets a sliver of burned-in caption text
     # peek out underneath (found via real manual verification).
     band_bottom = height
-    band_top = band_bottom - total_height - 2 * band_padding - round(height * 0.02)
+    band_top = band_bottom - total_height - 2 * band_padding - round(height * _BAND_BOTTOM_MARGIN_RATIO)
 
     # Fully opaque, not merely translucent: even a 92%-opaque band still
     # let high-contrast burned-in caption text ghost through legibly
