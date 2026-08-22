@@ -1,6 +1,6 @@
 # 97. Package AI Metadata: Opt-In AI-Written Title/Description/Thumbnail Text
 
-**Commit:** (pending)
+**Commit:** `1440a69`
 
 Real user report: the auto-generated title/description felt bland, and
 asked whether the thumbnail text was pulled from the script and whether
