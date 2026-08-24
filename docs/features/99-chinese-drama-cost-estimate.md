@@ -1,6 +1,6 @@
 # 99. Chinese Drama: Real Per-Video Cost Estimate
 
-**Commit:** (pending)
+**Commit:** `df8d5a9`
 
 Real user follow-up right after Chinese Drama mode shipped (doc 98):
 "after it finishes, can I see an estimate of how much this cost?"
