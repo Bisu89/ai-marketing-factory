@@ -39,6 +39,27 @@ export async function createVideoComposeJob(input: CreateVideoComposeJobInput): 
   return response.json();
 }
 
+// Chinese Drama -> Vietnamese Shorts: one uploaded video, ASR'd + translated
+// + titled/hooked on the worker (see VideoComposerService._run_dub_generation_phase),
+// then dubbed/captioned/rendered through the same downstream pipeline every
+// other job already uses. No script/voice fields here -- everything past
+// the upload is auto-generated server-side.
+export async function createChineseDramaJob(file: File, outputDir?: string): Promise<VideoComposeJob> {
+  const form = new FormData();
+  form.set("file", file);
+  if (outputDir) form.set("output_dir", outputDir);
+
+  const response = await fetch(`${config.apiBaseUrl}/video-compose-jobs/from-chinese-drama`, {
+    method: "POST",
+    body: form,
+  });
+  if (!response.ok) {
+    const body = await response.json().catch(() => null);
+    throw new Error(typeof body?.detail === "string" ? body.detail : `API request failed: ${response.status}`);
+  }
+  return response.json();
+}
+
 export function listVideoComposeJobs(): Promise<VideoComposeJob[]> {
   return apiGet("/video-compose-jobs");
 }

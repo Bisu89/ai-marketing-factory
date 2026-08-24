@@ -55,10 +55,17 @@ FINAL_DURATION_MISMATCH = "FINAL_DURATION_MISMATCH"
 FINAL_STREAM_INVALID = "FINAL_STREAM_INVALID"
 FINAL_ENCODING_FAILED = "FINAL_ENCODING_FAILED"
 
+# Chinese Drama -> Vietnamese Shorts (VideoComposeJob.source_language set) --
+# the new pre-narration ASR+translation phase's own code, covering both the
+# "transcribing" and "translating" statuses (see PHASE_TO_ERROR_CODE below).
+DUB_GENERATION_FAILED = "DUB_GENERATION_FAILED"
+
 # Maps a VideoComposeJob.status value (the phase that was running when a job
 # failed) to the error code its report.json should carry. "queued" has no
 # entry -- a job can't fail before it starts running.
 PHASE_TO_ERROR_CODE = {
+    "transcribing": DUB_GENERATION_FAILED,
+    "translating": DUB_GENERATION_FAILED,
     "rendering_beats": RENDER_FAILED,
     "merging": RENDER_FAILED,
     "narrating": AUDIO_RENDER_FAILED,

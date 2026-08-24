@@ -3,6 +3,7 @@ import { Film, ArrowUp, ArrowDown, X, Loader2, FolderOpen, FolderInput, Music } 
 import { PageHeader } from "../components/PageHeader";
 import { EmptyState } from "../components/EmptyState";
 import {
+  createChineseDramaJob,
   createVideoComposeJob,
   listVideoComposeJobs,
   openVideoComposeJobFolder,
@@ -25,6 +26,8 @@ const VOICE_OPTIONS: { value: string; label: string }[] = [
 
 const STATUS_LABEL: Record<VideoComposeJob["status"], string> = {
   queued: "Trong hàng đợi",
+  transcribing: "Đang nhận diện giọng nói tiếng Trung...",
+  translating: "Đang dịch & viết tiêu đề...",
   rendering_beats: "Đang dựng cảnh",
   merging: "Đang ghép video (chuyển cảnh swipe-left)",
   narrating: "Đang tạo giọng đọc",
@@ -40,6 +43,8 @@ const STATUS_LABEL: Record<VideoComposeJob["status"], string> = {
 
 const IN_PROGRESS_STATUSES: VideoComposeJob["status"][] = [
   "queued",
+  "transcribing",
+  "translating",
   "rendering_beats",
   "merging",
   "narrating",
@@ -49,7 +54,13 @@ const IN_PROGRESS_STATUSES: VideoComposeJob["status"][] = [
   "validating",
 ];
 
+type ComposerMode = "standard" | "chinese_drama";
+
 export function VideoComposerPage() {
+  const [mode, setMode] = useState<ComposerMode>("standard");
+  const [dubFile, setDubFile] = useState<File | null>(null);
+  const [dubDragOver, setDubDragOver] = useState(false);
+
   const [clips, setClips] = useState<File[]>([]);
   const [title, setTitle] = useState("");
   const [script, setScript] = useState("");
@@ -143,6 +154,22 @@ export function VideoComposerPage() {
     }
   }
 
+  async function handleSubmitChineseDrama() {
+    if (!dubFile || submitting) return;
+    setSubmitting(true);
+    setSubmitError(null);
+    try {
+      await createChineseDramaJob(dubFile, outputDir.trim() || undefined);
+      const data = await listVideoComposeJobs();
+      setJobs(data);
+      setDubFile(null);
+    } catch (err) {
+      setSubmitError(err instanceof Error ? err.message : "Không tạo được tác vụ Chinese Drama.");
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
   async function handlePickFolder() {
     setPickingFolder(true);
     setSubmitError(null);
@@ -163,100 +190,147 @@ export function VideoComposerPage() {
         subtitle="Ghép nhiều video, chuyển cảnh swipe-left, chèn tiêu đề, tự tạo giọng đọc + phụ đề"
       />
 
-      <div className="vc-form">
-        <label className="vc-field">
-          Tiêu đề (hiển thị cố định đầu video)
-          <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="VD: Canal de Prueba" />
-        </label>
-
-        <label className="vc-field">
-          Kịch bản (dùng để tạo giọng đọc + phụ đề)
-          <textarea
-            rows={5}
-            value={script}
-            onChange={(e) => setScript(e.target.value)}
-            placeholder="Hi everyone, welcome..."
-          />
-        </label>
-
-        <label className="vc-field">
-          Giọng đọc
-          <select value={voice} onChange={(e) => setVoice(e.target.value)}>
-            {VOICE_OPTIONS.map((v) => (
-              <option key={v.value} value={v.value}>
-                {v.label}
-              </option>
-            ))}
-          </select>
-        </label>
-
-        <div className="vc-field">
-          <span>Video (theo thứ tự ghép)</span>
-          <label
-            className={`vc-upload-row${clipsDragOver ? " vc-drag-over" : ""}`}
-            onDragOver={(e) => {
-              e.preventDefault();
-              setClipsDragOver(true);
-            }}
-            onDragLeave={() => setClipsDragOver(false)}
-            onDrop={(e) => {
-              e.preventDefault();
-              setClipsDragOver(false);
-              handleAddClips(e.dataTransfer.files);
-            }}
-          >
-            <Film size={15} />
-            <span>Thêm video... (hoặc kéo thả file vào đây)</span>
-            <input type="file" accept="video/*" multiple onChange={(e) => handleAddClips(e.target.files)} />
-          </label>
-
-          {clips.length > 0 && (
-            <ul className="vc-clip-list">
-              {clips.map((clip, index) => (
-                <li key={`${clip.name}-${index}`} className="vc-clip-row">
-                  <span className="vc-clip-index">{index + 1}</span>
-                  <ClipThumbnail file={clip} />
-                  <span className="vc-clip-name">{clip.name}</span>
-                  <div className="vc-clip-actions">
-                    <button type="button" onClick={() => moveClip(index, -1)} disabled={index === 0} title="Lên">
-                      <ArrowUp size={14} />
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => moveClip(index, 1)}
-                      disabled={index === clips.length - 1}
-                      title="Xuống"
-                    >
-                      <ArrowDown size={14} />
-                    </button>
-                    <button type="button" onClick={() => removeClip(index)} title="Xoá">
-                      <X size={14} />
-                    </button>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-
-        <label
-          className={`vc-upload-row vc-music-row${musicDragOver ? " vc-drag-over" : ""}`}
-          onDragOver={(e) => {
-            e.preventDefault();
-            setMusicDragOver(true);
-          }}
-          onDragLeave={() => setMusicDragOver(false)}
-          onDrop={(e) => {
-            e.preventDefault();
-            setMusicDragOver(false);
-            const file = e.dataTransfer.files?.[0];
-            if (file && (file.type.startsWith("audio/") || file.type === "")) setMusic(file);
-          }}
+      <div className="vc-mode-toggle">
+        <button
+          type="button"
+          className={`vc-mode-btn${mode === "standard" ? " vc-mode-btn--active" : ""}`}
+          onClick={() => setMode("standard")}
         >
-          <Music size={15} />
-          <span>{music ? music.name : "Nhạc nền (tuỳ chọn, hoặc kéo thả vào đây)..."}</span>
-          <input type="file" accept="audio/*" onChange={(e) => setMusic(e.target.files?.[0] ?? null)} />
-        </label>
+          Standard
+        </button>
+        <button
+          type="button"
+          className={`vc-mode-btn${mode === "chinese_drama" ? " vc-mode-btn--active" : ""}`}
+          onClick={() => setMode("chinese_drama")}
+        >
+          Chinese Drama → Vietnamese Shorts
+        </button>
+      </div>
+
+      <div className="vc-form">
+        {mode === "chinese_drama" ? (
+          <div className="vc-field">
+            <span>Video phim Trung Quốc (1 file)</span>
+            <p className="vc-hint">
+              Tự động: nhận diện lời thoại tiếng Trung, dịch sang tiếng Việt, viết tiêu đề + hook, lồng giọng đọc
+              tiếng Việt, chèn phụ đề, cắt dọc 9:16.
+            </p>
+            <label
+              className={`vc-upload-row${dubDragOver ? " vc-drag-over" : ""}`}
+              onDragOver={(e) => {
+                e.preventDefault();
+                setDubDragOver(true);
+              }}
+              onDragLeave={() => setDubDragOver(false)}
+              onDrop={(e) => {
+                e.preventDefault();
+                setDubDragOver(false);
+                const file = e.dataTransfer.files?.[0];
+                if (file && (file.type.startsWith("video/") || file.type === "")) setDubFile(file);
+              }}
+            >
+              <Film size={15} />
+              <span>{dubFile ? dubFile.name : "Chọn video... (hoặc kéo thả file vào đây)"}</span>
+              <input type="file" accept="video/*" onChange={(e) => setDubFile(e.target.files?.[0] ?? null)} />
+            </label>
+          </div>
+        ) : (
+          <>
+            <label className="vc-field">
+              Tiêu đề (hiển thị cố định đầu video)
+              <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="VD: Canal de Prueba" />
+            </label>
+
+            <label className="vc-field">
+              Kịch bản (dùng để tạo giọng đọc + phụ đề)
+              <textarea
+                rows={5}
+                value={script}
+                onChange={(e) => setScript(e.target.value)}
+                placeholder="Hi everyone, welcome..."
+              />
+            </label>
+
+            <label className="vc-field">
+              Giọng đọc
+              <select value={voice} onChange={(e) => setVoice(e.target.value)}>
+                {VOICE_OPTIONS.map((v) => (
+                  <option key={v.value} value={v.value}>
+                    {v.label}
+                  </option>
+                ))}
+              </select>
+            </label>
+
+            <div className="vc-field">
+              <span>Video (theo thứ tự ghép)</span>
+              <label
+                className={`vc-upload-row${clipsDragOver ? " vc-drag-over" : ""}`}
+                onDragOver={(e) => {
+                  e.preventDefault();
+                  setClipsDragOver(true);
+                }}
+                onDragLeave={() => setClipsDragOver(false)}
+                onDrop={(e) => {
+                  e.preventDefault();
+                  setClipsDragOver(false);
+                  handleAddClips(e.dataTransfer.files);
+                }}
+              >
+                <Film size={15} />
+                <span>Thêm video... (hoặc kéo thả file vào đây)</span>
+                <input type="file" accept="video/*" multiple onChange={(e) => handleAddClips(e.target.files)} />
+              </label>
+
+              {clips.length > 0 && (
+                <ul className="vc-clip-list">
+                  {clips.map((clip, index) => (
+                    <li key={`${clip.name}-${index}`} className="vc-clip-row">
+                      <span className="vc-clip-index">{index + 1}</span>
+                      <ClipThumbnail file={clip} />
+                      <span className="vc-clip-name">{clip.name}</span>
+                      <div className="vc-clip-actions">
+                        <button type="button" onClick={() => moveClip(index, -1)} disabled={index === 0} title="Lên">
+                          <ArrowUp size={14} />
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => moveClip(index, 1)}
+                          disabled={index === clips.length - 1}
+                          title="Xuống"
+                        >
+                          <ArrowDown size={14} />
+                        </button>
+                        <button type="button" onClick={() => removeClip(index)} title="Xoá">
+                          <X size={14} />
+                        </button>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+
+            <label
+              className={`vc-upload-row vc-music-row${musicDragOver ? " vc-drag-over" : ""}`}
+              onDragOver={(e) => {
+                e.preventDefault();
+                setMusicDragOver(true);
+              }}
+              onDragLeave={() => setMusicDragOver(false)}
+              onDrop={(e) => {
+                e.preventDefault();
+                setMusicDragOver(false);
+                const file = e.dataTransfer.files?.[0];
+                if (file && (file.type.startsWith("audio/") || file.type === "")) setMusic(file);
+              }}
+            >
+              <Music size={15} />
+              <span>{music ? music.name : "Nhạc nền (tuỳ chọn, hoặc kéo thả vào đây)..."}</span>
+              <input type="file" accept="audio/*" onChange={(e) => setMusic(e.target.files?.[0] ?? null)} />
+            </label>
+          </>
+        )}
 
         <label className="vc-field">
           Thư mục lưu kết quả (tuỳ chọn, để trống dùng mặc định)
@@ -274,40 +348,49 @@ export function VideoComposerPage() {
           </div>
         </label>
 
-        <div className="vc-params">
-          <label>
-            Âm lượng nhạc nền
-            <input
-              type="number"
-              min={0}
-              max={1}
-              step={0.05}
-              value={musicVolume}
-              onChange={(e) => setMusicVolume(Number(e.target.value))}
-            />
-          </label>
-          <label>
-            Độ dài chuyển cảnh (giây)
-            <input
-              type="number"
-              min={0}
-              step={0.1}
-              value={transitionDuration}
-              onChange={(e) => setTransitionDuration(Number(e.target.value))}
-            />
-          </label>
-          <label className="vc-checkbox-field">
-            <input type="checkbox" checked={burnSubtitles} onChange={(e) => setBurnSubtitles(e.target.checked)} />
-            Chèn phụ đề vào video
-          </label>
-        </div>
+        {mode === "standard" && (
+          <div className="vc-params">
+            <label>
+              Âm lượng nhạc nền
+              <input
+                type="number"
+                min={0}
+                max={1}
+                step={0.05}
+                value={musicVolume}
+                onChange={(e) => setMusicVolume(Number(e.target.value))}
+              />
+            </label>
+            <label>
+              Độ dài chuyển cảnh (giây)
+              <input
+                type="number"
+                min={0}
+                step={0.1}
+                value={transitionDuration}
+                onChange={(e) => setTransitionDuration(Number(e.target.value))}
+              />
+            </label>
+            <label className="vc-checkbox-field">
+              <input type="checkbox" checked={burnSubtitles} onChange={(e) => setBurnSubtitles(e.target.checked)} />
+              Chèn phụ đề vào video
+            </label>
+          </div>
+        )}
 
         {submitError && <div className="vc-alert vc-alert-error">{submitError}</div>}
 
-        <button className="btn btn-primary" onClick={handleSubmit} disabled={!canSubmit || submitting}>
-          {submitting ? <Loader2 size={16} className="spin" /> : <Film size={16} />}
-          Ghép video
-        </button>
+        {mode === "chinese_drama" ? (
+          <button className="btn btn-primary" onClick={handleSubmitChineseDrama} disabled={!dubFile || submitting}>
+            {submitting ? <Loader2 size={16} className="spin" /> : <Film size={16} />}
+            Tạo video
+          </button>
+        ) : (
+          <button className="btn btn-primary" onClick={handleSubmit} disabled={!canSubmit || submitting}>
+            {submitting ? <Loader2 size={16} className="spin" /> : <Film size={16} />}
+            Ghép video
+          </button>
+        )}
       </div>
 
       <h2 className="vc-jobs-title">Các tác vụ đã chạy</h2>

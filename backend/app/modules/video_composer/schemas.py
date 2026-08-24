@@ -88,6 +88,9 @@ class VideoComposeJobOut(BaseModel):
     progress_current: int | None = None
     progress_total: int | None = None
     previous_job_id: int | None = None
+    # Chinese Drama -> Vietnamese Shorts. None for every other job.
+    source_language: str | None = None
+    hook_text: str | None = None
     clip_count: int
     output_path: str | None
     output_media_url: str | None = None

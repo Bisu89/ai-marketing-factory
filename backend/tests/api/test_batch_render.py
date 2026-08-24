@@ -62,12 +62,13 @@ def _make_solid_image(path: Path, color: tuple[int, int, int], size: tuple[int, 
     return path
 
 
-def _fake_run_narration(script_text: str, voice: str, output_path: Path) -> list[dict]:
+def _fake_run_narration(script_text: str, voice: str, output_path: Path, rate: str = "+0%") -> list[dict]:
     """Stands in for VideoComposerService._run_narration (normally a real
     edge-tts cloud call) with a short local silent track, exactly like
     tests/api/test_composition_render.py's own fixture of the same name --
     keeps these batch-rendering tests free of any network dependency while
     still exercising the real, unmodified render pipeline end to end.
+    `rate` (Chinese Drama -> Vietnamese Shorts) is accepted but unused.
     """
     subprocess.run(
         [

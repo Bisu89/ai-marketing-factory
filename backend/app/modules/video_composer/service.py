@@ -10,7 +10,7 @@ import uuid
 from collections.abc import Callable
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import BinaryIO
+from typing import BinaryIO, Protocol
 
 import edge_tts
 from PIL import ImageFont
@@ -19,6 +19,7 @@ from app.core import render_errors
 from app.core.config import get_settings
 from app.core.events import EventBus
 from app.core.exceptions import NotFoundError, RenderCancelled, ValidationError
+from app.core.render_profile import get_render_profile
 from app.db.session import SessionLocal
 from app.modules.video_composer.models import CAPTION_PRESETS, VideoComposeClip, VideoComposeJob
 
@@ -30,8 +31,8 @@ logger = logging.getLogger(__name__)
 # it was genuinely RUNNING when the process died (see _recover_pending_jobs,
 # Task 11 -- docs/features/38-render-job-hardening.md).
 PENDING_STATUSES = (
-    "queued", "rendering_beats", "merging", "narrating", "subtitling", "mixing_audio", "finalizing",
-    "composing_final", "validating",
+    "queued", "transcribing", "translating", "rendering_beats", "merging", "narrating", "subtitling",
+    "mixing_audio", "finalizing", "composing_final", "validating",
 )
 _RUNNING_STATUSES = tuple(s for s in PENDING_STATUSES if s != "queued")
 
@@ -47,6 +48,32 @@ BeatRenderer = Callable[
     [dict, Path, Callable[[], bool], Callable[[int, int], None], Callable[[subprocess.Popen | None], None]],
     list[Path],
 ]
+
+
+class _DubResult(Protocol):
+    """Structural type only (module isolation -- this file never imports
+    the real dataclass from app/api/v1/endpoints/chinese_drama_dub.py,
+    same reasoning BeatRenderer's own return type is a plain list[Path]
+    rather than a cross-module type).
+    """
+
+    translation: str
+    title: str
+    hook: str
+
+
+# Chinese Drama -> Vietnamese Shorts: (video_path, on_transcription_complete)
+# -> DubResult-shaped object. Injected at construction time (see
+# app/main.py), same pluggable-callable shape as BeatRenderer above -- this
+# file never imports app.modules.ai; the real implementation (ASR +
+# translate/title/hook) lives in app/api/v1/endpoints/chinese_drama_dub.py.
+# on_transcription_complete is called once, right after ASR finishes and
+# before the translate call starts, purely so this service can flip the
+# job's own status from "transcribing" to "translating" in real time (the
+# whole call is otherwise a single blocking round trip with no other
+# natural checkpoint) -- it also doubles as this phase's one cancellation
+# check point (raises RenderCancelled if the job was cancelled meanwhile).
+DubGenerator = Callable[[Path, Callable[[], None]], _DubResult]
 
 # Duration validation tolerance for the finished output vs. the merged
 # clips' own probed duration (Task 10 hardening -- see
@@ -74,6 +101,13 @@ _FINAL_DURATION_TOLERANCE_SEC = 1.0
 # versa (module isolation), and final_qa.py is a composition root that
 # needs the same value to know the real, now-longer expected duration.
 _PRE_OUTRO_HOLD_SEC = 1.5
+
+# Chinese Drama -> Vietnamese Shorts. Duplicated (not imported) from
+# app/api/v1/endpoints/chinese_drama_dub.py's own HOOK_DISPLAY_DURATION_SEC
+# -- same module-isolation reasoning as _PRE_OUTRO_HOLD_SEC above, just in
+# the opposite direction (a module may never import a composition root
+# either, since that's a backwards/circular dependency).
+_HOOK_DISPLAY_DURATION_SEC = 3.0
 
 FONT_PATH = "C:/Windows/Fonts/arial.ttf"
 # The karaoke subtitle style below renders Bold=1, so word widths must be
@@ -150,6 +184,7 @@ class VideoComposerService:
         self,
         library_dir: Path,
         beat_renderer: BeatRenderer | None = None,
+        dub_generator: DubGenerator | None = None,
         event_bus: EventBus | None = None,
     ):
         self._library_dir = library_dir
@@ -157,6 +192,7 @@ class VideoComposerService:
         self._queue: "queue.Queue[int | None]" = queue.Queue()
         self._worker: threading.Thread | None = None
         self._beat_renderer = beat_renderer
+        self._dub_generator = dub_generator
         self._event_bus = event_bus
 
         # Runtime-only job-control state (Task 11 -- see
@@ -217,6 +253,9 @@ class VideoComposerService:
         watermark_margin_x: int = 24,
         watermark_margin_y: int = 24,
         outro_clip_path: str | None = None,
+        source_language: str | None = None,
+        hook_text: str | None = None,
+        narration_rate: str = "+0%",
     ) -> int:
         db = SessionLocal()
         try:
@@ -254,6 +293,12 @@ class VideoComposerService:
                 watermark_margin_x=watermark_margin_x,
                 watermark_margin_y=watermark_margin_y,
                 outro_clip_path=outro_clip_path,
+                # Chinese Drama -> Vietnamese Shorts. None for every other
+                # caller -- zero behavior change (see _run_job/
+                # _run_dub_generation_phase).
+                source_language=source_language,
+                hook_text=hook_text,
+                narration_rate=narration_rate,
                 status="queued",
             )
             db.add(job)
@@ -319,19 +364,31 @@ class VideoComposerService:
 
     def retry_job(self, job_id: int) -> int:
         """Creates a fresh RenderJob attempt for a failed/cancelled job,
-        reusing its stored render request (composition_request_json --
-        None for the plain upload-based flow, which has no stored request
-        to replay and so cannot be retried this way). Never mutates the
-        original job row -- retrying creates job N+1, job N keeps its own
-        final status/report/log exactly as they were, per this task's "do
-        not corrupt the previous job record" instruction.
+        reusing its stored render request (composition_request_json) when
+        one exists (a Factory-driven job -- the worker re-renders its own
+        beat clips from scratch), or its real already-on-disk clips
+        otherwise (the plain upload-based flow and Chinese Drama mode --
+        see the save_clip_paths call below). A job with neither (impossible
+        in practice -- every job has one or the other by the time it can
+        fail) cannot be retried this way. Never mutates the original job
+        row -- retrying creates job N+1, job N keeps its own final status/
+        report/log exactly as they were, per this task's "do not corrupt
+        the previous job record" instruction.
+
+        For a Chinese-Drama-mode job (source_language set), title/
+        script_text/hook_text are copied over already-translated -- see
+        VideoComposerService._run_dub_generation_phase's own "hook_text is
+        None" gate, which is exactly what lets a retry skip re-billing the
+        ASR/LLM call entirely.
         """
         db = SessionLocal()
         try:
             original = db.get(VideoComposeJob, job_id)
             if original is None:
                 raise NotFoundError("Video compose job", job_id)
-            if original.composition_request_json is None:
+            original_clip_paths = [Path(c.file_path) for c in original.clips]
+            original_has_composition_request = original.composition_request_json is not None
+            if not original_has_composition_request and not original_clip_paths:
                 raise ValidationError("This job has no stored render request and cannot be retried.")
             if original.status not in ("failed", "cancelled"):
                 raise ValidationError(
@@ -366,6 +423,9 @@ class VideoComposerService:
                 watermark_margin_x=original.watermark_margin_x,
                 watermark_margin_y=original.watermark_margin_y,
                 outro_clip_path=original.outro_clip_path,
+                source_language=original.source_language,
+                hook_text=original.hook_text,
+                narration_rate=original.narration_rate,
                 previous_job_id=original.id,
                 status="queued",
             )
@@ -375,6 +435,9 @@ class VideoComposerService:
             new_job_id = new_job.id
         finally:
             db.close()
+
+        if original_clip_paths and not original_has_composition_request:
+            self.save_clip_paths(new_job_id, original_clip_paths)
 
         self.enqueue(new_job_id)
         return new_job_id
@@ -513,6 +576,56 @@ class VideoComposerService:
         self._log(job_id, f"phase completed: RENDER_BEATS ({beat_render_seconds:.2f}s, {len(clip_paths)} clips)")
         return clip_paths
 
+    def _run_dub_generation_phase(self, job_id: int, video_path: Path) -> bool:
+        """Chinese Drama -> Vietnamese Shorts: ASR + translate/title/hook,
+        run before every other phase whenever job.source_language is set
+        and this job hasn't already been translated (job.hook_text is
+        None -- also true for a job created via retry_job, which already
+        copies over real translated text, so a retry never re-bills this
+        call). Delegates the actual OpenAI/LLM work to the injected
+        self._dub_generator (implemented in chinese_drama_dub.py, which
+        alone is allowed to import both app.modules.ai and this module) --
+        mirrors _run_beat_rendering_phase's own self._beat_renderer shape.
+        Returns False (having already marked the job failed/cancelled
+        itself) on any failure.
+        """
+        if self._dub_generator is None:
+            self._fail_job(job_id, "transcribing", "This job requires Chinese Drama dubbing but none is configured.")
+            return False
+
+        if self._is_cancelled(job_id):
+            self._finish_cancelled(job_id, "transcribing")
+            return False
+
+        self._set_status(job_id, "transcribing")
+        self._log(job_id, "phase started: TRANSCRIBE_AUDIO")
+        self._publish("render.job.phase_changed", {"job_id": job_id, "phase": "TRANSCRIBE_AUDIO"})
+
+        def _on_transcribed() -> None:
+            # The one cancellation checkpoint for this whole phase (see
+            # DubGenerator's own docstring) -- also where the job's status
+            # actually flips to "translating," since the single injected
+            # call otherwise has no other natural midpoint to observe.
+            if self._is_cancelled(job_id):
+                raise RenderCancelled()
+            self._set_status(job_id, "translating")
+            self._log(job_id, "phase completed: TRANSCRIBE_AUDIO")
+            self._publish("render.job.phase_changed", {"job_id": job_id, "phase": "TRANSLATE_CONTENT"})
+
+        try:
+            result = self._dub_generator(video_path, _on_transcribed)
+        except RenderCancelled:
+            self._finish_cancelled(job_id, self._get_status(job_id) or "transcribing")
+            return False
+        except Exception as exc:
+            logger.exception("Chinese Drama dub generation failed for job %s", job_id)
+            self._fail_job(job_id, self._get_status(job_id) or "transcribing", str(exc))
+            return False
+
+        self._set_fields(job_id, title=result.title, script_text=result.translation, hook_text=result.hook)
+        self._log(job_id, "phase completed: TRANSLATE_CONTENT")
+        return True
+
     def _run_job(self, job_id: int) -> None:
         db = SessionLocal()
         try:
@@ -523,11 +636,20 @@ class VideoComposerService:
                 return  # cancelled while still queued -- the worker never actually starts it
             composition_request = job.composition_request_json
             has_clips = bool(job.clips)
+            needs_dub_generation = job.source_language is not None and job.hook_text is None
+            dub_source_path = Path(job.clips[0].file_path) if needs_dub_generation and job.clips else None
         finally:
             db.close()
 
         self._log(job_id, "job started")
         self._publish("render.job.started", {"job_id": job_id})
+
+        if needs_dub_generation:
+            if dub_source_path is None:
+                self._fail_job(job_id, "transcribing", "No source video found for Chinese Drama dubbing.")
+                return
+            if not self._run_dub_generation_phase(job_id, dub_source_path):
+                return  # already marked failed/cancelled
 
         if not has_clips and composition_request is not None:
             if self._run_beat_rendering_phase(job_id, composition_request) is None:
@@ -542,6 +664,7 @@ class VideoComposerService:
             title = job.title
             script_text = job.script_text
             voice = job.voice
+            narration_rate = job.narration_rate
             music_path = job.music_path
             music_volume = job.music_volume
             narration_volume = job.narration_volume
@@ -567,6 +690,9 @@ class VideoComposerService:
             watermark_margin_x = job.watermark_margin_x
             watermark_margin_y = job.watermark_margin_y
             outro_clip_path = job.outro_clip_path
+            source_language = job.source_language
+            hook_text = job.hook_text
+            render_profile = job.render_profile
         finally:
             db.close()
 
@@ -642,6 +768,38 @@ class VideoComposerService:
             width, height, fps = self._probe_video_info(clip_paths[0])
             if len(clip_paths) > 1:
                 self._merge_clips_with_transitions(clip_paths, merged_video, transition_duration, width, height, fps)
+            elif source_language is not None:
+                # Chinese Drama -> Vietnamese Shorts: the single-clip fast
+                # path below (pass the upload straight through unchanged)
+                # is correct for the plain Video Composer flow, whose
+                # source clip may already be any aspect ratio the caller
+                # intends -- but this mode's whole point is turning
+                # existing (often 16:9) drama footage into a vertical
+                # short, so it needs a real cover-crop to the target
+                # render profile. Same cover-scale+crop idiom already
+                # proven in motion/renderer.py's own static-clip branch
+                # (duplicated, not imported, per this module's own
+                # established module-isolation convention -- see e.g.
+                # _PRE_OUTRO_HOLD_SEC above). Center crop only (v1 scope --
+                # no face detection/tracking).
+                profile = get_render_profile(render_profile)
+                width, height, fps = profile.width, profile.height, profile.fps
+                cropped_video = tmp_dir / "cropped.mp4"
+                self._run_ffmpeg([
+                    "-i", str(clip_paths[0]),
+                    # fps= must be an explicit stage here -- unlike scale/crop,
+                    # ffmpeg never resamples frame rate on its own, and
+                    # _validate_final_output checks the real output's fps
+                    # against this same target `fps` (a real bug caught by
+                    # this feature's own test: a 10fps source clip stayed
+                    # 10fps without this, failing validation against the
+                    # target profile's 30fps).
+                    "-vf", f"scale={width}:{height}:force_original_aspect_ratio=increase,crop={width}:{height},fps={fps}",
+                    "-an",  # this clip's own audio is discarded regardless -- _finalize always maps in the
+                            # separately-produced narration/mix audio, never this intermediate's own track
+                    str(cropped_video),
+                ])
+                merged_video = cropped_video
             else:
                 # A single clip has nothing to transition into -- skip the
                 # ffmpeg scale/pad/concat pass entirely and feed the
@@ -664,7 +822,7 @@ class VideoComposerService:
                 self._build_narration_timeline(beat_narration_specs or [], tmp_dir / "narration_segments", narration_audio)
                 words: list[dict] = []
             else:
-                words = self._run_narration(script_text, voice, narration_audio)
+                words = self._run_narration(script_text, voice, narration_audio, narration_rate)
             narrating_seconds = time.monotonic() - stage_start
 
             self._set_status(job_id, "subtitling")
@@ -706,7 +864,7 @@ class VideoComposerService:
             self._set_status(job_id, "finalizing")
             self._log(job_id, "phase started: BURN_CAPTIONS")
             stage_start = time.monotonic()
-            self._finalize(merged_video, mixed_audio, title, subtitle_ass, burn_subtitles, tmp_final_video, width)
+            self._finalize(merged_video, mixed_audio, title, subtitle_ass, burn_subtitles, tmp_final_video, width, hook_text)
             finalizing_seconds = time.monotonic() - stage_start
             self._log(job_id, f"phase completed: BURN_CAPTIONS ({subtitling_seconds + finalizing_seconds:.2f}s)")
 
@@ -1217,11 +1375,23 @@ class VideoComposerService:
 
     # --- narration + subtitles ----------------------------------------------
 
-    def _run_narration(self, script_text: str, voice: str, output_path: Path) -> list[dict]:
+    def _run_narration(self, script_text: str, voice: str, output_path: Path, rate: str = "+0%") -> list[dict]:
         import asyncio
 
-        async def _generate() -> list[dict]:
-            communicate = edge_tts.Communicate(script_text, voice, boundary="WordBoundary")
+        # edge-tts is an unofficial API -- real testing (both this task's
+        # own Chinese Drama verification and app.modules.voice.providers'
+        # own EdgeTTSProvider, which documents the identical failure) shows
+        # an intermittent "No audio was received" NoAudioReceived error
+        # roughly every few consecutive calls, unrelated to the text
+        # content itself. Duplicated (not imported) retry constants/shape
+        # from that module -- sibling modules, module isolation. Without
+        # this, Chinese Drama mode (which always makes a fresh edge-tts
+        # call per job) would be measurably unreliable in real use.
+        _NARRATION_MAX_ATTEMPTS = 4
+        _NARRATION_RETRY_BACKOFF_SEC = 1.5
+
+        async def _generate_once() -> list[dict]:
+            communicate = edge_tts.Communicate(script_text, voice, rate=rate, boundary="WordBoundary")
             words: list[dict] = []
             with open(output_path, "wb") as f:
                 async for chunk in communicate.stream():
@@ -1237,7 +1407,25 @@ class VideoComposerService:
                         )
             return words
 
-        return asyncio.run(_generate())
+        async def _generate_with_retry() -> list[dict]:
+            last_exc: Exception | None = None
+            for attempt in range(_NARRATION_MAX_ATTEMPTS):
+                try:
+                    words = await _generate_once()
+                    if output_path.exists() and output_path.stat().st_size > 0:
+                        return words
+                    last_exc = RuntimeError("edge_tts produced no audio bytes.")
+                except Exception as exc:  # noqa: BLE001 -- retried below regardless of exact edge_tts exception type
+                    last_exc = exc
+                if attempt < _NARRATION_MAX_ATTEMPTS - 1:
+                    logger.warning(
+                        "edge_tts narration attempt %d/%d failed (%s) -- retrying.",
+                        attempt + 1, _NARRATION_MAX_ATTEMPTS, last_exc,
+                    )
+                    await asyncio.sleep(_NARRATION_RETRY_BACKOFF_SEC * (attempt + 1))
+            raise RuntimeError(f"edge_tts narration failed after {_NARRATION_MAX_ATTEMPTS} attempts: {last_exc}")
+
+        return asyncio.run(_generate_with_retry())
 
     @staticmethod
     def _build_narration_timeline(specs: list[dict], segments_dir: Path, output_path: Path) -> None:
@@ -1718,6 +1906,7 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
         burn_subtitles: bool,
         output_path: Path,
         width: int,
+        hook_text: str | None = None,
     ) -> None:
         video_filters = []
 
@@ -1730,6 +1919,26 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
             f"box=1:boxcolor=black@0.4:boxborderw={int(title_font_size * 0.35)}:"
             f"x=(w-text_w)/2:y=h*0.02"
         )
+
+        if hook_text:
+            # Chinese Drama -> Vietnamese Shorts: a short AI-written hook,
+            # visible only for the opening _HOOK_DISPLAY_DURATION_SEC
+            # seconds. Fuller 4-character escaping (see
+            # outro/renderer.py::_escape_drawtext, duplicated here for the
+            # same module-isolation reason as _HOOK_DISPLAY_DURATION_SEC
+            # above) since this text is AI-written/unpredictable, unlike
+            # the title block above.
+            hook_escaped = (
+                hook_text.replace("\\", "\\\\").replace("'", "\\'").replace(":", "\\:").replace("%", "\\%")
+            )
+            hook_font_size = max(28, int(width * 0.06))
+            video_filters.append(
+                f"drawtext=fontfile='{font_escaped}':text='{hook_escaped}':"
+                f"fontsize={hook_font_size}:fontcolor=white:borderw=3:bordercolor=black@0.6:"
+                f"box=1:boxcolor=black@0.5:boxborderw={int(hook_font_size * 0.35)}:"
+                f"x=(w-text_w)/2:y=h*0.5-text_h/2:"
+                f"enable='between(t,0,{_HOOK_DISPLAY_DURATION_SEC:.1f})'"
+            )
 
         if burn_subtitles:
             video_filters.append(f"subtitles='{self._escape_for_ffmpeg_filter(subtitle_ass)}'")

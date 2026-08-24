@@ -133,13 +133,15 @@ def _make_scene(
     )
 
 
-def _fake_run_narration(script_text: str, voice: str, output_path: Path) -> list[dict]:
+def _fake_run_narration(script_text: str, voice: str, output_path: Path, rate: str = "+0%") -> list[dict]:
     """Stands in for VideoComposerService._run_narration, which normally
     calls Microsoft's edge-tts cloud service. Generates a short *local*
     silent audio track via ffmpeg instead (no network, no external API --
     "do not require external APIs"), and returns plausible word timestamps
     so the rest of the real, unmodified pipeline (subtitling, audio mixing,
-    finalize) still runs against real, well-formed data.
+    finalize) still runs against real, well-formed data. `rate` (Chinese
+    Drama -> Vietnamese Shorts) is accepted but unused here -- this fake
+    never actually calls edge-tts.
     """
     subprocess.run(
         [

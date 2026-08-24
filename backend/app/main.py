@@ -8,6 +8,7 @@ from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 
 import app.models  # noqa: F401  (registers ORM models on Base.metadata)
+from app.api.v1.endpoints.chinese_drama_dub import generate_dub
 from app.api.v1.endpoints.composition_render import render_beats_for_job
 from app.api.v1.endpoints.factory_pipeline import (
     reconcile_batches_on_startup,
@@ -72,9 +73,16 @@ async def lifespan(app: FastAPI):
     # lives in the composition root (app/api/v1/endpoints/composition_render.py),
     # which alone is allowed to know about both app.modules.motion and
     # app.modules.composition. See docs/features/38-render-job-hardening.md.
+    # dub_generator is injected the same way beat_renderer is (see the
+    # comment above) -- generate_dub (chinese_drama_dub.py, the composition
+    # root allowed to import app.modules.ai) takes `settings` as an
+    # explicit param for testability, so it's bound here via a closure
+    # rather than passed positionally the way DubGenerator's own 2-arg
+    # call signature expects.
     video_composer_service = VideoComposerService(
         library_dir=Path(settings.library_dir),
         beat_renderer=render_beats_for_job,
+        dub_generator=lambda video_path, on_transcribed: generate_dub(video_path, on_transcribed, settings),
         event_bus=event_bus,
     )
     video_composer_service.start()

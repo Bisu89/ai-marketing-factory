@@ -107,6 +107,11 @@ const POLL_INTERVAL_MS = 2000;
 
 const STATUS_LABEL: Record<VideoComposeJob["status"], string> = {
   queued: "Queued",
+  // Chinese Drama -> Vietnamese Shorts statuses -- never entered by a
+  // Factory-driven job (this page's own render flow), but VideoComposeStatus
+  // is shared across both, so this map must stay exhaustive.
+  transcribing: "Transcribing audio",
+  translating: "Translating content",
   rendering_beats: "Rendering beats",
   merging: "Composing video",
   narrating: "Generating narration",

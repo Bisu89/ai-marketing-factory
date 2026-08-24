@@ -1,5 +1,9 @@
 export type VideoComposeStatus =
   | "queued"
+  // Chinese Drama -> Vietnamese Shorts (source_language set). Every other
+  // job never enters either status.
+  | "transcribing"
+  | "translating"
   | "rendering_beats"
   | "merging"
   | "narrating"
@@ -21,6 +25,8 @@ export type VideoComposeStatus =
 export type CoarseJobStatus = "QUEUED" | "RUNNING" | "COMPLETED" | "FAILED" | "CANCELLED";
 
 export type RenderPhase =
+  | "TRANSCRIBE_AUDIO"
+  | "TRANSLATE_CONTENT"
   | "RENDER_BEATS"
   | "COMPOSE_VIDEO"
   | "BUILD_AUDIO"
@@ -75,6 +81,9 @@ export interface VideoComposeJob {
   progress_current: number | null;
   progress_total: number | null;
   previous_job_id: number | null;
+  // Chinese Drama -> Vietnamese Shorts. Null for every other job.
+  source_language: string | null;
+  hook_text: string | null;
   error_message: string | null;
   created_at: string;
   completed_at: string | null;

@@ -36,7 +36,7 @@ EXAMPLE_DIR = Path(__file__).resolve().parents[3] / "examples" / "video_factory"
 REPO_ROOT = EXAMPLE_DIR.parents[1]
 
 
-def _fake_run_narration(script_text: str, voice: str, output_path: Path) -> list[dict]:
+def _fake_run_narration(script_text: str, voice: str, output_path: Path, rate: str = "+0%") -> list[dict]:
     subprocess.run(
         [
             "ffmpeg", "-y", "-nostdin", "-hide_banner", "-loglevel", "error",

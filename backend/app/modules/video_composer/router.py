@@ -111,6 +111,53 @@ def create_video_compose_job(
     return job_to_out(_get_job_or_404(db, job_id), Path(settings.library_dir))
 
 
+# Chinese Drama -> Vietnamese Shorts (see app/api/v1/endpoints/
+# chinese_drama_dub.py, the composition root that owns the real ASR/LLM
+# constants and implementation -- this router only needs the plain default
+# values, duplicated as two local constants the same way this module's own
+# service.py already duplicates constants across module/composition-root
+# boundaries). title/script_text are real placeholders overwritten by
+# VideoComposerService._run_dub_generation_phase before anything downstream
+# ever reads them -- both columns are NOT NULL, so a placeholder is required
+# at creation time regardless.
+_DUB_PLACEHOLDER_TITLE = "(Đang dịch...)"
+_DUB_PLACEHOLDER_SCRIPT = "(Đang nhận diện giọng nói và dịch...)"
+_DUB_DEFAULT_VOICE = "vi-VN-HoaiMyNeural"
+_DUB_DEFAULT_RATE = "+5%"  # edge_tts.Communicate's own signed-percentage rate string
+_DUB_DEFAULT_LANGUAGE = "zh"
+
+
+@router.post("/video-compose-jobs/from-chinese-drama", response_model=VideoComposeJobOut, status_code=201)
+def create_chinese_drama_job(
+    file: UploadFile = File(...),
+    output_dir: str | None = Form(None),
+    db: Session = Depends(get_db),
+    settings: Settings = Depends(get_settings),
+    service: VideoComposerService = Depends(get_video_composer_service),
+):
+    """Chinese Drama -> Vietnamese Shorts: one uploaded video, ASR'd and
+    translated on the worker (see VideoComposerService._run_dub_generation_phase),
+    then dubbed/captioned/rendered through the exact same downstream
+    pipeline every other Video Composer job already uses. No script/voice
+    fields here -- everything past the upload is auto-generated.
+    """
+    job_id = service.create_job(
+        title=_DUB_PLACEHOLDER_TITLE,
+        script_text=_DUB_PLACEHOLDER_SCRIPT,
+        voice=_DUB_DEFAULT_VOICE,
+        narration_rate=_DUB_DEFAULT_RATE,
+        music_volume=0.15,
+        transition_duration=0.5,
+        burn_subtitles=True,
+        requested_output_dir=output_dir,
+        render_profile="SOCIAL_VERTICAL",
+        source_language=_DUB_DEFAULT_LANGUAGE,
+    )
+    service.save_input_clips(job_id, [(file.filename or "video.mp4", file.file)])
+    service.enqueue(job_id)
+    return job_to_out(_get_job_or_404(db, job_id), Path(settings.library_dir))
+
+
 @router.get("/video-compose-jobs", response_model=list[VideoComposeJobOut])
 def list_video_compose_jobs(
     db: Session = Depends(get_db),

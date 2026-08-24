@@ -57,6 +57,10 @@ _NEW_COLUMNS: list[tuple[str, str, str]] = [
     # every row before this feature, and every project with
     # config.outro.enabled=False).
     ("video_compose_job", "outro_clip_path", "VARCHAR"),
+    # Chinese Drama -> Vietnamese Shorts.
+    ("video_compose_job", "source_language", "VARCHAR"),
+    ("video_compose_job", "hook_text", "VARCHAR"),
+    ("video_compose_job", "narration_rate", "VARCHAR DEFAULT '+0%'"),
 ]
 
 # (index_name, table, column) -- Base.metadata.create_all() only creates

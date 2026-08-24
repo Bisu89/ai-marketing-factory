@@ -9,6 +9,12 @@ CAPTION_PRESETS = ("emotional", "cinematic", "word_highlight", "big_statement", 
 
 VIDEO_COMPOSE_STATUSES = (
     "queued",
+    # Chinese Drama -> Vietnamese Shorts (VideoComposeJob.source_language
+    # set): a new pre-narration pass -- ASR then translate/title/hook --
+    # entered right after "queued" and before "rendering_beats"/"merging".
+    # Every other job (source_language=None) never enters either status.
+    "transcribing",
+    "translating",
     "rendering_beats",
     "merging",
     "narrating",
@@ -35,6 +41,8 @@ VIDEO_COMPOSE_STATUSES = (
 # is purely a derived, API-facing view (see VideoComposeJobOut.job_status).
 COARSE_STATUS = {
     "queued": "QUEUED",
+    "transcribing": "RUNNING",
+    "translating": "RUNNING",
     "rendering_beats": "RUNNING",
     "merging": "RUNNING",
     "narrating": "RUNNING",
@@ -54,6 +62,8 @@ COARSE_STATUS = {
 # job's own persisted phase; the frontend shows "Preparing..." for that
 # window instead (see docs/features/38-render-job-hardening.md).
 RENDER_PHASE = {
+    "transcribing": "TRANSCRIBE_AUDIO",
+    "translating": "TRANSLATE_CONTENT",
     "rendering_beats": "RENDER_BEATS",
     "merging": "COMPOSE_VIDEO",
     "narrating": "BUILD_AUDIO",
@@ -98,6 +108,14 @@ class VideoComposeJob(Base):
     title: Mapped[str] = mapped_column(String, nullable=False)
     script_text: Mapped[str] = mapped_column(String, nullable=False)
     voice: Mapped[str] = mapped_column(String, nullable=False, default="en-US-GuyNeural")
+    # edge-tts's own signed-percentage rate string (e.g. "+5%"), passed
+    # straight through to edge_tts.Communicate(rate=...) in _run_narration.
+    # "+0%" (the default) is unchanged behavior for every job that predates
+    # this column -- this narration path never had a speed knob before
+    # Chinese Drama mode (docs/features -- Package AI Metadata's sibling
+    # feature), unlike app.modules.voice.providers.EdgeTTSProvider's own
+    # separate float-multiplier `speed`, which this simpler pipeline never used.
+    narration_rate: Mapped[str] = mapped_column(String, nullable=False, default="+0%")
 
     music_path: Mapped[str | None] = mapped_column(String, nullable=True)
     music_volume: Mapped[float] = mapped_column(Float, nullable=False, default=0.15)
@@ -214,6 +232,21 @@ class VideoComposeJob(Base):
     # main composed video. Only ever set together with audio_master_path
     # (Factory-driven renders) -- see app/api/v1/endpoints/outro_generate.py.
     outro_clip_path: Mapped[str | None] = mapped_column(String, nullable=True)
+
+    # Chinese Drama -> Vietnamese Shorts. When set (e.g. "zh"), _run_job
+    # runs a pre-narration ASR+translation pass (see
+    # VideoComposerService._run_dub_generation_phase) that overwrites
+    # title/script_text with the real translation before the rest of the
+    # pipeline (unchanged from here on) runs -- see app/api/v1/endpoints/
+    # chinese_drama_dub.py, the composition root that actually calls
+    # OpenAI transcription + the LLM. None (every existing job) means this
+    # phase never runs -- zero behavior change for every prior caller.
+    source_language: Mapped[str | None] = mapped_column(String, nullable=True)
+    # The short "hook" line generated alongside the translation -- burned
+    # in by _finalize as a drawtext overlay visible only for the first
+    # HOOK_DISPLAY_DURATION_SEC seconds (see chinese_drama_dub.py). None
+    # for every job that isn't Chinese-Drama-mode.
+    hook_text: Mapped[str | None] = mapped_column(String, nullable=True)
 
     status: Mapped[str] = mapped_column(String, nullable=False, default="queued")
     output_path: Mapped[str | None] = mapped_column(String, nullable=True)
