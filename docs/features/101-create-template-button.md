@@ -1,6 +1,6 @@
 # 101. Settings: "New Template" Button
 
-**Commit:** (pending)
+**Commit:** `ddb5692`
 
 Real user report: Settings' "Video Factory Templates" card could edit and
 delete custom templates but had no way to create a new one — the only other
