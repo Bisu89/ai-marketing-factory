@@ -1,6 +1,6 @@
 # 102. Template Voice & Caption Controls
 
-**Commit:** _pending_
+**Commit:** `f91d36c`
 
 Real user report: the Create/Edit Template modals (added in
 [101](101-create-template-button.md)) had no voice or caption size/position
