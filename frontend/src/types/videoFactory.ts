@@ -567,6 +567,10 @@ export interface Project extends GeneratedBeatPlan {
   id: number;
   slug: string;
   render_job_id: number | null;
+  // Series (scoped-down "100-Day Series") -- both null for a project not
+  // attached to a Series. See types/series.ts.
+  series_id: number | null;
+  episode_number: number | null;
 }
 
 // -- Frontend-only working model for a beat, before it becomes a Scene -------

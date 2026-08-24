@@ -13,6 +13,7 @@ import {
   Images,
   Layers,
   ListChecks,
+  ListVideo,
   Sparkles,
   Trophy,
   Wand2,
@@ -35,6 +36,7 @@ const NAV_ITEMS = [
   { to: "/video-composer", label: "Video Composer", icon: Clapperboard },
   { to: "/video-factory", label: "Video Factory", icon: Wand2 },
   { to: "/batches", label: "Batches", icon: Layers },
+  { to: "/series", label: "Series", icon: ListVideo },
   { to: "/asset-library", label: "Asset Library", icon: Images },
   { to: "/settings", label: "Settings", icon: Settings },
 ];

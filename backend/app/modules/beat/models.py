@@ -62,6 +62,21 @@ class Project(Base):
     # project can be re-rendered, so this always reflects the *latest*
     # attempt, not a history (VideoComposeJob's own table is that history).
     render_job_id: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    # Series (scoped-down "100-Day Series") -- bare, unconstrained reference
+    # to a series.models.Series.id, same no-FK/no-import convention as
+    # render_job_id above (app.modules.beat must never import
+    # app.modules.series). Indexed since "list every project in this
+    # series" (see app/api/v1/endpoints/series_project.py) is a real query
+    # pattern, mirroring BatchItem.project_id's own indexed reverse
+    # reference. Set once, together with episode_number, by
+    # project_service.set_project_series when a Project is attached to a
+    # Series -- never on its own.
+    series_id: Mapped[int | None] = mapped_column(Integer, nullable=True, index=True)
+    # 1-based position within its series, auto-assigned at attach time
+    # (max existing + 1) -- not user-editable, same "not re-derived from
+    # array order" reasoning BatchItem.index already documents. None
+    # whenever series_id is None.
+    episode_number: Mapped[int | None] = mapped_column(Integer, nullable=True)
 
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow)
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow, onupdate=_utcnow)

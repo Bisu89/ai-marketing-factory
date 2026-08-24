@@ -29,6 +29,7 @@ from app.api.v1.endpoints import (
     package_generate,
     performance_intelligence,
     quality_gate,
+    series_project,
     settings,
     winner_detection,
     tags,
@@ -44,6 +45,7 @@ from app.modules.affiliate.router import router as affiliate_router
 from app.modules.competitor_intelligence.router import router as competitor_intelligence_router
 from app.modules.content_strategy.router import router as content_strategy_router
 from app.modules.scene_cutter.router import router as scene_cutter_router
+from app.modules.series.router import router as series_router
 from app.modules.video_composer.router import router as video_composer_router
 
 api_router = APIRouter()
@@ -75,6 +77,8 @@ api_router.include_router(content_strategy_router, tags=["content-strategy"])
 api_router.include_router(content_idea_generation.router, tags=["content-idea-generation"])
 api_router.include_router(content_batch_generate.router, tags=["content-batch"])
 api_router.include_router(beat_router, tags=["beat"])
+api_router.include_router(series_router, tags=["series"])
+api_router.include_router(series_project.router, tags=["series-project"])
 api_router.include_router(composition_render.router, tags=["composition-render"])
 api_router.include_router(beat_generate.router, tags=["beat-generate"])
 api_router.include_router(beat_preview.router, tags=["beat-preview"])

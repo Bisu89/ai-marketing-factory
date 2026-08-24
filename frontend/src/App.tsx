@@ -16,6 +16,8 @@ import { VideoComposerPage } from "./pages/VideoComposerPage";
 import { VideoFactoryPage } from "./pages/VideoFactoryPage";
 import { BatchPage } from "./pages/BatchPage";
 import { BatchDetailPage } from "./pages/BatchDetailPage";
+import { SeriesPage } from "./pages/SeriesPage";
+import { SeriesDetailPage } from "./pages/SeriesDetailPage";
 import { AssetLibraryPage } from "./pages/AssetLibraryPage";
 import { SettingsPage } from "./pages/SettingsPage";
 
@@ -40,6 +42,8 @@ function App() {
         <Route path="video-factory" element={<VideoFactoryPage />} />
         <Route path="batches" element={<BatchPage />} />
         <Route path="batches/:batchId" element={<BatchDetailPage />} />
+        <Route path="series" element={<SeriesPage />} />
+        <Route path="series/:seriesId" element={<SeriesDetailPage />} />
         <Route path="asset-library" element={<AssetLibraryPage />} />
         <Route path="settings" element={<SettingsPage />} />
         <Route path="*" element={<Navigate to="/dashboard" replace />} />

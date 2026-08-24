@@ -5,6 +5,7 @@ import { createProject } from "../api/beat";
 import { listTemplates } from "../api/template";
 import { startFactoryRun } from "../api/factory";
 import { getSettings } from "../api/settings";
+import { attachProjectToSeries } from "../api/series";
 import { CONTENT_LANGUAGES, CONTENT_LANGUAGE_LABELS } from "../types/videoFactory";
 import type { ContentLanguage, Template } from "../types/videoFactory";
 import "./NewVideoModal.css";
@@ -28,6 +29,14 @@ const LAST_CONTENT_LANGUAGE_KEY = "nvm:lastContentLanguage";
 
 interface NewVideoModalProps {
   onClose: () => void;
+  // Series (scoped-down "100-Day Series") -- when opened from
+  // SeriesDetailPage.tsx's "+ New Episode" button, the created project is
+  // attached to this series as a second step right after creation (mirrors
+  // this component's own existing create-then-maybe-startFactoryRun
+  // two-step shape). Not exposed as a picker in the normal "New Video"
+  // entry point -- Series creation/attachment is a deliberately separate,
+  // opt-in flow, not a field every video creation shows.
+  seriesId?: number;
 }
 
 // Task 18's one-click "New Video" entry point (section 29 -- see
@@ -45,7 +54,7 @@ interface NewVideoModalProps {
 // disables the other rather than allowing both, since the backend only
 // accepts one anyway (a script always skips AI content generation, section
 // 43's own explicit example).
-export function NewVideoModal({ onClose }: NewVideoModalProps) {
+export function NewVideoModal({ onClose, seriesId }: NewVideoModalProps) {
   const navigate = useNavigate();
   const [templates, setTemplates] = useState<Template[]>([]);
   const [templatesError, setTemplatesError] = useState<string | null>(null);
@@ -136,6 +145,9 @@ export function NewVideoModal({ onClose }: NewVideoModalProps) {
         outro_text: outroText.trim() || null,
         ai_metadata_enabled: aiMetadataEnabled,
       });
+      if (seriesId != null) {
+        await attachProjectToSeries(project.id, seriesId);
+      }
       if (autoProduce) {
         await startFactoryRun(project.id);
       }
@@ -164,6 +176,13 @@ export function NewVideoModal({ onClose }: NewVideoModalProps) {
         content_language: contentLanguage, outro_text: outroText.trim() || null,
         ai_metadata_enabled: aiMetadataEnabled,
       });
+      if (seriesId != null) {
+        // Must happen before startFactoryRun -- the Factory pipeline's own
+        // GENERATING_VISUALS stage reads this project's image_style_prompt
+        // as soon as it runs, so the series' character description needs
+        // to already be folded in by then.
+        await attachProjectToSeries(project.id, seriesId);
+      }
       await startFactoryRun(project.id);
       onClose();
       navigate(`/video-factory?project=${project.id}`);
@@ -178,7 +197,7 @@ export function NewVideoModal({ onClose }: NewVideoModalProps) {
     <div className="nvm-backdrop">
       <div className="nvm-modal" onClick={(e) => e.stopPropagation()}>
         <div className="nvm-header">
-          <h3>New Video</h3>
+          <h3>{seriesId != null ? "New Episode" : "New Video"}</h3>
           <button className="btn btn-icon" onClick={onClose}>
             <X size={16} />
           </button>

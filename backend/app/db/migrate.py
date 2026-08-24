@@ -62,6 +62,11 @@ _NEW_COLUMNS: list[tuple[str, str, str]] = [
     ("video_compose_job", "hook_text", "VARCHAR"),
     ("video_compose_job", "narration_rate", "VARCHAR DEFAULT '+0%'"),
     ("video_compose_job", "estimated_cost_usd", "FLOAT"),
+    # Series (scoped-down "100-Day Series") -- NULL for every project not
+    # attached to a Series (the pre-existing default for every row before
+    # this feature).
+    ("project", "series_id", "INTEGER"),
+    ("project", "episode_number", "INTEGER"),
 ]
 
 # (index_name, table, column) -- Base.metadata.create_all() only creates
@@ -71,6 +76,7 @@ _NEW_COLUMNS: list[tuple[str, str, str]] = [
 # _NEW_COLUMNS above.
 _NEW_INDEXES: list[tuple[str, str, str]] = [
     ("ix_batch_item_project_id", "batch_item", "project_id"),
+    ("ix_project_series_id", "project", "series_id"),
 ]
 
 

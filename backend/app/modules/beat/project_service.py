@@ -102,7 +102,11 @@ def get_project_draft(project_id: int) -> ProjectOut:
     why this is a different contract from a strict BeatPlan.
     """
     project = get_project(project_id)
-    return ProjectOut.model_validate({"id": project.id, "slug": project.slug, "render_job_id": project.render_job_id, **project.beat_plan_json})
+    return ProjectOut.model_validate({
+        "id": project.id, "slug": project.slug, "render_job_id": project.render_job_id,
+        "series_id": project.series_id, "episode_number": project.episode_number,
+        **project.beat_plan_json,
+    })
 
 
 def get_project_beat_plan(project_id: int) -> BeatPlan:
@@ -121,6 +125,31 @@ def update_project_beat_plan(project_id: int, plan: BeatPlan) -> None:
         if project is None:
             raise NotFoundError("Project", project_id)
         project.beat_plan_json = _json_safe(plan)
+        db.commit()
+    finally:
+        db.close()
+
+
+def update_project_config(project_id: int, config: ProjectConfig) -> None:
+    """Updates just a Project's own config, leaving script_text/beats/idea/
+    etc. completely untouched. Unlike update_project_beat_plan, this never
+    reconstructs a strict BeatPlan -- BeatPlan.beats has a real
+    `min_length=1` invariant (see ProjectOut's own docstring) that a
+    freshly-created, beat-less project (a real, valid lifecycle state) can
+    never satisfy, so a caller that only needs to change config -- e.g.
+    Series attachment (app/api/v1/endpoints/series_project.py), which must
+    work on a project regardless of whether Beat generation has run yet --
+    would otherwise fail on exactly that common case (a real bug found via
+    this function's own test).
+    """
+    db = SessionLocal()
+    try:
+        project = db.get(Project, project_id)
+        if project is None:
+            raise NotFoundError("Project", project_id)
+        raw = dict(project.beat_plan_json)
+        raw["config"] = config.model_dump(mode="json")
+        project.beat_plan_json = raw
         db.commit()
     finally:
         db.close()
@@ -249,5 +278,23 @@ def set_project_render_job_id(project_id: int, render_job_id: int) -> None:
         if project is not None:
             project.render_job_id = render_job_id
             db.commit()
+    finally:
+        db.close()
+
+
+def set_project_series(project_id: int, series_id: int, episode_number: int) -> None:
+    """Series (scoped-down "100-Day Series"). Called once, at attach time,
+    by the composition root (app/api/v1/endpoints/series_project.py) --
+    this function itself never imports app.modules.series (module
+    isolation), it just writes the two bare-int columns.
+    """
+    db = SessionLocal()
+    try:
+        project = db.get(Project, project_id)
+        if project is None:
+            raise NotFoundError("Project", project_id)
+        project.series_id = series_id
+        project.episode_number = episode_number
+        db.commit()
     finally:
         db.close()

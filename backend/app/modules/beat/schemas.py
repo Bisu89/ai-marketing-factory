@@ -1044,6 +1044,12 @@ class ProjectOut(BaseModel):
     project_name: str | None = None
     config: ProjectConfig = Field(default_factory=lambda: DEFAULT_PROJECT_CONFIG.model_copy(deep=True))
     render_job_id: int | None = None
+    # Series (scoped-down "100-Day Series") -- see
+    # app/api/v1/endpoints/series_project.py. Both None for a project not
+    # attached to a Series (every project before this feature, and every
+    # one a user never attaches).
+    series_id: int | None = None
+    episode_number: int | None = None
     # Task 21 -- see BeatPlan's own matching fields above; ProjectOut mirrors
     # them for the exact same reason it mirrors script_text/beats/config.
     idea: str | None = None
