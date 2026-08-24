@@ -1,6 +1,6 @@
 # 100. Series: Group Episodes Under a Shared Character/Visual Description
 
-**Commit:** (pending)
+**Commit:** `ac39d65`
 
 Real user request for a "100-Day Series Engine" (AI-planned 100-day story
 arc, character bible, continuity validation, weekly compilations, milestone
