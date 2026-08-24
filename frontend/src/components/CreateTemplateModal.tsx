@@ -2,9 +2,11 @@ import { Fragment, useEffect, useState } from "react";
 import { AlertTriangle, Loader2, Music, Save, Trash2, X } from "lucide-react";
 import { assetFileUrl, getAsset } from "../api/asset";
 import { createTemplate } from "../api/template";
+import { listLocalVoices } from "../api/voice";
+import type { LocalVoiceOption } from "../api/voice";
 import { AssetBrowserModal } from "./AssetBrowserModal";
-import { SYSTEM_DEFAULT_PROJECT_CONFIG } from "../types/videoFactory";
-import type { ProjectConfig, Template } from "../types/videoFactory";
+import { CAPTION_PRESETS, CAPTION_PRESET_LABELS, SYSTEM_DEFAULT_PROJECT_CONFIG, VOICE_OPTIONS } from "../types/videoFactory";
+import type { CaptionPreset, ProjectConfig, Template } from "../types/videoFactory";
 import "./EditTemplateModal.css";
 
 interface CreateTemplateModalProps {
@@ -40,6 +42,13 @@ export function CreateTemplateModal({ existingTemplates, onSaved, onClose }: Cre
   const [musicAssetId, setMusicAssetId] = useState<number | null>(null);
   const [musicAssetName, setMusicAssetName] = useState<string | null>(null);
   const [musicBrowserOpen, setMusicBrowserOpen] = useState(false);
+  const [captionsEnabled, setCaptionsEnabled] = useState(SYSTEM_DEFAULT_PROJECT_CONFIG.captions.enabled);
+  const [captionPreset, setCaptionPreset] = useState<CaptionPreset>(SYSTEM_DEFAULT_PROJECT_CONFIG.captions.preset);
+  const [voiceProvider, setVoiceProvider] = useState(SYSTEM_DEFAULT_PROJECT_CONFIG.voice.provider);
+  const [voiceId, setVoiceId] = useState(SYSTEM_DEFAULT_PROJECT_CONFIG.voice.voice_id);
+  const [voiceSpeed, setVoiceSpeed] = useState(SYSTEM_DEFAULT_PROJECT_CONFIG.voice.speed);
+  const [localVoices, setLocalVoices] = useState<LocalVoiceOption[]>([]);
+  const [localVoicesError, setLocalVoicesError] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -55,6 +64,11 @@ export function CreateTemplateModal({ existingTemplates, onSaved, onClose }: Cre
     setImageStylePrompt(config.visual_generation.image_style_prompt);
     setMusicEnabled(config.audio.music_enabled);
     setMusicAssetId(config.audio.bgm_asset_id);
+    setCaptionsEnabled(config.captions.enabled);
+    setCaptionPreset(config.captions.preset);
+    setVoiceProvider(config.voice.provider);
+    setVoiceId(config.voice.voice_id);
+    setVoiceSpeed(config.voice.speed);
   }
 
   useEffect(() => {
@@ -66,6 +80,12 @@ export function CreateTemplateModal({ existingTemplates, onSaved, onClose }: Cre
       .then((asset) => setMusicAssetName(asset.filename))
       .catch(() => setMusicAssetName(null));
   }, [musicAssetId]);
+
+  useEffect(() => {
+    listLocalVoices()
+      .then(setLocalVoices)
+      .catch((err) => setLocalVoicesError(err instanceof Error ? err.message : "Could not load local voices."));
+  }, []);
 
   async function handleCreate() {
     if (!name.trim() || saving) return;
@@ -89,6 +109,8 @@ export function CreateTemplateModal({ existingTemplates, onSaved, onClose }: Cre
             bgm_mode: musicAssetId != null ? "MANUAL" : "AUTO",
             bgm_asset_id: musicAssetId,
           },
+          captions: { ...base.captions, enabled: captionsEnabled, preset: captionPreset },
+          voice: { ...base.voice, provider: voiceProvider, voice_id: voiceId, speed: voiceSpeed },
         },
       });
       onSaved(created);
@@ -149,6 +171,82 @@ export function CreateTemplateModal({ existingTemplates, onSaved, onClose }: Cre
                 Appended to every AI-generated beat image for projects using this template. Free -- image
                 generation is a flat per-image fee regardless of prompt length.
               </span>
+            </label>
+
+            <label className="edit-template-checkbox">
+              <input type="checkbox" checked={captionsEnabled} onChange={(e) => setCaptionsEnabled(e.target.checked)} />
+              <span>Captions</span>
+            </label>
+
+            {captionsEnabled && (
+              <label className="edit-template-field">
+                <span>Caption style (controls text size and position)</span>
+                <select value={captionPreset} onChange={(e) => setCaptionPreset(e.target.value as CaptionPreset)}>
+                  {CAPTION_PRESETS.map((preset) => (
+                    <option key={preset} value={preset}>
+                      {CAPTION_PRESET_LABELS[preset]}
+                    </option>
+                  ))}
+                </select>
+                <span className="edit-template-hint">
+                  "Big statement" is large and vertically centered; "Emotional"/"Cinematic"/"Word highlight"/"Top"
+                  sit near the bottom or top edge instead.
+                </span>
+              </label>
+            )}
+
+            <label className="edit-template-field">
+              <span>Voice provider</span>
+              <select
+                value={voiceProvider}
+                onChange={(e) => {
+                  const next = e.target.value as typeof voiceProvider;
+                  setVoiceProvider(next);
+                  setVoiceId("default");
+                }}
+              >
+                <option value="local">Local (offline, no network)</option>
+                <option value="edge_tts">Edge TTS (free, requires network)</option>
+              </select>
+            </label>
+
+            {voiceProvider === "local" ? (
+              <label className="edit-template-field">
+                <span>Voice</span>
+                <select value={voiceId} onChange={(e) => setVoiceId(e.target.value)}>
+                  <option value="default">System Default</option>
+                  {localVoices.map((v) => (
+                    <option key={v.id} value={v.id}>
+                      {v.name}
+                    </option>
+                  ))}
+                </select>
+                {localVoicesError && <span className="edit-template-hint">{localVoicesError}</span>}
+              </label>
+            ) : (
+              <label className="edit-template-field">
+                <span>Voice</span>
+                <select value={voiceId} onChange={(e) => setVoiceId(e.target.value)}>
+                  <option value="default">Default for language</option>
+                  {VOICE_OPTIONS.map((v) => (
+                    <option key={v.value} value={v.value}>
+                      {v.label}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            )}
+
+            <label className="edit-template-field">
+              <span>Voice speed ({voiceSpeed.toFixed(2)}x)</span>
+              <input
+                type="range"
+                min={0.5}
+                max={2}
+                step={0.05}
+                value={voiceSpeed}
+                onChange={(e) => setVoiceSpeed(Number(e.target.value))}
+              />
             </label>
 
             <label className="edit-template-checkbox">

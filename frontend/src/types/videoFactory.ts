@@ -80,6 +80,19 @@ export const CAPTION_PRESET_LABELS: Record<CaptionPreset, string> = {
   top: "Top (small, below the top edge)",
 };
 
+// A small convenience list of edge-tts voice IDs (any valid edge-tts voice
+// name works, this is just what the picker offers directly) -- moved here
+// from VideoFactoryPage.tsx so CreateTemplateModal/EditTemplateModal can
+// reuse the exact same options without duplicating the list.
+export const VOICE_OPTIONS: { value: string; label: string }[] = [
+  { value: "en-US-GuyNeural", label: "English (Male)" },
+  { value: "en-US-AriaNeural", label: "English (Female)" },
+  { value: "es-ES-AlvaroNeural", label: "Spanish (Male)" },
+  { value: "es-ES-ElviraNeural", label: "Spanish (Female)" },
+  { value: "vi-VN-NamMinhNeural", label: "Vietnamese (Male)" },
+  { value: "vi-VN-HoaiMyNeural", label: "Vietnamese (Female)" },
+];
+
 export type Easing = "linear" | "ease_in" | "ease_out" | "ease_in_out";
 export type TransitionType = "cut" | "crossfade" | "slide_left" | "slide_right" | "fade_to_black";
 

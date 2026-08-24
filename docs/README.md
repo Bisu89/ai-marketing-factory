@@ -122,6 +122,7 @@ SQLite.
 99. [Chinese Drama: Real Per-Video Cost Estimate](features/99-chinese-drama-cost-estimate.md) — real user follow-up asking for a $ estimate per video; combines a new ASR per-minute estimate with the existing AI Metadata pricing infra, accumulated across repair retries, preserved across job retry, surfaced on the job card
 100. [Series: Group Episodes Under a Shared Character/Visual Description](features/100-series.md) — scoped-down "100-Day Series Engine" (dropped the AI-planned arc, continuity/originality QC, and analytics per explicit user direction); a Series' character description folds into each attached episode's existing image_style_prompt at attach time, reusing the style-consistency mechanism already built for per-project style guidance
 101. [Settings: "New Template" Button](features/101-create-template-button.md) — real user report that Settings could edit/delete but not create templates; the backend already fully supported it, so this is a pure frontend addition mirroring the existing edit modal, with a "start from blank or copy an existing template" option
+102. [Template Voice & Caption Controls](features/102-template-voice-caption-controls.md) — real user report of no voice/caption-size controls and "text huge in the middle"; the Create/Edit Template modals now expose caption preset, voice provider/voice/speed, revealing that "Emotional Story" actually used the large centered `big_statement` preset
 
 ## Keeping this up to date
 

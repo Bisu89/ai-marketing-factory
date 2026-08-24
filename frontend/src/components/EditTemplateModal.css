@@ -61,6 +61,7 @@
 }
 
 .edit-template-field input,
+.edit-template-field select,
 .edit-template-field textarea {
   font-family: inherit;
   font-size: 13px;
@@ -71,6 +72,12 @@
   border-radius: var(--radius-sm);
   padding: 8px 10px;
   resize: vertical;
+}
+
+.edit-template-field input[type="range"] {
+  padding: 0;
+  background: transparent;
+  border: none;
 }
 
 .edit-template-hint {

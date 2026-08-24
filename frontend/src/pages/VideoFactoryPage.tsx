@@ -63,6 +63,7 @@ import {
   CONTENT_LANGUAGE_LABELS,
   MOTION_PRESET_DEFAULTS,
   SYSTEM_DEFAULT_PROJECT_CONFIG,
+  VOICE_OPTIONS,
   WATERMARK_POSITIONS,
   WATERMARK_POSITION_LABELS,
   effectiveMotionPreset,
@@ -88,15 +89,6 @@ import type {
 } from "../types/videoFactory";
 import type { CompositionPlan } from "../types/videoFactory";
 import "./VideoFactoryPage.css";
-
-const VOICE_OPTIONS: { value: string; label: string }[] = [
-  { value: "en-US-GuyNeural", label: "English (Male)" },
-  { value: "en-US-AriaNeural", label: "English (Female)" },
-  { value: "es-ES-AlvaroNeural", label: "Spanish (Male)" },
-  { value: "es-ES-ElviraNeural", label: "Spanish (Female)" },
-  { value: "vi-VN-NamMinhNeural", label: "Vietnamese (Male)" },
-  { value: "vi-VN-HoaiMyNeural", label: "Vietnamese (Female)" },
-];
 
 const OUTPUT_FORMAT: OutputFormat = { width: 1080, height: 1920, fps: 30 };
 // OUTPUT_FORMAT is a fixed 1080x1920 constant (see types/videoFactory.ts's
