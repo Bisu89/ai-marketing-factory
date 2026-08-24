@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { CheckCircle2, FolderOpen, LayoutTemplate, Pencil, Trash2 } from "lucide-react";
+import { CheckCircle2, FolderOpen, LayoutTemplate, Pencil, Plus, Trash2 } from "lucide-react";
 import { PageHeader } from "../components/PageHeader";
 import { FolderBrowserModal } from "../components/FolderBrowserModal";
 import { EditTemplateModal } from "../components/EditTemplateModal";
+import { CreateTemplateModal } from "../components/CreateTemplateModal";
 import {
   getSettings,
   updateAiProvider,
@@ -58,6 +59,7 @@ export function SettingsPage() {
   const [templatesError, setTemplatesError] = useState<string | null>(null);
   const [deletingTemplateId, setDeletingTemplateId] = useState<string | null>(null);
   const [editingTemplate, setEditingTemplate] = useState<Template | null>(null);
+  const [creatingTemplate, setCreatingTemplate] = useState(false);
 
   function refreshTemplates() {
     listTemplates()
@@ -419,6 +421,10 @@ export function SettingsPage() {
           <label className="settings-label">
             <LayoutTemplate size={14} /> Video Factory Templates
           </label>
+          <button className="btn btn-secondary" onClick={() => setCreatingTemplate(true)}>
+            <Plus size={13} />
+            New Template
+          </button>
         </div>
         {templatesError && <div className="settings-alert settings-alert-error">{templatesError}</div>}
         <ul className="settings-template-list">
@@ -466,6 +472,17 @@ export function SettingsPage() {
             refreshTemplates();
           }}
           onClose={() => setEditingTemplate(null)}
+        />
+      )}
+
+      {creatingTemplate && (
+        <CreateTemplateModal
+          existingTemplates={templates}
+          onSaved={() => {
+            setCreatingTemplate(false);
+            refreshTemplates();
+          }}
+          onClose={() => setCreatingTemplate(false)}
         />
       )}
     </>
