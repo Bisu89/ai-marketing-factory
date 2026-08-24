@@ -61,6 +61,7 @@ _NEW_COLUMNS: list[tuple[str, str, str]] = [
     ("video_compose_job", "source_language", "VARCHAR"),
     ("video_compose_job", "hook_text", "VARCHAR"),
     ("video_compose_job", "narration_rate", "VARCHAR DEFAULT '+0%'"),
+    ("video_compose_job", "estimated_cost_usd", "FLOAT"),
 ]
 
 # (index_name, table, column) -- Base.metadata.create_all() only creates

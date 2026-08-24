@@ -44,10 +44,11 @@ def _make_landscape_clip(path: Path, duration: float = 2.0, size: str = "1280x72
 
 
 class _FakeDubResult:
-    def __init__(self, translation: str, title: str, hook: str):
+    def __init__(self, translation: str, title: str, hook: str, estimated_cost_usd: float | None = 0.0123):
         self.translation = translation
         self.title = title
         self.hook = hook
+        self.estimated_cost_usd = estimated_cost_usd
 
 
 @unittest.skipUnless(FFMPEG_AVAILABLE, "ffmpeg/ffprobe not found on PATH")
@@ -122,6 +123,7 @@ class ChineseDramaPipelineTests(unittest.TestCase):
         self.assertEqual(job.title, self.fake_dub_result.title)
         self.assertEqual(job.script_text, self.fake_dub_result.translation)
         self.assertEqual(job.hook_text, self.fake_dub_result.hook)
+        self.assertEqual(job.estimated_cost_usd, self.fake_dub_result.estimated_cost_usd)
         self.assertEqual(len(self.dub_calls), 1)
 
         # Cover-crop actually ran: a 1280x720 landscape source became a

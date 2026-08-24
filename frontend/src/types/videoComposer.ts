@@ -84,6 +84,7 @@ export interface VideoComposeJob {
   // Chinese Drama -> Vietnamese Shorts. Null for every other job.
   source_language: string | null;
   hook_text: string | null;
+  estimated_cost_usd: number | null;
   error_message: string | null;
   created_at: string;
   completed_at: string | null;

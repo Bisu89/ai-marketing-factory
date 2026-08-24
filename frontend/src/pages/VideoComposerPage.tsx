@@ -468,6 +468,7 @@ function VideoComposeJobCard({ job }: { job: VideoComposeJob }) {
             {IN_PROGRESS_STATUSES.includes(job.status) && <Loader2 size={13} className="spin" />}
             {STATUS_LABEL[job.status]}
             {` — ${job.clip_count} video`}
+            {job.estimated_cost_usd != null && ` — ~$${job.estimated_cost_usd.toFixed(4)}`}
           </div>
         </div>
         {job.status === "completed" && (

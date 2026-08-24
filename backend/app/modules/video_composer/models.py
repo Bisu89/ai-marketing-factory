@@ -247,6 +247,12 @@ class VideoComposeJob(Base):
     # HOOK_DISPLAY_DURATION_SEC seconds (see chinese_drama_dub.py). None
     # for every job that isn't Chinese-Drama-mode.
     hook_text: Mapped[str | None] = mapped_column(String, nullable=True)
+    # Real user request: an estimated USD cost for the ASR + every LLM
+    # attempt this job's dub generation made (see chinese_drama_dub.py's
+    # own DubResult.estimated_cost_usd) -- None for every job that isn't
+    # Chinese-Drama-mode, since every other job's only external call is
+    # edge-tts, which is free.
+    estimated_cost_usd: Mapped[float | None] = mapped_column(Float, nullable=True)
 
     status: Mapped[str] = mapped_column(String, nullable=False, default="queued")
     output_path: Mapped[str | None] = mapped_column(String, nullable=True)

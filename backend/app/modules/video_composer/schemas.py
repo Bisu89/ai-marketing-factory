@@ -91,6 +91,7 @@ class VideoComposeJobOut(BaseModel):
     # Chinese Drama -> Vietnamese Shorts. None for every other job.
     source_language: str | None = None
     hook_text: str | None = None
+    estimated_cost_usd: float | None = None
     clip_count: int
     output_path: str | None
     output_media_url: str | None = None

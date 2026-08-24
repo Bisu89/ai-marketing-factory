@@ -119,6 +119,7 @@ SQLite.
 96. [Thumbnail Headline: Shrink the Oversized Black Band](features/96-thumbnail-headline-band-shrink.md) — real user report that the auto-generated thumbnail's headline band looked cheap/oversized (~31% of frame height); shrunk font size and band padding ratios so a 2-line headline now covers ~19% of the frame instead
 97. [Package AI Metadata: Opt-In AI-Written Title/Description/Thumbnail Text](features/97-package-ai-metadata.md) — real user report that the deterministic title/description felt bland; new opt-in, billed AI rewrite (checkbox in the New Video modal) with a script-content-keyed cache so an unchanged script never re-bills, and a soft fallback to the old deterministic text on any provider error
 98. [Chinese Drama → Vietnamese Shorts](features/98-chinese-drama-vietnamese-shorts.md) — new Video Composer mode: ASR (OpenAI) + LLM translation/title/hook, dubbed with real word-timed Vietnamese TTS, cover-cropped to vertical, reusing the existing upload-flow pipeline/queue almost entirely; retry never re-bills ASR/LLM since translated text is baked into the job's own stored fields
+99. [Chinese Drama: Real Per-Video Cost Estimate](features/99-chinese-drama-cost-estimate.md) — real user follow-up asking for a $ estimate per video; combines a new ASR per-minute estimate with the existing AI Metadata pricing infra, accumulated across repair retries, preserved across job retry, surfaced on the job card
 
 ## Keeping this up to date
 

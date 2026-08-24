@@ -106,12 +106,16 @@ class GenerateDubTests(unittest.TestCase):
         with self.assertRaises(ValidationError):
             generate_dub(None, lambda: None, settings)
 
+    @patch("app.api.v1.endpoints.chinese_drama_dub.probe_audio_duration")
     @patch("app.api.v1.endpoints.chinese_drama_dub.transcribe_audio")
     @patch("app.api.v1.endpoints.chinese_drama_dub.extract_audio_track")
     @patch("app.api.v1.endpoints.chinese_drama_dub.call_structured")
-    def test_asr_called_with_correct_model_and_language(self, mock_call_structured, mock_extract, mock_transcribe):
+    def test_asr_called_with_correct_model_and_language(
+        self, mock_call_structured, mock_extract, mock_transcribe, mock_probe_duration
+    ):
         from pathlib import Path
 
+        mock_probe_duration.return_value = 12.0
         mock_transcribe.return_value = SimpleNamespace(text="你好世界", segments=[])
         mock_call_structured.return_value = _fake_llm_result("Xin chào thế giới", _VALID_TITLE, "hook ngắn")
 
@@ -124,25 +128,35 @@ class GenerateDubTests(unittest.TestCase):
         self.assertEqual(kwargs.get("language"), "zh")
         self.assertEqual(on_transcribed_calls, [1])  # on_transcribed fires exactly once, after ASR
 
+    @patch("app.api.v1.endpoints.chinese_drama_dub.probe_audio_duration")
     @patch("app.api.v1.endpoints.chinese_drama_dub.transcribe_audio")
     @patch("app.api.v1.endpoints.chinese_drama_dub.extract_audio_track")
     @patch("app.api.v1.endpoints.chinese_drama_dub.call_structured")
-    def test_valid_llm_response_becomes_dub_result(self, mock_call_structured, mock_extract, mock_transcribe):
+    def test_valid_llm_response_becomes_dub_result(
+        self, mock_call_structured, mock_extract, mock_transcribe, mock_probe_duration
+    ):
         from pathlib import Path
 
+        mock_probe_duration.return_value = 12.0
         mock_transcribe.return_value = SimpleNamespace(text="你好", segments=[])
         mock_call_structured.return_value = _fake_llm_result("Xin chào", _VALID_TITLE, "Một câu hook")
 
         result = generate_dub(Path("fake_video.mp4"), lambda: None, self.settings)
 
-        self.assertEqual(result, DubResult(translation="Xin chào", title=_VALID_TITLE, hook="Một câu hook"))
+        self.assertEqual(result.translation, "Xin chào")
+        self.assertEqual(result.title, _VALID_TITLE)
+        self.assertEqual(result.hook, "Một câu hook")
 
+    @patch("app.api.v1.endpoints.chinese_drama_dub.probe_audio_duration")
     @patch("app.api.v1.endpoints.chinese_drama_dub.transcribe_audio")
     @patch("app.api.v1.endpoints.chinese_drama_dub.extract_audio_track")
     @patch("app.api.v1.endpoints.chinese_drama_dub.call_structured")
-    def test_invalid_title_length_triggers_one_repair_retry_then_succeeds(self, mock_call_structured, mock_extract, mock_transcribe):
+    def test_invalid_title_length_triggers_one_repair_retry_then_succeeds(
+        self, mock_call_structured, mock_extract, mock_transcribe, mock_probe_duration
+    ):
         from pathlib import Path
 
+        mock_probe_duration.return_value = 12.0
         mock_transcribe.return_value = SimpleNamespace(text="你好", segments=[])
         mock_call_structured.side_effect = [
             _fake_llm_result("Xin chào", "Quá ngắn", "hook"),  # title too short -- invalid
@@ -156,17 +170,88 @@ class GenerateDubTests(unittest.TestCase):
         retry_system_prompt = mock_call_structured.call_args_list[1].kwargs["system"]
         self.assertIn("previous response was invalid", retry_system_prompt)
 
+    @patch("app.api.v1.endpoints.chinese_drama_dub.probe_audio_duration")
     @patch("app.api.v1.endpoints.chinese_drama_dub.transcribe_audio")
     @patch("app.api.v1.endpoints.chinese_drama_dub.extract_audio_track")
     @patch("app.api.v1.endpoints.chinese_drama_dub.call_structured")
-    def test_exhausted_retries_raise_external_service_error(self, mock_call_structured, mock_extract, mock_transcribe):
+    def test_exhausted_retries_raise_external_service_error(
+        self, mock_call_structured, mock_extract, mock_transcribe, mock_probe_duration
+    ):
         from pathlib import Path
 
+        mock_probe_duration.return_value = 12.0
         mock_transcribe.return_value = SimpleNamespace(text="你好", segments=[])
         mock_call_structured.return_value = _fake_llm_result("Xin chào", "Quá ngắn", "hook")  # always invalid
 
         with self.assertRaises(ExternalServiceError):
             generate_dub(Path("fake_video.mp4"), lambda: None, self.settings)
+
+
+class CostEstimateTests(unittest.TestCase):
+    """Real user request: estimate the $ cost for one Chinese Drama job."""
+
+    def setUp(self):
+        self.settings = _settings()
+
+    @patch("app.api.v1.endpoints.chinese_drama_dub.probe_audio_duration")
+    @patch("app.api.v1.endpoints.chinese_drama_dub.transcribe_audio")
+    @patch("app.api.v1.endpoints.chinese_drama_dub.extract_audio_track")
+    @patch("app.api.v1.endpoints.chinese_drama_dub.call_structured")
+    def test_successful_run_reports_a_positive_cost_estimate(
+        self, mock_call_structured, mock_extract, mock_transcribe, mock_probe_duration
+    ):
+        from pathlib import Path
+
+        mock_probe_duration.return_value = 30.0  # 30s of audio
+        mock_transcribe.return_value = SimpleNamespace(text="你好", segments=[])
+        mock_call_structured.return_value = _fake_llm_result("Xin chào", _VALID_TITLE, "Một câu hook")
+
+        result = generate_dub(Path("fake_video.mp4"), lambda: None, self.settings)
+
+        self.assertIsNotNone(result.estimated_cost_usd)
+        self.assertGreater(result.estimated_cost_usd, 0)
+
+    @patch("app.api.v1.endpoints.chinese_drama_dub.probe_audio_duration")
+    @patch("app.api.v1.endpoints.chinese_drama_dub.transcribe_audio")
+    @patch("app.api.v1.endpoints.chinese_drama_dub.extract_audio_track")
+    @patch("app.api.v1.endpoints.chinese_drama_dub.call_structured")
+    def test_longer_audio_costs_more(self, mock_call_structured, mock_extract, mock_transcribe, mock_probe_duration):
+        from pathlib import Path
+
+        mock_transcribe.return_value = SimpleNamespace(text="你好", segments=[])
+        mock_call_structured.return_value = _fake_llm_result("Xin chào", _VALID_TITLE, "Một câu hook")
+
+        mock_probe_duration.return_value = 10.0
+        short_result = generate_dub(Path("fake_video.mp4"), lambda: None, self.settings)
+        mock_probe_duration.return_value = 120.0
+        long_result = generate_dub(Path("fake_video.mp4"), lambda: None, self.settings)
+
+        self.assertGreater(long_result.estimated_cost_usd, short_result.estimated_cost_usd)
+
+    @patch("app.api.v1.endpoints.chinese_drama_dub.probe_audio_duration")
+    @patch("app.api.v1.endpoints.chinese_drama_dub.transcribe_audio")
+    @patch("app.api.v1.endpoints.chinese_drama_dub.extract_audio_track")
+    @patch("app.api.v1.endpoints.chinese_drama_dub.call_structured")
+    def test_repair_retry_cost_is_included_in_the_total(
+        self, mock_call_structured, mock_extract, mock_transcribe, mock_probe_duration
+    ):
+        from pathlib import Path
+
+        mock_probe_duration.return_value = 30.0
+        mock_transcribe.return_value = SimpleNamespace(text="你好", segments=[])
+        mock_call_structured.side_effect = [
+            _fake_llm_result("Xin chào", "Quá ngắn", "hook"),  # invalid attempt -- still burns real tokens
+            _fake_llm_result("Xin chào", _VALID_TITLE, "hook"),  # repaired
+        ]
+
+        result = generate_dub(Path("fake_video.mp4"), lambda: None, self.settings)
+
+        # 2 LLM attempts (100 input + 50 output tokens each, per _fake_llm_result)
+        # must cost strictly more than what a single successful attempt alone
+        # would have -- confirms the failed attempt's cost wasn't dropped.
+        asr_cost = 30.0 / 60.0 * 0.006
+        single_call_llm_cost = (100 / 1_000_000) * 3.00 + (50 / 1_000_000) * 15.00  # claude-sonnet-5 pricing
+        self.assertGreater(result.estimated_cost_usd, asr_cost + single_call_llm_cost)
 
 
 if __name__ == "__main__":

@@ -14,6 +14,30 @@ import openai
 # Change here only -- nowhere else references the transcription model name.
 TRANSCRIBE_MODEL = "gpt-4o-transcribe"
 
+# USD per minute of audio. Unconfirmed (no public per-minute pricing page
+# for gpt-4o-transcribe this codebase can check today -- OpenAI prices it
+# per audio token, not flatly per minute) -- ballparked against whisper-1's
+# long-published $0.006/min rate, same "seed with a rough, honestly-labelled
+# estimate rather than leave it null" convention app.modules.ai.pricing's
+# own module docstring already establishes for claude-sonnet-5/gpt-5.6-luna.
+# Update here only once a real rate is confirmed.
+TRANSCRIBE_PRICE_PER_MINUTE_USD = 0.006
+
+
+def estimate_transcription_cost_usd(duration_seconds: float) -> float:
+    return round((duration_seconds / 60.0) * TRANSCRIBE_PRICE_PER_MINUTE_USD, 6)
+
+
+def probe_audio_duration(audio_path: Path) -> float:
+    result = subprocess.run(
+        ["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "default=noprint_wrappers=1:nokey=1", str(audio_path)],
+        capture_output=True, text=True, stdin=subprocess.DEVNULL,
+    )
+    try:
+        return float(result.stdout.strip())
+    except ValueError as exc:
+        raise TranscribeError(f"Could not read audio duration for {audio_path}") from exc
+
 
 class TranscribeError(Exception):
     """Any failure extracting audio from a video or transcribing it."""

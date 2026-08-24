@@ -60,6 +60,7 @@ class _DubResult(Protocol):
     translation: str
     title: str
     hook: str
+    estimated_cost_usd: float | None
 
 
 # Chinese Drama -> Vietnamese Shorts: (video_path, on_transcription_complete)
@@ -256,6 +257,7 @@ class VideoComposerService:
         source_language: str | None = None,
         hook_text: str | None = None,
         narration_rate: str = "+0%",
+        estimated_cost_usd: float | None = None,
     ) -> int:
         db = SessionLocal()
         try:
@@ -299,6 +301,7 @@ class VideoComposerService:
                 source_language=source_language,
                 hook_text=hook_text,
                 narration_rate=narration_rate,
+                estimated_cost_usd=estimated_cost_usd,
                 status="queued",
             )
             db.add(job)
@@ -426,6 +429,7 @@ class VideoComposerService:
                 source_language=original.source_language,
                 hook_text=original.hook_text,
                 narration_rate=original.narration_rate,
+                estimated_cost_usd=original.estimated_cost_usd,
                 previous_job_id=original.id,
                 status="queued",
             )
@@ -622,7 +626,10 @@ class VideoComposerService:
             self._fail_job(job_id, self._get_status(job_id) or "transcribing", str(exc))
             return False
 
-        self._set_fields(job_id, title=result.title, script_text=result.translation, hook_text=result.hook)
+        self._set_fields(
+            job_id, title=result.title, script_text=result.translation, hook_text=result.hook,
+            estimated_cost_usd=result.estimated_cost_usd,
+        )
         self._log(job_id, "phase completed: TRANSLATE_CONTENT")
         return True
 
@@ -692,6 +699,7 @@ class VideoComposerService:
             outro_clip_path = job.outro_clip_path
             source_language = job.source_language
             hook_text = job.hook_text
+            estimated_cost_usd = job.estimated_cost_usd
             render_profile = job.render_profile
         finally:
             db.close()
@@ -926,6 +934,7 @@ class VideoComposerService:
             fps=fps,
             caption_enabled=burn_subtitles,
             narration_mode=narration_mode,
+            dub_cost_usd=estimated_cost_usd,
             timing={
                 "preflight": preflight_seconds,
                 "beat_render": beat_render_seconds,
@@ -2140,6 +2149,7 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
         error_code: str | None = None,
         error_message: str | None = None,
         failed_phase: str | None = None,
+        dub_cost_usd: float | None = None,
     ) -> None:
         """Writes `.render/job_<id>/report.json` under the app's own
         library_dir (Task 10 -- see docs/features/37-e2e-pipeline-hardening.md),
@@ -2165,12 +2175,30 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
         job ever started; a real bug (this method originally treated any
         narration_mode other than "local" as needing 1 external call,
         mis-billing every precomposed render) caught by manual verification.
+
+        `dub_cost_usd` (Chinese Drama -> Vietnamese Shorts, real user
+        request): when set, this job also made a real, billed ASR + LLM
+        call before narration even started -- added on top of the base
+        edge-tts accounting above (2 extra calls: ASR + at least one LLM
+        attempt) rather than replacing it.
         """
         report_dir = library_dir / ".render" / f"job_{job_id}"
         report_dir.mkdir(parents=True, exist_ok=True)
 
         if status == "completed":
-            external_api_calls = 0 if narration_mode in ("local", "precomposed") else 1
+            # narration_calls: the pre-existing edge-tts accounting (free,
+            # cost genuinely unknown -- see docstring above). dub_calls:
+            # Chinese Drama mode's own ASR + at least one LLM attempt, cost
+            # actually known (dub_cost_usd) -- added on top, never replacing.
+            narration_calls = 0 if narration_mode in ("local", "precomposed") else 1
+            dub_calls = 2 if dub_cost_usd is not None else 0
+            external_api_calls = narration_calls + dub_calls
+            if dub_cost_usd is not None:
+                external_api_cost_estimate = dub_cost_usd
+            elif narration_calls == 0:
+                external_api_cost_estimate = 0
+            else:
+                external_api_cost_estimate = None
             report = {
                 "status": "completed",
                 "job_id": job_id,
@@ -2188,7 +2216,7 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
                 "beats": clip_count,
                 "captions": caption_enabled,
                 "external_api_calls": external_api_calls,
-                "external_api_cost_estimate": 0 if external_api_calls == 0 else None,
+                "external_api_cost_estimate": external_api_cost_estimate,
                 "timing": timing or {},
             }
         else:

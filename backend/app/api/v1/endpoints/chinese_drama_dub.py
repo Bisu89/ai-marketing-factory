@@ -18,12 +18,20 @@ import logging
 import tempfile
 from collections.abc import Callable
 from dataclasses import dataclass
+from datetime import datetime, timezone
 from pathlib import Path
 
 from app.core.config import Settings
 from app.core.exceptions import ExternalServiceError, ValidationError
 from app.modules.ai.llm_client import AICredentials, AIProviderError, call_structured, resolve_ai_credentials
-from app.modules.ai.transcribe_client import TranscribeError, extract_audio_track, transcribe_audio
+from app.modules.ai.pricing import call_cost_usd
+from app.modules.ai.transcribe_client import (
+    TranscribeError,
+    estimate_transcription_cost_usd,
+    extract_audio_track,
+    probe_audio_duration,
+    transcribe_audio,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -46,6 +54,12 @@ class DubResult:
     translation: str
     title: str
     hook: str
+    # Rough estimate (ASR + every LLM attempt, including failed/repaired
+    # ones -- they still burn real tokens) -- None only if pricing wasn't
+    # computable at all (see pricing.py's own "never fabricate" contract);
+    # in practice always a real number today since every configured
+    # provider/model already has a PriceEntry, even if marked unconfirmed.
+    estimated_cost_usd: float | None = None
 
 
 OUTPUT_SCHEMA = {
@@ -109,7 +123,9 @@ def _validate_dub_result(parsed: dict) -> DubResult:
     return DubResult(translation=translation, title=title, hook=hook)
 
 
-def _call_and_validate(credentials: AICredentials, transcript: str, repair_note: str | None) -> DubResult:
+def _call_and_validate(
+    credentials: AICredentials, transcript: str, repair_note: str | None, cost_accumulator: list[float]
+) -> DubResult:
     system_prompt = SYSTEM_PROMPT
     if repair_note:
         system_prompt += (
@@ -125,6 +141,13 @@ def _call_and_validate(credentials: AICredentials, transcript: str, repair_note:
     except AIProviderError as exc:
         raise ExternalServiceError(f"AI provider call failed: {exc}") from exc
 
+    # Every attempt burns real tokens regardless of whether the response
+    # ends up valid -- a repair retry must still be counted, so this is
+    # recorded before any of the refusal/empty/invalid checks below.
+    cost = call_cost_usd(result.provider, result.model, result.input_tokens, result.output_tokens, datetime.now(timezone.utc))
+    if cost.cost_usd is not None:
+        cost_accumulator.append(cost.cost_usd)
+
     if result.refused:
         raise ExternalServiceError("Request was refused by the model's safety filter.")
     if not result.text:
@@ -137,18 +160,21 @@ def _call_and_validate(credentials: AICredentials, transcript: str, repair_note:
         raise ValueError(f"generated JSON did not match the expected contract: {exc}") from exc
 
 
-def _translate_title_and_hook(settings: Settings, transcript: str) -> DubResult:
+def _translate_title_and_hook(settings: Settings, transcript: str) -> tuple[DubResult, float | None]:
     credentials = resolve_ai_credentials(settings)
     if credentials is None:
         raise ValidationError(
             "No AI provider is configured. Go to Settings to choose a provider and enter an API key."
         )
 
+    cost_accumulator: list[float] = []
     repair_note: str | None = None
     last_error: Exception | None = None
     for attempt in range(MAX_RETRIES + 1):
         try:
-            return _call_and_validate(credentials, transcript, repair_note)
+            result = _call_and_validate(credentials, transcript, repair_note, cost_accumulator)
+            llm_cost = round(sum(cost_accumulator), 6) if cost_accumulator else None
+            return result, llm_cost
         except ValueError as exc:
             logger.warning(
                 "Chinese Drama dub-text attempt %d/%d failed validation: %s", attempt + 1, MAX_RETRIES + 1, exc
@@ -180,9 +206,13 @@ def generate_dub(video_path: Path, on_transcribed: Callable[[], None], settings:
         audio_path = Path(tmp) / "audio.mp3"
         try:
             extract_audio_track(video_path, audio_path)
+            audio_duration_sec = probe_audio_duration(audio_path)
             transcription = transcribe_audio(settings.openai_api_key, audio_path, language=DUB_ASR_LANGUAGE)
         except TranscribeError as exc:
             raise ExternalServiceError(str(exc)) from exc
 
     on_transcribed()
-    return _translate_title_and_hook(settings, transcription.text)
+    asr_cost = estimate_transcription_cost_usd(audio_duration_sec)
+    result, llm_cost = _translate_title_and_hook(settings, transcription.text)
+    result.estimated_cost_usd = round(asr_cost + (llm_cost or 0.0), 6)
+    return result
