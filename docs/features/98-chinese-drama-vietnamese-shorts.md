@@ -1,6 +1,6 @@
 # 98. Chinese Drama → Vietnamese Shorts (new Video Composer mode)
 
-**Commit:** (pending)
+**Commit:** `aeafa3e`
 
 Real user request, specified in detail (flow + config + validation +
 test list) and given as a "reuse existing architecture, don't rewrite"
