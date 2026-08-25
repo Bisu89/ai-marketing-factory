@@ -59,7 +59,7 @@ running app's own API against a real local video file, end to end
 scenes, shortest 4.5s) had no fragment shorter than the floor. Test job
 and its output files cleaned up afterward.
 
-## Follow-up: threshold default raised 46 -> 60
+## Follow-up: threshold default raised 46 -> 60 (commit `c72c414`)
 
 The user re-tested against their own real video (a fast, handheld
 reaction-style clip uploaded via the Scene Cutter's own upload feature) and
