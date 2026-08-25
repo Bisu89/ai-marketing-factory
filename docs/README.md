@@ -124,6 +124,7 @@ SQLite.
 101. [Settings: "New Template" Button](features/101-create-template-button.md) — real user report that Settings could edit/delete but not create templates; the backend already fully supported it, so this is a pure frontend addition mirroring the existing edit modal, with a "start from blank or copy an existing template" option
 102. [Template Voice & Caption Controls](features/102-template-voice-caption-controls.md) — real user report of no voice/caption-size controls and "text huge in the middle"; the Create/Edit Template modals now expose caption preset, voice provider/voice/speed, revealing that "Emotional Story" actually used the large centered `big_statement` preset
 103. [Story-to-Scene Analysis](features/103-story-to-scene-analysis.md) — upgrades the existing script-to-beat AI pipeline to split by visual/emotional moment (not sentence), guarantee word-for-word narration preservation, and produce camera/lighting/emotion/continuity per scene, feeding a much richer AI image prompt with zero new UI required
+104. [Fix: Captions Not Wrapping to a Second Line](features/104-caption-wrap-width-fix.md) — real user report of subtitles running off the screen edge; the per-line character budget was computed with an off-by-one (divided by max_lines-1 instead of max_lines), so the 2-line wrap never actually triggered
 
 ## Keeping this up to date
 

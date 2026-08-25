@@ -41,7 +41,9 @@ class BuildAssContentTests(unittest.TestCase):
 
     def test_big_statement_uppercases_text(self):
         content = build_ass_content(_segments(), 1080, 1920, 48, preset="big_statement")
-        self.assertIn("THIS IS THE FIRST CAPTION.", content)
+        dialogue = next(line for line in content.splitlines() if line.startswith("Dialogue:"))
+        text = dialogue.split(",", 9)[9].replace(r"\N", " ")
+        self.assertEqual(text, "THIS IS THE FIRST CAPTION.")
 
     def test_quote_wraps_text_in_curly_quotes(self):
         content = build_ass_content(_segments(), 1080, 1920, 48, preset="quote")
@@ -67,6 +69,25 @@ class BuildAssContentTests(unittest.TestCase):
         for width, height in [(1920, 1080), (1080, 1080)]:
             content = build_ass_content(_segments(), width, height, 48, preset="emotional")
             validate_ass_content(content)
+
+    def test_a_full_length_chunk_actually_wraps_to_a_second_line(self):
+        # Real user report: captions ran off the edge of the screen instead
+        # of wrapping. Root cause was build_ass_content's own
+        # max_chars_per_line computation (see ass_writer.py) coming out
+        # equal to the whole chunk's max_chars budget for the default
+        # max_lines=2, so _wrap_balanced's "already fits" check was always
+        # true and \N was never inserted. A chunk at the default max_chars
+        # budget (42) must produce a real second line, not a single long one.
+        segments = [
+            CaptionSegment(
+                id="b1_c1", beat_id="b1", start=0.0, end=3.0,
+                text="This caption line is long enough to need wrapping",
+            )
+        ]
+        content = build_ass_content(segments, 1080, 1920, 48, preset="cinematic", max_lines=2, max_chars=42)
+        dialogue_lines = [line for line in content.splitlines() if line.startswith("Dialogue:")]
+        self.assertEqual(len(dialogue_lines), 1)
+        self.assertIn(r"\N", dialogue_lines[0])
 
 
 class WrapBalancedTests(unittest.TestCase):
@@ -132,7 +153,10 @@ class UnicodeRoundTripTests(unittest.TestCase):
             path = Path(tmp) / "captions.ass"
             path.write_text(content, encoding="utf-8")
             reread = path.read_text(encoding="utf-8")
-        self.assertIn(text, reread)
+        # A real \N line break may legitimately split this text across two
+        # lines now that build_ass_content actually wraps -- collapse it
+        # back to a single line before checking every character round-tripped.
+        self.assertIn(text, reread.replace(r"\N", " "))
 
     def test_vietnamese_text_round_trips(self):
         self._round_trip("Xin chào, chúc một ngày tốt lành!")

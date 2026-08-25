@@ -124,7 +124,20 @@ def build_ass_content(
 
     scaled_font_size = max(20, int(font_size * config["font_scale"]))
     margin_v = int(height * config["margin_v_frac"])
-    max_chars_per_line = max(10, max_chars // max(1, max_lines - 1) if max_lines > 1 else max_chars)
+    # Real user report: captions were rendering as one long line running off
+    # the edge of the screen instead of wrapping to a second line. Root
+    # cause: this used to divide by `max_lines - 1` (giving 42 // 1 == 42
+    # for the default max_chars=42/max_lines=2), so max_chars_per_line came
+    # out equal to the *whole chunk's* character budget -- since
+    # segmentation.py already caps each chunk at max_chars, _wrap_balanced's
+    # own "already fits on one line" check was then always true, and the
+    # second line was never used. WrapStyle 2 (see the template below) means
+    # ASS/libass does no wrapping of its own -- only the explicit \N this
+    # function inserts -- so a too-long single line had nowhere else to go
+    # but off the edge of PlayResX. Dividing the total budget across
+    # max_lines (21 chars/line for the default 42/2) is what actually makes
+    # _wrap_balanced produce a real second line.
+    max_chars_per_line = max_chars if max_lines <= 1 else max(10, max_chars // max_lines)
 
     style_line = (
         f"Style: Karaoke,Arial,{scaled_font_size},&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,"
