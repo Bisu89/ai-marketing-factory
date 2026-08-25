@@ -1,6 +1,6 @@
 # 107. Scene Cutter: Fix False Splits (1 Scene Cut Into Several)
 
-**Commit:** _pending_
+**Commit:** `c4da2c0`
 
 Real user report: cutting a video that was really one continuous scene
 came back split into 3.
