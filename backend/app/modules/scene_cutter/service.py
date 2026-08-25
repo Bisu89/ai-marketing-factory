@@ -18,6 +18,19 @@ logger = logging.getLogger(__name__)
 
 PENDING_STATUSES = ("queued", "analyzing", "splitting")
 
+# Real user report: a single continuous scene came back cut into 3. This
+# is the same "guaranteed, not dependent on a single tunable being
+# perfectly right for a given video" merge already used twice elsewhere
+# in this app (app.api.v1.endpoints.beat_generate.py's _merge_short_beats,
+# app.modules.caption.ass_writer.py's own line-wrap budget) -- a spurious
+# scene boundary (a whip-pan, a flash, motion blur, a brief lighting
+# change) tends to produce an abnormally short scene either side of it,
+# so merging anything under this floor into its predecessor catches a
+# false split PySceneDetect's own ContentDetector(threshold=...,
+# min_scene_len=...) missed, without having to guess the one "correct"
+# threshold for every video.
+_MIN_SCENE_DURATION_FOR_MERGE_SEC = 1.0
+
 
 class SceneCutterService:
     """Background scene-cutting engine: its own queue + worker thread, fully
@@ -227,6 +240,27 @@ class SceneCutterService:
         return input_path, output_dir, None
 
     @staticmethod
+    def _merge_short_scenes(scenes: list[tuple], min_duration_sec: float) -> list[tuple]:
+        """Extends a scene shorter than min_duration_sec to absorb it into
+        the one immediately before it (the two are already contiguous --
+        PySceneDetect's own scene list always covers the full video with
+        no gaps -- so this is just widening the previous scene's end).
+        The first scene has no predecessor to merge into and is left
+        alone, same edge case _merge_short_beats already accepts.
+        """
+        if len(scenes) <= 1:
+            return scenes
+        merged = [scenes[0]]
+        for start, end in scenes[1:]:
+            duration_sec = (end - start).get_seconds()
+            if duration_sec < min_duration_sec:
+                prev_start, _ = merged[-1]
+                merged[-1] = (prev_start, end)
+            else:
+                merged.append((start, end))
+        return merged
+
+    @staticmethod
     def _detect_scenes(video_path: Path, threshold: float, min_scene_len_sec: float, trim_sec: float):
         video = open_video(str(video_path))
         scene_manager = SceneManager()
@@ -235,6 +269,7 @@ class SceneCutterService:
         )
         scene_manager.detect_scenes(video)
         scenes = scene_manager.get_scene_list()
+        scenes = SceneCutterService._merge_short_scenes(scenes, _MIN_SCENE_DURATION_FOR_MERGE_SEC)
 
         if trim_sec > 0:
             trimmed = []

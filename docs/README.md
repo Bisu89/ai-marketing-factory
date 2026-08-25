@@ -127,6 +127,7 @@ SQLite.
 104. [Fix: Captions Not Wrapping to a Second Line](features/104-caption-wrap-width-fix.md) — real user report of subtitles running off the screen edge; the per-line character budget was computed with an off-by-one (divided by max_lines-1 instead of max_lines), so the 2-line wrap never actually triggered
 105. [Remember Ending Text (Outro) Across Modal Opens](features/105-remember-outro-text.md) — real user request; same localStorage remember-on-reopen pattern already used for Template/Content language
 106. [Fix: Video Factory Looked Frozen After a Render Finished](features/106-ready-to-post-card-stuck-fix.md) — real user report needing F5 to see results; ReadyToPostCard gave up polling for the title/thumbnail package after a hard 60s timeout and rendered nothing while waiting, indistinguishable from stuck; now polls indefinitely with a visible "preparing" indicator, gated on the FactoryRun actually still being active
+107. [Scene Cutter: Fix False Splits](features/107-scene-cutter-false-split-fix.md) — real user report of 1 real scene coming back cut into 3; a deterministic merge-short-scenes safety net (mirroring the app's own beat/caption merge precedent) plus a more conservative default min scene length, with UI hint text pointing at the sensitivity slider for videos that still need per-video tuning
 
 ## Keeping this up to date
 

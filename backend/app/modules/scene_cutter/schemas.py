@@ -14,7 +14,13 @@ class SceneCutJobCreateIn(BaseModel):
     video_id: int | None = None
     source_path: str | None = None
     threshold: float = 46.0
-    min_scene_len_sec: float = 0.6
+    # Real user report: a single continuous scene came back cut into 3 at
+    # the old default of 0.6s -- see SceneCutterService._merge_short_scenes
+    # for the deterministic safety net added alongside this; raising the
+    # detector's own floor here is the first line of defense, reducing how
+    # often a spurious sub-second boundary (whip-pan, flash, motion blur)
+    # gets registered as a scene break in the first place.
+    min_scene_len_sec: float = 1.2
     trim_sec: float = 0.0
     output_dir: str | None = None
 

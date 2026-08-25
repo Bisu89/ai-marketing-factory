@@ -173,6 +173,12 @@
   font-size: 13px;
 }
 
+.scene-cutter-param-hint {
+  max-width: 220px;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
 .scene-cutter-alert {
   padding: 10px 14px;
   border-radius: var(--radius-sm);

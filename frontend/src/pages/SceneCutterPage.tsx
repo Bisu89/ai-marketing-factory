@@ -41,7 +41,10 @@ export function SceneCutterPage() {
   const [outputDir, setOutputDir] = useState("");
 
   const [threshold, setThreshold] = useState(46);
-  const [minSceneLen, setMinSceneLen] = useState(0.6);
+  // Real user report: a single continuous scene came back cut into 3 at
+  // the old default of 0.6s -- see backend SceneCutJobCreateIn's own
+  // comment. Kept in sync with that backend default.
+  const [minSceneLen, setMinSceneLen] = useState(1.2);
   const [trim, setTrim] = useState(0);
 
   const [pickingFolder, setPickingFolder] = useState(false);
@@ -272,6 +275,9 @@ export function SceneCutterPage() {
               step={1}
               onChange={(e) => setThreshold(Number(e.target.value))}
             />
+            <span className="scene-cutter-param-hint">
+              Số càng cao càng ít nhạy -- nếu 1 cảnh bị cắt vụn ra nhiều đoạn, tăng số này lên.
+            </span>
           </label>
           <label>
             Cảnh tối thiểu (giây)
@@ -281,6 +287,7 @@ export function SceneCutterPage() {
               step={0.1}
               onChange={(e) => setMinSceneLen(Number(e.target.value))}
             />
+            <span className="scene-cutter-param-hint">Đoạn ngắn hơn mức này sẽ tự gộp vào cảnh trước.</span>
           </label>
           <label>
             Trim đầu/cuối (giây)
