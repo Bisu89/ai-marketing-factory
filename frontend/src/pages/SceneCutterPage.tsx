@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Scissors, Search, Loader2, FolderOpen, FolderInput, Upload } from "lucide-react";
+import { Scissors, Search, Loader2, FolderOpen, FolderInput, Upload, Eye } from "lucide-react";
 import { PageHeader } from "../components/PageHeader";
 import { EmptyState } from "../components/EmptyState";
 import { fetchVideos } from "../api/videos";
@@ -8,11 +8,13 @@ import {
   listSceneJobs,
   openSceneJobFolder,
   pickOutputFolder,
+  previewSceneJob,
+  previewSceneJobUpload,
   uploadSceneJob,
 } from "../api/sceneCutter";
 import { mediaUrl } from "../api/client";
 import type { VideoOut } from "../features/library/types";
-import type { SceneCutJob } from "../types/sceneCutter";
+import type { ScenePreview, SceneCutJob } from "../types/sceneCutter";
 import "./SceneCutterPage.css";
 
 const POLL_INTERVAL_MS = 2000;
@@ -56,6 +58,16 @@ export function SceneCutterPage() {
 
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+
+  // docs/features/107-scene-cutter-false-split-fix.md's Preview follow-up
+  // -- real user feedback that no single threshold works for every video,
+  // and that finding the right one by running a full cut each time (wait
+  // for ffmpeg to write files, inspect, repeat) was slow. Detection-only,
+  // no job/files created -- separate from `jobs` below on purpose, a
+  // preview is never itself a real cut job and shouldn't appear in history.
+  const [previewing, setPreviewing] = useState(false);
+  const [previewError, setPreviewError] = useState<string | null>(null);
+  const [preview, setPreview] = useState<ScenePreview | null>(null);
 
   const [jobs, setJobs] = useState<SceneCutJob[]>([]);
 
@@ -150,10 +162,35 @@ export function SceneCutterPage() {
       setVideoQuery("");
       setSourcePath("");
       setUploadFile(null);
+      setPreview(null);
     } catch (err) {
       setSubmitError(err instanceof Error ? err.message : "Không tạo được tác vụ cắt cảnh.");
     } finally {
       setSubmitting(false);
+    }
+  }
+
+  async function handlePreview() {
+    if (!canSubmit || previewing) return;
+    setPreviewing(true);
+    setPreviewError(null);
+    try {
+      const result =
+        sourceMode === "upload"
+          ? await previewSceneJobUpload(uploadFile!, threshold, minSceneLen, trim)
+          : await previewSceneJob({
+              video_id: sourceMode === "library" ? selectedVideo!.id : undefined,
+              source_path: sourceMode === "path" ? sourcePath.trim() : undefined,
+              threshold,
+              min_scene_len_sec: minSceneLen,
+              trim_sec: trim,
+            });
+      setPreview(result);
+    } catch (err) {
+      setPreview(null);
+      setPreviewError(err instanceof Error ? err.message : "Không xem trước được.");
+    } finally {
+      setPreviewing(false);
     }
   }
 
@@ -301,11 +338,35 @@ export function SceneCutterPage() {
         </div>
 
         {submitError && <div className="scene-cutter-alert scene-cutter-alert-error">{submitError}</div>}
+        {previewError && <div className="scene-cutter-alert scene-cutter-alert-error">{previewError}</div>}
 
-        <button className="btn btn-primary" onClick={handleSubmit} disabled={!canSubmit || submitting}>
-          {submitting ? <Loader2 size={16} className="spin" /> : <Scissors size={16} />}
-          Cắt thành cảnh
-        </button>
+        <div className="scene-cutter-actions">
+          <button className="btn btn-secondary" onClick={handlePreview} disabled={!canSubmit || previewing}>
+            {previewing ? <Loader2 size={16} className="spin" /> : <Eye size={16} />}
+            Xem trước
+          </button>
+          <button className="btn btn-primary" onClick={handleSubmit} disabled={!canSubmit || submitting}>
+            {submitting ? <Loader2 size={16} className="spin" /> : <Scissors size={16} />}
+            Cắt thành cảnh
+          </button>
+        </div>
+
+        {preview && (
+          <div className="scene-cutter-preview">
+            <div className="scene-cutter-preview-header">
+              Xem trước: {preview.scene_count} cảnh (threshold={threshold}, cảnh tối thiểu={minSceneLen}s) -- chưa cắt file, chỉ dò thử.
+            </div>
+            <ul className="scene-cutter-preview-list">
+              {preview.scenes.map((scene, index) => (
+                <li key={index}>
+                  <span className="scene-cutter-preview-index">#{index + 1}</span>
+                  <span>{scene.start_timecode} → {scene.end_timecode}</span>
+                  <span className="scene-cutter-preview-duration">{scene.duration_sec.toFixed(1)}s</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
 
       <h2 className="scene-cutter-jobs-title">Các tác vụ đã chạy</h2>

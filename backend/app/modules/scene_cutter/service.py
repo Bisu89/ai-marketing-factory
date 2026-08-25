@@ -213,6 +213,29 @@ class SceneCutterService:
         finally:
             db.close()
 
+    def _resolve_input_path(
+        self, video_id: int | None, source_path: str | None
+    ) -> tuple[Path | None, str | None]:
+        """Just the input-file half of _resolve_paths below -- split out so
+        preview_scenes (no job, no output_dir, nothing written to disk) can
+        share it without needing a job_id to build a default_output_dir it
+        will never use.
+        """
+        if video_id is not None:
+            db = SessionLocal()
+            try:
+                video = db.get(Video, video_id)
+                if video is None or not video.video_path:
+                    return None, "Video not found or not downloaded yet"
+            finally:
+                db.close()
+            return Path(video.video_path), None
+
+        input_path = Path(source_path)
+        if not input_path.exists():
+            return None, f"Không tìm thấy file: {input_path}"
+        return input_path, None
+
     def _resolve_paths(
         self,
         job_id: int,
@@ -220,24 +243,40 @@ class SceneCutterService:
         source_path: str | None,
         requested_output_dir: str | None,
     ) -> tuple[Path | None, Path | None, str | None]:
+        input_path, error = self._resolve_input_path(video_id, source_path)
+        if error is not None:
+            return None, None, error
+
         if video_id is not None:
-            db = SessionLocal()
-            try:
-                video = db.get(Video, video_id)
-                if video is None or not video.video_path:
-                    return None, None, "Video not found or not downloaded yet"
-            finally:
-                db.close()
-            input_path = Path(video.video_path)
             default_output_dir = input_path.parent / "scenes" / f"job_{job_id}"
         else:
-            input_path = Path(source_path)
-            if not input_path.exists():
-                return None, None, f"Không tìm thấy file: {input_path}"
             default_output_dir = self._library_dir / "_local_files" / f"job_{job_id}"
 
         output_dir = Path(requested_output_dir) if requested_output_dir else default_output_dir
         return input_path, output_dir, None
+
+    def preview_scenes(
+        self,
+        video_id: int | None,
+        source_path: str | None,
+        threshold: float,
+        min_scene_len_sec: float,
+        trim_sec: float,
+    ) -> list[tuple]:
+        """Real user follow-up (docs/features/107-scene-cutter-false-split-fix.md):
+        no single threshold works for every video -- a continuous handheld
+        shot with fast motion needs a high threshold, a rapid multi-clip
+        compilation needs a low one, and the only way to know which a given
+        video needs is to actually look at the result. Runs detection only
+        -- no ffmpeg splitting, no job/DB row, nothing written to disk --
+        so trying a few threshold values back to back is fast, not a full
+        cut-and-wait cycle each time. Raises ValueError (not a job status)
+        since there's no job row to report a failure status on.
+        """
+        input_path, error = self._resolve_input_path(video_id, source_path)
+        if error is not None:
+            raise ValueError(error)
+        return self._detect_scenes(input_path, threshold, min_scene_len_sec, trim_sec)
 
     @staticmethod
     def _merge_short_scenes(scenes: list[tuple], min_duration_sec: float) -> list[tuple]:

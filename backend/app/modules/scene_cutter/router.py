@@ -10,7 +10,14 @@ from app.core.config import Settings, get_settings
 from app.core.exceptions import FileOperationError, NotFoundError, ValidationError
 from app.db.session import get_db
 from app.modules.scene_cutter.models import SceneCutJob
-from app.modules.scene_cutter.schemas import PickFolderOut, SceneCutJobCreateIn, SceneCutJobOut, job_to_out
+from app.modules.scene_cutter.schemas import (
+    PickFolderOut,
+    ScenePreviewOut,
+    SceneCutJobCreateIn,
+    SceneCutJobOut,
+    job_to_out,
+    scenes_to_preview_out,
+)
 from app.modules.scene_cutter.service import SceneCutterService
 
 router = APIRouter()
@@ -81,8 +88,8 @@ def create_scene_job(
 @router.post("/scene-jobs/upload", response_model=SceneCutJobOut, status_code=201)
 def upload_scene_job(
     file: UploadFile = File(...),
-    threshold: float = Form(46.0),
-    min_scene_len_sec: float = Form(0.6),
+    threshold: float = Form(60.0),
+    min_scene_len_sec: float = Form(1.2),
     trim_sec: float = Form(0.0),
     output_dir: str | None = Form(None),
     db: Session = Depends(get_db),
@@ -99,6 +106,54 @@ def upload_scene_job(
         requested_output_dir=output_dir,
     )
     return job_to_out(_get_job_or_404(db, job_id), Path(settings.library_dir))
+
+
+# Real user follow-up (docs/features/107-scene-cutter-false-split-fix.md):
+# no single threshold works for every video, and finding the right one by
+# repeatedly running a real cut (waiting for ffmpeg to write files each
+# time) was slow and frustrating. These two mirror create_scene_job/
+# upload_scene_job's own JSON-vs-multipart split exactly, but call
+# service.preview_scenes (detection only) instead of service.enqueue --
+# fast, no job row, no files written, so the user can try several
+# threshold values back to back before committing to a real cut.
+@router.post("/scene-jobs/preview", response_model=ScenePreviewOut)
+def preview_scene_job(
+    payload: SceneCutJobCreateIn,
+    service: SceneCutterService = Depends(get_scene_cutter_service),
+):
+    try:
+        scenes = service.preview_scenes(
+            video_id=payload.video_id,
+            source_path=payload.source_path,
+            threshold=payload.threshold,
+            min_scene_len_sec=payload.min_scene_len_sec,
+            trim_sec=payload.trim_sec,
+        )
+    except ValueError as exc:
+        raise ValidationError(str(exc)) from exc
+    return scenes_to_preview_out(scenes)
+
+
+@router.post("/scene-jobs/preview/upload", response_model=ScenePreviewOut)
+def preview_scene_job_upload(
+    file: UploadFile = File(...),
+    threshold: float = Form(60.0),
+    min_scene_len_sec: float = Form(1.2),
+    trim_sec: float = Form(0.0),
+    service: SceneCutterService = Depends(get_scene_cutter_service),
+):
+    staged_path = service.save_uploaded_file(file.filename or "upload.mp4", file.file)
+    try:
+        scenes = service.preview_scenes(
+            video_id=None,
+            source_path=str(staged_path),
+            threshold=threshold,
+            min_scene_len_sec=min_scene_len_sec,
+            trim_sec=trim_sec,
+        )
+    except ValueError as exc:
+        raise ValidationError(str(exc)) from exc
+    return scenes_to_preview_out(scenes)
 
 
 @router.get("/scene-jobs", response_model=list[SceneCutJobOut])

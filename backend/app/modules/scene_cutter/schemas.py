@@ -93,3 +93,26 @@ class SceneCutJobOut(BaseModel):
 def job_to_out(job: SceneCutJob, library_dir: Path) -> SceneCutJobOut:
     base = SceneCutJobOut.model_validate(job)
     return base.model_copy(update={"scenes": [scene_to_out(s, library_dir) for s in job.scenes]})
+
+
+class ScenePreviewItem(BaseModel):
+    start_timecode: str
+    end_timecode: str
+    duration_sec: float
+
+
+class ScenePreviewOut(BaseModel):
+    scene_count: int
+    scenes: list[ScenePreviewItem]
+
+
+def scenes_to_preview_out(scenes: list[tuple]) -> ScenePreviewOut:
+    items = [
+        ScenePreviewItem(
+            start_timecode=start.get_timecode(),
+            end_timecode=end.get_timecode(),
+            duration_sec=round((end - start).get_seconds(), 2),
+        )
+        for start, end in scenes
+    ]
+    return ScenePreviewOut(scene_count=len(items), scenes=items)

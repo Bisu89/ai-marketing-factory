@@ -33,3 +33,17 @@ export interface CreateSceneJobInput {
   trim_sec: number;
   output_dir?: string;
 }
+
+// docs/features/107-scene-cutter-false-split-fix.md's Preview follow-up --
+// detection only, no job/files created, so trying several threshold values
+// is fast instead of a full cut-and-wait cycle each time.
+export interface ScenePreviewItem {
+  start_timecode: string;
+  end_timecode: string;
+  duration_sec: number;
+}
+
+export interface ScenePreview {
+  scene_count: number;
+  scenes: ScenePreviewItem[];
+}

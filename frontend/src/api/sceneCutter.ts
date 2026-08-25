@@ -1,9 +1,34 @@
 import { config } from "../config/env";
 import { apiGet, apiPost } from "./client";
-import type { CreateSceneJobInput, SceneCutJob } from "../types/sceneCutter";
+import type { CreateSceneJobInput, ScenePreview, SceneCutJob } from "../types/sceneCutter";
 
 export function createSceneJob(input: CreateSceneJobInput): Promise<SceneCutJob> {
   return apiPost("/scene-jobs", input);
+}
+
+// docs/features/107-scene-cutter-false-split-fix.md's Preview follow-up.
+export function previewSceneJob(input: CreateSceneJobInput): Promise<ScenePreview> {
+  return apiPost("/scene-jobs/preview", input);
+}
+
+export async function previewSceneJobUpload(
+  file: File,
+  threshold: number,
+  minSceneLenSec: number,
+  trimSec: number,
+): Promise<ScenePreview> {
+  const form = new FormData();
+  form.set("file", file);
+  form.set("threshold", String(threshold));
+  form.set("min_scene_len_sec", String(minSceneLenSec));
+  form.set("trim_sec", String(trimSec));
+
+  const response = await fetch(`${config.apiBaseUrl}/scene-jobs/preview/upload`, { method: "POST", body: form });
+  if (!response.ok) {
+    const body = await response.json().catch(() => null);
+    throw new Error(typeof body?.detail === "string" ? body.detail : `API request failed: ${response.status}`);
+  }
+  return response.json();
 }
 
 export interface UploadSceneJobInput {

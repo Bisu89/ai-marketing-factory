@@ -1,4 +1,4 @@
-# 107. Scene Cutter: Fix False Splits (1 Scene Cut Into Several)
+# 107. Scene Cutter: Fix False Splits + Preview Mode
 
 **Commit:** `c4da2c0`
 
@@ -101,3 +101,57 @@ previously fragmented into 5+ pieces now came back as one single scene.
 Test job and output files cleaned up afterward. Still fully
 user-adjustable per video via the "Do nhay" field for content that needs a
 different balance (the hint text added above already points at it).
+
+## Follow-up 2: Preview mode (detection only, no cut)
+
+The user tried several more of their own real videos at the new default
+and still got messy results ("cảnh lộn tùm lum") -- inspected two of their
+actual uploaded videos directly (pulled real frames at the detected cut
+points with `ffmpeg -ss ... -frames:v 1`) and found the fundamental
+problem: different videos in this genre need *opposite* threshold
+settings. One was a single continuous handheld shot (needs a high
+threshold to avoid false splits from camera movement); the other turned
+out to be a compilation of several different people's clips stitched
+together (needs a lower threshold, or 60 wrongly merges different people's
+segments into one "scene"). Also empirically tried `scenedetect`'s
+`HashDetector` and `HistogramDetector` against both real videos as
+alternative algorithms -- both produced dramatically more false scenes
+(20-28) than `ContentDetector`, ruling them out.
+
+Conclusion: there is no single default that suits every video in this
+genre, and no better detector currently available in the library --
+per-video tuning via the threshold field is genuinely required. The real
+problem was the *workflow*: finding the right threshold required running a
+full cut (ffmpeg writing real files) each time just to see if a guess was
+right.
+
+Added a Preview mode: `SceneCutterService.preview_scenes()` (new, shares
+`_resolve_input_path` -- extracted from `_resolve_paths` -- with the real
+job path) runs detection only, no `split_video_ffmpeg`, no `SceneCutJob`
+DB row, nothing written to disk. New endpoints `POST /scene-jobs/preview`
+(JSON, mirrors `create_scene_job`) and `POST /scene-jobs/preview/upload`
+(multipart, mirrors `upload_scene_job`) return `{scene_count, scenes:
+[{start_timecode, end_timecode, duration_sec}]}`. Frontend: a "Xem trước"
+button next to "Cắt thành cảnh" shows the same scene list inline (with the
+threshold/min-scene-length used) without creating a job -- the user can
+try several threshold values back to back before committing to a real cut.
+Also fixed `upload_scene_job`'s own hardcoded `Form(46.0)`/`Form(0.6)`
+defaults, stale since Follow-up 1 changed `SceneCutJobCreateIn`'s real
+defaults to 60.0/1.2 (harmless in practice -- the frontend always sends
+explicit values -- but wrong for anyone calling the endpoint directly).
+
+### Verification
+
+Backend: new `PreviewScenesTests` (missing-file error path, no DB/OpenCV
+needed) alongside the existing `MergeShortScenesTests` -- 7 tests passing.
+`npx tsc -b --noEmit` clean.
+
+Real, non-mocked verification: called the actual `POST /scene-jobs/preview`
+endpoint against a real video at threshold=70 -- returned in under a
+second (vs. several seconds plus file writes for a real cut) with the
+correct 3-scene result, and confirmed via direct DB inspection that no
+`scene_cut_job` row was created. Then drove the real running app through
+Playwright: switched to "Đường dẫn file cục bộ", entered the same file,
+set threshold to 70, clicked "Xem trước", and confirmed the exact same
+3-scene result rendered inline in the UI with the "chưa cắt file, chỉ dò
+thử" label.

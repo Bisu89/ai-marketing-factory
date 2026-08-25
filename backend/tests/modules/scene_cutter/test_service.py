@@ -5,6 +5,7 @@ involved -- the merge itself only ever operates on (start, end) tuples).
 """
 
 import unittest
+from pathlib import Path
 
 from scenedetect import FrameTimecode
 
@@ -61,6 +62,23 @@ class MergeShortScenesTests(unittest.TestCase):
 
     def test_empty_scene_list_is_returned_unchanged(self):
         self.assertEqual(SceneCutterService._merge_short_scenes([], min_duration_sec=1.0), [])
+
+
+class PreviewScenesTests(unittest.TestCase):
+    """docs/features/107-scene-cutter-false-split-fix.md's Preview follow-up
+    -- only the input-resolution/error-surfacing half is covered here
+    (no OpenCV/real video decoding, no DB session for the video_id branch);
+    the detection call itself is the same _detect_scenes already exercised
+    manually end to end and covered by MergeShortScenesTests above.
+    """
+
+    def test_missing_source_path_raises_value_error(self):
+        service = SceneCutterService(library_dir=Path("."))
+        with self.assertRaises(ValueError):
+            service.preview_scenes(
+                video_id=None, source_path="Z:/definitely/does/not/exist.mp4",
+                threshold=60.0, min_scene_len_sec=1.2, trim_sec=0.0,
+            )
 
 
 if __name__ == "__main__":
