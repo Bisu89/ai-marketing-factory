@@ -1,6 +1,6 @@
 # 104. Fix: Captions Not Wrapping to a Second Line
 
-**Commit:** _pending_
+**Commit:** `70e87c4`
 
 Real user report: subtitles were too long and ran off the edge of the
 screen instead of wrapping to a second line ("phần subtitle bị dài quá
