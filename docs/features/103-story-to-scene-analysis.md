@@ -1,6 +1,6 @@
 # 103. Story-to-Scene Analysis
 
-**Commit:** _pending_
+**Commit:** `a3670a6`
 
 Explicit user request: paste a complete story into Script and get a real
 sequence of cinematic scenes back automatically -- no manual beat/scene
