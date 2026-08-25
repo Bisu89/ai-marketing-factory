@@ -102,7 +102,7 @@ Test job and output files cleaned up afterward. Still fully
 user-adjustable per video via the "Do nhay" field for content that needs a
 different balance (the hint text added above already points at it).
 
-## Follow-up 2: Preview mode (detection only, no cut)
+## Follow-up 2: Preview mode (detection only, no cut) (commit `8a84ced`)
 
 The user tried several more of their own real videos at the new default
 and still got messy results ("cảnh lộn tùm lum") -- inspected two of their
