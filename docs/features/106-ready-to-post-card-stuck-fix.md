@@ -1,6 +1,6 @@
 # 106. Fix: Video Factory Looked Frozen After a Render Finished
 
-**Commit:** _pending_
+**Commit:** `44b004f`
 
 Real user report: "Video Factory sau khi gen video xong thì bị đứng luôn
 phải f5 lại mới thấy kết quả" (after generating finishes, it just freezes,
