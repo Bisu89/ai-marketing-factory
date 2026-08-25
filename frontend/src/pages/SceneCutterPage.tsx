@@ -40,7 +40,12 @@ export function SceneCutterPage() {
 
   const [outputDir, setOutputDir] = useState("");
 
-  const [threshold, setThreshold] = useState(46);
+  // Real user follow-up (docs/features/107-scene-cutter-false-split-fix.md):
+  // 46 still over-split real handheld/reaction-style footage (fast camera
+  // movement within one continuous shot). Raised to 60 after empirically
+  // testing against the user's own reported video. Kept in sync with the
+  // backend's own SceneCutJobCreateIn default.
+  const [threshold, setThreshold] = useState(60);
   // Real user report: a single continuous scene came back cut into 3 at
   // the old default of 0.6s -- see backend SceneCutJobCreateIn's own
   // comment. Kept in sync with that backend default.

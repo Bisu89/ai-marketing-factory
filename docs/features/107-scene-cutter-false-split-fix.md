@@ -38,10 +38,9 @@ cut there.
   scenes, not the case where the detector is genuinely too sensitive for a
   specific video's own motion/lighting.
 
-`threshold` itself (46.0) was left unchanged -- already notably more
-conservative than PySceneDetect's own CLI default (27.0), and the "right"
-value beyond that is genuinely per-video; the new hint text tells the user
-which slider to reach for instead.
+`threshold` itself (46.0) was initially left unchanged -- see the
+follow-up below, where the user's own real video proved this wasn't
+enough on its own.
 
 ## Verification
 
@@ -59,3 +58,46 @@ running app's own API against a real local video file, end to end
 `min_scene_len_sec: 1.2` default was applied and the real result (5
 scenes, shortest 4.5s) had no fragment shorter than the floor. Test job
 and its output files cleaned up afterward.
+
+## Follow-up: threshold default raised 46 -> 60
+
+The user re-tested against their own real video (a fast, handheld
+reaction-style clip uploaded via the Scene Cutter's own upload feature) and
+still got a bad split -- 11 scenes for what should have been closer to 1-2.
+Inspected the real DB rows for that job directly: every one of the 11
+scenes was already >=1.2s (1.6s-13.8s), so the merge-short-scenes safety
+net above genuinely couldn't have caught it -- this was the detector being
+too sensitive for this video's own content, not a sub-second flicker.
+
+Pulled real frames from the video at the detected cut points
+(`ffmpeg -ss ... -frames:v 1`) to see what was actually triggering each
+cut. Confirmed by eye: some boundaries were a real cut (a different person/
+composited reaction shot spliced in around 17.5s); most were the *same*
+continuous handheld shot with fast camera movement (the subject bringing a
+trimmer up to his face, changing framing) -- exactly the kind of large
+frame-to-frame visual change that a plain content-difference detector
+can't distinguish from a real cut.
+
+Before changing the default, tested empirically against this same real
+video rather than guessing:
+
+| Detector | Setting | Scenes |
+|---|---|---|
+| ContentDetector | threshold=46 (old default) | 11 |
+| ContentDetector | threshold=55 | 5 |
+| ContentDetector | threshold=65 | 6 |
+| ContentDetector | threshold=75 | 2 |
+| ContentDetector | threshold=85 | 0 |
+| AdaptiveDetector (`scenedetect`'s own detector, marketed as more robust to camera movement) | adaptive_threshold=3/5/8 | 23 / 23 / 19 |
+
+`AdaptiveDetector` made this specific video meaningfully *worse*, not
+better -- ruled out as an alternative. Raised the default `threshold` from
+46.0 to 60.0 (`SceneCutJobCreateIn` and the frontend's matching default) --
+a real, empirically-informed middle ground for this app's own actual
+content, not just PySceneDetect's generic CLI default (27.0). Re-ran the
+same real video end to end at the new default: 6 scenes instead of 11, and
+critically the whole 40-second continuous handheld portion that had
+previously fragmented into 5+ pieces now came back as one single scene.
+Test job and output files cleaned up afterward. Still fully
+user-adjustable per video via the "Do nhay" field for content that needs a
+different balance (the hint text added above already points at it).

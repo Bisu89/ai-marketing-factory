@@ -13,7 +13,20 @@ class PickFolderOut(BaseModel):
 class SceneCutJobCreateIn(BaseModel):
     video_id: int | None = None
     source_path: str | None = None
-    threshold: float = 46.0
+    # Real user follow-up (docs/features/107-scene-cutter-false-split-fix.md):
+    # raising min_scene_len_sec alone wasn't enough on real handheld/reaction-
+    # style footage -- fast camera movement within one continuous shot (a
+    # whip to a new angle, a hand entering frame) can swing the frame-to-
+    # frame content difference well past the old 46.0 default for several
+    # seconds at a time, well outside what a "merge short scenes" safety net
+    # can catch. Empirically tested against a real reported video (46 -> 11
+    # false scenes; 55 -> 5; tried scenedetect's AdaptiveDetector too, which
+    # did worse -- 23) before picking 60 as a real, better-tuned default for
+    # this app's actual content, not just PySceneDetect's own generic CLI
+    # default (27.0) that was never validated against this app's own users'
+    # footage. Still fully user-adjustable per video via the "Do nhay"
+    # field for content that needs a different balance.
+    threshold: float = 60.0
     # Real user report: a single continuous scene came back cut into 3 at
     # the old default of 0.6s -- see SceneCutterService._merge_short_scenes
     # for the deterministic safety net added alongside this; raising the
