@@ -143,6 +143,23 @@ class Beat(BaseModel):
     # duration field (section 21's own "do not duplicate timing fields").
     start: float | None = None
     end: float | None = None
+    # Story-to-Scene Analysis (see docs/features/103-story-to-scene-analysis.md):
+    # a real, showable image description ("what should appear on screen"),
+    # distinct from visual_hint's short 3-10 word label above -- this is
+    # what imagegen_generate.py's _image_prompt() now prefers as the base
+    # of the AI image prompt when present, falling back to visual_hint for
+    # any older/manually-authored beat that never had it set. All six of
+    # these plus visual_description are optional and additive -- a beat
+    # generated before this feature (or authored by hand) simply has all
+    # of them None, and every downstream consumer already treats that the
+    # same as "not specified."
+    visual_description: str | None = None
+    location: str | None = None
+    time_of_day: str | None = None
+    emotion: str | None = None
+    camera: str | None = None
+    lighting: str | None = None
+    continuity_notes: str | None = None
 
     @field_validator("id")
     @classmethod
@@ -165,7 +182,10 @@ class Beat(BaseModel):
             raise ValueError(f"Beat.duration must be between {MIN_DURATION} and {MAX_DURATION} seconds, got {value}")
         return value
 
-    @field_validator("narration", "visual_hint")
+    @field_validator(
+        "narration", "visual_hint", "visual_description", "location",
+        "time_of_day", "emotion", "camera", "lighting", "continuity_notes",
+    )
     @classmethod
     def _optional_text_not_blank(cls, value: str | None) -> str | None:
         return _reject_blank_if_provided(value)

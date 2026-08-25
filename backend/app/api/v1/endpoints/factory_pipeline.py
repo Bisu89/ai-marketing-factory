@@ -289,7 +289,14 @@ def _stage_generate_beats(project_id: int, settings: Settings) -> tuple[BeatPlan
         # must never put more concurrent Claude calls in flight than this,
         # even if project-level concurrency is higher.
         with ai_generation_semaphore:
-            generated = generate_beat_plan(resolve_ai_credentials(settings), script)
+            generated = generate_beat_plan(
+                resolve_ai_credentials(settings), script,
+                idea=draft.idea,
+                character_description=draft.config.visual_generation.image_style_prompt or None,
+                tone=draft.config.content.tone,
+                style=draft.config.content.style,
+                target_duration=draft.config.content.target_duration,
+            )
     except (ValidationError, ExternalServiceError) as exc:
         raise FactoryStageError("GENERATING_BEATS", BEAT_GENERATION_FAILED, str(exc)) from exc
 

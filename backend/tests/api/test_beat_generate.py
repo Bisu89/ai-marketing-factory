@@ -42,6 +42,15 @@ VALID_BEATS_JSON = json.dumps(
     }
 )
 
+# Story-to-Scene Analysis (docs/features/103-story-to-scene-analysis.md)
+# validates that concatenated beat narration reproduces the input script
+# word-for-word -- this is that same script, so VALID_BEATS_JSON's response
+# passes validation when used against it.
+VALID_SCRIPT = (
+    "She thought he forgot. She waited all evening. Then she heard the front door open. "
+    "He walked in carrying flowers. She started crying, overwhelmed."
+)
+
 
 class BeatGenerateInTests(unittest.TestCase):
     def test_valid_script_accepted(self):
@@ -66,7 +75,7 @@ class GenerateBeatPlanTests(unittest.TestCase):
     def test_valid_ai_response_becomes_a_valid_beat_plan(self, mock_call):
         mock_call.return_value = _fake_result(VALID_BEATS_JSON)
 
-        plan = generate_beat_plan(FAKE_CREDENTIALS, "She thought he forgot their anniversary.")
+        plan = generate_beat_plan(FAKE_CREDENTIALS, VALID_SCRIPT)
 
         self.assertIsInstance(plan, BeatPlan)
         self.assertEqual(len(plan.beats), 5)
@@ -80,7 +89,7 @@ class GenerateBeatPlanTests(unittest.TestCase):
     def test_generated_beats_only_use_supported_types(self, mock_call):
         mock_call.return_value = _fake_result(VALID_BEATS_JSON)
 
-        plan = generate_beat_plan(FAKE_CREDENTIALS, "A story script.")
+        plan = generate_beat_plan(FAKE_CREDENTIALS, VALID_SCRIPT)
 
         for beat in plan.beats:
             self.assertIn(beat.type, list(BeatType))
@@ -98,7 +107,7 @@ class GenerateBeatPlanTests(unittest.TestCase):
     def test_malformed_json_triggers_one_repair_retry_then_succeeds(self, mock_call):
         mock_call.side_effect = [_fake_result("not valid json{{{"), _fake_result(VALID_BEATS_JSON)]
 
-        plan = generate_beat_plan(FAKE_CREDENTIALS, "A story script.")
+        plan = generate_beat_plan(FAKE_CREDENTIALS, VALID_SCRIPT)
 
         self.assertEqual(len(plan.beats), 5)
         self.assertEqual(mock_call.call_count, 2)
@@ -216,8 +225,12 @@ class MergeShortBeatsTests(unittest.TestCase):
             ]
         }
         mock_call.return_value = _fake_result(json.dumps(raw))
+        script = (
+            "She thought he forgot. She waited all evening. A short bit. Another short bit. "
+            "She started crying."
+        )
 
-        plan = generate_beat_plan(FAKE_CREDENTIALS, "A story script.")
+        plan = generate_beat_plan(FAKE_CREDENTIALS, script)
 
         self.assertEqual(len(plan.beats), 4)
         self.assertEqual(plan.beats[2].narration, "A short bit. Another short bit.")
@@ -226,6 +239,110 @@ class MergeShortBeatsTests(unittest.TestCase):
         # own contract -- never inherited from the pre-merge index.
         self.assertEqual(plan.beats[2].id, "beat_03")
         self.assertEqual(plan.beats[3].id, "beat_04")
+
+
+class StoryToSceneAnalysisTests(unittest.TestCase):
+    """docs/features/103-story-to-scene-analysis.md -- the new structured
+    scene fields, the strict verbatim-narration guarantee, and threading
+    idea/character/tone/style/target_duration into the prompt.
+    """
+
+    def _beats_json(self, narrations: list[str]) -> str:
+        return json.dumps(
+            {
+                "beats": [
+                    {
+                        "type": "BODY", "narration": text, "duration": 4.0, "visual_hint": "a shot",
+                        "visual_description": "a detailed cinematic description",
+                        "location": "a room", "time_of_day": "morning", "emotion": "hopeful",
+                        "camera": "medium shot", "lighting": "soft natural light",
+                        "continuity_notes": "same room as before",
+                    }
+                    for text in narrations
+                ]
+            }
+        )
+
+    @patch("app.api.v1.endpoints.beat_generate.call_structured")
+    def test_richer_scene_fields_land_on_the_beat(self, mock_call):
+        mock_call.return_value = _fake_result(self._beats_json(["A story about change."]))
+
+        plan = generate_beat_plan(FAKE_CREDENTIALS, "A story about change.")
+
+        beat = plan.beats[0]
+        self.assertEqual(beat.visual_description, "a detailed cinematic description")
+        self.assertEqual(beat.location, "a room")
+        self.assertEqual(beat.time_of_day, "morning")
+        self.assertEqual(beat.emotion, "hopeful")
+        self.assertEqual(beat.camera, "medium shot")
+        self.assertEqual(beat.lighting, "soft natural light")
+        self.assertEqual(beat.continuity_notes, "same room as before")
+
+    @patch("app.api.v1.endpoints.beat_generate.call_structured")
+    def test_narration_matching_the_script_word_for_word_is_accepted(self, mock_call):
+        script = "Line one here. Line two here."
+        mock_call.return_value = _fake_result(self._beats_json(["Line one here.", "Line two here."]))
+
+        plan = generate_beat_plan(FAKE_CREDENTIALS, script)
+
+        self.assertEqual(len(plan.beats), 2)
+        mock_call.assert_called_once()  # no repair retry needed
+
+    @patch("app.api.v1.endpoints.beat_generate.call_structured")
+    def test_narration_dropping_a_word_from_the_script_is_rejected(self, mock_call):
+        script = "The sun set slowly over the quiet city."
+        # Drops "quiet" -- must fail the verbatim-narration check every attempt.
+        mock_call.return_value = _fake_result(self._beats_json(["The sun set slowly over the city."]))
+
+        with self.assertRaises(ExternalServiceError):
+            generate_beat_plan(FAKE_CREDENTIALS, script)
+
+        self.assertEqual(mock_call.call_count, 2)  # initial + 1 bounded repair retry
+        retry_system_prompt = mock_call.call_args_list[1].kwargs["system"]
+        self.assertIn("quiet", retry_system_prompt)
+
+    @patch("app.api.v1.endpoints.beat_generate.call_structured")
+    def test_narration_inventing_extra_words_is_rejected(self, mock_call):
+        script = "He opened the door."
+        mock_call.return_value = _fake_result(self._beats_json(["He slowly opened the heavy door."]))
+
+        with self.assertRaises(ExternalServiceError):
+            generate_beat_plan(FAKE_CREDENTIALS, script)
+
+    @patch("app.api.v1.endpoints.beat_generate.call_structured")
+    def test_whitespace_only_differences_are_tolerated(self, mock_call):
+        # Original script has a paragraph break; the model reflows it into
+        # one beat separated by a single space -- same words, not a mismatch.
+        script = "First paragraph.\n\nSecond paragraph."
+        mock_call.return_value = _fake_result(self._beats_json(["First paragraph. Second paragraph."]))
+
+        plan = generate_beat_plan(FAKE_CREDENTIALS, script)
+
+        self.assertEqual(len(plan.beats), 1)
+
+    @patch("app.api.v1.endpoints.beat_generate.call_structured")
+    def test_idea_and_character_description_reach_the_prompt(self, mock_call):
+        mock_call.return_value = _fake_result(self._beats_json(["A story."]))
+
+        generate_beat_plan(
+            FAKE_CREDENTIALS, "A story.",
+            idea="a man rebuilds his life", character_description="28yo man, grey hoodie",
+            tone="warm", style="storytelling", target_duration=45.0,
+        )
+
+        user_message = mock_call.call_args.kwargs["user_message"]
+        self.assertIn("a man rebuilds his life", user_message)
+        self.assertIn("28yo man, grey hoodie", user_message)
+        self.assertIn("warm", user_message)
+        self.assertIn("45", user_message)
+
+    @patch("app.api.v1.endpoints.beat_generate.call_structured")
+    def test_no_context_leaves_user_message_as_the_bare_script(self, mock_call):
+        mock_call.return_value = _fake_result(self._beats_json(["A story."]))
+
+        generate_beat_plan(FAKE_CREDENTIALS, "A story.")
+
+        self.assertEqual(mock_call.call_args.kwargs["user_message"], "A story.")
 
 
 if __name__ == "__main__":

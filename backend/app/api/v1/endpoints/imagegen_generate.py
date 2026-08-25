@@ -64,9 +64,23 @@ def _beat_image_path(project_id: int, beat_id: str, settings: Settings) -> Path:
 
 
 def _image_prompt(beat: Beat, content_config: ContentProjectConfig, visual_config: VisualGenerationProjectConfig) -> str:
-    base = (beat.visual_hint or beat.narration or "").strip()
+    # Story-to-Scene Analysis (docs/features/103-story-to-scene-analysis.md):
+    # visual_description is a real, showable scene description ("what should
+    # appear on screen") produced by beat_generate.py's richer prompt --
+    # preferred over visual_hint's older 3-10 word label whenever a beat has
+    # it. Falls back to visual_hint/narration unchanged for any beat
+    # generated before this feature, or authored/edited by hand.
+    base = (beat.visual_description or beat.visual_hint or beat.narration or "").strip()
     if not base:
         base = "An establishing shot fitting the surrounding story."
+    cinematography = ", ".join(
+        part for part in (
+            f"location: {beat.location}" if beat.location else None,
+            f"time of day: {beat.time_of_day}" if beat.time_of_day else None,
+            f"camera: {beat.camera}" if beat.camera else None,
+            f"lighting: {beat.lighting}" if beat.lighting else None,
+        ) if part
+    )
     style_suffix = _STYLE_SUFFIX_TEMPLATE.format(tone=content_config.tone, style=content_config.style)
     # Template/project-level free-text style guidance (e.g. "watercolor
     # illustration, pastel colors") -- appended rather than replacing the
@@ -75,7 +89,10 @@ def _image_prompt(beat: Beat, content_config: ContentProjectConfig, visual_confi
     custom_style = visual_config.image_style_prompt.strip()
     if custom_style:
         style_suffix = f"{style_suffix} {custom_style}"
-    return f"{base}. {style_suffix}"
+    prompt = base if base.endswith((".", "!", "?")) else f"{base}."
+    if cinematography:
+        prompt += f" ({cinematography})."
+    return f"{prompt} {style_suffix}"
 
 
 def _get_or_register_image_asset(db, path: Path) -> int:

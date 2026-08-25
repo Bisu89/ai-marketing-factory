@@ -240,7 +240,10 @@ class StateMachineTests(_FactoryTestCase):
         # stages; RENDERING/COMPLETED require the real worker (covered by
         # EndToEndTests below).
         project_id = self._create_project("State Machine")
-        with patch("app.api.v1.endpoints.factory_pipeline.generate_beat_plan", side_effect=lambda key, script: _fake_beat_plan(script)):
+        with patch(
+            "app.api.v1.endpoints.factory_pipeline.generate_beat_plan",
+            side_effect=lambda key, script, **_: _fake_beat_plan(script),
+        ):
             # No beats yet on this project and no asset assigned -- give it
             # one manually-good beat plan up front so it sails through to
             # QUEUED for this specific test (state machine shape, not
@@ -357,7 +360,7 @@ class BeatReuseTests(_FactoryTestCase):
         project_id = self._create_project("Generate Beats", script_text="A real script.")
         with patch(
             "app.api.v1.endpoints.factory_pipeline.generate_beat_plan",
-            side_effect=lambda key, script: _fake_beat_plan(script, num_beats=1),
+            side_effect=lambda key, script, **_: _fake_beat_plan(script, num_beats=1),
         ) as mock_generate:
             run = self._run_sync(project_id)
             mock_generate.assert_called_once()

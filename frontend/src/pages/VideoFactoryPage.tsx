@@ -184,6 +184,13 @@ function makeBeat(overrides: Partial<WorkingBeat> = {}): WorkingBeat {
     narrationAssetId: null,
     narrationAssetStatus: "unregistered",
     narrationAssetError: null,
+    visualDescription: null,
+    location: null,
+    timeOfDay: null,
+    emotion: null,
+    camera: null,
+    lighting: null,
+    continuityNotes: null,
     ...overrides,
   };
 }
@@ -211,6 +218,13 @@ function workingBeatFromDTO(beat: GeneratedBeat): WorkingBeat {
     assetStatus: beat.asset_id != null ? "registered" : "unregistered",
     narrationAssetId: beat.narration_asset_id,
     narrationAssetStatus: beat.narration_asset_id != null ? "registered" : "unregistered",
+    visualDescription: beat.visual_description,
+    location: beat.location,
+    timeOfDay: beat.time_of_day,
+    emotion: beat.emotion,
+    camera: beat.camera,
+    lighting: beat.lighting,
+    continuityNotes: beat.continuity_notes,
   });
 }
 
@@ -228,6 +242,13 @@ function toBeatDTO(beat: WorkingBeat, order: number): GeneratedBeat {
     asset_id: beat.assetId,
     motion_preset: beat.motionPreset,
     narration_asset_id: beat.narrationAssetId,
+    visual_description: beat.visualDescription,
+    location: beat.location,
+    time_of_day: beat.timeOfDay,
+    emotion: beat.emotion,
+    camera: beat.camera,
+    lighting: beat.lighting,
+    continuity_notes: beat.continuityNotes,
   };
 }
 

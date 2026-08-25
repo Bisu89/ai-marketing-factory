@@ -341,7 +341,10 @@ class RetryAttemptAndClassificationTests(_FactoryTestCase):
         # Manual retry must still succeed past the "soft" max -- this app
         # has no automatic retry loop to actually cap (see
         # FACTORY_MAX_ATTEMPTS' own docstring).
-        with patch("app.api.v1.endpoints.factory_pipeline.generate_beat_plan", side_effect=lambda key, script: _fake_beat_plan(script, 1)):
+        with patch(
+            "app.api.v1.endpoints.factory_pipeline.generate_beat_plan",
+            side_effect=lambda key, script, **_: _fake_beat_plan(script, 1),
+        ):
             retry_run(run.id, self.settings, self.service)
             resumed = self._wait_for_run_settled(run.id)
         self.assertNotEqual(resumed.status, "PENDING")  # it actually ran, wasn't blocked

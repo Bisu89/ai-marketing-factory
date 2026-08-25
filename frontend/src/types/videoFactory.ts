@@ -316,6 +316,16 @@ export interface GeneratedBeat {
   // the plan has one set -- this beat's `narration` text spoken via the
   // existing TTS path instead).
   narration_asset_id: number | null;
+  // Story-to-Scene Analysis (docs/features/103-story-to-scene-analysis.md)
+  // -- all optional/additive, null for any beat generated before this
+  // feature or authored by hand. See backend Beat's own field comments.
+  visual_description: string | null;
+  location: string | null;
+  time_of_day: string | null;
+  emotion: string | null;
+  camera: string | null;
+  lighting: string | null;
+  continuity_notes: string | null;
 }
 
 // -- Project configuration + templates (Task 12) -----------------------------
@@ -615,4 +625,15 @@ export interface WorkingBeat {
   narrationAssetId: number | null;
   narrationAssetStatus: AssetAssignmentStatus;
   narrationAssetError: string | null;
+  // Story-to-Scene Analysis (docs/features/103-story-to-scene-analysis.md)
+  // -- carried through save/reload so editing a beat (reordering, tweaking
+  // duration, etc.) doesn't silently drop the AI's scene analysis before
+  // imagegen_generate.py ever reads it.
+  visualDescription: string | null;
+  location: string | null;
+  timeOfDay: string | null;
+  emotion: string | null;
+  camera: string | null;
+  lighting: string | null;
+  continuityNotes: string | null;
 }

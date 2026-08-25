@@ -207,7 +207,7 @@ class AIConcurrencyWiringTests(_BatchEngineTestCase):
         project_id = self._create_project("Semaphore Wiring", script_text="A real script.")
         observed_value_during_call = {}
 
-        def _fake_generate(key, script):
+        def _fake_generate(key, script, **_):
             observed_value_during_call["value"] = ai_generation_semaphore._value
             return BeatPlan(script_text=script, beats=[Beat(id="b1", order=1, type=BeatType.BODY, narration="x", duration=1.0)])
 
