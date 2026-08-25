@@ -1,6 +1,6 @@
 # 105. Remember Ending Text (Outro) Across Modal Opens
 
-**Commit:** _pending_
+**Commit:** `ff1354c`
 
 Real user request: "Ending text (outro, optional)" should also be
 remembered when reopening New Video, the same as Template and Content
