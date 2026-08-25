@@ -53,8 +53,12 @@ MARGIN_X = 40
 
 # Bumped whenever this module's actual ASS output would differ from what
 # an old cached artifact already contains (section 36/37) -- part of the
-# caption_generate.py composition root's own cache fingerprint.
-ENGINE_VERSION = "caption-v1"
+# caption_generate.py composition root's own cache fingerprint. Bumped for
+# the max_chars_per_line wrap-width fix (docs/features/104-caption-wrap-width-fix.md)
+# so an existing project's already-cached (and wrongly unwrapped) captions
+# regenerate correctly wrapped the next time its render is retried/rebuilt,
+# instead of silently reusing the old broken artifact forever.
+ENGINE_VERSION = "caption-v2"
 
 
 def _format_ass_time(seconds: float) -> str:
