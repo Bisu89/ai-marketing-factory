@@ -26,6 +26,12 @@ const TYPICAL_BEAT_COUNT_RANGE = [6, 8] as const;
 // either changes.
 const LAST_TEMPLATE_ID_KEY = "nvm:lastTemplateId";
 const LAST_CONTENT_LANGUAGE_KEY = "nvm:lastContentLanguage";
+// Real user follow-up: Ending text (outro) is often the same call-to-action
+// reused across most/all of a channel's videos (e.g. "Theo doi de xem phan
+// 2 nhe!") -- same "remember across opens" treatment as Template/Content
+// language above, not the deliberately-not-persisted aiMetadataEnabled/
+// autoProduce (those are per-video decisions, this is a reused piece of copy).
+const LAST_OUTRO_TEXT_KEY = "nvm:lastOutroText";
 
 interface NewVideoModalProps {
   onClose: () => void;
@@ -83,8 +89,9 @@ export function NewVideoModal({ onClose, seriesId }: NewVideoModalProps) {
   // starts the FactoryRun in one call, before there's ever a BeatPlan to
   // attach a Step-4-style edit to, so this has to be settable here, at
   // creation time, or not at all. Blank means no outro (unchanged
-  // behavior for the auto-produce/classic paths below).
-  const [outroText, setOutroText] = useState("");
+  // behavior for the auto-produce/classic paths below). Remembered across
+  // opens (see LAST_OUTRO_TEXT_KEY above).
+  const [outroText, setOutroText] = useState(() => localStorage.getItem(LAST_OUTRO_TEXT_KEY) ?? "");
   // Package AI Metadata -- real user report that the deterministic
   // title/description/thumbnail text felt bland (bland core_message
   // truncation, thumbnail always echoing the exact same text as the
@@ -124,6 +131,10 @@ export function NewVideoModal({ onClose, seriesId }: NewVideoModalProps) {
   useEffect(() => {
     localStorage.setItem(LAST_CONTENT_LANGUAGE_KEY, contentLanguage);
   }, [contentLanguage]);
+
+  useEffect(() => {
+    localStorage.setItem(LAST_OUTRO_TEXT_KEY, outroText);
+  }, [outroText]);
 
   const hasContent = script.trim().length > 0 || idea.trim().length > 0;
   const hasStory = script.trim().length > 0;
