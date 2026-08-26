@@ -15,6 +15,7 @@ see app.modules.batch.schemas.parse_scripts, app.modules.asset.ingest.*):
 - analyze_motion / analyze_audio / analyze_captions + evaluate_readiness -> ReadinessEvaluator
 """
 
+import math
 import re
 import statistics
 from collections import Counter
@@ -38,9 +39,37 @@ from app.modules.quality.schemas import (
 # that still catches section 7's own literal example (durations 2.0, 4.2,
 # 2.1, 2.0, 9.8 -- mean 4.02s, the 9.8s beat is 2.44x the mean).
 PACING_OUTLIER_RATIO = 2.3
+# Real user report (docs/features/109-quality-gate-long-form.md): a real
+# 7.5-minute, 21-beat Story-to-Scene Analysis project (see
+# docs/features/103-story-to-scene-analysis.md) got flagged on a punchy
+# ~5s hook against a ~21s project average (a 4x+ ratio) and a brief ~8s
+# transitional aside -- both deliberate, normal editorial pacing for a
+# longer, multi-topic video, not defects. Section 7's own calibration
+# example was a 5-beat short video; applying that same fixed ratio
+# uniformly regardless of video length produces false positives as beat
+# count grows, since more beats naturally means more legitimate pacing
+# variety (a short hook is a *smaller* fraction of a 21-beat video than of
+# a 5-beat one). PACING_OUTLIER_BASE_BEAT_COUNT keeps every project at or
+# under it (covers this app's own typical short-form range, see
+# beat_generate.py's own MIN_BEATS/MAX_BEATS=3-18) at exactly the original
+# 2.3x ratio -- no existing short-form behavior changes -- and loosens
+# gradually, capped, only past that.
+PACING_OUTLIER_BASE_BEAT_COUNT = 8
+PACING_OUTLIER_RATIO_STEP = 0.1  # per beat past the base count
+PACING_OUTLIER_MAX_RATIO = 4.5
 # 3+ consecutive beats sharing the same narrative purpose is flagged
-# (section 10's own literal example).
+# (section 10's own literal example, a 4-beat plan -- see
+# test_three_consecutive_same_purpose_flags_duplication). Same long-form
+# false-positive as above -- 3 consecutive BUILD beats while a video
+# explains one topic after another (e.g. 3 different methods in a row) is
+# normal structure, not repetitive pacing; see _consecutive_purpose_threshold
+# below, same "unchanged at short-form beat counts" guarantee. 0.22 was
+# picked (not the pacing ratio's own step-based approach) against the
+# actual real 15-beat project this was reported against -- see
+# docs/features/109-quality-gate-long-form.md -- where 3 consecutive BUILD
+# beats correctly should NOT flag but 4 still should.
 CONSECUTIVE_PURPOSE_WARNING_THRESHOLD = 3
+CONSECUTIVE_PURPOSE_RATIO = 0.22
 # unique_purposes / total_beats at or below this (with >=3 beats) is "very
 # low diversity" (section 9's own literal example: 5x HOOK = 1/5 = 0.20).
 LOW_PURPOSE_DIVERSITY_RATIO = 0.34
@@ -70,6 +99,17 @@ NEEDS_REVIEW_THRESHOLD = 70
 
 def _beat_label(beat: BeatAnalysisInput) -> str:
     return f"Beat {beat.order:02d}"
+
+
+def _pacing_outlier_ratio(beat_count: int) -> float:
+    if beat_count <= PACING_OUTLIER_BASE_BEAT_COUNT:
+        return PACING_OUTLIER_RATIO
+    extra = beat_count - PACING_OUTLIER_BASE_BEAT_COUNT
+    return min(PACING_OUTLIER_MAX_RATIO, PACING_OUTLIER_RATIO + extra * PACING_OUTLIER_RATIO_STEP)
+
+
+def _consecutive_purpose_threshold(beat_count: int) -> int:
+    return max(CONSECUTIVE_PURPOSE_WARNING_THRESHOLD, math.ceil(beat_count * CONSECUTIVE_PURPOSE_RATIO))
 
 
 def _clamp(value: float, low: int = 0, high: int = 100) -> int:
@@ -114,12 +154,15 @@ def analyze_narrative(beats: list[BeatAnalysisInput]) -> tuple[int, list[Quality
             score -= 15
 
     # Consecutive-run detection (section 10) -- every run of
-    # CONSECUTIVE_PURPOSE_WARNING_THRESHOLD+ identical, adjacent purposes.
+    # _consecutive_purpose_threshold(len(purposes))+ identical, adjacent
+    # purposes (see that function's own docstring/the module-level
+    # CONSECUTIVE_PURPOSE_RATIO comment for why this scales with beat count).
+    consecutive_threshold = _consecutive_purpose_threshold(len(purposes))
     run_start = 0
     for i in range(1, len(purposes) + 1):
         if i == len(purposes) or purposes[i] != purposes[run_start]:
             run_length = i - run_start
-            if run_length >= CONSECUTIVE_PURPOSE_WARNING_THRESHOLD:
+            if run_length >= consecutive_threshold:
                 issues.append(
                     QualityIssue(
                         code="PURPOSE_DUPLICATION",
@@ -163,8 +206,17 @@ def analyze_pacing(beats: list[BeatAnalysisInput]) -> tuple[int, list[QualityIss
 
     issues: list[QualityIssue] = []
     outlier_count = 0
+    ratio = _pacing_outlier_ratio(len(beats))
     for beat in beats:
-        if mean > 0 and (beat.duration > mean * PACING_OUTLIER_RATIO or beat.duration < mean / PACING_OUTLIER_RATIO):
+        if mean <= 0:
+            continue
+        too_long = beat.duration > mean * ratio
+        # A HOOK/ENDING beat being short relative to the project average is
+        # deliberate pacing (a punchy open/close), not a defect -- only
+        # flag one of these two types for running unusually *long*, never
+        # for being short. Every other type still checks both directions.
+        too_short = beat.duration < mean / ratio and beat.type not in ("HOOK", "ENDING")
+        if too_long or too_short:
             outlier_count += 1
             issues.append(
                 QualityIssue(

@@ -85,6 +85,42 @@ class NarrativeAnalysisTests(unittest.TestCase):
         self.assertEqual(len(dup_issues), 1)
         self.assertIn("3 consecutive SETUP", dup_issues[0].message)
 
+    @staticmethod
+    def _varied_filler(start_order: int, count: int) -> list[BeatAnalysisInput]:
+        # Cycles through several distinct types so the filler itself never
+        # forms a same-type run of its own -- isolates the run under test
+        # (a BUILD run inserted separately) as the only run in the plan.
+        cycle = ["HOOK", "SETUP", "REVEAL", "REACTION", "ENDING"]
+        return [
+            _beat(id=f"f{start_order + i}", order=start_order + i, type=cycle[i % len(cycle)], narration=f"filler{i}")
+            for i in range(count)
+        ]
+
+    def test_long_form_three_consecutive_build_does_not_flag(self):
+        # Real user report (docs/features/109-quality-gate-long-form.md):
+        # the actual real project this was reported against had 15 beats,
+        # 3 of them consecutive BUILD (explaining 3 different MMO methods
+        # in a row) -- normal structure for a longer video, not repetitive
+        # pacing, but got flagged as "duplication". The threshold scales
+        # up past this app's own short-form beat range, so a 15-beat plan
+        # now tolerates a run of 3 without warning (threshold becomes 4).
+        beats = self._varied_filler(1, 7)
+        beats += [_beat(id=f"b{i}", order=7 + i, type="BUILD", narration=f"build{i}") for i in range(3)]  # 3 in a row
+        beats += self._varied_filler(10, 5)
+        self.assertEqual(len(beats), 15)
+        score, issues = analyze_narrative(beats)
+        self.assertNotIn("PURPOSE_DUPLICATION", [i.code for i in issues])
+
+    def test_long_form_four_consecutive_same_purpose_still_flags(self):
+        # A run long enough to be a real problem even at 15 beats (4 >=
+        # the scaled threshold of ceil(15 * 0.22) = 4) is still caught.
+        beats = self._varied_filler(1, 7)
+        beats += [_beat(id=f"b{i}", order=7 + i, type="BUILD", narration=f"build{i}") for i in range(4)]  # 4 in a row
+        beats += self._varied_filler(11, 4)
+        self.assertEqual(len(beats), 15)
+        score, issues = analyze_narrative(beats)
+        self.assertIn("PURPOSE_DUPLICATION", [i.code for i in issues])
+
     def test_two_consecutive_same_purpose_does_not_flag(self):
         beats = [
             _beat(id="b1", order=1, type="SETUP", narration="a"),
@@ -151,6 +187,57 @@ class PacingAnalysisTests(unittest.TestCase):
         extreme_score, _, _ = analyze_pacing(extreme)
         self.assertGreater(consistent_score, moderate_score)
         self.assertGreater(moderate_score, extreme_score)
+
+
+class LongFormPacingTests(unittest.TestCase):
+    """Real user report (docs/features/109-quality-gate-long-form.md): a
+    real 21-beat, ~7.5-minute Story-to-Scene Analysis project got flagged
+    for a punchy short HOOK beat and a brief transitional aside, both
+    normal editorial pacing for a longer video -- section 7's own
+    calibration example was a 5-beat short video.
+    """
+
+    def _long_form_beats(self, hook_duration: float, aside_duration: float, filler_duration: float = 22.0):
+        beats = [_beat(id="b1", order=1, type="HOOK", duration=hook_duration, narration="hook")]
+        beats += [
+            _beat(id=f"b{i}", order=i, type="BODY", duration=filler_duration, narration=f"n{i}")
+            for i in range(2, 11)
+        ]
+        beats.append(_beat(id="b11", order=11, type="BUILD", duration=aside_duration, narration="aside"))
+        beats += [
+            _beat(id=f"b{i}", order=i, type="BODY", duration=filler_duration, narration=f"n{i}")
+            for i in range(12, 22)
+        ]
+        return beats
+
+    def test_short_hook_in_a_long_video_is_never_flagged(self):
+        beats = self._long_form_beats(hook_duration=5.0, aside_duration=22.0)
+        self.assertEqual(len(beats), 21)
+        score, issues, metrics = analyze_pacing(beats)
+        self.assertNotIn("PACING_OUTLIER", [i.code for i in issues if i.beat_id == "b1"])
+
+    def test_brief_aside_within_scaled_ratio_is_not_flagged(self):
+        # ~20.5s mean, an 8s aside -- ratio ~2.56x, over the short-form
+        # 2.3x but under the scaled ratio a 21-beat project gets.
+        beats = self._long_form_beats(hook_duration=22.0, aside_duration=8.0)
+        score, issues, metrics = analyze_pacing(beats)
+        self.assertNotIn("PACING_OUTLIER", [i.code for i in issues if i.beat_id == "b11"])
+
+    def test_a_genuine_extreme_outlier_still_flags_even_in_a_long_video(self):
+        # 2s among a ~20s mean -- ratio ~10x, far past even the scaled/
+        # capped ratio. The scaling loosens false positives, it doesn't
+        # disable the check.
+        beats = self._long_form_beats(hook_duration=22.0, aside_duration=2.0)
+        score, issues, metrics = analyze_pacing(beats)
+        self.assertIn("PACING_OUTLIER", [i.code for i in issues if i.beat_id == "b11"])
+
+    def test_a_hook_running_unusually_long_still_flags(self):
+        # The HOOK/ENDING exemption only ever covers being *short* -- a
+        # hook that runs far longer than the rest of the video is still a
+        # real pacing problem worth surfacing.
+        beats = self._long_form_beats(hook_duration=150.0, aside_duration=22.0)
+        score, issues, metrics = analyze_pacing(beats)
+        self.assertIn("PACING_OUTLIER", [i.code for i in issues if i.beat_id == "b1"])
 
 
 class VisualAnalysisTests(unittest.TestCase):
