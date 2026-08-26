@@ -1,6 +1,6 @@
 # 109. Quality Gate False Positives on Long-Form Video
 
-**Commit:** _pending_
+**Commit:** `f12c80a`
 
 Real user report: producing the first real long-form episode (Series +
 Story-to-Scene Analysis + landscape profile, see
