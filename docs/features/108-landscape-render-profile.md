@@ -1,6 +1,6 @@
 # 108. Landscape (16:9) Render Profile + Long-Form target_duration
 
-**Commit:** _pending_
+**Commit:** `9fc6686`
 
 Real user request: a long-form (7-8 min) YouTube documentary/journal series
 ("MMO Journey to 10K") in traditional 16:9, not this app's original
