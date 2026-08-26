@@ -130,6 +130,7 @@ SQLite.
 107. [Scene Cutter: Fix False Splits + Preview Mode](features/107-scene-cutter-false-split-fix.md) — real user report of 1 real scene coming back cut into several; merge-short-scenes safety net + empirically-tuned threshold default (46→60, tested against the user's own real videos, ruled out alternate detectors), then a detection-only Preview button (no file writes) after discovering different videos in this genre genuinely need opposite threshold settings
 108. [Landscape (16:9) Render Profile + Long-Form target_duration](features/108-landscape-render-profile.md) — real user request for a 7-8 min YouTube documentary series; added a landscape render profile, made AI image generation size/prompt orientation-aware instead of hardcoded portrait, and fixed target_duration's 120s cap (it had wrongly reused Beat.duration's per-segment limit)
 109. [Quality Gate False Positives on Long-Form Video](features/109-quality-gate-long-form.md) — real user's first long-form episode got paused on 3 false-positive warnings; two Quality Gate heuristics were calibrated only against short-form literal examples and never validated against real multi-minute content — now scale with beat count, verified against the actual real project before/after
+110. [AI Metadata: Default to On](features/110-ai-metadata-default-on.md) — real user request after several episodes of manually re-checking it every time; small per-video cost, always wanted, now on by default
 
 ## Keeping this up to date
 

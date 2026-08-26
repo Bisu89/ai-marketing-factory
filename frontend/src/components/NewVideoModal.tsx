@@ -95,11 +95,14 @@ export function NewVideoModal({ onClose, seriesId }: NewVideoModalProps) {
   // Package AI Metadata -- real user report that the deterministic
   // title/description/thumbnail text felt bland (bland core_message
   // truncation, thumbnail always echoing the exact same text as the
-  // title). Off by default -- a real, billed AI call, unlike everything
-  // else this modal sets. Not persisted across opens (unlike Template/
-  // Content language) -- same reasoning as autoProduce not being
-  // persisted either.
-  const [aiMetadataEnabled, setAiMetadataEnabled] = useState(false);
+  // title). Real user follow-up: on by default now -- after using it for
+  // several real episodes, the small per-video cost (~$0.01 or less) is
+  // worth it every time, and re-checking it manually on every single
+  // video was pure friction. Still just a flat default, not persisted
+  // across opens (unlike Template/Content language) -- same reasoning as
+  // autoProduce not being persisted either; a user who wants it off can
+  // still uncheck it per video.
+  const [aiMetadataEnabled, setAiMetadataEnabled] = useState(true);
   const [autoProduce, setAutoProduce] = useState(true);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
