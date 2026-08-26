@@ -1,6 +1,6 @@
 # 110. AI Metadata: Default to On
 
-**Commit:** _pending_
+**Commit:** `12dc26d`
 
 Real user request: after producing several real episodes with "AI-write
 title, description & thumbnail text" checked every time, re-checking it
