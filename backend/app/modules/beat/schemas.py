@@ -48,8 +48,21 @@ MIN_DURATION = 0.1
 # Matches app.modules.motion.schemas.MAX_DURATION / app.modules.composition
 # .schemas.MAX_DURATION -- the same upper bound already established for one
 # renderable segment elsewhere in this pipeline, reused here rather than
-# inventing a new, disagreeing limit.
+# inventing a new, disagreeing limit. This is a per-BEAT/per-scene cap
+# (no single AI-generated image should be held on screen for 2+ minutes) --
+# see MAX_TARGET_DURATION below for the *whole-video* length, which is a
+# different quantity and was a real bug to have shared this same bound.
 MAX_DURATION = 120.0
+# Real user request: a long-form (7-8 min) YouTube series, not just Shorts.
+# ContentProjectConfig.target_duration used to reuse MAX_DURATION above --
+# copied from the one-renderable-segment limit without checking it made
+# sense for a whole video's total length too. A video is many beats
+# concatenated; nothing about rendering, captions, or audio actually caps
+# total length at 120s (see docs/features/108-landscape-render-profile.md).
+# 1800s (30 min) is a generous ceiling for long-form content while still
+# catching an obvious typo (e.g. accidentally entering seconds as if they
+# were minutes).
+MAX_TARGET_DURATION = 1800.0
 
 
 class BeatType(str, Enum):
@@ -687,8 +700,10 @@ class ContentProjectConfig(BaseModel):
     @field_validator("target_duration")
     @classmethod
     def _duration_within_bounds(cls, value: float) -> float:
-        if not (MIN_DURATION <= value <= MAX_DURATION):
-            raise ValueError(f"target_duration must be between {MIN_DURATION} and {MAX_DURATION} seconds, got {value}")
+        if not (MIN_DURATION <= value <= MAX_TARGET_DURATION):
+            raise ValueError(
+                f"target_duration must be between {MIN_DURATION} and {MAX_TARGET_DURATION} seconds, got {value}"
+            )
         return value
 
 

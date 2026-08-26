@@ -26,8 +26,17 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from app.core.config import Settings
+from app.core.render_profile import RenderProfile, get_render_profile
 from app.db.session import SessionLocal
-from app.modules.ai.image_client import IMAGE_COST_USD, IMAGE_HEIGHT, IMAGE_WIDTH, ImageGenError, generate_beat_image
+from app.modules.ai.image_client import (
+    IMAGE_COST_USD,
+    IMAGE_SIZE_DIMENSIONS,
+    IMAGE_SIZE_LANDSCAPE,
+    IMAGE_SIZE_PORTRAIT,
+    IMAGE_SIZE_SQUARE,
+    ImageGenError,
+    generate_beat_image,
+)
 from app.modules.asset.models import Asset
 from app.modules.asset.schemas import AssetRegisterIn
 from app.modules.asset.service import AssetService
@@ -35,6 +44,28 @@ from app.modules.beat.project_service import get_project_draft, update_project_b
 from app.modules.beat.schemas import Beat, BeatPlan, ContentProjectConfig, VisualGenerationProjectConfig
 
 logger = logging.getLogger(__name__)
+
+
+def _image_size_for_profile(profile: RenderProfile) -> str:
+    """Real user request: a landscape (16:9) render profile alongside this
+    app's original portrait one. Derives which of GPT image models' 3
+    supported sizes to request from the profile's own width/height --
+    never branches on the profile *name* -- so any future profile (a
+    square one, say) is handled correctly without this function changing.
+    """
+    if profile.width > profile.height:
+        return IMAGE_SIZE_LANDSCAPE
+    if profile.width < profile.height:
+        return IMAGE_SIZE_PORTRAIT
+    return IMAGE_SIZE_SQUARE
+
+
+def _orientation_phrase(image_size: str) -> str:
+    if image_size == IMAGE_SIZE_LANDSCAPE:
+        return "horizontal 16:9 composition"
+    if image_size == IMAGE_SIZE_SQUARE:
+        return "square 1:1 composition"
+    return "vertical 9:16 composition"
 
 # The technical constraints stay fixed and generic on purpose -- the user's
 # own stated priority is visual consistency across a whole video over any
@@ -51,7 +82,7 @@ logger = logging.getLogger(__name__)
 _STYLE_SUFFIX_TEMPLATE = (
     "Simple, consistent illustration style matching the rest of this video's visuals, "
     "evoking a {tone} tone in a {style} style, "
-    "vertical 9:16 composition, no text or watermarks in the image."
+    "{orientation}, no text or watermarks in the image."
 )
 
 
@@ -63,7 +94,9 @@ def _beat_image_path(project_id: int, beat_id: str, settings: Settings) -> Path:
     return _visuals_dir(project_id, settings) / f"beat_{beat_id}.png"
 
 
-def _image_prompt(beat: Beat, content_config: ContentProjectConfig, visual_config: VisualGenerationProjectConfig) -> str:
+def _image_prompt(
+    beat: Beat, content_config: ContentProjectConfig, visual_config: VisualGenerationProjectConfig, image_size: str,
+) -> str:
     # Story-to-Scene Analysis (docs/features/103-story-to-scene-analysis.md):
     # visual_description is a real, showable scene description ("what should
     # appear on screen") produced by beat_generate.py's richer prompt --
@@ -81,7 +114,9 @@ def _image_prompt(beat: Beat, content_config: ContentProjectConfig, visual_confi
             f"lighting: {beat.lighting}" if beat.lighting else None,
         ) if part
     )
-    style_suffix = _STYLE_SUFFIX_TEMPLATE.format(tone=content_config.tone, style=content_config.style)
+    style_suffix = _STYLE_SUFFIX_TEMPLATE.format(
+        tone=content_config.tone, style=content_config.style, orientation=_orientation_phrase(image_size),
+    )
     # Template/project-level free-text style guidance (e.g. "watercolor
     # illustration, pastel colors") -- appended rather than replacing the
     # suffix above so the vertical/no-text/consistency instructions always
@@ -95,7 +130,7 @@ def _image_prompt(beat: Beat, content_config: ContentProjectConfig, visual_confi
     return f"{prompt} {style_suffix}"
 
 
-def _get_or_register_image_asset(db, path: Path) -> int:
+def _get_or_register_image_asset(db, path: Path, image_size: str) -> int:
     """Section 30 (voice_generate.py's own precedent): a beat's image lives
     at a deterministic path -- reuses the existing Asset row for that path
     if one is already registered (a second raw register() call on the same
@@ -111,10 +146,11 @@ def _get_or_register_image_asset(db, path: Path) -> int:
     existing = db.query(Asset).filter(Asset.path == resolved).first()
     if existing is not None:
         return existing.id
+    width, height = IMAGE_SIZE_DIMENSIONS[image_size]
     asset = AssetService(db).register(
         AssetRegisterIn(
             filename=path.name, path=resolved, type="image",
-            width=IMAGE_WIDTH, height=IMAGE_HEIGHT, source="ai_image_generator",
+            width=width, height=height, source="ai_image_generator",
         )
     )
     return asset.id
@@ -144,20 +180,25 @@ def generate_project_images(project_id: int, settings: Settings) -> ImageGenerat
     if not settings.openai_api_key:
         raise ImageGenError("No OpenAI API key configured -- add one in Settings to use AI image generation.")
 
+    # Real user request: a landscape (16:9) render profile alongside this
+    # app's original portrait one. Resolved once per run, not per beat --
+    # a project's render profile never changes mid-run.
+    image_size = _image_size_for_profile(get_render_profile(draft.config.render.profile))
+
     updated_by_id: dict[str, Beat] = {}
     db = SessionLocal()
     try:
         for beat in pending:
             output_path = _beat_image_path(project_id, beat.id, settings)
             try:
-                prompt = _image_prompt(beat, draft.config.content, draft.config.visual_generation)
-                generate_beat_image(settings.openai_api_key, prompt, output_path)
+                prompt = _image_prompt(beat, draft.config.content, draft.config.visual_generation, image_size)
+                generate_beat_image(settings.openai_api_key, prompt, output_path, size=image_size)
             except ImageGenError:
                 logger.warning(
                     "AI image generation failed for project %s beat %s -- left unassigned.", project_id, beat.id
                 )
                 continue
-            asset_id = _get_or_register_image_asset(db, output_path)
+            asset_id = _get_or_register_image_asset(db, output_path, image_size)
             updated_by_id[beat.id] = beat.model_copy(update={"asset_id": asset_id})
     finally:
         db.close()

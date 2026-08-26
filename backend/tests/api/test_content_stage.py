@@ -66,7 +66,7 @@ def _fake_beat_plan_with_asset(asset_id: int):
     *its* tests), this pre-assigns a real asset so a full Content->Script->
     Beat->Visual->Quality->Render chain can actually reach QUEUED.
     """
-    def _make(api_key, script):
+    def _make(api_key, script, **_):
         return BeatPlan(
             script_text=script,
             beats=[Beat(id="b1", order=1, type=BeatType.BODY, narration=script[:80], duration=2.0, asset_id=asset_id)],

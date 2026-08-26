@@ -20,13 +20,36 @@ import openai
 # Change here only -- nowhere else references image model/quality/size.
 IMAGE_MODEL = "gpt-image-1-mini"
 IMAGE_QUALITY = "low"
-IMAGE_SIZE = "1024x1536"  # portrait, matches this app's own 9:16 render profile
-IMAGE_WIDTH = 1024
-IMAGE_HEIGHT = 1536
+
+# GPT image models only support these three exact sizes (verified against
+# the installed openai SDK's own Literal type, e.g.
+# openai.types.images_response.ImagesResponse.data[].size). Real user
+# request: a landscape (16:9) render profile alongside this app's original
+# portrait one -- see app.core.render_profile.SOCIAL_LANDSCAPE. Keyed by
+# the same "portrait"/"landscape"/"square" orientation
+# _orientation_for_profile below derives from a project's actual render
+# profile, so a caller never has to know the raw API size string.
+IMAGE_SIZE_PORTRAIT = "1024x1536"
+IMAGE_SIZE_LANDSCAPE = "1536x1024"
+IMAGE_SIZE_SQUARE = "1024x1024"
+
+IMAGE_SIZE_DIMENSIONS: dict[str, tuple[int, int]] = {
+    IMAGE_SIZE_PORTRAIT: (1024, 1536),
+    IMAGE_SIZE_LANDSCAPE: (1536, 1024),
+    IMAGE_SIZE_SQUARE: (1024, 1024),
+}
+
+# Kept as the default for every existing caller that doesn't (yet) pass an
+# explicit `size` -- this app's original portrait 9:16 profile.
+IMAGE_SIZE = IMAGE_SIZE_PORTRAIT
+IMAGE_WIDTH, IMAGE_HEIGHT = IMAGE_SIZE_DIMENSIONS[IMAGE_SIZE]
 
 # Flat per-image USD price (OpenAI's own published table, not derived from
 # token usage -- simpler, matches what the user sees on OpenAI's pricing
-# page). Update here only if OpenAI repriced gpt-image-1-mini/low/1024x1536.
+# page). Portrait and landscape have the identical total pixel count (just
+# rotated), so this one price covers both; square was never priced/verified
+# separately since no square render profile exists in this app. Update
+# here only if OpenAI repriced gpt-image-1-mini/low.
 IMAGE_COST_USD = 0.006
 
 
@@ -34,17 +57,26 @@ class ImageGenError(Exception):
     """Any failure generating or decoding one beat's image."""
 
 
-def generate_beat_image(api_key: str, prompt: str, output_path: Path) -> None:
+def generate_beat_image(api_key: str, prompt: str, output_path: Path, size: str = IMAGE_SIZE) -> None:
     """Generates one image and writes it atomically to output_path. Never
     partially writes a broken file at the canonical path (same tmp-then-
     replace convention voice_generate.py's own narration_wav.replace()
     uses) -- a crash mid-write must never leave a corrupt PNG that a later
     idempotent-reuse check would wrongly treat as already-generated.
+
+    `size` defaults to this app's original portrait size for every existing
+    caller that doesn't pass one; must be one of IMAGE_SIZE_DIMENSIONS'
+    keys. Callers that care about a project's actual render profile (see
+    imagegen_generate.py) pass one of IMAGE_SIZE_PORTRAIT/_LANDSCAPE/_SQUARE
+    explicitly instead of relying on this default.
     """
+    if size not in IMAGE_SIZE_DIMENSIONS:
+        raise ImageGenError(f"Unsupported image size {size!r}, must be one of {sorted(IMAGE_SIZE_DIMENSIONS)}")
+
     client = openai.OpenAI(api_key=api_key)
     try:
         response = client.images.generate(
-            model=IMAGE_MODEL, prompt=prompt, quality=IMAGE_QUALITY, size=IMAGE_SIZE, n=1,
+            model=IMAGE_MODEL, prompt=prompt, quality=IMAGE_QUALITY, size=size, n=1,
         )
     except openai.APIError as exc:
         raise ImageGenError(str(exc)) from exc

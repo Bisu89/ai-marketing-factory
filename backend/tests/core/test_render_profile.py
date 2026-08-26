@@ -5,6 +5,7 @@ from app.core.render_profile import (
     DEFAULT_RENDER_PROFILE_NAME,
     PREVIEW,
     RENDER_PROFILES,
+    SOCIAL_LANDSCAPE,
     SOCIAL_VERTICAL,
     get_render_profile,
 )
@@ -39,6 +40,16 @@ class RenderProfileTests(unittest.TestCase):
     def test_render_profiles_registry_has_no_orphaned_names(self):
         for name, profile in RENDER_PROFILES.items():
             self.assertEqual(name, profile.name)
+
+    def test_social_landscape_is_the_rotation_of_social_vertical(self):
+        # Real user request (docs/features/108-landscape-render-profile.md):
+        # a long-form 16:9 YouTube series alongside this app's original
+        # 9:16 profile -- same total pixel count, just rotated, so identical
+        # fps/codec choices remain correct for it.
+        self.assertEqual(SOCIAL_LANDSCAPE.width, SOCIAL_VERTICAL.height)
+        self.assertEqual(SOCIAL_LANDSCAPE.height, SOCIAL_VERTICAL.width)
+        self.assertEqual(SOCIAL_LANDSCAPE.fps, SOCIAL_VERTICAL.fps)
+        self.assertIs(get_render_profile("SOCIAL_LANDSCAPE"), SOCIAL_LANDSCAPE)
 
 
 if __name__ == "__main__":

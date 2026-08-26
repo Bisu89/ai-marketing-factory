@@ -128,6 +128,7 @@ SQLite.
 105. [Remember Ending Text (Outro) Across Modal Opens](features/105-remember-outro-text.md) — real user request; same localStorage remember-on-reopen pattern already used for Template/Content language
 106. [Fix: Video Factory Looked Frozen After a Render Finished](features/106-ready-to-post-card-stuck-fix.md) — real user report needing F5 to see results; ReadyToPostCard gave up polling for the title/thumbnail package after a hard 60s timeout and rendered nothing while waiting, indistinguishable from stuck; now polls indefinitely with a visible "preparing" indicator, gated on the FactoryRun actually still being active
 107. [Scene Cutter: Fix False Splits + Preview Mode](features/107-scene-cutter-false-split-fix.md) — real user report of 1 real scene coming back cut into several; merge-short-scenes safety net + empirically-tuned threshold default (46→60, tested against the user's own real videos, ruled out alternate detectors), then a detection-only Preview button (no file writes) after discovering different videos in this genre genuinely need opposite threshold settings
+108. [Landscape (16:9) Render Profile + Long-Form target_duration](features/108-landscape-render-profile.md) — real user request for a 7-8 min YouTube documentary series; added a landscape render profile, made AI image generation size/prompt orientation-aware instead of hardcoded portrait, and fixed target_duration's 120s cap (it had wrongly reused Beat.duration's per-segment limit)
 
 ## Keeping this up to date
 

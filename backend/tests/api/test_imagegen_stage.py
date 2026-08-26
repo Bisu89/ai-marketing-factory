@@ -18,16 +18,23 @@ import unittest
 from unittest.mock import patch
 
 from app.api.v1.endpoints.factory_pipeline import _stage_generate_images
-from app.api.v1.endpoints.imagegen_generate import ImageGenerationResult, generate_project_images
-from app.modules.ai.image_client import IMAGE_COST_USD, ImageGenError
+from app.api.v1.endpoints.imagegen_generate import (
+    ImageGenerationResult,
+    _image_size_for_profile,
+    _orientation_phrase,
+    generate_project_images,
+)
+from app.core.render_profile import SOCIAL_LANDSCAPE, SOCIAL_VERTICAL
+from app.modules.ai.image_client import IMAGE_COST_USD, IMAGE_SIZE_LANDSCAPE, IMAGE_SIZE_PORTRAIT, ImageGenError
+from app.modules.asset.models import Asset
 from app.modules.beat.project_service import create_project, get_project_draft, update_project_beat_plan
-from app.modules.beat.schemas import Beat, BeatPlan, BeatType, ProjectConfig, VisualGenerationProjectConfig
+from app.modules.beat.schemas import Beat, BeatPlan, BeatType, ProjectConfig, RenderProjectConfig, VisualGenerationProjectConfig
 from app.modules.factory import service as factory_service
 from app.modules.factory.schemas import IMAGE_GENERATION_FAILED
 from tests.api.test_factory_pipeline import _FactoryTestCase, _fake_beat_plan
 
 
-def _fake_generate_beat_image_writes_a_file(api_key, prompt, output_path):
+def _fake_generate_beat_image_writes_a_file(api_key, prompt, output_path, size=None):
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_bytes(b"fake png bytes")
 
@@ -76,9 +83,9 @@ class ImageGenerationTests(_ImageGenTestCase):
 
         captured_prompts = []
 
-        def _capture_and_write(api_key, prompt, output_path):
+        def _capture_and_write(api_key, prompt, output_path, size=None):
             captured_prompts.append(prompt)
-            _fake_generate_beat_image_writes_a_file(api_key, prompt, output_path)
+            _fake_generate_beat_image_writes_a_file(api_key, prompt, output_path, size)
 
         with (
             patch("app.api.v1.endpoints.imagegen_generate.generate_beat_image", side_effect=_capture_and_write),
@@ -119,10 +126,10 @@ class SoftFailureTests(_ImageGenTestCase):
         self.settings.openai_api_key = "fake-openai-key"
         project_id = self._ai_generated_project("Partial Failure", num_beats=3)
 
-        def _fail_beat_02(api_key, prompt, output_path):
+        def _fail_beat_02(api_key, prompt, output_path, size=None):
             if "beat_02" in str(output_path):
                 raise ImageGenError("content policy rejection")
-            _fake_generate_beat_image_writes_a_file(api_key, prompt, output_path)
+            _fake_generate_beat_image_writes_a_file(api_key, prompt, output_path, size)
 
         with (
             patch("app.api.v1.endpoints.imagegen_generate.generate_beat_image", side_effect=_fail_beat_02),
@@ -158,6 +165,59 @@ class IdempotencyTests(_ImageGenTestCase):
         self.assertTrue(first.generated)
         self.assertFalse(second.generated)
         self.assertEqual(second.image_count, 0)
+
+
+class LandscapeProfileTests(_ImageGenTestCase):
+    """Real user request (docs/features/108-landscape-render-profile.md):
+    a landscape (16:9) render profile alongside this app's original
+    portrait one -- AI image generation must actually request landscape
+    images (and register the right Asset dimensions) for a project using it.
+    """
+
+    def test_image_size_for_profile_derives_from_width_vs_height_not_name(self):
+        self.assertEqual(_image_size_for_profile(SOCIAL_VERTICAL), IMAGE_SIZE_PORTRAIT)
+        self.assertEqual(_image_size_for_profile(SOCIAL_LANDSCAPE), IMAGE_SIZE_LANDSCAPE)
+
+    def test_orientation_phrase_matches_each_size(self):
+        self.assertIn("vertical", _orientation_phrase(IMAGE_SIZE_PORTRAIT))
+        self.assertIn("horizontal", _orientation_phrase(IMAGE_SIZE_LANDSCAPE))
+
+    def test_landscape_project_requests_landscape_images_and_registers_landscape_asset(self):
+        self.settings.openai_api_key = "fake-openai-key"
+        config = ProjectConfig(
+            render=RenderProjectConfig(profile="SOCIAL_LANDSCAPE"),
+            visual_generation=VisualGenerationProjectConfig(mode="ai_generated"),
+        )
+        project_id = create_project("Landscape Series", "A short test script.", config)
+        plan = _fake_beat_plan("A short test script.", 1).model_copy(update={"config": config})
+        update_project_beat_plan(project_id, plan)
+
+        captured_sizes = []
+        captured_prompts = []
+
+        def _capture(api_key, prompt, output_path, size=None):
+            captured_sizes.append(size)
+            captured_prompts.append(prompt)
+            _fake_generate_beat_image_writes_a_file(api_key, prompt, output_path, size)
+
+        with (
+            patch("app.api.v1.endpoints.imagegen_generate.generate_beat_image", side_effect=_capture),
+            patch("app.api.v1.endpoints.imagegen_generate.SessionLocal", self.TestSessionLocal),
+        ):
+            generate_project_images(project_id, self.settings)
+
+        self.assertEqual(captured_sizes, [IMAGE_SIZE_LANDSCAPE])
+        self.assertIn("horizontal 16:9 composition", captured_prompts[0])
+
+        draft = get_project_draft(project_id)
+        asset_id = draft.beats[0].asset_id
+        self.assertIsNotNone(asset_id)
+        db = self.TestSessionLocal()
+        try:
+            asset = db.get(Asset, asset_id)
+            self.assertEqual((asset.width, asset.height), (1536, 1024))
+        finally:
+            db.close()
 
 
 class PipelineWiringTests(_FactoryTestCase):

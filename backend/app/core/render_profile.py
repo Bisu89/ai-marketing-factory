@@ -35,9 +35,19 @@ class RenderProfile(BaseModel):
 
 SOCIAL_VERTICAL = RenderProfile(name="SOCIAL_VERTICAL", width=1080, height=1920, fps=30.0)
 PREVIEW = RenderProfile(name="PREVIEW", width=720, height=1280, fps=24.0)
+# Real user request: a long-form (7-8 min) YouTube series, traditional 16:9
+# rather than vertical Shorts. Every downstream stage this was checked
+# against (composition_render.py's own render_composition, the caption
+# engine -- see caption/ass_writer.py's own "stays proportionally safe
+# across 9:16/16:9/1:1, no per-aspect-ratio special case" -- and motion)
+# already derives its geometry from the requested profile's width/height
+# rather than hardcoding SOCIAL_VERTICAL's own numbers; the one real
+# hardcoded gap was AI image generation (see app.modules.ai.image_client),
+# now fixed alongside this profile's addition.
+SOCIAL_LANDSCAPE = RenderProfile(name="SOCIAL_LANDSCAPE", width=1920, height=1080, fps=30.0)
 
 RENDER_PROFILES: dict[str, RenderProfile] = {
-    profile.name: profile for profile in (SOCIAL_VERTICAL, PREVIEW)
+    profile.name: profile for profile in (SOCIAL_VERTICAL, PREVIEW, SOCIAL_LANDSCAPE)
 }
 
 DEFAULT_RENDER_PROFILE_NAME = SOCIAL_VERTICAL.name

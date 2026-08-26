@@ -7,10 +7,12 @@ from pydantic import ValidationError
 
 from app.modules.beat.schemas import (
     DEFAULT_PROJECT_CONFIG,
+    MAX_TARGET_DURATION,
     Beat,
     BeatMotionPreset,
     BeatPlan,
     BeatType,
+    ContentProjectConfig,
     effective_motion_preset,
 )
 from app.modules.beat.service import load_beats_json, save_beats_json
@@ -377,6 +379,31 @@ class BeatsJsonFileTests(unittest.TestCase):
             self.assertEqual(
                 [b.id for b in restored.ordered_beats()], ["beat_01", "beat_02", "beat_03", "beat_04"]
             )
+
+
+class ContentProjectConfigTargetDurationTests(unittest.TestCase):
+    """Real user request: long-form (7-8 min) YouTube videos, not just
+    Shorts. target_duration used to reuse Beat's own per-segment
+    MAX_DURATION (120s) -- a genuine bug, not a deliberate limit (see
+    docs/features/108-landscape-render-profile.md) -- so a whole video
+    could never be configured longer than one single beat is allowed to be.
+    """
+
+    def test_a_long_form_duration_is_accepted(self):
+        config = ContentProjectConfig(target_duration=450.0)  # 7.5 minutes
+        self.assertEqual(config.target_duration, 450.0)
+
+    def test_duration_at_the_new_ceiling_is_accepted(self):
+        config = ContentProjectConfig(target_duration=MAX_TARGET_DURATION)
+        self.assertEqual(config.target_duration, MAX_TARGET_DURATION)
+
+    def test_duration_past_the_new_ceiling_is_rejected(self):
+        with self.assertRaises(ValidationError):
+            ContentProjectConfig(target_duration=MAX_TARGET_DURATION + 1)
+
+    def test_short_form_default_still_works_unchanged(self):
+        config = ContentProjectConfig()
+        self.assertEqual(config.target_duration, 30.0)
 
 
 if __name__ == "__main__":
