@@ -92,6 +92,7 @@ def voice_fingerprint(script_text: str, voice: VoiceProjectConfig) -> str:
     normalized_text = re.sub(r"\s+", " ", script_text.strip().lower())
     payload = "|".join([
         normalized_text, voice.provider, voice.voice_id, voice.language, f"{voice.speed:.2f}", str(voice.pitch),
+        f"{voice.sentence_pause_sec:.2f}",
     ])
     return hashlib.sha256(payload.encode("utf-8")).hexdigest()
 
@@ -198,7 +199,10 @@ def generate_project_narration(project_id: int, settings: Settings) -> bool:
     else:
         provider = get_provider(voice_config.provider)
         raw_output = _voice_dir(project_id, settings) / "narration.raw.tmp.wav"
-        result = provider.synthesize(full_text, voice_config.voice_id, voice_config.language, voice_config.speed, raw_output)
+        result = provider.synthesize(
+            full_text, voice_config.voice_id, voice_config.language, voice_config.speed, raw_output,
+            sentence_pause_sec=voice_config.sentence_pause_sec,
+        )
 
         tmp_wav = _voice_dir(project_id, settings) / "narration.tmp.wav"
         normalize_audio(Path(result.path), tmp_wav)

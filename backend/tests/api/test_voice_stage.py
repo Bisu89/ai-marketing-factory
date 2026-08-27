@@ -137,6 +137,12 @@ class InvalidationTests(_VoiceStageTestCase):
         regenerated = generate_project_narration(project_id, self.settings)
         self.assertTrue(regenerated)
 
+    def test_sentence_pause_change_invalidates_the_cached_fingerprint(self):
+        text = "One sentence. Two sentence."
+        default = voice_fingerprint(text, VoiceProjectConfig())
+        slower_pauses = voice_fingerprint(text, VoiceProjectConfig(sentence_pause_sec=0.8))
+        self.assertNotEqual(default, slower_pauses)
+
     def test_voice_settings_change_invalidates_without_touching_visual_assignment(self):
         project_id = self._project_with_beats("Voice Settings Change", ["Some narration text."])
         generate_project_narration(project_id, self.settings)
@@ -237,8 +243,10 @@ class _FakeEdgeProvider:
     still exercising the real persistence/carry-forward code path.
     """
 
-    def synthesize(self, text, voice_id, language, speed, output_path):
-        real = LocalTTSProvider().synthesize(text, "default", language, speed, output_path)
+    def synthesize(self, text, voice_id, language, speed, output_path, sentence_pause_sec=0.35):
+        real = LocalTTSProvider().synthesize(
+            text, "default", language, speed, output_path, sentence_pause_sec=sentence_pause_sec
+        )
         words = _fake_word_timestamps(text, real.duration_sec)
         return AudioResult(
             path=real.path, duration_sec=real.duration_sec, sample_rate=real.sample_rate,

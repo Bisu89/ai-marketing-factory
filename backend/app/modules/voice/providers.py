@@ -234,7 +234,10 @@ class _TTSWorker:
         finally:
             engine.stop()
 
-    def _synthesize_now(self, text: str, voice_id: str, language: str, speed: float, output_path: Path) -> AudioResult:
+    def _synthesize_now(
+        self, text: str, voice_id: str, language: str, speed: float, output_path: Path,
+        sentence_pause_sec: float = _INTER_SENTENCE_PAUSE_SEC,
+    ) -> AudioResult:
         output_path.parent.mkdir(parents=True, exist_ok=True)
         sentences = _split_sentences(text)
 
@@ -273,7 +276,7 @@ class _TTSWorker:
                 # last-word position to trim to -- None means "use the
                 # segment's own full length" (see _concat_wav_with_pauses's
                 # own docstring).
-                _concat_wav_with_pauses([(p, None) for p in segment_paths], _INTER_SENTENCE_PAUSE_SEC, output_path)
+                _concat_wav_with_pauses([(p, None) for p in segment_paths], sentence_pause_sec, output_path)
             finally:
                 shutil.rmtree(tmp_dir, ignore_errors=True)
 
@@ -305,8 +308,11 @@ class _TTSWorker:
             raise value
         return value
 
-    def synthesize(self, text: str, voice_id: str, language: str, speed: float, output_path: Path) -> AudioResult:
-        return self._submit("synthesize", (text, voice_id, language, speed, output_path))
+    def synthesize(
+        self, text: str, voice_id: str, language: str, speed: float, output_path: Path,
+        sentence_pause_sec: float = _INTER_SENTENCE_PAUSE_SEC,
+    ) -> AudioResult:
+        return self._submit("synthesize", (text, voice_id, language, speed, output_path, sentence_pause_sec))
 
     def list_voices(self) -> list[dict]:
         return self._submit("list_voices", ())
@@ -320,12 +326,18 @@ _tts_worker = _TTSWorker()
 
 class TTSProvider(ABC):
     @abstractmethod
-    def synthesize(self, text: str, voice_id: str, language: str, speed: float, output_path: Path) -> AudioResult:
+    def synthesize(
+        self, text: str, voice_id: str, language: str, speed: float, output_path: Path,
+        sentence_pause_sec: float = _INTER_SENTENCE_PAUSE_SEC,
+    ) -> AudioResult:
         """Writes real, playable audio to `output_path` (any format -- the
         composition root normalizes to the canonical WAV format afterward,
         see audio_analysis.normalize_audio) and returns its own facts about
         what it produced. Must raise VoiceError (never returns a partial/
-        placeholder result) on failure.
+        placeholder result) on failure. `sentence_pause_sec` is the silent
+        gap spliced between sentences (only meaningful for multi-sentence
+        text); it defaults to this module's own constant so existing
+        callers are unaffected.
         """
         raise NotImplementedError
 
@@ -379,7 +391,10 @@ class LocalTTSProvider(TTSProvider):
             "Install a matching Windows Speech voice, or choose the edge_tts provider instead.",
         )
 
-    def synthesize(self, text: str, voice_id: str, language: str, speed: float, output_path: Path) -> AudioResult:
+    def synthesize(
+        self, text: str, voice_id: str, language: str, speed: float, output_path: Path,
+        sentence_pause_sec: float = _INTER_SENTENCE_PAUSE_SEC,
+    ) -> AudioResult:
         try:
             import pythoncom  # noqa: F401 -- import-checked here so a missing pywin32 fails with this module's own stable code
         except ImportError as exc:  # pragma: no cover -- Windows-only dependency
@@ -391,7 +406,7 @@ class LocalTTSProvider(TTSProvider):
         # point of view, still just a plain synchronous call in, AudioResult
         # out.
         try:
-            return _tts_worker.synthesize(text, voice_id, language, speed, output_path)
+            return _tts_worker.synthesize(text, voice_id, language, speed, output_path, sentence_pause_sec)
         except VoiceError:
             raise
         except Exception as exc:
@@ -410,7 +425,10 @@ class EdgeTTSProvider(TTSProvider):
     behavior in any way.
     """
 
-    def synthesize(self, text: str, voice_id: str, language: str, speed: float, output_path: Path) -> AudioResult:
+    def synthesize(
+        self, text: str, voice_id: str, language: str, speed: float, output_path: Path,
+        sentence_pause_sec: float = _INTER_SENTENCE_PAUSE_SEC,
+    ) -> AudioResult:
         import edge_tts
 
         resolved_voice = voice_id if voice_id and voice_id != "default" else _default_edge_voice(language)
@@ -517,9 +535,9 @@ class EdgeTTSProvider(TTSProvider):
                     )
                     segments.append((tmp_wav, trim_to))
                     is_last = i == len(sentences) - 1
-                    offset_sec += trim_to + (0.0 if is_last else _INTER_SENTENCE_PAUSE_SEC)
+                    offset_sec += trim_to + (0.0 if is_last else sentence_pause_sec)
 
-                _concat_wav_with_pauses(segments, _INTER_SENTENCE_PAUSE_SEC, output_path)
+                _concat_wav_with_pauses(segments, sentence_pause_sec, output_path)
                 words = all_words
             finally:
                 shutil.rmtree(tmp_dir, ignore_errors=True)

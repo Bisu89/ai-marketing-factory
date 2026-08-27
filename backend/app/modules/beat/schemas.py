@@ -715,6 +715,11 @@ class ContentProjectConfig(BaseModel):
 VOICE_PROVIDERS = ("local", "edge_tts")
 MIN_VOICE_SPEED = 0.5
 MAX_VOICE_SPEED = 2.0
+# The silent gap spliced between sentences/beats (app.modules.voice.providers
+# was a hardcoded 0.35s -- fine for a warm story read, too clipped for the
+# deliberate "nhấn nhá" a horror narration needs). 0.0 = no gap.
+DEFAULT_SENTENCE_PAUSE_SEC = 0.35
+MAX_SENTENCE_PAUSE_SEC = 2.0
 
 
 class VoiceProjectConfig(BaseModel):
@@ -735,12 +740,20 @@ class VoiceProjectConfig(BaseModel):
     language: str = "en"
     speed: float = 1.0
     pitch: int = 0
+    sentence_pause_sec: float = DEFAULT_SENTENCE_PAUSE_SEC
 
     @field_validator("provider")
     @classmethod
     def _known_provider(cls, value: str) -> str:
         if value not in VOICE_PROVIDERS:
             raise ValueError(f"Unknown voice provider {value!r}, must be one of {VOICE_PROVIDERS}")
+        return value
+
+    @field_validator("sentence_pause_sec")
+    @classmethod
+    def _pause_within_bounds(cls, value: float) -> float:
+        if not (0.0 <= value <= MAX_SENTENCE_PAUSE_SEC):
+            raise ValueError(f"sentence_pause_sec must be between 0 and {MAX_SENTENCE_PAUSE_SEC}, got {value}")
         return value
 
     @field_validator("language")
@@ -983,8 +996,12 @@ HORROR_SHORTS_TEMPLATE = Template(
         # internet); en-US-GuyNeural is a calm, low male read.
         # speed 0.82 (edge_tts rate -18%): a deliberate, dread-building
         # delivery -- 0.95 read "too fast for horror" in real review.
+        # sentence_pause_sec 0.8 (default 0.35): a real beat of silence
+        # between sentences/beats -- the "nhấn nhá" horror pacing needs,
+        # which a near-continuous read was missing.
         voice=VoiceProjectConfig(
-            provider="edge_tts", voice_id="en-US-GuyNeural", language="en", speed=0.82
+            provider="edge_tts", voice_id="en-US-GuyNeural", language="en",
+            speed=0.82, sentence_pause_sec=0.8,
         ),
         visual_generation=VisualGenerationProjectConfig(
             image_style_prompt=(
