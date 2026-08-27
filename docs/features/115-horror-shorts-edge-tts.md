@@ -1,6 +1,6 @@
 # 115. Horror Shorts Template → edge_tts (captions lock to narration)
 
-**Commit:** _(fill in after commit)_
+**Commit:** `0824049`
 
 Real user report on the first Horror Shorts batch: *"chữ chạy lệch/giật so
 với giọng"* — the word-by-word captions drift and jitter against the
