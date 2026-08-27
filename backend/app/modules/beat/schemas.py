@@ -942,6 +942,51 @@ HORROR_TEMPLATE = Template(
     ),
 )
 
+# Task 111 follow-up -- the short-form "rules horror / impossible horror /
+# found-footage" formats: 15-25s, one first-person or documentary voice, a
+# hard twist on the last line, watched muted so captions carry it. Distinct
+# enough from HORROR_TEMPLATE (45s cinematic narration) to be its own
+# built-in, the same way couple_story is a tuned variant of emotional_story.
+HORROR_SHORTS_TEMPLATE = Template(
+    id="horror_shorts",
+    name="Horror Shorts (Rules & Twists)",
+    description="15-25s scary shorts -- strange-rules / impossible-event / found-footage "
+    "formats with a one-line twist ending. Punchy word-by-word captions, locked-off "
+    "camera feel, security-cam AI image style.",
+    version=1,
+    builtin=True,
+    config=ProjectConfig(
+        render=RenderProjectConfig(profile="SOCIAL_VERTICAL"),
+        # Subtle, not cinematic -- these read as a fixed camera / CCTV feed;
+        # a strong push-in fights that. Still not fully STATIC so a 3-4s beat
+        # doesn't feel like a frozen slide.
+        motion=MotionProjectConfig(default_preset=BeatMotionPreset.SLOW_PUSH_IN, intensity="SUBTLE"),
+        # word_highlight keeps the viewer on each beat and lets the final
+        # twist line land word-by-word; tightened word/char caps so a line
+        # like "Nobody was there." fills the frame instead of shrinking.
+        captions=CaptionsProjectConfig(
+            enabled=True, preset="word_highlight", max_words=4, max_chars=24, max_lines=2
+        ),
+        audio=AudioProjectConfig(narration_enabled=True, music_enabled=True, music_volume=0.25, ducking=True),
+        content=ContentProjectConfig(
+            language="en", tone="eerie, unsettling and deadpan",
+            style="short first-person scary story with a one-line twist ending",
+            target_duration=22.0, audience="horror shorts and creepypasta viewers", cta_enabled=True,
+        ),
+        voice=VoiceProjectConfig(provider="local", voice_id="default", language="en", speed=0.95),
+        visual_generation=VisualGenerationProjectConfig(
+            image_style_prompt=(
+                "grainy found-footage horror still, security camera / low-light night-vision look, "
+                "heavy sensor noise and compression artifacts, dark desaturated cold grey-green tint, "
+                "empty dread, dim practical lighting, wide locked-off angle, no visible faces, "
+                "no on-screen text, no timestamp, no watermark"
+            ),
+        ),
+        template_id="horror_shorts",
+        template_version=1,
+    ),
+)
+
 CUSTOM_TEMPLATE = Template(
     id="custom",
     name="Custom",
@@ -952,13 +997,15 @@ CUSTOM_TEMPLATE = Template(
 )
 
 # Note: BUILTIN_TEMPLATES' own `id`s ("emotional_story"/"couple_story"/
-# "horror"/"custom") are reserved -- template_service.save_custom_templates
-# below rejects a custom template trying to reuse one, so a built-in can
-# never be shadowed or overwritten by user data.
+# "horror"/"horror_shorts"/"custom") are reserved --
+# template_service.save_custom_templates below rejects a custom template
+# trying to reuse one, so a built-in can never be shadowed or overwritten
+# by user data.
 BUILTIN_TEMPLATES: list[Template] = [
     EMOTIONAL_STORY_TEMPLATE,
     COUPLE_STORY_TEMPLATE,
     HORROR_TEMPLATE,
+    HORROR_SHORTS_TEMPLATE,
     CUSTOM_TEMPLATE,
 ]
 BUILTIN_TEMPLATE_IDS = frozenset(t.id for t in BUILTIN_TEMPLATES)

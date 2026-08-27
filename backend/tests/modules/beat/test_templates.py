@@ -18,6 +18,7 @@ from app.modules.beat.schemas import (
     CUSTOM_TEMPLATE,
     DEFAULT_PROJECT_CONFIG,
     EMOTIONAL_STORY_TEMPLATE,
+    HORROR_SHORTS_TEMPLATE,
     HORROR_TEMPLATE,
     AudioProjectConfig,
     Beat,
@@ -75,8 +76,16 @@ class TemplateValidationTests(unittest.TestCase):
 class BuiltinTemplateTests(unittest.TestCase):
     def test_builtin_templates_exist(self):
         ids = {t.id for t in BUILTIN_TEMPLATES}
-        self.assertEqual(ids, {"emotional_story", "couple_story", "horror", "custom"})
+        self.assertEqual(ids, {"emotional_story", "couple_story", "horror", "horror_shorts", "custom"})
         self.assertTrue(all(t.builtin for t in BUILTIN_TEMPLATES))
+
+    def test_horror_shorts_is_short_punchy_and_found_footage_styled(self):
+        config = HORROR_SHORTS_TEMPLATE.config
+        self.assertLessEqual(config.content.target_duration, 25.0)
+        self.assertEqual(config.captions.preset, "word_highlight")
+        self.assertLessEqual(config.captions.max_words, 5)
+        self.assertEqual(config.visual_generation.mode, "library")
+        self.assertIn("found-footage", config.visual_generation.image_style_prompt.lower())
 
     def test_horror_uses_dread_motion_cinematic_captions_and_dark_image_style(self):
         config = HORROR_TEMPLATE.config
