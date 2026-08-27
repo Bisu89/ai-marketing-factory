@@ -81,6 +81,50 @@ def _split_long_chunk_by_words(words: list[str], max_words: int, max_chars: int)
     return groups
 
 
+# A lone 1-word caption card (almost always a sentence's tail that the
+# greedy walk below couldn't fit alongside its own phrase) reads far worse
+# on screen than a slightly fuller card -- real user report: "nhiều đoạn
+# có đúng 1 chữ". A merge may run one word over max_words (a 6-word cap
+# becoming a 7-word card to swallow an orphan), but never over max_chars
+# (that would undo the char-limit split the walk just did -- and the
+# real orphans this targets, sentence tails like "me." / "face.", are
+# only a few characters, so the char cap is never the blocker in
+# practice).
+_ORPHAN_MERGE_WORD_TOLERANCE = 1
+
+
+def _merge_orphan_chunks(chunks: list[str], max_words: int, max_chars: int) -> list[str]:
+    """Fold a single-word chunk into a neighbour (previous first, else
+    next) when the merged card still fits. Never merges two multi-word
+    chunks, so a deliberate short line like "Nobody was there." (a whole
+    sentence) is untouched."""
+    if len(chunks) < 2:
+        return chunks
+
+    def _fits(text: str) -> bool:
+        return (
+            len(text.split()) <= max_words + _ORPHAN_MERGE_WORD_TOLERANCE
+            and len(text) <= max_chars
+        )
+
+    merged: list[str] = []
+    for chunk in chunks:
+        if merged and len(chunk.split()) == 1:
+            candidate = f"{merged[-1]} {chunk}"
+            if _fits(candidate):
+                merged[-1] = candidate
+                continue
+        merged.append(chunk)
+
+    # A leading orphan has no previous card -- fold it forward instead.
+    if len(merged) >= 2 and len(merged[0].split()) == 1:
+        candidate = f"{merged[0]} {merged[1]}"
+        if _fits(candidate):
+            merged = [candidate, *merged[2:]]
+
+    return merged
+
+
 def split_text_into_chunks(text: str, max_words: int, max_chars: int) -> list[str]:
     """Section 5/6: prefer sentence/phrase boundaries over blind word
     splitting. Walks the text word by word, closing the current chunk at
@@ -118,7 +162,7 @@ def split_text_into_chunks(text: str, max_words: int, max_chars: int) -> list[st
         else:
             for group in _split_long_chunk_by_words(phrase, max_words, max_chars):
                 chunks.append(" ".join(group))
-    return chunks
+    return _merge_orphan_chunks(chunks, max_words, max_chars)
 
 
 def _rebalance_minimum_duration(raw_durations: list[float], total_duration: float, min_duration: float) -> list[float]:

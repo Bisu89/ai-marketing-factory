@@ -83,7 +83,8 @@ class BuiltinTemplateTests(unittest.TestCase):
         config = HORROR_SHORTS_TEMPLATE.config
         self.assertLessEqual(config.content.target_duration, 25.0)
         self.assertEqual(config.captions.preset, "word_highlight")
-        self.assertLessEqual(config.captions.max_words, 5)
+        self.assertLessEqual(config.captions.max_words, 7)
+        self.assertEqual(config.voice.provider, "edge_tts")
         self.assertEqual(config.visual_generation.mode, "library")
         self.assertIn("found-footage", config.visual_generation.image_style_prompt.lower())
 

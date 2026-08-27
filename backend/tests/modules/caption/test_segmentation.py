@@ -53,6 +53,25 @@ class ChunkSplittingTests(unittest.TestCase):
         chunks = split_text_into_chunks("Well, that is that.", max_words=20, max_chars=200)
         self.assertNotEqual(chunks[0], "Well,")
 
+    def test_no_lone_one_word_card_from_a_sentence_tail(self):
+        # Real user report ("nhiều đoạn có đúng 1 chữ"): the greedy walk
+        # left sentence tails like "me." / "face." on their own card.
+        text = "Everyone in it was smiling. Everyone except me. It was my face."
+        chunks = split_text_into_chunks(text, max_words=6, max_chars=38)
+        one_word = [c for c in chunks if len(c.split()) == 1]
+        self.assertEqual(one_word, [], f"orphan 1-word card(s): {one_word}")
+
+    def test_a_whole_short_sentence_still_gets_its_own_card(self):
+        # The merge only touches 1-word chunks -- a genuine short line
+        # (multi-word whole sentence) is left alone.
+        chunks = split_text_into_chunks("It rang again. Nobody was there.", max_words=6, max_chars=38)
+        self.assertIn("Nobody was there.", chunks)
+
+    def test_orphan_merge_never_exceeds_the_char_limit(self):
+        chunks = split_text_into_chunks("alpha beta gamma delta epsilon zeta eta theta", max_words=20, max_chars=15)
+        for chunk in chunks:
+            self.assertLessEqual(len(chunk), 15)
+
     def test_hard_word_limit_splits_even_without_punctuation(self):
         text = " ".join(f"word{i}" for i in range(1, 21))  # 20 words, no punctuation at all
         chunks = split_text_into_chunks(text, max_words=5, max_chars=200)

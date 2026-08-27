@@ -975,10 +975,13 @@ HORROR_SHORTS_TEMPLATE = Template(
         # doesn't feel like a frozen slide.
         motion=MotionProjectConfig(default_preset=BeatMotionPreset.SLOW_PUSH_IN, intensity="SUBTLE"),
         # word_highlight keeps the viewer on each beat and lets the final
-        # twist line land word-by-word; tightened word/char caps so a line
-        # like "Nobody was there." fills the frame instead of shrinking.
+        # twist line land word-by-word. max_words 6 / max_chars 38 (not the
+        # tighter 4/24 first shipped): 4/24 fragmented normal narration into
+        # 1-2 word cards and left sentence-tail orphans ("me.", "the") --
+        # real user report. A genuinely short twist line still gets its own
+        # card because it's a whole sentence, not because the caps force it.
         captions=CaptionsProjectConfig(
-            enabled=True, preset="word_highlight", max_words=4, max_chars=24, max_lines=2
+            enabled=True, preset="word_highlight", max_words=6, max_chars=38, max_lines=2
         ),
         audio=AudioProjectConfig(narration_enabled=True, music_enabled=True, music_volume=0.25, ducking=True),
         content=ContentProjectConfig(
