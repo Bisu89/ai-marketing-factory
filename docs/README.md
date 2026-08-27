@@ -135,6 +135,7 @@ SQLite.
 112. [Built-in "Horror Shorts (Rules & Twists)" Template](features/112-horror-shorts-template.md) — a 5th built-in tuned for 15-25s twist-horror shorts (strange-rules / impossible-event / found-footage formats): 22s target, word-by-word captions, locked-off camera feel, security-cam image style
 113. [Produced Videos page](features/113-produced-videos-page.md) — real user report of no place to browse finished renders; new `/videos` page (thumbnail grid, batch/series/status filters, drawer with player + metadata + copy-path + open-folder) over a new read-only `GET /produced-videos` aggregation
 114. [AI Package Metadata language fix](features/114-ai-metadata-language-fix.md) — real user report of English videos getting Vietnamese AI titles/descriptions/thumbnail text; the prompt was hardcoded to a "Vietnamese channel" and ignored the project's `content.language` — now pins output to it explicitly
+115. [Horror Shorts template → edge_tts](features/115-horror-shorts-edge-tts.md) — real user report of captions drifting/jittering against the voice; `word_highlight` captions only lock to narration with real per-word timings, which only edge_tts emits — switched the template's voice from offline local TTS to edge_tts
 
 ## Keeping this up to date
 

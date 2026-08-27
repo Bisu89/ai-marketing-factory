@@ -953,7 +953,7 @@ HORROR_SHORTS_TEMPLATE = Template(
     description="15-25s scary shorts -- strange-rules / impossible-event / found-footage "
     "formats with a one-line twist ending. Punchy word-by-word captions, locked-off "
     "camera feel, security-cam AI image style.",
-    version=1,
+    version=2,  # v2: edge_tts (was local) so captions lock to the narration
     builtin=True,
     config=ProjectConfig(
         render=RenderProjectConfig(profile="SOCIAL_VERTICAL"),
@@ -973,7 +973,18 @@ HORROR_SHORTS_TEMPLATE = Template(
             style="short first-person scary story with a one-line twist ending",
             target_duration=22.0, audience="horror shorts and creepypasta viewers", cta_enabled=True,
         ),
-        voice=VoiceProjectConfig(provider="local", voice_id="default", language="en", speed=0.95),
+        # edge_tts, not the offline SAPI5 "local" voice: word_highlight
+        # captions only lock to the narration when the Caption Engine has
+        # real per-word timestamps to segment on (see features 62 / 92),
+        # and only edge_tts emits them. Local TTS falls back to a
+        # weighted-text-length estimate that visibly drifts against the
+        # voice on these fast, twist-driven cuts -- the exact "chữ chạy
+        # lệch/giật" the user reported. edge_tts is still $0 (needs
+        # internet); en-US-GuyNeural is a calm, low male read that suits
+        # the deadpan tone.
+        voice=VoiceProjectConfig(
+            provider="edge_tts", voice_id="en-US-GuyNeural", language="en", speed=0.95
+        ),
         visual_generation=VisualGenerationProjectConfig(
             image_style_prompt=(
                 "grainy found-footage horror still, security camera / low-light night-vision look, "
@@ -983,7 +994,7 @@ HORROR_SHORTS_TEMPLATE = Template(
             ),
         ),
         template_id="horror_shorts",
-        template_version=1,
+        template_version=2,
     ),
 )
 
