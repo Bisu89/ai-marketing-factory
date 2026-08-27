@@ -138,6 +138,7 @@ SQLite.
 115. [Horror Shorts template → edge_tts](features/115-horror-shorts-edge-tts.md) — real user report of captions drifting/jittering against the voice; `word_highlight` captions only lock to narration with real per-word timings, which only edge_tts emits — switched the template's voice from offline local TTS to edge_tts
 116. [Configurable inter-sentence pause](features/116-configurable-sentence-pause.md) — real user report that horror narration ran sentence-into-sentence with no dramatic beat; the 0.35s inter-sentence gap was hardcoded — now a `VoiceProjectConfig.sentence_pause_sec` (Horror Shorts set to 0.8s)
 117. [No lone 1-word caption cards](features/117-caption-orphan-word-fix.md) — real user report that captions fragmented into 1-word cards with sentence-tail orphans; added an orphan-merge pass to segmentation + relaxed Horror Shorts caption caps (4/24 → 6/38)
+118. [Production Dashboard: layout refactor](features/118-dashboard-layout-refactor.md) — real user request; same data, re-laid out by what a producer checks first: KPIs → merged Needs-attention (attention + failures) → Running now (batch + render + queue) → Recent videos → a single muted At-a-glance card
 
 ## Keeping this up to date
 

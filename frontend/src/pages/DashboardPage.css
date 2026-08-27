@@ -33,9 +33,9 @@
 
 .dash-kpis {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 16px;
-  margin-bottom: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 14px;
+  margin-bottom: 22px;
 }
 
 .dash-kpi {
@@ -43,38 +43,40 @@
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
-  padding: 18px 20px;
+  padding: 16px 18px;
   border-left: 3px solid var(--border);
 }
 
 .dash-kpi-value {
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 700;
   color: var(--text-heading);
   line-height: 1.1;
+  font-variant-numeric: tabular-nums;
 }
 
 .dash-kpi-label {
   margin-top: 4px;
-  font-size: 12.5px;
+  font-size: 12px;
   color: var(--text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.03em;
 }
 
-.dash-kpi--ready {
+/* A zero count stays quiet; a non-zero one lights its accent edge. */
+.dash-kpi--ready.is-active {
   border-left-color: var(--success);
 }
-
-.dash-kpi--review {
+.dash-kpi--review.is-active {
   border-left-color: #d97706;
 }
-
-.dash-kpi--rendering {
+.dash-kpi--blocked.is-active {
+  border-left-color: var(--danger);
+}
+.dash-kpi--rendering.is-active {
   border-left-color: var(--accent);
 }
-
-.dash-kpi--completed {
+.dash-kpi--completed.is-active {
   border-left-color: var(--success);
 }
 
@@ -86,19 +88,58 @@
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
   padding: 16px 18px;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 .dash-card-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 12px;
+  gap: 10px;
+  margin-bottom: 14px;
 }
 
 .dash-card-header h3 {
   margin: 0;
   font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--text-heading);
+}
+
+.dash-card-header h3 svg {
+  color: var(--text-muted);
+}
+
+.dash-header-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.dash-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 18px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: var(--surface-alt);
+  color: var(--text-muted);
+  font-size: 11.5px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.dash-count--warn {
+  background: rgba(239, 68, 68, 0.14);
+  color: var(--danger);
 }
 
 .dash-card-actions {
@@ -107,17 +148,47 @@
   margin-top: 12px;
 }
 
-.dash-columns {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 20px;
+.btn-sm {
+  padding: 5px 10px;
+  font-size: 12.5px;
+  gap: 5px;
 }
 
-.dash-columns .dash-card {
+/* -- "Needs attention" panel ---------------------------------------- */
+
+.dash-card--attention {
+  border-left: 3px solid var(--danger);
+  background: linear-gradient(
+    to right,
+    rgba(239, 68, 68, 0.05),
+    var(--surface) 240px
+  );
+}
+
+/* -- "Running now" row --------------------------------------------- */
+
+.dash-now {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.dash-now .dash-card {
   margin-bottom: 0;
 }
 
-/* -- Current batch ------------------------------------------------------ */
+.dash-now-block + .dash-now-block {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+@media (max-width: 780px) {
+  .dash-now {
+    grid-template-columns: 1fr;
+  }
+}
 
 .dash-batch-name {
   font-size: 15px;
@@ -144,6 +215,7 @@
   margin-top: 6px;
   font-size: 12.5px;
   color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
 }
 
 .dash-status-chips {
@@ -166,48 +238,48 @@
 .dash-chip--COMPLETED {
   color: var(--success);
 }
-
 .dash-chip--FAILED,
 .dash-chip--SKIPPED {
   color: var(--danger);
 }
-
-.dash-chip--RENDERING {
+.dash-chip--RENDERING,
+.dash-chip--RUNNING {
   color: var(--accent);
 }
-
 .dash-chip--NEEDS_REVIEW {
   color: #d97706;
 }
 
-/* -- Current render ------------------------------------------------------ */
+/* -- Current render fields ---------------------------------------- */
 
 .dash-render-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
   gap: 14px;
 }
 
 .dash-field-label {
-  font-size: 11.5px;
+  font-size: 11px;
   color: var(--text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.03em;
 }
 
 .dash-field-value {
   margin-top: 3px;
-  font-size: 14px;
+  font-size: 13.5px;
   font-weight: 600;
   color: var(--text-heading);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-/* -- Needs Attention ------------------------------------------------------ */
+/* -- Lists (shared) ------------------------------------------------- */
 
 .dash-attention-list,
 .dash-queue-list,
 .dash-video-list,
-.dash-failure-list,
 .dash-pipeline-list,
 .dash-cost-list {
   list-style: none;
@@ -215,35 +287,39 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
 }
 
 .dash-attention-item {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 8px 0;
+  padding: 10px 0;
   border-bottom: 1px solid var(--border);
+}
+
+.dash-attention-item:first-child {
+  padding-top: 0;
 }
 
 .dash-attention-item:last-child {
   border-bottom: none;
+  padding-bottom: 0;
 }
 
 .dash-priority {
-  font-size: 10.5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 10px;
   font-weight: 700;
   padding: 3px 8px;
   border-radius: 4px;
   white-space: nowrap;
   text-transform: uppercase;
+  letter-spacing: 0.02em;
 }
 
-.dash-priority--BLOCKED {
-  background: rgba(239, 68, 68, 0.12);
-  color: var(--danger);
-}
-
+.dash-priority--BLOCKED,
 .dash-priority--FAILED {
   background: rgba(239, 68, 68, 0.12);
   color: var(--danger);
@@ -263,6 +339,9 @@
   font-size: 13px;
   font-weight: 600;
   color: var(--text-heading);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .dash-attention-reason {
@@ -273,33 +352,32 @@
   white-space: nowrap;
 }
 
-.dash-view-all {
-  display: inline-block;
-  margin-top: 10px;
-  font-size: 12.5px;
-  color: var(--accent);
-}
-
 /* -- Render queue ------------------------------------------------------ */
 
 .dash-queue-item {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 6px 0;
+  padding: 8px 0;
   border-bottom: 1px solid var(--border);
+}
+
+.dash-queue-item:first-child {
+  padding-top: 0;
 }
 
 .dash-queue-item:last-child {
   border-bottom: none;
+  padding-bottom: 0;
 }
 
 .dash-queue-status {
-  font-size: 10.5px;
+  font-size: 10px;
   font-weight: 700;
   padding: 3px 8px;
   border-radius: 4px;
   white-space: nowrap;
+  letter-spacing: 0.02em;
 }
 
 .dash-queue-status--RUNNING {
@@ -316,13 +394,20 @@
   flex: 1;
   font-size: 13px;
   color: var(--text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-/* -- Recent videos / failures ------------------------------------------- */
+/* -- Recent videos ------------------------------------------------------ */
 
 .dash-video-item {
   border-bottom: 1px solid var(--border);
-  padding-bottom: 10px;
+  padding: 10px 0;
+}
+
+.dash-video-item:first-child {
+  padding-top: 0;
 }
 
 .dash-video-item:last-child {
@@ -354,6 +439,17 @@
   font-size: 12px;
   color: var(--text-muted);
   white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.dash-video-meta--muted {
+  opacity: 0.7;
+}
+
+@media (max-width: 560px) {
+  .dash-video-meta--muted {
+    display: none;
+  }
 }
 
 .dash-video-preview {
@@ -364,55 +460,47 @@
   display: block;
 }
 
-.dash-failure-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  padding: 8px 0;
-  border-bottom: 1px solid var(--border);
+/* -- At a glance ------------------------------------------------------ */
+
+.dash-card--overview {
+  background: var(--surface-alt);
+  box-shadow: none;
 }
 
-.dash-failure-item:last-child {
-  border-bottom: none;
+.dash-overview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 22px;
 }
 
-.dash-failure-icon {
-  color: var(--danger);
-  flex-shrink: 0;
-  margin-top: 2px;
+.dash-overview-heading {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  margin-bottom: 8px;
 }
-
-.dash-failure-body {
-  flex: 1;
-  min-width: 0;
-}
-
-.dash-failure-title {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text-heading);
-}
-
-.dash-failure-message {
-  font-size: 12px;
-  color: var(--danger);
-  margin-top: 2px;
-}
-
-/* -- Pipeline / cost ------------------------------------------------------ */
 
 .dash-pipeline-row,
 .dash-cost-list li {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 13px;
+  font-size: 12.5px;
   color: var(--text);
+  padding: 4px 0;
+}
+
+.dash-pipeline-row span {
   text-transform: capitalize;
 }
 
-.dash-cost-list li {
-  text-transform: none;
+.dash-pipeline-row strong,
+.dash-cost-list strong {
+  font-variant-numeric: tabular-nums;
+  color: var(--text-heading);
 }
 
 .dash-cost-list span {
