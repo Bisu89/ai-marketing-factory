@@ -1,6 +1,6 @@
 # 112. Built-in "Horror Shorts (Rules & Twists)" Template
 
-**Commit:** _(fill in after commit)_
+**Commit:** `c4dbd37`
 
 Follow-up to [111](111-horror-builtin-template.md). The user is producing
 short-form twist horror in three recurring formats (strange-rules /
