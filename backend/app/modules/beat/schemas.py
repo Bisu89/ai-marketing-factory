@@ -997,14 +997,14 @@ HORROR_SHORTS_TEMPLATE = Template(
         # voice on these fast, twist-driven cuts -- the exact "chữ chạy
         # lệch/giật" the user reported. edge_tts is still $0 (needs
         # internet); en-US-GuyNeural is a calm, low male read.
-        # speed 0.82 (edge_tts rate -18%): a deliberate, dread-building
-        # delivery -- 0.95 read "too fast for horror" in real review.
-        # sentence_pause_sec 0.8 (default 0.35): a real beat of silence
-        # between sentences/beats -- the "nhấn nhá" horror pacing needs,
-        # which a near-continuous read was missing.
+        # speed 0.75 (edge_tts rate -25%) + sentence_pause_sec 1.0 (default
+        # 0.35): a slow, deliberate, dread-building delivery with a real
+        # beat of silence between sentences/beats. Both dialled in over
+        # several rounds of real user review -- 0.95/near-continuous "read
+        # too fast, no nhấn nhá horror". A ~22s script lands ~30s here.
         voice=VoiceProjectConfig(
             provider="edge_tts", voice_id="en-US-GuyNeural", language="en",
-            speed=0.82, sentence_pause_sec=0.8,
+            speed=0.75, sentence_pause_sec=1.0,
         ),
         visual_generation=VisualGenerationProjectConfig(
             image_style_prompt=(
