@@ -236,7 +236,12 @@ export function VideosPage() {
 
             <div className="videos-drawer-player">
               {selected.output_media_url ? (
-                <video src={mediaUrl(selected.output_media_url)} controls playsInline />
+                <video
+                  key={selected.render_job_id}
+                  src={mediaUrl(selected.output_media_url)}
+                  controls
+                  playsInline
+                />
               ) : (
                 <div className="videos-drawer-player-empty">Không có file để xem</div>
               )}
