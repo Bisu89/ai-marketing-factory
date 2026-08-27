@@ -1,6 +1,6 @@
 # 117. No Lone 1-Word Caption Cards
 
-**Commit:** _(fill in after commit)_
+**Commit:** `6913f34`
 
 Real user report on the Horror Shorts clips: *"đoạn subtitle vẫn chưa
 smart lắm, nhiều đoạn có đúng 1 chữ"* — captions kept fragmenting into
