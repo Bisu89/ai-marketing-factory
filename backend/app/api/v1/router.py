@@ -28,6 +28,7 @@ from app.api.v1.endpoints import (
     motion_generate,
     package_generate,
     performance_intelligence,
+    produced_videos,
     quality_gate,
     series_project,
     settings,
@@ -86,6 +87,7 @@ api_router.include_router(batch_router, tags=["batch"])
 api_router.include_router(batch_render.router, tags=["batch-render"])
 api_router.include_router(quality_gate.router, tags=["quality-gate"])
 api_router.include_router(dashboard.router, tags=["dashboard"])
+api_router.include_router(produced_videos.router, tags=["produced-videos"])
 api_router.include_router(factory_pipeline.router, tags=["factory-pipeline"])
 api_router.include_router(content_generate.router, tags=["content-generate"])
 api_router.include_router(voice_generate.router, tags=["voice-generate"])

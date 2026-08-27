@@ -14,6 +14,7 @@ import { AffiliatePage } from "./pages/AffiliatePage";
 import { SceneCutterPage } from "./pages/SceneCutterPage";
 import { VideoComposerPage } from "./pages/VideoComposerPage";
 import { VideoFactoryPage } from "./pages/VideoFactoryPage";
+import { VideosPage } from "./pages/VideosPage";
 import { BatchPage } from "./pages/BatchPage";
 import { BatchDetailPage } from "./pages/BatchDetailPage";
 import { SeriesPage } from "./pages/SeriesPage";
@@ -40,6 +41,7 @@ function App() {
         <Route path="scene-cutter" element={<SceneCutterPage />} />
         <Route path="video-composer" element={<VideoComposerPage />} />
         <Route path="video-factory" element={<VideoFactoryPage />} />
+        <Route path="videos" element={<VideosPage />} />
         <Route path="batches" element={<BatchPage />} />
         <Route path="batches/:batchId" element={<BatchDetailPage />} />
         <Route path="series" element={<SeriesPage />} />
