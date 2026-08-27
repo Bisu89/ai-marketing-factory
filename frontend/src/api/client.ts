@@ -25,13 +25,22 @@ async function handle<T>(response: Response): Promise<T> {
   return response.json() as Promise<T>;
 }
 
+// The API is dynamic data, never a cacheable asset -- always hit the
+// network. A packaged build once served the SPA's index.html as the
+// fallback for unknown /api/v1/* paths *with* ETag/Last-Modified headers,
+// which some browsers then heuristically cached and replayed ("200 OK
+// (from disk cache)", content-type text/html) even after the real endpoint
+// existed. `no-store` makes that impossible.
+const NO_STORE: RequestInit = { cache: "no-store" };
+
 export async function apiGet<T>(path: string): Promise<T> {
-  const response = await fetch(`${config.apiBaseUrl}${path}`);
+  const response = await fetch(`${config.apiBaseUrl}${path}`, NO_STORE);
   return handle<T>(response);
 }
 
 export async function apiPost<T>(path: string, body?: unknown): Promise<T> {
   const response = await fetch(`${config.apiBaseUrl}${path}`, {
+    ...NO_STORE,
     method: "POST",
     headers: body !== undefined ? { "Content-Type": "application/json" } : undefined,
     body: body !== undefined ? JSON.stringify(body) : undefined,
@@ -41,6 +50,7 @@ export async function apiPost<T>(path: string, body?: unknown): Promise<T> {
 
 export async function apiPut<T>(path: string, body: unknown): Promise<T> {
   const response = await fetch(`${config.apiBaseUrl}${path}`, {
+    ...NO_STORE,
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(body),
@@ -50,6 +60,7 @@ export async function apiPut<T>(path: string, body: unknown): Promise<T> {
 
 export async function apiPatch<T>(path: string, body: unknown): Promise<T> {
   const response = await fetch(`${config.apiBaseUrl}${path}`, {
+    ...NO_STORE,
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(body),
@@ -59,6 +70,7 @@ export async function apiPatch<T>(path: string, body: unknown): Promise<T> {
 
 export async function apiUpload<T>(path: string, formData: FormData): Promise<T> {
   const response = await fetch(`${config.apiBaseUrl}${path}`, {
+    ...NO_STORE,
     method: "POST",
     body: formData,
   });
@@ -66,7 +78,7 @@ export async function apiUpload<T>(path: string, formData: FormData): Promise<T>
 }
 
 export async function apiDelete<T>(path: string): Promise<T> {
-  const response = await fetch(`${config.apiBaseUrl}${path}`, { method: "DELETE" });
+  const response = await fetch(`${config.apiBaseUrl}${path}`, { ...NO_STORE, method: "DELETE" });
   return handle<T>(response);
 }
 

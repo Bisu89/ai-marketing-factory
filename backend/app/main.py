@@ -148,6 +148,19 @@ def create_app() -> FastAPI:
         allow_headers=["*"],
     )
 
+    @app.middleware("http")
+    async def _no_store_api_responses(request: Request, call_next):
+        """Every /api/v1 response is live data, never a cacheable asset.
+        A packaged build once served the SPA index.html as the fallback for
+        unknown /api/v1/* paths *with* ETag/Last-Modified, which browsers
+        then heuristically cached and replayed even after the real endpoint
+        shipped ("200 OK (from disk cache)", content-type text/html). Force
+        no-store on the whole API surface so that can never recur."""
+        response = await call_next(request)
+        if request.url.path.startswith(settings.api_v1_prefix):
+            response.headers["Cache-Control"] = "no-store"
+        return response
+
     # StaticFiles requires the directory to exist at mount time, which happens
     # before the lifespan startup that would otherwise create it -- ensure it
     # exists here too (idempotent, DownloadEngine.start() also does this).
