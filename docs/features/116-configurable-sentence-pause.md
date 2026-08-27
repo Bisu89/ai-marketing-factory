@@ -1,6 +1,6 @@
 # 116. Configurable Inter-Sentence Pause (Horror Shorts: 0.8s)
 
-**Commit:** _(fill in after commit)_
+**Commit:** `7eb2b40`
 
 Real user review of the Horror Shorts batch: *"các đoạn ngắt không có độ
 trễ, gần như đọc liên tục, không có nhấn nhá horror"* — the narration ran
