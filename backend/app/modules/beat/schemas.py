@@ -980,10 +980,11 @@ HORROR_SHORTS_TEMPLATE = Template(
         # weighted-text-length estimate that visibly drifts against the
         # voice on these fast, twist-driven cuts -- the exact "chữ chạy
         # lệch/giật" the user reported. edge_tts is still $0 (needs
-        # internet); en-US-GuyNeural is a calm, low male read that suits
-        # the deadpan tone.
+        # internet); en-US-GuyNeural is a calm, low male read.
+        # speed 0.82 (edge_tts rate -18%): a deliberate, dread-building
+        # delivery -- 0.95 read "too fast for horror" in real review.
         voice=VoiceProjectConfig(
-            provider="edge_tts", voice_id="en-US-GuyNeural", language="en", speed=0.95
+            provider="edge_tts", voice_id="en-US-GuyNeural", language="en", speed=0.82
         ),
         visual_generation=VisualGenerationProjectConfig(
             image_style_prompt=(
