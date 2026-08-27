@@ -1,6 +1,6 @@
 # 118. Production Dashboard: Layout Refactor
 
-**Commit:** _(fill in after commit)_
+**Commit:** `abad324`
 
 Real user request to refactor the dashboard's layout. Same data, same
 endpoint ([43](43-production-dashboard.md)) — this is purely a
