@@ -18,6 +18,7 @@ from app.modules.beat.schemas import (
     CUSTOM_TEMPLATE,
     DEFAULT_PROJECT_CONFIG,
     EMOTIONAL_STORY_TEMPLATE,
+    HORROR_TEMPLATE,
     AudioProjectConfig,
     Beat,
     BeatMotionPreset,
@@ -72,10 +73,20 @@ class TemplateValidationTests(unittest.TestCase):
 
 
 class BuiltinTemplateTests(unittest.TestCase):
-    def test_three_builtin_templates_exist(self):
+    def test_builtin_templates_exist(self):
         ids = {t.id for t in BUILTIN_TEMPLATES}
-        self.assertEqual(ids, {"emotional_story", "couple_story", "custom"})
+        self.assertEqual(ids, {"emotional_story", "couple_story", "horror", "custom"})
         self.assertTrue(all(t.builtin for t in BUILTIN_TEMPLATES))
+
+    def test_horror_uses_dread_motion_cinematic_captions_and_dark_image_style(self):
+        config = HORROR_TEMPLATE.config
+        self.assertEqual(config.motion.default_preset, BeatMotionPreset.SLOW_PUSH_IN)
+        self.assertEqual(config.captions.preset, "cinematic")
+        self.assertTrue(config.audio.narration_enabled)
+        self.assertIn("horror", config.visual_generation.image_style_prompt.lower())
+        # Never silently opts a project into billed AI image generation --
+        # library mode stays the default, same as every other built-in.
+        self.assertEqual(config.visual_generation.mode, "library")
 
     def test_emotional_story_defaults(self):
         config = EMOTIONAL_STORY_TEMPLATE.config

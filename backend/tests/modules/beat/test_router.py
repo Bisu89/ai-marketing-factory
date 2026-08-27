@@ -99,9 +99,11 @@ class TemplateRouterTests(unittest.TestCase):
     def tearDown(self):
         self.tmpdir.cleanup()
 
-    def test_list_templates_returns_the_three_builtins_before_any_custom_one(self):
+    def test_list_templates_returns_the_builtins_before_any_custom_one(self):
         templates = list_templates(self.settings)
-        self.assertEqual([t.id for t in templates], ["emotional_story", "couple_story", "custom"])
+        self.assertEqual(
+            [t.id for t in templates], ["emotional_story", "couple_story", "horror", "custom"]
+        )
         self.assertTrue(all(t.builtin for t in templates))
 
     def test_create_then_list_includes_the_new_custom_template(self):
@@ -113,7 +115,7 @@ class TemplateRouterTests(unittest.TestCase):
         self.assertFalse(created.builtin)
 
         templates = list_templates(self.settings)
-        self.assertEqual(len(templates), 4)
+        self.assertEqual(len(templates), 5)
         self.assertIn("colombia_emotional_v2", [t.id for t in templates])
 
     def test_create_with_duplicate_name_gets_a_unique_id(self):
@@ -157,7 +159,7 @@ class TemplateRouterTests(unittest.TestCase):
         self.assertEqual(updated.config.visual_generation.image_style_prompt, "watercolor illustration")
 
         templates = list_templates(self.settings)
-        self.assertEqual(len(templates), 4)
+        self.assertEqual(len(templates), 5)
         reloaded = next(t for t in templates if t.id == created.id)
         self.assertEqual(reloaded.name, "Renamed")
 

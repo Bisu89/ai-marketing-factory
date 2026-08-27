@@ -910,6 +910,38 @@ COUPLE_STORY_TEMPLATE = Template(
     ),
 )
 
+HORROR_TEMPLATE = Template(
+    id="horror",
+    name="Horror",
+    description="Scary/creepypasta/true-scary-story videos -- slow dread push-in, "
+    "cinematic captions, tense low music, dark AI image style.",
+    version=1,
+    builtin=True,
+    config=ProjectConfig(
+        render=RenderProjectConfig(profile="SOCIAL_VERTICAL"),
+        motion=MotionProjectConfig(default_preset=BeatMotionPreset.SLOW_PUSH_IN, intensity="STRONG"),
+        captions=CaptionsProjectConfig(enabled=True, preset="cinematic"),
+        audio=AudioProjectConfig(narration_enabled=True, music_enabled=True, music_volume=0.22, ducking=True),
+        content=ContentProjectConfig(
+            language="en", tone="tense, ominous and suspenseful", style="horror storytelling",
+            target_duration=45.0, audience="fans of horror and scary stories", cta_enabled=True,
+        ),
+        voice=VoiceProjectConfig(provider="local", voice_id="default", language="en", speed=0.9),
+        # Only takes effect when a project switches Visuals to "Generate Full
+        # by AI" -- library mode stays the default (same as every other
+        # built-in), this just makes AI images look right for the genre when
+        # the user opts in.
+        visual_generation=VisualGenerationProjectConfig(
+            image_style_prompt=(
+                "dark cinematic horror still, deep shadows, desaturated cold tones, "
+                "eerie fog, heavy film grain, unsettling atmosphere, dim moody lighting, no text"
+            ),
+        ),
+        template_id="horror",
+        template_version=1,
+    ),
+)
+
 CUSTOM_TEMPLATE = Template(
     id="custom",
     name="Custom",
@@ -920,10 +952,15 @@ CUSTOM_TEMPLATE = Template(
 )
 
 # Note: BUILTIN_TEMPLATES' own `id`s ("emotional_story"/"couple_story"/
-# "custom") are reserved -- template_service.save_custom_templates below
-# rejects a custom template trying to reuse one, so a built-in can never be
-# shadowed or overwritten by user data.
-BUILTIN_TEMPLATES: list[Template] = [EMOTIONAL_STORY_TEMPLATE, COUPLE_STORY_TEMPLATE, CUSTOM_TEMPLATE]
+# "horror"/"custom") are reserved -- template_service.save_custom_templates
+# below rejects a custom template trying to reuse one, so a built-in can
+# never be shadowed or overwritten by user data.
+BUILTIN_TEMPLATES: list[Template] = [
+    EMOTIONAL_STORY_TEMPLATE,
+    COUPLE_STORY_TEMPLATE,
+    HORROR_TEMPLATE,
+    CUSTOM_TEMPLATE,
+]
 BUILTIN_TEMPLATE_IDS = frozenset(t.id for t in BUILTIN_TEMPLATES)
 
 
