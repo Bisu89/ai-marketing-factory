@@ -1,4 +1,4 @@
-# 116. Configurable Inter-Sentence Pause (Horror Shorts: 0.8s)
+# 116. Configurable Inter-Sentence Pause (Horror Shorts: 1.0s)
 
 **Commit:** `7eb2b40`
 
@@ -21,7 +21,9 @@ for horror pacing, and not tunable anywhere.
   and the `_TTSWorker` proxy) takes `sentence_pause_sec`, defaulting to
   the old constant so non-Factory callers are untouched. `voice_generate`
   passes the project's value through.
-- `horror_shorts` template → `sentence_pause_sec=0.8`.
+- `horror_shorts` template → `sentence_pause_sec=1.0` (started at 0.8;
+  raised to 1.0 alongside voice speed 0.82→0.75 over further review — see
+  the follow-up commit).
 
 Beat timing stays correct automatically: `compute_beat_timing` works off
 the *measured* narration duration + real edge_tts word timestamps, both
