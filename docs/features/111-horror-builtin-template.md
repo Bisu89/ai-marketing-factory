@@ -1,6 +1,6 @@
 # 111. Built-in "Horror" Template
 
-**Commit:** _(fill in after commit)_
+**Commit:** `a46c0a5`
 
 Real user request: they produce MMO content and want to add a horror
 niche. Niche isn't a hardcoded concept in this app — content is driven by
