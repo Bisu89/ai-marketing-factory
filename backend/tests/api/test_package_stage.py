@@ -471,6 +471,40 @@ class AIMetadataTests(_PackageStageTestCase):
         config = ProjectConfig()
         return config.model_copy(update={"package": config.package.model_copy(update={"ai_metadata_enabled": True})})
 
+    def test_ai_metadata_prompt_pins_the_output_language(self):
+        # Real user report: English videos got Vietnamese AI titles because
+        # the prompt was hardcoded to a "Vietnamese storytelling channel"
+        # and only softly asked for "the same language as the script".
+        from app.api.v1.endpoints.package_generate import (
+            _ai_metadata_fingerprint,
+            _ai_metadata_system_prompt,
+        )
+
+        self.assertIn("entirely in English", _ai_metadata_system_prompt("English"))
+        self.assertIn("entirely in Vietnamese", _ai_metadata_system_prompt("Vietnamese"))
+        self.assertNotIn("Vietnamese", _ai_metadata_system_prompt("English"))
+        # A language change must re-bill (not reuse the cached other-language text).
+        self.assertNotEqual(
+            _ai_metadata_fingerprint("same script", "en"),
+            _ai_metadata_fingerprint("same script", "vi"),
+        )
+
+    @patch("app.api.v1.endpoints.package_generate.call_structured")
+    def test_ai_metadata_call_uses_the_projects_content_language(self, mock_call):
+        mock_call.return_value = _fake_ai_metadata_result("T", "D. #a #b", "THUMB")
+        config = self._ai_config()
+        config = config.model_copy(
+            update={"content": config.content.model_copy(update={"language": "vi"})}
+        )
+        project_id = self._full_pipeline_project(
+            "AI Metadata Language", ["Some narration text."],
+            content_brief=self._content_brief(), config=config,
+        )
+        run = self._render_and_wait(project_id)
+        self.assertEqual(run.status, "COMPLETED")
+        system_prompt = mock_call.call_args.kwargs["system"]
+        self.assertIn("entirely in Vietnamese", system_prompt)
+
     @patch("app.api.v1.endpoints.package_generate.call_structured")
     def test_ai_metadata_enabled_uses_ai_title_and_description(self, mock_call):
         mock_call.return_value = _fake_ai_metadata_result(

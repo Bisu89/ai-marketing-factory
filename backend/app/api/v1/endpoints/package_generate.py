@@ -53,7 +53,15 @@ logger = logging.getLogger(__name__)
 router = APIRouter()
 
 METADATA_ENGINE_VERSION = "post-package-v1"
-AI_METADATA_ENGINE_VERSION = "package-ai-metadata-v1"
+# v2: the AI metadata prompt now pins the output language to the project's
+# own content language instead of a soft "same language as the script"
+# hint that a hardcoded "Vietnamese storytelling channel" framing kept
+# overriding (real user report: English videos getting Vietnamese titles).
+AI_METADATA_ENGINE_VERSION = "package-ai-metadata-v2"
+
+# Same map as content_generate.LANGUAGE_NAMES / story.service -- duplicated
+# (a few string constants across an endpoint boundary) rather than imported.
+_LANGUAGE_NAMES = {"en": "English", "es": "Spanish", "vi": "Vietnamese", "pt": "Portuguese"}
 
 _THUMBNAIL_FILENAME = "thumbnail.jpg"
 _METADATA_FILENAME = "metadata.json"
@@ -194,28 +202,30 @@ _AI_METADATA_SCHEMA = {
 # scripts (not a first draft) -- the user asked for a more "giat gan"
 # (sensational/clickbait) tone, then for title/description to be shorter;
 # both rounds of feedback are baked into these instructions directly.
-_AI_METADATA_SYSTEM_PROMPT = (
-    "You are a viral short-form video copywriter for a Vietnamese storytelling channel about "
-    "relationships and emotional growth. Your style is SENSATIONAL and CLICKBAIT-driven (giat gan) -- "
-    "the kind that stops someone mid-scroll. Use techniques like: a shocking reveal teased but not "
-    "given away, a direct accusatory or confessional voice, numbers/timeframes, an unresolved "
-    "question, or a twist implied. Still must be earned by the actual script -- never invent plot "
-    "details it doesn't support.\n\n"
-    "BE RUTHLESSLY SHORT. Every extra word loses attention -- cut anything not essential to the hook.\n\n"
-    "Given the full narration script below, write:\n"
-    "- title: max 40 characters (hard limit), in the SAME language as the script. One sharp hook -- "
-    "a confession, a turning point, or a question. No sub-clauses, no dashes with extra clarification.\n"
-    "- description: max 120 characters (hard limit), ONE punchy sentence amplifying the emotional "
-    "stakes, in the SAME language as the script, then 3 relevant hashtags on the same or next line.\n"
-    "- thumbnail_text: max 5 words / 40 characters, ALL CAPS, the single most shocking/emotional line "
-    "possible for a thumbnail, in the SAME language as the script -- must NOT just copy the title "
-    "verbatim.\n\nReturn structured JSON only."
-)
+def _ai_metadata_system_prompt(language_name: str) -> str:
+    return (
+        "You are a viral short-form video copywriter for a storytelling channel. Your style is "
+        "SENSATIONAL and CLICKBAIT-driven -- the kind that stops someone mid-scroll. Use techniques "
+        "like: a shocking reveal teased but not given away, a direct accusatory or confessional voice, "
+        "numbers/timeframes, an unresolved question, or a twist implied. Still must be earned by the "
+        "actual script -- never invent plot details it doesn't support.\n\n"
+        f"Write EVERY output field entirely in {language_name}. Do not mix languages, and do not "
+        "translate to any other language regardless of what language the script itself is in.\n\n"
+        "BE RUTHLESSLY SHORT. Every extra word loses attention -- cut anything not essential to the hook.\n\n"
+        "Given the full narration script below, write:\n"
+        "- title: max 40 characters (hard limit). One sharp hook -- a confession, a turning point, or a "
+        "question. No sub-clauses, no dashes with extra clarification.\n"
+        "- description: max 120 characters (hard limit), ONE punchy sentence amplifying the emotional "
+        "stakes, then 3 relevant hashtags on the same or next line.\n"
+        "- thumbnail_text: max 5 words / 40 characters, ALL CAPS, the single most shocking/emotional "
+        "line possible for a thumbnail -- must NOT just copy the title verbatim.\n\n"
+        "Return structured JSON only."
+    )
 
 _AI_METADATA_MAX_TOKENS = 400
 
 
-def _generate_ai_metadata(script_text: str, settings: Settings) -> AIMetadata | None:
+def _generate_ai_metadata(script_text: str, language: str, settings: Settings) -> AIMetadata | None:
     """Never raises -- a billed AI call going wrong (no credentials
     configured, timeout, provider error, safety refusal, malformed JSON)
     must fall back to the deterministic title/description/headline, not
@@ -225,10 +235,12 @@ def _generate_ai_metadata(script_text: str, settings: Settings) -> AIMetadata | 
     credentials = resolve_ai_credentials(settings)
     if credentials is None or not script_text.strip():
         return None
+    language_name = _LANGUAGE_NAMES.get(language, "English")
     try:
         with ai_generation_semaphore:
             result = call_structured(
-                credentials, system=_AI_METADATA_SYSTEM_PROMPT, user_message=script_text.strip(),
+                credentials, system=_ai_metadata_system_prompt(language_name),
+                user_message=script_text.strip(),
                 output_schema=_AI_METADATA_SCHEMA, max_tokens=_AI_METADATA_MAX_TOKENS,
                 schema_name="package_ai_metadata",
             )
@@ -250,8 +262,10 @@ def _generate_ai_metadata(script_text: str, settings: Settings) -> AIMetadata | 
     return AIMetadata(title=title, description=description, thumbnail_text=thumbnail_text)
 
 
-def _ai_metadata_fingerprint(script_text: str) -> str:
-    return hashlib.sha256("|".join([script_text or "", AI_METADATA_ENGINE_VERSION]).encode("utf-8")).hexdigest()
+def _ai_metadata_fingerprint(script_text: str, language: str) -> str:
+    return hashlib.sha256(
+        "|".join([script_text or "", language or "", AI_METADATA_ENGINE_VERSION]).encode("utf-8")
+    ).hexdigest()
 
 
 def _resolve_ai_metadata(job: VideoComposeJob, draft: ProjectOut, settings: Settings) -> tuple[AIMetadata | None, str | None]:
@@ -265,11 +279,12 @@ def _resolve_ai_metadata(job: VideoComposeJob, draft: ProjectOut, settings: Sett
     if not draft.config.package.ai_metadata_enabled:
         return None, None
     script_text = draft.script_text or ""
-    fingerprint = _ai_metadata_fingerprint(script_text)
+    language = draft.config.content.language
+    fingerprint = _ai_metadata_fingerprint(script_text, language)
     cache = _load_cache(job) or {}
     if cache.get("ai_metadata_fingerprint") == fingerprint and cache.get("ai_metadata"):
         return AIMetadata(**cache["ai_metadata"]), fingerprint
-    ai_metadata = _generate_ai_metadata(script_text, settings)
+    ai_metadata = _generate_ai_metadata(script_text, language, settings)
     if ai_metadata is None:
         return None, None
     return ai_metadata, fingerprint
