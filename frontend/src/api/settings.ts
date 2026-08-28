@@ -33,6 +33,12 @@ export async function updateTikTokRedirectUri(redirectUri: string): Promise<{ ti
   return apiPut<{ tiktok_redirect_uri: string }>("/settings/tiktok-redirect-uri", { redirect_uri: redirectUri });
 }
 
+export async function updateRenderCacheRetention(
+  days: number,
+): Promise<{ render_cache_retention_days: number }> {
+  return apiPut<{ render_cache_retention_days: number }>("/settings/render-cache-retention", { days });
+}
+
 export async function browseFolders(path?: string): Promise<BrowseFoldersResult> {
   const query = path ? `?path=${encodeURIComponent(path)}` : "";
   return apiGet<BrowseFoldersResult>(`/settings/browse-folders${query}`);

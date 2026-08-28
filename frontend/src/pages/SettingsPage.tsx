@@ -10,6 +10,7 @@ import {
   updateAnthropicApiKey,
   updateLibraryDir,
   updateOpenAiApiKey,
+  updateRenderCacheRetention,
   updateTikTokClientKey,
   updateTikTokClientSecret,
   updateTikTokRedirectUri,
@@ -54,6 +55,9 @@ export function SettingsPage() {
   const [tiktokRedirectUriInput, setTiktokRedirectUriInput] = useState("");
   const [savingTikTokRedirectUri, setSavingTikTokRedirectUri] = useState(false);
 
+  const [renderCacheDays, setRenderCacheDays] = useState(0);
+  const [savingRenderCache, setSavingRenderCache] = useState(false);
+
   // Video Factory templates (Task 12 -- see docs/features/39-project-templates.md).
   const [templates, setTemplates] = useState<Template[]>([]);
   const [templatesError, setTemplatesError] = useState<string | null>(null);
@@ -77,6 +81,7 @@ export function SettingsPage() {
         setHasTikTokClientKey(settings.has_tiktok_client_key);
         setHasTikTokClientSecret(settings.has_tiktok_client_secret);
         setTiktokRedirectUri(settings.tiktok_redirect_uri);
+        setRenderCacheDays(settings.render_cache_retention_days);
       })
       .catch(() => setError("Không đọc được cấu hình hiện tại."));
     refreshTemplates();
@@ -179,6 +184,26 @@ export function SettingsPage() {
       setError(err instanceof Error ? err.message : "Không lưu được TikTok Redirect URI.");
     } finally {
       setSavingTikTokRedirectUri(false);
+    }
+  }
+
+  async function handleSaveRenderCache(days: number) {
+    if (savingRenderCache || days === renderCacheDays) return;
+    setSavingRenderCache(true);
+    setError(null);
+    setMessage(null);
+    try {
+      const result = await updateRenderCacheRetention(days);
+      setRenderCacheDays(result.render_cache_retention_days);
+      setMessage(
+        days === 0
+          ? "Đã tắt tự động dọn render cache."
+          : `Đã bật: tự động dọn render cache của video xong sau ${days} ngày.`,
+      );
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Không lưu được cấu hình dọn render cache.");
+    } finally {
+      setSavingRenderCache(false);
     }
   }
 
@@ -413,6 +438,35 @@ export function SettingsPage() {
               Lưu
             </button>
           </div>
+        </div>
+      </div>
+
+      <div className="settings-card">
+        <div className="settings-row settings-row-header">
+          <label className="settings-label">Dọn dẹp bộ nhớ (render cache)</label>
+        </div>
+        <p className="settings-hint">
+          Sau khi một video render xong, các file đọc/chuyển động/audio tạm của nó (regenerate được nếu render lại)
+          sẽ tự động bị xóa sau số ngày dưới đây, lúc mở app và mỗi 24 giờ. File nhạc bạn tự import và ảnh AI đã sinh
+          không bị đụng tới. 0 = tắt.
+        </p>
+        <div className="settings-row">
+          <label className="settings-label" htmlFor="render-cache-days">
+            Tự động xóa sau (ngày)
+          </label>
+          <select
+            id="render-cache-days"
+            className="settings-input settings-input-narrow"
+            value={renderCacheDays}
+            disabled={savingRenderCache}
+            onChange={(e) => handleSaveRenderCache(Number(e.target.value))}
+          >
+            <option value={0}>Tắt</option>
+            <option value={3}>3 ngày</option>
+            <option value={7}>7 ngày</option>
+            <option value={14}>14 ngày</option>
+            <option value={30}>30 ngày</option>
+          </select>
         </div>
       </div>
 

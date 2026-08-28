@@ -127,6 +127,14 @@ class Settings(BaseSettings):
     # neighboring beats instead).
     voice_min_beat_duration: float = 0.8
 
+    # Render-cache auto-cleanup (see docs/features/121-...). How many days
+    # after a project's render finishes before its regenerable per-beat
+    # voice/motion/audio cache (_voice/_motion/_audio/project_<id>/) is
+    # swept automatically, at startup + every 24h. 0 = off (the shipped
+    # default -- never auto-deletes anything unless the user opts in).
+    # AI-generated images are never included in the automatic sweep.
+    render_cache_retention_days: int = 0
+
     anthropic_api_key: str | None = None
 
     # Dual AI Provider (see docs/features/55-dual-ai-provider.md) -- which
@@ -157,6 +165,11 @@ def get_settings() -> Settings:
 
 def update_library_dir(new_path: str) -> None:
     set_key(ENV_FILE_PATH, "APP_LIBRARY_DIR", new_path)
+    get_settings.cache_clear()
+
+
+def update_render_cache_retention_days(days: int) -> None:
+    set_key(ENV_FILE_PATH, "APP_RENDER_CACHE_RETENTION_DAYS", str(days))
     get_settings.cache_clear()
 
 

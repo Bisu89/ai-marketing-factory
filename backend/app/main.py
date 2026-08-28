@@ -1,4 +1,6 @@
+import logging
 import os
+import threading
 from contextlib import asynccontextmanager
 from pathlib import Path
 
@@ -8,6 +10,7 @@ from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 
 import app.models  # noqa: F401  (registers ORM models on Base.metadata)
+from app.api.v1.endpoints.assets_cleanup import sweep_stale_render_cache
 from app.api.v1.endpoints.chinese_drama_dub import generate_dub
 from app.api.v1.endpoints.composition_render import render_beats_for_job
 from app.api.v1.endpoints.factory_pipeline import (
@@ -102,8 +105,26 @@ async def lifespan(app: FastAPI):
     # stale in-flight one.
     reconcile_batches_on_startup()
 
+    # Render-cache auto-cleanup (see app/api/v1/endpoints/assets_cleanup.py).
+    # Once now, then every 24h while the app stays open -- a no-op unless
+    # settings.render_cache_retention_days > 0. Daemon thread + Event so a
+    # shutdown never waits up to a day for the sleep to return.
+    cache_sweep_stop = threading.Event()
+
+    def _cache_sweep_loop() -> None:
+        while not cache_sweep_stop.is_set():
+            try:
+                sweep_stale_render_cache(get_settings())
+            except Exception:  # noqa: BLE001 -- a bad sweep must never crash the app
+                logging.getLogger(__name__).exception("render-cache auto-sweep failed")
+            cache_sweep_stop.wait(24 * 60 * 60)
+
+    cache_sweep_thread = threading.Thread(target=_cache_sweep_loop, name="render-cache-sweep", daemon=True)
+    cache_sweep_thread.start()
+
     yield
 
+    cache_sweep_stop.set()
     download_engine.shutdown()
     scene_cutter_service.shutdown()
     video_composer_service.shutdown()

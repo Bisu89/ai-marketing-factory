@@ -7,13 +7,17 @@ SQLite with just the four tables it joins.
 
 import tempfile
 import unittest
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from app.api.v1.endpoints.assets_cleanup import CleanupGeneratedRequest, cleanup_generated_assets
+from app.api.v1.endpoints.assets_cleanup import (
+    CleanupGeneratedRequest,
+    cleanup_generated_assets,
+    sweep_stale_render_cache,
+)
 from app.core.config import Settings
 from app.core.exceptions import ValidationError
 from app.db.base import Base
@@ -53,10 +57,16 @@ class _CleanupTestCase(unittest.TestCase):
 
     # -- fixture helpers -------------------------------------------------
 
-    def _job(self, status: str) -> int:
+    def _job(self, status: str, completed_days_ago: float | None = None) -> int:
         db = self.Session()
         try:
-            job = VideoComposeJob(title="t", script_text="s", status=status, created_at=_utcnow())
+            completed_at = None
+            if completed_days_ago is not None:
+                completed_at = _utcnow() - timedelta(days=completed_days_ago)
+            job = VideoComposeJob(
+                title="t", script_text="s", status=status,
+                created_at=_utcnow(), completed_at=completed_at,
+            )
             db.add(job)
             db.commit()
             db.refresh(job)
@@ -232,6 +242,57 @@ class CleanupGeneratedTests(_CleanupTestCase):
     def test_unknown_source_is_rejected(self):
         with self.assertRaises(ValidationError):
             self._run(sources=["voice_factory", "bogus"])
+
+    def test_older_than_days_skips_recently_finished_projects(self):
+        recent = self._project(render_job_id=self._job("completed", completed_days_ago=2))
+        old = self._project(render_job_id=self._job("completed", completed_days_ago=30))
+        self._beat_asset("voice", recent, "01")
+        self._beat_asset("voice", old, "01")
+
+        result = self._run(older_than_days=7)
+
+        self.assertEqual(result.projects_cleaned, [old])
+        self.assertEqual(result.skipped.too_recent, 1)
+
+    def test_completed_job_with_no_timestamp_is_treated_as_too_recent(self):
+        pid = self._project(render_job_id=self._job("completed", completed_days_ago=None))
+        self._beat_asset("voice", pid, "01")
+
+        result = self._run(older_than_days=7)
+
+        self.assertEqual(result.projects_cleaned, [])
+        self.assertEqual(result.skipped.too_recent, 1)
+
+    def test_sweep_stale_render_cache_is_noop_when_retention_disabled(self):
+        pid = self._project(render_job_id=self._job("completed", completed_days_ago=30))
+        self._beat_asset("voice", pid, "01")
+        self.settings.render_cache_retention_days = 0
+
+        self.assertIsNone(sweep_stale_render_cache(self.settings))
+        self.assertEqual(len(self._asset_ids()), 1)
+
+    def test_sweep_stale_render_cache_cleans_old_projects_when_enabled(self):
+        old = self._project(render_job_id=self._job("completed", completed_days_ago=30))
+        recent = self._project(render_job_id=self._job("completed", completed_days_ago=1))
+        self._beat_asset("voice", old, "01")
+        self._beat_asset("motion", recent, "01")
+        self.settings.render_cache_retention_days = 7
+
+        # sweep_stale_render_cache opens its own SessionLocal -- point it at
+        # this test's engine.
+        import app.api.v1.endpoints.assets_cleanup as mod
+        original = mod.SessionLocal
+        mod.SessionLocal = self.Session
+        try:
+            result = sweep_stale_render_cache(self.settings)
+        finally:
+            mod.SessionLocal = original
+
+        self.assertIsNotNone(result)
+        self.assertEqual(result.projects_cleaned, [old])
+        self.assertEqual(len(self._asset_ids()), 1)  # the recent project's motion clip survives
+        self.assertTrue((self.tmp_path / "_motion" / f"project_{recent}" / "beat_01.mp4").exists())
+        self.assertFalse((self.tmp_path / "_voice" / f"project_{old}").exists())
 
     def test_unparseable_path_is_counted_not_crashed(self):
         job = self._job("completed")

@@ -13,6 +13,7 @@ from app.core.config import (
     update_anthropic_api_key,
     update_library_dir,
     update_openai_api_key,
+    update_render_cache_retention_days,
     update_tiktok_client_key,
     update_tiktok_client_secret,
     update_tiktok_redirect_uri,
@@ -51,6 +52,10 @@ class TikTokRedirectUriIn(BaseModel):
     redirect_uri: str
 
 
+class RenderCacheRetentionIn(BaseModel):
+    days: int
+
+
 class FolderEntry(BaseModel):
     name: str
     path: str
@@ -82,7 +87,18 @@ def read_settings(settings: Settings = Depends(get_settings)):
         "has_tiktok_client_key": bool(settings.tiktok_client_key),
         "has_tiktok_client_secret": bool(settings.tiktok_client_secret),
         "tiktok_redirect_uri": settings.tiktok_redirect_uri,
+        # Render-cache auto-cleanup (0 = off). See
+        # app/api/v1/endpoints/assets_cleanup.py.
+        "render_cache_retention_days": settings.render_cache_retention_days,
     }
+
+
+@router.put("/settings/render-cache-retention")
+def set_render_cache_retention(payload: RenderCacheRetentionIn):
+    if payload.days < 0 or payload.days > 3650:
+        raise HTTPException(status_code=400, detail="days must be between 0 and 3650 (0 = off)")
+    update_render_cache_retention_days(payload.days)
+    return {"render_cache_retention_days": payload.days}
 
 
 @router.put("/settings/anthropic-key")
