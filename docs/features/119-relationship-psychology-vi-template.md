@@ -29,6 +29,12 @@ Series **#5 "Phụ Nữ Yêu Quá Nhiều"** (DB row) — a VN woman shown from
 behind / out of focus, warm muted reflective aesthetic, for AI-image
 style consistency across episodes.
 
+Custom template **`relationship_psychology_vn_music`** "Relationship
+Psychology (VN) + Music" (`templates.json`) — the built-in's config plus
+**Locket Rainfall (Asset #250)** as MANUAL BGM (volume 0.15, ducking on).
+Built-in templates can't carry a `bgm_asset_id` (test-guarded), so the
+music variant is a custom template, same split as `horror_shorts_music`.
+
 ## Key files
 
 - `backend/app/modules/beat/schemas.py` — `RELATIONSHIP_PSYCHOLOGY_VI_TEMPLATE`, added to `BUILTIN_TEMPLATES`
