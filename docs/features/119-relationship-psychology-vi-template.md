@@ -15,7 +15,10 @@ built-in alongside the horror ones.
   `target_duration` **60s** (a reflective read, not a 20s twist)
 - `voice`: **edge_tts `vi-VN-HoaiMyNeural`** (the female VN voice already
   used for Chinese Drama dubbing — local SAPI5 has no VN voice at all),
-  speed **0.9**, `sentence_pause_sec` **0.7** for room between beats
+  speed **1.0**, `sentence_pause_sec` **0.7** for room between beats
+  (speed was 0.9 at first — a ~200-word script rendered ~77s against the
+  60s target, so it was raised to the normal edge_tts rate; the pauses
+  carry the reflective feel, not a slow delivery)
 - `captions`: `emotional` preset, `max_chars` 42 → **50** (Vietnamese lines
   run long), `max_words` **8**
 - `motion`: `SLOW_PUSH_IN` **SUBTLE** (intimate, not the STRONG dread push)

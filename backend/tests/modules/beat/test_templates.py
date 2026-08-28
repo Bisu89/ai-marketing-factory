@@ -93,7 +93,7 @@ class BuiltinTemplateTests(unittest.TestCase):
         self.assertEqual(config.voice.provider, "edge_tts")
         self.assertEqual(config.voice.voice_id, "vi-VN-HoaiMyNeural")
         self.assertEqual(config.voice.language, "vi")
-        self.assertLess(config.voice.speed, 1.0)
+        self.assertLessEqual(config.voice.speed, 1.0)
         self.assertGreater(config.voice.sentence_pause_sec, 0.35)
         self.assertEqual(config.captions.preset, "emotional")
         self.assertGreaterEqual(config.content.target_duration, 45.0)

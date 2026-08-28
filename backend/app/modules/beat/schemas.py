@@ -1059,13 +1059,16 @@ RELATIONSHIP_PSYCHOLOGY_VI_TEMPLATE = Template(
             cta_enabled=True,
         ),
         # edge_tts vi-VN-HoaiMyNeural -- the female Vietnamese voice this app
-        # already uses for Chinese Drama dubbing. speed 0.9 + a 0.7s pause
-        # between sentences: an unhurried, reflective read with room for the
-        # realization to land. edge_tts is $0 (needs internet) and, unlike
-        # local SAPI5, has a real Vietnamese voice at all.
+        # already uses for Chinese Drama dubbing. speed 1.0 (normal edge_tts
+        # rate) + a 0.7s pause between sentences: a natural, unhurried read
+        # that still leaves room for the realization to land. 0.9 was tried
+        # first and ran long -- a ~200-word script landed ~77s against a 60s
+        # target; the pauses, not the delivery, carry the reflective feel.
+        # edge_tts is $0 (needs internet) and, unlike local SAPI5, has a
+        # real Vietnamese voice at all.
         voice=VoiceProjectConfig(
             provider="edge_tts", voice_id="vi-VN-HoaiMyNeural", language="vi",
-            speed=0.9, sentence_pause_sec=0.7,
+            speed=1.0, sentence_pause_sec=0.7,
         ),
         # Only used if the project switches Visuals to "Generate Full by AI"
         # -- library mode stays the default like every other built-in.
