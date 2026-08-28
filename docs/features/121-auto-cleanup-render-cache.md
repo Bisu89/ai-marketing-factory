@@ -1,6 +1,6 @@
 # 121. Auto-Delete the Render Cache N Days After a Render Finishes
 
-**Commit:** `_pending_`
+**Commit:** `96c80a6`
 
 Follow-up to [120](120-cleanup-generated-render-cache.md): the user didn't
 want to remember to press "Clean Render Cache" — they wanted a finished
