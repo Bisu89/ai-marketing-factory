@@ -1,6 +1,6 @@
 # 122. Manual Title/Description Survive a Factory Re-Render
 
-**Commit:** `_pending_`
+**Commit:** `ddd6ec2`
 
 Real user report: pinned a `manual_title` on a project, re-ran the Factory,
 and the finished `metadata.json` still had the AI-written title.
