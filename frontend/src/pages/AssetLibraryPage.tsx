@@ -20,6 +20,7 @@ import {
   assetFileUrl,
   assetThumbnailUrl,
   cancelAssetImportJob,
+  cleanupGeneratedAssets,
   deleteAsset,
   getAssetImportJob,
   importAssets,
@@ -60,6 +61,8 @@ export function AssetLibraryPage() {
   const [job, setJob] = useState<AssetImportJob | null>(null);
   const [rescanBusy, setRescanBusy] = useState(false);
   const [rescanResult, setRescanResult] = useState<RescanResult | null>(null);
+  const [cleanupBusy, setCleanupBusy] = useState(false);
+  const [cleanupMsg, setCleanupMsg] = useState<string | null>(null);
 
   async function refresh() {
     setLoading(true);
@@ -126,6 +129,39 @@ export function AssetLibraryPage() {
     }
   }
 
+  async function handleCleanup() {
+    if (cleanupBusy) return;
+    setCleanupBusy(true);
+    setCleanupMsg(null);
+    try {
+      const preview = await cleanupGeneratedAssets({ dry_run: true });
+      if (preview.assets_unregistered === 0) {
+        setCleanupMsg(
+          `Nothing to clean. ${preview.skipped.no_completed_render} generated file(s) belong to projects that haven't finished a render; ` +
+            `${preview.skipped.render_in_progress} are mid-render.`
+        );
+        return;
+      }
+      const ok = window.confirm(
+        `Delete ${preview.assets_unregistered} per-beat voice/motion cache file(s) from ` +
+          `${preview.projects_cleaned.length} finished project(s) and free ~${preview.megabytes_freed} MB?\n\n` +
+          `These are regenerated automatically if you ever render one of those projects again. ` +
+          `Imported assets and AI-generated images are not touched.`
+      );
+      if (!ok) return;
+      const result = await cleanupGeneratedAssets({ dry_run: false });
+      setCleanupMsg(
+        `Freed ${result.megabytes_freed} MB -- unregistered ${result.assets_unregistered} file(s) ` +
+          `from ${result.projects_cleaned.length} finished project(s).`
+      );
+      refresh();
+    } catch (err) {
+      setCleanupMsg(err instanceof Error ? err.message : "Could not clean up the render cache.");
+    } finally {
+      setCleanupBusy(false);
+    }
+  }
+
   return (
     <>
       <PageHeader
@@ -136,6 +172,15 @@ export function AssetLibraryPage() {
             <button className="btn btn-secondary" onClick={handleRescan} disabled={rescanBusy}>
               {rescanBusy ? <Loader2 size={14} className="spin" /> : <RefreshCw size={14} />}
               Re-scan Library
+            </button>
+            <button
+              className="btn btn-secondary"
+              onClick={handleCleanup}
+              disabled={cleanupBusy}
+              title="Delete the per-beat voice/motion render cache for finished projects"
+            >
+              {cleanupBusy ? <Loader2 size={14} className="spin" /> : <Trash2 size={14} />}
+              Clean Render Cache
             </button>
             <button className="btn btn-primary" onClick={() => setImportOpen(true)}>
               <Plus size={14} />
@@ -151,6 +196,8 @@ export function AssetLibraryPage() {
           {rescanResult.now_active}, now invalid {rescanResult.now_invalid}, unchanged {rescanResult.unchanged}.
         </div>
       )}
+
+      {cleanupMsg && <div className="al-alert al-alert-info">{cleanupMsg}</div>}
 
       {job && (
         <ImportProgressBanner job={job} onCancel={handleCancelImport} onDismiss={() => setJob(null)} />

@@ -4,6 +4,7 @@ from app.api.v1.endpoints import (
     affiliate_performance,
     affiliate_recommend,
     ai_costs,
+    assets_cleanup,
     audio_generate,
     batch_render,
     beat_generate,
@@ -72,6 +73,7 @@ api_router.include_router(affiliate_performance.router, tags=["affiliate-perform
 api_router.include_router(scene_cutter_router, tags=["scene-cutter"])
 api_router.include_router(video_composer_router, tags=["video-composer"])
 api_router.include_router(asset_router, tags=["asset"])
+api_router.include_router(assets_cleanup.router, tags=["asset"])
 api_router.include_router(story_router, tags=["story"])
 api_router.include_router(hook_router, tags=["hook"])
 api_router.include_router(content_strategy_router, tags=["content-strategy"])

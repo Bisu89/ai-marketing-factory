@@ -72,3 +72,29 @@ export function cancelAssetImportJob(jobId: number): Promise<AssetImportJob> {
 export function rescanAssets(): Promise<RescanResult> {
   return apiPost("/assets/rescan");
 }
+
+// -- Clean up the Factory's own per-beat render cache (voice/motion) --
+
+export interface CleanupGeneratedRequest {
+  sources?: string[];
+  delete_files?: boolean;
+  dry_run?: boolean;
+}
+
+export interface CleanupGeneratedResult {
+  dry_run: boolean;
+  projects_cleaned: number[];
+  assets_unregistered: number;
+  files_deleted: number;
+  bytes_freed: number;
+  megabytes_freed: number;
+  skipped: {
+    no_completed_render: number;
+    render_in_progress: number;
+    unparseable_path: number;
+  };
+}
+
+export function cleanupGeneratedAssets(request: CleanupGeneratedRequest = {}): Promise<CleanupGeneratedResult> {
+  return apiPost("/assets/cleanup-generated", request);
+}

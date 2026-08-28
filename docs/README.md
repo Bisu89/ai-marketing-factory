@@ -140,6 +140,7 @@ SQLite.
 117. [No lone 1-word caption cards](features/117-caption-orphan-word-fix.md) — real user report that captions fragmented into 1-word cards with sentence-tail orphans; added an orphan-merge pass to segmentation + relaxed Horror Shorts caption caps (4/24 → 6/38)
 118. [Production Dashboard: layout refactor](features/118-dashboard-layout-refactor.md) — real user request; same data, re-laid out by what a producer checks first: KPIs → merged Needs-attention (attention + failures) → Running now (batch + render + queue) → Recent videos → a single muted At-a-glance card
 119. [Built-in "Relationship Psychology (VN)" Template](features/119-relationship-psychology-vi-template.md) — new niche: Vietnamese female-narrated (`vi-VN-HoaiMyNeural`) relationship-psychology shorts in the Robin Norwood / "phụ nữ yêu quá nhiều" style (hook → story → one-line reframe); a 6th built-in Template + Series #5 "Phụ Nữ Yêu Quá Nhiều"
+120. [Clean Up the Factory's Per-Beat Render Cache](features/120-cleanup-generated-render-cache.md) — real user report of thousands of `beat_beat_0X.wav`/`.mp4` rows cluttering the Asset Library; `POST /assets/cleanup-generated` + a "Clean Render Cache" button unregister/delete the regenerable `voice_factory`/`motion_engine` per-beat cache for finished projects only
 
 ## Keeping this up to date
 
