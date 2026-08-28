@@ -118,13 +118,31 @@ def get_project_beat_plan(project_id: int) -> BeatPlan:
     return BeatPlan.model_validate(project.beat_plan_json)
 
 
+# Package-stage manual overrides (Task 27). Written only by
+# set_project_package_overrides (which edits beat_plan_json directly, never
+# via this function) -- every BeatPlan(...) reconstructed by a factory
+# stage to persist updated beats/timing leaves these at their None default,
+# which would otherwise silently wipe a title/description the user pinned.
+# Same class of "re-save site drops a later-added field" bug Task 21's
+# idea/content_brief/script_locked already hit; fixed here in one place
+# rather than at all 8 call sites. Preserving on None (not merging) is
+# correct: there is no Beat-Editor UI that clears an override -- clearing
+# goes through set_project_package_overrides too.
+_PACKAGE_OVERRIDE_KEYS = ("manual_title", "manual_description", "manual_hashtags")
+
+
 def update_project_beat_plan(project_id: int, plan: BeatPlan) -> None:
     db = SessionLocal()
     try:
         project = db.get(Project, project_id)
         if project is None:
             raise NotFoundError("Project", project_id)
-        project.beat_plan_json = _json_safe(plan)
+        new_json = _json_safe(plan)
+        existing = project.beat_plan_json or {}
+        for key in _PACKAGE_OVERRIDE_KEYS:
+            if new_json.get(key) is None and existing.get(key) is not None:
+                new_json[key] = existing[key]
+        project.beat_plan_json = new_json
         db.commit()
     finally:
         db.close()

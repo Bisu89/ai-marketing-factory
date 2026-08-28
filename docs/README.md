@@ -142,6 +142,7 @@ SQLite.
 119. [Built-in "Relationship Psychology (VN)" Template](features/119-relationship-psychology-vi-template.md) — new niche: Vietnamese female-narrated (`vi-VN-HoaiMyNeural`) relationship-psychology shorts in the Robin Norwood / "phụ nữ yêu quá nhiều" style (hook → story → one-line reframe); a 6th built-in Template + Series #5 "Phụ Nữ Yêu Quá Nhiều"
 120. [Clean Up the Factory's Per-Beat Render Cache](features/120-cleanup-generated-render-cache.md) — real user report of thousands of `beat_beat_0X.wav`/`.mp4` rows cluttering the Asset Library; `POST /assets/cleanup-generated` + a "Clean Render Cache" button unregister/delete the regenerable `voice_factory`/`motion_engine` per-beat cache for finished projects only
 121. [Auto-Delete the Render Cache N Days After a Render Finishes](features/121-auto-cleanup-render-cache.md) — real user follow-up; `render_cache_retention_days` setting (0 = off, shipped default) + a Settings dropdown; `sweep_stale_render_cache` runs at startup and every 24h, age-gated on each project's render `completed_at`, voice/motion/audio only (never AI images)
+122. [Manual Title/Description Survive a Factory Re-Render](features/122-package-override-survives-resave.md) — real user report; a pinned `manual_title` was wiped every time a Factory stage re-saved the BeatPlan (8 call sites reconstruct `BeatPlan(...)` without the Task 27 override fields); fixed once in `update_project_beat_plan` by carrying forward an existing `manual_*` when the incoming plan leaves it `None`
 
 ## Keeping this up to date
 
