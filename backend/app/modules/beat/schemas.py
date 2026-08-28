@@ -1019,6 +1019,69 @@ HORROR_SHORTS_TEMPLATE = Template(
     ),
 )
 
+# Vietnamese, female-narrated relationship-psychology shorts -- the "phụ nữ
+# yêu quá nhiều" / Robin Norwood style: a calm third-person story about a
+# woman's relationship pattern ("cô ấy..."), a quiet realization, and a
+# one-line reframe on the last line. Longer and gentler than the horror
+# shorts (a reflective ~60s read, not a 20s twist), so it's its own
+# built-in the same way couple_story is a tuned variant of emotional_story.
+RELATIONSHIP_PSYCHOLOGY_VI_TEMPLATE = Template(
+    id="relationship_psychology_vi",
+    name="Relationship Psychology (VN)",
+    description="Vietnamese female-narrated relationship-psychology shorts -- a calm "
+    "third-person story about a woman's love pattern ending on a one-line reframe "
+    "(Robin Norwood / \"phụ nữ yêu quá nhiều\" style). Soft push-in, emotional captions, "
+    "tender low music.",
+    version=1,
+    builtin=True,
+    config=ProjectConfig(
+        render=RenderProjectConfig(profile="SOCIAL_VERTICAL"),
+        # Subtle intimate push -- contemplative, not the STRONG dread push
+        # the horror templates use.
+        motion=MotionProjectConfig(default_preset=BeatMotionPreset.SLOW_PUSH_IN, intensity="SUBTLE"),
+        # `emotional` (same as couple_story): full reflective lines, not the
+        # word-by-word `word_highlight` -- this format is listened to, the
+        # captions only support it. Vietnamese lines run long, so max_chars
+        # is lifted 42 -> 50.
+        captions=CaptionsProjectConfig(
+            enabled=True, preset="emotional", max_words=8, max_chars=50, max_lines=2
+        ),
+        # Music sits well under the voice here (0.12, below couple_story's
+        # 0.15) -- the narration and its pauses carry the piece.
+        audio=AudioProjectConfig(narration_enabled=True, music_enabled=True, music_volume=0.12, ducking=True),
+        content=ContentProjectConfig(
+            language="vi",
+            tone="gentle, tender and quietly insightful",
+            style="reflective third-person story about a woman's relationship pattern, "
+            "ending on a one-line reframe",
+            target_duration=60.0,
+            audience="adult women interested in relationship psychology and self-understanding",
+            cta_enabled=True,
+        ),
+        # edge_tts vi-VN-HoaiMyNeural -- the female Vietnamese voice this app
+        # already uses for Chinese Drama dubbing. speed 0.9 + a 0.7s pause
+        # between sentences: an unhurried, reflective read with room for the
+        # realization to land. edge_tts is $0 (needs internet) and, unlike
+        # local SAPI5, has a real Vietnamese voice at all.
+        voice=VoiceProjectConfig(
+            provider="edge_tts", voice_id="vi-VN-HoaiMyNeural", language="vi",
+            speed=0.9, sentence_pause_sec=0.7,
+        ),
+        # Only used if the project switches Visuals to "Generate Full by AI"
+        # -- library mode stays the default like every other built-in.
+        visual_generation=VisualGenerationProjectConfig(
+            image_style_prompt=(
+                "soft cinematic emotional still, warm muted desaturated tones, shallow depth of field, "
+                "a woman alone in gentle natural window light, quiet domestic or rainy-city scene, "
+                "fine film grain, melancholic intimate reflective mood, face turned away or out of focus, "
+                "no on-screen text, no watermark"
+            ),
+        ),
+        template_id="relationship_psychology_vi",
+        template_version=1,
+    ),
+)
+
 CUSTOM_TEMPLATE = Template(
     id="custom",
     name="Custom",
@@ -1029,15 +1092,16 @@ CUSTOM_TEMPLATE = Template(
 )
 
 # Note: BUILTIN_TEMPLATES' own `id`s ("emotional_story"/"couple_story"/
-# "horror"/"horror_shorts"/"custom") are reserved --
-# template_service.save_custom_templates below rejects a custom template
-# trying to reuse one, so a built-in can never be shadowed or overwritten
-# by user data.
+# "horror"/"horror_shorts"/"relationship_psychology_vi"/"custom") are
+# reserved -- template_service.save_custom_templates below rejects a custom
+# template trying to reuse one, so a built-in can never be shadowed or
+# overwritten by user data.
 BUILTIN_TEMPLATES: list[Template] = [
     EMOTIONAL_STORY_TEMPLATE,
     COUPLE_STORY_TEMPLATE,
     HORROR_TEMPLATE,
     HORROR_SHORTS_TEMPLATE,
+    RELATIONSHIP_PSYCHOLOGY_VI_TEMPLATE,
     CUSTOM_TEMPLATE,
 ]
 BUILTIN_TEMPLATE_IDS = frozenset(t.id for t in BUILTIN_TEMPLATES)

@@ -76,8 +76,28 @@ class TemplateValidationTests(unittest.TestCase):
 class BuiltinTemplateTests(unittest.TestCase):
     def test_builtin_templates_exist(self):
         ids = {t.id for t in BUILTIN_TEMPLATES}
-        self.assertEqual(ids, {"emotional_story", "couple_story", "horror", "horror_shorts", "custom"})
+        self.assertEqual(
+            ids,
+            {
+                "emotional_story", "couple_story", "horror", "horror_shorts",
+                "relationship_psychology_vi", "custom",
+            },
+        )
         self.assertTrue(all(t.builtin for t in BUILTIN_TEMPLATES))
+
+    def test_relationship_psychology_vi_is_vietnamese_female_narrated_and_reflective(self):
+        config = next(
+            t.config for t in BUILTIN_TEMPLATES if t.id == "relationship_psychology_vi"
+        )
+        self.assertEqual(config.content.language, "vi")
+        self.assertEqual(config.voice.provider, "edge_tts")
+        self.assertEqual(config.voice.voice_id, "vi-VN-HoaiMyNeural")
+        self.assertEqual(config.voice.language, "vi")
+        self.assertLess(config.voice.speed, 1.0)
+        self.assertGreater(config.voice.sentence_pause_sec, 0.35)
+        self.assertEqual(config.captions.preset, "emotional")
+        self.assertGreaterEqual(config.content.target_duration, 45.0)
+        self.assertEqual(config.visual_generation.mode, "library")
 
     def test_horror_shorts_is_short_punchy_and_found_footage_styled(self):
         config = HORROR_SHORTS_TEMPLATE.config

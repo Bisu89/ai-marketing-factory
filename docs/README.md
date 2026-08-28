@@ -139,6 +139,7 @@ SQLite.
 116. [Configurable inter-sentence pause](features/116-configurable-sentence-pause.md) — real user report that horror narration ran sentence-into-sentence with no dramatic beat; the 0.35s inter-sentence gap was hardcoded — now a `VoiceProjectConfig.sentence_pause_sec` (Horror Shorts set to 0.8s)
 117. [No lone 1-word caption cards](features/117-caption-orphan-word-fix.md) — real user report that captions fragmented into 1-word cards with sentence-tail orphans; added an orphan-merge pass to segmentation + relaxed Horror Shorts caption caps (4/24 → 6/38)
 118. [Production Dashboard: layout refactor](features/118-dashboard-layout-refactor.md) — real user request; same data, re-laid out by what a producer checks first: KPIs → merged Needs-attention (attention + failures) → Running now (batch + render + queue) → Recent videos → a single muted At-a-glance card
+119. [Built-in "Relationship Psychology (VN)" Template](features/119-relationship-psychology-vi-template.md) — new niche: Vietnamese female-narrated (`vi-VN-HoaiMyNeural`) relationship-psychology shorts in the Robin Norwood / "phụ nữ yêu quá nhiều" style (hook → story → one-line reframe); a 6th built-in Template + Series #5 "Phụ Nữ Yêu Quá Nhiều"
 
 ## Keeping this up to date
 
