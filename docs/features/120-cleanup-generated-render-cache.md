@@ -1,6 +1,6 @@
 # 120. Clean Up the Factory's Per-Beat Render Cache
 
-**Commit:** `_pending_`
+**Commit:** `8e4c75d`
 
 Real user report: the Asset Library fills up with thousands of
 `beat_beat_0X.wav` / `.mp4` rows. Those are the per-beat narration
