@@ -1,6 +1,6 @@
 # 119. Built-in "Relationship Psychology (VN)" Template
 
-**Commit:** `_pending_`
+**Commit:** `3b90153`
 
 Real user request: expanding into a new niche — Vietnamese, female-narrated
 relationship-psychology shorts in the Robin Norwood / "phụ nữ yêu quá nhiều"
