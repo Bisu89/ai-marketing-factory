@@ -48,10 +48,14 @@ DEFAULT_SOURCES = ("voice_factory", "motion_engine")
 # Per-project cache directories under library_dir/. When delete_files is
 # set and a project is eligible, the whole directory is removed (its
 # unregistered sidecars -- narration.wav, *.meta.json, audio_master.wav --
-# are regenerable too), not just the files that had Asset rows.
+# are regenerable too), not just the files that had Asset rows. _imagegen
+# is only swept when `ai_image_generator` is explicitly in `sources`.
 _CACHE_SUBDIRS = ("_voice", "_motion", "_audio")
+_AI_IMAGE_SUBDIR = "_imagegen"
 
-_PROJECT_DIR_RE = re.compile(r"[/\\]_(?:voice|motion|audio)[/\\]project_(\d+)[/\\]", re.IGNORECASE)
+_PROJECT_DIR_RE = re.compile(
+    r"[/\\]_(?:voice|motion|audio|imagegen)[/\\]project_(\d+)[/\\]", re.IGNORECASE
+)
 
 
 class CleanupGeneratedRequest(BaseModel):
@@ -178,7 +182,10 @@ def cleanup_generated_assets(
             db.delete(asset)
 
     if payload.delete_files:
-        swept_bytes, swept_files = _sweep_cache_dirs(settings, cleaned_projects, counted, commit)
+        subdirs = list(_CACHE_SUBDIRS)
+        if "ai_image_generator" in payload.sources:
+            subdirs.append(_AI_IMAGE_SUBDIR)
+        swept_bytes, swept_files = _sweep_cache_dirs(settings, cleaned_projects, subdirs, counted, commit)
         bytes_freed += swept_bytes
         files_deleted += swept_files
     if commit:
@@ -203,21 +210,21 @@ def _safe_resolve(path: Path) -> Path:
 
 
 def _sweep_cache_dirs(
-    settings: Settings, project_ids: set[int], exclude: set[Path], commit: bool
+    settings: Settings, project_ids: set[int], subdirs: list[str], exclude: set[Path], commit: bool
 ) -> tuple[int, int]:
     """Account for (and, when commit, remove) each cleaned project's
-    _voice/_motion/_audio directory wholesale -- the leftover unregistered
-    sidecars (narration.wav, *.meta.json, audio_master.wav) are regenerable
-    caches too. Files already accounted for via their Asset row are in
-    `exclude` and never double-counted. Best-effort: a dir that's already
-    gone, or one that won't delete, is skipped silently. Returns
-    (extra_bytes, extra_files) reclaimed beyond the registered files.
+    `subdirs` directories wholesale -- the leftover unregistered sidecars
+    (narration.wav, *.meta.json, audio_master.wav) are regenerable caches
+    too. Files already accounted for via their Asset row are in `exclude`
+    and never double-counted. Best-effort: a dir that's already gone, or
+    one that won't delete, is skipped silently. Returns (extra_bytes,
+    extra_files) reclaimed beyond the registered files.
     """
     library_dir = Path(settings.library_dir)
     extra_bytes = 0
     extra_files = 0
     for pid in project_ids:
-        for subdir in _CACHE_SUBDIRS:
+        for subdir in subdirs:
             d = library_dir / subdir / f"project_{pid}"
             if not d.is_dir():
                 continue

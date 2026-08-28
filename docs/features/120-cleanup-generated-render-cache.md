@@ -17,11 +17,14 @@ only: ≥1 COMPLETED render job, none QUEUED/RUNNING. A project that never
 rendered, or is mid-render, is skipped and counted separately.
 
 - `sources` (default `["voice_factory", "motion_engine"]`; `ai_image_generator`
-  allowed but off by default — it costs money to regenerate)
+  allowed but off by default — an AI image costs money and, unlike the
+  deterministic voice/motion passes, regenerates to a *different* image,
+  so it's a creative artifact, not a cache)
 - `delete_files` (default true) — also unlinks files and removes the now
   fully-regenerable `_voice/_motion/_audio/project_<id>/` dirs wholesale
   (incl. unregistered sidecars: `narration.wav`, `*.meta.json`,
-  `audio_master.wav`)
+  `audio_master.wav`); `_imagegen/project_<id>/` is swept too only when
+  `ai_image_generator` is in `sources`
 - `dry_run` (default false) — same counts, no changes; used by the UI to
   preview before confirming
 
@@ -39,8 +42,8 @@ Asset Library page: a **"Clean Render Cache"** header button (dry-run →
 - **Composition root, not the asset module.** Deciding "is this project
   finished" needs Project + BatchItem + VideoComposeJob — same join
   `produced_videos.py` / `dashboard.py` already do outside the modules.
-- **Project id comes from the file path** (`_voice/project_<id>/`), not a
-  DB link — `voice_factory` assets have no project FK (module isolation).
+- **Project id comes from the file path** (`_voice|_motion|_audio|_imagegen/project_<id>/`),
+  not a DB link — these assets have no project FK (module isolation).
   Unparseable paths are skipped, never guessed.
 - **Beat rows are left untouched** — a stale `narration_asset_id` is
   harmless: with `narration.wav` gone the Voice stage's fingerprint check

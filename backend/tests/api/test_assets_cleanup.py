@@ -100,7 +100,7 @@ class _CleanupTestCase(unittest.TestCase):
         sub, ext, source = {
             "voice": ("_voice", "wav", "voice_factory"),
             "motion": ("_motion", "mp4", "motion_engine"),
-            "image": ("_voice", "png", "ai_image_generator"),
+            "image": ("_imagegen", "png", "ai_image_generator"),
         }[kind]
         d = self.tmp_path / sub / f"project_{project_id}"
         d.mkdir(parents=True, exist_ok=True)
@@ -214,7 +214,9 @@ class CleanupGeneratedTests(_CleanupTestCase):
 
         opted = self._run(sources=["ai_image_generator"])
         self.assertEqual(opted.assets_unregistered, 1)
+        self.assertEqual(opted.skipped.unparseable_path, 0)  # _imagegen path parses
         self.assertEqual(self._asset_ids(), set())
+        self.assertFalse((self.tmp_path / "_imagegen" / f"project_{pid}").exists())
 
     def test_project_rendered_via_batch_item_is_eligible(self):
         job = self._job("completed")
