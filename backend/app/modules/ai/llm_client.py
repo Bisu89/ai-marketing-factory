@@ -30,6 +30,19 @@ ANTHROPIC_MODEL = "claude-sonnet-5"
 # request 2026-08-19: switched from gpt-5-mini to gpt-5.6-luna.
 OPENAI_MODEL = "gpt-5.6-luna"
 
+# gpt-5.6-luna is a reasoning model: it spends hidden "reasoning" tokens
+# BEFORE the visible answer, and those count against max_completion_tokens.
+# Every caller here passes max_tokens meaning "the JSON answer I want"
+# (1400-2048), which was fine for the old non-reasoning gpt-5-mini but not
+# now -- a hard prompt (e.g. a tight word-count-constrained documentary
+# script) can burn 2000+ reasoning tokens, hit the cap mid-reasoning, and
+# return an EMPTY 200 (a real user-facing Factory failure at the very first
+# stage). So the OpenAI path adds this fixed reasoning headroom on top of
+# whatever the caller asked for. It's a ceiling, not a spend -- billing is
+# on tokens actually used (~1000-2000 reasoning observed). Anthropic needs
+# no equivalent (Claude Sonnet 5 has no separate reasoning-token budget).
+OPENAI_REASONING_HEADROOM = 6000
+
 AI_PROVIDERS = ("anthropic", "openai")
 
 
@@ -115,7 +128,7 @@ def _call_openai(
     try:
         response = client.chat.completions.create(
             model=OPENAI_MODEL,
-            max_completion_tokens=max_tokens,
+            max_completion_tokens=max_tokens + OPENAI_REASONING_HEADROOM,
             messages=[
                 {"role": "system", "content": system},
                 {"role": "user", "content": user_message},
