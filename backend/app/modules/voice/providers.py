@@ -17,6 +17,7 @@ app.modules.beat.schemas already uses for BeatMotionPreset.
 import asyncio
 import logging
 import queue
+import random
 import re
 import shutil
 import subprocess
@@ -467,8 +468,14 @@ class EdgeTTSProvider(TTSProvider):
         # mitigation for an unofficial API like this -- without it, this
         # change would make narration generation measurably less reliable
         # overall, not just less monotone.
-        _SEGMENT_MAX_ATTEMPTS = 4
-        _SEGMENT_RETRY_BACKOFF_SEC = 1.5
+        # Bumped 4 -> 7 with a longer, jittered, capped backoff after a real
+        # user hit an exhausted-retry failure on a News digest (many rapid
+        # per-sentence calls): NoAudioReceived from Microsoft's free endpoint
+        # arrives in bursts, so extra tries spaced further apart (and out of
+        # lockstep with other parallel projects) recover almost all of them.
+        _SEGMENT_MAX_ATTEMPTS = 7
+        _SEGMENT_RETRY_BACKOFF_SEC = 2.0
+        _SEGMENT_RETRY_BACKOFF_CAP_SEC = 8.0
 
         async def _generate_segment(segment_text: str, tmp_mp3: Path) -> list[WordTiming]:
             last_exc: Exception | None = None
@@ -485,7 +492,8 @@ class EdgeTTSProvider(TTSProvider):
                         "edge_tts segment synthesis attempt %d/%d failed (%s) -- retrying.",
                         attempt + 1, _SEGMENT_MAX_ATTEMPTS, last_exc,
                     )
-                    await asyncio.sleep(_SEGMENT_RETRY_BACKOFF_SEC * (attempt + 1))
+                    backoff = min(_SEGMENT_RETRY_BACKOFF_SEC * (attempt + 1), _SEGMENT_RETRY_BACKOFF_CAP_SEC)
+                    await asyncio.sleep(backoff + random.uniform(0.0, 1.5))
             raise VoiceError(
                 TTS_GENERATION_FAILED,
                 f"edge_tts synthesis failed after {_SEGMENT_MAX_ATTEMPTS} attempts: {last_exc}",
