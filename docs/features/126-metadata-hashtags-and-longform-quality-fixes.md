@@ -26,10 +26,13 @@ Fixes (`app/modules/metadata/service.py`, `app/api/v1/endpoints/package_generate
 - `_generate_metadata()` now prefers the AI's own short hashtags when AI
   metadata is on (manual hashtags still win); only falls back to
   `derive_hashtags()` when neither is available.
-- `regenerate-metadata` now also busts the `ai_metadata` cache — an
-  explicit regen re-runs the (cheap, billed) AI call rather than replaying
-  a result cached before this change. Same "explicit request wins over
-  automatic reuse" precedent as `regenerate-script`/`regenerate-voice`.
+- `AI_METADATA_ENGINE_VERSION` bumped `v2 → v3` (it's baked into the AI
+  cache fingerprint): a pre-126 cache has no `hashtags`, so it misses and
+  regenerates once with the hashtag-aware engine. `regenerate-metadata`
+  still reuses a same-version cache — feature 97's "unchanged script never
+  re-bills the AI call" contract is untouched. (A first attempt that wiped
+  the cache in `regenerate-metadata` broke that contract and was reverted,
+  commit `f38298d`.)
 
 Verified on the real Agincourt video: `['#Agincourt', '#MedievalHistory',
 '#MilitaryHistory', '#HenryV', '#Longbow']`.
@@ -48,7 +51,7 @@ threshold` / `_pacing_outlier_ratio`.
 ## Key files
 
 - `backend/app/modules/metadata/service.py` — `normalize_hashtag` length guard
-- `backend/app/api/v1/endpoints/package_generate.py` — AI hashtags in schema/prompt/`AIMetadata`, `_generate_metadata` preference order, `regenerate-metadata` cache bust
+- `backend/app/api/v1/endpoints/package_generate.py` — AI hashtags in schema/prompt/`AIMetadata`, `_generate_metadata` preference order, `AI_METADATA_ENGINE_VERSION` v2→v3
 - `backend/app/modules/quality/analyzer.py` — `LOW_PURPOSE_DIVERSITY_MIN_UNIQUE`
 
 ## Verification
