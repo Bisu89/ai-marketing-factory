@@ -29,6 +29,8 @@ from app.db.migrate import run_additive_column_migrations
 from app.db.seed import seed_initial_data
 from app.db.session import SessionLocal, engine
 from app.modules.content_strategy.seed import seed_default_pillars
+from app.modules.news.seed import seed_default_news_sources
+from app.modules.news.service import fetch_all_enabled_sources
 from app.modules.scene_cutter.service import SceneCutterService
 from app.modules.video_composer.service import VideoComposerService
 from app.services.download.engine import DownloadEngine
@@ -46,6 +48,7 @@ async def lifespan(app: FastAPI):
     try:
         seed_initial_data(db)
         seed_default_pillars(db)
+        seed_default_news_sources(db)
     finally:
         db.close()
 
@@ -122,9 +125,31 @@ async def lifespan(app: FastAPI):
     cache_sweep_thread = threading.Thread(target=_cache_sweep_loop, name="render-cache-sweep", daemon=True)
     cache_sweep_thread.start()
 
+    # News feed poll loop (see docs/features/123-news-channel.md). Same
+    # daemon-thread + Event shape as the cache sweep above -- a no-op while
+    # settings.news_poll_interval_minutes == 0 (the shipped default), so a
+    # user who never opens the News page pays nothing for it.
+    news_poll_stop = threading.Event()
+
+    def _news_poll_loop() -> None:
+        while not news_poll_stop.is_set():
+            interval = max(0, get_settings().news_poll_interval_minutes)
+            if interval <= 0:
+                news_poll_stop.wait(5 * 60)  # re-check the setting every 5 min
+                continue
+            try:
+                fetch_all_enabled_sources()
+            except Exception:  # noqa: BLE001 -- a bad poll must never crash the app
+                logging.getLogger(__name__).exception("news feed auto-poll failed")
+            news_poll_stop.wait(interval * 60)
+
+    news_poll_thread = threading.Thread(target=_news_poll_loop, name="news-feed-poll", daemon=True)
+    news_poll_thread.start()
+
     yield
 
     cache_sweep_stop.set()
+    news_poll_stop.set()
     download_engine.shutdown()
     scene_cutter_service.shutdown()
     video_composer_service.shutdown()

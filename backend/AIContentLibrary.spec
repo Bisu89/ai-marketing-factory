@@ -43,6 +43,9 @@ a = Analysis(
         # sqlalchemy's sqlite dialect is loaded by name from database_url,
         # not a static top-level import.
         "sqlalchemy.dialects.sqlite",
+        # feedparser (News module) pulls its SGML parser in dynamically --
+        # the `feedparser-sgmllib` dist installs as the top-level `sgmllib`.
+        "sgmllib",
     ],
     hookspath=[],
     runtime_hooks=[],

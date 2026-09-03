@@ -80,7 +80,7 @@ class BuiltinTemplateTests(unittest.TestCase):
             ids,
             {
                 "emotional_story", "couple_story", "horror", "horror_shorts",
-                "relationship_psychology_vi", "custom",
+                "relationship_psychology_vi", "news_vi", "custom",
             },
         )
         self.assertTrue(all(t.builtin for t in BUILTIN_TEMPLATES))

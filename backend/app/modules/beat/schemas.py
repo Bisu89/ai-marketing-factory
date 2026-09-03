@@ -1085,6 +1085,65 @@ RELATIONSHIP_PSYCHOLOGY_VI_TEMPLATE = Template(
     ),
 )
 
+# Vietnamese short-form news read (see docs/features/123-news-channel.md).
+# A neutral news-anchor delivery of ONE story: headline up front, key facts
+# in order, a flat closing line -- no CTA, no opinion. Paired with the News
+# Ingestion module, which drafts each script straight from a real RSS
+# article's headline + summary; the template only carries the *look and
+# voice*, never any editorial stance.
+NEWS_VI_TEMPLATE = Template(
+    id="news_vi",
+    name="News (VN)",
+    description="Vietnamese short-form news read -- one story, anchor tone, headline then key "
+    "facts then a flat closing line. No CTA. Pairs with the News page (RSS -> drafted script).",
+    version=1,
+    builtin=True,
+    config=ProjectConfig(
+        render=RenderProjectConfig(profile="SOCIAL_VERTICAL"),
+        # Barely-there push so a static news photo doesn't feel frozen --
+        # same reasoning as horror_shorts, gentler still.
+        motion=MotionProjectConfig(default_preset=BeatMotionPreset.SLOW_PUSH_IN, intensity="SUBTLE"),
+        # `top` preset (feature 60) -- smaller text near the top edge, out of
+        # the way of a news image's subject. Full reflective lines, not
+        # word-by-word. Vietnamese lines run long, so max_chars 50.
+        captions=CaptionsProjectConfig(
+            enabled=True, preset="top", max_words=9, max_chars=50, max_lines=2
+        ),
+        # A very low music bed under the voice (0.08) -- present but never
+        # competing with an anchor read.
+        audio=AudioProjectConfig(narration_enabled=True, music_enabled=True, music_volume=0.08, ducking=True),
+        content=ContentProjectConfig(
+            language="vi",
+            tone="neutral, factual, news-anchor",
+            style="short factual news report of a single story: headline first, key facts in "
+            "order of importance, a flat neutral closing line",
+            target_duration=45.0,
+            audience="người xem tin tức nhanh trên mạng xã hội",
+            cta_enabled=False,
+        ),
+        # edge_tts vi-VN-NamMinhNeural -- a male Vietnamese voice for an
+        # anchor feel (the female vi-VN-HoaiMyNeural is used by the
+        # relationship-psychology template). speed 1.0, a short 0.4s
+        # inter-sentence pause for a crisp news pace. edge_tts is $0 (needs
+        # internet) and is the only provider with a Vietnamese voice.
+        voice=VoiceProjectConfig(
+            provider="edge_tts", voice_id="vi-VN-NamMinhNeural", language="vi",
+            speed=1.0, sentence_pause_sec=0.4,
+        ),
+        # Only used if the project switches Visuals to "Generate Full by AI"
+        # -- library mode stays the default like every other built-in.
+        visual_generation=VisualGenerationProjectConfig(
+            image_style_prompt=(
+                "clean editorial news photograph, photojournalism style, real-world location, "
+                "natural lighting, neutral documentary framing, candid and unstaged, "
+                "no on-screen text, no captions, no watermark, no logos"
+            ),
+        ),
+        template_id="news_vi",
+        template_version=1,
+    ),
+)
+
 CUSTOM_TEMPLATE = Template(
     id="custom",
     name="Custom",
@@ -1095,16 +1154,17 @@ CUSTOM_TEMPLATE = Template(
 )
 
 # Note: BUILTIN_TEMPLATES' own `id`s ("emotional_story"/"couple_story"/
-# "horror"/"horror_shorts"/"relationship_psychology_vi"/"custom") are
-# reserved -- template_service.save_custom_templates below rejects a custom
-# template trying to reuse one, so a built-in can never be shadowed or
-# overwritten by user data.
+# "horror"/"horror_shorts"/"relationship_psychology_vi"/"news_vi"/"custom")
+# are reserved -- template_service.save_custom_templates below rejects a
+# custom template trying to reuse one, so a built-in can never be shadowed
+# or overwritten by user data.
 BUILTIN_TEMPLATES: list[Template] = [
     EMOTIONAL_STORY_TEMPLATE,
     COUPLE_STORY_TEMPLATE,
     HORROR_TEMPLATE,
     HORROR_SHORTS_TEMPLATE,
     RELATIONSHIP_PSYCHOLOGY_VI_TEMPLATE,
+    NEWS_VI_TEMPLATE,
     CUSTOM_TEMPLATE,
 ]
 BUILTIN_TEMPLATE_IDS = frozenset(t.id for t in BUILTIN_TEMPLATES)

@@ -19,6 +19,9 @@ export interface AppSettings {
   // Auto-delete a finished project's regenerable voice/motion/audio render
   // cache this many days after its render completes. 0 = off.
   render_cache_retention_days: number;
+  // How often the News page re-fetches every enabled RSS source, in
+  // minutes. 0 = off (feeds only pulled on a manual "Fetch").
+  news_poll_interval_minutes: number;
 }
 
 export interface FolderEntry {

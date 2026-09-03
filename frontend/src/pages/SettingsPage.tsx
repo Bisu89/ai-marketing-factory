@@ -10,6 +10,7 @@ import {
   updateAnthropicApiKey,
   updateLibraryDir,
   updateOpenAiApiKey,
+  updateNewsPollInterval,
   updateRenderCacheRetention,
   updateTikTokClientKey,
   updateTikTokClientSecret,
@@ -57,6 +58,8 @@ export function SettingsPage() {
 
   const [renderCacheDays, setRenderCacheDays] = useState(0);
   const [savingRenderCache, setSavingRenderCache] = useState(false);
+  const [newsPollMinutes, setNewsPollMinutes] = useState(0);
+  const [savingNewsPoll, setSavingNewsPoll] = useState(false);
 
   // Video Factory templates (Task 12 -- see docs/features/39-project-templates.md).
   const [templates, setTemplates] = useState<Template[]>([]);
@@ -82,6 +85,7 @@ export function SettingsPage() {
         setHasTikTokClientSecret(settings.has_tiktok_client_secret);
         setTiktokRedirectUri(settings.tiktok_redirect_uri);
         setRenderCacheDays(settings.render_cache_retention_days);
+        setNewsPollMinutes(settings.news_poll_interval_minutes);
       })
       .catch(() => setError("Không đọc được cấu hình hiện tại."));
     refreshTemplates();
@@ -204,6 +208,26 @@ export function SettingsPage() {
       setError(err instanceof Error ? err.message : "Không lưu được cấu hình dọn render cache.");
     } finally {
       setSavingRenderCache(false);
+    }
+  }
+
+  async function handleSaveNewsPoll(minutes: number) {
+    if (savingNewsPoll || minutes === newsPollMinutes) return;
+    setSavingNewsPoll(true);
+    setError(null);
+    setMessage(null);
+    try {
+      const result = await updateNewsPollInterval(minutes);
+      setNewsPollMinutes(result.news_poll_interval_minutes);
+      setMessage(
+        minutes === 0
+          ? "Đã tắt tự động kéo tin RSS."
+          : `Đã bật: tự động kéo tin RSS mỗi ${minutes} phút.`,
+      );
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Không lưu được cấu hình kéo tin.");
+    } finally {
+      setSavingNewsPoll(false);
     }
   }
 
@@ -466,6 +490,34 @@ export function SettingsPage() {
             <option value={7}>7 ngày</option>
             <option value={14}>14 ngày</option>
             <option value={30}>30 ngày</option>
+          </select>
+        </div>
+      </div>
+
+      <div className="settings-card">
+        <div className="settings-row settings-row-header">
+          <label className="settings-label">Tự động kéo tin tức (RSS)</label>
+        </div>
+        <p className="settings-hint">
+          Trang Tin tức sẽ tự động kéo bài mới từ tất cả nguồn RSS đang bật, theo chu kỳ dưới đây (lúc mở app
+          và mỗi khoảng thời gian này). 0 = tắt, chỉ kéo khi bạn bấm "Kéo tất cả".
+        </p>
+        <div className="settings-row">
+          <label className="settings-label" htmlFor="news-poll-minutes">
+            Kéo mỗi
+          </label>
+          <select
+            id="news-poll-minutes"
+            className="settings-input settings-input-narrow"
+            value={newsPollMinutes}
+            disabled={savingNewsPoll}
+            onChange={(e) => handleSaveNewsPoll(Number(e.target.value))}
+          >
+            <option value={0}>Tắt</option>
+            <option value={15}>15 phút</option>
+            <option value={30}>30 phút</option>
+            <option value={60}>60 phút</option>
+            <option value={180}>3 giờ</option>
           </select>
         </div>
       </div>

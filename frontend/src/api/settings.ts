@@ -39,6 +39,12 @@ export async function updateRenderCacheRetention(
   return apiPut<{ render_cache_retention_days: number }>("/settings/render-cache-retention", { days });
 }
 
+export async function updateNewsPollInterval(
+  minutes: number,
+): Promise<{ news_poll_interval_minutes: number }> {
+  return apiPut<{ news_poll_interval_minutes: number }>("/settings/news-poll-interval", { minutes });
+}
+
 export async function browseFolders(path?: string): Promise<BrowseFoldersResult> {
   const query = path ? `?path=${encodeURIComponent(path)}` : "";
   return apiGet<BrowseFoldersResult>(`/settings/browse-folders${query}`);

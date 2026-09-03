@@ -12,6 +12,7 @@ from app.core.config import (
     update_ai_provider,
     update_anthropic_api_key,
     update_library_dir,
+    update_news_poll_interval_minutes,
     update_openai_api_key,
     update_render_cache_retention_days,
     update_tiktok_client_key,
@@ -56,6 +57,10 @@ class RenderCacheRetentionIn(BaseModel):
     days: int
 
 
+class NewsPollIntervalIn(BaseModel):
+    minutes: int
+
+
 class FolderEntry(BaseModel):
     name: str
     path: str
@@ -90,6 +95,9 @@ def read_settings(settings: Settings = Depends(get_settings)):
         # Render-cache auto-cleanup (0 = off). See
         # app/api/v1/endpoints/assets_cleanup.py.
         "render_cache_retention_days": settings.render_cache_retention_days,
+        # News channel feed poll interval in minutes (0 = off). See
+        # app/modules/news/ and docs/features/123-news-channel.md.
+        "news_poll_interval_minutes": settings.news_poll_interval_minutes,
     }
 
 
@@ -99,6 +107,14 @@ def set_render_cache_retention(payload: RenderCacheRetentionIn):
         raise HTTPException(status_code=400, detail="days must be between 0 and 3650 (0 = off)")
     update_render_cache_retention_days(payload.days)
     return {"render_cache_retention_days": payload.days}
+
+
+@router.put("/settings/news-poll-interval")
+def set_news_poll_interval(payload: NewsPollIntervalIn):
+    if payload.minutes < 0 or payload.minutes > 1440:
+        raise HTTPException(status_code=400, detail="minutes must be between 0 and 1440 (0 = off)")
+    update_news_poll_interval_minutes(payload.minutes)
+    return {"news_poll_interval_minutes": payload.minutes}
 
 
 @router.put("/settings/anthropic-key")

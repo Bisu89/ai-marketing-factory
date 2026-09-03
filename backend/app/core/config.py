@@ -135,6 +135,12 @@ class Settings(BaseSettings):
     # AI-generated images are never included in the automatic sweep.
     render_cache_retention_days: int = 0
 
+    # News channel (see docs/features/123-news-channel.md). How often the
+    # background poll loop re-fetches every enabled NewsSource, in minutes.
+    # 0 = off (the shipped default -- feeds are only pulled when the user
+    # clicks "Fetch"). A sensible manual value is 30-60.
+    news_poll_interval_minutes: int = 0
+
     anthropic_api_key: str | None = None
 
     # Dual AI Provider (see docs/features/55-dual-ai-provider.md) -- which
@@ -170,6 +176,11 @@ def update_library_dir(new_path: str) -> None:
 
 def update_render_cache_retention_days(days: int) -> None:
     set_key(ENV_FILE_PATH, "APP_RENDER_CACHE_RETENTION_DAYS", str(days))
+    get_settings.cache_clear()
+
+
+def update_news_poll_interval_minutes(minutes: int) -> None:
+    set_key(ENV_FILE_PATH, "APP_NEWS_POLL_INTERVAL_MINUTES", str(minutes))
     get_settings.cache_clear()
 
 

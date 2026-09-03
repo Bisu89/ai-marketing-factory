@@ -19,3 +19,8 @@ pillow==12.3.0
 # edge-tts above (free, but a real network call to Microsoft's service).
 pyttsx3==2.99
 pywin32==312
+# News channel -- see docs/features/123-news-channel.md. RSS/Atom feed
+# parsing for the News Ingestion module (app.modules.news.feeds); pure
+# stdlib-only library, no network layer of its own (we pass it fetched
+# bytes via httpx so timeouts/errors are handled the same as everywhere else).
+feedparser==6.0.14

@@ -5,6 +5,7 @@ import { DownloadPage } from "./pages/DownloadPage";
 import { LibraryPage } from "./pages/LibraryPage";
 import { HistoryPage } from "./pages/HistoryPage";
 import { ContentStudioPage } from "./pages/ContentStudioPage";
+import { NewsPage } from "./pages/NewsPage";
 import { ContentBatchesPage } from "./pages/ContentBatchesPage";
 import { ContentBatchDetailPage } from "./pages/ContentBatchDetailPage";
 import { WinnerDetectionPage } from "./pages/WinnerDetectionPage";
@@ -32,6 +33,7 @@ function App() {
         <Route path="library" element={<LibraryPage />} />
         <Route path="history" element={<HistoryPage />} />
         <Route path="content-studio" element={<ContentStudioPage />} />
+        <Route path="news" element={<NewsPage />} />
         <Route path="content-batches" element={<ContentBatchesPage />} />
         <Route path="content-batches/:batchId" element={<ContentBatchDetailPage />} />
         <Route path="winners" element={<WinnerDetectionPage />} />
