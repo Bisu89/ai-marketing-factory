@@ -44,7 +44,12 @@ logger = logging.getLogger(__name__)
 router = APIRouter()
 
 MAX_TOKENS = 2048
-MAX_RETRIES = 1  # one bounded repair attempt, matching beat_generate.py's own convention
+# Two bounded repair attempts (3 calls total). There are two independent
+# transient failure modes now -- a malformed-JSON response, and a provider
+# returning an empty 200 (observed intermittently from gpt-5.6-luna, the
+# same "unofficial/flaky endpoint" shape edge_tts has) -- and a single-shot
+# failure of the very first Factory stage is a poor experience.
+MAX_RETRIES = 2
 
 # Section 12/13 -- shared between _build_script_system_prompt (states the
 # target as an explicit word count, not just seconds) and
@@ -85,6 +90,16 @@ class InvalidContentResponse(ExternalServiceError):
     shape at all (bad JSON, wrong keys) -- distinct from ScriptValidationError
     below, which is a real, well-formed Script that just fails this
     project's own length/structure rules.
+    """
+
+
+class _TransientProviderError(Exception):
+    """A retryable provider hiccup within one generate_* attempt loop -- an
+    empty 200 response or a refused flag on a request that has no business
+    being refused. Never surfaced to a caller (the loop either succeeds on
+    a retry or converts it to InvalidContentResponse); kept distinct from
+    ValueError so a genuine JSON/schema failure still carries its own
+    repair_note back into the next attempt's prompt.
     """
 
 
@@ -203,9 +218,9 @@ def _call_brief(credentials: AICredentials, idea: str, content: ContentProjectCo
         raise ExternalServiceError(f"AI provider call failed: {exc}") from exc
 
     if result.refused:
-        raise ExternalServiceError("Request was refused by the model's safety filter.")
+        raise _TransientProviderError("The model returned a refusal for a routine request.")
     if not result.text:
-        raise ExternalServiceError("Model did not return any text content.")
+        raise _TransientProviderError("The model returned an empty response.")
 
     try:
         parsed = json.loads(result.text)
@@ -228,6 +243,14 @@ def generate_content_brief(credentials: AICredentials | None, idea: str, content
             logger.warning("Content brief attempt %d/%d failed validation: %s", attempt + 1, MAX_RETRIES + 1, exc)
             last_error = exc
             repair_note = str(exc)
+        except _TransientProviderError as exc:
+            # An empty 200 / spurious refusal -- retry without a repair_note
+            # (the previous response wasn't "wrong", it was absent). A real
+            # ContentProviderTimeout is deliberately NOT caught here: it is
+            # already a distinct, classified TRANSIENT error and propagates
+            # as before.
+            logger.warning("Content brief attempt %d/%d hit an empty provider response: %s", attempt + 1, MAX_RETRIES + 1, exc)
+            last_error = exc
     raise InvalidContentResponse(f"Could not generate a valid content brief after {MAX_RETRIES + 1} attempts: {last_error}")
 
 
@@ -306,9 +329,9 @@ def _call_script(
         raise ExternalServiceError(f"AI provider call failed: {exc}") from exc
 
     if result.refused:
-        raise ExternalServiceError("Request was refused by the model's safety filter.")
+        raise _TransientProviderError("The model returned a refusal for a routine request.")
     if not result.text:
-        raise ExternalServiceError("Model did not return any text content.")
+        raise _TransientProviderError("The model returned an empty response.")
 
     try:
         parsed = json.loads(result.text)
@@ -346,6 +369,9 @@ def generate_script(
                 raise  # preserve the real SCRIPT_TOO_LONG/SCRIPT_TOO_SHORT code for the caller
             last_error = exc
             repair_note = str(exc)
+        except _TransientProviderError as exc:
+            logger.warning("Script attempt %d/%d hit an empty provider response: %s", attempt + 1, MAX_RETRIES + 1, exc)
+            last_error = exc
     raise InvalidContentResponse(f"Could not generate a valid script after {MAX_RETRIES + 1} attempts: {last_error}")
 
 
