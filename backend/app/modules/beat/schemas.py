@@ -1209,6 +1209,7 @@ HISTORY_DOCUMENTARY_TEMPLATE = Template(
                 "cinematic historical documentary still, painterly photorealistic illustration, "
                 "dramatic natural light, volumetric atmosphere, muted earthy desaturated color grade, "
                 "fine film grain, epic scale, period-accurate clothing architecture weapons and landscape, "
+                "tasteful and non-graphic, no blood, no gore, no wounds, no corpses, "
                 "no modern objects, no lettering, no on-screen text, no watermark, horizontal composition"
             ),
         ),
@@ -1277,7 +1278,9 @@ MILITARY_HISTORY_TEMPLATE = Template(
                 "massed ancient or medieval infantry in formation, cavalry charging, period-accurate "
                 "armor shields spears swords and banners, a decisive battlefield with dust smoke and "
                 "dramatic low light, wide epic scale, muted earthy desaturated color grade, fine film "
-                "grain, no modern objects, no lettering, no on-screen text, no watermark, horizontal composition"
+                "grain, heroic and atmospheric but tasteful and non-graphic, no blood, no gore, no "
+                "visible wounds, no corpses, no modern objects, no lettering, no on-screen text, no "
+                "watermark, horizontal composition"
             ),
         ),
         outro=OutroProjectConfig(
