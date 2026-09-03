@@ -1,6 +1,6 @@
 # 125 — Built-in "Military History (Decisive Battles)" Template
 
-**Commit:** _(fill in after commit)_
+**Commit:** `75eebee`
 
 The sub-niche the user settled on after a 2026 trend analysis (search:
 "faceless history documentary 2026", "history YouTube RPM by sub-niche"):
