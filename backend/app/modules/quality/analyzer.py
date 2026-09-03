@@ -73,6 +73,13 @@ CONSECUTIVE_PURPOSE_RATIO = 0.22
 # unique_purposes / total_beats at or below this (with >=3 beats) is "very
 # low diversity" (section 9's own literal example: 5x HOOK = 1/5 = 0.20).
 LOW_PURPOSE_DIVERSITY_RATIO = 0.34
+# ...but the ratio alone punishes long-form: a genuinely well-structured
+# 30-beat documentary with all 6 BeatTypes present is 6/30 = 0.20, flagged.
+# So the warning also requires the *absolute* distinct-purpose count to be
+# below this floor -- 4+ distinct narrative purposes is real structural
+# variety regardless of length. Same long-form-false-positive fix as
+# _consecutive_purpose_threshold / _pacing_outlier_ratio (feature 109).
+LOW_PURPOSE_DIVERSITY_MIN_UNIQUE = 4
 
 _CONFIDENCE_WEIGHT = {"HIGH": 1.0, "MEDIUM": 0.7, "LOW": 0.4}
 _SUITABILITY_WEIGHT = {"EXCELLENT": 1.0, "GOOD": 0.9, "CROP_REQUIRED": 0.75, "LOW_RESOLUTION": 0.5}
@@ -140,7 +147,7 @@ def analyze_narrative(beats: list[BeatAnalysisInput]) -> tuple[int, list[Quality
     purposes = [beat.type for beat in beats]
     if len(purposes) >= 3:
         unique_ratio = len(set(purposes)) / len(purposes)
-        if unique_ratio <= LOW_PURPOSE_DIVERSITY_RATIO:
+        if unique_ratio <= LOW_PURPOSE_DIVERSITY_RATIO and len(set(purposes)) < LOW_PURPOSE_DIVERSITY_MIN_UNIQUE:
             issues.append(
                 QualityIssue(
                     code="LOW_PURPOSE_DIVERSITY",

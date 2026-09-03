@@ -19,6 +19,10 @@ _WHITESPACE_RE = re.compile(r"\s+")
 _ILLEGAL_FS_CHARS_RE = re.compile(r'[<>:"/\\|?*\x00-\x1f]')
 _CONTROL_CHAR_RE = re.compile(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]")
 _NON_ALNUM_RE = re.compile(r"[^a-zA-Z0-9]+")
+# A hashtag is a tag, not a caption -- reject phrase/sentence-length input
+# instead of CamelCasing it into one unusable run-on tag (feature 126).
+_HASHTAG_MAX_WORDS = 5
+_HASHTAG_MAX_CHARS = 40
 
 
 def _normalize_whitespace(text: str) -> str:
@@ -138,8 +142,15 @@ def normalize_hashtag(raw: str) -> str | None:
     words = [w for w in _NON_ALNUM_RE.split(text) if w]
     if not words:
         return None
+    # A real hashtag is a couple of words, not a phrase or a whole
+    # sentence. Reject anything longer rather than CamelCasing it into an
+    # unusable monster tag -- ContentBrief's topic/angle/emotion/tone are
+    # full sentences (see derive_hashtags), and feeding those here used to
+    # produce "#TheBattleOfAgincourtOn25October1415Where..." (feature 126).
+    if len(words) > _HASHTAG_MAX_WORDS:
+        return None
     normalized = "".join(word[:1].upper() + word[1:] for word in words)
-    if not normalized:
+    if not normalized or len(normalized) > _HASHTAG_MAX_CHARS:
         return None
     return f"#{normalized}"
 

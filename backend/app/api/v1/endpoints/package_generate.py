@@ -23,7 +23,7 @@ atomic tmp-then-replace write" convention exactly.
 import hashlib
 import json
 import logging
-from dataclasses import asdict, dataclass
+from dataclasses import asdict, dataclass, field
 from pathlib import Path
 
 from fastapi import APIRouter, Depends
@@ -37,7 +37,13 @@ from app.modules.ai.llm_client import AIProviderError, AIProviderTimeoutError, c
 from app.modules.beat.project_service import _UNSET, get_project_draft, set_project_package_overrides
 from app.modules.beat.schemas import Beat, BeatType, PackageProjectConfig, ProjectOut
 from app.modules.metadata.schemas import ContentInputs, MetadataError, PackageMetadata
-from app.modules.metadata.service import derive_category, derive_description, derive_hashtags, derive_title
+from app.modules.metadata.service import (
+    derive_category,
+    derive_description,
+    derive_hashtags,
+    derive_title,
+    normalize_hashtags,
+)
 from app.modules.thumbnail.renderer import (
     ENGINE_VERSION as THUMBNAIL_ENGINE_VERSION,
     build_thumbnail,
@@ -182,6 +188,11 @@ class AIMetadata:
     title: str
     description: str
     thumbnail_text: str
+    # Short, real hashtags the AI proposed (1-2 words each). Empty for a
+    # cache written before this field existed -- AIMetadata(**old_cache)
+    # still constructs, and the metadata generator falls back to the
+    # deterministic derive_hashtags() when this is empty.
+    hashtags: list[str] = field(default_factory=list)
 
 
 _AI_METADATA_SCHEMA = {
@@ -192,8 +203,9 @@ _AI_METADATA_SCHEMA = {
             "title": {"type": "string"},
             "description": {"type": "string"},
             "thumbnail_text": {"type": "string"},
+            "hashtags": {"type": "array", "items": {"type": "string"}},
         },
-        "required": ["title", "description", "thumbnail_text"],
+        "required": ["title", "description", "thumbnail_text", "hashtags"],
         "additionalProperties": False,
     },
 }
@@ -218,7 +230,10 @@ def _ai_metadata_system_prompt(language_name: str) -> str:
         "- description: max 120 characters (hard limit), ONE punchy sentence amplifying the emotional "
         "stakes, then 3 relevant hashtags on the same or next line.\n"
         "- thumbnail_text: max 5 words / 40 characters, ALL CAPS, the single most shocking/emotional "
-        "line possible for a thumbnail -- must NOT just copy the title verbatim.\n\n"
+        "line possible for a thumbnail -- must NOT just copy the title verbatim.\n"
+        "- hashtags: 4 to 6 SHORT hashtags, each 1-2 words, no spaces, real searchable tags a viewer "
+        "would use (e.g. #Agincourt #MedievalHistory #MilitaryHistory). Never a whole phrase or "
+        "sentence as one tag.\n\n"
         "Return structured JSON only."
     )
 
@@ -254,12 +269,13 @@ def _generate_ai_metadata(script_text: str, language: str, settings: Settings) -
         title = str(parsed["title"]).strip()
         description = str(parsed["description"]).strip()
         thumbnail_text = str(parsed["thumbnail_text"]).strip()
+        hashtags = [str(t).strip() for t in parsed.get("hashtags", []) if str(t).strip()]
     except (json.JSONDecodeError, KeyError, TypeError) as exc:
         logger.warning("Package AI metadata call returned malformed JSON: %s", exc)
         return None
     if not title or not description or not thumbnail_text:
         return None
-    return AIMetadata(title=title, description=description, thumbnail_text=thumbnail_text)
+    return AIMetadata(title=title, description=description, thumbnail_text=thumbnail_text, hashtags=hashtags)
 
 
 def _ai_metadata_fingerprint(script_text: str, language: str) -> str:
@@ -404,7 +420,16 @@ def _generate_metadata(
     ai_metadata: AIMetadata | None,
 ) -> PackageMetadata:
     package_config: PackageProjectConfig = draft.config.package
-    hashtags = derive_hashtags(inputs, draft.manual_hashtags, package_config.max_hashtags)
+    # Manual hashtags always win. Otherwise prefer the AI's own short tags
+    # (when AI metadata is on) over derive_hashtags(), which CamelCases
+    # ContentBrief's full-sentence topic/angle/emotion/tone into unusable
+    # monster tags -- see docs/features/126-...
+    if draft.manual_hashtags is not None:
+        hashtags = derive_hashtags(inputs, draft.manual_hashtags, package_config.max_hashtags)
+    elif ai_metadata is not None and ai_metadata.hashtags:
+        hashtags = normalize_hashtags(ai_metadata.hashtags, package_config.max_hashtags)
+    else:
+        hashtags = derive_hashtags(inputs, None, package_config.max_hashtags)
     title = _resolve_title_text(inputs, draft.manual_title, ai_metadata.title if ai_metadata else None, max_chars=70)
     description = _resolve_description_text(
         inputs, draft.manual_description, ai_metadata.description if ai_metadata else None, hashtags,
@@ -713,6 +738,14 @@ def regenerate_metadata(project_id: int, settings: Settings = Depends(get_settin
         return {"project_id": project_id, "generated": False}
     cache = _load_cache(job) or {}
     cache.pop("metadata_fingerprint", None)
+    # An explicit "regenerate metadata" also re-runs the AI metadata call
+    # (one cheap, billed call) rather than reusing a stale cached result --
+    # same "an explicit request always wins over an automatic reuse check"
+    # precedent as regenerate-script/regenerate-voice. Without this, a
+    # cache written before a metadata-engine change (e.g. the feature 126
+    # hashtag fix) would keep producing the old output forever.
+    cache.pop("ai_metadata_fingerprint", None)
+    cache.pop("ai_metadata", None)
     _save_cache(job, **cache)
     generated = generate_project_package(project_id, settings)
     return {"project_id": project_id, "generated": generated}
