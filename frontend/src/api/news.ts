@@ -61,6 +61,16 @@ export function createNewsBatch(input: {
   name: string;
   template_id: string;
   item_ids: number[];
+  use_article_image?: boolean;
 }): Promise<Batch> {
   return apiPost("/news/batch", input);
+}
+
+export function createNewsDigest(input: {
+  name: string;
+  template_id: string;
+  item_ids: number[];
+  use_article_image?: boolean;
+}): Promise<Batch> {
+  return apiPost("/news/digest", input);
 }

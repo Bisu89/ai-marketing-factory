@@ -102,7 +102,13 @@ def compute_asset_confidence(beat: Beat, asset: Asset) -> str:
     "confidence"). Short-circuit here, same shape as the "no visual_hint at
     all -> HIGH" case above: no real signal to contradict the assignment.
     """
-    if asset.source == "ai_image_generator":
+    # "news_image" (see docs/features/123-news-channel.md): the article's
+    # own RSS photo, deliberately assigned to that story's beat -- it has no
+    # tags/filename to keyword-match against a beat's headline-derived
+    # visual_hint, exactly like an AI-generated image, so the same
+    # short-circuit applies (otherwise every news video would sit at
+    # NEEDS_REVIEW forever).
+    if asset.source in ("ai_image_generator", "news_image"):
         return "HIGH"
 
     hint_tokens = tokenize_prose(beat.visual_hint) if beat.visual_hint else set()

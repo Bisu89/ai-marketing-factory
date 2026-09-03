@@ -95,6 +95,41 @@ builtin count. `npx tsc -b --noEmit` clean. Not run against live feeds /
 a real LLM key in this pass (mocked at the module boundary, same
 convention as the content-stage tests).
 
+## Follow-up: article images + digest ("điểm tin")
+
+Commit `_(fill in)_`. Two additions after the first cut:
+
+- **`app/modules/news/images.py`** — `prepare_article_image()`: httpx
+  download → PIL cover-crop (`ImageOps.fit`, centering 0.5/0.4) to the
+  exact render-profile size → JPEG. Cover-crop not letterbox: a landscape
+  news photo would otherwise waste ~60% of a vertical frame. Rejects
+  non-images and sub-320px thumbnails (soft — caller falls back).
+- **`POST /news/batch` gains `use_article_image` (default true)** — when
+  on, each item's RSS photo is downloaded + registered as an
+  `Asset(source="news_image")`, and the project's beats are **pre-built
+  deterministically** from the drafted script's paragraphs (one beat each,
+  every beat pointing at that photo), `BatchItem → BEATS_READY`, no AI
+  beat split / no library match. Download failure → falls back to the
+  plain `script → Generate Beats` path (`PROJECT_CREATED`).
+- **`POST /news/digest`** — one roundup video from 2–15 items. A single
+  structured LLM call → `{intro, segments:[{narration}]×N, outro}` from
+  the items' own headlines/summaries (faithful, neutral, no CTA). Builds
+  **one** project directly: HOOK(intro) + BODY(segment)×N + ENDING(outro),
+  each segment beat showing that story's own photo. One 1-item Batch, all
+  N news items → `queued` → that project.
+- Both produce through the **Factory engine** (`POST /batches/{id}/
+  factory-run`, called by the frontend right after create) — the classic
+  Render All path hardcodes an English voice; the Factory GENERATING_VOICE
+  stage uses the template's real voice (`vi-VN-NamMinhNeural`).
+- **Quality Gate**: `source == "news_image"` joins `"ai_image_generator"`
+  in the confidence short-circuit (`quality_gate.py`) — an article photo
+  has no tags/filename to keyword-match a headline-derived `visual_hint`,
+  so without this every news video sat at `NEEDS_REVIEW` forever.
+- Frontend: "Dùng ảnh từ bài viết" checkbox + a "Tạo bản điểm tin" button
+  on the select bar → shared `CreateModal` (batch|digest).
+- Verified live: real VnExpress digest (3 stories → 5 beats, 3 real photos
+  cover-cropped to 1080×1920, `news_image` assets, `script_locked`).
+
 ## Not built (deliberate)
 
 News API adapters (paid, keyed) — RSS only for now. Full auto-pilot

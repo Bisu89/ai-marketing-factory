@@ -14,8 +14,10 @@ import {
 import { PageHeader } from "../components/PageHeader";
 import { EmptyState } from "../components/EmptyState";
 import { listTemplates } from "../api/template";
+import { produceBatch } from "../api/factory";
 import {
   createNewsBatch,
+  createNewsDigest,
   createNewsSource,
   deleteNewsSource,
   dismissNewsItem,
@@ -62,6 +64,7 @@ export function NewsPage() {
   const [notice, setNotice] = useState<string | null>(null);
   const [showSources, setShowSources] = useState(false);
   const [batchOpen, setBatchOpen] = useState(false);
+  const [digestOpen, setDigestOpen] = useState(false);
 
   const loadSources = useCallback(async () => {
     try {
@@ -235,6 +238,14 @@ export function NewsPage() {
               Tạo script ({selected.size})
             </button>
             <button
+              className="btn btn-secondary"
+              disabled={selected.size < 2}
+              onClick={() => setDigestOpen(true)}
+              title={selected.size < 2 ? "Chọn ít nhất 2 tin" : "Gộp các tin đã chọn thành 1 video điểm tin"}
+            >
+              Tạo bản điểm tin ({selected.size})
+            </button>
+            <button
               className="btn btn-primary"
               disabled={selectedDraftedCount === 0}
               onClick={() => setBatchOpen(true)}
@@ -324,12 +335,23 @@ export function NewsPage() {
       )}
 
       {batchOpen && (
-        <CreateBatchModal
+        <CreateModal
+          mode="batch"
           count={selectedDraftedCount}
           itemIds={items
             .filter((i) => selected.has(i.id) && i.status === "drafted" && i.script_text)
             .map((i) => i.id)}
           onClose={() => setBatchOpen(false)}
+          onCreated={(batchId) => navigate(`/batches/${batchId}`)}
+        />
+      )}
+
+      {digestOpen && (
+        <CreateModal
+          mode="digest"
+          count={selected.size}
+          itemIds={[...selected]}
+          onClose={() => setDigestOpen(false)}
           onCreated={(batchId) => navigate(`/batches/${batchId}`)}
         />
       )}
@@ -446,20 +468,28 @@ function SourcesPanel({
   );
 }
 
-function CreateBatchModal({
+function CreateModal({
+  mode,
   count,
   itemIds,
   onClose,
   onCreated,
 }: {
+  mode: "batch" | "digest";
   count: number;
   itemIds: number[];
   onClose: () => void;
   onCreated: (batchId: number) => void;
 }) {
+  const isDigest = mode === "digest";
   const [templates, setTemplates] = useState<Template[]>([]);
   const [templateId, setTemplateId] = useState("news_vi");
-  const [name, setName] = useState(() => `Tin tức ${new Date().toISOString().slice(0, 10)}`);
+  const [name, setName] = useState(() =>
+    isDigest
+      ? `Điểm tin ${new Date().toISOString().slice(0, 10)}`
+      : `Tin tức ${new Date().toISOString().slice(0, 10)}`,
+  );
+  const [useArticleImage, setUseArticleImage] = useState(true);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const mounted = useRef(true);
@@ -485,10 +515,17 @@ function CreateBatchModal({
     setBusy(true);
     setError(null);
     try {
-      const batch = await createNewsBatch({ name, template_id: templateId, item_ids: itemIds });
+      const payload = { name, template_id: templateId, item_ids: itemIds, use_article_image: useArticleImage };
+      const batch = isDigest ? await createNewsDigest(payload) : await createNewsBatch(payload);
+      // Produce through the Factory engine so the template's real voice
+      // (e.g. vi-VN-NamMinhNeural) is used -- the classic Render All path
+      // hardcodes an English voice.
+      await produceBatch(batch.id).catch(() => {
+        /* batch still created; user can produce from the Batch page */
+      });
       onCreated(batch.id);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Tạo batch thất bại.");
+      setError(err instanceof Error ? err.message : "Tạo thất bại.");
       setBusy(false);
     }
   }
@@ -497,14 +534,14 @@ function CreateBatchModal({
     <div className="news-modal-backdrop">
       <div className="news-modal" onClick={(e) => e.stopPropagation()}>
         <div className="news-modal-header">
-          <h3>Tạo Batch từ {count} tin</h3>
+          <h3>{isDigest ? `Bản điểm tin từ ${count} tin` : `Tạo Batch từ ${count} tin`}</h3>
           <button className="btn btn-icon" onClick={onClose}>
             <X size={16} />
           </button>
         </div>
         {error && <div className="news-alert news-alert-error">{error}</div>}
         <label className="news-field">
-          <span>Tên batch</span>
+          <span>{isDigest ? "Tên video" : "Tên batch"}</span>
           <input value={name} onChange={(e) => setName(e.target.value)} />
         </label>
         <label className="news-field">
@@ -518,8 +555,15 @@ function CreateBatchModal({
             ))}
           </select>
         </label>
+        <label className="news-check" style={{ marginBottom: 12 }}>
+          <input type="checkbox" checked={useArticleImage} onChange={(e) => setUseArticleImage(e.target.checked)} />
+          <span>Dùng ảnh từ bài viết (tự tải, cắt cho khung dọc)</span>
+        </label>
         <p className="news-modal-hint">
-          Mỗi tin thành một project (script đã khoá). Sau khi tạo, vào trang Batch bấm "Generate Beats" rồi "Render All".
+          {isDigest
+            ? "AI viết 1 kịch bản: mở đầu + 1 đoạn tóm tắt mỗi tin + kết. Mỗi đoạn dùng ảnh của tin đó. Ra 1 video."
+            : "Mỗi tin thành 1 project (script đã khoá). Tự chạy qua Factory (giọng theo template)."}
+          {" "}Sau khi tạo, mở trang Batch để theo dõi / bấm Render.
         </p>
         <div className="news-modal-actions">
           <button className="btn btn-secondary" onClick={onClose} disabled={busy}>
@@ -527,7 +571,7 @@ function CreateBatchModal({
           </button>
           <button className="btn btn-primary" onClick={handleCreate} disabled={busy || !name.trim()}>
             {busy ? <Loader2 size={14} className="spin" /> : null}
-            Tạo Batch
+            {isDigest ? "Tạo & Sản xuất" : "Tạo & Sản xuất"}
           </button>
         </div>
       </div>

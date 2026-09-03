@@ -133,6 +133,33 @@ class NewsBatchRequest(BaseModel):
     name: str
     template_id: str
     item_ids: list[int] = Field(min_length=1)
+    # When true (default), each item's own RSS image is downloaded, cropped
+    # to the render profile, and assigned to that item's beats -- the whole
+    # project's beats are then pre-built from the drafted script (no AI beat
+    # split, no library/AI image match). When false, or when the download
+    # fails, the item falls back to the normal script -> Generate Beats ->
+    # library/AI-image flow.
+    use_article_image: bool = True
+
+    @field_validator("name", "template_id")
+    @classmethod
+    def _not_blank(cls, value: str) -> str:
+        if not value.strip():
+            raise ValueError("must not be blank")
+        return value.strip()
+
+
+class NewsDigestRequest(BaseModel):
+    """One "điểm tin" roundup video from N selected items -- the AI writes a
+    single script (intro + one summary per story + outro) from the items'
+    own headlines/summaries; each story segment shows that story's own RSS
+    image. No per-item "draft script" step is needed first.
+    """
+
+    name: str
+    template_id: str
+    item_ids: list[int] = Field(min_length=2, max_length=15)
+    use_article_image: bool = True
 
     @field_validator("name", "template_id")
     @classmethod
