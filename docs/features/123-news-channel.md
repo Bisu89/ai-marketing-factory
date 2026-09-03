@@ -1,6 +1,6 @@
 # 123 — News Channel: RSS Ingestion → Drafted Script → Batch
 
-**Commit:** _(fill in after commit)_
+**Commit:** `92fbe21`
 
 Adds the missing front end for a news channel: pull articles from RSS/Atom
 feeds, let the user pick which ones become videos, AI-draft a straight
