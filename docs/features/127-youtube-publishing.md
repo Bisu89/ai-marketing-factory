@@ -1,6 +1,6 @@
 # 127 — YouTube Publishing: connect channels → auto-upload finished videos
 
-**Commit:** _(fill in after commit)_
+**Commit:** `80079eb`
 
 Managing several channels with manual uploads is the last big time sink.
 This connects one or more YouTube channels via Google OAuth and uploads a
