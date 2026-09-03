@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   AlertCircle,
@@ -492,21 +492,21 @@ function CreateModal({
   const [useArticleImage, setUseArticleImage] = useState(true);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const mounted = useRef(true);
 
   useEffect(() => {
+    let cancelled = false;
     (async () => {
       try {
         const list = await listTemplates();
-        if (!mounted.current) return;
+        if (cancelled) return;
         setTemplates(list);
         if (!list.some((t) => t.id === "news_vi") && list.length > 0) setTemplateId(list[0].id);
-      } catch {
-        /* non-fatal */
+      } catch (err) {
+        if (!cancelled) setError(err instanceof Error ? err.message : "Không tải được template.");
       }
     })();
     return () => {
-      mounted.current = false;
+      cancelled = true;
     };
   }, []);
 
