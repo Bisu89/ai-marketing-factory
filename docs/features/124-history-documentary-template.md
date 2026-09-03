@@ -1,6 +1,6 @@
 # 124 — Built-in "History Documentary" Template
 
-**Commit:** _(fill in after commit)_
+**Commit:** `97dae68`
 
 New monetization-oriented faceless niche the user asked for: long-form
 English history documentaries (military history, ancient civilizations,
