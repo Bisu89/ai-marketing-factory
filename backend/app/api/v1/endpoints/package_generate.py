@@ -63,7 +63,12 @@ METADATA_ENGINE_VERSION = "post-package-v1"
 # own content language instead of a soft "same language as the script"
 # hint that a hardcoded "Vietnamese storytelling channel" framing kept
 # overriding (real user report: English videos getting Vietnamese titles).
-AI_METADATA_ENGINE_VERSION = "package-ai-metadata-v2"
+# v3 (feature 126): the AI call now also returns a `hashtags` array; a v2
+# cache has no hashtags, so bumping the version re-runs it once with the
+# hashtag-aware engine (this is the intended invalidation mechanism --
+# regenerate-metadata still reuses a same-version cache, never re-bills for
+# unchanged text).
+AI_METADATA_ENGINE_VERSION = "package-ai-metadata-v3"
 
 # Same map as content_generate.LANGUAGE_NAMES / story.service -- duplicated
 # (a few string constants across an endpoint boundary) rather than imported.
@@ -738,14 +743,6 @@ def regenerate_metadata(project_id: int, settings: Settings = Depends(get_settin
         return {"project_id": project_id, "generated": False}
     cache = _load_cache(job) or {}
     cache.pop("metadata_fingerprint", None)
-    # An explicit "regenerate metadata" also re-runs the AI metadata call
-    # (one cheap, billed call) rather than reusing a stale cached result --
-    # same "an explicit request always wins over an automatic reuse check"
-    # precedent as regenerate-script/regenerate-voice. Without this, a
-    # cache written before a metadata-engine change (e.g. the feature 126
-    # hashtag fix) would keep producing the old output forever.
-    cache.pop("ai_metadata_fingerprint", None)
-    cache.pop("ai_metadata", None)
     _save_cache(job, **cache)
     generated = generate_project_package(project_id, settings)
     return {"project_id": project_id, "generated": generated}
