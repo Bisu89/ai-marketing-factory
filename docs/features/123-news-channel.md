@@ -97,7 +97,7 @@ convention as the content-stage tests).
 
 ## Follow-up: article images + digest ("điểm tin")
 
-Commit `_(fill in)_`. Two additions after the first cut:
+Commit `5230fd1`. Two additions after the first cut:
 
 - **`app/modules/news/images.py`** — `prepare_article_image()`: httpx
   download → PIL cover-crop (`ImageOps.fit`, centering 0.5/0.4) to the
