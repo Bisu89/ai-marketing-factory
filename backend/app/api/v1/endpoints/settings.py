@@ -11,6 +11,8 @@ from app.core.config import (
     get_settings,
     update_ai_provider,
     update_anthropic_api_key,
+    update_google_oauth_client_id,
+    update_google_oauth_client_secret,
     update_library_dir,
     update_news_poll_interval_minutes,
     update_openai_api_key,
@@ -18,6 +20,7 @@ from app.core.config import (
     update_tiktok_client_key,
     update_tiktok_client_secret,
     update_tiktok_redirect_uri,
+    update_youtube_redirect_uri,
 )
 from app.modules.ai.llm_client import AI_PROVIDERS, resolve_ai_credentials
 from app.services.download.engine import DownloadEngine
@@ -50,6 +53,15 @@ class TikTokClientSecretIn(BaseModel):
 
 
 class TikTokRedirectUriIn(BaseModel):
+    redirect_uri: str
+
+
+class GoogleOAuthClientIn(BaseModel):
+    client_id: str
+    client_secret: str
+
+
+class YouTubeRedirectUriIn(BaseModel):
     redirect_uri: str
 
 
@@ -92,6 +104,10 @@ def read_settings(settings: Settings = Depends(get_settings)):
         "has_tiktok_client_key": bool(settings.tiktok_client_key),
         "has_tiktok_client_secret": bool(settings.tiktok_client_secret),
         "tiktok_redirect_uri": settings.tiktok_redirect_uri,
+        # YouTube Publishing (see docs/features/127-youtube-publishing.md) --
+        # same "never echo the secret, only whether it's set" convention.
+        "has_google_oauth_client": bool(settings.google_oauth_client_id and settings.google_oauth_client_secret),
+        "youtube_redirect_uri": settings.youtube_redirect_uri,
         # Render-cache auto-cleanup (0 = off). See
         # app/api/v1/endpoints/assets_cleanup.py.
         "render_cache_retention_days": settings.render_cache_retention_days,
@@ -168,6 +184,26 @@ def set_tiktok_redirect_uri(payload: TikTokRedirectUriIn):
         raise HTTPException(status_code=400, detail="Redirect URI phai la HTTPS -- TikTok khong chap nhan http://")
     update_tiktok_redirect_uri(uri)
     return {"tiktok_redirect_uri": uri}
+
+
+@router.put("/settings/google-oauth-client")
+def set_google_oauth_client(payload: GoogleOAuthClientIn):
+    cid = payload.client_id.strip()
+    secret = payload.client_secret.strip()
+    if not cid or not secret:
+        raise HTTPException(status_code=400, detail="Client ID va Client Secret khong duoc de trong")
+    update_google_oauth_client_id(cid)
+    update_google_oauth_client_secret(secret)
+    return {"has_google_oauth_client": True}
+
+
+@router.put("/settings/youtube-redirect-uri")
+def set_youtube_redirect_uri(payload: YouTubeRedirectUriIn):
+    uri = payload.redirect_uri.strip()
+    if not (uri.startswith("http://127.0.0.1") or uri.startswith("http://localhost") or uri.startswith("https://")):
+        raise HTTPException(status_code=400, detail="Redirect URI phai la http://127.0.0.1..., http://localhost... hoac https://...")
+    update_youtube_redirect_uri(uri)
+    return {"youtube_redirect_uri": uri}
 
 
 @router.put("/settings/library-dir")

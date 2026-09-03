@@ -31,6 +31,7 @@ from app.api.v1.endpoints import (
     package_generate,
     performance_intelligence,
     produced_videos,
+    publish_video,
     quality_gate,
     series_project,
     settings,
@@ -48,6 +49,7 @@ from app.modules.affiliate.router import router as affiliate_router
 from app.modules.competitor_intelligence.router import router as competitor_intelligence_router
 from app.modules.content_strategy.router import router as content_strategy_router
 from app.modules.news.router import router as news_router
+from app.modules.publishing.router import router as publishing_router
 from app.modules.scene_cutter.router import router as scene_cutter_router
 from app.modules.series.router import router as series_router
 from app.modules.video_composer.router import router as video_composer_router
@@ -81,6 +83,8 @@ api_router.include_router(hook_router, tags=["hook"])
 api_router.include_router(content_strategy_router, tags=["content-strategy"])
 api_router.include_router(news_router, tags=["news"])
 api_router.include_router(news_pipeline.router, tags=["news-pipeline"])
+api_router.include_router(publishing_router, tags=["publishing"])
+api_router.include_router(publish_video.router, tags=["publishing"])
 api_router.include_router(content_idea_generation.router, tags=["content-idea-generation"])
 api_router.include_router(content_batch_generate.router, tags=["content-batch"])
 api_router.include_router(beat_router, tags=["beat"])

@@ -9,12 +9,15 @@ import {
   FolderOpen,
   Loader2,
   X,
+  Youtube,
 } from "lucide-react";
 import { PageHeader } from "../components/PageHeader";
 import { EmptyState } from "../components/EmptyState";
 import { Pagination } from "../features/library/components/Pagination";
 import { mediaUrl } from "../api/client";
 import { listProducedVideos, openProducedVideoFolder } from "../api/producedVideos";
+import { fetchYouTubeChannels, uploadToYouTube } from "../api/publishing";
+import type { YouTubeChannel, YouTubePrivacy } from "../types/publishing";
 import type { ProducedVideo, ProducedVideoList } from "../types/producedVideo";
 import "./VideosPage.css";
 
@@ -330,10 +333,115 @@ export function VideosPage() {
                 <button className="btn btn-secondary" onClick={() => handleOpenFolder(selected)}>
                   <FolderOpen size={14} /> Mở thư mục
                 </button>
+                {selected.project_id != null && selected.job_status === "COMPLETED" && (
+                  <YouTubeUploadButton projectId={selected.project_id} />
+                )}
               </div>
               {actionNote && <p className="videos-drawer-note">{actionNote}</p>}
             </div>
           </aside>
+        </div>
+      )}
+    </>
+  );
+}
+
+function YouTubeUploadButton({ projectId }: { projectId: number }) {
+  const [open, setOpen] = useState(false);
+  const [channels, setChannels] = useState<YouTubeChannel[] | null>(null);
+  const [channelId, setChannelId] = useState<number | "">("");
+  const [privacy, setPrivacy] = useState<YouTubePrivacy>("private");
+  const [busy, setBusy] = useState(false);
+  const [msg, setMsg] = useState<string | null>(null);
+
+  async function openPicker() {
+    setOpen(true);
+    setMsg(null);
+    if (channels == null) {
+      try {
+        const list = await fetchYouTubeChannels();
+        setChannels(list);
+        const firstEnabled = list.find((c) => c.enabled);
+        if (firstEnabled) setChannelId(firstEnabled.id);
+      } catch (err) {
+        setMsg(err instanceof Error ? err.message : "Không tải được danh sách kênh.");
+      }
+    }
+  }
+
+  async function handleUpload() {
+    if (channelId === "" || busy) return;
+    setBusy(true);
+    setMsg(null);
+    try {
+      await uploadToYouTube({ project_id: projectId, channel_id: channelId, privacy });
+      setMsg("Đã đưa vào hàng đợi tải lên. Xem tiến độ ở trang Publishing.");
+    } catch (err) {
+      setMsg(err instanceof Error ? err.message : "Tải lên thất bại.");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  return (
+    <>
+      <button className="btn btn-secondary" onClick={openPicker}>
+        <Youtube size={14} /> Đăng lên YouTube
+      </button>
+      {open && (
+        <div className="videos-drawer-overlay" onClick={() => setOpen(false)}>
+          <div className="videos-yt-modal" onClick={(e) => e.stopPropagation()}>
+            <div className="videos-yt-modal-header">
+              <h3>Đăng lên YouTube</h3>
+              <button className="btn btn-icon" onClick={() => setOpen(false)}>
+                <X size={15} />
+              </button>
+            </div>
+            {channels != null && channels.length === 0 ? (
+              <p className="videos-drawer-note">
+                Chưa kết nối kênh nào. Vào <Link to="/publishing">Publishing</Link> để kết nối.
+              </p>
+            ) : (
+              <>
+                <label className="videos-yt-field">
+                  <span>Kênh</span>
+                  <select
+                    value={channelId}
+                    onChange={(e) => setChannelId(e.target.value === "" ? "" : Number(e.target.value))}
+                  >
+                    <option value="">— chọn kênh —</option>
+                    {(channels ?? []).map((c) => (
+                      <option key={c.id} value={c.id} disabled={!c.enabled}>
+                        {c.title}
+                        {c.enabled ? "" : " (tắt)"}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+                <label className="videos-yt-field">
+                  <span>Chế độ</span>
+                  <select value={privacy} onChange={(e) => setPrivacy(e.target.value as YouTubePrivacy)}>
+                    <option value="private">Private</option>
+                    <option value="unlisted">Unlisted</option>
+                    <option value="public">Public</option>
+                  </select>
+                </label>
+                <p className="videos-drawer-note">
+                  App OAuth chưa audit thì YouTube vẫn khoá video ở private dù chọn gì — vào Studio bấm publish.
+                </p>
+                <div className="videos-yt-actions">
+                  <button className="btn btn-secondary" onClick={() => setOpen(false)}>
+                    Đóng
+                  </button>
+                  <button className="btn btn-primary" onClick={handleUpload} disabled={busy || channelId === ""}>
+                    {busy ? <Loader2 size={14} className="spin" /> : <Youtube size={14} />}
+                    Tải lên
+                  </button>
+                </div>
+              </>
+            )}
+            {msg && <p className="videos-drawer-note">{msg}</p>}
+          </div>
         </div>
       )}
     </>

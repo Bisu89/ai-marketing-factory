@@ -16,6 +16,9 @@ export interface AppSettings {
   has_tiktok_client_key: boolean;
   has_tiktok_client_secret: boolean;
   tiktok_redirect_uri: string | null;
+  // YouTube Publishing — Google Cloud OAuth client (never echoed).
+  has_google_oauth_client: boolean;
+  youtube_redirect_uri: string;
   // Auto-delete a finished project's regenerable voice/motion/audio render
   // cache this many days after its render completes. 0 = off.
   render_cache_retention_days: number;

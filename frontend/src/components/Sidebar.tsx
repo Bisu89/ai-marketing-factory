@@ -17,6 +17,7 @@ import {
   MonitorPlay,
   Newspaper,
   Sparkles,
+  Youtube,
   Trophy,
   Wand2,
 } from "lucide-react";
@@ -39,6 +40,7 @@ const NAV_ITEMS = [
   { to: "/video-composer", label: "Video Composer", icon: Clapperboard },
   { to: "/video-factory", label: "Video Factory", icon: Wand2 },
   { to: "/videos", label: "Videos", icon: MonitorPlay },
+  { to: "/publishing", label: "Publishing", icon: Youtube },
   { to: "/batches", label: "Batches", icon: Layers },
   { to: "/series", label: "Series", icon: ListVideo },
   { to: "/asset-library", label: "Asset Library", icon: Images },

@@ -12,6 +12,7 @@ import {
   updateOpenAiApiKey,
   updateNewsPollInterval,
   updateRenderCacheRetention,
+  updateGoogleOAuthClient,
   updateTikTokClientKey,
   updateTikTokClientSecret,
   updateTikTokRedirectUri,
@@ -55,6 +56,11 @@ export function SettingsPage() {
   const [tiktokRedirectUri, setTiktokRedirectUri] = useState<string | null>(null);
   const [tiktokRedirectUriInput, setTiktokRedirectUriInput] = useState("");
   const [savingTikTokRedirectUri, setSavingTikTokRedirectUri] = useState(false);
+  const [hasGoogleOAuth, setHasGoogleOAuth] = useState(false);
+  const [youtubeRedirectUri, setYoutubeRedirectUri] = useState("");
+  const [googleClientIdInput, setGoogleClientIdInput] = useState("");
+  const [googleClientSecretInput, setGoogleClientSecretInput] = useState("");
+  const [savingGoogleOAuth, setSavingGoogleOAuth] = useState(false);
 
   const [renderCacheDays, setRenderCacheDays] = useState(0);
   const [savingRenderCache, setSavingRenderCache] = useState(false);
@@ -84,6 +90,8 @@ export function SettingsPage() {
         setHasTikTokClientKey(settings.has_tiktok_client_key);
         setHasTikTokClientSecret(settings.has_tiktok_client_secret);
         setTiktokRedirectUri(settings.tiktok_redirect_uri);
+        setHasGoogleOAuth(settings.has_google_oauth_client);
+        setYoutubeRedirectUri(settings.youtube_redirect_uri);
         setRenderCacheDays(settings.render_cache_retention_days);
         setNewsPollMinutes(settings.news_poll_interval_minutes);
       })
@@ -208,6 +216,24 @@ export function SettingsPage() {
       setError(err instanceof Error ? err.message : "Không lưu được cấu hình dọn render cache.");
     } finally {
       setSavingRenderCache(false);
+    }
+  }
+
+  async function handleSaveGoogleOAuth() {
+    if (!googleClientIdInput.trim() || !googleClientSecretInput.trim() || savingGoogleOAuth) return;
+    setSavingGoogleOAuth(true);
+    setError(null);
+    setMessage(null);
+    try {
+      const result = await updateGoogleOAuthClient(googleClientIdInput.trim(), googleClientSecretInput.trim());
+      setHasGoogleOAuth(result.has_google_oauth_client);
+      setGoogleClientIdInput("");
+      setGoogleClientSecretInput("");
+      setMessage("Đã lưu Google OAuth client. Sang trang Publishing để kết nối kênh.");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Không lưu được Google OAuth client.");
+    } finally {
+      setSavingGoogleOAuth(false);
     }
   }
 
@@ -462,6 +488,53 @@ export function SettingsPage() {
               Lưu
             </button>
           </div>
+        </div>
+      </div>
+
+      <div className="settings-card">
+        <div className="settings-row settings-row-header">
+          <label className="settings-label">YouTube Publishing (Google OAuth)</label>
+        </div>
+        <p className="settings-hint">
+          Tạo project trên Google Cloud Console → bật <strong>YouTube Data API v3</strong> → tạo OAuth client loại
+          "Desktop app" → thêm Redirect URI dưới đây vào client đó → dán Client ID / Secret vào ô này.
+          {hasGoogleOAuth ? " Đã cấu hình." : ""}
+        </p>
+        <div className="settings-row">
+          <label className="settings-label" htmlFor="google-client-id">Client ID</label>
+          <input
+            id="google-client-id"
+            type="text"
+            className="settings-input"
+            placeholder={hasGoogleOAuth ? "••• (đã lưu)" : "xxxxx.apps.googleusercontent.com"}
+            value={googleClientIdInput}
+            onChange={(e) => setGoogleClientIdInput(e.target.value)}
+          />
+        </div>
+        <div className="settings-row">
+          <label className="settings-label" htmlFor="google-client-secret">Client Secret</label>
+          <div className="settings-folder-picker">
+            <input
+              id="google-client-secret"
+              type="password"
+              className="settings-input"
+              placeholder={hasGoogleOAuth ? "••• (đã lưu)" : "GOCSPX-..."}
+              value={googleClientSecretInput}
+              onChange={(e) => setGoogleClientSecretInput(e.target.value)}
+            />
+            <button
+              className="btn btn-secondary"
+              onClick={handleSaveGoogleOAuth}
+              disabled={!googleClientIdInput.trim() || !googleClientSecretInput.trim() || savingGoogleOAuth}
+            >
+              {hasGoogleOAuth && <CheckCircle2 size={14} />}
+              Lưu
+            </button>
+          </div>
+        </div>
+        <div className="settings-row">
+          <label className="settings-label">Redirect URI (dán vào Google Console)</label>
+          <input className="settings-input" type="text" readOnly value={youtubeRedirectUri} onFocus={(e) => e.target.select()} />
         </div>
       </div>
 

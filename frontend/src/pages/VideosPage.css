@@ -343,3 +343,43 @@
     flex: 1;
   }
 }
+
+/* -- YouTube upload mini-modal (drawer) -- */
+.videos-yt-modal {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  width: min(420px, 92vw);
+}
+.videos-yt-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.videos-yt-modal-header h3 {
+  margin: 0;
+  font-size: 15px;
+}
+.videos-yt-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 12px;
+  font-size: 13px;
+}
+.videos-yt-field select {
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface-alt);
+  color: var(--text);
+  font-size: 13px;
+}
+.videos-yt-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 4px;
+}

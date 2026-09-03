@@ -1,0 +1,140 @@
+.pub-alert {
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  margin-bottom: 14px;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+.pub-alert-error {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--danger);
+}
+.pub-alert-warn {
+  background: rgba(234, 179, 8, 0.12);
+  color: var(--text);
+}
+.pub-note {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 12px 14px;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font-size: 12.5px;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+.pub-note svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--warning, #eab308);
+}
+
+.pub-section-title {
+  font-size: 14px;
+  margin: 22px 0 10px;
+}
+.pub-empty-hint {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.pub-channels {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.pub-channel {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+.pub-channel-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.pub-channel-info {
+  flex: 1;
+  min-width: 0;
+}
+.pub-channel-title {
+  font-weight: 600;
+  font-size: 14px;
+}
+.pub-channel-meta {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.pub-channel-err {
+  color: var(--danger);
+}
+.pub-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.pub-table-wrap {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+.pub-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.pub-table thead th {
+  text-align: left;
+  padding: 9px 14px;
+  font-size: 12px;
+  color: var(--text-muted);
+  background: var(--surface-alt);
+  border-bottom: 1px solid var(--border);
+}
+.pub-table tbody td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.pub-table tbody tr:last-child td {
+  border-bottom: none;
+}
+.pub-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 600;
+}
+.pub-status--completed {
+  color: var(--success, #16a34a);
+}
+.pub-status--failed,
+.pub-status--interrupted {
+  color: var(--danger);
+}
+.pub-row-err {
+  font-size: 11.5px;
+  color: var(--danger);
+  margin-top: 3px;
+  max-width: 360px;
+}
+.pub-row-actions {
+  display: flex;
+  gap: 6px;
+  justify-content: flex-end;
+  white-space: nowrap;
+}

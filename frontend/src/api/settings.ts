@@ -39,6 +39,16 @@ export async function updateRenderCacheRetention(
   return apiPut<{ render_cache_retention_days: number }>("/settings/render-cache-retention", { days });
 }
 
+export async function updateGoogleOAuthClient(
+  clientId: string,
+  clientSecret: string,
+): Promise<{ has_google_oauth_client: boolean }> {
+  return apiPut<{ has_google_oauth_client: boolean }>("/settings/google-oauth-client", {
+    client_id: clientId,
+    client_secret: clientSecret,
+  });
+}
+
 export async function updateNewsPollInterval(
   minutes: number,
 ): Promise<{ news_poll_interval_minutes: number }> {

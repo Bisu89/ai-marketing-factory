@@ -31,6 +31,7 @@ from app.db.session import SessionLocal, engine
 from app.modules.content_strategy.seed import seed_default_pillars
 from app.modules.news.seed import seed_default_news_sources
 from app.modules.news.service import fetch_all_enabled_sources
+from app.modules.publishing.service import reconcile_uploads_on_startup
 from app.modules.scene_cutter.service import SceneCutterService
 from app.modules.video_composer.service import VideoComposerService
 from app.services.download.engine import DownloadEngine
@@ -107,6 +108,9 @@ async def lifespan(app: FastAPI):
     # "RUNNING" syncs from its FactoryRun's already-settled outcome, not a
     # stale in-flight one.
     reconcile_batches_on_startup()
+    # YouTube Publishing (see docs/features/127-youtube-publishing.md) --
+    # mark any upload left mid-flight by a previous process as 'interrupted'.
+    reconcile_uploads_on_startup()
 
     # Render-cache auto-cleanup (see app/api/v1/endpoints/assets_cleanup.py).
     # Once now, then every 24h while the app stays open -- a no-op unless

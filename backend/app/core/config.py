@@ -163,6 +163,16 @@ class Settings(BaseSettings):
     tiktok_client_secret: str | None = None
     tiktok_redirect_uri: str | None = None
 
+    # YouTube Publishing (see docs/features/127-youtube-publishing.md).
+    # Google Cloud OAuth 2.0 "Desktop app" client credentials the user
+    # creates themselves (one Cloud project, YouTube Data API v3 enabled) --
+    # same "plain str field + dedicated update_x()" shape as the keys above.
+    # youtube_redirect_uri must be one of the redirect URIs registered on
+    # that OAuth client; the loopback default works for a desktop app.
+    google_oauth_client_id: str | None = None
+    google_oauth_client_secret: str | None = None
+    youtube_redirect_uri: str = "http://127.0.0.1:8000/api/v1/publishing/youtube/oauth/callback"
+
 
 @lru_cache
 def get_settings() -> Settings:
@@ -211,4 +221,19 @@ def update_tiktok_client_secret(secret: str) -> None:
 
 def update_tiktok_redirect_uri(uri: str) -> None:
     set_key(ENV_FILE_PATH, "APP_TIKTOK_REDIRECT_URI", uri)
+    get_settings.cache_clear()
+
+
+def update_google_oauth_client_id(value: str) -> None:
+    set_key(ENV_FILE_PATH, "APP_GOOGLE_OAUTH_CLIENT_ID", value)
+    get_settings.cache_clear()
+
+
+def update_google_oauth_client_secret(value: str) -> None:
+    set_key(ENV_FILE_PATH, "APP_GOOGLE_OAUTH_CLIENT_SECRET", value)
+    get_settings.cache_clear()
+
+
+def update_youtube_redirect_uri(uri: str) -> None:
+    set_key(ENV_FILE_PATH, "APP_YOUTUBE_REDIRECT_URI", uri)
     get_settings.cache_clear()
