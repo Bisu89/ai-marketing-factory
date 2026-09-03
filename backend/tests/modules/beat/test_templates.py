@@ -80,7 +80,7 @@ class BuiltinTemplateTests(unittest.TestCase):
             ids,
             {
                 "emotional_story", "couple_story", "horror", "horror_shorts",
-                "relationship_psychology_vi", "news_vi", "custom",
+                "relationship_psychology_vi", "news_vi", "history_documentary", "custom",
             },
         )
         self.assertTrue(all(t.builtin for t in BUILTIN_TEMPLATES))
@@ -117,6 +117,19 @@ class BuiltinTemplateTests(unittest.TestCase):
         # Never silently opts a project into billed AI image generation --
         # library mode stays the default, same as every other built-in.
         self.assertEqual(config.visual_generation.mode, "library")
+
+    def test_history_documentary_is_landscape_longform_english_and_ai_visual_ready(self):
+        config = next(t.config for t in BUILTIN_TEMPLATES if t.id == "history_documentary")
+        self.assertEqual(config.render.profile, "SOCIAL_LANDSCAPE")
+        self.assertEqual(config.content.language, "en")
+        self.assertGreaterEqual(config.content.target_duration, 480.0)  # long-form
+        self.assertEqual(config.voice.provider, "edge_tts")
+        self.assertTrue(config.motion.auto_rotate)
+        self.assertTrue(config.package.ai_metadata_enabled)
+        # library mode stays the default even though this niche is meant to
+        # be run with "Generate Full by AI" -- never silently bills.
+        self.assertEqual(config.visual_generation.mode, "library")
+        self.assertIn("historical", config.visual_generation.image_style_prompt.lower())
 
     def test_emotional_story_defaults(self):
         config = EMOTIONAL_STORY_TEMPLATE.config

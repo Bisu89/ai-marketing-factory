@@ -1144,6 +1144,90 @@ NEWS_VI_TEMPLATE = Template(
     ),
 )
 
+# Long-form English history documentary (military history, ancient
+# civilizations, figures, unsolved mysteries) -- a monetization-oriented
+# faceless niche: 16:9, ~11 min, one event/figure/civilization told as a
+# narrative, cinematic Ken Burns over painterly AI historical stills,
+# measured British narration, an epic music bed. First built-in on the
+# SOCIAL_LANDSCAPE profile (every earlier one is a vertical short).
+HISTORY_DOCUMENTARY_TEMPLATE = Template(
+    id="history_documentary",
+    name="History Documentary",
+    description="Long-form (~11 min) English history documentary -- one event, figure, civilization "
+    "or unsolved mystery told as a story. 16:9, cinematic Ken Burns, measured British narration, "
+    "epic music bed, painterly AI historical visuals. Pair with Visuals = \"Generate Full by AI\" "
+    "(no stock footage of the past; archive photos are a copyright risk on a monetized channel).",
+    version=1,
+    builtin=True,
+    config=ProjectConfig(
+        render=RenderProjectConfig(profile="SOCIAL_LANDSCAPE"),
+        # A real, visible Ken Burns move (MEDIUM, not the SUBTLE intimate
+        # push the shorts use) + auto_rotate so a 50+-beat video isn't the
+        # same slow zoom-in on every single shot -- the "every beat = zoom
+        # in" problem Task 23 calls out is far worse stretched over 11 min.
+        motion=MotionProjectConfig(
+            default_preset=BeatMotionPreset.SLOW_PUSH_IN, intensity="MEDIUM", auto_rotate=True
+        ),
+        # `cinematic` full-sentence captions. 16:9 is wider than vertical so
+        # lines can run longer (max_chars 70 / max_words 12) and hold a
+        # touch longer (5.0s). A documentary is listened to; captions only
+        # support it and aid non-native / muted viewers.
+        captions=CaptionsProjectConfig(
+            enabled=True, preset="cinematic", max_words=12, max_chars=70, max_lines=2, max_duration_sec=5.0
+        ),
+        # An epic/orchestral bed sitting low under the narration (0.14).
+        # AUTO selection by tone tag -- import a few cinematic/epic/tense
+        # tracks into the Asset Library for it to choose from; with none,
+        # bgm_missing_policy OFF just proceeds narration-only.
+        audio=AudioProjectConfig(narration_enabled=True, music_enabled=True, music_volume=0.14, ducking=True),
+        content=ContentProjectConfig(
+            language="en",
+            tone="authoritative, measured and cinematic, like a documentary narrator",
+            style="a history documentary that tells ONE event, figure, civilization or unsolved "
+            "mystery as a narrative -- vivid scene-setting, cause and effect, rising tension, and "
+            "what it meant -- never a dry list of dates",
+            target_duration=660.0,  # ~11 minutes
+            audience="history enthusiasts and long-form documentary viewers",
+            cta_enabled=True,
+        ),
+        # edge_tts en-GB-RyanNeural -- a calm, measured British voice, the
+        # classic documentary sound. speed 0.95 for a deliberate delivery,
+        # 0.5s between sentences. Note: an ~11-min script is ~100 per-
+        # sentence edge_tts calls, so the occasional retry (and some added
+        # time) is normal; switch provider to `local` in the template editor
+        # for a fully offline, if more robotic, read.
+        voice=VoiceProjectConfig(
+            provider="edge_tts", voice_id="en-GB-RyanNeural", language="en",
+            speed=0.95, sentence_pause_sec=0.5,
+        ),
+        # This niche is meant to be run with Visuals = "Generate Full by AI"
+        # (there is no footage of the past). library mode stays the built-in
+        # default like every other template; this prompt shapes the AI
+        # images the moment the user opts in.
+        visual_generation=VisualGenerationProjectConfig(
+            image_style_prompt=(
+                "cinematic historical documentary still, painterly photorealistic illustration, "
+                "dramatic natural light, volumetric atmosphere, muted earthy desaturated color grade, "
+                "fine film grain, epic scale, period-accurate clothing architecture weapons and landscape, "
+                "no modern objects, no lettering, no on-screen text, no watermark, horizontal composition"
+            ),
+        ),
+        # A closing card so an 11-minute video doesn't cut dead the instant
+        # narration ends -- edit the text per channel.
+        outro=OutroProjectConfig(
+            enabled=True,
+            text="If you made it this far, subscribe -- a new story every week.",
+            duration_sec=6.0,
+        ),
+        # CTR on title + thumbnail text matters more than the small per-video
+        # cost for a channel meant to earn -- AI metadata on by default here
+        # (it stays off on every other built-in).
+        package=PackageProjectConfig(ai_metadata_enabled=True),
+        template_id="history_documentary",
+        template_version=1,
+    ),
+)
+
 CUSTOM_TEMPLATE = Template(
     id="custom",
     name="Custom",
@@ -1154,10 +1238,10 @@ CUSTOM_TEMPLATE = Template(
 )
 
 # Note: BUILTIN_TEMPLATES' own `id`s ("emotional_story"/"couple_story"/
-# "horror"/"horror_shorts"/"relationship_psychology_vi"/"news_vi"/"custom")
-# are reserved -- template_service.save_custom_templates below rejects a
-# custom template trying to reuse one, so a built-in can never be shadowed
-# or overwritten by user data.
+# "horror"/"horror_shorts"/"relationship_psychology_vi"/"news_vi"/
+# "history_documentary"/"custom") are reserved -- template_service.
+# save_custom_templates below rejects a custom template trying to reuse
+# one, so a built-in can never be shadowed or overwritten by user data.
 BUILTIN_TEMPLATES: list[Template] = [
     EMOTIONAL_STORY_TEMPLATE,
     COUPLE_STORY_TEMPLATE,
@@ -1165,6 +1249,7 @@ BUILTIN_TEMPLATES: list[Template] = [
     HORROR_SHORTS_TEMPLATE,
     RELATIONSHIP_PSYCHOLOGY_VI_TEMPLATE,
     NEWS_VI_TEMPLATE,
+    HISTORY_DOCUMENTARY_TEMPLATE,
     CUSTOM_TEMPLATE,
 ]
 BUILTIN_TEMPLATE_IDS = frozenset(t.id for t in BUILTIN_TEMPLATES)
