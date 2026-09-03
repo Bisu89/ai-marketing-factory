@@ -1228,6 +1228,69 @@ HISTORY_DOCUMENTARY_TEMPLATE = Template(
     ),
 )
 
+# Tuned variant of HISTORY_DOCUMENTARY for the specific niche the user
+# chose after a 2026 trend analysis: ancient & medieval *military* history,
+# one decisive battle per video. Highest-value history sub-niche RPM (~$7-13),
+# high-disposable-income audience, and the "one specific battle/commander"
+# angle is under-served relative to audience size. Longer than the general
+# template (15 min -- battle docs hold retention at that length) and its
+# style/image prompt are battle-specific. Same "tuned variant is its own
+# built-in" precedent as couple_story vs emotional_story.
+MILITARY_HISTORY_TEMPLATE = Template(
+    id="military_history",
+    name="Military History (Decisive Battles)",
+    description="Long-form (~15 min) English military-history documentary -- ONE decisive ancient "
+    "or medieval battle per video: the strategic situation, the two forces and their commanders, "
+    "the terrain, the battle phase by phase, the turning point, the consequences. 16:9, cinematic "
+    "Ken Burns, measured British narration, martial score, painterly battle-art visuals. Run with "
+    "Visuals = \"Generate Full by AI\"; base each script on a real source (the audience is exacting "
+    "about numbers, units and geography).",
+    version=1,
+    builtin=True,
+    config=ProjectConfig(
+        render=RenderProjectConfig(profile="SOCIAL_LANDSCAPE"),
+        motion=MotionProjectConfig(
+            default_preset=BeatMotionPreset.SLOW_PUSH_IN, intensity="MEDIUM", auto_rotate=True
+        ),
+        captions=CaptionsProjectConfig(
+            enabled=True, preset="cinematic", max_words=12, max_chars=70, max_lines=2, max_duration_sec=5.0
+        ),
+        audio=AudioProjectConfig(narration_enabled=True, music_enabled=True, music_volume=0.15, ducking=True),
+        content=ContentProjectConfig(
+            language="en",
+            tone="authoritative, measured and cinematic, like a military-history documentary narrator",
+            style="ONE decisive historical battle told as a narrative: the strategic situation and "
+            "what was at stake, the two armies and their commanders, the ground they fought on, how "
+            "the battle unfolded phase by phase, the decisive turning point, and the consequences -- "
+            "grounded in specific numbers, units, formations and geography, never vague",
+            target_duration=900.0,  # ~15 minutes
+            audience="military history enthusiasts, wargamers, and long-form documentary viewers",
+            cta_enabled=True,
+        ),
+        voice=VoiceProjectConfig(
+            provider="edge_tts", voice_id="en-GB-RyanNeural", language="en",
+            speed=0.95, sentence_pause_sec=0.5,
+        ),
+        visual_generation=VisualGenerationProjectConfig(
+            image_style_prompt=(
+                "cinematic historical military documentary still, painterly photorealistic battle art, "
+                "massed ancient or medieval infantry in formation, cavalry charging, period-accurate "
+                "armor shields spears swords and banners, a decisive battlefield with dust smoke and "
+                "dramatic low light, wide epic scale, muted earthy desaturated color grade, fine film "
+                "grain, no modern objects, no lettering, no on-screen text, no watermark, horizontal composition"
+            ),
+        ),
+        outro=OutroProjectConfig(
+            enabled=True,
+            text="If you made it this far, subscribe -- a new decisive battle every week.",
+            duration_sec=6.0,
+        ),
+        package=PackageProjectConfig(ai_metadata_enabled=True),
+        template_id="military_history",
+        template_version=1,
+    ),
+)
+
 CUSTOM_TEMPLATE = Template(
     id="custom",
     name="Custom",
@@ -1239,9 +1302,10 @@ CUSTOM_TEMPLATE = Template(
 
 # Note: BUILTIN_TEMPLATES' own `id`s ("emotional_story"/"couple_story"/
 # "horror"/"horror_shorts"/"relationship_psychology_vi"/"news_vi"/
-# "history_documentary"/"custom") are reserved -- template_service.
-# save_custom_templates below rejects a custom template trying to reuse
-# one, so a built-in can never be shadowed or overwritten by user data.
+# "history_documentary"/"military_history"/"custom") are reserved --
+# template_service.save_custom_templates below rejects a custom template
+# trying to reuse one, so a built-in can never be shadowed or overwritten
+# by user data.
 BUILTIN_TEMPLATES: list[Template] = [
     EMOTIONAL_STORY_TEMPLATE,
     COUPLE_STORY_TEMPLATE,
@@ -1250,6 +1314,7 @@ BUILTIN_TEMPLATES: list[Template] = [
     RELATIONSHIP_PSYCHOLOGY_VI_TEMPLATE,
     NEWS_VI_TEMPLATE,
     HISTORY_DOCUMENTARY_TEMPLATE,
+    MILITARY_HISTORY_TEMPLATE,
     CUSTOM_TEMPLATE,
 ]
 BUILTIN_TEMPLATE_IDS = frozenset(t.id for t in BUILTIN_TEMPLATES)
