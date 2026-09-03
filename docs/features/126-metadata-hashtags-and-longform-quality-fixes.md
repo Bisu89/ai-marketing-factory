@@ -1,6 +1,6 @@
 # 126 — Package hashtags fix + long-form Quality-Gate false positive
 
-**Commit:** _(fill in after commit)_
+**Commit:** `65b9fee`
 
 Two bugs surfaced by rendering the first real 15-minute video
 (`military_history` template, 30 beats, AI visuals):
