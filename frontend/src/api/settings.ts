@@ -55,22 +55,6 @@ export async function updateNewsPollInterval(
   return apiPut<{ news_poll_interval_minutes: number }>("/settings/news-poll-interval", { minutes });
 }
 
-export interface DefaultVoiceResult {
-  default_voice_provider: "local" | "edge_tts";
-  default_voice_id: string;
-  default_voice_speed: number;
-  default_sentence_pause_sec: number;
-}
-
-export async function updateDefaultVoice(input: {
-  provider: "local" | "edge_tts";
-  voice_id: string;
-  speed: number;
-  sentence_pause_sec: number;
-}): Promise<DefaultVoiceResult> {
-  return apiPut<DefaultVoiceResult>("/settings/default-voice", input);
-}
-
 export async function browseFolders(path?: string): Promise<BrowseFoldersResult> {
   const query = path ? `?path=${encodeURIComponent(path)}` : "";
   return apiGet<BrowseFoldersResult>(`/settings/browse-folders${query}`);

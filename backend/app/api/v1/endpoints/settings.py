@@ -11,7 +11,6 @@ from app.core.config import (
     get_settings,
     update_ai_provider,
     update_anthropic_api_key,
-    update_default_voice,
     update_google_oauth_client_id,
     update_google_oauth_client_secret,
     update_library_dir,
@@ -24,12 +23,6 @@ from app.core.config import (
     update_youtube_redirect_uri,
 )
 from app.modules.ai.llm_client import AI_PROVIDERS, resolve_ai_credentials
-from app.modules.beat.schemas import (
-    MAX_SENTENCE_PAUSE_SEC,
-    MAX_VOICE_SPEED,
-    MIN_VOICE_SPEED,
-    VOICE_PROVIDERS,
-)
 from app.services.download.engine import DownloadEngine
 
 router = APIRouter()
@@ -80,13 +73,6 @@ class NewsPollIntervalIn(BaseModel):
     minutes: int
 
 
-class DefaultVoiceIn(BaseModel):
-    provider: str
-    voice_id: str
-    speed: float
-    sentence_pause_sec: float
-
-
 class FolderEntry(BaseModel):
     name: str
     path: str
@@ -128,13 +114,6 @@ def read_settings(settings: Settings = Depends(get_settings)):
         # News channel feed poll interval in minutes (0 = off). See
         # app/modules/news/ and docs/features/123-news-channel.md.
         "news_poll_interval_minutes": settings.news_poll_interval_minutes,
-        # Default narration settings that pre-fill a NEW template's voice
-        # fields (CreateTemplateModal, "Blank" start). Not applied to any
-        # existing template/project.
-        "default_voice_provider": settings.default_voice_provider,
-        "default_voice_id": settings.default_voice_id,
-        "default_voice_speed": settings.default_voice_speed,
-        "default_sentence_pause_sec": settings.default_sentence_pause_sec,
     }
 
 
@@ -152,24 +131,6 @@ def set_news_poll_interval(payload: NewsPollIntervalIn):
         raise HTTPException(status_code=400, detail="minutes must be between 0 and 1440 (0 = off)")
     update_news_poll_interval_minutes(payload.minutes)
     return {"news_poll_interval_minutes": payload.minutes}
-
-
-@router.put("/settings/default-voice")
-def set_default_voice(payload: DefaultVoiceIn):
-    if payload.provider not in VOICE_PROVIDERS:
-        raise HTTPException(status_code=400, detail=f"provider phai la mot trong {VOICE_PROVIDERS}")
-    if not (MIN_VOICE_SPEED <= payload.speed <= MAX_VOICE_SPEED):
-        raise HTTPException(status_code=400, detail=f"speed phai trong khoang {MIN_VOICE_SPEED}-{MAX_VOICE_SPEED}")
-    if not (0.0 <= payload.sentence_pause_sec <= MAX_SENTENCE_PAUSE_SEC):
-        raise HTTPException(status_code=400, detail=f"sentence_pause_sec phai trong khoang 0-{MAX_SENTENCE_PAUSE_SEC}")
-    voice_id = payload.voice_id.strip() or "default"
-    update_default_voice(payload.provider, voice_id, payload.speed, payload.sentence_pause_sec)
-    return {
-        "default_voice_provider": payload.provider,
-        "default_voice_id": voice_id,
-        "default_voice_speed": payload.speed,
-        "default_sentence_pause_sec": payload.sentence_pause_sec,
-    }
 
 
 @router.put("/settings/anthropic-key")

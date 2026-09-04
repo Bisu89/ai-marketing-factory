@@ -19,15 +19,6 @@ interface CreateTemplateModalProps {
   // docs/features/84-template-management-and-image-style-prompt.md for the
   // sibling edit flow this mirrors.
   existingTemplates: Template[];
-  // Narration defaults from Settings ("Giọng đọc mặc định") -- used to
-  // seed the voice fields when this modal starts from "Blank". A template
-  // copied from an existing one still uses that template's own voice.
-  defaultVoice?: {
-    provider: "local" | "edge_tts";
-    voice_id: string;
-    speed: number;
-    sentence_pause_sec: number;
-  };
   onSaved: (template: Template) => void;
   onClose: () => void;
 }
@@ -42,14 +33,7 @@ interface CreateTemplateModalProps {
 // creation, and matching Template.config's own "everything else stays as
 // the source had it" semantics (mirrors Batch.template_id's own snapshot
 // convention, not a live link to the source template).
-export function CreateTemplateModal({ existingTemplates, defaultVoice, onSaved, onClose }: CreateTemplateModalProps) {
-  const blankVoice = {
-    provider: defaultVoice?.provider ?? SYSTEM_DEFAULT_PROJECT_CONFIG.voice.provider,
-    voice_id: defaultVoice?.voice_id ?? SYSTEM_DEFAULT_PROJECT_CONFIG.voice.voice_id,
-    speed: defaultVoice?.speed ?? SYSTEM_DEFAULT_PROJECT_CONFIG.voice.speed,
-    sentence_pause_sec:
-      defaultVoice?.sentence_pause_sec ?? SYSTEM_DEFAULT_PROJECT_CONFIG.voice.sentence_pause_sec,
-  };
+export function CreateTemplateModal({ existingTemplates, onSaved, onClose }: CreateTemplateModalProps) {
   const [sourceTemplateId, setSourceTemplateId] = useState<string>("__blank__");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -60,10 +44,10 @@ export function CreateTemplateModal({ existingTemplates, defaultVoice, onSaved, 
   const [musicBrowserOpen, setMusicBrowserOpen] = useState(false);
   const [captionsEnabled, setCaptionsEnabled] = useState(SYSTEM_DEFAULT_PROJECT_CONFIG.captions.enabled);
   const [captionPreset, setCaptionPreset] = useState<CaptionPreset>(SYSTEM_DEFAULT_PROJECT_CONFIG.captions.preset);
-  const [voiceProvider, setVoiceProvider] = useState(blankVoice.provider);
-  const [voiceId, setVoiceId] = useState(blankVoice.voice_id);
-  const [voiceSpeed, setVoiceSpeed] = useState(blankVoice.speed);
-  const [sentencePause, setSentencePause] = useState(blankVoice.sentence_pause_sec);
+  const [voiceProvider, setVoiceProvider] = useState(SYSTEM_DEFAULT_PROJECT_CONFIG.voice.provider);
+  const [voiceId, setVoiceId] = useState(SYSTEM_DEFAULT_PROJECT_CONFIG.voice.voice_id);
+  const [voiceSpeed, setVoiceSpeed] = useState(SYSTEM_DEFAULT_PROJECT_CONFIG.voice.speed);
+  const [sentencePause, setSentencePause] = useState(SYSTEM_DEFAULT_PROJECT_CONFIG.voice.sentence_pause_sec);
   const [localVoices, setLocalVoices] = useState<LocalVoiceOption[]>([]);
   const [localVoicesError, setLocalVoicesError] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
@@ -83,18 +67,10 @@ export function CreateTemplateModal({ existingTemplates, defaultVoice, onSaved, 
     setMusicAssetId(config.audio.bgm_asset_id);
     setCaptionsEnabled(config.captions.enabled);
     setCaptionPreset(config.captions.preset);
-    if (id === "__blank__") {
-      // "Blank" seeds the voice from Settings' "Giọng đọc mặc định".
-      setVoiceProvider(blankVoice.provider);
-      setVoiceId(blankVoice.voice_id);
-      setVoiceSpeed(blankVoice.speed);
-      setSentencePause(blankVoice.sentence_pause_sec);
-    } else {
-      setVoiceProvider(config.voice.provider);
-      setVoiceId(config.voice.voice_id);
-      setVoiceSpeed(config.voice.speed);
-      setSentencePause(config.voice.sentence_pause_sec ?? blankVoice.sentence_pause_sec);
-    }
+    setVoiceProvider(config.voice.provider);
+    setVoiceId(config.voice.voice_id);
+    setVoiceSpeed(config.voice.speed);
+    setSentencePause(config.voice.sentence_pause_sec ?? SYSTEM_DEFAULT_PROJECT_CONFIG.voice.sentence_pause_sec);
   }
 
   useEffect(() => {

@@ -8,7 +8,6 @@ import {
   getSettings,
   updateAiProvider,
   updateAnthropicApiKey,
-  updateDefaultVoice,
   updateLibraryDir,
   updateOpenAiApiKey,
   updateNewsPollInterval,
@@ -18,12 +17,9 @@ import {
   updateTikTokClientSecret,
   updateTikTokRedirectUri,
 } from "../api/settings";
-import { listLocalVoices } from "../api/voice";
-import type { LocalVoiceOption } from "../api/voice";
 import { deleteTemplate, listTemplates } from "../api/template";
 import type { AIProvider } from "../types/settings";
 import type { Template } from "../types/videoFactory";
-import { VOICE_OPTIONS } from "../types/videoFactory";
 import "./SettingsPage.css";
 
 export function SettingsPage() {
@@ -69,16 +65,6 @@ export function SettingsPage() {
   const [newsPollMinutes, setNewsPollMinutes] = useState(0);
   const [savingNewsPoll, setSavingNewsPoll] = useState(false);
 
-  // Default narration settings -- pre-fill a NEW template's voice fields
-  // (CreateTemplateModal, "Blank" start). Never touches an existing
-  // template or project.
-  const [defaultVoiceProvider, setDefaultVoiceProvider] = useState<"local" | "edge_tts">("local");
-  const [defaultVoiceId, setDefaultVoiceId] = useState("default");
-  const [defaultVoiceSpeed, setDefaultVoiceSpeed] = useState(1.0);
-  const [defaultSentencePause, setDefaultSentencePause] = useState(0.35);
-  const [savingDefaultVoice, setSavingDefaultVoice] = useState(false);
-  const [localVoices, setLocalVoices] = useState<LocalVoiceOption[]>([]);
-
   // Video Factory templates (Task 12 -- see docs/features/39-project-templates.md).
   const [templates, setTemplates] = useState<Template[]>([]);
   const [templatesError, setTemplatesError] = useState<string | null>(null);
@@ -106,16 +92,9 @@ export function SettingsPage() {
         setYoutubeRedirectUri(settings.youtube_redirect_uri);
         setRenderCacheDays(settings.render_cache_retention_days);
         setNewsPollMinutes(settings.news_poll_interval_minutes);
-        // Fall back to the built-in defaults if the backend predates this
-        // feature (GET /settings without the default_voice_* keys).
-        setDefaultVoiceProvider(settings.default_voice_provider ?? "local");
-        setDefaultVoiceId(settings.default_voice_id ?? "default");
-        setDefaultVoiceSpeed(settings.default_voice_speed ?? 1.0);
-        setDefaultSentencePause(settings.default_sentence_pause_sec ?? 0.35);
       })
       .catch(() => setError("Không đọc được cấu hình hiện tại."));
     refreshTemplates();
-    listLocalVoices().then(setLocalVoices).catch(() => setLocalVoices([]));
   }, []);
 
   async function handleDeleteTemplate(template: Template) {
@@ -276,30 +255,6 @@ export function SettingsPage() {
     }
   }
 
-  async function handleSaveDefaultVoice() {
-    if (savingDefaultVoice) return;
-    setSavingDefaultVoice(true);
-    setError(null);
-    setMessage(null);
-    try {
-      const result = await updateDefaultVoice({
-        provider: defaultVoiceProvider,
-        voice_id: defaultVoiceId,
-        speed: defaultVoiceSpeed,
-        sentence_pause_sec: defaultSentencePause,
-      });
-      setDefaultVoiceProvider(result.default_voice_provider);
-      setDefaultVoiceId(result.default_voice_id);
-      setDefaultVoiceSpeed(result.default_voice_speed);
-      setDefaultSentencePause(result.default_sentence_pause_sec);
-      setMessage("Đã lưu giọng đọc mặc định. Áp dụng khi bạn tạo Template mới từ 'Blank'.");
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Không lưu được giọng đọc mặc định.");
-    } finally {
-      setSavingDefaultVoice(false);
-    }
-  }
-
   async function handleChangeProvider(provider: AIProvider) {
     if (provider === aiProvider || savingProvider) return;
     setSavingProvider(true);
@@ -451,109 +406,6 @@ export function SettingsPage() {
               Lưu
             </button>
           </div>
-        </div>
-      </div>
-
-      {/* -- Giọng đọc mặc định ------------------------------------------- */}
-      <div className="settings-card">
-        <div className="settings-row settings-row-header">
-          <label className="settings-label">Giọng đọc mặc định (cho Template mới)</label>
-        </div>
-        <p className="settings-hint">
-          Điền sẵn các ô giọng đọc khi bạn tạo một Template mới từ "Blank" (Video Factory Templates bên dưới). Không
-          đổi Template hay project nào đang có -- mỗi Template giữ cấu hình riêng của nó.
-        </p>
-
-        <div className="settings-row">
-          <label className="settings-label" htmlFor="default-voice-provider">
-            Provider
-          </label>
-          <select
-            id="default-voice-provider"
-            className="settings-input settings-input-narrow"
-            value={defaultVoiceProvider}
-            onChange={(e) => {
-              setDefaultVoiceProvider(e.target.value as "local" | "edge_tts");
-              setDefaultVoiceId("default");
-            }}
-          >
-            <option value="local">Local (offline, không cần mạng)</option>
-            <option value="edge_tts">Edge TTS (miễn phí, cần mạng)</option>
-          </select>
-        </div>
-
-        <div className="settings-row">
-          <label className="settings-label" htmlFor="default-voice-id">
-            Giọng
-          </label>
-          <select
-            id="default-voice-id"
-            className="settings-input settings-input-narrow"
-            value={defaultVoiceId}
-            onChange={(e) => setDefaultVoiceId(e.target.value)}
-          >
-            {defaultVoiceProvider === "local" ? (
-              <>
-                <option value="default">System Default</option>
-                {localVoices.map((v) => (
-                  <option key={v.id} value={v.id}>
-                    {v.name}
-                  </option>
-                ))}
-              </>
-            ) : (
-              <>
-                <option value="default">Mặc định theo ngôn ngữ</option>
-                {VOICE_OPTIONS.map((v) => (
-                  <option key={v.value} value={v.value}>
-                    {v.label}
-                  </option>
-                ))}
-              </>
-            )}
-          </select>
-        </div>
-
-        <div className="settings-row">
-          <label className="settings-label" htmlFor="default-voice-speed">
-            Tốc độ ({defaultVoiceSpeed.toFixed(2)}x)
-          </label>
-          <input
-            id="default-voice-speed"
-            type="range"
-            min={0.5}
-            max={2}
-            step={0.05}
-            value={defaultVoiceSpeed}
-            onChange={(e) => setDefaultVoiceSpeed(Number(e.target.value))}
-          />
-        </div>
-
-        <div className="settings-row">
-          <label className="settings-label" htmlFor="default-sentence-pause">
-            Khoảng lặng giữa câu ({defaultSentencePause.toFixed(2)}s)
-          </label>
-          <input
-            id="default-sentence-pause"
-            type="range"
-            min={0}
-            max={2}
-            step={0.05}
-            value={defaultSentencePause}
-            onChange={(e) => setDefaultSentencePause(Number(e.target.value))}
-          />
-        </div>
-        <p className="settings-hint">
-          Khoảng im lặng chèn giữa các câu/beat. 0.35s là mặc định cho giọng kể ấm; tăng lên ~0.8-1.5s cho kiểu
-          "nhấn nhá" chậm rãi (horror, podcast deadpan).
-        </p>
-
-        <div className="settings-row">
-          <span className="settings-label" />
-          <button className="btn btn-secondary" onClick={handleSaveDefaultVoice} disabled={savingDefaultVoice}>
-            <CheckCircle2 size={14} />
-            Lưu giọng mặc định
-          </button>
         </div>
       </div>
 
@@ -782,12 +634,6 @@ export function SettingsPage() {
       {creatingTemplate && (
         <CreateTemplateModal
           existingTemplates={templates}
-          defaultVoice={{
-            provider: defaultVoiceProvider,
-            voice_id: defaultVoiceId,
-            speed: defaultVoiceSpeed,
-            sentence_pause_sec: defaultSentencePause,
-          }}
           onSaved={() => {
             setCreatingTemplate(false);
             refreshTemplates();
