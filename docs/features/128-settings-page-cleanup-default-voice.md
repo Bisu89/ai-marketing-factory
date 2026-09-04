@@ -25,7 +25,7 @@ Reworked the Settings page after a user request to tidy it up.
   `SYSTEM_DEFAULT_PROJECT_CONFIG` literal + `VideoFactoryPage`'s
   `buildProjectConfigForSave` (preserved as-loaded, no Step 4 control).
 
-**Landed in**: _(pending commit)_
+**Landed in**: `465e896` — feat: Settings page cleanup + default-voice card (128)
 
 **Key files**: `backend/app/core/config.py`,
 `backend/app/api/v1/endpoints/settings.py`,
