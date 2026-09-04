@@ -8,6 +8,7 @@ import {
   getSettings,
   updateAiProvider,
   updateAnthropicApiKey,
+  updateDefaultVoice,
   updateLibraryDir,
   updateOpenAiApiKey,
   updateNewsPollInterval,
@@ -17,15 +18,16 @@ import {
   updateTikTokClientSecret,
   updateTikTokRedirectUri,
 } from "../api/settings";
+import { listLocalVoices } from "../api/voice";
+import type { LocalVoiceOption } from "../api/voice";
 import { deleteTemplate, listTemplates } from "../api/template";
 import type { AIProvider } from "../types/settings";
 import type { Template } from "../types/videoFactory";
+import { VOICE_OPTIONS } from "../types/videoFactory";
 import "./SettingsPage.css";
 
 export function SettingsPage() {
   const [libraryDir, setLibraryDir] = useState<string | null>(null);
-  const [maxConcurrent, setMaxConcurrent] = useState(3);
-  const [defaultQuality, setDefaultQuality] = useState("1080p");
   const [showBrowser, setShowBrowser] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -67,6 +69,16 @@ export function SettingsPage() {
   const [newsPollMinutes, setNewsPollMinutes] = useState(0);
   const [savingNewsPoll, setSavingNewsPoll] = useState(false);
 
+  // Default narration settings -- pre-fill a NEW template's voice fields
+  // (CreateTemplateModal, "Blank" start). Never touches an existing
+  // template or project.
+  const [defaultVoiceProvider, setDefaultVoiceProvider] = useState<"local" | "edge_tts">("local");
+  const [defaultVoiceId, setDefaultVoiceId] = useState("default");
+  const [defaultVoiceSpeed, setDefaultVoiceSpeed] = useState(1.0);
+  const [defaultSentencePause, setDefaultSentencePause] = useState(0.35);
+  const [savingDefaultVoice, setSavingDefaultVoice] = useState(false);
+  const [localVoices, setLocalVoices] = useState<LocalVoiceOption[]>([]);
+
   // Video Factory templates (Task 12 -- see docs/features/39-project-templates.md).
   const [templates, setTemplates] = useState<Template[]>([]);
   const [templatesError, setTemplatesError] = useState<string | null>(null);
@@ -94,9 +106,14 @@ export function SettingsPage() {
         setYoutubeRedirectUri(settings.youtube_redirect_uri);
         setRenderCacheDays(settings.render_cache_retention_days);
         setNewsPollMinutes(settings.news_poll_interval_minutes);
+        setDefaultVoiceProvider(settings.default_voice_provider);
+        setDefaultVoiceId(settings.default_voice_id);
+        setDefaultVoiceSpeed(settings.default_voice_speed);
+        setDefaultSentencePause(settings.default_sentence_pause_sec);
       })
       .catch(() => setError("Không đọc được cấu hình hiện tại."));
     refreshTemplates();
+    listLocalVoices().then(setLocalVoices).catch(() => setLocalVoices([]));
   }, []);
 
   async function handleDeleteTemplate(template: Template) {
@@ -257,6 +274,30 @@ export function SettingsPage() {
     }
   }
 
+  async function handleSaveDefaultVoice() {
+    if (savingDefaultVoice) return;
+    setSavingDefaultVoice(true);
+    setError(null);
+    setMessage(null);
+    try {
+      const result = await updateDefaultVoice({
+        provider: defaultVoiceProvider,
+        voice_id: defaultVoiceId,
+        speed: defaultVoiceSpeed,
+        sentence_pause_sec: defaultSentencePause,
+      });
+      setDefaultVoiceProvider(result.default_voice_provider);
+      setDefaultVoiceId(result.default_voice_id);
+      setDefaultVoiceSpeed(result.default_voice_speed);
+      setDefaultSentencePause(result.default_sentence_pause_sec);
+      setMessage("Đã lưu giọng đọc mặc định. Áp dụng khi bạn tạo Template mới từ 'Blank'.");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Không lưu được giọng đọc mặc định.");
+    } finally {
+      setSavingDefaultVoice(false);
+    }
+  }
+
   async function handleChangeProvider(provider: AIProvider) {
     if (provider === aiProvider || savingProvider) return;
     setSavingProvider(true);
@@ -288,7 +329,7 @@ export function SettingsPage() {
 
   return (
     <>
-      <PageHeader title="Settings" subtitle="Cấu hình chung cho việc tải và lưu trữ" />
+      <PageHeader title="Settings" subtitle="Cấu hình chung cho lưu trữ, AI và Video Factory" />
 
       {message && (
         <div className="settings-alert settings-alert-success">
@@ -298,7 +339,12 @@ export function SettingsPage() {
       )}
       {error && <div className="settings-alert settings-alert-error">{error}</div>}
 
+      {/* -- Lưu trữ & dọn dẹp ------------------------------------------- */}
       <div className="settings-card">
+        <div className="settings-row settings-row-header">
+          <label className="settings-label">Lưu trữ &amp; dọn dẹp</label>
+        </div>
+
         <div className="settings-row">
           <label className="settings-label">Thư mục lưu trữ</label>
           <div className="settings-folder-picker">
@@ -310,41 +356,40 @@ export function SettingsPage() {
           </div>
         </div>
 
+        <p className="settings-hint">
+          Sau khi một video render xong, các file đọc/chuyển động/audio tạm của nó (regenerate được nếu render lại)
+          sẽ tự động bị xóa sau số ngày dưới đây, lúc mở app và mỗi 24 giờ. File nhạc bạn tự import và ảnh AI đã sinh
+          không bị đụng tới. 0 = tắt.
+        </p>
         <div className="settings-row">
-          <label className="settings-label" htmlFor="max-concurrent">
-            Số lượt tải song song tối đa
-          </label>
-          <input
-            id="max-concurrent"
-            type="number"
-            min={1}
-            max={10}
-            className="settings-input settings-input-narrow"
-            value={maxConcurrent}
-            onChange={(e) => setMaxConcurrent(Number(e.target.value))}
-          />
-        </div>
-
-        <div className="settings-row">
-          <label className="settings-label" htmlFor="default-quality">
-            Chất lượng mặc định
+          <label className="settings-label" htmlFor="render-cache-days">
+            Tự động xóa render cache sau (ngày)
           </label>
           <select
-            id="default-quality"
+            id="render-cache-days"
             className="settings-input settings-input-narrow"
-            value={defaultQuality}
-            onChange={(e) => setDefaultQuality(e.target.value)}
+            value={renderCacheDays}
+            disabled={savingRenderCache}
+            onChange={(e) => handleSaveRenderCache(Number(e.target.value))}
           >
-            <option value="2160p">2160p (4K)</option>
-            <option value="1080p">1080p</option>
-            <option value="720p">720p</option>
-            <option value="480p">480p</option>
+            <option value={0}>Tắt</option>
+            <option value={3}>3 ngày</option>
+            <option value={7}>7 ngày</option>
+            <option value={14}>14 ngày</option>
+            <option value={30}>30 ngày</option>
           </select>
+        </div>
+      </div>
+
+      {/* -- AI Provider ---------------------------------------------------- */}
+      <div className="settings-card">
+        <div className="settings-row settings-row-header">
+          <label className="settings-label">AI Provider (Content / Beats / AI Story)</label>
         </div>
 
         <div className="settings-row">
           <label className="settings-label" htmlFor="ai-provider">
-            AI Provider (dùng cho Content/Beats/AI Story)
+            Provider đang dùng
           </label>
           <select
             id="ai-provider"
@@ -407,6 +452,110 @@ export function SettingsPage() {
         </div>
       </div>
 
+      {/* -- Giọng đọc mặc định ------------------------------------------- */}
+      <div className="settings-card">
+        <div className="settings-row settings-row-header">
+          <label className="settings-label">Giọng đọc mặc định (cho Template mới)</label>
+        </div>
+        <p className="settings-hint">
+          Điền sẵn các ô giọng đọc khi bạn tạo một Template mới từ "Blank" (Video Factory Templates bên dưới). Không
+          đổi Template hay project nào đang có -- mỗi Template giữ cấu hình riêng của nó.
+        </p>
+
+        <div className="settings-row">
+          <label className="settings-label" htmlFor="default-voice-provider">
+            Provider
+          </label>
+          <select
+            id="default-voice-provider"
+            className="settings-input settings-input-narrow"
+            value={defaultVoiceProvider}
+            onChange={(e) => {
+              setDefaultVoiceProvider(e.target.value as "local" | "edge_tts");
+              setDefaultVoiceId("default");
+            }}
+          >
+            <option value="local">Local (offline, không cần mạng)</option>
+            <option value="edge_tts">Edge TTS (miễn phí, cần mạng)</option>
+          </select>
+        </div>
+
+        <div className="settings-row">
+          <label className="settings-label" htmlFor="default-voice-id">
+            Giọng
+          </label>
+          <select
+            id="default-voice-id"
+            className="settings-input settings-input-narrow"
+            value={defaultVoiceId}
+            onChange={(e) => setDefaultVoiceId(e.target.value)}
+          >
+            {defaultVoiceProvider === "local" ? (
+              <>
+                <option value="default">System Default</option>
+                {localVoices.map((v) => (
+                  <option key={v.id} value={v.id}>
+                    {v.name}
+                  </option>
+                ))}
+              </>
+            ) : (
+              <>
+                <option value="default">Mặc định theo ngôn ngữ</option>
+                {VOICE_OPTIONS.map((v) => (
+                  <option key={v.value} value={v.value}>
+                    {v.label}
+                  </option>
+                ))}
+              </>
+            )}
+          </select>
+        </div>
+
+        <div className="settings-row">
+          <label className="settings-label" htmlFor="default-voice-speed">
+            Tốc độ ({defaultVoiceSpeed.toFixed(2)}x)
+          </label>
+          <input
+            id="default-voice-speed"
+            type="range"
+            min={0.5}
+            max={2}
+            step={0.05}
+            value={defaultVoiceSpeed}
+            onChange={(e) => setDefaultVoiceSpeed(Number(e.target.value))}
+          />
+        </div>
+
+        <div className="settings-row">
+          <label className="settings-label" htmlFor="default-sentence-pause">
+            Khoảng lặng giữa câu ({defaultSentencePause.toFixed(2)}s)
+          </label>
+          <input
+            id="default-sentence-pause"
+            type="range"
+            min={0}
+            max={2}
+            step={0.05}
+            value={defaultSentencePause}
+            onChange={(e) => setDefaultSentencePause(Number(e.target.value))}
+          />
+        </div>
+        <p className="settings-hint">
+          Khoảng im lặng chèn giữa các câu/beat. 0.35s là mặc định cho giọng kể ấm; tăng lên ~0.8-1.5s cho kiểu
+          "nhấn nhá" chậm rãi (horror, podcast deadpan).
+        </p>
+
+        <div className="settings-row">
+          <span className="settings-label" />
+          <button className="btn btn-secondary" onClick={handleSaveDefaultVoice} disabled={savingDefaultVoice}>
+            <CheckCircle2 size={14} />
+            Lưu giọng mặc định
+          </button>
+        </div>
+      </div>
+
+      {/* -- TikTok ------------------------------------------------------- */}
       <div className="settings-card">
         <div className="settings-row settings-row-header">
           <label className="settings-label">TikTok (Competitor Content Analyzer)</label>
@@ -491,6 +640,7 @@ export function SettingsPage() {
         </div>
       </div>
 
+      {/* -- YouTube Publishing ----------------------------------------- */}
       <div className="settings-card">
         <div className="settings-row settings-row-header">
           <label className="settings-label">YouTube Publishing (Google OAuth)</label>
@@ -538,35 +688,7 @@ export function SettingsPage() {
         </div>
       </div>
 
-      <div className="settings-card">
-        <div className="settings-row settings-row-header">
-          <label className="settings-label">Dọn dẹp bộ nhớ (render cache)</label>
-        </div>
-        <p className="settings-hint">
-          Sau khi một video render xong, các file đọc/chuyển động/audio tạm của nó (regenerate được nếu render lại)
-          sẽ tự động bị xóa sau số ngày dưới đây, lúc mở app và mỗi 24 giờ. File nhạc bạn tự import và ảnh AI đã sinh
-          không bị đụng tới. 0 = tắt.
-        </p>
-        <div className="settings-row">
-          <label className="settings-label" htmlFor="render-cache-days">
-            Tự động xóa sau (ngày)
-          </label>
-          <select
-            id="render-cache-days"
-            className="settings-input settings-input-narrow"
-            value={renderCacheDays}
-            disabled={savingRenderCache}
-            onChange={(e) => handleSaveRenderCache(Number(e.target.value))}
-          >
-            <option value={0}>Tắt</option>
-            <option value={3}>3 ngày</option>
-            <option value={7}>7 ngày</option>
-            <option value={14}>14 ngày</option>
-            <option value={30}>30 ngày</option>
-          </select>
-        </div>
-      </div>
-
+      {/* -- Tự động kéo tin RSS --------------------------------------- */}
       <div className="settings-card">
         <div className="settings-row settings-row-header">
           <label className="settings-label">Tự động kéo tin tức (RSS)</label>
@@ -595,6 +717,7 @@ export function SettingsPage() {
         </div>
       </div>
 
+      {/* -- Video Factory Templates ----------------------------------- */}
       <div className="settings-card">
         <div className="settings-row settings-row-header">
           <label className="settings-label">
@@ -657,6 +780,12 @@ export function SettingsPage() {
       {creatingTemplate && (
         <CreateTemplateModal
           existingTemplates={templates}
+          defaultVoice={{
+            provider: defaultVoiceProvider,
+            voice_id: defaultVoiceId,
+            speed: defaultVoiceSpeed,
+            sentence_pause_sec: defaultSentencePause,
+          }}
           onSaved={() => {
             setCreatingTemplate(false);
             refreshTemplates();

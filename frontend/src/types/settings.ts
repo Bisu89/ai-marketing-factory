@@ -25,6 +25,13 @@ export interface AppSettings {
   // How often the News page re-fetches every enabled RSS source, in
   // minutes. 0 = off (feeds only pulled on a manual "Fetch").
   news_poll_interval_minutes: number;
+  // Default narration settings that pre-fill a NEW Video Factory
+  // template's voice fields (CreateTemplateModal, "Blank" start). Not
+  // applied to any existing template or project.
+  default_voice_provider: "local" | "edge_tts";
+  default_voice_id: string;
+  default_voice_speed: number;
+  default_sentence_pause_sec: number;
 }
 
 export interface FolderEntry {

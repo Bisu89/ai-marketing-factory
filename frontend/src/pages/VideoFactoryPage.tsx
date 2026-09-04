@@ -904,6 +904,9 @@ export function VideoFactoryPage() {
         language: contentLanguage,
         speed: voiceSpeed,
         pitch: projectConfig.voice.pitch,
+        // No Step 4 control for this yet -- preserved as-loaded from the
+        // template/project snapshot (same reasoning as pitch above).
+        sentence_pause_sec: projectConfig.voice.sentence_pause_sec,
       },
       // Not sourced from any Step 4 control (this page has no visual-
       // generation-mode UI) -- preserved as-loaded, same reasoning as

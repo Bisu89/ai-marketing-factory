@@ -438,6 +438,9 @@ export interface VoiceProjectConfig {
   language: string;
   speed: number;
   pitch: number;
+  // Task 116 -- the silent gap spliced between sentences/beats, in
+  // seconds (0 = no gap). Higher = more deliberate "nhấn nhá".
+  sentence_pause_sec: number;
 }
 
 // Task 59 -- see docs/features/59-ai-image-generation.md. "library" (the
@@ -512,6 +515,7 @@ export const SYSTEM_DEFAULT_PROJECT_CONFIG: ProjectConfig = {
     language: "en",
     speed: 1.0,
     pitch: 0,
+    sentence_pause_sec: 0.35,
   },
   visual_generation: { mode: "library", image_style_prompt: "" },
   template_id: null,

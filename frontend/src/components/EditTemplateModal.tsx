@@ -53,6 +53,7 @@ export function EditTemplateModal({ template, onSaved, onClose }: EditTemplateMo
   const [voiceProvider, setVoiceProvider] = useState(template.config.voice.provider);
   const [voiceId, setVoiceId] = useState(template.config.voice.voice_id);
   const [voiceSpeed, setVoiceSpeed] = useState(template.config.voice.speed);
+  const [sentencePause, setSentencePause] = useState(template.config.voice.sentence_pause_sec ?? 0.35);
   const [localVoices, setLocalVoices] = useState<LocalVoiceOption[]>([]);
   const [localVoicesError, setLocalVoicesError] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
@@ -92,7 +93,13 @@ export function EditTemplateModal({ template, onSaved, onClose }: EditTemplateMo
             bgm_asset_id: musicAssetId,
           },
           captions: { ...template.config.captions, enabled: captionsEnabled, preset: captionPreset },
-          voice: { ...template.config.voice, provider: voiceProvider, voice_id: voiceId, speed: voiceSpeed },
+          voice: {
+            ...template.config.voice,
+            provider: voiceProvider,
+            voice_id: voiceId,
+            speed: voiceSpeed,
+            sentence_pause_sec: sentencePause,
+          },
         },
       });
       onSaved(updated);
@@ -215,6 +222,22 @@ export function EditTemplateModal({ template, onSaved, onClose }: EditTemplateMo
                 value={voiceSpeed}
                 onChange={(e) => setVoiceSpeed(Number(e.target.value))}
               />
+            </label>
+
+            <label className="edit-template-field">
+              <span>Sentence pause ({sentencePause.toFixed(2)}s)</span>
+              <input
+                type="range"
+                min={0}
+                max={2}
+                step={0.05}
+                value={sentencePause}
+                onChange={(e) => setSentencePause(Number(e.target.value))}
+              />
+              <span className="edit-template-hint">
+                Silent gap spliced between sentences/beats. ~0.35s for a warm read; 0.8-1.5s for a slower,
+                more deliberate delivery.
+              </span>
             </label>
 
             <label className="edit-template-checkbox">

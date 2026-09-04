@@ -127,6 +127,18 @@ class Settings(BaseSettings):
     # neighboring beats instead).
     voice_min_beat_duration: float = 0.8
 
+    # Default narration settings used to pre-fill the voice fields when a
+    # user creates a NEW Video Factory template from "Blank" (see
+    # CreateTemplateModal). Purely a starting point -- once a template is
+    # created it carries its own snapshot, and changing these never touches
+    # an existing template or project. Mirrors VoiceProjectConfig's own
+    # field names/defaults (app.modules.beat.schemas): provider in
+    # ("local", "edge_tts"), speed 0.5-2.0, pause 0.0-2.0s.
+    default_voice_provider: str = "local"
+    default_voice_id: str = "default"
+    default_voice_speed: float = 1.0
+    default_sentence_pause_sec: float = 0.35
+
     # Render-cache auto-cleanup (see docs/features/121-...). How many days
     # after a project's render finishes before its regenerable per-beat
     # voice/motion/audio cache (_voice/_motion/_audio/project_<id>/) is
@@ -191,6 +203,14 @@ def update_render_cache_retention_days(days: int) -> None:
 
 def update_news_poll_interval_minutes(minutes: int) -> None:
     set_key(ENV_FILE_PATH, "APP_NEWS_POLL_INTERVAL_MINUTES", str(minutes))
+    get_settings.cache_clear()
+
+
+def update_default_voice(provider: str, voice_id: str, speed: float, sentence_pause_sec: float) -> None:
+    set_key(ENV_FILE_PATH, "APP_DEFAULT_VOICE_PROVIDER", provider)
+    set_key(ENV_FILE_PATH, "APP_DEFAULT_VOICE_ID", voice_id)
+    set_key(ENV_FILE_PATH, "APP_DEFAULT_VOICE_SPEED", str(speed))
+    set_key(ENV_FILE_PATH, "APP_DEFAULT_SENTENCE_PAUSE_SEC", str(sentence_pause_sec))
     get_settings.cache_clear()
 
 
