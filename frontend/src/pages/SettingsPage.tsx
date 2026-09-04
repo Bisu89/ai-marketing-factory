@@ -106,10 +106,12 @@ export function SettingsPage() {
         setYoutubeRedirectUri(settings.youtube_redirect_uri);
         setRenderCacheDays(settings.render_cache_retention_days);
         setNewsPollMinutes(settings.news_poll_interval_minutes);
-        setDefaultVoiceProvider(settings.default_voice_provider);
-        setDefaultVoiceId(settings.default_voice_id);
-        setDefaultVoiceSpeed(settings.default_voice_speed);
-        setDefaultSentencePause(settings.default_sentence_pause_sec);
+        // Fall back to the built-in defaults if the backend predates this
+        // feature (GET /settings without the default_voice_* keys).
+        setDefaultVoiceProvider(settings.default_voice_provider ?? "local");
+        setDefaultVoiceId(settings.default_voice_id ?? "default");
+        setDefaultVoiceSpeed(settings.default_voice_speed ?? 1.0);
+        setDefaultSentencePause(settings.default_sentence_pause_sec ?? 0.35);
       })
       .catch(() => setError("Không đọc được cấu hình hiện tại."));
     refreshTemplates();
