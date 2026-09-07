@@ -496,11 +496,11 @@ function ProducePanel({
   const planReady = story.status === "SCENES_READY" || planRun?.status === "READY";
   const canProduce = planReady && (produceRun == null || !isActiveStoryRun(produceRun.status));
 
-  async function doProduce() {
+  async function doProduce(test: boolean) {
     setBusy(true);
     setError(null);
     try {
-      onChange(await produceStory(storyId));
+      onChange(await produceStory(storyId, test));
     } catch (err) {
       setError(err instanceof Error ? err.message : "Could not start production.");
     } finally {
@@ -549,7 +549,10 @@ function ProducePanel({
         <ul className="studio-compiled-list">
           {compiled.map((p) => (
             <li key={p.project_id}>
-              <span className="studio-compiled-label">{p.label}</span>
+              <span className="studio-compiled-label">
+                {p.is_test ? "🧪 " : ""}
+                {p.label}
+              </span>
               {p.factory_run ? (
                 <span
                   className={`studio-badge ${
@@ -577,9 +580,13 @@ function ProducePanel({
       {error && <div className="studio-alert studio-alert-error">{error}</div>}
 
       <div className="studio-run-actions">
-        <button className="btn btn-primary" disabled={busy || !canProduce} onClick={doProduce}>
+        <button className="btn btn-secondary" disabled={busy || !canProduce} onClick={() => doProduce(true)}>
+          {busy ? <Loader2 size={14} className="spin" /> : "🧪"}
+          Test render (first {5} scenes)
+        </button>
+        <button className="btn btn-primary" disabled={busy || !canProduce} onClick={() => doProduce(false)}>
           {busy ? <Loader2 size={14} className="spin" /> : <Clapperboard size={14} />}
-          {produceRun == null ? "Produce" : "Re-produce"}
+          {produceRun == null ? "Produce full" : "Re-produce full"}
         </button>
         {compiled.some((p) => !RENDER_DONE.includes(p.factory_run?.status ?? "")) && produceRun?.status === "COMPLETED" && (
           <span className="studio-meta-dim">Renders run in the background — track them in Video Factory.</span>

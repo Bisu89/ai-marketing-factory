@@ -121,8 +121,8 @@ export function importStoryPackage(
 
 // -- compile / produce (Phase 5) -----------------------------------
 
-export function produceStory(storyId: number): Promise<StoryRun> {
-  return apiPost(`/stories/${storyId}/produce`);
+export function produceStory(storyId: number, test = false): Promise<StoryRun> {
+  return apiPost(`/stories/${storyId}/produce${test ? "?test=true" : ""}`);
 }
 
 export function getCompiledProjects(storyId: number): Promise<{ story_id: number; projects: CompiledProjectView[] }> {

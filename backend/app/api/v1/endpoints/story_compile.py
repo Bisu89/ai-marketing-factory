@@ -170,12 +170,17 @@ def _beats_from_raw(raw: list[dict]) -> list[Beat]:
     ]
 
 
-def _build_beat_plan(story, pc, scenes: list, chars_by_id: dict, locs_by_id: dict, project_name: str) -> BeatPlan:
+def _build_beat_plan(
+    story, pc, scenes: list, chars_by_id: dict, locs_by_id: dict, project_name: str,
+    *, render_profile: str | None = None,
+) -> BeatPlan:
     raw = [_scene_to_raw_beat(sc, chars_by_id, locs_by_id) for sc in scenes]
     raw = _merge_short(raw, pc.story_compile.merge_scenes_under_seconds)
     beats = _beats_from_raw(raw)
 
     config = pc.model_copy(deep=True)
+    if render_profile is not None:
+        config.render = config.render.model_copy(update={"profile": render_profile})
     config.audio = config.audio.model_copy(update={"narration_enabled": True})
     config.visual_generation = config.visual_generation.model_copy(update={
         "mode": "ai_generated",
@@ -237,7 +242,14 @@ def _project_exists(project_id: int | None) -> bool:
         db.close()
 
 
-def compile_story(story_id: int) -> CompileResult:
+# A "test" produce: the first few scenes only, rendered at the smaller
+# PREVIEW profile -- a quick, ~$0.02 look at the character / voice / pacing
+# before committing to the whole story.
+_TEST_MAX_SCENES = 5
+_TEST_RENDER_PROFILE = "PREVIEW"
+
+
+def compile_story(story_id: int, *, test: bool = False) -> CompileResult:
     story = service.get_story(story_id)
     pc = resolve_project_config(story.project_config_json)
     tree = service.get_chapters_with_scenes(story_id)
@@ -248,6 +260,23 @@ def compile_story(story_id: int) -> CompileResult:
     locs_by_id = {loc.id: loc for loc in service.list_locations(story_id)}
     mode = pc.story_compile.compile_mode
     projects: list[CompiledProject] = []
+
+    if test:
+        # First N scenes, one throwaway Project, never linked to a chapter
+        # / episode (a real Produce still compiles the full thing fresh).
+        all_scenes = [sc for _c, scenes in tree for sc in scenes][:_TEST_MAX_SCENES]
+        name = f"{story.title} — TEST"
+        plan = _build_beat_plan(
+            story, pc, all_scenes, chars_by_id, locs_by_id, name, render_profile=_TEST_RENDER_PROFILE
+        )
+        pid = _create_project(name, plan)
+        return CompileResult(
+            story_id=story_id, compile_mode="test",
+            projects=[CompiledProject(
+                project_id=pid, chapter_id=None, label=f"Test ({len(plan.beats)} scenes)",
+                beat_count=len(plan.beats), reused=False,
+            )],
+        )
 
     if mode == "per_chapter":
         for chapter, scenes in tree:
@@ -302,7 +331,9 @@ def compile_story(story_id: int) -> CompileResult:
 # -- the PRODUCE run ------------------------------------------------
 
 
-def _execute_story_produce_sync(run_id: int, story_id: int, settings: Settings, service_vc: VideoComposerService) -> None:
+def _execute_story_produce_sync(
+    run_id: int, story_id: int, settings: Settings, service_vc: VideoComposerService, *, test: bool = False
+) -> None:
     cancel_event = _cancel_event_for(run_id)
     try:
         # COMPILING -- reuse the run's own recorded ids on a retry.
@@ -315,11 +346,11 @@ def _execute_story_produce_sync(run_id: int, story_id: int, settings: Settings, 
         if prior and all(_project_exists(pid) for pid in prior):
             project_ids = list(prior)
         else:
-            result = compile_story(story_id)
+            result = compile_story(story_id, test=test)
             project_ids = [p.project_id for p in result.projects]
             service.set_run_fields(run_id, compiled_project_ids_json=project_ids)
         service.merge_stage_metrics(run_id, compiling_seconds=round(time.monotonic() - t0, 3))
-        service.complete_checkpoint(run_id, "COMPILING", metadata={"project_ids": project_ids})
+        service.complete_checkpoint(run_id, "COMPILING", metadata={"project_ids": project_ids, "test": test})
 
         if _bail_if_cancelled(run_id, cancel_event):
             return
@@ -334,13 +365,14 @@ def _execute_story_produce_sync(run_id: int, story_id: int, settings: Settings, 
                 started += 1
             except Exception:  # noqa: BLE001 -- one project failing to start must not abort the rest
                 logger.exception("story produce: could not start a factory run for project %s", pid)
-        service.complete_checkpoint(run_id, "PRODUCING", metadata={"factory_runs_started": started})
+        service.complete_checkpoint(run_id, "PRODUCING", metadata={"factory_runs_started": started, "test": test})
 
         service.set_run_fields(run_id, status="COMPLETED", completed_at=service._utcnow())
-        try:
-            service.patch_story(story_id, {"status": "PRODUCING"})
-        except Exception:  # noqa: BLE001
-            logger.exception("story %s: could not set status PRODUCING", story_id)
+        if not test:
+            try:
+                service.patch_story(story_id, {"status": "PRODUCING"})
+            except Exception:  # noqa: BLE001
+                logger.exception("story %s: could not set status PRODUCING", story_id)
     except ValidationError as exc:
         service.mark_run_failed(run_id, "COMPILING", "COMPILE_FAILED", str(exc))
     except Exception as exc:  # noqa: BLE001
@@ -350,44 +382,77 @@ def _execute_story_produce_sync(run_id: int, story_id: int, settings: Settings, 
         _drop_cancel_event(run_id)
 
 
-def produce_story(story_id: int, settings: Settings, service_vc: VideoComposerService):
+def produce_story(story_id: int, settings: Settings, service_vc: VideoComposerService, *, test: bool = False):
     story = service.get_story(story_id)
     tree = service.get_chapters_with_scenes(story_id)
     if not tree or all(len(sc) == 0 for _c, sc in tree):
         raise ValidationError("This story has no scenes to compile -- run the planning pipeline first.")
 
-    cost = estimate_cost(story_id)
-    if cost.verdict == "BLOCK":
-        raise ValidationError(
-            f"Estimated cost ${cost.total_usd} exceeds the cap ${cost.effective_cap_usd} ({cost.cap_source}). "
-            "Raise the budget or trim the story before producing."
-        )
+    # A test render is a handful of scenes -- never blocked by the cost cap
+    # (its whole point is to be cheap); a full produce still is.
+    if not test:
+        cost = estimate_cost(story_id)
+        if cost.verdict == "BLOCK":
+            raise ValidationError(
+                f"Estimated cost ${cost.total_usd} exceeds the cap ${cost.effective_cap_usd} ({cost.cap_source}). "
+                "Raise the budget or trim the story before producing."
+            )
 
     run, created = service.create_run(story_id, scope="PRODUCE")
     if created:
         threading.Thread(
-            target=_execute_story_produce_sync, args=(run.id, story_id, settings, service_vc), daemon=True
+            target=_execute_story_produce_sync, args=(run.id, story_id, settings, service_vc),
+            kwargs={"test": test}, daemon=True,
         ).start()
     return service.get_run(run.id)
 
 
+def _factory_run_dict(project_id: int) -> dict | None:
+    fr = factory_service.get_latest_run_for_project(project_id)
+    if fr is None:
+        return None
+    return {
+        "id": fr.id, "status": fr.status, "failed_stage": fr.failed_stage,
+        "error_message": fr.error_message, "render_job_id": fr.render_job_id,
+    }
+
+
 def _compiled_view(story_id: int) -> list[dict]:
     service.get_story(story_id)  # 404
-    chapters = service.list_chapters(story_id)
     out: list[dict] = []
-    for chapter in chapters:
+    seen: set[int] = set()
+
+    for chapter in service.list_chapters(story_id):
         if chapter.compiled_project_id is None:
             continue
-        fr = factory_service.get_latest_run_for_project(chapter.compiled_project_id)
+        seen.add(chapter.compiled_project_id)
         out.append({
             "project_id": chapter.compiled_project_id,
             "chapter_id": chapter.id,
             "label": chapter.title or f"Chapter {chapter.order}",
-            "factory_run": None if fr is None else {
-                "id": fr.id, "status": fr.status, "failed_stage": fr.failed_stage,
-                "error_message": fr.error_message, "render_job_id": fr.render_job_id,
-            },
+            "is_test": False,
+            "factory_run": _factory_run_dict(chapter.compiled_project_id),
         })
+
+    # The latest PRODUCE run's own projects -- covers `single` compile mode
+    # and, crucially, a test render (never linked to a chapter).
+    runs = [r for r in service.list_runs_for_story(story_id) if r.scope == "PRODUCE"]
+    if runs:
+        latest = runs[0]
+        is_test = any(
+            (c.checkpoint_metadata_json or {}).get("test")
+            for c in service.get_checkpoints(latest.id)
+        )
+        for pid in latest.compiled_project_ids_json or []:
+            if pid in seen or not _project_exists(pid):
+                continue
+            seen.add(pid)
+            out.append({
+                "project_id": pid, "chapter_id": None,
+                "label": "Test render" if is_test else "Full story",
+                "is_test": is_test,
+                "factory_run": _factory_run_dict(pid),
+            })
     return out
 
 
@@ -404,10 +469,14 @@ class CompiledResponse(BaseModel):
 @router.post("/stories/{story_id}/produce", response_model=StoryRunOut, status_code=201)
 def produce_story_endpoint(
     story_id: int,
+    test: bool = False,
     settings: Settings = Depends(get_settings),
     service_vc: VideoComposerService = Depends(get_video_composer_service),
 ) -> StoryRunOut:
-    run = produce_story(story_id, settings, service_vc)
+    """`?test=true` compiles only the first few scenes at the PREVIEW
+    profile -- a quick, cheap look before the full produce.
+    """
+    run = produce_story(story_id, settings, service_vc, test=test)
     return StoryRunOut.model_validate(run, from_attributes=True)
 
 

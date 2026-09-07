@@ -201,6 +201,7 @@ export interface CompiledProjectView {
   project_id: number;
   chapter_id: number | null;
   label: string;
+  is_test?: boolean;
   factory_run: {
     id: number;
     status: string;

@@ -197,6 +197,43 @@ class ProduceTests(_CompileTestCase):
         with self.Session() as db:
             self.assertEqual(db.query(Project).count(), 2)  # no new projects on retry
 
+    def test_test_render_uses_first_scenes_preview_profile_and_no_chapter_link(self):
+        sid = self._story()
+        self._populate(sid, chapters=3, scenes_per=3)  # 9 scenes total
+        run = sc.produce_story(sid, self.settings, object(), test=True)
+
+        done = service.get_run(run.id)
+        self.assertEqual(done.status, "COMPLETED")
+        self.assertEqual(len(done.compiled_project_ids_json), 1)
+        pid = done.compiled_project_ids_json[0]
+        with self.Session() as db:
+            proj = db.get(Project, pid)
+        self.assertEqual(len(proj.beat_plan_json["beats"]), sc._TEST_MAX_SCENES)  # 5, not 9
+        self.assertEqual(proj.beat_plan_json["config"]["render"]["profile"], "PREVIEW")
+        self.assertIn("TEST", proj.name)
+        # a test never touches the chapter links or the story status
+        self.assertTrue(all(c.compiled_project_id is None for c in service.list_chapters(sid)))
+        self.assertNotEqual(service.get_story(sid).status, "PRODUCING")
+
+    def test_test_render_skips_the_cost_guard(self):
+        sid = self._story(config={"cost_guard": {"max_total_usd": 0.00001, "block_on_exceed": True}})
+        self._populate(sid, chapters=2, scenes_per=2)
+        run = sc.produce_story(sid, self.settings, object(), test=True)  # must not raise
+        self.assertEqual(service.get_run(run.id).status, "COMPLETED")
+
+    def test_compiled_view_surfaces_a_test_render(self):
+        sid = self._story()
+        self._populate(sid, chapters=2, scenes_per=2)
+        run = sc.produce_story(sid, self.settings, object(), test=True)
+        pid = service.get_run(run.id).compiled_project_ids_json[0]
+        with self.Session() as db:
+            db.add(FactoryRun(project_id=pid, status="RENDERING"))
+            db.commit()
+        view = sc._compiled_view(sid)
+        self.assertEqual(len(view), 1)
+        self.assertTrue(view[0]["is_test"])
+        self.assertEqual(view[0]["factory_run"]["status"], "RENDERING")
+
     def test_compiled_view_reports_factory_run_status(self):
         sid = self._story()
         self._populate(sid, chapters=1, scenes_per=2)
