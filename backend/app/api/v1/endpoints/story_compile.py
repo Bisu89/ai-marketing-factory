@@ -186,6 +186,16 @@ def _build_beat_plan(
         "mode": "ai_generated",
         "image_style_prompt": _style_summary(story.style_bible_json or {}) or config.visual_generation.image_style_prompt,
     })
+    # The story bible's tone drives BGM auto-selection
+    # (audio.service.select_bgm matches config.content.tone against its tone
+    # rules) and the image-prompt tone derivation. A generic default would
+    # give a horror story the same soft-piano track as a romance.
+    bible_tone = (story.story_bible_json or {}).get("tone")
+    style_mood = (story.style_bible_json or {}).get("mood")
+    tone = ", ".join(t for t in (bible_tone, style_mood) if t)
+    if tone:
+        config.content = config.content.model_copy(update={"tone": tone})
+
     # A story is narrated published content -- the offline SAPI5 "local"
     # voice reads as robotic. Default to edge_tts (free, networked, the
     # voice the caption engine locks to) unless the story's own config

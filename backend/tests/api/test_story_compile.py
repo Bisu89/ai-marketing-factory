@@ -120,6 +120,8 @@ class CompileTests(_CompileTestCase):
         self.assertEqual(proj.beat_plan_json["config"]["visual_generation"]["mode"], "ai_generated")
         self.assertTrue(proj.beat_plan_json["config"]["audio"]["narration_enabled"])
         self.assertEqual(proj.beat_plan_json["config"]["voice"]["provider"], "edge_tts")
+        # BGM auto-select + image tone follow the bible/style, not a generic default
+        self.assertEqual(proj.beat_plan_json["config"]["content"]["tone"], "grim")
         self.assertIn("ash", proj.beat_plan_json["config"]["visual_generation"]["image_style_prompt"])
         self.assertTrue(proj.beat_plan_json["script_locked"])
 
