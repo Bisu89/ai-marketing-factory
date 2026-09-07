@@ -1,0 +1,423 @@
+/* AI Storytelling Studio -- list page + story detail page. Uses the app's
+   existing CSS variables (theme-aware); adds only a warn accent + a couple
+   of button variants this page needs. */
+
+:root {
+  --studio-warn: #b45309;
+  --studio-warn-bg: rgba(180, 83, 9, 0.12);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --studio-warn: #f59e0b;
+    --studio-warn-bg: rgba(245, 158, 11, 0.16);
+  }
+}
+
+.studio-alert {
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+.studio-alert-error {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--danger);
+}
+
+.btn-danger {
+  background: var(--danger);
+  border-color: var(--danger);
+  color: #fff;
+}
+.btn-icon {
+  padding: 6px;
+}
+
+/* -- list table -------------------------------------------------------- */
+
+.studio-table-wrap {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+.studio-table-wrap--flush {
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  overflow-x: auto;
+}
+
+.studio-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.studio-table thead th {
+  text-align: left;
+  padding: 10px 16px;
+  font-weight: 600;
+  color: var(--text-muted);
+  font-size: 12px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-alt);
+}
+.studio-table tbody td {
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  vertical-align: top;
+}
+.studio-table tbody tr:last-child td {
+  border-bottom: none;
+}
+.studio-row-clickable {
+  cursor: pointer;
+}
+.studio-row-clickable:hover td {
+  background: var(--surface-alt);
+}
+
+.studio-story-title {
+  font-weight: 600;
+  color: var(--text-heading);
+}
+.studio-story-logline {
+  color: var(--text-muted);
+  font-size: 12px;
+  max-width: 520px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.studio-status-pill {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+}
+
+/* -- detail page ----------------------------------------------------- */
+
+.studio-header-actions,
+.studio-run-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.studio-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.studio-meta-dim {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.studio-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: 16px 18px;
+  margin-bottom: 16px;
+}
+.studio-card--ok {
+  border-color: rgba(22, 163, 74, 0.5);
+}
+.studio-card--warn {
+  border-color: var(--studio-warn);
+  background: var(--studio-warn-bg);
+}
+.studio-card--failed {
+  border-color: rgba(239, 68, 68, 0.5);
+  background: rgba(239, 68, 68, 0.06);
+}
+
+.studio-card-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-heading);
+  margin: 0 0 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.studio-run-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* -- stepper ------------------------------------------------------- */
+
+.studio-stepper {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  padding: 10px 0;
+  margin: 8px 0;
+}
+.studio-step {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.studio-step--done {
+  color: var(--success);
+}
+.studio-step--active {
+  color: var(--accent);
+  font-weight: 600;
+}
+.studio-step--failed {
+  color: var(--danger);
+  font-weight: 600;
+}
+
+.studio-run-error {
+  font-size: 13px;
+  color: var(--danger);
+  margin: 6px 0;
+  white-space: pre-wrap;
+}
+
+/* -- budget-fix inline ------------------------------------------- */
+
+.studio-budget-fix {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px 0;
+}
+.studio-field--inline {
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+}
+.studio-field--inline input {
+  width: 120px;
+}
+
+/* -- cost bar --------------------------------------------------- */
+
+.studio-verdict {
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.studio-verdict--ok {
+  background: rgba(22, 163, 74, 0.14);
+  color: var(--success);
+}
+.studio-verdict--warn {
+  background: var(--studio-warn-bg);
+  color: var(--studio-warn);
+}
+.studio-verdict--block {
+  background: rgba(239, 68, 68, 0.14);
+  color: var(--danger);
+}
+.studio-verdict--unknown {
+  background: var(--surface-alt);
+  color: var(--text-muted);
+}
+
+.studio-cost-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 14px;
+  margin: 10px 0;
+}
+.studio-cost-num {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-heading);
+  font-variant-numeric: tabular-nums;
+}
+.studio-cost-breakdown {
+  font-size: 12px;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border);
+  padding-top: 10px;
+  font-variant-numeric: tabular-nums;
+}
+.studio-cost-notes {
+  margin: 8px 0 0;
+  padding-left: 18px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* -- cast --------------------------------------------------------- */
+
+.studio-cast-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 13px;
+}
+.studio-prompt-block {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+  font-style: italic;
+}
+
+/* -- scene table ------------------------------------------------- */
+
+.studio-scene-table {
+  font-size: 12.5px;
+}
+.studio-scene-narration {
+  max-width: 380px;
+  color: var(--text);
+}
+.studio-scores {
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+}
+.studio-composite {
+  font-weight: 700;
+  color: var(--text-heading);
+}
+
+.studio-visual-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.studio-badge {
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+.studio-badge--STILL {
+  background: var(--surface-alt);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+}
+.studio-badge--STILL_WITH_MOTION {
+  background: var(--accent-bg);
+  color: var(--accent);
+}
+.studio-badge--AI_VIDEO {
+  background: var(--studio-warn-bg);
+  color: var(--studio-warn);
+}
+.studio-visual-cell select {
+  font: inherit;
+  font-size: 12px;
+  padding: 3px 6px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--text);
+}
+.studio-unlock {
+  border: none;
+  background: none;
+  color: var(--studio-warn);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+}
+
+.studio-reclassify-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+/* -- modal (shared shape with SeriesPage's modal) ------------------ */
+
+.studio-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+.studio-modal {
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  width: 520px;
+  max-width: calc(100vw - 32px);
+  max-height: calc(100vh - 64px);
+  overflow-y: auto;
+  padding: 20px;
+}
+.studio-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.studio-modal-header h3 {
+  font-size: 16px;
+}
+.studio-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+  font-size: 13px;
+}
+.studio-field > span:first-child {
+  font-weight: 600;
+  color: var(--text-heading);
+}
+.studio-field input,
+.studio-field select,
+.studio-field textarea {
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+}
+.studio-field textarea {
+  resize: vertical;
+}
+.studio-field-row {
+  display: flex;
+  gap: 14px;
+}
+.studio-field-row .studio-field {
+  flex: 1;
+}
+.studio-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
