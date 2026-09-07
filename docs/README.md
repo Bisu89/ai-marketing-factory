@@ -161,6 +161,8 @@ SQLite.
 
 135. [AI Storytelling Studio — Phase 5 (compile → Factory)](features/135-storytelling-studio-compile-produce.md) — `POST /stories/{id}/produce` runs a PRODUCE-scope `StoryRun`: `COMPILING` turns every `StoryScene` into a `beat.Beat` (with each on-screen character's locked `canonical_prompt_block` inlined into the image prompt for consistency) and builds one `Project`/`BeatPlan` per chapter (`per_chapter`) or one for the whole story (`single`), forcing `ai_generated` visuals + narrated audio; `PRODUCING` hands each project to `factory_pipeline.create_and_start_run`. Idempotent at the run level (reuses recorded project ids on retry), gated by the same cost-guard `BLOCK` check as the planning run. `GET /stories/{id}/compiled` + a Produce panel on `/studio/:storyId` (live per-project Factory-run badges). New `app/api/v1/endpoints/story_compile.py`.
 
+136. [AI Storytelling Studio — import a written story](features/136-storytelling-studio-import.md) — a paste-your-own path that skips the paid LLM planning pipeline: `POST /stories/{id}/import` takes a JSON package (bible / characters / locations / chapters+scenes) and materialises it as real rows in one transaction (names resolved to ids, unknown scene types → `BODY`, duration clamped, story → `SCENES_READY`). Frontend: an "Import script" modal on `/studio/:storyId` with a one-click "Copy the ChatGPT prompt" (the prompt embeds the exact schema) + a paste box. The Scene Director + cost + Produce steps are unchanged — the only remaining spend is the AI images at produce time.
+
 ## Keeping this up to date
 
 See the "Documentation" section in `CLAUDE.md` at the repo root — every

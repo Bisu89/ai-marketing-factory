@@ -100,6 +100,25 @@ export function cancelStoryRun(runId: number): Promise<StoryRun> {
   return apiPost(`/story-runs/${runId}/cancel`);
 }
 
+// -- import a story written elsewhere (skip the AI pipeline) --------
+
+export interface StoryImportResult {
+  story_id: number;
+  characters: number;
+  locations: number;
+  chapters: number;
+  scenes: number;
+  unresolved_character_names: string[];
+}
+
+export function importStoryPackage(
+  storyId: number,
+  pkg: unknown,
+  replace = false,
+): Promise<StoryImportResult> {
+  return apiPost(`/stories/${storyId}/import${replace ? "?replace=true" : ""}`, pkg);
+}
+
 // -- compile / produce (Phase 5) -----------------------------------
 
 export function produceStory(storyId: number): Promise<StoryRun> {

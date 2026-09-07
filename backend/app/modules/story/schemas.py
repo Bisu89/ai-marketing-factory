@@ -405,3 +405,119 @@ class StoryRunOut(BaseModel):
 
     _scope_v = field_validator("scope")(_one_of("StoryRun.scope", STORY_RUN_SCOPES))
     _status_v = field_validator("status")(_one_of("StoryRun.status", STORY_RUN_STATUSES))
+
+
+# -- Import: paste a story written elsewhere (feature 136) -------------
+#
+# The whole planning pipeline (5 LLM stages) skipped -- the user brings the
+# bible / characters / chapters / scenes already written (e.g. in ChatGPT).
+# `extra="ignore"` on every model so a slightly-off paste still imports.
+
+
+class ImportBible(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+
+    premise: str | None = None
+    synopsis: str | None = None
+    central_conflict: str | None = None
+    tone: str | None = None
+    setting_summary: str | None = None
+    themes: list[str] = Field(default_factory=list)
+    world_rules: list[str] = Field(default_factory=list)
+    timeline: list[str] = Field(default_factory=list)
+
+
+class ImportStyle(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+
+    palette: str | None = None
+    lighting: str | None = None
+    mood: str | None = None
+    visual_references: list[str] = Field(default_factory=list)
+
+
+class ImportCharacter(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+
+    name: str
+    role: str | None = None
+    age: str | None = None
+    gender: str | None = None
+    appearance: str | None = None
+    wardrobe: str | None = None
+    personality: str | None = None
+    # The LOCKED block reused verbatim in every image prompt -- the
+    # character-consistency mechanism. Strongly recommended.
+    canonical_prompt_block: str | None = None
+    negative_constraints: str | None = None
+
+    @field_validator("name")
+    @classmethod
+    def _name_not_blank(cls, value: str) -> str:
+        if not value.strip():
+            raise ValueError("character name must not be blank")
+        return value
+
+
+class ImportLocation(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+
+    name: str
+    description: str | None = None
+    mood: str | None = None
+
+
+class ImportDialogueLine(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+
+    character_name: str
+    line: str
+
+
+class ImportScene(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+
+    scene_type: str | None = None
+    narration: str | None = None
+    dialogue: list[ImportDialogueLine] = Field(default_factory=list)
+    character_names: list[str] = Field(default_factory=list)
+    location_name: str | None = None
+    camera: str | None = None
+    emotion: str | None = None
+    time_of_day: str | None = None
+    continuity_notes: str | None = None
+    # An explicit "what appears on screen" description; falls back to the
+    # narration if absent.
+    image_prompt: str | None = None
+    duration_hint: float = 6.0
+
+
+class ImportChapter(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+
+    title: str | None = None
+    summary: str | None = None
+    goal: str | None = None
+    retention_notes: str | None = None
+    scenes: list[ImportScene] = Field(default_factory=list, min_length=1)
+
+
+class StoryImportIn(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+
+    story_bible: ImportBible = Field(default_factory=ImportBible)
+    style_bible: ImportStyle = Field(default_factory=ImportStyle)
+    characters: list[ImportCharacter] = Field(default_factory=list)
+    locations: list[ImportLocation] = Field(default_factory=list)
+    chapters: list[ImportChapter] = Field(default_factory=list, min_length=1)
+
+
+class StoryImportResult(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    story_id: int
+    characters: int
+    locations: int
+    chapters: int
+    scenes: int
+    unresolved_character_names: list[str] = Field(default_factory=list)

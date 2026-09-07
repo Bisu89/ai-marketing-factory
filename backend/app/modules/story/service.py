@@ -18,6 +18,7 @@ from app.modules.story.models import (
     CHECKPOINT_FAILED,
     CHECKPOINT_RUNNING,
     CHECKPOINT_SKIPPED,
+    SCENE_TYPES,
     STORY_RUN_ACTIVE_STATUSES,
     STORY_RUN_STAGES,
     StoryChannel,
@@ -610,6 +611,121 @@ def set_episode_compiled_projects(episode_id: int, project_ids: list[int]) -> No
             raise NotFoundError("Episode", episode_id)
         row.compiled_project_ids_json = list(project_ids)
         db.commit()
+    finally:
+        db.close()
+
+
+def _clamp_import_duration(value) -> float:
+    try:
+        return round(max(2.0, min(20.0, float(value))), 2)
+    except (TypeError, ValueError):
+        return 6.0
+
+
+def import_story_package(story_id: int, pkg: dict, *, replace: bool = False) -> dict:
+    """Skip the whole planning pipeline: take a bible + characters + chapters
+    + scenes the user wrote elsewhere and materialise them as real rows in
+    ONE transaction. The Scene Director (classify-scenes) + cost + produce
+    path is unchanged afterward. `replace=True` wipes any existing
+    chapters/characters/locations first.
+    """
+    db = SessionLocal()
+    try:
+        story = db.get(Story, story_id)
+        if story is None:
+            raise NotFoundError("Story", story_id)
+
+        has_chapters = db.query(StoryChapter).filter(StoryChapter.story_id == story_id).first() is not None
+        has_chars = db.query(StoryCharacter).filter(StoryCharacter.story_id == story_id).first() is not None
+        if (has_chapters or has_chars) and not replace:
+            raise ValidationError(
+                "This story already has chapters or characters. Re-import with replace=true to overwrite them."
+            )
+        if replace:
+            for ch in db.query(StoryChapter).filter(StoryChapter.story_id == story_id).all():
+                db.delete(ch)  # cascades scenes
+            for c in db.query(StoryCharacter).filter(StoryCharacter.story_id == story_id).all():
+                db.delete(c)
+            for loc in db.query(StoryLocation).filter(StoryLocation.story_id == story_id).all():
+                db.delete(loc)
+            db.flush()
+
+        sb = pkg.get("story_bible") or {}
+        style = pkg.get("style_bible") or {}
+        story.story_bible_json = {**(story.story_bible_json or {}), **{k: v for k, v in sb.items() if v not in (None, [], "")}}
+        story.style_bible_json = {**(story.style_bible_json or {}), **{k: v for k, v in style.items() if v not in (None, [], "")}}
+
+        char_by_name: dict[str, int] = {}
+        for c in pkg.get("characters", []):
+            row = StoryCharacter(
+                story_id=story_id, name=str(c["name"])[:200], role=c.get("role"), age=c.get("age"),
+                gender=c.get("gender"), appearance=c.get("appearance"), wardrobe=c.get("wardrobe"),
+                personality=c.get("personality"), canonical_prompt_block=c.get("canonical_prompt_block"),
+                negative_constraints=c.get("negative_constraints"),
+            )
+            db.add(row)
+            db.flush()
+            char_by_name[row.name.strip().lower()] = row.id
+
+        loc_by_name: dict[str, int] = {}
+        for loc in pkg.get("locations", []):
+            row = StoryLocation(
+                story_id=story_id, name=str(loc["name"])[:200],
+                description=loc.get("description"), mood=loc.get("mood"),
+            )
+            db.add(row)
+            db.flush()
+            loc_by_name[row.name.strip().lower()] = row.id
+
+        unresolved: set[str] = set()
+        scene_count = 0
+        for ci, ch in enumerate(pkg.get("chapters", []), start=1):
+            chapter = StoryChapter(
+                story_id=story_id, order=ci, title=(ch.get("title") or f"Chapter {ci}")[:200],
+                summary=ch.get("summary"), goal=ch.get("goal"), retention_notes=ch.get("retention_notes"),
+            )
+            db.add(chapter)
+            db.flush()
+            for si, sc in enumerate(ch.get("scenes", []), start=1):
+                names = [str(n).strip().lower() for n in sc.get("character_names", [])]
+                char_ids = []
+                for n in names:
+                    if n in char_by_name:
+                        char_ids.append(char_by_name[n])
+                    elif n:
+                        unresolved.add(n)
+                dialogue = []
+                for d in sc.get("dialogue", []):
+                    dn = str(d.get("character_name", "")).strip().lower()
+                    if dn in char_by_name and d.get("line"):
+                        dialogue.append({"character_id": char_by_name[dn], "line": d["line"]})
+                    elif dn:
+                        unresolved.add(dn)
+                st = str(sc.get("scene_type") or "BODY").upper()
+                db.add(StoryScene(
+                    chapter_id=chapter.id, order=si,
+                    scene_type=st if st in SCENE_TYPES else "BODY",
+                    narration=(sc.get("narration") or None),
+                    dialogue_json=dialogue, character_ids_json=char_ids,
+                    location_id=loc_by_name.get(str(sc.get("location_name") or "").strip().lower()),
+                    image_prompt=(sc.get("image_prompt") or None),
+                    camera=(sc.get("camera") or None), emotion=(sc.get("emotion") or None),
+                    time_of_day=(sc.get("time_of_day") or None), continuity_notes=(sc.get("continuity_notes") or None),
+                    duration_hint=_clamp_import_duration(sc.get("duration_hint")),
+                    visual_mode="STILL_WITH_MOTION", visual_mode_source="AUTO",
+                ))
+                scene_count += 1
+
+        story.status = "SCENES_READY"
+        db.commit()
+        return {
+            "story_id": story_id,
+            "characters": len(char_by_name),
+            "locations": len(loc_by_name),
+            "chapters": len(pkg.get("chapters", [])),
+            "scenes": scene_count,
+            "unresolved_character_names": sorted(unresolved),
+        }
     finally:
         db.close()
 

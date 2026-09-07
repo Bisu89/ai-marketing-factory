@@ -20,6 +20,8 @@ from app.modules.story.schemas import (
     StoryCharacterIn,
     StoryCharacterOut,
     StoryCheckpointOut,
+    StoryImportIn,
+    StoryImportResult,
     StoryIn,
     StoryLocationIn,
     StoryLocationOut,
@@ -119,6 +121,17 @@ def patch_story(story_id: int, payload: StoryPatch) -> StoryOut:
 @router.delete("/stories/{story_id}", status_code=204)
 def delete_story(story_id: int) -> None:
     service.delete_story(story_id)
+
+
+@router.post("/stories/{story_id}/import", response_model=StoryImportResult)
+def import_story(story_id: int, payload: StoryImportIn, replace: bool = False) -> StoryImportResult:
+    """Skip the AI planning pipeline: import a bible / characters / chapters
+    / scenes written elsewhere. The story goes straight to SCENES_READY;
+    run the Scene Director + Produce as normal.
+    """
+    return StoryImportResult.model_validate(
+        service.import_story_package(story_id, payload.model_dump(), replace=replace)
+    )
 
 
 # -- Characters --------------------------------------------------

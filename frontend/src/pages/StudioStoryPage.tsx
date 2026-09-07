@@ -8,6 +8,7 @@ import {
   Circle,
   Clapperboard,
   DollarSign,
+  FileJson,
   Loader2,
   Play,
   RefreshCw,
@@ -32,6 +33,7 @@ import {
   startStoryRun,
   updateScene,
 } from "../api/story";
+import { StudioImportModal } from "./StudioImportModal";
 import { STORY_RUN_STAGES, VISUAL_MODES, isActiveStoryRun } from "../types/story";
 import type {
   CompiledProjectView,
@@ -75,6 +77,7 @@ export function StudioStoryPage() {
   const [cost, setCost] = useState<StoryCost | null>(null);
   const [runs, setRuns] = useState<StoryRun[]>([]);
   const [compiled, setCompiled] = useState<CompiledProjectView[]>([]);
+  const [importOpen, setImportOpen] = useState(false);
   const [loadError, setLoadError] = useState<string | null>(null);
   const [loaded, setLoaded] = useState(false);
   const pollRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -171,6 +174,10 @@ export function StudioStoryPage() {
               <ArrowLeft size={14} />
               All stories
             </button>
+            <button className="btn btn-secondary" disabled={runActive} onClick={() => setImportOpen(true)}>
+              <FileJson size={14} />
+              Import script
+            </button>
             <DeleteStoryButton
               disabled={runActive}
               onDelete={async () => {
@@ -249,6 +256,18 @@ export function StudioStoryPage() {
           </button>
           <span className="studio-meta-dim">Re-scores every scene and refreshes the cost estimate (keeps your manual overrides).</span>
         </div>
+      )}
+
+      {importOpen && (
+        <StudioImportModal
+          storyId={id}
+          hasContent={chapters.length > 0 || characters.length > 0}
+          onClose={() => setImportOpen(false)}
+          onImported={() => {
+            setImportOpen(false);
+            refresh();
+          }}
+        />
       )}
     </>
   );
