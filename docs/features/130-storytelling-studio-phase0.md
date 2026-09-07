@@ -76,5 +76,5 @@ pure engines that Phase 1–5 plug into.
 
 ## Landed in
 
-`TBD` — `pytest tests/modules/` + factory/batch regression green;
-`app.main` boots.
+`aad943d` — 869 tests pass (`tests/modules/` + `test_factory_pipeline` +
+`test_batch_render` + `test_content_stage`); `app.main` boots.
