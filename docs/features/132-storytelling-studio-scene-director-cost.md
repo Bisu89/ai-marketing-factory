@@ -65,4 +65,4 @@ cost-estimate (`$0.24`, verdict `OK`) → scene-plan → bad-config PATCH then
 
 ## Landed in
 
-`TBD`
+`93480c4`
