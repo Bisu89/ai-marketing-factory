@@ -35,6 +35,7 @@ from app.api.v1.endpoints import (
     quality_gate,
     series_project,
     settings,
+    story_pipeline,
     winner_detection,
     tags,
     videos,
@@ -92,6 +93,7 @@ api_router.include_router(beat_router, tags=["beat"])
 api_router.include_router(series_router, tags=["series"])
 api_router.include_router(series_project.router, tags=["series-project"])
 api_router.include_router(story_planning_router, tags=["story-planning"])
+api_router.include_router(story_pipeline.router, tags=["story-planning"])
 api_router.include_router(composition_render.router, tags=["composition-render"])
 api_router.include_router(beat_generate.router, tags=["beat-generate"])
 api_router.include_router(beat_preview.router, tags=["beat-preview"])

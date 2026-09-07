@@ -473,6 +473,59 @@ def delete_scene(scene_id: int) -> None:
         db.close()
 
 
+def get_chapters_with_scenes(story_id: int) -> list[tuple[StoryChapter, list[StoryScene]]]:
+    """Every chapter of a story with its scenes, both in `order`, resolved in
+    one session -- the read the Phase 3 story pipeline (scene classification +
+    cost estimate) needs. Detached rows.
+    """
+    db = SessionLocal()
+    try:
+        _require_story(db, story_id)
+        chapters = (
+            db.query(StoryChapter)
+            .filter(StoryChapter.story_id == story_id)
+            .order_by(StoryChapter.order)
+            .all()
+        )
+        out: list[tuple[StoryChapter, list[StoryScene]]] = []
+        for chap in chapters:
+            scenes = (
+                db.query(StoryScene)
+                .filter(StoryScene.chapter_id == chap.id)
+                .order_by(StoryScene.order)
+                .all()
+            )
+            out.append((chap, scenes))
+        db.expunge_all()
+        return out
+    finally:
+        db.close()
+
+
+def apply_scene_updates(updates: dict[int, dict]) -> int:
+    """Write per-scene field patches for many scenes in one transaction --
+    used by the Scene Director stage to persist scores + visual_mode. Silently
+    skips a scene id that no longer exists (a concurrent delete is harmless
+    here). Returns the number of rows updated.
+    """
+    if not updates:
+        return 0
+    db = SessionLocal()
+    try:
+        n = 0
+        for scene_id, fields in updates.items():
+            row = db.get(StoryScene, scene_id)
+            if row is None:
+                continue
+            for k, v in fields.items():
+                setattr(row, k, v)
+            n += 1
+        db.commit()
+        return n
+    finally:
+        db.close()
+
+
 # -- StoryRun / StoryCheckpoint (read-only in Phase 1) -----------------
 
 
