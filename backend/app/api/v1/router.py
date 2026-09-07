@@ -52,6 +52,7 @@ from app.modules.news.router import router as news_router
 from app.modules.publishing.router import router as publishing_router
 from app.modules.scene_cutter.router import router as scene_cutter_router
 from app.modules.series.router import router as series_router
+from app.modules.story.router import router as story_planning_router
 from app.modules.video_composer.router import router as video_composer_router
 
 api_router = APIRouter()
@@ -90,6 +91,7 @@ api_router.include_router(content_batch_generate.router, tags=["content-batch"])
 api_router.include_router(beat_router, tags=["beat"])
 api_router.include_router(series_router, tags=["series"])
 api_router.include_router(series_project.router, tags=["series-project"])
+api_router.include_router(story_planning_router, tags=["story-planning"])
 api_router.include_router(composition_render.router, tags=["composition-render"])
 api_router.include_router(beat_generate.router, tags=["beat-generate"])
 api_router.include_router(beat_preview.router, tags=["beat-preview"])

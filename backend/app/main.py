@@ -24,8 +24,7 @@ from app.core.config import get_settings, resource_path
 from app.core.events import EventBus
 from app.core.exceptions import ExternalServiceError, FileOperationError, NotFoundError, ValidationError
 from app.core.logging import configure_logging
-from app.db.base import Base
-from app.db.migrate import run_additive_column_migrations
+from app.db.schema import sync_schema
 from app.db.seed import seed_initial_data
 from app.db.session import SessionLocal, engine
 from app.modules.content_strategy.seed import seed_default_pillars
@@ -33,6 +32,7 @@ from app.modules.news.seed import seed_default_news_sources
 from app.modules.news.service import fetch_all_enabled_sources
 from app.modules.publishing.service import reconcile_uploads_on_startup
 from app.modules.scene_cutter.service import SceneCutterService
+from app.modules.story.service import reconcile_story_runs_on_startup
 from app.modules.video_composer.service import VideoComposerService
 from app.services.download.engine import DownloadEngine
 from app.services.download.ytdlp_downloader import YtdlpDownloader
@@ -42,8 +42,11 @@ from app.services.download.ytdlp_downloader import YtdlpDownloader
 async def lifespan(app: FastAPI):
     settings = get_settings()
     configure_logging(settings)
-    Base.metadata.create_all(bind=engine)
-    run_additive_column_migrations(engine)
+    # Schema bootstrap (feature 131): create_all for fresh tables, the
+    # legacy additive-column list, then Alembic catch-up/stamp. See
+    # app/db/schema.py for the one-place explanation of the create_all vs
+    # Alembic split.
+    sync_schema(engine)
 
     db = SessionLocal()
     try:
@@ -111,6 +114,10 @@ async def lifespan(app: FastAPI):
     # YouTube Publishing (see docs/features/127-youtube-publishing.md) --
     # mark any upload left mid-flight by a previous process as 'interrupted'.
     reconcile_uploads_on_startup()
+    # AI Storytelling Studio (feature 131) -- a StoryRun left active by a
+    # crashed process becomes FAILED so the UI can show Retry. No-op in
+    # Phase 1 (no story pipeline yet); the hook is wired now.
+    reconcile_story_runs_on_startup()
 
     # Render-cache auto-cleanup (see app/api/v1/endpoints/assets_cleanup.py).
     # Once now, then every 24h while the app stays open -- a no-op unless

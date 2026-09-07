@@ -8,8 +8,19 @@ app.modules.batch.router already establishes.
 
 from fastapi import APIRouter
 
-from app.modules.series.schemas import CreateSeriesRequest, SeriesOut, UpdateSeriesRequest
-from app.modules.series.service import create_series, get_series, list_series, update_series
+from app.modules.series.schemas import (
+    CreateSeriesRequest,
+    SeriesOut,
+    UpdateSeriesRequest,
+    UpdateSeriesStudioRequest,
+)
+from app.modules.series.service import (
+    create_series,
+    get_series,
+    list_series,
+    update_series,
+    update_series_studio,
+)
 
 router = APIRouter()
 
@@ -34,3 +45,12 @@ def get_series_endpoint(series_id: int) -> SeriesOut:
 def update_series_endpoint(series_id: int, payload: UpdateSeriesRequest) -> SeriesOut:
     series = update_series(series_id, payload.name, payload.character_description)
     return SeriesOut.model_validate(series)
+
+
+@router.put("/series/{series_id}/studio", response_model=SeriesOut)
+def update_series_studio_endpoint(series_id: int, payload: UpdateSeriesStudioRequest) -> SeriesOut:
+    """AI Storytelling Studio (feature 131) -- the channel_id / branding /
+    voice / metadata-convention fields. Never touches name /
+    character_description.
+    """
+    return SeriesOut.model_validate(update_series_studio(series_id, **payload.model_dump()))

@@ -19,7 +19,7 @@ never "completes" -- episodes get attached to it indefinitely.
 
 from datetime import datetime, timezone
 
-from sqlalchemy import DateTime, String
+from sqlalchemy import JSON, DateTime, Integer, String
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.db.base import Base
@@ -43,7 +43,23 @@ class Series(Base):
     # This is style-level consistency, not a guarantee of pixel-identical
     # faces across episodes -- no reference-image/seed/embedding mechanism
     # exists in this codebase's image generation today.
+    #
+    # AI Storytelling Studio note (feature 131): superseded going forward by
+    # app.modules.story.StoryCharacter -- kept, still written by the classic
+    # series_project.py flow, no data migration.
     character_description: Mapped[str] = mapped_column(String, nullable=False, default="")
+
+    # -- AI Storytelling Studio, Phase 1 (feature 131) -- additive.
+    # `channel_id` -> app.modules.story.Channel.id (bare int, no FK -- Channel
+    # is in another module, same convention as app.modules.beat.Project.series_id).
+    # None for every Series created by the classic flow (backward compatible).
+    # The *_json bundles override the parent Channel's own defaults; empty
+    # dict = "inherit from Channel". Shape validated in schemas.py.
+    channel_id: Mapped[int | None] = mapped_column(Integer, nullable=True, index=True)
+    narrative_identity: Mapped[str | None] = mapped_column(String, nullable=True)
+    visual_identity_json: Mapped[dict] = mapped_column(JSON, nullable=False, default=dict)
+    voice_override_json: Mapped[dict] = mapped_column(JSON, nullable=False, default=dict)
+    metadata_conventions_json: Mapped[dict] = mapped_column(JSON, nullable=False, default=dict)
 
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow)
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow, onupdate=_utcnow)

@@ -21,6 +21,12 @@ a = Analysis(
         ("../frontend/dist", "frontend/dist"),
         ("../resources/ffmpeg", "resources/ffmpeg"),
         (certifi.where(), "certifi"),
+        # Alembic migration scripts (feature 131). app/db/schema.py builds
+        # an alembic.config.Config pointing script_location at
+        # resource_path("alembic"), so alembic.ini itself is not needed --
+        # just env.py + script.py.mako + versions/. Excludes handled below
+        # keep __pycache__ out.
+        ("alembic", "alembic"),
     ],
     hiddenimports=[
         # uvicorn's protocol/loop implementations are selected dynamically
@@ -46,6 +52,13 @@ a = Analysis(
         # feedparser (News module) pulls its SGML parser in dynamically --
         # the `feedparser-sgmllib` dist installs as the top-level `sgmllib`.
         "sgmllib",
+        # Alembic loads its script env by path at runtime (see
+        # app/db/schema.py); its own dynamic imports need to be forced in.
+        "alembic",
+        "alembic.runtime.migration",
+        "alembic.autogenerate",
+        # env.py imports the app's full model set.
+        "app.db.all_models",
     ],
     hookspath=[],
     runtime_hooks=[],

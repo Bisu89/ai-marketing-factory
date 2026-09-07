@@ -12,7 +12,13 @@ from sqlalchemy.pool import StaticPool
 from app.core.exceptions import NotFoundError
 from app.db.base import Base
 from app.modules.series.models import Series
-from app.modules.series.service import create_series, get_series, list_series, update_series
+from app.modules.series.service import (
+    create_series,
+    get_series,
+    list_series,
+    update_series,
+    update_series_studio,
+)
 
 
 class SeriesServiceTests(unittest.TestCase):
@@ -38,6 +44,29 @@ class SeriesServiceTests(unittest.TestCase):
     def test_get_missing_series_raises_not_found(self):
         with self.assertRaises(NotFoundError):
             get_series(999)
+
+    def test_studio_patch_only_touches_studio_columns(self):
+        s = create_series("Decisive Battles", "grizzled narrator")
+        update_series_studio(
+            s.id, channel_id=7, narrative_identity="grand strategy retold",
+            visual_identity_json={"palette": "sepia"},
+        )
+        row = get_series(s.id)
+        self.assertEqual(row.channel_id, 7)
+        self.assertEqual(row.narrative_identity, "grand strategy retold")
+        self.assertEqual(row.visual_identity_json, {"palette": "sepia"})
+        # classic fields untouched
+        self.assertEqual(row.name, "Decisive Battles")
+        self.assertEqual(row.character_description, "grizzled narrator")
+
+    def test_studio_patch_missing_series_raises(self):
+        with self.assertRaises(NotFoundError):
+            update_series_studio(999, channel_id=1)
+
+    def test_classic_flow_series_has_studio_defaults(self):
+        s = get_series(create_series("X", "").id)
+        self.assertIsNone(s.channel_id)
+        self.assertEqual(s.visual_identity_json, {})
 
     def test_list_series_returns_newest_first(self):
         first = create_series("Series A", "")

@@ -24,3 +24,9 @@ pywin32==312
 # stdlib-only library, no network layer of its own (we pass it fetched
 # bytes via httpx so timeouts/errors are handled the same as everywhere else).
 feedparser==6.0.14
+# Schema migrations (feature 131 -- AI Storytelling Studio Phase 1). The
+# `alembic/` script dir is bundled as data in AIContentLibrary.spec; the
+# frozen app runs `command.stamp/upgrade` programmatically at startup (see
+# app/db/schema.py). `Base.metadata.create_all()` still owns fresh-schema
+# creation -- Alembic is the catch-up + rollback layer.
+alembic==1.14.0

@@ -57,3 +57,29 @@ def update_series(series_id: int, name: str, character_description: str) -> Seri
         return series
     finally:
         db.close()
+
+
+# -- AI Storytelling Studio, Phase 1 (feature 131) -- the additive
+# channel_id / *_json columns. Kept separate from update_series above so a
+# studio patch can never touch name / character_description.
+_STUDIO_FIELDS = (
+    "channel_id", "narrative_identity", "visual_identity_json",
+    "voice_override_json", "metadata_conventions_json",
+)
+
+
+def update_series_studio(series_id: int, **fields) -> Series:
+    db = SessionLocal()
+    try:
+        series = db.get(Series, series_id)
+        if series is None:
+            raise NotFoundError("Series", series_id)
+        for key in _STUDIO_FIELDS:
+            if key in fields:
+                setattr(series, key, fields[key])
+        db.commit()
+        db.refresh(series)
+        db.expunge(series)
+        return series
+    finally:
+        db.close()
