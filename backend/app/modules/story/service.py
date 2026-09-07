@@ -590,6 +590,30 @@ def bulk_add_scenes(chapter_id: int, rows: list[dict]) -> list[StoryScene]:
         db.close()
 
 
+def set_chapter_compiled_project(chapter_id: int, project_id: int | None) -> None:
+    db = SessionLocal()
+    try:
+        row = db.get(StoryChapter, chapter_id)
+        if row is None:
+            raise NotFoundError("StoryChapter", chapter_id)
+        row.compiled_project_id = project_id
+        db.commit()
+    finally:
+        db.close()
+
+
+def set_episode_compiled_projects(episode_id: int, project_ids: list[int]) -> None:
+    db = SessionLocal()
+    try:
+        row = db.get(Episode, episode_id)
+        if row is None:
+            raise NotFoundError("Episode", episode_id)
+        row.compiled_project_ids_json = list(project_ids)
+        db.commit()
+    finally:
+        db.close()
+
+
 def merge_story_json(story_id: int, *, story_bible: dict | None = None, style_bible: dict | None = None) -> None:
     """Shallow-merge new keys into story_bible_json / style_bible_json
     without dropping keys an earlier stage already wrote.

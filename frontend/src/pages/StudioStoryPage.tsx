@@ -6,6 +6,7 @@ import {
   Ban,
   CheckCircle2,
   Circle,
+  Clapperboard,
   DollarSign,
   Loader2,
   Play,
@@ -18,6 +19,7 @@ import {
   cancelStoryRun,
   classifyScenes,
   deleteStory,
+  getCompiledProjects,
   getSceneCost,
   getStory,
   listChapters,
@@ -25,12 +27,14 @@ import {
   listScenes,
   listStoryRuns,
   patchStory,
+  produceStory,
   retryStoryRun,
   startStoryRun,
   updateScene,
 } from "../api/story";
 import { STORY_RUN_STAGES, VISUAL_MODES, isActiveStoryRun } from "../types/story";
 import type {
+  CompiledProjectView,
   CostVerdict,
   Story,
   StoryChapter,
@@ -69,15 +73,19 @@ export function StudioStoryPage() {
   const [scenesByChapter, setScenesByChapter] = useState<Record<number, StoryScene[]>>({});
   const [characters, setCharacters] = useState<StoryCharacter[]>([]);
   const [cost, setCost] = useState<StoryCost | null>(null);
-  const [run, setRun] = useState<StoryRun | null>(null);
+  const [runs, setRuns] = useState<StoryRun[]>([]);
+  const [compiled, setCompiled] = useState<CompiledProjectView[]>([]);
   const [loadError, setLoadError] = useState<string | null>(null);
   const [loaded, setLoaded] = useState(false);
   const pollRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  const planRun = runs.find((r) => r.scope === "STORY_PLAN") ?? null;
+  const produceRun = runs.find((r) => r.scope === "PRODUCE") ?? null;
+
   const refresh = useCallback(async () => {
     try {
       setLoadError(null);
-      const [s, chs, chars, runs] = await Promise.all([
+      const [s, chs, chars, runList] = await Promise.all([
         getStory(id),
         listChapters(id),
         listCharacters(id),
@@ -86,7 +94,10 @@ export function StudioStoryPage() {
       setStory(s);
       setChapters(chs);
       setCharacters(chars);
-      setRun(runs[0] ?? null);
+      setRuns(runList);
+      getCompiledProjects(id)
+        .then((r) => setCompiled(r.projects))
+        .catch(() => setCompiled([]));
 
       const scenePairs = await Promise.all(chs.map((c) => listScenes(c.id).then((sc) => [c.id, sc] as const)));
       setScenesByChapter(Object.fromEntries(scenePairs));
@@ -107,15 +118,20 @@ export function StudioStoryPage() {
     refresh();
   }, [refresh]);
 
-  // Poll only the run while it is active; a full refresh once it settles.
+  // Poll while a run (planning or produce) is active, or a handed-off
+  // Factory render is still going; a full refresh once things settle.
+  const runActive = runs.some((r) => isActiveStoryRun(r.status));
+  const renderActive = compiled.some(
+    (p) => p.factory_run != null && !["COMPLETED", "FAILED", "CANCELLED"].includes(p.factory_run.status),
+  );
   useEffect(() => {
-    if (run == null || !isActiveStoryRun(run.status)) return;
+    if (!runActive && !renderActive) return;
     pollRef.current = setTimeout(async () => {
       try {
-        const runs = await listStoryRuns(id);
-        const latest = runs[0] ?? null;
-        setRun(latest);
-        if (latest && !isActiveStoryRun(latest.status)) refresh();
+        const [runList, comp] = await Promise.all([listStoryRuns(id), getCompiledProjects(id).catch(() => null)]);
+        setRuns(runList);
+        if (comp) setCompiled(comp.projects);
+        if (runActive && !runList.some((r) => isActiveStoryRun(r.status))) refresh();
       } catch {
         /* transient -- keep the last known state */
       }
@@ -123,7 +139,7 @@ export function StudioStoryPage() {
     return () => {
       if (pollRef.current) clearTimeout(pollRef.current);
     };
-  }, [run, id, refresh]);
+  }, [runActive, renderActive, id, refresh]);
 
   if (loadError) {
     return (
@@ -156,7 +172,7 @@ export function StudioStoryPage() {
               All stories
             </button>
             <DeleteStoryButton
-              disabled={run != null && isActiveStoryRun(run.status)}
+              disabled={runActive}
               onDelete={async () => {
                 await deleteStory(id);
                 navigate("/studio");
@@ -176,10 +192,19 @@ export function StudioStoryPage() {
       </div>
 
       <RunPanel
-        run={run}
+        run={planRun}
         story={story}
-        onChange={setRun}
+        onChange={(r) => setRuns((prev) => [r, ...prev.filter((x) => x.id !== r.id)])}
         onSettled={refresh}
+      />
+
+      <ProducePanel
+        storyId={id}
+        story={story}
+        planRun={planRun}
+        produceRun={produceRun}
+        compiled={compiled}
+        onChange={(r) => setRuns((prev) => [r, ...prev.filter((x) => x.id !== r.id)])}
       />
 
       {cost && <CostBar cost={cost} />}
@@ -424,6 +449,125 @@ function stageState(run: StoryRun, stage: string): StepState {
   if (stageIdx < currentIdx) return "done";
   if (stageIdx === currentIdx) return "active";
   return "pending";
+}
+
+// -- Produce panel (compile + Factory handoff) ---------------------
+
+const RENDER_DONE = ["COMPLETED", "FAILED", "CANCELLED"];
+
+function ProducePanel({
+  storyId,
+  story,
+  planRun,
+  produceRun,
+  compiled,
+  onChange,
+}: {
+  storyId: number;
+  story: Story;
+  planRun: StoryRun | null;
+  produceRun: StoryRun | null;
+  compiled: CompiledProjectView[];
+  onChange: (run: StoryRun) => void;
+}) {
+  const navigate = useNavigate();
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const planReady = story.status === "SCENES_READY" || planRun?.status === "READY";
+  const canProduce = planReady && (produceRun == null || !isActiveStoryRun(produceRun.status));
+
+  async function doProduce() {
+    setBusy(true);
+    setError(null);
+    try {
+      onChange(await produceStory(storyId));
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Could not start production.");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  if (!planReady && produceRun == null) return null;
+
+  const produceState =
+    produceRun == null
+      ? null
+      : isActiveStoryRun(produceRun.status)
+        ? "active"
+        : produceRun.status === "FAILED"
+          ? "failed"
+          : "done";
+
+  return (
+    <section
+      className={`studio-card ${produceState === "failed" ? "studio-card--failed" : produceState === "done" ? "studio-card--ok" : ""}`}
+    >
+      <div className="studio-run-head">
+        <h3 className="studio-card-title">
+          <Clapperboard size={15} /> Produce
+        </h3>
+        {produceRun && <span className="studio-status-pill">{produceRun.status}</span>}
+      </div>
+
+      {produceState === "active" && (
+        <p className="studio-meta-dim">
+          {produceRun!.status === "COMPILING"
+            ? "Compiling scenes into renderable projects…"
+            : "Handing each project to the Video Factory…"}
+        </p>
+      )}
+      {produceState === "failed" && <p className="studio-run-error">{produceRun!.error_message}</p>}
+      {produceState == null && (
+        <p className="studio-meta-dim">
+          Compiles every chapter into a beat plan (one project per chapter, or one for the whole story) and starts a
+          Video Factory render for each — character prompt blocks are baked into every scene's image prompt.
+        </p>
+      )}
+
+      {compiled.length > 0 && (
+        <ul className="studio-compiled-list">
+          {compiled.map((p) => (
+            <li key={p.project_id}>
+              <span className="studio-compiled-label">{p.label}</span>
+              {p.factory_run ? (
+                <span
+                  className={`studio-badge ${
+                    p.factory_run.status === "COMPLETED"
+                      ? "studio-badge--STILL_WITH_MOTION"
+                      : p.factory_run.status === "FAILED"
+                        ? "studio-badge--AI_VIDEO"
+                        : "studio-badge--STILL"
+                  }`}
+                >
+                  {p.factory_run.status}
+                  {p.factory_run.failed_stage ? ` · ${p.factory_run.failed_stage}` : ""}
+                </span>
+              ) : (
+                <span className="studio-meta-dim">not started</span>
+              )}
+              <button className="studio-unlock" onClick={() => navigate("/video-factory")}>
+                open in Video Factory
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
+
+      {error && <div className="studio-alert studio-alert-error">{error}</div>}
+
+      <div className="studio-run-actions">
+        <button className="btn btn-primary" disabled={busy || !canProduce} onClick={doProduce}>
+          {busy ? <Loader2 size={14} className="spin" /> : <Clapperboard size={14} />}
+          {produceRun == null ? "Produce" : "Re-produce"}
+        </button>
+        {compiled.some((p) => !RENDER_DONE.includes(p.factory_run?.status ?? "")) && produceRun?.status === "COMPLETED" && (
+          <span className="studio-meta-dim">Renders run in the background — track them in Video Factory.</span>
+        )}
+      </div>
+    </section>
+  );
 }
 
 // -- Cost bar -------------------------------------------------------

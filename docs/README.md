@@ -159,6 +159,8 @@ SQLite.
 
 134. [AI Storytelling Studio — Phase 2 (planning UI)](features/134-storytelling-studio-planning-ui.md) — the first frontend for the Studio: `/studio` (create + list stories) and `/studio/:storyId` (drive the planning pipeline, review the Scene Director + cost). The detail page's run panel reflects the latest `StoryRun` (6-stage stepper polled while active, Cancel / Retry, and a "raise cap & retry" flow for a `COST_GUARD_BLOCKED` pause), a pre-flight cost bar with the OK/WARN/BLOCK/UNKNOWN verdict, the generated cast, and a per-chapter scene table with the four sub-scores + a `STILL`/`STILL_WITH_MOTION`/`AI_VIDEO` badge and a `<select>` override that freezes a scene against re-classification. New `src/api/story.ts` + `src/types/story.ts`.
 
+135. [AI Storytelling Studio — Phase 5 (compile → Factory)](features/135-storytelling-studio-compile-produce.md) — `POST /stories/{id}/produce` runs a PRODUCE-scope `StoryRun`: `COMPILING` turns every `StoryScene` into a `beat.Beat` (with each on-screen character's locked `canonical_prompt_block` inlined into the image prompt for consistency) and builds one `Project`/`BeatPlan` per chapter (`per_chapter`) or one for the whole story (`single`), forcing `ai_generated` visuals + narrated audio; `PRODUCING` hands each project to `factory_pipeline.create_and_start_run`. Idempotent at the run level (reuses recorded project ids on retry), gated by the same cost-guard `BLOCK` check as the planning run. `GET /stories/{id}/compiled` + a Produce panel on `/studio/:storyId` (live per-project Factory-run badges). New `app/api/v1/endpoints/story_compile.py`.
+
 ## Keeping this up to date
 
 See the "Documentation" section in `CLAUDE.md` at the repo root — every

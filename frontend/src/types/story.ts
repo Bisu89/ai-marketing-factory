@@ -115,9 +115,22 @@ export const STORY_RUN_STAGES = [
 ] as const;
 export type StoryRunStage = (typeof STORY_RUN_STAGES)[number];
 
-export type StoryRunStatus = StoryRunStage | "DRAFT" | "NEEDS_REVIEW" | "READY" | "FAILED" | "CANCELLED" | "COMPLETED";
+// PRODUCE-scope stages (feature 135) -- a produce run compiles then hands
+// each project to the Factory.
+export const STORY_PRODUCE_STAGES = ["COMPILING", "PRODUCING"] as const;
+export type StoryProduceStage = (typeof STORY_PRODUCE_STAGES)[number];
 
-const ACTIVE_STAGES = new Set<string>(STORY_RUN_STAGES);
+export type StoryRunStatus =
+  | StoryRunStage
+  | StoryProduceStage
+  | "DRAFT"
+  | "NEEDS_REVIEW"
+  | "READY"
+  | "FAILED"
+  | "CANCELLED"
+  | "COMPLETED";
+
+const ACTIVE_STAGES = new Set<string>([...STORY_RUN_STAGES, ...STORY_PRODUCE_STAGES]);
 export function isActiveStoryRun(status: string): boolean {
   return ACTIVE_STAGES.has(status) || status === "DRAFT";
 }
@@ -182,6 +195,19 @@ export interface StoryCost {
   };
   scene_counts: Record<string, number | boolean>;
   notes: string[];
+}
+
+export interface CompiledProjectView {
+  project_id: number;
+  chapter_id: number | null;
+  label: string;
+  factory_run: {
+    id: number;
+    status: string;
+    failed_stage: string | null;
+    error_message: string | null;
+    render_job_id: number | null;
+  } | null;
 }
 
 export interface SceneClassifyResponse {

@@ -1,5 +1,6 @@
 import { apiDelete, apiGet, apiPatch, apiPost, apiPut } from "./client";
 import type {
+  CompiledProjectView,
   CreateStoryRequest,
   SceneClassifyResponse,
   Story,
@@ -97,4 +98,14 @@ export function retryStoryRun(runId: number): Promise<StoryRun> {
 
 export function cancelStoryRun(runId: number): Promise<StoryRun> {
   return apiPost(`/story-runs/${runId}/cancel`);
+}
+
+// -- compile / produce (Phase 5) -----------------------------------
+
+export function produceStory(storyId: number): Promise<StoryRun> {
+  return apiPost(`/stories/${storyId}/produce`);
+}
+
+export function getCompiledProjects(storyId: number): Promise<{ story_id: number; projects: CompiledProjectView[] }> {
+  return apiGet(`/stories/${storyId}/compiled`);
 }

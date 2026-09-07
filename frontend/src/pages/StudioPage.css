@@ -347,6 +347,25 @@
   padding: 0;
 }
 
+.studio-compiled-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 10px 0;
+  font-size: 12.5px;
+}
+.studio-compiled-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.studio-compiled-label {
+  font-weight: 600;
+  color: var(--text-heading);
+}
+
 .studio-reclassify-row {
   display: flex;
   align-items: center;
