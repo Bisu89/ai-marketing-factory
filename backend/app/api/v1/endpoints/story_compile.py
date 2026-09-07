@@ -181,6 +181,12 @@ def _build_beat_plan(story, pc, scenes: list, chars_by_id: dict, locs_by_id: dic
         "mode": "ai_generated",
         "image_style_prompt": _style_summary(story.style_bible_json or {}) or config.visual_generation.image_style_prompt,
     })
+    # A story is narrated published content -- the offline SAPI5 "local"
+    # voice reads as robotic. Default to edge_tts (free, networked, the
+    # voice the caption engine locks to) unless the story's own config
+    # explicitly chose a provider.
+    if "provider" not in (story.project_config_json.get("voice") or {}):
+        config.voice = config.voice.model_copy(update={"provider": "edge_tts"})
 
     script_text = "\n\n".join(b.narration for b in beats if b.narration) or None
     return BeatPlan(
