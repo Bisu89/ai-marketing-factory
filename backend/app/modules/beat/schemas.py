@@ -802,6 +802,204 @@ class VisualGenerationProjectConfig(BaseModel):
         return value
 
 
+# -- AI Storytelling Studio, Phase 0 (see the published architecture plan)
+# --------------------------------------------------------------------------
+#
+# Six additive sub-configs. Every field has a default, so a pre-Phase-0
+# beats.json / beat_plan_json / templates.json parses unchanged (exactly
+# the backward-compat pattern Task 12/21/59 already used). Nothing consumes
+# these yet -- they are the config surface the Story pipeline (plan Phase
+# 2-5) plugs into. `SceneClassificationProjectConfig` mirrors
+# app.modules.scene_director.schemas.SceneDirectorConfig field-for-field;
+# the future composition root translates one to the other (a few lines),
+# the same way app/api/v1/endpoints/quality_gate.py builds a
+# QualityAnalysisInput from a ProjectConfig -- "duplicate the small
+# contract across the module boundary, don't import across it".
+
+VISUAL_DENSITIES = ("MINIMAL", "BALANCED", "CINEMATIC")
+MODEL_TIERS = ("cheap", "standard", "premium")
+STORY_COMPILE_MODES = ("per_chapter", "single")
+
+
+class SceneClassificationProjectConfig(BaseModel):
+    """Tunables for the AI Scene Director (STILL / STILL_WITH_MOTION /
+    AI_VIDEO decision). Defaults = the BALANCED profile.
+    """
+
+    model_config = ConfigDict(extra="forbid")
+
+    enabled: bool = True
+    w_importance: float = 0.35
+    w_movement: float = 0.30
+    w_emotion: float = 0.20
+    w_complexity: float = 0.15
+    still_motion_threshold: float = 40.0
+    video_threshold: float = 72.0
+    min_movement_for_video: float = 55.0
+    ai_video_max_ratio: float = 0.15
+    ai_video_hard_cap: int = 12
+
+    @field_validator(
+        "w_importance", "w_movement", "w_emotion", "w_complexity",
+        "still_motion_threshold", "video_threshold", "min_movement_for_video", "ai_video_max_ratio",
+    )
+    @classmethod
+    def _non_negative(cls, value: float) -> float:
+        if value < 0:
+            raise ValueError("must be >= 0")
+        return value
+
+    @field_validator("ai_video_max_ratio")
+    @classmethod
+    def _ratio_unit(cls, value: float) -> float:
+        if value > 1.0:
+            raise ValueError("ai_video_max_ratio must be between 0.0 and 1.0")
+        return value
+
+    @field_validator("ai_video_hard_cap")
+    @classmethod
+    def _cap_non_negative(cls, value: int) -> int:
+        if value < 0:
+            raise ValueError("ai_video_hard_cap must be >= 0")
+        return value
+
+    @model_validator(mode="after")
+    def _weights_sum_to_one(self) -> "SceneClassificationProjectConfig":
+        total = self.w_importance + self.w_movement + self.w_emotion + self.w_complexity
+        if abs(total - 1.0) > 0.001:
+            raise ValueError(f"scene-classification weights must sum to 1.0, got {total:.3f}")
+        if self.still_motion_threshold > self.video_threshold:
+            raise ValueError("still_motion_threshold must not exceed video_threshold")
+        return self
+
+
+class VisualDensityProjectConfig(BaseModel):
+    """How many images a video needs, and how long a still may hold. The
+    real resolver (duration/scene-count -> target image count) is Phase 3;
+    this is only the config surface.
+    """
+
+    model_config = ConfigDict(extra="forbid")
+
+    density: str = "BALANCED"
+    # A single AI image should not be on screen longer than this before it
+    # reads as a frozen slide -- the compiler splits or adds an image past
+    # it (mirrors beat_generate._merge_short_beats' inverse concern).
+    max_seconds_per_image: float = 45.0
+    # Allow the Scene Director to mark a low-importance scene as reusing the
+    # previous scene's image ($0).
+    allow_scene_reuse: bool = True
+
+    @field_validator("density")
+    @classmethod
+    def _known_density(cls, value: str) -> str:
+        if value not in VISUAL_DENSITIES:
+            raise ValueError(f"Unknown visual density {value!r}, must be one of {VISUAL_DENSITIES}")
+        return value
+
+    @field_validator("max_seconds_per_image")
+    @classmethod
+    def _positive(cls, value: float) -> float:
+        if value <= 0:
+            raise ValueError("max_seconds_per_image must be > 0")
+        return value
+
+
+class CostGuardProjectConfig(BaseModel):
+    """Pre-flight budget guard. `max_total_usd = None` means no cap. When a
+    cost estimate exceeds the cap and `block_on_exceed`, the Story run
+    pauses at NEEDS_REVIEW instead of auto-producing.
+    """
+
+    model_config = ConfigDict(extra="forbid")
+
+    max_total_usd: float | None = None
+    block_on_exceed: bool = True
+    warn_at_fraction: float = 0.8
+
+    @field_validator("max_total_usd")
+    @classmethod
+    def _cap_positive(cls, value: float | None) -> float | None:
+        if value is not None and value <= 0:
+            raise ValueError("max_total_usd must be > 0 if set")
+        return value
+
+    @field_validator("warn_at_fraction")
+    @classmethod
+    def _fraction_unit(cls, value: float) -> float:
+        if not (0.0 < value <= 1.0):
+            raise ValueError("warn_at_fraction must be in (0.0, 1.0]")
+        return value
+
+
+class ModelRoutingProjectConfig(BaseModel):
+    """Overrides for app.modules.ai.model_router. `tier_overrides` maps a
+    task_kind to one of cheap/standard/premium; an empty dict uses the
+    router's own TASK_TIER_MAP.
+    """
+
+    model_config = ConfigDict(extra="forbid")
+
+    enabled: bool = True
+    tier_overrides: dict[str, str] = Field(default_factory=dict)
+
+    @field_validator("tier_overrides")
+    @classmethod
+    def _known_tiers(cls, value: dict[str, str]) -> dict[str, str]:
+        bad = {k: v for k, v in value.items() if v not in MODEL_TIERS}
+        if bad:
+            raise ValueError(f"tier_overrides values must be one of {MODEL_TIERS}; got {bad}")
+        return value
+
+
+class AIDisclosureProjectConfig(BaseModel):
+    """What AI assistance this project uses -- for YouTube's "altered or
+    synthetic content" disclosure. Flags are AUTO-SET by the pipeline based
+    on what actually ran (mode ai_generated -> ai_images; edge_tts/SAPI5 ->
+    ai_voice; an AI_VIDEO scene rendered -> ai_video). `synthetic_realistic`
+    and `disclosure_line` are the human-decidable parts; policy for "when
+    is disclosure required" lives in a config file, never hardcoded here
+    (plan section 18).
+    """
+
+    model_config = ConfigDict(extra="forbid")
+
+    ai_script: bool = True
+    ai_images: bool = False
+    ai_video: bool = False
+    ai_voice: bool = False
+    synthetic_realistic: bool = False
+    disclosure_line: str = ""
+
+
+class StoryCompileProjectConfig(BaseModel):
+    """How a Story compiles down to Project(s)/BeatPlan(s). `per_chapter`
+    (K chapters -> K episode videos) or `single` (one long video).
+    """
+
+    model_config = ConfigDict(extra="forbid")
+
+    compile_mode: str = "per_chapter"
+    # Scenes shorter than this are merged into their neighbour at compile
+    # time (each scene is a separately-billed image -- same reasoning as
+    # beat_generate._merge_short_beats).
+    merge_scenes_under_seconds: float = 2.5
+
+    @field_validator("compile_mode")
+    @classmethod
+    def _known_mode(cls, value: str) -> str:
+        if value not in STORY_COMPILE_MODES:
+            raise ValueError(f"Unknown compile_mode {value!r}, must be one of {STORY_COMPILE_MODES}")
+        return value
+
+    @field_validator("merge_scenes_under_seconds")
+    @classmethod
+    def _non_negative(cls, value: float) -> float:
+        if value < 0:
+            raise ValueError("merge_scenes_under_seconds must be >= 0")
+        return value
+
+
 class ProjectConfig(BaseModel):
     """The one, unified configuration object -- render/motion/captions/audio
     -- shared by templates and projects alike (Task 12's own "do not
@@ -824,6 +1022,15 @@ class ProjectConfig(BaseModel):
     content: ContentProjectConfig = Field(default_factory=ContentProjectConfig)
     voice: VoiceProjectConfig = Field(default_factory=VoiceProjectConfig)
     visual_generation: VisualGenerationProjectConfig = Field(default_factory=VisualGenerationProjectConfig)
+    # AI Storytelling Studio, Phase 0 -- additive, nothing consumes these
+    # yet (see each class's docstring). Backward compatible: a pre-Phase-0
+    # config JSON simply gets the defaults.
+    scene_classification: SceneClassificationProjectConfig = Field(default_factory=SceneClassificationProjectConfig)
+    visual_density: VisualDensityProjectConfig = Field(default_factory=VisualDensityProjectConfig)
+    cost_guard: CostGuardProjectConfig = Field(default_factory=CostGuardProjectConfig)
+    model_routing: ModelRoutingProjectConfig = Field(default_factory=ModelRoutingProjectConfig)
+    ai_disclosure: AIDisclosureProjectConfig = Field(default_factory=AIDisclosureProjectConfig)
+    story_compile: StoryCompileProjectConfig = Field(default_factory=StoryCompileProjectConfig)
     # Provenance only, like Beat.asset_id -- which Template (and which
     # version of it) this config was snapshotted from, if any. A project
     # created without choosing a template (or a pre-Task-12 project) has

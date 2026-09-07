@@ -336,11 +336,18 @@ class SaveProjectAsTemplateTests(unittest.TestCase):
         # -- a single `mode` string ("library"/"ai_generated"), no
         # asset_id/beat_id/job_id/output_path, same "plain scalars only"
         # shape.
+        # AI Storytelling Studio Phase 0 (docs/features/130-*) added six more
+        # -- scene_classification / visual_density / cost_guard /
+        # model_routing / ai_disclosure / story_compile -- every field a
+        # weight/threshold/ratio/bool/enum, no asset_id/beat_id/job_id/
+        # output_path, so the "plain scalars only" invariant still holds.
         self.assertEqual(
             fields,
             {
                 "render", "motion", "captions", "audio", "watermark", "package", "factory", "content", "voice",
                 "visual_generation", "outro", "template_id", "template_version",
+                "scene_classification", "visual_density", "cost_guard", "model_routing",
+                "ai_disclosure", "story_compile",
             },
         )
 

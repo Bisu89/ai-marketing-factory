@@ -93,3 +93,48 @@ def call_cost_usd(
         return CallCost(None, "Lệnh gọi này không có input_tokens/output_tokens để tính chi phí.", False)
     cost = (input_tokens / 1_000_000) * entry.input_price_per_1m + (output_tokens / 1_000_000) * entry.output_price_per_1m
     return CallCost(round(cost, 6), None, entry.confirmed)
+
+
+# -- AI video pricing (AI Storytelling Studio plan, Phase 0 skeleton) -----
+#
+# NO video provider is wired yet (see app.modules.ai.video_client). This
+# table exists so app.modules.ai.cost_estimator can produce a pre-flight
+# estimate the moment a provider IS chosen (Phase 10) -- fill in the real
+# per-second rate here, nowhere else, and set confirmed=True. Every entry
+# below is `confirmed=False` and `price_per_second=None` on purpose: an
+# unpriced provider makes cost_estimator report the video cost as "unknown"
+# with a reason, never a fabricated $0 -- the same "null + why, never
+# guessed" convention call_cost_usd above already uses.
+
+
+@dataclass(frozen=True)
+class VideoPriceEntry:
+    provider: str
+    price_per_second: float | None  # USD per second of generated clip
+    confirmed: bool
+    note: str
+
+
+VIDEO_PRICE_TABLE: list[VideoPriceEntry] = [
+    VideoPriceEntry(provider="null", price_per_second=0.0, confirmed=True,
+                    note="NullVideoProvider generates nothing -- $0."),
+    # Add one row per real provider in Phase 10 (kling / runway / luma /
+    # pika / minimax ...), with the published per-second rate and
+    # confirmed=True.
+]
+
+
+@dataclass
+class VideoCost:
+    cost_usd: float | None
+    note: str | None
+    confirmed_price: bool
+
+
+def video_cost_usd(provider: str, total_seconds: float) -> VideoCost:
+    entry = next((e for e in VIDEO_PRICE_TABLE if e.provider == provider), None)
+    if entry is None:
+        return VideoCost(None, f"Chưa có cấu hình giá video cho provider {provider!r}.", False)
+    if entry.price_per_second is None:
+        return VideoCost(None, f"Giá video cho {provider!r} chưa được điền (Phase 10).", False)
+    return VideoCost(round(entry.price_per_second * max(0.0, total_seconds), 6), None, entry.confirmed)

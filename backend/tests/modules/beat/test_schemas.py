@@ -13,6 +13,8 @@ from app.modules.beat.schemas import (
     BeatPlan,
     BeatType,
     ContentProjectConfig,
+    ProjectConfig,
+    SceneClassificationProjectConfig,
     effective_motion_preset,
 )
 from app.modules.beat.service import load_beats_json, save_beats_json
@@ -335,6 +337,47 @@ class MotionBackwardCompatibilityTests(unittest.TestCase):
         self.assertTrue(
             all(effective_motion_preset(beat, plan.config) == BeatMotionPreset.STATIC for beat in plan.beats)
         )
+
+
+class StorytellingStudioSubConfigTests(unittest.TestCase):
+    """AI Storytelling Studio, Phase 0: the six additive ProjectConfig
+    sub-configs must not break a pre-Phase-0 config JSON, and must
+    round-trip.
+    """
+
+    def test_pre_phase0_config_json_loads_with_defaults(self):
+        old = {"render": {"profile": "SOCIAL_VERTICAL"}, "captions": {"preset": "emotional"}}
+        pc = ProjectConfig.model_validate(old)
+        self.assertTrue(pc.scene_classification.enabled)
+        self.assertEqual(pc.visual_density.density, "BALANCED")
+        self.assertIsNone(pc.cost_guard.max_total_usd)
+        self.assertTrue(pc.model_routing.enabled)
+        self.assertTrue(pc.ai_disclosure.ai_script)
+        self.assertEqual(pc.story_compile.compile_mode, "per_chapter")
+
+    def test_empty_beat_plan_config_still_default(self):
+        plan = BeatPlan.model_validate({"beats": [{"id": "b1", "order": 1, "duration": 4.0, "type": "HOOK"}]})
+        self.assertEqual(plan.config.story_compile.compile_mode, "per_chapter")
+
+    def test_round_trip_equivalent(self):
+        pc = ProjectConfig(
+            scene_classification=SceneClassificationProjectConfig(ai_video_max_ratio=0.3, ai_video_hard_cap=20),
+            story_compile={"compile_mode": "single"},
+        )
+        self.assertEqual(ProjectConfig.model_validate(pc.model_dump(mode="json")), pc)
+
+    def test_scene_classification_weights_must_sum_to_one(self):
+        with self.assertRaises(ValidationError):
+            SceneClassificationProjectConfig(w_importance=0.9, w_movement=0.9, w_emotion=0.1, w_complexity=0.1)
+
+    def test_bad_compile_mode_rejected(self):
+        with self.assertRaises(ValidationError):
+            ProjectConfig(story_compile={"compile_mode": "per_episode"})
+
+    def test_all_builtin_templates_still_validate(self):
+        from app.modules.beat.schemas import BUILTIN_TEMPLATES
+        for t in BUILTIN_TEMPLATES:
+            self.assertIsInstance(t.config, ProjectConfig)
 
 
 class DeterminismTests(unittest.TestCase):
