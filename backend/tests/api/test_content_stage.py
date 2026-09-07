@@ -77,8 +77,8 @@ def _fake_beat_plan_with_asset(asset_id: int):
 class _ContentStageTestCase(_FactoryTestCase):
     def _patch_content(self, word_count: int = 72):
         return (
-            patch("app.api.v1.endpoints.factory_pipeline.generate_content_brief", side_effect=_fake_brief),
-            patch("app.api.v1.endpoints.factory_pipeline.generate_script", side_effect=_fake_script(word_count)),
+            patch("app.api.v1.endpoints.factory_stages.generate_content_brief", side_effect=_fake_brief),
+            patch("app.api.v1.endpoints.factory_stages.generate_script", side_effect=_fake_script(word_count)),
         )
 
     def _project_with_idea(self, name: str, idea: str) -> int:
@@ -94,7 +94,7 @@ class ContentGenerationTests(_ContentStageTestCase):
         project_id = self._project_with_idea("Idea To Script", "Why couples stop talking after five years")
         with (
             self._patch_content()[0], self._patch_content()[1],
-            patch("app.api.v1.endpoints.factory_pipeline.generate_beat_plan", side_effect=_fake_beat_plan_with_asset(self.asset_id)),
+            patch("app.api.v1.endpoints.factory_stages.generate_beat_plan", side_effect=_fake_beat_plan_with_asset(self.asset_id)),
         ):
             run = self._run_sync(project_id)
 
@@ -150,14 +150,14 @@ class ValidationTests(_ContentStageTestCase):
         project_id = self._project_with_idea("Timeout Project", "An idea")
 
         with patch(
-            "app.api.v1.endpoints.factory_pipeline.generate_content_brief",
+            "app.api.v1.endpoints.factory_stages.generate_content_brief",
             side_effect=ContentProviderTimeout("timed out"),
         ):
             with self.assertRaises(Exception):
                 _stage_generate_content(project_id, self.settings)
 
         with patch(
-            "app.api.v1.endpoints.factory_pipeline.generate_content_brief",
+            "app.api.v1.endpoints.factory_stages.generate_content_brief",
             side_effect=InvalidContentResponse("bad json"),
         ):
             with self.assertRaises(Exception):
@@ -166,7 +166,7 @@ class ValidationTests(_ContentStageTestCase):
     def test_full_pipeline_fails_with_stable_error_codes(self):
         project_id = self._project_with_idea("Full Pipeline Timeout", "An idea")
         with patch(
-            "app.api.v1.endpoints.factory_pipeline.generate_content_brief",
+            "app.api.v1.endpoints.factory_stages.generate_content_brief",
             side_effect=ContentProviderTimeout("timed out"),
         ):
             run = self._run_sync(project_id)
@@ -189,14 +189,14 @@ class ValidationTests(_ContentStageTestCase):
 class IdempotencyTests(_ContentStageTestCase):
     def test_existing_script_skips_content_generation(self):
         project_id = self._create_project("Existing Script", script_text="A perfectly good existing script.")
-        with patch("app.api.v1.endpoints.factory_pipeline.generate_content_brief") as mock_brief:
+        with patch("app.api.v1.endpoints.factory_stages.generate_content_brief") as mock_brief:
             generated = _stage_generate_content(project_id, self.settings)
             mock_brief.assert_not_called()
         self.assertFalse(generated)
 
     def test_no_idea_and_no_script_leaves_content_stage_as_noop(self):
         project_id = self._create_project("Blank Project", script_text=" ")
-        with patch("app.api.v1.endpoints.factory_pipeline.generate_content_brief") as mock_brief:
+        with patch("app.api.v1.endpoints.factory_stages.generate_content_brief") as mock_brief:
             generated = _stage_generate_content(project_id, self.settings)
             mock_brief.assert_not_called()
         self.assertFalse(generated)
@@ -214,7 +214,7 @@ class ManualOverrideTests(_ContentStageTestCase):
         draft = get_project_draft(project_id)
         self.assertTrue(draft.script_locked)
 
-        with patch("app.api.v1.endpoints.factory_pipeline.generate_content_brief") as mock_brief:
+        with patch("app.api.v1.endpoints.factory_stages.generate_content_brief") as mock_brief:
             generated = _stage_generate_content(project_id, self.settings)
             mock_brief.assert_not_called()
         self.assertFalse(generated)
@@ -306,7 +306,7 @@ class CrashRecoveryTests(_ContentStageTestCase):
 
         with (
             self._patch_content()[0], self._patch_content()[1],
-            patch("app.api.v1.endpoints.factory_pipeline.generate_beat_plan", side_effect=_fake_beat_plan_with_asset(self.asset_id)),
+            patch("app.api.v1.endpoints.factory_stages.generate_beat_plan", side_effect=_fake_beat_plan_with_asset(self.asset_id)),
         ):
             retry_run(run.id, self.settings, self.service)
             resumed = self._wait_for_run_settled(run.id)
@@ -397,7 +397,7 @@ class EndToEndIdeaTests(_ContentStageTestCase):
         project_id = self._project_with_idea("E2E Idea", "Why couples stop talking after five years")
         with (
             self._patch_content()[0], self._patch_content()[1],
-            patch("app.api.v1.endpoints.factory_pipeline.generate_beat_plan", side_effect=_fake_beat_plan_with_asset(self.asset_id)),
+            patch("app.api.v1.endpoints.factory_stages.generate_beat_plan", side_effect=_fake_beat_plan_with_asset(self.asset_id)),
         ):
             run = self._run_sync(project_id)
 

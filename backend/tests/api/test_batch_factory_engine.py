@@ -212,7 +212,7 @@ class AIConcurrencyWiringTests(_BatchEngineTestCase):
             return BeatPlan(script_text=script, beats=[Beat(id="b1", order=1, type=BeatType.BODY, narration="x", duration=1.0)])
 
         before = ai_generation_semaphore._value
-        with patch("app.api.v1.endpoints.factory_pipeline.generate_beat_plan", side_effect=_fake_generate):
+        with patch("app.api.v1.endpoints.factory_stages.generate_beat_plan", side_effect=_fake_generate):
             factory_pipeline_module._stage_generate_beats(project_id, self.settings)
         after = ai_generation_semaphore._value
 

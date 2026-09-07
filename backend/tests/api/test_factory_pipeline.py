@@ -108,6 +108,7 @@ class _FactoryTestCase(unittest.TestCase):
             patch("app.modules.video_composer.service.SessionLocal", self.TestSessionLocal),
             patch("app.modules.factory.service.SessionLocal", self.TestSessionLocal),
             patch("app.api.v1.endpoints.factory_pipeline.SessionLocal", self.TestSessionLocal),
+            patch("app.api.v1.endpoints.factory_stages.SessionLocal", self.TestSessionLocal),
             patch("app.api.v1.endpoints.voice_generate.SessionLocal", self.TestSessionLocal),
             patch("app.api.v1.endpoints.motion_generate.SessionLocal", self.TestSessionLocal),
             patch("app.api.v1.endpoints.audio_generate.SessionLocal", self.TestSessionLocal),
@@ -241,7 +242,7 @@ class StateMachineTests(_FactoryTestCase):
         # EndToEndTests below).
         project_id = self._create_project("State Machine")
         with patch(
-            "app.api.v1.endpoints.factory_pipeline.generate_beat_plan",
+            "app.api.v1.endpoints.factory_stages.generate_beat_plan",
             side_effect=lambda key, script, **_: _fake_beat_plan(script),
         ):
             # No beats yet on this project and no asset assigned -- give it
@@ -351,7 +352,7 @@ class BeatReuseTests(_FactoryTestCase):
         )
         update_project_beat_plan(project_id, plan)
 
-        with patch("app.api.v1.endpoints.factory_pipeline.generate_beat_plan") as mock_generate:
+        with patch("app.api.v1.endpoints.factory_stages.generate_beat_plan") as mock_generate:
             run = self._run_sync(project_id)
             mock_generate.assert_not_called()
         self.assertEqual(run.status, "QUEUED")
@@ -359,7 +360,7 @@ class BeatReuseTests(_FactoryTestCase):
     def test_missing_beats_are_generated(self):
         project_id = self._create_project("Generate Beats", script_text="A real script.")
         with patch(
-            "app.api.v1.endpoints.factory_pipeline.generate_beat_plan",
+            "app.api.v1.endpoints.factory_stages.generate_beat_plan",
             side_effect=lambda key, script, **_: _fake_beat_plan(script, num_beats=1),
         ) as mock_generate:
             run = self._run_sync(project_id)
@@ -460,7 +461,7 @@ class ReviewResumeTests(_FactoryTestCase):
         )
         update_project_beat_plan(project_id, plan)
 
-        with patch("app.api.v1.endpoints.factory_pipeline.generate_beat_plan") as mock_generate:
+        with patch("app.api.v1.endpoints.factory_stages.generate_beat_plan") as mock_generate:
             run = self._run_sync(project_id)
             mock_generate.assert_not_called()
         self.assertEqual(run.status, "NEEDS_REVIEW")
@@ -478,7 +479,7 @@ class ReviewResumeTests(_FactoryTestCase):
         )
         update_project_beat_plan(project_id, fixed_plan)
 
-        with patch("app.api.v1.endpoints.factory_pipeline.generate_beat_plan") as mock_generate:
+        with patch("app.api.v1.endpoints.factory_stages.generate_beat_plan") as mock_generate:
             continue_run(run.id, self.settings, self.service)
             resumed = self._wait_for_run_settled(run.id)
             mock_generate.assert_not_called()
@@ -546,7 +547,7 @@ class RetryTests(_FactoryTestCase):
         )
         update_project_beat_plan(project_id, fixed_plan)
 
-        with patch("app.api.v1.endpoints.factory_pipeline.generate_beat_plan") as mock_generate:
+        with patch("app.api.v1.endpoints.factory_stages.generate_beat_plan") as mock_generate:
             retry_run(run.id, self.settings, self.service)
             resumed = self._wait_for_run_settled(run.id)
             mock_generate.assert_not_called()
@@ -591,7 +592,7 @@ class IdempotencyTests(_FactoryTestCase):
         )
         update_project_beat_plan(project_id, plan)
 
-        with patch("app.api.v1.endpoints.factory_pipeline.generate_beat_plan") as mock_generate:
+        with patch("app.api.v1.endpoints.factory_stages.generate_beat_plan") as mock_generate:
             run1 = create_and_start_run(project_id, self.settings, self.service)
             run2 = create_and_start_run(project_id, self.settings, self.service)
             self.assertEqual(run1.id, run2.id)
@@ -769,7 +770,7 @@ class BatchIntegrationTests(_FactoryTestCase):
             )
             update_project_beat_plan(item.project_id, plan)
 
-        with patch("app.api.v1.endpoints.factory_pipeline.generate_beat_plan") as mock_generate:
+        with patch("app.api.v1.endpoints.factory_stages.generate_beat_plan") as mock_generate:
             started = run_batch_factory(batch.id, self.settings, self.service)
             mock_generate.assert_not_called()  # every project already had beats -- reused
 

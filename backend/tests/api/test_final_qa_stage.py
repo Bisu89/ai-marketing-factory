@@ -348,7 +348,7 @@ class StageErrorTranslationTests(_PackageStageTestCase):
 
         factory_service.set_run_fields(run.id, status="FINAL_QA", completed_at=None)
         with patch(
-            "app.api.v1.endpoints.factory_pipeline.run_final_qa", side_effect=RuntimeError("boom"),
+            "app.api.v1.endpoints.factory_stages.run_final_qa", side_effect=RuntimeError("boom"),
         ):
             _run_final_qa_and_settle(run.id, project_id, self.settings)
 

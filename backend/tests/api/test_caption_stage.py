@@ -274,7 +274,7 @@ class StageErrorTranslationTests(_CaptionStageTestCase):
         # is tested elsewhere in this codebase.
         project_id = self._project_with_narration("Stage Error Translation", ["Some narration text."])
         with patch(
-            "app.api.v1.endpoints.factory_pipeline.generate_project_captions",
+            "app.api.v1.endpoints.factory_stages.generate_project_captions",
             side_effect=CaptionError("CAPTION_TIMING_INVALID", "forced for translation test"),
         ):
             with self.assertRaises(FactoryStageError) as ctx:
@@ -328,7 +328,7 @@ class BatchTests(_CaptionStageTestCase):
             plan = BeatPlan(script_text=draft.script_text, beats=beats, project_name=draft.project_name, config=draft.config)
             update_project_beat_plan(item.project_id, plan)
 
-        with patch("app.api.v1.endpoints.factory_pipeline.generate_beat_plan") as mock_generate:
+        with patch("app.api.v1.endpoints.factory_stages.generate_beat_plan") as mock_generate:
             started = run_batch_factory(batch.id, self.settings, self.service)
             mock_generate.assert_not_called()
 

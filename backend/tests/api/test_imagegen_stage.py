@@ -224,7 +224,7 @@ class PipelineWiringTests(_FactoryTestCase):
     def test_stage_translates_image_gen_error_to_stable_code(self):
         project_id = self._create_project("Wiring Error")
         with patch(
-            "app.api.v1.endpoints.factory_pipeline.generate_project_images",
+            "app.api.v1.endpoints.factory_stages.generate_project_images",
             side_effect=ImageGenError("boom"),
         ):
             with self.assertRaises(Exception) as ctx:
@@ -236,7 +236,7 @@ class PipelineWiringTests(_FactoryTestCase):
         project_id = self._create_project("Library Mode")
         beats = [Beat(id="b1", order=1, type=BeatType.BODY, narration="Part one.", duration=1.5, asset_id=self.asset_id)]
         update_project_beat_plan(project_id, BeatPlan(script_text="A short test script.", beats=beats))
-        with patch("app.api.v1.endpoints.factory_pipeline.generate_project_images") as mock_gen:
+        with patch("app.api.v1.endpoints.factory_stages.generate_project_images") as mock_gen:
             run = self._run_sync(project_id)
             mock_gen.assert_not_called()
         self.assertEqual(run.status, "QUEUED")  # unaffected -- default "library" mode, unchanged from before Task 59
@@ -262,7 +262,7 @@ class PipelineWiringTests(_FactoryTestCase):
             update_project_beat_plan(project_id, plan)
             return fake_result
 
-        with patch("app.api.v1.endpoints.factory_pipeline.generate_project_images", side_effect=_assign_and_return):
+        with patch("app.api.v1.endpoints.factory_stages.generate_project_images", side_effect=_assign_and_return):
             run = self._run_sync(project_id)
 
         self.assertEqual(run.status, "QUEUED")

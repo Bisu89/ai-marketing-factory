@@ -390,7 +390,7 @@ class StageErrorTranslationTests(_PackageStageTestCase):
             "Stage Error Translation", ["Some narration text."], content_brief=self._content_brief(),
         )
         with patch(
-            "app.api.v1.endpoints.factory_pipeline.generate_project_package",
+            "app.api.v1.endpoints.factory_stages.generate_project_package",
             side_effect=PackageError("PACKAGE_INCOMPLETE", "forced for translation test"),
         ):
             from app.modules.factory import service as factory_service
