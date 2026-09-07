@@ -276,11 +276,10 @@ class StoryCostResponse(BaseModel):
     notes: list[str]
 
 
-def _plan_llm_work(n_chapters: int, n_scenes: int, n_characters: int) -> list[LlmWorkItem]:
-    """A conservative bucket list for the MASTER-language planning calls the
-    Phase 4/5 pipeline will make. Deliberately errs high (cost_estimator
-    already prices every call at the provider's standard default model);
-    actuals should come in under this.
+def _planning_llm_work(n_chapters: int, n_scenes: int, n_characters: int) -> list[LlmWorkItem]:
+    """Conservative buckets for the planning pipeline's LLM calls -- only
+    relevant BEFORE any scenes exist. Once the story is planned (or
+    imported), these calls never run again.
     """
     return [
         LlmWorkItem("story_development", 1, 2500, 1500),
@@ -290,6 +289,13 @@ def _plan_llm_work(n_chapters: int, n_scenes: int, n_characters: int) -> list[Ll
         LlmWorkItem("scene_breakdown", max(1, n_chapters), 2600, 2400),
         LlmWorkItem("script", max(1, n_scenes), 900, 700),
     ]
+
+
+def _produce_llm_work(n_projects: int) -> list[LlmWorkItem]:
+    """The only LLM the produce path spends: one AI title/description
+    rewrite per compiled Project (Factory PACKAGING stage).
+    """
+    return [LlmWorkItem("metadata_rewrite", max(1, n_projects), 1200, 400)]
 
 
 def _word_count(text: str | None) -> int:
@@ -331,17 +337,28 @@ def build_cost_input(story, tree: list[tuple[object, list[object]]]) -> tuple[Co
         "classified": all(sc.composite_score is not None for sc in scenes) if scenes else False,
     }
 
+    # The estimate is forward-looking: "what will producing this story from
+    # its CURRENT state cost". Once scenes exist -- whether the pipeline
+    # wrote them or they were imported -- the planning LLM calls are done
+    # (or will never run), so only the produce-time metadata rewrite counts.
     n_characters = len(service.list_characters(story.id))
+    if n_scenes == 0:
+        llm_work = _planning_llm_work(n_chapters, n_scenes, n_characters)
+    else:
+        n_projects = n_chapters if pc.story_compile.compile_mode == "per_chapter" else 1
+        llm_work = _produce_llm_work(n_projects)
+        notes.append("Kế hoạch đã xong -- LLM ở đây chỉ là bước viết tiêu đề/mô tả lúc produce.")
+
     inp = CostEstimateInput(
         provider=provider,
-        llm_work=_plan_llm_work(n_chapters, n_scenes, n_characters),
+        llm_work=llm_work,
         image_count=new_images,
         ai_video_count=len(ai_video),
         ai_video_total_seconds=ai_video_seconds,
         video_provider="null",
         tts_provider=pc.voice.provider,
         tts_word_count=tts_words,
-        package_ai_metadata=True,
+        package_ai_metadata=False,  # rolled into llm_work above
         target_language_count=1,
     )
     return inp, scene_counts, notes

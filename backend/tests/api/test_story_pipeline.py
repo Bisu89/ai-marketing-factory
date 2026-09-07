@@ -159,6 +159,25 @@ class CostEstimateTests(_PipelineTestCase):
         self.assertIn(cost.verdict, ("WARN", "BLOCK"))
         self.assertEqual(cost.cap_source, "story_budget")
 
+    def test_planned_story_excludes_planning_llm_from_the_estimate(self):
+        # Once scenes exist, the planning LLM calls are done (or, for an
+        # imported story, will never run) -- the forward-looking estimate
+        # must not bill them again.
+        sid = self._story()
+        self._chapter_with_scenes(sid, [{"narration": _CALM} for _ in range(6)])
+        sp.classify_and_persist(sid)
+        cost = sp.estimate_cost(sid)
+        # LLM cost is now just the per-project metadata rewrite -- far below
+        # the ~$0.9 the full planning buckets would produce.
+        self.assertLess(cost.estimate["llm_usd"], 0.10)
+        self.assertTrue(any("Kế hoạch đã xong" in n for n in cost.notes))
+
+    def test_unplanned_story_still_includes_planning_llm(self):
+        sid = self._story()
+        service.add_chapter(sid, order=1, title="c1")  # a chapter but no scenes
+        cost = sp.estimate_cost(sid)
+        self.assertGreater(cost.estimate["llm_usd"], 0.10)
+
     def test_scene_plan_combines_rows_and_cost(self):
         sid = self._story(config=_ALLOW_VIDEO)
         self._chapter_with_scenes(sid, [
