@@ -163,6 +163,8 @@ SQLite.
 
 136. [AI Storytelling Studio — import a written story](features/136-storytelling-studio-import.md) — a paste-your-own path that skips the paid LLM planning pipeline: `POST /stories/{id}/import` takes a JSON package (bible / characters / locations / chapters+scenes) and materialises it as real rows in one transaction (names resolved to ids, unknown scene types → `BODY`, duration clamped, story → `SCENES_READY`). Frontend: an "Import script" modal on `/studio/:storyId` with a one-click "Copy the ChatGPT prompt" (the prompt embeds the exact schema) + a paste box. The Scene Director + cost + Produce steps are unchanged — the only remaining spend is the AI images at produce time.
 
+137. [Schema bootstrap: handle an empty `alembic_version` table](features/137-schema-bootstrap-empty-alembic-version-fix.md) — a real user DB had an `alembic_version` table with **no row** (an earlier startup that half-finished). `sync_schema` keyed stamp-vs-upgrade on `has_table("alembic_version")`, so it ran `upgrade head`, which re-ran migration `0001`'s `create_table` over the tables `create_all()` had just made → `table story_channel already exists`, whole app failed to boot. Fixed by deciding on the **recorded revision** (`current_revision(engine) is None` → stamp), so both "no table" and "empty table" take the stamp path.
+
 ## Keeping this up to date
 
 See the "Documentation" section in `CLAUDE.md` at the repo root — every

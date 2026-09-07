@@ -13,7 +13,8 @@ The rule, in one place:
                                           a new module's tables on upgrade)
   2. run_additive_column_migrations()  -- legacy pre-Alembic column adds
                                           (frozen list; superseded by (4))
-  3. if the DB has no `alembic_version` table:
+  3. if the DB has no recorded Alembic revision (no `alembic_version`
+     table, or the table exists but is empty):
         alembic  stamp head            -- create_all just produced the
                                           current schema, so record it as
                                           up-to-date; migrations never run
@@ -70,10 +71,6 @@ def _alembic_config(db_url: str | None = None) -> Config:
     return cfg
 
 
-def _has_alembic_version(engine: Engine) -> bool:
-    return inspect(engine).has_table("alembic_version")
-
-
 def _db_has_any_app_table(engine: Engine) -> bool:
     existing = set(inspect(engine).get_table_names())
     return bool(existing & set(Base.metadata.tables.keys()))
@@ -84,15 +81,18 @@ def sync_schema(engine: Engine) -> None:
     run_additive_column_migrations(engine)
 
     cfg = _alembic_config(str(engine.url))
-    if _has_alembic_version(engine):
-        logger.info("alembic: upgrading database to head")
-        command.upgrade(cfg, "head")
-    else:
-        # No version table. create_all above just produced the current
-        # schema, so stamp it as head rather than running the baseline
-        # migration's create_table over tables that now exist.
-        logger.info("alembic: stamping unversioned database at head")
+    recorded = current_revision(engine)
+    if recorded is None:
+        # No recorded revision -- either no alembic_version table at all, or
+        # the table exists but is empty (a partially-completed earlier
+        # startup). create_all above just produced the current schema, so
+        # stamp it as head rather than running the baseline migration's
+        # create_table over tables that now exist.
+        logger.info("alembic: stamping database at head (no recorded revision)")
         command.stamp(cfg, "head")
+    else:
+        logger.info("alembic: upgrading database to head (currently at %s)", recorded)
+        command.upgrade(cfg, "head")
 
 
 def current_revision(engine: Engine) -> str | None:

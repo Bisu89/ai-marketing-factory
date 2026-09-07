@@ -49,6 +49,21 @@ class SyncSchemaTests(unittest.TestCase):
         sync_schema(self.engine)  # must not raise, must not change anything
         self.assertEqual(current_revision(self.engine), rev1)
 
+    def test_empty_alembic_version_table_is_stamped_not_upgraded(self):
+        # Real-world state: a partially-completed earlier startup left an
+        # `alembic_version` TABLE with no row. create_all has already made
+        # every table, so sync must stamp (not run 0001's create_table over
+        # tables that now exist).
+        sync_schema(self.engine)
+        with self.engine.begin() as conn:
+            conn.execute(text("DELETE FROM alembic_version"))
+        self.assertIsNone(current_revision(self.engine))
+
+        sync_schema(self.engine)  # must not raise "table ... already exists"
+
+        self.assertEqual(current_revision(self.engine), "0001_storytelling_studio_phase1")
+        self.assertTrue(_STORY_TABLES <= set(inspect(self.engine).get_table_names()))
+
     def test_pre_phase1_db_catches_up(self):
         # Simulate a DB created by an older app version: everything EXCEPT
         # the story tables + the new series columns, and no alembic_version.
