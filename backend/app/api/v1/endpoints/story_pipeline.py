@@ -38,12 +38,23 @@ estimator wired to real rows, nothing more.
 from __future__ import annotations
 
 import dataclasses
+import logging
+import threading
+import time
 
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
 from pydantic import BaseModel, ConfigDict, ValidationError as PydanticValidationError
 
-from app.core.config import get_settings
-from app.core.exceptions import ValidationError
+from app.api.v1.endpoints.story_stages import (
+    StoryStageError,
+    _stage_chapter_outline,
+    _stage_character_bible,
+    _stage_scene_breakdown,
+    _stage_story_bible,
+    _stage_story_development,
+)
+from app.core.config import Settings, get_settings
+from app.core.exceptions import NotFoundError, ValidationError
 from app.modules.ai.cost_estimator import CostEstimate, CostEstimateInput, LlmWorkItem, estimate_story
 from app.modules.ai.image_client import IMAGE_COST_USD
 from app.modules.beat.schemas import ProjectConfig
@@ -55,7 +66,9 @@ from app.modules.scene_director.schemas import (
     SceneDirectorReport,
 )
 from app.modules.story import service
+from app.modules.story.schemas import StoryRunOut
 
+logger = logging.getLogger(__name__)
 router = APIRouter()
 
 # The text providers app.modules.ai.model_router / cost_estimator price
@@ -432,6 +445,172 @@ def scene_plan(story_id: int) -> ScenePlanResponse:
     return ScenePlanResponse(story_id=story_id, scenes=rows, cost=estimate_cost(story_id))
 
 
+# -- the resumable STORY_PLAN run (plan Phase 4) -----------------------
+#
+# A 1:1 mirror of factory_pipeline._execute_pipeline_sync: a plain daemon
+# thread walking a fixed stage list, one StoryCheckpoint per stage, a
+# between-stage cancel check, every failure funnelled through
+# service.mark_run_failed. There is NO persisted worker -- a run still
+# ACTIVE at process start was interrupted (service.reconcile_story_runs_on_startup).
+
+# STORY_PLAN scope: idea -> scenes. VISUAL_PLANNING / COMPILING (turning
+# the plan into renderable beat.Project(s)) are plan Phase 5.
+_STORY_PLAN_SEQUENCE: tuple[tuple[str, object], ...] = (
+    ("STORY_DEVELOPMENT", _stage_story_development),
+    ("STORY_BIBLE", _stage_story_bible),
+    ("CHARACTER_BIBLE", _stage_character_bible),
+    ("CHAPTER_OUTLINE", _stage_chapter_outline),
+    ("SCENE_BREAKDOWN", _stage_scene_breakdown),
+    # SCENE_CLASSIFICATION is deterministic (Phase 3's classify_and_persist)
+    # + the cost-guard gate -- handled inline, not a _stage_* function.
+)
+
+_cancel_events: dict[int, threading.Event] = {}
+_cancel_events_lock = threading.Lock()
+
+
+def _cancel_event_for(run_id: int) -> threading.Event:
+    with _cancel_events_lock:
+        event = _cancel_events.get(run_id)
+        if event is None:
+            event = threading.Event()
+            _cancel_events[run_id] = event
+        return event
+
+
+def _drop_cancel_event(run_id: int) -> None:
+    with _cancel_events_lock:
+        _cancel_events.pop(run_id, None)
+
+
+def _bail_if_cancelled(run_id: int, cancel_event: threading.Event) -> bool:
+    if not cancel_event.is_set():
+        return False
+    service.set_run_fields(run_id, status="CANCELLED", completed_at=service._utcnow())
+    return True
+
+
+def _run_scene_classification_gate(run_id: int, story_id: int) -> None:
+    """SCENE_CLASSIFICATION stage: deterministic classify + persist, then
+    the pre-flight cost estimate. A BLOCK verdict pauses the run at
+    NEEDS_REVIEW (never FAILED) so the user can raise the cap / trim scope
+    and retry; WARN/OK/UNKNOWN proceed to READY.
+    """
+    service.set_run_fields(run_id, status="SCENE_CLASSIFICATION")
+    service.start_checkpoint(run_id, "SCENE_CLASSIFICATION")
+    t0 = time.monotonic()
+    report = classify_and_persist(story_id)
+    cost = estimate_cost(story_id)
+    service.merge_stage_metrics(run_id, scene_classification_seconds=round(time.monotonic() - t0, 3))
+    service.set_run_fields(run_id, est_cost_json=cost.model_dump())
+
+    if cost.verdict == "BLOCK":
+        service.complete_checkpoint(run_id, "SCENE_CLASSIFICATION", metadata={
+            "ai_video_count": report.ai_video_count, "cost_verdict": cost.verdict,
+        })
+        service.set_run_fields(
+            run_id, status="NEEDS_REVIEW", failed_stage="SCENE_CLASSIFICATION",
+            error_code="COST_GUARD_BLOCKED",
+            error_message=(
+                f"Estimated cost ${cost.total_usd} exceeds the cap "
+                f"${cost.effective_cap_usd} ({cost.cap_source}). Raise the budget or trim the story, then retry."
+            ),
+            requires_human_review=True, review_reason_count=1, completed_at=service._utcnow(),
+        )
+        return
+
+    service.complete_checkpoint(run_id, "SCENE_CLASSIFICATION", metadata={
+        "ai_video_count": report.ai_video_count,
+        "still_count": report.still_count,
+        "cost_verdict": cost.verdict,
+        "est_total_usd": cost.total_usd,
+    })
+    service.set_run_fields(run_id, status="READY", completed_at=service._utcnow())
+    try:
+        service.patch_story(story_id, {"status": "SCENES_READY"})
+    except Exception:  # noqa: BLE001 -- a story status bump must never fail the run
+        logger.exception("story %s: could not set status SCENES_READY", story_id)
+
+
+def _execute_story_plan_sync(run_id: int, story_id: int, settings: Settings) -> None:
+    cancel_event = _cancel_event_for(run_id)
+    current_stage = "STORY_DEVELOPMENT"
+    try:
+        for stage, fn in _STORY_PLAN_SEQUENCE:
+            current_stage = stage
+            if _bail_if_cancelled(run_id, cancel_event):
+                return
+            service.set_run_fields(run_id, status=stage)
+            service.start_checkpoint(run_id, stage)
+            t0 = time.monotonic()
+            did_work = fn(story_id, settings)
+            service.merge_stage_metrics(run_id, **{f"{stage.lower()}_seconds": round(time.monotonic() - t0, 3)})
+            service.complete_checkpoint(run_id, stage, metadata={"generated": bool(did_work)})
+
+        if _bail_if_cancelled(run_id, cancel_event):
+            return
+        _run_scene_classification_gate(run_id, story_id)
+    except StoryStageError as exc:
+        service.mark_run_failed(run_id, exc.stage, exc.code, exc.message)
+    except Exception as exc:  # noqa: BLE001 -- never a raw stack trace to the user
+        logger.exception("StoryRun %s failed unexpectedly at %s", run_id, current_stage)
+        service.mark_run_failed(run_id, current_stage, "UNEXPECTED_ERROR", str(exc))
+    finally:
+        _drop_cancel_event(run_id)
+
+
+def create_and_start_run(story_id: int, settings: Settings) -> object:
+    """Start a STORY_PLAN run, or return the story's already-active one
+    unchanged (never two at once). Spawns the background thread only for a
+    genuinely new run.
+    """
+    service.get_story(story_id)  # raises NotFoundError if the story is gone
+    run, created = service.create_run(story_id, scope="STORY_PLAN")
+    if created:
+        threading.Thread(
+            target=_execute_story_plan_sync, args=(run.id, story_id, settings), daemon=True
+        ).start()
+    return service.get_run(run.id)
+
+
+def retry_run(run_id: int, settings: Settings) -> object:
+    """Resume a FAILED or cost-guard-paused (NEEDS_REVIEW) run. Replays the
+    whole sequence from the top -- every LLM stage's reuse check makes the
+    already-done work free, so this naturally resumes from the first
+    incomplete stage (same design as factory_pipeline.retry_run).
+    """
+    run = service.get_run(run_id)
+    if run is None:
+        raise NotFoundError("StoryRun", run_id)
+    if run.status not in ("FAILED", "NEEDS_REVIEW"):
+        raise ValidationError(
+            f"Only a FAILED or NEEDS_REVIEW run can be retried (this run is {run.status})."
+        )
+    service.increment_attempt(run_id)
+    service.set_run_fields(
+        run_id, status="STORY_DEVELOPMENT", error_code=None, error_message=None,
+        failed_stage=None, completed_at=None, requires_human_review=run.requires_human_review,
+    )
+    threading.Thread(
+        target=_execute_story_plan_sync, args=(run_id, run.story_id, settings), daemon=True
+    ).start()
+    return service.get_run(run_id)
+
+
+def cancel_run(run_id: int) -> object:
+    """Signal a cooperative cancel -- the background thread stops at the
+    next stage boundary (a stage mid-LLM-call can't be force-killed, same
+    as factory_pipeline.cancel_run's own local stages).
+    """
+    run = service.get_run(run_id)
+    if run is None:
+        raise NotFoundError("StoryRun", run_id)
+    if run.status in ("COMPLETED", "FAILED", "CANCELLED", "READY"):
+        return run
+    _cancel_event_for(run_id).set()
+    return service.get_run(run_id)
+
+
 # -- routes -------------------------------------------------------------
 
 
@@ -454,3 +633,26 @@ def get_cost_estimate(story_id: int) -> StoryCostResponse:
 @router.get("/stories/{story_id}/scene-plan", response_model=ScenePlanResponse)
 def get_scene_plan(story_id: int) -> ScenePlanResponse:
     return scene_plan(story_id)
+
+
+def _run_out(run) -> StoryRunOut:
+    return StoryRunOut.model_validate(run, from_attributes=True)
+
+
+@router.post("/stories/{story_id}/runs", response_model=StoryRunOut, status_code=201)
+def start_story_run(story_id: int, settings: Settings = Depends(get_settings)) -> StoryRunOut:
+    """Start (or reuse) a STORY_PLAN run: STORY_DEVELOPMENT -> ... ->
+    SCENE_BREAKDOWN -> SCENE_CLASSIFICATION + cost guard. Runs on a
+    background thread; poll GET /story-runs/{id}.
+    """
+    return _run_out(create_and_start_run(story_id, settings))
+
+
+@router.post("/story-runs/{run_id}/retry", response_model=StoryRunOut)
+def retry_story_run(run_id: int, settings: Settings = Depends(get_settings)) -> StoryRunOut:
+    return _run_out(retry_run(run_id, settings))
+
+
+@router.post("/story-runs/{run_id}/cancel", response_model=StoryRunOut)
+def cancel_story_run(run_id: int) -> StoryRunOut:
+    return _run_out(cancel_run(run_id))

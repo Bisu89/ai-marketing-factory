@@ -8,12 +8,18 @@ rules beyond ownership checks and the state-machine guards a resumable
 StoryRun needs (Phase 2 fills those in).
 """
 
+import threading
 from datetime import datetime, timezone
 
 from app.core.exceptions import NotFoundError, ValidationError
 from app.db.session import SessionLocal
 from app.modules.story.models import (
+    CHECKPOINT_COMPLETED,
+    CHECKPOINT_FAILED,
+    CHECKPOINT_RUNNING,
+    CHECKPOINT_SKIPPED,
     STORY_RUN_ACTIVE_STATUSES,
+    STORY_RUN_STAGES,
     StoryChannel,
     Episode,
     Story,
@@ -24,6 +30,11 @@ from app.modules.story.models import (
     StoryRun,
     StoryScene,
 )
+
+# Guards the "does this story already have an active run" check-then-create
+# (a single-process desktop app -- an in-process lock is enough, same as
+# app.modules.factory.service._create_lock).
+_create_lock = threading.Lock()
 
 
 def _utcnow() -> datetime:
@@ -526,7 +537,81 @@ def apply_scene_updates(updates: dict[int, dict]) -> int:
         db.close()
 
 
-# -- StoryRun / StoryCheckpoint (read-only in Phase 1) -----------------
+# -- Idempotent bulk creates for the planning pipeline (Phase 4) --------
+#
+# A stage checks "does this story already have characters/chapters/scenes"
+# and only calls these when it doesn't -- the same reuse-before-regenerate
+# idempotency app.api.v1.endpoints.factory_stages established for beats.
+
+
+def bulk_add_characters(story_id: int, rows: list[dict]) -> list[StoryCharacter]:
+    db = SessionLocal()
+    try:
+        _require_story(db, story_id)
+        created = [StoryCharacter(story_id=story_id, **r) for r in rows]
+        db.add_all(created)
+        db.commit()
+        for c in created:
+            db.refresh(c)
+        db.expunge_all()
+        return created
+    finally:
+        db.close()
+
+
+def bulk_add_chapters(story_id: int, rows: list[dict]) -> list[StoryChapter]:
+    db = SessionLocal()
+    try:
+        _require_story(db, story_id)
+        created = [StoryChapter(story_id=story_id, **r) for r in rows]
+        db.add_all(created)
+        db.commit()
+        for c in created:
+            db.refresh(c)
+        db.expunge_all()
+        return created
+    finally:
+        db.close()
+
+
+def bulk_add_scenes(chapter_id: int, rows: list[dict]) -> list[StoryScene]:
+    db = SessionLocal()
+    try:
+        if db.get(StoryChapter, chapter_id) is None:
+            raise NotFoundError("StoryChapter", chapter_id)
+        created = [StoryScene(chapter_id=chapter_id, **r) for r in rows]
+        db.add_all(created)
+        db.commit()
+        for s in created:
+            db.refresh(s)
+        db.expunge_all()
+        return created
+    finally:
+        db.close()
+
+
+def merge_story_json(story_id: int, *, story_bible: dict | None = None, style_bible: dict | None = None) -> None:
+    """Shallow-merge new keys into story_bible_json / style_bible_json
+    without dropping keys an earlier stage already wrote.
+    """
+    db = SessionLocal()
+    try:
+        row = db.get(Story, story_id)
+        if row is None:
+            raise NotFoundError("Story", story_id)
+        if story_bible:
+            row.story_bible_json = {**(row.story_bible_json or {}), **story_bible}
+        if style_bible:
+            row.style_bible_json = {**(row.style_bible_json or {}), **style_bible}
+        db.commit()
+    finally:
+        db.close()
+
+
+# -- StoryRun / StoryCheckpoint --------------------------------------------
+#
+# A 1:1 mirror of app.modules.factory.service's run + checkpoint helpers
+# (same "SessionLocal per call, called from a background thread" shape).
 
 
 def get_run(run_id: int) -> StoryRun | None:
@@ -581,13 +666,218 @@ def reconcile_story_runs_on_startup() -> int:
     db = SessionLocal()
     try:
         for run in db.query(StoryRun).filter(StoryRun.status.in_(STORY_RUN_ACTIVE_STATUSES)).all():
-            run.failed_stage = run.status  # remember where it was, before overwriting
+            stuck_stage = run.status if run.status in STORY_RUN_STAGES else run.failed_stage
+            run.failed_stage = stuck_stage  # remember where it was, before overwriting
             run.status = "FAILED"
             run.error_code = "STORY_RUN_INTERRUPTED"
             run.error_message = "The application restarted while this run was active."
             run.completed_at = _utcnow()
+            for cp in db.query(StoryCheckpoint).filter(
+                StoryCheckpoint.story_run_id == run.id, StoryCheckpoint.status == CHECKPOINT_RUNNING
+            ).all():
+                cp.status = CHECKPOINT_FAILED
+                cp.completed_at = _utcnow()
+                cp.error_code = "STORY_RUN_INTERRUPTED"
+                cp.error_message = "The application restarted while this stage was running."
             reconciled += 1
         db.commit()
     finally:
         db.close()
     return reconciled
+
+
+def get_active_run_for_story(story_id: int) -> StoryRun | None:
+    db = SessionLocal()
+    try:
+        run = (
+            db.query(StoryRun)
+            .filter(StoryRun.story_id == story_id, StoryRun.status.in_(STORY_RUN_ACTIVE_STATUSES))
+            .order_by(StoryRun.id.desc())
+            .first()
+        )
+        if run is not None:
+            db.expunge(run)
+        return run
+    finally:
+        db.close()
+
+
+def get_latest_run_for_story(story_id: int) -> StoryRun | None:
+    db = SessionLocal()
+    try:
+        run = db.query(StoryRun).filter(StoryRun.story_id == story_id).order_by(StoryRun.id.desc()).first()
+        if run is not None:
+            db.expunge(run)
+        return run
+    finally:
+        db.close()
+
+
+def create_run(story_id: int, scope: str = "STORY_PLAN") -> tuple[StoryRun, bool]:
+    """New run, or the story's already-active one unchanged. `created` tells
+    the caller whether it needs to spawn a background execution thread
+    (never a second one alongside an existing active run).
+    """
+    with _create_lock:
+        existing = get_active_run_for_story(story_id)
+        if existing is not None:
+            return existing, False
+        db = SessionLocal()
+        try:
+            if db.get(Story, story_id) is None:
+                raise NotFoundError("Story", story_id)
+            run = StoryRun(story_id=story_id, scope=scope, status="DRAFT", started_at=_utcnow(), stage_metrics_json={})
+            db.add(run)
+            db.commit()
+            db.refresh(run)
+            db.expunge(run)
+            return run, True
+        finally:
+            db.close()
+
+
+def set_run_fields(run_id: int, **fields) -> None:
+    db = SessionLocal()
+    try:
+        run = db.get(StoryRun, run_id)
+        if run is None:
+            return
+        for key, value in fields.items():
+            setattr(run, key, value)
+        db.commit()
+    finally:
+        db.close()
+
+
+def merge_stage_metrics(run_id: int, **timings: float) -> None:
+    db = SessionLocal()
+    try:
+        run = db.get(StoryRun, run_id)
+        if run is None:
+            return
+        run.stage_metrics_json = {**(run.stage_metrics_json or {}), **timings}
+        db.commit()
+    finally:
+        db.close()
+
+
+def increment_attempt(run_id: int) -> None:
+    db = SessionLocal()
+    try:
+        run = db.get(StoryRun, run_id)
+        if run is None:
+            return
+        run.attempt = (run.attempt or 1) + 1
+        db.commit()
+    finally:
+        db.close()
+
+
+def _get_checkpoint(db, run_id: int, stage: str) -> StoryCheckpoint | None:
+    return (
+        db.query(StoryCheckpoint)
+        .filter(StoryCheckpoint.story_run_id == run_id, StoryCheckpoint.stage == stage)
+        .first()
+    )
+
+
+def start_checkpoint(run_id: int, stage: str) -> StoryCheckpoint:
+    db = SessionLocal()
+    try:
+        now = _utcnow()
+        cp = _get_checkpoint(db, run_id, stage)
+        if cp is None:
+            cp = StoryCheckpoint(story_run_id=run_id, stage=stage, status=CHECKPOINT_RUNNING, attempt=1, started_at=now)
+            db.add(cp)
+        else:
+            cp.attempt = (cp.attempt or 1) + 1
+            cp.status = CHECKPOINT_RUNNING
+            cp.started_at = now
+            cp.completed_at = None
+            cp.error_code = None
+            cp.error_message = None
+        db.commit()
+        db.refresh(cp)
+        db.expunge(cp)
+        return cp
+    finally:
+        db.close()
+
+
+def complete_checkpoint(run_id: int, stage: str, metadata: dict | None = None) -> None:
+    db = SessionLocal()
+    try:
+        cp = _get_checkpoint(db, run_id, stage)
+        if cp is None:
+            cp = StoryCheckpoint(story_run_id=run_id, stage=stage, attempt=1, started_at=_utcnow())
+            db.add(cp)
+        cp.status = CHECKPOINT_COMPLETED
+        cp.completed_at = _utcnow()
+        if metadata is not None:
+            cp.checkpoint_metadata_json = metadata
+        db.commit()
+    finally:
+        db.close()
+
+
+def skip_checkpoint(run_id: int, stage: str, metadata: dict | None = None) -> None:
+    db = SessionLocal()
+    try:
+        cp = _get_checkpoint(db, run_id, stage)
+        now = _utcnow()
+        if cp is None:
+            cp = StoryCheckpoint(story_run_id=run_id, stage=stage, attempt=1, started_at=now)
+            db.add(cp)
+        cp.status = CHECKPOINT_SKIPPED
+        cp.completed_at = now
+        if metadata is not None:
+            cp.checkpoint_metadata_json = metadata
+        db.commit()
+    finally:
+        db.close()
+
+
+def fail_checkpoint(run_id: int, stage: str, error_code: str, error_message: str) -> None:
+    db = SessionLocal()
+    try:
+        cp = _get_checkpoint(db, run_id, stage)
+        if cp is None:
+            cp = StoryCheckpoint(story_run_id=run_id, stage=stage, attempt=1, started_at=_utcnow())
+            db.add(cp)
+        cp.status = CHECKPOINT_FAILED
+        cp.completed_at = _utcnow()
+        cp.error_code = error_code
+        cp.error_message = error_message
+        db.commit()
+    finally:
+        db.close()
+
+
+def force_checkpoint_status(
+    run_id: int, stage: str, status: str, error_code: str | None = None, error_message: str | None = None
+) -> None:
+    db = SessionLocal()
+    try:
+        cp = _get_checkpoint(db, run_id, stage)
+        now = _utcnow()
+        if cp is None:
+            cp = StoryCheckpoint(story_run_id=run_id, stage=stage, attempt=1, started_at=now)
+            db.add(cp)
+        cp.status = status
+        cp.completed_at = now
+        cp.error_code = error_code
+        cp.error_message = error_message
+        db.commit()
+    finally:
+        db.close()
+
+
+def mark_run_failed(run_id: int, stage: str, code: str, message: str) -> None:
+    """Single funnel for every failure path -- settles StoryRun and the
+    stage's StoryCheckpoint together (mirrors factory_stages._mark_failed).
+    """
+    set_run_fields(
+        run_id, status="FAILED", failed_stage=stage, error_code=code, error_message=message, completed_at=_utcnow(),
+    )
+    if stage in STORY_RUN_STAGES:
+        fail_checkpoint(run_id, stage, code, message)

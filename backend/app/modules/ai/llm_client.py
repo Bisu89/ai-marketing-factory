@@ -93,11 +93,14 @@ class LLMCallResult:
     latency_ms: int
 
 
-def _call_anthropic(api_key: str, system: str, user_message: str, output_schema: dict, max_tokens: int) -> LLMCallResult:
+def _call_anthropic(
+    api_key: str, system: str, user_message: str, output_schema: dict, max_tokens: int, model: str | None = None
+) -> LLMCallResult:
     client = anthropic.Anthropic(api_key=api_key)
+    resolved_model = model or ANTHROPIC_MODEL
     try:
         response = client.messages.create(
-            model=ANTHROPIC_MODEL,
+            model=resolved_model,
             max_tokens=max_tokens,
             system=system,
             messages=[{"role": "user", "content": user_message}],
@@ -114,7 +117,7 @@ def _call_anthropic(api_key: str, system: str, user_message: str, output_schema:
         text=text_block.text if text_block is not None else "",
         refused=response.stop_reason == "refusal",
         provider="anthropic",
-        model=ANTHROPIC_MODEL,
+        model=resolved_model,
         input_tokens=getattr(usage, "input_tokens", None),
         output_tokens=getattr(usage, "output_tokens", None),
         latency_ms=0,  # filled in by call_structured
@@ -122,12 +125,14 @@ def _call_anthropic(api_key: str, system: str, user_message: str, output_schema:
 
 
 def _call_openai(
-    api_key: str, system: str, user_message: str, output_schema: dict, max_tokens: int, schema_name: str
+    api_key: str, system: str, user_message: str, output_schema: dict, max_tokens: int, schema_name: str,
+    model: str | None = None,
 ) -> LLMCallResult:
     client = openai.OpenAI(api_key=api_key)
+    resolved_model = model or OPENAI_MODEL
     try:
         response = client.chat.completions.create(
-            model=OPENAI_MODEL,
+            model=resolved_model,
             max_completion_tokens=max_tokens + OPENAI_REASONING_HEADROOM,
             messages=[
                 {"role": "system", "content": system},
@@ -149,7 +154,7 @@ def _call_openai(
         text=message.content or "",
         refused=bool(message.refusal),
         provider="openai",
-        model=OPENAI_MODEL,
+        model=resolved_model,
         input_tokens=getattr(usage, "prompt_tokens", None),
         output_tokens=getattr(usage, "completion_tokens", None),
         latency_ms=0,  # filled in by call_structured
@@ -164,11 +169,17 @@ def call_structured(
     output_schema: dict,
     max_tokens: int,
     schema_name: str = "structured_output",
+    model: str | None = None,
 ) -> LLMCallResult:
+    """`model` overrides the provider's default model id -- used by
+    app.modules.ai.model_router routing (a `cheap`/`premium` tier that has
+    a real model configured). None keeps the provider default
+    (ANTHROPIC_MODEL / OPENAI_MODEL), which is every existing caller.
+    """
     start = time.monotonic()
     if credentials.provider == "openai":
-        result = _call_openai(credentials.api_key, system, user_message, output_schema, max_tokens, schema_name)
+        result = _call_openai(credentials.api_key, system, user_message, output_schema, max_tokens, schema_name, model)
     else:
-        result = _call_anthropic(credentials.api_key, system, user_message, output_schema, max_tokens)
+        result = _call_anthropic(credentials.api_key, system, user_message, output_schema, max_tokens, model)
     result.latency_ms = int((time.monotonic() - start) * 1000)
     return result
