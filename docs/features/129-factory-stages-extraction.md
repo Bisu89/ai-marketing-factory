@@ -40,7 +40,8 @@ targets were retargeted to `factory_stages` (the real new home), and
 alongside the existing `factory_pipeline.SessionLocal`. `_execute_pipeline_sync`
 / `get_settings` patches were left as-is (still live in `factory_pipeline`).
 
-**Landed in**: `TBD`
+**Landed in**: `7eaec5a` — full factory + stage + batch + final-composer +
+final-QA suite: 236 passed, 0 failed.
 
 **Key files**: `backend/app/api/v1/endpoints/factory_stages.py` (new),
 `backend/app/api/v1/endpoints/factory_pipeline.py`,
