@@ -217,6 +217,16 @@ class ProduceTests(_CompileTestCase):
         self.assertTrue(all(c.compiled_project_id is None for c in service.list_chapters(sid)))
         self.assertNotEqual(service.get_story(sid).status, "PRODUCING")
 
+    def test_test_render_of_a_landscape_story_stays_landscape(self):
+        sid = self._story(config={"render": {"profile": "SOCIAL_LANDSCAPE"}})
+        self._populate(sid, chapters=1, scenes_per=3)
+        run = sc.produce_story(sid, self.settings, object(), test=True)
+        pid = service.get_run(run.id).compiled_project_ids_json[0]
+        with self.Session() as db:
+            proj = db.get(Project, pid)
+        # no small landscape profile exists -- test at the real 16:9 one
+        self.assertEqual(proj.beat_plan_json["config"]["render"]["profile"], "SOCIAL_LANDSCAPE")
+
     def test_test_render_skips_the_cost_guard(self):
         sid = self._story(config={"cost_guard": {"max_total_usd": 0.00001, "block_on_exceed": True}})
         self._populate(sid, chapters=2, scenes_per=2)

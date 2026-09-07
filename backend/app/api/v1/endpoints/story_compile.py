@@ -252,11 +252,17 @@ def _project_exists(project_id: int | None) -> bool:
         db.close()
 
 
-# A "test" produce: the first few scenes only, rendered at the smaller
-# PREVIEW profile -- a quick, ~$0.02 look at the character / voice / pacing
-# before committing to the whole story.
+# A "test" produce: the first few scenes only -- a quick, ~$0.02 look at
+# the character / voice / pacing before committing to the whole story.
 _TEST_MAX_SCENES = 5
-_TEST_RENDER_PROFILE = "PREVIEW"
+
+
+def _test_render_profile(story_profile: str) -> str:
+    """Preview a 9:16 story at the small PREVIEW profile; a 16:9 story has
+    no small landscape profile, so test-render it at its real profile
+    (still cheap -- only 5 scenes).
+    """
+    return "PREVIEW" if story_profile == "SOCIAL_VERTICAL" else story_profile
 
 
 def compile_story(story_id: int, *, test: bool = False) -> CompileResult:
@@ -277,7 +283,8 @@ def compile_story(story_id: int, *, test: bool = False) -> CompileResult:
         all_scenes = [sc for _c, scenes in tree for sc in scenes][:_TEST_MAX_SCENES]
         name = f"{story.title} — TEST"
         plan = _build_beat_plan(
-            story, pc, all_scenes, chars_by_id, locs_by_id, name, render_profile=_TEST_RENDER_PROFILE
+            story, pc, all_scenes, chars_by_id, locs_by_id, name,
+            render_profile=_test_render_profile(pc.render.profile),
         )
         pid = _create_project(name, plan)
         return CompileResult(

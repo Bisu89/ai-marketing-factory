@@ -39,7 +39,15 @@ export interface CreateStoryRequest {
   budget_usd?: number | null;
   production_profile?: ProductionProfile;
   reference_notes?: string | null;
+  project_config_json?: Record<string, unknown>;
 }
+
+// Render aspect ratio -- the beat.ProjectConfig render profile the story
+// compiles to. Long-form YouTube is 16:9; Shorts/Reels/TikTok are 9:16.
+export const STORY_FORMATS = [
+  { label: "Long-form — YouTube (16:9)", profile: "SOCIAL_LANDSCAPE" },
+  { label: "Shorts / Reels / TikTok (9:16)", profile: "SOCIAL_VERTICAL" },
+] as const;
 
 export interface StoryChapter {
   id: number;

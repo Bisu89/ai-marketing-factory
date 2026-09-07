@@ -4,7 +4,7 @@ import { Clapperboard, Loader2, Plus, X } from "lucide-react";
 import { PageHeader } from "../components/PageHeader";
 import { EmptyState } from "../components/EmptyState";
 import { createStory, listStories } from "../api/story";
-import { STORY_MODES } from "../types/story";
+import { STORY_FORMATS, STORY_MODES } from "../types/story";
 import type { CreateStoryRequest, Story, StoryMode } from "../types/story";
 import "./StudioPage.css";
 
@@ -110,6 +110,7 @@ export function StudioPage() {
 function CreateStoryModal({ onClose, onCreated }: { onClose: () => void; onCreated: (story: Story) => void }) {
   const [title, setTitle] = useState("");
   const [mode, setMode] = useState<StoryMode>("STORY");
+  const [format, setFormat] = useState<string>(STORY_FORMATS[0].profile);
   const [logline, setLogline] = useState("");
   const [genre, setGenre] = useState("");
   const [budget, setBudget] = useState("");
@@ -128,6 +129,7 @@ function CreateStoryModal({ onClose, onCreated }: { onClose: () => void; onCreat
       genre: genre.trim() || null,
       budget_usd: budget.trim() ? Number(budget) : null,
       reference_notes: referenceNotes.trim() || null,
+      project_config_json: { render: { profile: format } },
     };
     try {
       onCreated(await createStory(payload));
@@ -155,16 +157,28 @@ function CreateStoryModal({ onClose, onCreated }: { onClose: () => void; onCreat
           <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="The Siege Courier" />
         </label>
 
-        <label className="studio-field">
-          <span>Mode</span>
-          <select value={mode} onChange={(e) => setMode(e.target.value as StoryMode)}>
-            {STORY_MODES.map((m) => (
-              <option key={m} value={m}>
-                {MODE_LABEL[m]}
-              </option>
-            ))}
-          </select>
-        </label>
+        <div className="studio-field-row">
+          <label className="studio-field">
+            <span>Mode</span>
+            <select value={mode} onChange={(e) => setMode(e.target.value as StoryMode)}>
+              {STORY_MODES.map((m) => (
+                <option key={m} value={m}>
+                  {MODE_LABEL[m]}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label className="studio-field">
+            <span>Format</span>
+            <select value={format} onChange={(e) => setFormat(e.target.value)}>
+              {STORY_FORMATS.map((f) => (
+                <option key={f.profile} value={f.profile}>
+                  {f.label}
+                </option>
+              ))}
+            </select>
+          </label>
+        </div>
 
         <label className="studio-field">
           <span>Logline</span>
