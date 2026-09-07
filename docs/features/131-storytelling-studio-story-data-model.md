@@ -93,6 +93,6 @@ needed at runtime); `render_as_batch=True` for SQLite ALTER support.
 
 ## Landed in
 
-`TBD` — 862 `tests/modules/` pass + factory/batch regression; real
+`e8e4867` — 862 `tests/modules/` pass + factory/batch regression; real
 `uvicorn app.main:app` boot against a fresh DB with full `/story-*` CRUD
 over HTTP verified.
