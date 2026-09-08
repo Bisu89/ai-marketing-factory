@@ -50,6 +50,7 @@ from app.modules.beat.router import router as beat_router
 from app.modules.affiliate.router import router as affiliate_router
 from app.modules.competitor_intelligence.router import router as competitor_intelligence_router
 from app.modules.content_strategy.router import router as content_strategy_router
+from app.modules.discovery.router import router as discovery_router
 from app.modules.news.router import router as news_router
 from app.modules.publishing.router import router as publishing_router
 from app.modules.scene_cutter.router import router as scene_cutter_router
@@ -84,6 +85,7 @@ api_router.include_router(assets_cleanup.router, tags=["asset"])
 api_router.include_router(story_router, tags=["story"])
 api_router.include_router(hook_router, tags=["hook"])
 api_router.include_router(content_strategy_router, tags=["content-strategy"])
+api_router.include_router(discovery_router, tags=["discovery"])
 api_router.include_router(news_router, tags=["news"])
 api_router.include_router(news_pipeline.router, tags=["news-pipeline"])
 api_router.include_router(publishing_router, tags=["publishing"])

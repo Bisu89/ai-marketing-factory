@@ -2,6 +2,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import { AppShell } from "./layouts/AppShell";
 import { DashboardPage } from "./pages/DashboardPage";
 import { DownloadPage } from "./pages/DownloadPage";
+import { RadarPage } from "./pages/RadarPage";
 import { LibraryPage } from "./pages/LibraryPage";
 import { HistoryPage } from "./pages/HistoryPage";
 import { ContentStudioPage } from "./pages/ContentStudioPage";
@@ -33,6 +34,7 @@ function App() {
         <Route index element={<Navigate to="/dashboard" replace />} />
         <Route path="dashboard" element={<DashboardPage />} />
         <Route path="download" element={<DownloadPage />} />
+        <Route path="radar" element={<RadarPage />} />
         <Route path="library" element={<LibraryPage />} />
         <Route path="history" element={<HistoryPage />} />
         <Route path="content-studio" element={<ContentStudioPage />} />

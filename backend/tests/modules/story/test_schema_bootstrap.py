@@ -9,7 +9,13 @@ from pathlib import Path
 
 from sqlalchemy import create_engine, inspect, text
 
+from alembic.script import ScriptDirectory
+
 from app.db.schema import _alembic_config, current_revision, sync_schema
+
+# The current Alembic head -- read from the script directory rather than
+# hardcoded so a new migration doesn't silently break these tests.
+_HEAD_REVISION = ScriptDirectory.from_config(_alembic_config("sqlite://")).get_current_head()
 
 _STORY_TABLES = {
     "story_channel", "episode", "story", "story_character", "story_location",
@@ -41,7 +47,7 @@ class SyncSchemaTests(unittest.TestCase):
         self.assertIn("series", names)
         self.assertTrue(_NEW_SERIES_COLS <= self._series_cols())
         self.assertTrue(inspect(self.engine).has_table("alembic_version"))
-        self.assertEqual(current_revision(self.engine), "0001_storytelling_studio_phase1")
+        self.assertEqual(current_revision(self.engine), _HEAD_REVISION)
 
     def test_sync_is_idempotent(self):
         sync_schema(self.engine)
@@ -61,7 +67,7 @@ class SyncSchemaTests(unittest.TestCase):
 
         sync_schema(self.engine)  # must not raise "table ... already exists"
 
-        self.assertEqual(current_revision(self.engine), "0001_storytelling_studio_phase1")
+        self.assertEqual(current_revision(self.engine), _HEAD_REVISION)
         self.assertTrue(_STORY_TABLES <= set(inspect(self.engine).get_table_names()))
 
     def test_pre_phase1_db_catches_up(self):
@@ -93,7 +99,7 @@ class SyncSchemaTests(unittest.TestCase):
         names = set(inspect(self.engine).get_table_names())
         self.assertTrue(_STORY_TABLES <= names)
         self.assertTrue(_NEW_SERIES_COLS <= self._series_cols())
-        self.assertEqual(current_revision(self.engine), "0001_storytelling_studio_phase1")
+        self.assertEqual(current_revision(self.engine), _HEAD_REVISION)
         # existing data survived
         with self.engine.connect() as conn:
             self.assertEqual(conn.execute(text("SELECT name FROM series")).scalar(), "Old Series")

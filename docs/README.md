@@ -167,6 +167,8 @@ SQLite.
 
 138. [AI Storytelling Studio — test render + first end-to-end produce](features/138-storytelling-studio-test-render.md) — the story pipeline rendered a real video for the first time (6-scene import → `video_hoan_chinh.mp4`, 1080×1920, 30.6s, QA PASS, $0.036 of AI images). Adds `POST /stories/{id}/produce?test=true`: compiles only the first 5 scenes into one throwaway Project at the PREVIEW profile (~$0.02, ~1 min), never touching the chapter links or `Story.status`, and not gated by the cost cap. `GET /stories/{id}/compiled` now also surfaces the latest PRODUCE run's own projects (tagged `is_test`). Frontend: a "Test render (first 5 scenes)" button beside "Produce full".
 
+139. [Viral Source Radar (Phase 1)](features/139-viral-source-radar.md) — one search box fans a topic out to Reddit + YouTube in parallel (TikTok/Instagram are honest "unavailable" stubs — no compliant public keyword-search API), then deterministic keyword expansion → normalize → dedup → rule-based viral score (no AI, no paid API) → grid with Open / Save / rights-gated Download. New `app/modules/discovery/` + `discovery_search`/`discovery_result` tables + `/radar` page; a card's Download deep-links into the existing `/download` flow
+
 ## Keeping this up to date
 
 See the "Documentation" section in `CLAUDE.md` at the repo root — every

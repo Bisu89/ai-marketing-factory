@@ -173,6 +173,17 @@ class Settings(BaseSettings):
     google_oauth_client_secret: str | None = None
     youtube_redirect_uri: str = "http://127.0.0.1:8000/api/v1/publishing/youtube/oauth/callback"
 
+    # Viral Source Radar (see docs/features/139-viral-source-radar.md).
+    # youtube_api_key is a plain YouTube Data API v3 key (NOT the OAuth
+    # client above) -- search.list only needs an API key. reddit_client_id/
+    # _secret are optional: without them the Reddit engine falls back to
+    # anonymous public search, which is fine for a single-user desktop app
+    # but rate-limited. Same "plain str field + dedicated update_x()" shape
+    # as every key above.
+    youtube_api_key: str | None = None
+    reddit_client_id: str | None = None
+    reddit_client_secret: str | None = None
+
 
 @lru_cache
 def get_settings() -> Settings:
@@ -236,4 +247,15 @@ def update_google_oauth_client_secret(value: str) -> None:
 
 def update_youtube_redirect_uri(uri: str) -> None:
     set_key(ENV_FILE_PATH, "APP_YOUTUBE_REDIRECT_URI", uri)
+    get_settings.cache_clear()
+
+
+def update_youtube_api_key(key: str) -> None:
+    set_key(ENV_FILE_PATH, "APP_YOUTUBE_API_KEY", key)
+    get_settings.cache_clear()
+
+
+def update_reddit_credentials(client_id: str, client_secret: str) -> None:
+    set_key(ENV_FILE_PATH, "APP_REDDIT_CLIENT_ID", client_id)
+    set_key(ENV_FILE_PATH, "APP_REDDIT_CLIENT_SECRET", client_secret)
     get_settings.cache_clear()

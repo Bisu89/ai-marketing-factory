@@ -5,6 +5,7 @@ import {
   Library,
   History,
   Radar,
+  ScanSearch,
   ShoppingBag,
   Settings,
   Film,
@@ -28,6 +29,7 @@ import "./Sidebar.css";
 const NAV_ITEMS = [
   { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
   { to: "/download", label: "Download", icon: Download },
+  { to: "/radar", label: "Viral Source Radar", icon: ScanSearch },
   { to: "/library", label: "Library", icon: Library },
   { to: "/history", label: "History", icon: History },
   { to: "/content-studio", label: "Content Studio", icon: Sparkles },

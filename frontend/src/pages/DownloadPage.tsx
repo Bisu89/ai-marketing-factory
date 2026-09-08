@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { Search, Loader2, CheckCircle2 } from "lucide-react";
 import { PageHeader } from "../components/PageHeader";
 import { VideoResultCard } from "../components/VideoResultCard";
@@ -11,14 +12,30 @@ import "./DownloadPage.css";
 type Status = "idle" | "loading" | "error";
 
 export function DownloadPage() {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [url, setUrl] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [result, setResult] = useState<AnalyzeResult | null>(null);
   const [queuedMessage, setQueuedMessage] = useState<string | null>(null);
+  const autoAnalyzed = useRef(false);
 
-  async function handleAnalyze() {
-    if (!url.trim()) return;
+  // Deep link from Viral Source Radar: /download?url=<source>. Prefill and
+  // analyze once, then drop the param so a refresh doesn't re-run it.
+  useEffect(() => {
+    const incoming = searchParams.get("url");
+    if (!incoming || autoAnalyzed.current) return;
+    autoAnalyzed.current = true;
+    setUrl(incoming);
+    void handleAnalyze(incoming);
+    searchParams.delete("url");
+    setSearchParams(searchParams, { replace: true });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  async function handleAnalyze(urlOverride?: string) {
+    const target = (urlOverride ?? url).trim();
+    if (!target) return;
 
     setStatus("loading");
     setErrorMessage(null);
@@ -26,7 +43,7 @@ export function DownloadPage() {
     setQueuedMessage(null);
 
     try {
-      const analyzed = await detectUrl(url.trim());
+      const analyzed = await detectUrl(target);
       setResult(analyzed);
       setStatus("idle");
     } catch {
@@ -107,7 +124,7 @@ export function DownloadPage() {
           onChange={(e) => setUrl(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && handleAnalyze()}
         />
-        <button className="btn btn-primary" onClick={handleAnalyze} disabled={!url.trim() || status === "loading"}>
+        <button className="btn btn-primary" onClick={() => handleAnalyze()} disabled={!url.trim() || status === "loading"}>
           {status === "loading" ? <Loader2 size={16} className="spin" /> : <Search size={16} />}
           Analyze
         </button>

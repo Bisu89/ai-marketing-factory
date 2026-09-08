@@ -20,6 +20,8 @@ from app.core.config import (
     update_tiktok_client_key,
     update_tiktok_client_secret,
     update_tiktok_redirect_uri,
+    update_reddit_credentials,
+    update_youtube_api_key,
     update_youtube_redirect_uri,
 )
 from app.modules.ai.llm_client import AI_PROVIDERS, resolve_ai_credentials
@@ -54,6 +56,15 @@ class TikTokClientSecretIn(BaseModel):
 
 class TikTokRedirectUriIn(BaseModel):
     redirect_uri: str
+
+
+class YouTubeApiKeyIn(BaseModel):
+    api_key: str
+
+
+class RedditCredentialsIn(BaseModel):
+    client_id: str
+    client_secret: str
 
 
 class GoogleOAuthClientIn(BaseModel):
@@ -108,6 +119,10 @@ def read_settings(settings: Settings = Depends(get_settings)):
         # same "never echo the secret, only whether it's set" convention.
         "has_google_oauth_client": bool(settings.google_oauth_client_id and settings.google_oauth_client_secret),
         "youtube_redirect_uri": settings.youtube_redirect_uri,
+        # Viral Source Radar (see docs/features/139-viral-source-radar.md) --
+        # same "never echo the secret, only whether it's set" convention.
+        "has_youtube_api_key": bool(settings.youtube_api_key),
+        "has_reddit_credentials": bool(settings.reddit_client_id and settings.reddit_client_secret),
         # Render-cache auto-cleanup (0 = off). See
         # app/api/v1/endpoints/assets_cleanup.py.
         "render_cache_retention_days": settings.render_cache_retention_days,
@@ -204,6 +219,25 @@ def set_youtube_redirect_uri(payload: YouTubeRedirectUriIn):
         raise HTTPException(status_code=400, detail="Redirect URI phai la http://127.0.0.1..., http://localhost... hoac https://...")
     update_youtube_redirect_uri(uri)
     return {"youtube_redirect_uri": uri}
+
+
+@router.put("/settings/youtube-api-key")
+def set_youtube_api_key(payload: YouTubeApiKeyIn):
+    key = payload.api_key.strip()
+    if not key:
+        raise HTTPException(status_code=400, detail="API key khong duoc de trong")
+    update_youtube_api_key(key)
+    return {"has_youtube_api_key": True}
+
+
+@router.put("/settings/reddit-credentials")
+def set_reddit_credentials(payload: RedditCredentialsIn):
+    cid = payload.client_id.strip()
+    secret = payload.client_secret.strip()
+    if not cid or not secret:
+        raise HTTPException(status_code=400, detail="Client ID va Client Secret khong duoc de trong")
+    update_reddit_credentials(cid, secret)
+    return {"has_reddit_credentials": True}
 
 
 @router.put("/settings/library-dir")
