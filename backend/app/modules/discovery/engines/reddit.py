@@ -138,7 +138,7 @@ class RedditEngine(BaseEngine):
             "q": q,
             "sort": "top",
             "t": "year" if (options.max_age_days or 366) > 90 else "month",
-            "limit": str(min(options.limit_per_query, 25)),
+            "limit": str(min(max(options.limit_per_query, 25), 100)),
             "type": "link",
             "raw_json": "1",
         }

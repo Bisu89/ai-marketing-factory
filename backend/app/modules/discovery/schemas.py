@@ -15,7 +15,7 @@ class SearchRequest(BaseModel):
     platforms: list[str] | None = None
     sort: str = "best"
     max_age_days: int | None = Field(default=365, ge=1, le=3650)
-    limit_per_query: int = Field(default=15, ge=1, le=25)
+    limit_per_query: int = Field(default=25, ge=1, le=50)
 
     @field_validator("query")
     @classmethod

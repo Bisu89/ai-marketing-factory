@@ -76,7 +76,7 @@ class SearchOrchestrator:
         self,
         query: str,
         *,
-        limit_per_query: int = 15,
+        limit_per_query: int = 25,
         max_age_days: int | None = 365,
         platforms: list[str] | None = None,
         sort: str = "best",

@@ -140,7 +140,9 @@ class YouTubeEngine(BaseEngine):
             "q": q,
             "type": "video",
             "order": "relevance",
-            "maxResults": str(min(options.limit_per_query, 25)),
+            # search.list costs a flat 100 units for 1-50 results, so always
+            # ask for the max -- more candidates at zero extra quota.
+            "maxResults": "50",
             "safeSearch": "moderate",
         }
         if published_after:
