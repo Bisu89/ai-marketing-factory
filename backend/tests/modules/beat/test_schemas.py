@@ -353,11 +353,11 @@ class StorytellingStudioSubConfigTests(unittest.TestCase):
         self.assertIsNone(pc.cost_guard.max_total_usd)
         self.assertTrue(pc.model_routing.enabled)
         self.assertTrue(pc.ai_disclosure.ai_script)
-        self.assertEqual(pc.story_compile.compile_mode, "per_chapter")
+        self.assertEqual(pc.story_compile.compile_mode, "single")
 
     def test_empty_beat_plan_config_still_default(self):
         plan = BeatPlan.model_validate({"beats": [{"id": "b1", "order": 1, "duration": 4.0, "type": "HOOK"}]})
-        self.assertEqual(plan.config.story_compile.compile_mode, "per_chapter")
+        self.assertEqual(plan.config.story_compile.compile_mode, "single")
 
     def test_round_trip_equivalent(self):
         pc = ProjectConfig(

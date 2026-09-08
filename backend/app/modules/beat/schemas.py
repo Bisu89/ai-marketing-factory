@@ -973,13 +973,14 @@ class AIDisclosureProjectConfig(BaseModel):
 
 
 class StoryCompileProjectConfig(BaseModel):
-    """How a Story compiles down to Project(s)/BeatPlan(s). `per_chapter`
-    (K chapters -> K episode videos) or `single` (one long video).
+    """How a Story compiles down to Project(s)/BeatPlan(s). `single` (the
+    default -- one Story is one video) or `per_chapter` (K chapters -> K
+    separate videos, for a multi-part series).
     """
 
     model_config = ConfigDict(extra="forbid")
 
-    compile_mode: str = "per_chapter"
+    compile_mode: str = "single"
     # Scenes shorter than this are merged into their neighbour at compile
     # time (each scene is a separately-billed image -- same reasoning as
     # beat_generate._merge_short_beats).

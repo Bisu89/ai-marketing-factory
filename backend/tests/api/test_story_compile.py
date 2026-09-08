@@ -98,7 +98,7 @@ class _CompileTestCase(unittest.TestCase):
 
 class CompileTests(_CompileTestCase):
     def test_per_chapter_creates_one_project_each(self):
-        sid = self._story()
+        sid = self._story(config={"story_compile": {"compile_mode": "per_chapter"}})
         self._populate(sid, chapters=3, scenes_per=2)
         result = sc.compile_story(sid)
 
@@ -152,7 +152,7 @@ class CompileTests(_CompileTestCase):
                 self.assertEqual(proj.beat_plan_json["config"]["render"]["profile"], "SOCIAL_LANDSCAPE")
 
     def test_per_chapter_is_idempotent(self):
-        sid = self._story()
+        sid = self._story(config={"story_compile": {"compile_mode": "per_chapter"}})
         self._populate(sid, chapters=2, scenes_per=2)
         first = sc.compile_story(sid)
         second = sc.compile_story(sid)
@@ -163,13 +163,15 @@ class CompileTests(_CompileTestCase):
         with self.Session() as db:
             self.assertEqual(db.query(Project).count(), 2)  # not 4
 
-    def test_single_mode_one_project_for_the_whole_story(self):
-        sid = self._story(config={"story_compile": {"compile_mode": "single"}})
+    def test_single_is_the_default_one_project_for_the_whole_story(self):
+        sid = self._story()  # no compile_mode -> single by default
         self._populate(sid, chapters=3, scenes_per=2)
         result = sc.compile_story(sid)
         self.assertEqual(result.compile_mode, "single")
         self.assertEqual(len(result.projects), 1)
         self.assertEqual(result.projects[0].beat_count, 6)
+        # single mode does not touch chapter links
+        self.assertTrue(all(c.compiled_project_id is None for c in service.list_chapters(sid)))
 
     def test_merge_short_scenes_folds_backward(self):
         sid = self._story(config={"story_compile": {"merge_scenes_under_seconds": 3.0}})
@@ -191,7 +193,7 @@ class CompileTests(_CompileTestCase):
 
 class ProduceTests(_CompileTestCase):
     def test_produce_compiles_then_starts_a_factory_run_per_project(self):
-        sid = self._story()
+        sid = self._story(config={"story_compile": {"compile_mode": "per_chapter"}})
         self._populate(sid, chapters=2, scenes_per=2)
         run = sc.produce_story(sid, self.settings, object())
 
@@ -211,7 +213,7 @@ class ProduceTests(_CompileTestCase):
             sc.produce_story(sid, self.settings, object())
 
     def test_retry_reuses_the_runs_recorded_projects(self):
-        sid = self._story()
+        sid = self._story(config={"story_compile": {"compile_mode": "per_chapter"}})
         self._populate(sid, chapters=2, scenes_per=2)
         run = sc.produce_story(sid, self.settings, object())
         ids_first = service.get_run(run.id).compiled_project_ids_json
@@ -274,14 +276,15 @@ class ProduceTests(_CompileTestCase):
 
     def test_compiled_view_reports_factory_run_status(self):
         sid = self._story()
-        self._populate(sid, chapters=1, scenes_per=2)
-        sc.compile_story(sid)
-        pid = service.list_chapters(sid)[0].compiled_project_id
+        self._populate(sid, chapters=2, scenes_per=2)
+        run = sc.produce_story(sid, self.settings, object())  # single -> 1 project, recorded on the run
+        pid = service.get_run(run.id).compiled_project_ids_json[0]
         with self.Session() as db:
             db.add(FactoryRun(project_id=pid, status="RENDERING"))
             db.commit()
         view = sc._compiled_view(sid)
         self.assertEqual(len(view), 1)
+        self.assertEqual(view[0]["label"], "Full story")
         self.assertEqual(view[0]["factory_run"]["status"], "RENDERING")
 
 
