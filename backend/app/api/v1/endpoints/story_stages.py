@@ -392,7 +392,9 @@ _SCENE_SCHEMA = _obj(
 )
 
 
-def generate_scene_breakdown(credentials: AICredentials, story, chapter, characters: list, locations: list) -> dict:
+def generate_scene_breakdown(
+    credentials: AICredentials, story, chapter, characters: list, locations: list, n_chapters: int = 1
+) -> dict:
     cast = ", ".join(c.name for c in characters) or "(none defined)"
     locs = ", ".join(loc.name for loc in locations) or "(none defined)"
     system = (
@@ -401,6 +403,18 @@ def generate_scene_breakdown(credentials: AICredentials, story, chapter, charact
         "on screen, the location, a camera note, the dominant emotion, and a duration_hint in seconds "
         "(3-12). Use ONLY the cast and locations listed. Return JSON only, scenes in order."
     )
+    if chapter.order == 1:
+        system += (
+            " This is the OPENING chapter: scene 1 is the HOOK (scene_type \"HOOK\") -- open on the most "
+            "striking image or the highest-stakes moment and plant a question the viewer must keep watching "
+            "to answer; the first sentence lands in under 4 seconds; never open with \"In this video\", "
+            "\"Today\", or any throat-clearing."
+        )
+    if chapter.order == n_chapters:
+        system += (
+            " This is the FINAL chapter: the last scene is scene_type \"ENDING\" -- it resolves the question "
+            "and lands one closing thought, with no \"thanks for watching\"."
+        )
     user = (
         _story_header(story)
         + f"\n\nCast: {cast}\nLocations: {locs}"
@@ -438,7 +452,7 @@ def _stage_scene_breakdown(story_id: int, settings: Settings) -> bool:
             continue  # this chapter already broken down -- resume-safe
         if credentials is None:
             credentials = _resolve_credentials(settings, "SCENE_BREAKDOWN")
-        data = generate_scene_breakdown(credentials, story, chapter, characters, locations)
+        data = generate_scene_breakdown(credentials, story, chapter, characters, locations, len(chapters))
         rows = []
         for i, sc in enumerate(data.get("scenes", []), start=1):
             names = [n.strip().lower() for n in sc.get("character_names", [])]

@@ -122,6 +122,14 @@ class CompileTests(_CompileTestCase):
         self.assertEqual(proj.beat_plan_json["config"]["voice"]["provider"], "edge_tts")
         # BGM auto-select + image tone follow the bible/style, not a generic default
         self.assertEqual(proj.beat_plan_json["config"]["content"]["tone"], "grim")
+        # Ken-Burns variety + a closing segment
+        self.assertTrue(proj.beat_plan_json["config"]["motion"]["auto_rotate"])
+        self.assertTrue(proj.beat_plan_json["config"]["outro"]["enabled"])
+        self.assertTrue(proj.beat_plan_json["config"]["outro"]["text"])
+        # the generic SLOW_PUSH_IN hint is dropped so auto_rotate can cycle;
+        # a deliberate STATIC / pan / pull-out from the Scene Director is kept
+        presets = [b.get("motion_preset") for b in proj.beat_plan_json["beats"]]
+        self.assertNotIn("SLOW_PUSH_IN", presets)
         self.assertIn("ash", proj.beat_plan_json["config"]["visual_generation"]["image_style_prompt"])
         self.assertTrue(proj.beat_plan_json["script_locked"])
 

@@ -69,6 +69,13 @@ and NOTHING ELSE (no prose, no markdown fences). Match this schema exactly:
 
 Rules:
 - 3-6 chapters, 4-10 scenes per chapter, 30-60 scenes total.
+- CHAPTER 1, SCENE 1 is the HOOK (scene_type "HOOK"): open on the single
+  most striking image or the highest-stakes moment, and plant a question
+  the viewer must keep watching to answer. First sentence must land in
+  under 4 seconds. NEVER open with "In this video", "Today we look at",
+  "Have you ever wondered", or any slow throat-clearing.
+- The LAST scene (scene_type "ENDING") resolves the question and lands one
+  closing thought -- no "thanks for watching" (the outro handles that).
 - Every character_name / location_name in a scene MUST match a name defined
   in "characters" / "locations" exactly.
 - duration_hint is seconds per scene, 3-12.

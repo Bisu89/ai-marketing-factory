@@ -112,6 +112,13 @@ def _visual_description(scene, chars_by_id: dict, locs_by_id: dict) -> str | Non
 def _scene_to_raw_beat(scene, chars_by_id: dict, locs_by_id: dict) -> dict:
     beat_type = _SCENE_TYPE_TO_BEAT.get((scene.scene_type or "").upper(), "BODY")
     mp = scene.motion_preset if scene.motion_preset in _VALID_MOTION else None
+    # Keep only a *deliberate* content-driven preset (STATIC for a text/quote
+    # beat, SLOW_PULL_OUT for a wide establish, ZOOM_AND_PAN for a pan/action
+    # scene). The Scene Director's generic SLOW_PUSH_IN fallback is dropped so
+    # auto_rotate (below) cycles the whole pool -- 10 minutes of identical
+    # push-ins reads as a template and tanks retention.
+    if mp == "SLOW_PUSH_IN":
+        mp = None
     return {
         "type": beat_type,
         "narration": (scene.narration or "").strip() or None,
@@ -202,6 +209,28 @@ def _build_beat_plan(
     # explicitly chose a provider.
     if "provider" not in (story.project_config_json.get("voice") or {}):
         config.voice = config.voice.model_copy(update={"provider": "edge_tts"})
+
+    # Ken-Burns variety: cycle the motion pool for any beat without a
+    # deliberate content-driven preset (see _scene_to_raw_beat) -- 10
+    # minutes of identical slow push-ins reads as a template.
+    config.motion = config.motion.model_copy(update={
+        "auto_rotate": True,
+        "default_preset": BeatMotionPreset.SLOW_PUSH_IN,
+    })
+
+    # A closing segment so the video doesn't cut dead on the last narrated
+    # word (a fixed string, never per-story AI text). Language follows the
+    # narration; a story that set its own outro text wins.
+    if not (story.project_config_json.get("outro") or {}).get("text"):
+        lang = (config.voice.language or "en").split("-")[0].lower()
+        config.outro = config.outro.model_copy(update={
+            "enabled": True,
+            "text": (
+                "Cảm ơn đã xem. Đăng ký kênh để không bỏ lỡ tập tiếp theo."
+                if lang == "vi"
+                else "Thanks for watching. Subscribe for the next one."
+            ),
+        })
 
     script_text = "\n\n".join(b.narration for b in beats if b.narration) or None
     return BeatPlan(

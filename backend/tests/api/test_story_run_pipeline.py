@@ -137,7 +137,7 @@ class _RunTestCase(unittest.TestCase):
         return st.id
 
     def _breakdown_side_effect(self):
-        def _fn(credentials, story, chapter, characters, locations):
+        def _fn(credentials, story, chapter, characters, locations, n_chapters=1):
             return _scenes_for(chapter, action=(chapter.order == 2))
         return _fn
 
