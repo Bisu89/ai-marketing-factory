@@ -169,6 +169,8 @@ SQLite.
 
 139. [Viral Source Radar (Phase 1)](features/139-viral-source-radar.md) — one search box fans a topic out to Reddit + YouTube in parallel (TikTok/Instagram are honest "unavailable" stubs — no compliant public keyword-search API), then deterministic keyword expansion → normalize → dedup → rule-based viral score (no AI, no paid API) → grid with Open / Save / rights-gated Download. New `app/modules/discovery/` + `discovery_search`/`discovery_result` tables + `/radar` page; a card's Download deep-links into the existing `/download` flow
 
+140. [Video Composer refactor (P2): split `service.py`](features/140-video-composer-service-split.md) — pure refactor, no behaviour change: the 2382-line `video_composer/service.py` (the review's biggest complexity hotspot) drops to 1788 lines by extracting `subtitles.py` (5 caption presets), `narration.py` (edge_tts + per-beat timeline), `audio_mix.py` (ducked-music mix), `ffmpeg_ops.py` (run/probe helpers). Stays independent of the Factory pipeline's own `caption.ass_writer` / `audio.renderer` copies
+
 ## Keeping this up to date
 
 See the "Documentation" section in `CLAUDE.md` at the repo root — every

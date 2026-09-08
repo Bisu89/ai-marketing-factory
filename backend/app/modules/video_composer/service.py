@@ -11,7 +11,6 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import BinaryIO, Protocol
 
-import edge_tts
 
 from app.core import render_errors
 from app.core.config import get_settings
@@ -19,7 +18,7 @@ from app.core.events import EventBus
 from app.core.exceptions import NotFoundError, RenderCancelled, ValidationError
 from app.core.render_profile import get_render_profile
 from app.db.session import SessionLocal
-from app.modules.video_composer import subtitles
+from app.modules.video_composer import audio_mix, ffmpeg_ops, narration, subtitles
 from app.modules.video_composer.models import VideoComposeClip, VideoComposeJob
 
 # Re-exported for _finalize's own drawtext/outro use and for
@@ -741,7 +740,7 @@ class VideoComposerService:
             self._set_status(job_id, "merging")
             self._log(job_id, "phase started: COMPOSE_VIDEO")
             stage_start = time.monotonic()
-            width, height, fps = self._probe_video_info(clip_paths[0])
+            width, height, fps = ffmpeg_ops.probe_video_info(clip_paths[0])
             if len(clip_paths) > 1:
                 self._merge_clips_with_transitions(clip_paths, merged_video, transition_duration, width, height, fps)
             elif source_language is not None:
@@ -761,7 +760,7 @@ class VideoComposerService:
                 profile = get_render_profile(render_profile)
                 width, height, fps = profile.width, profile.height, profile.fps
                 cropped_video = tmp_dir / "cropped.mp4"
-                self._run_ffmpeg([
+                ffmpeg_ops.run_ffmpeg([
                     "-i", str(clip_paths[0]),
                     # fps= must be an explicit stage here -- unlike scale/crop,
                     # ffmpeg never resamples frame rate on its own, and
@@ -795,10 +794,10 @@ class VideoComposerService:
                 # with no narration asset assigned get pure silence for
                 # their full duration, never TTS -- see
                 # docs/features/36-audio-pipeline.md.
-                self._build_narration_timeline(beat_narration_specs or [], tmp_dir / "narration_segments", narration_audio)
+                narration.build_narration_timeline(beat_narration_specs or [], tmp_dir / "narration_segments", narration_audio)
                 words: list[dict] = []
             else:
-                words = self._run_narration(script_text, voice, narration_audio, narration_rate)
+                words = narration.run_narration(script_text, voice, narration_audio, narration_rate)
             narrating_seconds = time.monotonic() - stage_start
 
             self._set_status(job_id, "subtitling")
@@ -822,8 +821,8 @@ class VideoComposerService:
             _checkpoint()
             self._set_status(job_id, "mixing_audio")
             stage_start = time.monotonic()
-            video_duration = self._probe_duration(merged_video)
-            self._mix_audio(
+            video_duration = ffmpeg_ops.probe_duration(merged_video)
+            audio_mix.mix_audio(
                 narration_audio,
                 music_path,
                 music_volume,
@@ -1001,8 +1000,8 @@ class VideoComposerService:
                         f"not found: {clip}"
                     )
                 try:
-                    clip_width, clip_height, clip_fps = self._probe_video_info(clip)
-                    clip_duration = self._probe_duration(clip)
+                    clip_width, clip_height, clip_fps = ffmpeg_ops.probe_video_info(clip)
+                    clip_duration = ffmpeg_ops.probe_duration(clip)
                 except (ValueError, ZeroDivisionError) as exc:
                     raise RuntimeError(
                         f"{render_errors.INVALID_BEAT_ARTIFACT}: Beat clip {index + 1}/{len(clip_paths)} "
@@ -1017,7 +1016,7 @@ class VideoComposerService:
                     f"{render_errors.AUDIO_MASTER_MISSING}: Audio Master file not found: {audio_master_path}"
                 )
             try:
-                audio_duration = self._probe_duration(Path(audio_master_path))
+                audio_duration = ffmpeg_ops.probe_duration(Path(audio_master_path))
             except ValueError as exc:
                 raise RuntimeError(
                     f"{render_errors.AUDIO_MASTER_MISSING}: Audio Master is not a readable audio file: "
@@ -1076,7 +1075,7 @@ class VideoComposerService:
             if outro_clip_path is not None and Path(outro_clip_path).exists():
                 _checkpoint()
                 self._log(job_id, "phase started: APPEND_OUTRO")
-                outro_duration = self._probe_duration(Path(outro_clip_path)) + _PRE_OUTRO_HOLD_SEC
+                outro_duration = ffmpeg_ops.probe_duration(Path(outro_clip_path)) + _PRE_OUTRO_HOLD_SEC
                 tmp_with_outro = tmp_dir / ".video_hoan_chinh.outro.tmp.mp4"
                 self._append_outro_clip(final_video, Path(outro_clip_path), tmp_with_outro)
                 tmp_with_outro.replace(final_video)
@@ -1182,8 +1181,8 @@ class VideoComposerService:
             # family, so pointing fontsdir at this known location is this
             # app's one and only configured fallback, not a silent
             # substitution.
-            fontsdir = self._escape_for_ffmpeg_filter(Path(FONT_PATH).parent)
-            escaped_ass = self._escape_for_ffmpeg_filter(captions_path)
+            fontsdir = ffmpeg_ops.escape_for_ffmpeg_filter(Path(FONT_PATH).parent)
+            escaped_ass = ffmpeg_ops.escape_for_ffmpeg_filter(captions_path)
             filters.append(f"[{video_label}]subtitles='{escaped_ass}':fontsdir='{fontsdir}'[vcap]")
             video_label = "vcap"
 
@@ -1201,7 +1200,7 @@ class VideoComposerService:
 
         filters.append(f"[{video_label}]format=yuv420p[v]")
 
-        self._run_ffmpeg(
+        ffmpeg_ops.run_ffmpeg(
             inputs
             + [
                 "-filter_complex", ";".join(filters),
@@ -1239,7 +1238,7 @@ class VideoComposerService:
         `_PRE_OUTRO_HOLD_SEC` before the concat, giving a brief breathing
         room ahead of the CTA.
         """
-        self._run_ffmpeg(
+        ffmpeg_ops.run_ffmpeg(
             [
                 "-i", str(main_video),
                 "-i", str(outro_clip),
@@ -1257,47 +1256,6 @@ class VideoComposerService:
             ]
         )
 
-    # --- ffmpeg/ffprobe helpers --------------------------------------------
-
-    @staticmethod
-    def _run_ffmpeg(args: list[str]) -> None:
-        # -nostdin + stdin=DEVNULL: ffmpeg reads stdin by default for
-        # interactive key commands; run as a subprocess with an inherited/
-        # piped stdin that never delivers EOF, it can block indefinitely on
-        # certain inputs instead of failing fast (confirmed as a real,
-        # reproducible hang while building app/modules/motion/renderer.py --
-        # see docs/features/23-local-motion-renderer.md's "Real bugs" -- and
-        # flagged there as a latent gap in this exact method).
-        command = ["ffmpeg", "-y", "-nostdin", "-hide_banner", "-loglevel", "error"] + args
-        result = subprocess.run(command, capture_output=True, text=True, stdin=subprocess.DEVNULL)
-        if result.returncode != 0:
-            raise RuntimeError(f"ffmpeg failed: {result.stderr.strip()[-2000:]}")
-
-    @staticmethod
-    def _probe_duration(path: Path) -> float:
-        command = [
-            "ffprobe", "-v", "error",
-            "-show_entries", "format=duration",
-            "-of", "default=noprint_wrappers=1:nokey=1",
-            str(path),
-        ]
-        result = subprocess.run(command, capture_output=True, text=True, stdin=subprocess.DEVNULL)
-        return float(result.stdout.strip())
-
-    @staticmethod
-    def _probe_video_info(path: Path) -> tuple[int, int, float]:
-        command = [
-            "ffprobe", "-v", "error",
-            "-select_streams", "v:0",
-            "-show_entries", "stream=width,height,r_frame_rate",
-            "-of", "csv=p=0:s=x",
-            str(path),
-        ]
-        result = subprocess.run(command, capture_output=True, text=True, stdin=subprocess.DEVNULL)
-        width_str, height_str, fps_str = result.stdout.strip().split("x")
-        num, _, den = fps_str.partition("/")
-        fps = float(num) / float(den or 1)
-        return int(width_str), int(height_str), fps
 
     def _merge_clips_with_transitions(
         self,
@@ -1308,7 +1266,7 @@ class VideoComposerService:
         height: int,
         fps: float,
     ) -> None:
-        durations = [self._probe_duration(c) for c in clips]
+        durations = [ffmpeg_ops.probe_duration(c) for c in clips]
 
         # Clamp so a transition never tries to overlap more than a clip
         # actually contains -- otherwise the computed xfade offset for a
@@ -1340,7 +1298,7 @@ class VideoComposerService:
             prev_label = new_label
         final_label = prev_label
 
-        self._run_ffmpeg(
+        ffmpeg_ops.run_ffmpeg(
             inputs
             + [
                 "-filter_complex",
@@ -1352,227 +1310,7 @@ class VideoComposerService:
             ]
         )
 
-    # --- narration + subtitles ----------------------------------------------
-
-    def _run_narration(self, script_text: str, voice: str, output_path: Path, rate: str = "+0%") -> list[dict]:
-        import asyncio
-
-        # edge-tts is an unofficial API -- real testing (both this task's
-        # own Chinese Drama verification and app.modules.voice.providers'
-        # own EdgeTTSProvider, which documents the identical failure) shows
-        # an intermittent "No audio was received" NoAudioReceived error
-        # roughly every few consecutive calls, unrelated to the text
-        # content itself. Duplicated (not imported) retry constants/shape
-        # from that module -- sibling modules, module isolation. Without
-        # this, Chinese Drama mode (which always makes a fresh edge-tts
-        # call per job) would be measurably unreliable in real use.
-        _NARRATION_MAX_ATTEMPTS = 4
-        _NARRATION_RETRY_BACKOFF_SEC = 1.5
-
-        async def _generate_once() -> list[dict]:
-            communicate = edge_tts.Communicate(script_text, voice, rate=rate, boundary="WordBoundary")
-            words: list[dict] = []
-            with open(output_path, "wb") as f:
-                async for chunk in communicate.stream():
-                    if chunk["type"] == "audio":
-                        f.write(chunk["data"])
-                    elif chunk["type"] == "WordBoundary":
-                        words.append(
-                            {
-                                "start": chunk["offset"] / 1e7,
-                                "end": (chunk["offset"] + chunk["duration"]) / 1e7,
-                                "text": chunk["text"],
-                            }
-                        )
-            return words
-
-        async def _generate_with_retry() -> list[dict]:
-            last_exc: Exception | None = None
-            for attempt in range(_NARRATION_MAX_ATTEMPTS):
-                try:
-                    words = await _generate_once()
-                    if output_path.exists() and output_path.stat().st_size > 0:
-                        return words
-                    last_exc = RuntimeError("edge_tts produced no audio bytes.")
-                except Exception as exc:  # noqa: BLE001 -- retried below regardless of exact edge_tts exception type
-                    last_exc = exc
-                if attempt < _NARRATION_MAX_ATTEMPTS - 1:
-                    logger.warning(
-                        "edge_tts narration attempt %d/%d failed (%s) -- retrying.",
-                        attempt + 1, _NARRATION_MAX_ATTEMPTS, last_exc,
-                    )
-                    await asyncio.sleep(_NARRATION_RETRY_BACKOFF_SEC * (attempt + 1))
-            raise RuntimeError(f"edge_tts narration failed after {_NARRATION_MAX_ATTEMPTS} attempts: {last_exc}")
-
-        return asyncio.run(_generate_with_retry())
-
-    @staticmethod
-    def _build_narration_timeline(specs: list[dict], segments_dir: Path, output_path: Path) -> None:
-        """Builds one continuous local narration track from per-beat
-        pre-recorded audio, preserving Beat boundaries exactly: each entry
-        in `specs` (`{"duration": float, "path": str | None}`, one per
-        Beat, in order) occupies exactly `duration` seconds in the output
-        -- its own audio (silence-padded if shorter -- validating it isn't
-        *longer* is the caller's job, see composition_render.py's
-        preflight) or pure silence if `path` is None. This is what makes
-        local narration a drop-in replacement for _run_narration's output:
-        the same single "one narration file" contract _mix_audio already
-        expects, so nothing downstream needs to change.
-        """
-        segments_dir.mkdir(parents=True, exist_ok=True)
-        segment_paths: list[Path] = []
-        for index, spec in enumerate(specs):
-            duration = float(spec["duration"])
-            source_path = spec.get("path")
-            segment_path = segments_dir / f"segment_{index:03d}.m4a"
-            if source_path:
-                VideoComposerService._run_ffmpeg(
-                    [
-                        "-i", str(source_path),
-                        "-af", f"apad=whole_dur={duration}",
-                        "-t", str(duration),
-                        "-c:a", "aac",
-                        str(segment_path),
-                    ]
-                )
-            else:
-                VideoComposerService._run_ffmpeg(
-                    [
-                        "-f", "lavfi", "-i", "anullsrc=r=44100:cl=mono",
-                        "-t", str(duration),
-                        "-c:a", "aac",
-                        str(segment_path),
-                    ]
-                )
-            segment_paths.append(segment_path)
-
-        if not segment_paths:
-            # No beats at all -- shouldn't happen (an empty CompositionPlan
-            # is already rejected before rendering starts), but produce a
-            # trivially short silent file rather than leaving no narration
-            # input at all for _mix_audio to read.
-            VideoComposerService._run_ffmpeg(
-                ["-f", "lavfi", "-i", "anullsrc=r=44100:cl=mono", "-t", "0.1", "-c:a", "aac", str(output_path)]
-            )
-            return
-
-        concat_list = segments_dir / "concat.txt"
-        concat_list.write_text(
-            # ffmpeg's concat demuxer resolves relative "file" entries
-            # against the *list file's own directory*, not the process cwd.
-            # segment_path is relative to cwd (job_dir is built from a
-            # relative library root) -- writing that same relative path
-            # verbatim doubles it up with segments_dir's own path, producing
-            # a nonexistent nested path. Resolve to an absolute path instead.
-            "\n".join(f"file '{path.resolve().as_posix()}'" for path in segment_paths), encoding="utf-8"
-        )
-        VideoComposerService._run_ffmpeg(
-            ["-f", "concat", "-safe", "0", "-i", str(concat_list), "-c", "copy", str(output_path)]
-        )
-
     # --- audio mixing + final composition -----------------------------------
-
-    def _mix_audio(
-        self,
-        narration_path: Path,
-        music_path: str | None,
-        music_volume: float,
-        narration_volume: float,
-        music_ducking_ratio: float,
-        fade_in_sec: float,
-        fade_out_sec: float,
-        video_duration: float,
-        output_path: Path,
-        sfx_cues: list[dict] | None = None,
-    ) -> None:
-        """Mixes narration (always present) with optional background music
-        (ducked under narration via ffmpeg's sidechaincompress -- real,
-        dynamic ducking keyed off the narration's own level, not just a
-        lower static volume) and optional SFX cues (each played once,
-        delayed to its own start offset), then applies optional fade in/out
-        to the combined result. `-t {video_duration}` on the output is the
-        same hard, deterministic-duration safety net the original version
-        of this method already used -- unchanged regardless of how many
-        optional layers are mixed in.
-        """
-        sfx_cues = sfx_cues or []
-
-        inputs: list[str] = ["-i", str(narration_path)]
-        # apad's own default (no explicit target) pads only a small,
-        # ffmpeg-internal amount -- not reliably "the rest of video_duration"
-        # once amix/sidechaincompress are also in the graph (confirmed by a
-        # real test failure while building this pipeline: narration+music
-        # with a multi-second gap between narration and video length
-        # silently truncated to narration's own raw length instead of
-        # video_duration). whole_dur makes the target explicit and
-        # deterministic regardless of what else is in the filter chain.
-        filters: list[str] = [f"[0:a]volume={narration_volume},apad=whole_dur={video_duration}[narration]"]
-        mix_labels = ["narration"]
-        next_index = 1
-
-        if music_path:
-            inputs += ["-stream_loop", "-1", "-i", music_path]
-            filters.append(f"[{next_index}:a]volume={music_volume}[music_pre]")
-            # sidechaincompress: music (main input) is compressed using
-            # narration (sidechain input) as the trigger -- music level
-            # drops automatically whenever narration is actually speaking,
-            # and returns to normal during silence. threshold/attack/release
-            # are fixed, sensible defaults for speech-over-music; `ratio`
-            # (ffmpeg's own parameter, 1.0=no effect..20.0=max) is the one
-            # knob exposed as music_ducking_ratio.
-            filters.append(
-                f"[music_pre][narration]sidechaincompress=threshold=0.05:"
-                f"ratio={music_ducking_ratio}:attack=5:release=300[ducked]"
-            )
-            mix_labels.append("ducked")
-            next_index += 1
-
-        for i, cue in enumerate(sfx_cues):
-            inputs += ["-i", str(cue["path"])]
-            delay_ms = max(0, int(round(cue.get("start_sec", 0.0) * 1000)))
-            cue_volume = cue.get("volume", 1.0)
-            label = f"sfx{i}"
-            filters.append(f"[{next_index}:a]volume={cue_volume},adelay={delay_ms}|{delay_ms}[{label}]")
-            mix_labels.append(label)
-            next_index += 1
-
-        if len(mix_labels) > 1:
-            mix_inputs = "".join(f"[{label}]" for label in mix_labels)
-            filters.append(f"{mix_inputs}amix=inputs={len(mix_labels)}:duration=first:dropout_transition=0[mixed]")
-            last_label = "mixed"
-        else:
-            last_label = "narration"
-
-        # Final apad=whole_dur, always applied: sidechaincompress was found
-        # (by a real test failure while building this pipeline) to truncate
-        # its output back to narration's *raw*, pre-padding length even
-        # when fed an already-apad-padded sidechain input -- padding
-        # narration alone before compression isn't reliably enough. Padding
-        # the fully-combined output here, right before the end, is: whole_dur
-        # only ever *adds* silence if the stream is shorter than
-        # video_duration, never trims, so it's a safe no-op once the stream
-        # is already long enough. The outer -t below remains the final trim.
-        final_ops = [f"apad=whole_dur={video_duration}"]
-        if fade_in_sec > 0:
-            final_ops.append(f"afade=t=in:st=0:d={fade_in_sec}")
-        if fade_out_sec > 0:
-            fade_out_start = max(0.0, video_duration - fade_out_sec)
-            final_ops.append(f"afade=t=out:st={fade_out_start}:d={fade_out_sec}")
-        filters.append(f"[{last_label}]{','.join(final_ops)}[a]")
-
-        self._run_ffmpeg(
-            inputs
-            + [
-                "-filter_complex", ";".join(filters),
-                "-map", "[a]",
-                "-t", str(video_duration),
-                str(output_path),
-            ]
-        )
-
-    @staticmethod
-    def _escape_for_ffmpeg_filter(path: Path) -> str:
-        return path.resolve().as_posix().replace(":", "\\:")
 
     def _finalize(
         self,
@@ -1618,9 +1356,9 @@ class VideoComposerService:
             )
 
         if burn_subtitles:
-            video_filters.append(f"subtitles='{self._escape_for_ffmpeg_filter(subtitle_ass)}'")
+            video_filters.append(f"subtitles='{ffmpeg_ops.escape_for_ffmpeg_filter(subtitle_ass)}'")
 
-        self._run_ffmpeg(
+        ffmpeg_ops.run_ffmpeg(
             [
                 "-i", str(merged_video),
                 "-i", str(audio_path),

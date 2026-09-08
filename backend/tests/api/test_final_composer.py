@@ -28,6 +28,7 @@ from app.modules.beat.schemas import (
     ProjectConfig,
     WatermarkProjectConfig,
 )
+from app.modules.video_composer import ffmpeg_ops
 from app.modules.video_composer.models import VideoComposeJob
 from app.modules.video_composer.service import VideoComposerService
 from tests.api.test_batch_render import FFMPEG_AVAILABLE, _make_solid_image
@@ -223,7 +224,7 @@ class OutroCardTests(_FinalComposerTestCase):
     def _probe_narration_only_duration(self, project_id: int) -> float:
         from app.api.v1.endpoints.audio_generate import audio_master_path
 
-        return self.service._probe_duration(audio_master_path(project_id, self.settings.library_dir))
+        return ffmpeg_ops.probe_duration(audio_master_path(project_id, self.settings.library_dir))
 
 
 class MissingAudioMasterTests(_FinalComposerTestCase):

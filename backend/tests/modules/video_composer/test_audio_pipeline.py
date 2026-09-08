@@ -21,6 +21,7 @@ from sqlalchemy.pool import StaticPool
 
 from app.db.base import Base
 from app.modules.video_composer.models import VideoComposeClip, VideoComposeJob
+from app.modules.video_composer import narration
 from app.modules.video_composer.service import VideoComposerService
 
 FFMPEG_AVAILABLE = shutil.which("ffmpeg") is not None and shutil.which("ffprobe") is not None
@@ -89,7 +90,7 @@ class BuildNarrationTimelineTests(unittest.TestCase):
             {"duration": 2.5, "path": str(tone)},
         ]
         output = self.tmp_path / "timeline.m4a"
-        VideoComposerService._build_narration_timeline(specs, self.tmp_path / "segments", output)
+        narration.build_narration_timeline(specs, self.tmp_path / "segments", output)
 
         self.assertTrue(output.exists())
         self.assertAlmostEqual(_ffprobe_duration(output), 6.0, delta=0.2)
@@ -110,7 +111,7 @@ class BuildNarrationTimelineTests(unittest.TestCase):
         specs = [{"duration": 1.0, "path": str(tone)}]
         segments_dir = self.tmp_path / "segments"
         output = self.tmp_path / "timeline.m4a"
-        VideoComposerService._build_narration_timeline(specs, segments_dir, output)
+        narration.build_narration_timeline(specs, segments_dir, output)
 
         concat_text = (segments_dir / "concat.txt").read_text(encoding="utf-8")
         for line in concat_text.splitlines():
@@ -121,7 +122,7 @@ class BuildNarrationTimelineTests(unittest.TestCase):
         tone = _make_tone(self.tmp_path / "n.mp3", 440, 1.0)  # 1s of tone
         specs = [{"duration": 3.0, "path": str(tone)}]  # beat is 3s
         output = self.tmp_path / "timeline.m4a"
-        VideoComposerService._build_narration_timeline(specs, self.tmp_path / "segments", output)
+        narration.build_narration_timeline(specs, self.tmp_path / "segments", output)
 
         self.assertAlmostEqual(_ffprobe_duration(output), 3.0, delta=0.15)
         # First ~0.8s: audible tone.
@@ -132,7 +133,7 @@ class BuildNarrationTimelineTests(unittest.TestCase):
     def test_beat_with_no_narration_asset_is_pure_silence_for_its_full_duration(self):
         specs = [{"duration": 2.0, "path": None}]
         output = self.tmp_path / "timeline.m4a"
-        VideoComposerService._build_narration_timeline(specs, self.tmp_path / "segments", output)
+        narration.build_narration_timeline(specs, self.tmp_path / "segments", output)
 
         self.assertAlmostEqual(_ffprobe_duration(output), 2.0, delta=0.15)
         self.assertLess(_mean_volume_db(output, start=0.0, duration=1.8), -50)
@@ -147,7 +148,7 @@ class BuildNarrationTimelineTests(unittest.TestCase):
             {"duration": 2.0, "path": str(tone)},
         ]
         output = self.tmp_path / "timeline.m4a"
-        VideoComposerService._build_narration_timeline(specs, self.tmp_path / "segments", output)
+        narration.build_narration_timeline(specs, self.tmp_path / "segments", output)
 
         self.assertAlmostEqual(_ffprobe_duration(output), 6.0, delta=0.2)
         # Beat 2's window (2.0s-4.0s) must be silent.
@@ -162,7 +163,7 @@ class BuildNarrationTimelineTests(unittest.TestCase):
         tone = _make_tone(self.tmp_path / "n.mp3", 440, 1.0)
         specs = [{"duration": 1.0, "path": None}, {"duration": 1.0, "path": str(tone)}]
         output = self.tmp_path / "timeline.m4a"
-        VideoComposerService._build_narration_timeline(specs, self.tmp_path / "segments", output)
+        narration.build_narration_timeline(specs, self.tmp_path / "segments", output)
 
         self.assertLess(_mean_volume_db(output, start=0.0, duration=0.7), -50)
         self.assertGreater(_mean_volume_db(output, start=1.0, duration=0.7), -50)

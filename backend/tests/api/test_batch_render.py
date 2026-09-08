@@ -527,7 +527,7 @@ class RenderQueueIntegrationTests(_BatchTestCase):
         self.service.start()
 
         with patch.object(self.service, "_run_job", side_effect=_tracked_run_job), \
-             patch.object(self.service, "_run_narration", side_effect=_fake_run_narration):
+             patch("app.modules.video_composer.narration.run_narration", side_effect=_fake_run_narration):
             db = self._db()
             try:
                 result = render_batch(out.id, db=db, settings=self.settings, service=self.service)
@@ -551,7 +551,7 @@ class RenderQueueIntegrationTests(_BatchTestCase):
 
         self.service.start()
 
-        with patch.object(self.service, "_run_narration", side_effect=_fake_run_narration):
+        with patch("app.modules.video_composer.narration.run_narration", side_effect=_fake_run_narration):
             db = self._db()
             try:
                 result = render_batch(out.id, db=db, settings=self.settings, service=self.service)

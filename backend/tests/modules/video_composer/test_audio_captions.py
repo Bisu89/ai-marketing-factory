@@ -7,7 +7,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 from app.modules.video_composer.models import CAPTION_PRESETS
-from app.modules.video_composer import subtitles
+from app.modules.video_composer import audio_mix, ffmpeg_ops, subtitles
 from app.modules.video_composer.service import VideoComposerService
 
 FFMPEG_AVAILABLE = shutil.which("ffmpeg") is not None and shutil.which("ffprobe") is not None
@@ -88,8 +88,8 @@ class MixAudioCommandGenerationTests(unittest.TestCase):
         def _fake_run_ffmpeg(args: list[str]) -> None:
             captured["args"] = args
 
-        with patch.object(self.service, "_run_ffmpeg", side_effect=_fake_run_ffmpeg):
-            self.service._mix_audio(**defaults)
+        with patch("app.modules.video_composer.audio_mix.run_ffmpeg", side_effect=_fake_run_ffmpeg):
+            audio_mix.mix_audio(**defaults)
         return captured["args"]
 
     def _filter_complex(self, args: list[str]) -> str:
@@ -284,7 +284,7 @@ class AudioMixIntegrationTests(unittest.TestCase):
         ]
         for i, combo in enumerate(combinations):
             output = self.tmp_path / f"mix_{i}.m4a"
-            self.service._mix_audio(
+            audio_mix.mix_audio(
                 narration, combo["music_path"], 0.15, 1.0, 8.0, 0.0, 0.0, video_duration, output,
                 sfx_cues=combo["sfx_cues"],
             )
@@ -293,13 +293,13 @@ class AudioMixIntegrationTests(unittest.TestCase):
     def test_audio_duration_is_deterministic_with_fades(self):
         narration = _make_tone(self.tmp_path / "narration.mp3", 440, 2.0)
         output = self.tmp_path / "faded.m4a"
-        self.service._mix_audio(narration, None, 0.15, 1.0, 8.0, 0.5, 0.5, 3.0, output)
+        audio_mix.mix_audio(narration, None, 0.15, 1.0, 8.0, 0.5, 0.5, 3.0, output)
         self.assertAlmostEqual(_ffprobe_duration(output), 3.0, delta=0.05)
 
     def test_missing_optional_music_still_produces_valid_audio(self):
         narration = _make_tone(self.tmp_path / "narration.mp3", 440, 2.0)
         output = self.tmp_path / "no_music.m4a"
-        self.service._mix_audio(narration, None, 0.15, 1.0, 8.0, 0.0, 0.0, 2.5, output)
+        audio_mix.mix_audio(narration, None, 0.15, 1.0, 8.0, 0.0, 0.0, 2.5, output)
         self.assertTrue(output.exists())
         self.assertAlmostEqual(_ffprobe_duration(output), 2.5, delta=0.05)
 
@@ -374,7 +374,7 @@ class AudioMixIntegrationTests(unittest.TestCase):
             subtitles.write_subtitles(lines, ass_path, self.tmp_path / f"{preset}.srt", 480, 852, 32, preset)
 
             burned = self.tmp_path / f"{preset}_burned.mp4"
-            escaped = self.service._escape_for_ffmpeg_filter(ass_path)
+            escaped = ffmpeg_ops.escape_for_ffmpeg_filter(ass_path)
             result = subprocess.run(
                 [
                     "ffmpeg", "-y", "-nostdin", "-hide_banner", "-loglevel", "error",
