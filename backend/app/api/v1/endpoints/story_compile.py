@@ -23,6 +23,7 @@ from __future__ import annotations
 import logging
 import threading
 import time
+from datetime import datetime, timezone
 
 from fastapi import APIRouter, Depends
 from pydantic import BaseModel, ConfigDict
@@ -177,14 +178,13 @@ def _beats_from_raw(raw: list[dict]) -> list[Beat]:
     ]
 
 
-def _build_beat_plan(
-    story, pc, scenes: list, chars_by_id: dict, locs_by_id: dict, project_name: str,
-    *, render_profile: str | None = None,
-) -> BeatPlan:
-    raw = [_scene_to_raw_beat(sc, chars_by_id, locs_by_id) for sc in scenes]
-    raw = _merge_short(raw, pc.story_compile.merge_scenes_under_seconds)
-    beats = _beats_from_raw(raw)
-
+def _resolve_render_config(story, pc, render_profile: str | None = None):
+    """The ProjectConfig a compiled story renders with = the story's own
+    resolved config + the deterministic Studio overrides (edge_tts,
+    auto_rotate, outro, ai_generated visuals, bible tone). Deterministic
+    given the story, so _reusable_project can compare a compiled Project's
+    stored config against a fresh one to detect config drift.
+    """
     config = pc.model_copy(deep=True)
     if render_profile is not None:
         config.render = config.render.model_copy(update={"profile": render_profile})
@@ -231,7 +231,17 @@ def _build_beat_plan(
                 else "Thanks for watching. Subscribe for the next one."
             ),
         })
+    return config
 
+
+def _build_beat_plan(
+    story, pc, scenes: list, chars_by_id: dict, locs_by_id: dict, project_name: str,
+    *, render_profile: str | None = None,
+) -> BeatPlan:
+    raw = [_scene_to_raw_beat(sc, chars_by_id, locs_by_id) for sc in scenes]
+    raw = _merge_short(raw, pc.story_compile.merge_scenes_under_seconds)
+    beats = _beats_from_raw(raw)
+    config = _resolve_render_config(story, pc, render_profile)
     script_text = "\n\n".join(b.narration for b in beats if b.narration) or None
     return BeatPlan(
         script_text=script_text, beats=beats, project_name=project_name, config=config, script_locked=True,
@@ -281,10 +291,24 @@ def _project_exists(project_id: int | None) -> bool:
         db.close()
 
 
-def _reusable_project(project_id: int | None, want_profile: str) -> tuple[bool, int]:
-    """(reuse?, beat_count) for an already-compiled project. Not reusable if
-    it's gone or its render profile no longer matches the story's config
-    (e.g. the user switched 9:16 -> 16:9) -- then it must be recompiled.
+def _scene_mtime(tree) -> datetime | None:
+    """Latest edit time across every SCENE -- a compiled Project older than
+    this has stale beats. Deliberately only scenes: story.updated_at bumps
+    on a status-only patch, and chapter.updated_at bumps when compile
+    writes back compiled_project_id -- neither means the beats changed.
+    """
+    stamps = [sc.updated_at for _chap, scenes in tree for sc in scenes if sc.updated_at is not None]
+    if not stamps:
+        return None
+    latest = max(stamps)
+    return latest if latest.tzinfo else latest.replace(tzinfo=timezone.utc)
+
+
+def _reusable_project(project_id: int | None, expected_config: dict, scene_mtime: datetime | None) -> tuple[bool, int]:
+    """(reuse?, beat_count) for an already-compiled Project. Not reusable if
+    it's gone, its stored config no longer matches what the story would
+    compile to now (profile / BGM / volume / voice / any config edit), or a
+    scene was edited after it was compiled.
     """
     if project_id is None:
         return False, 0
@@ -293,10 +317,14 @@ def _reusable_project(project_id: int | None, want_profile: str) -> tuple[bool, 
         p = db.get(Project, project_id)
         if p is None:
             return False, 0
-        cfg = (p.beat_plan_json or {}).get("config", {})
-        profile = (cfg.get("render") or {}).get("profile")
         beat_count = len((p.beat_plan_json or {}).get("beats", []))
-        return profile == want_profile, beat_count
+        if (p.beat_plan_json or {}).get("config") != expected_config:
+            return False, beat_count
+        if scene_mtime is not None and p.updated_at is not None:
+            pu = p.updated_at if p.updated_at.tzinfo else p.updated_at.replace(tzinfo=timezone.utc)
+            if pu < scene_mtime:
+                return False, beat_count
+        return True, beat_count
     finally:
         db.close()
 
@@ -324,6 +352,8 @@ def compile_story(story_id: int, *, test: bool = False) -> CompileResult:
     chars_by_id = {c.id: c for c in service.list_characters(story_id)}
     locs_by_id = {loc.id: loc for loc in service.list_locations(story_id)}
     mode = pc.story_compile.compile_mode
+    smtime = _scene_mtime(tree)
+    expected_cfg = _resolve_render_config(story, pc).model_dump(mode="json")
     projects: list[CompiledProject] = []
 
     if test:
@@ -348,7 +378,7 @@ def compile_story(story_id: int, *, test: bool = False) -> CompileResult:
         for chapter, scenes in tree:
             if not scenes:
                 continue
-            reuse, beat_count = _reusable_project(chapter.compiled_project_id, pc.render.profile)
+            reuse, beat_count = _reusable_project(chapter.compiled_project_id, expected_cfg, smtime)
             if reuse:
                 projects.append(CompiledProject(
                     project_id=chapter.compiled_project_id, chapter_id=chapter.id,
@@ -366,7 +396,7 @@ def compile_story(story_id: int, *, test: bool = False) -> CompileResult:
     else:  # single
         all_scenes = [sc for _c, scenes in tree for sc in scenes]
         existing = story.episode_id and service.get_episode(story.episode_id).compiled_project_ids_json
-        reuse_checks = [_reusable_project(pid, pc.render.profile) for pid in existing] if existing else []
+        reuse_checks = [_reusable_project(pid, expected_cfg, smtime) for pid in existing] if existing else []
         if reuse_checks and all(ok for ok, _ in reuse_checks):
             for pid, (_, beat_count) in zip(existing, reuse_checks):
                 projects.append(CompiledProject(
@@ -399,8 +429,12 @@ def _execute_story_produce_sync(
 
         run = service.get_run(run_id)
         prior = run.compiled_project_ids_json if run else []
-        want_profile = resolve_project_config(service.get_story(story_id).project_config_json).render.profile
-        if prior and all(_reusable_project(pid, want_profile)[0] for pid in prior):
+        _story = service.get_story(story_id)
+        _pc = resolve_project_config(_story.project_config_json)
+        _tree = service.get_chapters_with_scenes(story_id)
+        _exp = _resolve_render_config(_story, _pc).model_dump(mode="json")
+        _smt = _scene_mtime(_tree)
+        if prior and not test and all(_reusable_project(pid, _exp, _smt)[0] for pid in prior):
             project_ids = list(prior)
         else:
             result = compile_story(story_id, test=test)
