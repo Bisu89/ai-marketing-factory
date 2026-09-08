@@ -281,6 +281,26 @@ def _project_exists(project_id: int | None) -> bool:
         db.close()
 
 
+def _reusable_project(project_id: int | None, want_profile: str) -> tuple[bool, int]:
+    """(reuse?, beat_count) for an already-compiled project. Not reusable if
+    it's gone or its render profile no longer matches the story's config
+    (e.g. the user switched 9:16 -> 16:9) -- then it must be recompiled.
+    """
+    if project_id is None:
+        return False, 0
+    db = SessionLocal()
+    try:
+        p = db.get(Project, project_id)
+        if p is None:
+            return False, 0
+        cfg = (p.beat_plan_json or {}).get("config", {})
+        profile = (cfg.get("render") or {}).get("profile")
+        beat_count = len((p.beat_plan_json or {}).get("beats", []))
+        return profile == want_profile, beat_count
+    finally:
+        db.close()
+
+
 # A "test" produce: the first few scenes only -- a quick, ~$0.02 look at
 # the character / voice / pacing before committing to the whole story.
 _TEST_MAX_SCENES = 5
@@ -328,13 +348,8 @@ def compile_story(story_id: int, *, test: bool = False) -> CompileResult:
         for chapter, scenes in tree:
             if not scenes:
                 continue
-            if _project_exists(chapter.compiled_project_id):
-                db = SessionLocal()
-                try:
-                    p = db.get(Project, chapter.compiled_project_id)
-                    beat_count = len((p.beat_plan_json or {}).get("beats", []))
-                finally:
-                    db.close()
+            reuse, beat_count = _reusable_project(chapter.compiled_project_id, pc.render.profile)
+            if reuse:
                 projects.append(CompiledProject(
                     project_id=chapter.compiled_project_id, chapter_id=chapter.id,
                     label=chapter.title or f"Chapter {chapter.order}", beat_count=beat_count, reused=True,
@@ -351,14 +366,9 @@ def compile_story(story_id: int, *, test: bool = False) -> CompileResult:
     else:  # single
         all_scenes = [sc for _c, scenes in tree for sc in scenes]
         existing = story.episode_id and service.get_episode(story.episode_id).compiled_project_ids_json
-        if existing and all(_project_exists(pid) for pid in existing):
-            for pid in existing:
-                db = SessionLocal()
-                try:
-                    p = db.get(Project, pid)
-                    beat_count = len((p.beat_plan_json or {}).get("beats", []))
-                finally:
-                    db.close()
+        reuse_checks = [_reusable_project(pid, pc.render.profile) for pid in existing] if existing else []
+        if reuse_checks and all(ok for ok, _ in reuse_checks):
+            for pid, (_, beat_count) in zip(existing, reuse_checks):
                 projects.append(CompiledProject(
                     project_id=pid, chapter_id=None, label=story.title, beat_count=beat_count, reused=True,
                 ))
@@ -389,7 +399,8 @@ def _execute_story_produce_sync(
 
         run = service.get_run(run_id)
         prior = run.compiled_project_ids_json if run else []
-        if prior and all(_project_exists(pid) for pid in prior):
+        want_profile = resolve_project_config(service.get_story(story_id).project_config_json).render.profile
+        if prior and all(_reusable_project(pid, want_profile)[0] for pid in prior):
             project_ids = list(prior)
         else:
             result = compile_story(story_id, test=test)

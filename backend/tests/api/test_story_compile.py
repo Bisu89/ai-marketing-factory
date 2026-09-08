@@ -133,6 +133,24 @@ class CompileTests(_CompileTestCase):
         self.assertIn("ash", proj.beat_plan_json["config"]["visual_generation"]["image_style_prompt"])
         self.assertTrue(proj.beat_plan_json["script_locked"])
 
+    def test_changing_the_render_profile_forces_a_recompile(self):
+        sid = self._story()
+        self._populate(sid, chapters=2, scenes_per=2)
+        first = sc.compile_story(sid)
+        # user switches the story to 16:9
+        service.patch_story(sid, {"project_config_json": {"render": {"profile": "SOCIAL_LANDSCAPE"}}})
+        second = sc.compile_story(sid)
+
+        self.assertNotEqual(
+            sorted(p.project_id for p in first.projects),
+            sorted(p.project_id for p in second.projects),
+        )
+        self.assertTrue(all(not p.reused for p in second.projects))
+        with self.Session() as db:
+            for p in second.projects:
+                proj = db.get(Project, p.project_id)
+                self.assertEqual(proj.beat_plan_json["config"]["render"]["profile"], "SOCIAL_LANDSCAPE")
+
     def test_per_chapter_is_idempotent(self):
         sid = self._story()
         self._populate(sid, chapters=2, scenes_per=2)
