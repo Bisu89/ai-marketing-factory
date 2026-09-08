@@ -23,10 +23,12 @@ from app.modules.discovery.scoring import ScoreConfig, score_all
 
 logger = logging.getLogger(__name__)
 
-# YouTube's search.list is 100 quota units; Reddit's is free. Cap the
-# expanded queries handed to each engine accordingly.
+# YouTube's search.list costs 100 quota units of a 10k/day free budget, so
+# every extra expanded query is 1% of the daily budget -- keep it to 2
+# (~50 Radar searches/day). Reddit's search is free, so it gets the full
+# expansion for better recall.
 PER_ENGINE_QUERY_CAP = {
-    "youtube": 3,
+    "youtube": 2,
     "reddit": 6,
     "tiktok": 1,
     "instagram": 1,

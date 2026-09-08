@@ -83,31 +83,44 @@ class YouTubeEngine(BaseEngine):
                 published_after = datetime.fromtimestamp(cutoff, tz=timezone.utc).strftime(
                     "%Y-%m-%dT%H:%M:%SZ"
                 )
+            quota_hit = False
             for q in queries:
                 try:
                     for r in self._search_one(client, key, q, options, published_after):
                         by_id.setdefault(r.id, r)
                 except httpx.HTTPStatusError as exc:
-                    if exc.response is not None and exc.response.status_code == 403:
-                        # Quota exceeded / key disabled -- stop, report what
-                        # we have so far, don't hammer the API.
-                        detail = _quota_detail(exc.response)
-                        logger.warning("youtube: 403 (%s) -- stopping", detail)
-                        if by_id:
-                            self._backfill(client, key, by_id)
-                        return EngineOutcome(
-                            platform=self.platform,
-                            status="error" if not by_id else "ok",
-                            results=list(by_id.values()),
-                            error=detail,
-                        )
-                    raise
+                    status = exc.response.status_code if exc.response is not None else 0
+                    reason = _error_reason(exc.response)
+                    if status == 403:
+                        # Quota exceeded / key disabled / API not enabled --
+                        # stop hammering, keep whatever we already have.
+                        quota_hit = reason in ("quotaExceeded", "dailyLimitExceeded", "rateLimitExceeded")
+                        logger.warning("youtube: search.list 403 (%s) -- stopping", reason or "forbidden")
+                        break
+                    logger.warning("youtube: search.list %s (%s) for %r", status, reason, q)
+                    continue
+
             if by_id:
                 self._backfill(client, key, by_id)
-            return EngineOutcome.ok(self.platform, list(by_id.values()))
-        except httpx.HTTPError as exc:
-            logger.exception("youtube: search failed")
-            return EngineOutcome.failed(self.platform, f"YouTube request failed: {exc}")
+
+            results = list(by_id.values())
+            if results:
+                # We have at least titles/thumbnails from search.list; the
+                # scorers degrade gracefully when stats are missing.
+                note = _QUOTA_MESSAGE if quota_hit else None
+                return EngineOutcome(platform=self.platform, status="ok", results=results, error=note)
+            if quota_hit:
+                return EngineOutcome.unavailable(self.platform, _QUOTA_MESSAGE)
+            return EngineOutcome.ok(self.platform, [])
+        except httpx.HTTPStatusError as exc:
+            reason = _error_reason(exc.response)
+            if reason in ("quotaExceeded", "dailyLimitExceeded", "rateLimitExceeded"):
+                return EngineOutcome.unavailable(self.platform, _QUOTA_MESSAGE)
+            logger.warning("youtube: request failed (%s)", reason or exc)
+            return EngineOutcome.failed(self.platform, "YouTube API rejected the request.")
+        except httpx.HTTPError:
+            logger.exception("youtube: network error")
+            return EngineOutcome.failed(self.platform, "YouTube request failed (network error).")
         finally:
             if owns_client:
                 client.close()
@@ -163,6 +176,10 @@ class YouTubeEngine(BaseEngine):
         return out
 
     def _backfill(self, client: httpx.Client, key: str, by_id: dict[str, VideoResult]) -> None:
+        """Enrich search.list hits with stats/duration/license via videos.list
+        (1 unit / 50 ids). A failure here is non-fatal -- the results stay,
+        just without view counts etc. (the scorers handle missing metrics).
+        """
         ids = list(by_id.keys())
         for i in range(0, len(ids), 50):
             chunk = ids[i : i + 50]
@@ -171,8 +188,13 @@ class YouTubeEngine(BaseEngine):
                 "part": "statistics,contentDetails,status,snippet",
                 "id": ",".join(chunk),
             }
-            resp = client.get(_VIDEOS_URL, params=params, timeout=20)
-            resp.raise_for_status()
+            try:
+                resp = client.get(_VIDEOS_URL, params=params, timeout=20)
+                resp.raise_for_status()
+            except httpx.HTTPError as exc:
+                reason = _error_reason(getattr(exc, "response", None))
+                logger.warning("youtube: videos.list backfill failed (%s) -- keeping bare results", reason or exc)
+                return
             for item in resp.json().get("items", []):
                 r = by_id.get(item.get("id"))
                 if r is None:
@@ -215,11 +237,18 @@ def _parse_dt(v: str | None) -> datetime | None:
         return None
 
 
-def _quota_detail(resp: httpx.Response) -> str:
+_QUOTA_MESSAGE = (
+    "Hết quota YouTube API hôm nay (mặc định 10.000 đơn vị/ngày, mỗi lượt tìm tốn ~100). "
+    "Quota reset lúc nửa đêm giờ Thái Bình Dương (khoảng 14-15h VN)."
+)
+
+
+def _error_reason(resp: "httpx.Response | None") -> str:
+    """The Google API error `reason` (e.g. 'quotaExceeded') -- never the raw
+    response text, which contains the API key in the request URL."""
+    if resp is None:
+        return ""
     try:
-        reason = resp.json()["error"]["errors"][0].get("reason", "")
-    except (ValueError, KeyError, IndexError):
-        reason = ""
-    if reason in ("quotaExceeded", "dailyLimitExceeded"):
-        return "YouTube API daily quota exceeded -- try again tomorrow or add quota."
-    return "YouTube API rejected the request (403). Check the API key."
+        return resp.json()["error"]["errors"][0].get("reason", "") or ""
+    except (ValueError, KeyError, IndexError, TypeError):
+        return ""
