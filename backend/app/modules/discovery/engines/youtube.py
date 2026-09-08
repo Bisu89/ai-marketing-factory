@@ -15,6 +15,7 @@ License handling (brief section 4):
 
 from __future__ import annotations
 
+import html
 import logging
 import re
 from datetime import datetime, timezone
@@ -160,8 +161,8 @@ class YouTubeEngine(BaseEngine):
                     platform=PLATFORM_YOUTUBE,
                     id=vid,
                     source_url=f"https://www.youtube.com/watch?v={vid}",
-                    title=snip.get("title") or "Untitled",
-                    description=snip.get("description") or None,
+                    title=html.unescape(snip.get("title") or "") or "Untitled",
+                    description=html.unescape(snip.get("description") or "") or None,
                     thumbnail_url=thumb,
                     creator_name=snip.get("channelTitle"),
                     creator_url=(

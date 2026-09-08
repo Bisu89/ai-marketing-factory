@@ -17,10 +17,17 @@ def _v(platform, url, title, score=0.0, **kw):
 
 
 class DedupTests(unittest.TestCase):
-    def test_normalize_url_strips_scheme_www_query(self):
+    def test_normalize_url_strips_scheme_www_and_tracking_but_keeps_video_id(self):
+        # tracking params (t, si) dropped; scheme/www normalized...
         self.assertEqual(
             normalize_url("https://www.youtube.com/watch?v=abc&t=1"),
-            normalize_url("http://youtube.com/watch"),
+            normalize_url("http://youtube.com/watch?v=abc&si=xyz"),
+        )
+        # ...but the v= id itself is NOT dropped (every watch URL would
+        # otherwise collapse to one string).
+        self.assertNotEqual(
+            normalize_url("https://youtube.com/watch?v=abc"),
+            normalize_url("https://youtube.com/watch?v=def"),
         )
 
     def test_same_url_different_platform_is_grouped(self):

@@ -13,12 +13,14 @@ Signals used (all local, no thumbnail hashing in V1):
 from __future__ import annotations
 
 import re
-from urllib.parse import urlparse
+from urllib.parse import parse_qsl, urlparse
 
 from app.modules.discovery.contracts import VideoResult
 
 TITLE_DUP_THRESHOLD = 0.82
 TITLE_WITH_CREATOR_THRESHOLD = 0.6
+# Same-platform merges need to be near-certain (see _is_duplicate).
+SAME_PLATFORM_TITLE_THRESHOLD = 0.92
 
 _STOPWORDS = {
     "the", "a", "an", "and", "or", "of", "to", "in", "on", "for", "with",
@@ -33,15 +35,28 @@ _STOPWORDS = {
 _WORD_RE = re.compile(r"[a-z0-9]+")
 
 
+# Query params that identify the actual video and must be KEPT -- YouTube's
+# `v=` above all (without it every youtube.com/watch URL collapses to one
+# string). Everything else in the query (?si=, ?utm_*, ?t=, ?feature=) is
+# tracking / UI state and is dropped.
+_ID_QUERY_KEYS = {"v", "video_id", "story_fbid", "fbid"}
+
+
 def normalize_url(url: str) -> str:
-    """Strip scheme, www, query, trailing slash, lower-case host."""
+    """scheme / www / m. / trailing-slash stripped, host lower-cased, query
+    reduced to identity params only -- so youtube.com/watch?v=A and ...?v=B
+    stay distinct while tracking params never split one video into two."""
     try:
         p = urlparse(url.strip())
     except ValueError:
         return url.strip().lower()
-    host = (p.netloc or "").lower().removeprefix("www.")
+    host = (p.netloc or "").lower().removeprefix("www.").removeprefix("m.")
     path = (p.path or "").rstrip("/")
-    return f"{host}{path}".lower()
+    kept = sorted(
+        (k.lower(), v) for k, v in parse_qsl(p.query) if k.lower() in _ID_QUERY_KEYS
+    )
+    query = "?" + "&".join(f"{k}={v}" for k, v in kept) if kept else ""
+    return f"{host}{path}{query}".lower()
 
 
 def _title_tokens(title: str) -> set[str]:
@@ -69,7 +84,18 @@ def _same_creator(a: VideoResult, b: VideoResult) -> bool:
 def _is_duplicate(a: VideoResult, b: VideoResult) -> bool:
     if a.source_url and b.source_url and normalize_url(a.source_url) == normalize_url(b.source_url):
         return True
+
+    # Two results from the SAME platform are almost never the same upload --
+    # a shared topic ("beard transformation compilation") produces high title
+    # overlap between genuinely different videos. Only merge same-platform
+    # rows on a near-identical title AND the same creator.
     sim = title_similarity(a.title, b.title)
+    if a.platform == b.platform:
+        return sim >= SAME_PLATFORM_TITLE_THRESHOLD and _same_creator(a, b)
+
+    # Cross-platform: the whole point of dedup (a clip reposted to Reddit +
+    # TikTok + YT). A high title match, or a decent one with the same
+    # creator handle, is enough.
     if sim >= TITLE_DUP_THRESHOLD:
         return True
     if sim >= TITLE_WITH_CREATOR_THRESHOLD and _same_creator(a, b):
