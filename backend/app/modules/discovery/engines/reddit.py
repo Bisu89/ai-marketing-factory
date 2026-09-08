@@ -88,16 +88,42 @@ class RedditEngine(BaseEngine):
             queries = options.queries or [query]
             collected: dict[str, VideoResult] = {}
             token = self._bearer_token(client)
+            forbidden = False
+            other_error: str | None = None
             for q in queries:
                 try:
                     for r in self._search_one(client, q, options, token):
                         collected.setdefault(r.source_url, r)
-                except httpx.HTTPError as exc:
+                except httpx.HTTPStatusError as exc:
+                    if exc.response is not None and exc.response.status_code in (401, 403, 429):
+                        forbidden = True
+                    else:
+                        other_error = str(exc)
                     logger.warning("reddit: query %r failed: %s", q, exc)
                     continue
-            if not collected:
-                return EngineOutcome.ok(self.platform, [])
-            return EngineOutcome.ok(self.platform, list(collected.values()))
+                except httpx.HTTPError as exc:
+                    other_error = str(exc)
+                    logger.warning("reddit: query %r failed: %s", q, exc)
+                    continue
+            if collected:
+                return EngineOutcome.ok(self.platform, list(collected.values()))
+            # Nothing collected -- distinguish "genuinely no matches" from
+            # "Reddit blocked us". Anonymous search is 403'd for most
+            # non-browser clients now, so a 403 without credentials means
+            # the user needs to add a Reddit app id/secret in Settings.
+            if forbidden and not token:
+                return EngineOutcome.unavailable(
+                    self.platform,
+                    "Reddit chặn tìm kiếm ẩn danh. Thêm Reddit API client id/secret "
+                    "trong Settings (tạo app loại 'script' tại reddit.com/prefs/apps).",
+                )
+            if forbidden:
+                return EngineOutcome.failed(
+                    self.platform, "Reddit từ chối truy cập (kiểm tra lại client id/secret)."
+                )
+            if other_error:
+                return EngineOutcome.failed(self.platform, f"Reddit request failed: {other_error}")
+            return EngineOutcome.ok(self.platform, [])
         except httpx.HTTPError as exc:
             logger.exception("reddit: search failed")
             return EngineOutcome.failed(self.platform, f"Reddit request failed: {exc}")
