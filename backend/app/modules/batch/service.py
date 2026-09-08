@@ -3,7 +3,7 @@ module docstring for why this module never imports app.modules.beat or
 app.modules.video_composer. Mirrors app.modules.beat.project_service's own
 "SessionLocal per call" shape for the same reason: called from both
 request handlers and a background thread (the batch beat-generation
-processor, app/api/v1/endpoints/batch_render.py).
+processor, app/pipelines/batch_render.py).
 """
 
 from datetime import datetime, timezone

@@ -3,7 +3,7 @@ docs/features/123-news-channel.md).
 
 The one place allowed to import app.modules.news together with
 app.modules.beat / app.modules.batch / app.modules.ai / app.modules.asset
--- same composition-root shape as app/api/v1/endpoints/batch_render.py
+-- same composition-root shape as app/pipelines/batch_render.py
 (which this file leans on for template lookup + batch bookkeeping).
 
   POST /news/items/draft-scripts  -- AI-write a neutral news-read narration
@@ -33,7 +33,7 @@ from pathlib import Path
 
 from fastapi import APIRouter, Depends
 
-from app.api.v1.endpoints.batch_render import _get_template_or_404
+from app.pipelines.batch_render import _get_template_or_404
 from app.core.concurrency import ai_generation_semaphore
 from app.core.config import Settings, get_settings
 from app.core.exceptions import ExternalServiceError, ValidationError

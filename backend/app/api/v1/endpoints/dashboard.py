@@ -5,7 +5,7 @@ app/modules/README.md, this aggregates across app.modules.batch (Batch/
 BatchItem), app.modules.beat (Project), app.modules.asset (AssetService,
 needed by the Quality Gate), and app.modules.video_composer (VideoComposeJob)
 -- none of those modules may import each other, so this file is the one
-place allowed to. Mirrors app/api/v1/endpoints/batch_render.py's own
+place allowed to. Mirrors app/pipelines/batch_render.py's own
 "composition root aggregates several modules, module list stays pure"
 shape, applied to a read-only view instead of an orchestrated action.
 

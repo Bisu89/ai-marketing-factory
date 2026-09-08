@@ -10,7 +10,7 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
-from app.api.v1.endpoints.factory_pipeline import _stage_generate_motion, reconcile_factory_runs_on_startup
+from app.pipelines.factory_pipeline import _stage_generate_motion, reconcile_factory_runs_on_startup
 from app.api.v1.endpoints.motion_generate import (
     beat_clip_path,
     generate_project_motion,

@@ -7,7 +7,7 @@ real FK" convention already used throughout this codebase
 app.modules.beat.models.Project.render_job_id, etc). Per
 app/modules/README.md, this module must never import app.modules.beat,
 app.modules.asset, app.modules.quality, or app.modules.video_composer --
-the composition root (app/api/v1/endpoints/factory_pipeline.py) is the
+the composition root (app/pipelines/factory_pipeline.py) is the
 only place allowed to import all of them together.
 
 `status` mirrors app.modules.video_composer.models.VideoComposeJob's own

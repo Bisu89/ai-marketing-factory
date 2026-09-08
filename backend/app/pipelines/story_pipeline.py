@@ -45,7 +45,7 @@ import time
 from fastapi import APIRouter, Depends
 from pydantic import BaseModel, ConfigDict, ValidationError as PydanticValidationError
 
-from app.api.v1.endpoints.story_stages import (
+from app.pipelines.story_stages import (
     StoryStageError,
     _stage_chapter_outline,
     _stage_character_bible,

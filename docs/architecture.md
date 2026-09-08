@@ -11,6 +11,11 @@
 ```
 app/api/v1/endpoints/*.py   <- HTTP layer: parse request, call service, map response.
                                 No SQL, no business rules here.
+app/pipelines/*.py           <- cross-module orchestration ("composition roots"):
+                                Script/Story/News flows that sequence app.modules.*
+                                end to end + own FactoryRun/StoryRun state. Carry
+                                their own APIRouter. The ONE place allowed to import
+                                many modules together. (feature 142)
 app/services/<area>/service.py   <- Business rules (validation, status transitions,
                                      tag get-or-create, dedup checks, ...)
 app/services/<area>/repository.py <- Query/persistence only, no business logic.

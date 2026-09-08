@@ -542,7 +542,7 @@ def apply_scene_updates(updates: dict[int, dict]) -> int:
 #
 # A stage checks "does this story already have characters/chapters/scenes"
 # and only calls these when it doesn't -- the same reuse-before-regenerate
-# idempotency app.api.v1.endpoints.factory_stages established for beats.
+# idempotency app.pipelines.factory_stages established for beats.
 
 
 def bulk_add_characters(story_id: int, rows: list[dict]) -> list[StoryCharacter]:

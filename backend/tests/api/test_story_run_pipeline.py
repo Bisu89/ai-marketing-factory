@@ -1,5 +1,5 @@
 """Tests for the resumable STORY_PLAN run
-(app/api/v1/endpoints/story_pipeline.py orchestration + story_stages.py,
+(app/pipelines/story_pipeline.py orchestration + story_stages.py,
 feature 132 Phase 4). The five LLM `generate_*` functions are patched with
 canned output -- exactly how tests/api/test_factory_pipeline.py patches
 `generate_beat_plan` etc. The deterministic stages (SCENE_CLASSIFICATION,
@@ -13,8 +13,8 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.pool import StaticPool
 
-from app.api.v1.endpoints import story_pipeline as sp
-from app.api.v1.endpoints import story_stages
+from app.pipelines import story_pipeline as sp
+from app.pipelines import story_stages
 from app.core.config import get_settings
 from app.core.exceptions import ValidationError
 from app.db.base import Base

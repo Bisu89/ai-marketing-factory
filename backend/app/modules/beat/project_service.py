@@ -28,7 +28,7 @@ def slugify(text: str) -> str:
 
 def unique_project_slug(base: str, db) -> str:
     """Public (not `_`-prefixed) since the composition root (Task 13's
-    batch creation -- see app/api/v1/endpoints/batch_render.py) needs to
+    batch creation -- see app/pipelines/batch_render.py) needs to
     construct Project rows itself, inside ONE shared transaction alongside
     Batch/BatchItem rows, for real cross-table atomicity (see that file's
     own docstring for why create_project's own single-project-per-call

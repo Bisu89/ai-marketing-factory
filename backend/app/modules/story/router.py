@@ -1,6 +1,6 @@
 """Story planning CRUD (feature 131). Pure module router -- no cross-module
 work here (Phase 2's story pipeline lives in a composition root,
-app/api/v1/endpoints/story_pipeline.py, the same split
+app/pipelines/story_pipeline.py, the same split
 app.modules.series.router / series_project.py already use).
 
 NotFoundError / ValidationError raised by the service layer are turned

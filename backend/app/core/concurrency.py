@@ -1,8 +1,8 @@
 """Process-wide concurrency limiters for external resources shared by more
 than one composition root (Task 20 -- see
 docs/features/46-factory-batch-engine.md). Lives in app.core (not a domain
-module) so both app/api/v1/endpoints/batch_render.py's own batch
-beat-generation and app/api/v1/endpoints/factory_pipeline.py's per-project
+module) so both app/pipelines/batch_render.py's own batch
+beat-generation and app/pipelines/factory_pipeline.py's per-project
 Beat stage can import the *same* limiter instead of each bounding their own
 concurrent AI calls independently -- two independently-correct local bounds
 would still let combined concurrency exceed settings.max_concurrent_ai_generation

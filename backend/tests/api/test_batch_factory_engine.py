@@ -14,8 +14,8 @@ import time
 import unittest
 from unittest.mock import patch
 
-from app.api.v1.endpoints import factory_pipeline as factory_pipeline_module
-from app.api.v1.endpoints.factory_pipeline import (
+from app.pipelines import factory_pipeline as factory_pipeline_module
+from app.pipelines.factory_pipeline import (
     cancel_batch_engine,
     continue_batch_factory,
     pause_batch_engine,
@@ -42,9 +42,9 @@ from tests.api.test_factory_pipeline import _FactoryTestCase
 
 class _BatchEngineTestCase(_FactoryTestCase):
     def _create_batch(self, name: str, scripts_text: str) -> Batch:
-        from app.api.v1.endpoints.batch_render import create_batch
+        from app.pipelines.batch_render import create_batch
 
-        with patch("app.api.v1.endpoints.batch_render.SessionLocal", self.TestSessionLocal):
+        with patch("app.pipelines.batch_render.SessionLocal", self.TestSessionLocal):
             return create_batch(CreateBatchRequest(name=name, template_id="custom", scripts_text=scripts_text), self.settings)
 
     def _batch(self, batch_id: int) -> Batch:
@@ -119,7 +119,7 @@ class SchedulerConcurrencyTests(_BatchEngineTestCase):
         self.settings.max_parallel_projects = 2
         fake = _InstrumentedFakeExecute(delay=0.05)
 
-        with patch("app.api.v1.endpoints.factory_pipeline._execute_pipeline_sync", fake):
+        with patch("app.pipelines.factory_pipeline._execute_pipeline_sync", fake):
             started = run_batch_factory(batch.id, self.settings, self.service)
 
         self.assertEqual(started, 5)
@@ -132,7 +132,7 @@ class SchedulerConcurrencyTests(_BatchEngineTestCase):
         fake = _InstrumentedFakeExecute(delay=0.01)
         expected_order = [item.project_id for item in self._batch(batch.id).items]
 
-        with patch("app.api.v1.endpoints.factory_pipeline._execute_pipeline_sync", fake):
+        with patch("app.pipelines.factory_pipeline._execute_pipeline_sync", fake):
             run_batch_factory(batch.id, self.settings, self.service)
 
         self.assertEqual(fake.start_order, expected_order)
@@ -150,7 +150,7 @@ class SchedulerConcurrencyTests(_BatchEngineTestCase):
         self.settings.max_parallel_projects = 2
         fake = _InstrumentedFakeExecute(delay=0.01)
 
-        with patch("app.api.v1.endpoints.factory_pipeline._execute_pipeline_sync", fake):
+        with patch("app.pipelines.factory_pipeline._execute_pipeline_sync", fake):
             started = run_batch_factory(batch.id, self.settings, self.service)
 
         self.assertEqual(started, 50)
@@ -212,7 +212,7 @@ class AIConcurrencyWiringTests(_BatchEngineTestCase):
             return BeatPlan(script_text=script, beats=[Beat(id="b1", order=1, type=BeatType.BODY, narration="x", duration=1.0)])
 
         before = ai_generation_semaphore._value
-        with patch("app.api.v1.endpoints.factory_stages.generate_beat_plan", side_effect=_fake_generate):
+        with patch("app.pipelines.factory_stages.generate_beat_plan", side_effect=_fake_generate):
             factory_pipeline_module._stage_generate_beats(project_id, self.settings)
         after = ai_generation_semaphore._value
 
@@ -291,7 +291,7 @@ class PauseResumeCancelTests(_BatchEngineTestCase):
         self.settings.max_parallel_projects = 1
         fake = _InstrumentedFakeExecute(delay=0.15)
 
-        with patch("app.api.v1.endpoints.factory_pipeline._execute_pipeline_sync", fake):
+        with patch("app.pipelines.factory_pipeline._execute_pipeline_sync", fake):
             batch_service.set_batch_status(batch.id, "PROCESSING")
             start_batch_run(batch.id, self.settings, self.service)
             self._wait_for_fake_active(fake)  # the first item has genuinely started claiming/running
@@ -314,7 +314,7 @@ class PauseResumeCancelTests(_BatchEngineTestCase):
         self.settings.max_parallel_projects = 1
         fake = _InstrumentedFakeExecute(delay=0.15)
 
-        with patch("app.api.v1.endpoints.factory_pipeline._execute_pipeline_sync", fake):
+        with patch("app.pipelines.factory_pipeline._execute_pipeline_sync", fake):
             batch_service.set_batch_status(batch.id, "PROCESSING")
             start_batch_run(batch.id, self.settings, self.service)
             self._wait_for_fake_active(fake)
@@ -345,7 +345,7 @@ class PauseResumeCancelTests(_BatchEngineTestCase):
         self.settings.max_parallel_projects = 1
         fake = _InstrumentedFakeExecute(delay=0.15)
 
-        with patch("app.api.v1.endpoints.factory_pipeline._execute_pipeline_sync", fake):
+        with patch("app.pipelines.factory_pipeline._execute_pipeline_sync", fake):
             batch_service.set_batch_status(batch.id, "PROCESSING")
             start_batch_run(batch.id, self.settings, self.service)
             self._wait_for_fake_active(fake)

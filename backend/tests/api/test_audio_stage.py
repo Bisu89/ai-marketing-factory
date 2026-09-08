@@ -18,7 +18,7 @@ from app.api.v1.endpoints.audio_generate import (
     generate_project_audio_master,
     resolve_bgm_asset,
 )
-from app.api.v1.endpoints.factory_pipeline import _stage_generate_audio, reconcile_factory_runs_on_startup
+from app.pipelines.factory_pipeline import _stage_generate_audio, reconcile_factory_runs_on_startup
 from app.api.v1.endpoints.voice_generate import generate_project_narration, narration_wav_path
 from app.modules.asset.models import Asset
 from app.modules.audio.schemas import AudioError
@@ -229,7 +229,7 @@ class CrashRecoveryTests(_AudioStageTestCase):
 
 class StageErrorTranslationTests(_AudioStageTestCase):
     def test_bgm_not_found_is_translated_into_a_factory_stage_error(self):
-        from app.api.v1.endpoints.factory_pipeline import FactoryStageError
+        from app.pipelines.factory_pipeline import FactoryStageError
 
         project_id = self._project_with_narration(
             "Stage Error BGM", ["Some narration text."],
@@ -266,17 +266,17 @@ class PipelineIntegrationTests(_AudioStageTestCase):
 
 class BatchTests(_AudioStageTestCase):
     def test_five_projects_complete_the_audio_stage(self):
-        from app.api.v1.endpoints.factory_pipeline import run_batch_factory
+        from app.pipelines.factory_pipeline import run_batch_factory
         from app.modules.batch import service as batch_service
         from app.modules.batch.schemas import CreateBatchRequest
         from tests.api.test_batch_render import _make_solid_image
-        from app.api.v1.endpoints.batch_render import create_batch
+        from app.pipelines.batch_render import create_batch
 
         image = _make_solid_image(self.tmp_path / "batch_shared.jpg", (10, 200, 10))
         asset_id = self._register_image_asset(image)
 
         scripts = "\n---\n".join(f"Batch script number {i}." for i in range(1, 6))
-        with patch("app.api.v1.endpoints.batch_render.SessionLocal", self.TestSessionLocal):
+        with patch("app.pipelines.batch_render.SessionLocal", self.TestSessionLocal):
             batch = create_batch(CreateBatchRequest(name="Audio Batch", template_id="custom", scripts_text=scripts), self.settings)
 
         for item in batch.items:
@@ -285,7 +285,7 @@ class BatchTests(_AudioStageTestCase):
             plan = BeatPlan(script_text=draft.script_text, beats=beats, project_name=draft.project_name, config=draft.config)
             update_project_beat_plan(item.project_id, plan)
 
-        with patch("app.api.v1.endpoints.factory_stages.generate_beat_plan") as mock_generate:
+        with patch("app.pipelines.factory_stages.generate_beat_plan") as mock_generate:
             started = run_batch_factory(batch.id, self.settings, self.service)
             mock_generate.assert_not_called()
 

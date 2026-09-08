@@ -18,7 +18,7 @@ from app.api.v1.endpoints.caption_generate import (
     generate_project_captions,
     regenerate_captions,
 )
-from app.api.v1.endpoints.factory_pipeline import FactoryStageError, _stage_generate_captions, reconcile_factory_runs_on_startup
+from app.pipelines.factory_pipeline import FactoryStageError, _stage_generate_captions, reconcile_factory_runs_on_startup
 from app.api.v1.endpoints.voice_generate import generate_project_narration
 from app.modules.beat.project_service import get_project_draft, update_project_beat_plan
 from app.modules.beat.schemas import Beat, BeatPlan, BeatType, CaptionsProjectConfig, ProjectConfig
@@ -274,7 +274,7 @@ class StageErrorTranslationTests(_CaptionStageTestCase):
         # is tested elsewhere in this codebase.
         project_id = self._project_with_narration("Stage Error Translation", ["Some narration text."])
         with patch(
-            "app.api.v1.endpoints.factory_stages.generate_project_captions",
+            "app.pipelines.factory_stages.generate_project_captions",
             side_effect=CaptionError("CAPTION_TIMING_INVALID", "forced for translation test"),
         ):
             with self.assertRaises(FactoryStageError) as ctx:
@@ -310,16 +310,16 @@ class PipelineIntegrationTests(_CaptionStageTestCase):
 
 class BatchTests(_CaptionStageTestCase):
     def test_five_projects_complete_the_caption_stage(self):
-        from app.api.v1.endpoints.factory_pipeline import run_batch_factory
+        from app.pipelines.factory_pipeline import run_batch_factory
         from app.modules.batch.schemas import CreateBatchRequest
         from tests.api.test_batch_render import _make_solid_image
-        from app.api.v1.endpoints.batch_render import create_batch
+        from app.pipelines.batch_render import create_batch
 
         image = _make_solid_image(self.tmp_path / "caption_batch_shared.jpg", (10, 200, 10))
         asset_id = self._register_image_asset(image)
 
         scripts = "\n---\n".join(f"Batch caption script number {i}." for i in range(1, 6))
-        with patch("app.api.v1.endpoints.batch_render.SessionLocal", self.TestSessionLocal):
+        with patch("app.pipelines.batch_render.SessionLocal", self.TestSessionLocal):
             batch = create_batch(CreateBatchRequest(name="Caption Batch", template_id="custom", scripts_text=scripts), self.settings)
 
         for item in batch.items:
@@ -328,7 +328,7 @@ class BatchTests(_CaptionStageTestCase):
             plan = BeatPlan(script_text=draft.script_text, beats=beats, project_name=draft.project_name, config=draft.config)
             update_project_beat_plan(item.project_id, plan)
 
-        with patch("app.api.v1.endpoints.factory_stages.generate_beat_plan") as mock_generate:
+        with patch("app.pipelines.factory_stages.generate_beat_plan") as mock_generate:
             started = run_batch_factory(batch.id, self.settings, self.service)
             mock_generate.assert_not_called()
 

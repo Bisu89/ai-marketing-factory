@@ -28,10 +28,13 @@ points out.**
 
 The core (`app/models/*`, `app/services/download`, `app/services/library`)
 must **never** import anything from `app/modules/*`. A module may **never**
-import another module. The only place that "knows" a given module exists is
-the composition root (`app/main.py` for event subscriptions, `app/api/v1/router.py`
-for mounting its API router) -- that wiring is unavoidable and fine; it is not
-the coupling this rule is about.
+import another module. The only places that "know" a given module exists
+are `app/main.py` (event subscriptions), `app/api/v1/router.py` (mounting
+its API router), and the **composition roots in `app/pipelines/*`** (the
+cross-module orchestrators -- `factory_pipeline`, `story_pipeline`,
+`news_pipeline`, `batch_render`, ... -- that sequence several modules end
+to end). That wiring is unavoidable and fine; it is not the coupling this
+rule is about.
 
 ## What a module owns
 

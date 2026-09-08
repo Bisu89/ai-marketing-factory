@@ -13,7 +13,7 @@ import app.models  # noqa: F401  (registers ORM models on Base.metadata)
 from app.api.v1.endpoints.assets_cleanup import sweep_stale_render_cache
 from app.api.v1.endpoints.chinese_drama_dub import generate_dub
 from app.api.v1.endpoints.composition_render import render_beats_for_job
-from app.api.v1.endpoints.factory_pipeline import (
+from app.pipelines.factory_pipeline import (
     reconcile_batches_on_startup,
     reconcile_factory_runs_on_startup,
     register_factory_event_handlers,

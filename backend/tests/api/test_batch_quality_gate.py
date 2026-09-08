@@ -13,7 +13,7 @@ duplicating that setup.
 
 import unittest
 
-from app.api.v1.endpoints.batch_render import check_batch_quality, render_batch
+from app.pipelines.batch_render import check_batch_quality, render_batch
 from app.modules.asset.schemas import AssetRegisterIn
 from app.modules.asset.service import AssetService
 from app.modules.batch.service import set_item_fields

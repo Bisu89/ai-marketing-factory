@@ -169,6 +169,8 @@ SQLite.
 
 139. [Viral Source Radar (Phase 1)](features/139-viral-source-radar.md) — one search box fans a topic out to Reddit + YouTube in parallel (TikTok/Instagram are honest "unavailable" stubs — no compliant public keyword-search API), then deterministic keyword expansion → normalize → dedup → rule-based viral score (no AI, no paid API) → grid with Open / Save / rights-gated Download. New `app/modules/discovery/` + `discovery_search`/`discovery_result` tables + `/radar` page; a card's Download deep-links into the existing `/download` flow
 
+142. [Refactor (P3): move composition roots to `app/pipelines/`](features/142-pipelines-out-of-endpoints.md) — pure structural move: the 8 cross-module orchestrators (`factory_pipeline`, `factory_stages`, `story_pipeline`, `story_stages`, `story_compile`, `news_pipeline`, `batch_render`, `content_batch_generate`, ~5300 lines) leave `app/api/v1/endpoints/` for a new `app/pipelines/` package so the endpoints layer is HTTP-only again. P1 (unify FactoryRun/StoryRun) assessed and dropped — the two models genuinely diverged and it's the one change needing a live DB migration
+
 ## Keeping this up to date
 
 See the "Documentation" section in `CLAUDE.md` at the repo root — every

@@ -86,7 +86,7 @@ def put_beat_plan(payload: BeatPlan, settings: Settings = Depends(get_settings))
 # Real, independently-addressable projects -- unlike the singleton
 # beats.json above (untouched, still the interactive single-project
 # editing session), each Project has its own row/id, created in bulk by a
-# Batch (composition-root -- see app/api/v1/endpoints/batch_render.py,
+# Batch (composition-root -- see app/pipelines/batch_render.py,
 # which is the only place that creates a Project alongside a BatchItem in
 # the same transaction). This router only ever touches ONE project at a
 # time by id, via app.modules.beat.project_service -- it has no idea a
@@ -156,7 +156,7 @@ def _resolve_template_config(template_id: str, settings: Settings) -> ProjectCon
 @router.post("/projects", response_model=ProjectOut, status_code=201)
 def create_project_endpoint(payload: CreateProjectRequest, settings: Settings = Depends(get_settings)) -> ProjectOut:
     """A single-project counterpart to batch creation's own per-item Project
-    row (see app/api/v1/endpoints/batch_render.py's create_batch) -- reuses
+    row (see app/pipelines/batch_render.py's create_batch) -- reuses
     the exact same app.modules.beat.project_service.create_project this
     codebase already has, just called for one project outside of a batch
     (Task 18's "New Video" one-click flow needs a real, id-addressable

@@ -1,5 +1,5 @@
 """Integration tests for Task 13's batch orchestration
-(app/api/v1/endpoints/batch_render.py) -- see
+(app/pipelines/batch_render.py) -- see
 docs/features/40-batch-video-creation.md. Route handlers are called
 directly as plain functions (this codebase's established convention, see
 e.g. tests/api/test_composition_render.py), against a single shared,
@@ -27,9 +27,9 @@ from PIL import Image
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from app.api.v1.endpoints import batch_render
+from app.pipelines import batch_render
 from app.api.v1.endpoints.composition_render import render_beats_for_job
-from app.api.v1.endpoints.batch_render import (
+from app.pipelines.batch_render import (
     cancel_batch,
     create_batch,
     generate_beats_for_batch,
@@ -121,7 +121,7 @@ class _BatchTestCase(unittest.TestCase):
         self.patchers = [
             patch("app.modules.batch.service.SessionLocal", self.TestSessionLocal),
             patch("app.modules.beat.project_service.SessionLocal", self.TestSessionLocal),
-            patch("app.api.v1.endpoints.batch_render.SessionLocal", self.TestSessionLocal),
+            patch("app.pipelines.batch_render.SessionLocal", self.TestSessionLocal),
             patch("app.modules.video_composer.service.SessionLocal", self.TestSessionLocal),
         ]
         for p in self.patchers:
@@ -347,7 +347,7 @@ class BatchCreationTests(_BatchTestCase):
                 raise RuntimeError("simulated failure mid-batch-creation")
             return real_unique_slug(base, db)
 
-        with patch("app.api.v1.endpoints.batch_render.unique_project_slug", side_effect=_flaky_slug):
+        with patch("app.pipelines.batch_render.unique_project_slug", side_effect=_flaky_slug):
             with self.assertRaises(RuntimeError):
                 self._create_batch("Will Fail", "custom", "One.\n---\nTwo.\n---\nThree.\n---\nFour.")
 
@@ -365,7 +365,7 @@ class BatchCreationTests(_BatchTestCase):
 class BeatGenerationTests(_BatchTestCase):
     def test_successful_generation_marks_items_beats_ready(self):
         out = self._create_batch("Gen Test", "custom", "Script A.\n---\nScript B.")
-        with patch("app.api.v1.endpoints.batch_render.generate_beat_plan", side_effect=lambda key, script: _fake_beat_plan(script)):
+        with patch("app.pipelines.batch_render.generate_beat_plan", side_effect=lambda key, script: _fake_beat_plan(script)):
             generate_beats_for_batch(out.id, self.settings)
             # Background thread -- wait for it to actually finish.
             self._wait_for_terminal_batch_status(out.id, timeout=5.0)
@@ -383,7 +383,7 @@ class BeatGenerationTests(_BatchTestCase):
                 raise ValueError("Model returned zero beats")
             return _fake_beat_plan(script)
 
-        with patch("app.api.v1.endpoints.batch_render.generate_beat_plan", side_effect=_maybe_fail):
+        with patch("app.pipelines.batch_render.generate_beat_plan", side_effect=_maybe_fail):
             generate_beats_for_batch(out.id, self.settings)
             self._wait_for_terminal_batch_status(out.id, timeout=5.0)
 
@@ -409,7 +409,7 @@ class BeatGenerationTests(_BatchTestCase):
             return _fake_beat_plan(script)
 
         self.settings.max_concurrent_ai_generation = 2
-        with patch("app.api.v1.endpoints.batch_render.generate_beat_plan", side_effect=_slow_generate):
+        with patch("app.pipelines.batch_render.generate_beat_plan", side_effect=_slow_generate):
             generate_beats_for_batch(out.id, self.settings)
             self._wait_for_terminal_batch_status(out.id, timeout=10.0)
 
@@ -614,7 +614,7 @@ class RetryTests(_BatchTestCase):
         item = out.items[0]
         set_item_fields(item.id, status="FAILED", error_message="model error")
 
-        with patch("app.api.v1.endpoints.batch_render.generate_beat_plan", side_effect=lambda key, script: _fake_beat_plan(script)):
+        with patch("app.pipelines.batch_render.generate_beat_plan", side_effect=lambda key, script: _fake_beat_plan(script)):
             db = self._db()
             try:
                 retry_batch(out.id, db=db, settings=self.settings, service=self.service)
@@ -712,7 +712,7 @@ class EndToEndBatchTests(_BatchTestCase):
         out = self._create_batch("E2E Five Pack", "custom", scripts)
         self.assertEqual(len(out.items), 5)
 
-        with patch("app.api.v1.endpoints.batch_render.generate_beat_plan", side_effect=lambda key, script: _fake_beat_plan(script, num_beats=2)):
+        with patch("app.pipelines.batch_render.generate_beat_plan", side_effect=lambda key, script: _fake_beat_plan(script, num_beats=2)):
             generate_beats_for_batch(out.id, self.settings)
             self._wait_for_terminal_batch_status(out.id, timeout=10.0)
 

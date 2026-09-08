@@ -3,7 +3,7 @@ models.py's module docstring for why this module never imports
 content_strategy or ai.story. Mirrors app.modules.batch.service's own
 "SessionLocal per call" shape for the identical reason: called from both
 request handlers and the background worker thread (see
-app/api/v1/endpoints/content_batch_generate.py).
+app/pipelines/content_batch_generate.py).
 """
 
 from datetime import datetime, timezone

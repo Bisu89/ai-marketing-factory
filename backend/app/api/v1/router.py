@@ -6,14 +6,12 @@ from app.api.v1.endpoints import (
     ai_costs,
     assets_cleanup,
     audio_generate,
-    batch_render,
     beat_generate,
     beat_preview,
     caption_generate,
     categories,
     competitor_analysis,
     composition_render,
-    content_batch_generate,
     content_generate,
     content_idea_generation,
     content_recommendations,
@@ -21,13 +19,11 @@ from app.api.v1.endpoints import (
     detect,
     downloads,
     emotions,
-    factory_pipeline,
     final_qa,
     health,
     insights,
     publish_log,
     motion_generate,
-    news_pipeline,
     package_generate,
     performance_intelligence,
     produced_videos,
@@ -35,12 +31,20 @@ from app.api.v1.endpoints import (
     quality_gate,
     series_project,
     settings,
-    story_compile,
-    story_pipeline,
     winner_detection,
     tags,
     videos,
     voice_generate,
+)
+
+# Cross-module orchestration composition roots -- see app/pipelines/__init__.py.
+from app.pipelines import (
+    batch_render,
+    content_batch_generate,
+    factory_pipeline,
+    news_pipeline,
+    story_compile,
+    story_pipeline,
 )
 from app.modules.ai.hook.router import router as hook_router
 from app.modules.ai.story.router import router as story_router

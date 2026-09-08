@@ -12,7 +12,7 @@ each needing 2 real calls (generate + score), is 40-60 seconds of AI time
 at minimum -- unsafe to run inside one HTTP request (timeout, no
 progress, no cancel). Rather than building a new queue/worker system,
 this reuses the exact pattern already proven in
-app/api/v1/endpoints/batch_render.py's own
+app/pipelines/batch_render.py's own
 _run_batch_beat_generation/_generate_beats_for_item: one daemon Thread
 per "Run" click, internally a ThreadPoolExecutor bounded by
 settings.max_concurrent_ai_generation, each task additionally wrapped in

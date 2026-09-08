@@ -7,7 +7,7 @@ app/api/v1/endpoints/produced_videos.py.
 
 The upload itself runs on a per-job daemon thread (uploads are infrequent
 and independent; no shared queue needed) -- the same lightweight pattern
-app/api/v1/endpoints/batch_render.py uses for "Generate Beats". A restart
+app/pipelines/batch_render.py uses for "Generate Beats". A restart
 mid-upload leaves the job 'interrupted' (service.reconcile_uploads_on_startup),
 never silently retried.
 """

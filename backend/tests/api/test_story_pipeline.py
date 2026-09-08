@@ -1,5 +1,5 @@
 """Tests for the story pipeline composition root
-(app/api/v1/endpoints/story_pipeline.py, feature 132) -- the Scene Director
+(app/pipelines/story_pipeline.py, feature 132) -- the Scene Director
 wired to real StoryScene rows + the pre-flight cost/budget guard. Route
 handlers called as plain functions against one in-memory DB, this
 codebase's established convention (see tests/api/test_series_project.py).
@@ -12,7 +12,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.pool import StaticPool
 
-from app.api.v1.endpoints import story_pipeline as sp
+from app.pipelines import story_pipeline as sp
 from app.core.exceptions import ValidationError
 from app.db.base import Base
 from app.modules.story import service

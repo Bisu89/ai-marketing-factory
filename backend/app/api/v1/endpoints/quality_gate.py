@@ -7,7 +7,7 @@ app/api/v1/endpoints/composition_render.py already does for building a
 CompositionPlan out of a live BeatPlan + resolved Assets.
 
 `run_quality_check` (plain function, not just an HTTP handler) is imported
-directly by app/api/v1/endpoints/batch_render.py's render_batch() -- a
+directly by app/pipelines/batch_render.py's render_batch() -- a
 composition-root file importing another composition-root file is the
 established, already-used pattern (batch_render.py already imports
 render_composition from composition_render.py and generate_beat_plan from
@@ -83,7 +83,7 @@ def compute_asset_confidence(beat: Beat, asset: Asset) -> str:
 
     Public (not `_`-prefixed), same reasoning as batch_render.py's own
     project_composition_plan promotion: Task 18's
-    app/api/v1/endpoints/factory_pipeline.py -- another composition root --
+    app/pipelines/factory_pipeline.py -- another composition root --
     reuses this (and tokenize_prose below) directly for its own auto-assign
     stage's candidate search + confidence check, rather than a second
     implementation of the same keyword-overlap logic.

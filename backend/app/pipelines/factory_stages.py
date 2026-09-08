@@ -4,7 +4,7 @@ depending on factory_pipeline's own single-project orchestration, batch
 engine, render.job.* event handlers, and HTTP routes.
 
 Today the only consumer is factory_pipeline.py itself (it re-imports every
-name below, so `from app.api.v1.endpoints.factory_pipeline import
+name below, so `from app.pipelines.factory_pipeline import
 _stage_generate_voice` etc. keeps working unchanged). A future
 story_pipeline.py (long-form AI story production -- see the plan doc) will
 import from HERE instead of pulling in the whole 2000-line
@@ -36,7 +36,7 @@ from app.api.v1.endpoints.audio_generate import (
     audio_master_path,
     generate_project_audio_master,
 )
-from app.api.v1.endpoints.batch_render import project_composition_plan
+from app.pipelines.batch_render import project_composition_plan
 from app.api.v1.endpoints.beat_generate import generate_beat_plan
 from app.api.v1.endpoints.caption_generate import captions_ass_path, captions_is_valid, generate_project_captions
 from app.api.v1.endpoints.composition_render import render_composition
