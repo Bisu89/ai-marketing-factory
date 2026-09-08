@@ -133,6 +133,23 @@ class CompileTests(_CompileTestCase):
         self.assertIn("ash", proj.beat_plan_json["config"]["visual_generation"]["image_style_prompt"])
         self.assertTrue(proj.beat_plan_json["script_locked"])
 
+    def test_changing_only_the_bgm_patches_config_and_keeps_images(self):
+        sid = self._story()
+        self._populate(sid, chapters=2, scenes_per=2)
+        run1 = sc.produce_story(sid, self.settings, object())
+        pid = service.get_run(run1.id).compiled_project_ids_json[0]
+        self.started_projects.clear()
+        # user swaps the background music -- an audio-only change -- and re-produces
+        service.patch_story(sid, {"project_config_json": {"audio": {"bgm_mode": "MANUAL", "bgm_asset_id": 903}}})
+        run2 = sc.produce_story(sid, self.settings, object())
+
+        self.assertEqual(service.get_run(run2.id).compiled_project_ids_json, [pid])  # SAME project, not recompiled
+        self.assertEqual(self.started_projects, [pid])                               # factory re-run reuses its images
+        with self.Session() as db:
+            self.assertEqual(db.query(Project).count(), 1)                           # no new project
+            cfg = db.get(Project, pid).beat_plan_json["config"]
+        self.assertEqual(cfg["audio"]["bgm_asset_id"], 903)                          # config patched in place
+
     def test_changing_the_render_profile_forces_a_recompile(self):
         sid = self._story()
         self._populate(sid, chapters=2, scenes_per=2)

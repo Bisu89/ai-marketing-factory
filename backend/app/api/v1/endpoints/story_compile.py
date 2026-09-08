@@ -304,27 +304,55 @@ def _scene_mtime(tree) -> datetime | None:
     return latest if latest.tzinfo else latest.replace(tzinfo=timezone.utc)
 
 
-def _reusable_project(project_id: int | None, expected_config: dict, scene_mtime: datetime | None) -> tuple[bool, int]:
-    """(reuse?, beat_count) for an already-compiled Project. Not reusable if
-    it's gone, its stored config no longer matches what the story would
-    compile to now (profile / BGM / volume / voice / any config edit), or a
-    scene was edited after it was compiled.
+# Config subtrees whose change alters the generated IMAGES (so they force
+# a full recompile + regen). Everything else -- audio / BGM / volume /
+# outro / motion / captions / voice -- is applied by patching the existing
+# Project's config in place, keeping every already-generated image ($0).
+_IMAGE_AFFECTING = ("render", "visual_generation", "content", "story_compile")
+
+
+def _reuse_state(project_id: int | None, expected_config: dict, scene_mtime: datetime | None) -> tuple[str, int]:
+    """One of: "gone" | "recompile" | "config_only" | "reuse", plus beat_count.
+
+    - "recompile": project missing, a scene was edited, or an image-affecting
+      config subtree changed -> must rebuild the BeatPlan + regenerate images.
+    - "config_only": only audio/outro/motion/voice changed -> patch the
+      Project's stored config, keep the images.
+    - "reuse": nothing changed.
     """
     if project_id is None:
-        return False, 0
+        return "gone", 0
     db = SessionLocal()
     try:
         p = db.get(Project, project_id)
         if p is None:
-            return False, 0
-        beat_count = len((p.beat_plan_json or {}).get("beats", []))
-        if (p.beat_plan_json or {}).get("config") != expected_config:
-            return False, beat_count
+            return "gone", 0
+        bp = p.beat_plan_json or {}
+        beat_count = len(bp.get("beats", []))
         if scene_mtime is not None and p.updated_at is not None:
             pu = p.updated_at if p.updated_at.tzinfo else p.updated_at.replace(tzinfo=timezone.utc)
             if pu < scene_mtime:
-                return False, beat_count
-        return True, beat_count
+                return "recompile", beat_count
+        stored = bp.get("config") or {}
+        if stored == expected_config:
+            return "reuse", beat_count
+        if any(stored.get(k) != expected_config.get(k) for k in _IMAGE_AFFECTING):
+            return "recompile", beat_count
+        return "config_only", beat_count
+    finally:
+        db.close()
+
+
+def _patch_project_config(project_id: int, new_config: dict) -> None:
+    db = SessionLocal()
+    try:
+        p = db.get(Project, project_id)
+        if p is None:
+            return
+        bp = dict(p.beat_plan_json or {})
+        bp["config"] = new_config
+        p.beat_plan_json = bp
+        db.commit()
     finally:
         db.close()
 
@@ -378,8 +406,10 @@ def compile_story(story_id: int, *, test: bool = False) -> CompileResult:
         for chapter, scenes in tree:
             if not scenes:
                 continue
-            reuse, beat_count = _reusable_project(chapter.compiled_project_id, expected_cfg, smtime)
-            if reuse:
+            state, beat_count = _reuse_state(chapter.compiled_project_id, expected_cfg, smtime)
+            if state in ("reuse", "config_only"):
+                if state == "config_only":
+                    _patch_project_config(chapter.compiled_project_id, expected_cfg)
                 projects.append(CompiledProject(
                     project_id=chapter.compiled_project_id, chapter_id=chapter.id,
                     label=chapter.title or f"Chapter {chapter.order}", beat_count=beat_count, reused=True,
@@ -396,9 +426,20 @@ def compile_story(story_id: int, *, test: bool = False) -> CompileResult:
     else:  # single
         all_scenes = [sc for _c, scenes in tree for sc in scenes]
         existing = story.episode_id and service.get_episode(story.episode_id).compiled_project_ids_json
-        reuse_checks = [_reusable_project(pid, expected_cfg, smtime) for pid in existing] if existing else []
-        if reuse_checks and all(ok for ok, _ in reuse_checks):
-            for pid, (_, beat_count) in zip(existing, reuse_checks):
+        if not existing:
+            # A standalone story (no Episode) has no per-project link -- the
+            # last PRODUCE run is where the compiled id was recorded.
+            prev = next(
+                (r for r in service.list_runs_for_story(story_id)
+                 if r.scope == "PRODUCE" and r.compiled_project_ids_json),
+                None,
+            )
+            existing = prev.compiled_project_ids_json if prev else []
+        checks = [(pid, *_reuse_state(pid, expected_cfg, smtime)) for pid in existing] if existing else []
+        if checks and all(state in ("reuse", "config_only") for _pid, state, _bc in checks):
+            for pid, state, beat_count in checks:
+                if state == "config_only":
+                    _patch_project_config(pid, expected_cfg)
                 projects.append(CompiledProject(
                     project_id=pid, chapter_id=None, label=story.title, beat_count=beat_count, reused=True,
                 ))
@@ -434,7 +475,11 @@ def _execute_story_produce_sync(
         _tree = service.get_chapters_with_scenes(story_id)
         _exp = _resolve_render_config(_story, _pc).model_dump(mode="json")
         _smt = _scene_mtime(_tree)
-        if prior and not test and all(_reusable_project(pid, _exp, _smt)[0] for pid in prior):
+        _states = [(pid, _reuse_state(pid, _exp, _smt)[0]) for pid in prior] if prior else []
+        if _states and not test and all(st in ("reuse", "config_only") for _pid, st in _states):
+            for pid, st in _states:
+                if st == "config_only":
+                    _patch_project_config(pid, _exp)
             project_ids = list(prior)
         else:
             result = compile_story(story_id, test=test)
