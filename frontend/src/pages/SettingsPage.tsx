@@ -13,9 +13,11 @@ import {
   updateNewsPollInterval,
   updateRenderCacheRetention,
   updateGoogleOAuthClient,
+  updateRedditCredentials,
   updateTikTokClientKey,
   updateTikTokClientSecret,
   updateTikTokRedirectUri,
+  updateYouTubeApiKey,
 } from "../api/settings";
 import { deleteTemplate, listTemplates } from "../api/template";
 import type { AIProvider } from "../types/settings";
@@ -60,6 +62,18 @@ export function SettingsPage() {
   const [googleClientSecretInput, setGoogleClientSecretInput] = useState("");
   const [savingGoogleOAuth, setSavingGoogleOAuth] = useState(false);
 
+  // Viral Source Radar (see docs/features/139-viral-source-radar.md) --
+  // a YouTube Data API v3 key (search.list only needs a key, not OAuth)
+  // and optional Reddit "script" app credentials (anonymous Reddit search
+  // is now 403-blocked).
+  const [hasYouTubeApiKey, setHasYouTubeApiKey] = useState(false);
+  const [youtubeApiKeyInput, setYoutubeApiKeyInput] = useState("");
+  const [savingYouTubeApiKey, setSavingYouTubeApiKey] = useState(false);
+  const [hasRedditCreds, setHasRedditCreds] = useState(false);
+  const [redditClientIdInput, setRedditClientIdInput] = useState("");
+  const [redditClientSecretInput, setRedditClientSecretInput] = useState("");
+  const [savingRedditCreds, setSavingRedditCreds] = useState(false);
+
   const [renderCacheDays, setRenderCacheDays] = useState(0);
   const [savingRenderCache, setSavingRenderCache] = useState(false);
   const [newsPollMinutes, setNewsPollMinutes] = useState(0);
@@ -92,6 +106,8 @@ export function SettingsPage() {
         setYoutubeRedirectUri(settings.youtube_redirect_uri);
         setRenderCacheDays(settings.render_cache_retention_days);
         setNewsPollMinutes(settings.news_poll_interval_minutes);
+        setHasYouTubeApiKey(settings.has_youtube_api_key);
+        setHasRedditCreds(settings.has_reddit_credentials);
       })
       .catch(() => setError("Không đọc được cấu hình hiện tại."));
     refreshTemplates();
@@ -232,6 +248,44 @@ export function SettingsPage() {
       setError(err instanceof Error ? err.message : "Không lưu được Google OAuth client.");
     } finally {
       setSavingGoogleOAuth(false);
+    }
+  }
+
+  async function handleSaveYouTubeApiKey() {
+    if (!youtubeApiKeyInput.trim() || savingYouTubeApiKey) return;
+    setSavingYouTubeApiKey(true);
+    setError(null);
+    setMessage(null);
+    try {
+      const result = await updateYouTubeApiKey(youtubeApiKeyInput.trim());
+      setHasYouTubeApiKey(result.has_youtube_api_key);
+      setYoutubeApiKeyInput("");
+      setMessage("Đã lưu YouTube API key. Radar giờ tìm được trên YouTube.");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Không lưu được YouTube API key.");
+    } finally {
+      setSavingYouTubeApiKey(false);
+    }
+  }
+
+  async function handleSaveRedditCreds() {
+    if (!redditClientIdInput.trim() || !redditClientSecretInput.trim() || savingRedditCreds) return;
+    setSavingRedditCreds(true);
+    setError(null);
+    setMessage(null);
+    try {
+      const result = await updateRedditCredentials(
+        redditClientIdInput.trim(),
+        redditClientSecretInput.trim(),
+      );
+      setHasRedditCreds(result.has_reddit_credentials);
+      setRedditClientIdInput("");
+      setRedditClientSecretInput("");
+      setMessage("Đã lưu Reddit credentials. Radar giờ tìm được trên Reddit.");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Không lưu được Reddit credentials.");
+    } finally {
+      setSavingRedditCreds(false);
     }
   }
 
@@ -540,6 +594,90 @@ export function SettingsPage() {
           <label className="settings-label">Redirect URI (dán vào Google Console)</label>
           <input className="settings-input" type="text" readOnly value={youtubeRedirectUri} onFocus={(e) => e.target.select()} />
         </div>
+      </div>
+
+      {/* -- Viral Source Radar --------------------------------------- */}
+      <div className="settings-card">
+        <div className="settings-row settings-row-header">
+          <label className="settings-label">Viral Source Radar (tìm nguồn video)</label>
+        </div>
+        <p className="settings-hint">
+          Trang Radar quét Reddit + YouTube để tìm nguồn video short-form. TikTok/Instagram không có API
+          tìm kiếm công khai nên luôn hiển thị "n/a".
+        </p>
+
+        <div className="settings-row">
+          <label className="settings-label" htmlFor="youtube-api-key">
+            YouTube Data API key
+          </label>
+          <div className="settings-folder-picker">
+            <input
+              id="youtube-api-key"
+              type="password"
+              className="settings-input"
+              placeholder={hasYouTubeApiKey ? "•••••••••••••• (đã cấu hình)" : "AIza..."}
+              value={youtubeApiKeyInput}
+              onChange={(e) => setYoutubeApiKeyInput(e.target.value)}
+            />
+            <button
+              className="btn btn-secondary"
+              onClick={handleSaveYouTubeApiKey}
+              disabled={!youtubeApiKeyInput.trim() || savingYouTubeApiKey}
+            >
+              {hasYouTubeApiKey && <CheckCircle2 size={14} />}
+              Lưu
+            </button>
+          </div>
+        </div>
+        <p className="settings-hint">
+          Lấy tại Google Cloud Console → bật <strong>YouTube Data API v3</strong> → Credentials → API key.
+          Đây là API key thường, KHÁC với OAuth client ở mục YouTube Publishing. Hạn mức miễn phí ~10–20
+          lượt tìm/ngày.
+        </p>
+
+        <div className="settings-row">
+          <label className="settings-label" htmlFor="reddit-client-id">
+            Reddit Client ID
+          </label>
+          <input
+            id="reddit-client-id"
+            type="text"
+            className="settings-input"
+            placeholder={hasRedditCreds ? "••• (đã lưu)" : "vd: p-a2Bc..."}
+            value={redditClientIdInput}
+            onChange={(e) => setRedditClientIdInput(e.target.value)}
+          />
+        </div>
+        <div className="settings-row">
+          <label className="settings-label" htmlFor="reddit-client-secret">
+            Reddit Client Secret
+          </label>
+          <div className="settings-folder-picker">
+            <input
+              id="reddit-client-secret"
+              type="password"
+              className="settings-input"
+              placeholder={hasRedditCreds ? "••• (đã lưu)" : "..."}
+              value={redditClientSecretInput}
+              onChange={(e) => setRedditClientSecretInput(e.target.value)}
+            />
+            <button
+              className="btn btn-secondary"
+              onClick={handleSaveRedditCreds}
+              disabled={
+                !redditClientIdInput.trim() || !redditClientSecretInput.trim() || savingRedditCreds
+              }
+            >
+              {hasRedditCreds && <CheckCircle2 size={14} />}
+              Lưu
+            </button>
+          </div>
+        </div>
+        <p className="settings-hint">
+          Tạo tại reddit.com/prefs/apps → "create another app" → chọn loại <strong>script</strong> → redirect
+          uri điền <code>http://localhost</code>. Reddit hiện chặn tìm kiếm ẩn danh nên bước này bắt buộc nếu
+          muốn có kết quả Reddit.
+        </p>
       </div>
 
       {/* -- Tự động kéo tin RSS --------------------------------------- */}

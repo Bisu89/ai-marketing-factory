@@ -25,6 +25,10 @@ export interface AppSettings {
   // How often the News page re-fetches every enabled RSS source, in
   // minutes. 0 = off (feeds only pulled on a manual "Fetch").
   news_poll_interval_minutes: number;
+  // Viral Source Radar — YouTube Data API v3 key + optional Reddit app
+  // credentials (never echoed, only whether they are set).
+  has_youtube_api_key: boolean;
+  has_reddit_credentials: boolean;
 }
 
 export interface FolderEntry {

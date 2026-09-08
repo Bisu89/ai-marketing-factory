@@ -49,6 +49,22 @@ export async function updateGoogleOAuthClient(
   });
 }
 
+export async function updateYouTubeApiKey(
+  apiKey: string,
+): Promise<{ has_youtube_api_key: boolean }> {
+  return apiPut<{ has_youtube_api_key: boolean }>("/settings/youtube-api-key", { api_key: apiKey });
+}
+
+export async function updateRedditCredentials(
+  clientId: string,
+  clientSecret: string,
+): Promise<{ has_reddit_credentials: boolean }> {
+  return apiPut<{ has_reddit_credentials: boolean }>("/settings/reddit-credentials", {
+    client_id: clientId,
+    client_secret: clientSecret,
+  });
+}
+
 export async function updateNewsPollInterval(
   minutes: number,
 ): Promise<{ news_poll_interval_minutes: number }> {
