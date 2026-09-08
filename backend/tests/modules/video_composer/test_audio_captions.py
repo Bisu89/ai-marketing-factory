@@ -7,6 +7,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 from app.modules.video_composer.models import CAPTION_PRESETS
+from app.modules.video_composer import subtitles
 from app.modules.video_composer.service import VideoComposerService
 
 FFMPEG_AVAILABLE = shutil.which("ffmpeg") is not None and shutil.which("ffprobe") is not None
@@ -180,7 +181,7 @@ class CaptionPresetGenerationTests(unittest.TestCase):
             {"start": 1.0, "end": 1.5, "text": "test"},
             {"start": 1.5, "end": 2.0, "text": "narration"},
         ]
-        self.lines = self.service._group_words_into_lines(self.words)
+        self.lines = subtitles.group_words_into_lines(self.words)
 
     def tearDown(self):
         self.tmpdir.cleanup()
@@ -188,7 +189,7 @@ class CaptionPresetGenerationTests(unittest.TestCase):
     def _write(self, preset: str) -> str:
         ass_path = self.tmp_path / f"{preset}.ass"
         srt_path = self.tmp_path / f"{preset}.srt"
-        self.service._write_subtitles(self.lines, ass_path, srt_path, 480, 852, 32, preset)
+        subtitles.write_subtitles(self.lines, ass_path, srt_path, 480, 852, 32, preset)
         return ass_path.read_text(encoding="utf-8")
 
     def test_all_six_presets_generate_valid_non_empty_ass(self):
@@ -204,7 +205,7 @@ class CaptionPresetGenerationTests(unittest.TestCase):
 
     def test_unknown_caption_preset_raises_value_error(self):
         with self.assertRaises(ValueError):
-            self.service._write_subtitles(
+            subtitles.write_subtitles(
                 self.lines, self.tmp_path / "x.ass", self.tmp_path / "x.srt", 480, 852, 32, "not_a_real_preset"
             )
 
@@ -238,9 +239,9 @@ class CaptionPresetGenerationTests(unittest.TestCase):
 
     def test_caption_timing_differs_for_different_word_boundaries(self):
         shifted_words = [{**w, "start": w["start"] + 5.0, "end": w["end"] + 5.0} for w in self.words]
-        shifted_lines = self.service._group_words_into_lines(shifted_words)
+        shifted_lines = subtitles.group_words_into_lines(shifted_words)
         ass_path = self.tmp_path / "shifted.ass"
-        self.service._write_subtitles(shifted_lines, ass_path, self.tmp_path / "shifted.srt", 480, 852, 32, "cinematic")
+        subtitles.write_subtitles(shifted_lines, ass_path, self.tmp_path / "shifted.srt", 480, 852, 32, "cinematic")
         content = ass_path.read_text(encoding="utf-8")
         self.assertIn("0:00:05.00", content)
         self.assertNotIn("0:00:00.00", content)
@@ -249,7 +250,7 @@ class CaptionPresetGenerationTests(unittest.TestCase):
         srt_contents = set()
         for preset in CAPTION_PRESETS:
             srt_path = self.tmp_path / f"{preset}_ref.srt"
-            self.service._write_subtitles(
+            subtitles.write_subtitles(
                 self.lines, self.tmp_path / f"{preset}_ref.ass", srt_path, 480, 852, 32, preset
             )
             srt_contents.add(srt_path.read_text(encoding="utf-8"))
@@ -356,7 +357,7 @@ class AudioMixIntegrationTests(unittest.TestCase):
             {"start": 0.6, "end": 1.0, "text": "a"},
             {"start": 1.0, "end": 1.5, "text": "test"},
         ]
-        lines = self.service._group_words_into_lines(words)
+        lines = subtitles.group_words_into_lines(words)
 
         base_video = self.tmp_path / "base.mp4"
         subprocess.run(
@@ -370,7 +371,7 @@ class AudioMixIntegrationTests(unittest.TestCase):
 
         for preset in CAPTION_PRESETS:
             ass_path = self.tmp_path / f"{preset}.ass"
-            self.service._write_subtitles(lines, ass_path, self.tmp_path / f"{preset}.srt", 480, 852, 32, preset)
+            subtitles.write_subtitles(lines, ass_path, self.tmp_path / f"{preset}.srt", 480, 852, 32, preset)
 
             burned = self.tmp_path / f"{preset}_burned.mp4"
             escaped = self.service._escape_for_ffmpeg_filter(ass_path)

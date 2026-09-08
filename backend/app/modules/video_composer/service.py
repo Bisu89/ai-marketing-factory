@@ -1,7 +1,6 @@
 import json
 import logging
 import queue
-import random
 import shutil
 import subprocess
 import threading
@@ -13,7 +12,6 @@ from pathlib import Path
 from typing import BinaryIO, Protocol
 
 import edge_tts
-from PIL import ImageFont
 
 from app.core import render_errors
 from app.core.config import get_settings
@@ -21,7 +19,13 @@ from app.core.events import EventBus
 from app.core.exceptions import NotFoundError, RenderCancelled, ValidationError
 from app.core.render_profile import get_render_profile
 from app.db.session import SessionLocal
-from app.modules.video_composer.models import CAPTION_PRESETS, VideoComposeClip, VideoComposeJob
+from app.modules.video_composer import subtitles
+from app.modules.video_composer.models import VideoComposeClip, VideoComposeJob
+
+# Re-exported for _finalize's own drawtext/outro use and for
+# composition_render.py (a composition root that mirrors this file's font
+# handling). The definitions live in subtitles.py.
+from app.modules.video_composer.subtitles import FONT_PATH, FONT_PATH_BOLD  # noqa: F401
 
 logger = logging.getLogger(__name__)
 
@@ -110,47 +114,11 @@ _PRE_OUTRO_HOLD_SEC = 1.5
 # either, since that's a backwards/circular dependency).
 _HOOK_DISPLAY_DURATION_SEC = 3.0
 
-FONT_PATH = "C:/Windows/Fonts/arial.ttf"
-# The karaoke subtitle style below renders Bold=1, so word widths must be
-# measured with the bold metrics or the highlight box drifts off the word.
-FONT_PATH_BOLD = "C:/Windows/Fonts/arialbd.ttf"
 TRANSITION_STYLE = "slideleft"
 
-MAX_WORDS_PER_LINE = 5
-MAX_LINE_DURATION_SEC = 4.5
-LINE_BREAK_GAP_SEC = 0.6
-
-# Background box colour behind the word currently being spoken. Text itself
-# always stays white -- ASS &HBBGGRR& order (reversed from usual RRGGBB).
-HIGHLIGHT_COLORS = [
-    "00FFFF",
-    "FFFF00",
-    "9314FF",
-    "00A5FF",
-    "32CD32",
-    "00D7FF",
-    "FF6EC7",
-    "F0E000",
-]
-
-# Per-preset caption styling (see _write_subtitles). `alignment`/`margin_v_frac`
-# use ASS's own numpad alignment convention: 2 = bottom-center, 5 = middle-
-# center. `font_scale` multiplies the caller-supplied base font_size, so
-# "big_statement" reads as dramatically larger without a second font-sizing
-# system.
-CAPTION_PRESET_CONFIG = {
-    "emotional": {"font_bold": True, "italic": False, "font_scale": 1.0, "margin_v_frac": 0.11, "alignment": 2},
-    "cinematic": {"font_bold": False, "italic": False, "font_scale": 0.85, "margin_v_frac": 0.08, "alignment": 2},
-    "word_highlight": {"font_bold": True, "italic": False, "font_scale": 1.0, "margin_v_frac": 0.11, "alignment": 2},
-    "big_statement": {"font_bold": True, "italic": False, "font_scale": 1.8, "margin_v_frac": 0.45, "alignment": 5},
-    "quote": {"font_bold": False, "italic": True, "font_scale": 0.9, "margin_v_frac": 0.45, "alignment": 5},
-    # 8 = top-center (ASS numpad convention) -- a modest margin below the
-    # very top edge (clear of platform UI like TikTok's own top icons),
-    # smaller than the default "emotional" size so it reads as a caption,
-    # not a headline.
-    "top": {"font_bold": True, "italic": False, "font_scale": 0.85, "margin_v_frac": 0.09, "alignment": 8},
-}
-assert set(CAPTION_PRESET_CONFIG) == set(CAPTION_PRESETS)
+# Word-timed caption rendering (constants + all 5 presets) lives in
+# app/modules/video_composer/subtitles.py -- FONT_PATH is re-imported at the
+# top of this file for _finalize's own drawtext/outro use.
 
 # Task 26 (see docs/features/52-final-composer.md section 18/22) -- ffmpeg's
 # own `overlay` filter exposes W/H (main video) and w/h (overlay) as filter
@@ -844,9 +812,11 @@ class VideoComposerService:
                 # from local narration's own lack of word-boundary data.
                 subtitle_ass = Path(captions_ass_path)
             else:
-                lines = self._group_words_into_lines(words)
+                lines = subtitles.group_words_into_lines(words)
                 font_size = max(28, int(height * 0.045))
-                self._write_subtitles(lines, subtitle_ass, subtitle_srt, width, height, font_size, caption_preset)
+                subtitles.write_subtitles(
+                    lines, subtitle_ass, subtitle_srt, width, height, font_size, caption_preset
+                )
             subtitling_seconds = time.monotonic() - stage_start
 
             _checkpoint()
@@ -1499,308 +1469,6 @@ class VideoComposerService:
         VideoComposerService._run_ffmpeg(
             ["-f", "concat", "-safe", "0", "-i", str(concat_list), "-c", "copy", str(output_path)]
         )
-
-    @staticmethod
-    def _group_words_into_lines(words: list[dict]) -> list[list[dict]]:
-        lines: list[list[dict]] = []
-        current: list[dict] = []
-        for word in words:
-            if current:
-                gap = word["start"] - current[-1]["end"]
-                would_be_duration = word["end"] - current[0]["start"]
-                if (
-                    gap > LINE_BREAK_GAP_SEC
-                    or len(current) >= MAX_WORDS_PER_LINE
-                    or would_be_duration > MAX_LINE_DURATION_SEC
-                ):
-                    lines.append(current)
-                    current = []
-            current.append(word)
-        if current:
-            lines.append(current)
-        return lines
-
-    @staticmethod
-    def _format_ass_time(seconds: float) -> str:
-        hours = int(seconds // 3600)
-        minutes = int((seconds % 3600) // 60)
-        secs = seconds % 60
-        return f"{hours}:{minutes:02d}:{secs:05.2f}"
-
-    @staticmethod
-    def _format_srt_time(seconds: float) -> str:
-        hours = int(seconds // 3600)
-        minutes = int((seconds % 3600) // 60)
-        secs = int(seconds % 60)
-        millis = int(round((seconds % 1) * 1000))
-        return f"{hours:02d}:{minutes:02d}:{secs:02d},{millis:03d}"
-
-    @staticmethod
-    def _rounded_rect_drawing(w: float, h: float, r: float) -> str:
-        """ASS \\p vector-drawing path for a filled rounded rectangle spanning
-        (0,0) to (w,h) -- used as the highlight box behind the active word."""
-        r = min(r, w / 2, h / 2)
-        return (
-            f"m {r:.1f} 0 "
-            f"l {w - r:.1f} 0 "
-            f"b {w:.1f} 0 {w:.1f} 0 {w:.1f} {r:.1f} "
-            f"l {w:.1f} {h - r:.1f} "
-            f"b {w:.1f} {h:.1f} {w:.1f} {h:.1f} {w - r:.1f} {h:.1f} "
-            f"l {r:.1f} {h:.1f} "
-            f"b 0 {h:.1f} 0 {h:.1f} 0 {h - r:.1f} "
-            f"l 0 {r:.1f} "
-            f"b 0 0 0 0 {r:.1f} 0"
-        )
-
-    @staticmethod
-    def _split_line_for_width(line: list[dict], font: ImageFont.FreeTypeFont, space_width: float, available_width: float) -> list[list[dict]]:
-        """Re-break a line's words wherever the cumulative rendered width
-        would exceed the box a single unwrapped row can occupy. The box
-        layout below assumes each `line` it's handed renders on exactly one
-        row -- libass's own auto-wrap can't be relied on for that (it wraps
-        at whatever width fits, independent of these word-timed boxes), so
-        wrapping has to happen here, using the same width math."""
-        rows: list[list[dict]] = []
-        current: list[dict] = []
-        current_width = 0.0
-        for word in line:
-            word_width = font.getlength(word["text"])
-            added = word_width if not current else word_width + space_width
-            if current and current_width + added > available_width:
-                rows.append(current)
-                current = []
-                added = word_width
-                current_width = 0.0
-            current.append(word)
-            current_width += added
-        if current:
-            rows.append(current)
-        return rows
-
-    def _write_subtitles(
-        self,
-        lines: list[list[dict]],
-        ass_path: Path,
-        srt_path: Path,
-        width: int,
-        height: int,
-        font_size: int,
-        caption_preset: str = "emotional",
-    ) -> None:
-        """Burns word-timed captions to `ass_path` (+ a plain `srt_path`
-        alongside, unchanged regardless of preset -- it's a reference/
-        accessibility artifact, not what actually gets burned in), styled
-        per `caption_preset`. All 5 presets share the same word-boundary
-        timing data and the same `_split_line_for_width` row-wrapping --
-        only the Dialogue layout strategy and ASS Style differ. "emotional"
-        is exactly the original, already-shipped karaoke-highlight-box
-        behavior (see 17-karaoke-highlight-box.md), now one case among five
-        instead of the only option.
-        """
-        if caption_preset not in CAPTION_PRESET_CONFIG:
-            raise ValueError(f"Unknown caption preset {caption_preset!r}, must be one of {CAPTION_PRESETS}")
-        config = CAPTION_PRESET_CONFIG[caption_preset]
-
-        scaled_font_size = max(20, int(font_size * config["font_scale"]))
-        font_path = FONT_PATH_BOLD if config["font_bold"] else FONT_PATH
-        font = ImageFont.truetype(font_path, scaled_font_size)
-        space_width = font.getlength(" ")
-        margin_x = 40
-        margin_v = int(height * config["margin_v_frac"])
-        available_width = width - 2 * margin_x
-
-        if caption_preset == "emotional":
-            ass_lines = self._ass_events_emotional(lines, font, space_width, available_width, width, margin_v, scaled_font_size)
-        elif caption_preset == "word_highlight":
-            ass_lines = self._ass_events_word_highlight(lines, font, space_width, available_width)
-        elif caption_preset in ("cinematic", "top"):
-            # "top" is the same plain, unadorned static-line layout as
-            # "cinematic" -- only the Style's own alignment/margin/font_scale
-            # (set via CAPTION_PRESET_CONFIG above) differ.
-            ass_lines = self._ass_events_static_lines(lines, font, space_width, available_width)
-        elif caption_preset == "big_statement":
-            ass_lines = self._ass_events_big_statement(lines)
-        else:  # "quote"
-            ass_lines = self._ass_events_quote(lines, font, space_width, available_width)
-
-        style_line = (
-            f"Style: Karaoke,Arial,{scaled_font_size},&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,"
-            f"{1 if config['font_bold'] else 0},{1 if config['italic'] else 0},0,0,100,100,0,0,1,3,0,"
-            f"{config['alignment']},{margin_x},{margin_x},{margin_v},1"
-        )
-        ass_content = (
-            f"""[Script Info]
-Title: Phu de {caption_preset}
-ScriptType: v4.00+
-WrapStyle: 2
-PlayResX: {width}
-PlayResY: {height}
-ScaledBorderAndShadow: yes
-
-[V4+ Styles]
-Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-{style_line}
-
-[Events]
-Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
-"""
-            + "\n".join(ass_lines)
-            + "\n"
-        )
-        ass_path.write_text(ass_content, encoding="utf-8")
-
-        srt_lines = []
-        for i, line in enumerate(lines, start=1):
-            plain_text = " ".join(word["text"] for word in line)
-            srt_lines.append(
-                f"{i}\n{self._format_srt_time(line[0]['start'])} --> "
-                f"{self._format_srt_time(line[-1]['end'])}\n{plain_text}\n"
-            )
-        srt_path.write_text("\n".join(srt_lines), encoding="utf-8")
-
-    def _ass_events_emotional(
-        self,
-        lines: list[list[dict]],
-        font: ImageFont.FreeTypeFont,
-        space_width: float,
-        available_width: float,
-        width: int,
-        margin_v: int,
-        font_size: int,
-    ) -> list[str]:
-        """The original karaoke-highlight-box preset (see
-        17-karaoke-highlight-box.md), unchanged: a solid rounded box slides
-        behind whichever word is being spoken; text itself stays plain
-        white. The box needs a real x position per word, which ASS's \\k
-        tag can't give us (it only fills left-to-right inside one Dialogue
-        line) -- so word widths are measured with the same bold TTF the
-        Style below renders with, laid out left-to-right around the row's
-        centred x, and each word gets its own timed Dialogue event carrying
-        just the box (Layer 0, drawn first/behind). The row's text is a
-        second, separate Dialogue spanning the whole row (Layer 1, on top).
-        """
-        box_height = font_size * 1.35
-        box_top = margin_v - font_size * 0.14
-        pad_x = font_size * 0.22
-        radius = font_size * 0.22
-
-        ass_lines = []
-        for line in lines:
-            for row in self._split_line_for_width(line, font, space_width, available_width):
-                row_start = row[0]["start"]
-                row_end = row[-1]["end"]
-                plain_text = " ".join(word["text"] for word in row)
-
-                word_widths = [font.getlength(word["text"]) for word in row]
-                total_width = sum(word_widths) + space_width * (len(row) - 1)
-                cursor_x = width / 2 - total_width / 2
-                color = random.choice(HIGHLIGHT_COLORS)
-                for word, word_width in zip(row, word_widths):
-                    box_x = cursor_x - pad_x
-                    box_w = word_width + pad_x * 2
-                    drawing = self._rounded_rect_drawing(box_w, box_height, radius)
-                    ass_lines.append(
-                        f"Dialogue: 0,{self._format_ass_time(word['start'])},{self._format_ass_time(word['end'])},"
-                        f"Karaoke,,0,0,0,,{{\\an7\\pos({box_x:.1f},{box_top:.1f})\\bord0\\shad0"
-                        f"\\1c&H{color}&\\1a&H00&\\p1}}{drawing}{{\\p0}}"
-                    )
-                    cursor_x += word_width + space_width
-
-                ass_lines.append(
-                    f"Dialogue: 1,{self._format_ass_time(row_start)},{self._format_ass_time(row_end)},"
-                    f"Karaoke,,0,0,0,,{plain_text}"
-                )
-        return ass_lines
-
-    def _ass_events_word_highlight(
-        self,
-        lines: list[list[dict]],
-        font: ImageFont.FreeTypeFont,
-        space_width: float,
-        available_width: float,
-    ) -> list[str]:
-        """Simpler alternative to "emotional": no box, just recolours the
-        active word inline within the row's own text via an ASS `\\c`
-        override, reset back to white immediately after -- one Dialogue
-        event per word, each carrying the full row so the rest of the row
-        is visible throughout, not just the active word.
-        """
-        ass_lines = []
-        for line in lines:
-            for row in self._split_line_for_width(line, font, space_width, available_width):
-                words_text = [word["text"] for word in row]
-                for i, word in enumerate(row):
-                    color = random.choice(HIGHLIGHT_COLORS)
-                    rendered = " ".join(
-                        f"{{\\c&H{color}&}}{text}{{\\c&HFFFFFF&}}" if j == i else text
-                        for j, text in enumerate(words_text)
-                    )
-                    ass_lines.append(
-                        f"Dialogue: 0,{self._format_ass_time(word['start'])},{self._format_ass_time(word['end'])},"
-                        f"Karaoke,,0,0,0,,{rendered}"
-                    )
-        return ass_lines
-
-    def _ass_events_static_lines(
-        self,
-        lines: list[list[dict]],
-        font: ImageFont.FreeTypeFont,
-        space_width: float,
-        available_width: float,
-    ) -> list[str]:
-        """"cinematic" preset: clean, elegant movie-subtitle look -- one
-        static Dialogue per row spanning its whole start..end span, no
-        per-word timing/animation at all.
-        """
-        ass_lines = []
-        for line in lines:
-            for row in self._split_line_for_width(line, font, space_width, available_width):
-                plain_text = " ".join(word["text"] for word in row)
-                ass_lines.append(
-                    f"Dialogue: 0,{self._format_ass_time(row[0]['start'])},{self._format_ass_time(row[-1]['end'])},"
-                    f"Karaoke,,0,0,0,,{plain_text}"
-                )
-        return ass_lines
-
-    @staticmethod
-    def _ass_events_big_statement(lines: list[list[dict]]) -> list[str]:
-        """"big_statement" preset: one or two words at a time, upper-cased,
-        for a fast-cut, high-impact look -- position/size come entirely
-        from the Style block (large font, middle-center alignment), not
-        per-event overrides.
-        """
-        ass_lines = []
-        for line in lines:
-            for i in range(0, len(line), 2):
-                chunk = line[i : i + 2]
-                text = " ".join(word["text"] for word in chunk).upper()
-                ass_lines.append(
-                    f"Dialogue: 0,{VideoComposerService._format_ass_time(chunk[0]['start'])},"
-                    f"{VideoComposerService._format_ass_time(chunk[-1]['end'])},Karaoke,,0,0,0,,{text}"
-                )
-        return ass_lines
-
-    def _ass_events_quote(
-        self,
-        lines: list[list[dict]],
-        font: ImageFont.FreeTypeFont,
-        space_width: float,
-        available_width: float,
-    ) -> list[str]:
-        """"quote" preset: each row wrapped in curly quotation marks; the
-        Style block sets Italic=1 for the elegant look. Reuses row-wrapping
-        (rather than showing a whole `line` unbroken) so a long narration
-        chunk still fits the frame width.
-        """
-        ass_lines = []
-        for line in lines:
-            for row in self._split_line_for_width(line, font, space_width, available_width):
-                plain_text = " ".join(word["text"] for word in row)
-                ass_lines.append(
-                    f"Dialogue: 0,{self._format_ass_time(row[0]['start'])},{self._format_ass_time(row[-1]['end'])},"
-                    f"Karaoke,,0,0,0,,“{plain_text}”"
-                )
-        return ass_lines
 
     # --- audio mixing + final composition -----------------------------------
 
