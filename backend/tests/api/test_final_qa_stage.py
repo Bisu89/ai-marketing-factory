@@ -15,7 +15,7 @@ from unittest.mock import patch
 
 from app.api.v1.endpoints.audio_generate import audio_master_path
 from app.api.v1.endpoints.caption_generate import captions_ass_path
-from app.api.v1.endpoints.factory_pipeline import (
+from app.pipelines.factory_pipeline import (
     FactoryStageError,
     _run_final_qa_and_settle,
     _stage_final_qa,
@@ -348,7 +348,7 @@ class StageErrorTranslationTests(_PackageStageTestCase):
 
         factory_service.set_run_fields(run.id, status="FINAL_QA", completed_at=None)
         with patch(
-            "app.api.v1.endpoints.factory_stages.run_final_qa", side_effect=RuntimeError("boom"),
+            "app.pipelines.factory_stages.run_final_qa", side_effect=RuntimeError("boom"),
         ):
             _run_final_qa_and_settle(run.id, project_id, self.settings)
 

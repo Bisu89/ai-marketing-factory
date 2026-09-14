@@ -10,7 +10,7 @@ throughout this codebase (AIGenerationHistory.job_id,
 PublishLog.ai_story_job_id, VideoComposeJob.previous_job_id, etc). The
 actual cross-module orchestration (create a Project for each BatchItem,
 generate its beats, render it) lives in the composition root --
-app/api/v1/endpoints/batch_render.py -- the only place allowed to import
+app/pipelines/batch_render.py -- the only place allowed to import
 both this module and beat/video_composer at once.
 """
 
@@ -64,7 +64,7 @@ BATCH_ITEM_STATUSES = (
 )
 
 # Terminal item statuses -- a batch's own coarse status (see
-# app/api/v1/endpoints/batch_render.py's _recompute_batch_status) is
+# app/pipelines/batch_render.py's _recompute_batch_status) is
 # derived from how many items are in these vs. still in flight.
 BATCH_ITEM_TERMINAL_STATUSES = ("COMPLETED", "FAILED", "SKIPPED", "CANCELLED")
 

@@ -11,7 +11,7 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
-from app.api.v1.endpoints.factory_pipeline import _stage_generate_voice, reconcile_factory_runs_on_startup
+from app.pipelines.factory_pipeline import _stage_generate_voice, reconcile_factory_runs_on_startup
 from app.api.v1.endpoints.voice_generate import (
     build_narration_text,
     generate_project_narration,
@@ -161,7 +161,7 @@ class InvalidationTests(_VoiceStageTestCase):
 
 class StageErrorTranslationTests(_VoiceStageTestCase):
     def test_silent_audio_is_translated_into_a_factory_stage_error_with_the_stable_code(self):
-        from app.api.v1.endpoints.factory_pipeline import FactoryStageError
+        from app.pipelines.factory_pipeline import FactoryStageError
         from app.modules.voice.schemas import VoiceError
 
         project_id = self._project_with_beats("Voice Silent", ["Some narration."])

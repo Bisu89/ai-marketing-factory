@@ -28,9 +28,9 @@ from datetime import datetime, timezone
 from fastapi import APIRouter, Depends
 from pydantic import BaseModel, ConfigDict
 
-from app.api.v1.endpoints.factory_pipeline import create_and_start_run as start_factory_run
-from app.api.v1.endpoints.factory_pipeline import get_video_composer_service
-from app.api.v1.endpoints.story_pipeline import (
+from app.pipelines.factory_pipeline import create_and_start_run as start_factory_run
+from app.pipelines.factory_pipeline import get_video_composer_service
+from app.pipelines.story_pipeline import (
     _bail_if_cancelled,
     _cancel_event_for,
     _drop_cancel_event,

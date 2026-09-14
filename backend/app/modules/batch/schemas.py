@@ -126,7 +126,7 @@ class BatchItemOut(BaseModel):
     error_message: str | None
     render_job_id: int | None
     # Computed only by the composition root's GET /batches/{id} (needs
-    # app.modules.asset -- see app/api/v1/endpoints/batch_render.py) --
+    # app.modules.asset -- see app/pipelines/batch_render.py) --
     # None from the plain, pure GET /batches list view. Never a stored
     # column: render eligibility can change the moment a user assigns a
     # missing asset, so it's always recomputed fresh, never stale.

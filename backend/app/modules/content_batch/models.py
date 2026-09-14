@@ -10,7 +10,7 @@ already used throughout this codebase (BatchItem.project_id,
 PublishLog.ai_story_job_id, AIGenerationHistory.job_id, etc). The actual
 cross-module orchestration (load the ContentIdea, call StoryService,
 call StoryQualityService) lives in the composition root --
-app/api/v1/endpoints/content_batch_generate.py -- the only place allowed
+app/pipelines/content_batch_generate.py -- the only place allowed
 to import content_batch, content_strategy, and ai.story together.
 
 `video_id` is a real FK, unlike the above -- `video` is core, and

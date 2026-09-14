@@ -1,4 +1,4 @@
-"""Tests for app/api/v1/endpoints/factory_pipeline.py (Task 18 -- see
+"""Tests for app/pipelines/factory_pipeline.py (Task 18 -- see
 docs/features/44-one-click-factory-pipeline.md). Reuses
 tests.api.test_batch_render's own _BatchTestCase harness (real file-backed
 SQLite shared across Project/Batch/Asset/VideoComposeJob) and extends it
@@ -19,8 +19,8 @@ from app.api.v1.endpoints.audio_generate import generate_project_audio_master
 from app.api.v1.endpoints.beat_generate import generate_beat_plan  # noqa: F401 (patched by name below)
 from app.api.v1.endpoints.composition_render import render_beats_for_job
 from app.api.v1.endpoints.voice_generate import generate_project_narration
-from app.api.v1.endpoints import factory_pipeline as factory_pipeline_module
-from app.api.v1.endpoints.factory_pipeline import (
+from app.pipelines import factory_pipeline as factory_pipeline_module
+from app.pipelines.factory_pipeline import (
     _execute_pipeline_sync,
     cancel_run,
     continue_batch_factory,
@@ -104,11 +104,11 @@ class _FactoryTestCase(unittest.TestCase):
         self.patchers = [
             patch("app.modules.batch.service.SessionLocal", self.TestSessionLocal),
             patch("app.modules.beat.project_service.SessionLocal", self.TestSessionLocal),
-            patch("app.api.v1.endpoints.batch_render.SessionLocal", self.TestSessionLocal),
+            patch("app.pipelines.batch_render.SessionLocal", self.TestSessionLocal),
             patch("app.modules.video_composer.service.SessionLocal", self.TestSessionLocal),
             patch("app.modules.factory.service.SessionLocal", self.TestSessionLocal),
-            patch("app.api.v1.endpoints.factory_pipeline.SessionLocal", self.TestSessionLocal),
-            patch("app.api.v1.endpoints.factory_stages.SessionLocal", self.TestSessionLocal),
+            patch("app.pipelines.factory_pipeline.SessionLocal", self.TestSessionLocal),
+            patch("app.pipelines.factory_stages.SessionLocal", self.TestSessionLocal),
             patch("app.api.v1.endpoints.voice_generate.SessionLocal", self.TestSessionLocal),
             patch("app.api.v1.endpoints.motion_generate.SessionLocal", self.TestSessionLocal),
             patch("app.api.v1.endpoints.audio_generate.SessionLocal", self.TestSessionLocal),
@@ -126,7 +126,7 @@ class _FactoryTestCase(unittest.TestCase):
             # paths all derive from the render job's own output_path), but
             # FINAL_QA's own captions_ass_path/audio_master_path lookups
             # (Task 28) do.
-            patch("app.api.v1.endpoints.factory_pipeline.get_settings", lambda: self.settings),
+            patch("app.pipelines.factory_pipeline.get_settings", lambda: self.settings),
         ]
         for p in self.patchers:
             p.start()
@@ -242,7 +242,7 @@ class StateMachineTests(_FactoryTestCase):
         # EndToEndTests below).
         project_id = self._create_project("State Machine")
         with patch(
-            "app.api.v1.endpoints.factory_stages.generate_beat_plan",
+            "app.pipelines.factory_stages.generate_beat_plan",
             side_effect=lambda key, script, **_: _fake_beat_plan(script),
         ):
             # No beats yet on this project and no asset assigned -- give it
@@ -352,7 +352,7 @@ class BeatReuseTests(_FactoryTestCase):
         )
         update_project_beat_plan(project_id, plan)
 
-        with patch("app.api.v1.endpoints.factory_stages.generate_beat_plan") as mock_generate:
+        with patch("app.pipelines.factory_stages.generate_beat_plan") as mock_generate:
             run = self._run_sync(project_id)
             mock_generate.assert_not_called()
         self.assertEqual(run.status, "QUEUED")
@@ -360,7 +360,7 @@ class BeatReuseTests(_FactoryTestCase):
     def test_missing_beats_are_generated(self):
         project_id = self._create_project("Generate Beats", script_text="A real script.")
         with patch(
-            "app.api.v1.endpoints.factory_stages.generate_beat_plan",
+            "app.pipelines.factory_stages.generate_beat_plan",
             side_effect=lambda key, script, **_: _fake_beat_plan(script, num_beats=1),
         ) as mock_generate:
             run = self._run_sync(project_id)
@@ -461,7 +461,7 @@ class ReviewResumeTests(_FactoryTestCase):
         )
         update_project_beat_plan(project_id, plan)
 
-        with patch("app.api.v1.endpoints.factory_stages.generate_beat_plan") as mock_generate:
+        with patch("app.pipelines.factory_stages.generate_beat_plan") as mock_generate:
             run = self._run_sync(project_id)
             mock_generate.assert_not_called()
         self.assertEqual(run.status, "NEEDS_REVIEW")
@@ -479,7 +479,7 @@ class ReviewResumeTests(_FactoryTestCase):
         )
         update_project_beat_plan(project_id, fixed_plan)
 
-        with patch("app.api.v1.endpoints.factory_stages.generate_beat_plan") as mock_generate:
+        with patch("app.pipelines.factory_stages.generate_beat_plan") as mock_generate:
             continue_run(run.id, self.settings, self.service)
             resumed = self._wait_for_run_settled(run.id)
             mock_generate.assert_not_called()
@@ -547,7 +547,7 @@ class RetryTests(_FactoryTestCase):
         )
         update_project_beat_plan(project_id, fixed_plan)
 
-        with patch("app.api.v1.endpoints.factory_stages.generate_beat_plan") as mock_generate:
+        with patch("app.pipelines.factory_stages.generate_beat_plan") as mock_generate:
             retry_run(run.id, self.settings, self.service)
             resumed = self._wait_for_run_settled(run.id)
             mock_generate.assert_not_called()
@@ -592,7 +592,7 @@ class IdempotencyTests(_FactoryTestCase):
         )
         update_project_beat_plan(project_id, plan)
 
-        with patch("app.api.v1.endpoints.factory_stages.generate_beat_plan") as mock_generate:
+        with patch("app.pipelines.factory_stages.generate_beat_plan") as mock_generate:
             run1 = create_and_start_run(project_id, self.settings, self.service)
             run2 = create_and_start_run(project_id, self.settings, self.service)
             self.assertEqual(run1.id, run2.id)
@@ -733,9 +733,9 @@ class EndToEndTests(_FactoryTestCase):
 
 class BatchIntegrationTests(_FactoryTestCase):
     def _create_batch(self, name: str, scripts_text: str) -> Batch:
-        from app.api.v1.endpoints.batch_render import create_batch
+        from app.pipelines.batch_render import create_batch
 
-        with patch("app.api.v1.endpoints.batch_render.SessionLocal", self.TestSessionLocal):
+        with patch("app.pipelines.batch_render.SessionLocal", self.TestSessionLocal):
             return create_batch(CreateBatchRequest(name=name, template_id="custom", scripts_text=scripts_text), self.settings)
 
     def test_five_scripts_yield_five_projects_and_five_factory_runs_mixed_outcomes(self):
@@ -770,7 +770,7 @@ class BatchIntegrationTests(_FactoryTestCase):
             )
             update_project_beat_plan(item.project_id, plan)
 
-        with patch("app.api.v1.endpoints.factory_stages.generate_beat_plan") as mock_generate:
+        with patch("app.pipelines.factory_stages.generate_beat_plan") as mock_generate:
             started = run_batch_factory(batch.id, self.settings, self.service)
             mock_generate.assert_not_called()  # every project already had beats -- reused
 

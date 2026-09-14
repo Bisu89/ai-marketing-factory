@@ -1,6 +1,6 @@
 """News source/item CRUD + feed fetching. The News -> Factory pipeline
 (draft scripts, create batch) lives in the composition root
-app/api/v1/endpoints/news_pipeline.py, not here -- this module must never
+app/pipelines/news_pipeline.py, not here -- this module must never
 import app.modules.beat / app.modules.batch / app.modules.ai.
 """
 

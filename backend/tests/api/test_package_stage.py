@@ -16,7 +16,7 @@ from PIL import Image
 
 from app.api.v1.endpoints.audio_generate import generate_project_audio_master
 from app.api.v1.endpoints.caption_generate import generate_project_captions
-from app.api.v1.endpoints.factory_pipeline import FactoryStageError, _stage_package, register_factory_event_handlers
+from app.pipelines.factory_pipeline import FactoryStageError, _stage_package, register_factory_event_handlers
 from app.api.v1.endpoints.package_generate import (
     generate_project_package,
     get_project_package,
@@ -107,7 +107,7 @@ class _PackageStageTestCase(_FactoryTestCase):
         return project_id
 
     def _render_and_wait(self, project_id: int):
-        from app.api.v1.endpoints.factory_pipeline import _stage_render
+        from app.pipelines.factory_pipeline import _stage_render
         from app.modules.factory import service as factory_service
         import time
 
@@ -390,7 +390,7 @@ class StageErrorTranslationTests(_PackageStageTestCase):
             "Stage Error Translation", ["Some narration text."], content_brief=self._content_brief(),
         )
         with patch(
-            "app.api.v1.endpoints.factory_stages.generate_project_package",
+            "app.pipelines.factory_stages.generate_project_package",
             side_effect=PackageError("PACKAGE_INCOMPLETE", "forced for translation test"),
         ):
             from app.modules.factory import service as factory_service
@@ -404,7 +404,7 @@ class StageErrorTranslationTests(_PackageStageTestCase):
 
 class CrashRecoveryTests(_PackageStageTestCase):
     def test_run_stuck_in_packaging_is_marked_interrupted_on_reconcile(self):
-        from app.api.v1.endpoints.factory_pipeline import reconcile_factory_runs_on_startup
+        from app.pipelines.factory_pipeline import reconcile_factory_runs_on_startup
         from app.modules.factory import service as factory_service
 
         project_id = self._full_pipeline_project(
@@ -422,7 +422,7 @@ class CrashRecoveryTests(_PackageStageTestCase):
         self.assertEqual(after.failed_stage, "PACKAGING")
 
     def test_retry_from_packaging_never_re_renders_the_video(self):
-        from app.api.v1.endpoints.factory_pipeline import retry_run
+        from app.pipelines.factory_pipeline import retry_run
         from app.modules.factory import service as factory_service
 
         project_id = self._full_pipeline_project(

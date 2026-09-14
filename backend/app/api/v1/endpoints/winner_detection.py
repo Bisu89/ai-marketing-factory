@@ -4,7 +4,7 @@ app.services.insights together with app.modules.ai.story and
 app.modules.content_strategy) -- reused directly for pillar/format
 resolution (_pillar_format_by_log) rather than duplicated, same
 "composition roots may import each other's small helpers" precedent
-app/api/v1/endpoints/content_batch_generate.py already uses for
+app/pipelines/content_batch_generate.py already uses for
 content_idea_generation.py's _load_idea_context.
 
 Every endpoint here is read-only and delegates to

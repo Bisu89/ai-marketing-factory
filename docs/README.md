@@ -171,6 +171,8 @@ SQLite.
 
 140. [Video Composer refactor (P2): split `service.py`](features/140-video-composer-service-split.md) — pure refactor, no behaviour change: the 2382-line `video_composer/service.py` (the review's biggest complexity hotspot) drops to 1788 lines by extracting `subtitles.py` (5 caption presets), `narration.py` (edge_tts + per-beat timeline), `audio_mix.py` (ducked-music mix), `ffmpeg_ops.py` (run/probe helpers). Stays independent of the Factory pipeline's own `caption.ass_writer` / `audio.renderer` copies
 
+142. [Refactor (P3): move composition roots to `app/pipelines/`](features/142-pipelines-out-of-endpoints.md) — pure structural move: the 8 cross-module orchestrators (`factory_pipeline`, `factory_stages`, `story_pipeline`, `story_stages`, `story_compile`, `news_pipeline`, `batch_render`, `content_batch_generate`, ~5300 lines) leave `app/api/v1/endpoints/` for a new `app/pipelines/` package so the endpoints layer is HTTP-only again. P1 (unify FactoryRun/StoryRun) assessed and dropped — the two models genuinely diverged and it's the one change needing a live DB migration
+
 ## Keeping this up to date
 
 See the "Documentation" section in `CLAUDE.md` at the repo root — every

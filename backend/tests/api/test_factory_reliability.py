@@ -8,7 +8,7 @@ import time
 import unittest
 from unittest.mock import patch
 
-from app.api.v1.endpoints.factory_pipeline import (
+from app.pipelines.factory_pipeline import (
     _execute_pipeline_sync,
     _is_completed_run_stale,
     _mark_failed,
@@ -120,7 +120,7 @@ class CrashRecoveryPerStageTests(_FactoryTestCase):
         # nothing upstream is silently duplicated.
         draft = get_project_draft(project_id)
         update_project_beat_plan(project_id, _one_beat_plan(draft, self.asset_id))
-        with patch("app.api.v1.endpoints.factory_stages.generate_beat_plan") as mock_generate:
+        with patch("app.pipelines.factory_stages.generate_beat_plan") as mock_generate:
             retry_run(run_id, self.settings, self.service)
             resumed = self._wait_for_run_settled(run_id)
             mock_generate.assert_not_called()  # beats already exist now -- reused, not regenerated
@@ -140,7 +140,7 @@ class CrashRecoveryPerStageTests(_FactoryTestCase):
         checkpoint = next(c for c in factory_service.get_checkpoints(run_id) if c.stage == "ASSIGNING_ASSETS")
         self.assertEqual(checkpoint.status, "FAILED")
 
-        with patch("app.api.v1.endpoints.factory_stages.generate_beat_plan") as mock_generate:
+        with patch("app.pipelines.factory_stages.generate_beat_plan") as mock_generate:
             retry_run(run_id, self.settings, self.service)
             resumed = self._wait_for_run_settled(run_id)
             mock_generate.assert_not_called()
@@ -342,7 +342,7 @@ class RetryAttemptAndClassificationTests(_FactoryTestCase):
         # has no automatic retry loop to actually cap (see
         # FACTORY_MAX_ATTEMPTS' own docstring).
         with patch(
-            "app.api.v1.endpoints.factory_stages.generate_beat_plan",
+            "app.pipelines.factory_stages.generate_beat_plan",
             side_effect=lambda key, script, **_: _fake_beat_plan(script, 1),
         ):
             retry_run(run.id, self.settings, self.service)

@@ -193,7 +193,7 @@ def project_composition_plan(
     successfully *is* the check.
 
     Public (not `_`-prefixed), same as beat_to_scene above: Task 18's
-    app/api/v1/endpoints/factory_pipeline.py -- another composition root --
+    app/pipelines/factory_pipeline.py -- another composition root --
     reuses both directly for its own RENDER stage rather than duplicating
     this Beat-plan-to-CompositionPlan translation a second time.
     """
@@ -394,7 +394,7 @@ def create_batch(payload: CreateBatchRequest, settings: Settings = Depends(get_s
 def _generate_beats_for_item(item_id: int, project_id: int, script_text: str, credentials: AICredentials | None) -> None:
     try:
         # Task 20: shares app.core.concurrency's process-wide AI semaphore
-        # with app/api/v1/endpoints/factory_pipeline.py's own Beat stage --
+        # with app/pipelines/factory_pipeline.py's own Beat stage --
         # this ThreadPoolExecutor's own max_workers=max_concurrent_ai_generation
         # (see _run_batch_beat_generation) already bounds *this flow's own*
         # concurrent calls; the shared semaphore additionally bounds the

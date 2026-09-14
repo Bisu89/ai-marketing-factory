@@ -4,7 +4,7 @@ module docstring). Everything else (create, generate-beats, render,
 cancel, retry, and the single-batch detail view -- which needs to sync
 render status from VideoComposeJob and compute per-item render
 eligibility) lives in the composition root instead --
-app/api/v1/endpoints/batch_render.py -- per this codebase's established
+app/pipelines/batch_render.py -- per this codebase's established
 "video_composer/router.py stays pure video_composer; composition_render.py
 is where cross-module orchestration lives" split (see that file's own
 module docstring for the precedent this mirrors).

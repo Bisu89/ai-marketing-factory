@@ -4,7 +4,7 @@ composition root that connects Script -> Beat -> Visual -> Quality ->
 Render using only already-existing services. Per app/modules/README.md,
 none of app.modules.factory/beat/asset/quality/batch/video_composer may
 import each other; this file is the one place allowed to import all of
-them, exactly like app/api/v1/endpoints/batch_render.py already does for
+them, exactly like app/pipelines/batch_render.py already does for
 "many projects at once" -- this is that same composition-root pattern
 applied to "one project's full pipeline, end to end."
 
@@ -20,7 +20,7 @@ generator is implemented here. Every real unit of work is delegated:
                                       exists)
     compute_asset_confidence()    <- app/api/v1/endpoints/quality_gate.py
     run_quality_check()           <- app/api/v1/endpoints/quality_gate.py
-    project_composition_plan()    <- app/api/v1/endpoints/batch_render.py
+    project_composition_plan()    <- app/pipelines/batch_render.py
     render_composition()          <- app/api/v1/endpoints/composition_render.py
     VideoComposerService          <- app.modules.video_composer (the one
                                       LocalRenderQueue/RenderWorker)
@@ -36,12 +36,12 @@ second orchestrator (a future long-form story pipeline) can reuse the
 exact same stage bodies without importing this module's single-project
 orchestration, batch engine, and HTTP routes. They are re-imported here
 (see the import block below) so every existing
-`from app.api.v1.endpoints.factory_pipeline import <name>` keeps
+`from app.pipelines.factory_pipeline import <name>` keeps
 resolving unchanged.
 
 Threading model: a FactoryRun's local stages (PREPARING through
 QUALITY_CHECK) run on a plain daemon background thread (mirroring
-app/api/v1/endpoints/batch_render.py's own `_run_batch_beat_generation`
+app/pipelines/batch_render.py's own `_run_batch_beat_generation`
 thread) since GENERATING_BEATS may call the real Claude API and must not
 block the HTTP request. Once a RenderJob is created, this file's own
 thread is done -- QUEUED -> RENDERING -> COMPLETED/FAILED is driven
@@ -92,9 +92,9 @@ from app.modules.video_composer.service import VideoComposerService
 # were extracted to factory_stages.py so a future story_pipeline.py can reuse
 # them without importing this module's own orchestration, batch engine, and
 # HTTP routes. Re-imported here so every existing
-# `from app.api.v1.endpoints.factory_pipeline import <name>` (used by ~10
+# `from app.pipelines.factory_pipeline import <name>` (used by ~10
 # test modules) keeps resolving unchanged.
-from app.api.v1.endpoints.factory_stages import (  # noqa: F401
+from app.pipelines.factory_stages import (  # noqa: F401
     FactoryStageError,
     _auto_assign_visual,
     _bail_if_cancelled,

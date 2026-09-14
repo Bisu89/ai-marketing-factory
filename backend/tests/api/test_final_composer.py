@@ -15,7 +15,7 @@ from PIL import Image
 
 from app.api.v1.endpoints.audio_generate import generate_project_audio_master
 from app.api.v1.endpoints.caption_generate import generate_project_captions
-from app.api.v1.endpoints.factory_pipeline import FactoryStageError, _stage_render
+from app.pipelines.factory_pipeline import FactoryStageError, _stage_render
 from app.api.v1.endpoints.voice_generate import generate_project_narration
 from app.core import render_errors
 from app.modules.beat.project_service import get_project_draft, update_project_beat_plan

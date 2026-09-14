@@ -6,5 +6,5 @@ own two tables, no FK into any other app/modules/* table (per
 app/modules/README.md, a module may never import another module). The one
 composition root allowed to bridge this module with app.modules.beat /
 app.modules.batch / app.modules.ai is
-app/api/v1/endpoints/news_pipeline.py.
+app/pipelines/news_pipeline.py.
 """

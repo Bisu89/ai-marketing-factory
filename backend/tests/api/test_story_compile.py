@@ -1,5 +1,5 @@
 """Tests for the Story -> Project compile + Factory handoff
-(app/api/v1/endpoints/story_compile.py, feature 135). The Factory run
+(app/pipelines/story_compile.py, feature 135). The Factory run
 itself is patched -- this codebase's convention for a composition root
 that delegates to another one (see tests/api/test_story_run_pipeline.py).
 """
@@ -11,7 +11,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.pool import StaticPool
 
-from app.api.v1.endpoints import story_compile as sc
+from app.pipelines import story_compile as sc
 from app.core.config import get_settings
 from app.core.exceptions import ValidationError
 from app.db.base import Base
@@ -55,7 +55,7 @@ class _CompileTestCase(unittest.TestCase):
         self.started_projects: list[int] = []
         self._patchers = [
             patch("app.modules.story.service.SessionLocal", self.Session),
-            patch("app.api.v1.endpoints.story_compile.SessionLocal", self.Session),
+            patch("app.pipelines.story_compile.SessionLocal", self.Session),
             patch("app.modules.beat.project_service.SessionLocal", self.Session),
             patch("app.modules.factory.service.SessionLocal", self.Session),
             patch.object(sc.threading, "Thread", _SyncThread),

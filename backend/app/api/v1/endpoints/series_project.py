@@ -1,7 +1,7 @@
 """Series <-> Project composition root: the one place allowed to import both
 app.modules.series and app.modules.beat at once (per app/modules/README.md --
 neither of those modules may import the other). Mirrors
-app/api/v1/endpoints/batch_render.py's own role for Batch+Project.
+app/pipelines/batch_render.py's own role for Batch+Project.
 
 Attaching a Project to a Series folds the Series' own character/visual
 description into that Project's existing VisualGenerationProjectConfig.

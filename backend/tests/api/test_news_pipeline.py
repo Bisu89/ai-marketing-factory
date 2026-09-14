@@ -1,5 +1,5 @@
 """Integration tests for the News -> Factory composition root
-(app/api/v1/endpoints/news_pipeline.py). Route handlers called directly as
+(app/pipelines/news_pipeline.py). Route handlers called directly as
 plain functions against a shared temp-file SQLite DB; LLM calls and image
 downloads are mocked at the news_pipeline boundary (no network).
 """
@@ -12,7 +12,7 @@ from unittest.mock import patch
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from app.api.v1.endpoints.news_pipeline import create_news_batch, create_news_digest, draft_scripts
+from app.pipelines.news_pipeline import create_news_batch, create_news_digest, draft_scripts
 from app.core.config import Settings
 from app.core.exceptions import NotFoundError, ValidationError
 from app.db.base import Base
@@ -69,7 +69,7 @@ class NewsPipelineTests(unittest.TestCase):
             patch("app.modules.news.service.SessionLocal", self.TestSessionLocal),
             patch("app.modules.batch.service.SessionLocal", self.TestSessionLocal),
             patch("app.modules.beat.project_service.SessionLocal", self.TestSessionLocal),
-            patch("app.api.v1.endpoints.news_pipeline.SessionLocal", self.TestSessionLocal),
+            patch("app.pipelines.news_pipeline.SessionLocal", self.TestSessionLocal),
         ]
         for p in self.patchers:
             p.start()
@@ -103,7 +103,7 @@ class NewsPipelineTests(unittest.TestCase):
     # -- draft-scripts ------------------------------------------------------
 
     def test_draft_scripts_fills_script_text_and_marks_drafted(self):
-        with patch("app.api.v1.endpoints.news_pipeline.call_structured", side_effect=_fake_script_llm):
+        with patch("app.pipelines.news_pipeline.call_structured", side_effect=_fake_script_llm):
             res = draft_scripts(DraftScriptsRequest(item_ids=self.item_ids), self.settings)
         self.assertEqual(res.drafted, 2)
         for item in news_service.list_items()[0]:
@@ -120,7 +120,7 @@ class NewsPipelineTests(unittest.TestCase):
             )
 
     def test_create_news_batch_without_images_falls_back_to_project_created(self):
-        with patch("app.api.v1.endpoints.news_pipeline.call_structured", side_effect=_fake_script_llm):
+        with patch("app.pipelines.news_pipeline.call_structured", side_effect=_fake_script_llm):
             draft_scripts(DraftScriptsRequest(item_ids=self.item_ids), self.settings)
         # image download disabled -> plain script projects, Generate Beats later
         batch = create_news_batch(
@@ -134,9 +134,9 @@ class NewsPipelineTests(unittest.TestCase):
             self.assertEqual(item.batch_id, batch.id)
 
     def test_create_news_batch_with_article_image_prebuilds_beats(self):
-        with patch("app.api.v1.endpoints.news_pipeline.call_structured", side_effect=_fake_script_llm):
+        with patch("app.pipelines.news_pipeline.call_structured", side_effect=_fake_script_llm):
             draft_scripts(DraftScriptsRequest(item_ids=self.item_ids), self.settings)
-        with patch("app.api.v1.endpoints.news_pipeline.prepare_article_image", side_effect=self._fake_prepare_image):
+        with patch("app.pipelines.news_pipeline.prepare_article_image", side_effect=self._fake_prepare_image):
             batch = create_news_batch(
                 NewsBatchRequest(name="Tin sáng", template_id="news_vi", item_ids=self.item_ids),
                 self.settings,
@@ -156,7 +156,7 @@ class NewsPipelineTests(unittest.TestCase):
             db.close()
 
     def test_unknown_template_is_rejected(self):
-        with patch("app.api.v1.endpoints.news_pipeline.call_structured", side_effect=_fake_script_llm):
+        with patch("app.pipelines.news_pipeline.call_structured", side_effect=_fake_script_llm):
             draft_scripts(DraftScriptsRequest(item_ids=self.item_ids), self.settings)
         with self.assertRaises(NotFoundError):
             create_news_batch(
@@ -167,8 +167,8 @@ class NewsPipelineTests(unittest.TestCase):
     # -- /news/digest ---------------------------------------------------
 
     def test_create_news_digest_builds_one_project_with_a_beat_per_segment(self):
-        with patch("app.api.v1.endpoints.news_pipeline.call_structured", side_effect=_fake_digest_llm), \
-             patch("app.api.v1.endpoints.news_pipeline.prepare_article_image", side_effect=self._fake_prepare_image):
+        with patch("app.pipelines.news_pipeline.call_structured", side_effect=_fake_digest_llm), \
+             patch("app.pipelines.news_pipeline.prepare_article_image", side_effect=self._fake_prepare_image):
             batch = create_news_digest(
                 NewsDigestRequest(name="Điểm tin sáng", template_id="news_vi", item_ids=self.item_ids),
                 self.settings,
