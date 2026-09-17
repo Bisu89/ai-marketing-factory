@@ -38,6 +38,8 @@ logger = logging.getLogger(__name__)
 
 OUTPUT_WIDTH, OUTPUT_HEIGHT = 1920, 1080
 
+IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".webp", ".bmp"}
+
 CHUNK_TARGET_CHARS = 1500
 _NARRATION_MAX_ATTEMPTS = 4
 _NARRATION_RETRY_BACKOFF_SEC = 1.5
@@ -143,12 +145,27 @@ def _escape_for_ffmpeg_filter(path: Path) -> str:
     return path.resolve().as_posix().replace(":", "\\:")
 
 
-def _sample_corner_color(video_path: Path, tmp_dir: Path) -> str:
-    """Extract 1 frame and read its top-left pixel as the avatar clip's
-    background colour, for ffmpeg's colorkey filter. Auto-detected default;
-    callers may override via StorytellerAsset.key_color afterwards."""
+def is_image_file(path: Path) -> bool:
+    return path.suffix.lower() in IMAGE_EXTENSIONS
+
+
+def _probe_image_info(path: Path) -> tuple[int, int]:
+    with Image.open(path) as img:
+        return img.width, img.height
+
+
+def _sample_corner_color(media_path: Path, tmp_dir: Path) -> str:
+    """Read the top-left corner pixel as the avatar's background colour,
+    for ffmpeg's colorkey filter. Auto-detected default; callers may
+    override via StorytellerAsset.key_color afterwards. Works on a still
+    image directly, or the first frame extracted from a video clip."""
+    if is_image_file(media_path):
+        with Image.open(media_path) as img:
+            r, g, b = img.convert("RGB").getpixel((0, 0))
+        return f"0x{r:02X}{g:02X}{b:02X}"
+
     frame_path = tmp_dir / "sample_frame.png"
-    _run_ffmpeg(["-ss", "0.5", "-i", str(video_path), "-frames:v", "1", str(frame_path)])
+    _run_ffmpeg(["-ss", "0.5", "-i", str(media_path), "-frames:v", "1", str(frame_path)])
     with Image.open(frame_path) as img:
         r, g, b = img.convert("RGB").getpixel((0, 0))
     frame_path.unlink(missing_ok=True)
@@ -333,7 +350,9 @@ class StorytellerService:
             title, script_text, voice, rate = episode.title, episode.script_text, episode.voice, episode.narration_rate
             burn_captions = episode.burn_captions
             background_path = Path(background.path) if background else None
+            background_is_image = background.media_type == "image" if background else False
             avatar_path = Path(avatar.path) if avatar else None
+            avatar_is_image = avatar.media_type == "image" if avatar else False
             avatar_key_color = avatar.key_color if avatar else None
         finally:
             db.close()
@@ -384,7 +403,9 @@ class StorytellerService:
             duration=duration,
             narration_path=narration_path,
             background_path=background_path,
+            background_is_image=background_is_image,
             avatar_path=avatar_path,
+            avatar_is_image=avatar_is_image,
             avatar_key_color=avatar_key_color,
             captions_path=captions_path,
             output_path=output_path,
@@ -402,7 +423,9 @@ class StorytellerService:
         duration: float,
         narration_path: Path,
         background_path: Path | None,
+        background_is_image: bool = False,
         avatar_path: Path | None,
+        avatar_is_image: bool = False,
         avatar_key_color: str | None,
         captions_path: Path | None,
         output_path: Path,
@@ -411,7 +434,13 @@ class StorytellerService:
         filters: list[str] = []
 
         if background_path is not None:
-            inputs += ["-stream_loop", "-1", "-t", str(duration), "-i", str(background_path)]
+            if background_is_image:
+                # -loop 1 turns a still image into a video stream for -t
+                # seconds -- the ffmpeg-standard "Ken Burns without the pan"
+                # still-image-as-background technique.
+                inputs += ["-loop", "1", "-framerate", "30", "-t", str(duration), "-i", str(background_path)]
+            else:
+                inputs += ["-stream_loop", "-1", "-t", str(duration), "-i", str(background_path)]
             filters.append(
                 f"[0:v]scale={OUTPUT_WIDTH}:{OUTPUT_HEIGHT}:force_original_aspect_ratio=increase,"
                 f"crop={OUTPUT_WIDTH}:{OUTPUT_HEIGHT},setsar=1,fps=30[bg]"
@@ -423,7 +452,10 @@ class StorytellerService:
         next_index = 1
         current_label = "bg"
         if avatar_path is not None:
-            inputs += ["-stream_loop", "-1", "-t", str(duration), "-i", str(avatar_path)]
+            if avatar_is_image:
+                inputs += ["-loop", "1", "-framerate", "30", "-t", str(duration), "-i", str(avatar_path)]
+            else:
+                inputs += ["-stream_loop", "-1", "-t", str(duration), "-i", str(avatar_path)]
             key_color = avatar_key_color or "0x00FF00"
             filters.append(
                 f"[{next_index}:v]colorkey={key_color}:0.30:0.15,scale=-2:{int(OUTPUT_HEIGHT * 0.55)}[av]"
@@ -529,12 +561,16 @@ def save_asset(*, kind: str, name: str, tmp_upload_path: Path, library_dir: Path
     dest_path = dest_dir / f"{name}{tmp_upload_path.suffix}"
     shutil.move(str(tmp_upload_path), str(dest_path))
 
+    media_type = "image" if is_image_file(dest_path) else "video"
     width = height = None
     duration = None
     key_color = None
     try:
-        width, height, _fps = _probe_video_info(dest_path)
-        duration = _probe_duration(dest_path)
+        if media_type == "image":
+            width, height = _probe_image_info(dest_path)
+        else:
+            width, height, _fps = _probe_video_info(dest_path)
+            duration = _probe_duration(dest_path)
         if kind == "avatar":
             key_color = _sample_corner_color(dest_path, dest_dir)
     except (subprocess.SubprocessError, ValueError, OSError):
@@ -543,7 +579,7 @@ def save_asset(*, kind: str, name: str, tmp_upload_path: Path, library_dir: Path
     db = SessionLocal()
     try:
         asset = StorytellerAsset(
-            kind=kind, name=name, path=str(dest_path),
+            kind=kind, media_type=media_type, name=name, path=str(dest_path),
             width=width, height=height, duration_sec=duration, key_color=key_color,
         )
         db.add(asset)

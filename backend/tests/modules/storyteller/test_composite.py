@@ -8,6 +8,8 @@ import tempfile
 import unittest
 from pathlib import Path
 
+from PIL import Image
+
 from app.modules.storyteller.service import (
     StorytellerService,
     _probe_duration,
@@ -82,6 +84,39 @@ class CompositeTests(unittest.TestCase):
         StorytellerService._composite(
             duration=2.0, narration_path=narration, background_path=None, avatar_path=avatar,
             avatar_key_color=key_color, captions_path=captions, output_path=out,
+        )
+        self.assertTrue(out.exists())
+        w, h, _fps = _probe_video_info(out)
+        self.assertEqual((w, h), (1920, 1080))
+
+    def test_still_image_background_is_looped_for_the_full_duration(self):
+        narration = self.tmp_path / "narration.mp3"
+        _silent_audio(narration, 2.5)
+        bg = self.tmp_path / "bg.png"
+        Image.new("RGB", (800, 600), color=(20, 60, 120)).save(bg)
+        out = self.tmp_path / "out.mp4"
+        StorytellerService._composite(
+            duration=2.5, narration_path=narration, background_path=bg, background_is_image=True,
+            avatar_path=None, avatar_key_color=None, captions_path=None, output_path=out,
+        )
+        self.assertTrue(out.exists())
+        w, h, _fps = _probe_video_info(out)
+        self.assertEqual((w, h), (1920, 1080))
+        self.assertAlmostEqual(_probe_duration(out), 2.5, delta=0.3)
+
+    def test_still_image_avatar_colorkey_overlay(self):
+        narration = self.tmp_path / "narration.mp3"
+        _silent_audio(narration, 2.0)
+        avatar = self.tmp_path / "avatar.png"
+        img = Image.new("RGB", (300, 500), color=(0, 255, 0))
+        img.save(avatar)
+        key_color = _sample_corner_color(avatar, self.tmp_path)
+        self.assertEqual(key_color, "0x00FF00")
+
+        out = self.tmp_path / "out.mp4"
+        StorytellerService._composite(
+            duration=2.0, narration_path=narration, background_path=None, avatar_path=avatar,
+            avatar_is_image=True, avatar_key_color=key_color, captions_path=None, output_path=out,
         )
         self.assertTrue(out.exists())
         w, h, _fps = _probe_video_info(out)

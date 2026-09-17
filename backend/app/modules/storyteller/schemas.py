@@ -45,6 +45,7 @@ class EpisodeOut(BaseModel):
 class AssetOut(BaseModel):
     id: int
     kind: str
+    media_type: str
     name: str
     path: str
     duration_sec: float | None

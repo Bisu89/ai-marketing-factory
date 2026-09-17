@@ -19,9 +19,12 @@ export interface StorytellerEpisode {
   updated_at: string;
 }
 
+export type StorytellerMediaType = "image" | "video";
+
 export interface StorytellerAsset {
   id: number;
   kind: StorytellerAssetKind;
+  media_type: StorytellerMediaType;
   name: string;
   path: string;
   duration_sec: number | null;

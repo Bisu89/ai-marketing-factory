@@ -3,10 +3,13 @@ no ffmpeg."""
 
 import unittest
 
+from pathlib import Path
+
 from app.modules.storyteller.service import (
     CHUNK_TARGET_CHARS,
     _group_words_into_lines,
     chunk_script,
+    is_image_file,
 )
 
 
@@ -68,6 +71,16 @@ class GroupWordsIntoLinesTests(unittest.TestCase):
         lines = _group_words_into_lines(words)
         flat = [w for line in lines for w in line]
         self.assertEqual(len(flat), 17)
+
+
+class IsImageFileTests(unittest.TestCase):
+    def test_recognizes_common_image_extensions(self):
+        for ext in (".jpg", ".JPEG", ".png", ".webp", ".bmp"):
+            self.assertTrue(is_image_file(Path(f"clip{ext}")), ext)
+
+    def test_video_extensions_are_not_images(self):
+        for ext in (".mp4", ".mov", ".webm", ".mkv"):
+            self.assertFalse(is_image_file(Path(f"clip{ext}")), ext)
 
 
 if __name__ == "__main__":

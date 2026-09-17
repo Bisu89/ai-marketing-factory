@@ -174,6 +174,7 @@ SQLite.
 142. [Refactor (P3): move composition roots to `app/pipelines/`](features/142-pipelines-out-of-endpoints.md) — pure structural move: the 8 cross-module orchestrators (`factory_pipeline`, `factory_stages`, `story_pipeline`, `story_stages`, `story_compile`, `news_pipeline`, `batch_render`, `content_batch_generate`, ~5300 lines) leave `app/api/v1/endpoints/` for a new `app/pipelines/` package so the endpoints layer is HTTP-only again. P1 (unify FactoryRun/StoryRun) assessed and dropped — the two models genuinely diverged and it's the one change needing a live DB migration
 
 143. [Kể Truyện (Storyteller)](features/143-storyteller.md) — paste/upload a script written externally (no AI call in this module) → long-form narrated video: chunked edge_tts narration → word-timed captions → composite over a background loop + auto colour-keyed avatar overlay. New `app/modules/storyteller/` (own tables, own queue/worker) + `/storyteller` page
+144. [Storyteller: image backgrounds/avatars + voice/speed picker](features/144-storyteller-image-backgrounds-voice-picker.md) — still-image background/avatar support (`-loop 1` ffmpeg technique, `StorytellerAsset.media_type`) + a voice/narration-speed picker on the create-episode form (reuses Video Factory's `VOICE_OPTIONS`, not a duplicate list)
 
 ## Keeping this up to date
 

@@ -36,6 +36,7 @@ class StorytellerAsset(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True)
     kind: Mapped[str] = mapped_column(String, nullable=False)  # background | avatar
+    media_type: Mapped[str] = mapped_column(String, nullable=False, default="video")  # image | video
     name: Mapped[str] = mapped_column(String, nullable=False)
     path: Mapped[str] = mapped_column(String, nullable=False)
     duration_sec: Mapped[float | None] = mapped_column(Float, nullable=True)

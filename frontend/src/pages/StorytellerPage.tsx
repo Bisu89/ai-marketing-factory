@@ -13,11 +13,19 @@ import {
   retryEpisode,
   uploadAsset,
 } from "../api/storyteller";
+import { VOICE_OPTIONS } from "../types/videoFactory";
 import type { StorytellerAsset, StorytellerEpisode } from "../types/storyteller";
 import "./StorytellerPage.css";
 
 const POLL_INTERVAL_MS = 2000;
 const PENDING_STATUSES = new Set(["pending", "narrating", "compositing"]);
+
+const RATE_OPTIONS = [
+  { value: "-20%", label: "Chậm" },
+  { value: "+0%", label: "Bình thường" },
+  { value: "+20%", label: "Nhanh" },
+  { value: "+40%", label: "Rất nhanh" },
+];
 
 const STATUS_LABEL: Record<string, string> = {
   pending: "Chờ xử lý",
@@ -43,6 +51,10 @@ export function StorytellerPage() {
   const [title, setTitle] = useState("");
   const [scriptText, setScriptText] = useState("");
   const [uploadFile, setUploadFile] = useState<File | null>(null);
+  const [voice, setVoice] = useState(
+    VOICE_OPTIONS.find((v) => v.value === "vi-VN-HoaiMyNeural")?.value ?? VOICE_OPTIONS[0].value,
+  );
+  const [narrationRate, setNarrationRate] = useState("+0%");
   const [burnCaptions, setBurnCaptions] = useState(true);
   const [backgroundAssetId, setBackgroundAssetId] = useState<number | "">("");
   const [avatarAssetId, setAvatarAssetId] = useState<number | "">("");
@@ -85,6 +97,8 @@ export function StorytellerPage() {
       if (uploadFile) {
         await createEpisodeFromFile(uploadFile, {
           title: title.trim(),
+          voice,
+          narration_rate: narrationRate,
           burn_captions: burnCaptions,
           background_asset_id: backgroundAssetId === "" ? null : backgroundAssetId,
           avatar_asset_id: avatarAssetId === "" ? null : avatarAssetId,
@@ -93,6 +107,8 @@ export function StorytellerPage() {
         await createEpisode({
           title: title.trim(),
           script_text: scriptText,
+          voice,
+          narration_rate: narrationRate,
           burn_captions: burnCaptions,
           background_asset_id: backgroundAssetId === "" ? null : backgroundAssetId,
           avatar_asset_id: avatarAssetId === "" ? null : avatarAssetId,
@@ -195,6 +211,22 @@ export function StorytellerPage() {
         </div>
 
         <div className="st-options-row">
+          <select className="st-select" value={voice} onChange={(e) => setVoice(e.target.value)}>
+            {VOICE_OPTIONS.map((v) => (
+              <option key={v.value} value={v.value}>
+                Giọng: {v.label}
+              </option>
+            ))}
+          </select>
+
+          <select className="st-select" value={narrationRate} onChange={(e) => setNarrationRate(e.target.value)}>
+            {RATE_OPTIONS.map((r) => (
+              <option key={r.value} value={r.value}>
+                Tốc độ: {r.label}
+              </option>
+            ))}
+          </select>
+
           <label className="st-checkbox">
             <input type="checkbox" checked={burnCaptions} onChange={(e) => setBurnCaptions(e.target.checked)} />
             Ghi phụ đề
@@ -310,7 +342,7 @@ function AssetColumn({
           <Upload size={13} /> Tải lên
           <input
             type="file"
-            accept="video/*"
+            accept="video/*,image/*"
             hidden
             onChange={(e) => {
               const file = e.target.files?.[0];

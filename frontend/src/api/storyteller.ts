@@ -16,11 +16,20 @@ export function createEpisode(input: CreateEpisodeInput): Promise<StorytellerEpi
 
 export function createEpisodeFromFile(
   file: File,
-  fields: { title: string; burn_captions: boolean; background_asset_id?: number | null; avatar_asset_id?: number | null },
+  fields: {
+    title: string;
+    voice: string;
+    narration_rate: string;
+    burn_captions: boolean;
+    background_asset_id?: number | null;
+    avatar_asset_id?: number | null;
+  },
 ): Promise<StorytellerEpisode> {
   const form = new FormData();
   form.set("file", file);
   form.set("title", fields.title);
+  form.set("voice", fields.voice);
+  form.set("narration_rate", fields.narration_rate);
   form.set("burn_captions", String(fields.burn_captions));
   if (fields.background_asset_id != null) form.set("background_asset_id", String(fields.background_asset_id));
   if (fields.avatar_asset_id != null) form.set("avatar_asset_id", String(fields.avatar_asset_id));
