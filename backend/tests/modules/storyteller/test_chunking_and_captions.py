@@ -10,6 +10,7 @@ from app.modules.storyteller.service import (
     _group_words_into_lines,
     chunk_script,
     is_image_file,
+    split_into_beats,
 )
 
 
@@ -45,6 +46,34 @@ class ChunkScriptTests(unittest.TestCase):
         text = "word " * 2000
         chunks = chunk_script(text, target_chars=500)
         self.assertGreater(len(chunks), 1)
+
+
+class SplitIntoBeatsTests(unittest.TestCase):
+    def test_produces_exactly_n_groups_for_long_text(self):
+        beats = split_into_beats("word " * 100, 7)
+        self.assertEqual(len(beats), 7)
+
+    def test_no_word_is_lost_or_duplicated(self):
+        text = "Xin chào các bạn nhé hôm nay chúng ta cùng đọc truyện"
+        beats = split_into_beats(text, 4)
+        self.assertEqual(" ".join(beats).split(), text.split())
+
+    def test_clamps_n_to_word_count_for_very_short_text(self):
+        beats = split_into_beats("a b c", 10)
+        self.assertEqual(len(beats), 3)
+        self.assertTrue(all(b.strip() for b in beats))
+
+    def test_single_word_gives_one_beat(self):
+        self.assertEqual(split_into_beats("solo", 5), ["solo"])
+
+    def test_empty_text_gives_no_beats(self):
+        self.assertEqual(split_into_beats("", 5), [])
+
+    def test_groups_are_near_equal_length(self):
+        beats = split_into_beats("word " * 101, 10)
+        sizes = [len(b.split()) for b in beats]
+        self.assertEqual(len(beats), 10)
+        self.assertLessEqual(max(sizes) - min(sizes), 1)
 
 
 def _word(text: str, start: float, end: float) -> dict:

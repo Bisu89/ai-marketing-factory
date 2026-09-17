@@ -1,6 +1,6 @@
 export type StorytellerStatus = "pending" | "narrating" | "compositing" | "completed" | "failed";
 export type StorytellerAssetKind = "background" | "avatar";
-export type StorytellerLayout = "single" | "triptych";
+export type StorytellerLayout = "single" | "triptych" | "slideshow";
 
 export interface StorytellerEpisode {
   id: number;
@@ -15,6 +15,7 @@ export interface StorytellerEpisode {
   left_asset_id: number | null;
   middle_asset_id: number | null;
   right_asset_id: number | null;
+  slide_asset_ids: number[] | null;
   disclaimer_text: string | null;
   story_title: string | null;
   story_author: string | null;
@@ -55,6 +56,7 @@ export interface CreateEpisodeInput {
   left_asset_id?: number | null;
   middle_asset_id?: number | null;
   right_asset_id?: number | null;
+  slide_asset_ids?: number[] | null;
   disclaimer_text?: string | null;
   story_title?: string | null;
   story_author?: string | null;

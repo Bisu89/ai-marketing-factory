@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { BookOpen, Loader2, RotateCcw, Trash2, Upload, Download } from "lucide-react";
+import { ArrowDown, ArrowUp, BookOpen, Loader2, RotateCcw, Trash2, Upload, Download } from "lucide-react";
 import { PageHeader } from "../components/PageHeader";
 import { EmptyState } from "../components/EmptyState";
 import {
@@ -62,6 +62,7 @@ export function StorytellerPage() {
   const [leftAssetId, setLeftAssetId] = useState<number | "">("");
   const [middleAssetId, setMiddleAssetId] = useState<number | "">("");
   const [rightAssetId, setRightAssetId] = useState<number | "">("");
+  const [slideAssetIds, setSlideAssetIds] = useState<number[]>([]);
   const [disclaimerText, setDisclaimerText] = useState("");
   const [storyTitle, setStoryTitle] = useState("");
   const [storyAuthor, setStoryAuthor] = useState("");
@@ -96,9 +97,30 @@ export function StorytellerPage() {
     };
   }, [episodes]);
 
+  const imagePool = [...backgrounds, ...avatars].filter((a) => a.media_type === "image");
+
+  function addSlide(id: number) {
+    setSlideAssetIds((prev) => (prev.includes(id) ? prev : [...prev, id]));
+  }
+  function removeSlide(id: number) {
+    setSlideAssetIds((prev) => prev.filter((x) => x !== id));
+  }
+  function moveSlide(index: number, dir: -1 | 1) {
+    setSlideAssetIds((prev) => {
+      const target = index + dir;
+      if (target < 0 || target >= prev.length) return prev;
+      const next = [...prev];
+      [next[index], next[target]] = [next[target], next[index]];
+      return next;
+    });
+  }
+
+  const slideshowNeedsMoreImages = layout === "slideshow" && slideAssetIds.length < 2;
+
   async function handleSubmit() {
     if (!title.trim() || submitting) return;
     if (!uploadFile && !scriptText.trim()) return;
+    if (slideshowNeedsMoreImages) return;
     setSubmitting(true);
     setError(null);
     try {
@@ -113,6 +135,7 @@ export function StorytellerPage() {
         left_asset_id: leftAssetId === "" ? null : leftAssetId,
         middle_asset_id: middleAssetId === "" ? null : middleAssetId,
         right_asset_id: rightAssetId === "" ? null : rightAssetId,
+        slide_asset_ids: layout === "slideshow" ? slideAssetIds : null,
         disclaimer_text: disclaimerText.trim() || null,
         story_title: storyTitle.trim() || null,
         story_author: storyAuthor.trim() || null,
@@ -126,6 +149,7 @@ export function StorytellerPage() {
       setTitle("");
       setScriptText("");
       setUploadFile(null);
+      setSlideAssetIds([]);
       refresh();
     } catch (e) {
       setError(e instanceof Error ? e.message : "Không tạo được tập.");
@@ -244,6 +268,7 @@ export function StorytellerPage() {
           <select className="st-select" value={layout} onChange={(e) => setLayout(e.target.value as StorytellerLayout)}>
             <option value="single">Bố cục: 1 nền + avatar góc</option>
             <option value="triptych">Bố cục: 3 cột chia màn hình</option>
+            <option value="slideshow">Bố cục: slideshow nhiều ảnh (zoom Ken Burns)</option>
           </select>
         </div>
 
@@ -275,7 +300,7 @@ export function StorytellerPage() {
               ))}
             </select>
           </div>
-        ) : (
+        ) : layout === "triptych" ? (
           <div className="st-options-row">
             <select className="st-select" value={leftAssetId} onChange={(e) => setLeftAssetId(e.target.value ? Number(e.target.value) : "")}>
               <option value="">Cột trái: mặc định</option>
@@ -301,6 +326,58 @@ export function StorytellerPage() {
                 </option>
               ))}
             </select>
+          </div>
+        ) : (
+          <div className="st-slideshow-picker">
+            <select
+              className="st-select"
+              value=""
+              onChange={(e) => {
+                if (e.target.value) addSlide(Number(e.target.value));
+              }}
+            >
+              <option value="">+ Thêm ảnh vào slideshow...</option>
+              {imagePool
+                .filter((a) => !slideAssetIds.includes(a.id))
+                .map((a) => (
+                  <option key={a.id} value={a.id}>
+                    {a.name}
+                  </option>
+                ))}
+            </select>
+            {slideAssetIds.length === 0 ? (
+              <p className="st-asset-empty">Chưa chọn ảnh nào -- cần ít nhất 2 ảnh, theo đúng thứ tự xuất hiện.</p>
+            ) : (
+              <ul className="st-asset-list">
+                {slideAssetIds.map((id, i) => {
+                  const asset = imagePool.find((a) => a.id === id);
+                  return (
+                    <li key={id}>
+                      <span>
+                        {i + 1}. {asset?.name ?? `#${id}`}
+                      </span>
+                      <button className="st-asset-remove" onClick={() => moveSlide(i, -1)} disabled={i === 0} title="Lên trước">
+                        <ArrowUp size={13} />
+                      </button>
+                      <button
+                        className="st-asset-remove"
+                        onClick={() => moveSlide(i, 1)}
+                        disabled={i === slideAssetIds.length - 1}
+                        title="Xuống sau"
+                      >
+                        <ArrowDown size={13} />
+                      </button>
+                      <button className="st-asset-remove" onClick={() => removeSlide(id)} title="Xoá">
+                        <Trash2 size={13} />
+                      </button>
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
+            {slideshowNeedsMoreImages && slideAssetIds.length > 0 && (
+              <p className="st-asset-empty">Cần thêm ít nhất {2 - slideAssetIds.length} ảnh nữa.</p>
+            )}
           </div>
         )}
 
@@ -339,7 +416,7 @@ export function StorytellerPage() {
         <button
           className="btn btn-primary"
           onClick={handleSubmit}
-          disabled={submitting || !title.trim() || (!uploadFile && !scriptText.trim())}
+          disabled={submitting || !title.trim() || (!uploadFile && !scriptText.trim()) || slideshowNeedsMoreImages}
         >
           {submitting ? <Loader2 size={16} className="spin" /> : <BookOpen size={16} />}
           Tạo & bắt đầu đọc

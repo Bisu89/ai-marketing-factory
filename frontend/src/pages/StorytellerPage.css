@@ -74,6 +74,16 @@
   margin-bottom: 0;
 }
 
+.st-slideshow-picker {
+  margin-bottom: 12px;
+}
+.st-slideshow-picker .st-select {
+  max-width: 320px;
+}
+.st-slideshow-picker .st-asset-list {
+  margin-top: 8px;
+}
+
 .st-checkbox {
   display: inline-flex;
   align-items: center;

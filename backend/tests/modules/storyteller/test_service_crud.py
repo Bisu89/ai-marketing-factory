@@ -10,10 +10,13 @@ from unittest.mock import patch
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
+from pydantic import ValidationError as PydanticValidationError
+
 from app.core.exceptions import NotFoundError, ValidationError
 from app.db.base import Base
 from app.modules.storyteller import service
 from app.modules.storyteller.models import StorytellerAsset, StorytellerEpisode
+from app.modules.storyteller.schemas import EpisodeCreateIn
 
 
 class StorytellerServiceTests(unittest.TestCase):
@@ -116,6 +119,32 @@ class StorytellerServiceTests(unittest.TestCase):
 
         service.delete_asset(asset_id, Path(self.tmp.name))
         self.assertEqual(service.list_assets(), [])
+
+    def test_slide_asset_ids_round_trips_through_the_json_column(self):
+        ep = self._make(layout="slideshow", slide_asset_ids=[3, 1, 2])
+        fetched = service.get_episode(ep.id)
+        self.assertEqual(fetched.slide_asset_ids, [3, 1, 2])
+
+
+class EpisodeCreateInValidationTests(unittest.TestCase):
+    def _payload(self, **overrides):
+        fields = dict(title="T", script_text="hello world")
+        fields.update(overrides)
+        return fields
+
+    def test_slideshow_requires_at_least_two_slide_asset_ids(self):
+        with self.assertRaises(PydanticValidationError):
+            EpisodeCreateIn(**self._payload(layout="slideshow", slide_asset_ids=[1]))
+        with self.assertRaises(PydanticValidationError):
+            EpisodeCreateIn(**self._payload(layout="slideshow"))
+
+    def test_slideshow_with_enough_images_is_accepted(self):
+        payload = EpisodeCreateIn(**self._payload(layout="slideshow", slide_asset_ids=[1, 2, 3]))
+        self.assertEqual(payload.slide_asset_ids, [1, 2, 3])
+
+    def test_non_slideshow_layouts_ignore_slide_asset_ids(self):
+        payload = EpisodeCreateIn(**self._payload(layout="single"))
+        self.assertIsNone(payload.slide_asset_ids)
 
 
 if __name__ == "__main__":

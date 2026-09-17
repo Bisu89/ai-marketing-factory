@@ -1,9 +1,11 @@
 """Real-ffmpeg tests for StorytellerService._composite -- "single" layout
 (background loop/still-image + avatar colour-key overlay), "triptych"
-layout (3-panel split), burned captions, disclaimer + story-info overlays.
+layout (3-panel split), "slideshow" layout (many images, one beat + random
+Ken Burns zoom each), burned captions, disclaimer + story-info overlays.
 Mirrors the "exercise the real engine" precedent (tests/modules/video_composer).
 """
 
+import random
 import shutil
 import tempfile
 import unittest
@@ -203,6 +205,88 @@ class TriptychLayoutCompositeTests(unittest.TestCase):
             disclaimer_text="Giải trí, không phản ánh thực tế.",
             info_lines=["Truyện: X", "Tác giả: Y"],
             output_path=out,
+        )
+        self.assertTrue(out.exists())
+
+
+@unittest.skipUnless(FFMPEG_AVAILABLE, "ffmpeg/ffprobe not found on PATH")
+class SlideshowLayoutCompositeTests(unittest.TestCase):
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.tmp_path = Path(self.tmp.name)
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def test_generated_images_concat_to_full_duration_and_output_size(self):
+        narration = self.tmp_path / "narration.mp3"
+        _silent_audio(narration, 6.0)
+        img1 = self.tmp_path / "img1.png"
+        img2 = self.tmp_path / "img2.png"
+        img3 = self.tmp_path / "img3.png"
+        Image.new("RGB", (1200, 800), color=(200, 50, 50)).save(img1)
+        Image.new("RGB", (800, 1200), color=(50, 200, 50)).save(img2)
+        Image.new("RGB", (1920, 1080), color=(50, 50, 200)).save(img3)
+
+        out = self.tmp_path / "out.mp4"
+        StorytellerService._composite(
+            duration=6.0, narration_path=narration, layout="slideshow",
+            slides=[(_Panel(img1, True), 2.0), (_Panel(img2, True), 2.0), (_Panel(img3, True), 2.0)],
+            output_path=out, rng=random.Random(42),
+        )
+        self.assertTrue(out.exists())
+        w, h, _fps = _probe_video_info(out)
+        self.assertEqual((w, h), (1920, 1080))
+        self.assertAlmostEqual(_probe_duration(out), 6.0, delta=0.3)
+
+    def test_mixed_image_and_video_slides(self):
+        narration = self.tmp_path / "narration.mp3"
+        _silent_audio(narration, 4.0)
+        img = self.tmp_path / "img.png"
+        Image.new("RGB", (1200, 800), color=(200, 50, 50)).save(img)
+        clip = self.tmp_path / "clip.mp4"
+        _solid_clip(clip, "yellow", "640x360", duration=1.0)
+
+        out = self.tmp_path / "out.mp4"
+        StorytellerService._composite(
+            duration=4.0, narration_path=narration, layout="slideshow",
+            slides=[(_Panel(img, True), 2.0), (_Panel(clip, False), 2.0)],
+            output_path=out, rng=random.Random(7),
+        )
+        self.assertTrue(out.exists())
+        w, h, _fps = _probe_video_info(out)
+        self.assertEqual((w, h), (1920, 1080))
+        self.assertAlmostEqual(_probe_duration(out), 4.0, delta=0.3)
+
+    def test_no_slides_falls_back_to_solid_background(self):
+        narration = self.tmp_path / "narration.mp3"
+        _silent_audio(narration, 2.0)
+        out = self.tmp_path / "out.mp4"
+        StorytellerService._composite(
+            duration=2.0, narration_path=narration, layout="slideshow", slides=None, output_path=out,
+        )
+        self.assertTrue(out.exists())
+        w, h, _fps = _probe_video_info(out)
+        self.assertEqual((w, h), (1920, 1080))
+
+    def test_slideshow_with_captions_and_overlays_together(self):
+        narration = self.tmp_path / "narration.mp3"
+        _silent_audio(narration, 3.0)
+        captions = self.tmp_path / "captions.ass"
+        _write_captions([{"text": "xin", "start": 0.0, "end": 0.3}], captions)
+        img1 = self.tmp_path / "img1.png"
+        img2 = self.tmp_path / "img2.png"
+        Image.new("RGB", (1000, 1000), color=(90, 10, 200)).save(img1)
+        Image.new("RGB", (1000, 1000), color=(10, 200, 90)).save(img2)
+
+        out = self.tmp_path / "out.mp4"
+        StorytellerService._composite(
+            duration=3.0, narration_path=narration, layout="slideshow",
+            slides=[(_Panel(img1, True), 1.5), (_Panel(img2, True), 1.5)],
+            captions_path=captions,
+            disclaimer_text="Giải trí, không phản ánh thực tế.",
+            info_lines=["Truyện: X", "Tác giả: Y"],
+            output_path=out, rng=random.Random(1),
         )
         self.assertTrue(out.exists())
 

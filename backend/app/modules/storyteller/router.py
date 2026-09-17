@@ -61,6 +61,7 @@ def create_episode_from_file(
     left_asset_id: int | None = Form(None),
     middle_asset_id: int | None = Form(None),
     right_asset_id: int | None = Form(None),
+    slide_asset_ids: str | None = Form(None),
     disclaimer_text: str | None = Form(None),
     story_title: str | None = Form(None),
     story_author: str | None = Form(None),
@@ -72,11 +73,15 @@ def create_episode_from_file(
     if not raw:
         raise ValidationError("File rỗng")
     script_text = _decode_text(raw)
+    slide_ids = [int(x) for x in slide_asset_ids.split(",") if x.strip()] if slide_asset_ids else None
+    if layout == "slideshow" and len(slide_ids or []) < 2:
+        raise ValidationError("Bố cục slideshow cần ít nhất 2 ảnh")
     episode = service.create_episode(
         title=title, script_text=script_text, voice=voice, narration_rate=narration_rate,
         burn_captions=burn_captions, layout=layout,
         background_asset_id=background_asset_id, avatar_asset_id=avatar_asset_id,
         left_asset_id=left_asset_id, middle_asset_id=middle_asset_id, right_asset_id=right_asset_id,
+        slide_asset_ids=slide_ids,
         disclaimer_text=disclaimer_text or None, story_title=story_title or None,
         story_author=story_author or None, story_character=story_character or None,
     )

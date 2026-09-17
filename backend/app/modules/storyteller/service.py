@@ -9,14 +9,18 @@ Pipeline per episode:
   script_text -> chunk into TTS-safe segments -> edge_tts each chunk
   (-> word timestamps) -> concat into one narration track -> (optional)
   build word-timed ASS captions -> composite over a background loop
-  (+ optional colour-keyed avatar overlay) -> final.mp4
+  (+ optional colour-keyed avatar overlay), 3-panel triptych, or a
+  many-image slideshow (one script beat + random Ken Burns zoom per image)
+  -> final.mp4
 """
 
 from __future__ import annotations
 
 import asyncio
 import logging
+import math
 import queue
+import random
 import re
 import shutil
 import subprocess
@@ -142,6 +146,27 @@ def _hard_split(text: str, target_chars: int) -> list[str]:
     return pieces or [text]
 
 
+def split_into_beats(text: str, n: int) -> list[str]:
+    """Split into exactly min(n, word_count) contiguous, near-equal-length
+    word groups -- one beat per slideshow image, so each image's on-screen
+    time tracks how much of the script narrates over it. Word-based (not
+    sentence-based) so the group count is exact regardless of punctuation
+    density; a beat boundary landing mid-sentence is an acceptable
+    trade-off for guaranteed 1:1 alignment with the image count."""
+    words = text.split()
+    if not words:
+        return []
+    n = max(1, min(n, len(words)))
+    base, extra = divmod(len(words), n)
+    beats: list[str] = []
+    idx = 0
+    for i in range(n):
+        size = base + (1 if i < extra else 0)
+        beats.append(" ".join(words[idx : idx + size]))
+        idx += size
+    return beats
+
+
 # -- ffmpeg/ffprobe helpers (duplicated, not imported -- module isolation,
 # see app/modules/video_composer/ffmpeg_ops.py's own docstring for the
 # identical rationale) -----------------------------------------------
@@ -193,6 +218,26 @@ def _drawtext_filter(lines: list[str], *, y_expr: str, font_size: int = 34) -> s
             f"fontcolor=white:box=1:boxcolor=black@0.55:boxborderw=10:x=(w-text_w)/2:y={y}"
         )
     return ",".join(filters)
+
+
+def _zoompan_filter(direction: str, max_zoom: float, total_frames: int, fps: int = 30) -> str:
+    """A slideshow image's Ken Burns clip: zoompan with d=1 (one output
+    frame per already-looped input frame, from -loop 1 -framerate {fps})
+    so 'zoom' accumulates continuously across the whole clip instead of
+    resetting every d frames. step is sized so the zoom travels its full
+    range (1.0<->max_zoom) over exactly this panel's own duration, so a
+    short beat doesn't zoom faster/further than a long one. Centered pan
+    (x/y always recentring on the current zoom window) keeps the crop
+    inside the image regardless of direction, avoiding black-bar drift."""
+    step = (max_zoom - 1.0) / max(total_frames, 1)
+    if direction == "out":
+        zoom_expr = f"if(eq(on,1),{max_zoom:.4f},max(zoom-{step:.6f},1.0))"
+    else:
+        zoom_expr = f"min(zoom+{step:.6f},{max_zoom:.4f})"
+    return (
+        f"zoompan=z='{zoom_expr}':d=1:x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':"
+        f"s={OUTPUT_WIDTH}x{OUTPUT_HEIGHT}:fps={fps}"
+    )
 
 
 def is_image_file(path: Path) -> bool:
@@ -409,6 +454,7 @@ class StorytellerService:
             left = load(episode.left_asset_id)
             middle = load(episode.middle_asset_id)
             right = load(episode.right_asset_id)
+            slides = [p for aid in (episode.slide_asset_ids or []) if (p := load(aid)) is not None]
 
             title, script_text, voice, rate = episode.title, episode.script_text, episode.voice, episode.narration_rate
             burn_captions = episode.burn_captions
@@ -429,18 +475,37 @@ class StorytellerService:
 
         # -- narrate ------------------------------------------------
         self._set(episode_id, status="narrating", progress_stage="Đang đọc kịch bản...")
-        chunks = chunk_script(script_text)
         all_words: list[dict] = []
         segment_paths: list[Path] = []
         cursor = 0.0
-        for i, chunk in enumerate(chunks):
-            seg_path = segments_dir / f"segment_{i:03d}.mp3"
-            words = _narrate_chunk(chunk, voice, rate, seg_path)
-            for w in words:
-                all_words.append({"start": w["start"] + cursor, "end": w["end"] + cursor, "text": w["text"]})
-            cursor += _probe_duration(seg_path)
-            segment_paths.append(seg_path)
-            self._set(episode_id, progress_stage=f"Đã đọc {i + 1}/{len(chunks)} đoạn...")
+        beat_durations: list[float] = []
+
+        if layout == "slideshow" and slides:
+            beats = split_into_beats(script_text, len(slides))
+            slides = slides[: len(beats)]  # split_into_beats may clamp for very short scripts
+            seg_counter = 0
+            for beat_i, beat_text in enumerate(beats):
+                beat_start_cursor = cursor
+                for sub_chunk in chunk_script(beat_text):
+                    seg_path = segments_dir / f"segment_{seg_counter:03d}.mp3"
+                    words = _narrate_chunk(sub_chunk, voice, rate, seg_path)
+                    for w in words:
+                        all_words.append({"start": w["start"] + cursor, "end": w["end"] + cursor, "text": w["text"]})
+                    cursor += _probe_duration(seg_path)
+                    segment_paths.append(seg_path)
+                    seg_counter += 1
+                beat_durations.append(cursor - beat_start_cursor)
+                self._set(episode_id, progress_stage=f"Đã đọc {beat_i + 1}/{len(beats)} phân đoạn...")
+        else:
+            chunks = chunk_script(script_text)
+            for i, chunk in enumerate(chunks):
+                seg_path = segments_dir / f"segment_{i:03d}.mp3"
+                words = _narrate_chunk(chunk, voice, rate, seg_path)
+                for w in words:
+                    all_words.append({"start": w["start"] + cursor, "end": w["end"] + cursor, "text": w["text"]})
+                cursor += _probe_duration(seg_path)
+                segment_paths.append(seg_path)
+                self._set(episode_id, progress_stage=f"Đã đọc {i + 1}/{len(chunks)} đoạn...")
 
         narration_path = work_dir / "narration.mp3"
         if len(segment_paths) == 1:
@@ -474,6 +539,7 @@ class StorytellerService:
             left=left,
             middle=middle,
             right=right,
+            slides=list(zip(slides, beat_durations)) if layout == "slideshow" else None,
             captions_path=captions_path,
             disclaimer_text=disclaimer_text,
             info_lines=info_lines,
@@ -506,11 +572,14 @@ class StorytellerService:
         left: "_Panel | None" = None,
         middle: "_Panel | None" = None,
         right: "_Panel | None" = None,
+        slides: list[tuple["_Panel", float]] | None = None,
         captions_path: Path | None = None,
         disclaimer_text: str | None = None,
         info_lines: list[str] | None = None,
         output_path: Path,
+        rng: random.Random | None = None,
     ) -> None:
+        rng = rng or random.Random()
         inputs: list[str] = []
         filters: list[str] = []
         next_index = 0
@@ -539,6 +608,37 @@ class StorytellerService:
                 )
                 panel_labels.append(label)
             filters.append("".join(f"[{lb}]" for lb in panel_labels) + "hstack=inputs=3[bg]")
+            current_label = "bg"
+        elif layout == "slideshow":
+            slide_pairs = slides or []
+            if not slide_pairs:
+                idx = add_input(solid_color(OUTPUT_WIDTH))
+                filters.append(f"[{idx}:v]setsar=1[bg]")
+            else:
+                slide_labels: list[str] = []
+                for panel, beat_duration in slide_pairs:
+                    idx = add_input(StorytellerService._panel_input_args(panel, beat_duration))
+                    label = f"sl{idx}"
+                    base = (
+                        f"[{idx}:v]scale={OUTPUT_WIDTH}:{OUTPUT_HEIGHT}:force_original_aspect_ratio=increase,"
+                        f"crop={OUTPUT_WIDTH}:{OUTPUT_HEIGHT}"
+                    )
+                    if panel.is_image:
+                        # Ken Burns only makes sense on a still image -- a
+                        # video slide already has its own motion.
+                        direction = rng.choice(("in", "out"))
+                        max_zoom = rng.uniform(1.12, 1.28)
+                        total_frames = max(1, round(beat_duration * 30))
+                        filters.append(
+                            f"{base},scale={OUTPUT_WIDTH * 2}:{OUTPUT_HEIGHT * 2},"
+                            f"{_zoompan_filter(direction, max_zoom, total_frames)},setsar=1,fps=30[{label}]"
+                        )
+                    else:
+                        filters.append(f"{base},setsar=1,fps=30[{label}]")
+                    slide_labels.append(label)
+                filters.append(
+                    "".join(f"[{lb}]" for lb in slide_labels) + f"concat=n={len(slide_labels)}:v=1:a=0[bg]"
+                )
             current_label = "bg"
         else:
             idx = add_input(

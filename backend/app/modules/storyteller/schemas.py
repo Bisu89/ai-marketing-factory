@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from datetime import datetime
 
-from pydantic import BaseModel, Field, field_validator
+from pydantic import BaseModel, Field, field_validator, model_validator
 
 from app.modules.storyteller.models import STORYTELLER_ASSET_KINDS, STORYTELLER_LAYOUTS
 
@@ -19,6 +19,7 @@ class EpisodeCreateIn(BaseModel):
     left_asset_id: int | None = None
     middle_asset_id: int | None = None
     right_asset_id: int | None = None
+    slide_asset_ids: list[int] | None = None
     disclaimer_text: str | None = Field(default=None, max_length=300)
     story_title: str | None = Field(default=None, max_length=200)
     story_author: str | None = Field(default=None, max_length=200)
@@ -38,6 +39,12 @@ class EpisodeCreateIn(BaseModel):
             raise ValueError(f"layout must be one of {STORYTELLER_LAYOUTS}")
         return v
 
+    @model_validator(mode="after")
+    def _slideshow_needs_images(self) -> "EpisodeCreateIn":
+        if self.layout == "slideshow" and len(self.slide_asset_ids or []) < 2:
+            raise ValueError("slideshow layout needs at least 2 slide_asset_ids")
+        return self
+
 
 class EpisodeOut(BaseModel):
     id: int
@@ -52,6 +59,7 @@ class EpisodeOut(BaseModel):
     left_asset_id: int | None
     middle_asset_id: int | None
     right_asset_id: int | None
+    slide_asset_ids: list[int] | None
     disclaimer_text: str | None
     story_title: str | None
     story_author: str | None

@@ -31,6 +31,7 @@ export interface EpisodeFileFields {
   left_asset_id?: number | null;
   middle_asset_id?: number | null;
   right_asset_id?: number | null;
+  slide_asset_ids?: number[] | null;
   disclaimer_text?: string | null;
   story_title?: string | null;
   story_author?: string | null;
@@ -45,6 +46,9 @@ export function createEpisodeFromFile(file: File, fields: EpisodeFileFields): Pr
   form.set("narration_rate", fields.narration_rate);
   form.set("burn_captions", String(fields.burn_captions));
   form.set("layout", fields.layout);
+  if (fields.slide_asset_ids && fields.slide_asset_ids.length > 0) {
+    form.set("slide_asset_ids", fields.slide_asset_ids.join(","));
+  }
   const optional: [string, string | number | null | undefined][] = [
     ["background_asset_id", fields.background_asset_id],
     ["avatar_asset_id", fields.avatar_asset_id],

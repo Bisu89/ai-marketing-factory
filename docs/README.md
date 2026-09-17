@@ -176,6 +176,7 @@ SQLite.
 143. [Kể Truyện (Storyteller)](features/143-storyteller.md) — paste/upload a script written externally (no AI call in this module) → long-form narrated video: chunked edge_tts narration → word-timed captions → composite over a background loop + auto colour-keyed avatar overlay. New `app/modules/storyteller/` (own tables, own queue/worker) + `/storyteller` page
 144. [Storyteller: image backgrounds/avatars + voice/speed picker](features/144-storyteller-image-backgrounds-voice-picker.md) — still-image background/avatar support (`-loop 1` ffmpeg technique, `StorytellerAsset.media_type`) + a voice/narration-speed picker on the create-episode form (reuses Video Factory's `VOICE_OPTIONS`, not a duplicate list)
 145. [Storyteller: layout templates (triptych) + disclaimer/story-info overlays](features/145-storyteller-layout-templates.md) — a second layout mode (3-panel split-screen, `hstack`) matching a real competitor format, plus optional disclaimer text and story-info-card drawtext overlays on either layout
+146. [Storyteller: slideshow layout (many images, Ken Burns zoom)](features/146-storyteller-slideshow-layout.md) — a third layout for long-form (10-15 min) narration: upload many images, script auto-splits into one beat per image so each image's on-screen time matches its narration, each image gets a random zoom in/out so nothing is static
 
 ## Keeping this up to date
 

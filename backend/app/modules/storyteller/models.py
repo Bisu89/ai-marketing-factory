@@ -10,7 +10,7 @@ from __future__ import annotations
 
 from datetime import datetime, timezone
 
-from sqlalchemy import Boolean, DateTime, Float, Integer, String, Text
+from sqlalchemy import JSON, Boolean, DateTime, Float, Integer, String, Text
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.db.base import Base
@@ -46,7 +46,7 @@ class StorytellerAsset(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow)
 
 
-STORYTELLER_LAYOUTS = ("single", "triptych")
+STORYTELLER_LAYOUTS = ("single", "triptych", "slideshow")
 
 
 class StorytellerEpisode(Base):
@@ -56,15 +56,22 @@ class StorytellerEpisode(Base):
     other render engine in this app (VideoComposerService, SceneCutterService,
     ...).
 
-    Two `layout`s:
-      "single"   -- one background (loop or still image) + optional avatar
-                    overlaid via colour-key, corner-positioned.
-      "triptych" -- 3 equal-width panels side by side (left/middle/right
-                    asset ids), each an independent clip, no colour-key --
-                    the format seen in real competitor "story reading"
-                    channels (host panel + an unrelated satisfying/ASMR
-                    filler panel + a thematic panel).
-    Both layouts optionally burn a top disclaimer line and a bottom
+    Three `layout`s:
+      "single"    -- one background (loop or still image) + optional avatar
+                     overlaid via colour-key, corner-positioned.
+      "triptych"  -- 3 equal-width panels side by side (left/middle/right
+                     asset ids), each an independent clip, no colour-key --
+                     the format seen in real competitor "story reading"
+                     channels (host panel + an unrelated satisfying/ASMR
+                     filler panel + a thematic panel).
+      "slideshow" -- an ordered list of images (`slide_asset_ids`), the
+                     script split into one beat per image so each image's
+                     on-screen time tracks how much narration plays over it,
+                     each beat given a random Ken Burns zoom in/out. Built
+                     for long-form (10-15 min) narration where a single
+                     static background/triptych panel is too static to hold
+                     attention that long.
+    All layouts optionally burn a top disclaimer line and a bottom
     story-info card (title/author/main character)."""
 
     __tablename__ = "storyteller_episode"
@@ -88,6 +95,10 @@ class StorytellerEpisode(Base):
     left_asset_id: Mapped[int | None] = mapped_column(Integer, nullable=True)
     middle_asset_id: Mapped[int | None] = mapped_column(Integer, nullable=True)
     right_asset_id: Mapped[int | None] = mapped_column(Integer, nullable=True)
+
+    # layout == "slideshow" -- ordered asset ids, a JSON column rather than a
+    # child table (same precedent as video_composer's beat_narration_specs).
+    slide_asset_ids: Mapped[list | None] = mapped_column(JSON, nullable=True)
 
     # optional overlays, either layout
     disclaimer_text: Mapped[str | None] = mapped_column(String, nullable=True)
