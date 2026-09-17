@@ -59,6 +59,7 @@ from app.modules.news.router import router as news_router
 from app.modules.publishing.router import router as publishing_router
 from app.modules.scene_cutter.router import router as scene_cutter_router
 from app.modules.series.router import router as series_router
+from app.modules.storyteller.router import router as storyteller_router
 from app.modules.story.router import router as story_planning_router
 from app.modules.video_composer.router import router as video_composer_router
 
@@ -90,6 +91,7 @@ api_router.include_router(story_router, tags=["story"])
 api_router.include_router(hook_router, tags=["hook"])
 api_router.include_router(content_strategy_router, tags=["content-strategy"])
 api_router.include_router(discovery_router, tags=["discovery"])
+api_router.include_router(storyteller_router, tags=["storyteller"])
 api_router.include_router(news_router, tags=["news"])
 api_router.include_router(news_pipeline.router, tags=["news-pipeline"])
 api_router.include_router(publishing_router, tags=["publishing"])

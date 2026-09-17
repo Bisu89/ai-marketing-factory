@@ -33,6 +33,7 @@ import app.modules.publishing.models  # noqa: F401
 import app.modules.scene_cutter.models  # noqa: F401
 import app.modules.series.models  # noqa: F401
 import app.modules.story.models  # noqa: F401
+import app.modules.storyteller.models  # noqa: F401
 import app.modules.video_composer.models  # noqa: F401
 
 from app.db.base import Base  # noqa: E402

@@ -1,0 +1,344 @@
+import { useEffect, useRef, useState } from "react";
+import { BookOpen, Loader2, RotateCcw, Trash2, Upload, Download } from "lucide-react";
+import { PageHeader } from "../components/PageHeader";
+import { EmptyState } from "../components/EmptyState";
+import {
+  createEpisode,
+  createEpisodeFromFile,
+  deleteAsset,
+  deleteEpisode,
+  episodeFileUrl,
+  listAssets,
+  listEpisodes,
+  retryEpisode,
+  uploadAsset,
+} from "../api/storyteller";
+import type { StorytellerAsset, StorytellerEpisode } from "../types/storyteller";
+import "./StorytellerPage.css";
+
+const POLL_INTERVAL_MS = 2000;
+const PENDING_STATUSES = new Set(["pending", "narrating", "compositing"]);
+
+const STATUS_LABEL: Record<string, string> = {
+  pending: "Chờ xử lý",
+  narrating: "Đang đọc",
+  compositing: "Đang ghép video",
+  completed: "Hoàn tất",
+  failed: "Lỗi",
+};
+
+function formatDuration(sec: number | null): string {
+  if (sec == null) return "—";
+  const m = Math.floor(sec / 60);
+  const s = Math.round(sec % 60);
+  return `${m}:${String(s).padStart(2, "0")}`;
+}
+
+export function StorytellerPage() {
+  const [episodes, setEpisodes] = useState<StorytellerEpisode[]>([]);
+  const [backgrounds, setBackgrounds] = useState<StorytellerAsset[]>([]);
+  const [avatars, setAvatars] = useState<StorytellerAsset[]>([]);
+  const [error, setError] = useState<string | null>(null);
+
+  const [title, setTitle] = useState("");
+  const [scriptText, setScriptText] = useState("");
+  const [uploadFile, setUploadFile] = useState<File | null>(null);
+  const [burnCaptions, setBurnCaptions] = useState(true);
+  const [backgroundAssetId, setBackgroundAssetId] = useState<number | "">("");
+  const [avatarAssetId, setAvatarAssetId] = useState<number | "">("");
+  const [submitting, setSubmitting] = useState(false);
+
+  const pollRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  function refresh() {
+    listEpisodes().then(setEpisodes).catch(() => {});
+  }
+
+  useEffect(() => {
+    refresh();
+    listAssets("background").then(setBackgrounds).catch(() => {});
+    listAssets("avatar").then(setAvatars).catch(() => {});
+  }, []);
+
+  useEffect(() => {
+    const hasActive = episodes.some((e) => PENDING_STATUSES.has(e.status));
+    if (hasActive && !pollRef.current) {
+      pollRef.current = setInterval(refresh, POLL_INTERVAL_MS);
+    } else if (!hasActive && pollRef.current) {
+      clearInterval(pollRef.current);
+      pollRef.current = null;
+    }
+    return () => {
+      if (pollRef.current) {
+        clearInterval(pollRef.current);
+        pollRef.current = null;
+      }
+    };
+  }, [episodes]);
+
+  async function handleSubmit() {
+    if (!title.trim() || submitting) return;
+    if (!uploadFile && !scriptText.trim()) return;
+    setSubmitting(true);
+    setError(null);
+    try {
+      if (uploadFile) {
+        await createEpisodeFromFile(uploadFile, {
+          title: title.trim(),
+          burn_captions: burnCaptions,
+          background_asset_id: backgroundAssetId === "" ? null : backgroundAssetId,
+          avatar_asset_id: avatarAssetId === "" ? null : avatarAssetId,
+        });
+      } else {
+        await createEpisode({
+          title: title.trim(),
+          script_text: scriptText,
+          burn_captions: burnCaptions,
+          background_asset_id: backgroundAssetId === "" ? null : backgroundAssetId,
+          avatar_asset_id: avatarAssetId === "" ? null : avatarAssetId,
+        });
+      }
+      setTitle("");
+      setScriptText("");
+      setUploadFile(null);
+      refresh();
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Không tạo được tập.");
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
+  async function handleRetry(id: number) {
+    try {
+      await retryEpisode(id);
+      refresh();
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Không thử lại được.");
+    }
+  }
+
+  async function handleDelete(id: number) {
+    if (!window.confirm("Xoá tập này?")) return;
+    try {
+      await deleteEpisode(id);
+      refresh();
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Không xoá được.");
+    }
+  }
+
+  async function handleUploadAsset(kind: "background" | "avatar", file: File) {
+    try {
+      const asset = await uploadAsset(kind, file.name.replace(/\.[^.]+$/, ""), file);
+      if (kind === "background") setBackgrounds((prev) => [asset, ...prev]);
+      else setAvatars((prev) => [asset, ...prev]);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Không tải lên được clip.");
+    }
+  }
+
+  async function handleDeleteAsset(kind: "background" | "avatar", id: number) {
+    try {
+      await deleteAsset(id);
+      if (kind === "background") setBackgrounds((prev) => prev.filter((a) => a.id !== id));
+      else setAvatars((prev) => prev.filter((a) => a.id !== id));
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Không xoá được clip.");
+    }
+  }
+
+  return (
+    <>
+      <PageHeader
+        title="Kể Truyện"
+        subtitle="Dán hoặc upload kịch bản (viết ở ngoài) — tool tự đọc, ghép nền, phụ đề, không dùng AI"
+      />
+
+      {error && <div className="st-alert st-alert-error">{error}</div>}
+
+      <div className="st-card">
+        <h3 className="st-card-title">Tạo tập mới</h3>
+        <input
+          className="st-input"
+          type="text"
+          placeholder="Tên tập, vd: Chương 1 - Khởi đầu"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+
+        <textarea
+          className="st-textarea"
+          placeholder="Dán kịch bản vào đây..."
+          value={scriptText}
+          onChange={(e) => setScriptText(e.target.value)}
+          disabled={!!uploadFile}
+          rows={8}
+        />
+
+        <div className="st-file-row">
+          <label className="btn btn-secondary st-file-label">
+            <Upload size={14} />
+            {uploadFile ? uploadFile.name : "Hoặc chọn file .txt"}
+            <input
+              type="file"
+              accept=".txt"
+              hidden
+              onChange={(e) => setUploadFile(e.target.files?.[0] ?? null)}
+            />
+          </label>
+          {uploadFile && (
+            <button className="btn btn-secondary" onClick={() => setUploadFile(null)}>
+              Bỏ file
+            </button>
+          )}
+        </div>
+
+        <div className="st-options-row">
+          <label className="st-checkbox">
+            <input type="checkbox" checked={burnCaptions} onChange={(e) => setBurnCaptions(e.target.checked)} />
+            Ghi phụ đề
+          </label>
+
+          <select
+            className="st-select"
+            value={backgroundAssetId}
+            onChange={(e) => setBackgroundAssetId(e.target.value ? Number(e.target.value) : "")}
+          >
+            <option value="">Nền: mặc định (màu trơn)</option>
+            {backgrounds.map((a) => (
+              <option key={a.id} value={a.id}>
+                Nền: {a.name}
+              </option>
+            ))}
+          </select>
+
+          <select
+            className="st-select"
+            value={avatarAssetId}
+            onChange={(e) => setAvatarAssetId(e.target.value ? Number(e.target.value) : "")}
+          >
+            <option value="">Avatar: không có</option>
+            {avatars.map((a) => (
+              <option key={a.id} value={a.id}>
+                Avatar: {a.name}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <button
+          className="btn btn-primary"
+          onClick={handleSubmit}
+          disabled={submitting || !title.trim() || (!uploadFile && !scriptText.trim())}
+        >
+          {submitting ? <Loader2 size={16} className="spin" /> : <BookOpen size={16} />}
+          Tạo & bắt đầu đọc
+        </button>
+      </div>
+
+      <div className="st-card">
+        <h3 className="st-card-title">Clip nền / avatar</h3>
+        <div className="st-asset-cols">
+          <AssetColumn kind="background" label="Nền lặp" assets={backgrounds} onUpload={handleUploadAsset} onDelete={handleDeleteAsset} />
+          <AssetColumn kind="avatar" label="Avatar (tự tách nền màu)" assets={avatars} onUpload={handleUploadAsset} onDelete={handleDeleteAsset} />
+        </div>
+      </div>
+
+      <h3 className="st-card-title">Các tập</h3>
+      {episodes.length === 0 ? (
+        <EmptyState icon={BookOpen} title="Chưa có tập nào" description="Tạo tập đầu tiên ở form phía trên." />
+      ) : (
+        <div className="st-episode-list">
+          {episodes.map((ep) => (
+            <div key={ep.id} className="st-episode-row">
+              <div className="st-episode-main">
+                <span className="st-episode-title">{ep.title}</span>
+                <span className="st-episode-meta">
+                  {ep.word_count.toLocaleString()} từ · {formatDuration(ep.duration_sec)}
+                </span>
+              </div>
+              <div className="st-episode-status">
+                <span className={`st-status-badge st-status--${ep.status}`}>
+                  {PENDING_STATUSES.has(ep.status) && <Loader2 size={12} className="spin" />}
+                  {STATUS_LABEL[ep.status] ?? ep.status}
+                </span>
+                {ep.progress_stage && <span className="st-progress-stage">{ep.progress_stage}</span>}
+                {ep.error_message && <span className="st-error-text">{ep.error_message}</span>}
+              </div>
+              <div className="st-episode-actions">
+                {ep.status === "completed" && (
+                  <a className="btn btn-secondary" href={episodeFileUrl(ep.id)} target="_blank" rel="noreferrer">
+                    <Download size={14} /> Xem/Tải
+                  </a>
+                )}
+                {ep.status === "failed" && (
+                  <button className="btn btn-secondary" onClick={() => handleRetry(ep.id)}>
+                    <RotateCcw size={14} /> Thử lại
+                  </button>
+                )}
+                <button className="btn btn-secondary" onClick={() => handleDelete(ep.id)}>
+                  <Trash2 size={14} />
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </>
+  );
+}
+
+function AssetColumn({
+  kind,
+  label,
+  assets,
+  onUpload,
+  onDelete,
+}: {
+  kind: "background" | "avatar";
+  label: string;
+  assets: StorytellerAsset[];
+  onUpload: (kind: "background" | "avatar", file: File) => void;
+  onDelete: (kind: "background" | "avatar", id: number) => void;
+}) {
+  return (
+    <div className="st-asset-col">
+      <div className="st-asset-col-header">
+        <span>{label}</span>
+        <label className="btn btn-secondary">
+          <Upload size={13} /> Tải lên
+          <input
+            type="file"
+            accept="video/*"
+            hidden
+            onChange={(e) => {
+              const file = e.target.files?.[0];
+              if (file) onUpload(kind, file);
+              e.target.value = "";
+            }}
+          />
+        </label>
+      </div>
+      {assets.length === 0 ? (
+        <p className="st-asset-empty">Chưa có clip nào</p>
+      ) : (
+        <ul className="st-asset-list">
+          {assets.map((a) => (
+            <li key={a.id}>
+              <span>{a.name}</span>
+              {a.width && a.height && (
+                <span className="st-asset-dim">
+                  {a.width}×{a.height}
+                </span>
+              )}
+              <button className="st-asset-remove" onClick={() => onDelete(kind, a.id)} title="Xoá">
+                <Trash2 size={13} />
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}

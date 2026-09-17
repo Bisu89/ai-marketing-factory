@@ -3,6 +3,7 @@ import { AppShell } from "./layouts/AppShell";
 import { DashboardPage } from "./pages/DashboardPage";
 import { DownloadPage } from "./pages/DownloadPage";
 import { RadarPage } from "./pages/RadarPage";
+import { StorytellerPage } from "./pages/StorytellerPage";
 import { LibraryPage } from "./pages/LibraryPage";
 import { HistoryPage } from "./pages/HistoryPage";
 import { ContentStudioPage } from "./pages/ContentStudioPage";
@@ -35,6 +36,7 @@ function App() {
         <Route path="dashboard" element={<DashboardPage />} />
         <Route path="download" element={<DownloadPage />} />
         <Route path="radar" element={<RadarPage />} />
+        <Route path="storyteller" element={<StorytellerPage />} />
         <Route path="library" element={<LibraryPage />} />
         <Route path="history" element={<HistoryPage />} />
         <Route path="content-studio" element={<ContentStudioPage />} />

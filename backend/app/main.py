@@ -32,6 +32,7 @@ from app.modules.news.seed import seed_default_news_sources
 from app.modules.news.service import fetch_all_enabled_sources
 from app.modules.publishing.service import reconcile_uploads_on_startup
 from app.modules.scene_cutter.service import SceneCutterService
+from app.modules.storyteller.service import StorytellerService
 from app.modules.story.service import reconcile_story_runs_on_startup
 from app.modules.video_composer.service import VideoComposerService
 from app.services.download.engine import DownloadEngine
@@ -76,6 +77,10 @@ async def lifespan(app: FastAPI):
     scene_cutter_service = SceneCutterService(library_dir=Path(settings.library_dir))
     scene_cutter_service.start()
     app.state.scene_cutter_service = scene_cutter_service
+
+    storyteller_service = StorytellerService(library_dir=Path(settings.library_dir))
+    storyteller_service.start()
+    app.state.storyteller_service = storyteller_service
 
     # beat_renderer is injected here, not imported by video_composer itself
     # (see app/modules/README.md) -- same pluggable-strategy shape as
@@ -163,6 +168,7 @@ async def lifespan(app: FastAPI):
     news_poll_stop.set()
     download_engine.shutdown()
     scene_cutter_service.shutdown()
+    storyteller_service.shutdown()
     video_composer_service.shutdown()
 
 
