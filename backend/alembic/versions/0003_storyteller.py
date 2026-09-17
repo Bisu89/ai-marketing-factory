@@ -4,11 +4,18 @@ Revision ID: 0003_storyteller
 Revises: 0002_viral_source_radar
 Create Date: 2026-09-17
 
-NOTE (see app/db/schema.py::sync_schema): this upgrade() never runs in
-normal operation -- create_all() makes these tables on startup and a
-fresh/unversioned DB is stamped at head. Exists so
-`alembic downgrade base && alembic upgrade head` cycles cleanly and so an
-older-version DB catches up. Both are genuinely new tables.
+NOTE (see app/db/schema.py::sync_schema): unlike 0001/0002's own claim
+("this upgrade() never runs in normal operation"), it demonstrably DOES:
+any existing (non-fresh) DB behind head runs sync_schema's create_all()
+first on every startup, which creates a genuinely-new table like this
+migration's own before the upgrade step gets a chance to -- create_all
+doesn't know or care what revision the DB is recorded at. Confirmed as a
+real startup crash ("table storyteller_asset already exists") the first
+time a real existing dev DB (recorded at 0002, not freshly stamped)
+upgraded past a revision that adds a table. `op.create_table` here is
+therefore guarded with a has_table() check so upgrade() is idempotent
+against whatever create_all() already did -- the correct general rule for
+every future "genuinely new table" migration, not just this one.
 """
 
 from collections.abc import Sequence
@@ -22,8 +29,15 @@ branch_labels: str | Sequence[str] | None = None
 depends_on: str | Sequence[str] | None = None
 
 
+def _create_table_if_missing(name: str, *columns: sa.Column) -> None:
+    bind = op.get_bind()
+    if name in sa.inspect(bind).get_table_names():
+        return
+    op.create_table(name, *columns)
+
+
 def upgrade() -> None:
-    op.create_table(
+    _create_table_if_missing(
         "storyteller_asset",
         sa.Column("id", sa.Integer(), primary_key=True),
         sa.Column("kind", sa.String(), nullable=False),
@@ -36,7 +50,7 @@ def upgrade() -> None:
         sa.Column("created_at", sa.DateTime(timezone=True), nullable=False),
     )
 
-    op.create_table(
+    _create_table_if_missing(
         "storyteller_episode",
         sa.Column("id", sa.Integer(), primary_key=True),
         sa.Column("title", sa.String(), nullable=False),
