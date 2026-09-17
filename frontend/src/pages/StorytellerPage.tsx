@@ -14,7 +14,7 @@ import {
   uploadAsset,
 } from "../api/storyteller";
 import { VOICE_OPTIONS } from "../types/videoFactory";
-import type { StorytellerAsset, StorytellerEpisode } from "../types/storyteller";
+import type { StorytellerAsset, StorytellerEpisode, StorytellerLayout } from "../types/storyteller";
 import "./StorytellerPage.css";
 
 const POLL_INTERVAL_MS = 2000;
@@ -56,8 +56,16 @@ export function StorytellerPage() {
   );
   const [narrationRate, setNarrationRate] = useState("+0%");
   const [burnCaptions, setBurnCaptions] = useState(true);
+  const [layout, setLayout] = useState<StorytellerLayout>("single");
   const [backgroundAssetId, setBackgroundAssetId] = useState<number | "">("");
   const [avatarAssetId, setAvatarAssetId] = useState<number | "">("");
+  const [leftAssetId, setLeftAssetId] = useState<number | "">("");
+  const [middleAssetId, setMiddleAssetId] = useState<number | "">("");
+  const [rightAssetId, setRightAssetId] = useState<number | "">("");
+  const [disclaimerText, setDisclaimerText] = useState("");
+  const [storyTitle, setStoryTitle] = useState("");
+  const [storyAuthor, setStoryAuthor] = useState("");
+  const [storyCharacter, setStoryCharacter] = useState("");
   const [submitting, setSubmitting] = useState(false);
 
   const pollRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -94,25 +102,26 @@ export function StorytellerPage() {
     setSubmitting(true);
     setError(null);
     try {
+      const shared = {
+        title: title.trim(),
+        voice,
+        narration_rate: narrationRate,
+        burn_captions: burnCaptions,
+        layout,
+        background_asset_id: backgroundAssetId === "" ? null : backgroundAssetId,
+        avatar_asset_id: avatarAssetId === "" ? null : avatarAssetId,
+        left_asset_id: leftAssetId === "" ? null : leftAssetId,
+        middle_asset_id: middleAssetId === "" ? null : middleAssetId,
+        right_asset_id: rightAssetId === "" ? null : rightAssetId,
+        disclaimer_text: disclaimerText.trim() || null,
+        story_title: storyTitle.trim() || null,
+        story_author: storyAuthor.trim() || null,
+        story_character: storyCharacter.trim() || null,
+      };
       if (uploadFile) {
-        await createEpisodeFromFile(uploadFile, {
-          title: title.trim(),
-          voice,
-          narration_rate: narrationRate,
-          burn_captions: burnCaptions,
-          background_asset_id: backgroundAssetId === "" ? null : backgroundAssetId,
-          avatar_asset_id: avatarAssetId === "" ? null : avatarAssetId,
-        });
+        await createEpisodeFromFile(uploadFile, shared);
       } else {
-        await createEpisode({
-          title: title.trim(),
-          script_text: scriptText,
-          voice,
-          narration_rate: narrationRate,
-          burn_captions: burnCaptions,
-          background_asset_id: backgroundAssetId === "" ? null : backgroundAssetId,
-          avatar_asset_id: avatarAssetId === "" ? null : avatarAssetId,
-        });
+        await createEpisode({ ...shared, script_text: scriptText });
       }
       setTitle("");
       setScriptText("");
@@ -232,31 +241,99 @@ export function StorytellerPage() {
             Ghi phụ đề
           </label>
 
-          <select
-            className="st-select"
-            value={backgroundAssetId}
-            onChange={(e) => setBackgroundAssetId(e.target.value ? Number(e.target.value) : "")}
-          >
-            <option value="">Nền: mặc định (màu trơn)</option>
-            {backgrounds.map((a) => (
-              <option key={a.id} value={a.id}>
-                Nền: {a.name}
-              </option>
-            ))}
+          <select className="st-select" value={layout} onChange={(e) => setLayout(e.target.value as StorytellerLayout)}>
+            <option value="single">Bố cục: 1 nền + avatar góc</option>
+            <option value="triptych">Bố cục: 3 cột chia màn hình</option>
           </select>
+        </div>
 
-          <select
-            className="st-select"
-            value={avatarAssetId}
-            onChange={(e) => setAvatarAssetId(e.target.value ? Number(e.target.value) : "")}
-          >
-            <option value="">Avatar: không có</option>
-            {avatars.map((a) => (
-              <option key={a.id} value={a.id}>
-                Avatar: {a.name}
-              </option>
-            ))}
-          </select>
+        {layout === "single" ? (
+          <div className="st-options-row">
+            <select
+              className="st-select"
+              value={backgroundAssetId}
+              onChange={(e) => setBackgroundAssetId(e.target.value ? Number(e.target.value) : "")}
+            >
+              <option value="">Nền: mặc định (màu trơn)</option>
+              {backgrounds.map((a) => (
+                <option key={a.id} value={a.id}>
+                  Nền: {a.name}
+                </option>
+              ))}
+            </select>
+
+            <select
+              className="st-select"
+              value={avatarAssetId}
+              onChange={(e) => setAvatarAssetId(e.target.value ? Number(e.target.value) : "")}
+            >
+              <option value="">Avatar: không có</option>
+              {avatars.map((a) => (
+                <option key={a.id} value={a.id}>
+                  Avatar: {a.name}
+                </option>
+              ))}
+            </select>
+          </div>
+        ) : (
+          <div className="st-options-row">
+            <select className="st-select" value={leftAssetId} onChange={(e) => setLeftAssetId(e.target.value ? Number(e.target.value) : "")}>
+              <option value="">Cột trái: mặc định</option>
+              {[...avatars, ...backgrounds].map((a) => (
+                <option key={a.id} value={a.id}>
+                  Trái: {a.name}
+                </option>
+              ))}
+            </select>
+            <select className="st-select" value={middleAssetId} onChange={(e) => setMiddleAssetId(e.target.value ? Number(e.target.value) : "")}>
+              <option value="">Cột giữa: mặc định</option>
+              {[...backgrounds, ...avatars].map((a) => (
+                <option key={a.id} value={a.id}>
+                  Giữa: {a.name}
+                </option>
+              ))}
+            </select>
+            <select className="st-select" value={rightAssetId} onChange={(e) => setRightAssetId(e.target.value ? Number(e.target.value) : "")}>
+              <option value="">Cột phải: mặc định</option>
+              {[...backgrounds, ...avatars].map((a) => (
+                <option key={a.id} value={a.id}>
+                  Phải: {a.name}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
+
+        <input
+          className="st-input"
+          type="text"
+          placeholder="Dòng miễn trừ trách nhiệm (tuỳ chọn), vd: Nội dung chỉ mang tính giải trí..."
+          value={disclaimerText}
+          onChange={(e) => setDisclaimerText(e.target.value)}
+        />
+
+        <div className="st-options-row">
+          <input
+            className="st-input st-story-info-input"
+            type="text"
+            placeholder="Tên truyện (tuỳ chọn)"
+            value={storyTitle}
+            onChange={(e) => setStoryTitle(e.target.value)}
+          />
+          <input
+            className="st-input st-story-info-input"
+            type="text"
+            placeholder="Tác giả (tuỳ chọn)"
+            value={storyAuthor}
+            onChange={(e) => setStoryAuthor(e.target.value)}
+          />
+          <input
+            className="st-input st-story-info-input"
+            type="text"
+            placeholder="Nhân vật chính (tuỳ chọn)"
+            value={storyCharacter}
+            onChange={(e) => setStoryCharacter(e.target.value)}
+          />
         </div>
 
         <button

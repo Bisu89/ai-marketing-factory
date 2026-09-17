@@ -22,6 +22,7 @@ import shutil
 import subprocess
 import threading
 from pathlib import Path
+from typing import NamedTuple
 
 import edge_tts
 from PIL import Image
@@ -36,6 +37,18 @@ from app.modules.storyteller.models import (
 
 logger = logging.getLogger(__name__)
 
+
+class _Panel(NamedTuple):
+    """One resolved background/avatar/triptych-panel asset, as _process
+    hands it to _composite -- decoupled from the DB row so _composite stays
+    a pure function of plain values (real-ffmpeg tests build these
+    directly, no DB needed)."""
+
+    path: Path
+    is_image: bool
+    key_color: str | None = None
+
+
 OUTPUT_WIDTH, OUTPUT_HEIGHT = 1920, 1080
 
 IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".webp", ".bmp"}
@@ -47,6 +60,27 @@ _NARRATION_RETRY_BACKOFF_SEC = 1.5
 _CAPTION_FONT_SIZE = 46
 _CAPTION_MAX_WORDS_PER_LINE = 10
 _CAPTION_LINE_BREAK_GAP_SEC = 0.6
+
+# drawtext (disclaimer / story-info card), duplicated from
+# app/modules/outro/renderer.py's own FONT_PATH/_escape_drawtext -- same
+# module-isolation "duplicate, don't import" convention as elsewhere in
+# this module.
+_DRAWTEXT_FONT_PATH = "C:/Windows/Fonts/arialbd.ttf"
+_DRAWTEXT_FONT_PATH_ESCAPED = _DRAWTEXT_FONT_PATH.replace(":", "\\:")
+
+
+def _escape_drawtext(text: str) -> str:
+    text = text.replace("\\", "\\\\")
+    text = text.replace(":", "\\:")
+    text = text.replace("%", "\\%")
+    # A literal ' inside a single-quoted ffmpeg filter value can't be
+    # backslash-escaped (confirmed by a real ffmpeg parse failure during
+    # verification: "\\'" inside '...' does not mean "escaped quote", it
+    # ends the string early and leaves the rest of the value as stray,
+    # unparsed filtergraph text). The correct break-out-and-reopen form is
+    # '\'' -- close the quote, an escaped quote *outside* it, reopen.
+    text = text.replace("'", "'\\''")
+    return text
 
 
 # -- text chunking (no AI -- plain paragraph/sentence splitting) --------
@@ -143,6 +177,22 @@ def _probe_video_info(path: Path) -> tuple[int, int, float]:
 
 def _escape_for_ffmpeg_filter(path: Path) -> str:
     return path.resolve().as_posix().replace(":", "\\:")
+
+
+def _drawtext_filter(lines: list[str], *, y_expr: str, font_size: int = 34) -> str:
+    """One drawtext filter per line (stacked), each on its own translucent
+    box for readability over arbitrary background footage -- same
+    multi-drawtext-per-line shape app.modules.outro.renderer uses for its
+    own multi-line CTA, duplicated rather than imported."""
+    filters = []
+    for i, line in enumerate(lines):
+        escaped = _escape_drawtext(line)
+        y = f"({y_expr})+{i}*{int(font_size * 1.3)}"
+        filters.append(
+            f"drawtext=fontfile='{_DRAWTEXT_FONT_PATH_ESCAPED}':text='{escaped}':fontsize={font_size}:"
+            f"fontcolor=white:box=1:boxcolor=black@0.55:boxborderw=10:x=(w-text_w)/2:y={y}"
+        )
+    return ",".join(filters)
 
 
 def is_image_file(path: Path) -> bool:
@@ -345,15 +395,31 @@ class StorytellerService:
             episode = db.get(StorytellerEpisode, episode_id)
             if episode is None:
                 return
-            background = db.get(StorytellerAsset, episode.background_asset_id) if episode.background_asset_id else None
-            avatar = db.get(StorytellerAsset, episode.avatar_asset_id) if episode.avatar_asset_id else None
+
+            def load(asset_id: int | None) -> _Panel | None:
+                if not asset_id:
+                    return None
+                asset = db.get(StorytellerAsset, asset_id)
+                if asset is None:
+                    return None
+                return _Panel(Path(asset.path), asset.media_type == "image", asset.key_color)
+
+            background = load(episode.background_asset_id)
+            avatar = load(episode.avatar_asset_id)
+            left = load(episode.left_asset_id)
+            middle = load(episode.middle_asset_id)
+            right = load(episode.right_asset_id)
+
             title, script_text, voice, rate = episode.title, episode.script_text, episode.voice, episode.narration_rate
             burn_captions = episode.burn_captions
-            background_path = Path(background.path) if background else None
-            background_is_image = background.media_type == "image" if background else False
-            avatar_path = Path(avatar.path) if avatar else None
-            avatar_is_image = avatar.media_type == "image" if avatar else False
-            avatar_key_color = avatar.key_color if avatar else None
+            layout = episode.layout
+            disclaimer_text = episode.disclaimer_text
+            info_lines = [
+                f"Truyện: {episode.story_title}" if episode.story_title else None,
+                f"Tác giả: {episode.story_author}" if episode.story_author else None,
+                f"Nhân vật chính: {episode.story_character}" if episode.story_character else None,
+            ]
+            info_lines = [line for line in info_lines if line]
         finally:
             db.close()
 
@@ -402,12 +468,15 @@ class StorytellerService:
         self._composite(
             duration=duration,
             narration_path=narration_path,
-            background_path=background_path,
-            background_is_image=background_is_image,
-            avatar_path=avatar_path,
-            avatar_is_image=avatar_is_image,
-            avatar_key_color=avatar_key_color,
+            layout=layout,
+            background=background,
+            avatar=avatar,
+            left=left,
+            middle=middle,
+            right=right,
             captions_path=captions_path,
+            disclaimer_text=disclaimer_text,
+            info_lines=info_lines,
             output_path=output_path,
         )
 
@@ -418,64 +487,99 @@ class StorytellerService:
         logger.info("storyteller: episode %s (%r) completed -> %s", episode_id, title, output_path)
 
     @staticmethod
+    def _panel_input_args(panel: "_Panel", duration: float) -> list[str]:
+        if panel.is_image:
+            # -loop 1 turns a still image into a video stream for -t
+            # seconds -- the ffmpeg-standard "Ken Burns without the pan"
+            # still-image-as-background technique.
+            return ["-loop", "1", "-framerate", "30", "-t", str(duration), "-i", str(panel.path)]
+        return ["-stream_loop", "-1", "-t", str(duration), "-i", str(panel.path)]
+
+    @staticmethod
     def _composite(
         *,
         duration: float,
         narration_path: Path,
-        background_path: Path | None,
-        background_is_image: bool = False,
-        avatar_path: Path | None,
-        avatar_is_image: bool = False,
-        avatar_key_color: str | None,
-        captions_path: Path | None,
+        layout: str = "single",
+        background: "_Panel | None" = None,
+        avatar: "_Panel | None" = None,
+        left: "_Panel | None" = None,
+        middle: "_Panel | None" = None,
+        right: "_Panel | None" = None,
+        captions_path: Path | None = None,
+        disclaimer_text: str | None = None,
+        info_lines: list[str] | None = None,
         output_path: Path,
     ) -> None:
         inputs: list[str] = []
         filters: list[str] = []
+        next_index = 0
 
-        if background_path is not None:
-            if background_is_image:
-                # -loop 1 turns a still image into a video stream for -t
-                # seconds -- the ffmpeg-standard "Ken Burns without the pan"
-                # still-image-as-background technique.
-                inputs += ["-loop", "1", "-framerate", "30", "-t", str(duration), "-i", str(background_path)]
-            else:
-                inputs += ["-stream_loop", "-1", "-t", str(duration), "-i", str(background_path)]
+        def add_input(args: list[str]) -> int:
+            nonlocal next_index
+            inputs.extend(args)
+            idx = next_index
+            next_index += 1
+            return idx
+
+        def solid_color(width: int) -> list[str]:
+            return ["-f", "lavfi", "-t", str(duration), "-i", f"color=c=0x141414:s={width}x{OUTPUT_HEIGHT}:rate=30"]
+
+        if layout == "triptych":
+            panel_width = OUTPUT_WIDTH // 3
+            panel_labels: list[str] = []
+            for panel in (left, middle, right):
+                idx = add_input(
+                    StorytellerService._panel_input_args(panel, duration) if panel is not None else solid_color(panel_width)
+                )
+                label = f"p{idx}"
+                filters.append(
+                    f"[{idx}:v]scale={panel_width}:{OUTPUT_HEIGHT}:force_original_aspect_ratio=increase,"
+                    f"crop={panel_width}:{OUTPUT_HEIGHT},setsar=1,fps=30[{label}]"
+                )
+                panel_labels.append(label)
+            filters.append("".join(f"[{lb}]" for lb in panel_labels) + "hstack=inputs=3[bg]")
+            current_label = "bg"
+        else:
+            idx = add_input(
+                StorytellerService._panel_input_args(background, duration) if background is not None else solid_color(OUTPUT_WIDTH)
+            )
             filters.append(
-                f"[0:v]scale={OUTPUT_WIDTH}:{OUTPUT_HEIGHT}:force_original_aspect_ratio=increase,"
+                f"[{idx}:v]scale={OUTPUT_WIDTH}:{OUTPUT_HEIGHT}:force_original_aspect_ratio=increase,"
                 f"crop={OUTPUT_WIDTH}:{OUTPUT_HEIGHT},setsar=1,fps=30[bg]"
             )
-        else:
-            inputs += ["-f", "lavfi", "-t", str(duration), "-i", f"color=c=0x141414:s={OUTPUT_WIDTH}x{OUTPUT_HEIGHT}:rate=30"]
-            filters.append("[0:v]setsar=1[bg]")
+            current_label = "bg"
 
-        next_index = 1
-        current_label = "bg"
-        if avatar_path is not None:
-            if avatar_is_image:
-                inputs += ["-loop", "1", "-framerate", "30", "-t", str(duration), "-i", str(avatar_path)]
-            else:
-                inputs += ["-stream_loop", "-1", "-t", str(duration), "-i", str(avatar_path)]
-            key_color = avatar_key_color or "0x00FF00"
-            filters.append(
-                f"[{next_index}:v]colorkey={key_color}:0.30:0.15,scale=-2:{int(OUTPUT_HEIGHT * 0.55)}[av]"
-            )
-            filters.append(f"[{current_label}][av]overlay=W-w-40:H-h-40[withavatar]")
-            current_label = "withavatar"
-            next_index += 1
+            if avatar is not None:
+                idx = add_input(StorytellerService._panel_input_args(avatar, duration))
+                key_color = avatar.key_color or "0x00FF00"
+                filters.append(
+                    f"[{idx}:v]colorkey={key_color}:0.30:0.15,scale=-2:{int(OUTPUT_HEIGHT * 0.55)}[av]"
+                )
+                filters.append(f"[{current_label}][av]overlay=W-w-40:H-h-40[withavatar]")
+                current_label = "withavatar"
 
         if captions_path is not None:
             escaped = _escape_for_ffmpeg_filter(captions_path)
-            filters.append(f"[{current_label}]subtitles='{escaped}'[vout]")
-            current_label = "vout"
+            filters.append(f"[{current_label}]subtitles='{escaped}'[cap]")
+            current_label = "cap"
 
-        narration_input_index = next_index
-        inputs += ["-i", str(narration_path)]
+        if disclaimer_text:
+            dtext = _drawtext_filter([disclaimer_text], y_expr="30", font_size=32)
+            filters.append(f"[{current_label}]{dtext}[disc]")
+            current_label = "disc"
+
+        if info_lines:
+            itext = _drawtext_filter(info_lines, y_expr=f"h-{34 * len(info_lines) + 220}", font_size=30)
+            filters.append(f"[{current_label}]{itext}[info]")
+            current_label = "info"
+
+        narration_index = add_input(["-i", str(narration_path)])
 
         args = inputs + [
             "-filter_complex", ";".join(filters),
             "-map", f"[{current_label}]",
-            "-map", f"{narration_input_index}:a",
+            "-map", f"{narration_index}:a",
             "-t", str(duration),
             "-c:v", "libx264", "-pix_fmt", "yuv420p",
             "-c:a", "aac",

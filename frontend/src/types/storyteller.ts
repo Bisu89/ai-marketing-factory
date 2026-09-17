@@ -1,5 +1,6 @@
 export type StorytellerStatus = "pending" | "narrating" | "compositing" | "completed" | "failed";
 export type StorytellerAssetKind = "background" | "avatar";
+export type StorytellerLayout = "single" | "triptych";
 
 export interface StorytellerEpisode {
   id: number;
@@ -8,8 +9,16 @@ export interface StorytellerEpisode {
   voice: string;
   narration_rate: string;
   burn_captions: boolean;
+  layout: StorytellerLayout;
   background_asset_id: number | null;
   avatar_asset_id: number | null;
+  left_asset_id: number | null;
+  middle_asset_id: number | null;
+  right_asset_id: number | null;
+  disclaimer_text: string | null;
+  story_title: string | null;
+  story_author: string | null;
+  story_character: string | null;
   status: StorytellerStatus;
   progress_stage: string | null;
   error_message: string | null;
@@ -40,6 +49,14 @@ export interface CreateEpisodeInput {
   voice?: string;
   narration_rate?: string;
   burn_captions?: boolean;
+  layout?: StorytellerLayout;
   background_asset_id?: number | null;
   avatar_asset_id?: number | null;
+  left_asset_id?: number | null;
+  middle_asset_id?: number | null;
+  right_asset_id?: number | null;
+  disclaimer_text?: string | null;
+  story_title?: string | null;
+  story_author?: string | null;
+  story_character?: string | null;
 }

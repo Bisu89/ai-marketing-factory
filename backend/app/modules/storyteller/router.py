@@ -55,8 +55,16 @@ def create_episode_from_file(
     voice: str = Form("vi-VN-HoaiMyNeural"),
     narration_rate: str = Form("+0%"),
     burn_captions: bool = Form(True),
+    layout: str = Form("single"),
     background_asset_id: int | None = Form(None),
     avatar_asset_id: int | None = Form(None),
+    left_asset_id: int | None = Form(None),
+    middle_asset_id: int | None = Form(None),
+    right_asset_id: int | None = Form(None),
+    disclaimer_text: str | None = Form(None),
+    story_title: str | None = Form(None),
+    story_author: str | None = Form(None),
+    story_character: str | None = Form(None),
     file: UploadFile = File(...),
     svc: StorytellerService = Depends(get_storyteller_service),
 ):
@@ -66,7 +74,11 @@ def create_episode_from_file(
     script_text = _decode_text(raw)
     episode = service.create_episode(
         title=title, script_text=script_text, voice=voice, narration_rate=narration_rate,
-        burn_captions=burn_captions, background_asset_id=background_asset_id, avatar_asset_id=avatar_asset_id,
+        burn_captions=burn_captions, layout=layout,
+        background_asset_id=background_asset_id, avatar_asset_id=avatar_asset_id,
+        left_asset_id=left_asset_id, middle_asset_id=middle_asset_id, right_asset_id=right_asset_id,
+        disclaimer_text=disclaimer_text or None, story_title=story_title or None,
+        story_author=story_author or None, story_character=story_character or None,
     )
     svc.enqueue(episode.id)
     return _episode_out(episode)

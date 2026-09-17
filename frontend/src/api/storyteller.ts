@@ -1,6 +1,12 @@
 import { apiDelete, apiGet, apiPost, apiUpload } from "./client";
 import { config } from "../config/env";
-import type { CreateEpisodeInput, StorytellerAsset, StorytellerAssetKind, StorytellerEpisode } from "../types/storyteller";
+import type {
+  CreateEpisodeInput,
+  StorytellerAsset,
+  StorytellerAssetKind,
+  StorytellerEpisode,
+  StorytellerLayout,
+} from "../types/storyteller";
 
 export function listEpisodes(): Promise<StorytellerEpisode[]> {
   return apiGet("/storyteller/episodes");
@@ -14,25 +20,45 @@ export function createEpisode(input: CreateEpisodeInput): Promise<StorytellerEpi
   return apiPost("/storyteller/episodes", input);
 }
 
-export function createEpisodeFromFile(
-  file: File,
-  fields: {
-    title: string;
-    voice: string;
-    narration_rate: string;
-    burn_captions: boolean;
-    background_asset_id?: number | null;
-    avatar_asset_id?: number | null;
-  },
-): Promise<StorytellerEpisode> {
+export interface EpisodeFileFields {
+  title: string;
+  voice: string;
+  narration_rate: string;
+  burn_captions: boolean;
+  layout: StorytellerLayout;
+  background_asset_id?: number | null;
+  avatar_asset_id?: number | null;
+  left_asset_id?: number | null;
+  middle_asset_id?: number | null;
+  right_asset_id?: number | null;
+  disclaimer_text?: string | null;
+  story_title?: string | null;
+  story_author?: string | null;
+  story_character?: string | null;
+}
+
+export function createEpisodeFromFile(file: File, fields: EpisodeFileFields): Promise<StorytellerEpisode> {
   const form = new FormData();
   form.set("file", file);
   form.set("title", fields.title);
   form.set("voice", fields.voice);
   form.set("narration_rate", fields.narration_rate);
   form.set("burn_captions", String(fields.burn_captions));
-  if (fields.background_asset_id != null) form.set("background_asset_id", String(fields.background_asset_id));
-  if (fields.avatar_asset_id != null) form.set("avatar_asset_id", String(fields.avatar_asset_id));
+  form.set("layout", fields.layout);
+  const optional: [string, string | number | null | undefined][] = [
+    ["background_asset_id", fields.background_asset_id],
+    ["avatar_asset_id", fields.avatar_asset_id],
+    ["left_asset_id", fields.left_asset_id],
+    ["middle_asset_id", fields.middle_asset_id],
+    ["right_asset_id", fields.right_asset_id],
+    ["disclaimer_text", fields.disclaimer_text],
+    ["story_title", fields.story_title],
+    ["story_author", fields.story_author],
+    ["story_character", fields.story_character],
+  ];
+  for (const [key, value] of optional) {
+    if (value != null && value !== "") form.set(key, String(value));
+  }
   return apiUpload("/storyteller/episodes/upload", form);
 }
 

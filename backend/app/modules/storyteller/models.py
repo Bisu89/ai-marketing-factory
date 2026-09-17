@@ -46,12 +46,26 @@ class StorytellerAsset(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow)
 
 
+STORYTELLER_LAYOUTS = ("single", "triptych")
+
+
 class StorytellerEpisode(Base):
     """One narrated long-form episode: pasted/uploaded script -> TTS ->
-    (optional) captions -> composited over a background loop + optional
-    avatar overlay -> final.mp4. Runs on this module's own queue + worker
-    thread (StorytellerService), independent of every other render engine
-    in this app (VideoComposerService, SceneCutterService, ...)."""
+    (optional) captions -> composited -> final.mp4. Runs on this module's
+    own queue + worker thread (StorytellerService), independent of every
+    other render engine in this app (VideoComposerService, SceneCutterService,
+    ...).
+
+    Two `layout`s:
+      "single"   -- one background (loop or still image) + optional avatar
+                    overlaid via colour-key, corner-positioned.
+      "triptych" -- 3 equal-width panels side by side (left/middle/right
+                    asset ids), each an independent clip, no colour-key --
+                    the format seen in real competitor "story reading"
+                    channels (host panel + an unrelated satisfying/ASMR
+                    filler panel + a thematic panel).
+    Both layouts optionally burn a top disclaimer line and a bottom
+    story-info card (title/author/main character)."""
 
     __tablename__ = "storyteller_episode"
 
@@ -64,8 +78,22 @@ class StorytellerEpisode(Base):
     narration_rate: Mapped[str] = mapped_column(String, nullable=False, default="+0%")
     burn_captions: Mapped[bool] = mapped_column(Boolean, nullable=False, default=True)
 
+    layout: Mapped[str] = mapped_column(String, nullable=False, default="single")
+
+    # layout == "single"
     background_asset_id: Mapped[int | None] = mapped_column(Integer, nullable=True)
     avatar_asset_id: Mapped[int | None] = mapped_column(Integer, nullable=True)
+
+    # layout == "triptych"
+    left_asset_id: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    middle_asset_id: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    right_asset_id: Mapped[int | None] = mapped_column(Integer, nullable=True)
+
+    # optional overlays, either layout
+    disclaimer_text: Mapped[str | None] = mapped_column(String, nullable=True)
+    story_title: Mapped[str | None] = mapped_column(String, nullable=True)
+    story_author: Mapped[str | None] = mapped_column(String, nullable=True)
+    story_character: Mapped[str | None] = mapped_column(String, nullable=True)
 
     status: Mapped[str] = mapped_column(String, nullable=False, default="pending")
     progress_stage: Mapped[str | None] = mapped_column(String, nullable=True)

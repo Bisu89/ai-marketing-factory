@@ -68,6 +68,12 @@
   margin-bottom: 0;
 }
 
+.st-story-info-input {
+  flex: 1;
+  min-width: 160px;
+  margin-bottom: 0;
+}
+
 .st-checkbox {
   display: inline-flex;
   align-items: center;

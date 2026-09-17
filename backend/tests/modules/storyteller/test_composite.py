@@ -1,5 +1,6 @@
-"""Real-ffmpeg tests for StorytellerService._composite -- background loop
-(file or generated colour), avatar colour-key overlay, burned captions.
+"""Real-ffmpeg tests for StorytellerService._composite -- "single" layout
+(background loop/still-image + avatar colour-key overlay), "triptych"
+layout (3-panel split), burned captions, disclaimer + story-info overlays.
 Mirrors the "exercise the real engine" precedent (tests/modules/video_composer).
 """
 
@@ -12,6 +13,7 @@ from PIL import Image
 
 from app.modules.storyteller.service import (
     StorytellerService,
+    _Panel,
     _probe_duration,
     _probe_video_info,
     _run_ffmpeg,
@@ -34,22 +36,19 @@ def _solid_clip(path: Path, color: str, size: str, duration: float = 2.0) -> Non
 
 
 @unittest.skipUnless(FFMPEG_AVAILABLE, "ffmpeg/ffprobe not found on PATH")
-class CompositeTests(unittest.TestCase):
+class SingleLayoutCompositeTests(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
         self.tmp_path = Path(self.tmp.name)
 
     def tearDown(self):
-        self.tmp.dispose() if hasattr(self.tmp, "dispose") else self.tmp.cleanup()
+        self.tmp.cleanup()
 
     def test_generated_background_no_avatar_no_captions(self):
         narration = self.tmp_path / "narration.mp3"
         _silent_audio(narration, 3.0)
         out = self.tmp_path / "out.mp4"
-        StorytellerService._composite(
-            duration=3.0, narration_path=narration, background_path=None, avatar_path=None,
-            avatar_key_color=None, captions_path=None, output_path=out,
-        )
+        StorytellerService._composite(duration=3.0, narration_path=narration, output_path=out)
         self.assertTrue(out.exists())
         w, h, _fps = _probe_video_info(out)
         self.assertEqual((w, h), (1920, 1080))
@@ -62,8 +61,7 @@ class CompositeTests(unittest.TestCase):
         _solid_clip(bg, "navy", "640x360", duration=1.0)  # smaller + wrong AR than output
         out = self.tmp_path / "out.mp4"
         StorytellerService._composite(
-            duration=2.0, narration_path=narration, background_path=bg, avatar_path=None,
-            avatar_key_color=None, captions_path=None, output_path=out,
+            duration=2.0, narration_path=narration, background=_Panel(bg, False), output_path=out,
         )
         w, h, _fps = _probe_video_info(out)
         self.assertEqual((w, h), (1920, 1080))
@@ -82,8 +80,8 @@ class CompositeTests(unittest.TestCase):
 
         out = self.tmp_path / "out.mp4"
         StorytellerService._composite(
-            duration=2.0, narration_path=narration, background_path=None, avatar_path=avatar,
-            avatar_key_color=key_color, captions_path=captions, output_path=out,
+            duration=2.0, narration_path=narration, avatar=_Panel(avatar, False, key_color),
+            captions_path=captions, output_path=out,
         )
         self.assertTrue(out.exists())
         w, h, _fps = _probe_video_info(out)
@@ -96,8 +94,7 @@ class CompositeTests(unittest.TestCase):
         Image.new("RGB", (800, 600), color=(20, 60, 120)).save(bg)
         out = self.tmp_path / "out.mp4"
         StorytellerService._composite(
-            duration=2.5, narration_path=narration, background_path=bg, background_is_image=True,
-            avatar_path=None, avatar_key_color=None, captions_path=None, output_path=out,
+            duration=2.5, narration_path=narration, background=_Panel(bg, True), output_path=out,
         )
         self.assertTrue(out.exists())
         w, h, _fps = _probe_video_info(out)
@@ -108,15 +105,13 @@ class CompositeTests(unittest.TestCase):
         narration = self.tmp_path / "narration.mp3"
         _silent_audio(narration, 2.0)
         avatar = self.tmp_path / "avatar.png"
-        img = Image.new("RGB", (300, 500), color=(0, 255, 0))
-        img.save(avatar)
+        Image.new("RGB", (300, 500), color=(0, 255, 0)).save(avatar)
         key_color = _sample_corner_color(avatar, self.tmp_path)
         self.assertEqual(key_color, "0x00FF00")
 
         out = self.tmp_path / "out.mp4"
         StorytellerService._composite(
-            duration=2.0, narration_path=narration, background_path=None, avatar_path=avatar,
-            avatar_is_image=True, avatar_key_color=key_color, captions_path=None, output_path=out,
+            duration=2.0, narration_path=narration, avatar=_Panel(avatar, True, key_color), output_path=out,
         )
         self.assertTrue(out.exists())
         w, h, _fps = _probe_video_info(out)
@@ -126,11 +121,90 @@ class CompositeTests(unittest.TestCase):
         narration = self.tmp_path / "narration.mp3"
         _silent_audio(narration, 5.0)
         out = self.tmp_path / "out.mp4"
-        StorytellerService._composite(
-            duration=1.5, narration_path=narration, background_path=None, avatar_path=None,
-            avatar_key_color=None, captions_path=None, output_path=out,
-        )
+        StorytellerService._composite(duration=1.5, narration_path=narration, output_path=out)
         self.assertAlmostEqual(_probe_duration(out), 1.5, delta=0.3)
+
+    def test_disclaimer_and_story_info_card_render_without_error(self):
+        narration = self.tmp_path / "narration.mp3"
+        _silent_audio(narration, 2.0)
+        out = self.tmp_path / "out.mp4"
+        StorytellerService._composite(
+            duration=2.0, narration_path=narration, output_path=out,
+            disclaimer_text="Nội dung chỉ mang tính giải trí.",
+            info_lines=["Truyện: Test", "Tác giả: Ai đó", "Nhân vật chính: A"],
+        )
+        self.assertTrue(out.exists())
+        w, h, _fps = _probe_video_info(out)
+        self.assertEqual((w, h), (1920, 1080))
+
+    def test_disclaimer_text_with_special_characters_does_not_break_ffmpeg(self):
+        # colons/quotes/percent are drawtext-filter-graph metacharacters --
+        # must be escaped, not just passed through.
+        narration = self.tmp_path / "narration.mp3"
+        _silent_audio(narration, 1.5)
+        out = self.tmp_path / "out.mp4"
+        StorytellerService._composite(
+            duration=1.5, narration_path=narration, output_path=out,
+            disclaimer_text="Cảnh báo: 100% giải trí, 'không' áp dụng!",
+        )
+        self.assertTrue(out.exists())
+
+
+@unittest.skipUnless(FFMPEG_AVAILABLE, "ffmpeg/ffprobe not found on PATH")
+class TriptychLayoutCompositeTests(unittest.TestCase):
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.tmp_path = Path(self.tmp.name)
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def test_three_generated_panels_hstack_to_full_output_size(self):
+        narration = self.tmp_path / "narration.mp3"
+        _silent_audio(narration, 2.0)
+        out = self.tmp_path / "out.mp4"
+        StorytellerService._composite(
+            duration=2.0, narration_path=narration, layout="triptych", output_path=out,
+        )
+        self.assertTrue(out.exists())
+        w, h, _fps = _probe_video_info(out)
+        self.assertEqual((w, h), (1920, 1080))
+
+    def test_three_real_clips_of_different_sizes_hstack_cleanly(self):
+        narration = self.tmp_path / "narration.mp3"
+        _silent_audio(narration, 1.5)
+        left = self.tmp_path / "left.mp4"
+        middle = self.tmp_path / "middle.png"
+        right = self.tmp_path / "right.mp4"
+        _solid_clip(left, "red", "400x700", duration=1.0)
+        Image.new("RGB", (1000, 500), color=(10, 200, 10)).save(middle)
+        _solid_clip(right, "blue", "1920x1080", duration=1.0)
+
+        out = self.tmp_path / "out.mp4"
+        StorytellerService._composite(
+            duration=1.5, narration_path=narration, layout="triptych",
+            left=_Panel(left, False), middle=_Panel(middle, True), right=_Panel(right, False),
+            output_path=out,
+        )
+        self.assertTrue(out.exists())
+        w, h, _fps = _probe_video_info(out)
+        self.assertEqual((w, h), (1920, 1080))
+        self.assertAlmostEqual(_probe_duration(out), 1.5, delta=0.3)
+
+    def test_triptych_with_captions_and_overlays_together(self):
+        narration = self.tmp_path / "narration.mp3"
+        _silent_audio(narration, 1.5)
+        captions = self.tmp_path / "captions.ass"
+        _write_captions([{"text": "xin", "start": 0.0, "end": 0.3}], captions)
+
+        out = self.tmp_path / "out.mp4"
+        StorytellerService._composite(
+            duration=1.5, narration_path=narration, layout="triptych", captions_path=captions,
+            disclaimer_text="Giải trí, không phản ánh thực tế.",
+            info_lines=["Truyện: X", "Tác giả: Y"],
+            output_path=out,
+        )
+        self.assertTrue(out.exists())
 
 
 if __name__ == "__main__":
