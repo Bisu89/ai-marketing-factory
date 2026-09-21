@@ -9,6 +9,7 @@ from app.modules.storyteller.service import (
     CHUNK_TARGET_CHARS,
     _group_words_into_lines,
     chunk_script,
+    is_audio_file,
     is_image_file,
     split_into_beats,
 )
@@ -110,6 +111,16 @@ class IsImageFileTests(unittest.TestCase):
     def test_video_extensions_are_not_images(self):
         for ext in (".mp4", ".mov", ".webm", ".mkv"):
             self.assertFalse(is_image_file(Path(f"clip{ext}")), ext)
+
+
+class IsAudioFileTests(unittest.TestCase):
+    def test_recognizes_common_audio_extensions(self):
+        for ext in (".mp3", ".WAV", ".m4a", ".aac", ".flac", ".ogg"):
+            self.assertTrue(is_audio_file(Path(f"track{ext}")), ext)
+
+    def test_video_and_image_extensions_are_not_audio(self):
+        for ext in (".mp4", ".mov", ".png", ".jpg"):
+            self.assertFalse(is_audio_file(Path(f"clip{ext}")), ext)
 
 
 if __name__ == "__main__":

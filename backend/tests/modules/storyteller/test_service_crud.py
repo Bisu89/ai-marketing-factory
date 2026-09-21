@@ -2,6 +2,8 @@
 patched). No edge_tts, no ffmpeg -- narration/compositing are exercised
 separately in test_composite.py / manually."""
 
+import shutil
+import subprocess
 import tempfile
 import unittest
 from pathlib import Path
@@ -107,6 +109,23 @@ class StorytellerServiceTests(unittest.TestCase):
         self.assertEqual(len(service.list_assets("avatar")), 1)
         self.assertEqual(len(service.list_assets()), 2)
 
+    @unittest.skipUnless(shutil.which("ffmpeg") and shutil.which("ffprobe"), "ffmpeg/ffprobe not found on PATH")
+    def test_save_asset_music_kind_is_probed_as_audio(self):
+        tmp_upload = Path(self.tmp.name) / "upload.mp3"
+        subprocess.run(
+            ["ffmpeg", "-y", "-nostdin", "-hide_banner", "-loglevel", "error",
+             "-f", "lavfi", "-t", "2", "-i", "sine=frequency=220:duration=2",
+             "-c:a", "libmp3lame", str(tmp_upload)],
+            check=True,
+        )
+        asset = service.save_asset(
+            kind="music", name="drone", tmp_upload_path=tmp_upload, library_dir=Path(self.tmp.name),
+        )
+        self.assertEqual(asset.media_type, "audio")
+        self.assertIsNone(asset.width)
+        self.assertIsNone(asset.key_color)
+        self.assertAlmostEqual(asset.duration_sec, 2.0, delta=0.2)
+
     def test_delete_asset_removes_row(self):
         db = self.SessionLocal()
         asset = StorytellerAsset(kind="background", name="bg1", path=str(Path(self.tmp.name) / "bg1.mp4"))
@@ -124,6 +143,11 @@ class StorytellerServiceTests(unittest.TestCase):
         ep = self._make(layout="slideshow", slide_asset_ids=[3, 1, 2])
         fetched = service.get_episode(ep.id)
         self.assertEqual(fetched.slide_asset_ids, [3, 1, 2])
+
+    def test_music_asset_id_round_trips(self):
+        ep = self._make(music_asset_id=7)
+        fetched = service.get_episode(ep.id)
+        self.assertEqual(fetched.music_asset_id, 7)
 
 
 class EpisodeCreateInValidationTests(unittest.TestCase):

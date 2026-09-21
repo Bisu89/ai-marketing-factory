@@ -46,6 +46,7 @@ export function StorytellerPage() {
   const [episodes, setEpisodes] = useState<StorytellerEpisode[]>([]);
   const [backgrounds, setBackgrounds] = useState<StorytellerAsset[]>([]);
   const [avatars, setAvatars] = useState<StorytellerAsset[]>([]);
+  const [musics, setMusics] = useState<StorytellerAsset[]>([]);
   const [error, setError] = useState<string | null>(null);
 
   const [title, setTitle] = useState("");
@@ -63,6 +64,7 @@ export function StorytellerPage() {
   const [middleAssetId, setMiddleAssetId] = useState<number | "">("");
   const [rightAssetId, setRightAssetId] = useState<number | "">("");
   const [slideAssetIds, setSlideAssetIds] = useState<number[]>([]);
+  const [musicAssetId, setMusicAssetId] = useState<number | "">("");
   const [disclaimerText, setDisclaimerText] = useState("");
   const [storyTitle, setStoryTitle] = useState("");
   const [storyAuthor, setStoryAuthor] = useState("");
@@ -79,6 +81,7 @@ export function StorytellerPage() {
     refresh();
     listAssets("background").then(setBackgrounds).catch(() => {});
     listAssets("avatar").then(setAvatars).catch(() => {});
+    listAssets("music").then(setMusics).catch(() => {});
   }, []);
 
   useEffect(() => {
@@ -136,6 +139,7 @@ export function StorytellerPage() {
         middle_asset_id: middleAssetId === "" ? null : middleAssetId,
         right_asset_id: rightAssetId === "" ? null : rightAssetId,
         slide_asset_ids: layout === "slideshow" ? slideAssetIds : null,
+        music_asset_id: musicAssetId === "" ? null : musicAssetId,
         disclaimer_text: disclaimerText.trim() || null,
         story_title: storyTitle.trim() || null,
         story_author: storyAuthor.trim() || null,
@@ -150,6 +154,7 @@ export function StorytellerPage() {
       setScriptText("");
       setUploadFile(null);
       setSlideAssetIds([]);
+      setMusicAssetId("");
       refresh();
     } catch (e) {
       setError(e instanceof Error ? e.message : "Không tạo được tập.");
@@ -177,21 +182,23 @@ export function StorytellerPage() {
     }
   }
 
-  async function handleUploadAsset(kind: "background" | "avatar", file: File) {
+  async function handleUploadAsset(kind: "background" | "avatar" | "music", file: File) {
     try {
       const asset = await uploadAsset(kind, file.name.replace(/\.[^.]+$/, ""), file);
       if (kind === "background") setBackgrounds((prev) => [asset, ...prev]);
-      else setAvatars((prev) => [asset, ...prev]);
+      else if (kind === "avatar") setAvatars((prev) => [asset, ...prev]);
+      else setMusics((prev) => [asset, ...prev]);
     } catch (e) {
       setError(e instanceof Error ? e.message : "Không tải lên được clip.");
     }
   }
 
-  async function handleDeleteAsset(kind: "background" | "avatar", id: number) {
+  async function handleDeleteAsset(kind: "background" | "avatar" | "music", id: number) {
     try {
       await deleteAsset(id);
       if (kind === "background") setBackgrounds((prev) => prev.filter((a) => a.id !== id));
-      else setAvatars((prev) => prev.filter((a) => a.id !== id));
+      else if (kind === "avatar") setAvatars((prev) => prev.filter((a) => a.id !== id));
+      else setMusics((prev) => prev.filter((a) => a.id !== id));
     } catch (e) {
       setError(e instanceof Error ? e.message : "Không xoá được clip.");
     }
@@ -392,6 +399,21 @@ export function StorytellerPage() {
           </div>
         )}
 
+        <div className="st-options-row">
+          <select
+            className="st-select"
+            value={musicAssetId}
+            onChange={(e) => setMusicAssetId(e.target.value ? Number(e.target.value) : "")}
+          >
+            <option value="">Nhạc nền: không có</option>
+            {musics.map((a) => (
+              <option key={a.id} value={a.id}>
+                Nhạc nền: {a.name}
+              </option>
+            ))}
+          </select>
+        </div>
+
         <input
           className="st-input"
           type="text"
@@ -435,10 +457,11 @@ export function StorytellerPage() {
       </div>
 
       <div className="st-card">
-        <h3 className="st-card-title">Clip nền / avatar</h3>
+        <h3 className="st-card-title">Clip nền / avatar / nhạc nền</h3>
         <div className="st-asset-cols">
           <AssetColumn kind="background" label="Nền lặp" assets={backgrounds} onUpload={handleUploadAsset} onDelete={handleDeleteAsset} />
           <AssetColumn kind="avatar" label="Avatar (tự tách nền màu)" assets={avatars} onUpload={handleUploadAsset} onDelete={handleDeleteAsset} />
+          <AssetColumn kind="music" label="Nhạc nền (tự động ducking dưới giọng đọc)" assets={musics} onUpload={handleUploadAsset} onDelete={handleDeleteAsset} accept="audio/*" />
         </div>
       </div>
 
@@ -492,12 +515,14 @@ function AssetColumn({
   assets,
   onUpload,
   onDelete,
+  accept = "video/*,image/*",
 }: {
-  kind: "background" | "avatar";
+  kind: "background" | "avatar" | "music";
   label: string;
   assets: StorytellerAsset[];
-  onUpload: (kind: "background" | "avatar", file: File) => void;
-  onDelete: (kind: "background" | "avatar", id: number) => void;
+  onUpload: (kind: "background" | "avatar" | "music", file: File) => void;
+  onDelete: (kind: "background" | "avatar" | "music", id: number) => void;
+  accept?: string;
 }) {
   return (
     <div className="st-asset-col">
@@ -507,7 +532,7 @@ function AssetColumn({
           <Upload size={13} /> Tải lên
           <input
             type="file"
-            accept="video/*,image/*"
+            accept={accept}
             hidden
             onChange={(e) => {
               const file = e.target.files?.[0];

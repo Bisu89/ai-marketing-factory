@@ -32,6 +32,7 @@ export interface EpisodeFileFields {
   middle_asset_id?: number | null;
   right_asset_id?: number | null;
   slide_asset_ids?: number[] | null;
+  music_asset_id?: number | null;
   disclaimer_text?: string | null;
   story_title?: string | null;
   story_author?: string | null;
@@ -55,6 +56,7 @@ export function createEpisodeFromFile(file: File, fields: EpisodeFileFields): Pr
     ["left_asset_id", fields.left_asset_id],
     ["middle_asset_id", fields.middle_asset_id],
     ["right_asset_id", fields.right_asset_id],
+    ["music_asset_id", fields.music_asset_id],
     ["disclaimer_text", fields.disclaimer_text],
     ["story_title", fields.story_title],
     ["story_author", fields.story_author],

@@ -62,6 +62,7 @@ def create_episode_from_file(
     middle_asset_id: int | None = Form(None),
     right_asset_id: int | None = Form(None),
     slide_asset_ids: str | None = Form(None),
+    music_asset_id: int | None = Form(None),
     disclaimer_text: str | None = Form(None),
     story_title: str | None = Form(None),
     story_author: str | None = Form(None),
@@ -81,7 +82,7 @@ def create_episode_from_file(
         burn_captions=burn_captions, layout=layout,
         background_asset_id=background_asset_id, avatar_asset_id=avatar_asset_id,
         left_asset_id=left_asset_id, middle_asset_id=middle_asset_id, right_asset_id=right_asset_id,
-        slide_asset_ids=slide_ids,
+        slide_asset_ids=slide_ids, music_asset_id=music_asset_id,
         disclaimer_text=disclaimer_text or None, story_title=story_title or None,
         story_author=story_author or None, story_character=story_character or None,
     )

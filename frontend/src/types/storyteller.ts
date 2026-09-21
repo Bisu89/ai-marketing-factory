@@ -1,5 +1,5 @@
 export type StorytellerStatus = "pending" | "narrating" | "compositing" | "completed" | "failed";
-export type StorytellerAssetKind = "background" | "avatar";
+export type StorytellerAssetKind = "background" | "avatar" | "music";
 export type StorytellerLayout = "single" | "triptych" | "slideshow";
 
 export interface StorytellerEpisode {
@@ -16,6 +16,7 @@ export interface StorytellerEpisode {
   middle_asset_id: number | null;
   right_asset_id: number | null;
   slide_asset_ids: number[] | null;
+  music_asset_id: number | null;
   disclaimer_text: string | null;
   story_title: string | null;
   story_author: string | null;
@@ -29,7 +30,7 @@ export interface StorytellerEpisode {
   updated_at: string;
 }
 
-export type StorytellerMediaType = "image" | "video";
+export type StorytellerMediaType = "image" | "video" | "audio";
 
 export interface StorytellerAsset {
   id: number;
@@ -57,6 +58,7 @@ export interface CreateEpisodeInput {
   middle_asset_id?: number | null;
   right_asset_id?: number | null;
   slide_asset_ids?: number[] | null;
+  music_asset_id?: number | null;
   disclaimer_text?: string | null;
   story_title?: string | null;
   story_author?: string | null;

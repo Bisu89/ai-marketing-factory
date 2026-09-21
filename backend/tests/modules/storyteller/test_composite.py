@@ -16,6 +16,7 @@ from PIL import Image
 from app.modules.storyteller.service import (
     StorytellerService,
     _Panel,
+    _mix_narration_and_music,
     _probe_duration,
     _probe_video_info,
     _run_ffmpeg,
@@ -289,6 +290,59 @@ class SlideshowLayoutCompositeTests(unittest.TestCase):
             output_path=out, rng=random.Random(1),
         )
         self.assertTrue(out.exists())
+
+
+@unittest.skipUnless(FFMPEG_AVAILABLE, "ffmpeg/ffprobe not found on PATH")
+class MixNarrationAndMusicTests(unittest.TestCase):
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.tmp_path = Path(self.tmp.name)
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def test_no_music_passes_narration_through_at_requested_duration(self):
+        narration = self.tmp_path / "narration.mp3"
+        _silent_audio(narration, 4.0)
+        out = self.tmp_path / "mixed.mp3"
+        _mix_narration_and_music(narration, None, 4.0, out)
+        self.assertTrue(out.exists())
+        self.assertAlmostEqual(_probe_duration(out), 4.0, delta=0.2)
+
+    def test_music_shorter_than_narration_loops_to_cover_full_duration(self):
+        narration = self.tmp_path / "narration.mp3"
+        _silent_audio(narration, 6.0)
+        music = self.tmp_path / "music.mp3"
+        _run_ffmpeg(["-f", "lavfi", "-t", "2", "-i", "sine=frequency=110:duration=2", "-c:a", "libmp3lame", str(music)])
+        out = self.tmp_path / "mixed.mp3"
+        _mix_narration_and_music(narration, music, 6.0, out)
+        self.assertTrue(out.exists())
+        self.assertAlmostEqual(_probe_duration(out), 6.0, delta=0.2)
+
+    def test_music_longer_than_narration_is_trimmed_to_video_duration(self):
+        narration = self.tmp_path / "narration.mp3"
+        _silent_audio(narration, 2.0)
+        music = self.tmp_path / "music.mp3"
+        _run_ffmpeg(["-f", "lavfi", "-t", "10", "-i", "sine=frequency=220:duration=10", "-c:a", "libmp3lame", str(music)])
+        out = self.tmp_path / "mixed.mp3"
+        _mix_narration_and_music(narration, music, 2.0, out)
+        self.assertAlmostEqual(_probe_duration(out), 2.0, delta=0.2)
+
+    def test_mixed_audio_feeds_into_composite_like_plain_narration(self):
+        # _composite doesn't know or care whether its narration_path is raw
+        # narration or a pre-mixed narration+music track -- _process just
+        # hands it whichever file is appropriate.
+        narration = self.tmp_path / "narration.mp3"
+        _silent_audio(narration, 3.0)
+        music = self.tmp_path / "music.mp3"
+        _run_ffmpeg(["-f", "lavfi", "-t", "3", "-i", "sine=frequency=90:duration=3", "-c:a", "libmp3lame", str(music)])
+        mixed = self.tmp_path / "mixed.mp3"
+        _mix_narration_and_music(narration, music, 3.0, mixed)
+
+        out = self.tmp_path / "out.mp4"
+        StorytellerService._composite(duration=3.0, narration_path=mixed, output_path=out)
+        self.assertTrue(out.exists())
+        self.assertAlmostEqual(_probe_duration(out), 3.0, delta=0.3)
 
 
 if __name__ == "__main__":

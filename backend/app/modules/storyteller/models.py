@@ -18,7 +18,7 @@ from app.db.base import Base
 STORYTELLER_STATUSES = ("pending", "narrating", "compositing", "completed", "failed")
 PENDING_STATUSES = ("pending", "narrating", "compositing")
 
-STORYTELLER_ASSET_KINDS = ("background", "avatar")
+STORYTELLER_ASSET_KINDS = ("background", "avatar", "music")
 
 
 def _utcnow() -> datetime:
@@ -26,17 +26,17 @@ def _utcnow() -> datetime:
 
 
 class StorytellerAsset(Base):
-    """A reusable background-loop or avatar-overlay clip, uploaded once and
-    picked by id on many episodes. `key_color` is the hex colour ffmpeg's
-    colorkey filter should remove for an `avatar` asset (auto-sampled from
-    the clip's corner pixel at upload time; nullable/unused for `background`
-    assets, which are never keyed)."""
+    """A reusable background-loop, avatar-overlay, or background-music clip,
+    uploaded once and picked by id on many episodes. `key_color` is the hex
+    colour ffmpeg's colorkey filter should remove for an `avatar` asset
+    (auto-sampled from the clip's corner pixel at upload time; nullable/
+    unused for `background`/`music` assets)."""
 
     __tablename__ = "storyteller_asset"
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    kind: Mapped[str] = mapped_column(String, nullable=False)  # background | avatar
-    media_type: Mapped[str] = mapped_column(String, nullable=False, default="video")  # image | video
+    kind: Mapped[str] = mapped_column(String, nullable=False)  # background | avatar | music
+    media_type: Mapped[str] = mapped_column(String, nullable=False, default="video")  # image | video | audio
     name: Mapped[str] = mapped_column(String, nullable=False)
     path: Mapped[str] = mapped_column(String, nullable=False)
     duration_sec: Mapped[float | None] = mapped_column(Float, nullable=True)
@@ -99,6 +99,11 @@ class StorytellerEpisode(Base):
     # layout == "slideshow" -- ordered asset ids, a JSON column rather than a
     # child table (same precedent as video_composer's beat_narration_specs).
     slide_asset_ids: Mapped[list | None] = mapped_column(JSON, nullable=True)
+
+    # optional background music, any layout -- ducked under narration via
+    # sidechaincompress (same technique as video_composer/audio_mix.py,
+    # duplicated per module isolation).
+    music_asset_id: Mapped[int | None] = mapped_column(Integer, nullable=True)
 
     # optional overlays, either layout
     disclaimer_text: Mapped[str | None] = mapped_column(String, nullable=True)

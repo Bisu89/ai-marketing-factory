@@ -20,6 +20,7 @@ class EpisodeCreateIn(BaseModel):
     middle_asset_id: int | None = None
     right_asset_id: int | None = None
     slide_asset_ids: list[int] | None = None
+    music_asset_id: int | None = None
     disclaimer_text: str | None = Field(default=None, max_length=300)
     story_title: str | None = Field(default=None, max_length=200)
     story_author: str | None = Field(default=None, max_length=200)
@@ -60,6 +61,7 @@ class EpisodeOut(BaseModel):
     middle_asset_id: int | None
     right_asset_id: int | None
     slide_asset_ids: list[int] | None
+    music_asset_id: int | None
     disclaimer_text: str | None
     story_title: str | None
     story_author: str | None

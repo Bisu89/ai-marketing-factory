@@ -56,6 +56,10 @@ class _Panel(NamedTuple):
 OUTPUT_WIDTH, OUTPUT_HEIGHT = 1920, 1080
 
 IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".webp", ".bmp"}
+AUDIO_EXTENSIONS = {".mp3", ".wav", ".m4a", ".aac", ".flac", ".ogg"}
+
+MUSIC_VOLUME = 0.18
+MUSIC_DUCKING_RATIO = 8.0
 
 CHUNK_TARGET_CHARS = 1500
 _NARRATION_MAX_ATTEMPTS = 4
@@ -244,6 +248,10 @@ def is_image_file(path: Path) -> bool:
     return path.suffix.lower() in IMAGE_EXTENSIONS
 
 
+def is_audio_file(path: Path) -> bool:
+    return path.suffix.lower() in AUDIO_EXTENSIONS
+
+
 def _probe_image_info(path: Path) -> tuple[int, int]:
     with Image.open(path) as img:
         return img.width, img.height
@@ -303,6 +311,43 @@ def _narrate_chunk(text: str, voice: str, rate: str, output_path: Path) -> list[
         raise RuntimeError(f"edge_tts failed after {_NARRATION_MAX_ATTEMPTS} attempts: {last_exc}")
 
     return asyncio.run(_generate_with_retry())
+
+
+def _mix_narration_and_music(
+    narration_path: Path,
+    music_path: Path | None,
+    video_duration: float,
+    output_path: Path,
+    music_volume: float = MUSIC_VOLUME,
+    music_ducking_ratio: float = MUSIC_DUCKING_RATIO,
+) -> None:
+    """Narration + optional looped, ducked background music -> one audio
+    track. Same sidechaincompress ducking technique as
+    video_composer/audio_mix.py's mix_audio (music level drops whenever
+    narration is speaking), duplicated rather than imported per this
+    module's isolation convention -- simplified to narration+music only,
+    no SFX cues (storyteller has no SFX concept)."""
+    inputs = ["-i", str(narration_path)]
+    filters = [f"[0:a]apad=whole_dur={video_duration}[narration]"]
+    if music_path is not None:
+        inputs += ["-stream_loop", "-1", "-i", str(music_path)]
+        filters.append(f"[1:a]volume={music_volume}[music_pre]")
+        filters.append(
+            f"[music_pre][narration]sidechaincompress=threshold=0.05:"
+            f"ratio={music_ducking_ratio}:attack=5:release=300[ducked]"
+        )
+        filters.append(
+            f"[narration][ducked]amix=inputs=2:duration=first:dropout_transition=0,"
+            f"apad=whole_dur={video_duration}[a]"
+        )
+        last_label = "a"
+    else:
+        last_label = "narration"
+
+    _run_ffmpeg(
+        inputs
+        + ["-filter_complex", ";".join(filters), "-map", f"[{last_label}]", "-t", str(video_duration), str(output_path)]
+    )
 
 
 # -- captions: one plain static-line style (word-grouped, bottom-third) --
@@ -455,6 +500,8 @@ class StorytellerService:
             middle = load(episode.middle_asset_id)
             right = load(episode.right_asset_id)
             slides = [p for aid in (episode.slide_asset_ids or []) if (p := load(aid)) is not None]
+            music_asset = db.get(StorytellerAsset, episode.music_asset_id) if episode.music_asset_id else None
+            music_path = Path(music_asset.path) if music_asset is not None else None
 
             title, script_text, voice, rate = episode.title, episode.script_text, episode.voice, episode.narration_rate
             burn_captions = episode.burn_captions
@@ -519,6 +566,14 @@ class StorytellerService:
         duration = _probe_duration(narration_path)
         self._set(episode_id, narration_path=str(narration_path), duration_sec=duration)
 
+        # -- background music (optional) -------------------------------
+        audio_path = narration_path
+        if music_path is not None:
+            self._set(episode_id, progress_stage="Đang trộn nhạc nền...")
+            mixed_path = work_dir / "mixed_audio.mp3"
+            _mix_narration_and_music(narration_path, music_path, duration, mixed_path)
+            audio_path = mixed_path
+
         # -- captions -------------------------------------------------
         captions_path: Path | None = None
         if burn_captions and all_words:
@@ -532,7 +587,7 @@ class StorytellerService:
         output_path = work_dir / "final.mp4"
         self._composite(
             duration=duration,
-            narration_path=narration_path,
+            narration_path=audio_path,
             layout=layout,
             background=background,
             avatar=avatar,
@@ -765,13 +820,20 @@ def save_asset(*, kind: str, name: str, tmp_upload_path: Path, library_dir: Path
     dest_path = dest_dir / f"{name}{tmp_upload_path.suffix}"
     shutil.move(str(tmp_upload_path), str(dest_path))
 
-    media_type = "image" if is_image_file(dest_path) else "video"
+    if kind == "music" or is_audio_file(dest_path):
+        media_type = "audio"
+    elif is_image_file(dest_path):
+        media_type = "image"
+    else:
+        media_type = "video"
     width = height = None
     duration = None
     key_color = None
     try:
         if media_type == "image":
             width, height = _probe_image_info(dest_path)
+        elif media_type == "audio":
+            duration = _probe_duration(dest_path)
         else:
             width, height, _fps = _probe_video_info(dest_path)
             duration = _probe_duration(dest_path)
