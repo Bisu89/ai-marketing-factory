@@ -177,6 +177,7 @@ SQLite.
 144. [Storyteller: image backgrounds/avatars + voice/speed picker](features/144-storyteller-image-backgrounds-voice-picker.md) — still-image background/avatar support (`-loop 1` ffmpeg technique, `StorytellerAsset.media_type`) + a voice/narration-speed picker on the create-episode form (reuses Video Factory's `VOICE_OPTIONS`, not a duplicate list)
 145. [Storyteller: layout templates (triptych) + disclaimer/story-info overlays](features/145-storyteller-layout-templates.md) — a second layout mode (3-panel split-screen, `hstack`) matching a real competitor format, plus optional disclaimer text and story-info-card drawtext overlays on either layout
 146. [Storyteller: slideshow layout (many images, Ken Burns zoom)](features/146-storyteller-slideshow-layout.md) — a third layout for long-form (10-15 min) narration: upload many images, script auto-splits into one beat per image so each image's on-screen time matches its narration, each image gets a random zoom in/out so nothing is static
+147. [Storyteller: "test with library images" button](features/147-storyteller-slideshow-test-with-library-images.md) — one click fills the slideshow picker with every image already in the asset library, to test the pipeline before spending time generating story-matching images
 
 ## Keeping this up to date
 

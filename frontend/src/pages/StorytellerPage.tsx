@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { ArrowDown, ArrowUp, BookOpen, Loader2, RotateCcw, Trash2, Upload, Download } from "lucide-react";
+import { ArrowDown, ArrowUp, BookOpen, Loader2, RotateCcw, Trash2, Upload, Download, Wand2 } from "lucide-react";
 import { PageHeader } from "../components/PageHeader";
 import { EmptyState } from "../components/EmptyState";
 import {
@@ -329,22 +329,33 @@ export function StorytellerPage() {
           </div>
         ) : (
           <div className="st-slideshow-picker">
-            <select
-              className="st-select"
-              value=""
-              onChange={(e) => {
-                if (e.target.value) addSlide(Number(e.target.value));
-              }}
-            >
-              <option value="">+ Thêm ảnh vào slideshow...</option>
-              {imagePool
-                .filter((a) => !slideAssetIds.includes(a.id))
-                .map((a) => (
-                  <option key={a.id} value={a.id}>
-                    {a.name}
-                  </option>
-                ))}
-            </select>
+            <div className="st-file-row">
+              <select
+                className="st-select"
+                value=""
+                onChange={(e) => {
+                  if (e.target.value) addSlide(Number(e.target.value));
+                }}
+              >
+                <option value="">+ Thêm ảnh vào slideshow...</option>
+                {imagePool
+                  .filter((a) => !slideAssetIds.includes(a.id))
+                  .map((a) => (
+                    <option key={a.id} value={a.id}>
+                      {a.name}
+                    </option>
+                  ))}
+              </select>
+              <button
+                type="button"
+                className="btn btn-secondary"
+                onClick={() => setSlideAssetIds(imagePool.map((a) => a.id))}
+                disabled={imagePool.length === 0}
+                title="Dùng thử toàn bộ ảnh có sẵn trong thư viện -- không cần tự gen ảnh mới"
+              >
+                <Wand2 size={14} /> Test bằng ảnh có sẵn ({imagePool.length})
+              </button>
+            </div>
             {slideAssetIds.length === 0 ? (
               <p className="st-asset-empty">Chưa chọn ảnh nào -- cần ít nhất 2 ảnh, theo đúng thứ tự xuất hiện.</p>
             ) : (
