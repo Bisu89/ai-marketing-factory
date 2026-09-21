@@ -80,7 +80,8 @@ class BuiltinTemplateTests(unittest.TestCase):
             ids,
             {
                 "emotional_story", "couple_story", "horror", "horror_shorts",
-                "relationship_psychology_vi", "news_vi", "history_documentary", "military_history", "custom",
+                "relationship_psychology_vi", "news_vi", "history_documentary", "military_history",
+                "biblical_figures", "custom",
             },
         )
         self.assertTrue(all(t.builtin for t in BUILTIN_TEMPLATES))
@@ -138,6 +139,19 @@ class BuiltinTemplateTests(unittest.TestCase):
         self.assertGreaterEqual(config.content.target_duration, 600.0)
         self.assertIn("battle", config.content.style.lower())
         self.assertIn("battle", config.visual_generation.image_style_prompt.lower())
+        self.assertEqual(config.visual_generation.mode, "library")
+        self.assertTrue(config.package.ai_metadata_enabled)
+
+    def test_biblical_figures_is_landscape_longform_neutral_biography_focused(self):
+        config = next(t.config for t in BUILTIN_TEMPLATES if t.id == "biblical_figures")
+        self.assertEqual(config.render.profile, "SOCIAL_LANDSCAPE")
+        self.assertEqual(config.content.language, "en")
+        self.assertGreaterEqual(config.content.target_duration, 600.0)
+        # Neutral/historical framing, not doctrinal -- distinguishes
+        # documented history from tradition/legend and takes no
+        # denominational stance (the whole point of this sub-niche).
+        self.assertIn("tradition", config.content.style.lower())
+        self.assertIn("denominational", config.content.style.lower())
         self.assertEqual(config.visual_generation.mode, "library")
         self.assertTrue(config.package.ai_metadata_enabled)
 
