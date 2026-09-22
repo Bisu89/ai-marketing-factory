@@ -1570,6 +1570,78 @@ BIBLICAL_FIGURES_TEMPLATE = Template(
     ),
 )
 
+# Long-form English fiction serial: a school-set zombie-apocalypse story
+# where the protagonist secretly gains a hidden game-like "System" (status
+# window, levels, skills, quests) the moment the outbreak begins -- the
+# "LitRPG/system apocalypse" trend currently big on webtoon-recap channels
+# (All of Us Are Dead-style setting + Solo Leveling-style system). Unlike
+# every other built-in so far this is fiction, not documentary/history --
+# ONE chapter per video, continuing across episodes, real narrative stakes
+# punctuated by short system-notification beats. Meant to run in
+# visual_generation.mode="library" against a small reused manhwa-style
+# asset pool (see docs/features/149-...): a handful of character/scene
+# images plus 2-3 reusable "system UI" screens for every level-up/skill/
+# quest beat, not a unique AI image per beat -- the whole point of the
+# Huong 1 cost/consistency test this niche grew out of.
+ZOMBIE_SYSTEM_TEMPLATE = Template(
+    id="zombie_system",
+    name="Zombie System (Apocalypse LitRPG)",
+    description="Long-form (~12 min) English fiction serial -- a school-set zombie apocalypse where "
+    "the protagonist secretly gains a hidden game-like System (status window, levels, skills, "
+    "quests) the moment the outbreak begins. ONE chapter per video, continuing story across "
+    "episodes. 16:9, Korean-webtoon/manhwa illustration style (not photorealistic), tense urgent "
+    "narration, short system-notification beats styled like game UI. Meant to run with Visuals = "
+    "\"library\" against a small reused manhwa asset pool (characters + a few system-UI screens), "
+    "not a unique AI image per beat.",
+    version=1,
+    builtin=True,
+    config=ProjectConfig(
+        render=RenderProjectConfig(profile="SOCIAL_LANDSCAPE"),
+        motion=MotionProjectConfig(
+            default_preset=BeatMotionPreset.SLOW_PUSH_IN, intensity="MEDIUM", auto_rotate=True
+        ),
+        captions=CaptionsProjectConfig(
+            enabled=True, preset="cinematic", max_words=12, max_chars=70, max_lines=2, max_duration_sec=5.0
+        ),
+        audio=AudioProjectConfig(narration_enabled=True, music_enabled=True, music_volume=0.15, ducking=True),
+        content=ContentProjectConfig(
+            language="en",
+            tone="tense, urgent and propulsive, like a LitRPG/apocalypse web-novel narrator -- real "
+            "danger and emotional stakes, punctuated by dry, matter-of-fact system-notification lines",
+            style="ONE chapter of a continuing school-set zombie-apocalypse story per video: the "
+            "protagonist secretly awakens a hidden game-like System (status window, levels, skills, "
+            "quests) as the outbreak begins, and must survive, protect classmates, and level up "
+            "without anyone discovering the System -- told as serialized fiction with a cliffhanger "
+            "or clear hook into the next chapter, short system-notification beats (level up, skill "
+            "acquired, quest update) woven into the narration like on-screen game UI",
+            target_duration=720.0,  # ~12 minutes
+            audience="LitRPG/system-apocalypse web novel and webtoon-recap viewers",
+            cta_enabled=True,
+        ),
+        voice=VoiceProjectConfig(
+            provider="edge_tts", voice_id="en-US-GuyNeural", language="en",
+            speed=1.02, sentence_pause_sec=0.4,
+        ),
+        visual_generation=VisualGenerationProjectConfig(
+            image_style_prompt=(
+                "Korean webtoon manhwa illustration style, clean confident linework, soft cel-shaded "
+                "coloring, semi-realistic proportions, expressive detailed eyes, cinematic soft "
+                "lighting and color grading, digital painting, high production webtoon art, no text, "
+                "no watermark, no speech bubbles, widescreen composition, modern school and urban "
+                "apocalypse setting, tasteful, no gore, no graphic wounds, no corpses shown in detail"
+            ),
+        ),
+        outro=OutroProjectConfig(
+            enabled=True,
+            text="Next chapter drops soon -- subscribe so you don't miss it.",
+            duration_sec=6.0,
+        ),
+        package=PackageProjectConfig(ai_metadata_enabled=True),
+        template_id="zombie_system",
+        template_version=1,
+    ),
+)
+
 CUSTOM_TEMPLATE = Template(
     id="custom",
     name="Custom",
@@ -1581,10 +1653,10 @@ CUSTOM_TEMPLATE = Template(
 
 # Note: BUILTIN_TEMPLATES' own `id`s ("emotional_story"/"couple_story"/
 # "horror"/"horror_shorts"/"relationship_psychology_vi"/"news_vi"/
-# "history_documentary"/"military_history"/"biblical_figures"/"custom") are
-# reserved -- template_service.save_custom_templates below rejects a custom
-# template trying to reuse one, so a built-in can never be shadowed or
-# overwritten by user data.
+# "history_documentary"/"military_history"/"biblical_figures"/
+# "zombie_system"/"custom") are reserved -- template_service.save_custom_templates
+# below rejects a custom template trying to reuse one, so a built-in can
+# never be shadowed or overwritten by user data.
 BUILTIN_TEMPLATES: list[Template] = [
     EMOTIONAL_STORY_TEMPLATE,
     COUPLE_STORY_TEMPLATE,
@@ -1595,6 +1667,7 @@ BUILTIN_TEMPLATES: list[Template] = [
     HISTORY_DOCUMENTARY_TEMPLATE,
     MILITARY_HISTORY_TEMPLATE,
     BIBLICAL_FIGURES_TEMPLATE,
+    ZOMBIE_SYSTEM_TEMPLATE,
     CUSTOM_TEMPLATE,
 ]
 BUILTIN_TEMPLATE_IDS = frozenset(t.id for t in BUILTIN_TEMPLATES)

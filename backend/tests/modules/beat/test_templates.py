@@ -81,7 +81,7 @@ class BuiltinTemplateTests(unittest.TestCase):
             {
                 "emotional_story", "couple_story", "horror", "horror_shorts",
                 "relationship_psychology_vi", "news_vi", "history_documentary", "military_history",
-                "biblical_figures", "custom",
+                "biblical_figures", "zombie_system", "custom",
             },
         )
         self.assertTrue(all(t.builtin for t in BUILTIN_TEMPLATES))
@@ -152,6 +152,18 @@ class BuiltinTemplateTests(unittest.TestCase):
         # denominational stance (the whole point of this sub-niche).
         self.assertIn("tradition", config.content.style.lower())
         self.assertIn("denominational", config.content.style.lower())
+        self.assertEqual(config.visual_generation.mode, "library")
+        self.assertTrue(config.package.ai_metadata_enabled)
+
+    def test_zombie_system_is_landscape_longform_fiction_with_system_beats(self):
+        config = next(t.config for t in BUILTIN_TEMPLATES if t.id == "zombie_system")
+        self.assertEqual(config.render.profile, "SOCIAL_LANDSCAPE")
+        self.assertEqual(config.content.language, "en")
+        self.assertGreaterEqual(config.content.target_duration, 600.0)
+        self.assertIn("system", config.content.style.lower())
+        self.assertIn("manhwa", config.visual_generation.image_style_prompt.lower())
+        # library mode + a reused manhwa asset pool is the whole point of
+        # this niche, not a unique AI image per beat.
         self.assertEqual(config.visual_generation.mode, "library")
         self.assertTrue(config.package.ai_metadata_enabled)
 
