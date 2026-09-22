@@ -60,6 +60,19 @@ MARGIN_X = 40
 # instead of silently reusing the old broken artifact forever.
 ENGINE_VERSION = "caption-v2"
 
+# Arial (this engine's long-standing default) has no Hangul glyphs -- a
+# Korean project's captions would burn as tofu boxes with it. Malgun
+# Gothic ships with every Windows install since Vista and covers Hangul
+# plus the full Latin set this engine already relies on, so it's used only
+# for language="ko" rather than switched globally (no reason to risk
+# changing the established look of every existing en/es/vi/pt render).
+_CJK_FONTS = {"ko": "Malgun Gothic"}
+_DEFAULT_FONT = "Arial"
+
+
+def _font_name_for_language(language: str | None) -> str:
+    return _CJK_FONTS.get(language or "", _DEFAULT_FONT)
+
 
 def _format_ass_time(seconds: float) -> str:
     seconds = max(0.0, seconds)
@@ -117,6 +130,7 @@ def _escape_ass_text(text: str) -> str:
 def build_ass_content(
     segments: list[CaptionSegment], width: int, height: int, font_size: int,
     preset: str = "emotional", max_lines: int = 2, max_chars: int = 42,
+    language: str | None = None,
 ) -> str:
     """Pure function: the complete `.ass` file content. No I/O -- safe and
     fast to unit test directly. Raises CaptionError(CAPTION_STYLE_INVALID)
@@ -144,7 +158,7 @@ def build_ass_content(
     max_chars_per_line = max_chars if max_lines <= 1 else max(10, max_chars // max_lines)
 
     style_line = (
-        f"Style: Karaoke,Arial,{scaled_font_size},&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,"
+        f"Style: Karaoke,{_font_name_for_language(language)},{scaled_font_size},&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,"
         f"{1 if config['font_bold'] else 0},{1 if config['italic'] else 0},0,0,100,100,0,0,1,3,0,"
         f"{config['alignment']},{MARGIN_X},{MARGIN_X},{margin_v},1"
     )

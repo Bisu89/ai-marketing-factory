@@ -668,7 +668,10 @@ class FactoryProjectConfig(BaseModel):
 
 # ISO-ish short codes, matching section 36's own explicit examples -- never
 # inferred from user location, always the configured template/batch value.
-CONTENT_LANGUAGES = ("en", "es", "vi", "pt")
+# "ko" added for the Zombie System niche's Korean-language test -- see
+# app.modules.caption.ass_writer._font_name_for_language for the matching
+# Hangul-capable caption font (Arial has no Hangul glyphs).
+CONTENT_LANGUAGES = ("en", "es", "vi", "pt", "ko")
 
 
 class ContentProjectConfig(BaseModel):

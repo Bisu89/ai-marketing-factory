@@ -178,16 +178,23 @@ def _validate_segment_continuity(segments: list[CaptionSegment], beats_by_id: di
 # -- Fingerprint (section 36/37) --------------------------------------------
 
 
-def caption_fingerprint(narration_identity: str, config: CaptionsProjectConfig) -> str:
+def caption_fingerprint(narration_identity: str, config: CaptionsProjectConfig, language: str | None = None) -> str:
     """Section 37's own cache key -- every input that actually changes the
     generated ASS, plus ENGINE_VERSION so a change to this engine's own
     output format never silently reuses an artifact it would no longer
     produce today.
+
+    `language` picks the ASS Style's font (see
+    app.modules.caption.ass_writer._font_name_for_language) but isn't part
+    of CaptionsProjectConfig -- without it here, changing a project's
+    content.language alone (e.g. en -> ko) would keep the exact same
+    fingerprint and silently reuse a stale captions.ass burned with the
+    wrong (Hangul-less) font.
     """
     payload = "|".join([
         narration_identity, config.preset, str(config.max_words), str(config.max_chars),
         f"{config.min_duration_sec:.3f}", f"{config.max_duration_sec:.3f}", str(config.max_lines),
-        f"{config.reading_speed_wps:.3f}", ENGINE_VERSION,
+        f"{config.reading_speed_wps:.3f}", language or "", ENGINE_VERSION,
     ])
     return hashlib.sha256(payload.encode("utf-8")).hexdigest()
 
@@ -232,7 +239,7 @@ def generate_project_captions(project_id: int, settings: Settings) -> bool:
 
     word_timestamps = load_word_timestamps(project_id, settings)
     narration_identity = _narration_identity(draft.beats, word_timestamps)
-    fingerprint = caption_fingerprint(narration_identity, caption_config)
+    fingerprint = caption_fingerprint(narration_identity, caption_config, draft.config.content.language)
     output_path = captions_ass_path(project_id, settings.library_dir)
     metadata = _load_metadata(project_id, settings.library_dir)
 
@@ -251,6 +258,7 @@ def generate_project_captions(project_id: int, settings: Settings) -> bool:
     content = build_ass_content(
         segments, render_profile.width, render_profile.height, font_size,
         preset=caption_config.preset, max_lines=caption_config.max_lines, max_chars=caption_config.max_chars,
+        language=draft.config.content.language,
     )
     validate_ass_content(content)  # raises before anything durable is written
 
