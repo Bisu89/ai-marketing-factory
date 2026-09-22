@@ -49,10 +49,33 @@ _REVEAL_FRACTION = 0.7  # reveal finishes within this fraction of duration_sec, 
 
 
 def _escape_drawtext(text: str) -> str:
+    """Backslash-escapes every ffmpeg filtergraph-special character and
+    relies on the caller embedding the result UNQUOTED (`text={value}`,
+    not `text='{value}'`).
+
+    A literal `'` is normalized to the typographic U+2019 (') instead of
+    being backslash-escaped -- real bug found rendering this feature's own
+    "Zombie System" outro text ("...subscribe so you don't miss it."):
+    ffmpeg's filtergraph parser treats `'` as its quote-toggle character
+    unconditionally, in *both* quoted and unquoted values -- a preceding
+    backslash doesn't escape it, it just inserts a literal backslash and
+    then still toggles quote-parsing state. That first tried-and-failed
+    fix (backslash-escaping `'` for a quoted value) crashed ffmpeg outright
+    ("No such filter: '<some unrelated number>'"); backslash-escaping it
+    for an *unquoted* value instead didn't crash but silently broke
+    rendering from that character on (confirmed by dumping the actual
+    filter_complex and bisecting rendered frames -- the clip goes solid
+    black the instant a `\\'`-containing drawtext filter's enable window
+    starts, because the unbalanced quote state corrupts every filter after
+    it in the comma-separated chain). There is no valid escape for `'`
+    itself in this parser; swapping it for a different, non-special
+    character sidesteps the whole problem (and reads better on screen than
+    a straight quote anyway).
+    """
     text = text.replace("\\", "\\\\")
-    text = text.replace("'", "\\'")
-    text = text.replace(":", "\\:")
-    text = text.replace("%", "\\%")
+    text = text.replace("'", "’")
+    for ch in (":", "%", ",", "[", "]", "=", ";"):
+        text = text.replace(ch, f"\\{ch}")
     return text
 
 
@@ -167,7 +190,7 @@ def render_outro_clip(
             is_last_char_of_last_line = line_index == len(line_tokens) - 1 and i == len(tokens)
             end = duration_sec if is_last_char_of_last_line else (elapsed_chars + i) * char_interval
             drawtext_filters.append(
-                f"drawtext=fontfile='{_FONT_PATH_ESCAPED}':text='{prefix}':fontsize={font_size}:fontcolor=white:"
+                f"drawtext=fontfile='{_FONT_PATH_ESCAPED}':text={prefix}:fontsize={font_size}:fontcolor=white:"
                 f"x=(w-text_w)/2:y={y:.1f}:"
                 f"enable='between(t,{start:.4f},{end:.4f})'"
             )
@@ -178,7 +201,7 @@ def render_outro_clip(
             full_line = "".join(tokens)
             next_line_start = (elapsed_chars + len(tokens)) * char_interval
             drawtext_filters.append(
-                f"drawtext=fontfile='{_FONT_PATH_ESCAPED}':text='{full_line}':fontsize={font_size}:fontcolor=white:"
+                f"drawtext=fontfile='{_FONT_PATH_ESCAPED}':text={full_line}:fontsize={font_size}:fontcolor=white:"
                 f"x=(w-text_w)/2:y={y:.1f}:"
                 f"enable='gte(t,{next_line_start:.4f})'"
             )
