@@ -1627,11 +1627,17 @@ ZOMBIE_SYSTEM_TEMPLATE = Template(
         ),
         visual_generation=VisualGenerationProjectConfig(
             image_style_prompt=(
-                "Korean webtoon manhwa illustration style, clean confident linework, soft cel-shaded "
-                "coloring, semi-realistic proportions, expressive detailed eyes, cinematic soft "
-                "lighting and color grading, digital painting, high production webtoon art, no text, "
-                "no watermark, no speech bubbles, widescreen composition, modern school and urban "
-                "apocalypse setting, tasteful, no gore, no graphic wounds, no corpses shown in detail"
+                # Real user feedback on episode 1: the original "soft cel-shaded... digital
+                # painting" wording rendered as a generic painterly anime-movie look, not
+                # actual webtoon -- an A/B test (bold black linework + flat cel-shading with
+                # hard shadow edges, explicitly "not painterly") is what actually reads as
+                # webtoon. Also swap "manhwa" for plain "webtoon comic" -- manhwa can pull in
+                # a broader print-comic look; "webtoon" alone steered the model more reliably.
+                "Korean webtoon comic illustration style, bold clean black linework, flat "
+                "cel-shaded coloring with hard shadow edges, not painterly, not soft gradients, "
+                "vibrant saturated flat colors, webtoon panel art, no text, no watermark, no "
+                "speech bubbles, widescreen composition, modern school and urban apocalypse "
+                "setting, tasteful, no gore, no graphic wounds, no corpses shown in detail"
             ),
         ),
         outro=OutroProjectConfig(

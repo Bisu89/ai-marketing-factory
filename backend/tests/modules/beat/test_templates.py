@@ -161,7 +161,7 @@ class BuiltinTemplateTests(unittest.TestCase):
         self.assertEqual(config.content.language, "en")
         self.assertGreaterEqual(config.content.target_duration, 600.0)
         self.assertIn("system", config.content.style.lower())
-        self.assertIn("manhwa", config.visual_generation.image_style_prompt.lower())
+        self.assertIn("webtoon", config.visual_generation.image_style_prompt.lower())
         # library mode + a reused manhwa asset pool is the whole point of
         # this niche, not a unique AI image per beat.
         self.assertEqual(config.visual_generation.mode, "library")
