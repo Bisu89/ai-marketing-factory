@@ -1633,11 +1633,16 @@ ZOMBIE_SYSTEM_TEMPLATE = Template(
                 # hard shadow edges, explicitly "not painterly") is what actually reads as
                 # webtoon. Also swap "manhwa" for plain "webtoon comic" -- manhwa can pull in
                 # a broader print-comic look; "webtoon" alone steered the model more reliably.
+                # Episode 2 feedback: any blood/wounds should render as black/dark ichor
+                # instead of red -- a common stylization for exactly this reason (reads as
+                # "infected/corrupted," not literal gore, and is a safer visual for a
+                # monetized channel) rather than avoiding blood outright.
                 "Korean webtoon comic illustration style, bold clean black linework, flat "
                 "cel-shaded coloring with hard shadow edges, not painterly, not soft gradients, "
                 "vibrant saturated flat colors, webtoon panel art, no text, no watermark, no "
                 "speech bubbles, widescreen composition, modern school and urban apocalypse "
-                "setting, tasteful, no gore, no graphic wounds, no corpses shown in detail"
+                "setting, tasteful, non-graphic wounds, any blood shown as black dark ichor "
+                "rather than red, no photorealistic gore, no corpses shown in detail"
             ),
         ),
         outro=OutroProjectConfig(
