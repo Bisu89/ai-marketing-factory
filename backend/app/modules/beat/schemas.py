@@ -1637,12 +1637,21 @@ ZOMBIE_SYSTEM_TEMPLATE = Template(
                 # instead of red -- a common stylization for exactly this reason (reads as
                 # "infected/corrupted," not literal gore, and is a safer visual for a
                 # monetized channel) rather than avoiding blood outright.
-                "Korean webtoon comic illustration style, bold clean black linework, flat "
-                "cel-shaded coloring with hard shadow edges, not painterly, not soft gradients, "
-                "vibrant saturated flat colors, webtoon panel art, no text, no watermark, no "
-                "speech bubbles, widescreen composition, modern school and urban apocalypse "
-                "setting, tasteful, non-graphic wounds, any blood shown as black dark ichor "
-                "rather than red, no photorealistic gore, no corpses shown in detail"
+                # Episode 3 feedback: manual ChatGPT gens still drifted toward red blood and a
+                # semi-realistic/painterly anime look on action-heavy scenes despite the above --
+                # the single "not painterly" / "black ichor" mentions were too weak against a
+                # busy action prompt. Reinforced with explicit repeated negatives (no red/crimson
+                # blood in any form, no movie-still/semi-realistic rendering) since one soft
+                # mention loses out to the rest of a detailed scene description.
+                "Korean webtoon comic illustration style, bold clean black ink linework, flat 2D "
+                "cel-shaded coloring with hard-edged shadows, absolutely NOT painterly, NOT "
+                "semi-realistic anime rendering, NOT a cinematic movie-still look, no soft "
+                "airbrushed gradients, no film-like rim lighting, vibrant saturated flat colors "
+                "like a printed webtoon panel, webtoon panel art, modern school and urban "
+                "apocalypse setting, tasteful, non-graphic wounds, any wound or blood must be "
+                "ONLY thin black dark ichor drips or smears -- never red, never crimson, no red "
+                "blood spatter or pooling of any kind, no photorealistic gore, no corpses shown "
+                "in detail, no text, no watermark, no speech bubbles, widescreen composition"
             ),
         ),
         outro=OutroProjectConfig(
