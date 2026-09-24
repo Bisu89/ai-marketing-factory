@@ -1,6 +1,6 @@
 # 152 — Final video also saved under the project's own name
 
-**Commit:** see `git log -- docs/features/152-named-video-export.md`
+**Commit:** `3706364`
 
 Every render's output folder held an identically named `video_hoan_chinh.mp4`,
 so episodes copied out of the app were indistinguishable (real user report,
