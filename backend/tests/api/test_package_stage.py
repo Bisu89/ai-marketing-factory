@@ -8,8 +8,11 @@ established.
 """
 
 import json
+import os
+import tempfile
 import unittest
 from pathlib import Path
+from types import SimpleNamespace
 from unittest.mock import patch
 
 from PIL import Image
@@ -18,9 +21,11 @@ from app.api.v1.endpoints.audio_generate import generate_project_audio_master
 from app.api.v1.endpoints.caption_generate import generate_project_captions
 from app.pipelines.factory_pipeline import FactoryStageError, _stage_package, register_factory_event_handlers
 from app.api.v1.endpoints.package_generate import (
+    ensure_named_video,
     generate_project_package,
     get_project_package,
     metadata_path,
+    named_video_filename,
     package_is_valid,
     package_was_attempted,
     regenerate_metadata,
@@ -576,3 +581,34 @@ class AIMetadataTests(_PackageStageTestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class NamedVideoTests(unittest.TestCase):
+    """Every output folder's final video is `video_hoan_chinh.mp4`; packaging
+    also exposes it under the project's own name (real user report)."""
+
+    def test_filename_strips_windows_unsafe_characters(self):
+        self.assertEqual(named_video_filename('Ep1: Why? "Judas" / Short.'), "Ep1 Why Judas Short.mp4")
+
+    def test_filename_none_for_blank_or_canonical_name(self):
+        self.assertIsNone(named_video_filename(None))
+        self.assertIsNone(named_video_filename("  ?? "))
+        self.assertIsNone(named_video_filename("video_hoan_chinh"))
+
+    def test_named_video_created_beside_final_and_refreshed_after_rerender(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            final = Path(tmp) / "video_hoan_chinh.mp4"
+            final.write_bytes(b"first render")
+            job = SimpleNamespace(output_path=str(final))
+
+            named = ensure_named_video(job, "Biblical Figures Ep1 SHORT - Judas")
+            self.assertEqual(named, Path(tmp) / "Biblical Figures Ep1 SHORT - Judas.mp4")
+            self.assertEqual(named.read_bytes(), b"first render")
+            self.assertTrue(final.exists())
+
+            # A re-render replaces the canonical file (tmp-then-replace = new inode).
+            new = Path(tmp) / ".tmp.mp4"
+            new.write_bytes(b"second render!")
+            os.replace(new, final)
+            ensure_named_video(job, "Biblical Figures Ep1 SHORT - Judas")
+            self.assertEqual(named.read_bytes(), b"second render!")

@@ -23,6 +23,9 @@ atomic tmp-then-replace write" convention exactly.
 import hashlib
 import json
 import logging
+import os
+import re
+import shutil
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
 
@@ -76,6 +79,7 @@ _LANGUAGE_NAMES = {"en": "English", "es": "Spanish", "vi": "Vietnamese", "pt": "
 
 _THUMBNAIL_FILENAME = "thumbnail.jpg"
 _METADATA_FILENAME = "metadata.json"
+_FINAL_VIDEO_FILENAME = "video_hoan_chinh.mp4"  # video_composer.service's canonical output name
 _CACHE_FILENAME = "package.meta.json"
 
 
@@ -130,6 +134,51 @@ def metadata_path(job: VideoComposeJob) -> Path:
 
 def _cache_path(job: VideoComposeJob) -> Path:
     return _output_dir(job) / _CACHE_FILENAME
+
+
+_WINDOWS_UNSAFE_CHARS = re.compile(r'[<>:"/\\|?*\x00-\x1f]')
+
+
+def named_video_filename(project_name: str | None) -> str | None:
+    """`<project name>.mp4`, stripped of characters Windows forbids in a
+    filename. None when nothing usable is left (or it would collide with
+    the canonical final-video name itself).
+    """
+    safe = _WINDOWS_UNSAFE_CHARS.sub("", project_name or "")
+    safe = re.sub(r"\s+", " ", safe).strip(" .")[:120].rstrip(" .")
+    if not safe or safe.lower() == Path(_FINAL_VIDEO_FILENAME).stem:
+        return None
+    return f"{safe}.mp4"
+
+
+def ensure_named_video(job: VideoComposeJob, project_name: str | None) -> Path | None:
+    """Real user report: every render's output folder holds an identically
+    named `video_hoan_chinh.mp4`, so exported episodes were indistinguishable
+    once copied out. The canonical name stays (metadata.json, Final QA and
+    publishing all reference it); this adds a second, human-named entry
+    beside it -- a hard link (no extra disk), falling back to a copy on a
+    filesystem without link support. Best-effort: a failure here never
+    fails packaging.
+    """
+    name = named_video_filename(project_name)
+    src = Path(job.output_path)
+    if name is None or not src.exists():
+        return None
+    dst = src.with_name(name)
+    try:
+        if dst.exists():
+            s, d = src.stat(), dst.stat()
+            if os.path.samefile(src, dst) or (s.st_size, s.st_mtime) == (d.st_size, d.st_mtime):
+                return dst  # already current (hard link, or an unchanged copy2 fallback)
+            dst.unlink()  # stale entry from an earlier render of this job
+        try:
+            os.link(src, dst)
+        except OSError:
+            shutil.copy2(src, dst)
+        return dst
+    except OSError as exc:
+        logger.warning("Could not create named video %s: %s", dst, exc)
+        return None
 
 
 def _read_render_metadata(job: VideoComposeJob) -> dict:
@@ -477,6 +526,8 @@ def generate_project_package(project_id: int, settings: Settings) -> bool:
     video_path = Path(job.output_path)
     if not video_path.exists():
         return False  # Project.render_job_id/job row exist but the file itself is gone -- reconciliation's job, not a hard failure here
+
+    ensure_named_video(job, draft.project_name)
 
     inputs = build_content_inputs(draft)
     render_meta = _read_render_metadata(job)
