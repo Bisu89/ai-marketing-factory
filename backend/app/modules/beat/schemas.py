@@ -1505,74 +1505,6 @@ MILITARY_HISTORY_TEMPLATE = Template(
     ),
 )
 
-# Tuned variant of HISTORY_DOCUMENTARY for a biography-driven sub-niche:
-# one figure from the Gospels/early-church story per video (Judas, Pilate,
-# Mary Magdalene, Peter, Paul...). Framed strictly as history/culture, not
-# theology -- documented events vs. tradition/legend called out explicitly,
-# no denominational stance, no supernatural claim presented as settled fact
-# -- the safest angle for ad monetization and for not alienating any faith
-# audience. Same "tuned variant is its own built-in" precedent as
-# military_history vs. history_documentary.
-BIBLICAL_FIGURES_TEMPLATE = Template(
-    id="biblical_figures",
-    name="Biblical Figures",
-    description="Long-form (~12 min) English historical-biography documentary -- ONE figure from the "
-    "Gospels or early-church story per video (e.g. Judas Iscariot, Pontius Pilate, Mary Magdalene, "
-    "Peter, Paul of Tarsus): their world under Roman rule, their role and choices, their fate, and "
-    "their lasting influence. Treated as history and culture, not theology -- documented history is "
-    "kept distinct from tradition or legend, no denominational stance. 16:9, cinematic Ken Burns, "
-    "measured British narration, painterly historical visuals. Run with Visuals = \"Generate Full by "
-    "AI\" (no real footage of the period).",
-    version=1,
-    builtin=True,
-    config=ProjectConfig(
-        render=RenderProjectConfig(profile="SOCIAL_LANDSCAPE"),
-        motion=MotionProjectConfig(
-            default_preset=BeatMotionPreset.SLOW_PUSH_IN, intensity="MEDIUM", auto_rotate=True
-        ),
-        captions=CaptionsProjectConfig(
-            enabled=True, preset="cinematic", max_words=12, max_chars=70, max_lines=2, max_duration_sec=5.0
-        ),
-        audio=AudioProjectConfig(narration_enabled=True, music_enabled=True, music_volume=0.14, ducking=True),
-        content=ContentProjectConfig(
-            language="en",
-            tone="authoritative, measured and cinematic, like a history-documentary narrator -- "
-            "respectful and neutral on matters of faith",
-            style="ONE figure from the Gospels or early-church period told as a narrative biography: "
-            "their world under first-century Roman rule, who they were, the pivotal choices or events "
-            "that define them, their fate, and the influence they left on history and culture -- "
-            "clearly distinguishing what is historically documented from what is tradition or legend, "
-            "presenting contested points (motives, identity, fate) as differing traditions or scholarly "
-            "views rather than settled fact, and taking no denominational or doctrinal position",
-            target_duration=720.0,  # ~12 minutes
-            audience="history and religious-history enthusiasts, long-form documentary viewers",
-            cta_enabled=True,
-        ),
-        voice=VoiceProjectConfig(
-            provider="edge_tts", voice_id="en-GB-RyanNeural", language="en",
-            speed=0.95, sentence_pause_sec=0.5,
-        ),
-        visual_generation=VisualGenerationProjectConfig(
-            image_style_prompt=(
-                "cinematic historical documentary still, painterly photorealistic illustration, "
-                "first-century Roman Judea setting, period-accurate clothing architecture and "
-                "landscape, dramatic natural light, volumetric atmosphere, muted earthy desaturated "
-                "color grade, fine film grain, epic but grounded scale, reverent and tasteful, no "
-                "blood, no gore, no wounds, no corpses, no modern objects, no lettering, no on-screen "
-                "text, no watermark, horizontal composition"
-            ),
-        ),
-        outro=OutroProjectConfig(
-            enabled=True,
-            text="If you made it this far, subscribe -- a new figure from history every week.",
-            duration_sec=6.0,
-        ),
-        package=PackageProjectConfig(ai_metadata_enabled=True),
-        template_id="biblical_figures",
-        template_version=1,
-    ),
-)
-
 # Long-form English fiction serial: a school-set zombie-apocalypse story
 # where the protagonist secretly gains a hidden game-like "System" (status
 # window, levels, skills, quests) the moment the outbreak begins -- the
@@ -1676,7 +1608,7 @@ CUSTOM_TEMPLATE = Template(
 
 # Note: BUILTIN_TEMPLATES' own `id`s ("emotional_story"/"couple_story"/
 # "horror"/"horror_shorts"/"relationship_psychology_vi"/"news_vi"/
-# "history_documentary"/"military_history"/"biblical_figures"/
+# "history_documentary"/"military_history"/
 # "zombie_system"/"custom") are reserved -- template_service.save_custom_templates
 # below rejects a custom template trying to reuse one, so a built-in can
 # never be shadowed or overwritten by user data.
@@ -1689,7 +1621,6 @@ BUILTIN_TEMPLATES: list[Template] = [
     NEWS_VI_TEMPLATE,
     HISTORY_DOCUMENTARY_TEMPLATE,
     MILITARY_HISTORY_TEMPLATE,
-    BIBLICAL_FIGURES_TEMPLATE,
     ZOMBIE_SYSTEM_TEMPLATE,
     CUSTOM_TEMPLATE,
 ]

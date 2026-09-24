@@ -2,7 +2,7 @@
 
 **Commit:** `cfdb564`
 
-11th built-in, and the first *fiction* one — every earlier built-in is
+10th built-in, and the first *fiction* one — every earlier built-in is
 documentary/biography/history. A school-set zombie apocalypse where the
 protagonist secretly gains a hidden game-like System (status window,
 levels, skills, quests) the moment the outbreak begins — the "system
