@@ -6,6 +6,7 @@ Chạy tool bằng Python trong venv của backend.
 
 ```
 cd backend
+.venv\Scripts\python ..\tools\manhua_recap\recap.py fetch  https://manhuavn2.com/doc-truyen/van-co-chi-ton-chapter-2.html D:\truyen\chuong12
 .venv\Scripts\python ..\tools\manhua_recap\recap.py cut    D:\truyen\chuong12
 .venv\Scripts\python ..\tools\manhua_recap\recap.py script D:\truyen\chuong12 --seconds 50 --notes "lão già là chưởng môn"
 .venv\Scripts\python ..\tools\manhua_recap\recap.py build  D:\truyen\chuong12
