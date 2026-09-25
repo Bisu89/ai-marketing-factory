@@ -192,9 +192,10 @@ class CaptionPresetGenerationTests(unittest.TestCase):
         subtitles.write_subtitles(self.lines, ass_path, srt_path, 480, 852, 32, preset)
         return ass_path.read_text(encoding="utf-8")
 
-    def test_all_six_presets_generate_valid_non_empty_ass(self):
+    def test_all_presets_generate_valid_non_empty_ass(self):
         self.assertEqual(
-            set(CAPTION_PRESETS), {"emotional", "cinematic", "word_highlight", "big_statement", "quote", "top"}
+            set(CAPTION_PRESETS),
+            {"emotional", "cinematic", "word_highlight", "big_statement", "quote", "top", "word_pop"},
         )
         for preset in CAPTION_PRESETS:
             content = self._write(preset)
@@ -216,6 +217,15 @@ class CaptionPresetGenerationTests(unittest.TestCase):
     def test_big_statement_uppercases_and_groups_two_words_per_event(self):
         content = self._write("big_statement")
         self.assertIn("THIS IS", content)
+
+    def test_word_pop_shows_one_uppercased_word_per_event_in_changing_colours(self):
+        content = self._write("word_pop")
+        events = [line for line in content.splitlines() if line.startswith("Dialogue:")]
+        word_count = sum(len(line) for line in self.lines)
+        self.assertEqual(len(events), word_count)
+        texts = [e.split(",", 9)[9] for e in events]
+        self.assertTrue(texts[0].endswith("THIS"))
+        self.assertNotEqual(texts[0].split("&")[1], texts[1].split("&")[1])  # colour differs card to card
 
     def test_quote_preset_wraps_rows_in_quotation_marks(self):
         content = self._write("quote")

@@ -5,7 +5,7 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.db.base import Base
 
-CAPTION_PRESETS = ("emotional", "cinematic", "word_highlight", "big_statement", "quote", "top")
+CAPTION_PRESETS = ("emotional", "cinematic", "word_highlight", "big_statement", "quote", "top", "word_pop")
 
 VIDEO_COMPOSE_STATUSES = (
     "queued",

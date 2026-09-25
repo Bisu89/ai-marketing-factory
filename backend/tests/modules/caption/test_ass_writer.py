@@ -45,6 +45,13 @@ class BuildAssContentTests(unittest.TestCase):
         text = dialogue.split(",", 9)[9].replace(r"\N", " ")
         self.assertEqual(text, "THIS IS THE FIRST CAPTION.")
 
+    def test_word_pop_uppercases_and_cycles_colour_per_segment(self):
+        content = build_ass_content(_segments(), 1080, 1920, 48, preset="word_pop")
+        texts = [line.split(",", 9)[9].replace(r"\N", " ") for line in content.splitlines() if line.startswith("Dialogue:")]
+        self.assertTrue(texts[0].endswith("THIS IS THE FIRST CAPTION."))
+        self.assertTrue(texts[0].startswith(r"{\1c&H"))
+        self.assertNotEqual(texts[0].split("&")[1], texts[1].split("&")[1])
+
     def test_quote_wraps_text_in_curly_quotes(self):
         content = build_ass_content(_segments(), 1080, 1920, 48, preset="quote")
         self.assertIn("“", content)

@@ -27,7 +27,7 @@ from app.modules.caption.schemas import (
     CaptionSegment,
 )
 
-CAPTION_PRESETS = ("emotional", "cinematic", "word_highlight", "big_statement", "quote", "top")
+CAPTION_PRESETS = ("emotional", "cinematic", "word_highlight", "big_statement", "quote", "top", "word_pop")
 
 # Verbatim copy of video_composer.service.CAPTION_PRESET_CONFIG (section
 # 21/22: "the Template system should define caption style... only support
@@ -41,8 +41,18 @@ CAPTION_PRESET_CONFIG = {
     "big_statement": {"font_bold": True, "italic": False, "font_scale": 1.8, "margin_v_frac": 0.45, "alignment": 5},
     "quote": {"font_bold": False, "italic": True, "font_scale": 0.9, "margin_v_frac": 0.45, "alignment": 5},
     "top": {"font_bold": True, "italic": False, "font_scale": 0.85, "margin_v_frac": 0.09, "alignment": 8},
+    "word_pop": {"font_bold": True, "italic": False, "font_scale": 1.7, "margin_v_frac": 0.22, "alignment": 2},
 }
 assert set(CAPTION_PRESET_CONFIG) == set(CAPTION_PRESETS)
+
+# "word_pop" (manhua-recap look, see docs/features/153-manhua-recap.md): one
+# word per card, upper-cased, each card a different bright colour with a
+# thick black outline. ASS &HBBGGRR order -- yellow, lime, cyan, white,
+# orange, pink. Picked by segment index (not random) so a re-render of the
+# same captions is byte-identical and the cache fingerprint stays honest;
+# consecutive cards never repeat a colour since the palette has no dupes.
+WORD_POP_COLORS = ("00FFFF", "32FF32", "FFFF00", "FFFFFF", "00A5FF", "C86EFF")
+WORD_POP_OUTLINE = 6
 
 # Section 23's own "safe margins, never flush against the bottom edge" --
 # same fixed horizontal margin video_composer already uses; vertical
@@ -171,6 +181,9 @@ def build_ass_content(
         wrapped = _wrap_balanced(_escape_ass_text(text), max_chars_per_line, max_lines)
         if preset == "big_statement":
             wrapped = wrapped.upper()
+        elif preset == "word_pop":
+            color = WORD_POP_COLORS[len(dialogue_lines) % len(WORD_POP_COLORS)]
+            wrapped = f"{{\\1c&H{color}&\\bord{WORD_POP_OUTLINE}}}{wrapped.upper()}"
         elif preset == "quote":
             wrapped = f"“{wrapped}”"
         dialogue_lines.append(

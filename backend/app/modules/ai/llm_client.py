@@ -17,6 +17,7 @@ level) -- so only the provider-specific wrapper differs, never the schema
 itself.
 """
 
+import base64
 import time
 from dataclasses import dataclass
 
@@ -75,6 +76,46 @@ def resolve_ai_credentials(settings: Settings) -> AICredentials | None:
     return AICredentials(provider=provider, api_key=key)
 
 
+@dataclass(frozen=True)
+class LLMImage:
+    """One image sent alongside the user message (vision input) -- raw
+    bytes + MIME type; each provider wrapper base64-encodes it its own way.
+    First used by manhua_recap.py (the model reads comic panels)."""
+
+    media_type: str  # "image/jpeg" | "image/png" | "image/webp"
+    data: bytes
+    # Sent as a text block right before the image (e.g. "Panel 3") so the
+    # model can refer back to a specific image by name.
+    label: str | None = None
+
+    def b64(self) -> str:
+        return base64.b64encode(self.data).decode("ascii")
+
+
+def _anthropic_user_content(user_message: str, images: list[LLMImage] | None):
+    if not images:
+        return user_message
+    blocks: list[dict] = []
+    for img in images:
+        if img.label:
+            blocks.append({"type": "text", "text": img.label})
+        blocks.append({"type": "image", "source": {"type": "base64", "media_type": img.media_type, "data": img.b64()}})
+    return [*blocks, {"type": "text", "text": user_message}]
+
+
+def _openai_user_content(user_message: str, images: list[LLMImage] | None):
+    if not images:
+        return user_message
+    blocks: list[dict] = []
+    for img in images:
+        if img.label:
+            blocks.append({"type": "text", "text": img.label})
+        # "auto", not "low": low (a 512px thumbnail) can't read speech bubbles.
+        url = f"data:{img.media_type};base64,{img.b64()}"
+        blocks.append({"type": "image_url", "image_url": {"url": url, "detail": "auto"}})
+    return [*blocks, {"type": "text", "text": user_message}]
+
+
 @dataclass
 class LLMCallResult:
     """Normalized across both providers -- callers never see a raw SDK
@@ -94,7 +135,8 @@ class LLMCallResult:
 
 
 def _call_anthropic(
-    api_key: str, system: str, user_message: str, output_schema: dict, max_tokens: int, model: str | None = None
+    api_key: str, system: str, user_message: str, output_schema: dict, max_tokens: int, model: str | None = None,
+    images: list[LLMImage] | None = None,
 ) -> LLMCallResult:
     client = anthropic.Anthropic(api_key=api_key)
     resolved_model = model or ANTHROPIC_MODEL
@@ -103,7 +145,7 @@ def _call_anthropic(
             model=resolved_model,
             max_tokens=max_tokens,
             system=system,
-            messages=[{"role": "user", "content": user_message}],
+            messages=[{"role": "user", "content": _anthropic_user_content(user_message, images)}],
             output_config={"format": output_schema},
         )
     except anthropic.APITimeoutError as exc:
@@ -126,7 +168,7 @@ def _call_anthropic(
 
 def _call_openai(
     api_key: str, system: str, user_message: str, output_schema: dict, max_tokens: int, schema_name: str,
-    model: str | None = None,
+    model: str | None = None, images: list[LLMImage] | None = None,
 ) -> LLMCallResult:
     client = openai.OpenAI(api_key=api_key)
     resolved_model = model or OPENAI_MODEL
@@ -136,7 +178,7 @@ def _call_openai(
             max_completion_tokens=max_tokens + OPENAI_REASONING_HEADROOM,
             messages=[
                 {"role": "system", "content": system},
-                {"role": "user", "content": user_message},
+                {"role": "user", "content": _openai_user_content(user_message, images)},
             ],
             response_format={
                 "type": "json_schema",
@@ -170,16 +212,23 @@ def call_structured(
     max_tokens: int,
     schema_name: str = "structured_output",
     model: str | None = None,
+    images: list[LLMImage] | None = None,
 ) -> LLMCallResult:
-    """`model` overrides the provider's default model id -- used by
+    """`images` (optional) are sent before the text in the user turn --
+    vision input; None/empty keeps the plain-text message every existing
+    caller sends.
+
+    `model` overrides the provider's default model id -- used by
     app.modules.ai.model_router routing (a `cheap`/`premium` tier that has
     a real model configured). None keeps the provider default
     (ANTHROPIC_MODEL / OPENAI_MODEL), which is every existing caller.
     """
     start = time.monotonic()
     if credentials.provider == "openai":
-        result = _call_openai(credentials.api_key, system, user_message, output_schema, max_tokens, schema_name, model)
+        result = _call_openai(
+            credentials.api_key, system, user_message, output_schema, max_tokens, schema_name, model, images
+        )
     else:
-        result = _call_anthropic(credentials.api_key, system, user_message, output_schema, max_tokens, model)
+        result = _call_anthropic(credentials.api_key, system, user_message, output_schema, max_tokens, model, images)
     result.latency_ms = int((time.monotonic() - start) * 1000)
     return result

@@ -67,6 +67,12 @@ class ChunkSplittingTests(unittest.TestCase):
         chunks = split_text_into_chunks("It rang again. Nobody was there.", max_words=6, max_chars=38)
         self.assertIn("Nobody was there.", chunks)
 
+    def test_max_words_one_gives_one_word_per_card_with_no_orphan_merge(self):
+        # word_pop: every card is a single word by design.
+        text = "Hai người tìm đến, nhưng thay vì gặp cao nhân."
+        chunks = split_text_into_chunks(text, max_words=1, max_chars=20)
+        self.assertEqual(chunks, text.split())
+
     def test_orphan_merge_never_exceeds_the_char_limit(self):
         chunks = split_text_into_chunks("alpha beta gamma delta epsilon zeta eta theta", max_words=20, max_chars=15)
         for chunk in chunks:

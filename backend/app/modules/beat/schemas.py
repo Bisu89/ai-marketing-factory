@@ -235,7 +235,7 @@ class Beat(BaseModel):
 # app.modules.composition.schemas.CaptionPreset already uses for the exact
 # same set) -- video_composer owns the real ASS rendering for each of
 # these; this module only needs to know the set of valid names.
-CAPTION_PRESETS = ("emotional", "cinematic", "word_highlight", "big_statement", "quote", "top")
+CAPTION_PRESETS = ("emotional", "cinematic", "word_highlight", "big_statement", "quote", "top", "word_pop")
 
 MIN_VOLUME = 0.0
 MAX_VOLUME = 2.0
@@ -1597,6 +1597,113 @@ ZOMBIE_SYSTEM_TEMPLATE = Template(
     ),
 )
 
+# Vietnamese manhua (Chinese cultivation-comic) recap shorts -- the format of
+# a real sample the user brought in (docs/features/153-manhua-recap.md):
+# ~50s, one comic panel on screen per 1.5-2.5s, a male AI voice reading a
+# fast (~335 syllables/min), gapless third-person recap of ONE chapter, and
+# one bright-coloured word on screen at a time. Two built-ins share that
+# look and differ only in where the panels come from -- see each one.
+_MANHUA_CAPTIONS = CaptionsProjectConfig(
+    # One syllable per card; max_duration 1.5 so a word before a long pause
+    # doesn't linger. min_duration only matters on the estimated-timing
+    # fallback -- edge_tts' real word timings are used as-is.
+    enabled=True, preset="word_pop", max_words=1, max_chars=20, max_lines=1,
+    min_duration_sec=0.15, max_duration_sec=1.5,
+)
+# vi-VN-NamMinhNeural (male, like the sample) at +25% with almost no
+# sentence pause: the sample's narration never goes silent for >0.3s.
+_MANHUA_VOICE = VoiceProjectConfig(
+    provider="edge_tts", voice_id="vi-VN-NamMinhNeural", language="vi",
+    speed=1.25, sentence_pause_sec=0.1,
+)
+_MANHUA_TONE = (
+    "fast, punchy, lightly comedic recap narrator -- plain spoken Vietnamese, "
+    "no filler, every sentence moves the plot forward"
+)
+_MANHUA_STYLE = (
+    "third-person recap of ONE chapter of a Chinese cultivation (tu tiên / kiếm hiệp) "
+    "comic: open on the situation in the very first sentence (no greeting, no "
+    "'hôm nay'), set up an expectation, flip it (the lazy-looking one is secretly "
+    "overpowered, the joke move hides a deep technique), and end on a funny or "
+    "shocked reaction line"
+)
+
+MANHUA_RECAP_VI_TEMPLATE = Template(
+    id="manhua_recap_vi",
+    name="Manhua Recap (VN, comic panels)",
+    description="~50s Vietnamese recap of one chapter of a Chinese cultivation comic, shown "
+    "with the comic's OWN panels (one per beat, zoom/pan) -- fast male narration, one "
+    "coloured word on screen at a time. Built by tools/manhua_recap (cut panels -> AI "
+    "writes the recap from the panels -> project). Uses someone else's artwork: expect "
+    "reused-content / copyright risk on YouTube.",
+    version=1,
+    builtin=True,
+    config=ProjectConfig(
+        render=RenderProjectConfig(profile="SOCIAL_VERTICAL"),
+        # Panels are all shapes (wide action strips, tall close-ups) --
+        # auto_rotate varies the move so 25 consecutive panels don't all
+        # push in identically.
+        motion=MotionProjectConfig(
+            default_preset=BeatMotionPreset.SLOW_PUSH_IN, intensity="MEDIUM", auto_rotate=True
+        ),
+        captions=_MANHUA_CAPTIONS,
+        audio=AudioProjectConfig(narration_enabled=True, music_enabled=True, music_volume=0.1, ducking=True),
+        content=ContentProjectConfig(
+            language="vi", tone=_MANHUA_TONE, style=_MANHUA_STYLE, target_duration=50.0,
+            audience="Vietnamese manhua / tu tiên comic readers", cta_enabled=False,
+        ),
+        voice=_MANHUA_VOICE,
+        package=PackageProjectConfig(ai_metadata_enabled=True),
+        template_id="manhua_recap_vi",
+        template_version=1,
+    ),
+)
+
+MANHUA_AI_VI_TEMPLATE = Template(
+    id="manhua_ai_vi",
+    name="Manhua Story (VN, AI images)",
+    description="Same format as Manhua Recap -- fast male Vietnamese recap narration, one "
+    "coloured word at a time, 9:16 -- but an ORIGINAL cultivation story with every beat "
+    "drawn by AI in Chinese manhua style -- create it with \"Generate Full by AI\" "
+    "(one billed image per beat). No third-party artwork.",
+    version=1,
+    builtin=True,
+    config=ProjectConfig(
+        render=RenderProjectConfig(profile="SOCIAL_VERTICAL"),
+        motion=MotionProjectConfig(
+            default_preset=BeatMotionPreset.SLOW_PUSH_IN, intensity="MEDIUM", auto_rotate=True
+        ),
+        captions=_MANHUA_CAPTIONS,
+        audio=AudioProjectConfig(narration_enabled=True, music_enabled=True, music_volume=0.1, ducking=True),
+        content=ContentProjectConfig(
+            language="vi", tone=_MANHUA_TONE,
+            style=_MANHUA_STYLE.replace("third-person recap of ONE chapter of a Chinese cultivation "
+                                        "(tu tiên / kiếm hiệp) comic",
+                                        "original third-person Chinese cultivation (tu tiên / kiếm hiệp) "
+                                        "story told like a comic-chapter recap"),
+            target_duration=50.0,
+            audience="Vietnamese manhua / tu tiên comic readers", cta_enabled=False,
+        ),
+        voice=_MANHUA_VOICE,
+        # Meant for "Generate Full by AI" (the create button, not this
+        # config, decides the mode -- see create_project_endpoint); library
+        # stays the stored default like every other built-in.
+        visual_generation=VisualGenerationProjectConfig(
+            image_style_prompt=(
+                "Chinese manhua comic panel, cultivation / wuxia fantasy, full-colour digital "
+                "manhua illustration, clean bold linework, cel shading with soft glow effects, "
+                "flowing hanfu robes and long hair, ancient Chinese sect courtyards, mountains "
+                "and golden sunset light, dramatic expressive faces, dynamic comic angles, "
+                "vertical 9:16 composition, no speech bubbles, no text, no sound-effect "
+                "lettering, no watermark"
+            ),
+        ),
+        package=PackageProjectConfig(ai_metadata_enabled=True),
+        template_id="manhua_ai_vi",
+        template_version=1,
+    ),
+)
+
 CUSTOM_TEMPLATE = Template(
     id="custom",
     name="Custom",
@@ -1609,7 +1716,7 @@ CUSTOM_TEMPLATE = Template(
 # Note: BUILTIN_TEMPLATES' own `id`s ("emotional_story"/"couple_story"/
 # "horror"/"horror_shorts"/"relationship_psychology_vi"/"news_vi"/
 # "history_documentary"/"military_history"/
-# "zombie_system"/"custom") are reserved -- template_service.save_custom_templates
+# "zombie_system"/"manhua_recap_vi"/"manhua_ai_vi"/"custom") are reserved -- template_service.save_custom_templates
 # below rejects a custom template trying to reuse one, so a built-in can
 # never be shadowed or overwritten by user data.
 BUILTIN_TEMPLATES: list[Template] = [
@@ -1622,6 +1729,8 @@ BUILTIN_TEMPLATES: list[Template] = [
     HISTORY_DOCUMENTARY_TEMPLATE,
     MILITARY_HISTORY_TEMPLATE,
     ZOMBIE_SYSTEM_TEMPLATE,
+    MANHUA_RECAP_VI_TEMPLATE,
+    MANHUA_AI_VI_TEMPLATE,
     CUSTOM_TEMPLATE,
 ]
 BUILTIN_TEMPLATE_IDS = frozenset(t.id for t in BUILTIN_TEMPLATES)

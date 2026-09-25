@@ -48,10 +48,10 @@ export const MOTION_PRESET_LABELS: Record<MotionPresetName, string> = {
   subtle_rotate: "Subtle rotate",
 };
 
-export type CaptionPreset = "emotional" | "cinematic" | "word_highlight" | "big_statement" | "quote" | "top";
+export type CaptionPreset = "emotional" | "cinematic" | "word_highlight" | "big_statement" | "quote" | "top" | "word_pop";
 
 export const CAPTION_PRESETS: CaptionPreset[] = [
-  "emotional", "cinematic", "word_highlight", "big_statement", "quote", "top",
+  "emotional", "cinematic", "word_highlight", "big_statement", "quote", "top", "word_pop",
 ];
 
 // Mirrors backend CONTENT_LANGUAGES (app/modules/beat/schemas.py) exactly --
@@ -78,6 +78,7 @@ export const CAPTION_PRESET_LABELS: Record<CaptionPreset, string> = {
   big_statement: "Big statement",
   quote: "Quote",
   top: "Top (small, below the top edge)",
+  word_pop: "Word pop (1 colored word at a time)",
 };
 
 // A small convenience list of edge-tts voice IDs (any valid edge-tts voice

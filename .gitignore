@@ -37,3 +37,6 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Sample videos dropped in for analysis (large, not committed)
+check-video/

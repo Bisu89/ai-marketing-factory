@@ -81,7 +81,7 @@ class BuiltinTemplateTests(unittest.TestCase):
             {
                 "emotional_story", "couple_story", "horror", "horror_shorts",
                 "relationship_psychology_vi", "news_vi", "history_documentary", "military_history",
-                "zombie_system", "custom",
+                "zombie_system", "manhua_recap_vi", "manhua_ai_vi", "custom",
             },
         )
         self.assertTrue(all(t.builtin for t in BUILTIN_TEMPLATES))
@@ -153,6 +153,19 @@ class BuiltinTemplateTests(unittest.TestCase):
         # this niche, not a unique AI image per beat.
         self.assertEqual(config.visual_generation.mode, "library")
         self.assertTrue(config.package.ai_metadata_enabled)
+
+    def test_manhua_templates_share_the_recap_look_and_differ_only_in_visual_source(self):
+        recap = next(t.config for t in BUILTIN_TEMPLATES if t.id == "manhua_recap_vi")
+        ai = next(t.config for t in BUILTIN_TEMPLATES if t.id == "manhua_ai_vi")
+        for config in (recap, ai):
+            self.assertEqual(config.render.profile, "SOCIAL_VERTICAL")
+            self.assertEqual(config.content.language, "vi")
+            self.assertEqual(config.voice.voice_id, "vi-VN-NamMinhNeural")
+            self.assertEqual(config.captions.preset, "word_pop")
+            self.assertEqual(config.captions.max_words, 1)
+        # recap uses the comic's own panels; the AI channel only adds a manhua image style
+        self.assertEqual(recap.visual_generation.image_style_prompt, "")
+        self.assertIn("manhua", ai.visual_generation.image_style_prompt.lower())
 
     def test_emotional_story_defaults(self):
         config = EMOTIONAL_STORY_TEMPLATE.config

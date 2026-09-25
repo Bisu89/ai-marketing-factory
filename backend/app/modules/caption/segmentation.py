@@ -97,8 +97,9 @@ def _merge_orphan_chunks(chunks: list[str], max_words: int, max_chars: int) -> l
     """Fold a single-word chunk into a neighbour (previous first, else
     next) when the merged card still fits. Never merges two multi-word
     chunks, so a deliberate short line like "Nobody was there." (a whole
-    sentence) is untouched."""
-    if len(chunks) < 2:
+    sentence) is untouched. max_words=1 (the "word_pop" one-word-per-card
+    look) opts out entirely -- there every card is a deliberate orphan."""
+    if len(chunks) < 2 or max_words <= 1:
         return chunks
 
     def _fits(text: str) -> bool:

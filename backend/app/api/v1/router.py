@@ -22,6 +22,7 @@ from app.api.v1.endpoints import (
     final_qa,
     health,
     insights,
+    manhua_recap,
     publish_log,
     motion_generate,
     package_generate,
@@ -106,6 +107,7 @@ api_router.include_router(story_pipeline.router, tags=["story-planning"])
 api_router.include_router(story_compile.router, tags=["story-planning"])
 api_router.include_router(composition_render.router, tags=["composition-render"])
 api_router.include_router(beat_generate.router, tags=["beat-generate"])
+api_router.include_router(manhua_recap.router, tags=["manhua-recap"])
 api_router.include_router(beat_preview.router, tags=["beat-preview"])
 api_router.include_router(batch_router, tags=["batch"])
 api_router.include_router(batch_render.router, tags=["batch-render"])
