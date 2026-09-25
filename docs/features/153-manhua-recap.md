@@ -1,6 +1,6 @@
 # 153 — Manhua recap: `word_pop` captions, 2 built-ins, panel-recap tool
 
-**Commit:** _(pending)_
+**Commit:** `37dc5b1`
 
 The user brought a sample Vietnamese manhua recap Short and asked for tooling to make
 two channels in that format. Analysis of the sample (ffprobe, scene detection, per-second
