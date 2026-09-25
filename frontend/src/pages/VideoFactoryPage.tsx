@@ -191,6 +191,7 @@ function makeBeat(overrides: Partial<WorkingBeat> = {}): WorkingBeat {
     camera: null,
     lighting: null,
     continuityNotes: null,
+    voiceId: null,
     ...overrides,
   };
 }
@@ -225,6 +226,7 @@ function workingBeatFromDTO(beat: GeneratedBeat): WorkingBeat {
     camera: beat.camera,
     lighting: beat.lighting,
     continuityNotes: beat.continuity_notes,
+    voiceId: beat.voice_id ?? null,
   });
 }
 
@@ -249,6 +251,7 @@ function toBeatDTO(beat: WorkingBeat, order: number): GeneratedBeat {
     camera: beat.camera,
     lighting: beat.lighting,
     continuity_notes: beat.continuityNotes,
+    voice_id: beat.voiceId,
   };
 }
 

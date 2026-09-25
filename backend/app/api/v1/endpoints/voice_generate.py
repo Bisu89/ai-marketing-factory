@@ -34,7 +34,7 @@ from app.modules.asset.service import AssetService
 from app.modules.beat.project_service import get_project_draft, update_project_beat_plan
 from app.modules.beat.schemas import Beat, BeatPlan, VoiceProjectConfig
 from app.modules.voice.audio_analysis import cut_segment, normalize_audio, probe_audio, validate_audio
-from app.modules.voice.providers import LocalTTSProvider, get_provider
+from app.modules.voice.providers import LocalTTSProvider, get_provider, synthesize_voice_runs
 from app.modules.voice.schemas import BeatTimingInput, WordTiming
 from app.modules.voice.timing import compute_beat_timing
 
@@ -82,7 +82,24 @@ def build_narration_text(beats: list[Beat]) -> str:
     return " ".join(parts)
 
 
-def voice_fingerprint(script_text: str, voice: VoiceProjectConfig) -> str:
+def voice_runs(beats: list[Beat], default_voice_id: str) -> list[tuple[str, str]]:
+    """[(text, voice_id), ...] in Beat order, consecutive beats sharing an
+    effective voice (Beat.voice_id or the project's) merged into one run --
+    a project with no per-beat overrides is always exactly one run."""
+    runs: list[tuple[str, str]] = []
+    for beat in sorted(beats, key=lambda b: b.order):
+        text = (beat.narration or "").strip()
+        if not text:
+            continue
+        voice_id = beat.voice_id or default_voice_id
+        if runs and runs[-1][1] == voice_id:
+            runs[-1] = (f"{runs[-1][0]} {text}", voice_id)
+        else:
+            runs.append((text, voice_id))
+    return runs
+
+
+def voice_fingerprint(script_text: str, voice: VoiceProjectConfig, runs: list[tuple[str, str]] | None = None) -> str:
     """Section 32 -- the same deterministic-hash idea
     content_generate.py's own content_fingerprint already uses, over every
     input that actually affects the synthesized audio. A change to any one
@@ -94,6 +111,10 @@ def voice_fingerprint(script_text: str, voice: VoiceProjectConfig) -> str:
         normalized_text, voice.provider, voice.voice_id, voice.language, f"{voice.speed:.2f}", str(voice.pitch),
         f"{voice.sentence_pause_sec:.2f}",
     ])
+    if runs and len(runs) > 1:
+        # Only multi-voice projects add this, so every existing single-voice
+        # project keeps its exact cached fingerprint.
+        payload += "|runs:" + "|".join(f"{len(text.split())}:{voice_id}" for text, voice_id in runs)
     return hashlib.sha256(payload.encode("utf-8")).hexdigest()
 
 
@@ -170,7 +191,8 @@ def generate_project_narration(project_id: int, settings: Settings) -> bool:
         return False  # no narration text anywhere -- the Quality Gate's own MISSING_NARRATION already covers this
 
     voice_config = draft.config.voice
-    fingerprint = voice_fingerprint(full_text, voice_config)
+    runs = voice_runs(draft.beats, voice_config.voice_id)
+    fingerprint = voice_fingerprint(full_text, voice_config, runs)
     narration_wav = narration_wav_path(project_id, settings)
     metadata = _load_metadata(project_id, settings)
     fingerprint_matches = metadata is not None and metadata.get("fingerprint") == fingerprint and narration_wav.exists()
@@ -199,10 +221,16 @@ def generate_project_narration(project_id: int, settings: Settings) -> bool:
     else:
         provider = get_provider(voice_config.provider)
         raw_output = _voice_dir(project_id, settings) / "narration.raw.tmp.wav"
-        result = provider.synthesize(
-            full_text, voice_config.voice_id, voice_config.language, voice_config.speed, raw_output,
-            sentence_pause_sec=voice_config.sentence_pause_sec,
-        )
+        if len(runs) > 1:
+            result = synthesize_voice_runs(
+                provider, runs, voice_config.language, voice_config.speed, raw_output,
+                sentence_pause_sec=voice_config.sentence_pause_sec,
+            )
+        else:
+            result = provider.synthesize(
+                full_text, voice_config.voice_id, voice_config.language, voice_config.speed, raw_output,
+                sentence_pause_sec=voice_config.sentence_pause_sec,
+            )
 
         tmp_wav = _voice_dir(project_id, settings) / "narration.tmp.wav"
         normalize_audio(Path(result.path), tmp_wav)
@@ -244,7 +272,7 @@ def generate_project_narration(project_id: int, settings: Settings) -> bool:
         fingerprint=fingerprint, provider=voice_config.provider, voice_id=voice_config.voice_id,
         language=voice_config.language, speed=voice_config.speed, pitch=voice_config.pitch,
         duration_sec=probe.duration_sec, sample_rate=probe.sample_rate, channels=probe.channels,
-        external_api_calls=1 if voice_config.provider == "edge_tts" else 0,
+        external_api_calls=len(runs) if voice_config.provider == "edge_tts" else 0,
         # Task 62 -- see docs/features/62-caption-real-word-timing.md.
         # Absolute seconds within narration.wav's own timeline (the same
         # timeline Beat.start/end already use) -- None for a provider with

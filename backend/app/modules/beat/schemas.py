@@ -173,6 +173,10 @@ class Beat(BaseModel):
     camera: str | None = None
     lighting: str | None = None
     continuity_notes: str | None = None
+    # Per-beat narration voice (same provider as the project's VoiceProjectConfig);
+    # None = the project's voice_id. First used by manhua recaps: host-commentary
+    # beats read by a second voice (docs/features/153-manhua-recap.md).
+    voice_id: str | None = None
 
     @field_validator("id")
     @classmethod

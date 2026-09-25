@@ -567,6 +567,46 @@ class EdgeTTSProvider(TTSProvider):
         )
 
 
+def synthesize_voice_runs(
+    provider: TTSProvider, runs: list[tuple[str, str]], language: str, speed: float, output_path: Path,
+    sentence_pause_sec: float = _INTER_SENTENCE_PAUSE_SEC,
+) -> AudioResult:
+    """Several voices in one narration track: `runs` is [(text, voice_id), ...]
+    in speaking order (consecutive same-voice beats already merged by the
+    caller). Each run is one normal synthesize() call; the runs are spliced
+    with a `sentence_pause_sec` gap, each trimmed to its own last real word
+    (same trailing-silence reasoning as _concat_wav_with_pauses), and every
+    run's word timings are shifted onto the joint timeline -- so beat cutting
+    and captions downstream see one ordinary track with real word timing.
+    """
+    tmp_dir = output_path.parent / f".{output_path.stem}_runs"
+    tmp_dir.mkdir(parents=True, exist_ok=True)
+    try:
+        segments: list[tuple[Path, float | None]] = []
+        words: list[WordTiming] = []
+        offset = 0.0
+        for i, (text, voice_id) in enumerate(runs):
+            result = provider.synthesize(
+                text, voice_id, language, speed, tmp_dir / f"run_{i:03d}.wav", sentence_pause_sec=sentence_pause_sec,
+            )
+            run_path = Path(result.path)
+            trim_to = result.duration_sec
+            if result.word_timestamps:
+                trim_to = min(trim_to, result.word_timestamps[-1].end + _TRAILING_WORD_BUFFER_SEC)
+            words.extend(WordTiming(text=w.text, start=w.start + offset, end=w.end + offset) for w in result.word_timestamps)
+            segments.append((run_path, trim_to))
+            offset += trim_to + sentence_pause_sec
+        _concat_wav_with_pauses(segments, sentence_pause_sec, output_path)
+    finally:
+        shutil.rmtree(tmp_dir, ignore_errors=True)
+
+    duration_sec, sample_rate, channels = _probe_wav(output_path)
+    return AudioResult(
+        path=str(output_path), duration_sec=duration_sec, sample_rate=sample_rate,
+        channels=channels, word_timestamps=words,
+    )
+
+
 def get_provider(name: str) -> TTSProvider:
     if name == "local":
         return LocalTTSProvider()

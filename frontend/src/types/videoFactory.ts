@@ -327,6 +327,9 @@ export interface GeneratedBeat {
   camera: string | null;
   lighting: string | null;
   continuity_notes: string | null;
+  // Per-beat narration voice override (null = the project's voice) -- e.g.
+  // a manhua recap's host-commentary beats in a second voice.
+  voice_id?: string | null;
 }
 
 // -- Project configuration + templates (Task 12) -----------------------------
@@ -641,4 +644,5 @@ export interface WorkingBeat {
   camera: string | null;
   lighting: string | null;
   continuityNotes: string | null;
+  voiceId: string | null;
 }

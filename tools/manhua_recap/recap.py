@@ -5,7 +5,7 @@ Usage (backend running, with the backend venv's python):
     python recap.py cut    <chapter_dir>                  # split pages into panels -> <chapter_dir>/_recap/panels/
     python recap.py script <chapter_dir> [--seconds 50] [--notes "..."]
                                                           # AI reads the panels, writes _recap/script.json
-    python recap.py build  <chapter_dir> [--name "..."] [--no-render]
+    python recap.py build  <chapter_dir> [--name "..."] [--no-render] [--commentary-voice VOICE|same]
                                                           # register panels, create the project, start the render
 
 <chapter_dir> holds the chapter's page images (jpg/png/webp) in reading order by
@@ -27,6 +27,9 @@ from PIL import Image
 
 API = os.environ.get("MANHUA_API", "http://127.0.0.1:8000/api/v1")  # override to target another backend
 TEMPLATE_ID = "manhua_recap_vi"
+# Host-commentary beats are read by a second voice (female) so viewers hear
+# the channel's own take as distinct from the recap (male, the template's).
+COMMENTARY_VOICE = "vi-VN-HoaiMyNeural"
 PAGE_EXTS = {".jpg", ".jpeg", ".png", ".webp"}
 # Same pace the backend's script writer targets (measured: NamMinh @1.6 ~ 5.1 syllables/s).
 SYLLABLES_PER_SECOND = 5.1
@@ -238,7 +241,7 @@ def cmd_script(chapter: Path, seconds: float, notes: str | None, commentary: boo
     print("Edit script.json if needed (make the commentary sound like YOU), then run `build`.")
 
 
-def cmd_build(chapter: Path, name: str | None, render: bool) -> None:
+def cmd_build(chapter: Path, name: str | None, render: bool, commentary_voice: str | None) -> None:
     script_path = chapter / "_recap" / "script.json"
     if not script_path.exists():
         sys.exit("No script yet -- run `script` first.")
@@ -264,6 +267,7 @@ def cmd_build(chapter: Path, name: str | None, render: bool) -> None:
             "type": "HOOK" if i == 1 else "ENDING" if i == len(script["beats"]) else b.get("type", "BUILD"),
             "narration": text, "duration": round(max(1.2, len(text.split()) / SYLLABLES_PER_SECOND + 0.15), 2),
             "visual_hint": path.stem, "asset_id": asset["id"],
+            "voice_id": commentary_voice if b.get("kind") == "commentary" else None,
         })
 
     name = name or script["title"]
@@ -299,6 +303,8 @@ def main() -> None:
         if cmd == "build":
             p.add_argument("--name", default=None)
             p.add_argument("--no-render", action="store_true")
+            p.add_argument("--commentary-voice", default=COMMENTARY_VOICE,
+                           help=f"edge-tts voice for commentary beats (default {COMMENTARY_VOICE}; 'same' = narrator's)")
     args = parser.parse_args()
     if args.cmd == "fetch":
         cmd_fetch(args.url, args.chapter.resolve())
@@ -311,7 +317,8 @@ def main() -> None:
     elif args.cmd == "script":
         cmd_script(chapter, args.seconds, args.notes, not args.no_commentary)
     else:
-        cmd_build(chapter, args.name, not args.no_render)
+        cmd_build(chapter, args.name, not args.no_render,
+                  None if args.commentary_voice == "same" else args.commentary_voice)
 
 
 if __name__ == "__main__":

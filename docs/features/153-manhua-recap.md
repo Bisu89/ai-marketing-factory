@@ -81,3 +81,15 @@ edge_tts project, not only manhua.
 **Known gap:** BGM auto-selection has no wuxia-style track in the library, so project 112
 got `horror.mp3` and 113 got a prayer track. Manhua-specific tracks still need to be
 added.
+
+**Two voices: male recap, female commentary.** `Beat.voice_id` is a new optional per-beat
+override that is round-tripped by the frontend beat editor. The voice stage
+(`voice_generate.voice_runs`) groups consecutive beats with the same effective voice into
+runs. `providers.synthesize_voice_runs` makes one synthesize() call per run, splices the
+runs with the sentence pause after trimming each to its last word, and shifts word timings
+onto the joint timeline, so beat cutting and captions work unchanged. Single-voice projects
+are always a single run and keep their exact old fingerprint, so no cached narration was
+invalidated. `recap.py build` gives commentary beats `vi-VN-HoaiMyNeural`
+(`--commentary-voice VOICE|same`). Verified on project 113 by measuring median f0 per beat:
+recap beats were 132–150 Hz and commentary beats 211–241 Hz. The render was 53.9s with
+Final QA PASS 100.
