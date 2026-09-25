@@ -1610,11 +1610,14 @@ _MANHUA_CAPTIONS = CaptionsProjectConfig(
     enabled=True, preset="word_pop", max_words=1, max_chars=20, max_lines=1,
     min_duration_sec=0.15, max_duration_sec=1.5,
 )
-# vi-VN-NamMinhNeural (male, like the sample) at +25% with almost no
+# vi-VN-NamMinhNeural (male, like the sample) at +60% with almost no
 # sentence pause: the sample's narration never goes silent for >0.3s.
+# 1.25 was the first guess -- a real render measured only ~242 syllables/min
+# against the sample's ~335; 1.6 measured ~308/min and whisper still
+# transcribes it cleanly (project 112).
 _MANHUA_VOICE = VoiceProjectConfig(
     provider="edge_tts", voice_id="vi-VN-NamMinhNeural", language="vi",
-    speed=1.25, sentence_pause_sec=0.1,
+    speed=1.6, sentence_pause_sec=0.1,
 )
 _MANHUA_TONE = (
     "fast, punchy, lightly comedic recap narrator -- plain spoken Vietnamese, "

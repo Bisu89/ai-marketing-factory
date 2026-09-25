@@ -72,6 +72,15 @@ class ManhuaRecapScriptTests(unittest.TestCase):
         self.assertIn("over the maximum", call.call_args.kwargs["system"])
         self.assertEqual(len(out.beats), 3)
 
+    def test_unknown_beat_type_is_sent_back_for_repair(self):
+        bad = self._beats([1, 2, 3])
+        bad["beats"][1]["type"] = "CLIMAX"
+        good = self._beats([1, 2, 3])
+        good["beats"][1]["type"] = "REVEAL"
+        with patch("app.api.v1.endpoints.manhua_recap.call_structured", side_effect=[_result(bad), _result(good)]):
+            out = generate_manhua_script(SETTINGS, ManhuaScriptIn(panel_paths=self.paths))
+        self.assertEqual(out.beats[1].type, "REVEAL")
+
     def test_missing_panel_file_is_a_validation_error(self):
         paths = [*self.paths[:3], str(Path(self.tmp.name) / "nope.png")]
         with self.assertRaises(ValidationError):

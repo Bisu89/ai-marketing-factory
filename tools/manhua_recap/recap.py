@@ -15,6 +15,7 @@ filename. Between steps you can delete bad panels from _recap/panels/ (then re-r
 """
 import argparse
 import json
+import os
 import re
 import sys
 import urllib.error
@@ -24,11 +25,11 @@ from pathlib import Path
 import numpy as np
 from PIL import Image
 
-API = "http://127.0.0.1:8000/api/v1"
+API = os.environ.get("MANHUA_API", "http://127.0.0.1:8000/api/v1")  # override to target another backend
 TEMPLATE_ID = "manhua_recap_vi"
 PAGE_EXTS = {".jpg", ".jpeg", ".png", ".webp"}
-# Same pace the backend's script writer targets (reference sample: ~335 syllables/min).
-SYLLABLES_PER_SECOND = 5.5
+# Same pace the backend's script writer targets (measured: NamMinh @1.6 ~ 5.1 syllables/s).
+SYLLABLES_PER_SECOND = 5.1
 
 # -- fetching -------------------------------------------------------------------
 # manhuavn2.com chapter pages list their page images as <img class="lazy"
@@ -224,7 +225,8 @@ def cmd_script(chapter: Path, seconds: float, notes: str | None) -> None:
     }, timeout=600)
     script = {
         "title": result["title"],
-        "beats": [{"panel": panels[b["panel"] - 1].name, "narration": b["narration"]} for b in result["beats"]],
+        "beats": [{"panel": panels[b["panel"] - 1].name, "type": b["type"], "narration": b["narration"]}
+                  for b in result["beats"]],
     }
     path = chapter / "_recap" / "script.json"
     path.write_text(json.dumps(script, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -257,7 +259,8 @@ def cmd_build(chapter: Path, name: str | None, render: bool) -> None:
                                              "width": w, "height": h, "tags": ["manhua_recap", tag]})
         text = b["narration"].strip()
         beats.append({
-            "id": f"b{i}", "order": i, "type": "HOOK" if i == 1 else "ENDING" if i == len(script["beats"]) else "BUILD",
+            "id": f"b{i}", "order": i,
+            "type": "HOOK" if i == 1 else "ENDING" if i == len(script["beats"]) else b.get("type", "BUILD"),
             "narration": text, "duration": round(max(1.2, len(text.split()) / SYLLABLES_PER_SECOND + 0.15), 2),
             "visual_hint": path.stem, "asset_id": asset["id"],
         })

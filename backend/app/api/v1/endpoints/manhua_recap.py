@@ -35,9 +35,10 @@ MAX_RETRIES = 1
 # small enough that a 60-panel chapter stays a reasonable single request.
 PANEL_MAX_WIDTH = 768
 PANEL_MAX_HEIGHT = 1536
-# Measured on the reference sample: ~335 Vietnamese syllables/min of
-# narration (vi-VN-NamMinhNeural at speed 1.25 reads close to this).
-SYLLABLES_PER_SECOND = 5.5
+# Real render (project 112): vi-VN-NamMinhNeural at speed 1.6 read 262
+# syllables in 51.1s = ~5.1/s (~308/min; the reference sample is ~335/min).
+# At 1.25 it was only ~4.0/s -- a "50s" script rendered at 65s.
+SYLLABLES_PER_SECOND = 5.1
 # The sample shows a new panel every ~2s. Real run on a 56-panel chapter:
 # asked only for a syllable total, the model narrated 44 panels / 533
 # syllables (~97s) against a 50s target -- so the beat count is stated
@@ -45,6 +46,8 @@ SYLLABLES_PER_SECOND = 5.5
 # through the repair retry.
 SECONDS_PER_BEAT = 2.0
 LENGTH_TOLERANCE = 1.3
+
+BEAT_TYPES = ("HOOK", "SETUP", "BUILD", "REVEAL", "REACTION", "ENDING")
 
 LANGUAGE_NAMES = {"vi": "Vietnamese", "en": "English", "ko": "Korean"}
 
@@ -68,6 +71,9 @@ SYSTEM_PROMPT = (
     "- The last beat lands the chapter's ending/reaction.\n"
     "- Use the character names if the panels give them; otherwise short descriptive labels "
     "(e.g. 'lão già', 'gã kiếm tiên').\n"
+    "- Give each beat a `type` for its role: HOOK (first beat only), SETUP, BUILD, REVEAL "
+    "(a twist/secret comes out), REACTION (someone's shock/response), ENDING (last beat only). "
+    "Vary them the way the story actually moves -- not a long run of BUILD.\n"
     "Also return a short catchy video title (max 80 characters) in the same language."
 )
 
@@ -83,9 +89,10 @@ OUTPUT_SCHEMA = {
                     "type": "object",
                     "properties": {
                         "panel": {"type": "integer"},
+                        "type": {"type": "string", "enum": list(BEAT_TYPES)},
                         "narration": {"type": "string"},
                     },
-                    "required": ["panel", "narration"],
+                    "required": ["panel", "type", "narration"],
                     "additionalProperties": False,
                 },
             },
@@ -107,6 +114,7 @@ class ManhuaScriptIn(BaseModel):
 
 class ManhuaBeatOut(BaseModel):
     panel: int  # 1-based index into panel_paths
+    type: str = "BUILD"  # one of BEAT_TYPES -- becomes Beat.type on the built project
     narration: str
 
 
@@ -161,6 +169,8 @@ def _validate(parsed: dict, panel_count: int, syllable_budget: int) -> ManhuaScr
             raise ValueError(f"panel {beat.panel} is out of range 1..{panel_count}")
         if beat.panel <= previous:
             raise ValueError(f"panels must be strictly increasing, got {beat.panel} after {previous}")
+        if beat.type not in BEAT_TYPES:
+            raise ValueError(f"beat for panel {beat.panel} has unknown type {beat.type!r}")
         if not beat.narration.strip():
             raise ValueError(f"beat for panel {beat.panel} has empty narration")
         previous = beat.panel

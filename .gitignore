@@ -40,3 +40,5 @@ Thumbs.db
 
 # Sample videos dropped in for analysis (large, not committed)
 check-video/
+# Manhua recap chapters (downloaded pages + cut panels, referenced by asset paths)
+manhua-recap/

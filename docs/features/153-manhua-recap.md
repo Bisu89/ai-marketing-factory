@@ -48,3 +48,13 @@ validator sends a script over 1.3x the syllable budget back through the repair r
 The re-run gave 25 beats / 338 syllables in a single call (~44k input tokens). The prompt
 also tells the model to skip promo banners. Added `recap.py fetch <chapter url>`
 (manhuavn2 only, plain public image URLs, refuses VIP-locked chapters).
+
+**First full render (project 112, same chapter).** Final QA passed at 100. Quality Gate
+raised warnings only: `LOW_RESOLUTION_ASSET`, because the source pages are 750px wide,
+and a long run of BUILD beats. At voice speed 1.25 the render was 64.9s against a 48s
+estimate, with measured narration of about 242 syllables/min versus about 335 in the
+sample. Raising the speed to 1.6 gave 51.1s at about 308/min, and a whisper transcript of
+the result was still clean. The template now uses 1.6, and the pace constant was changed
+to 5.1 syllables/s. The script writer now assigns each beat's `type`
+(SETUP/BUILD/REVEAL/REACTION), so the tool no longer marks every middle beat as BUILD.
+`recap.py` reads `MANHUA_API` to target a backend other than :8000.
