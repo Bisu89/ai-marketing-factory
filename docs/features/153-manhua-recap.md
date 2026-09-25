@@ -38,3 +38,13 @@ into exactly 8 panels. A real OpenAI vision call on those 8 panels returned a va
 8-beat script in 12s. `word_pop` ASS burned through ffmpeg/libass rendered Vietnamese
 diacritics correctly. Not yet run end to end through a factory render, because the
 running backend predates this code.
+
+**Follow-up (real chapter, manhuavn2.com Vạn Cổ Chí Tôn ch.2, 18 pages).** The first cut
+merged bubble-linked panels into one strip 6823px tall. Over-tall segments (taller than
+2x their width) are now split again at their emptiest row band. That run produced 56
+panels, all within the limit. The first real script ran long: 44 beats / 533 syllables,
+about 97s against a 50s target. The prompt now states a beat count (~target/2s) and the
+validator sends a script over 1.3x the syllable budget back through the repair retry.
+The re-run gave 25 beats / 338 syllables in a single call (~44k input tokens). The prompt
+also tells the model to skip promo banners. Added `recap.py fetch <chapter url>`
+(manhuavn2 only, plain public image URLs, refuses VIP-locked chapters).

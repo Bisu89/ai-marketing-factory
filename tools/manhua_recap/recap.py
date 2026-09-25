@@ -1,6 +1,7 @@
 """Manhua recap tool -- one comic chapter (page images) -> a finished recap Short.
 
 Usage (backend running, with the backend venv's python):
+    python recap.py fetch  <chapter_url> <chapter_dir>    # download a chapter's page images (manhuavn2.com)
     python recap.py cut    <chapter_dir>                  # split pages into panels -> <chapter_dir>/_recap/panels/
     python recap.py script <chapter_dir> [--seconds 50] [--notes "..."]
                                                           # AI reads the panels, writes _recap/script.json
@@ -29,6 +30,35 @@ PAGE_EXTS = {".jpg", ".jpeg", ".png", ".webp"}
 # Same pace the backend's script writer targets (reference sample: ~335 syllables/min).
 SYLLABLES_PER_SECOND = 5.5
 
+# -- fetching -------------------------------------------------------------------
+# manhuavn2.com chapter pages list their page images as <img class="lazy"
+# data-original="...">; the same markup is used for the sidebar's cover
+# thumbnails, which all live under /Pictures/Truyen/. VIP chapters are marked
+# "isAccessibleForFree": false and carry no page images.
+USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130 Safari/537.36"
+COVER_PATH = "/Pictures/Truyen/"
+
+
+def _get(url: str, timeout: int = 60) -> bytes:
+    req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+    with urllib.request.urlopen(req, timeout=timeout) as r:
+        return r.read()
+
+
+def cmd_fetch(url: str, chapter: Path) -> None:
+    html = _get(url).decode("utf-8", errors="replace")
+    if re.search(r'"isAccessibleForFree"\s*:\s*false', html):
+        sys.exit("This chapter is VIP/locked on the site -- pick a free chapter.")
+    urls = [u for u in re.findall(r'data-original="([^"]+)"', html) if COVER_PATH not in u]
+    if not urls:
+        sys.exit("No page images found on that page -- is it a chapter URL (…/doc-truyen/…-chapter-N.html)?")
+    chapter.mkdir(parents=True, exist_ok=True)
+    for i, image_url in enumerate(urls, 1):
+        (chapter / f"{i:03d}.jpg").write_bytes(_get(image_url))
+        print(f"\r{i}/{len(urls)}", end="", flush=True)
+    print(f"\n{len(urls)} page(s) -> {chapter}. Next: `cut`.")
+
+
 # -- panel cutting ------------------------------------------------------------
 # Web manhua/webtoon chapters are tall vertical strips cut into arbitrary page
 # images, with panels separated by horizontal bands of flat colour (white,
@@ -41,6 +71,12 @@ GUTTER_MIN_ROWS = 6      # this many flat rows in a row = a gutter
 PANEL_MIN_HEIGHT = 150   # anything shorter is a divider/text scrap, dropped
 PANEL_MIN_INK = 0.04     # fraction of non-flat pixels a real panel needs
 STRIP_WIDTH = 900        # every page is resized to this width before stacking
+# Panels that bleed into each other (speech bubbles over the gutter, full-bleed
+# art) come out as one very tall segment -- and a 9:16 cover-crop would only
+# ever show its middle. Anything taller than this many widths is split again
+# at its emptiest rows (most near-white/near-black pixels).
+MAX_PANEL_ASPECT = 2.0
+MIN_SPLIT_PIECE = 0.7    # a split piece is at least this many widths tall
 
 
 def _natural_key(path: Path):
@@ -90,6 +126,19 @@ def _segments(flat: np.ndarray) -> list[tuple[int, int]]:
     return segments
 
 
+def _split_tall(strip: np.ndarray, top: int, bottom: int) -> list[tuple[int, int]]:
+    """Recursively cut an over-tall segment at its emptiest row band."""
+    width = strip.shape[1]
+    if (bottom - top) <= MAX_PANEL_ASPECT * width:
+        return [(top, bottom)]
+    gray = strip[top:bottom].mean(axis=2)
+    empty = ((gray > 235) | (gray < 20)).mean(axis=1)
+    empty = np.convolve(empty, np.ones(9) / 9, mode="same")  # prefer a band, not one lucky row
+    lo, hi = int(MIN_SPLIT_PIECE * width), (bottom - top) - int(MIN_SPLIT_PIECE * width)
+    cut = top + lo + int(np.argmax(empty[lo:hi]))
+    return _split_tall(strip, top, cut) + _split_tall(strip, cut, bottom)
+
+
 def _trim_columns(panel: np.ndarray) -> np.ndarray:
     cols = panel.mean(axis=2).std(axis=0) >= ROW_FLAT_STD
     idx = np.flatnonzero(cols)
@@ -111,7 +160,8 @@ def cmd_cut(chapter: Path) -> None:
         old.unlink()
 
     kept = 0
-    for top, bottom in _segments(_flat_rows(strip)):
+    pieces = [piece for top, bottom in _segments(_flat_rows(strip)) for piece in _split_tall(strip, top, bottom)]
+    for top, bottom in pieces:
         if bottom - top < PANEL_MIN_HEIGHT:
             continue
         panel = _trim_columns(strip[top:bottom])
@@ -231,6 +281,9 @@ def cmd_build(chapter: Path, name: str | None, render: bool) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = parser.add_subparsers(dest="cmd", required=True)
+    fetch = sub.add_parser("fetch")
+    fetch.add_argument("url")
+    fetch.add_argument("chapter", type=Path)
     for cmd in ("cut", "script", "build"):
         p = sub.add_parser(cmd)
         p.add_argument("chapter", type=Path)
@@ -241,6 +294,9 @@ def main() -> None:
             p.add_argument("--name", default=None)
             p.add_argument("--no-render", action="store_true")
     args = parser.parse_args()
+    if args.cmd == "fetch":
+        cmd_fetch(args.url, args.chapter.resolve())
+        return
     chapter = args.chapter.resolve()
     if not chapter.is_dir():
         sys.exit(f"Not a folder: {chapter}")

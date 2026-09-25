@@ -62,6 +62,16 @@ class ManhuaRecapScriptTests(unittest.TestCase):
             with self.assertRaises(ExternalServiceError):
                 generate_manhua_script(SETTINGS, ManhuaScriptIn(panel_paths=self.paths))
 
+    def test_over_long_narration_is_sent_back_for_a_shorter_rewrite(self):
+        long_line = " ".join(["chữ"] * 200)
+        too_long = {"title": "t", "beats": [{"panel": p, "narration": long_line} for p in (1, 2, 3)]}
+        responses = [_result(too_long), _result(self._beats([1, 2, 3]))]
+        with patch("app.api.v1.endpoints.manhua_recap.call_structured", side_effect=responses) as call:
+            out = generate_manhua_script(SETTINGS, ManhuaScriptIn(panel_paths=self.paths, target_duration=20))
+        self.assertEqual(call.call_count, 2)
+        self.assertIn("over the maximum", call.call_args.kwargs["system"])
+        self.assertEqual(len(out.beats), 3)
+
     def test_missing_panel_file_is_a_validation_error(self):
         paths = [*self.paths[:3], str(Path(self.tmp.name) / "nope.png")]
         with self.assertRaises(ValidationError):

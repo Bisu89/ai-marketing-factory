@@ -38,6 +38,13 @@ PANEL_MAX_HEIGHT = 1536
 # Measured on the reference sample: ~335 Vietnamese syllables/min of
 # narration (vi-VN-NamMinhNeural at speed 1.25 reads close to this).
 SYLLABLES_PER_SECOND = 5.5
+# The sample shows a new panel every ~2s. Real run on a 56-panel chapter:
+# asked only for a syllable total, the model narrated 44 panels / 533
+# syllables (~97s) against a 50s target -- so the beat count is stated
+# explicitly, and a script over LENGTH_TOLERANCE x the budget is sent back
+# through the repair retry.
+SECONDS_PER_BEAT = 2.0
+LENGTH_TOLERANCE = 1.3
 
 LANGUAGE_NAMES = {"vi": "Vietnamese", "en": "English", "ko": "Korean"}
 
@@ -50,7 +57,8 @@ SYSTEM_PROMPT = (
     "Then write the recap as a sequence of beats. Each beat shows exactly ONE panel on "
     "screen while one short piece of narration is read over it.\n"
     "- Panels must be used in strictly increasing order. Skip panels that are redundant, "
-    "unreadable, mostly text/blank, or don't move the story; never reuse a panel.\n"
+    "unreadable, mostly text/blank, or don't move the story, and ALWAYS skip ads, credits, "
+    "translator notes and website/app promo banners; never reuse a panel.\n"
     "- Each beat's narration is one short clause or sentence (roughly 8-20 syllables) that "
     "matches what that panel shows.\n"
     "- Third person, plain spoken language, fast and punchy, lightly comedic where the "
@@ -124,19 +132,26 @@ def _load_panel(path_str: str, index: int) -> LLMImage:
 
 def _build_user_message(payload: ManhuaScriptIn) -> str:
     language = LANGUAGE_NAMES.get(payload.language, payload.language)
-    syllables = round(payload.target_duration * SYLLABLES_PER_SECOND)
+    syllables = _syllable_budget(payload.target_duration)
+    beats = max(3, round(payload.target_duration / SECONDS_PER_BEAT))
     lines = [
         f"There are {len(payload.panel_paths)} panels above (Panel 1 .. Panel {len(payload.panel_paths)}).",
         f"Write the recap in {language}.",
-        f"Target length: about {payload.target_duration:.0f} seconds read fast -- roughly {syllables} "
-        "words/syllables of narration in total across all beats.",
+        f"Target length: about {payload.target_duration:.0f} seconds read fast -- about {beats} beats and "
+        f"roughly {syllables} words/syllables of narration in total (hard maximum "
+        f"{round(syllables * LENGTH_TOLERANCE)}). You will NOT use every panel: pick the ~{beats} that tell "
+        "the story best and compress -- this is a recap, not a retelling.",
     ]
     if payload.notes:
         lines.append(f"Context from the channel owner: {payload.notes}")
     return "\n".join(lines)
 
 
-def _validate(parsed: dict, panel_count: int) -> ManhuaScriptOut:
+def _syllable_budget(target_duration: float) -> int:
+    return round(target_duration * SYLLABLES_PER_SECOND)
+
+
+def _validate(parsed: dict, panel_count: int, syllable_budget: int) -> ManhuaScriptOut:
     out = ManhuaScriptOut.model_validate(parsed)
     if len(out.beats) < 3:
         raise ValueError(f"only {len(out.beats)} beats returned, need at least 3")
@@ -149,6 +164,12 @@ def _validate(parsed: dict, panel_count: int) -> ManhuaScriptOut:
         if not beat.narration.strip():
             raise ValueError(f"beat for panel {beat.panel} has empty narration")
         previous = beat.panel
+    total = sum(len(beat.narration.split()) for beat in out.beats)
+    if total > syllable_budget * LENGTH_TOLERANCE:
+        raise ValueError(
+            f"narration is {total} words/syllables, over the maximum of "
+            f"{round(syllable_budget * LENGTH_TOLERANCE)} -- use fewer beats and shorter lines"
+        )
     out.title = out.title.strip()[:100] or "Manhua recap"
     return out
 
@@ -179,7 +200,7 @@ def generate_manhua_script(settings: Settings, payload: ManhuaScriptIn) -> Manhu
         if not result.text:
             raise ExternalServiceError("Model did not return any text content.")
         try:
-            return _validate(json.loads(result.text), len(images))
+            return _validate(json.loads(result.text), len(images), _syllable_budget(payload.target_duration))
         except (json.JSONDecodeError, ValueError) as exc:
             logger.warning("Manhua script attempt %d/%d invalid: %s", attempt + 1, MAX_RETRIES + 1, exc)
             last_error = exc
