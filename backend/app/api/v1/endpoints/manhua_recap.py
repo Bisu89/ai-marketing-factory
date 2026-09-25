@@ -48,6 +48,15 @@ SECONDS_PER_BEAT = 2.0
 LENGTH_TOLERANCE = 1.3
 
 BEAT_TYPES = ("HOOK", "SETUP", "BUILD", "REVEAL", "REACTION", "ENDING")
+# YouTube's monetization policy (reused content, updated 2025-07) rejects
+# videos that only re-read someone else's material, but allows "edited
+# footage ... where you add a storyline and commentary" and critical review.
+# So by default a recap must carry the channel's own take: "commentary"
+# beats (opinion, analysis, prediction) next to the plain "recap" beats,
+# checked below rather than left to the prompt alone.
+BEAT_KINDS = ("recap", "commentary")
+MIN_COMMENTARY_BEATS = 2
+MIN_COMMENTARY_SHARE = 0.15  # of total narration syllables
 
 LANGUAGE_NAMES = {"vi": "Vietnamese", "en": "English", "ko": "Korean"}
 
@@ -68,13 +77,34 @@ SYSTEM_PROMPT = (
     "chapter is funny. No greeting, no 'in this chapter', never mention panels, comics, or "
     "the reader. Do not read speech bubbles out verbatim -- retell them.\n"
     "- The very first beat is the hook: drop the viewer straight into the situation.\n"
-    "- The last beat lands the chapter's ending/reaction.\n"
+    "- The recap lands the chapter's ending/reaction.\n"
     "- Use the character names if the panels give them; otherwise short descriptive labels "
     "(e.g. 'lão già', 'gã kiếm tiên').\n"
     "- Give each beat a `type` for its role: HOOK (first beat only), SETUP, BUILD, REVEAL "
     "(a twist/secret comes out), REACTION (someone's shock/response), ENDING (last beat only). "
     "Vary them the way the story actually moves -- not a long run of BUILD.\n"
+    "- Mark every beat's `kind` as \"recap\" (retelling what happens).\n"
     "Also return a short catchy video title (max 80 characters) in the same language."
+)
+
+# Appended when commentary is on; overrides the plain-recap ending/kind rules above.
+COMMENTARY_RULES = (
+    "\n\nCOMMENTARY -- this channel is a REVIEW channel, not a read-along. Besides the recap "
+    "beats, write beats of the channel host's own take, marked `kind`: \"commentary\":\n"
+    "- Spoken by the host in first person (Vietnamese: 'mình'), casual and confident.\n"
+    "- Specific to THIS chapter, never generic praise ('hay quá', 'đỉnh thật' alone is not "
+    "commentary): why a move or reveal is clever, what it says about a character's real power "
+    "or personality, a detail most readers miss, how it sets something up, a prediction for "
+    "the next chapter.\n"
+    "- Put 1-2 short commentary beats in the middle, right after the moment they react to, "
+    "and END the video with 2-3 commentary beats: the host's verdict on the chapter, then a "
+    "prediction or a question for viewers as the very last line. The recap's own climax comes "
+    "just before that closing take.\n"
+    "- A commentary beat still shows one panel (still strictly increasing): pick one that "
+    "fits what is being said.\n"
+    "- Commentary is part of the same length budget -- compress the recap to make room, "
+    "roughly 20-30% of all narration should be commentary.\n"
+    "- The last beat's `type` is ENDING even though it is commentary."
 )
 
 OUTPUT_SCHEMA = {
@@ -90,9 +120,10 @@ OUTPUT_SCHEMA = {
                     "properties": {
                         "panel": {"type": "integer"},
                         "type": {"type": "string", "enum": list(BEAT_TYPES)},
+                        "kind": {"type": "string", "enum": list(BEAT_KINDS)},
                         "narration": {"type": "string"},
                     },
-                    "required": ["panel", "type", "narration"],
+                    "required": ["panel", "type", "kind", "narration"],
                     "additionalProperties": False,
                 },
             },
@@ -110,11 +141,14 @@ class ManhuaScriptIn(BaseModel):
     # Free-text context the panels can't give: series name, who's who,
     # "this is chapter 12, the old man is the sect master", etc.
     notes: str | None = None
+    # Host commentary beats (see BEAT_KINDS). False = plain recap only.
+    commentary: bool = True
 
 
 class ManhuaBeatOut(BaseModel):
     panel: int  # 1-based index into panel_paths
     type: str = "BUILD"  # one of BEAT_TYPES -- becomes Beat.type on the built project
+    kind: str = "recap"  # one of BEAT_KINDS
     narration: str
 
 
@@ -150,6 +184,17 @@ def _build_user_message(payload: ManhuaScriptIn) -> str:
         f"{round(syllables * LENGTH_TOLERANCE)}). You will NOT use every panel: pick the ~{beats} that tell "
         "the story best and compress -- this is a recap, not a retelling.",
     ]
+    if payload.commentary:
+        # First real run with commentary overshot the maximum even after the
+        # repair retry: the model added the host's take ON TOP of a full-length
+        # recap. Spell out the split so the recap is compressed up front.
+        commentary_beats = max(MIN_COMMENTARY_BEATS + 1, round(beats * 0.25))
+        lines.append(
+            f"Split that budget: about {beats - commentary_beats} recap beats (~{round(syllables * 0.75)} "
+            f"syllables) and about {commentary_beats} commentary beats (~{round(syllables * 0.25)} syllables). "
+            "The recap must be SHORTER than a plain recap would be -- the host's take replaces story detail, "
+            "it is not added on top."
+        )
     if payload.notes:
         lines.append(f"Context from the channel owner: {payload.notes}")
     return "\n".join(lines)
@@ -159,7 +204,27 @@ def _syllable_budget(target_duration: float) -> int:
     return round(target_duration * SYLLABLES_PER_SECOND)
 
 
-def _validate(parsed: dict, panel_count: int, syllable_budget: int) -> ManhuaScriptOut:
+def _check_commentary(beats: list[ManhuaBeatOut]) -> None:
+    commentary = [b for b in beats if b.kind == "commentary"]
+    if len(commentary) < MIN_COMMENTARY_BEATS:
+        raise ValueError(
+            f"only {len(commentary)} commentary beat(s), need at least {MIN_COMMENTARY_BEATS} "
+            "(1-2 in the middle and a closing take)"
+        )
+    if beats[-1].kind != "commentary":
+        raise ValueError("the last beat must be the host's commentary (verdict / prediction / question)")
+    total = sum(len(b.narration.split()) for b in beats)
+    share = sum(len(b.narration.split()) for b in commentary) / max(total, 1)
+    if share < MIN_COMMENTARY_SHARE:
+        raise ValueError(
+            f"commentary is only {share:.0%} of the narration, need at least {MIN_COMMENTARY_SHARE:.0%} "
+            "-- compress the recap and give the host more of their own take"
+        )
+
+
+def _validate(
+    parsed: dict, panel_count: int, syllable_budget: int, commentary: bool = True,
+) -> ManhuaScriptOut:
     out = ManhuaScriptOut.model_validate(parsed)
     if len(out.beats) < 3:
         raise ValueError(f"only {len(out.beats)} beats returned, need at least 3")
@@ -171,6 +236,8 @@ def _validate(parsed: dict, panel_count: int, syllable_budget: int) -> ManhuaScr
             raise ValueError(f"panels must be strictly increasing, got {beat.panel} after {previous}")
         if beat.type not in BEAT_TYPES:
             raise ValueError(f"beat for panel {beat.panel} has unknown type {beat.type!r}")
+        if beat.kind not in BEAT_KINDS:
+            raise ValueError(f"beat for panel {beat.panel} has unknown kind {beat.kind!r}")
         if not beat.narration.strip():
             raise ValueError(f"beat for panel {beat.panel} has empty narration")
         previous = beat.panel
@@ -180,6 +247,8 @@ def _validate(parsed: dict, panel_count: int, syllable_budget: int) -> ManhuaScr
             f"narration is {total} words/syllables, over the maximum of "
             f"{round(syllable_budget * LENGTH_TOLERANCE)} -- use fewer beats and shorter lines"
         )
+    if commentary:
+        _check_commentary(out.beats)
     out.title = out.title.strip()[:100] or "Manhua recap"
     return out
 
@@ -195,7 +264,7 @@ def generate_manhua_script(settings: Settings, payload: ManhuaScriptIn) -> Manhu
     repair_note: str | None = None
     last_error: Exception | None = None
     for attempt in range(MAX_RETRIES + 1):
-        system = SYSTEM_PROMPT
+        system = SYSTEM_PROMPT + (COMMENTARY_RULES if payload.commentary else "")
         if repair_note:
             system += f"\n\nYour previous response was invalid: {repair_note}\nFix it and return valid JSON only."
         try:
@@ -210,7 +279,9 @@ def generate_manhua_script(settings: Settings, payload: ManhuaScriptIn) -> Manhu
         if not result.text:
             raise ExternalServiceError("Model did not return any text content.")
         try:
-            return _validate(json.loads(result.text), len(images), _syllable_budget(payload.target_duration))
+            return _validate(
+                json.loads(result.text), len(images), _syllable_budget(payload.target_duration), payload.commentary,
+            )
         except (json.JSONDecodeError, ValueError) as exc:
             logger.warning("Manhua script attempt %d/%d invalid: %s", attempt + 1, MAX_RETRIES + 1, exc)
             last_error = exc

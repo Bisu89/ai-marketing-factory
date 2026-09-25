@@ -414,6 +414,14 @@ class LocalTTSProvider(TTSProvider):
             raise VoiceError(TTS_GENERATION_FAILED, f"Local TTS synthesis failed: {exc}") from exc
 
 
+# Real hang (factory run 130, 2026-09-25): after one NoAudioReceived, the
+# retry's WebSocket stream never produced a chunk nor closed, and with no
+# timeout the whole Factory run sat in GENERATING_VOICE for 10+ minutes. A
+# sentence-sized segment normally streams in 1-3s, so a stalled attempt is
+# abandoned and counts as one failed try (module-level so tests can shrink it).
+_SEGMENT_ATTEMPT_TIMEOUT_SEC = 45.0
+
+
 class EdgeTTSProvider(TTSProvider):
     """The optional, non-default provider (section 41) -- free but NOT
     offline (a real network call to Microsoft's Edge Read-Aloud service,
@@ -481,7 +489,9 @@ class EdgeTTSProvider(TTSProvider):
             last_exc: Exception | None = None
             for attempt in range(_SEGMENT_MAX_ATTEMPTS):
                 try:
-                    words = await _generate_segment_once(segment_text, tmp_mp3)
+                    words = await asyncio.wait_for(
+                        _generate_segment_once(segment_text, tmp_mp3), timeout=_SEGMENT_ATTEMPT_TIMEOUT_SEC
+                    )
                     if tmp_mp3.exists() and tmp_mp3.stat().st_size > 0:
                         return words
                     last_exc = RuntimeError("edge_tts produced no audio bytes for this segment.")

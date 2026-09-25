@@ -37,8 +37,29 @@ class ManhuaRecapScriptTests(unittest.TestCase):
     def tearDown(self):
         self.tmp.cleanup()
 
-    def _beats(self, panels):
-        return {"title": "Kiếm tiên lười biếng", "beats": [{"panel": p, "narration": f"câu {p}"} for p in panels]}
+    def _beats(self, panels, commentary_last=2):
+        # The last `commentary_last` beats are the host's take (valid by default).
+        n = len(panels)
+        return {"title": "Kiếm tiên lười biếng", "beats": [
+            {"panel": p, "narration": f"câu {p}", "kind": "commentary" if i >= n - commentary_last else "recap"}
+            for i, p in enumerate(panels)
+        ]}
+
+    def test_recap_without_commentary_is_sent_back_for_repair(self):
+        responses = [_result(self._beats([1, 2, 3], commentary_last=0)), _result(self._beats([1, 2, 3]))]
+        with patch("app.api.v1.endpoints.manhua_recap.call_structured", side_effect=responses) as call:
+            out = generate_manhua_script(SETTINGS, ManhuaScriptIn(panel_paths=self.paths))
+        self.assertEqual(call.call_count, 2)
+        self.assertIn("COMMENTARY", call.call_args.kwargs["system"])
+        self.assertIn("commentary beat", call.call_args.kwargs["system"])
+        self.assertEqual([b.kind for b in out.beats], ["recap", "commentary", "commentary"])
+
+    def test_commentary_off_accepts_a_plain_recap(self):
+        plain = _result(self._beats([1, 2, 3], commentary_last=0))
+        with patch("app.api.v1.endpoints.manhua_recap.call_structured", return_value=plain) as call:
+            out = generate_manhua_script(SETTINGS, ManhuaScriptIn(panel_paths=self.paths, commentary=False))
+        self.assertNotIn("COMMENTARY", call.call_args.kwargs["system"])
+        self.assertEqual(len(out.beats), 3)
 
     def test_valid_response_returns_beats_and_sends_every_panel_labelled(self):
         with patch("app.api.v1.endpoints.manhua_recap.call_structured", return_value=_result(self._beats([1, 2, 4]))) as call:
@@ -64,7 +85,7 @@ class ManhuaRecapScriptTests(unittest.TestCase):
 
     def test_over_long_narration_is_sent_back_for_a_shorter_rewrite(self):
         long_line = " ".join(["chữ"] * 200)
-        too_long = {"title": "t", "beats": [{"panel": p, "narration": long_line} for p in (1, 2, 3)]}
+        too_long = {"title": "t", "beats": [{"panel": p, "narration": long_line, "kind": "commentary"} for p in (1, 2, 3)]}
         responses = [_result(too_long), _result(self._beats([1, 2, 3]))]
         with patch("app.api.v1.endpoints.manhua_recap.call_structured", side_effect=responses) as call:
             out = generate_manhua_script(SETTINGS, ManhuaScriptIn(panel_paths=self.paths, target_duration=20))

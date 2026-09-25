@@ -58,3 +58,26 @@ the result was still clean. The template now uses 1.6, and the pace constant was
 to 5.1 syllables/s. The script writer now assigns each beat's `type`
 (SETUP/BUILD/REVEAL/REACTION), so the tool no longer marks every middle beat as BUILD.
 `recap.py` reads `MANHUA_API` to target a backend other than :8000.
+
+**Host commentary (for YouTube's reused-content policy).** The policy was re-read on
+2026-09-25 (monetization policies, updated 2025-07-15). It rejects videos that "exclusively
+feature readings of other materials" but allows "edited footage … where you add a storyline
+and commentary". `POST /manhua-recap/script` now defaults to `commentary=true`. Beats are
+tagged `kind: recap|commentary`, and the validator requires at least 2 commentary beats,
+with the last beat being commentary and commentary making up at least 15% of the syllables.
+The prompt splits the length budget roughly 75/25, because the first real run added the
+host's take on top of a full-length recap and went over the maximum even after the retry.
+On the real chapter the result was 26 beats, 7 of them commentary, and project 113
+rendered at 58.6s with Final QA PASS 100. `recap.py script --no-commentary` gives the old
+plain recap.
+
+**Fix: edge_tts retry could hang forever.** Factory run 130 stayed in GENERATING_VOICE for
+10+ minutes. After one NoAudioReceived, the retry's WebSocket stream neither yielded nor
+closed, and there was no timeout. Each segment attempt is now wrapped in
+`asyncio.wait_for(45s)` (`voice/providers.py`), so a stalled attempt counts as a failed
+try. Covered by `tests/modules/voice/test_edge_provider_timeout.py`. This affects every
+edge_tts project, not only manhua.
+
+**Known gap:** BGM auto-selection has no wuxia-style track in the library, so project 112
+got `horror.mp3` and 113 got a prayer track. Manhua-specific tracks still need to be
+added.

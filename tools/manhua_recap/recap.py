@@ -216,25 +216,26 @@ def _panel_files(chapter: Path) -> list[Path]:
     return panels
 
 
-def cmd_script(chapter: Path, seconds: float, notes: str | None) -> None:
+def cmd_script(chapter: Path, seconds: float, notes: str | None, commentary: bool) -> None:
     panels = _panel_files(chapter)
     print(f"Sending {len(panels)} panels to the AI (this can take a minute)...")
     result = call("POST", "/manhua-recap/script", {
         "panel_paths": [str(p.resolve()) for p in panels], "target_duration": seconds,
-        "language": "vi", "notes": notes,
+        "language": "vi", "notes": notes, "commentary": commentary,
     }, timeout=600)
     script = {
         "title": result["title"],
-        "beats": [{"panel": panels[b["panel"] - 1].name, "type": b["type"], "narration": b["narration"]}
-                  for b in result["beats"]],
+        "beats": [{"panel": panels[b["panel"] - 1].name, "type": b["type"], "kind": b.get("kind", "recap"),
+                   "narration": b["narration"]} for b in result["beats"]],
     }
     path = chapter / "_recap" / "script.json"
     path.write_text(json.dumps(script, ensure_ascii=False, indent=2), encoding="utf-8")
     syllables = sum(len(b["narration"].split()) for b in script["beats"])
     print(f"{script['title']}\n{len(script['beats'])} beats, ~{syllables / SYLLABLES_PER_SECOND:.0f}s -> {path}")
     for b in script["beats"]:
-        print(f"  [{b['panel']}] {b['narration']}")
-    print("Edit script.json if needed, then run `build`.")
+        tag = "BÌNH LUẬN" if b["kind"] == "commentary" else "kể"
+        print(f"  [{b['panel']}] ({tag}) {b['narration']}")
+    print("Edit script.json if needed (make the commentary sound like YOU), then run `build`.")
 
 
 def cmd_build(chapter: Path, name: str | None, render: bool) -> None:
@@ -293,6 +294,8 @@ def main() -> None:
         if cmd == "script":
             p.add_argument("--seconds", type=float, default=50.0)
             p.add_argument("--notes", default=None, help="context the panels can't give (names, who's who)")
+            p.add_argument("--no-commentary", action="store_true",
+                           help="plain recap, no host commentary (higher reused-content risk on YouTube)")
         if cmd == "build":
             p.add_argument("--name", default=None)
             p.add_argument("--no-render", action="store_true")
@@ -306,7 +309,7 @@ def main() -> None:
     if args.cmd == "cut":
         cmd_cut(chapter)
     elif args.cmd == "script":
-        cmd_script(chapter, args.seconds, args.notes)
+        cmd_script(chapter, args.seconds, args.notes, not args.no_commentary)
     else:
         cmd_build(chapter, args.name, not args.no_render)
 
