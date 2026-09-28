@@ -1,0 +1,32 @@
+{
+  "title": "Ma Hoàng bị trói vào... một tiểu thư!?",
+  "chapters": "2",
+  "source_dir": "manhua-recap/dqg_ep2",
+  "written_by": "Claude (đọc tay từ panels), 2026-09-28",
+  "beats": [
+    {"panel": "p003.jpg", "type": "HOOK", "kind": "recap", "narration": "Ma Hoàng này cứ rời xa một cô tiểu thư là tim đau như muốn nổ tung."},
+    {"panel": "p004.jpg", "type": "SETUP", "kind": "recap", "narration": "Hắn tưởng mình luyện công tẩu hỏa nhập ma."},
+    {"panel": "p006.jpg", "type": "SETUP", "kind": "recap", "narration": "Nhưng kinh mạch vẫn bình thường, chẳng có gì sai cả."},
+    {"panel": "p009.jpg", "type": "BUILD", "kind": "recap", "narration": "Hắn thử quay lại gần Lạc gia, cơn đau lập tức biến mất."},
+    {"panel": "p011.jpg", "type": "BUILD", "kind": "recap", "narration": "Càng đi xa, ngực lại càng đau dữ dội."},
+    {"panel": "p012.jpg", "type": "REVEAL", "kind": "recap", "narration": "Đây là tâm ma, thứ đáng sợ nhất với người tu luyện."},
+    {"panel": "p016.jpg", "type": "REVEAL", "kind": "recap", "narration": "Ký ức ùa về: cha của thân xác này đã chết để bảo vệ Lạc gia."},
+    {"panel": "p018.jpg", "type": "REVEAL", "kind": "recap", "narration": "Tiểu thư Lạc gia từng che chở cậu bé, không cho ai bắt nạt."},
+    {"panel": "p019.jpg", "type": "BUILD", "kind": "recap", "narration": "Nên cậu thề phải mạnh lên để bảo vệ Lạc gia."},
+    {"panel": "p026.jpg", "type": "BUILD", "kind": "recap", "narration": "Rồi cậu chết khi chưa kịp trả ơn, chấp niệm biến thành tâm ma."},
+    {"panel": "p027.jpg", "type": "REACTION", "kind": "recap", "narration": "Tức là cả đời này, Ma Hoàng phải làm nô tài cho người khác."},
+    {"panel": "p028.jpg", "type": "REACTION", "kind": "commentary", "narration": "Tôi thấy tội ông này thật, chết một lần xong lại đi làm thuê."},
+    {"panel": "p031.jpg", "type": "BUILD", "kind": "recap", "narration": "Không còn cách nào, hắn đành bước ra khỏi bụi cây."},
+    {"panel": "p033.jpg", "type": "BUILD", "kind": "recap", "narration": "Lạc gia tưởng cứu binh tới, nhưng chỉ thấy một tên gia nô."},
+    {"panel": "p036.jpg", "type": "BUILD", "kind": "recap", "narration": "Hắn còn khuyên tiểu thư đưa đại cho chúng một quyển bí kíp khác."},
+    {"panel": "p040.jpg", "type": "BUILD", "kind": "recap", "narration": "Bọn phản đồ cười lăn, một nô tài mà dám ra mặt."},
+    {"panel": "p043.jpg", "type": "REACTION", "kind": "commentary", "narration": "Cả phe mình lẫn phe địch đều nghĩ hắn bị ngốc, đúng là tấu hài."},
+    {"panel": "p050.jpg", "type": "BUILD", "kind": "recap", "narration": "Đối thủ mạnh hơn hắn hai cảnh giới, hắn chỉ có một cơ hội."},
+    {"panel": "p052.jpg", "type": "BUILD", "kind": "recap", "narration": "Tên đại hán lao tới, định bóp chết hắn."},
+    {"panel": "p057.jpg", "type": "BUILD", "kind": "recap", "narration": "Trác Phàm né người, giật luôn thanh đao trong tay hắn."},
+    {"panel": "p061.jpg", "type": "REVEAL", "kind": "recap", "narration": "Một nhát chém, cao thủ hơn hai cảnh giới gục xuống."},
+    {"panel": "p062.jpg", "type": "REACTION", "kind": "recap", "narration": "Cả hai phe đứng hình, không ai hiểu chuyện gì vừa xảy ra."},
+    {"panel": "p066.jpg", "type": "BUILD", "kind": "recap", "narration": "Hắn vác luôn tiểu thư và thiếu gia, bỏ chạy vào rừng."},
+    {"panel": "p069.jpg", "type": "ENDING", "kind": "recap", "narration": "Tên quản gia gầm lên, thề sẽ lột da cái tên nô tài này."}
+  ]
+}

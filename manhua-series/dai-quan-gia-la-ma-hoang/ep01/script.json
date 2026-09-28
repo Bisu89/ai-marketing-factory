@@ -1,0 +1,31 @@
+{
+  "title": "Ma Hoàng bị chính đệ tử phản bội!?",
+  "chapters": "1",
+  "source_dir": "manhua-recap/dqg_ep1",
+  "written_by": "Claude (đọc tay từ panels), 2026-09-28",
+  "beats": [
+    {"panel": "p008.jpg", "type": "HOOK", "kind": "recap", "narration": "Ma Hoàng này mạnh nhất thiên hạ, lại chết vì đứa đệ tử nuôi như con ruột."},
+    {"panel": "p009.jpg", "type": "SETUP", "kind": "recap", "narration": "Mọi chuyện bắt đầu từ Cửu U Mật Lục, bí kíp của Ma Đế thượng cổ."},
+    {"panel": "p010.jpg", "type": "SETUP", "kind": "recap", "narration": "Tin vừa lộ, cả chính đạo kéo đến vây Thiên Ma Phong."},
+    {"panel": "p020.jpg", "type": "BUILD", "kind": "recap", "narration": "Hắn cười khẩy: một đám tạp binh cũng dám hống hách?"},
+    {"panel": "p024.jpg", "type": "BUILD", "kind": "recap", "narration": "Một lượt ra tay, cả đám đổ gục giữa trời giông."},
+    {"panel": "p041.jpg", "type": "REVEAL", "kind": "recap", "narration": "Đang thắng thế, một thanh kiếm đâm xuyên từ sau lưng."},
+    {"panel": "p042.jpg", "type": "REVEAL", "kind": "recap", "narration": "Kẻ ra tay là Triệu Thành, đệ tử ruột, cũng là kẻ mở cửa cho địch."},
+    {"panel": "p043.jpg", "type": "REACTION", "kind": "recap", "narration": "Ta nuôi ngươi như con đẻ, sao lại phản ta?"},
+    {"panel": "p044.jpg", "type": "REVEAL", "kind": "recap", "narration": "Vì sư phụ luyện bí kíp một mình, không cho hắn xem dù một chút."},
+    {"panel": "p045.jpg", "type": "REACTION", "kind": "commentary", "narration": "Tôi nghe mà tức, phản sư chỉ vì không được đọc ké."},
+    {"panel": "p050.jpg", "type": "BUILD", "kind": "recap", "narration": "Ma Hoàng thề thà hủy bí kíp, cũng không để ai có được."},
+    {"panel": "p052.jpg", "type": "BUILD", "kind": "recap", "narration": "Hắn tự bạo, nổ tung cả bầu trời."},
+    {"panel": "p060.jpg", "type": "BUILD", "kind": "recap", "narration": "Linh hồn rơi xuống rừng, nhập vào một thiếu niên đang hấp hối."},
+    {"panel": "p064.jpg", "type": "REACTION", "kind": "commentary", "narration": "Mình thích câu này: đường đường Ma Hoàng mà phải đoạt hồn một đứa trẻ."},
+    {"panel": "p073.jpg", "type": "BUILD", "kind": "recap", "narration": "Bầy sói vây tới, hắn quát một tiếng cút, cả bầy bỏ chạy."},
+    {"panel": "p078.jpg", "type": "BUILD", "kind": "recap", "narration": "Một gã bị thương bò tới, gọi hắn là Trác Phàm, xin cứu mạng."},
+    {"panel": "p084.jpg", "type": "REVEAL", "kind": "recap", "narration": "Hắn đáp: ta không phải Trác Phàm, ta là Ma Hoàng."},
+    {"panel": "p090.jpg", "type": "REVEAL", "kind": "recap", "narration": "Rồi hút sạch tu vi của gã, chỉ còn lại bộ xương."},
+    {"panel": "p092.jpg", "type": "REACTION", "kind": "commentary", "narration": "Mình nói trước, main này không hiền đâu."},
+    {"panel": "p100.jpg", "type": "BUILD", "kind": "recap", "narration": "Hắn thề sẽ quay về Thánh Vực tính sổ Triệu Thành."},
+    {"panel": "p107.jpg", "type": "SETUP", "kind": "recap", "narration": "Giữa đường, hắn gặp Lạc gia bị chính quản gia nhà mình phản bội."},
+    {"panel": "p112.jpg", "type": "BUILD", "kind": "recap", "narration": "Ma Hoàng phẩy tay: chuyện thế tục, không liên quan tới ta."},
+    {"panel": "p114.jpg", "type": "ENDING", "kind": "recap", "narration": "Nhưng vừa quay lưng, lồng ngực hắn đau như bị xé toạc."}
+  ]
+}

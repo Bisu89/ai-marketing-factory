@@ -8,7 +8,10 @@ Usage (backend running, with the backend venv's python):
     python recap.py cut    <chapter_dir>                  # split pages into panels -> <chapter_dir>/_recap/panels/
     python recap.py script <chapter_dir> [--seconds 50] [--notes "..."]
                                                           # AI reads the panels, writes _recap/script.json
-    python recap.py build  <chapter_dir> [--name "..."] [--no-render] [--commentary-voice VOICE|same]
+    python recap.py sheets <chapter_dir>                  # numbered reading sheets (6 panels each) so a
+                                                          # person / Claude can read the chapter and write
+                                                          # script.json by hand -- no OpenAI cost
+    python recap.py build  <chapter_dir> [--script FILE] [--name "..."] [--no-render] [--commentary-voice VOICE|same]
                                          [--captions color|yellow]
                                                           # register panels, create the project, start the render
 
@@ -219,6 +222,39 @@ def _contact_sheet(panels_dir: Path, thumb_h: int = 260, per_row: int = 8) -> No
     sheet.save(panels_dir.parent / "panels_preview.jpg", quality=85)
 
 
+# Reading sheets: big enough to read speech bubbles, 6 panels per image, each
+# labelled with its file name -- the unit a hand-written script.json refers to.
+SHEET_CELL = (620, 900)
+SHEET_COLS, SHEET_ROWS = 3, 2
+
+
+def cmd_sheets(chapter: Path) -> None:
+    from PIL import ImageDraw, ImageFont
+    panels = _panel_files(chapter)
+    out = chapter / "_recap" / "sheets"
+    out.mkdir(parents=True, exist_ok=True)
+    for old in out.glob("sheet_*.jpg"):
+        old.unlink()
+    try:
+        font = ImageFont.truetype("C:/Windows/Fonts/arialbd.ttf", 40)
+    except OSError:
+        font = ImageFont.load_default()
+    per = SHEET_COLS * SHEET_ROWS
+    cw, ch = SHEET_CELL
+    for n, start in enumerate(range(0, len(panels), per), 1):
+        sheet = Image.new("RGB", (SHEET_COLS * cw, SHEET_ROWS * (ch + 50)), "white")
+        draw = ImageDraw.Draw(sheet)
+        for k, panel in enumerate(panels[start:start + per]):
+            x, y = (k % SHEET_COLS) * cw, (k // SHEET_COLS) * (ch + 50)
+            with Image.open(panel) as img:
+                img = img.convert("RGB")
+                img.thumbnail((cw - 10, ch - 10))
+                sheet.paste(img, (x + (cw - img.width) // 2, y + 50))
+            draw.text((x + 10, y + 4), panel.name, fill="red", font=font)
+        sheet.save(out / f"sheet_{n:02d}.jpg", quality=88)
+    print(f"{len(panels)} panels -> {n} sheet(s) in {out}")
+
+
 # -- API ------------------------------------------------------------------------
 
 def call(method, path, body=None, timeout=300):
@@ -277,10 +313,13 @@ CAPTION_STYLES = {"color": "word_pop", "yellow": "word_pop_yellow"}
 
 def cmd_build(
     chapter: Path, name: str | None, render: bool, commentary_voice: str | None, captions: str = "color",
+    script_path: Path | None = None,
 ) -> None:
-    script_path = chapter / "_recap" / "script.json"
+    # --script lets the script live somewhere version-controlled (manhua-series/)
+    # while the heavy page/panel images stay local in the chapter dir.
+    script_path = script_path or chapter / "_recap" / "script.json"
     if not script_path.exists():
-        sys.exit("No script yet -- run `script` first.")
+        sys.exit(f"No script at {script_path} -- run `script` (or write one by hand) first.")
     script = json.loads(script_path.read_text(encoding="utf-8"))
     panels_dir = chapter / "_recap" / "panels"
     tag = re.sub(r"[^a-z0-9]+", "_", chapter.name.lower()).strip("_") or "chapter"
@@ -330,7 +369,7 @@ def main() -> None:
     fetch.add_argument("url")
     fetch.add_argument("chapter", type=Path)
     fetch.add_argument("--count", type=int, default=1, help="fetch this chapter and the next COUNT-1")
-    for cmd in ("cut", "script", "build"):
+    for cmd in ("cut", "sheets", "script", "build"):
         p = sub.add_parser(cmd)
         p.add_argument("chapter", type=Path)
         if cmd == "script":
@@ -341,6 +380,8 @@ def main() -> None:
             p.add_argument("--mode", choices=("chapter", "premise"), default="chapter",
                            help="chapter = recap one chapter; premise = sell the series from its first chapters")
         if cmd == "build":
+            p.add_argument("--script", type=Path, default=None,
+                           help="script.json to build from (default <chapter_dir>/_recap/script.json)")
             p.add_argument("--name", default=None)
             p.add_argument("--no-render", action="store_true")
             p.add_argument("--commentary-voice", default=COMMENTARY_VOICE,
@@ -356,11 +397,14 @@ def main() -> None:
         sys.exit(f"Not a folder: {chapter}")
     if args.cmd == "cut":
         cmd_cut(chapter)
+    elif args.cmd == "sheets":
+        cmd_sheets(chapter)
     elif args.cmd == "script":
         cmd_script(chapter, args.seconds, args.notes, not args.no_commentary, args.mode)
     else:
         cmd_build(chapter, args.name, not args.no_render,
-                  None if args.commentary_voice == "same" else args.commentary_voice, args.captions)
+                  None if args.commentary_voice == "same" else args.commentary_voice, args.captions,
+                  args.script.resolve() if args.script else None)
 
 
 if __name__ == "__main__":
