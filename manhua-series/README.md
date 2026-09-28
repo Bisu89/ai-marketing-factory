@@ -57,12 +57,25 @@ Video ra ở `backend\data\library\_video_composer\job_XXX\output\<Tên>.mp4`. L
   "title": "Tiêu đề video (nghịch lý + !?)",
   "chapters": "1",
   "source_dir": "manhua-recap/dqg_ep1",
+  "description": "2–4 dòng: tóm tắt nghịch lý + 'Review truyện X – Tập N' + link tập trước/sau",
+  "hashtags": ["#DaiQuanGiaLaMaHoang", "#ReviewManhua", "#Manhua"],
+  "thumbnail": {"text": "CHỮ TO TRÊN THUMB", "prompt": "prompt tiếng Anh dán vào ChatGPT để vẽ ảnh thumbnail"},
   "beats": [
     {"panel": "p008.jpg", "type": "HOOK", "kind": "recap", "narration": "Câu mở nghịch lý."},
     {"panel": "p045.jpg", "type": "REACTION", "kind": "commentary", "narration": "Câu bình luận của kênh (giọng nữ)."}
   ]
 }
 ```
+
+**Metadata:** template manhua đã **tắt AI tự viết** tiêu đề, mô tả và hashtag.
+Lệnh `build` lấy `title` (tối đa 70 ký tự), `description` (tối đa 500 ký tự) và `hashtags` từ `script.json`.
+- App **bỏ dấu `?`** khỏi tiêu đề, vì tiêu đề còn được dùng làm tên file. Nên khi đăng lên YouTube, bạn gõ lại "!?" cho đúng.
+- Hashtag viết theo kiểu `#ViếtHoaChữĐầu` (ví dụ `#DaiQuanGiaLaMaHoang`), vì app tự chuẩn hóa về dạng đó.
+
+**Thumbnail:**
+1. Copy `thumbnail.prompt` dán vào ChatGPT để vẽ ảnh dọc 9:16. Prompt đã dặn không vẽ chữ và chừa 25% phía trên.
+2. Tự chèn `thumbnail.text` lên phần trên ảnh (Canva / CapCut), chữ vàng hoặc trắng, viền đen.
+   Không nhờ ChatGPT viết chữ tiếng Việt vì hay sai dấu.
 
 Quy tắc để video đạt chuẩn:
 - `panel` phải tăng dần, không dùng lại khung.

@@ -166,6 +166,9 @@ class BuiltinTemplateTests(unittest.TestCase):
         # recap uses the comic's own panels; the AI channel only adds a manhua image style
         self.assertEqual(recap.visual_generation.image_style_prompt, "")
         self.assertIn("manhua", ai.visual_generation.image_style_prompt.lower())
+        # metadata is hand-written per episode (manhua-series script.json), never AI-billed
+        self.assertFalse(recap.package.ai_metadata_enabled)
+        self.assertFalse(ai.package.ai_metadata_enabled)
 
     def test_emotional_story_defaults(self):
         config = EMOTIONAL_STORY_TEMPLATE.config

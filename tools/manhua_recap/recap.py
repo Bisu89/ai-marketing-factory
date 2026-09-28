@@ -354,7 +354,14 @@ def cmd_build(
     cfg["captions"]["preset"] = CAPTION_STYLES[captions]
     call("PUT", f"/projects/{pid}/beat-plan", {"project_name": name, "script_text": text, "script_locked": True,
                                                 "beats": beats, "config": cfg})
-    call("PUT", f"/projects/{pid}/package-overrides", {"title": script["title"]})
+    # Hand-written metadata from script.json (the manhua templates have AI
+    # metadata off). App limits: title 70 chars, description 500.
+    overrides = {"title": script["title"][:70]}
+    if script.get("description"):
+        overrides["description"] = script["description"][:500]
+    if script.get("hashtags"):
+        overrides["hashtags"] = script["hashtags"]
+    call("PUT", f"/projects/{pid}/package-overrides", overrides)
     if not render:
         print(f"project {pid} ({name}) created -- open it in the app to render.")
         return

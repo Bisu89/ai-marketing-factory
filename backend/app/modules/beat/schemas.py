@@ -1676,7 +1676,9 @@ MANHUA_RECAP_VI_TEMPLATE = Template(
             audience="Vietnamese manhua / tu tiên comic readers", cta_enabled=False,
         ),
         voice=_MANHUA_VOICE,
-        package=PackageProjectConfig(ai_metadata_enabled=True),
+        # No AI metadata: each episode's title/description/hashtags are hand-written
+        # in manhua-series/<series>/epNN/script.json and set by `recap.py build`.
+        package=PackageProjectConfig(ai_metadata_enabled=False),
         template_id="manhua_recap_vi",
         template_version=1,
     ),
@@ -1721,7 +1723,7 @@ MANHUA_AI_VI_TEMPLATE = Template(
                 "lettering, no watermark"
             ),
         ),
-        package=PackageProjectConfig(ai_metadata_enabled=True),
+        package=PackageProjectConfig(ai_metadata_enabled=False),
         template_id="manhua_ai_vi",
         template_version=1,
     ),
