@@ -81,7 +81,7 @@ class BuiltinTemplateTests(unittest.TestCase):
             {
                 "emotional_story", "couple_story", "horror", "horror_shorts",
                 "relationship_psychology_vi", "news_vi", "history_documentary", "military_history",
-                "zombie_system", "manhua_recap_vi", "manhua_ai_vi", "custom",
+                "zombie_system", "manhua_recap_vi", "manhua_ai_vi", "manhua_recap_long_vi", "custom",
             },
         )
         self.assertTrue(all(t.builtin for t in BUILTIN_TEMPLATES))
@@ -171,6 +171,15 @@ class BuiltinTemplateTests(unittest.TestCase):
         self.assertFalse(ai.package.ai_metadata_enabled)
         self.assertFalse(recap.audio.music_enabled)
         self.assertFalse(ai.audio.music_enabled)
+
+    def test_manhua_long_is_landscape_blur_fill_cinematic_no_music(self):
+        config = next(t.config for t in BUILTIN_TEMPLATES if t.id == "manhua_recap_long_vi")
+        self.assertEqual(config.render.profile, "SOCIAL_LANDSCAPE")
+        self.assertEqual(config.motion.fit_mode, "blur_fill")
+        self.assertEqual(config.captions.preset, "cinematic")
+        self.assertFalse(config.audio.music_enabled)
+        self.assertFalse(config.package.ai_metadata_enabled)
+        self.assertGreaterEqual(config.content.target_duration, 600.0)
 
     def test_emotional_story_defaults(self):
         config = EMOTIONAL_STORY_TEMPLATE.config

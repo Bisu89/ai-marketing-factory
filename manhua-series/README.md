@@ -77,6 +77,11 @@ Lệnh `build` lấy `title` (tối đa 70 ký tự), `description` (tối đa 5
 2. Tự chèn `thumbnail.text` lên phần trên ảnh (Canva / CapCut), chữ vàng hoặc trắng, viền đen.
    Không nhờ ChatGPT viết chữ tiếng Việt vì hay sai dấu.
 
+**Video dài (16:9):** trong `script.json`, thêm `"template": "manhua_recap_long_vi"`.
+Beat nào mở đầu một phần thì thêm `"section": "Tên phần"`.
+Sau khi render xong, chạy `recap.py timestamps <project_id> --script <file>` để in mục lục thời gian, rồi dán vào mô tả hoặc bình luận ghim.
+Khi truyện có hơn 1000 khung, tên khung có 4 chữ số (`p0001.jpg`), và ảnh đọc có ghi chương `[c003]` cạnh tên khung.
+
 Quy tắc để video đạt chuẩn:
 - `panel` phải tăng dần, không dùng lại khung.
 - `type`: HOOK (beat đầu), SETUP, BUILD, REVEAL, REACTION, ENDING (beat cuối).

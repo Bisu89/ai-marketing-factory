@@ -1,0 +1,1052 @@
+{
+  "template": "manhua_recap_long_vi",
+  "title": "Ma Hoàng thành quản gia | Tóm tắt chương 1-10",
+  "chapters": "1-10",
+  "source_dir": "manhua-recap/dqg_long01",
+  "written_by": "Claude (đọc tay 1039 khung), 2026-09-28",
+  "description": "Ma Hoàng mạnh nhất thiên hạ bị chính đệ tử phản bội, trọng sinh vào thân xác một gia nô và bị tâm ma trói buộc phải bảo vệ Lạc gia. Tóm tắt truyện Đại Quản Gia Là Ma Hoàng, chương 1 đến 10, kèm bình luận.\nMục lục thời gian: xem bình luận ghim.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#TomTatTruyen"
+  ],
+  "thumbnail": {
+    "text": "MA HOÀNG THÀNH QUẢN GIA",
+    "prompt": "A young man with dark messy hair and glowing violet eyes in a plain brown servant robe with red trim, smirking confidently, arms crossed; behind him a giant shadowy silhouette of a demon emperor with red eyes and a dark crown; a beautiful young lady with long golden-orange hair in a red and white hanfu stands at his side; dramatic purple and red lightning sky. Chinese manhua cover art style, full-colour digital illustration, bold clean linework, cel shading with dramatic glow, high contrast, 16:9 widescreen composition, subject on the right half, leave the left 40% darker for a title overlay, NO text, NO letters, NO speech bubbles, NO watermark"
+  },
+  "beats": [
+    {
+      "panel": "p0009.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Ma Hoàng mạnh nhất thiên hạ, cuối cùng lại phải đi làm quản gia cho một gia tộc sắp phá sản. Chuyện gì đã xảy ra?",
+      "section": "Mở đầu: Ma Hoàng bị phản bội"
+    },
+    {
+      "panel": "p0010.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tất cả bắt đầu từ Cửu U Mật Lục, bí kíp của Ma Đế thượng cổ mà cả thiên hạ đều thèm khát."
+    },
+    {
+      "panel": "p0011.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tin Ma Hoàng Trác Nhất Phàm có được bí kíp vừa lộ ra, cả chính đạo kéo quân vây kín Thiên Ma Phong."
+    },
+    {
+      "panel": "p0021.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn chỉ cười khẩy: một đám tạp binh cũng dám tới đây hống hách?"
+    },
+    {
+      "panel": "p0025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một lượt ra tay, cả đám tu sĩ đổ gục giữa trời giông."
+    },
+    {
+      "panel": "p0038.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thánh Vực buộc phải phái cả Thánh giả mạnh nhất tới đòi di vật Ma Đế."
+    },
+    {
+      "panel": "p0042.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đang lúc đối đầu, một thanh kiếm bất ngờ đâm xuyên từ sau lưng hắn."
+    },
+    {
+      "panel": "p0043.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Kẻ ra tay là Triệu Thành, đệ tử chân truyền hắn nuôi từ nhỏ, cũng là kẻ đã mở cửa cho địch."
+    },
+    {
+      "panel": "p0044.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ta nuôi ngươi như con đẻ, vì sao lại phản bội ta?"
+    },
+    {
+      "panel": "p0045.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Câu trả lời khiến người ta lạnh sống lưng: vì sư phụ luyện bí kíp một mình, không cho hắn xem dù chỉ một trang."
+    },
+    {
+      "panel": "p0046.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Tôi nghe mà tức thay, phản sư chỉ vì không được đọc ké. Nuôi ong tay áo đúng là thế này."
+    },
+    {
+      "panel": "p0048.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Nhất Phàm hiểu ra, thế gian này chẳng còn gì đáng để tin."
+    },
+    {
+      "panel": "p0051.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn thề thà hủy Cửu U Mật Lục, cũng không để bất kỳ ai có được nó."
+    },
+    {
+      "panel": "p0053.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Và Ma Hoàng tự bạo, nổ tung cả một vùng trời."
+    },
+    {
+      "panel": "p0061.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Linh hồn hắn rơi xuống một khu rừng xa lạ, nhập vào thân xác một thiếu niên đang hấp hối."
+    },
+    {
+      "panel": "p0065.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Đường đường Ma Hoàng mà phải đi mượn xác một đứa trẻ. Đúng là số phận trêu người."
+    },
+    {
+      "panel": "p0074.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bầy sói kéo tới, hắn chỉ quát một tiếng cút, cả bầy cụp đuôi bỏ chạy."
+    },
+    {
+      "panel": "p0079.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một gã bị thương bò tới, gọi hắn là Trác Phàm, van xin cứu mạng."
+    },
+    {
+      "panel": "p0085.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn lạnh lùng đáp: ta không phải Trác Phàm. Ta là Ma Hoàng."
+    },
+    {
+      "panel": "p0091.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Rồi hút sạch tu vi của gã, chỉ còn lại một bộ xương khô."
+    },
+    {
+      "panel": "p0101.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trời vừa sáng, hắn thề sẽ quay về Thánh Vực tính sổ với Triệu Thành."
+    },
+    {
+      "panel": "p0108.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng giữa đường, hắn bắt gặp Lạc gia đang bị chính quản gia nhà mình phản bội."
+    },
+    {
+      "panel": "p0113.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ma Hoàng phẩy tay: chuyện thế tục, không liên quan tới ta."
+    },
+    {
+      "panel": "p0115.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng vừa quay lưng bỏ đi, lồng ngực hắn đột nhiên đau như bị xé toạc."
+    },
+    {
+      "panel": "p0124.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn tưởng mình luyện công tẩu hỏa nhập ma, nhưng kiểm tra lại, kinh mạch vẫn hoàn toàn bình thường.",
+      "section": "Tâm ma: bị trói vào Lạc gia"
+    },
+    {
+      "panel": "p0129.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn thử quay lại gần Lạc gia, cơn đau lập tức biến mất. Càng đi xa, ngực lại càng đau dữ dội."
+    },
+    {
+      "panel": "p0132.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đây là tâm ma, thứ đáng sợ nhất với người tu luyện."
+    },
+    {
+      "panel": "p0136.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ký ức của thân xác cũ ùa về: cha của cậu bé đã chết để bảo vệ Lạc gia."
+    },
+    {
+      "panel": "p0138.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tiểu thư Lạc gia từng che chở cậu, không cho ai bắt nạt, nên cậu thề phải mạnh lên để báo ơn."
+    },
+    {
+      "panel": "p0146.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng cậu chết khi chưa kịp trả ơn. Chấp niệm ấy hóa thành tâm ma, giờ đè lên vai Ma Hoàng."
+    },
+    {
+      "panel": "p0148.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Tôi thấy tội ông này thật, chết một lần xong lại bị ép đi làm thuê cho người khác."
+    },
+    {
+      "panel": "p0151.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Không còn cách nào, hắn đành bước ra khỏi bụi cây."
+    },
+    {
+      "panel": "p0153.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lạc gia tưởng cứu binh tới, ai ngờ chỉ là một tên gia nô gầy gò."
+    },
+    {
+      "panel": "p0160.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bọn phản đồ cười lăn: một tên nô tài mà cũng dám ra mặt?"
+    },
+    {
+      "panel": "p0170.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đối thủ mạnh hơn hắn hai đại cảnh giới, còn hắn chỉ có đúng một cơ hội."
+    },
+    {
+      "panel": "p0177.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tên đại hán lao tới. Trác Phàm né người, giật luôn thanh đao trong tay hắn."
+    },
+    {
+      "panel": "p0181.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một nhát chém, cao thủ hơn hai cảnh giới gục xuống ngay tại chỗ."
+    },
+    {
+      "panel": "p0186.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn vác luôn tiểu thư và thiếu gia, lao thẳng vào rừng."
+    },
+    {
+      "panel": "p0189.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sau lưng, Tôn quản gia gầm lên, thề sẽ lột da tên nô tài này."
+    },
+    {
+      "panel": "p0199.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chạy được một đoạn, tiểu thư đòi quay lại cứu hộ vệ. Trác Phàm thẳng tay quăng cô xuống đất.",
+      "section": "Rừng Sương Mù: cái bẫy chết người"
+    },
+    {
+      "panel": "p0201.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Quay lại thì làm được gì? Kẻ thù sắp tới nơi, còn giở tính tiểu thư."
+    },
+    {
+      "panel": "p0206.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thiếu gia Vân Hải gọi hắn là cẩu nô tài, đòi hắn xin lỗi, liền bị ăn một trận đòn vào mông."
+    },
+    {
+      "panel": "p0217.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tiểu thư tức đỏ mặt, thầm thề thoát nạn xong sẽ tính sổ với hắn."
+    },
+    {
+      "panel": "p0221.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Họ trốn vào Rừng Sương Mù, nơi quanh năm mây mù dày đặc, ngay cả sơn tặc cũng không dám bén mảng."
+    },
+    {
+      "panel": "p0226.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tiểu thư muốn ở lại cầm chân, để hắn đưa em trai chạy trước. Hắn đáp gọn: ta từ chối."
+    },
+    {
+      "panel": "p0232.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Rồi đưa ra một ý điên rồ: tiêu diệt toàn bộ đám Tôn quản gia ngay tại đây."
+    },
+    {
+      "panel": "p0236.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tôn quản gia là cao thủ Tụ Khí tầng sáu, còn tên gia nô này thậm chí chưa bước vào Tụ Khí."
+    },
+    {
+      "panel": "p0240.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hoặc nghe ta liều một phen, hoặc ngồi chờ chết. Đại tiểu thư, có dám đánh cược không?"
+    },
+    {
+      "panel": "p0243.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tiểu thư cắn răng ném cho hắn chiếc nhẫn trữ vật, toàn bộ gia tài của cô."
+    },
+    {
+      "panel": "p0253.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đi sâu vào rừng, hắn nhận ra năm ngọn núi ứng với Thanh Long, Bạch Hổ, Chu Tước, Huyền Vũ và Kỳ Lân, một trận đồ thiên nhiên."
+    },
+    {
+      "panel": "p0257.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tiếc là không ai nhìn ra. Lần này, hắn sẽ biến nơi đây thành Thiên Ma Sơn thứ hai."
+    },
+    {
+      "panel": "p0262.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Dùng linh thạch làm mắt trận, hắn bày ra Tứ Phương Tà Sát Trận."
+    },
+    {
+      "panel": "p0264.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một vòng xoáy tím khổng lồ bùng lên, cả màn sương biến mất."
+    },
+    {
+      "panel": "p0275.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Tôi phải nói, một trận pháp cấp một thôi đã đáng hơn mười vạn linh thạch. Gia nô gì mà biết bày trận thế này?"
+    },
+    {
+      "panel": "p0282.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ở phía bên kia, Bàng thống lĩnh bị trói. Tôn quản gia định dùng ông để uy hiếp tiểu thư."
+    },
+    {
+      "panel": "p0289.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng khi tới nơi, hắn thấy Trác Phàm đang ngồi thảnh thơi: Tôn quản gia, ta đợi ngươi lâu lắm rồi."
+    },
+    {
+      "panel": "p0294.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một hộ vệ vung đao chém xuống. Trác Phàm chỉ khẽ cười."
+    },
+    {
+      "panel": "p0301.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn để mặc lưỡi đao cứa vào tay, rồi đề nghị một cuộc giao dịch.",
+      "section": "Kế lừa: Trác Phàm bán chủ?"
+    },
+    {
+      "panel": "p0311.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn sẽ giao hai tỷ đệ Lạc gia, đổi lấy một tiền đồ ở Hắc Phong Sơn."
+    },
+    {
+      "panel": "p0316.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Người không vì mình, trời tru đất diệt. Tôn quản gia nghe xong liền cười lớn."
+    },
+    {
+      "panel": "p0321.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hai chị em đang trốn ở đầu kia một sợi dây đỏ, dùng để đánh dấu đường trong rừng."
+    },
+    {
+      "panel": "p0328.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hai kẻ cười ha hả, rồi cùng nhau lần theo sợi dây."
+    },
+    {
+      "panel": "p0332.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Từ xa, tiểu thư mắng hắn là cẩu nô tài bán chủ."
+    },
+    {
+      "panel": "p0339.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tới nơi, Trác Phàm dừng lại: ta tiễn các ngươi tới đây thôi, đường xuống hoàng tuyền phải tự đi."
+    },
+    {
+      "panel": "p0343.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tôn quản gia lao tới vồ, nhưng Trác Phàm tan biến như một ảo ảnh."
+    },
+    {
+      "panel": "p0348.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sợi dây đỏ bị đứt, Bàng thống lĩnh cũng biến mất. Cả đám bị nhốt giữa rừng."
+    },
+    {
+      "panel": "p0357.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Màn sương chuyển sang màu đỏ máu. Tôn quản gia lúc này mới hiểu ra: đây là trận pháp."
+    },
+    {
+      "panel": "p0365.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hóa ra hai chị em và Bàng thống lĩnh đã được đưa ra ngoài an toàn từ trước."
+    },
+    {
+      "panel": "p0367.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Mình thích cú lật này: màn bán chủ chỉ là mồi nhử, người bị bán thật lại là Tôn quản gia."
+    },
+    {
+      "panel": "p0372.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm ôm lấy tiểu thư từ phía sau, bảo cô tập trung, cùng hắn điều khiển trận."
+    },
+    {
+      "panel": "p0377.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chỉ một chữ giết, gai đen trồi lên khắp khu rừng."
+    },
+    {
+      "panel": "p0386.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Từng tên hộ vệ bị xuyên thủng."
+    },
+    {
+      "panel": "p0394.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tôn quản gia bỏ chạy, nhưng cũng không thoát khỏi mũi gai."
+    },
+    {
+      "panel": "p0397.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trước khi chết, hắn hỏi: Trác Phàm, rốt cuộc ngươi là ai?"
+    },
+    {
+      "panel": "p0400.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Câu trả lời lạnh buốt: xuống địa ngục, hỏi Diêm Vương đi."
+    },
+    {
+      "panel": "p0409.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm hút sạch âm sát của trận pháp: Cửu U Ma Sát, quy thuộc về ta.",
+      "section": "Đột phá: Ma Hoàng giấu nghề"
+    },
+    {
+      "panel": "p0415.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tu vi tăng vọt: Trúc Cơ tầng bảy, tầng tám, rồi tầng chín."
+    },
+    {
+      "panel": "p0425.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Rồi phá vỡ bình cảnh, bước thẳng vào Tụ Khí cảnh."
+    },
+    {
+      "panel": "p0430.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Kinh mạch mở rộng, nguyên lực mạnh gấp ba lần cao thủ Tụ Khí bình thường."
+    },
+    {
+      "panel": "p0437.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mọi người tìm tới, hắn chỉ bảo: trận có khiếm khuyết nên mất kiểm soát thôi."
+    },
+    {
+      "panel": "p0441.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bàng thống lĩnh bất ngờ quỳ xuống, xin lỗi vì trước đây đã coi thường hắn."
+    },
+    {
+      "panel": "p0446.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhìn người hộ vệ trung thành này, Trác Phàm thầm nghĩ: nếu Triệu Thành có được nửa phần như vậy thì hay biết mấy."
+    },
+    {
+      "panel": "p0451.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn đẩy hết công lao cho tiểu thư, nói trận pháp là do cô bày ra."
+    },
+    {
+      "panel": "p0452.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Mình thấy chi tiết này rất Ma Hoàng: đánh xong còn giấu nghề, để người khác nhận vơ."
+    },
+    {
+      "panel": "p0458.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Họ quyết định tới Phong Lâm Thành nhờ cậy Thái gia, nơi có vị hôn phu của tiểu thư."
+    },
+    {
+      "panel": "p0461.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm tính toán: giao được chị em Lạc gia cho Thái gia, tâm ma sẽ tan, hắn sẽ được tự do."
+    },
+    {
+      "panel": "p0467.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cùng lúc đó ở sơn trại Hắc Phong Sơn, thiếu trại chủ vẫn đang chờ tin của Tôn quản gia."
+    },
+    {
+      "panel": "p0478.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn giam cả sư phụ của mình, chỉ chờ cướp được Hồi Long Chưởng của Lạc gia."
+    },
+    {
+      "panel": "p0484.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Năm ngày sau, họ tới Phong Lâm Thành.",
+      "section": "Phong Lâm Thành: viên ngọc giả"
+    },
+    {
+      "panel": "p0495.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Vân Hải lại gọi hắn là cẩu nô tài, liền bị đá bay một cú."
+    },
+    {
+      "panel": "p0505.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngoài chợ, một cô gái áo xanh đang cãi nhau với lão bán mặc ngọc."
+    },
+    {
+      "panel": "p0510.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô biết viên ngọc là đồ giả, nhưng không chứng minh được."
+    },
+    {
+      "panel": "p0515.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm bước ra: ta có cách chứng minh."
+    },
+    {
+      "panel": "p0529.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn pha một bát nước với lưu huỳnh và cỏ thuốc."
+    },
+    {
+      "panel": "p0535.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thả ngọc vào, nước lập tức chuyển đỏ và sôi sùng sục. Đồ giả, chỉ đáng ba đồng."
+    },
+    {
+      "panel": "p0543.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đám đông ùa tới đòi trả hàng. Lão bán ngọc hận Trác Phàm tận xương."
+    },
+    {
+      "panel": "p0547.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô gái áo xanh cảm ơn hắn, rồi lặng lẽ rời đi."
+    },
+    {
+      "panel": "p0552.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Rồi Trác Phàm quay sang mượn Bàng thống lĩnh mười viên linh thạch."
+    },
+    {
+      "panel": "p0556.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn tìm tới chính lão bán ngọc giả, đòi mua lại viên ngọc đó."
+    },
+    {
+      "panel": "p0567.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lão bán ngọc gọi cả đám tay sai, muốn lấy luôn mạng hắn."
+    },
+    {
+      "panel": "p0577.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chỉ một thoáng sau, cả đám nằm la liệt."
+    },
+    {
+      "panel": "p0578.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Tôi đoán ngay: vạch trần xong rồi lại đi mua, chắc chắn viên ngọc này có bí mật."
+    },
+    {
+      "panel": "p0588.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Về khách điếm, hắn đốt lớp vỏ ngoài. Bên trong là Huyết Tinh Linh."
+    },
+    {
+      "panel": "p0594.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Loại đá tích tụ tinh huyết ngàn vạn năm, bảo vật tối thượng của ma đạo."
+    },
+    {
+      "panel": "p0596.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Theo Cửu U Mật Lục, nó có thể luyện thành Huyết Anh bổn mạng, trưởng thành cùng chủ nhân tới tận Thánh cấp."
+    },
+    {
+      "panel": "p0614.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Để luyện Huyết Anh, hắn phải tưới máu tươi của chính mình lên viên đá.",
+      "section": "Luyện Huyết Anh"
+    },
+    {
+      "panel": "p0624.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mất quá nhiều máu, hắn thổ huyết, suýt nữa phải bỏ cuộc."
+    },
+    {
+      "panel": "p0630.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hình ảnh Triệu Thành đâm lén từ sau lưng lại hiện lên trong đầu."
+    },
+    {
+      "panel": "p0636.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Các ngươi đều muốn ta chết. Ta nhất định không chết. Ta là Ma Hoàng, Trác Nhất Phàm."
+    },
+    {
+      "panel": "p0641.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Phá cho ta! Viên đá bắt đầu đập thình thịch như một trái tim."
+    },
+    {
+      "panel": "p0655.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bổn mạng Huyết Anh, thành công."
+    },
+    {
+      "panel": "p0664.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mười ngày sau hắn mới mở cửa. Bàng thống lĩnh đã đứng canh suốt mười ngày."
+    },
+    {
+      "panel": "p0670.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tin tưởng vô điều kiện, thứ mà kiếp trước Ma Hoàng chưa từng có được."
+    },
+    {
+      "panel": "p0678.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tới Thái phủ, Bàng thống lĩnh giới thiệu hắn là quản gia Lạc gia.",
+      "section": "Thái phủ trở mặt"
+    },
+    {
+      "panel": "p0680.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Đường đường Ma Hoàng, bỗng dưng được thăng chức quản gia. Tới đây tên truyện mới hiện nguyên hình."
+    },
+    {
+      "panel": "p0684.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng lính gác Thái phủ gọi họ là đám ruồi muỗi tới xin ăn."
+    },
+    {
+      "panel": "p0695.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hai chị em Lạc gia bị cho ở trong một túp lều tranh xập xệ sau vườn."
+    },
+    {
+      "panel": "p0711.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Còn vị hôn phu Thái Hiếu Đình đã có người mới, tuyên bố từ nay không còn quan hệ gì với tiểu thư."
+    },
+    {
+      "panel": "p0725.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Người tình mới là Tôn Vũ Phi, tát tiểu thư ngã xuống đất."
+    },
+    {
+      "panel": "p0732.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tiểu thư bật khóc: có ai có thể cứu ta không?"
+    },
+    {
+      "panel": "p0737.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một bóng người lao tới, tát thẳng vào mặt đôi gian phu dâm phụ."
+    },
+    {
+      "panel": "p0754.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chính Trác Phàm cũng bất ngờ. Hóa ra tâm ma không cho hắn đứng nhìn tiểu thư bị sỉ nhục.",
+      "section": "Ma Hoàng nổi giận"
+    },
+    {
+      "panel": "p0765.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Vũ Phi đòi tất cả quỳ xuống dập đầu, nhất là hắn."
+    },
+    {
+      "panel": "p0775.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm túm đầu hai kẻ đó, đập thẳng mặt xuống đất."
+    },
+    {
+      "panel": "p0784.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Muốn ta quỳ? Ngươi nghĩ nhiều rồi."
+    },
+    {
+      "panel": "p0788.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Gia chủ Thái gia xuất hiện, một cao thủ Luyện Cốt bát trọng."
+    },
+    {
+      "panel": "p0809.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lão bắt mỗi người đỡ một chưởng hai phần lực, sống chết do mệnh."
+    },
+    {
+      "panel": "p0815.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm lao ra đỡ trước."
+    },
+    {
+      "panel": "p0822.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Không những không chết, hắn còn khiến lòng bàn tay lão chảy máu."
+    },
+    {
+      "panel": "p0824.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Con trai lão bắt đầu ho ra máu. Hắn có thể lấy mạng nó bất cứ lúc nào."
+    },
+    {
+      "panel": "p0831.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hôm nay ông không thèm để ý tới ta, ngày mai ta sẽ khiến ông không với tới được."
+    },
+    {
+      "panel": "p0839.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng Vũ Phi thề sẽ trả thù. Cô ta là người của Ngự Hạ Thất Thế Gia."
+    },
+    {
+      "panel": "p0840.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Mình nói trước, đụng vào Thất Thế Gia là rắc rối cỡ cả đế quốc chứ không đùa."
+    },
+    {
+      "panel": "p0859.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngự Hạ Thất Thế Gia là bảy gia tộc công thần ngang hàng hoàng thất. Kẻ thù của họ là cả đế quốc.",
+      "section": "Ngự Hạ Thất Thế Gia"
+    },
+    {
+      "panel": "p0874.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tiểu thư hoảng sợ muốn đi xin lỗi. Trác Phàm lắc đầu: bây giờ đi, chỉ có đường chết."
+    },
+    {
+      "panel": "p0881.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Vân Hải giờ đổi giọng gọi hắn là Trác đại ca, còn nói muốn hắn làm anh rể."
+    },
+    {
+      "panel": "p0883.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Phong Lâm Thành còn một nhánh khác của Thất Thế Gia: Tiềm Long Các, thế gia giám bảo giàu có nhất."
+    },
+    {
+      "panel": "p0887.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Kế hoạch của hắn là tới đó liên minh."
+    },
+    {
+      "panel": "p0900.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lính gác Tiềm Long Các chặn cửa, coi họ là kẻ vô danh tiểu tốt."
+    },
+    {
+      "panel": "p0906.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm không lùi: thì ra Thất Thế Gia đãi khách như thế này đây."
+    },
+    {
+      "panel": "p0910.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Người bước ra ngăn lại chính là cô gái áo xanh ở chợ ngọc."
+    },
+    {
+      "panel": "p0914.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô tên Long Quỳ, người của Tiềm Long Các."
+    },
+    {
+      "panel": "p0916.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm nói mình tới bán một bảo vật gia truyền."
+    },
+    {
+      "panel": "p0922.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lính gác cười thầm: với bộ dạng nghèo rớt đó thì lấy ra được gì."
+    },
+    {
+      "panel": "p0929.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn mở cuộn giấy. Long Quỳ lập tức sững sờ."
+    },
+    {
+      "panel": "p0930.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Mình cười nhất đoạn này: bức vẽ nguệch ngoạc hôm qua bỗng hóa thành bảo bối."
+    },
+    {
+      "panel": "p0933.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Long Quỳ ra giá hai mươi vạn linh thạch."
+    },
+    {
+      "panel": "p0936.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm cười: cô định cho ăn mày à? Lão tử không bán."
+    },
+    {
+      "panel": "p0947.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Long Quỳ nói đây chỉ là trận thức đồ cấp một, lại còn là bản vẽ tay.",
+      "section": "Thượng Cổ Trận Thức Đồ"
+    },
+    {
+      "panel": "p0949.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô nâng lên ba mươi vạn. Hắn vẫn đòi lấy lại."
+    },
+    {
+      "panel": "p0953.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng trong lòng, Long Quỳ biết bức đồ có những trận pháp chính cô cũng chưa từng thấy."
+    },
+    {
+      "panel": "p0958.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô quay sang dụ tiểu thư: làm ăn với Tiềm Long Các sẽ thành khách quý."
+    },
+    {
+      "panel": "p0962.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm bảo tiểu thư im lặng: ta là quản gia, chuyện này ta làm chủ."
+    },
+    {
+      "panel": "p0970.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Rồi hỏi thẳng: Tiềm Long Các còn giám bảo sư nào khác không?"
+    },
+    {
+      "panel": "p0978.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tổng quản sự Tiềm Long Các bước ra: Thần Nhãn Long Cửu."
+    },
+    {
+      "panel": "p0979.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm biết mình không nhìn ra nổi tu vi của lão."
+    },
+    {
+      "panel": "p0994.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lão xem qua, rồi trả một trăm tám mươi vạn."
+    },
+    {
+      "panel": "p0997.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm chỉ nói hai chữ: quá thấp."
+    },
+    {
+      "panel": "p1001.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nếu không ra giá cao hơn, giao dịch này hủy."
+    },
+    {
+      "panel": "p1004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Long Cửu lập tức bộc phát khí thế, ép thẳng xuống người hắn."
+    },
+    {
+      "panel": "p1011.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm không hề lùi: Cửu gia, ngài sợ rồi sao?"
+    },
+    {
+      "panel": "p1013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Long Cửu cười lớn: tiểu tử khá lắm."
+    },
+    {
+      "panel": "p1016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm ra giá một ngàn vạn."
+    },
+    {
+      "panel": "p1017.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trả trước một trăm vạn, còn lại trả dần. Coi như Tiềm Long Các nợ Lạc gia."
+    },
+    {
+      "panel": "p1020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Long Cửu gật đầu đồng ý."
+    },
+    {
+      "panel": "p1027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Họ vừa đi, Long Cửu mới nói thật: đây là Thượng Cổ Trận Thức Đồ, một ngàn vạn cũng không sánh được."
+    },
+    {
+      "panel": "p1030.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lão còn điều bốn năm cao thủ đi bảo vệ Lạc gia."
+    },
+    {
+      "panel": "p1033.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Mình phải nói, một bức vẽ đổi được cả chỗ dựa cho Lạc gia. Đây mới đúng là đầu óc của Ma Hoàng."
+    },
+    {
+      "panel": "p1034.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhờ một món nợ, Lạc gia vừa có được chỗ dựa lớn nhất Phong Lâm Thành."
+    },
+    {
+      "panel": "p1035.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Nhưng Tôn gia sẽ không ngồi yên. Ma Hoàng sẽ đối phó với Ngự Hạ Thất Thế Gia thế nào?"
+    }
+  ]
+}

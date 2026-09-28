@@ -1731,6 +1731,45 @@ MANHUA_AI_VI_TEMPLATE = Template(
     ),
 )
 
+# Long-form (10-15 min, 16:9) companion to manhua_recap_vi: a recap of an
+# arc (~10 chapters) for YouTube watch hours, since Shorts-only channels need
+# 20M Shorts views / 90 days to join YPP from 2027-02. Vertical panels sit
+# centred over a blurred copy of themselves (blur_fill), a slower read than
+# the Shorts, classic two-line subtitles instead of one-word pops, no BGM and
+# hand-written metadata (manhua-series/<series>/longNN/script.json).
+MANHUA_RECAP_LONG_VI_TEMPLATE = Template(
+    id="manhua_recap_long_vi",
+    name="Manhua Recap Long (VN, 16:9)",
+    description="10-15 min Vietnamese recap of a comic arc (~10 chapters) in 16:9: the comic's own "
+    "panels centred over a blurred copy, male narration with female host commentary, "
+    "two-line subtitles, no music. Built by tools/manhua_recap with a hand-written script.",
+    version=1,
+    builtin=True,
+    config=ProjectConfig(
+        render=RenderProjectConfig(profile="SOCIAL_LANDSCAPE"),
+        motion=MotionProjectConfig(
+            default_preset=BeatMotionPreset.SLOW_PUSH_IN, intensity="SUBTLE", auto_rotate=True,
+            fit_mode="blur_fill",
+        ),
+        captions=CaptionsProjectConfig(
+            enabled=True, preset="cinematic", max_words=12, max_chars=70, max_lines=2, max_duration_sec=5.0
+        ),
+        audio=AudioProjectConfig(narration_enabled=True, music_enabled=False),
+        content=ContentProjectConfig(
+            language="vi", tone=_MANHUA_TONE, style=_MANHUA_STYLE, target_duration=660.0,
+            audience="Vietnamese manhua / tu tiên comic readers", cta_enabled=False,
+        ),
+        # 1.3, not the Shorts' 1.6: a 10+ minute listen needs room to breathe.
+        voice=VoiceProjectConfig(
+            provider="edge_tts", voice_id="vi-VN-NamMinhNeural", language="vi",
+            speed=1.3, sentence_pause_sec=0.25,
+        ),
+        package=PackageProjectConfig(ai_metadata_enabled=False),
+        template_id="manhua_recap_long_vi",
+        template_version=1,
+    ),
+)
+
 CUSTOM_TEMPLATE = Template(
     id="custom",
     name="Custom",
@@ -1743,7 +1782,7 @@ CUSTOM_TEMPLATE = Template(
 # Note: BUILTIN_TEMPLATES' own `id`s ("emotional_story"/"couple_story"/
 # "horror"/"horror_shorts"/"relationship_psychology_vi"/"news_vi"/
 # "history_documentary"/"military_history"/
-# "zombie_system"/"manhua_recap_vi"/"manhua_ai_vi"/"custom") are reserved -- template_service.save_custom_templates
+# "zombie_system"/"manhua_recap_vi"/"manhua_ai_vi"/"manhua_recap_long_vi"/"custom") are reserved -- template_service.save_custom_templates
 # below rejects a custom template trying to reuse one, so a built-in can
 # never be shadowed or overwritten by user data.
 BUILTIN_TEMPLATES: list[Template] = [
@@ -1758,6 +1797,7 @@ BUILTIN_TEMPLATES: list[Template] = [
     ZOMBIE_SYSTEM_TEMPLATE,
     MANHUA_RECAP_VI_TEMPLATE,
     MANHUA_AI_VI_TEMPLATE,
+    MANHUA_RECAP_LONG_VI_TEMPLATE,
     CUSTOM_TEMPLATE,
 ]
 BUILTIN_TEMPLATE_IDS = frozenset(t.id for t in BUILTIN_TEMPLATES)

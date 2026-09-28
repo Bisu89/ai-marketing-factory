@@ -121,3 +121,9 @@ Final QA PASS 100.
   the premise commentary floor went from 8% to 5% (at least 2 aside beats are still
   required). manhuavn2 serves ch.3–100 from `img02.g5img.top`, which returns 403 without
   its own Referer, so those chapters have to be downloaded in a browser.
+- **Long-form:** the `manhua_recap_long_vi` built-in is 16:9 with blur_fill, `cinematic` captions,
+  voice speed 1.3, no BGM and no AI metadata. `script.json` gains `template`, and a per-beat `section`
+  feeds `recap.py timestamps` (YouTube chapters taken from real beat start times). `cut` writes
+  `panel_pages.json` (panel → source page and chapter), and sheets label each panel `[cNNN]`.
+  Runs with 1000+ panels use 4-digit names. The first long script (Đại Quản Gia ch.1–10,
+  1039 panels read by hand) has 170 beats and 11 sections, and is project 121.

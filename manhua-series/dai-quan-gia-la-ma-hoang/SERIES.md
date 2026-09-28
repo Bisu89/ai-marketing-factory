@@ -48,6 +48,17 @@ Tên tiểu thư Lạc Vân Thường là tên theo truyện gốc, chưa thấy
 | 3 | 3–6 | `manhua-recap/dqg_ep3` | *(Ma Hoàng đi làm quản gia!?)* | ⏳ đã tải từ cotruyenday (418 khung), chờ Claude đọc + viết |
 | 4+ | theo arc | | | |
 
+## Video dài
+
+| Video | Chương | Thư mục ảnh | Tiêu đề | Trạng thái |
+|---|---|---|---|---|
+| Long 01 | 1–10 | `manhua-recap/dqg_long01` (cotruyenday, `fetch --count 10`) | Ma Hoàng thành quản gia \| Tóm tắt chương 1-10 | ✅ script `long01/script.json` (170 beat, 11 phần), ghi chú đọc truyện chi tiết trong `long01/notes.md` |
+
+Nhân vật mới ở chương 3–10: **Bàng Vũ** (thống lĩnh hộ vệ), **Lạc Vân Hải** (thiếu gia), **Tôn quản gia** (đã chết ở chương 4),
+thiếu trại chủ Hắc Phong Sơn (chủ mưu, muốn cướp Hồi Long Chưởng), **Thái Hiếu Đình** (vị hôn phu phản bội), gia chủ Thái gia,
+**Tôn Vũ Phi** (thuộc Ngự Hạ Thất Thế Gia, thề trả thù), **Long Quỳ** và **Thần Nhãn Long Cửu** (Tiềm Long Các).
+Đạo cụ quan trọng: Huyết Tinh Linh, dùng để luyện Huyết Anh bổn mạng; Thượng Cổ Trận Thức Đồ, bán giá 1000 vạn.
+
 Hai bản cũ do OpenAI viết (project 115/116, tiêu đề khác) được giữ để so sánh. Bản chính thức là bản Claude viết.
 
 ## Khung đã xóa trước khi cắt kịch bản

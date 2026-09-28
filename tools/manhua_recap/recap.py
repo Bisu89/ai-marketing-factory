@@ -128,15 +128,18 @@ def _pages(chapter: Path) -> list[Path]:
     return pages
 
 
-def _stack(pages: list[Path]) -> np.ndarray:
-    parts = []
+def _stack(pages: list[Path]) -> tuple[np.ndarray, list[int]]:
+    """The vertical strip, plus each page's starting row in it."""
+    parts, starts, row = [], [], 0
     for page in pages:
         with Image.open(page) as img:
             img = img.convert("RGB")
             if img.width != STRIP_WIDTH:
                 img = img.resize((STRIP_WIDTH, round(img.height * STRIP_WIDTH / img.width)), Image.LANCZOS)
             parts.append(np.asarray(img))
-    return np.concatenate(parts, axis=0)
+            starts.append(row)
+            row += parts[-1].shape[0]
+    return np.concatenate(parts, axis=0), starts
 
 
 def _flat_rows(strip: np.ndarray) -> np.ndarray:
@@ -191,7 +194,7 @@ def _ink_ratio(panel: np.ndarray) -> float:
 
 def cmd_cut(chapter: Path) -> None:
     pages = _pages(chapter)
-    strip = _stack(pages)
+    strip, page_starts = _stack(pages)
     out = chapter / "_recap" / "panels"
     out.mkdir(parents=True, exist_ok=True)
     for old in out.glob("p*.jpg"):
@@ -199,6 +202,12 @@ def cmd_cut(chapter: Path) -> None:
 
     kept = 0
     pieces = [piece for top, bottom in _segments(_flat_rows(strip)) for piece in _split_tall(strip, top, bottom)]
+    # 3-digit names (p001) as before; 4 only for 1000+ piece runs (multi-chapter
+    # long videos), so names still sort in reading order.
+    width = 3 if len(pieces) < 1000 else 4
+    # Which source page each panel starts on -- with `fetch --count` pages are
+    # named c<chapter>_<page>, so this is also the panel's chapter.
+    panel_pages: dict[str, str] = {}
     for top, bottom in pieces:
         if bottom - top < PANEL_MIN_HEIGHT:
             continue
@@ -206,10 +215,14 @@ def cmd_cut(chapter: Path) -> None:
         if panel.shape[1] < PANEL_MIN_HEIGHT or _ink_ratio(panel) < PANEL_MIN_INK:
             continue
         kept += 1
-        Image.fromarray(panel).save(out / f"p{kept:03d}.jpg", quality=92)
+        name = f"p{kept:0{width}d}.jpg"
+        Image.fromarray(panel).save(out / name, quality=92)
+        page_index = max(i for i, start in enumerate(page_starts) if start <= top)
+        panel_pages[name] = pages[page_index].name
 
     if kept == 0:
         sys.exit("No panels found -- are these really comic pages with gutters between panels?")
+    (out.parent / "panel_pages.json").write_text(json.dumps(panel_pages, indent=0), encoding="utf-8")
     _contact_sheet(out)
     print(f"{len(pages)} page(s) -> {kept} panel(s) in {out}")
     print(f"Check {out.parent / 'panels_preview.jpg'}; delete any junk panel files, then run `script`.")
@@ -241,6 +254,8 @@ SHEET_COLS, SHEET_ROWS = 3, 2
 def cmd_sheets(chapter: Path) -> None:
     from PIL import ImageDraw, ImageFont
     panels = _panel_files(chapter)
+    map_file = chapter / "_recap" / "panel_pages.json"
+    page_of = json.loads(map_file.read_text(encoding="utf-8")) if map_file.exists() else {}
     out = chapter / "_recap" / "sheets"
     out.mkdir(parents=True, exist_ok=True)
     for old in out.glob("sheet_*.jpg"):
@@ -260,7 +275,9 @@ def cmd_sheets(chapter: Path) -> None:
                 img = img.convert("RGB")
                 img.thumbnail((cw - 10, ch - 10))
                 sheet.paste(img, (x + (cw - img.width) // 2, y + 50))
-            draw.text((x + 10, y + 4), panel.name, fill="red", font=font)
+            source = page_of.get(panel.name, "")
+            label = f"{panel.name}  [{source.split('_')[0]}]" if "_" in source else panel.name
+            draw.text((x + 10, y + 4), label, fill="red", font=font)
         sheet.save(out / f"sheet_{n:02d}.jpg", quality=88)
     print(f"{len(panels)} panels -> {n} sheet(s) in {out}")
 
@@ -319,10 +336,13 @@ def cmd_script(chapter: Path, seconds: float, notes: str | None, commentary: boo
 
 
 CAPTION_STYLES = {"color": "word_pop", "yellow": "word_pop_yellow"}
+# Narration pace per template (syllables/s) -- only used for the pre-voice
+# duration estimate; the Voice stage sets the real beat timings.
+TEMPLATE_PACE = {"manhua_recap_vi": 5.1, "manhua_recap_long_vi": 4.2}
 
 
 def cmd_build(
-    chapter: Path, name: str | None, render: bool, commentary_voice: str | None, captions: str = "color",
+    chapter: Path, name: str | None, render: bool, commentary_voice: str | None, captions: str | None = None,
     script_path: Path | None = None,
 ) -> None:
     # --script lets the script live somewhere version-controlled (manhua-series/)
@@ -331,6 +351,9 @@ def cmd_build(
     if not script_path.exists():
         sys.exit(f"No script at {script_path} -- run `script` (or write one by hand) first.")
     script = json.loads(script_path.read_text(encoding="utf-8"))
+    # "template" in script.json picks Short (default) vs long-form 16:9.
+    template_id = script.get("template", TEMPLATE_ID)
+    pace = TEMPLATE_PACE.get(template_id, SYLLABLES_PER_SECOND)
     panels_dir = chapter / "_recap" / "panels"
     tag = re.sub(r"[^a-z0-9]+", "_", chapter.name.lower()).strip("_") or "chapter"
 
@@ -350,18 +373,19 @@ def cmd_build(
         beats.append({
             "id": f"b{i}", "order": i,
             "type": "HOOK" if i == 1 else "ENDING" if i == len(script["beats"]) else b.get("type", "BUILD"),
-            "narration": text, "duration": round(max(1.2, len(text.split()) / SYLLABLES_PER_SECOND + 0.15), 2),
+            "narration": text, "duration": round(max(1.2, len(text.split()) / pace + 0.15), 2),
             "visual_hint": path.stem, "asset_id": asset["id"],
             "voice_id": commentary_voice if b.get("kind") == "commentary" else None,
         })
 
     name = name or script["title"]
     text = " ".join(b["narration"] for b in beats)
-    pid = call("POST", "/projects", {"name": name, "template_id": TEMPLATE_ID, "script_text": text,
+    pid = call("POST", "/projects", {"name": name, "template_id": template_id, "script_text": text,
                                      "content_language": "vi", "visual_generation_mode": "library"})["id"]
     cfg = call("GET", f"/projects/{pid}")["config"]
     cfg["content"]["target_duration"] = float(round(sum(b["duration"] for b in beats)))
-    cfg["captions"]["preset"] = CAPTION_STYLES[captions]
+    if captions:  # otherwise keep the template's own caption style
+        cfg["captions"]["preset"] = CAPTION_STYLES[captions]
     call("PUT", f"/projects/{pid}/beat-plan", {"project_name": name, "script_text": text, "script_locked": True,
                                                 "beats": beats, "config": cfg})
     # Hand-written metadata from script.json (the manhua templates have AI
@@ -379,6 +403,20 @@ def cmd_build(
     print(f"project {pid} ({name}), factory run {run['id']} {run['status']}")
 
 
+def cmd_timestamps(project_id: int, script_path: Path) -> None:
+    """YouTube chapter timestamps for a rendered long video: every beat in
+    script.json carrying a "section" title starts a chapter, at the real
+    start time the Voice stage gave that beat."""
+    script = json.loads(script_path.read_text(encoding="utf-8"))
+    beats = sorted(call("GET", f"/projects/{project_id}")["beats"], key=lambda b: b["order"])
+    if len(beats) != len(script["beats"]):
+        sys.exit(f"project {project_id} has {len(beats)} beats, script has {len(script['beats'])} -- wrong pair?")
+    for sb, pb in zip(script["beats"], beats):
+        if sb.get("section"):
+            start = int(pb.get("start") or 0)
+            print(f"{start // 60}:{start % 60:02d} {sb['section']}")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = parser.add_subparsers(dest="cmd", required=True)
@@ -386,6 +424,9 @@ def main() -> None:
     fetch.add_argument("url")
     fetch.add_argument("chapter", type=Path)
     fetch.add_argument("--count", type=int, default=1, help="fetch this chapter and the next COUNT-1")
+    ts = sub.add_parser("timestamps")
+    ts.add_argument("project_id", type=int)
+    ts.add_argument("--script", type=Path, required=True)
     for cmd in ("cut", "sheets", "script", "build"):
         p = sub.add_parser(cmd)
         p.add_argument("chapter", type=Path)
@@ -403,11 +444,14 @@ def main() -> None:
             p.add_argument("--no-render", action="store_true")
             p.add_argument("--commentary-voice", default=COMMENTARY_VOICE,
                            help=f"edge-tts voice for commentary beats (default {COMMENTARY_VOICE}; 'same' = narrator's)")
-            p.add_argument("--captions", choices=tuple(CAPTION_STYLES), default="color",
-                           help="color = each word a different colour; yellow = every word yellow")
+            p.add_argument("--captions", choices=tuple(CAPTION_STYLES), default=None,
+                           help="Shorts only: color = each word a different colour; yellow = every word yellow")
     args = parser.parse_args()
     if args.cmd == "fetch":
         cmd_fetch(args.url, args.chapter.resolve(), args.count)
+        return
+    if args.cmd == "timestamps":
+        cmd_timestamps(args.project_id, args.script.resolve())
         return
     chapter = args.chapter.resolve()
     if not chapter.is_dir():
