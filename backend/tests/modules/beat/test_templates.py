@@ -169,6 +169,8 @@ class BuiltinTemplateTests(unittest.TestCase):
         # metadata is hand-written per episode (manhua-series script.json), never AI-billed
         self.assertFalse(recap.package.ai_metadata_enabled)
         self.assertFalse(ai.package.ai_metadata_enabled)
+        self.assertFalse(recap.audio.music_enabled)
+        self.assertFalse(ai.audio.music_enabled)
 
     def test_emotional_story_defaults(self):
         config = EMOTIONAL_STORY_TEMPLATE.config

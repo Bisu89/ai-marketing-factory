@@ -1670,7 +1670,8 @@ MANHUA_RECAP_VI_TEMPLATE = Template(
             fit_mode="blur_fill",
         ),
         captions=_MANHUA_CAPTIONS,
-        audio=AudioProjectConfig(narration_enabled=True, music_enabled=True, music_volume=0.1, ducking=True),
+        # No BGM (user call): the library has no wuxia track, auto-pick gave horror/prayer music.
+        audio=AudioProjectConfig(narration_enabled=True, music_enabled=False),
         content=ContentProjectConfig(
             language="vi", tone=_MANHUA_TONE, style=_MANHUA_STYLE, target_duration=50.0,
             audience="Vietnamese manhua / tu tiên comic readers", cta_enabled=False,
@@ -1699,7 +1700,8 @@ MANHUA_AI_VI_TEMPLATE = Template(
             default_preset=BeatMotionPreset.SLOW_PUSH_IN, intensity="MEDIUM", auto_rotate=True
         ),
         captions=_MANHUA_CAPTIONS,
-        audio=AudioProjectConfig(narration_enabled=True, music_enabled=True, music_volume=0.1, ducking=True),
+        # No BGM (user call): the library has no wuxia track, auto-pick gave horror/prayer music.
+        audio=AudioProjectConfig(narration_enabled=True, music_enabled=False),
         content=ContentProjectConfig(
             language="vi", tone=_MANHUA_TONE,
             style=_MANHUA_STYLE.replace("third-person recap of ONE chapter of a Chinese cultivation "

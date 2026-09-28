@@ -3,7 +3,9 @@
 - **Nguồn:** https://manhuavn2.com/dai-quan-gia-la-ma-hoang-0.html
   (hạng #1 top tháng, 70K lượt/tháng tại 2026-09-28; tác giả Trác Nhất Phàm)
 - **Quy mô:** 915 chương, còn đang ra. **Chương 1–283 miễn phí**, từ 284 trở đi là VIP.
-- **Tải ảnh:**
+- **Nguồn thứ 2 (tải tự động được):** https://cotruyenday.com/truyen-tranh/dai-quan-gia-la-ma-hoang-6986/chapter-0
+  Chương 0–10 tải thẳng bằng `recap.py fetch <link> <thư mục> --count N`. Từ chương 11 trở đi phải đăng nhập, không có ảnh.
+- **Tải ảnh (manhuavn2):**
   - Chương 1–2 nằm trên `img2.truyensieuhay.com` và chương 200 trên blogspot: `recap.py fetch` tải được.
   - **Chương 3–100+ nằm trên `img02.g5img.top`, bị chặn tải (403).** Phải tải tay bằng extension trình duyệt vào `manhua-recap/dqg_epN/`, đặt tên `c03_001.jpg`…
 - **Rủi ro:** trang ghi "nghiêm cấm reup", cộng thêm rủi ro reused content trên YouTube. Vì vậy mỗi tập đều có câu bình luận riêng.
@@ -43,7 +45,7 @@ Tên tiểu thư Lạc Vân Thường là tên theo truyện gốc, chưa thấy
 |---|---|---|---|---|
 | 1 | 1 | `manhua-recap/dqg_ep1` | Ma Hoàng bị chính đệ tử phản bội!? | ✅ script (Claude viết) |
 | 2 | 2 | `manhua-recap/dqg_ep2` | Ma Hoàng bị trói vào... một tiểu thư!? | ✅ script (Claude viết) |
-| 3 | 3–6 | `manhua-recap/dqg_ep3` | *(Ma Hoàng đi làm quản gia!?)* | ⏳ chờ tải tay chương 3–6 |
+| 3 | 3–6 | `manhua-recap/dqg_ep3` | *(Ma Hoàng đi làm quản gia!?)* | ⏳ đã tải từ cotruyenday (418 khung), chờ Claude đọc + viết |
 | 4+ | theo arc | | | |
 
 Hai bản cũ do OpenAI viết (project 115/116, tiêu đề khác) được giữ để so sánh. Bản chính thức là bản Claude viết.
@@ -59,4 +61,5 @@ Việc xóa không đổi tên các khung còn lại.
 
 ## Nhật ký
 
+- 2026-09-28: tắt nhạc nền cho template manhua, render lại tập 1–2 (project 117/118, jobs 179/180).
 - 2026-09-28: phân tích truyện, viết tay kịch bản tập 1–2 (Claude đọc 31 ảnh đọc, 180 khung).
