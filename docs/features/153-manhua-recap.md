@@ -111,3 +111,7 @@ Final QA PASS 100.
 - Project 114 rendered at 54.1s with Final QA PASS 100.
 - zettruyen2.com image CDN returns 403 without its own Referer. As with sangchanhteam,
   pages have to be downloaded in a browser.
+- **`word_pop` colours are seeded-random** (user request) instead of a fixed cycle. The
+  palette is unchanged, a colour never repeats twice in a row, and the seed is the card's
+  index plus its text, so a re-render is byte-identical. The caption `ENGINE_VERSION` was
+  bumped to `caption-v3`.

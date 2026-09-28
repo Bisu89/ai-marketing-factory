@@ -20,6 +20,8 @@ requires real word timestamps this module never has (no ASR, no live TTS
 word-boundary stream -- see segmentation.py's own docstring).
 """
 
+import zlib
+
 from app.modules.caption.schemas import (
     CAPTION_ASS_INVALID,
     CAPTION_STYLE_INVALID,
@@ -47,13 +49,20 @@ CAPTION_PRESET_CONFIG = {
 assert set(CAPTION_PRESET_CONFIG) == set(CAPTION_PRESETS)
 
 # "word_pop" (manhua-recap look, see docs/features/153-manhua-recap.md): one
-# word per card, upper-cased, each card a different bright colour with a
-# thick black outline. ASS &HBBGGRR order -- yellow, lime, cyan, white,
-# orange, pink. Picked by segment index (not random) so a re-render of the
-# same captions is byte-identical and the cache fingerprint stays honest;
-# consecutive cards never repeat a colour since the palette has no dupes.
+# word per card, upper-cased, a bright colour that reads on a thick black
+# outline. ASS &HBBGGRR order -- yellow, lime, cyan, white, orange, pink.
+# The colour is random-looking (user request: not a fixed cycle) but seeded
+# from the card's own index + text, so a re-render of the same captions is
+# byte-identical and the cache fingerprint stays honest; never the same
+# colour twice in a row.
 WORD_POP_COLORS = ("00FFFF", "32FF32", "FFFF00", "FFFFFF", "00A5FF", "C86EFF")
 WORD_POP_OUTLINE = 6
+
+
+def word_pop_color(index: int, text: str, previous: str | None) -> str:
+    choices = [c for c in WORD_POP_COLORS if c != previous]
+    seed = zlib.crc32(f"{index}|{text}".encode("utf-8"))
+    return choices[seed % len(choices)]
 # "word_pop_yellow": the same one-word cards, always yellow (the look of a
 # 1.8M-view manhua recap channel analysed 2026-09-28).
 WORD_POP_YELLOW = "00FFFF"
@@ -72,7 +81,8 @@ MARGIN_X = 40
 # so an existing project's already-cached (and wrongly unwrapped) captions
 # regenerate correctly wrapped the next time its render is retried/rebuilt,
 # instead of silently reusing the old broken artifact forever.
-ENGINE_VERSION = "caption-v2"
+# caption-v3: word_pop colours changed from a fixed cycle to seeded-random.
+ENGINE_VERSION = "caption-v3"
 
 # Arial (this engine's long-standing default) has no Hangul glyphs -- a
 # Korean project's captions would burn as tofu boxes with it. Malgun
@@ -178,6 +188,7 @@ def build_ass_content(
     )
 
     dialogue_lines = []
+    previous_color: str | None = None
     for segment in segments:
         text = normalize_for_display(segment.text)
         if not text:
@@ -188,8 +199,9 @@ def build_ass_content(
         elif preset in ("word_pop", "word_pop_yellow"):
             color = (
                 WORD_POP_YELLOW if preset == "word_pop_yellow"
-                else WORD_POP_COLORS[len(dialogue_lines) % len(WORD_POP_COLORS)]
+                else word_pop_color(len(dialogue_lines), text, previous_color)
             )
+            previous_color = color
             wrapped = f"{{\\1c&H{color}&\\bord{WORD_POP_OUTLINE}}}{wrapped.upper()}"
         elif preset == "quote":
             wrapped = f"“{wrapped}”"

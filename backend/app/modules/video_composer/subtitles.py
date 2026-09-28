@@ -14,6 +14,7 @@ by the codebase's "duplicate, don't import across modules" convention.
 from __future__ import annotations
 
 import random
+import zlib
 from pathlib import Path
 
 from PIL import ImageFont
@@ -51,12 +52,18 @@ CAPTION_PRESET_CONFIG = {
     "word_pop_yellow": {"font_bold": True, "italic": False, "font_scale": 1.7, "margin_v_frac": 0.22, "alignment": 2},
 }
 
-# Same palette/outline as app.modules.caption.ass_writer.WORD_POP_COLORS
-# (duplicated, module isolation): one upper-cased word per card, cycling
-# bright colours with a thick black outline.
+# Same palette/outline/colour pick as app.modules.caption.ass_writer
+# (duplicated, module isolation): one upper-cased word per card, a
+# seeded-random bright colour (never the same twice in a row) with a thick
+# black outline.
 WORD_POP_COLORS = ("00FFFF", "32FF32", "FFFF00", "FFFFFF", "00A5FF", "C86EFF")
 WORD_POP_OUTLINE = 6
 WORD_POP_YELLOW = "00FFFF"  # word_pop_yellow: same cards, always yellow
+
+
+def _word_pop_color(index: int, text: str, previous: str | None) -> str:
+    choices = [c for c in WORD_POP_COLORS if c != previous]
+    return choices[zlib.crc32(f"{index}|{text}".encode("utf-8")) % len(choices)]
 assert set(CAPTION_PRESET_CONFIG) == set(CAPTION_PRESETS)
 
 
@@ -311,9 +318,11 @@ def _ass_events_word_pop(lines: list[list[dict]], fixed_color: str | None = None
     """"word_pop" preset: exactly the word being spoken, alone, upper-cased,
     each word a different colour -- the manhua-recap caption look."""
     ass_lines = []
+    previous: str | None = None
     words = [word for line in lines for word in line]
     for i, word in enumerate(words):
-        color = fixed_color or WORD_POP_COLORS[i % len(WORD_POP_COLORS)]
+        color = fixed_color or _word_pop_color(i, word["text"], previous)
+        previous = color
         ass_lines.append(
             f"Dialogue: 0,{_format_ass_time(word['start'])},{_format_ass_time(word['end'])},"
             f"Karaoke,,0,0,0,,{{\\1c&H{color}&\\bord{WORD_POP_OUTLINE}}}{word['text'].upper()}"

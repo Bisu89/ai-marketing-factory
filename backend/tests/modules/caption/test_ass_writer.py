@@ -52,6 +52,16 @@ class BuildAssContentTests(unittest.TestCase):
         self.assertTrue(texts[0].startswith(r"{\1c&H"))
         self.assertNotEqual(texts[0].split("&")[1], texts[1].split("&")[1])
 
+    def test_word_pop_colours_are_random_looking_never_repeat_and_are_stable(self):
+        words = "một hai ba bốn năm sáu bảy tám chín mười mười một mười hai".split()
+        segs = [CaptionSegment(id=f"c{i}", beat_id="b", start=i, end=i + 1, text=w) for i, w in enumerate(words)]
+        content = build_ass_content(segs, 1080, 1920, 48, preset="word_pop", max_lines=1)
+        colors = [line.split("&")[1] for line in content.splitlines() if line.startswith("Dialogue:")]
+        self.assertTrue(all(a != b for a, b in zip(colors, colors[1:])))  # never twice in a row
+        palette = ["H" + c for c in ("00FFFF", "32FF32", "FFFF00", "FFFFFF", "00A5FF", "C86EFF")]
+        self.assertNotEqual(colors, [palette[i % 6] for i in range(len(colors))])  # not the old fixed cycle
+        self.assertEqual(content, build_ass_content(segs, 1080, 1920, 48, preset="word_pop", max_lines=1))
+
     def test_word_pop_yellow_keeps_every_card_yellow(self):
         content = build_ass_content(_segments(), 1080, 1920, 48, preset="word_pop_yellow")
         colors = {line.split("&")[1] for line in content.splitlines() if line.startswith("Dialogue:")}
