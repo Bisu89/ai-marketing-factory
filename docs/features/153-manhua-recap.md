@@ -115,3 +115,9 @@ Final QA PASS 100.
   palette is unchanged, a colour never repeats twice in a row, and the seed is the card's
   index plus its text, so a re-render is byte-identical. The caption `ENGINE_VERSION` was
   bumped to `caption-v3`.
+- **Real series run (Đại Quản Gia Là Ma Hoàng, ep 1–2 = ch.1 and ch.2, projects 115/116,
+  61.6s / 59.4s, both PASS 100).** The Ep1 script was rejected three times: twice for panel
+  order and once at 7% commentary against the 8% floor. `MAX_RETRIES` went from 1 to 2, and
+  the premise commentary floor went from 8% to 5% (at least 2 aside beats are still
+  required). manhuavn2 serves ch.3–100 from `img02.g5img.top`, which returns 403 without
+  its own Referer, so those chapters have to be downloaded in a browser.

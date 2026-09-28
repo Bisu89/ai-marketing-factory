@@ -33,7 +33,7 @@ router = APIRouter()
 # 150, not 80: premise mode sends the first several chapters at once.
 MAX_PANELS = 150
 MAX_TOKENS = 6000
-MAX_RETRIES = 1
+MAX_RETRIES = 2  # 2 repair attempts: panel-order / length slips are common on 100+ panel runs
 # Panels are downscaled before upload: wide enough to read a speech bubble,
 # small enough that a 60-panel chapter stays a reasonable single request.
 PANEL_MAX_WIDTH = 768
@@ -68,7 +68,9 @@ MIN_COMMENTARY_SHARE = 0.15  # of total narration syllables
 # Premise mode keeps the host's take to short in-line asides (the reference
 # channel's "à ý tôi là...", "tôi thực sự rất tò mò...") and ends on the
 # cliffhanger, not on commentary.
-PREMISE_MIN_COMMENTARY_SHARE = 0.08
+# 0.05, not 0.08: real Ep1 run (Dai Quan Gia ch.1) was rejected twice at 7%
+# for two valid asides -- the beat-count rule already guarantees the asides exist.
+PREMISE_MIN_COMMENTARY_SHARE = 0.05
 
 LANGUAGE_NAMES = {"vi": "Vietnamese", "en": "English", "ko": "Korean"}
 
