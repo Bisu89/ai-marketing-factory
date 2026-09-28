@@ -93,3 +93,21 @@ invalidated. `recap.py build` gives commentary beats `vi-VN-HoaiMyNeural`
 (`--commentary-voice VOICE|same`). Verified on project 113 by measuring median f0 per beat:
 recap beats were 132–150 Hz and commentary beats 211–241 Hz. The render was 53.9s with
 Final QA PASS 100.
+
+**NBToon-style upgrades (from a real channel's 11 Shorts, 71K–1.8M views).**
+- **Premise mode:** `script --mode premise` with `fetch --count N` recaps a series' first
+  chapters instead of one chapter. The script opens on a '<X> này' paradox, jumps back to
+  how it started, escalates, and ends on a cliffhanger. Host asides are short first-person
+  lines in the middle, never the last beat. The panel limit went from 80 to 150; above 80
+  panels, each is sent at 512 px, and the tool samples evenly when there are more than 150.
+  Tested on Vạn Cổ Chí Tôn ch.2–5: 239 panels were cut, 150 were sent, and the script was
+  25 beats titled "Võ Đế trọng sinh thành phế vật!?".
+- **`motion.fit_mode="blur_fill"`:** the whole panel is centred over a blurred copy of
+  itself, composed once with Pillow at 2x the output size. The default stays `cover`, and
+  the fingerprint only changes for non-default modes, so existing caches are kept. Both
+  manhua built-ins use it.
+- **`word_pop_yellow` caption preset:** every card is yellow (`recap.py build --captions
+  yellow`).
+- Project 114 rendered at 54.1s with Final QA PASS 100.
+- zettruyen2.com image CDN returns 403 without its own Referer. As with sangchanhteam,
+  pages have to be downloaded in a browser.

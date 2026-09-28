@@ -132,6 +132,7 @@ class CaptionPreset(str, Enum):
     QUOTE = "quote"
     TOP = "top"
     WORD_POP = "word_pop"
+    WORD_POP_YELLOW = "word_pop_yellow"
 
 
 class SceneCaption(BaseModel):

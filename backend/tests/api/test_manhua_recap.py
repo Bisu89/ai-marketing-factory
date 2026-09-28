@@ -2,6 +2,7 @@
 The AI provider is always mocked; panels are tiny real PNGs in a temp dir.
 """
 
+import io
 import json
 import unittest
 from pathlib import Path
@@ -53,6 +54,33 @@ class ManhuaRecapScriptTests(unittest.TestCase):
         self.assertIn("COMMENTARY", call.call_args.kwargs["system"])
         self.assertIn("commentary beat", call.call_args.kwargs["system"])
         self.assertEqual([b.kind for b in out.beats], ["recap", "commentary", "commentary"])
+
+    def test_premise_mode_must_end_on_the_cliffhanger_not_an_aside(self):
+        def premise(kinds):
+            return {"title": "Tu tiên giờ hành chính!?", "beats": [
+                {"panel": i + 1, "narration": "một hai ba bốn", "kind": k} for i, k in enumerate(kinds)
+            ]}
+        ends_on_aside = _result(premise(["recap", "commentary", "recap", "commentary"]))
+        ends_on_cliff = _result(premise(["recap", "commentary", "commentary", "recap"]))
+        with patch("app.api.v1.endpoints.manhua_recap.call_structured", side_effect=[ends_on_aside, ends_on_cliff]) as call:
+            out = generate_manhua_script(SETTINGS, ManhuaScriptIn(panel_paths=self.paths, mode="premise"))
+        self.assertEqual(call.call_count, 2)
+        self.assertIn("CLIFFHANGER", call.call_args.kwargs["system"])
+        self.assertIn("cliffhanger (a recap beat)", call.call_args.kwargs["system"])
+        self.assertEqual(out.beats[-1].kind, "recap")
+
+    def test_many_panels_are_sent_smaller(self):
+        big = Path(self.tmp.name) / "big.png"
+        Image.new("RGB", (1500, 3000), (10, 20, 30)).save(big)
+        mock = _result(self._beats([1, 2, 3]))
+        with patch("app.api.v1.endpoints.manhua_recap.call_structured", return_value=mock) as call:
+            generate_manhua_script(SETTINGS, ManhuaScriptIn(panel_paths=[str(big)] * 3))
+        few = Image.open(io.BytesIO(call.call_args.kwargs["images"][0].data))
+        with patch("app.api.v1.endpoints.manhua_recap.call_structured", return_value=mock) as call:
+            generate_manhua_script(SETTINGS, ManhuaScriptIn(panel_paths=[str(big)] * 100))  # > MANY_PANELS
+        many = Image.open(io.BytesIO(call.call_args.kwargs["images"][0].data))
+        self.assertEqual(few.height, 1536)
+        self.assertEqual(many.height, 1024)
 
     def test_commentary_off_accepts_a_plain_recap(self):
         plain = _result(self._beats([1, 2, 3], commentary_last=0))

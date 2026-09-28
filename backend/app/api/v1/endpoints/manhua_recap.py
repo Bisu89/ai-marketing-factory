@@ -18,6 +18,8 @@ from pathlib import Path
 
 from fastapi import APIRouter, Depends
 from PIL import Image
+from typing import Literal
+
 from pydantic import BaseModel, Field
 
 from app.core.config import Settings, get_settings
@@ -28,13 +30,19 @@ logger = logging.getLogger(__name__)
 
 router = APIRouter()
 
-MAX_PANELS = 80
+# 150, not 80: premise mode sends the first several chapters at once.
+MAX_PANELS = 150
 MAX_TOKENS = 6000
 MAX_RETRIES = 1
 # Panels are downscaled before upload: wide enough to read a speech bubble,
 # small enough that a 60-panel chapter stays a reasonable single request.
 PANEL_MAX_WIDTH = 768
 PANEL_MAX_HEIGHT = 1536
+# Above this many panels (a multi-chapter premise run) each one is sent smaller
+# so the whole series start still fits one request.
+MANY_PANELS = 80
+MANY_PANELS_MAX_WIDTH = 512
+MANY_PANELS_MAX_HEIGHT = 1024
 # Real render (project 112): vi-VN-NamMinhNeural at speed 1.6 read 262
 # syllables in 51.1s = ~5.1/s (~308/min; the reference sample is ~335/min).
 # At 1.25 it was only ~4.0/s -- a "50s" script rendered at 65s.
@@ -57,15 +65,44 @@ BEAT_TYPES = ("HOOK", "SETUP", "BUILD", "REVEAL", "REACTION", "ENDING")
 BEAT_KINDS = ("recap", "commentary")
 MIN_COMMENTARY_BEATS = 2
 MIN_COMMENTARY_SHARE = 0.15  # of total narration syllables
+# Premise mode keeps the host's take to short in-line asides (the reference
+# channel's "à ý tôi là...", "tôi thực sự rất tò mò...") and ends on the
+# cliffhanger, not on commentary.
+PREMISE_MIN_COMMENTARY_SHARE = 0.08
 
 LANGUAGE_NAMES = {"vi": "Vietnamese", "en": "English", "ko": "Korean"}
 
-SYSTEM_PROMPT = (
+CHAPTER_INTRO = (
     "You write narration for fast short-form comic recap videos. You are given the panels "
     "of ONE comic chapter in reading order, each labelled 'Panel N'. Read every panel "
     "carefully, including speech bubbles, captions and sound effects, and work out what "
     "actually happens: who the characters are, what they want, the expectation the chapter "
     "sets up, the twist, and how it ends.\n\n"
+)
+
+# Modelled on a real channel analysed 2026-09-28 (11 Shorts, 71K-1.8M views,
+# docs/features/153-manhua-recap.md): they recap a SERIES' premise, not one
+# chapter, and every top video opens on one clear paradox.
+PREMISE_INTRO = (
+    "You write narration for fast short-form comic recap videos. You are given the panels "
+    "of the FIRST SEVERAL CHAPTERS of one comic series in reading order, each labelled "
+    "'Panel N'. Read every panel carefully, including speech bubbles, and work out the "
+    "series' PREMISE: who the protagonist is, the one absurd / contradictory situation the "
+    "whole story hangs on, how it started, and the running gag.\n\n"
+    "Write a PREMISE recap -- sell the series, do not retell every chapter:\n"
+    "- Beat 1 is ONE sentence: '<character> này' + the paradox, understandable instantly, e.g. "
+    "'Con hươu này có một bí mật cực kỳ khủng khiếp...', 'Thanh niên này vừa được làm hoàng đế, "
+    "vừa được làm hoàng hậu?', 'Thanh niên này luôn từ chối mọi cô gái, bởi vì hắn có một căn "
+    "bệnh cực kỳ quái lạ.' Never open on a crude/sexual double meaning.\n"
+    "- Then jump back to how it started ('Chuyện bắt đầu khi...', 'Tất cả bắt đầu khi...').\n"
+    "- Escalate the situation with 2-3 funny developments; modern everyday slang and "
+    "comparisons (tăng ca, tan làm, ăn dưa...) are welcome.\n"
+    "- END ON A CLIFFHANGER: the last beat opens a question and does NOT resolve it "
+    "('Hắn đâu ngờ chỉ một quyết định lại dẫn đến chuyện này.').\n"
+    "- The video title is a short paradox ending in '!?' (e.g. 'Tu tiên giờ hành chính!?').\n\n"
+)
+
+SYSTEM_RULES = (
     "Then write the recap as a sequence of beats. Each beat shows exactly ONE panel on "
     "screen while one short piece of narration is read over it.\n"
     "- Panels must be used in strictly increasing order. Skip panels that are redundant, "
@@ -77,7 +114,6 @@ SYSTEM_PROMPT = (
     "chapter is funny. No greeting, no 'in this chapter', never mention panels, comics, or "
     "the reader. Do not read speech bubbles out verbatim -- retell them.\n"
     "- The very first beat is the hook: drop the viewer straight into the situation.\n"
-    "- The recap lands the chapter's ending/reaction.\n"
     "- Use the character names if the panels give them; otherwise short descriptive labels "
     "(e.g. 'lão già', 'gã kiếm tiên').\n"
     "- Give each beat a `type` for its role: HOOK (first beat only), SETUP, BUILD, REVEAL "
@@ -86,6 +122,9 @@ SYSTEM_PROMPT = (
     "- Mark every beat's `kind` as \"recap\" (retelling what happens).\n"
     "Also return a short catchy video title (max 80 characters) in the same language."
 )
+
+# Chapter mode only (premise mode ends on its cliffhanger instead).
+CHAPTER_ENDING = "- The recap lands the chapter's ending/reaction.\n"
 
 # Appended when commentary is on; overrides the plain-recap ending/kind rules above.
 COMMENTARY_RULES = (
@@ -106,6 +145,23 @@ COMMENTARY_RULES = (
     "roughly 20-30% of all narration should be commentary.\n"
     "- The last beat's `type` is ENDING even though it is commentary."
 )
+
+PREMISE_COMMENTARY_RULES = (
+    "\n\nHOST ASIDES -- add 2-3 short beats marked `kind`: \"commentary\" where the narrator "
+    "steps out of the story for a second in first person ('tôi'/'mình'): a quick joke or "
+    "reaction specific to what just happened ('à ý tôi là...', 'Nhưng tôi thực sự rất tò mò...'). "
+    "Put them in the middle, never as the last beat -- the video still ends on the cliffhanger "
+    "(a `recap` beat, type ENDING). Keep them short: about 10% of all narration."
+)
+
+
+def build_system_prompt(mode: str, commentary: bool) -> str:
+    if mode == "premise":
+        return PREMISE_INTRO + SYSTEM_RULES + (PREMISE_COMMENTARY_RULES if commentary else "")
+    rules = SYSTEM_RULES.replace(
+        "- The very first beat is the hook", CHAPTER_ENDING + "- The very first beat is the hook"
+    )
+    return CHAPTER_INTRO + rules + (COMMENTARY_RULES if commentary else "")
 
 OUTPUT_SCHEMA = {
     "type": "json_schema",
@@ -143,6 +199,9 @@ class ManhuaScriptIn(BaseModel):
     notes: str | None = None
     # Host commentary beats (see BEAT_KINDS). False = plain recap only.
     commentary: bool = True
+    # "chapter": recap one chapter. "premise": sell a series from its first
+    # several chapters (paradox hook, flashback, cliffhanger ending).
+    mode: Literal["chapter", "premise"] = "chapter"
 
 
 class ManhuaBeatOut(BaseModel):
@@ -157,14 +216,16 @@ class ManhuaScriptOut(BaseModel):
     beats: list[ManhuaBeatOut]
 
 
-def _load_panel(path_str: str, index: int) -> LLMImage:
+def _load_panel(
+    path_str: str, index: int, max_size: tuple[int, int] = (PANEL_MAX_WIDTH, PANEL_MAX_HEIGHT),
+) -> LLMImage:
     path = Path(path_str)
     if not path.is_file():
         raise ValidationError(f"Panel {index} not found: {path_str}")
     try:
         with Image.open(path) as img:
             img = img.convert("RGB")
-            img.thumbnail((PANEL_MAX_WIDTH, PANEL_MAX_HEIGHT))
+            img.thumbnail(max_size)
             buf = io.BytesIO()
             img.save(buf, format="JPEG", quality=85)
     except OSError as exc:
@@ -184,7 +245,7 @@ def _build_user_message(payload: ManhuaScriptIn) -> str:
         f"{round(syllables * LENGTH_TOLERANCE)}). You will NOT use every panel: pick the ~{beats} that tell "
         "the story best and compress -- this is a recap, not a retelling.",
     ]
-    if payload.commentary:
+    if payload.commentary and payload.mode == "chapter":
         # First real run with commentary overshot the maximum even after the
         # repair retry: the model added the host's take ON TOP of a full-length
         # recap. Spell out the split so the recap is compressed up front.
@@ -204,26 +265,28 @@ def _syllable_budget(target_duration: float) -> int:
     return round(target_duration * SYLLABLES_PER_SECOND)
 
 
-def _check_commentary(beats: list[ManhuaBeatOut]) -> None:
+def _check_commentary(beats: list[ManhuaBeatOut], mode: str = "chapter") -> None:
     commentary = [b for b in beats if b.kind == "commentary"]
     if len(commentary) < MIN_COMMENTARY_BEATS:
-        raise ValueError(
-            f"only {len(commentary)} commentary beat(s), need at least {MIN_COMMENTARY_BEATS} "
-            "(1-2 in the middle and a closing take)"
-        )
-    if beats[-1].kind != "commentary":
+        where = "(short host asides in the middle)" if mode == "premise" else "(1-2 in the middle and a closing take)"
+        raise ValueError(f"only {len(commentary)} commentary beat(s), need at least {MIN_COMMENTARY_BEATS} {where}")
+    if mode == "premise":
+        if beats[-1].kind != "recap":
+            raise ValueError("the last beat must be the cliffhanger (a recap beat), not a host aside")
+    elif beats[-1].kind != "commentary":
         raise ValueError("the last beat must be the host's commentary (verdict / prediction / question)")
+    minimum = PREMISE_MIN_COMMENTARY_SHARE if mode == "premise" else MIN_COMMENTARY_SHARE
     total = sum(len(b.narration.split()) for b in beats)
     share = sum(len(b.narration.split()) for b in commentary) / max(total, 1)
-    if share < MIN_COMMENTARY_SHARE:
+    if share < minimum:
         raise ValueError(
-            f"commentary is only {share:.0%} of the narration, need at least {MIN_COMMENTARY_SHARE:.0%} "
+            f"commentary is only {share:.0%} of the narration, need at least {minimum:.0%} "
             "-- compress the recap and give the host more of their own take"
         )
 
 
 def _validate(
-    parsed: dict, panel_count: int, syllable_budget: int, commentary: bool = True,
+    parsed: dict, panel_count: int, syllable_budget: int, commentary: bool = True, mode: str = "chapter",
 ) -> ManhuaScriptOut:
     out = ManhuaScriptOut.model_validate(parsed)
     if len(out.beats) < 3:
@@ -248,7 +311,7 @@ def _validate(
             f"{round(syllable_budget * LENGTH_TOLERANCE)} -- use fewer beats and shorter lines"
         )
     if commentary:
-        _check_commentary(out.beats)
+        _check_commentary(out.beats, mode)
     out.title = out.title.strip()[:100] or "Manhua recap"
     return out
 
@@ -258,13 +321,17 @@ def generate_manhua_script(settings: Settings, payload: ManhuaScriptIn) -> Manhu
     if credentials is None:
         raise ValidationError("No AI provider is configured. Go to Settings to choose a provider and enter an API key.")
 
-    images = [_load_panel(p, i) for i, p in enumerate(payload.panel_paths, 1)]
+    max_size = (
+        (MANY_PANELS_MAX_WIDTH, MANY_PANELS_MAX_HEIGHT) if len(payload.panel_paths) > MANY_PANELS
+        else (PANEL_MAX_WIDTH, PANEL_MAX_HEIGHT)
+    )
+    images = [_load_panel(p, i, max_size) for i, p in enumerate(payload.panel_paths, 1)]
     user_message = _build_user_message(payload)
 
     repair_note: str | None = None
     last_error: Exception | None = None
     for attempt in range(MAX_RETRIES + 1):
-        system = SYSTEM_PROMPT + (COMMENTARY_RULES if payload.commentary else "")
+        system = build_system_prompt(payload.mode, payload.commentary)
         if repair_note:
             system += f"\n\nYour previous response was invalid: {repair_note}\nFix it and return valid JSON only."
         try:
@@ -280,7 +347,8 @@ def generate_manhua_script(settings: Settings, payload: ManhuaScriptIn) -> Manhu
             raise ExternalServiceError("Model did not return any text content.")
         try:
             return _validate(
-                json.loads(result.text), len(images), _syllable_budget(payload.target_duration), payload.commentary,
+                json.loads(result.text), len(images), _syllable_budget(payload.target_duration),
+                payload.commentary, payload.mode,
             )
         except (json.JSONDecodeError, ValueError) as exc:
             logger.warning("Manhua script attempt %d/%d invalid: %s", attempt + 1, MAX_RETRIES + 1, exc)

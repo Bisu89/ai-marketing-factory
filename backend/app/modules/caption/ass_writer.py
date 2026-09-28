@@ -27,7 +27,7 @@ from app.modules.caption.schemas import (
     CaptionSegment,
 )
 
-CAPTION_PRESETS = ("emotional", "cinematic", "word_highlight", "big_statement", "quote", "top", "word_pop")
+CAPTION_PRESETS = ("emotional", "cinematic", "word_highlight", "big_statement", "quote", "top", "word_pop", "word_pop_yellow")
 
 # Verbatim copy of video_composer.service.CAPTION_PRESET_CONFIG (section
 # 21/22: "the Template system should define caption style... only support
@@ -42,6 +42,7 @@ CAPTION_PRESET_CONFIG = {
     "quote": {"font_bold": False, "italic": True, "font_scale": 0.9, "margin_v_frac": 0.45, "alignment": 5},
     "top": {"font_bold": True, "italic": False, "font_scale": 0.85, "margin_v_frac": 0.09, "alignment": 8},
     "word_pop": {"font_bold": True, "italic": False, "font_scale": 1.7, "margin_v_frac": 0.22, "alignment": 2},
+    "word_pop_yellow": {"font_bold": True, "italic": False, "font_scale": 1.7, "margin_v_frac": 0.22, "alignment": 2},
 }
 assert set(CAPTION_PRESET_CONFIG) == set(CAPTION_PRESETS)
 
@@ -53,6 +54,9 @@ assert set(CAPTION_PRESET_CONFIG) == set(CAPTION_PRESETS)
 # consecutive cards never repeat a colour since the palette has no dupes.
 WORD_POP_COLORS = ("00FFFF", "32FF32", "FFFF00", "FFFFFF", "00A5FF", "C86EFF")
 WORD_POP_OUTLINE = 6
+# "word_pop_yellow": the same one-word cards, always yellow (the look of a
+# 1.8M-view manhua recap channel analysed 2026-09-28).
+WORD_POP_YELLOW = "00FFFF"
 
 # Section 23's own "safe margins, never flush against the bottom edge" --
 # same fixed horizontal margin video_composer already uses; vertical
@@ -181,8 +185,11 @@ def build_ass_content(
         wrapped = _wrap_balanced(_escape_ass_text(text), max_chars_per_line, max_lines)
         if preset == "big_statement":
             wrapped = wrapped.upper()
-        elif preset == "word_pop":
-            color = WORD_POP_COLORS[len(dialogue_lines) % len(WORD_POP_COLORS)]
+        elif preset in ("word_pop", "word_pop_yellow"):
+            color = (
+                WORD_POP_YELLOW if preset == "word_pop_yellow"
+                else WORD_POP_COLORS[len(dialogue_lines) % len(WORD_POP_COLORS)]
+            )
             wrapped = f"{{\\1c&H{color}&\\bord{WORD_POP_OUTLINE}}}{wrapped.upper()}"
         elif preset == "quote":
             wrapped = f"“{wrapped}”"

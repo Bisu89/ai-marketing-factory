@@ -1,11 +1,15 @@
 """Manhua recap tool -- one comic chapter (page images) -> a finished recap Short.
 
 Usage (backend running, with the backend venv's python):
-    python recap.py fetch  <chapter_url> <chapter_dir>    # download a chapter's page images (manhuavn2.com)
+    python recap.py fetch  <chapter_url> <chapter_dir> [--count N]
+                                                          # download a chapter's page images (manhuavn2.com);
+                                                          # --count N = this chapter and the next N-1
+    python recap.py script <chapter_dir> --mode premise   # multi-chapter "sell the series" recap
     python recap.py cut    <chapter_dir>                  # split pages into panels -> <chapter_dir>/_recap/panels/
     python recap.py script <chapter_dir> [--seconds 50] [--notes "..."]
                                                           # AI reads the panels, writes _recap/script.json
     python recap.py build  <chapter_dir> [--name "..."] [--no-render] [--commentary-voice VOICE|same]
+                                         [--captions color|yellow]
                                                           # register panels, create the project, start the render
 
 <chapter_dir> holds the chapter's page images (jpg/png/webp) in reading order by
@@ -49,18 +53,35 @@ def _get(url: str, timeout: int = 60) -> bytes:
         return r.read()
 
 
-def cmd_fetch(url: str, chapter: Path) -> None:
+def _chapter_page_urls(url: str) -> list[str]:
     html = _get(url).decode("utf-8", errors="replace")
     if re.search(r'"isAccessibleForFree"\s*:\s*false', html):
-        sys.exit("This chapter is VIP/locked on the site -- pick a free chapter.")
+        sys.exit(f"{url} is VIP/locked on the site -- pick free chapters.")
     urls = [u for u in re.findall(r'data-original="([^"]+)"', html) if COVER_PATH not in u]
     if not urls:
-        sys.exit("No page images found on that page -- is it a chapter URL (…/doc-truyen/…-chapter-N.html)?")
+        sys.exit(f"No page images found on {url} -- is it a chapter URL (…/doc-truyen/…-chapter-N.html)?")
+    return urls
+
+
+def cmd_fetch(url: str, chapter: Path, count: int = 1) -> None:
+    """count > 1: also fetch the next chapters by bumping `-chapter-N` in the URL.
+    Pages are named c<chapter>_<page>.jpg so `cut` stacks them in reading order."""
+    match = re.search(r"-chapter-(\d+)\.html", url)
+    if count > 1 and not match:
+        sys.exit("--count needs a URL ending in -chapter-N.html")
     chapter.mkdir(parents=True, exist_ok=True)
-    for i, image_url in enumerate(urls, 1):
-        (chapter / f"{i:03d}.jpg").write_bytes(_get(image_url))
-        print(f"\r{i}/{len(urls)}", end="", flush=True)
-    print(f"\n{len(urls)} page(s) -> {chapter}. Next: `cut`.")
+    total = 0
+    for k in range(count):
+        n = int(match.group(1)) + k if match else None
+        chapter_url = url if k == 0 else re.sub(r"-chapter-\d+\.html", f"-chapter-{n}.html", url)
+        urls = _chapter_page_urls(chapter_url)
+        prefix = f"c{n:03d}_" if count > 1 else ""
+        for i, image_url in enumerate(urls, 1):
+            (chapter / f"{prefix}{i:03d}.jpg").write_bytes(_get(image_url))
+            print(f"\rchapter {n or ''}: {i}/{len(urls)}", end="", flush=True)
+        print()
+        total += len(urls)
+    print(f"{total} page(s) -> {chapter}. Next: `cut`.")
 
 
 # -- panel cutting ------------------------------------------------------------
@@ -219,12 +240,22 @@ def _panel_files(chapter: Path) -> list[Path]:
     return panels
 
 
-def cmd_script(chapter: Path, seconds: float, notes: str | None, commentary: bool) -> None:
+# Must match the backend's MAX_PANELS (endpoints/manhua_recap.py).
+MAX_PANELS = 150
+
+
+def cmd_script(chapter: Path, seconds: float, notes: str | None, commentary: bool, mode: str = "chapter") -> None:
     panels = _panel_files(chapter)
-    print(f"Sending {len(panels)} panels to the AI (this can take a minute)...")
+    if len(panels) > MAX_PANELS:
+        # A premise run over several chapters: keep an even spread so every
+        # chapter is still represented.
+        step = len(panels) / MAX_PANELS
+        panels = [panels[int(i * step)] for i in range(MAX_PANELS)]
+        print(f"{len(_panel_files(chapter))} panels > {MAX_PANELS}: sending an even sample of {MAX_PANELS}.")
+    print(f"Sending {len(panels)} panels to the AI ({mode} mode, this can take a minute)...")
     result = call("POST", "/manhua-recap/script", {
         "panel_paths": [str(p.resolve()) for p in panels], "target_duration": seconds,
-        "language": "vi", "notes": notes, "commentary": commentary,
+        "language": "vi", "notes": notes, "commentary": commentary, "mode": mode,
     }, timeout=600)
     script = {
         "title": result["title"],
@@ -241,7 +272,12 @@ def cmd_script(chapter: Path, seconds: float, notes: str | None, commentary: boo
     print("Edit script.json if needed (make the commentary sound like YOU), then run `build`.")
 
 
-def cmd_build(chapter: Path, name: str | None, render: bool, commentary_voice: str | None) -> None:
+CAPTION_STYLES = {"color": "word_pop", "yellow": "word_pop_yellow"}
+
+
+def cmd_build(
+    chapter: Path, name: str | None, render: bool, commentary_voice: str | None, captions: str = "color",
+) -> None:
     script_path = chapter / "_recap" / "script.json"
     if not script_path.exists():
         sys.exit("No script yet -- run `script` first.")
@@ -276,6 +312,7 @@ def cmd_build(chapter: Path, name: str | None, render: bool, commentary_voice: s
                                      "content_language": "vi", "visual_generation_mode": "library"})["id"]
     cfg = call("GET", f"/projects/{pid}")["config"]
     cfg["content"]["target_duration"] = float(round(sum(b["duration"] for b in beats)))
+    cfg["captions"]["preset"] = CAPTION_STYLES[captions]
     call("PUT", f"/projects/{pid}/beat-plan", {"project_name": name, "script_text": text, "script_locked": True,
                                                 "beats": beats, "config": cfg})
     call("PUT", f"/projects/{pid}/package-overrides", {"title": script["title"]})
@@ -292,6 +329,7 @@ def main() -> None:
     fetch = sub.add_parser("fetch")
     fetch.add_argument("url")
     fetch.add_argument("chapter", type=Path)
+    fetch.add_argument("--count", type=int, default=1, help="fetch this chapter and the next COUNT-1")
     for cmd in ("cut", "script", "build"):
         p = sub.add_parser(cmd)
         p.add_argument("chapter", type=Path)
@@ -300,14 +338,18 @@ def main() -> None:
             p.add_argument("--notes", default=None, help="context the panels can't give (names, who's who)")
             p.add_argument("--no-commentary", action="store_true",
                            help="plain recap, no host commentary (higher reused-content risk on YouTube)")
+            p.add_argument("--mode", choices=("chapter", "premise"), default="chapter",
+                           help="chapter = recap one chapter; premise = sell the series from its first chapters")
         if cmd == "build":
             p.add_argument("--name", default=None)
             p.add_argument("--no-render", action="store_true")
             p.add_argument("--commentary-voice", default=COMMENTARY_VOICE,
                            help=f"edge-tts voice for commentary beats (default {COMMENTARY_VOICE}; 'same' = narrator's)")
+            p.add_argument("--captions", choices=tuple(CAPTION_STYLES), default="color",
+                           help="color = each word a different colour; yellow = every word yellow")
     args = parser.parse_args()
     if args.cmd == "fetch":
-        cmd_fetch(args.url, args.chapter.resolve())
+        cmd_fetch(args.url, args.chapter.resolve(), args.count)
         return
     chapter = args.chapter.resolve()
     if not chapter.is_dir():
@@ -315,10 +357,10 @@ def main() -> None:
     if args.cmd == "cut":
         cmd_cut(chapter)
     elif args.cmd == "script":
-        cmd_script(chapter, args.seconds, args.notes, not args.no_commentary)
+        cmd_script(chapter, args.seconds, args.notes, not args.no_commentary, args.mode)
     else:
         cmd_build(chapter, args.name, not args.no_render,
-                  None if args.commentary_voice == "same" else args.commentary_voice)
+                  None if args.commentary_voice == "same" else args.commentary_voice, args.captions)
 
 
 if __name__ == "__main__":

@@ -309,6 +309,38 @@ def _probe_image(image_path: Path) -> None:
         raise FileOperationError(f"Invalid or unreadable image: {image_path}")
 
 
+# blur_fill background: a Gaussian blur this strong, darkened a little so the
+# sharp centred panel reads as the subject.
+_BLUR_FILL_RADIUS = 40
+_BLUR_FILL_DARKEN = 0.75
+# Composite built at 2x the output size: the motion stage zooms/pans into it,
+# so it needs headroom above the final resolution to stay sharp.
+_BLUR_FILL_SCALE = 2
+
+
+def compose_blur_fill(image_path: Path, width: int, height: int, output_path: Path) -> Path:
+    """Write a width:height PNG with the whole image contained in the centre
+    over a blurred, cover-scaled copy of itself (the "blur_fill" fit mode).
+    Done once per clip with Pillow rather than as a per-frame ffmpeg blur."""
+    from PIL import Image, ImageEnhance, ImageFilter
+
+    target_w, target_h = width * _BLUR_FILL_SCALE, height * _BLUR_FILL_SCALE
+    with Image.open(image_path) as source:
+        img = source.convert("RGB")
+    cover = max(target_w / img.width, target_h / img.height)
+    background = img.resize((round(img.width * cover), round(img.height * cover)), Image.LANCZOS)
+    left, top = (background.width - target_w) // 2, (background.height - target_h) // 2
+    background = background.crop((left, top, left + target_w, top + target_h))
+    background = background.filter(ImageFilter.GaussianBlur(_BLUR_FILL_RADIUS))
+    background = ImageEnhance.Brightness(background).enhance(_BLUR_FILL_DARKEN)
+    contain = min(target_w / img.width, target_h / img.height)
+    foreground = img.resize((round(img.width * contain), round(img.height * contain)), Image.LANCZOS)
+    background.paste(foreground, ((target_w - foreground.width) // 2, (target_h - foreground.height) // 2))
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    background.save(output_path)
+    return output_path
+
+
 def render_motion_clip(
     image_path: Path | str,
     motion_plan: MotionPlan,
@@ -322,8 +354,13 @@ def render_motion_clip(
     focal_y: float = 0.5,
     on_process_start: Callable[[subprocess.Popen], None] | None = None,
     is_cancelled: Callable[[], bool] | None = None,
+    fit_mode: str = "cover",
 ) -> Path:
     """Render one still image + MotionPlan into an MP4 at `output_path`.
+
+    `fit_mode="blur_fill"` first composes the image over a blurred copy of
+    itself at the output's aspect ratio (compose_blur_fill), so the cover
+    scaling below never crops any of the original image away.
 
     `focal_x`/`focal_y` (Task 23) only change the STATIC-preset crop
     center (see build_filter_graph) -- every panning/zooming preset
@@ -397,6 +434,9 @@ def render_motion_clip(
     except OSError as exc:
         raise FileOperationError(f"Cannot create output directory {output_path.parent}: {exc}") from exc
 
+    if fit_mode == "blur_fill":
+        image_path = compose_blur_fill(image_path, width, height, output_path.with_suffix(".blurfill.png"))
+
     command = build_ffmpeg_command(
         image_path, output_path, motion_plan, effective_duration, fps, width, height, focal_x, focal_y
     )
@@ -420,7 +460,11 @@ def render_motion_clip(
 
     if on_process_start is not None:
         on_process_start(process)
-    stdout, stderr = process.communicate()
+    try:
+        stdout, stderr = process.communicate()
+    finally:
+        if fit_mode == "blur_fill":
+            image_path.unlink(missing_ok=True)  # the temporary composite, never the source asset
 
     if process.returncode != 0:
         if is_cancelled is not None and is_cancelled():

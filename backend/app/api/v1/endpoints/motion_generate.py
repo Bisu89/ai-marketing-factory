@@ -129,7 +129,7 @@ def resolve_effective_preset(beat: Beat, config: ProjectConfig) -> BeatMotionPre
 
 def motion_fingerprint(
     asset_identity: str, effective_preset: BeatMotionPreset, intensity: str,
-    duration: float, width: int, height: int, fps: float,
+    duration: float, width: int, height: int, fps: float, fit_mode: str = "cover",
 ) -> str:
     """Section 46's own cache key -- every input that actually changes the
     rendered pixels, plus RENDERER_VERSION (section 47) so a change to this
@@ -140,6 +140,8 @@ def motion_fingerprint(
         asset_identity, effective_preset.value, intensity, f"{duration:.3f}",
         str(width), str(height), f"{fps:.3f}", RENDERER_VERSION,
     ])
+    if fit_mode != "cover":
+        payload += f"|fit:{fit_mode}"  # only non-default modes, so existing clip caches stay valid
     return hashlib.sha256(payload.encode("utf-8")).hexdigest()
 
 
@@ -260,6 +262,7 @@ def generate_project_motion(project_id: int, settings: Settings) -> bool:
             fingerprint = motion_fingerprint(
                 _asset_identity(asset), effective_preset, intensity,
                 beat.duration, render_profile.width, render_profile.height, render_profile.fps,
+                draft.config.motion.fit_mode,
             )
             clip_path = beat_clip_path(project_id, beat.id, settings.library_dir)
             cached_entry = metadata.get(beat.id)
@@ -275,6 +278,7 @@ def generate_project_motion(project_id: int, settings: Settings) -> bool:
                 render_motion_clip(
                     asset.path, motion_plan, tmp_path, duration=beat.duration,
                     fps=render_profile.fps, width=render_profile.width, height=render_profile.height,
+                    fit_mode=draft.config.motion.fit_mode,
                 )
             else:
                 render_video_clip(

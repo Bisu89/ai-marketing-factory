@@ -48,10 +48,10 @@ export const MOTION_PRESET_LABELS: Record<MotionPresetName, string> = {
   subtle_rotate: "Subtle rotate",
 };
 
-export type CaptionPreset = "emotional" | "cinematic" | "word_highlight" | "big_statement" | "quote" | "top" | "word_pop";
+export type CaptionPreset = "emotional" | "cinematic" | "word_highlight" | "big_statement" | "quote" | "top" | "word_pop" | "word_pop_yellow";
 
 export const CAPTION_PRESETS: CaptionPreset[] = [
-  "emotional", "cinematic", "word_highlight", "big_statement", "quote", "top", "word_pop",
+  "emotional", "cinematic", "word_highlight", "big_statement", "quote", "top", "word_pop", "word_pop_yellow",
 ];
 
 // Mirrors backend CONTENT_LANGUAGES (app/modules/beat/schemas.py) exactly --
@@ -79,6 +79,7 @@ export const CAPTION_PRESET_LABELS: Record<CaptionPreset, string> = {
   quote: "Quote",
   top: "Top (small, below the top edge)",
   word_pop: "Word pop (1 colored word at a time)",
+  word_pop_yellow: "Word pop yellow (1 yellow word at a time)",
 };
 
 // A small convenience list of edge-tts voice IDs (any valid edge-tts voice
@@ -349,6 +350,9 @@ export interface MotionProjectConfig {
   auto_rotate: boolean;
   intensity: MotionIntensity;
   short_video_policy: ShortVideoPolicy;
+  // "blur_fill": whole image centred over a blurred copy of itself (comic
+  // panels keep their speech bubbles) instead of a cover-crop.
+  fit_mode?: "cover" | "blur_fill";
 }
 
 // Task 25 -- see docs/features/51-caption-engine.md sections 5/6/9/10.

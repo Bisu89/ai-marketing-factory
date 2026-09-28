@@ -52,6 +52,11 @@ class BuildAssContentTests(unittest.TestCase):
         self.assertTrue(texts[0].startswith(r"{\1c&H"))
         self.assertNotEqual(texts[0].split("&")[1], texts[1].split("&")[1])
 
+    def test_word_pop_yellow_keeps_every_card_yellow(self):
+        content = build_ass_content(_segments(), 1080, 1920, 48, preset="word_pop_yellow")
+        colors = {line.split("&")[1] for line in content.splitlines() if line.startswith("Dialogue:")}
+        self.assertEqual(colors, {"H00FFFF"})
+
     def test_quote_wraps_text_in_curly_quotes(self):
         content = build_ass_content(_segments(), 1080, 1920, 48, preset="quote")
         self.assertIn("“", content)

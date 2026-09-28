@@ -239,7 +239,7 @@ class Beat(BaseModel):
 # app.modules.composition.schemas.CaptionPreset already uses for the exact
 # same set) -- video_composer owns the real ASS rendering for each of
 # these; this module only needs to know the set of valid names.
-CAPTION_PRESETS = ("emotional", "cinematic", "word_highlight", "big_statement", "quote", "top", "word_pop")
+CAPTION_PRESETS = ("emotional", "cinematic", "word_highlight", "big_statement", "quote", "top", "word_pop", "word_pop_yellow")
 
 MIN_VOLUME = 0.0
 MAX_VOLUME = 2.0
@@ -265,6 +265,7 @@ class RenderProjectConfig(BaseModel):
 # across a module boundary" convention CAPTION_PRESETS above already uses).
 MOTION_INTENSITIES = ("SUBTLE", "MEDIUM", "STRONG")
 SHORT_VIDEO_POLICIES = ("LOOP", "FREEZE", "REJECT")
+MOTION_FIT_MODES = ("cover", "blur_fill")
 
 
 class MotionProjectConfig(BaseModel):
@@ -290,6 +291,19 @@ class MotionProjectConfig(BaseModel):
     # least-surprising default (never silently shortens or rejects a beat
     # a human already assigned a real, if short, video to).
     short_video_policy: str = "FREEZE"
+    # How a still image that isn't the output's aspect ratio fills the frame.
+    # "cover" (default, every existing project): scale up and crop the
+    # overflow. "blur_fill": the WHOLE image centred over a blurred, enlarged
+    # copy of itself -- what comic-panel recap channels do, so a wide panel's
+    # speech bubbles and edges aren't cropped away (docs/features/153-manhua-recap.md).
+    fit_mode: str = "cover"
+
+    @field_validator("fit_mode")
+    @classmethod
+    def _known_fit_mode(cls, value: str) -> str:
+        if value not in MOTION_FIT_MODES:
+            raise ValueError(f"Unknown motion fit_mode {value!r}, must be one of {MOTION_FIT_MODES}")
+        return value
 
     @field_validator("intensity")
     @classmethod
@@ -1649,9 +1663,11 @@ MANHUA_RECAP_VI_TEMPLATE = Template(
         render=RenderProjectConfig(profile="SOCIAL_VERTICAL"),
         # Panels are all shapes (wide action strips, tall close-ups) --
         # auto_rotate varies the move so 25 consecutive panels don't all
-        # push in identically.
+        # push in identically; blur_fill keeps each WHOLE panel on screen
+        # (speech bubbles included) instead of cover-cropping its edges off.
         motion=MotionProjectConfig(
-            default_preset=BeatMotionPreset.SLOW_PUSH_IN, intensity="MEDIUM", auto_rotate=True
+            default_preset=BeatMotionPreset.SLOW_PUSH_IN, intensity="MEDIUM", auto_rotate=True,
+            fit_mode="blur_fill",
         ),
         captions=_MANHUA_CAPTIONS,
         audio=AudioProjectConfig(narration_enabled=True, music_enabled=True, music_volume=0.1, ducking=True),

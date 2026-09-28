@@ -48,6 +48,7 @@ CAPTION_PRESET_CONFIG = {
     "quote": {"font_bold": False, "italic": True, "font_scale": 0.9, "margin_v_frac": 0.45, "alignment": 5},
     "top": {"font_bold": True, "italic": False, "font_scale": 0.85, "margin_v_frac": 0.09, "alignment": 8},
     "word_pop": {"font_bold": True, "italic": False, "font_scale": 1.7, "margin_v_frac": 0.22, "alignment": 2},
+    "word_pop_yellow": {"font_bold": True, "italic": False, "font_scale": 1.7, "margin_v_frac": 0.22, "alignment": 2},
 }
 
 # Same palette/outline as app.modules.caption.ass_writer.WORD_POP_COLORS
@@ -55,6 +56,7 @@ CAPTION_PRESET_CONFIG = {
 # bright colours with a thick black outline.
 WORD_POP_COLORS = ("00FFFF", "32FF32", "FFFF00", "FFFFFF", "00A5FF", "C86EFF")
 WORD_POP_OUTLINE = 6
+WORD_POP_YELLOW = "00FFFF"  # word_pop_yellow: same cards, always yellow
 assert set(CAPTION_PRESET_CONFIG) == set(CAPTION_PRESETS)
 
 
@@ -173,8 +175,8 @@ def write_subtitles(
         ass_lines = _ass_events_static_lines(lines, font, space_width, available_width)
     elif caption_preset == "big_statement":
         ass_lines = _ass_events_big_statement(lines)
-    elif caption_preset == "word_pop":
-        ass_lines = _ass_events_word_pop(lines)
+    elif caption_preset in ("word_pop", "word_pop_yellow"):
+        ass_lines = _ass_events_word_pop(lines, WORD_POP_YELLOW if caption_preset == "word_pop_yellow" else None)
     else:  # "quote"
         ass_lines = _ass_events_quote(lines, font, space_width, available_width)
 
@@ -305,13 +307,13 @@ def _ass_events_static_lines(
     return ass_lines
 
 
-def _ass_events_word_pop(lines: list[list[dict]]) -> list[str]:
+def _ass_events_word_pop(lines: list[list[dict]], fixed_color: str | None = None) -> list[str]:
     """"word_pop" preset: exactly the word being spoken, alone, upper-cased,
     each word a different colour -- the manhua-recap caption look."""
     ass_lines = []
     words = [word for line in lines for word in line]
     for i, word in enumerate(words):
-        color = WORD_POP_COLORS[i % len(WORD_POP_COLORS)]
+        color = fixed_color or WORD_POP_COLORS[i % len(WORD_POP_COLORS)]
         ass_lines.append(
             f"Dialogue: 0,{_format_ass_time(word['start'])},{_format_ass_time(word['end'])},"
             f"Karaoke,,0,0,0,,{{\\1c&H{color}&\\bord{WORD_POP_OUTLINE}}}{word['text'].upper()}"

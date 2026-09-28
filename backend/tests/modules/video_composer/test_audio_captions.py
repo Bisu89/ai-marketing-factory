@@ -195,7 +195,7 @@ class CaptionPresetGenerationTests(unittest.TestCase):
     def test_all_presets_generate_valid_non_empty_ass(self):
         self.assertEqual(
             set(CAPTION_PRESETS),
-            {"emotional", "cinematic", "word_highlight", "big_statement", "quote", "top", "word_pop"},
+            {"emotional", "cinematic", "word_highlight", "big_statement", "quote", "top", "word_pop", "word_pop_yellow"},
         )
         for preset in CAPTION_PRESETS:
             content = self._write(preset)
