@@ -72,5 +72,10 @@ Việc xóa không đổi tên các khung còn lại.
 
 ## Nhật ký
 
+- 2026-09-28: render Long 01: project 121, job_181, dài 10:17, 1920x1080, QA PASS 100.
+  Mục lục thời gian (in bằng `recap.py timestamps 121 --script ...long01/script.json`):
+  0:00 Mở đầu: Ma Hoàng bị phản bội / 1:29 Tâm ma: bị trói vào Lạc gia / 2:26 Rừng Sương Mù: cái bẫy chết người /
+  3:47 Kế lừa: Trác Phàm bán chủ? / 4:52 Đột phá: Ma Hoàng giấu nghề / 5:42 Phong Lâm Thành: viên ngọc giả /
+  6:39 Luyện Huyết Anh / 7:07 Thái phủ trở mặt / 7:34 Ma Hoàng nổi giận / 8:15 Ngự Hạ Thất Thế Gia / 9:05 Thượng Cổ Trận Thức Đồ
 - 2026-09-28: tắt nhạc nền cho template manhua, render lại tập 1–2 (project 117/118, jobs 179/180).
 - 2026-09-28: phân tích truyện, viết tay kịch bản tập 1–2 (Claude đọc 31 ảnh đọc, 180 khung).
