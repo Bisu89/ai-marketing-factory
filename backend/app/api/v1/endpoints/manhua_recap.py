@@ -14,6 +14,7 @@ like POST /assets' own `path`.
 import io
 import json
 import logging
+from datetime import datetime
 from pathlib import Path
 
 from fastapi import APIRouter, Depends
@@ -21,12 +22,21 @@ from PIL import Image
 from typing import Literal
 
 from pydantic import BaseModel, Field
+from sqlalchemy.orm import Session
 
 from app.core.config import Settings, get_settings
 from app.core.exceptions import ExternalServiceError, ValidationError
+from app.db.session import get_db
 from app.modules.ai.llm_client import AIProviderError, LLMImage, call_structured, resolve_ai_credentials
+from app.modules.manhua.fetch import FetchError, fetch_chapters
+from app.modules.manhua.models import ManhuaFetchLog
 
 logger = logging.getLogger(__name__)
+
+# tools/manhua_recap/recap.py's own downloaded-chapters convention (see its
+# .gitignore entry): a folder per chapter directly under <repo root>/manhua-recap/.
+# This file lives at backend/app/api/v1/endpoints/, five levels below the root.
+MANHUA_RECAP_DIR = Path(__file__).resolve().parents[5] / "manhua-recap"
 
 router = APIRouter()
 
@@ -363,3 +373,84 @@ def generate_manhua_script(settings: Settings, payload: ManhuaScriptIn) -> Manhu
 @router.post("/manhua-recap/script", response_model=ManhuaScriptOut)
 def create_manhua_script(payload: ManhuaScriptIn, settings: Settings = Depends(get_settings)) -> ManhuaScriptOut:
     return generate_manhua_script(settings, payload)
+
+
+# -- fetch (feature 154: an in-app "paste a link" form for tools/manhua_recap/
+# recap.py's own `fetch` step -- so a chapter can be downloaded without going
+# through Claude/a terminal at all) -----------------------------------------
+
+class ManhuaFetchIn(BaseModel):
+    url: str = Field(..., description="A chapter URL from a supported site "
+                                        "(manhuavn2.com, cotruyenday.com, zettruyen*.com)")
+    chapter_dir: str = Field(..., description="Folder name under manhua-recap/, e.g. dqg_ep12")
+    count: int = Field(default=1, ge=1, le=20, description="This chapter and the next count-1")
+
+
+class ManhuaFetchChapterOut(BaseModel):
+    n: int | None
+    saved: int
+    skipped: int
+
+
+class ManhuaFetchOut(BaseModel):
+    id: int
+    chapter_dir: str
+    total_saved: int
+    total_skipped: int
+    chapters: list[ManhuaFetchChapterOut]
+
+
+class ManhuaFetchLogOut(BaseModel):
+    id: int
+    url: str
+    chapter_dir: str
+    count: int
+    saved: int
+    skipped: int
+    error: str | None
+    created_at: datetime
+
+
+def _safe_chapter_dir(name: str) -> Path:
+    """The form only ever sends a bare folder name -- reject anything that
+    would escape manhua-recap/ (a leading .. or an absolute path)."""
+    cleaned = name.strip().strip("/\\")
+    if not cleaned or ".." in Path(cleaned).parts or Path(cleaned).is_absolute():
+        raise ValidationError(f"Invalid folder name: {name!r}")
+    return MANHUA_RECAP_DIR / cleaned
+
+
+@router.post("/manhua-recap/fetch", response_model=ManhuaFetchOut)
+def fetch_manhua_chapter(payload: ManhuaFetchIn, db: Session = Depends(get_db)) -> ManhuaFetchOut:
+    chapter_path = _safe_chapter_dir(payload.chapter_dir)
+    try:
+        result = fetch_chapters(payload.url, chapter_path, payload.count)
+    except FetchError as exc:
+        db.add(ManhuaFetchLog(url=payload.url, chapter_dir=payload.chapter_dir, count=payload.count,
+                               saved=0, skipped=0, error=str(exc)))
+        db.commit()
+        raise ExternalServiceError(str(exc)) from exc
+
+    log = ManhuaFetchLog(url=payload.url, chapter_dir=payload.chapter_dir, count=payload.count,
+                          saved=result.total_saved, skipped=result.total_skipped, error=None)
+    db.add(log)
+    db.commit()
+    db.refresh(log)
+    return ManhuaFetchOut(
+        id=log.id,
+        chapter_dir=payload.chapter_dir,
+        total_saved=result.total_saved,
+        total_skipped=result.total_skipped,
+        chapters=[ManhuaFetchChapterOut(n=c.n, saved=c.saved, skipped=c.skipped) for c in result.chapters],
+    )
+
+
+@router.get("/manhua-recap/fetch-log", response_model=list[ManhuaFetchLogOut])
+def list_manhua_fetch_log(db: Session = Depends(get_db)) -> list[ManhuaFetchLogOut]:
+    rows = (
+        db.query(ManhuaFetchLog)
+        .order_by(ManhuaFetchLog.created_at.desc())
+        .limit(50)
+        .all()
+    )
+    return [ManhuaFetchLogOut.model_validate(row, from_attributes=True) for row in rows]

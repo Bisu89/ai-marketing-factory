@@ -1,0 +1,143 @@
+.manhua-fetch-page {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.manhua-fetch-form {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  margin-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.manhua-fetch-row {
+  display: flex;
+  gap: 14px;
+}
+
+.manhua-fetch-field {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.manhua-fetch-field input {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface-alt);
+  color: var(--text-heading);
+  padding: 9px 12px;
+  font-size: 13.5px;
+  outline: none;
+}
+
+.manhua-fetch-field input:focus {
+  border-color: var(--accent);
+}
+
+.manhua-fetch-count {
+  max-width: 160px;
+  flex: none;
+}
+
+.manhua-fetch-hint {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.manhua-fetch-submit {
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: var(--accent);
+  color: #fff;
+  font-size: 13.5px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.manhua-fetch-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.manhua-fetch-error {
+  color: var(--danger, #d64545);
+  font-size: 13px;
+  margin: 0;
+}
+
+.manhua-fetch-result {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  font-size: 13.5px;
+  color: var(--text-heading);
+}
+
+.manhua-fetch-result code {
+  background: var(--surface);
+  border-radius: 4px;
+  padding: 1px 5px;
+}
+
+.manhua-fetch-chapters {
+  margin: 8px 0 0;
+  padding-left: 18px;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.manhua-fetch-log-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-heading);
+  margin: 12px 0 4px;
+}
+
+.manhua-fetch-log-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.manhua-fetch-log-table th {
+  text-align: left;
+  color: var(--text-muted);
+  font-weight: 500;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.manhua-fetch-log-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-heading);
+  vertical-align: top;
+}
+
+.manhua-fetch-log-url {
+  max-width: 360px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--text-muted);
+}
+
+.manhua-fetch-log-row-error td {
+  color: var(--danger, #d64545);
+}

@@ -22,20 +22,16 @@ filename. Between steps you can delete bad panels from _recap/panels/ (then re-r
 `build`. The project uses the built-in "manhua_recap_vi" template.
 """
 import argparse
-import hashlib
 import json
 import os
 import re
 import sys
-import urllib.error
-import urllib.parse
-import urllib.request
-from collections import Counter
 from pathlib import Path
 
 import numpy as np
 from PIL import Image
 
+ROOT = Path(__file__).resolve().parent
 API = os.environ.get("MANHUA_API", "http://127.0.0.1:8000/api/v1")  # override to target another backend
 TEMPLATE_ID = "manhua_recap_vi"
 # Host-commentary beats are read by a second voice (female) so viewers hear
@@ -45,186 +41,28 @@ PAGE_EXTS = {".jpg", ".jpeg", ".png", ".webp"}
 # Same pace the backend's script writer targets (measured: NamMinh @1.6 ~ 5.1 syllables/s).
 SYLLABLES_PER_SECOND = 5.1
 
-# -- fetching -------------------------------------------------------------------
-# manhuavn2.com chapter pages list their page images as <img class="lazy"
-# data-original="...">; the same markup is used for the sidebar's cover
-# thumbnails, which all live under /Pictures/Truyen/. VIP chapters are marked
-# "isAccessibleForFree": false and carry no page images.
-# cotruyenday.com (…/truyen-tranh/<slug>/chapter-N, no .html) serves page
-# images from images.jino277.work/prod/chapters/…; the URLs can contain
-# spaces, so they are percent-encoded before download. Chapters past the
-# free ones (ch.11+ on Dai Quan Gia, 2026-09-28) come back with no images.
-# zettruyen*.com (…/truyen-tranh/<slug>/chuong-N) serves pages from
-# cdnN.zetimage.com/<slug>/<N>/<i>.jpg; that CDN answers 403 without a
-# Referer from the site (hotlink protection), and /thumb/ holds sidebar covers.
-USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130 Safari/537.36"
-COVER_PATH = "/Pictures/Truyen/"
-
-# Every site inserts its own ad/domain-name/"read at ..."/anti-reup splash
-# images into every chapter. Most are byte-identical every time (caught by
-# exact sha1 below), but some get re-encoded slightly differently by the CDN
-# on each request -- same picture, different bytes. So pages are also
-# compared by a coarse perceptual hash (256-bit average hash: resize to
-# 16x16 grayscale, one bit per pixel vs the mean) and treated as the same
-# recurring image if within PHASH_MAX_DIST bits of a previously-seen one.
-# Kept strict (~2% of bits) -- real story panels essentially never land
-# that close to each other by chance, but a recompressed duplicate does.
-# Both caches are process-wide (not keyed by site/series) so they keep
-# getting better at recognizing a site's recurring filler over time.
-COMMON_HASH_CACHE = Path(__file__).parent / "_common_hashes.json"
-PHASH_SIZE = 16          # 16x16 = 256-bit average hash
-PHASH_MAX_DIST = 6       # bits that may differ and still count as "the same image"
-
-
-def _load_common_hashes() -> dict:
-    try:
-        data = json.loads(COMMON_HASH_CACHE.read_text(encoding="utf-8"))
-    except (FileNotFoundError, json.JSONDecodeError):
-        return {"exact": {}, "phash": {}}
-    if "exact" not in data:  # pre-perceptual-hash cache: a flat {sha1: count} dict
-        data = {"exact": data, "phash": {}}
-    return data
-
-
-def _ahash(data: bytes) -> str | None:
-    """Average hash: coarse fingerprint that survives re-encoding/minor
-    resizing. None if the bytes aren't a decodable image (never blocks a
-    download on this -- exact-hash matching still applies)."""
-    try:
-        import io
-        im = Image.open(io.BytesIO(data)).convert("L").resize((PHASH_SIZE, PHASH_SIZE), Image.LANCZOS)
-    except Exception:
-        return None
-    pixels = list(im.getdata())
-    avg = sum(pixels) / len(pixels)
-    bits = "".join("1" if p >= avg else "0" for p in pixels)
-    return f"{int(bits, 2):0{len(bits) // 4}x}"
-
-
-def _hamming(a: str, b: str) -> int:
-    return bin(int(a, 16) ^ int(b, 16)).count("1")
-
-
-def _closest_phash(ph: str, candidates: dict) -> str | None:
-    """The key in candidates closest to ph within PHASH_MAX_DIST, or None."""
-    best, best_dist = None, PHASH_MAX_DIST + 1
-    for other in candidates:
-        d = _hamming(ph, other)
-        if d <= PHASH_MAX_DIST and d < best_dist:
-            best, best_dist = other, d
-    return best
-
-
-def _cluster_phashes(phashes: list[str | None]) -> list[int]:
-    """Groups this run's pages into near-duplicate buckets (Hamming <=
-    PHASH_MAX_DIST of the bucket's first member). Returns, per page, the
-    size of its bucket (1 for a None hash or a bucket of its own) -- >1
-    means the same image recurred within this run."""
-    reps: list[str] = []          # one representative hash per bucket
-    counts: list[int] = []
-    bucket_of: list[int | None] = []
-    for ph in phashes:
-        if ph is None:
-            bucket_of.append(None)
-            continue
-        match = next((b for b, rep in enumerate(reps) if _hamming(ph, rep) <= PHASH_MAX_DIST), None)
-        if match is None:
-            reps.append(ph)
-            counts.append(1)
-            bucket_of.append(len(reps) - 1)
-        else:
-            counts[match] += 1
-            bucket_of.append(match)
-    return [1 if b is None else counts[b] for b in bucket_of]
-
-
-def _get(url: str, timeout: int = 60, referer: str | None = None) -> bytes:
-    url = urllib.parse.quote(url, safe=":/%?=&")
-    headers = {"User-Agent": USER_AGENT}
-    if referer:
-        headers["Referer"] = referer
-    req = urllib.request.Request(url, headers=headers)
-    with urllib.request.urlopen(req, timeout=timeout) as r:
-        return r.read()
-
-
-def _chapter_page_urls(url: str) -> list[str]:
-    html = _get(url).decode("utf-8", errors="replace")
-    if re.search(r'"isAccessibleForFree"\s*:\s*false', html):
-        sys.exit(f"{url} is VIP/locked on the site -- pick free chapters.")
-    if "cotruyenday.com" in url:
-        urls = list(dict.fromkeys(re.findall(r'["\'](https?://images\.jino277\.work/prod/chapters/[^"\']+)', html)))
-    elif "zettruyen" in url:
-        urls = [u for u in dict.fromkeys(re.findall(r'(https?://cdn\d*\.zetimage\.com/[^"\'\s\\]+)', html))
-                if "/thumb/" not in u]
-    else:
-        urls = [u for u in re.findall(r'data-original="([^"]+)"', html) if COVER_PATH not in u]
-    if not urls:
-        sys.exit(f"No page images found on {url} -- a chapter URL? (cotruyenday: only free / logged-out chapters work)")
-    return urls
-
 
 def cmd_fetch(url: str, chapter: Path, count: int = 1) -> None:
-    """count > 1: also fetch the next chapters by bumping `-chapter-N` in the URL.
-    Pages are named c<chapter>_<page>.jpg so `cut` stacks them in reading order.
-    Downloads every chapter's images first, then writes -- so a filler image
-    that repeats can be recognized (see COMMON_HASH_CACHE) and dropped before
-    any file is written, keeping page numbering gap-free."""
-    match = re.search(r"(?:chapter|chuong)-(\d+)(\.html)?/?$", url)
-    if count > 1 and not match:
-        sys.exit("--count needs a URL ending in chapter-N / chuong-N (or -chapter-N.html)")
-    referer = "{0.scheme}://{0.netloc}/".format(urllib.parse.urlparse(url))
-    chapter.mkdir(parents=True, exist_ok=True)
+    """Thin CLI wrapper -- the actual fetch/site-parsing/filler-image-dedup
+    logic lives in app.modules.manhua.fetch (backend/app/modules/manhua/
+    fetch.py) so it's shared with POST /manhua-recap/fetch (the in-app
+    "paste a link" form, feature 154). Needs the backend importable
+    (its own package, not a running server) -- same trick cmd_aigen uses."""
+    sys.path.insert(0, str(ROOT.parent.parent / "backend"))
+    from app.modules.manhua.fetch import FetchError, fetch_chapters
 
-    fetched = []  # [(n, [bytes, ...]), ...]
-    for k in range(count):
-        n = int(match.group(1)) + k if match else None
-        chapter_url = url if k == 0 else url[:match.start(1)] + str(n) + url[match.end(1):]
-        urls = _chapter_page_urls(chapter_url)
-        pages = []
-        for i, image_url in enumerate(urls, 1):
-            pages.append(_get(image_url, referer=referer))
-            print(f"\rchapter {n or ''}: downloading {i}/{len(urls)}", end="", flush=True)
-        print()
-        fetched.append((n, pages))
+    def report(n: int | None, done: int, total: int) -> None:
+        print(f"\rchapter {n or ''}: downloading {done}/{total}", end="", flush=True)
+        if done == total:
+            print()
 
-    cache = _load_common_hashes()
-    all_data = [data for _, pages in fetched for data in pages]
-    exact_hashes = [hashlib.sha1(data).hexdigest() for data in all_data]
-    phashes = [_ahash(data) for data in all_data]
-    exact_tally = Counter(exact_hashes)
-    run_bucket_sizes = _cluster_phashes(phashes)
+    try:
+        result = fetch_chapters(url, chapter, count, on_progress=report)
+    except FetchError as exc:
+        sys.exit(str(exc))
 
-    # A page is filler if its exact hash, or a near-duplicate perceptual hash
-    # (recompressed/re-scaled copy of the same image), was already flagged in
-    # a past `fetch` call (cache) or recurs within this run.
-    filler = []
-    for h, ph, bucket_size in zip(exact_hashes, phashes, run_bucket_sizes):
-        exact_hit = cache["exact"].get(h, 0) > 0 or exact_tally[h] > 1
-        phash_hit = ph is not None and (bucket_size > 1 or _closest_phash(ph, cache["phash"]) is not None)
-        filler.append(exact_hit or phash_hit)
-        cache["exact"][h] = cache["exact"].get(h, 0) + 1
-        if ph is not None:
-            hit = _closest_phash(ph, cache["phash"])  # fold near-dups into one cache key, don't grow unbounded
-            cache["phash"][hit or ph] = cache["phash"].get(hit or ph, 0) + 1
-    COMMON_HASH_CACHE.write_text(json.dumps(cache), encoding="utf-8")
-
-    total = skipped = 0
-    pos = 0
-    for n, pages in fetched:
-        prefix = f"c{n:03d}_" if count > 1 else ""
-        out_i = 0
-        for data in pages:
-            if filler[pos]:
-                skipped += 1
-            else:
-                out_i += 1
-                (chapter / f"{prefix}{out_i:03d}.jpg").write_bytes(data)
-            pos += 1
-        total += out_i
-
-    skip_note = f" ({skipped} recurring/ad image(s) skipped)" if skipped else ""
-    print(f"{total} page(s) -> {chapter}{skip_note}. Next: `cut`.")
+    skip_note = f" ({result.total_skipped} recurring/ad image(s) skipped)" if result.total_skipped else ""
+    print(f"{result.total_saved} page(s) -> {chapter}{skip_note}. Next: `cut`.")
 
 
 # -- panel cutting ------------------------------------------------------------

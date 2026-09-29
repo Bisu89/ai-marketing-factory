@@ -23,6 +23,7 @@ import {
   Youtube,
   Trophy,
   Wand2,
+  ImageDown,
 } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import "./Sidebar.css";
@@ -50,6 +51,7 @@ const NAV_ITEMS = [
   { to: "/batches", label: "Batches", icon: Layers },
   { to: "/series", label: "Series", icon: ListVideo },
   { to: "/asset-library", label: "Asset Library", icon: Images },
+  { to: "/manhua-fetch", label: "Tải chương truyện", icon: ImageDown },
   { to: "/settings", label: "Settings", icon: Settings },
 ];
 

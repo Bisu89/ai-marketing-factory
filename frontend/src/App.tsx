@@ -26,6 +26,7 @@ import { BatchDetailPage } from "./pages/BatchDetailPage";
 import { SeriesPage } from "./pages/SeriesPage";
 import { SeriesDetailPage } from "./pages/SeriesDetailPage";
 import { AssetLibraryPage } from "./pages/AssetLibraryPage";
+import { ManhuaFetchPage } from "./pages/ManhuaFetchPage";
 import { SettingsPage } from "./pages/SettingsPage";
 
 function App() {
@@ -59,6 +60,7 @@ function App() {
         <Route path="series" element={<SeriesPage />} />
         <Route path="series/:seriesId" element={<SeriesDetailPage />} />
         <Route path="asset-library" element={<AssetLibraryPage />} />
+        <Route path="manhua-fetch" element={<ManhuaFetchPage />} />
         <Route path="settings" element={<SettingsPage />} />
         <Route path="*" element={<Navigate to="/dashboard" replace />} />
       </Route>

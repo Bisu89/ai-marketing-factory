@@ -28,6 +28,7 @@ import app.modules.content_batch.models  # noqa: F401
 import app.modules.content_strategy.models  # noqa: F401
 import app.modules.discovery.models  # noqa: F401
 import app.modules.factory.models  # noqa: F401
+import app.modules.manhua.models  # noqa: F401
 import app.modules.news.models  # noqa: F401
 import app.modules.publishing.models  # noqa: F401
 import app.modules.scene_cutter.models  # noqa: F401
