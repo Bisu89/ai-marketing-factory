@@ -22,6 +22,7 @@ filename. Between steps you can delete bad panels from _recap/panels/ (then re-r
 `build`. The project uses the built-in "manhua_recap_vi" template.
 """
 import argparse
+import hashlib
 import json
 import os
 import re
@@ -29,6 +30,7 @@ import sys
 import urllib.error
 import urllib.parse
 import urllib.request
+from collections import Counter
 from pathlib import Path
 
 import numpy as np
@@ -57,6 +59,22 @@ SYLLABLES_PER_SECOND = 5.1
 # Referer from the site (hotlink protection), and /thumb/ holds sidebar covers.
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130 Safari/537.36"
 COVER_PATH = "/Pictures/Truyen/"
+
+# Every site inserts its own ad/domain-name/"thanks for reading" splash images,
+# byte-identical across chapters (and often across different series on the
+# same site). Real story pages are never byte-identical to each other, so a
+# sha1-of-bytes seen more than once -- either earlier in this same run, or in
+# a past `fetch` call anywhere -- is an inserted image, not content: skip it.
+# The cache is process-wide (keyed only by content hash, not by site/series)
+# so it keeps getting better at recognizing a site's recurring filler over time.
+COMMON_HASH_CACHE = Path(__file__).parent / "_common_hashes.json"
+
+
+def _load_common_hashes() -> dict[str, int]:
+    try:
+        return json.loads(COMMON_HASH_CACHE.read_text(encoding="utf-8"))
+    except (FileNotFoundError, json.JSONDecodeError):
+        return {}
 
 
 def _get(url: str, timeout: int = 60, referer: str | None = None) -> bytes:
@@ -87,24 +105,49 @@ def _chapter_page_urls(url: str) -> list[str]:
 
 def cmd_fetch(url: str, chapter: Path, count: int = 1) -> None:
     """count > 1: also fetch the next chapters by bumping `-chapter-N` in the URL.
-    Pages are named c<chapter>_<page>.jpg so `cut` stacks them in reading order."""
+    Pages are named c<chapter>_<page>.jpg so `cut` stacks them in reading order.
+    Downloads every chapter's images first, then writes -- so a filler image
+    that repeats can be recognized (see COMMON_HASH_CACHE) and dropped before
+    any file is written, keeping page numbering gap-free."""
     match = re.search(r"(?:chapter|chuong)-(\d+)(\.html)?/?$", url)
     if count > 1 and not match:
         sys.exit("--count needs a URL ending in chapter-N / chuong-N (or -chapter-N.html)")
     referer = "{0.scheme}://{0.netloc}/".format(urllib.parse.urlparse(url))
     chapter.mkdir(parents=True, exist_ok=True)
-    total = 0
+
+    fetched = []  # [(n, [bytes, ...]), ...]
     for k in range(count):
         n = int(match.group(1)) + k if match else None
         chapter_url = url if k == 0 else url[:match.start(1)] + str(n) + url[match.end(1):]
         urls = _chapter_page_urls(chapter_url)
-        prefix = f"c{n:03d}_" if count > 1 else ""
+        pages = []
         for i, image_url in enumerate(urls, 1):
-            (chapter / f"{prefix}{i:03d}.jpg").write_bytes(_get(image_url, referer=referer))
-            print(f"\rchapter {n or ''}: {i}/{len(urls)}", end="", flush=True)
+            pages.append(_get(image_url, referer=referer))
+            print(f"\rchapter {n or ''}: downloading {i}/{len(urls)}", end="", flush=True)
         print()
-        total += len(urls)
-    print(f"{total} page(s) -> {chapter}. Next: `cut`.")
+        fetched.append((n, pages))
+
+    common = _load_common_hashes()
+    all_hashes = [[hashlib.sha1(data).hexdigest() for data in pages] for _, pages in fetched]
+    this_run = Counter(h for page_hashes in all_hashes for h in page_hashes)
+
+    total = skipped = 0
+    for (n, pages), page_hashes in zip(fetched, all_hashes):
+        prefix = f"c{n:03d}_" if count > 1 else ""
+        out_i = 0
+        for data, h in zip(pages, page_hashes):
+            is_filler = common.get(h, 0) or this_run[h] > 1
+            common[h] = common.get(h, 0) + 1
+            if is_filler:
+                skipped += 1
+                continue
+            out_i += 1
+            (chapter / f"{prefix}{out_i:03d}.jpg").write_bytes(data)
+        total += out_i
+    COMMON_HASH_CACHE.write_text(json.dumps(common), encoding="utf-8")
+
+    skip_note = f" ({skipped} recurring/ad image(s) skipped)" if skipped else ""
+    print(f"{total} page(s) -> {chapter}{skip_note}. Next: `cut`.")
 
 
 # -- panel cutting ------------------------------------------------------------

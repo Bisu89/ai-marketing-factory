@@ -42,3 +42,5 @@ Thumbs.db
 check-video/
 # Manhua recap chapters (downloaded pages + cut panels, referenced by asset paths)
 manhua-recap/
+# recap.py fetch's cross-run cache of recurring/ad image hashes -- runtime state, not source
+tools/manhua_recap/_common_hashes.json
