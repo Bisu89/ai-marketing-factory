@@ -3,7 +3,7 @@
 Usage (backend running, with the backend venv's python):
     python recap.py fetch  <chapter_url> <chapter_dir> [--count N]
                                                           # download a chapter's page images (manhuavn2.com,
-                                                          # cotruyenday.com);
+                                                          # cotruyenday.com, zettruyen*.com);
                                                           # --count N = this chapter and the next N-1
     python recap.py script <chapter_dir> --mode premise   # multi-chapter "sell the series" recap
     python recap.py cut    <chapter_dir>                  # split pages into panels -> <chapter_dir>/_recap/panels/
@@ -52,13 +52,19 @@ SYLLABLES_PER_SECOND = 5.1
 # images from images.jino277.work/prod/chapters/…; the URLs can contain
 # spaces, so they are percent-encoded before download. Chapters past the
 # free ones (ch.11+ on Dai Quan Gia, 2026-09-28) come back with no images.
+# zettruyen*.com (…/truyen-tranh/<slug>/chuong-N) serves pages from
+# cdnN.zetimage.com/<slug>/<N>/<i>.jpg; that CDN answers 403 without a
+# Referer from the site (hotlink protection), and /thumb/ holds sidebar covers.
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130 Safari/537.36"
 COVER_PATH = "/Pictures/Truyen/"
 
 
-def _get(url: str, timeout: int = 60) -> bytes:
+def _get(url: str, timeout: int = 60, referer: str | None = None) -> bytes:
     url = urllib.parse.quote(url, safe=":/%?=&")
-    req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+    headers = {"User-Agent": USER_AGENT}
+    if referer:
+        headers["Referer"] = referer
+    req = urllib.request.Request(url, headers=headers)
     with urllib.request.urlopen(req, timeout=timeout) as r:
         return r.read()
 
@@ -69,6 +75,9 @@ def _chapter_page_urls(url: str) -> list[str]:
         sys.exit(f"{url} is VIP/locked on the site -- pick free chapters.")
     if "cotruyenday.com" in url:
         urls = list(dict.fromkeys(re.findall(r'["\'](https?://images\.jino277\.work/prod/chapters/[^"\']+)', html)))
+    elif "zettruyen" in url:
+        urls = [u for u in dict.fromkeys(re.findall(r'(https?://cdn\d*\.zetimage\.com/[^"\'\s\\]+)', html))
+                if "/thumb/" not in u]
     else:
         urls = [u for u in re.findall(r'data-original="([^"]+)"', html) if COVER_PATH not in u]
     if not urls:
@@ -79,9 +88,10 @@ def _chapter_page_urls(url: str) -> list[str]:
 def cmd_fetch(url: str, chapter: Path, count: int = 1) -> None:
     """count > 1: also fetch the next chapters by bumping `-chapter-N` in the URL.
     Pages are named c<chapter>_<page>.jpg so `cut` stacks them in reading order."""
-    match = re.search(r"chapter-(\d+)(\.html)?/?$", url)
+    match = re.search(r"(?:chapter|chuong)-(\d+)(\.html)?/?$", url)
     if count > 1 and not match:
-        sys.exit("--count needs a URL ending in chapter-N (or -chapter-N.html)")
+        sys.exit("--count needs a URL ending in chapter-N / chuong-N (or -chapter-N.html)")
+    referer = "{0.scheme}://{0.netloc}/".format(urllib.parse.urlparse(url))
     chapter.mkdir(parents=True, exist_ok=True)
     total = 0
     for k in range(count):
@@ -90,7 +100,7 @@ def cmd_fetch(url: str, chapter: Path, count: int = 1) -> None:
         urls = _chapter_page_urls(chapter_url)
         prefix = f"c{n:03d}_" if count > 1 else ""
         for i, image_url in enumerate(urls, 1):
-            (chapter / f"{prefix}{i:03d}.jpg").write_bytes(_get(image_url))
+            (chapter / f"{prefix}{i:03d}.jpg").write_bytes(_get(image_url, referer=referer))
             print(f"\rchapter {n or ''}: {i}/{len(urls)}", end="", flush=True)
         print()
         total += len(urls)
