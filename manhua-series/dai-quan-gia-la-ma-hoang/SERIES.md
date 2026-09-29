@@ -92,12 +92,6 @@ Thái gia chủ hóa ra căm hận riêng Trác Phàm vì trước đó đã c�
 Các. Nhờ Huyết Anh, Trác Phàm đột phá cảnh giới nhanh gấp đôi bình thường, kết chương với thái độ tự tin, sẵn sàng
 đối đầu Hắc Phong Sơn ở tập sau.
 
-**Lưu ý cho tập 14+:** tập 13 ban đầu thử dùng GPT đọc link chương để viết kịch bản (xem `GPT_SCRIPT_PROMPT.md`) —
-GPT **bịa hoàn toàn** cốt truyện (chuyện mua vòng ngọc giả / phát hiện Huyết Tinh Linh không hề có trong chương 13
-thật), rất có thể vì trang manhuavn2/cotruyenday tải ảnh qua JS nên GPT không thực sự "nhìn" được tranh dù đọc được
-link. Đã bỏ script đó, Claude tự đọc lại từ `_recap/sheets/` như ep11/12. Nếu dùng GPT lần sau, nên bắt GPT đọc ảnh
-sheets được upload trực tiếp thay vì dán link, và luôn kiểm tra chéo vài chi tiết với ảnh panel thật trước khi build.
-
 Hai bản cũ do OpenAI viết (project 115/116, tiêu đề khác) được giữ để so sánh. Bản chính thức là bản Claude viết.
 
 ## Khung đã xóa trước khi cắt kịch bản
