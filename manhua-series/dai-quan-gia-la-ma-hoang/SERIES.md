@@ -52,7 +52,8 @@ Tên tiểu thư Lạc Vân Thường là tên theo truyện gốc, chưa thấy
 | 11 (KR) | 11 | `manhua-recap/dqg_ep11` | 마황, 마도 고수를 이겼지만 진짜 적은 이제 막 나타났다!? | ✅ project 125 / job_184, Final QA PASS 100 (71.0s, 1080×1920) |
 | 12 | 12 | `manhua-recap/dqg_ep12` | Ma Hoàng liều mạng luyện công, đánh thức quỷ dữ trong chính mình!? | ✅ project 128 / job_187, Final QA PASS 100 (50.04s, 1080×1920) |
 | 13 | 13 | `manhua-recap/dqg_ep13` | Quái vật tàn sát Thái phủ, hóa ra là con ruột của chính Ma Hoàng!? | ✅ project 129 / job_188, Final QA PASS 100 (52.52s, 1080×1920) |
-| 4–10, 14+ | theo arc | | | Chương 3–10 chỉ có bản dài (Long01); chương 11 là Short đầu tiên nối tiếp sau Long01, chưa làm Short riêng cho 3–10 |
+| 14 | 14 | `manhua-recap/dqg_ep14` | Ma Hoàng đi xin nhà, tiện tay lột trần gián điệp ẩn náu bấy lâu!? | ✅ project 132 / job_192, Final QA PASS 100 (52.65s, 1080×1920) |
+| 4–10, 15+ | theo arc | | | Chương 3–10 chỉ có bản dài (Long01); chương 11 là Short đầu tiên nối tiếp sau Long01, chưa làm Short riêng cho 3–10 |
 
 ## Video dài
 
@@ -92,6 +93,16 @@ Thái gia chủ hóa ra căm hận riêng Trác Phàm vì trước đó đã c�
 Các. Nhờ Huyết Anh, Trác Phàm đột phá cảnh giới nhanh gấp đôi bình thường, kết chương với thái độ tự tin, sẵn sàng
 đối đầu Hắc Phong Sơn ở tập sau.
 
+Chương 14: mở đầu nhẹ nhàng — Lạc Vân Thường đứng canh ngoài cửa phòng Trác Phàm suốt đêm vì lo hắn bị thương
+(sau vụ tập 13), hắn bối rối đổ lỗi cho "tâm ma". Sau đó Bàng Diên đưa hắn tới **Tiềm Long Các** xin một chỗ ở cố
+định cho Lạc gia — gặp lại **Long Qùy** (từ arc chương 1–10) vẫn còn hiềm khích, nhưng chính **Long Cửu** ra mặt
+dàn xếp. Trác Phàm lật ngược thế cờ: biến việc xin nhà thành "Tiềm Long Các nợ Lạc gia", vừa được cấp biệt viện
+vừa cho họ cớ chính đáng để tiếp tục giám sát/bảo vệ. Đổi lại, hắn tặng thêm tin tình báo: gián điệp U Minh Cốc
+cài trong Tiềm Long Các và Hắc Phong Sơn (phát hiện từ tập 13) chính là **Giản Trưởng Lão** — hóa ra chính là kẻ
+từng hủy một mắt của Long Cửu nhiều năm trước. Long Cửu nổi giận, huy động toàn bộ trưởng lão gia tộc truy sát.
+Kết tập: Trác Phàm mỉm cười hài lòng — một nước cờ vừa có nhà ở, vừa có đồng minh nợ ân tình, vừa trả thù giúp
+người khác mà không tốn công sức.
+
 Hai bản cũ do OpenAI viết (project 115/116, tiêu đề khác) được giữ để so sánh. Bản chính thức là bản Claude viết.
 
 ## Khung đã xóa trước khi cắt kịch bản
@@ -105,6 +116,9 @@ Việc xóa không đổi tên các khung còn lại.
 
 ## Nhật ký
 
+- 2026-09-29: chương 14 (`dqg_ep14`, ảnh đã tải sẵn từ trước) — `cut` cho 93 khung, không có khung rác nào cần xóa
+  (không có credit dịch/QR quảng cáo như các chương khác). Claude đọc `_recap/sheets/`, viết tay `ep14/script.json`
+  (20 beat). `build --script` tạo project 132, job_192, **Final QA PASS 100 (52.65s, 1080×1920)**.
 - 2026-09-29: chương 13 — thử nghiệm đầu tiên với `GPT_SCRIPT_PROMPT.md` (anh dán link chương cho GPT, GPT trả về
   JSON). Kết quả: **script bịa hoàn toàn**, không khớp ảnh thật (xem chi tiết ở mục nhân vật chương 13 phía trên).
   Claude tự đọc lại `_recap/sheets/` (81 khung sau khi xóa 6 khung rác: credit dịch, thông báo lịch ra chap, QR
