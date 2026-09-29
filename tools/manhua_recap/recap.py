@@ -60,21 +60,82 @@ SYLLABLES_PER_SECOND = 5.1
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130 Safari/537.36"
 COVER_PATH = "/Pictures/Truyen/"
 
-# Every site inserts its own ad/domain-name/"thanks for reading" splash images,
-# byte-identical across chapters (and often across different series on the
-# same site). Real story pages are never byte-identical to each other, so a
-# sha1-of-bytes seen more than once -- either earlier in this same run, or in
-# a past `fetch` call anywhere -- is an inserted image, not content: skip it.
-# The cache is process-wide (keyed only by content hash, not by site/series)
-# so it keeps getting better at recognizing a site's recurring filler over time.
+# Every site inserts its own ad/domain-name/"read at ..."/anti-reup splash
+# images into every chapter. Most are byte-identical every time (caught by
+# exact sha1 below), but some get re-encoded slightly differently by the CDN
+# on each request -- same picture, different bytes. So pages are also
+# compared by a coarse perceptual hash (256-bit average hash: resize to
+# 16x16 grayscale, one bit per pixel vs the mean) and treated as the same
+# recurring image if within PHASH_MAX_DIST bits of a previously-seen one.
+# Kept strict (~2% of bits) -- real story panels essentially never land
+# that close to each other by chance, but a recompressed duplicate does.
+# Both caches are process-wide (not keyed by site/series) so they keep
+# getting better at recognizing a site's recurring filler over time.
 COMMON_HASH_CACHE = Path(__file__).parent / "_common_hashes.json"
+PHASH_SIZE = 16          # 16x16 = 256-bit average hash
+PHASH_MAX_DIST = 6       # bits that may differ and still count as "the same image"
 
 
-def _load_common_hashes() -> dict[str, int]:
+def _load_common_hashes() -> dict:
     try:
-        return json.loads(COMMON_HASH_CACHE.read_text(encoding="utf-8"))
+        data = json.loads(COMMON_HASH_CACHE.read_text(encoding="utf-8"))
     except (FileNotFoundError, json.JSONDecodeError):
-        return {}
+        return {"exact": {}, "phash": {}}
+    if "exact" not in data:  # pre-perceptual-hash cache: a flat {sha1: count} dict
+        data = {"exact": data, "phash": {}}
+    return data
+
+
+def _ahash(data: bytes) -> str | None:
+    """Average hash: coarse fingerprint that survives re-encoding/minor
+    resizing. None if the bytes aren't a decodable image (never blocks a
+    download on this -- exact-hash matching still applies)."""
+    try:
+        import io
+        im = Image.open(io.BytesIO(data)).convert("L").resize((PHASH_SIZE, PHASH_SIZE), Image.LANCZOS)
+    except Exception:
+        return None
+    pixels = list(im.getdata())
+    avg = sum(pixels) / len(pixels)
+    bits = "".join("1" if p >= avg else "0" for p in pixels)
+    return f"{int(bits, 2):0{len(bits) // 4}x}"
+
+
+def _hamming(a: str, b: str) -> int:
+    return bin(int(a, 16) ^ int(b, 16)).count("1")
+
+
+def _closest_phash(ph: str, candidates: dict) -> str | None:
+    """The key in candidates closest to ph within PHASH_MAX_DIST, or None."""
+    best, best_dist = None, PHASH_MAX_DIST + 1
+    for other in candidates:
+        d = _hamming(ph, other)
+        if d <= PHASH_MAX_DIST and d < best_dist:
+            best, best_dist = other, d
+    return best
+
+
+def _cluster_phashes(phashes: list[str | None]) -> list[int]:
+    """Groups this run's pages into near-duplicate buckets (Hamming <=
+    PHASH_MAX_DIST of the bucket's first member). Returns, per page, the
+    size of its bucket (1 for a None hash or a bucket of its own) -- >1
+    means the same image recurred within this run."""
+    reps: list[str] = []          # one representative hash per bucket
+    counts: list[int] = []
+    bucket_of: list[int | None] = []
+    for ph in phashes:
+        if ph is None:
+            bucket_of.append(None)
+            continue
+        match = next((b for b, rep in enumerate(reps) if _hamming(ph, rep) <= PHASH_MAX_DIST), None)
+        if match is None:
+            reps.append(ph)
+            counts.append(1)
+            bucket_of.append(len(reps) - 1)
+        else:
+            counts[match] += 1
+            bucket_of.append(match)
+    return [1 if b is None else counts[b] for b in bucket_of]
 
 
 def _get(url: str, timeout: int = 60, referer: str | None = None) -> bytes:
@@ -127,24 +188,40 @@ def cmd_fetch(url: str, chapter: Path, count: int = 1) -> None:
         print()
         fetched.append((n, pages))
 
-    common = _load_common_hashes()
-    all_hashes = [[hashlib.sha1(data).hexdigest() for data in pages] for _, pages in fetched]
-    this_run = Counter(h for page_hashes in all_hashes for h in page_hashes)
+    cache = _load_common_hashes()
+    all_data = [data for _, pages in fetched for data in pages]
+    exact_hashes = [hashlib.sha1(data).hexdigest() for data in all_data]
+    phashes = [_ahash(data) for data in all_data]
+    exact_tally = Counter(exact_hashes)
+    run_bucket_sizes = _cluster_phashes(phashes)
+
+    # A page is filler if its exact hash, or a near-duplicate perceptual hash
+    # (recompressed/re-scaled copy of the same image), was already flagged in
+    # a past `fetch` call (cache) or recurs within this run.
+    filler = []
+    for h, ph, bucket_size in zip(exact_hashes, phashes, run_bucket_sizes):
+        exact_hit = cache["exact"].get(h, 0) > 0 or exact_tally[h] > 1
+        phash_hit = ph is not None and (bucket_size > 1 or _closest_phash(ph, cache["phash"]) is not None)
+        filler.append(exact_hit or phash_hit)
+        cache["exact"][h] = cache["exact"].get(h, 0) + 1
+        if ph is not None:
+            hit = _closest_phash(ph, cache["phash"])  # fold near-dups into one cache key, don't grow unbounded
+            cache["phash"][hit or ph] = cache["phash"].get(hit or ph, 0) + 1
+    COMMON_HASH_CACHE.write_text(json.dumps(cache), encoding="utf-8")
 
     total = skipped = 0
-    for (n, pages), page_hashes in zip(fetched, all_hashes):
+    pos = 0
+    for n, pages in fetched:
         prefix = f"c{n:03d}_" if count > 1 else ""
         out_i = 0
-        for data, h in zip(pages, page_hashes):
-            is_filler = common.get(h, 0) or this_run[h] > 1
-            common[h] = common.get(h, 0) + 1
-            if is_filler:
+        for data in pages:
+            if filler[pos]:
                 skipped += 1
-                continue
-            out_i += 1
-            (chapter / f"{prefix}{out_i:03d}.jpg").write_bytes(data)
+            else:
+                out_i += 1
+                (chapter / f"{prefix}{out_i:03d}.jpg").write_bytes(data)
+            pos += 1
         total += out_i
-    COMMON_HASH_CACHE.write_text(json.dumps(common), encoding="utf-8")
 
     skip_note = f" ({skipped} recurring/ad image(s) skipped)" if skipped else ""
     print(f"{total} page(s) -> {chapter}{skip_note}. Next: `cut`.")
