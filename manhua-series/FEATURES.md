@@ -9,6 +9,10 @@ tiếp tục công việc ở phiên chat mới, không cần lịch sử hội 
   (ví dụ [`dai-quan-gia-la-ma-hoang/SERIES.md`](dai-quan-gia-la-ma-hoang/SERIES.md)).
 - Lịch sử kỹ thuật đầy đủ (vì sao làm, bug đã sửa): `docs/features/153-manhua-recap.md` ở gốc repo.
 
+> **Quy tắc duy trì file này:** mỗi khi thêm tính năng mới hoặc sửa gì đáng kể cho tool/template
+> manhua, ghi thêm một dòng vào mục tương ứng (1–3) hoặc mục 6 nếu là việc còn tồn đọng. Không
+> cần đợi dọn phiên mới ghi — cập nhật ngay khi làm xong, để file luôn đúng với code hiện tại.
+
 ## 1. Công cụ `tools/manhua_recap/recap.py`
 
 Chạy bằng python trong `.venv` của backend, backend phải đang chạy ở cổng 8000
@@ -162,5 +166,28 @@ huyễn, lần thử đầu bị gán nhầm nhạc kinh dị/nhạc cầu nguy�
 3. **manhua-recap/** (ảnh tranh) không đưa lên git — máy khác phải `fetch` + `cut` lại. Danh
    sách khung rác đã xóa tay (nếu có) được ghi trong mục "Khung đã xóa" của `SERIES.md`, cần
    xóa lại y hệt để tên khung khớp với `script.json` đã lưu.
-4. Có một thay đổi **chưa commit** ở `backend/app/modules/beat/schemas.py` (tắt nhạc nền cho
-   template `zombie_system`, không liên quan tới manhua) — kiểm tra trước khi commit dọn dẹp.
+4. ~~Có một thay đổi chưa commit ở `backend/app/modules/beat/schemas.py`~~ — đã commit
+   (`15c8dd9`, 2026-09-29): tắt nhạc nền mặc định cho template `zombie_system` (không riêng
+   manhua, nhưng dọn cùng đợt này).
+
+## 7. Nhật ký cập nhật
+
+Danh sách ngắn, mới nhất lên đầu — chi tiết đầy đủ xem lịch sử git hoặc
+`docs/features/153-manhua-recap.md`.
+
+- **2026-09-29** — `fetch` hỗ trợ thêm `zettruyen*.com` (CDN `zetimage.com`, cần đúng Referer)
+  và **cotruyenday.com**; tự lọc ảnh rác lặp lại giữa các chương bằng SHA1 + perceptual hash
+  (cache `tools/manhua_recap/_common_hashes.json`, không đưa lên git).
+- **2026-09-29** — Template `zombie_system` tắt nhạc nền mặc định (khớp với mọi lần build thật
+  trước giờ đều tắt tay).
+- **2026-09-28** — Thêm template video dài 16:9 `manhua_recap_long_vi`, `cut` ghi
+  `panel_pages.json` (khung → trang/chương gốc), lệnh `timestamps` in mục lục thời gian YouTube.
+  Video dài đầu tiên: Đại Quản Gia Long01 (chương 1–10, 170 beat, PASS 100).
+- **2026-09-28** — Tắt AI tự viết tiêu đề/mô tả/hashtag cho 2 template manhua; `script.json`
+  có thêm `description`, `hashtags`, `thumbnail.prompt` để Claude viết tay.
+- **2026-09-28** — Tắt nhạc nền cho 2 template manhua (thư viện không có nhạc hợp thể loại).
+- **2026-09-28** — Tạo `manhua-series/` (kịch bản Claude tự đọc tranh viết tay, không gọi
+  OpenAI); lệnh `sheets` (ảnh đọc 6 khung/ảnh); `build --script FILE`.
+- Các mốc sớm hơn (preset `word_pop`/`word_pop_yellow`, `blur_fill`, giọng riêng từng beat,
+  sửa treo edge_tts, chế độ `premise`, bình luận kênh): xem mục 1–3 ở trên và
+  `docs/features/153-manhua-recap.md`.
