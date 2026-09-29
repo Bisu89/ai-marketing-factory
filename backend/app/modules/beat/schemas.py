@@ -1618,6 +1618,102 @@ ZOMBIE_SYSTEM_TEMPLATE = Template(
     ),
 )
 
+# Transmigration/isekai + hidden-System fiction (the "xuyên không"/"hệ thống"
+# web-novel trend), sourced via the Story Remix pipeline
+# (backend/app/api/v1/endpoints/story_remix.py + tools/story_remix/remix.py,
+# docs/features/155-story-remix-pipeline.md): 1-3 trending storytelling
+# videos in this genre are transcribed, then an LLM rewrites them into a
+# GENUINELY NEW story -- new characters, new setting, new ending, sources
+# blended rather than retold -- before this template ever renders a frame.
+# Sibling to ZOMBIE_SYSTEM_TEMPLATE (same webtoon art + System-notification-
+# beat idea) but not tied to a zombie-apocalypse setting; unlike
+# MANHUA_RECAP_VI_TEMPLATE below, this one does not reuse anyone else's
+# artwork or narration -- every image is a fresh AI generation and the
+# transcript text is never carried into the output verbatim (see
+# story_remix.py's `_check_transformation`/`_check_same_language_overlap`,
+# which reject an insufficiently-transformed draft before it ever reaches
+# here) -- the reused-content/copyright risk that template's own
+# description warns about is the thing this pipeline exists to avoid.
+# language="vi" by default; a Korean episode overrides content.language +
+# voice per-project at build time, the same real-production pattern
+# zombie_system already uses despite ITS OWN template default being "en"
+# (see docs/features/150-zombie-system-template.md and project memory --
+# this codebase's built-in Template is a starting scaffold, not a promise
+# every real episode renders in the template's own default language).
+ISEKAI_SYSTEM_VI_TEMPLATE = Template(
+    id="isekai_system_vi",
+    name="Xuyên Không Hệ Thống (Isekai/System)",
+    description="Long-form (~12 min) Vietnamese/Korean fiction serial -- a protagonist "
+    "transmigrates or reincarnates into a novel/game/cultivation world and secretly gains a "
+    "hidden game-like System (status window, levels, skills, quests). ONE chapter per video, "
+    "continuing story across episodes. 16:9, Korean-webtoon/manhwa illustration style, tense "
+    "narration, short system-notification beats styled like game UI. Story text comes from the "
+    "Story Remix pipeline (transcribe 1-3 trending source videos, then substantially rewrite -- "
+    "see module docstring), not a hand-written script -- every render still uses "
+    "visual_generation.mode=\"ai_generated\" (a fresh AI image per beat), never the source "
+    "videos' own footage or a reused asset pool.",
+    version=1,
+    builtin=True,
+    config=ProjectConfig(
+        render=RenderProjectConfig(profile="SOCIAL_LANDSCAPE"),
+        motion=MotionProjectConfig(
+            default_preset=BeatMotionPreset.SLOW_PUSH_IN, intensity="MEDIUM", auto_rotate=True
+        ),
+        captions=CaptionsProjectConfig(
+            enabled=True, preset="cinematic", max_words=12, max_chars=70, max_lines=2, max_duration_sec=5.0
+        ),
+        # No BGM by default, same call as zombie_system (real episode builds there found it
+        # unnecessary and easy to re-enable per-project if a given story wants one).
+        audio=AudioProjectConfig(narration_enabled=True, music_enabled=False, music_volume=0.15, ducking=True),
+        content=ContentProjectConfig(
+            language="vi",
+            tone="tense, urgent and propulsive, like a transmigration/System web-novel narrator -- "
+            "real stakes and emotional beats, punctuated by dry, matter-of-fact system-notification lines",
+            style="ONE chapter of a continuing transmigration/isekai story per video: the protagonist "
+            "wakes up in a new world/game/novel with a hidden System (status window, levels, skills, "
+            "quests) that only they can see, and must survive and grow without anyone else discovering "
+            "it -- told as serialized fiction with a cliffhanger or clear hook into the next chapter, "
+            "short system-notification beats (level up, skill acquired, quest update) woven into the "
+            "narration like on-screen game UI. The specific world/setting is whatever that episode's "
+            "own script establishes (fantasy kingdom, cultivation sect, game world, modern-world "
+            "portal, etc.) -- never fixed by the template itself.",
+            target_duration=720.0,  # ~12 minutes
+            audience="Transmigration/isekai and System/LitRPG web-novel and webtoon-recap viewers",
+            cta_enabled=True,
+        ),
+        voice=VoiceProjectConfig(
+            provider="edge_tts", voice_id="vi-VN-NamMinhNeural", language="vi",
+            speed=1.1, sentence_pause_sec=0.35,
+        ),
+        visual_generation=VisualGenerationProjectConfig(
+            image_style_prompt=(
+                # Same wording ZOMBIE_SYSTEM_TEMPLATE fought for (see that template's own
+                # comments for the real drift/regression history) -- reused verbatim rather
+                # than re-derived, minus its fixed "school and urban apocalypse setting"
+                # phrase, since this niche's setting varies per story.
+                "Korean webtoon comic illustration style, bold clean black ink linework, flat 2D "
+                "cel-shaded coloring with hard-edged shadows, absolutely NOT painterly, NOT "
+                "semi-realistic anime rendering, NOT a cinematic movie-still look, no soft "
+                "airbrushed gradients, no film-like rim lighting, vibrant saturated flat colors "
+                "like a printed webtoon panel, webtoon panel art, tasteful, non-graphic wounds, "
+                "any wound or blood must be ONLY thin black dark ichor drips or smears -- never "
+                "red, never crimson, no red blood spatter or pooling of any kind, no "
+                "photorealistic gore, no corpses shown in detail, no sexualized or suggestive "
+                "styling for any character written as a minor, no text, no watermark, no speech "
+                "bubbles, widescreen composition"
+            ),
+        ),
+        outro=OutroProjectConfig(
+            enabled=True,
+            text="Chương tiếp theo sẽ ra mắt sớm -- theo dõi kênh để không bỏ lỡ.",
+            duration_sec=6.0,
+        ),
+        package=PackageProjectConfig(ai_metadata_enabled=True),
+        template_id="isekai_system_vi",
+        template_version=1,
+    ),
+)
+
 # Vietnamese manhua (Chinese cultivation-comic) recap shorts -- the format of
 # a real sample the user brought in (docs/features/153-manhua-recap.md):
 # ~50s, one comic panel on screen per 1.5-2.5s, a male AI voice reading a
@@ -1785,7 +1881,7 @@ CUSTOM_TEMPLATE = Template(
 # Note: BUILTIN_TEMPLATES' own `id`s ("emotional_story"/"couple_story"/
 # "horror"/"horror_shorts"/"relationship_psychology_vi"/"news_vi"/
 # "history_documentary"/"military_history"/
-# "zombie_system"/"manhua_recap_vi"/"manhua_ai_vi"/"manhua_recap_long_vi"/"custom") are reserved -- template_service.save_custom_templates
+# "zombie_system"/"isekai_system_vi"/"manhua_recap_vi"/"manhua_ai_vi"/"manhua_recap_long_vi"/"custom") are reserved -- template_service.save_custom_templates
 # below rejects a custom template trying to reuse one, so a built-in can
 # never be shadowed or overwritten by user data.
 BUILTIN_TEMPLATES: list[Template] = [
@@ -1798,6 +1894,7 @@ BUILTIN_TEMPLATES: list[Template] = [
     HISTORY_DOCUMENTARY_TEMPLATE,
     MILITARY_HISTORY_TEMPLATE,
     ZOMBIE_SYSTEM_TEMPLATE,
+    ISEKAI_SYSTEM_VI_TEMPLATE,
     MANHUA_RECAP_VI_TEMPLATE,
     MANHUA_AI_VI_TEMPLATE,
     MANHUA_RECAP_LONG_VI_TEMPLATE,

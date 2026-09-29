@@ -46,3 +46,6 @@ tools/manhua_recap/__pycache__/
 # fetch_chapters()'s cross-run cache of recurring/ad image hashes -- runtime
 # state, not source (see backend/app/modules/manhua/fetch.py::_cache_dir)
 backend/data/manhua_common_hashes.json
+# Story Remix batches (downloaded source videos + transcripts + drafts)
+story-remix/
+tools/story_remix/__pycache__/

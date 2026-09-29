@@ -106,7 +106,8 @@ class TemplateRouterTests(unittest.TestCase):
             [
                 "emotional_story", "couple_story", "horror", "horror_shorts",
                 "relationship_psychology_vi", "news_vi", "history_documentary", "military_history",
-                "zombie_system", "manhua_recap_vi", "manhua_ai_vi", "manhua_recap_long_vi", "custom",
+                "zombie_system", "isekai_system_vi", "manhua_recap_vi", "manhua_ai_vi",
+                "manhua_recap_long_vi", "custom",
             ],
         )
         self.assertTrue(all(t.builtin for t in templates))
@@ -120,7 +121,7 @@ class TemplateRouterTests(unittest.TestCase):
         self.assertFalse(created.builtin)
 
         templates = list_templates(self.settings)
-        self.assertEqual(len(templates), 14)
+        self.assertEqual(len(templates), 15)
         self.assertIn("colombia_emotional_v2", [t.id for t in templates])
 
     def test_create_with_duplicate_name_gets_a_unique_id(self):
@@ -164,7 +165,7 @@ class TemplateRouterTests(unittest.TestCase):
         self.assertEqual(updated.config.visual_generation.image_style_prompt, "watercolor illustration")
 
         templates = list_templates(self.settings)
-        self.assertEqual(len(templates), 14)
+        self.assertEqual(len(templates), 15)
         reloaded = next(t for t in templates if t.id == created.id)
         self.assertEqual(reloaded.name, "Renamed")
 

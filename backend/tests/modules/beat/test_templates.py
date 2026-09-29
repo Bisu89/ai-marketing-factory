@@ -81,7 +81,8 @@ class BuiltinTemplateTests(unittest.TestCase):
             {
                 "emotional_story", "couple_story", "horror", "horror_shorts",
                 "relationship_psychology_vi", "news_vi", "history_documentary", "military_history",
-                "zombie_system", "manhua_recap_vi", "manhua_ai_vi", "manhua_recap_long_vi", "custom",
+                "zombie_system", "isekai_system_vi", "manhua_recap_vi", "manhua_ai_vi",
+                "manhua_recap_long_vi", "custom",
             },
         )
         self.assertTrue(all(t.builtin for t in BUILTIN_TEMPLATES))
