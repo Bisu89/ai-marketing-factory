@@ -9,6 +9,8 @@
   - Chương 1–2 nằm trên `img2.truyensieuhay.com` và chương 200 trên blogspot: `recap.py fetch` tải được.
   - **Chương 3–100+ nằm trên `img02.g5img.top`, bị chặn tải (403).** Phải tải tay bằng extension trình duyệt vào `manhua-recap/dqg_epN/`, đặt tên `c03_001.jpg`…
 - **Rủi ro:** trang ghi "nghiêm cấm reup", cộng thêm rủi ro reused content trên YouTube. Vì vậy mỗi tập đều có câu bình luận riêng.
+- **Viết kịch bản bằng GPT ngoài (tiết kiệm token Claude):** xem [`GPT_SCRIPT_PROMPT.md`](GPT_SCRIPT_PROMPT.md) --
+  prompt dán sẵn để GPT đọc link chương và viết kịch bản; Claude chỉ khớp panel + build + render.
 
 ## Tiền đề (đã đọc chương 1–2)
 
