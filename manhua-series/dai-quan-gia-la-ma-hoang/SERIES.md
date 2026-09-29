@@ -51,7 +51,8 @@ Tên tiểu thư Lạc Vân Thường là tên theo truyện gốc, chưa thấy
 | 11 | 11 | `manhua-recap/dqg_ep11` | Ma Hoàng thắng Ma Đạo, nhưng kẻ thù thật sự mới vừa xuất hiện!? | ✅ project 124 / job_183, Final QA PASS 100 (51.44s, 1080×1920) |
 | 11 (KR) | 11 | `manhua-recap/dqg_ep11` | 마황, 마도 고수를 이겼지만 진짜 적은 이제 막 나타났다!? | ✅ project 125 / job_184, Final QA PASS 100 (71.0s, 1080×1920) |
 | 12 | 12 | `manhua-recap/dqg_ep12` | Ma Hoàng liều mạng luyện công, đánh thức quỷ dữ trong chính mình!? | ✅ project 128 / job_187, Final QA PASS 100 (50.04s, 1080×1920) |
-| 4–10, 13+ | theo arc | | | Chương 3–10 chỉ có bản dài (Long01); chương 11 là Short đầu tiên nối tiếp sau Long01, chưa làm Short riêng cho 3–10 |
+| 13 | 13 | `manhua-recap/dqg_ep13` | Quái vật tàn sát Thái phủ, hóa ra là con ruột của chính Ma Hoàng!? | ✅ project 129 / job_188, Final QA PASS 100 (52.52s, 1080×1920) |
+| 4–10, 14+ | theo arc | | | Chương 3–10 chỉ có bản dài (Long01); chương 11 là Short đầu tiên nối tiếp sau Long01, chưa làm Short riêng cho 3–10 |
 
 ## Video dài
 
@@ -80,6 +81,23 @@ thật sự giờ là cả **Ngự Hạ Thất Thế Gia** (gia tộc của U Tu
 dụng, đánh thức một nhân cách/thế lực khác từ bên trong cơ thể, thề diệt tộc **Thái gia**. Kết lửng mới: mối nguy
 không đến từ bên ngoài mà từ chính bên trong Trác Phàm.
 
+Chương 13 giải thích luôn "thứ đánh thức" ở cuối tập 12: đó chính là **Huyết Anh** (bản mệnh huyết anh luyện từ
+Huyết Tinh Linh, xem mục "Đạo cụ quan trọng" ở chương 1–10) — không hẳn phản tác dụng như tưởng, mà là luyện thành
+công một sinh vật bán tự chủ, gắn với tâm mạch Trác Phàm (hai bên cùng sống cùng chết, nhưng Huyết Anh còn sống thì
+tâm mạch tự bạo cũng không nguy hiểm tính mạng). Nó tự ý đi tàn sát **Thái phủ** (tự xưng giết người thứ 50), khiến
+U Minh Cốc tưởng nhầm chính **Tiềm Long Các** giết U Tuyền (đúng ý đồ Trác Phàm gài từ tập 12) — nhân tiện phát hiện
+U Minh Cốc đã cài gián điệp ngay trong Tiềm Long Các, kể cả ở **Hắc Phong Sơn** (bãi trại cũ từ arc chương 1–10).
+Thái gia chủ hóa ra căm hận riêng Trác Phàm vì trước đó đã cấy tà thuật (Huyết Anh) vào con trai ông
+(**Thái Hiếu Đình**, vị hôn phu phản bội cũ) để dạy bài học — nhưng không dám ra tay vì sợ liên lụy tới Tiềm Long
+Các. Nhờ Huyết Anh, Trác Phàm đột phá cảnh giới nhanh gấp đôi bình thường, kết chương với thái độ tự tin, sẵn sàng
+đối đầu Hắc Phong Sơn ở tập sau.
+
+**Lưu ý cho tập 14+:** tập 13 ban đầu thử dùng GPT đọc link chương để viết kịch bản (xem `GPT_SCRIPT_PROMPT.md`) —
+GPT **bịa hoàn toàn** cốt truyện (chuyện mua vòng ngọc giả / phát hiện Huyết Tinh Linh không hề có trong chương 13
+thật), rất có thể vì trang manhuavn2/cotruyenday tải ảnh qua JS nên GPT không thực sự "nhìn" được tranh dù đọc được
+link. Đã bỏ script đó, Claude tự đọc lại từ `_recap/sheets/` như ep11/12. Nếu dùng GPT lần sau, nên bắt GPT đọc ảnh
+sheets được upload trực tiếp thay vì dán link, và luôn kiểm tra chéo vài chi tiết với ảnh panel thật trước khi build.
+
 Hai bản cũ do OpenAI viết (project 115/116, tiêu đề khác) được giữ để so sánh. Bản chính thức là bản Claude viết.
 
 ## Khung đã xóa trước khi cắt kịch bản
@@ -93,6 +111,11 @@ Việc xóa không đổi tên các khung còn lại.
 
 ## Nhật ký
 
+- 2026-09-29: chương 13 — thử nghiệm đầu tiên với `GPT_SCRIPT_PROMPT.md` (anh dán link chương cho GPT, GPT trả về
+  JSON). Kết quả: **script bịa hoàn toàn**, không khớp ảnh thật (xem chi tiết ở mục nhân vật chương 13 phía trên).
+  Claude tự đọc lại `_recap/sheets/` (81 khung sau khi xóa 6 khung rác: credit dịch, thông báo lịch ra chap, QR
+  quảng cáo, quảng cáo truyện khác, credit dịch giả, kênh Ham Truyện TV) và viết tay `ep13/script.json` (20 beat).
+  `build --script` tạo project 129, job_188, **Final QA PASS 100 (52.52s, 1080×1920)**.
 - 2026-09-29: chương 12 (`dqg_ep12`, ảnh đã tải sẵn từ trước qua UI `/manhua-fetch` mới) — `cut` ra 96 khung, xóa 1
   khung quảng cáo "Ham Truyện TV" (p096) còn lại 95. Viết tay `ep12/script.json` (20 beat). `build --script` tạo
   project 128, job_187, **Final QA PASS 100 (50.04s, 1080×1920)**.

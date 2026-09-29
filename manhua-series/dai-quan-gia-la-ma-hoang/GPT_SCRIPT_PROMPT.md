@@ -4,6 +4,14 @@ Dùng khi muốn GPT (đọc trực tiếp link chương) viết kịch bản th
 tiết kiệm token Claude. Claude chỉ cần khớp câu vào khung tranh và dựng/render, không cần tự đọc hiểu
 cả chương.
 
+> ⚠️ **Cảnh báo thật (tập 13, 2026-09-29):** dán link cho GPT đã cho ra một script **bịa hoàn toàn** —
+> đọc kỹ không khớp một chi tiết nào với ảnh chương thật (GPT tự chế ra cả một cảnh mua đồ không hề có).
+> Nhiều khả năng manhuavn2.com/cotruyenday.com tải ảnh qua JS nên trình duyệt của GPT không thực sự thấy
+> được tranh, dù có vẻ "đọc" được link. **Trước khi build, luôn nhờ Claude đối chiếu vài beat đầu với ảnh
+> panel thật** (mở `_recap/sheets/sheet_01.jpg` so với beat đầu tiên) — nếu lệch hẳn thì dừng lại, đừng
+> build tiếp. Cách chắc ăn hơn: chụp/upload trực tiếp ảnh `_recap/sheets/*.jpg` vào cửa sổ chat với GPT
+> thay vì chỉ dán link, để GPT thực sự "nhìn" được tranh.
+
 ## Cách dùng
 
 1. Copy toàn bộ prompt mẫu bên dưới.
