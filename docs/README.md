@@ -184,6 +184,7 @@ SQLite.
 152. [Final video also saved under the project name](features/152-named-video-export.md) — Package stage hard-links `video_hoan_chinh.mp4` to `<project name>.mp4` in the same output folder so exported episodes are distinguishable; canonical name kept for metadata/QA/publishing
 153. [Manhua recap: `word_pop` captions, 2 built-ins, panel-recap tool](features/153-manhua-recap.md) — from an analysed sample Short: one-coloured-word-at-a-time captions, `manhua_recap_vi` (comic panels) + `manhua_ai_vi` (AI images) built-ins, vision input in `call_structured`, `POST /manhua-recap/script`, and `tools/manhua_recap/recap.py` (cut pages into panels → AI writes the recap → project)
 154. [Manhua recap: in-app "paste a link" fetch UI](features/154-manhua-fetch-ui.md) — `/manhua-fetch` page + `POST /manhua-recap/fetch` / `GET /manhua-recap/fetch-log` (`manhua_fetch_log` table) so a chapter can be downloaded without a Claude/terminal turn; fetch + filler-image-dedup logic shared between the CLI tool and the API via a new `app/modules/manhua/fetch.py`
+155. [Story Remix pipeline + `isekai_system_vi` built-in template](features/155-story-remix-pipeline.md) — transcribe 1-3 trending "xuyên không"/"hệ thống" YouTube videos and have the model rewrite them into a genuinely new chapter, gated in code (not just the prompt) by a transformation self-report check plus a same-language overlap check; `POST /story-remix/transcribe` + `/rewrite`, new `isekai_system_vi` template, `tools/story_remix/remix.py`
 
 ## Keeping this up to date
 
