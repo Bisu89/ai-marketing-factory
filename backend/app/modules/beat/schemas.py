@@ -1556,7 +1556,10 @@ ZOMBIE_SYSTEM_TEMPLATE = Template(
         captions=CaptionsProjectConfig(
             enabled=True, preset="cinematic", max_words=12, max_chars=70, max_lines=2, max_duration_sec=5.0
         ),
-        audio=AudioProjectConfig(narration_enabled=True, music_enabled=True, music_volume=0.15, ducking=True),
+        # Every real episode build has explicitly disabled music per-project (user preference:
+        # no BGM for this niche) -- baking that into the template default so it no longer needs
+        # to be overridden by hand each episode.
+        audio=AudioProjectConfig(narration_enabled=True, music_enabled=False, music_volume=0.15, ducking=True),
         content=ContentProjectConfig(
             language="en",
             tone="tense, urgent and propulsive, like a LitRPG/apocalypse web-novel narrator -- real "
