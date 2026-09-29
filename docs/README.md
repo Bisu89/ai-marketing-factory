@@ -183,6 +183,7 @@ SQLite.
 151. [Fix: outro card crashed/blanked on an apostrophe in its text](features/151-outro-apostrophe-render-fix.md) — `_escape_drawtext` tried to backslash-escape `'` for ffmpeg drawtext, but ffmpeg's filtergraph parser has no such escape (`'` always toggles quote state); normalizing to a typographic U+2019 instead fixes it, found and verified rendering Zombie System's own outro text ("...don't miss it.")
 152. [Final video also saved under the project name](features/152-named-video-export.md) — Package stage hard-links `video_hoan_chinh.mp4` to `<project name>.mp4` in the same output folder so exported episodes are distinguishable; canonical name kept for metadata/QA/publishing
 153. [Manhua recap: `word_pop` captions, 2 built-ins, panel-recap tool](features/153-manhua-recap.md) — from an analysed sample Short: one-coloured-word-at-a-time captions, `manhua_recap_vi` (comic panels) + `manhua_ai_vi` (AI images) built-ins, vision input in `call_structured`, `POST /manhua-recap/script`, and `tools/manhua_recap/recap.py` (cut pages into panels → AI writes the recap → project)
+154. [Manhua recap: in-app "paste a link" fetch UI](features/154-manhua-fetch-ui.md) — `/manhua-fetch` page + `POST /manhua-recap/fetch` / `GET /manhua-recap/fetch-log` (`manhua_fetch_log` table) so a chapter can be downloaded without a Claude/terminal turn; fetch + filler-image-dedup logic shared between the CLI tool and the API via a new `app/modules/manhua/fetch.py`
 
 ## Keeping this up to date
 
