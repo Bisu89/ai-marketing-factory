@@ -1,0 +1,111 @@
+{
+  "title": "Chưa kịp bắt cóc, thủ lĩnh Hắc Phong Sơn đã bị Ma Hoàng bắt sống!?",
+  "chapters": "17",
+  "source_dir": "manhua-recap/dqgl_ep17",
+  "written_by": "Claude (đọc tay từ panels), 2026-09-30",
+  "description": "Nữ tiểu trại chủ Hắc Phong Sơn thề diệt trừ Lạc gia để báo thù cho cha nuôi, bắt tay cùng U Minh Cốc. Nhưng trước khi kịp ra tay, chính cô lại bị Trác Phàm đột nhập bắt sống ngay trong đêm -- và phải khai ra toàn bộ âm mưu.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tập 17 (chương 17).\n◀ Tập 16: Ma Hoàng từ chối làm đại gia, lại cứu Lạc gia khỏi âm mưu bắt cóc!?",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "BỊ BẮT SỐNG NGƯỢC!?",
+    "prompt": "A confident young man in a torn brown servant cloak with red trim standing over a defeated purple-haired female warrior kneeling on the floor with her wrists bound, dark crimson demonic energy from a small blood spirit creature swirling protectively around him, moonlit rooftop visible through a window behind them. Chinese manhua cover art style, full-colour digital illustration, bold clean linework, cel shading with dramatic glow and rim light, high contrast, vertical 9:16 composition (keep the subject inside the centre 2:3 area so it survives cropping), close-up that fills the frame, leave the top 25% as darker empty background for a title overlay, NO text, NO letters, NO speech bubbles, NO watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Nữ tiểu trại chủ Hắc Phong Sơn này thề báo thù cho cha nuôi, bất chấp mọi giá."
+    },
+    {
+      "panel": "p004.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Ngặt nỗi Tiềm Long Các lại chính là đối thủ của Ngự Hạ Thất Thế Gia, không dễ động vào."
+    },
+    {
+      "panel": "p007.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Dù có phải trả bằng mười mạng người, với cô cũng xứng đáng."
+    },
+    {
+      "panel": "p019.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng ngay đêm đó, một vị khách không mời đã lẻn thẳng vào phòng cô."
+    },
+    {
+      "panel": "p025.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Hắn tự giới thiệu: quản gia Lạc gia, Trác Phàm."
+    },
+    {
+      "panel": "p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô lập tức ra đòn sát thủ, thề giết chết hắn ngay tại chỗ."
+    },
+    {
+      "panel": "p031.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Nhưng chỉ một chiêu Huyết Anh, cô đã bị khống chế hoàn toàn."
+    },
+    {
+      "panel": "p035.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Người tính không bằng trời tính, chưa kịp đi bắt cóc đã bị bắt cóc ngược."
+    },
+    {
+      "panel": "p052.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn mang cả hai người về thẩm vấn, hứa sẽ thả nếu khai thật."
+    },
+    {
+      "panel": "p061.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Cô đành khai tên thật: Lôi Vũ Đình, nghĩa nữ sơn chủ Hắc Phong Sơn."
+    },
+    {
+      "panel": "p070.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Mục đích tới Phong Lâm Thành: diệt trừ toàn bộ Lạc gia."
+    },
+    {
+      "panel": "p072.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Kế hoạch: U Minh Cốc dụ người Tiềm Long Các đi, Hắc Phong Sơn thừa cơ tấn công."
+    },
+    {
+      "panel": "p078.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Hỏi tới đầu mối thật sự thì cô nàng lại giả vờ không biết, buộc Trác Phàm phải dùng chiêu đếm tới ba."
+    },
+    {
+      "panel": "p080.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chiêu này quả nhiên hiệu nghiệm, khiến cô đỏ mặt không dám chống cự thêm."
+    },
+    {
+      "panel": "p081.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Nhưng ngay lúc đó, một cảnh tượng hoàn toàn khác vụt hiện: một tiếng thét xé lòng, đừng mà!"
+    }
+  ]
+}

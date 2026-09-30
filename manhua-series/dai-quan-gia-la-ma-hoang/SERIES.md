@@ -55,7 +55,8 @@ Tên tiểu thư Lạc Vân Thường là tên theo truyện gốc, chưa thấy
 | 14 | 14 | `manhua-recap/dqg_ep14` | Ma Hoàng đi xin nhà, tiện tay lột trần gián điệp ẩn náu bấy lâu!? | ✅ project 132 / job_192, Final QA PASS 100 (52.65s, 1080×1920) |
 | 15 | 15 | `manhua-recap/dqgl_ep15` | Ma Hoàng chỉ dọn nhà, vô tình khiến cả thiên hạ chấn động!? | ✅ project 134 / job_193, Final QA PASS 100 (47.78s, 1080×1920) |
 | 16 | 16 | `manhua-recap/dqgl_ep16` | Ma Hoàng từ chối làm đại gia, lại cứu Lạc gia khỏi âm mưu bắt cóc!? | ✅ project 135 / job_194, Final QA PASS 100 (43.0s, 1080×1920) |
-| 4–10, 17+ | theo arc | | | Chương 3–10 chỉ có bản dài (Long01); chương 11 là Short đầu tiên nối tiếp sau Long01, chưa làm Short riêng cho 3–10. Từ chương 15, thư mục ảnh đổi tên thành `dqgl_epNN` (gõ nhầm của phiên khác, không phải `dqg_epNN`) |
+| 17 | 17 | `manhua-recap/dqgl_ep17` | Chưa kịp bắt cóc, thủ lĩnh Hắc Phong Sơn đã bị Ma Hoàng bắt sống!? | ✅ project 136 / job_195, Final QA PASS 100 (40.36s, 1080×1920) |
+| 4–10, 18+ | theo arc | | | Chương 3–10 chỉ có bản dài (Long01); chương 11 là Short đầu tiên nối tiếp sau Long01, chưa làm Short riêng cho 3–10. Từ chương 15, thư mục ảnh đổi tên thành `dqgl_epNN` (gõ nhầm của phiên khác, không phải `dqg_epNN`) |
 
 ## Video dài
 
@@ -120,6 +121,14 @@ ra đang do thám cấu trúc phòng thủ của biệt viện Lạc gia, đã b
 mục tiêu: xông vào giết sạch người Lạc gia, bắt sống **Lạc Vân Thường**. Kết lửng: âm mưu bị Huyết Anh tình cờ
 nghe được, nhưng chưa ai trong Lạc gia hay biết.
 
+Chương 17: danh tính "nữ nhân bí ẩn tóc tím" từ tập 16 được xác nhận: **Lôi Vũ Đình**, nghĩa nữ sơn chủ **Hắc
+Phong Sơn** (bãi trại cũ từ arc chương 1–10), thề diệt trừ Lạc gia để báo thù cho cha nuôi bị thương, bắt tay
+**U Minh Cốc**. Nhưng trước khi cô kịp ra tay, chính Trác Phàm đột nhập doanh trại Hắc Phong Sơn giữa đêm, để lộ
+thân phận rồi dùng **Huyết Anh** khống chế cô ngay tại chỗ, bắt cả cô lẫn thuộc hạ **Tiểu Thúy** về thẩm vấn. Ép
+cung (bằng chiêu hù dọa "đếm tới ba") lấy được toàn bộ kế hoạch: U Minh Cốc sẽ dụ người Tiềm Long Các rời vị trí
+để Hắc Phong Sơn thừa cơ tấn công — nhưng Lôi Vũ Đình không biết đầu mối liên lạc thật sự với U Minh Cốc là ai.
+Kết lửng: một cảnh hoàn toàn mới, chưa rõ nhân vật, cắt ngang bằng tiếng thét "Đừng mà!" — để ngỏ cho tập 18.
+
 Hai bản cũ do OpenAI viết (project 115/116, tiêu đề khác) được giữ để so sánh. Bản chính thức là bản Claude viết.
 
 ## Khung đã xóa trước khi cắt kịch bản
@@ -133,6 +142,14 @@ Việc xóa không đổi tên các khung còn lại.
 
 ## Nhật ký
 
+- 2026-09-30: chương 17 (`dqgl_ep17`) — `cut` ra 81 khung, không có khung rác. Viết tay `ep17/script.json` (15 beat).
+  `build --script` tạo project 136, **render fail 3 lần liên tiếp** ở bước GENERATING_VOICE (lỗi
+  `FACTORY_INTERRUPTED` do backend bị restart giữa chừng bởi phiên khác đang code song song, sau đó
+  `TTS_GENERATION_FAILED`/`UNEXPECTED_ERROR` — file tạm `seg_NNN.wav/mp3` không tìm thấy, đúng lúc project khác
+  (133) cũng đang GENERATING_VOICE cùng lúc, nghi ngờ tranh chấp tài nguyên edge_tts/thư mục tạm dùng chung). Xử lý
+  bằng cách chờ rồi tạo factory-run mới (không phải retry) — lần thứ 4 mới qua được. job_195, **Final QA PASS 100
+  (40.36s, 1080×1920)**. Ghi chú cho lần sau: nếu voice fail liên tục kiểu này, kiểm tra có project nào khác đang
+  GENERATING_VOICE cùng lúc trước khi coi là lỗi thật.
 - 2026-09-30: chương 16 (`dqgl_ep16`) — `cut` ra 79 khung, không có khung rác. Viết tay `ep16/script.json` (15 beat,
   cân đối 2 mạch truyện: từ chối cung phụng + âm mưu bắt cóc Lạc Vân Thường). `build --script` tạo project 135,
   job_194, **Final QA PASS 100 (43.0s, 1080×1920)**.
