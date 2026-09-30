@@ -53,7 +53,9 @@ Tên tiểu thư Lạc Vân Thường là tên theo truyện gốc, chưa thấy
 | 12 | 12 | `manhua-recap/dqg_ep12` | Ma Hoàng liều mạng luyện công, đánh thức quỷ dữ trong chính mình!? | ✅ project 128 / job_187, Final QA PASS 100 (50.04s, 1080×1920) |
 | 13 | 13 | `manhua-recap/dqg_ep13` | Quái vật tàn sát Thái phủ, hóa ra là con ruột của chính Ma Hoàng!? | ✅ project 129 / job_188, Final QA PASS 100 (52.52s, 1080×1920) |
 | 14 | 14 | `manhua-recap/dqg_ep14` | Ma Hoàng đi xin nhà, tiện tay lột trần gián điệp ẩn náu bấy lâu!? | ✅ project 132 / job_192, Final QA PASS 100 (52.65s, 1080×1920) |
-| 4–10, 15+ | theo arc | | | Chương 3–10 chỉ có bản dài (Long01); chương 11 là Short đầu tiên nối tiếp sau Long01, chưa làm Short riêng cho 3–10 |
+| 15 | 15 | `manhua-recap/dqgl_ep15` | Ma Hoàng chỉ dọn nhà, vô tình khiến cả thiên hạ chấn động!? | ✅ project 134 / job_193, Final QA PASS 100 (47.78s, 1080×1920) |
+| 16 | 16 | `manhua-recap/dqgl_ep16` | Ma Hoàng từ chối làm đại gia, lại cứu Lạc gia khỏi âm mưu bắt cóc!? | ✅ project 135 / job_194, Final QA PASS 100 (43.0s, 1080×1920) |
+| 4–10, 17+ | theo arc | | | Chương 3–10 chỉ có bản dài (Long01); chương 11 là Short đầu tiên nối tiếp sau Long01, chưa làm Short riêng cho 3–10. Từ chương 15, thư mục ảnh đổi tên thành `dqgl_epNN` (gõ nhầm của phiên khác, không phải `dqg_epNN`) |
 
 ## Video dài
 
@@ -103,6 +105,21 @@ từng hủy một mắt của Long Cửu nhiều năm trước. Long Cửu nổ
 Kết tập: Trác Phàm mỉm cười hài lòng — một nước cờ vừa có nhà ở, vừa có đồng minh nợ ân tình, vừa trả thù giúp
 người khác mà không tốn công sức.
 
+Chương 15: sau khi dọn vào biệt viện mới bị một quý tộc Tiềm Long Các mỉa mai "ếch ngồi đáy giếng", Trác Phàm
+lặng lẽ nâng cấp trận trấn thủ có sẵn của **Long Cửu** (Bàn Long Trận) từ tam cấp lên hẳn **ngũ cấp** — trình độ mà
+cả đời Long Cửu (trận sư mạnh nhất họ biết) chưa từng đạt tới, gây chấn động khắp Thiên Vũ Đế Quốc. Long Cửu đích
+thân mời Trác Phàm làm "cung phụng" của Tiềm Long Các (vị trí danh dự, bỏ qua cả thân phận quản gia nhỏ bé), xưng
+hô ngang hàng "lão đệ"/"Cửu ca". Kết lửng: Trác Phàm chưa trả lời.
+
+Chương 16: Trác Phàm từ chối lời mời cung phụng — điều kiện hắn ra không phải cho bản thân mà là bảo vệ trọn đời
+cho toàn bộ Lạc gia (Long Cửu đồng ý, hứa cả "đời đời tử tôn"). Tới ngày hẹn chính thức, hắn thẳng thừng từ chối
+làm cung phụng, tự xưng Đại quản gia Lạc gia, tuyên bố mười năm sẽ đưa Lạc gia vượt mặt Tiềm Long Các — triết lý
+Ma Đạo của hắn: "mệnh của ta do ta, không phải do trời". Song song đó, **Huyết Anh** (từ tập 13) vẫn âm thầm tàn
+sát người của Thái gia không ai hay, nhưng bị một **nữ nhân bí ẩn tóc tím** phát hiện và bám theo — người này hóa
+ra đang do thám cấu trúc phòng thủ của biệt viện Lạc gia, đã bắt tay với **U Minh Cốc** để dụ hộ vệ rời vị trí,
+mục tiêu: xông vào giết sạch người Lạc gia, bắt sống **Lạc Vân Thường**. Kết lửng: âm mưu bị Huyết Anh tình cờ
+nghe được, nhưng chưa ai trong Lạc gia hay biết.
+
 Hai bản cũ do OpenAI viết (project 115/116, tiêu đề khác) được giữ để so sánh. Bản chính thức là bản Claude viết.
 
 ## Khung đã xóa trước khi cắt kịch bản
@@ -116,6 +133,11 @@ Việc xóa không đổi tên các khung còn lại.
 
 ## Nhật ký
 
+- 2026-09-30: chương 16 (`dqgl_ep16`) — `cut` ra 79 khung, không có khung rác. Viết tay `ep16/script.json` (15 beat,
+  cân đối 2 mạch truyện: từ chối cung phụng + âm mưu bắt cóc Lạc Vân Thường). `build --script` tạo project 135,
+  job_194, **Final QA PASS 100 (43.0s, 1080×1920)**.
+- 2026-09-30: chương 15 (`dqgl_ep15`) — `cut` ra 86 khung, không có khung rác. Viết tay `ep15/script.json` (17 beat).
+  `build --script` tạo project 134, job_193, **Final QA PASS 100 (47.78s, 1080×1920)**.
 - 2026-09-29: chương 14 (`dqg_ep14`, ảnh đã tải sẵn từ trước) — `cut` cho 93 khung, không có khung rác nào cần xóa
   (không có credit dịch/QR quảng cáo như các chương khác). Claude đọc `_recap/sheets/`, viết tay `ep14/script.json`
   (20 beat). `build --script` tạo project 132, job_192, **Final QA PASS 100 (52.65s, 1080×1920)**.

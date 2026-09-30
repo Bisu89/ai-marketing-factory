@@ -1,0 +1,123 @@
+{
+  "title": "Ma Hoàng chỉ dọn nhà, vô tình khiến cả thiên hạ chấn động!?",
+  "chapters": "15",
+  "source_dir": "manhua-recap/dqgl_ep15",
+  "written_by": "Claude (đọc tay từ panels), 2026-09-30",
+  "description": "Trác Phàm chỉ định dọn vào biệt viện mới, bị một quý tộc Tiềm Long Các mỉa mai là ếch ngồi đáy giếng. Hắn đáp trả bằng cách nâng cấp cả một trận pháp trấn thủ -- và vô tình để lộ thực lực khiến cả thiên hạ phải chấn động.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tập 15 (chương 15).\n◀ Tập 14: Ma Hoàng đi xin nhà, tiện tay lột trần gián điệp ẩn náu bấy lâu!?",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "CHẤN ĐỘNG THIÊN HẠ!?",
+    "prompt": "A calm young man in a torn brown servant cloak with red trim standing with hands clasped in a meditation mudra, radiating golden light, while a massive glowing golden dragon made of light coils dramatically through the sky above an ornate Chinese estate behind him, awed elderly nobles watching in the background. Chinese manhua cover art style, full-colour digital illustration, bold clean linework, cel shading with dramatic glow and rim light, high contrast, vertical 9:16 composition (keep the subject inside the centre 2:3 area so it survives cropping), close-up that fills the frame, leave the top 25% as darker empty background for a title overlay, NO text, NO letters, NO speech bubbles, NO watermark"
+  },
+  "beats": [
+    {
+      "panel": "p004.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Ma Hoàng này vừa dọn vào biệt viện mới, chưa kịp ấm chỗ đã bị chê bai đủ điều."
+    },
+    {
+      "panel": "p008.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Một quý tộc Tiềm Long Các mỉa mai: chức quản gia này chẳng đáng giá gì."
+    },
+    {
+      "panel": "p016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Còn chê thẳng mặt: các ngươi chỉ là ếch ngồi đáy giếng."
+    },
+    {
+      "panel": "p019.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm chẳng nói nhiều, chỉ mượn Long Qùy tiểu thư một viên linh thạch."
+    },
+    {
+      "panel": "p024.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Rồi nhận ra ngay: đây là Bàn Long Trận, trận pháp riêng do chính Cửu Thúc bố trí."
+    },
+    {
+      "panel": "p037.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một con rồng vàng rực rỡ vọt lên từ chính tay hắn kích hoạt."
+    },
+    {
+      "panel": "p041.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Cách đó rất xa, Long Cửu giật mình cảm nhận được, tưởng kẻ thù cũ ra tay."
+    },
+    {
+      "panel": "p057.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Nhưng sự thật còn sốc hơn: hắn đã nâng cấp trận từ tam cấp lên hẳn ngũ cấp."
+    },
+    {
+      "panel": "p059.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Cả Thất Thế Gia cũng chẳng mấy ai bày nổi ngũ cấp trận thức, còn hắn thì tiện tay làm luôn lúc dọn nhà."
+    },
+    {
+      "panel": "p064.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Long Qùy tiểu thư không những hết giận, còn nể phục ra mặt."
+    },
+    {
+      "panel": "p068.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tin đồn lan xa: một tiểu gia tộc hẻo lánh lại giấu một nhân tài kiệt xuất."
+    },
+    {
+      "panel": "p070.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Một cao thủ lạ mặt lập tức xuất hiện, hỏi thẳng ai vừa bày trận."
+    },
+    {
+      "panel": "p075.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Chính Long Cửu cũng sốc: cả đời lão chỉ bày nổi tam cấp trận thức."
+    },
+    {
+      "panel": "p078.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lão liền đổi giọng, mời hẳn Trác Phàm gọi bằng lão đệ."
+    },
+    {
+      "panel": "p081.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Trác Phàm cũng chẳng ngại, gọi thẳng lại một tiếng Cửu ca, khiến người xung quanh chỉ biết thốt lên: vô liêm sỉ!"
+    },
+    {
+      "panel": "p084.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Long Cửu ngỏ lời mời thẳng: bỏ Lạc gia, qua Tiềm Long Các làm cung phụng."
+    },
+    {
+      "panel": "p085.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Trác Phàm chỉ cười, chưa vội trả lời, câu hỏi để ngỏ cho cả thiên hạ phải chờ."
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "title": "Ma Hoàng từ chối làm đại gia, lại cứu Lạc gia khỏi âm mưu bắt cóc!?",
+  "chapters": "16",
+  "source_dir": "manhua-recap/dqgl_ep16",
+  "written_by": "Claude (đọc tay từ panels), 2026-09-30",
+  "description": "Tiềm Long Các mời Trác Phàm làm cung phụng -- phần thưởng cả đời tu sĩ mơ ước -- nhưng hắn từ chối thẳng, chỉ xin một đời bình an cho Lạc gia rồi tự tuyên bố sẽ đưa Lạc gia vượt mặt cả Thất Thế Gia. Trong lúc đó, một âm mưu bắt cóc Lạc Vân Thường đang âm thầm hình thành, và chỉ một kẻ tình cờ nghe được.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tập 16 (chương 16).\n◀ Tập 15: Ma Hoàng chỉ dọn nhà, vô tình khiến cả thiên hạ chấn động!?",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "ÂM MƯU BẮT CÓC!?",
+    "prompt": "A determined young man in a torn brown servant cloak with red trim standing firm with arms crossed, declining an offer, while in the shadowed background a mysterious purple-haired woman in dark assassin attire studies a floor-plan scroll of an estate, plotting, with a small glowing red demonic creature secretly watching from a rooftop corner. Chinese manhua cover art style, full-colour digital illustration, bold clean linework, cel shading with dramatic glow and rim light, high contrast, vertical 9:16 composition (keep the subject inside the centre 2:3 area so it survives cropping), close-up that fills the frame, leave the top 25% as darker empty background for a title overlay, NO text, NO letters, NO speech bubbles, NO watermark"
+  },
+  "beats": [
+    {
+      "panel": "p003.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Ma Hoàng này vừa được Tiềm Long Các mời làm cung phụng, phần thưởng cả đời tu sĩ mơ ước."
+    },
+    {
+      "panel": "p012.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Nhưng điều kiện hắn đưa ra không phải cho bản thân, mà là một đời bình an cho toàn bộ Lạc gia."
+    },
+    {
+      "panel": "p016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Long Cửu đồng ý ngay, còn hứa bảo vệ tới muôn đời con cháu."
+    },
+    {
+      "panel": "p021.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Vậy mà tới ngày hẹn, Trác Phàm lại thẳng thừng từ chối làm cung phụng."
+    },
+    {
+      "panel": "p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn chỉ tay tuyên bố: mười năm nữa, Lạc gia sẽ vượt mặt cả Thất Thế Gia."
+    },
+    {
+      "panel": "p044.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Đang yên đang lành lại đi tuyên chiến với cả thiên hạ, đúng chất dân chơi Ma Đạo."
+    },
+    {
+      "panel": "p048.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Với hắn, mệnh của mình là do mình quyết định, không phải do trời."
+    },
+    {
+      "panel": "p060.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn còn tuyên bố thẳng: từ nay Lạc gia, việc lớn nhỏ một tay hắn làm chủ."
+    },
+    {
+      "panel": "p063.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trong lúc đó, một bóng đỏ bí ẩn vẫn âm thầm săn lùng người Thái gia không ai hay."
+    },
+    {
+      "panel": "p064.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Vừa mới oai phong đi giết người, quay đầu đã sợ tới run trong chăn."
+    },
+    {
+      "panel": "p066.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng lần này nó bị phát hiện: một nữ nhân bí ẩn đã bám theo dấu vết."
+    },
+    {
+      "panel": "p073.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Người này hóa ra đang do thám kỹ càng cấu trúc cả tòa đại viện Lạc gia."
+    },
+    {
+      "panel": "p076.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Phe cô ta đã bắt tay với chính U Minh Cốc để dụ hộ vệ rời vị trí."
+    },
+    {
+      "panel": "p078.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Mục tiêu thật sự: xông vào giết sạch người Lạc gia, bắt sống Lạc Vân Thường."
+    },
+    {
+      "panel": "p079.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Âm mưu chỉ vừa lộ ra trước một kẻ không ai ngờ tới: chính con Huyết Anh đang nấp gần đó."
+    }
+  ]
+}
