@@ -57,7 +57,8 @@ Tên tiểu thư Lạc Vân Thường là tên theo truyện gốc, chưa thấy
 | 16 | 16 | `manhua-recap/dqgl_ep16` | Ma Hoàng từ chối làm đại gia, lại cứu Lạc gia khỏi âm mưu bắt cóc!? | ✅ project 135 / job_194, Final QA PASS 100 (43.0s, 1080×1920) |
 | 17 | 17 | `manhua-recap/dqgl_ep17` | Chưa kịp bắt cóc, thủ lĩnh Hắc Phong Sơn đã bị Ma Hoàng bắt sống!? | ✅ project 136 / job_195, Final QA PASS 100 (40.36s, 1080×1920) |
 | 18 | 18 | `manhua-recap/dqgl_ep18` | Kẻ chủ mưu thật sự không phải nữ trại chủ, mà là vị hôn phu của cô!? | ✅ project 137 / job_196, Final QA PASS 100 (38.98s, 1080×1920) |
-| 4–10, 19+ | theo arc | | | Chương 3–10 chỉ có bản dài (Long01); chương 11 là Short đầu tiên nối tiếp sau Long01, chưa làm Short riêng cho 3–10. Từ chương 15, thư mục ảnh đổi tên thành `dqgl_epNN` (gõ nhầm của phiên khác, không phải `dqg_epNN`) |
+| 19 | 19 | `manhua-recap/dqgl_ep19` | Dương Minh bày cả vở kịch, đến cha nuôi cũng chỉ là quân cờ!? | ✅ project 138 / job_198, Final QA PASS 100 (44.98s, 1080×1920) |
+| 4–10, 20+ | theo arc | | | Chương 3–10 chỉ có bản dài (Long01); chương 11 là Short đầu tiên nối tiếp sau Long01, chưa làm Short riêng cho 3–10. Từ chương 15, thư mục ảnh đổi tên thành `dqgl_epNN` (gõ nhầm của phiên khác, không phải `dqg_epNN`) |
 
 ## Video dài
 
@@ -140,6 +141,16 @@ Tới nơi, phát hiện chuyến đi "tuyệt mật" của cô đã bị lộ c
 sát sao. Kết lửng: một bóng người xám bạc xuất hiện, chào thân mật "Vũ Đình muội muội" rồi ra tay tấn công ngay —
 chính là **Dương Minh**.
 
+Chương 19: Dương Minh không thật sự định giết Lôi Vũ Đình (ít nhất chưa phải lúc này) — hôm sau vẫn ân cần như
+thường. Cô mời một lang y giang hồ tới chữa cho cha nuôi; Dương Minh cản trở rồi mới "cho phép" (viện cớ thử thực
+lực). Không tin tưởng, cô nhờ **Trác Phàm** đích thân giả làm lang y khác tới khám — phát hiện chấn động: sơn chủ
+**không hề** có ngoại thương lẫn nội thương như Dương Minh vẫn kể, nguyên nhân thật là một **dị vật nhập thể**
+(gợi ý ông bị đầu độc/cấy thứ gì đó, không phải bị Lạc gia ám sát). Dương Minh lộ mặt, kích hoạt cơ quan bí mật đẩy
+cả hai xuống hầm tối, thú nhận lạnh lùng: ông không hề quan tâm cha nuôi sống chết, thậm chí còn định cho ông uống
+nhầm thuốc vì chẳng biết bệnh thật là gì — chỉ lo "đại kế" riêng. Bị nhốt, "lão lang y" (Trác Phàm cải trang) trấn
+an mọi việc vẫn trong kế hoạch. Kết chương: ông triệu hồi **Huyết Anh**, ra lệnh lạnh lùng "đi đi, tiêu diệt bọn
+chúng" — chuẩn bị phá ngục.
+
 Hai bản cũ do OpenAI viết (project 115/116, tiêu đề khác) được giữ để so sánh. Bản chính thức là bản Claude viết.
 
 ## Khung đã xóa trước khi cắt kịch bản
@@ -153,6 +164,9 @@ Việc xóa không đổi tên các khung còn lại.
 
 ## Nhật ký
 
+- 2026-09-30: chương 19 (`dqgl_ep19`) — `cut` ra 76 khung, không có khung rác. Viết tay `ep19/script.json` (17 beat).
+  `build --script` tạo project 138, **render fail 1 lần** ở GENERATING_VOICE (edge_tts "No audio was received", cùng
+  lỗi tập 18), retry lần 2 qua ngay. job_198, **Final QA PASS 100 (44.98s, 1080×1920)**.
 - 2026-09-30: chương 18 (`dqgl_ep18`) — `cut` ra 70 khung, không có khung rác. Viết tay `ep18/script.json` (13 beat).
   `build --script` tạo project 137, **render fail 2 lần liên tiếp** ở GENERATING_VOICE (`TTS_GENERATION_FAILED`:
   "No audio was received" từ edge_tts) dù lần này **không có project nào khác đang render song song** — test gọi
