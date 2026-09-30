@@ -421,6 +421,21 @@ class LocalTTSProvider(TTSProvider):
 # abandoned and counts as one failed try (module-level so tests can shrink it).
 _SEGMENT_ATTEMPT_TIMEOUT_SEC = 45.0
 
+# Real repeated failure (Zombie System Chapter 8, 2026-09-29/30): a single
+# project's own segment loop is already strictly sequential (one
+# `edge_tts.Communicate()` at a time, see `_generate_segment` below), but a
+# Factory run's GENERATING_VOICE stage executes on its own daemon thread
+# (factory_pipeline.py), and an interrupted/restarted run can leave that
+# thread alive in the background rather than actually terminating -- the
+# server log showed multiple independent "attempt 1/7 ... 7/7" sequences
+# interleaved in wall-clock time on the very run that kept failing, meaning
+# more than one thread's segment loop was hitting Microsoft's free endpoint
+# at once even though no single loop asked for that. This process-wide
+# semaphore caps how many edge_tts network calls (from any thread, any
+# project) are ever in flight at the same time, so an orphaned thread from a
+# past run can no longer silently compound a live run's own burst exposure.
+_EDGE_TTS_CONCURRENCY = threading.Semaphore(2)
+
 
 class EdgeTTSProvider(TTSProvider):
     """The optional, non-default provider (section 41) -- free but NOT
@@ -448,8 +463,9 @@ class EdgeTTSProvider(TTSProvider):
         output_path.parent.mkdir(parents=True, exist_ok=True)
         sentences = _split_sentences(text)
 
-        async def _generate_segment_once(segment_text: str, tmp_mp3: Path) -> list[WordTiming]:
-            communicate = edge_tts.Communicate(segment_text, resolved_voice, rate=rate_str, boundary="WordBoundary")
+        async def _generate_segment_once(segment_text: str, tmp_mp3: Path, want_word_timing: bool = True) -> list[WordTiming]:
+            kwargs = {"boundary": "WordBoundary"} if want_word_timing else {}
+            communicate = edge_tts.Communicate(segment_text, resolved_voice, rate=rate_str, **kwargs)
             words: list[WordTiming] = []
             with open(tmp_mp3, "wb") as f:
                 async for chunk in communicate.stream():
@@ -504,16 +520,48 @@ class EdgeTTSProvider(TTSProvider):
                     )
                     backoff = min(_SEGMENT_RETRY_BACKOFF_SEC * (attempt + 1), _SEGMENT_RETRY_BACKOFF_CAP_SEC)
                     await asyncio.sleep(backoff + random.uniform(0.0, 1.5))
+            # Real production evidence (Zombie System Chapter 8, 2026-09-30):
+            # requesting `boundary="WordBoundary"` (needed for real per-word
+            # caption timing) measurably raises edge_tts's own NoAudioReceived
+            # failure rate on Microsoft's free endpoint -- a direct side-by-side
+            # test against the exact segment that exhausted all
+            # _SEGMENT_MAX_ATTEMPTS retries above showed the plain call (no
+            # boundary tracking) succeeding far more often than the
+            # word-boundary call on the very same text/voice. Rather than fail
+            # the whole run once real retries are exhausted, make one last
+            # attempt without word-boundary tracking -- WordTiming is already a
+            # best-effort feature (schemas.WordTiming's own docstring: a
+            # provider that can't supply it just returns an empty list), so
+            # falling back to "audio succeeded, no per-word timing" is strictly
+            # better than failing outright over a feature downstream already
+            # tolerates being absent.
+            logger.warning(
+                "edge_tts word-boundary synthesis exhausted %d attempts (%s) -- "
+                "retrying once without word-boundary tracking.",
+                _SEGMENT_MAX_ATTEMPTS, last_exc,
+            )
+            try:
+                words = await asyncio.wait_for(
+                    _generate_segment_once(segment_text, tmp_mp3, want_word_timing=False),
+                    timeout=_SEGMENT_ATTEMPT_TIMEOUT_SEC,
+                )
+                if tmp_mp3.exists() and tmp_mp3.stat().st_size > 0:
+                    return words
+                last_exc = RuntimeError("edge_tts produced no audio bytes for this segment.")
+            except Exception as exc:  # noqa: BLE001 -- fallback exhausted, fall through to the final error below
+                last_exc = exc
             raise VoiceError(
                 TTS_GENERATION_FAILED,
-                f"edge_tts synthesis failed after {_SEGMENT_MAX_ATTEMPTS} attempts: {last_exc}",
+                f"edge_tts synthesis failed after {_SEGMENT_MAX_ATTEMPTS} attempts "
+                f"plus a no-word-boundary fallback: {last_exc}",
             )
 
         if len(sentences) <= 1:
             # Single sentence (or empty/degenerate text) -- unchanged
             # one-shot path, no segments/pauses to insert.
             tmp_mp3 = output_path.with_suffix(".mp3")
-            words = asyncio.run(_generate_segment(text, tmp_mp3))
+            with _EDGE_TTS_CONCURRENCY:
+                words = asyncio.run(_generate_segment(text, tmp_mp3))
             # Convert to this pipeline's own canonical WAV container
             # immediately (never leave an MP3 as the provider's own
             # "output_path" artifact -- audio_analysis.normalize_audio does
@@ -532,7 +580,8 @@ class EdgeTTSProvider(TTSProvider):
                 for i, sentence in enumerate(sentences):
                     tmp_mp3 = tmp_dir / f"seg_{i:03d}.mp3"
                     tmp_wav = tmp_dir / f"seg_{i:03d}.wav"
-                    segment_words = asyncio.run(_generate_segment(sentence, tmp_mp3))
+                    with _EDGE_TTS_CONCURRENCY:
+                        segment_words = asyncio.run(_generate_segment(sentence, tmp_mp3))
                     _convert_to_wav(tmp_mp3, tmp_wav)
                     seg_duration, _, _ = _probe_wav(tmp_wav)
 
