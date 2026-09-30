@@ -28,7 +28,7 @@ from app.api.v1.endpoints.package_generate import metadata_path, thumbnail_path
 from app.modules.beat.project_service import get_project_draft
 from app.modules.factory import service as factory_service
 from app.modules.video_composer.models import VideoComposeJob
-from tests.api.test_batch_render import FFMPEG_AVAILABLE
+from tests.api.media_helpers import FFMPEG_AVAILABLE
 from tests.api.test_package_stage import _PackageStageTestCase
 
 

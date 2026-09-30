@@ -195,9 +195,9 @@ def check_metadata(data: QAInput) -> QACheck:
             "metadata.json is missing a required title/description value.", repair_stage="PACKAGE",
         )
     # Section 27 -- the metadata's own artifact references must point at
-    # the real package files, never a stale/renamed path.
-    if meta.referenced_video != "video_hoan_chinh.mp4" and meta.referenced_video is not None:
-        pass  # filename is whatever the real render produced; presence-checked below, not hardcoded here
+    # the real package files, never a stale/renamed path. The video filename
+    # is whatever the render produced (job_<id>_<title>.mp4), so only its
+    # presence is checked here, never a hardcoded name.
     if not meta.referenced_video or not meta.referenced_thumbnail:
         return _check(
             "metadata_valid", "METADATA_INVALID", "FAIL", "error",

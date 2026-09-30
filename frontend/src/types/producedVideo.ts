@@ -1,12 +1,6 @@
 // Mirrors app/api/v1/endpoints/produced_videos.py -- the read-only browse
 // of every finished Factory / Video Composer render.
 
-export interface ProducedVideoFacet {
-  id: number;
-  name: string;
-  count: number;
-}
-
 export interface ProducedVideo {
   render_job_id: number;
   job_status: string; // COMPLETED | FAILED | RUNNING | QUEUED | CANCELLED
@@ -15,10 +9,6 @@ export interface ProducedVideo {
   hashtags: string[];
   project_id: number | null;
   project_name: string | null;
-  batch_id: number | null;
-  batch_name: string | null;
-  series_id: number | null;
-  series_name: string | null;
   duration_sec: number | null;
   width: number | null;
   height: number | null;
@@ -34,14 +24,10 @@ export interface ProducedVideo {
 export interface ProducedVideoList {
   total: number;
   items: ProducedVideo[];
-  batches: ProducedVideoFacet[];
-  series: ProducedVideoFacet[];
 }
 
 export interface ProducedVideoQuery {
   status?: "COMPLETED" | "FAILED" | "ALL";
-  batch_id?: number;
-  series_id?: number;
   q?: string;
   limit?: number;
   offset?: number;

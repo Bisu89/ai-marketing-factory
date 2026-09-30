@@ -11,7 +11,7 @@ Pipeline per episode:
   build word-timed ASS captions -> composite over a background loop
   (+ optional colour-keyed avatar overlay), 3-panel triptych, or a
   many-image slideshow (one script beat + random Ken Burns zoom per image)
-  -> final.mp4
+  -> <id>_<title>.mp4
 """
 
 from __future__ import annotations
@@ -32,6 +32,7 @@ import edge_tts
 from PIL import Image
 
 from app.core.exceptions import NotFoundError, ValidationError
+from app.core.output_naming import find_labeled_dir, labeled_video_filename, resolve_labeled_dir
 from app.db.session import SessionLocal
 from app.modules.storyteller.models import (
     PENDING_STATUSES,
@@ -459,8 +460,10 @@ class StorytellerService:
             finally:
                 self._queue.task_done()
 
-    def _episode_dir(self, episode_id: int) -> Path:
-        d = self._library_dir / "storyteller" / "episodes" / str(episode_id)
+    def _episode_dir(self, episode_id: int, title: str) -> Path:
+        """`episodes/<id>_<title>` (see app.core.output_naming), or the
+        folder this episode already has (legacy bare `<id>` included)."""
+        d = resolve_labeled_dir(self._library_dir / "storyteller" / "episodes", "", episode_id, title)
         d.mkdir(parents=True, exist_ok=True)
         return d
 
@@ -516,7 +519,7 @@ class StorytellerService:
         finally:
             db.close()
 
-        work_dir = self._episode_dir(episode_id)
+        work_dir = self._episode_dir(episode_id, title)
         segments_dir = work_dir / "segments"
         segments_dir.mkdir(exist_ok=True)
 
@@ -584,7 +587,7 @@ class StorytellerService:
 
         # -- composite --------------------------------------------------
         self._set(episode_id, status="compositing", progress_stage="Đang ghép video...")
-        output_path = work_dir / "final.mp4"
+        output_path = work_dir / labeled_video_filename("", episode_id, title)
         self._composite(
             duration=duration,
             narration_path=audio_path,
@@ -792,7 +795,9 @@ def delete_episode(episode_id: int, library_dir: Path) -> None:
         db.commit()
     finally:
         db.close()
-    shutil.rmtree(library_dir / "storyteller" / "episodes" / str(episode_id), ignore_errors=True)
+    episode_dir = find_labeled_dir(library_dir / "storyteller" / "episodes", "", episode_id)
+    if episode_dir is not None:
+        shutil.rmtree(episode_dir, ignore_errors=True)
 
 
 def retry_episode(episode_id: int) -> StorytellerEpisode:

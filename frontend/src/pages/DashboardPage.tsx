@@ -36,11 +36,8 @@ function formatElapsed(totalSeconds: number): string {
   return `${String(mm).padStart(2, "0")}:${String(ss).padStart(2, "0")}`;
 }
 
-function projectLink(projectId: number | null, batchId: number | null): string {
-  if (projectId == null) return "/batches";
-  return batchId != null
-    ? `/video-factory?project=${projectId}&batch=${batchId}`
-    : `/video-factory?project=${projectId}`;
+function projectLink(projectId: number | null): string {
+  return projectId == null ? "/videos" : `/video-factory?project=${projectId}`;
 }
 
 const ATTENTION_ACTION_LABEL: Record<AttentionPriority, string> = {
@@ -117,12 +114,9 @@ export function DashboardPage() {
 
   const headerActions = (
     <div className="dash-header-actions">
-      <button className="btn btn-secondary" onClick={() => setNewVideoOpen(true)}>
+      <button className="btn btn-primary" onClick={() => setNewVideoOpen(true)}>
         <Plus size={14} /> New Video
       </button>
-      <Link className="btn btn-primary" to="/batches?new=1">
-        <Plus size={14} /> New Batch
-      </Link>
     </div>
   );
 
@@ -162,15 +156,15 @@ export function DashboardPage() {
         <EmptyState
           icon={Wand2}
           title="Welcome to Video Factory"
-          description="No active production yet. Create your first video or batch to see it here."
+          description="No active production yet. Create your first video to see it here."
         />
         {newVideoModal}
       </>
     );
   }
 
-  const { summary, current_batch, current_render, queue, recent_videos, recent_failures } = data;
-  const isIdle = !current_batch && !current_render && queue.length === 0;
+  const { summary, current_render, queue, recent_videos, recent_failures } = data;
+  const isIdle = !current_render && queue.length === 0;
 
   return (
     <>
@@ -204,7 +198,7 @@ export function DashboardPage() {
         attentionTotal={data.attention_total}
         failures={recent_failures}
         busyJobId={busyJobId}
-        onNavigate={(item) => navigate(projectLink(item.project_id, item.batch_id))}
+        onNavigate={(item) => navigate(projectLink(item.project_id))}
         onRetry={handleRetry}
       />
 
@@ -215,42 +209,9 @@ export function DashboardPage() {
             <h3>
               <Clapperboard size={15} /> Running now
             </h3>
-            {current_batch && (
-              <Link className="dash-header-link" to={`/batches/${current_batch.batch_id}`}>
-                Open batch <ChevronRight size={13} />
-              </Link>
-            )}
           </div>
 
           {isIdle && <p className="dash-empty-note">Nothing in production right now.</p>}
-
-          {current_batch && (
-            <div className="dash-now-block">
-              <div className="dash-batch-name">{current_batch.name}</div>
-              <div className="dash-progress-track">
-                <div
-                  className="dash-progress-fill"
-                  style={{
-                    width: `${
-                      current_batch.total > 0
-                        ? (current_batch.completed / current_batch.total) * 100
-                        : 0
-                    }%`,
-                  }}
-                />
-              </div>
-              <div className="dash-progress-label">
-                {current_batch.completed} / {current_batch.total} completed
-              </div>
-              <div className="dash-status-chips">
-                {Object.entries(current_batch.status_counts).map(([status, count]) => (
-                  <span key={status} className={`dash-chip dash-chip--${status}`}>
-                    {count} {status.replace(/_/g, " ").toLowerCase()}
-                  </span>
-                ))}
-              </div>
-            </div>
-          )}
 
           {current_render && (
             <div className="dash-now-block dash-now-render">
@@ -270,7 +231,7 @@ export function DashboardPage() {
               <div className="dash-card-actions">
                 <Link
                   className="btn btn-secondary"
-                  to={projectLink(current_render.project_id, current_render.batch_id)}
+                  to={projectLink(current_render.project_id)}
                 >
                   View project
                 </Link>
@@ -343,7 +304,7 @@ export function DashboardPage() {
           <div className="dash-overview-col">
             <span className="dash-overview-heading">Pipeline</span>
             {Object.keys(data.pipeline.status_counts).length === 0 ? (
-              <p className="dash-empty-note">No batch items.</p>
+              <p className="dash-empty-note">No factory runs yet.</p>
             ) : (
               <ul className="dash-pipeline-list">
                 {Object.entries(data.pipeline.status_counts).map(([status, count]) => (
@@ -427,16 +388,11 @@ function AttentionPanel({
           <AlertTriangle size={15} /> Needs attention
           <span className="dash-count dash-count--warn">{totalCount}</span>
         </h3>
-        {attentionTotal > sorted.length && (
-          <Link className="dash-header-link" to="/batches">
-            View all <ChevronRight size={13} />
-          </Link>
-        )}
       </div>
 
       <ul className="dash-attention-list">
         {sorted.map((item) => (
-          <li key={`a-${item.item_id}`} className="dash-attention-item">
+          <li key={`a-${item.project_id}`} className="dash-attention-item">
             <span className={`dash-priority dash-priority--${item.priority}`}>
               {item.priority.replace("_", " ")}
             </span>

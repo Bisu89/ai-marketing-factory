@@ -208,7 +208,7 @@ class PipelineIntegrationTests(_VoiceStageTestCase):
         try:
             from app.modules.asset.schemas import AssetRegisterIn
             from app.modules.asset.service import AssetService
-            from tests.api.test_batch_render import _make_solid_image
+            from tests.api.media_helpers import _make_solid_image
 
             image = _make_solid_image(self.tmp_path / "voice_pipeline.jpg", (10, 200, 10))
             asset = AssetService(db).register(AssetRegisterIn(filename=image.name, path=str(image), type="image", source="test"))

@@ -50,21 +50,3 @@ export const DIMENSION_LABELS: Record<keyof QualityDimensions, string> = {
   captions: "Captions",
 };
 
-// -- Batch quality summary (section 31/32) -----------------------------
-
-export interface BatchItemQuality {
-  item_id: number;
-  project_id: number | null;
-  status: string; // READY | NEEDS_REVIEW | BLOCKED | NOT_READY
-  score: number | null;
-  issues: QualityIssue[];
-  warnings: QualityIssue[];
-}
-
-export interface BatchQualitySummary {
-  batch_id: number;
-  ready: number;
-  needs_review: number;
-  blocked: number;
-  items: BatchItemQuality[];
-}

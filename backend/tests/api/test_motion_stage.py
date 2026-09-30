@@ -32,7 +32,7 @@ from app.modules.beat.schemas import (
 )
 from app.modules.motion.renderer import render_video_clip
 from tests.api.test_factory_pipeline import _FactoryTestCase
-from tests.api.test_batch_render import _make_solid_image
+from tests.api.media_helpers import _make_solid_image
 
 
 class _MotionStageTestCase(_FactoryTestCase):

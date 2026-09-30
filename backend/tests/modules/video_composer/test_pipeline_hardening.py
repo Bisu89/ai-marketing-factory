@@ -211,7 +211,9 @@ class RunJobHardeningIntegrationTests(unittest.TestCase):
         self.assertTrue(Path(job.output_path).exists())
         # Atomic output: the tmp write target must never survive a
         # successful render.
-        self.assertFalse((output_dir / ".video_hoan_chinh.tmp.mp4").exists())
+        self.assertEqual(Path(job.output_path).name, f"job_{job_id}_Hardening test.mp4")
+        self.assertEqual(output_dir.parent.name, f"job_{job_id}_Hardening test")
+        self.assertEqual(list(output_dir.glob(".*.tmp.mp4")), [])
 
         report_path = self.tmp_path / ".render" / f"job_{job_id}" / "report.json"
         self.assertTrue(report_path.exists())

@@ -41,14 +41,6 @@ class StoryCostOut(BaseModel):
     unpriced_call_count: int
 
 
-class BatchCostOut(BaseModel):
-    batch_id: int
-    batch_name: str
-    total_cost_usd: float
-    story_count: int
-    unpriced_call_count: int
-
-
 class VideoCostOut(BaseModel):
     video_compose_job_id: int
     project_id: int | None

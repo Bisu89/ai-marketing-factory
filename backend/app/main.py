@@ -14,12 +14,10 @@ from app.api.v1.endpoints.assets_cleanup import sweep_stale_render_cache
 from app.api.v1.endpoints.chinese_drama_dub import generate_dub
 from app.api.v1.endpoints.composition_render import render_beats_for_job
 from app.pipelines.factory_pipeline import (
-    reconcile_batches_on_startup,
     reconcile_factory_runs_on_startup,
     register_factory_event_handlers,
 )
 from app.api.v1.router import api_router
-from app.modules.affiliate.router import redirect_router as affiliate_redirect_router
 from app.core.config import get_settings, resource_path
 from app.core.events import EventBus
 from app.core.exceptions import ExternalServiceError, FileOperationError, NotFoundError, ValidationError
@@ -27,11 +25,6 @@ from app.core.logging import configure_logging
 from app.db.schema import sync_schema
 from app.db.seed import seed_initial_data
 from app.db.session import SessionLocal, engine
-from app.modules.content_strategy.seed import seed_default_pillars
-from app.modules.news.seed import seed_default_news_sources
-from app.modules.news.service import fetch_all_enabled_sources
-from app.modules.publishing.service import reconcile_uploads_on_startup
-from app.modules.scene_cutter.service import SceneCutterService
 from app.modules.storyteller.service import StorytellerService
 from app.modules.story.service import reconcile_story_runs_on_startup
 from app.modules.video_composer.service import VideoComposerService
@@ -52,15 +45,13 @@ async def lifespan(app: FastAPI):
     db = SessionLocal()
     try:
         seed_initial_data(db)
-        seed_default_pillars(db)
-        seed_default_news_sources(db)
     finally:
         db.close()
 
     event_bus = EventBus()
     app.state.event_bus = event_bus
 
-    # Future modules (subtitle/story/caption/voice/affiliate/analytics generators)
+    # Future modules (subtitle/story/caption/voice/analytics generators)
     # register their event subscriptions here -- one line each, no changes to
     # DownloadEngine or any core model required. See app/modules/README.md.
 
@@ -73,10 +64,6 @@ async def lifespan(app: FastAPI):
     )
     download_engine.start()
     app.state.download_engine = download_engine
-
-    scene_cutter_service = SceneCutterService(library_dir=Path(settings.library_dir))
-    scene_cutter_service.start()
-    app.state.scene_cutter_service = scene_cutter_service
 
     storyteller_service = StorytellerService(library_dir=Path(settings.library_dir))
     storyteller_service.start()
@@ -111,14 +98,6 @@ async def lifespan(app: FastAPI):
     # every VideoComposeJob's own state via its own crash recovery.
     register_factory_event_handlers(event_bus)
     reconcile_factory_runs_on_startup(settings)
-    # Task 20 (see docs/features/46-factory-batch-engine.md) -- must run
-    # after reconcile_factory_runs_on_startup, so every BatchItem still
-    # "RUNNING" syncs from its FactoryRun's already-settled outcome, not a
-    # stale in-flight one.
-    reconcile_batches_on_startup()
-    # YouTube Publishing (see docs/features/127-youtube-publishing.md) --
-    # mark any upload left mid-flight by a previous process as 'interrupted'.
-    reconcile_uploads_on_startup()
     # AI Storytelling Studio (feature 131) -- a StoryRun left active by a
     # crashed process becomes FAILED so the UI can show Retry. No-op in
     # Phase 1 (no story pipeline yet); the hook is wired now.
@@ -141,33 +120,10 @@ async def lifespan(app: FastAPI):
     cache_sweep_thread = threading.Thread(target=_cache_sweep_loop, name="render-cache-sweep", daemon=True)
     cache_sweep_thread.start()
 
-    # News feed poll loop (see docs/features/123-news-channel.md). Same
-    # daemon-thread + Event shape as the cache sweep above -- a no-op while
-    # settings.news_poll_interval_minutes == 0 (the shipped default), so a
-    # user who never opens the News page pays nothing for it.
-    news_poll_stop = threading.Event()
-
-    def _news_poll_loop() -> None:
-        while not news_poll_stop.is_set():
-            interval = max(0, get_settings().news_poll_interval_minutes)
-            if interval <= 0:
-                news_poll_stop.wait(5 * 60)  # re-check the setting every 5 min
-                continue
-            try:
-                fetch_all_enabled_sources()
-            except Exception:  # noqa: BLE001 -- a bad poll must never crash the app
-                logging.getLogger(__name__).exception("news feed auto-poll failed")
-            news_poll_stop.wait(interval * 60)
-
-    news_poll_thread = threading.Thread(target=_news_poll_loop, name="news-feed-poll", daemon=True)
-    news_poll_thread.start()
-
     yield
 
     cache_sweep_stop.set()
-    news_poll_stop.set()
     download_engine.shutdown()
-    scene_cutter_service.shutdown()
     storyteller_service.shutdown()
     video_composer_service.shutdown()
 
@@ -175,11 +131,10 @@ async def lifespan(app: FastAPI):
 def _prepend_bundled_ffmpeg_to_path() -> None:
     """Packaged builds ship ffmpeg.exe/ffprobe.exe under resources/ffmpeg/ so
     a customer never has to install ffmpeg themselves. Every ffmpeg/ffprobe
-    call in this app -- the direct subprocess.run(["ffmpeg", ...]) calls in
-    video_composer/service.py, and PySceneDetect's own internal ffmpeg call
-    inside scene_cutter/service.py -- resolves the binary via PATH, so fixing
-    it once here (before anything can invoke either) covers both without
-    touching either module. In dev, resources/ffmpeg/ doesn't exist, so this
+    call in this app -- e.g. the direct subprocess.run(["ffmpeg", ...]) calls
+    in video_composer/service.py -- resolves the binary via PATH, so fixing
+    it once here (before anything can invoke one) covers them all without
+    touching any module. In dev, resources/ffmpeg/ doesn't exist, so this
     is a no-op and the system's own ffmpeg (if any) is used as before.
     """
     ffmpeg_dir = resource_path("resources/ffmpeg")
@@ -193,11 +148,6 @@ def create_app() -> FastAPI:
     settings = get_settings()
     app = FastAPI(title=settings.app_name, debug=settings.debug, lifespan=lifespan)
     app.include_router(api_router, prefix=settings.api_v1_prefix)
-    # Real, short, shareable click-tracking link (Task 12 -- see
-    # docs/features/77-affiliate-engine.md) -- deliberately NOT nested
-    # under api_v1_prefix, since /r/{code} is meant to be pasted into a
-    # social post/bio, not called as an API client.
-    app.include_router(affiliate_redirect_router)
 
     # Local-only desktop app: the frontend dev server (Vite, typically :5173)
     # and this API (typically :8000) are different origins in the browser's

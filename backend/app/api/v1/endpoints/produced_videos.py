@@ -5,9 +5,8 @@ strictly per-project, so there was no one place to see, filter and play
 back everything that has been produced.
 
 Composition root (same shape as dashboard.py): reads app.modules.video_composer
-(VideoComposeJob), app.modules.beat (Project), app.modules.batch
-(Batch/BatchItem) and app.modules.series (Series) -- none of which import
-each other -- and joins them here.
+(VideoComposeJob) and app.modules.beat (Project) -- neither imports the
+other -- and joins them here.
 """
 
 import json
@@ -23,9 +22,7 @@ from sqlalchemy.orm import Session
 from app.core.config import Settings, get_settings
 from app.core.exceptions import NotFoundError, ValidationError
 from app.db.session import get_db
-from app.modules.batch.models import Batch, BatchItem
 from app.modules.beat.models import Project
-from app.modules.series.models import Series
 from app.modules.video_composer.models import COARSE_STATUS, VideoComposeJob
 from app.modules.video_composer.schemas import job_to_out
 
@@ -40,10 +37,6 @@ class ProducedVideoOut(BaseModel):
     hashtags: list[str] = []
     project_id: int | None = None
     project_name: str | None = None
-    batch_id: int | None = None
-    batch_name: str | None = None
-    series_id: int | None = None
-    series_name: str | None = None
     duration_sec: float | None = None
     width: int | None = None
     height: int | None = None
@@ -56,17 +49,9 @@ class ProducedVideoOut(BaseModel):
     completed_at: datetime | None = None
 
 
-class ProducedVideoFacet(BaseModel):
-    id: int
-    name: str
-    count: int
-
-
 class ProducedVideoListOut(BaseModel):
     total: int
     items: list[ProducedVideoOut]
-    batches: list[ProducedVideoFacet]
-    series: list[ProducedVideoFacet]
 
 
 def _package_metadata(output_path: str | None) -> dict:
@@ -97,8 +82,6 @@ def _thumbnail_url(output_media_url: str | None) -> str | None:
 @router.get("/produced-videos", response_model=ProducedVideoListOut)
 def list_produced_videos(
     status: str = "COMPLETED",
-    batch_id: int | None = None,
-    series_id: int | None = None,
     q: str | None = None,
     limit: int = 48,
     offset: int = 0,
@@ -112,13 +95,7 @@ def list_produced_videos(
 
     jobs = db.query(VideoComposeJob).order_by(VideoComposeJob.id.desc()).all()
 
-    projects = db.query(Project).all()
-    project_by_id = {p.id: p for p in projects}
-    project_by_job = {p.render_job_id: p for p in projects if p.render_job_id is not None}
-    items_with_job = db.query(BatchItem).filter(BatchItem.render_job_id.isnot(None)).all()
-    item_by_job = {it.render_job_id: it for it in items_with_job}
-    batch_by_id = {b.id: b for b in db.query(Batch).all()}
-    series_by_id = {s.id: s for s in db.query(Series).all()}
+    project_by_job = {p.render_job_id: p for p in db.query(Project).all() if p.render_job_id is not None}
 
     rows: list[ProducedVideoOut] = []
     for job in jobs:
@@ -129,11 +106,6 @@ def list_produced_videos(
             continue
 
         project = project_by_job.get(job.id)
-        item = item_by_job.get(job.id)
-        if project is None and item is not None and item.project_id is not None:
-            project = project_by_id.get(item.project_id)
-        batch = batch_by_id.get(item.batch_id) if item is not None else None
-        series = series_by_id.get(project.series_id) if project and project.series_id else None
 
         meta = _package_metadata(job.output_path)
         out = job_to_out(job, library_dir)
@@ -147,10 +119,6 @@ def list_produced_videos(
             hashtags=meta.get("hashtags") or [],
             project_id=project.id if project else None,
             project_name=project.name if project else None,
-            batch_id=batch.id if batch else None,
-            batch_name=batch.name if batch else None,
-            series_id=series.id if series else None,
-            series_name=series.name if series else None,
             duration_sec=out.render_duration_sec,
             width=out.render_width,
             height=out.render_height,
@@ -163,41 +131,14 @@ def list_produced_videos(
             completed_at=job.completed_at,
         ))
 
-    # Facets are computed over the status-filtered set (before batch/series/q
-    # narrowing) so the dropdowns always offer every value that *could* be
-    # selected, not only the ones surviving the current filter.
-    batch_counts: dict[int, int] = {}
-    series_counts: dict[int, int] = {}
-    for row in rows:
-        if row.batch_id is not None:
-            batch_counts[row.batch_id] = batch_counts.get(row.batch_id, 0) + 1
-        if row.series_id is not None:
-            series_counts[row.series_id] = series_counts.get(row.series_id, 0) + 1
-
-    batches = [
-        ProducedVideoFacet(id=bid, name=batch_by_id[bid].name if bid in batch_by_id else f"Batch {bid}", count=n)
-        for bid, n in sorted(batch_counts.items(), key=lambda kv: -kv[1])
-    ]
-    series_facets = [
-        ProducedVideoFacet(id=sid, name=series_by_id[sid].name if sid in series_by_id else f"Series {sid}", count=n)
-        for sid, n in sorted(series_counts.items(), key=lambda kv: -kv[1])
-    ]
-
     filtered = [
         row for row in rows
-        if (batch_id is None or row.batch_id == batch_id)
-        and (series_id is None or row.series_id == series_id)
-        and (
-            not q
-            or q.strip().lower() in f"{row.title} {row.description or ''}".lower()
-        )
+        if not q or q.strip().lower() in f"{row.title} {row.description or ''}".lower()
     ]
 
     return ProducedVideoListOut(
         total=len(filtered),
         items=filtered[offset:offset + limit],
-        batches=batches,
-        series=series_facets,
     )
 
 

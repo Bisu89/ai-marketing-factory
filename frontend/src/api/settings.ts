@@ -21,54 +21,10 @@ export async function updateAiProvider(provider: AIProvider): Promise<{ ai_provi
   return apiPut<{ ai_provider: AIProvider }>("/settings/ai-provider", { provider });
 }
 
-export async function updateTikTokClientKey(clientKey: string): Promise<{ has_tiktok_client_key: boolean }> {
-  return apiPut<{ has_tiktok_client_key: boolean }>("/settings/tiktok-client-key", { client_key: clientKey });
-}
-
-export async function updateTikTokClientSecret(clientSecret: string): Promise<{ has_tiktok_client_secret: boolean }> {
-  return apiPut<{ has_tiktok_client_secret: boolean }>("/settings/tiktok-client-secret", { client_secret: clientSecret });
-}
-
-export async function updateTikTokRedirectUri(redirectUri: string): Promise<{ tiktok_redirect_uri: string }> {
-  return apiPut<{ tiktok_redirect_uri: string }>("/settings/tiktok-redirect-uri", { redirect_uri: redirectUri });
-}
-
 export async function updateRenderCacheRetention(
   days: number,
 ): Promise<{ render_cache_retention_days: number }> {
   return apiPut<{ render_cache_retention_days: number }>("/settings/render-cache-retention", { days });
-}
-
-export async function updateGoogleOAuthClient(
-  clientId: string,
-  clientSecret: string,
-): Promise<{ has_google_oauth_client: boolean }> {
-  return apiPut<{ has_google_oauth_client: boolean }>("/settings/google-oauth-client", {
-    client_id: clientId,
-    client_secret: clientSecret,
-  });
-}
-
-export async function updateYouTubeApiKey(
-  apiKey: string,
-): Promise<{ has_youtube_api_key: boolean }> {
-  return apiPut<{ has_youtube_api_key: boolean }>("/settings/youtube-api-key", { api_key: apiKey });
-}
-
-export async function updateRedditCredentials(
-  clientId: string,
-  clientSecret: string,
-): Promise<{ has_reddit_credentials: boolean }> {
-  return apiPut<{ has_reddit_credentials: boolean }>("/settings/reddit-credentials", {
-    client_id: clientId,
-    client_secret: clientSecret,
-  });
-}
-
-export async function updateNewsPollInterval(
-  minutes: number,
-): Promise<{ news_poll_interval_minutes: number }> {
-  return apiPut<{ news_poll_interval_minutes: number }>("/settings/news-poll-interval", { minutes });
 }
 
 export async function browseFolders(path?: string): Promise<BrowseFoldersResult> {

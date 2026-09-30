@@ -13,8 +13,6 @@ from sqlalchemy.orm import sessionmaker
 
 from app.core.exceptions import NotFoundError, ValidationError
 from app.db.base import Base
-from app.modules.series import service as series_service
-from app.modules.series.models import Series
 from app.modules.story import service
 from app.modules.story.models import (
     Episode,
@@ -29,7 +27,7 @@ from app.modules.story.models import (
 )
 
 _STORY_TABLES = [
-    Series.__table__, StoryChannel.__table__, Episode.__table__, Story.__table__,
+    StoryChannel.__table__, Episode.__table__, Story.__table__,
     StoryCharacter.__table__, StoryLocation.__table__, StoryChapter.__table__,
     StoryScene.__table__, StoryRun.__table__, StoryCheckpoint.__table__,
 ]
@@ -45,7 +43,6 @@ class _StoryServiceTestCase(unittest.TestCase):
         self.Session = sessionmaker(bind=self.engine)
         self._patchers = [
             patch.object(service, "SessionLocal", self.Session),
-            patch.object(series_service, "SessionLocal", self.Session),
         ]
         for p in self._patchers:
             p.start()
@@ -55,9 +52,6 @@ class _StoryServiceTestCase(unittest.TestCase):
             p.stop()
         self.engine.dispose()
         self.tmpdir.cleanup()
-
-    def _series(self, name="Decisive Battles") -> Series:
-        return series_service.create_series(name, "")
 
 
 class ChannelCrudTests(_StoryServiceTestCase):
@@ -78,23 +72,23 @@ class ChannelCrudTests(_StoryServiceTestCase):
 
 class EpisodeTests(_StoryServiceTestCase):
     def test_orphan_series_ref_is_allowed(self):
-        # series_id is a bare int (Series is another module) -- an orphan
+        # series_id is a bare int (no Series table to check against) -- an orphan
         # is harmless, not an error worth a cross-module lookup.
         ep = service.create_episode(series_id=123, order=1)
         self.assertEqual(ep.series_id, 123)
 
     def test_list_episodes_ordered(self):
-        s = self._series()
-        service.create_episode(series_id=s.id, order=2, title="B")
-        service.create_episode(series_id=s.id, order=1, title="A")
-        eps = service.list_episodes_for_series(s.id)
+        series_id = 7
+        service.create_episode(series_id=series_id, order=2, title="B")
+        service.create_episode(series_id=series_id, order=1, title="A")
+        eps = service.list_episodes_for_series(series_id)
         self.assertEqual([e.title for e in eps], ["A", "B"])
 
 
 class StoryTests(_StoryServiceTestCase):
     def test_create_links_episode(self):
-        s = self._series()
-        ep = service.create_episode(series_id=s.id, order=1)
+        series_id = 7
+        ep = service.create_episode(series_id=series_id, order=1)
         st = service.create_story(
             title="Cannae 216 BC", mode="HISTORY", episode_id=ep.id, project_config_json={"render": {"profile": "SOCIAL_LANDSCAPE"}},
             story_bible_json={}, style_bible_json={}, budget_usd=2.0, production_profile="BALANCED",

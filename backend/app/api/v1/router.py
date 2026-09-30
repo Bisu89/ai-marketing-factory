@@ -1,8 +1,6 @@
 from fastapi import APIRouter
 
 from app.api.v1.endpoints import (
-    affiliate_performance,
-    affiliate_recommend,
     ai_costs,
     assets_cleanup,
     audio_generate,
@@ -10,11 +8,8 @@ from app.api.v1.endpoints import (
     beat_preview,
     caption_generate,
     categories,
-    competitor_analysis,
     composition_render,
     content_generate,
-    content_idea_generation,
-    content_recommendations,
     dashboard,
     detect,
     downloads,
@@ -26,14 +21,10 @@ from app.api.v1.endpoints import (
     publish_log,
     motion_generate,
     package_generate,
-    performance_intelligence,
     produced_videos,
-    publish_video,
     quality_gate,
-    series_project,
     settings,
     story_remix,
-    winner_detection,
     tags,
     videos,
     voice_generate,
@@ -41,26 +32,14 @@ from app.api.v1.endpoints import (
 
 # Cross-module orchestration composition roots -- see app/pipelines/__init__.py.
 from app.pipelines import (
-    batch_render,
-    content_batch_generate,
     factory_pipeline,
-    news_pipeline,
     story_compile,
     story_pipeline,
 )
 from app.modules.ai.hook.router import router as hook_router
 from app.modules.ai.story.router import router as story_router
 from app.modules.asset.router import router as asset_router
-from app.modules.batch.router import router as batch_router
 from app.modules.beat.router import router as beat_router
-from app.modules.affiliate.router import router as affiliate_router
-from app.modules.competitor_intelligence.router import router as competitor_intelligence_router
-from app.modules.content_strategy.router import router as content_strategy_router
-from app.modules.discovery.router import router as discovery_router
-from app.modules.news.router import router as news_router
-from app.modules.publishing.router import router as publishing_router
-from app.modules.scene_cutter.router import router as scene_cutter_router
-from app.modules.series.router import router as series_router
 from app.modules.storyteller.router import router as storyteller_router
 from app.modules.story.router import router as story_planning_router
 from app.modules.video_composer.router import router as video_composer_router
@@ -76,33 +55,14 @@ api_router.include_router(detect.router, tags=["detect"])
 api_router.include_router(settings.router, tags=["settings"])
 api_router.include_router(insights.router, tags=["insights"])
 api_router.include_router(publish_log.router, tags=["publish-log"])
-api_router.include_router(performance_intelligence.router, tags=["performance-intelligence"])
-api_router.include_router(winner_detection.router, tags=["winner-detection"])
-api_router.include_router(content_recommendations.router, tags=["content-recommendations"])
 api_router.include_router(ai_costs.router, tags=["ai-costs"])
-api_router.include_router(competitor_intelligence_router, tags=["competitor-intelligence"])
-api_router.include_router(competitor_analysis.router, tags=["competitor-analysis"])
-api_router.include_router(affiliate_router, tags=["affiliate"])
-api_router.include_router(affiliate_recommend.router, tags=["affiliate-recommend"])
-api_router.include_router(affiliate_performance.router, tags=["affiliate-performance"])
-api_router.include_router(scene_cutter_router, tags=["scene-cutter"])
 api_router.include_router(video_composer_router, tags=["video-composer"])
 api_router.include_router(asset_router, tags=["asset"])
 api_router.include_router(assets_cleanup.router, tags=["asset"])
 api_router.include_router(story_router, tags=["story"])
 api_router.include_router(hook_router, tags=["hook"])
-api_router.include_router(content_strategy_router, tags=["content-strategy"])
-api_router.include_router(discovery_router, tags=["discovery"])
 api_router.include_router(storyteller_router, tags=["storyteller"])
-api_router.include_router(news_router, tags=["news"])
-api_router.include_router(news_pipeline.router, tags=["news-pipeline"])
-api_router.include_router(publishing_router, tags=["publishing"])
-api_router.include_router(publish_video.router, tags=["publishing"])
-api_router.include_router(content_idea_generation.router, tags=["content-idea-generation"])
-api_router.include_router(content_batch_generate.router, tags=["content-batch"])
 api_router.include_router(beat_router, tags=["beat"])
-api_router.include_router(series_router, tags=["series"])
-api_router.include_router(series_project.router, tags=["series-project"])
 api_router.include_router(story_planning_router, tags=["story-planning"])
 api_router.include_router(story_pipeline.router, tags=["story-planning"])
 api_router.include_router(story_compile.router, tags=["story-planning"])
@@ -111,8 +71,6 @@ api_router.include_router(beat_generate.router, tags=["beat-generate"])
 api_router.include_router(manhua_recap.router, tags=["manhua-recap"])
 api_router.include_router(story_remix.router, tags=["story-remix"])
 api_router.include_router(beat_preview.router, tags=["beat-preview"])
-api_router.include_router(batch_router, tags=["batch"])
-api_router.include_router(batch_render.router, tags=["batch-render"])
 api_router.include_router(quality_gate.router, tags=["quality-gate"])
 api_router.include_router(dashboard.router, tags=["dashboard"])
 api_router.include_router(produced_videos.router, tags=["produced-videos"])

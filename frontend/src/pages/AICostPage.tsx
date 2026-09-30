@@ -3,8 +3,8 @@ import { DollarSign, Loader2 } from "lucide-react";
 import { PageHeader } from "../components/PageHeader";
 import { EmptyState } from "../components/EmptyState";
 import { BarRanking } from "../components/BarRanking";
-import { getAICostBatches, getAICostStories, getAICostSummary } from "../api/aiCost";
-import type { AICostSummary, BatchCost, StoryCost } from "../types/aiCost";
+import { getAICostStories, getAICostSummary } from "../api/aiCost";
+import type { AICostSummary, StoryCost } from "../types/aiCost";
 import "./AICostPage.css";
 
 function usd(value: number | null): string {
@@ -16,16 +16,14 @@ export function AICostPage() {
   const [error, setError] = useState<string | null>(null);
   const [summary, setSummary] = useState<AICostSummary | null>(null);
   const [stories, setStories] = useState<StoryCost[]>([]);
-  const [batches, setBatches] = useState<BatchCost[]>([]);
 
   useEffect(() => {
     let cancelled = false;
-    Promise.all([getAICostSummary(), getAICostStories(), getAICostBatches()])
-      .then(([s, st, b]) => {
+    Promise.all([getAICostSummary(), getAICostStories()])
+      .then(([s, st]) => {
         if (cancelled) return;
         setSummary(s);
         setStories(st);
-        setBatches(b);
       })
       .catch((err) => {
         if (!cancelled) setError(err instanceof Error ? err.message : "Không tải được dữ liệu chi phí AI.");
@@ -143,33 +141,6 @@ export function AICostPage() {
             )}
           </section>
 
-          <section className="ac-section">
-            <h2 className="ac-section-title">Cost per Batch</h2>
-            {batches.length === 0 ? (
-              <EmptyState icon={DollarSign} title="Chưa có Batch nào" description="Chưa có Content Batch nào chứa Story đã được tính giá." />
-            ) : (
-              <div className="ac-table-wrap">
-                <table className="ac-table">
-                  <thead>
-                    <tr>
-                      <th>Batch</th>
-                      <th>Số Story</th>
-                      <th>Chi phí</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {batches.map((b) => (
-                      <tr key={b.batch_id}>
-                        <td>{b.batch_name}</td>
-                        <td>{b.story_count}</td>
-                        <td className="ac-cost-cell">{usd(b.total_cost_usd)}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            )}
-          </section>
         </>
       )}
     </>

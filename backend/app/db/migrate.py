@@ -67,28 +67,15 @@ _NEW_COLUMNS: list[tuple[str, str, str]] = [
     # this feature).
     ("project", "series_id", "INTEGER"),
     ("project", "episode_number", "INTEGER"),
-    # AI Storytelling Studio Phase 1 (feature 131) -- additive columns on
-    # the existing `series` table. `create_all` never alters an existing
-    # table and Alembic stamps (never runs 0001) on an unversioned DB, so
-    # these are added here, the same mechanism this app has always used for
-    # a new column on a shipped table. The 0001 migration also carries
-    # them, only for `alembic downgrade base && upgrade head` cycling.
-    ("series", "channel_id", "INTEGER"),
-    ("series", "narrative_identity", "VARCHAR"),
-    ("series", "visual_identity_json", "JSON DEFAULT '{}'"),
-    ("series", "voice_override_json", "JSON DEFAULT '{}'"),
-    ("series", "metadata_conventions_json", "JSON DEFAULT '{}'"),
 ]
 
 # (index_name, table, column) -- Base.metadata.create_all() only creates
 # indexes for tables it creates from scratch; an already-existing table's
-# column that later gains index=True (Task 20's BatchItem.project_id) needs
+# column that later gains index=True (e.g. Project.series_id) needs
 # its own explicit, idempotent CREATE INDEX here, same reasoning as
 # _NEW_COLUMNS above.
 _NEW_INDEXES: list[tuple[str, str, str]] = [
-    ("ix_batch_item_project_id", "batch_item", "project_id"),
     ("ix_project_series_id", "project", "series_id"),
-    ("ix_series_channel_id", "series", "channel_id"),  # feature 131
 ]
 
 

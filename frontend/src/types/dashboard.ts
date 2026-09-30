@@ -9,19 +9,9 @@ export interface DashboardSummary {
   completed_today: number;
 }
 
-export interface DashboardBatchProgress {
-  batch_id: number;
-  name: string;
-  total: number;
-  completed: number;
-  // Only the real, non-zero BatchItemStatus values present in this batch.
-  status_counts: Record<string, number>;
-}
-
 export interface DashboardCurrentRender {
   render_job_id: number;
   project_id: number | null;
-  batch_id: number | null;
   project_name: string;
   phase: string | null;
   progress_current: number | null;
@@ -32,9 +22,7 @@ export interface DashboardCurrentRender {
 export type AttentionPriority = "BLOCKED" | "FAILED" | "NEEDS_REVIEW";
 
 export interface DashboardAttentionItem {
-  batch_id: number;
-  item_id: number;
-  project_id: number | null;
+  project_id: number;
   project_name: string;
   priority: AttentionPriority;
   reason: string;
@@ -43,7 +31,6 @@ export interface DashboardAttentionItem {
 export interface DashboardVideo {
   render_job_id: number;
   project_id: number | null;
-  batch_id: number | null;
   title: string;
   status: "COMPLETED" | "FAILED";
   duration_sec: number | null;
@@ -73,7 +60,6 @@ export interface DashboardCost {
 export interface DashboardOut {
   has_any_data: boolean;
   summary: DashboardSummary;
-  current_batch: DashboardBatchProgress | null;
   current_render: DashboardCurrentRender | null;
   attention: DashboardAttentionItem[];
   attention_total: number;

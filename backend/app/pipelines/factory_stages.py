@@ -36,7 +36,7 @@ from app.api.v1.endpoints.audio_generate import (
     audio_master_path,
     generate_project_audio_master,
 )
-from app.pipelines.batch_render import project_composition_plan
+from app.pipelines.composition_plan import project_composition_plan
 from app.api.v1.endpoints.beat_generate import generate_beat_plan
 from app.api.v1.endpoints.caption_generate import captions_ass_path, captions_is_valid, generate_project_captions
 from app.api.v1.endpoints.composition_render import render_composition

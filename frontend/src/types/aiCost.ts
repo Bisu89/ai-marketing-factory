@@ -33,14 +33,6 @@ export interface StoryCost {
   unpriced_call_count: number;
 }
 
-export interface BatchCost {
-  batch_id: number;
-  batch_name: string;
-  total_cost_usd: number;
-  story_count: number;
-  unpriced_call_count: number;
-}
-
 export interface VideoCost {
   video_compose_job_id: number;
   project_id: number | null;

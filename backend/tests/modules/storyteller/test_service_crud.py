@@ -98,6 +98,16 @@ class StorytellerServiceTests(unittest.TestCase):
             service.get_episode(ep.id)
         self.assertFalse(episode_dir.exists())
 
+    def test_delete_episode_removes_labeled_directory(self):
+        ep = self._make(title="My Story")
+        episode_dir = Path(self.tmp.name) / "storyteller" / "episodes" / f"{ep.id}_My Story"
+        episode_dir.mkdir(parents=True)
+        (episode_dir / f"{ep.id}_My Story.mp4").write_bytes(b"fake")
+
+        service.delete_episode(ep.id, Path(self.tmp.name))
+
+        self.assertFalse(episode_dir.exists())
+
     def test_list_assets_filters_by_kind(self):
         db = self.SessionLocal()
         db.add(StorytellerAsset(kind="background", name="bg1", path="/x/bg1.mp4"))

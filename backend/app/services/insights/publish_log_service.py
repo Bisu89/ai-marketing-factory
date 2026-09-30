@@ -78,7 +78,6 @@ class PublishLogService:
         published_at: datetime | None,
         status: str,
         notes: str | None,
-        affiliate_link_id: int | None = None,
     ) -> PublishLog:
         if self.db.get(Video, video_id) is None:
             raise NotFoundError("Video", video_id)
@@ -94,7 +93,6 @@ class PublishLogService:
             affiliate_clicks=affiliate_clicks,
             affiliate_sales=affiliate_sales,
             affiliate_revenue=affiliate_revenue,
-            affiliate_link_id=affiliate_link_id,
             published_at=published_at or _utcnow(),
             status=status,
             notes=notes,
@@ -122,7 +120,6 @@ class PublishLogService:
         affiliate_revenue: float | None,
         status: str | None,
         notes: str | None,
-        affiliate_link_id: int | None = None,
     ) -> PublishLog:
         log = self._get(log_id)
         if page_name is not None:
@@ -139,8 +136,6 @@ class PublishLogService:
             log.affiliate_sales = affiliate_sales
         if affiliate_revenue is not None:
             log.affiliate_revenue = affiliate_revenue
-        if affiliate_link_id is not None:
-            log.affiliate_link_id = affiliate_link_id
         if status is not None:
             log.status = status
         if notes is not None:

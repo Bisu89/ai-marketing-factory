@@ -20,8 +20,6 @@ from app.api.v1.endpoints.content_generate import (
     validate_script_text,
 )
 from app.pipelines.factory_pipeline import _execute_pipeline_sync, _stage_generate_content, retry_run
-from app.modules.batch import service as batch_service
-from app.modules.batch.schemas import CreateBatchRequest, find_duplicate_ideas, normalize_idea, parse_idea_rows
 from app.modules.beat.project_service import (
     get_project_draft,
     update_project_beat_plan,
@@ -313,27 +311,6 @@ class CrashRecoveryTests(_ContentStageTestCase):
         self.assertEqual(resumed.status, "QUEUED")
 
 
-class DuplicateIdeaTests(unittest.TestCase):
-    def test_exact_normalized_duplicates_detected(self):
-        ideas = [
-            "Why couples stop talking",
-            "why couples stop talking",
-            "Why couples stop talking!",
-            "A totally different idea",
-        ]
-        duplicates = find_duplicate_ideas(ideas)
-        self.assertEqual(len(duplicates), 1)
-        (indexes,) = duplicates.values()
-        self.assertEqual(sorted(indexes), [0, 1, 2])
-
-    def test_normalize_idea_is_whitespace_and_punctuation_insensitive(self):
-        self.assertEqual(normalize_idea("  Why   Couples Stop Talking!  "), normalize_idea("why couples stop talking"))
-
-    def test_duplicates_are_never_auto_deleted_by_the_parser(self):
-        rows = parse_idea_rows("Same idea\nSame idea\nSame idea")
-        self.assertEqual(len(rows), 3)  # parser never dedupes -- see find_duplicate_ideas for that, separately
-
-
 class FingerprintTests(unittest.TestCase):
     def test_same_input_same_fingerprint(self):
         content = ContentProjectConfig()
@@ -354,42 +331,6 @@ class FingerprintTests(unittest.TestCase):
         fp = content_fingerprint("An idea", "custom", content)
         self.assertIsInstance(fp, str)
         self.assertEqual(len(fp), 64)  # sha256 hex digest length, not a row id
-
-
-class BatchIdeaImportTests(_ContentStageTestCase):
-    def _create_idea_batch(self, ideas_text: str, dedupe: bool = False):
-        from app.pipelines.batch_render import create_batch
-
-        with patch("app.pipelines.batch_render.SessionLocal", self.TestSessionLocal):
-            return create_batch(
-                CreateBatchRequest(name="Idea Batch", template_id="custom", ideas_text=ideas_text, dedupe=dedupe),
-                self.settings,
-            )
-
-    def test_ten_ideas_become_ten_batch_items_and_ten_projects(self):
-        ideas = "\n".join(f"Idea number {i}" for i in range(1, 11))
-        batch = self._create_idea_batch(ideas)
-        self.assertEqual(len(batch.items), 10)
-        for item in batch.items:
-            self.assertIsNotNone(item.project_id)
-            draft = get_project_draft(item.project_id)
-            self.assertTrue(draft.idea)
-            self.assertIsNone(draft.script_text)
-
-    def test_batch_engine_runs_content_stage_for_each_idea_respecting_concurrency(self):
-        ideas = "\n".join(f"Idea number {i}" for i in range(1, 6))
-        batch = self._create_idea_batch(ideas)
-        self.settings.max_parallel_projects = 2
-
-        with self._patch_content()[0], self._patch_content()[1]:
-            started = factory_pipeline_module.run_batch_factory(batch.id, self.settings, self.service)
-        self.assertEqual(started, 5)
-
-        final = batch_service.get_batch(batch.id)
-        for item in final.items:
-            self.assertIn(item.status, ("RUNNING", "COMPLETED", "NEEDS_REVIEW", "FAILED"))
-            draft = get_project_draft(item.project_id)
-            self.assertTrue(draft.script_text)  # content generation ran for every idea
 
 
 class EndToEndIdeaTests(_ContentStageTestCase):

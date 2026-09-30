@@ -49,13 +49,9 @@ class StoryJob(Base):
     status: Mapped[str] = mapped_column(String, nullable=False, default="completed")
     error_message: Mapped[str | None] = mapped_column(String, nullable=True)
 
-    # Task 04 -- optional provenance back to the app.modules.content_strategy
-    # ContentIdea (if any) that supplied extra context to this generation.
-    # Bare int, no FK/relationship -- ai/story must never import
-    # content_strategy (per app/modules/README.md); same convention as
-    # PublishLog.ai_story_job_id / BatchItem.project_id elsewhere in this
-    # codebase. Null for every StoryJob created the plain way (POST
-    # /story-jobs with no idea involved), which is most of them.
+    # Dormant leftover of the removed Content Studio (see
+    # docs/features/157-remove-unused-features.md) -- kept on the model but
+    # no longer written.
     content_idea_id: Mapped[int | None] = mapped_column(Integer, nullable=True)
 
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow)

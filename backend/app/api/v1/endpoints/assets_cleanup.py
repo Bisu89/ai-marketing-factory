@@ -16,8 +16,8 @@ Two entry points, one core (`perform_cleanup`):
   `settings.render_cache_retention_days` (0 = off).
 
 Composition root (same shape as produced_videos.py / dashboard.py): reads
-app.modules.asset (Asset), app.modules.beat (Project), app.modules.batch
-(BatchItem) and app.modules.video_composer (VideoComposeJob) -- none of
+app.modules.asset (Asset), app.modules.beat (Project) and
+app.modules.video_composer (VideoComposeJob) -- none of
 which import each other -- and joins them here. Only ever touches a
 project whose render is genuinely finished (>=1 COMPLETED render job, no
 QUEUED/RUNNING one), so it can never delete a file out from under an
@@ -39,7 +39,6 @@ from app.core.config import Settings, get_settings
 from app.core.exceptions import ValidationError
 from app.db.session import SessionLocal, get_db
 from app.modules.asset.models import Asset
-from app.modules.batch.models import BatchItem
 from app.modules.beat.models import Project
 from app.modules.video_composer.models import COARSE_STATUS, VideoComposeJob
 
@@ -113,10 +112,6 @@ def _eligible_project_ids(
     job_ids_by_project: dict[int, set[int]] = {}
     for p in db.query(Project).filter(Project.render_job_id.isnot(None)).all():
         job_ids_by_project.setdefault(p.id, set()).add(p.render_job_id)
-    for it in db.query(BatchItem).filter(
-        BatchItem.project_id.isnot(None), BatchItem.render_job_id.isnot(None)
-    ).all():
-        job_ids_by_project.setdefault(it.project_id, set()).add(it.render_job_id)
 
     if not job_ids_by_project:
         return set(), set(), set()

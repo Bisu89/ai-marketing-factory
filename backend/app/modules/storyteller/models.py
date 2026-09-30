@@ -51,7 +51,7 @@ STORYTELLER_LAYOUTS = ("single", "triptych", "slideshow")
 
 class StorytellerEpisode(Base):
     """One narrated long-form episode: pasted/uploaded script -> TTS ->
-    (optional) captions -> composited -> final.mp4. Runs on this module's
+    (optional) captions -> composited -> <id>_<title>.mp4. Runs on this module's
     own queue + worker thread (StorytellerService), independent of every
     other render engine in this app (VideoComposerService, SceneCutterService,
     ...).

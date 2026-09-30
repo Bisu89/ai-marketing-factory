@@ -79,6 +79,11 @@ def upgrade() -> None:
 
 
 def downgrade() -> None:
-    op.drop_table("discovery_result")
-    op.drop_index("ix_discovery_search_created", table_name="discovery_search")
-    op.drop_table("discovery_search")
+    # Viral Source Radar was removed (docs/features/157-remove-unused-features.md),
+    # so a database created after that never had these tables.
+    inspector = sa.inspect(op.get_bind())
+    if inspector.has_table("discovery_result"):
+        op.drop_table("discovery_result")
+    if inspector.has_table("discovery_search"):
+        op.drop_index("ix_discovery_search_created", table_name="discovery_search")
+        op.drop_table("discovery_search")

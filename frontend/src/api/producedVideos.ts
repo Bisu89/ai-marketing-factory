@@ -6,8 +6,6 @@ import type { ProducedVideoList, ProducedVideoQuery } from "../types/producedVid
 export function listProducedVideos(query: ProducedVideoQuery = {}): Promise<ProducedVideoList> {
   const params = new URLSearchParams();
   if (query.status) params.set("status", query.status);
-  if (query.batch_id != null) params.set("batch_id", String(query.batch_id));
-  if (query.series_id != null) params.set("series_id", String(query.series_id));
   if (query.q) params.set("q", query.q);
   if (query.limit != null) params.set("limit", String(query.limit));
   if (query.offset != null) params.set("offset", String(query.offset));

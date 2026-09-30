@@ -38,7 +38,6 @@ def create_publish_log(
         affiliate_clicks=payload.affiliate_clicks,
         affiliate_sales=payload.affiliate_sales,
         affiliate_revenue=payload.affiliate_revenue,
-        affiliate_link_id=payload.affiliate_link_id,
         published_at=payload.published_at,
         status=payload.status,
         notes=payload.notes,
@@ -77,7 +76,6 @@ def update_publish_log(
         affiliate_clicks=payload.affiliate_clicks,
         affiliate_sales=payload.affiliate_sales,
         affiliate_revenue=payload.affiliate_revenue,
-        affiliate_link_id=payload.affiliate_link_id,
         status=payload.status,
         notes=payload.notes,
     )

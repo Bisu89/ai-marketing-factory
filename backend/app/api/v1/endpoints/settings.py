@@ -11,18 +11,9 @@ from app.core.config import (
     get_settings,
     update_ai_provider,
     update_anthropic_api_key,
-    update_google_oauth_client_id,
-    update_google_oauth_client_secret,
     update_library_dir,
-    update_news_poll_interval_minutes,
     update_openai_api_key,
     update_render_cache_retention_days,
-    update_tiktok_client_key,
-    update_tiktok_client_secret,
-    update_tiktok_redirect_uri,
-    update_reddit_credentials,
-    update_youtube_api_key,
-    update_youtube_redirect_uri,
 )
 from app.modules.ai.llm_client import AI_PROVIDERS, resolve_ai_credentials
 from app.services.download.engine import DownloadEngine
@@ -46,42 +37,8 @@ class AIProviderIn(BaseModel):
     provider: str
 
 
-class TikTokClientKeyIn(BaseModel):
-    client_key: str
-
-
-class TikTokClientSecretIn(BaseModel):
-    client_secret: str
-
-
-class TikTokRedirectUriIn(BaseModel):
-    redirect_uri: str
-
-
-class YouTubeApiKeyIn(BaseModel):
-    api_key: str
-
-
-class RedditCredentialsIn(BaseModel):
-    client_id: str
-    client_secret: str
-
-
-class GoogleOAuthClientIn(BaseModel):
-    client_id: str
-    client_secret: str
-
-
-class YouTubeRedirectUriIn(BaseModel):
-    redirect_uri: str
-
-
 class RenderCacheRetentionIn(BaseModel):
     days: int
-
-
-class NewsPollIntervalIn(BaseModel):
-    minutes: int
 
 
 class FolderEntry(BaseModel):
@@ -110,25 +67,9 @@ def read_settings(settings: Settings = Depends(get_settings)):
         "has_anthropic_key": bool(settings.anthropic_api_key),
         "has_openai_key": bool(settings.openai_api_key),
         "has_ai_key": resolve_ai_credentials(settings) is not None,
-        # Competitor Content Analyzer (Task 11) -- same "never echo the
-        # secret, only whether it's set" convention as the AI keys above.
-        "has_tiktok_client_key": bool(settings.tiktok_client_key),
-        "has_tiktok_client_secret": bool(settings.tiktok_client_secret),
-        "tiktok_redirect_uri": settings.tiktok_redirect_uri,
-        # YouTube Publishing (see docs/features/127-youtube-publishing.md) --
-        # same "never echo the secret, only whether it's set" convention.
-        "has_google_oauth_client": bool(settings.google_oauth_client_id and settings.google_oauth_client_secret),
-        "youtube_redirect_uri": settings.youtube_redirect_uri,
-        # Viral Source Radar (see docs/features/139-viral-source-radar.md) --
-        # same "never echo the secret, only whether it's set" convention.
-        "has_youtube_api_key": bool(settings.youtube_api_key),
-        "has_reddit_credentials": bool(settings.reddit_client_id and settings.reddit_client_secret),
         # Render-cache auto-cleanup (0 = off). See
         # app/api/v1/endpoints/assets_cleanup.py.
         "render_cache_retention_days": settings.render_cache_retention_days,
-        # News channel feed poll interval in minutes (0 = off). See
-        # app/modules/news/ and docs/features/123-news-channel.md.
-        "news_poll_interval_minutes": settings.news_poll_interval_minutes,
     }
 
 
@@ -138,14 +79,6 @@ def set_render_cache_retention(payload: RenderCacheRetentionIn):
         raise HTTPException(status_code=400, detail="days must be between 0 and 3650 (0 = off)")
     update_render_cache_retention_days(payload.days)
     return {"render_cache_retention_days": payload.days}
-
-
-@router.put("/settings/news-poll-interval")
-def set_news_poll_interval(payload: NewsPollIntervalIn):
-    if payload.minutes < 0 or payload.minutes > 1440:
-        raise HTTPException(status_code=400, detail="minutes must be between 0 and 1440 (0 = off)")
-    update_news_poll_interval_minutes(payload.minutes)
-    return {"news_poll_interval_minutes": payload.minutes}
 
 
 @router.put("/settings/anthropic-key")
@@ -172,72 +105,6 @@ def set_ai_provider(payload: AIProviderIn):
         raise HTTPException(status_code=400, detail=f"Unknown provider {payload.provider!r}, must be one of {AI_PROVIDERS}")
     update_ai_provider(payload.provider)
     return {"ai_provider": payload.provider}
-
-
-@router.put("/settings/tiktok-client-key")
-def set_tiktok_client_key(payload: TikTokClientKeyIn):
-    key = payload.client_key.strip()
-    if not key:
-        raise HTTPException(status_code=400, detail="Client key khong duoc de trong")
-    update_tiktok_client_key(key)
-    return {"has_tiktok_client_key": True}
-
-
-@router.put("/settings/tiktok-client-secret")
-def set_tiktok_client_secret(payload: TikTokClientSecretIn):
-    secret = payload.client_secret.strip()
-    if not secret:
-        raise HTTPException(status_code=400, detail="Client secret khong duoc de trong")
-    update_tiktok_client_secret(secret)
-    return {"has_tiktok_client_secret": True}
-
-
-@router.put("/settings/tiktok-redirect-uri")
-def set_tiktok_redirect_uri(payload: TikTokRedirectUriIn):
-    uri = payload.redirect_uri.strip()
-    if not uri.startswith("https://"):
-        raise HTTPException(status_code=400, detail="Redirect URI phai la HTTPS -- TikTok khong chap nhan http://")
-    update_tiktok_redirect_uri(uri)
-    return {"tiktok_redirect_uri": uri}
-
-
-@router.put("/settings/google-oauth-client")
-def set_google_oauth_client(payload: GoogleOAuthClientIn):
-    cid = payload.client_id.strip()
-    secret = payload.client_secret.strip()
-    if not cid or not secret:
-        raise HTTPException(status_code=400, detail="Client ID va Client Secret khong duoc de trong")
-    update_google_oauth_client_id(cid)
-    update_google_oauth_client_secret(secret)
-    return {"has_google_oauth_client": True}
-
-
-@router.put("/settings/youtube-redirect-uri")
-def set_youtube_redirect_uri(payload: YouTubeRedirectUriIn):
-    uri = payload.redirect_uri.strip()
-    if not (uri.startswith("http://127.0.0.1") or uri.startswith("http://localhost") or uri.startswith("https://")):
-        raise HTTPException(status_code=400, detail="Redirect URI phai la http://127.0.0.1..., http://localhost... hoac https://...")
-    update_youtube_redirect_uri(uri)
-    return {"youtube_redirect_uri": uri}
-
-
-@router.put("/settings/youtube-api-key")
-def set_youtube_api_key(payload: YouTubeApiKeyIn):
-    key = payload.api_key.strip()
-    if not key:
-        raise HTTPException(status_code=400, detail="API key khong duoc de trong")
-    update_youtube_api_key(key)
-    return {"has_youtube_api_key": True}
-
-
-@router.put("/settings/reddit-credentials")
-def set_reddit_credentials(payload: RedditCredentialsIn):
-    cid = payload.client_id.strip()
-    secret = payload.client_secret.strip()
-    if not cid or not secret:
-        raise HTTPException(status_code=400, detail="Client ID va Client Secret khong duoc de trong")
-    update_reddit_credentials(cid, secret)
-    return {"has_reddit_credentials": True}
 
 
 @router.put("/settings/library-dir")

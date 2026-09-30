@@ -28,6 +28,13 @@ branch_labels: str | Sequence[str] | None = None
 depends_on: str | Sequence[str] | None = None
 
 
+def _has_series_table() -> bool:
+    # The Series feature was removed (docs/features/157-remove-unused-features.md),
+    # so a database created after that has no `series` table for the
+    # additive columns below to go onto. Older databases still have it.
+    return sa.inspect(op.get_bind()).has_table("series")
+
+
 def _ts(name: str, *, onupdate: bool = False) -> sa.Column:
     return sa.Column(name, sa.DateTime(timezone=True), nullable=True)
 
@@ -222,23 +229,25 @@ def upgrade() -> None:
     op.create_index("ix_story_checkpoint_stage", "story_checkpoint", ["stage"])
 
     # -- Series: additive columns (ALTER on a create_all-owned table) --
-    with op.batch_alter_table("series") as batch:
-        batch.add_column(sa.Column("channel_id", sa.Integer(), nullable=True))
-        batch.add_column(sa.Column("narrative_identity", sa.String(), nullable=True))
-        batch.add_column(sa.Column("visual_identity_json", sa.JSON(), nullable=False, server_default="{}"))
-        batch.add_column(sa.Column("voice_override_json", sa.JSON(), nullable=False, server_default="{}"))
-        batch.add_column(sa.Column("metadata_conventions_json", sa.JSON(), nullable=False, server_default="{}"))
-    op.create_index("ix_series_channel_id", "series", ["channel_id"])
+    if _has_series_table():
+        with op.batch_alter_table("series") as batch:
+            batch.add_column(sa.Column("channel_id", sa.Integer(), nullable=True))
+            batch.add_column(sa.Column("narrative_identity", sa.String(), nullable=True))
+            batch.add_column(sa.Column("visual_identity_json", sa.JSON(), nullable=False, server_default="{}"))
+            batch.add_column(sa.Column("voice_override_json", sa.JSON(), nullable=False, server_default="{}"))
+            batch.add_column(sa.Column("metadata_conventions_json", sa.JSON(), nullable=False, server_default="{}"))
+        op.create_index("ix_series_channel_id", "series", ["channel_id"])
 
 
 def downgrade() -> None:
-    op.drop_index("ix_series_channel_id", table_name="series")
-    with op.batch_alter_table("series") as batch:
-        batch.drop_column("metadata_conventions_json")
-        batch.drop_column("voice_override_json")
-        batch.drop_column("visual_identity_json")
-        batch.drop_column("narrative_identity")
-        batch.drop_column("channel_id")
+    if _has_series_table():
+        op.drop_index("ix_series_channel_id", table_name="series")
+        with op.batch_alter_table("series") as batch:
+            batch.drop_column("metadata_conventions_json")
+            batch.drop_column("voice_override_json")
+            batch.drop_column("visual_identity_json")
+            batch.drop_column("narrative_identity")
+            batch.drop_column("channel_id")
 
     for tbl in (
         "story_checkpoint", "story_run", "story_scene", "story_chapter",

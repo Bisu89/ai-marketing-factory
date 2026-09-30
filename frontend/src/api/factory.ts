@@ -27,11 +27,3 @@ export function retryFactoryRun(runId: number): Promise<FactoryRun> {
 export function continueFactoryRun(runId: number, force = false): Promise<FactoryRun> {
   return apiPost(`/factory-runs/${runId}/continue${force ? "?force=true" : ""}`);
 }
-
-export function produceBatch(batchId: number): Promise<{ batch_id: number; runs_started: number }> {
-  return apiPost(`/batches/${batchId}/factory-run`);
-}
-
-export function continueBatchProduction(batchId: number): Promise<{ batch_id: number; runs_processed: number }> {
-  return apiPost(`/batches/${batchId}/factory-continue`);
-}

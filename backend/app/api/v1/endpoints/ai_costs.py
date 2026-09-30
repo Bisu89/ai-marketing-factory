@@ -1,7 +1,7 @@
 """Task 10 -- AI Cost Tracking. Composition root: the one place allowed to
-import app.modules.ai.cost_service together with app.modules.content_batch
-(cost per batch) and app.modules.factory/app.modules.video_composer (AI
-image generation cost + "videos generated"), per app/modules/README.md.
+import app.modules.ai.cost_service together with
+app.modules.factory/app.modules.video_composer (AI image generation cost +
+"videos generated"), per app/modules/README.md.
 
 "Videos Generated" / "Cost per Video" use VideoComposeJob's own completed
 count -- the app's one existing definition of "a produced video" (see
@@ -27,13 +27,11 @@ from sqlalchemy.orm import Session
 from app.db.session import get_db
 from app.modules.ai import cost_service
 from app.modules.ai.image_client import IMAGE_MODEL
-from app.modules.content_batch.models import ContentBatch, ContentBatchItem
 from app.modules.factory.models import FactoryRun
 from app.modules.video_composer.models import VideoComposeJob
 from app.schemas.ai_cost import (
     AICallCostOut,
     AICostSummaryOut,
-    BatchCostOut,
     GroupCostOut,
     StoryCostOut,
     VideoCostOut,
@@ -152,46 +150,6 @@ def cost_by_call(limit: int = Query(100, ge=1, le=500), db: Session = Depends(ge
 def cost_by_story(db: Session = Depends(get_db)):
     calls = cost_service.all_call_costs(db)
     return cost_service.cost_by_story(db, calls)
-
-
-# -- Cost per batch (app.modules.content_batch) ----------------------------
-
-
-@router.get("/ai-costs/batches", response_model=list[BatchCostOut])
-def cost_by_batch(db: Session = Depends(get_db)):
-    calls = cost_service.all_call_costs(db)
-    story_costs = {s.story_job_id: s for s in cost_service.cost_by_story(db, calls)}
-
-    batches = db.query(ContentBatch).all()
-    items_by_batch: dict[int, list[ContentBatchItem]] = {}
-    for item in db.query(ContentBatchItem).all():
-        items_by_batch.setdefault(item.batch_id, []).append(item)
-
-    results = []
-    for batch in batches:
-        total = 0.0
-        story_count = 0
-        unpriced = 0
-        for item in items_by_batch.get(batch.id, []):
-            if item.story_job_id is None:
-                continue
-            sc = story_costs.get(item.story_job_id)
-            if sc is None:
-                continue
-            total += sc.total_cost_usd
-            story_count += 1
-            unpriced += sc.unpriced_call_count
-        results.append(
-            BatchCostOut(
-                batch_id=batch.id,
-                batch_name=batch.name,
-                total_cost_usd=round(total, 6),
-                story_count=story_count,
-                unpriced_call_count=unpriced,
-            )
-        )
-    results.sort(key=lambda b: b.total_cost_usd, reverse=True)
-    return results
 
 
 # -- Cost per produced video (app.modules.video_composer/factory) -----------

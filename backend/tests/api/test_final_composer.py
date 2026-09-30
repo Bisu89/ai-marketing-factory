@@ -31,7 +31,7 @@ from app.modules.beat.schemas import (
 from app.modules.video_composer import ffmpeg_ops
 from app.modules.video_composer.models import VideoComposeJob
 from app.modules.video_composer.service import VideoComposerService
-from tests.api.test_batch_render import FFMPEG_AVAILABLE, _make_solid_image
+from tests.api.media_helpers import FFMPEG_AVAILABLE, _make_solid_image
 from tests.api.test_factory_pipeline import _FactoryTestCase
 
 
@@ -330,7 +330,7 @@ class DirectFinalCompositionTests(_FinalComposerTestCase):
         )
         job = self._wait_for_job(job_id)
         self.assertEqual(job.status, "failed")
-        self.assertFalse((output_dir / "video_hoan_chinh.mp4").exists())
+        self.assertEqual(list(output_dir.glob("*.mp4")), [])
         report = json.loads((self.tmp_path / ".render" / f"job_{job_id}" / "report.json").read_text(encoding="utf-8"))
         self.assertIn(render_errors.MISSING_BEAT_ARTIFACT, report["message"])
         self.assertEqual(report["error_code"], render_errors.FINAL_COMPOSITION_FAILED)
@@ -348,7 +348,7 @@ class DirectFinalCompositionTests(_FinalComposerTestCase):
         )
         job = self._wait_for_job(job_id)
         self.assertEqual(job.status, "failed")
-        self.assertFalse((output_dir / "video_hoan_chinh.mp4").exists())
+        self.assertEqual(list(output_dir.glob("*.mp4")), [])
         report = json.loads((self.tmp_path / ".render" / f"job_{job_id}" / "report.json").read_text(encoding="utf-8"))
         self.assertIn(render_errors.INVALID_BEAT_ARTIFACT, report["message"])
 
@@ -379,7 +379,9 @@ class DirectFinalCompositionTests(_FinalComposerTestCase):
         )
         job = self._wait_for_job(job_id)
         self.assertEqual(job.status, "completed")
-        self.assertTrue((output_dir / "video_hoan_chinh.mp4").exists())
+        # Named after the job, not a fixed `video_hoan_chinh.mp4` (see app.core.output_naming).
+        self.assertEqual(Path(job.output_path), output_dir / f"job_{job_id}_direct.mp4")
+        self.assertTrue(Path(job.output_path).exists())
 
 
 class CrashRecoveryTests(_FinalComposerTestCase):

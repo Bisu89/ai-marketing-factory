@@ -243,7 +243,7 @@ class StageErrorTranslationTests(_AudioStageTestCase):
 
 class PipelineIntegrationTests(_AudioStageTestCase):
     def test_full_run_produces_audio_master_after_voice_and_motion(self):
-        from tests.api.test_batch_render import _make_solid_image
+        from tests.api.media_helpers import _make_solid_image
 
         image = _make_solid_image(self.tmp_path / "audio_pipeline.jpg", (10, 200, 10))
         asset_id = self._register_image_asset(image)
@@ -262,39 +262,6 @@ class PipelineIntegrationTests(_AudioStageTestCase):
 
         self.assertTrue(narration_wav_path(project_id, self.settings).exists())
         self.assertTrue(audio_master_path(project_id, self.settings.library_dir).exists())
-
-
-class BatchTests(_AudioStageTestCase):
-    def test_five_projects_complete_the_audio_stage(self):
-        from app.pipelines.factory_pipeline import run_batch_factory
-        from app.modules.batch import service as batch_service
-        from app.modules.batch.schemas import CreateBatchRequest
-        from tests.api.test_batch_render import _make_solid_image
-        from app.pipelines.batch_render import create_batch
-
-        image = _make_solid_image(self.tmp_path / "batch_shared.jpg", (10, 200, 10))
-        asset_id = self._register_image_asset(image)
-
-        scripts = "\n---\n".join(f"Batch script number {i}." for i in range(1, 6))
-        with patch("app.pipelines.batch_render.SessionLocal", self.TestSessionLocal):
-            batch = create_batch(CreateBatchRequest(name="Audio Batch", template_id="custom", scripts_text=scripts), self.settings)
-
-        for item in batch.items:
-            draft = get_project_draft(item.project_id)
-            beats = [Beat(id="b1", order=1, type=BeatType.BODY, narration="Some narration text for this beat.", duration=2.0, asset_id=asset_id)]
-            plan = BeatPlan(script_text=draft.script_text, beats=beats, project_name=draft.project_name, config=draft.config)
-            update_project_beat_plan(item.project_id, plan)
-
-        with patch("app.pipelines.factory_stages.generate_beat_plan") as mock_generate:
-            started = run_batch_factory(batch.id, self.settings, self.service)
-            mock_generate.assert_not_called()
-
-        self.assertEqual(started, 5)
-
-        settled = get_project_draft(batch.items[0].project_id)  # sanity: project still readable
-        self.assertIsNotNone(settled)
-        for item in batch.items:
-            self.assertTrue(audio_master_path(item.project_id, self.settings.library_dir).exists())
 
 
 if __name__ == "__main__":

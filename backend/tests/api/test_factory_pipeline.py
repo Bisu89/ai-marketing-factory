@@ -1,8 +1,6 @@
 """Tests for app/pipelines/factory_pipeline.py (Task 18 -- see
-docs/features/44-one-click-factory-pipeline.md). Reuses
-tests.api.test_batch_render's own _BatchTestCase harness (real file-backed
-SQLite shared across Project/Batch/Asset/VideoComposeJob) and extends it
-with app.modules.factory's own table + SessionLocal patch, plus a real
+docs/features/44-one-click-factory-pipeline.md). A real file-backed SQLite
+shared across Project/Asset/VideoComposeJob/FactoryRun, plus a real
 EventBus wired into VideoComposerService so factory_pipeline's own
 render.job.* subscriptions genuinely fire, exactly like production.
 """
@@ -23,14 +21,11 @@ from app.pipelines import factory_pipeline as factory_pipeline_module
 from app.pipelines.factory_pipeline import (
     _execute_pipeline_sync,
     cancel_run,
-    continue_batch_factory,
     continue_run,
     create_and_start_run,
     reconcile_factory_runs_on_startup,
     register_factory_event_handlers,
-    retry_batch_failed,
     retry_run,
-    run_batch_factory,
 )
 from app.core import render_errors
 from app.core.config import Settings
@@ -39,9 +34,6 @@ from app.db.base import Base
 from app.modules.asset.models import Asset
 from app.modules.asset.schemas import AssetRegisterIn
 from app.modules.asset.service import AssetService
-from app.modules.batch import service as batch_service
-from app.modules.batch.models import Batch, BatchItem
-from app.modules.batch.schemas import CreateBatchRequest
 from app.modules.beat.models import Project
 from app.modules.beat.project_service import create_project, get_project_draft, update_project_beat_plan
 from app.modules.beat.schemas import AudioProjectConfig, Beat, BeatPlan, BeatType, ProjectConfig
@@ -49,7 +41,7 @@ from app.modules.factory import service as factory_service
 from app.modules.factory.models import FactoryCheckpoint, FactoryRun
 from app.modules.video_composer.models import VideoComposeClip, VideoComposeJob
 from app.modules.video_composer.service import VideoComposerService
-from tests.api.test_batch_render import FFMPEG_AVAILABLE, _make_solid_image
+from tests.api.media_helpers import FFMPEG_AVAILABLE, _make_solid_image
 
 
 def _fake_beat_plan(script_text: str, num_beats: int = 3) -> BeatPlan:
@@ -66,10 +58,8 @@ def _fake_beat_plan(script_text: str, num_beats: int = 3) -> BeatPlan:
 
 
 class _FactoryTestCase(unittest.TestCase):
-    """Independent of _BatchTestCase (not a subclass) -- wires its own real
-    EventBus into VideoComposerService so factory_pipeline's render.job.*
-    subscriptions genuinely fire in tests, which _BatchTestCase's own
-    harness deliberately doesn't need for its own (non-factory) purposes.
+    """Wires its own real EventBus into VideoComposerService so
+    factory_pipeline's render.job.* subscriptions genuinely fire in tests.
     """
 
     def setUp(self):
@@ -83,7 +73,7 @@ class _FactoryTestCase(unittest.TestCase):
         Base.metadata.create_all(
             bind=self.engine,
             tables=[
-                Batch.__table__, BatchItem.__table__, Project.__table__,
+                Project.__table__,
                 VideoComposeJob.__table__, VideoComposeClip.__table__, Asset.__table__,
                 FactoryRun.__table__, FactoryCheckpoint.__table__,
             ],
@@ -102,9 +92,7 @@ class _FactoryTestCase(unittest.TestCase):
         )
 
         self.patchers = [
-            patch("app.modules.batch.service.SessionLocal", self.TestSessionLocal),
             patch("app.modules.beat.project_service.SessionLocal", self.TestSessionLocal),
-            patch("app.pipelines.batch_render.SessionLocal", self.TestSessionLocal),
             patch("app.modules.video_composer.service.SessionLocal", self.TestSessionLocal),
             patch("app.modules.factory.service.SessionLocal", self.TestSessionLocal),
             patch("app.pipelines.factory_pipeline.SessionLocal", self.TestSessionLocal),
@@ -154,14 +142,6 @@ class _FactoryTestCase(unittest.TestCase):
         # process lifetime, so this is test-isolation-only cleanup.
         with factory_pipeline_module._cancel_events_lock:
             factory_pipeline_module._cancel_events.clear()
-        # Task 20: _batch_pause_events is the exact same kind of
-        # module-global, id-keyed leak risk -- a batch left PAUSED (whose
-        # pause_event therefore stays .set()) never hits
-        # _drop_pause_event's own cleanup, so the same-numbered batch id in
-        # the next test's fresh DB would inherit an already-set event and
-        # silently no-op every item from the start.
-        with factory_pipeline_module._batch_pause_lock:
-            factory_pipeline_module._batch_pause_events.clear()
 
     def _db(self):
         return self.TestSessionLocal()
@@ -223,9 +203,7 @@ class _FactoryTestCase(unittest.TestCase):
 
     def _run_sync(self, project_id: int) -> FactoryRun:
         """Runs the pipeline body directly on the calling thread (no
-        background thread, no race to wait out) -- exactly like
-        tests.api.test_batch_render's own tests call render_batch()
-        synchronously despite production code sometimes threading it.
+        background thread, no race to wait out).
         """
         run, created = factory_service.create_run(project_id)
         self.assertTrue(created)
@@ -235,8 +213,7 @@ class _FactoryTestCase(unittest.TestCase):
 
 class StateMachineTests(_FactoryTestCase):
     def test_full_run_reaches_queued_without_a_worker_running(self):
-        # Worker deliberately not started here (mirrors test_batch_render's
-        # own "worker never started" tests) -- QUEUED is the last state
+        # Worker deliberately not started here -- QUEUED is the last state
         # reachable purely through _execute_pipeline_sync's own local
         # stages; RENDERING/COMPLETED require the real worker (covered by
         # EndToEndTests below).
@@ -729,124 +706,6 @@ class EndToEndTests(_FactoryTestCase):
         self.assertTrue(Path(job.output_path).exists())
         report_path = self.tmp_path / ".render" / f"job_{job.id}" / "report.json"
         self.assertTrue(report_path.exists())
-
-
-class BatchIntegrationTests(_FactoryTestCase):
-    def _create_batch(self, name: str, scripts_text: str) -> Batch:
-        from app.pipelines.batch_render import create_batch
-
-        with patch("app.pipelines.batch_render.SessionLocal", self.TestSessionLocal):
-            return create_batch(CreateBatchRequest(name=name, template_id="custom", scripts_text=scripts_text), self.settings)
-
-    def test_five_scripts_yield_five_projects_and_five_factory_runs_mixed_outcomes(self):
-        scripts = "\n---\n".join(f"Script {i}." for i in range(1, 6))
-        batch = self._create_batch("Factory Batch", scripts)
-        self.assertEqual(len(batch.items), 5)
-
-        low_res_id = self._register_image_asset(
-            _make_solid_image(self.tmp_path / "low_res_batch.jpg", (40, 40, 200), size=(200, 200)),
-            tags=["mismatched"],
-        )
-
-        def _beats_for(index: int) -> list[Beat]:
-            if index in (1, 2):  # READY
-                return [Beat(id="b1", order=1, type=BeatType.BODY, narration="Hi.", duration=1.0, asset_id=self.asset_id)]
-            if index == 3:  # NEEDS_REVIEW
-                return [
-                    Beat(
-                        id="b1", order=1, type=BeatType.BODY, narration="Hi.", duration=1.0,
-                        asset_id=low_res_id, visual_hint="totally unrelated wording here",
-                    )
-                ]
-            # index 4, 5 -> BLOCKED (no asset, no visual_hint at all so
-            # auto-assign can't even attempt a candidate)
-            return [Beat(id="b1", order=1, type=BeatType.BODY, narration="Hi.", duration=1.0, asset_id=None, visual_hint=None)]
-
-        for item in batch.items:
-            draft = get_project_draft(item.project_id)
-            plan = BeatPlan(
-                script_text=draft.script_text, project_name=draft.project_name, config=draft.config,
-                beats=_beats_for(item.index),
-            )
-            update_project_beat_plan(item.project_id, plan)
-
-        with patch("app.pipelines.factory_stages.generate_beat_plan") as mock_generate:
-            started = run_batch_factory(batch.id, self.settings, self.service)
-            mock_generate.assert_not_called()  # every project already had beats -- reused
-
-        self.assertEqual(started, 5)
-
-        db = self._db()
-        try:
-            runs = db.query(FactoryRun).filter(FactoryRun.project_id.in_([i.project_id for i in batch.items])).all()
-        finally:
-            db.close()
-        statuses = sorted(r.status for r in runs)
-        self.assertEqual(statuses, sorted(["QUEUED", "QUEUED", "NEEDS_REVIEW", "FAILED", "FAILED"]))
-
-        # Only the two READY projects actually created a real RenderJob --
-        # existing LocalRenderQueue remains the single rendering queue,
-        # never bypassed for the NEEDS_REVIEW/BLOCKED ones.
-        render_job_ids = [r.render_job_id for r in runs if r.render_job_id is not None]
-        self.assertEqual(len(render_job_ids), 2)
-
-    def test_continue_batch_only_touches_needs_review_and_failed(self):
-        # Task 20 (see docs/features/46-factory-batch-engine.md): the batch
-        # engine now sources eligibility from BatchItem.status (kept in
-        # sync with each item's own FactoryRun -- see
-        # _sync_batch_item_from_run), not by re-deriving it from FactoryRun
-        # directly, so this test sets both together, matching what the
-        # real engine itself would have already done. "[Continue Ready]"
-        # (NEEDS_REVIEW) and "[Retry Failed]" (FAILED) are now two separate
-        # actions/functions (continue_batch_factory / retry_batch_failed).
-        batch = self._create_batch("Continue Batch", "One.\n---\nTwo.\n---\nThree.")
-
-        # Item 1: already COMPLETED-equivalent (simulate a finished run) --
-        # must be left completely untouched.
-        completed_run, _ = factory_service.create_run(batch.items[0].project_id)
-        factory_service.set_run_fields(completed_run.id, status="COMPLETED")
-        batch_service.set_item_fields(batch.items[0].id, status="COMPLETED")
-
-        # Item 2: NEEDS_REVIEW, now fixed. Continuing this run all the way
-        # to QUEUED (asserted below) now requires a real Audio Master
-        # (Task 26 -- see docs/features/52-final-composer.md section 59:
-        # "Audio Master is required by default"), so Voice + Audio actually
-        # run for real here, matching _AudioStageTestCase's own established
-        # "exercise the real engine" pattern rather than a fabricated stub.
-        draft2 = get_project_draft(batch.items[1].project_id)
-        plan2 = BeatPlan(
-            script_text=draft2.script_text, project_name=draft2.project_name, config=draft2.config,
-            beats=[Beat(id="b1", order=1, type=BeatType.BODY, narration="Hi.", duration=1.0, asset_id=self.asset_id)],
-        )
-        update_project_beat_plan(batch.items[1].project_id, plan2)
-        generate_project_narration(batch.items[1].project_id, self.settings)
-        generate_project_audio_master(batch.items[1].project_id, self.settings)
-        review_run, _ = factory_service.create_run(batch.items[1].project_id)
-        factory_service.set_run_fields(review_run.id, status="NEEDS_REVIEW", requires_human_review=True)
-        batch_service.set_item_fields(batch.items[1].id, status="NEEDS_REVIEW")
-
-        # Item 3: FAILED at asset stage, now fixed.
-        draft3 = get_project_draft(batch.items[2].project_id)
-        plan3 = BeatPlan(
-            script_text=draft3.script_text, project_name=draft3.project_name, config=draft3.config,
-            beats=[Beat(id="b1", order=1, type=BeatType.BODY, narration="Hi.", duration=1.0, asset_id=self.asset_id)],
-        )
-        update_project_beat_plan(batch.items[2].project_id, plan3)
-        failed_run, _ = factory_service.create_run(batch.items[2].project_id)
-        factory_service.set_run_fields(failed_run.id, status="FAILED", failed_stage="QUALITY_CHECK", error_code="QUALITY_BLOCKED")
-        batch_service.set_item_fields(batch.items[2].id, status="FAILED")
-
-        continued = continue_batch_factory(batch.id, self.settings, self.service)
-        self.assertEqual(continued, 1)
-        retried = retry_batch_failed(batch.id, self.settings, self.service)
-        self.assertEqual(retried, 1)
-
-        self.assertEqual(self._get_run(completed_run.id).status, "COMPLETED")  # untouched
-        self.assertEqual(self._get_run(review_run.id).status, "QUEUED")
-        self.assertEqual(self._get_run(failed_run.id).status, "QUEUED")
-        self.assertEqual(batch_service.get_batch(batch.id).items[0].status, "COMPLETED")
-        self.assertEqual(batch_service.get_batch(batch.id).items[1].status, "RUNNING")
-        self.assertEqual(batch_service.get_batch(batch.id).items[2].status, "RUNNING")
 
 
 if __name__ == "__main__":

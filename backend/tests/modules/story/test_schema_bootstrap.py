@@ -21,10 +21,6 @@ _STORY_TABLES = {
     "story_channel", "episode", "story", "story_character", "story_location",
     "story_chapter", "story_scene", "story_run", "story_checkpoint",
 }
-_NEW_SERIES_COLS = {
-    "channel_id", "narrative_identity", "visual_identity_json",
-    "voice_override_json", "metadata_conventions_json",
-}
 
 
 class SyncSchemaTests(unittest.TestCase):
@@ -37,15 +33,12 @@ class SyncSchemaTests(unittest.TestCase):
         self.engine.dispose()
         self.tmpdir.cleanup()
 
-    def _series_cols(self):
-        return {c["name"] for c in inspect(self.engine).get_columns("series")}
-
     def test_fresh_db_gets_every_table_and_is_stamped_at_head(self):
         sync_schema(self.engine)
         names = set(inspect(self.engine).get_table_names())
         self.assertTrue(_STORY_TABLES <= names)
-        self.assertIn("series", names)
-        self.assertTrue(_NEW_SERIES_COLS <= self._series_cols())
+        # Series was removed (docs/features/157-remove-unused-features.md).
+        self.assertNotIn("series", names)
         self.assertTrue(inspect(self.engine).has_table("alembic_version"))
         self.assertEqual(current_revision(self.engine), _HEAD_REVISION)
 
@@ -72,37 +65,18 @@ class SyncSchemaTests(unittest.TestCase):
 
     def test_pre_phase1_db_catches_up(self):
         # Simulate a DB created by an older app version: everything EXCEPT
-        # the story tables + the new series columns, and no alembic_version.
+        # the story tables, and no alembic_version.
         sync_schema(self.engine)
         with self.engine.begin() as conn:
             for t in _STORY_TABLES:
                 conn.execute(text(f"DROP TABLE {t}"))
             conn.execute(text("DROP TABLE alembic_version"))
-            # rebuild `series` without the new columns
-            conn.execute(text("ALTER TABLE series RENAME TO series_old"))
-            conn.execute(text(
-                "CREATE TABLE series (id INTEGER PRIMARY KEY, name VARCHAR NOT NULL, "
-                "character_description VARCHAR NOT NULL DEFAULT '', "
-                "created_at DATETIME, updated_at DATETIME)"
-            ))
-            conn.execute(text(
-                "INSERT INTO series (id, name, character_description, created_at, updated_at) "
-                "SELECT id, name, character_description, created_at, updated_at FROM series_old"
-            ))
-            conn.execute(text("DROP TABLE series_old"))
-            conn.execute(text("INSERT INTO series (name, character_description) VALUES ('Old Series', '')"))
-
-        self.assertFalse(_NEW_SERIES_COLS <= self._series_cols())
 
         sync_schema(self.engine)  # catch-up
 
         names = set(inspect(self.engine).get_table_names())
         self.assertTrue(_STORY_TABLES <= names)
-        self.assertTrue(_NEW_SERIES_COLS <= self._series_cols())
         self.assertEqual(current_revision(self.engine), _HEAD_REVISION)
-        # existing data survived
-        with self.engine.connect() as conn:
-            self.assertEqual(conn.execute(text("SELECT name FROM series")).scalar(), "Old Series")
 
     def test_downgrade_then_upgrade_round_trips(self):
         sync_schema(self.engine)
@@ -111,11 +85,9 @@ class SyncSchemaTests(unittest.TestCase):
 
         command.downgrade(cfg, "base")
         self.assertNotIn("story_scene", inspect(self.engine).get_table_names())
-        self.assertFalse(_NEW_SERIES_COLS <= self._series_cols())
 
         command.upgrade(cfg, "head")
         self.assertIn("story_scene", inspect(self.engine).get_table_names())
-        self.assertTrue(_NEW_SERIES_COLS <= self._series_cols())
 
 
 if __name__ == "__main__":

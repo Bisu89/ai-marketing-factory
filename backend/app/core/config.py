@@ -135,12 +135,6 @@ class Settings(BaseSettings):
     # AI-generated images are never included in the automatic sweep.
     render_cache_retention_days: int = 0
 
-    # News channel (see docs/features/123-news-channel.md). How often the
-    # background poll loop re-fetches every enabled NewsSource, in minutes.
-    # 0 = off (the shipped default -- feeds are only pulled when the user
-    # clicks "Fetch"). A sensible manual value is 30-60.
-    news_poll_interval_minutes: int = 0
-
     anthropic_api_key: str | None = None
 
     # Dual AI Provider (see docs/features/55-dual-ai-provider.md) -- which
@@ -151,38 +145,6 @@ class Settings(BaseSettings):
     ai_provider: str = "anthropic"
     openai_api_key: str | None = None
 
-    # Competitor Content Analyzer (Task 11 -- see
-    # docs/features/76-competitor-content-analyzer.md). TikTok Developer
-    # app credentials (one app, registered by the user on
-    # developers.tiktok.com) -- same "plain str field + dedicated
-    # update_x()" shape as anthropic_api_key/openai_api_key above.
-    # tiktok_redirect_uri must be an HTTPS URL registered with that TikTok
-    # app (TikTok's own requirement, not this app's choice); see the
-    # module's own setup doc for why a desktop-local app needs one.
-    tiktok_client_key: str | None = None
-    tiktok_client_secret: str | None = None
-    tiktok_redirect_uri: str | None = None
-
-    # YouTube Publishing (see docs/features/127-youtube-publishing.md).
-    # Google Cloud OAuth 2.0 "Desktop app" client credentials the user
-    # creates themselves (one Cloud project, YouTube Data API v3 enabled) --
-    # same "plain str field + dedicated update_x()" shape as the keys above.
-    # youtube_redirect_uri must be one of the redirect URIs registered on
-    # that OAuth client; the loopback default works for a desktop app.
-    google_oauth_client_id: str | None = None
-    google_oauth_client_secret: str | None = None
-    youtube_redirect_uri: str = "http://127.0.0.1:8000/api/v1/publishing/youtube/oauth/callback"
-
-    # Viral Source Radar (see docs/features/139-viral-source-radar.md).
-    # youtube_api_key is a plain YouTube Data API v3 key (NOT the OAuth
-    # client above) -- search.list only needs an API key. reddit_client_id/
-    # _secret are optional: without them the Reddit engine falls back to
-    # anonymous public search, which is fine for a single-user desktop app
-    # but rate-limited. Same "plain str field + dedicated update_x()" shape
-    # as every key above.
-    youtube_api_key: str | None = None
-    reddit_client_id: str | None = None
-    reddit_client_secret: str | None = None
 
 
 @lru_cache
@@ -200,11 +162,6 @@ def update_render_cache_retention_days(days: int) -> None:
     get_settings.cache_clear()
 
 
-def update_news_poll_interval_minutes(minutes: int) -> None:
-    set_key(ENV_FILE_PATH, "APP_NEWS_POLL_INTERVAL_MINUTES", str(minutes))
-    get_settings.cache_clear()
-
-
 def update_anthropic_api_key(key: str) -> None:
     set_key(ENV_FILE_PATH, "APP_ANTHROPIC_API_KEY", key)
     get_settings.cache_clear()
@@ -217,45 +174,4 @@ def update_openai_api_key(key: str) -> None:
 
 def update_ai_provider(provider: str) -> None:
     set_key(ENV_FILE_PATH, "APP_AI_PROVIDER", provider)
-    get_settings.cache_clear()
-
-
-def update_tiktok_client_key(key: str) -> None:
-    set_key(ENV_FILE_PATH, "APP_TIKTOK_CLIENT_KEY", key)
-    get_settings.cache_clear()
-
-
-def update_tiktok_client_secret(secret: str) -> None:
-    set_key(ENV_FILE_PATH, "APP_TIKTOK_CLIENT_SECRET", secret)
-    get_settings.cache_clear()
-
-
-def update_tiktok_redirect_uri(uri: str) -> None:
-    set_key(ENV_FILE_PATH, "APP_TIKTOK_REDIRECT_URI", uri)
-    get_settings.cache_clear()
-
-
-def update_google_oauth_client_id(value: str) -> None:
-    set_key(ENV_FILE_PATH, "APP_GOOGLE_OAUTH_CLIENT_ID", value)
-    get_settings.cache_clear()
-
-
-def update_google_oauth_client_secret(value: str) -> None:
-    set_key(ENV_FILE_PATH, "APP_GOOGLE_OAUTH_CLIENT_SECRET", value)
-    get_settings.cache_clear()
-
-
-def update_youtube_redirect_uri(uri: str) -> None:
-    set_key(ENV_FILE_PATH, "APP_YOUTUBE_REDIRECT_URI", uri)
-    get_settings.cache_clear()
-
-
-def update_youtube_api_key(key: str) -> None:
-    set_key(ENV_FILE_PATH, "APP_YOUTUBE_API_KEY", key)
-    get_settings.cache_clear()
-
-
-def update_reddit_credentials(client_id: str, client_secret: str) -> None:
-    set_key(ENV_FILE_PATH, "APP_REDDIT_CLIENT_ID", client_id)
-    set_key(ENV_FILE_PATH, "APP_REDDIT_CLIENT_SECRET", client_secret)
     get_settings.cache_clear()

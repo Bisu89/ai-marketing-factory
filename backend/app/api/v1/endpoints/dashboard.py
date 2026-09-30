@@ -1,29 +1,21 @@
 """Production Dashboard (Task 17 -- see docs/features/43-production-dashboard.md):
 the read-only composition root that answers "what am I producing / what
 needs attention / what's rendering / what finished" in one call. Per
-app/modules/README.md, this aggregates across app.modules.batch (Batch/
-BatchItem), app.modules.beat (Project), app.modules.asset (AssetService,
-needed by the Quality Gate), and app.modules.video_composer (VideoComposeJob)
--- none of those modules may import each other, so this file is the one
-place allowed to. Mirrors app/pipelines/batch_render.py's own
-"composition root aggregates several modules, module list stays pure"
-shape, applied to a read-only view instead of an orchestrated action.
+app/modules/README.md, this aggregates across app.modules.beat (Project),
+app.modules.factory (FactoryRun), app.modules.asset (AssetService, needed
+by the Quality Gate), and app.modules.video_composer (VideoComposeJob) --
+none of those modules may import each other, so this file is the one place
+allowed to.
 
-Scope: only Projects reachable through a BatchItem are considered --
-there is no `GET /projects` list anywhere in this codebase (a Project
-created outside a batch is only ever addressed by its own id, see
-app/modules/beat/models.py's own docstring), so a global "all projects"
-view is not a real, listable thing to aggregate over. The classic
-singleton beats.json single-project flow (untouched by this task) is
-correspondingly out of scope too -- it has no id/list surface either.
+Scope: every Project, judged by its latest FactoryRun. Batches used to be
+the unit this view aggregated over; they were removed (see
+docs/features/157-remove-unused-features.md), so a Project is now the unit.
 
 `build_dashboard` is a plain function (not just an HTTP handler), the
 same "importable, unit-testable independent of FastAPI" shape already
-used by quality_gate.run_quality_check -- this is the "DashboardService"
-the brief asks for; it lives here rather than in a new app/modules/dashboard/
-because it owns no data of its own (no table, no domain rules), it is
-purely a read-side aggregation over other modules' already-existing data,
-exactly like this file's own batch_render.py sibling.
+used by quality_gate.run_quality_check -- it owns no data of its own (no
+table, no domain rules), it is purely a read-side aggregation over other
+modules' already-existing data.
 """
 
 from datetime import datetime, timezone
@@ -31,15 +23,15 @@ from pathlib import Path
 
 from fastapi import APIRouter, Depends
 from pydantic import BaseModel
-from sqlalchemy.orm import Session, selectinload
+from sqlalchemy.orm import Session
 
 from app.api.v1.endpoints.quality_gate import run_quality_check
 from app.core.config import Settings, get_settings
 from app.db.session import get_db
 from app.modules.asset.service import AssetService
-from app.modules.batch.models import Batch, BatchItem
 from app.modules.beat.models import Project
 from app.modules.beat.schemas import BeatPlan
+from app.modules.factory.models import FactoryRun
 from app.modules.quality.schemas import QualityReport
 from app.modules.video_composer.models import COARSE_STATUS, VideoComposeJob
 from app.modules.video_composer.schemas import job_to_out
@@ -63,21 +55,9 @@ class DashboardSummary(BaseModel):
     completed_today: int
 
 
-class DashboardBatchProgress(BaseModel):
-    batch_id: int
-    name: str
-    total: int
-    completed: int
-    # Only the real, non-zero BatchItemStatus values present in this batch
-    # -- never a fabricated 4-bucket split that doesn't match this app's
-    # actual 10-status vocabulary (see app.modules.batch.models).
-    status_counts: dict[str, int]
-
-
 class DashboardCurrentRender(BaseModel):
     render_job_id: int
     project_id: int | None
-    batch_id: int | None
     project_name: str
     phase: str | None
     progress_current: int | None
@@ -86,9 +66,7 @@ class DashboardCurrentRender(BaseModel):
 
 
 class DashboardAttentionItem(BaseModel):
-    batch_id: int
-    item_id: int
-    project_id: int | None
+    project_id: int
     project_name: str
     priority: str  # BLOCKED | FAILED | NEEDS_REVIEW
     reason: str
@@ -97,7 +75,6 @@ class DashboardAttentionItem(BaseModel):
 class DashboardVideo(BaseModel):
     render_job_id: int
     project_id: int | None
-    batch_id: int | None
     title: str
     status: str  # COMPLETED | FAILED
     duration_sec: float | None
@@ -137,7 +114,6 @@ class DashboardCost(BaseModel):
 class DashboardOut(BaseModel):
     has_any_data: bool
     summary: DashboardSummary
-    current_batch: DashboardBatchProgress | None
     current_render: DashboardCurrentRender | None
     attention: list[DashboardAttentionItem]
     attention_total: int
@@ -149,15 +125,6 @@ class DashboardOut(BaseModel):
 
 
 # -- Aggregation ---------------------------------------------------------
-
-
-def _is_batch_active(batch: Batch) -> bool:
-    # Mirrors frontend/src/pages/BatchDetailPage.tsx's own isActive() --
-    # batch.status is only recomputed by actions (render/sync/retry/...),
-    # never by this read-only endpoint (section 23: must not modify
-    # state), so a RENDERING item is checked directly rather than trusting
-    # a possibly-stale batch.status alone.
-    return batch.status == "PROCESSING" or any(item.status == "RENDERING" for item in batch.items)
 
 
 def _project_title(project: Project | None, fallback: str) -> str:
@@ -173,48 +140,55 @@ def _as_utc(dt: datetime) -> datetime:
     return dt if dt.tzinfo is not None else dt.replace(tzinfo=timezone.utc)
 
 
+def _latest_run_by_project(db: Session) -> dict[int, FactoryRun]:
+    latest: dict[int, FactoryRun] = {}
+    for run in db.query(FactoryRun).order_by(FactoryRun.id.asc()).all():
+        latest[run.project_id] = run
+    return latest
+
+
 def build_dashboard(db: Session, settings: Settings) -> DashboardOut:
     library_dir = Path(settings.library_dir)
 
-    batches = db.query(Batch).options(selectinload(Batch.items)).order_by(Batch.created_at.desc()).all()
-    all_items: list[tuple[Batch, BatchItem]] = [(batch, item) for batch in batches for item in batch.items]
-
-    has_any_data = bool(batches) or db.query(VideoComposeJob.id).first() is not None
-
-    project_ids = {item.project_id for _, item in all_items if item.project_id is not None}
-    projects = db.query(Project).filter(Project.id.in_(project_ids)).all() if project_ids else []
+    projects = db.query(Project).order_by(Project.created_at.desc()).all()
     project_by_id: dict[int, Project] = {project.id: project for project in projects}
+    latest_run = _latest_run_by_project(db)
 
-    item_by_render_job_id: dict[int, tuple[Batch, BatchItem]] = {
-        item.render_job_id: (batch, item) for batch, item in all_items if item.render_job_id is not None
+    has_any_data = bool(projects) or db.query(VideoComposeJob.id).first() is not None
+
+    # A render job belongs to a project either via Project.render_job_id
+    # (its latest render) or via any FactoryRun that started one.
+    project_by_render_job_id: dict[int, Project] = {
+        project.render_job_id: project for project in projects if project.render_job_id is not None
     }
+    for run in db.query(FactoryRun).filter(FactoryRun.render_job_id.isnot(None)).all():
+        project = project_by_id.get(run.project_id)
+        if project is not None:
+            project_by_render_job_id.setdefault(run.render_job_id, project)
 
-    # -- Quality Gate pass: only items that could plausibly render right
-    # now (BEATS_READY) or are sitting on a past review verdict that may
-    # have since been fixed (NEEDS_REVIEW) -- same scope as
-    # batch_render.check_batch_quality, never the full historical set. --
+    # -- Quality Gate pass: only projects that could plausibly render right
+    # now (never rendered, no run started yet) or are sitting on a past
+    # review verdict that may have since been fixed (NEEDS_REVIEW) -- never
+    # the full historical set. --
     asset_service = AssetService(db)
-    quality_by_item_id: dict[int, QualityReport] = {}
-    for _, item in all_items:
-        if item.status not in ("BEATS_READY", "NEEDS_REVIEW"):
-            continue
-        project = project_by_id.get(item.project_id) if item.project_id is not None else None
-        if project is None:
+    quality_by_project_id: dict[int, QualityReport] = {}
+    for project in projects:
+        run = latest_run.get(project.id)
+        awaiting_render = run is None and project.render_job_id is None
+        if not (awaiting_render or (run is not None and run.status == "NEEDS_REVIEW")):
             continue
         try:
             plan = BeatPlan.model_validate(project.beat_plan_json)
         except Exception:
             continue
-        quality_by_item_id[item.id] = run_quality_check(plan.beats, plan.config, asset_service)
+        quality_by_project_id[project.id] = run_quality_check(plan.beats, plan.config, asset_service)
 
-    ready = sum(1 for report in quality_by_item_id.values() if report.status == "READY")
-    needs_review = sum(1 for report in quality_by_item_id.values() if report.status == "NEEDS_REVIEW")
-    blocked = sum(1 for report in quality_by_item_id.values() if report.status == "BLOCKED")
-    blocked += sum(1 for _, item in all_items if item.status == "SKIPPED")
+    ready = sum(1 for report in quality_by_project_id.values() if report.status == "READY")
+    needs_review = sum(1 for report in quality_by_project_id.values() if report.status == "NEEDS_REVIEW")
+    blocked = sum(1 for report in quality_by_project_id.values() if report.status == "BLOCKED")
 
-    # -- RenderJob aggregates (own queries, not derived from batch items --
-    # a VideoComposeJob can exist without any batch, e.g. the classic
-    # single-project flow) --
+    # -- RenderJob aggregates (own queries -- a VideoComposeJob can exist
+    # without any project, e.g. a plain Video Composer job) --
     rendering_count = db.query(VideoComposeJob).filter(VideoComposeJob.status.in_(_RUNNING_STATUSES)).count()
     running_job = (
         db.query(VideoComposeJob)
@@ -251,30 +225,15 @@ def build_dashboard(db: Session, settings: Settings) -> DashboardOut:
         rendering=rendering_count, completed_today=completed_today,
     )
 
-    # -- Current batch (section 6) --
-    active_batches = [batch for batch in batches if _is_batch_active(batch)]
-    current_batch = None
-    if active_batches:
-        batch = active_batches[0]  # already ordered by created_at desc
-        status_counts: dict[str, int] = {}
-        for item in batch.items:
-            status_counts[item.status] = status_counts.get(item.status, 0) + 1
-        current_batch = DashboardBatchProgress(
-            batch_id=batch.id, name=batch.name, total=len(batch.items),
-            completed=status_counts.get("COMPLETED", 0), status_counts=status_counts,
-        )
-
     # -- Current render + queue (sections 8, 13) --
     current_render = None
     queue: list[DashboardQueueEntry] = []
     if running_job is not None:
-        match = item_by_render_job_id.get(running_job.id)
-        project = project_by_id.get(match[1].project_id) if match and match[1].project_id else None
+        project = project_by_render_job_id.get(running_job.id)
         out = job_to_out(running_job, library_dir)
         current_render = DashboardCurrentRender(
             render_job_id=running_job.id,
-            project_id=match[1].project_id if match else None,
-            batch_id=match[0].id if match else None,
+            project_id=project.id if project else None,
             project_name=_project_title(project, running_job.title),
             phase=out.phase,
             progress_current=out.progress_current,
@@ -283,48 +242,40 @@ def build_dashboard(db: Session, settings: Settings) -> DashboardOut:
         )
         queue.append(
             DashboardQueueEntry(
-                render_job_id=running_job.id, project_id=match[1].project_id if match else None,
+                render_job_id=running_job.id, project_id=project.id if project else None,
                 title=_project_title(project, running_job.title), job_status="RUNNING",
             )
         )
     for job in queued_jobs:
-        match = item_by_render_job_id.get(job.id)
-        project = project_by_id.get(match[1].project_id) if match and match[1].project_id else None
+        project = project_by_render_job_id.get(job.id)
         queue.append(
             DashboardQueueEntry(
-                render_job_id=job.id, project_id=match[1].project_id if match else None,
+                render_job_id=job.id, project_id=project.id if project else None,
                 title=_project_title(project, job.title), job_status="QUEUED",
             )
         )
 
     # -- Needs Attention (sections 9-10) --
     attention_candidates: list[tuple[int, datetime, DashboardAttentionItem]] = []
-    for batch, item in all_items:
-        project = project_by_id.get(item.project_id) if item.project_id is not None else None
-        project_name = _project_title(project, f"Item {item.index:03d}")
-
-        if item.status == "SKIPPED":
-            priority = "BLOCKED"
-            reason = item.error_message or "Blocked -- see project for details."
-        elif item.status == "FAILED":
+    for project in projects:
+        run = latest_run.get(project.id)
+        report = quality_by_project_id.get(project.id)
+        if run is not None and run.status == "FAILED":
             priority = "FAILED"
-            reason = item.error_message or "Render failed."
-        elif item.id in quality_by_item_id and quality_by_item_id[item.id].status == "BLOCKED":
-            report = quality_by_item_id[item.id]
+            reason = run.error_message or "Production failed."
+        elif report is not None and report.status == "BLOCKED":
             priority = "BLOCKED"
             reason = report.issues[0].message if report.issues else "Blocked by Quality Gate."
-        elif item.id in quality_by_item_id and quality_by_item_id[item.id].status == "NEEDS_REVIEW":
-            report = quality_by_item_id[item.id]
+        elif report is not None and report.status == "NEEDS_REVIEW":
             priority = "NEEDS_REVIEW"
             reason = report.warnings[0].message if report.warnings else "Needs review."
         else:
             continue
 
         entry = DashboardAttentionItem(
-            batch_id=batch.id, item_id=item.id, project_id=item.project_id,
-            project_name=project_name, priority=priority, reason=reason,
+            project_id=project.id, project_name=project.name, priority=priority, reason=reason,
         )
-        attention_candidates.append((_PRIORITY_RANK[priority], batch.created_at, entry))
+        attention_candidates.append((_PRIORITY_RANK[priority], _as_utc(project.created_at), entry))
 
     attention_candidates.sort(key=lambda t: (t[0], -t[1].timestamp()))
     attention_total = len(attention_candidates)
@@ -332,12 +283,11 @@ def build_dashboard(db: Session, settings: Settings) -> DashboardOut:
 
     # -- Recent videos / failures (sections 11-12) --
     def _to_video(job: VideoComposeJob, status_label: str) -> DashboardVideo:
-        match = item_by_render_job_id.get(job.id)
-        project = project_by_id.get(match[1].project_id) if match and match[1].project_id else None
+        project = project_by_render_job_id.get(job.id)
         out = job_to_out(job, library_dir)
         return DashboardVideo(
-            render_job_id=job.id, project_id=match[1].project_id if match else None,
-            batch_id=match[0].id if match else None, title=_project_title(project, job.title),
+            render_job_id=job.id, project_id=project.id if project else None,
+            title=_project_title(project, job.title),
             status=status_label, duration_sec=out.render_duration_sec,
             render_time_seconds=out.render_time_seconds, output_media_url=out.output_media_url,
             error_message=job.error_message,
@@ -346,19 +296,17 @@ def build_dashboard(db: Session, settings: Settings) -> DashboardOut:
     recent_videos = [_to_video(job, "COMPLETED") for job in recent_completed_jobs]
     recent_failures = [_to_video(job, "FAILED") for job in recent_failed_jobs]
 
-    # -- Production pipeline (section 18) -- real status counts, not an
-    # invented per-stage ready/review split this codebase's real states
-    # don't actually distinguish (Quality Gate is the one review point for
-    # everything -- visuals/motion/audio/pacing/etc together, not staged). --
+    # -- Production pipeline (section 18) -- real status counts of each
+    # project's latest FactoryRun, not an invented per-stage split. --
     pipeline_counts: dict[str, int] = {}
-    for _, item in all_items:
-        pipeline_counts[item.status] = pipeline_counts.get(item.status, 0) + 1
-    pipeline = DashboardPipeline(total_items=len(all_items), status_counts=pipeline_counts)
+    for run in latest_run.values():
+        pipeline_counts[run.status] = pipeline_counts.get(run.status, 0) + 1
+    pipeline = DashboardPipeline(total_items=len(latest_run), status_counts=pipeline_counts)
 
     cost = DashboardCost(videos_rendered_today=completed_today)
 
     return DashboardOut(
-        has_any_data=has_any_data, summary=summary, current_batch=current_batch,
+        has_any_data=has_any_data, summary=summary,
         current_render=current_render, attention=attention, attention_total=attention_total,
         recent_videos=recent_videos, recent_failures=recent_failures, queue=queue,
         pipeline=pipeline, cost=cost,

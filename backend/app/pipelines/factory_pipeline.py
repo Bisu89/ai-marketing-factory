@@ -2,11 +2,10 @@
 docs/features/44-one-click-factory-pipeline.md): the orchestration
 composition root that connects Script -> Beat -> Visual -> Quality ->
 Render using only already-existing services. Per app/modules/README.md,
-none of app.modules.factory/beat/asset/quality/batch/video_composer may
+none of app.modules.factory/beat/asset/quality/video_composer may
 import each other; this file is the one place allowed to import all of
-them, exactly like app/pipelines/batch_render.py already does for
-"many projects at once" -- this is that same composition-root pattern
-applied to "one project's full pipeline, end to end."
+them -- the composition-root pattern applied to "one project's full
+pipeline, end to end."
 
 No new render pipeline, queue, quality engine, asset matcher, or Beat
 generator is implemented here. Every real unit of work is delegated:
@@ -20,7 +19,7 @@ generator is implemented here. Every real unit of work is delegated:
                                       exists)
     compute_asset_confidence()    <- app/api/v1/endpoints/quality_gate.py
     run_quality_check()           <- app/api/v1/endpoints/quality_gate.py
-    project_composition_plan()    <- app/pipelines/batch_render.py
+    project_composition_plan()    <- app/pipelines/composition_plan.py
     render_composition()          <- app/api/v1/endpoints/composition_render.py
     VideoComposerService          <- app.modules.video_composer (the one
                                       LocalRenderQueue/RenderWorker)
@@ -34,15 +33,14 @@ _stage_final_qa) plus the shared FactoryStageError / _mark_failed /
 _bail_if_cancelled / _utcnow primitives live in factory_stages.py, so a
 second orchestrator (a future long-form story pipeline) can reuse the
 exact same stage bodies without importing this module's single-project
-orchestration, batch engine, and HTTP routes. They are re-imported here
+orchestration and HTTP routes. They are re-imported here
 (see the import block below) so every existing
 `from app.pipelines.factory_pipeline import <name>` keeps
 resolving unchanged.
 
 Threading model: a FactoryRun's local stages (PREPARING through
-QUALITY_CHECK) run on a plain daemon background thread (mirroring
-app/pipelines/batch_render.py's own `_run_batch_beat_generation`
-thread) since GENERATING_BEATS may call the real Claude API and must not
+QUALITY_CHECK) run on a plain daemon background thread since
+GENERATING_BEATS may call the real Claude API and must not
 block the HTTP request. Once a RenderJob is created, this file's own
 thread is done -- QUEUED -> RENDERING -> COMPLETED/FAILED is driven
 entirely by VideoComposerService's existing worker + the render.job.*
@@ -53,7 +51,6 @@ startup can only mean the previous process died mid-run (see
 reconcile_factory_runs_on_startup).
 """
 
-import concurrent.futures
 import logging
 import threading
 import time
@@ -68,10 +65,6 @@ from app.core.events import EventBus
 from app.core.exceptions import NotFoundError, ValidationError
 from app.db.session import SessionLocal, get_db
 from app.modules.asset.service import AssetService
-from app.modules.batch import service as batch_service
-from app.modules.batch.models import Batch
-from app.modules.batch.schemas import BatchOut
-from app.modules.batch.service import get_batch as get_batch_row
 from app.modules.beat.models import Project
 from app.modules.beat.project_service import get_project_draft, update_project_beat_plan
 from app.modules.beat.schemas import BeatPlan
@@ -90,8 +83,7 @@ from app.modules.video_composer.service import VideoComposerService
 # Stage worker functions (PREPARING_CONTENT ... FINAL_QA) plus the shared
 # FactoryStageError / _mark_failed / _bail_if_cancelled / _utcnow primitives
 # were extracted to factory_stages.py so a future story_pipeline.py can reuse
-# them without importing this module's own orchestration, batch engine, and
-# HTTP routes. Re-imported here so every existing
+# them without importing this module's own orchestration and HTTP routes. Re-imported here so every existing
 # `from app.pipelines.factory_pipeline import <name>` (used by ~10
 # test modules) keeps resolving unchanged.
 from app.pipelines.factory_stages import (  # noqa: F401
@@ -154,11 +146,8 @@ def _drop_cancel_event(run_id: int) -> None:
 def _execute_pipeline_sync(run_id: int, project_id: int, settings: Settings, service: VideoComposerService) -> None:
     """The full blocking pipeline body -- PREPARING through either
     NEEDS_REVIEW, QUEUED (render handed off), READY_TO_RENDER (render
-    disabled by policy), or FAILED. Called on its own daemon thread for an
-    interactively-triggered run (see create_and_start_run), or directly
-    inside a bounded ThreadPoolExecutor worker for a batch-triggered one
-    (see run_batch_factory) -- the concurrency bound is the *caller's*
-    concern in that case, this function itself has no opinion about it.
+    disabled by policy), or FAILED. Called on its own daemon thread (see
+    create_and_start_run).
     """
     cancel_event = _cancel_event_for(run_id)
     current_stage = "PREPARING"
@@ -446,7 +435,6 @@ def _continue_run_sync(
 
 def _continue_final_qa_sync(run_id: int, project_id: int, settings: Settings) -> None:
     _run_final_qa_and_settle(run_id, project_id, settings)
-    _sync_batch_after_run_settled(run_id, project_id)
 
 
 def continue_run(run_id: int, settings: Settings, service: VideoComposerService, force: bool = False) -> FactoryRun:
@@ -558,7 +546,6 @@ def retry_run(run_id: int, settings: Settings, service: VideoComposerService) ->
             factory_service.set_run_fields(run_id, status="FINAL_QA")
             factory_service.start_checkpoint(run_id, "FINAL_QA")
             _run_final_qa_and_settle(run_id, run.project_id, settings)
-        _sync_batch_after_run_settled(run_id, run.project_id)
         return factory_service.get_run(run_id)
 
     if run.failed_stage == "FINAL_QA":
@@ -571,7 +558,6 @@ def retry_run(run_id: int, settings: Settings, service: VideoComposerService) ->
         )
         factory_service.start_checkpoint(run_id, "FINAL_QA")
         _run_final_qa_and_settle(run_id, run.project_id, settings)
-        _sync_batch_after_run_settled(run_id, run.project_id)
         return factory_service.get_run(run_id)
 
     factory_service.set_run_fields(
@@ -605,399 +591,6 @@ def cancel_run(run_id: int, service: VideoComposerService) -> FactoryRun:
         _cancel_event_for(run_id).set()
 
     return factory_service.get_run(run_id)
-
-
-# -- Batch Engine (Task 20 -- see docs/features/46-factory-batch-engine.md)
-#
-# Deliberately NOT a second pipeline/queue/scheduler framework: every real
-# unit of work is still _execute_pipeline_sync/_continue_run_sync/
-# service.retry_job (all pre-existing, Task 18/19). This section's own job
-# is exactly two things Task 18's original run_batch_factory/
-# continue_batch_factory didn't do: (1) bound how many FactoryRuns run
-# their *local* stages at once via settings.max_parallel_projects, using a
-# plain concurrent.futures.ThreadPoolExecutor (its own internal work queue
-# is already a correct, non-busy-looping FIFO bounded scheduler -- no
-# custom one is built here), and (2) keep BatchItem.status/error_message in
-# sync with the FactoryRun actually doing the work, so Batch's own
-# item-derived status (recompute_batch_status) is never stale.
-#
-# Render concurrency is untouched and unbounded by anything in this
-# section -- app.modules.video_composer.VideoComposerService's single
-# worker thread already caps it at 1 (settings.max_parallel_renders is
-# reporting-only, see that field's own docstring); a project's own
-# ThreadPoolExecutor slot here is freed the instant _stage_render hands off
-# to that existing queue, not when the render itself finishes.
-# --------------------------------------------------------------------------
-
-
-_batch_pause_events: dict[int, threading.Event] = {}
-_batch_pause_lock = threading.Lock()
-
-
-def _pause_event_for(batch_id: int) -> threading.Event:
-    with _batch_pause_lock:
-        event = _batch_pause_events.get(batch_id)
-        if event is None:
-            event = threading.Event()
-            _batch_pause_events[batch_id] = event
-        return event
-
-
-def _drop_pause_event(batch_id: int) -> None:
-    with _batch_pause_lock:
-        _batch_pause_events.pop(batch_id, None)
-
-
-def _sync_batch_item_from_run(item_id: int, run: FactoryRun) -> None:
-    """The single place that translates a FactoryRun's granular status into
-    BatchItem's own coarser vocabulary (section 7's own "derive batch state
-    from actual items"). QUEUED/RENDERING (the render hand-off is
-    asynchronous -- see _stage_render's own docstring) fall into the same
-    "RUNNING" bucket as every local stage; their eventual COMPLETED/FAILED/
-    CANCELLED settlement is synced separately, from the render.job.* event
-    handlers below, since nothing is blocking on this call site to observe it.
-    """
-    if run.status == "COMPLETED":
-        batch_service.set_item_fields(item_id, status="COMPLETED", render_job_id=run.render_job_id, error_message=None)
-    elif run.status == "FAILED":
-        batch_service.set_item_fields(item_id, status="FAILED", error_message=run.error_message)
-    elif run.status == "CANCELLED":
-        batch_service.set_item_fields(item_id, status="CANCELLED", error_message=None)
-    elif run.status == "NEEDS_REVIEW":
-        batch_service.set_item_fields(item_id, status="NEEDS_REVIEW", error_message=None)
-    elif run.status == "READY_TO_RENDER":
-        # Section 36's render_after_quality_pass=False policy -- a genuine,
-        # non-terminal "done preparing, waiting for a manual render" state.
-        batch_service.set_item_fields(item_id, status="READY_TO_RENDER", error_message=None)
-    else:
-        batch_service.set_item_fields(item_id, status="RUNNING", render_job_id=run.render_job_id, error_message=None)
-
-
-def _recompute_batch_status_unless_paused(batch_id: int) -> None:
-    """Section 21: pausing stops new work, it does not touch the Batch's
-    own status while items already in flight settle -- calling the generic
-    recompute_batch_status while PAUSED would otherwise silently overwrite
-    "PAUSED"/"PAUSED_AFTER_RESTART" back to PROCESSING/DRAFT/etc the moment
-    any one already-running item finished.
-    """
-    batch = get_batch_row(batch_id)
-    if batch.status in ("PAUSED", "PAUSED_AFTER_RESTART"):
-        return
-    batch_service.recompute_batch_status(batch_id)
-
-
-def _run_batch_item(
-    item_id: int, project_id: int, settings: Settings, service: VideoComposerService, pause_event: threading.Event
-) -> bool:
-    """One ThreadPoolExecutor worker's unit of work -- claims the item
-    (section 27/28's atomic claim; a lost race or a paused batch is a
-    silent no-op, never an error), runs the existing single-project
-    pipeline synchronously, then syncs BatchItem from whatever it settled
-    at. Returns whether this call actually claimed and ran something (used
-    for run_batch_factory's own "started" count).
-
-    Section 40/41's own failure isolation: wrapped in its own try/except so
-    one project's unexpected exception can never take down the
-    ThreadPoolExecutor or any sibling submission -- though
-    _execute_pipeline_sync already catches everything itself (Task 18), this
-    is the outer boundary for claim_item/create_run/the sync call itself.
-    """
-    if pause_event.is_set():
-        return False
-    if not batch_service.claim_item(item_id):
-        return False
-    try:
-        run, _created = factory_service.create_run(project_id)
-        _execute_pipeline_sync(run.id, project_id, settings, service)
-        settled = factory_service.get_run(run.id)
-        _sync_batch_item_from_run(item_id, settled)
-    except Exception:
-        logger.exception("Batch item %s raised outside the FactoryRun's own error handling", item_id)
-        batch_service.set_item_fields(item_id, status="FAILED", error_message="Unexpected error -- see server logs.")
-    return True
-
-
-def run_batch_factory(batch_id: int, settings: Settings, service: VideoComposerService) -> int:
-    """The engine's own synchronous core -- exactly FactoryPipeline's
-    existing create_and_start_run/_execute_pipeline_sync, called once per
-    claimable item (section 15's own PENDING/PROJECT_CREATED/BEATS_READY/
-    READY_TO_RENDER -- never FAILED/NEEDS_REVIEW/terminal, see
-    batch_service.BATCH_ITEM_ENGINE_CLAIMABLE_STATUSES), bounded by
-    settings.max_parallel_projects via a plain ThreadPoolExecutor. Blocks
-    the calling thread until every *local*-stage pass this call started has
-    settled (a queued/rendering item's own eventual outcome still arrives
-    later, asynchronously) -- callers that must not block an HTTP request
-    use start_batch_run below instead. Returns how many items this call
-    actually claimed and started (never > however many were eligible, and
-    never double-counts an item another concurrent call already claimed).
-    """
-    pause_event = _pause_event_for(batch_id)
-    batch = get_batch_row(batch_id)
-    candidates = [(item.id, item.project_id) for item in batch.items if item.project_id is not None]
-    if not candidates:
-        return 0
-
-    started = 0
-    with concurrent.futures.ThreadPoolExecutor(max_workers=max(1, settings.max_parallel_projects)) as executor:
-        futures = [
-            executor.submit(_run_batch_item, item_id, project_id, settings, service, pause_event)
-            for item_id, project_id in candidates
-        ]
-        for future in concurrent.futures.as_completed(futures):
-            if future.result():
-                started += 1
-
-    if pause_event.is_set():
-        batch_service.set_batch_status(batch_id, "PAUSED")
-    else:
-        batch_service.recompute_batch_status(batch_id)
-        if get_batch_row(batch_id).status in ("COMPLETED", "PARTIAL_FAILURE", "FAILED", "CANCELLED"):
-            _drop_pause_event(batch_id)
-    return started
-
-
-def start_batch_run(batch_id: int, settings: Settings, service: VideoComposerService) -> None:
-    """Non-blocking entry point for the live endpoint (section 29's "do not
-    busy-loop, do not block the request") -- run_batch_factory itself stays
-    a plain, directly-testable synchronous function (mirrors
-    create_and_start_run's own thin-background-thread-around-a-sync-core
-    shape for a single project).
-    """
-    thread = threading.Thread(target=run_batch_factory, args=(batch_id, settings, service), daemon=True)
-    thread.start()
-
-
-def continue_batch_factory(batch_id: int, settings: Settings, service: VideoComposerService) -> int:
-    """Section 46's "[Continue Ready]" -- only NEEDS_REVIEW items. Distinct
-    from retry_batch_failed below (section 45's separate "[Retry Failed]")
-    since a batch's own review queue and its failure queue are different
-    user workflows with different fixes. Claim-guarded the same way as
-    run_batch_factory (from_statuses=("NEEDS_REVIEW",)) so two overlapping
-    calls can't double-dispatch the same item.
-    """
-    pause_event = _pause_event_for(batch_id)
-    batch = get_batch_row(batch_id)
-    needs_review = [item for item in batch.items if item.status == "NEEDS_REVIEW" and item.project_id is not None]
-    if not needs_review:
-        return 0
-
-    def _continue_one(item_id: int, project_id: int) -> bool:
-        if pause_event.is_set():
-            return False
-        if not batch_service.claim_item(item_id, from_statuses=("NEEDS_REVIEW",)):
-            return False
-        try:
-            run = factory_service.get_active_run_for_project(project_id) or factory_service.get_latest_run_for_project(
-                project_id
-            )
-            if run is None or run.status != "NEEDS_REVIEW":
-                batch_service.set_item_fields(item_id, status="NEEDS_REVIEW")  # nothing to continue -- put it back
-                return False
-            if run.failed_stage == "FINAL_QA":
-                # Task 28 -- same reasoning as continue_run's own identical
-                # branch: a post-render QA FAIL resumes by re-checking QA,
-                # never the pre-render Quality Gate.
-                factory_service.set_run_fields(
-                    run.id, status="FINAL_QA", error_code=None, error_message=None, failed_stage=None,
-                    requires_human_review=False, review_reason_count=0,
-                )
-                factory_service.start_checkpoint(run.id, "FINAL_QA")
-                _run_final_qa_and_settle(run.id, project_id, settings)
-                _sync_batch_item_from_run(item_id, factory_service.get_run(run.id))
-                return True
-            factory_service.set_run_fields(run.id, status="QUALITY_CHECK")
-            factory_service.start_checkpoint(run.id, "QUALITY_CHECK")
-            _continue_run_sync(run.id, project_id, settings, service)
-            _sync_batch_item_from_run(item_id, factory_service.get_run(run.id))
-        except Exception:
-            logger.exception("Batch item %s failed unexpectedly while continuing", item_id)
-            batch_service.set_item_fields(item_id, status="FAILED", error_message="Unexpected error -- see server logs.")
-        return True
-
-    processed = 0
-    with concurrent.futures.ThreadPoolExecutor(max_workers=max(1, settings.max_parallel_projects)) as executor:
-        futures = [executor.submit(_continue_one, item.id, item.project_id) for item in needs_review]
-        for future in concurrent.futures.as_completed(futures):
-            if future.result():
-                processed += 1
-
-    if pause_event.is_set():
-        batch_service.set_batch_status(batch_id, "PAUSED")
-    else:
-        batch_service.recompute_batch_status(batch_id)
-    return processed
-
-
-def start_batch_continue(batch_id: int, settings: Settings, service: VideoComposerService) -> None:
-    thread = threading.Thread(target=continue_batch_factory, args=(batch_id, settings, service), daemon=True)
-    thread.start()
-
-
-def retry_batch_failed(batch_id: int, settings: Settings, service: VideoComposerService) -> int:
-    """Section 45's "[Retry Failed]" -- only FAILED items; a render-stage
-    failure delegates to VideoComposerService's own retry_job (a fresh
-    RenderJob, matching retry_run's own single-project logic exactly, never
-    a second render pipeline); every earlier-stage failure re-invokes the
-    full pipeline (cheap thanks to each stage's own reuse-detection). Never
-    touches COMPLETED or NEEDS_REVIEW items (see continue_batch_factory for
-    the latter).
-    """
-    pause_event = _pause_event_for(batch_id)
-    batch = get_batch_row(batch_id)
-    failed = [item for item in batch.items if item.status == "FAILED" and item.project_id is not None]
-    if not failed:
-        return 0
-
-    def _retry_one(item_id: int, project_id: int) -> bool:
-        if pause_event.is_set():
-            return False
-        if not batch_service.claim_item(item_id, from_statuses=("FAILED",)):
-            return False
-        try:
-            run = factory_service.get_active_run_for_project(project_id) or factory_service.get_latest_run_for_project(
-                project_id
-            )
-            if run is None or run.status != "FAILED":
-                batch_service.set_item_fields(item_id, status="FAILED")
-                return False
-            factory_service.increment_attempt(run.id)
-            if run.failed_stage in ("QUEUED", "RENDERING") and run.render_job_id is not None:
-                new_job_id = service.retry_job(run.render_job_id)
-                factory_service.set_run_fields(
-                    run.id, status="QUEUED", render_job_id=new_job_id,
-                    error_code=None, error_message=None, failed_stage=None, completed_at=None,
-                )
-                factory_service.start_checkpoint(run.id, run.failed_stage)
-                _sync_batch_item_from_run(item_id, factory_service.get_run(run.id))
-            elif run.failed_stage == "PACKAGING":
-                # Task 27 section 52 -- resume Packaging only, never
-                # re-render the video (same reasoning as retry_run's own
-                # identical branch).
-                factory_service.set_run_fields(
-                    run.id, status="PACKAGING", error_code=None, error_message=None,
-                    failed_stage=None, completed_at=None,
-                )
-                factory_service.start_checkpoint(run.id, "PACKAGING")
-                try:
-                    _stage_package(run.id, project_id, settings)
-                except FactoryStageError as exc:
-                    _mark_failed(run.id, exc.stage, exc.code, exc.message)
-                else:
-                    factory_service.complete_checkpoint(run.id, "PACKAGING")
-                    # Task 28: still has to pass through FINAL_QA before
-                    # settling -- same reasoning as retry_run's own
-                    # identical branch.
-                    factory_service.set_run_fields(run.id, status="FINAL_QA")
-                    factory_service.start_checkpoint(run.id, "FINAL_QA")
-                    _run_final_qa_and_settle(run.id, project_id, settings)
-                _sync_batch_item_from_run(item_id, factory_service.get_run(run.id))
-            elif run.failed_stage == "FINAL_QA":
-                # Task 28: an UNEXPECTED_ERROR that aborted the QA check
-                # itself -- same reasoning as retry_run's own identical
-                # branch.
-                factory_service.set_run_fields(
-                    run.id, status="FINAL_QA", error_code=None, error_message=None,
-                    failed_stage=None, completed_at=None,
-                )
-                factory_service.start_checkpoint(run.id, "FINAL_QA")
-                _run_final_qa_and_settle(run.id, project_id, settings)
-                _sync_batch_item_from_run(item_id, factory_service.get_run(run.id))
-            else:
-                factory_service.set_run_fields(
-                    run.id, status="PREPARING", error_code=None, error_message=None,
-                    failed_stage=None, completed_at=None,
-                )
-                _execute_pipeline_sync(run.id, project_id, settings, service)
-                _sync_batch_item_from_run(item_id, factory_service.get_run(run.id))
-        except Exception:
-            logger.exception("Batch item %s failed unexpectedly while retrying", item_id)
-            batch_service.set_item_fields(item_id, status="FAILED", error_message="Unexpected error -- see server logs.")
-        return True
-
-    processed = 0
-    with concurrent.futures.ThreadPoolExecutor(max_workers=max(1, settings.max_parallel_projects)) as executor:
-        futures = [executor.submit(_retry_one, item.id, item.project_id) for item in failed]
-        for future in concurrent.futures.as_completed(futures):
-            if future.result():
-                processed += 1
-
-    if pause_event.is_set():
-        batch_service.set_batch_status(batch_id, "PAUSED")
-    else:
-        batch_service.recompute_batch_status(batch_id)
-    return processed
-
-
-def start_batch_retry_failed(batch_id: int, settings: Settings, service: VideoComposerService) -> None:
-    thread = threading.Thread(target=retry_batch_failed, args=(batch_id, settings, service), daemon=True)
-    thread.start()
-
-
-def pause_batch_engine(batch_id: int) -> None:
-    """Section 21: stops new items from being *claimed* -- items already
-    RUNNING (local stages in another worker thread, or already handed off
-    to the existing RenderQueue) are left to finish naturally, matching
-    "running projects should normally finish." Idempotent: pausing an
-    already-paused/terminal batch is a no-op.
-    """
-    batch = get_batch_row(batch_id)
-    if batch.status not in ("PROCESSING",):
-        return
-    _pause_event_for(batch_id).set()
-    batch_service.set_batch_status(batch_id, "PAUSED")
-
-
-def resume_batch_engine(batch_id: int, settings: Settings, service: VideoComposerService) -> None:
-    """Section 22: only PENDING/PROJECT_CREATED/BEATS_READY/READY_TO_RENDER
-    items are picked up (run_batch_factory's own claim-based eligibility);
-    a RUNNING item was never touched by pause in the first place, and a
-    COMPLETED/FAILED/CANCELLED one is never silently restarted here.
-    """
-    batch = get_batch_row(batch_id)
-    if batch.status not in ("PAUSED", "PAUSED_AFTER_RESTART"):
-        raise ValidationError(f"Only a PAUSED batch can be resumed (this batch is {batch.status}).")
-    _pause_event_for(batch_id).clear()
-    batch_service.set_batch_status(batch_id, "PROCESSING")
-    start_batch_run(batch_id, settings, service)
-
-
-def cancel_batch_engine(batch_id: int, service: VideoComposerService) -> None:
-    """Section 23/24: every still-claimable (not-yet-started) item becomes
-    CANCELLED immediately and atomically (batch_service.bulk_cancel_claimable_items
-    -- this alone also closes the race against a concurrently-running
-    claim, see that function's own docstring); every currently-RUNNING item
-    gets a real cancellation *request* through the existing single-project
-    cancel_run (itself delegating to VideoComposerService.cancel_job for an
-    in-flight render, or a cooperative cancel_event for a local stage) --
-    never force-killed, never silently ignored. Already-COMPLETED/FAILED/
-    NEEDS_REVIEW/SKIPPED items are left exactly as they are (section 24:
-    "already completed projects remain COMPLETED").
-    """
-    _pause_event_for(batch_id).set()  # also stop any in-flight run_batch_factory from claiming anything further
-    batch_service.bulk_cancel_claimable_items(batch_id)
-
-    batch = get_batch_row(batch_id)
-    for item in batch.items:
-        if item.status != "RUNNING" or item.project_id is None:
-            continue
-        run = factory_service.get_active_run_for_project(item.project_id)
-        if run is not None:
-            cancel_run(run.id, service)
-            _sync_batch_item_from_run(item.id, factory_service.get_run(run.id))
-
-    batch_service.recompute_batch_status(batch_id)
-    _drop_pause_event(batch_id)
-
-
-def skip_batch_item(item_id: int) -> bool:
-    """Section 51: a PENDING (or otherwise not-yet-started) item the user
-    doesn't want processed -> SKIPPED, never rendered. Not a failure --
-    excluded from any "N failed" count, and from run_batch_factory's own
-    eligibility going forward (SKIPPED is a terminal status). Returns
-    whether the skip actually took effect (False if the item had already
-    moved past claimable, e.g. it started running a moment earlier).
-    """
-    return batch_service.claim_item(item_id, new_status="SKIPPED")
 
 
 # -- Recovery / reconciliation (section 46-48) ------------------------------
@@ -1058,37 +651,6 @@ def reconcile_factory_runs_on_startup(settings: Settings) -> int:
     return reconciled
 
 
-def reconcile_batches_on_startup() -> int:
-    """Task 20 section 43/44: called once from app/main.py's lifespan,
-    *after* reconcile_factory_runs_on_startup above has already settled
-    every FactoryRun a batch's RUNNING items were waiting on -- so this
-    function's own job is purely: (1) sync each such BatchItem from its
-    now-settled FactoryRun (never regenerating/re-rendering anything
-    itself), and (2) force every batch that was actively PROCESSING back to
-    PAUSED_AFTER_RESTART, never silently resuming it. This is a desktop
-    machine -- the user may be mid-task, a source drive may be unmounted, a
-    credential may have changed (section 44) -- so an explicit
-    "Resume Batch" is always required after a restart, no matter how close
-    to finished the batch already was. Returns how many batches were paused.
-    """
-    paused = 0
-    for batch in batch_service.list_batches():
-        if batch.status != "PROCESSING":
-            continue
-        for item in batch.items:
-            if item.status != "RUNNING" or item.project_id is None:
-                continue
-            run = factory_service.get_active_run_for_project(item.project_id) or factory_service.get_latest_run_for_project(
-                item.project_id
-            )
-            if run is not None:
-                _sync_batch_item_from_run(item.id, run)
-        batch_service.set_batch_status(batch.id, "PAUSED_AFTER_RESTART")
-        _drop_pause_event(batch.id)  # any pre-crash pause/cancel signal is meaningless in a new process
-        paused += 1
-    return paused
-
-
 # -- render.job.* event handlers (section 21/51 -- reuse the existing
 # EventBus, never a second one) ---------------------------------------------
 
@@ -1147,12 +709,10 @@ def _on_render_job_completed(payload: dict) -> None:
         _stage_package(run.id, run.project_id, get_settings())
     except FactoryStageError as exc:
         _mark_failed(run.id, exc.stage, exc.code, exc.message)
-        _sync_batch_after_run_settled(run.id, run.project_id)
         return
     except Exception as exc:  # noqa: BLE001 -- never a raw stack trace to the user (section 24)
         logger.exception("FactoryRun %s failed unexpectedly during PACKAGING", run.id)
         _mark_failed(run.id, "PACKAGING", "UNEXPECTED_ERROR", str(exc))
-        _sync_batch_after_run_settled(run.id, run.project_id)
         return
     factory_service.complete_checkpoint(run.id, "PACKAGING")
 
@@ -1164,14 +724,12 @@ def _on_render_job_completed(payload: dict) -> None:
     factory_service.set_run_fields(run.id, status="FINAL_QA")
     factory_service.start_checkpoint(run.id, "FINAL_QA")
     _run_final_qa_and_settle(run.id, run.project_id, get_settings())
-    _sync_batch_after_run_settled(run.id, run.project_id)
 
 
 def _on_render_job_failed(payload: dict) -> None:
     run = _find_run_by_render_job(payload["job_id"])
     if run is not None:
         _mark_failed(run.id, "RENDERING", payload.get("error_code") or RENDER_FAILED, "The render failed.")
-        _sync_batch_after_run_settled(run.id, run.project_id)
 
 
 def _on_render_job_cancelled(payload: dict) -> None:
@@ -1179,23 +737,6 @@ def _on_render_job_cancelled(payload: dict) -> None:
     if run is not None:
         factory_service.set_run_fields(run.id, status="CANCELLED", completed_at=_utcnow())
         factory_service.force_checkpoint_status(run.id, "RENDERING", "SKIPPED")
-        _sync_batch_after_run_settled(run.id, run.project_id)
-
-
-def _sync_batch_after_run_settled(run_id: int, project_id: int) -> None:
-    """Task 20: the async tail of _run_batch_item -- a render's own
-    eventual completion/failure/cancellation arrives here, well after the
-    ThreadPoolExecutor worker that started it has already returned (see
-    _stage_render's own docstring on why this hand-off is non-blocking).
-    A no-op for a project that isn't part of any batch (item is None).
-    """
-    item = batch_service.get_batch_item_by_project(project_id)
-    if item is None:
-        return
-    settled = factory_service.get_run(run_id)
-    if settled is not None:
-        _sync_batch_item_from_run(item.id, settled)
-    _recompute_batch_status_unless_paused(item.batch_id)
 
 
 def register_factory_event_handlers(event_bus: EventBus) -> None:
@@ -1268,85 +809,3 @@ def continue_factory_run(
     service: VideoComposerService = Depends(get_video_composer_service),
 ) -> FactoryRun:
     return continue_run(run_id, settings, service, force=force)
-
-
-@router.post("/batches/{batch_id}/factory-run", response_model=dict)
-def start_batch_factory(
-    batch_id: int, settings: Settings = Depends(get_settings),
-    service: VideoComposerService = Depends(get_video_composer_service),
-) -> dict:
-    """Task 20: non-blocking (section 29) -- unlike Task 18's original
-    synchronous version, this returns immediately once the background
-    thread is started; the frontend already polls GET /batches/{id} for
-    real progress afterward rather than trusting this response's own
-    numbers (see frontend/src/pages/BatchDetailPage.tsx), so the response
-    shape is kept exactly as before for zero frontend changes -- the
-    number is simply always 0 now (nothing has been claimed yet by the
-    time this returns), not a final count.
-    """
-    get_batch_row(batch_id)  # 404 if the batch itself doesn't exist
-    batch_service.set_batch_status(batch_id, "PROCESSING")
-    start_batch_run(batch_id, settings, service)
-    return {"batch_id": batch_id, "runs_started": 0}
-
-
-@router.post("/batches/{batch_id}/factory-continue", response_model=dict)
-def continue_batch_factory_endpoint(
-    batch_id: int, settings: Settings = Depends(get_settings),
-    service: VideoComposerService = Depends(get_video_composer_service),
-) -> dict:
-    """Section 46's "[Continue Ready]" -- NEEDS_REVIEW items only (see
-    continue_batch_factory's own docstring for why FAILED items are a
-    separate action, POST /batches/{id}/factory-retry-failed below).
-    """
-    get_batch_row(batch_id)
-    batch_service.set_batch_status(batch_id, "PROCESSING")
-    start_batch_continue(batch_id, settings, service)
-    return {"batch_id": batch_id, "runs_processed": 0}
-
-
-@router.post("/batches/{batch_id}/factory-retry-failed", response_model=dict)
-def retry_batch_failed_endpoint(
-    batch_id: int, settings: Settings = Depends(get_settings),
-    service: VideoComposerService = Depends(get_video_composer_service),
-) -> dict:
-    get_batch_row(batch_id)
-    batch_service.set_batch_status(batch_id, "PROCESSING")
-    start_batch_retry_failed(batch_id, settings, service)
-    return {"batch_id": batch_id, "runs_processed": 0}
-
-
-@router.post("/batches/{batch_id}/factory-pause", response_model=BatchOut)
-def pause_batch_endpoint(batch_id: int) -> Batch:
-    get_batch_row(batch_id)
-    pause_batch_engine(batch_id)
-    return get_batch_row(batch_id)
-
-
-@router.post("/batches/{batch_id}/factory-resume", response_model=BatchOut)
-def resume_batch_endpoint(
-    batch_id: int, settings: Settings = Depends(get_settings),
-    service: VideoComposerService = Depends(get_video_composer_service),
-) -> Batch:
-    get_batch_row(batch_id)
-    resume_batch_engine(batch_id, settings, service)
-    return get_batch_row(batch_id)
-
-
-@router.post("/batches/{batch_id}/factory-cancel", response_model=BatchOut)
-def cancel_batch_factory_endpoint(
-    batch_id: int, service: VideoComposerService = Depends(get_video_composer_service)
-) -> Batch:
-    get_batch_row(batch_id)
-    cancel_batch_engine(batch_id, service)
-    return get_batch_row(batch_id)
-
-
-@router.post("/batches/{batch_id}/items/{item_id}/skip", response_model=BatchOut)
-def skip_batch_item_endpoint(batch_id: int, item_id: int) -> Batch:
-    batch = get_batch_row(batch_id)
-    if not any(item.id == item_id for item in batch.items):
-        raise NotFoundError("BatchItem", item_id)
-    skip_batch_item(item_id)
-    batch_service.recompute_batch_status(batch_id)
-    return get_batch_row(batch_id)

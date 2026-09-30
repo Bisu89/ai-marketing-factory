@@ -11,7 +11,7 @@ from app.core.exceptions import FileOperationError, NotFoundError, ValidationErr
 from app.db.session import get_db
 from app.modules.video_composer.models import CAPTION_PRESETS, VideoComposeJob
 from app.modules.video_composer.schemas import PickFolderOut, VideoComposeJobOut, job_to_out
-from app.modules.video_composer.service import VideoComposerService
+from app.modules.video_composer.service import DUB_PLACEHOLDER_TITLE, VideoComposerService
 
 router = APIRouter()
 
@@ -120,7 +120,6 @@ def create_video_compose_job(
 # VideoComposerService._run_dub_generation_phase before anything downstream
 # ever reads them -- both columns are NOT NULL, so a placeholder is required
 # at creation time regardless.
-_DUB_PLACEHOLDER_TITLE = "(Đang dịch...)"
 _DUB_PLACEHOLDER_SCRIPT = "(Đang nhận diện giọng nói và dịch...)"
 _DUB_DEFAULT_VOICE = "vi-VN-HoaiMyNeural"
 _DUB_DEFAULT_RATE = "+5%"  # edge_tts.Communicate's own signed-percentage rate string
@@ -142,7 +141,7 @@ def create_chinese_drama_job(
     fields here -- everything past the upload is auto-generated.
     """
     job_id = service.create_job(
-        title=_DUB_PLACEHOLDER_TITLE,
+        title=DUB_PLACEHOLDER_TITLE,
         script_text=_DUB_PLACEHOLDER_SCRIPT,
         voice=_DUB_DEFAULT_VOICE,
         narration_rate=_DUB_DEFAULT_RATE,

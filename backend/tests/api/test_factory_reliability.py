@@ -30,7 +30,7 @@ from app.modules.factory.schemas import (
     classify_error,
 )
 from app.modules.video_composer.models import VideoComposeJob
-from tests.api.test_batch_render import FFMPEG_AVAILABLE
+from tests.api.media_helpers import FFMPEG_AVAILABLE
 from tests.api.test_factory_pipeline import _FactoryTestCase, _fake_beat_plan
 
 

@@ -22,7 +22,6 @@ from app.core.config import Settings
 from app.core.exceptions import ValidationError
 from app.db.base import Base
 from app.modules.asset.models import Asset
-from app.modules.batch.models import Batch, BatchItem
 from app.modules.beat.models import Project
 from app.modules.video_composer.models import VideoComposeClip, VideoComposeJob
 
@@ -41,7 +40,7 @@ class _CleanupTestCase(unittest.TestCase):
         Base.metadata.create_all(
             bind=self.engine,
             tables=[
-                Project.__table__, Batch.__table__, BatchItem.__table__,
+                Project.__table__,
                 VideoComposeJob.__table__, VideoComposeClip.__table__, Asset.__table__,
             ],
         )
@@ -83,21 +82,6 @@ class _CleanupTestCase(unittest.TestCase):
             db.commit()
             db.refresh(p)
             return p.id
-        finally:
-            db.close()
-
-    def _batch_item(self, project_id: int, render_job_id: int) -> None:
-        db = self.Session()
-        try:
-            b = Batch(name="b")
-            db.add(b)
-            db.commit()
-            db.refresh(b)
-            db.add(BatchItem(
-                batch_id=b.id, index=1, script_text="s",
-                project_id=project_id, render_job_id=render_job_id,
-            ))
-            db.commit()
         finally:
             db.close()
 
@@ -227,17 +211,6 @@ class CleanupGeneratedTests(_CleanupTestCase):
         self.assertEqual(opted.skipped.unparseable_path, 0)  # _imagegen path parses
         self.assertEqual(self._asset_ids(), set())
         self.assertFalse((self.tmp_path / "_imagegen" / f"project_{pid}").exists())
-
-    def test_project_rendered_via_batch_item_is_eligible(self):
-        job = self._job("completed")
-        pid = self._project(render_job_id=None)
-        self._batch_item(pid, job)
-        self._beat_asset("voice", pid, "01")
-
-        result = self._run()
-
-        self.assertEqual(result.projects_cleaned, [pid])
-        self.assertEqual(self._asset_ids(), set())
 
     def test_unknown_source_is_rejected(self):
         with self.assertRaises(ValidationError):

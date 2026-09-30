@@ -150,7 +150,6 @@ class StoryService:
         style: str,
         language: str = "english",
         extra_context: str | None = None,
-        content_idea_id: int | None = None,
     ) -> StoryJob:
         video = self._get_video(video_id)
 
@@ -170,7 +169,6 @@ class StoryService:
                 language=language,
                 status="failed",
                 error_message=message,
-                content_idea_id=content_idea_id,
             )
             self.db.add(job)
             history.record(
@@ -222,7 +220,7 @@ class StoryService:
             raise ExternalServiceError(message) from exc
 
         job = StoryJob(
-            video_id=video_id, style=style, language=language, status="completed", content_idea_id=content_idea_id
+            video_id=video_id, style=style, language=language, status="completed"
         )
         self.db.add(job)
         self.db.flush()

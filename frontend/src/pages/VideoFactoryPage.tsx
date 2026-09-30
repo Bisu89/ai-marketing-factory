@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import {
   AlertTriangle,
   ArrowDown,
-  ArrowLeft,
   ArrowUp,
   Ban,
   Check,
@@ -433,15 +432,11 @@ function validatePlan(beats: WorkingBeat[], script: string): string[] {
 }
 
 export function VideoFactoryPage() {
-  // Task 13 -- opened as /video-factory?project=<id>[&batch=<batchId>] when
-  // editing one project out of a batch (see docs/features/40-batch-video-creation.md
-  // and BatchDetailPage.tsx's "Open Project" links) instead of this app's
-  // one singleton beats.json draft. `batch`, when present, is only used to
-  // render a "back to batch" link -- it plays no role in loading/saving.
+  // Opened as /video-factory?project=<id> when editing one Project instead
+  // of this app's one singleton beats.json draft.
   const [searchParams] = useSearchParams();
   const projectIdParam = searchParams.get("project");
   const projectId = projectIdParam ? Number(projectIdParam) : null;
-  const batchIdParam = searchParams.get("batch");
 
   const [step, setStep] = useState<Step>(1);
   const [script, setScript] = useState("");
@@ -1209,7 +1204,7 @@ export function VideoFactoryPage() {
         title="Video Factory"
         subtitle={
           projectId != null
-            ? `Editing batch project${projectName ? ` "${projectName}"` : ""} -- assign visuals, then render from the batch.`
+            ? `Editing project${projectName ? ` "${projectName}"` : ""} -- assign visuals, then render.`
             : "Turn a script into a captioned, narrated video from local images -- no cloud rendering."
         }
         actions={
@@ -1232,12 +1227,6 @@ export function VideoFactoryPage() {
               <span className="vf-duration-badge">
                 {Math.round(totalDuration)}s &bull; {ASPECT_RATIO_LABEL}
               </span>
-            )}
-            {batchIdParam && (
-              <Link className="btn btn-secondary" to={`/batches/${batchIdParam}`}>
-                <ArrowLeft size={14} />
-                Back to Batch
-              </Link>
             )}
             {projectId == null && (
               <button className="btn btn-secondary" onClick={handleOpenNewVideo}>

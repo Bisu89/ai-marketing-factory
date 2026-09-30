@@ -17,22 +17,12 @@ line). `noqa: F401` throughout -- the import *is* the point.
 import app.models  # noqa: F401
 
 # -- Feature module tables ------------------------------------------------
-import app.modules.affiliate.models  # noqa: F401
 import app.modules.ai.hook.models  # noqa: F401
 import app.modules.ai.story.models  # noqa: F401
 import app.modules.asset.models  # noqa: F401
-import app.modules.batch.models  # noqa: F401
 import app.modules.beat.models  # noqa: F401
-import app.modules.competitor_intelligence.models  # noqa: F401
-import app.modules.content_batch.models  # noqa: F401
-import app.modules.content_strategy.models  # noqa: F401
-import app.modules.discovery.models  # noqa: F401
 import app.modules.factory.models  # noqa: F401
 import app.modules.manhua.models  # noqa: F401
-import app.modules.news.models  # noqa: F401
-import app.modules.publishing.models  # noqa: F401
-import app.modules.scene_cutter.models  # noqa: F401
-import app.modules.series.models  # noqa: F401
 import app.modules.story.models  # noqa: F401
 import app.modules.storyteller.models  # noqa: F401
 import app.modules.video_composer.models  # noqa: F401

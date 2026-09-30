@@ -16,6 +16,7 @@ from app.core import render_errors
 from app.core.config import get_settings
 from app.core.events import EventBus
 from app.core.exceptions import NotFoundError, RenderCancelled, ValidationError
+from app.core.output_naming import labeled_video_filename, resolve_labeled_dir
 from app.core.render_profile import get_render_profile
 from app.db.session import SessionLocal
 from app.modules.video_composer import audio_mix, ffmpeg_ops, narration, subtitles
@@ -38,6 +39,11 @@ PENDING_STATUSES = (
     "mixing_audio", "finalizing", "composing_final", "validating",
 )
 _RUNNING_STATUSES = tuple(s for s in PENDING_STATUSES if s != "queued")
+
+# A Chinese Drama dub job's title until _run_dub_generation_phase replaces
+# it with the translated one (the column is NOT NULL, so creation needs a
+# placeholder). Never used as an output folder/file label.
+DUB_PLACEHOLDER_TITLE = "(Đang dịch...)"
 
 # A callable that does the actual per-beat motion rendering for a
 # composition-originated job: (composition_request, scenes_dir, is_cancelled,
@@ -413,11 +419,31 @@ class VideoComposerService:
         self.enqueue(new_job_id)
         return new_job_id
 
-    def job_dir(self, job_id: int) -> Path:
-        return self._root / f"job_{job_id}"
+    def job_dir(self, job_id: int, fallback_label: str | None = None) -> Path:
+        """`job_<id>_<title>` (see app.core.output_naming) -- or whichever
+        folder this job already has on disk, so it never moves mid-run.
+        `fallback_label` names the folder when the title is still the dub
+        placeholder (a dub job's inputs are saved before translation)."""
+        return resolve_labeled_dir(self._root, "job", job_id, self._output_label(job_id) or fallback_label)
+
+    def _output_label(self, job_id: int) -> str | None:
+        db = SessionLocal()
+        try:
+            job = db.get(VideoComposeJob, job_id)
+            title = job.title if job is not None else None
+        finally:
+            db.close()
+        return None if title == DUB_PLACEHOLDER_TITLE else title
+
+    def final_video_path(self, job_id: int, output_dir: Path) -> Path:
+        """`<output_dir>/job_<id>_<title>.mp4` -- also unique inside a
+        user-chosen output folder shared by several jobs, where the old fixed
+        `video_hoan_chinh.mp4` made every job overwrite the previous one."""
+        return output_dir / labeled_video_filename("job", job_id, self._output_label(job_id))
 
     def save_input_clips(self, job_id: int, uploads: list[tuple[str, BinaryIO]]) -> None:
-        inputs_dir = self.job_dir(job_id) / "inputs"
+        fallback_label = Path(uploads[0][0]).stem if uploads else None
+        inputs_dir = self.job_dir(job_id, fallback_label) / "inputs"
         inputs_dir.mkdir(parents=True, exist_ok=True)
 
         db = SessionLocal()
@@ -711,13 +737,13 @@ class VideoComposerService:
         mixed_audio = tmp_dir / "mixed_audio.m4a"
         subtitle_ass = output_dir / "phu_de_karaoke.ass"
         subtitle_srt = output_dir / "phu_de.srt"
-        final_video = output_dir / "video_hoan_chinh.mp4"
+        final_video = self.final_video_path(job_id, output_dir)
         # Never expose final_video until it's been validated (Task 10
         # hardening -- "atomic output"): ffmpeg writes into this temp name
         # first; only a successful _validate_final_output triggers the
         # atomic rename onto final_video, below. If anything fails first,
         # this is deleted and final_video never exists for this job.
-        tmp_final_video = output_dir / ".video_hoan_chinh.tmp.mp4"
+        tmp_final_video = output_dir / f".{final_video.stem}.tmp.mp4"
 
         render_start = time.monotonic()
         composition_seconds = narrating_seconds = subtitling_seconds = 0.0
@@ -974,8 +1000,8 @@ class VideoComposerService:
         ffmpeg call this method makes (_compose_final); nothing partial is
         ever written to the canonical output path.
         """
-        final_video = output_dir / "video_hoan_chinh.mp4"
-        tmp_final_video = output_dir / ".video_hoan_chinh.tmp.mp4"
+        final_video = self.final_video_path(job_id, output_dir)
+        tmp_final_video = output_dir / f".{final_video.stem}.tmp.mp4"
 
         def _checkpoint() -> None:
             if self._is_cancelled(job_id):
@@ -1076,7 +1102,7 @@ class VideoComposerService:
                 _checkpoint()
                 self._log(job_id, "phase started: APPEND_OUTRO")
                 outro_duration = ffmpeg_ops.probe_duration(Path(outro_clip_path)) + _PRE_OUTRO_HOLD_SEC
-                tmp_with_outro = tmp_dir / ".video_hoan_chinh.outro.tmp.mp4"
+                tmp_with_outro = tmp_dir / f".{final_video.stem}.outro.tmp.mp4"
                 self._append_outro_clip(final_video, Path(outro_clip_path), tmp_with_outro)
                 tmp_with_outro.replace(final_video)
                 self._log(job_id, f"phase completed: APPEND_OUTRO (+{outro_duration:.2f}s)")
