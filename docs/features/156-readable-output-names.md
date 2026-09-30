@@ -1,6 +1,6 @@
 # 156 — Readable output folder and video names
 
-**Commit:** _uncommitted_
+**Commit:** `9af3123`
 
 Real user report: every render landed in a bare `job_<id>` folder holding
 an identically named `video_hoan_chinh.mp4` (Storyteller:

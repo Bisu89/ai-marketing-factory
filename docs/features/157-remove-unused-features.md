@@ -1,6 +1,6 @@
 # 157 — Remove unused features
 
-**Commit:** _uncommitted_
+**Commit:** `9af3123`
 
 At the user's request, eleven features the user doesn't use were removed
 outright (code, routes, UI, tests), not just hidden from the sidebar:
