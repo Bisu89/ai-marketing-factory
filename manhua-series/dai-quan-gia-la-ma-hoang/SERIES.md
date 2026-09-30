@@ -56,7 +56,8 @@ Tên tiểu thư Lạc Vân Thường là tên theo truyện gốc, chưa thấy
 | 15 | 15 | `manhua-recap/dqgl_ep15` | Ma Hoàng chỉ dọn nhà, vô tình khiến cả thiên hạ chấn động!? | ✅ project 134 / job_193, Final QA PASS 100 (47.78s, 1080×1920) |
 | 16 | 16 | `manhua-recap/dqgl_ep16` | Ma Hoàng từ chối làm đại gia, lại cứu Lạc gia khỏi âm mưu bắt cóc!? | ✅ project 135 / job_194, Final QA PASS 100 (43.0s, 1080×1920) |
 | 17 | 17 | `manhua-recap/dqgl_ep17` | Chưa kịp bắt cóc, thủ lĩnh Hắc Phong Sơn đã bị Ma Hoàng bắt sống!? | ✅ project 136 / job_195, Final QA PASS 100 (40.36s, 1080×1920) |
-| 4–10, 18+ | theo arc | | | Chương 3–10 chỉ có bản dài (Long01); chương 11 là Short đầu tiên nối tiếp sau Long01, chưa làm Short riêng cho 3–10. Từ chương 15, thư mục ảnh đổi tên thành `dqgl_epNN` (gõ nhầm của phiên khác, không phải `dqg_epNN`) |
+| 18 | 18 | `manhua-recap/dqgl_ep18` | Kẻ chủ mưu thật sự không phải nữ trại chủ, mà là vị hôn phu của cô!? | ✅ project 137 / job_196, Final QA PASS 100 (38.98s, 1080×1920) |
+| 4–10, 19+ | theo arc | | | Chương 3–10 chỉ có bản dài (Long01); chương 11 là Short đầu tiên nối tiếp sau Long01, chưa làm Short riêng cho 3–10. Từ chương 15, thư mục ảnh đổi tên thành `dqgl_epNN` (gõ nhầm của phiên khác, không phải `dqg_epNN`) |
 
 ## Video dài
 
@@ -129,6 +130,16 @@ cung (bằng chiêu hù dọa "đếm tới ba") lấy được toàn bộ kế 
 để Hắc Phong Sơn thừa cơ tấn công — nhưng Lôi Vũ Đình không biết đầu mối liên lạc thật sự với U Minh Cốc là ai.
 Kết lửng: một cảnh hoàn toàn mới, chưa rõ nhân vật, cắt ngang bằng tiếng thét "Đừng mà!" — để ngỏ cho tập 18.
 
+Chương 18: tiếp cảnh "Đừng mà!" — hóa ra là một cô hầu gái khác bị thẩm vấn tiếp, khai ra: toàn bộ âm mưu không do
+Lôi Vũ Đình chủ mưu, mà do **Dương Minh**, vị hôn phu của cô và đệ tử thân cận của sơn chủ Hắc Phong Sơn. Chính
+Dương Minh (không phải Lạc gia) đã móc nối với quản gia phản bội cũ của Lạc gia (**Tôn quản gia**, chết ở chương 4)
+để lật đổ Lạc gia năm xưa — và mọi "bằng chứng" Lôi Vũ Đình tin (Lạc gia hại cha nuôi cô, Hồi Long Chưởng trị được
+thương) đều chỉ do một mình Dương Minh kể lại, chưa ai kiểm chứng độc lập. Trác Phàm nghi cả Lạc gia lẫn Hắc Phong
+Sơn chỉ là quân cờ của **Ngự Hạ Thất Thế Gia**, đòi Lôi Vũ Đình đích thân dẫn mình về tận Hắc Phong Sơn điều tra.
+Tới nơi, phát hiện chuyến đi "tuyệt mật" của cô đã bị lộ cho lính gác biết trước — dấu hiệu Dương Minh giám sát cô
+sát sao. Kết lửng: một bóng người xám bạc xuất hiện, chào thân mật "Vũ Đình muội muội" rồi ra tay tấn công ngay —
+chính là **Dương Minh**.
+
 Hai bản cũ do OpenAI viết (project 115/116, tiêu đề khác) được giữ để so sánh. Bản chính thức là bản Claude viết.
 
 ## Khung đã xóa trước khi cắt kịch bản
@@ -142,6 +153,12 @@ Việc xóa không đổi tên các khung còn lại.
 
 ## Nhật ký
 
+- 2026-09-30: chương 18 (`dqgl_ep18`) — `cut` ra 70 khung, không có khung rác. Viết tay `ep18/script.json` (13 beat).
+  `build --script` tạo project 137, **render fail 2 lần liên tiếp** ở GENERATING_VOICE (`TTS_GENERATION_FAILED`:
+  "No audio was received" từ edge_tts) dù lần này **không có project nào khác đang render song song** — test gọi
+  edge_tts trực tiếp (ngoài app) vẫn thành công, nên nhiều khả năng là rate-limit/flake phía dịch vụ Microsoft chứ
+  không phải do tranh chấp tài nguyên như tập 17. Retry lần 3 mới qua được. job_196, **Final QA PASS 100 (38.98s,
+  1080×1920)**.
 - 2026-09-30: chương 17 (`dqgl_ep17`) — `cut` ra 81 khung, không có khung rác. Viết tay `ep17/script.json` (15 beat).
   `build --script` tạo project 136, **render fail 3 lần liên tiếp** ở bước GENERATING_VOICE (lỗi
   `FACTORY_INTERRUPTED` do backend bị restart giữa chừng bởi phiên khác đang code song song, sau đó

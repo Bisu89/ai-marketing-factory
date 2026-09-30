@@ -1,0 +1,99 @@
+{
+  "title": "Kẻ chủ mưu thật sự không phải nữ trại chủ, mà là vị hôn phu của cô!?",
+  "chapters": "18",
+  "source_dir": "manhua-recap/dqgl_ep18",
+  "written_by": "Claude (đọc tay từ panels), 2026-09-30",
+  "description": "Lôi Vũ Đình khai ra: cô chỉ là con rối, kẻ đứng sau toàn bộ âm mưu chính là vị hôn phu Dương Minh. Trác Phàm theo cô về tận Hắc Phong Sơn điều tra -- và phát hiện người hôn phu ấy nguy hiểm hơn cô tưởng rất nhiều.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tập 18 (chương 18).\n◀ Tập 17: Chưa kịp bắt cóc, thủ lĩnh Hắc Phong Sơn đã bị Ma Hoàng bắt sống!?",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "HÔN PHU RA TAY!?",
+    "prompt": "A purple-haired female warrior in dark combat attire caught off guard by a sudden dagger strike from a handsome man with silver-streaked hair stepping out from behind a tree, his expression calm and calculating despite the surprise attack, blood droplets frozen mid-air near her shoulder, misty forest mountain path in the background. Chinese manhua cover art style, full-colour digital illustration, bold clean linework, cel shading with dramatic glow and rim light, high contrast, vertical 9:16 composition (keep the subject inside the centre 2:3 area so it survives cropping), close-up that fills the frame, leave the top 25% as darker empty background for a title overlay, NO text, NO letters, NO speech bubbles, NO watermark"
+  },
+  "beats": [
+    {
+      "panel": "p003.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Cô hầu gái sợ hãi khai ngay: mọi chuyện chẳng liên quan gì U Minh Cốc, tất cả do một người tên Dương Minh gây ra."
+    },
+    {
+      "panel": "p005.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Dương Minh chính là vị hôn phu của Lôi Vũ Đình, đệ tử thân cận của sơn chủ Hắc Phong Sơn."
+    },
+    {
+      "panel": "p008.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Năm xưa, chính hắn đã móc nối với tên quản gia phản bội cũ của Lạc gia để lật đổ Lạc gia."
+    },
+    {
+      "panel": "p010.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Mọi bằng chứng, mọi lý do báo thù, hóa ra đều chỉ một mình Dương Minh kể lại."
+    },
+    {
+      "panel": "p025.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trác Phàm nghi ngờ: có khi cả Lạc gia lẫn Hắc Phong Sơn chỉ là quân cờ của Ngự Hạ Thất Thế Gia."
+    },
+    {
+      "panel": "p026.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Đấu đá cả năm trời, hóa ra chỉ là trò đùa trong mắt kẻ khác, nghe mà chua chát."
+    },
+    {
+      "panel": "p040.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn nhất quyết đòi Lôi Vũ Đình đích thân dẫn mình tới tận Hắc Phong Sơn."
+    },
+    {
+      "panel": "p050.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô cảnh cáo trước: nếu có ý đồ xấu với Hắc Phong Sơn, cô sẽ không tha."
+    },
+    {
+      "panel": "p057.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Vừa tới chân núi, một tên gác cổng đã nhận ra cô về sớm hơn dự tính."
+    },
+    {
+      "panel": "p062.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Cô sững người: chuyến đi vốn là nhiệm vụ tuyệt mật, sao một tên lính gác cũng biết?"
+    },
+    {
+      "panel": "p066.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trong lúc đó, một bóng người lạ lặng lẽ theo dõi từ sau gốc cây."
+    },
+    {
+      "panel": "p069.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Hắn cất tiếng chào thân mật: Vũ Đình muội muội, sao lại đột nhiên quay về?"
+    },
+    {
+      "panel": "p070.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Rồi ngay lập tức ra tay tấn công, chính là Dương Minh!"
+    }
+  ]
+}
