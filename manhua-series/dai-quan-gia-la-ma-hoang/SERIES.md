@@ -65,7 +65,8 @@ Tên tiểu thư Lạc Vân Thường là tên theo truyện gốc, chưa thấy
 | Video | Chương | Thư mục ảnh | Tiêu đề | Trạng thái |
 |---|---|---|---|---|
 | Long 01 | 1–10 | `manhua-recap/dqg_long01` (cotruyenday, `fetch --count 10`) | Ma Hoàng thành quản gia \| Tóm tắt chương 1-10 | ✅ script `long01/script.json` (170 beat, 11 phần), ghi chú đọc truyện chi tiết trong `long01/notes.md` |
-| Long 02 | 11–20 | tái dùng panel từ `dqg_ep11..14` + `dqgl_ep15..20` (không cắt lại) | Ma Hoàng thành quản gia \| Tóm tắt chương 11-20 | ✅ script `long02/script.json` (174 beat, 10 phần — tổng hợp từ 10 kịch bản Short ep11-20 đã viết tay, không đọc lại panel), project 140, đang render |
+| Long 02 | 11–15 | tái dùng panel từ `dqg_ep11..14` + `dqgl_ep15` (không cắt lại) | Ma Hoàng thành quản gia \| Tóm tắt chương 11-15 | ✅ script `long02/script.json` (100 beat, 5 phần), project 141 / job_200, **Final QA PASS 100 (337.67s ≈ 5:38, 1920×1080)** |
+| Long 03 | 16–20 | tái dùng panel từ `dqgl_ep16..20` (không cắt lại) | Ma Hoàng thành quản gia \| Tóm tắt chương 16-20 | ✅ script `long03/script.json` (74 beat, 5 phần), project 142 / job_203, **Final QA PASS 100 (270.39s ≈ 4:30, 1920×1080)** |
 
 Nhân vật mới ở chương 3–10: **Bàng Vũ** (thống lĩnh hộ vệ), **Lạc Vân Hải** (thiếu gia), **Tôn quản gia** (đã chết ở chương 4),
 thiếu trại chủ Hắc Phong Sơn (chủ mưu, muốn cướp Hồi Long Chưởng), **Thái Hiếu Đình** (vị hôn phu phản bội), gia chủ Thái gia,
@@ -165,17 +166,36 @@ Việc xóa không đổi tên các khung còn lại.
 
 ## Nhật ký
 
-- 2026-09-30: Long 02 (chương 11–20) — thay vì tải lại/cắt lại ảnh vào một thư mục gộp như Long01,
-  tổng hợp trực tiếp 174 beat từ 10 kịch bản Short ep11-ep20 đã viết tay (bớt "Ma Hoàng này..." lặp lại đầu mỗi
-  tập, đổi `type` HOOK/ENDING giữa các tập thành BUILD, thêm `section` mỗi tập). **`recap.py build` không hỗ trợ
-  nhiều thư mục panel trong một lần build** (chỉ nhận một `chapter_dir`), nên build thủ công qua API: script Python
-  tra `asset_id` theo đường dẫn panel đầy đủ của từng tập (ảnh đã được đăng ký sẵn từ lần build Short trước đó,
-  không cần đăng ký lại). **Lưu ý quan trọng:** trường `section` trong `script.json` **không** phải field của
+- 2026-09-30: Long 02 + Long 03 (chương 11–20, tách đôi) — thay vì tải lại/cắt lại ảnh vào một thư mục gộp như
+  Long01, tổng hợp trực tiếp 174 beat từ 10 kịch bản Short ep11-ep20 đã viết tay (bớt "Ma Hoàng này..." lặp lại đầu
+  mỗi tập, đổi `type` HOOK/ENDING giữa các tập thành BUILD, thêm `section` mỗi tập). **`recap.py build` không hỗ
+  trợ nhiều thư mục panel trong một lần build** (chỉ nhận một `chapter_dir`), nên build thủ công qua API: script
+  Python tra `asset_id` theo đường dẫn panel đầy đủ của từng tập (ảnh đã được đăng ký sẵn từ lần build Short trước
+  đó, không cần đăng ký lại). **Lưu ý quan trọng:** trường `section` trong `script.json` **không** phải field của
   beat-plan API (`PUT /beat-plan` trả 422 "Extra inputs are not permitted" nếu gửi kèm `section` trong object beat)
   — `recap.py`'s `cmd_build` không hề gửi `section` lên backend, nó chỉ tồn tại trong file `script.json` cục bộ để
-  lệnh `timestamps` đọc lại sau khi render xong (khớp với thời điểm thật của beat). Đã lưu `long02/script.json`
-  đầy đủ `section` để dùng `recap.py timestamps 140 --script long02/script.json` in mục lục thời gian sau khi
-  render xong.
+  lệnh `timestamps` đọc lại sau khi render xong (khớp với thời điểm thật của beat).
+  - **Sự cố lớn:** bản gộp nguyên 174 beat (project 140, ~11 phút) **fail 16 lần liên tiếp** ở GENERATING_VOICE
+    (edge_tts "No audio was received"), thử cả hai giọng (nam `vi-VN-NamMinhNeural` và nữ `vi-VN-HoaiMyNeural`),
+    luôn fail ở thời điểm khác nhau mỗi lần — không phải một đoạn "độc" cố định mà là lỗi xác suất: càng nhiều beat
+    dồn vào một lần render (càng nhiều lệnh gọi edge_tts liên tiếp) càng dễ dính chuỗi lỗi ở đâu đó trên endpoint
+    miễn phí của Microsoft (theo nhận định của user, có vẻ endpoint kém ổn định hơn hẳn với tiếng Việt so với các
+    ngôn ngữ phổ biến). Giữa chừng phát hiện **phiên khác đang sửa đúng vấn đề edge_tts này** trong
+    `backend/app/modules/voice/providers.py` (đã lưu trên đĩa nhưng backend `--reload` không tự nạp): tăng
+    `_SEGMENT_MAX_ATTEMPTS` 7→15 và `_MAX_TTS_SEGMENTS` 8→16. Được user đồng ý, tự tay kill + khởi động lại tiến
+    trình uvicorn cổng 8000 để nạp bản sửa (rủi ro: có thể ngắt việc phiên kia đang làm, tương tự lỗi
+    `FACTORY_INTERRUPTED` đã gặp ở tập 17) — bản sửa có hiệu lực (lỗi đổi thành "after 15 attempts") nhưng với
+    174 beat vẫn còn fail. **Giải pháp cuối cùng (theo đề nghị của user): tách đôi** thành Long02 (chương 11-15,
+    100 beat, ~6 phút) và Long03 (chương 16-20, 74 beat, ~5 phút) — **cả hai đều qua ngay lần render đầu tiên**,
+    xác nhận beat count càng nhỏ càng ổn định. File build script dùng chung `build_long_11_20.py`
+    (định nghĩa dữ liệu 10 chương) + `build_long_split.py` (chia đôi, build riêng từng phần) — chỉ lưu trong
+    scratchpad phiên chat, chưa đưa vào repo vì là công cụ một lần, không phải quy trình lặp lại thường xuyên như
+    `recap.py`.
+  - Mục lục thời gian (`recap.py timestamps <id> --script <file>`):
+    - Long02 (project 141): 0:00 Tập 11: U Minh Cốc tìm tới / 1:09 Tập 12: Ván cờ chính trị / 2:15 Tập 13: Huyết
+      Anh ra đời / 3:24 Tập 14: Vạch trần gián điệp / 4:34 Tập 15: Ngũ cấp trận sư
+    - Long03 (project 142): 0:00 Tập 16: Âm mưu bắt cóc / 0:56 Tập 17: Bắt sống tiểu trại chủ / 1:50 Tập 18: Hôn
+      phu là chủ mưu / 2:41 Tập 19: Sự thật về sơn chủ / 3:41 Tập 20: Thảm sát trong rừng
 - 2026-09-30: chương 20 (`dqgl_ep20`) — `cut` ra 73 khung, không có khung rác. Viết tay `ep20/script.json`
   (14 beat). `build --script` tạo project 139, **render fail 0 lần** (qua ngay lần 1, chỉ cần force-continue qua
   NEEDS_REVIEW như thường lệ). job_199, **Final QA PASS 100 (37.45s, 1080×1920)**.
