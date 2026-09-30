@@ -65,6 +65,7 @@ Tên tiểu thư Lạc Vân Thường là tên theo truyện gốc, chưa thấy
 | Video | Chương | Thư mục ảnh | Tiêu đề | Trạng thái |
 |---|---|---|---|---|
 | Long 01 | 1–10 | `manhua-recap/dqg_long01` (cotruyenday, `fetch --count 10`) | Ma Hoàng thành quản gia \| Tóm tắt chương 1-10 | ✅ script `long01/script.json` (170 beat, 11 phần), ghi chú đọc truyện chi tiết trong `long01/notes.md` |
+| Long 02 | 11–20 | tái dùng panel từ `dqg_ep11..14` + `dqgl_ep15..20` (không cắt lại) | Ma Hoàng thành quản gia \| Tóm tắt chương 11-20 | ✅ script `long02/script.json` (174 beat, 10 phần — tổng hợp từ 10 kịch bản Short ep11-20 đã viết tay, không đọc lại panel), project 140, đang render |
 
 Nhân vật mới ở chương 3–10: **Bàng Vũ** (thống lĩnh hộ vệ), **Lạc Vân Hải** (thiếu gia), **Tôn quản gia** (đã chết ở chương 4),
 thiếu trại chủ Hắc Phong Sơn (chủ mưu, muốn cướp Hồi Long Chưởng), **Thái Hiếu Đình** (vị hôn phu phản bội), gia chủ Thái gia,
@@ -164,6 +165,20 @@ Việc xóa không đổi tên các khung còn lại.
 
 ## Nhật ký
 
+- 2026-09-30: Long 02 (chương 11–20) — thay vì tải lại/cắt lại ảnh vào một thư mục gộp như Long01,
+  tổng hợp trực tiếp 174 beat từ 10 kịch bản Short ep11-ep20 đã viết tay (bớt "Ma Hoàng này..." lặp lại đầu mỗi
+  tập, đổi `type` HOOK/ENDING giữa các tập thành BUILD, thêm `section` mỗi tập). **`recap.py build` không hỗ trợ
+  nhiều thư mục panel trong một lần build** (chỉ nhận một `chapter_dir`), nên build thủ công qua API: script Python
+  tra `asset_id` theo đường dẫn panel đầy đủ của từng tập (ảnh đã được đăng ký sẵn từ lần build Short trước đó,
+  không cần đăng ký lại). **Lưu ý quan trọng:** trường `section` trong `script.json` **không** phải field của
+  beat-plan API (`PUT /beat-plan` trả 422 "Extra inputs are not permitted" nếu gửi kèm `section` trong object beat)
+  — `recap.py`'s `cmd_build` không hề gửi `section` lên backend, nó chỉ tồn tại trong file `script.json` cục bộ để
+  lệnh `timestamps` đọc lại sau khi render xong (khớp với thời điểm thật của beat). Đã lưu `long02/script.json`
+  đầy đủ `section` để dùng `recap.py timestamps 140 --script long02/script.json` in mục lục thời gian sau khi
+  render xong.
+- 2026-09-30: chương 20 (`dqgl_ep20`) — `cut` ra 73 khung, không có khung rác. Viết tay `ep20/script.json`
+  (14 beat). `build --script` tạo project 139, **render fail 0 lần** (qua ngay lần 1, chỉ cần force-continue qua
+  NEEDS_REVIEW như thường lệ). job_199, **Final QA PASS 100 (37.45s, 1080×1920)**.
 - 2026-09-30: chương 19 (`dqgl_ep19`) — `cut` ra 76 khung, không có khung rác. Viết tay `ep19/script.json` (17 beat).
   `build --script` tạo project 138, **render fail 1 lần** ở GENERATING_VOICE (edge_tts "No audio was received", cùng
   lỗi tập 18), retry lần 2 qua ngay. job_198, **Final QA PASS 100 (44.98s, 1080×1920)**.

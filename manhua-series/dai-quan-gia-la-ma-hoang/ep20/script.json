@@ -1,0 +1,105 @@
+{
+  "title": "Ma Hoàng chỉ cứu người còn dùng được, số còn lại đành mặc kệ!?",
+  "chapters": "20",
+  "source_dir": "manhua-recap/dqgl_ep20",
+  "written_by": "Claude (đọc tay từ panels), 2026-09-30",
+  "description": "Trác Phàm phá ngục, chữa khỏi bệnh cho sơn chủ Hắc Phong Sơn, thu về một ma vật cực hiếm. Nhưng trên đường về, cả sơn trại ba bốn trăm người đã chết sạch không một tiếng kêu -- và Dương Minh chưa dừng lại ở đó.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tập 20 (chương 20).\n◀ Tập 19: Dương Minh bày cả vở kịch, đến cha nuôi cũng chỉ là quân cờ!?",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "CHẾT SẠCH KHÔNG TIẾNG KÊU!?",
+    "prompt": "A young man with striking red demonic eyes standing calmly in a misty blue-lit forest at night, dozens of fallen bodies barely visible in shadow behind him, a purple-haired woman carrying a wounded elderly man on her back looking on in horror, dark crimson tendrils curling around the young man's shoulders. Chinese manhua cover art style, full-colour digital illustration, bold clean linework, cel shading with dramatic glow and rim light, high contrast, vertical 9:16 composition (keep the subject inside the centre 2:3 area so it survives cropping), close-up that fills the frame, leave the top 25% as darker empty background for a title overlay, NO text, NO letters, NO speech bubbles, NO watermark"
+  },
+  "beats": [
+    {
+      "panel": "p008.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Ma Hoàng này vừa bị nhốt dưới hầm tối, chỉ một đêm đã tự phá ngục thành công."
+    },
+    {
+      "panel": "p011.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Huyết Anh chui vào cơ thể một tên lính canh, giả giọng lừa đồng đội mở cửa."
+    },
+    {
+      "panel": "p022.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm lộ diện, đề nghị Hắc Phong Sơn liên thủ vì chung một kẻ thù."
+    },
+    {
+      "panel": "p026.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Rồi đích thân dùng Huyết Anh chữa bệnh cho sơn chủ Hắc Phong Sơn."
+    },
+    {
+      "panel": "p039.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Ông cụ tỉnh dậy, cất tiếng nói được sau bao ngày câm lặng."
+    },
+    {
+      "panel": "p046.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Thứ gây bệnh là một loại côn trùng cực hiếm: Hàn Đàm Tuyết Tàm."
+    },
+    {
+      "panel": "p049.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thay vì giết nó, Trác Phàm quyết định giữ lại nuôi thành ma vật của riêng mình."
+    },
+    {
+      "panel": "p051.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Vừa cứu xong cha nuôi, quay qua đã bị bắt cõng người, đúng là làm ơn cũng chẳng được nghỉ."
+    },
+    {
+      "panel": "p056.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trên đường về Phong Lâm Thành, họ phát hiện một thảm cảnh giữa rừng."
+    },
+    {
+      "panel": "p059.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Cả sơn trại ba bốn trăm người đã chết sạch, không một tiếng kêu."
+    },
+    {
+      "panel": "p066.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trong số ít người sống sót, Trác Phàm chỉ cứu những ai còn có ích."
+    },
+    {
+      "panel": "p069.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Câu nói lạnh như băng, mới thấy triết lý Ma Đạo của hắn tàn nhẫn tới mức nào."
+    },
+    {
+      "panel": "p070.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Tệ hơn: ngay cả huynh đệ của họ ở Phong Lâm Thành cũng đang bị diệt khẩu."
+    },
+    {
+      "panel": "p073.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Trác Phàm chỉ lạnh lùng buông một câu: đối địch với hắn, sẽ chết rất thảm."
+    }
+  ]
+}
