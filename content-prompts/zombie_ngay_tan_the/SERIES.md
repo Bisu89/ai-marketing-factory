@@ -150,12 +150,59 @@
 
 ---
 
-## 5. Sinh tồn thể hiện qua hành động (không khẩu hiệu, không "bài học")
+## 5. Logic sinh tồn
 
-Không có Hệ Thống và cũng không có câu thoại dạy đời. Sinh tồn được kể bằng **hạn chế thật + lựa chọn khó**:
-- Tài nguyên luôn thiếu: tên của Areum có hạn (phải nhặt lại, tự chế), thuốc/băng gạc của Yerin cạn dần, pin bộ đàm và nước sạch.
-- Mỗi kỹ năng của nhân vật phải **giải quyết một tình huống cụ thể**, và mỗi kỹ năng đều có giá phải trả (Areum bắn xa nhưng hết tên là vô dụng; Taeho cận chiến nhưng bị thương là mất lực lượng chính).
-- Taeho không thắng nhờ giỏi hơn; anh thắng vì tính trước đường lui, và đôi khi vẫn tính sai.
+Sinh tồn không được dạy bằng khẩu hiệu hay lời thoại giảng giải. Nó hiện ra qua **quy luật thế giới, tài nguyên hữu hạn, hành động và hậu quả**. Nhân vật sống sót vì biết tận dụng cái đang có và chịu trả giá, không phải vì luôn chọn đúng.
+
+### 5.1 Giới hạn của từng người
+| Người | Làm được | Giới hạn |
+|---|---|---|
+| Taeho | chiến đấu, đọc địa hình, lập kế hoạch | không thể một mình bảo vệ cả nhóm; bị thương là nhóm mất lực lượng chính |
+| Jiwoo | điều phối, dẫn đường, giữ nhóm không tan | không biến được tuyến đường nguy hiểm thành an toàn; chỉ vật lộn thoát thân (hapkido cơ bản) |
+| Yerin | chữa thương, chẩn đoán | thuốc, băng gạc, dụng cụ, thời gian đều hữu hạn |
+| Areum | hạ zombie từ xa, gần như không tiếng động | tên có hạn, cận chiến yếu |
+| Minseo | hiểu virus, phân tích, chế hoá chất | thể chất yếu nhất nhóm |
+
+### 5.2 Mọi giải pháp có cái giá
+Nguy hiểm không biến mất, chỉ đổi dạng. Ví dụ: kéo Walker đi bằng tiếng ồn có thể gọi Runner từ khu khác; dùng thuốc cứu người thì kho thuốc vơi; bắn xa thì mất mũi tên; đi đường vòng thì tốn thời gian và sức; cứu thêm người sống sót thì cả nhóm chậm hơn; ở lại nghỉ lâu thì dễ bị phát hiện.
+
+### 5.3 Tài nguyên có tính liên tục
+Theo dõi xuyên series: nước sạch, thức ăn, thuốc/băng gạc, tên của Areum, pin, nhiên liệu, phương tiện, dụng cụ, nơi trú ẩn, thời gian. Cái đã dùng/mất **không tự xuất hiện lại** nếu chưa có nguồn mới; xe đã bỏ hoặc phá hỏng thì không dùng lại như chưa có chuyện gì. Sổ theo dõi nằm ở mục 5.9.
+
+### 5.4 Kỹ năng thể hiện bằng hành động
+Không nhân vật nào nói "luật sinh tồn". Khán giả tự nhận ra: Taeho kiểm tra lối ra rồi mới cho nhóm vào; Yerin xem vết thương rồi mới quyết định người đó đi tiếp được không; Areum chỉ bắn khi mục tiêu đáng một mũi tên; Jiwoo nhớ tuyến đường, chỗ trú, đường rút; Minseo đổi cách xử lý máu, mùi, vật dụng trước khi vào khu nhiều Walker.
+
+### 5.5 Sai lầm có hậu quả
+Taeho không luôn đúng: có thể đếm sai zombie, chọn sai đường, bỏ sót lối vào, tin một chỗ đã an toàn, đánh giá thấp loại zombie mới. Sai lầm không nhất thiết gây chết người ngay nhưng phải để lại hậu quả ở cảnh/tập sau, không được sửa bằng may mắn hay tình tiết thuận tiện.
+
+### 5.6 Kinh nghiệm cũ không phải lúc nào cũng đúng
+Taeho bắt đầu bằng tư duy quân nhân (đánh giá → kế hoạch → thực hiện → rút lui). Zombie tiến hoá, tài nguyên cạn, con người thành mối đe doạ khác, nên quy trình cũ dần thất bại. Tiến triển của anh không phải yếu → mạnh, mà là: quân nhân theo giáo án → người sống sót biết thích nghi → người dẫn đầu hiểu rằng không có kế hoạch nào luôn đúng.
+
+### 5.7 Logic tiến triển theo giai đoạn
+- **T1–2:** chưa hiểu dịch; ưu tiên sống, tìm đường, tránh tiếp xúc.
+- **T3–4:** bắt đầu nắm quy luật Walker/Runner/Screamer/Bloater và tận dụng khi đánh, khi di chuyển.
+- **T5+:** Kẻ Săn Mồi và biến thể mới làm kinh nghiệm cũ không đủ; phải quan sát, thử, đổi cách.
+- **Về sau:** phải cân bằng zombie, quân đội, các nhóm sống sót khác, tài nguyên, và mục tiêu đưa mẫu gốc + bằng chứng ra khỏi thành phố.
+
+### 5.8 Sai lầm đã gài cho 4 tập đầu (Taeho)
+| Tập | Sai lầm | Hậu quả |
+|---|---|---|
+| 2 | Dùng tiếng ồn dẫn Walker đi ở cầu mà không tính tới Runner khu lân cận | Runner bị thu hút, lao vào Jiwoo ở trường — suýt chết; Jiwoo từ đó không tin tuyệt đối vào kế hoạch của anh |
+| 3 | Tin kho bệnh viện phía sau là lối vào an toàn, bỏ qua tiếng ồn xe tải | Bloater/đàn zombie đã đứng sẵn ở hành lang tầng 4; xe tải hỏng phải bỏ lại |
+| 4 | Cho nhóm nghỉ ở tiệm tạp hoá lâu hơn dự tính vì Jiwoo cần băng chân | Đội của Choi lần ra dấu vết/mùi nhóm — chạm trán ở ga |
+
+### 5.9 Sổ tài nguyên (cập nhật mỗi tập, không được "hồi phục" vô cớ)
+| Hạng mục | Cuối T2 | Cuối T3 | Cuối T4 |
+|---|---|---|---|
+| Tên Areum | 16 | 11 (bắn 9, thu hồi 4) | 4 (còn lại gãy/kẹt khi sập hầm); bắt đầu tự chế |
+| Thuốc/băng Yerin | túi nhỏ: 2 cuộn băng, 1 bộ khâu, 6 viên kháng sinh, 1 chai sát khuẩn | dùng băng + khâu; nhặt thêm ở kho bệnh viện: 20 viên kháng sinh, 1 ống giảm đau | sát khuẩn còn nửa, hết băng nẹp, dùng đồ thay thế |
+| Nước sạch (balo Taeho) | 3 chai | 3 chai | 2 chai |
+| Pin bộ đàm | 100% | 60% | 40% |
+| Phương tiện | không (xe Taeho bỏ ở vành đai/cầu) | xe tải nhỏ hỏng, bỏ lại ở bệnh viện | đi bộ |
+| Nơi trú | — | sân thượng bệnh viện (tạm) | tiệm tạp hoá, rồi hầm tàu |
+| Thời gian còn lại tới phong toả | 72h | ~60h | ~48h |
+
+> Con số là đề xuất; chỉnh khi viết lời đọc từng tập và cập nhật bảng này.
 
 --- | --------------------------------------------------------------------- | ----------- |
 | 1   | "Đếm số lối thoát trước khi bước vào một căn phòng."                  | Taeho       |
