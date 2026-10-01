@@ -168,8 +168,27 @@ def _get(url: str, timeout: int = 60, referer: str | None = None) -> bytes:
         raise FetchError(f"Could not fetch {url}: {exc}") from exc
 
 
-def _chapter_page_urls(url: str) -> list[str]:
-    html = _get(url).decode("utf-8", errors="replace")
+# zettruyen*.com sits behind Cloudflare and resets the raw TLS connection for
+# any non-browser client -- plain urllib/curl and even a TLS-fingerprint-
+# spoofed client (curl_cffi impersonating Chrome) get the same reset, so the
+# chapter HTML has to come from a real (headless) browser instead. Needs
+# `python -m playwright install chromium` once.
+BROWSER_ONLY_SITES = ("zettruyen",)
+
+
+def _get_html_via_browser(url: str, page) -> str:
+    try:
+        page.goto(url, timeout=45_000, wait_until="domcontentloaded")
+    except Exception as exc:
+        raise FetchError(f"Could not fetch {url} (headless browser): {exc}") from exc
+    return page.content()
+
+
+def _chapter_page_urls(url: str, page=None) -> list[str]:
+    if page is not None and any(site in url for site in BROWSER_ONLY_SITES):
+        html = _get_html_via_browser(url, page)
+    else:
+        html = _get(url).decode("utf-8", errors="replace")
     if re.search(r'"isAccessibleForFree"\s*:\s*false', html):
         raise FetchError(f"{url} is VIP/locked on the site -- pick free chapters.")
     if "cotruyenday.com" in url:
@@ -203,17 +222,31 @@ def fetch_chapters(
     referer = "{0.scheme}://{0.netloc}/".format(urllib.parse.urlparse(url))
     chapter_dir.mkdir(parents=True, exist_ok=True)
 
-    fetched: list[tuple[int | None, list[bytes]]] = []
-    for k in range(count):
-        n = int(match.group(1)) + k if match else None
-        chapter_url = url if k == 0 else url[:match.start(1)] + str(n) + url[match.end(1):]
-        urls = _chapter_page_urls(chapter_url)
-        pages = []
-        for i, image_url in enumerate(urls, 1):
-            pages.append(_get(image_url, referer=referer))
-            if on_progress:
-                on_progress(n, i, len(urls))
-        fetched.append((n, pages))
+    def _run(page) -> list[tuple[int | None, list[bytes]]]:
+        fetched: list[tuple[int | None, list[bytes]]] = []
+        for k in range(count):
+            n = int(match.group(1)) + k if match else None
+            chapter_url = url if k == 0 else url[:match.start(1)] + str(n) + url[match.end(1):]
+            urls = _chapter_page_urls(chapter_url, page)
+            pages = []
+            for i, image_url in enumerate(urls, 1):
+                pages.append(_get(image_url, referer=referer))
+                if on_progress:
+                    on_progress(n, i, len(urls))
+            fetched.append((n, pages))
+        return fetched
+
+    if any(site in url for site in BROWSER_ONLY_SITES):
+        from playwright.sync_api import sync_playwright
+
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=True)
+            try:
+                fetched = _run(browser.new_page(user_agent=USER_AGENT))
+            finally:
+                browser.close()
+    else:
+        fetched = _run(None)
 
     cache = _load_common_hashes()
     all_data = [data for _, pages in fetched for data in pages]

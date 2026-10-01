@@ -187,6 +187,7 @@ SQLite.
 155. [Story Remix pipeline + `isekai_system_vi` built-in template](features/155-story-remix-pipeline.md) — transcribe 1-3 trending "xuyên không"/"hệ thống" YouTube videos and have the model rewrite them into a genuinely new chapter, gated in code (not just the prompt) by a transformation self-report check plus a same-language overlap check; `POST /story-remix/transcribe` + `/rewrite`, new `isekai_system_vi` template, `tools/story_remix/remix.py`
 156. [Readable output folder and video names](features/156-readable-output-names.md) — render folders become `job_<id>_<title>` and the final video `job_<id>_<title>.mp4` (was `job_<id>/output/video_hoan_chinh.mp4`), same for Storyteller episodes; existing folders are reused, never renamed
 157. [Remove unused features](features/157-remove-unused-features.md) — Viral Source Radar, News, Content Batches, Winner Detection, Competitor Analyzer, Affiliate Engine, Scene Cutter, Publishing (YouTube), Batches, Content Studio and Series deleted outright (code, routes, UI, settings, tests); Dashboard re-based on Project + latest FactoryRun; no database data dropped
+158. [zettruyen*.com fetch via headless browser](features/158-manhua-fetch-headless-browser.md) — Cloudflare on that site resets plain HTTP(S)/TLS-spoofed clients, so chapter HTML is now loaded via headless Chromium (Playwright); other sites unaffected
 
 ## Keeping this up to date
 

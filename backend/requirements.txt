@@ -24,3 +24,8 @@ pywin32==312
 # app/db/schema.py). `Base.metadata.create_all()` still owns fresh-schema
 # creation -- Alembic is the catch-up + rollback layer.
 alembic==1.14.0
+# Manhua chapter fetch (app/modules/manhua/fetch.py) -- zettruyen*.com sits
+# behind Cloudflare and resets plain-HTTP(S)/TLS-spoofed clients, so its
+# chapter HTML is loaded in a real headless Chromium instead. Requires a
+# one-time `python -m playwright install chromium` (not run by this file).
+playwright==1.62.0
