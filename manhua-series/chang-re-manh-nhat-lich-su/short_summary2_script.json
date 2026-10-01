@@ -1,0 +1,100 @@
+{
+  "title": "Chàng Rể Mạnh Nhất Lịch Sử: 2 chữ tự do đổi được cả hôn nhân!?",
+  "chapters": "10-19",
+  "description": "Tóm tắt nhanh tập 11-20 Chàng Rể Mạnh Nhất Lịch Sử. Xem bản đầy đủ ở video dài trên kênh.",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "thumbnail": {
+    "text": "2 CHỮ ĐỔI CẢ HÔN NHÂN!?",
+    "prompt": "Vertical 9:16 anime-style: a handsome long-haired young man in white robes standing before a female general in red armor, glowing calligraphy brush strokes floating around him, warm golden light. No text, leave top 25% empty."
+  },
+  "beats": [
+    {
+      "dir": "manhua-recap/crmn_ep11",
+      "panel": "p035.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Nhà họ Chúc ép cầu hôn, Kim Mộc Lan suýt tự hủy dung, còn Thẩm Lãng liều mạng xin vào danh sách chọn rể!?"
+    },
+    {
+      "dir": "manhua-recap/crmn_ep12",
+      "panel": "p030.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Giữa năm ứng viên tài giỏi, anh chỉ đáp hai chữ tự do, và được chọn ngay lập tức."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep13",
+      "panel": "p050.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngay trước đêm cưới, sát thủ xông vào định giết cả nhà anh."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep14",
+      "panel": "p069.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Hôn lễ diễn ra, tân lang che mặt bí ẩn khiến cả thành đồn đoán."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep15",
+      "panel": "p057.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Bị thách viết chữ để chứng minh không ngốc, anh tra chữ cổ khiến học giả câm nín."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep16",
+      "panel": "p022.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Đọc được cả văn bia thất truyền, danh tiếng vô dụng của anh sụp đổ ngay tại chỗ."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep17",
+      "panel": "p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Vợ mới cưới tuyên bố hôn nhân chỉ trên danh nghĩa, còn đưa cả nha hoàn tới thay mình."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep18",
+      "panel": "p049.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Anh đốt thẳng giấy nợ máu rồi trả dư trăm vàng, dằn mặt cả Bang Hắc Y."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep19",
+      "panel": "p068.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Người bạn duy nhất thời thơ ấu bị chính cha ruột bỏ mặc cho hổ ăn thịt."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep19",
+      "panel": "p072.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Ơn cứu mạng mà đáp trả bằng cách bỏ con lại rừng sâu, đúng là mất hết tính người."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep20",
+      "panel": "p058.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mang bạn tới cầu cứu, anh suýt bị chính lính gác phủ Bá tước đuổi thẳng ra ngoài."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep20",
+      "panel": "p074.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "May mắn vợ anh xuất hiện kịp lúc, đích thân đánh xe đi tìm thầy thuốc cứu người!"
+    }
+  ]
+}

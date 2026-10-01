@@ -1,0 +1,24 @@
+{
+  "title": "Đốt luôn giấy nợ máu rồi trả dư 100 vàng, chàng rể khiến cả Bang Hắc Y câm nín!?",
+  "chapters": "17",
+  "source_dir": "manhua-recap/crmn_ep18",
+  "description": "Thẩm Lãng mang thân phận cô gia phủ Bá tước xông thẳng vào Bang Hắc Y, đốt giấy nợ máu rồi trả dư cả trăm vàng để dằn mặt. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 18.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "thumbnail": {"text": "ĐỐT GIẤY NỢ, TRẢ DƯ 100 VÀNG!?", "prompt": "Vertical 9:16 anime-style: a long-haired young man calmly burning a bloody debt note in front of a shocked scarred gang boss, an open chest of gold coins beside him. No text, leave top 25% empty."},
+  "beats": [
+    {"panel": "p014.jpg", "type": "HOOK", "kind": "recap", "narration": "Vừa làm rể phủ Bá tước xong, Thẩm Lãng lập tức phi ngựa thẳng tới sào huyệt Bang Hắc Y!"},
+    {"panel": "p021.jpg", "type": "SETUP", "kind": "recap", "narration": "Trên đường đi, anh ngã lăn khỏi ngựa, đành đổi sang xe cho chắc."},
+    {"panel": "p030.jpg", "type": "BUILD", "kind": "recap", "narration": "Lính gác định bắn tên đuổi khách lạ, nhưng vừa thấy kỵ binh phủ Bá tước liền sợ hãi mở cửa."},
+    {"panel": "p038.jpg", "type": "BUILD", "kind": "recap", "narration": "Điền Hoành vẫn cười cợt, giả vờ thân thiết như chưa từng có chuyện gì."},
+    {"panel": "p049.jpg", "type": "REVEAL", "kind": "recap", "narration": "Anh rút ngay giấy nợ máu một nghìn vàng, châm lửa đốt ngay trước mặt hắn."},
+    {"panel": "p054.jpg", "type": "BUILD", "kind": "recap", "narration": "Điền Hoành giả vờ không nhớ gì, bảo chắc chắn là hiểu lầm."},
+    {"panel": "p061.jpg", "type": "REVEAL", "kind": "recap", "narration": "Thẩm Lãng không cần tranh cãi, ra lệnh mang hẳn một nghìn đồng vàng tới trả."},
+    {"panel": "p067.jpg", "type": "BUILD", "kind": "recap", "narration": "Rồi anh dằn thêm một trăm đồng tiền lãi, nói rõ nợ nần sòng phẳng mới là bạn tốt."},
+    {"panel": "p074.jpg", "type": "BUILD", "kind": "recap", "narration": "Tiện thể, anh nhắc tới chuyện Điền Thập Tam từng hống hách đòi đánh gãy chân người nhà mình."},
+    {"panel": "p080.jpg", "type": "REVEAL", "kind": "recap", "narration": "Điền Hoành lập tức ra lệnh đốt luôn cái ghế Thập Tam từng ngồi để tạ lỗi."},
+    {"panel": "p086.jpg", "type": "BUILD", "kind": "recap", "narration": "Thập Tam bị đày đi xa hai tháng, vừa về đã nghe tin đồn Thẩm Lãng đã bị đánh chết."},
+    {"panel": "p091.jpg", "type": "REACTION", "kind": "recap", "narration": "Hắn chết lặng khi biết sự thật hoàn toàn ngược lại, kẻ vô dụng ngày nào giờ không ai dám đụng tới."},
+    {"panel": "p092.jpg", "type": "REACTION", "kind": "commentary", "narration": "Từ con nợ thành chủ nợ chỉ sau một cái đám cưới, đúng là lội ngược dòng ngoạn mục."},
+    {"panel": "p095.jpg", "type": "ENDING", "kind": "recap", "narration": "Trở về phủ, Mộc Lan bất ngờ gọi tên anh giữa hành lang, một bản tình báo mới lại âm thầm mở ra!"}
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "title": "Băng sát thủ xông vào nhà giết cả gia đình, suýt chút nữa chàng rể mất tất cả trước đêm cưới!?",
+  "chapters": "12",
+  "source_dir": "manhua-recap/crmn_ep13",
+  "description": "Băng Hắc Y kéo đến tàn sát gia đình Thẩm Lãng ngay trước giờ thành thân, trong khi phủ Bá tước cuống cuồng cử người đi cứu. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 13.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "thumbnail": {"text": "SÁT THỦ ẬP VÀO ĐÚNG ĐÊM CƯỚI!?", "prompt": "Vertical 9:16 anime-style: armed bandits breaking down a poor wooden house door at night with torches, a terrified family inside, a lone rider racing through a dark forest in the background. No text, leave top 25% empty."},
+  "beats": [
+    {"panel": "p004.jpg", "type": "HOOK", "kind": "recap", "narration": "Thế tử nổi giận quất roi, không chấp nhận nổi chuyện tỷ tỷ mình phải hy sinh vì gã vô dụng."},
+    {"panel": "p009.jpg", "type": "SETUP", "kind": "recap", "narration": "Cha mẹ xông vào can ngăn, mắng con trai đừng đánh người vô tội."},
+    {"panel": "p017.jpg", "type": "BUILD", "kind": "recap", "narration": "Mẹ ra lệnh thẳng, Kim Trung mang người nhà của Thẩm công tử đến phủ ngay."},
+    {"panel": "p024.jpg", "type": "BUILD", "kind": "recap", "narration": "Cùng lúc đó, có kẻ trong thành lại đang âm mưu hại cả nhà Thẩm Lãng."},
+    {"panel": "p029.jpg", "type": "REVEAL", "kind": "recap", "narration": "Điền Hoành ra lệnh lạnh lùng, bắt cả nhà hắn lại, nếu không giao công thức thì giết không nương tay."},
+    {"panel": "p033.jpg", "type": "BUILD", "kind": "recap", "narration": "Hắn chẳng hề hay biết Thẩm Lãng sắp cưới Kim Mộc Lan, nên vẫn ra tay như kế hoạch."},
+    {"panel": "p038.jpg", "type": "BUILD", "kind": "recap", "narration": "Toán sát thủ phi ngựa xuyên rừng đêm, thẳng tiến về căn nhà nhỏ của gia đình Thẩm."},
+    {"panel": "p042.jpg", "type": "BUILD", "kind": "recap", "narration": "Chúng xông vào, đập cửa, uy hiếp cả nhà phải giao người."},
+    {"panel": "p047.jpg", "type": "REVEAL", "kind": "recap", "narration": "Em trai Thẩm Kiến liều mạng cầm gậy chống cự để bảo vệ cha mẹ."},
+    {"panel": "p050.jpg", "type": "BUILD", "kind": "recap", "narration": "Đúng lúc ngàn cân treo sợi tóc, một kỵ sĩ lao tới giữa màn đêm."},
+    {"panel": "p053.jpg", "type": "REVEAL", "kind": "recap", "narration": "Chính là Kim Trung, quản sự phủ Bá tước, xuất hiện kịp lúc."},
+    {"panel": "p054.jpg", "type": "BUILD", "kind": "recap", "narration": "Hắn tuyên bố, chủ nhân mời cả nhà Thẩm công tử đến dự hôn lễ, ai dám cản là nghịch ý phủ Bá tước."},
+    {"panel": "p057.jpg", "type": "REACTION", "kind": "recap", "narration": "Toán sát thủ sững người, không ngờ Thẩm Lãng đã có thế lực lớn chống lưng."},
+    {"panel": "p058.jpg", "type": "REACTION", "kind": "commentary", "narration": "Đúng là nghìn cân treo sợi tóc, chậm một bước thôi là mất cả gia đình."},
+    {"panel": "p059.jpg", "type": "ENDING", "kind": "recap", "narration": "Cả nhà thoát nạn trong gang tấc, lên đường tới phủ Bá tước dự lễ cưới định mệnh!"}
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "title": "Bị thách viết chữ để chứng minh không ngốc, chàng rể tra chữ cổ khiến cả học giả câm nín!?",
+  "chapters": "14",
+  "source_dir": "manhua-recap/crmn_ep15",
+  "description": "Quan lớn Chúc Lâm bất ngờ ghé dự hôn lễ, ép tân lang tháo mặt nạ ngay giữa tiệc, lộ ra đúng gã Thẩm Lãng nổi tiếng ngốc nghếch, buộc phải thi chữ nghĩa để chứng minh bản thân. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 15.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "thumbnail": {"text": "TRA CHỮ CỔ, HỌC GIẢ CÂM NÍN!?", "prompt": "Vertical 9:16 anime-style: a long-haired young man writing obscure ancient Chinese characters with a brush at a banquet table, a shocked elderly scholar and nobles staring over his shoulder, warm red lantern light. No text, leave top 25% empty."},
+  "beats": [
+    {"panel": "p006.jpg", "type": "HOOK", "kind": "recap", "narration": "Quan lớn Chúc Lâm bất ngờ ghé dự tiệc, lớn tiếng đòi xem mặt tân lang của cháu gái mình."},
+    {"panel": "p009.jpg", "type": "SETUP", "kind": "recap", "narration": "Cả sảnh đồng loạt hô vang, tháo mặt nạ ra đi!"},
+    {"panel": "p016.jpg", "type": "BUILD", "kind": "recap", "narration": "Thẩm Lãng từ từ gỡ mặt nạ, để lộ gương mặt thật trước bàn dân thiên hạ."},
+    {"panel": "p018.jpg", "type": "REVEAL", "kind": "recap", "narration": "Cả sảnh chết lặng, không ngờ đúng là gã vô dụng tiếng tăm khắp vùng."},
+    {"panel": "p021.jpg", "type": "BUILD", "kind": "recap", "narration": "Người ta xì xào, một kẻ như vậy sao có thể xứng với tiểu thư Mộc Lan."},
+    {"panel": "p029.jpg", "type": "BUILD", "kind": "recap", "narration": "Trương Tấn, bạn học cũ, khẳng định chắc nịch, hắn học mười năm còn chưa thuộc nổi một ngàn chữ."},
+    {"panel": "p033.jpg", "type": "BUILD", "kind": "recap", "narration": "Nhan Hùng, học sinh giỏi nhất trường, bước ra tự tin sẽ vạch trần kẻ giả mạo."},
+    {"panel": "p039.jpg", "type": "BUILD", "kind": "recap", "narration": "Hắn viết ba chữ đơn giản, thách Thẩm Lãng nhận mặt chữ ngay tại chỗ."},
+    {"panel": "p053.jpg", "type": "BUILD", "kind": "recap", "narration": "Thẩm Lãng lặng lẽ dùng chiếc laptop trong đầu để tra cứu từng chữ."},
+    {"panel": "p057.jpg", "type": "REVEAL", "kind": "recap", "narration": "Anh đáp lại bằng cả điển tích trong Kinh Thi, giải nghĩa sâu đến mức cả phòng sững sờ."},
+    {"panel": "p066.jpg", "type": "REACTION", "kind": "recap", "narration": "Thầy cũ của Nhan Hùng cũng xuất hiện, tự tin thách thêm những cách đọc hiếm gặp hơn."},
+    {"panel": "p069.jpg", "type": "REACTION", "kind": "commentary", "narration": "Giả vờ ngốc lâu quá, giờ bung hết kiến thức ra một phát khiến ai cũng choáng."},
+    {"panel": "p073.jpg", "type": "BUILD", "kind": "recap", "narration": "Đến lượt Thẩm Lãng viết ngược lại, toàn chữ cổ xưa chẳng ai từng thấy."},
+    {"panel": "p080.jpg", "type": "REVEAL", "kind": "recap", "narration": "Cả vị thành chủ tiền nhiệm lẫn học giả lừng danh đều không đọc nổi một chữ."},
+    {"panel": "p081.jpg", "type": "BUILD", "kind": "recap", "narration": "Thẩm Lãng tuyên bố, chỉ cần nhận ra bốn chữ trong số đó, anh sẽ cam tâm chịu thua."},
+    {"panel": "p082.jpg", "type": "REACTION", "kind": "recap", "narration": "Không một ai trong sảnh đọc được dù chỉ một chữ, tất cả đứng hình."},
+    {"panel": "p083.jpg", "type": "ENDING", "kind": "recap", "narration": "Anh cười nhẹ, viết xuống một câu đơn giản để tổng kết: Ta là kẻ ngốc!"}
+  ]
+}

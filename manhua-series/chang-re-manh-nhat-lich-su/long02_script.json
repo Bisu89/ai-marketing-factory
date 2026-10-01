@@ -1,0 +1,842 @@
+{
+  "template": "manhua_recap_long_vi",
+  "title": "Chàng Rể Mạnh Nhất Lịch Sử | Tóm tắt tập 11-20",
+  "chapters": "10-19",
+  "description": "Tóm tắt tập 11-20 Chàng Rể Mạnh Nhất Lịch Sử: chọn rể cứu nhà, đêm cưới nguy hiểm, lộ tài giấu kín, và hành trình cứu người bạn bị bỏ rơi.",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "beats": [
+    {
+      "panel": "p006.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Tin đồn về cuộc cầu hôn lan khắp phố, ai cũng xì xào về gã ở rể tên Thẩm Lãng.",
+      "dir": "manhua-recap/crmn_ep11",
+      "section": "Tập 11: Chọn rể cứu nhà"
+    },
+    {
+      "panel": "p009.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Thẩm Lãng chỉ xin một điều kiện, cho hắn một công việc ở lại phủ Bá tước.",
+      "dir": "manhua-recap/crmn_ep11"
+    },
+    {
+      "panel": "p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn thừa nhận, mục đích thật sự là được gần nữ thần Kim Mộc Lan mỗi ngày.",
+      "dir": "manhua-recap/crmn_ep11"
+    },
+    {
+      "panel": "p019.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Đúng lúc đó, tin dữ ập tới: Tướng quân Bình Nam Chúc Lâm đang dẫn quân tiến thẳng về thành Huyền Vũ.",
+      "dir": "manhua-recap/crmn_ep11"
+    },
+    {
+      "panel": "p021.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thời hạn cầu hôn không còn nửa tháng, mà chỉ còn ba canh giờ.",
+      "dir": "manhua-recap/crmn_ep11"
+    },
+    {
+      "panel": "p031.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Nhà họ Chúc thực chất muốn tháo dỡ trụ cột quyền lực, cướp luôn binh quyền của phủ Bá tước.",
+      "dir": "manhua-recap/crmn_ep11"
+    },
+    {
+      "panel": "p036.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Mẹ cô xông vào cản, hét lên không, điều đầu tiên bà phải bảo vệ chính là con gái mình.",
+      "dir": "manhua-recap/crmn_ep11"
+    },
+    {
+      "panel": "p038.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng cha cô nói thẳng, dù con có hủy mặt, nhà họ Chúc vẫn sẽ cầu hôn như cũ.",
+      "dir": "manhua-recap/crmn_ep11"
+    },
+    {
+      "panel": "p046.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bá tước lập tức viết ra danh sách năm ứng viên ưu tú, sai người đi mời gấp.",
+      "dir": "manhua-recap/crmn_ep11"
+    },
+    {
+      "panel": "p050.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Mộc Lan sững sờ, buột miệng gọi tên, Thẩm Lãng!?",
+      "dir": "manhua-recap/crmn_ep11"
+    },
+    {
+      "panel": "p065.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Cô đồng ý, cho hắn vào danh sách để công bằng với mọi người.",
+      "dir": "manhua-recap/crmn_ep11"
+    },
+    {
+      "panel": "p069.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Được thương hại hay được để ý thì tính sau, có suất thi là mừng rồi.",
+      "dir": "manhua-recap/crmn_ep11"
+    },
+    {
+      "panel": "p071.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mộc Lan đích thân dẫn hắn tới phòng sách thứ sáu, màn chọn rể chính thức bắt đầu!",
+      "dir": "manhua-recap/crmn_ep11"
+    },
+    {
+      "panel": "p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sáu chàng trai lần lượt bước vào sáu phòng sách, cuộc chọn rể chính thức bắt đầu!",
+      "dir": "manhua-recap/crmn_ep12",
+      "section": "Tập 12: Hai chữ tự do"
+    },
+    {
+      "panel": "p005.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Trước trưa phải chọn xong người, tối nay thành thân ngay, người quyết định duy nhất là Kim Mộc Lan.",
+      "dir": "manhua-recap/crmn_ep12"
+    },
+    {
+      "panel": "p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Người đầu tiên là Vương Liên, Chủ bộ thành Huyền Vũ, đã quen cô mười mấy năm.",
+      "dir": "manhua-recap/crmn_ep12"
+    },
+    {
+      "panel": "p019.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Người tiếp theo thề sẽ dẫn quân chinh chiến khắp nơi, lập công trạng cho gia tộc.",
+      "dir": "manhua-recap/crmn_ep12"
+    },
+    {
+      "panel": "p023.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cuối cùng cô đến phòng sách cuối, hỏi Thẩm Lãng đúng câu hỏi đó: ngươi có thể mang đến điều gì cho ta?",
+      "dir": "manhua-recap/crmn_ep12"
+    },
+    {
+      "panel": "p030.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Anh đáp gọn lỏn, đó là tự do.",
+      "dir": "manhua-recap/crmn_ep12"
+    },
+    {
+      "panel": "p043.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Cặp mắt tinh tường của cô nhận ra ngay, đây không phải lời nịnh hót như những người kia.",
+      "dir": "manhua-recap/crmn_ep12"
+    },
+    {
+      "panel": "p054.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Cha cô sốc nặng, ai cũng giỏi giang như vậy mà con lại chọn đúng Thẩm Lãng!?",
+      "dir": "manhua-recap/crmn_ep12"
+    },
+    {
+      "panel": "p065.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô giải thích, danh tiếng xấu của hắn lại là vũ khí, nhà họ Chúc thấy vậy sẽ coi là bị sỉ nhục mà rút lui.",
+      "dir": "manhua-recap/crmn_ep12"
+    },
+    {
+      "panel": "p066.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Vừa được chọn vì chân thành, vừa được chọn vì xấu danh tiếng, nghe mà dở khóc dở cười.",
+      "dir": "manhua-recap/crmn_ep12"
+    },
+    {
+      "panel": "p073.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đêm nay thành thân, số phận chàng rể vô dụng chính thức bước sang trang mới!",
+      "dir": "manhua-recap/crmn_ep12"
+    },
+    {
+      "panel": "p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thế tử nổi giận quất roi, không chấp nhận nổi chuyện tỷ tỷ mình phải hy sinh vì gã vô dụng.",
+      "dir": "manhua-recap/crmn_ep13",
+      "section": "Tập 13: Sát thủ trước đêm cưới"
+    },
+    {
+      "panel": "p009.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Cha mẹ xông vào can ngăn, mắng con trai đừng đánh người vô tội.",
+      "dir": "manhua-recap/crmn_ep13"
+    },
+    {
+      "panel": "p017.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mẹ ra lệnh thẳng, Kim Trung mang người nhà của Thẩm công tử đến phủ ngay.",
+      "dir": "manhua-recap/crmn_ep13"
+    },
+    {
+      "panel": "p029.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Điền Hoành ra lệnh lạnh lùng, bắt cả nhà hắn lại, nếu không giao công thức thì giết không nương tay.",
+      "dir": "manhua-recap/crmn_ep13"
+    },
+    {
+      "panel": "p033.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn chẳng hề hay biết Thẩm Lãng sắp cưới Kim Mộc Lan, nên vẫn ra tay như kế hoạch.",
+      "dir": "manhua-recap/crmn_ep13"
+    },
+    {
+      "panel": "p042.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chúng xông vào, đập cửa, uy hiếp cả nhà phải giao người.",
+      "dir": "manhua-recap/crmn_ep13"
+    },
+    {
+      "panel": "p047.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Em trai Thẩm Kiến liều mạng cầm gậy chống cự để bảo vệ cha mẹ.",
+      "dir": "manhua-recap/crmn_ep13"
+    },
+    {
+      "panel": "p053.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Chính là Kim Trung, quản sự phủ Bá tước, xuất hiện kịp lúc.",
+      "dir": "manhua-recap/crmn_ep13"
+    },
+    {
+      "panel": "p054.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn tuyên bố, chủ nhân mời cả nhà Thẩm công tử đến dự hôn lễ, ai dám cản là nghịch ý phủ Bá tước.",
+      "dir": "manhua-recap/crmn_ep13"
+    },
+    {
+      "panel": "p058.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Đúng là nghìn cân treo sợi tóc, chậm một bước thôi là mất cả gia đình.",
+      "dir": "manhua-recap/crmn_ep13"
+    },
+    {
+      "panel": "p059.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cả nhà thoát nạn trong gang tấc, lên đường tới phủ Bá tước dự lễ cưới định mệnh!",
+      "dir": "manhua-recap/crmn_ep13"
+    },
+    {
+      "panel": "p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Quản sự phủ Bá tước đích thân tới đón cha mẹ Thẩm Lãng, cả nhà ngỡ ngàng không tin nổi.",
+      "dir": "manhua-recap/crmn_ep14",
+      "section": "Tập 14: Hôn lễ bí ẩn"
+    },
+    {
+      "panel": "p009.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Mười mấy võ sĩ hộ tống, kiệu hoa trải thảm, đưa họ thẳng tới hôn lễ.",
+      "dir": "manhua-recap/crmn_ep14"
+    },
+    {
+      "panel": "p029.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bên trong Bang Hắc Y, Điền Hoành chột dạ khi nghe tin thuộc hạ suýt đụng vào người nhà phủ Bá tước.",
+      "dir": "manhua-recap/crmn_ep14"
+    },
+    {
+      "panel": "p055.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Khắp thành Huyền Vũ xôn xao bàn tán, ai mới xứng làm rể của tiểu thư Kim Mộc Lan.",
+      "dir": "manhua-recap/crmn_ep14"
+    },
+    {
+      "panel": "p061.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đúng giờ lành, kiệu hoa rước dâu tiến vào giữa pháo hoa rực rỡ.",
+      "dir": "manhua-recap/crmn_ep14"
+    },
+    {
+      "panel": "p069.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Tân lang xuất hiện trong bộ lễ phục đỏ, che mặt bằng một chiếc mặt nạ trắng bí ẩn.",
+      "dir": "manhua-recap/crmn_ep14"
+    },
+    {
+      "panel": "p072.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Hắn tự trấn an, chắc chỉ là mình tự dọa mình, phủ Bá tước sao lại chọn một kẻ tầm thường.",
+      "dir": "manhua-recap/crmn_ep14"
+    },
+    {
+      "panel": "p078.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lễ chính thức bắt đầu, nhất bái thiên địa, nhị bái cao đường, phu thê đối bái.",
+      "dir": "manhua-recap/crmn_ep14"
+    },
+    {
+      "panel": "p085.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Cả thành đoán già đoán non tiến sĩ hay danh gia, ai ngờ đáp án lại khiến chính người trong cuộc rùng mình.",
+      "dir": "manhua-recap/crmn_ep14"
+    },
+    {
+      "panel": "p086.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngay cả thành chủ Huyền Vũ cũng tò mò, rất muốn xem mặt vị anh tài nào mới xứng với Mộc Lan.",
+      "dir": "manhua-recap/crmn_ep14"
+    },
+    {
+      "panel": "p088.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Giữa lúc cả thành còn bàng hoàng đồn đoán, một bản tình báo bí mật về Chàng Rể Mạnh Nhất Lịch Sử đã âm thầm được mở ra!",
+      "dir": "manhua-recap/crmn_ep14"
+    },
+    {
+      "panel": "p006.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Quan lớn Chúc Lâm bất ngờ ghé dự tiệc, lớn tiếng đòi xem mặt tân lang của cháu gái mình.",
+      "dir": "manhua-recap/crmn_ep15",
+      "section": "Tập 15: Thi chữ cổ"
+    },
+    {
+      "panel": "p009.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Cả sảnh đồng loạt hô vang, tháo mặt nạ ra đi!",
+      "dir": "manhua-recap/crmn_ep15"
+    },
+    {
+      "panel": "p016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng từ từ gỡ mặt nạ, để lộ gương mặt thật trước bàn dân thiên hạ.",
+      "dir": "manhua-recap/crmn_ep15"
+    },
+    {
+      "panel": "p018.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Cả sảnh chết lặng, không ngờ đúng là gã vô dụng tiếng tăm khắp vùng.",
+      "dir": "manhua-recap/crmn_ep15"
+    },
+    {
+      "panel": "p029.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trương Tấn, bạn học cũ, khẳng định chắc nịch, hắn học mười năm còn chưa thuộc nổi một ngàn chữ.",
+      "dir": "manhua-recap/crmn_ep15"
+    },
+    {
+      "panel": "p039.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn viết ba chữ đơn giản, thách Thẩm Lãng nhận mặt chữ ngay tại chỗ.",
+      "dir": "manhua-recap/crmn_ep15"
+    },
+    {
+      "panel": "p057.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Anh đáp lại bằng cả điển tích trong Kinh Thi, giải nghĩa sâu đến mức cả phòng sững sờ.",
+      "dir": "manhua-recap/crmn_ep15"
+    },
+    {
+      "panel": "p066.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Thầy cũ của Nhan Hùng cũng xuất hiện, tự tin thách thêm những cách đọc hiếm gặp hơn.",
+      "dir": "manhua-recap/crmn_ep15"
+    },
+    {
+      "panel": "p069.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Giả vờ ngốc lâu quá, giờ bung hết kiến thức ra một phát khiến ai cũng choáng.",
+      "dir": "manhua-recap/crmn_ep15"
+    },
+    {
+      "panel": "p080.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Cả vị thành chủ tiền nhiệm lẫn học giả lừng danh đều không đọc nổi một chữ.",
+      "dir": "manhua-recap/crmn_ep15"
+    },
+    {
+      "panel": "p081.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng tuyên bố, chỉ cần nhận ra bốn chữ trong số đó, anh sẽ cam tâm chịu thua.",
+      "dir": "manhua-recap/crmn_ep15"
+    },
+    {
+      "panel": "p083.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh cười nhẹ, viết xuống một câu đơn giản để tổng kết: Ta là kẻ ngốc!",
+      "dir": "manhua-recap/crmn_ep15"
+    },
+    {
+      "panel": "p006.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cả sảnh cười ồ khi nghe anh tự nhận mình ngốc, chẳng ai ngờ đó chỉ là màn dạo đầu.",
+      "dir": "manhua-recap/crmn_ep16",
+      "section": "Tập 16: Lật ngược danh tiếng"
+    },
+    {
+      "panel": "p009.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Quan lớn Chúc Lâm chỉ khẽ nhíu mày, linh cảm có gì đó không đơn giản.",
+      "dir": "manhua-recap/crmn_ep16"
+    },
+    {
+      "panel": "p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trương Bá Ngôn, học giả lừng danh khắp vùng, bước ra với một thử thách khó nhằn hơn.",
+      "dir": "manhua-recap/crmn_ep16"
+    },
+    {
+      "panel": "p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một tiểu thư may mắn nhận ra đúng một chữ, cả đám đông trầm trồ vì hiếm có ai biết tới.",
+      "dir": "manhua-recap/crmn_ep16"
+    },
+    {
+      "panel": "p022.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Thẩm Lãng chỉ liếc qua đã đọc trôi chảy toàn bộ văn bia trước mặt mọi người.",
+      "dir": "manhua-recap/crmn_ep16"
+    },
+    {
+      "panel": "p039.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh cầm bút viết lại không chút do dự, nét chữ dứt khoát khiến ai nấy nín thở.",
+      "dir": "manhua-recap/crmn_ep16"
+    },
+    {
+      "panel": "p063.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chúc Lâm cảm kích vỗ vai, dặn anh hãy nhớ kỹ cái ngày đã khiến mình nể phục này.",
+      "dir": "manhua-recap/crmn_ep16"
+    },
+    {
+      "panel": "p065.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Giả vờ ngốc để câu giờ, cuối cùng vẫn là màn lội ngược dòng ngoạn mục nhất buổi tiệc.",
+      "dir": "manhua-recap/crmn_ep16"
+    },
+    {
+      "panel": "p066.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sang ngày trà lễ, cha mẹ Thẩm Lãng rụt rè ngồi mãi tận sảnh sau vì sợ con trai mất mặt.",
+      "dir": "manhua-recap/crmn_ep16"
+    },
+    {
+      "panel": "p070.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đến lượt Mộc Lan quỳ bái, Thẩm Lãng chỉ biết luống cuống không dám nhận lễ.",
+      "dir": "manhua-recap/crmn_ep16"
+    },
+    {
+      "panel": "p085.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhìn cô dâu xinh đẹp trước mặt, Thẩm Lãng thầm nghĩ, không ngờ mình thật sự cưới được nữ thần!",
+      "dir": "manhua-recap/crmn_ep16"
+    },
+    {
+      "panel": "p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sáng hôm sau động phòng, Mộc Lan nghiêm mặt tuyên bố một điều khiến anh chết lặng.",
+      "dir": "manhua-recap/crmn_ep17",
+      "section": "Tập 17: Hôn nhân danh nghĩa"
+    },
+    {
+      "panel": "p007.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Cô nói cả đời không định lấy chồng, chỉ vì bị nhà họ Chúc ép hôn nên mới chọn rể cho có.",
+      "dir": "manhua-recap/crmn_ep17"
+    },
+    {
+      "panel": "p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hôn nhân chỉ trên danh nghĩa, nghĩa vụ phu thê thật sự thì cô xin lỗi, không thể.",
+      "dir": "manhua-recap/crmn_ep17"
+    },
+    {
+      "panel": "p015.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tối đến, Mộc Lan gọi nha hoàn thân cận Tiểu Băng vào phòng.",
+      "dir": "manhua-recap/crmn_ep17"
+    },
+    {
+      "panel": "p020.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Cô bảo Tiểu Băng ở lại hầu hạ chồng mình thật tốt, coi như bù đắp.",
+      "dir": "manhua-recap/crmn_ep17"
+    },
+    {
+      "panel": "p026.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Tiểu Băng bật khóc, tủi thân vì nghĩ cả chủ nhân lẫn chồng hờ đều coi thường mình.",
+      "dir": "manhua-recap/crmn_ep17"
+    },
+    {
+      "panel": "p037.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Đẹp trai mà còn biết giữ lòng tự trọng cho người khác, điểm cộng cực lớn.",
+      "dir": "manhua-recap/crmn_ep17"
+    },
+    {
+      "panel": "p039.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh tự nhắc mình, vào phủ Bá tước làm rể là để bảo vệ gia đình, không được tham lam hơn.",
+      "dir": "manhua-recap/crmn_ep17"
+    },
+    {
+      "panel": "p044.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mộc Lan dặn, từ giờ có mục tiêu hay suy nghĩ gì thì cứ nói thẳng với cô.",
+      "dir": "manhua-recap/crmn_ep17"
+    },
+    {
+      "panel": "p048.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Anh đổi ý, thú nhận mình có một mục tiêu rất lớn: bắt nhà họ Từ quỳ gối tạ lỗi.",
+      "dir": "manhua-recap/crmn_ep17"
+    },
+    {
+      "panel": "p055.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô nhắc, phủ Bá tước không thể động vào nhà họ Từ vì phe cánh Chúc thị đứng sau, nhưng việc riêng với Điền Hoành thì anh có thể tự xử.",
+      "dir": "manhua-recap/crmn_ep17"
+    },
+    {
+      "panel": "p061.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng lập tức lên đường, mang theo thân phận cô gia phủ Bá tước đi tính sổ với trùm xã hội đen!",
+      "dir": "manhua-recap/crmn_ep17"
+    },
+    {
+      "panel": "p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Vừa làm rể phủ Bá tước xong, Thẩm Lãng lập tức phi ngựa thẳng tới sào huyệt Bang Hắc Y!",
+      "dir": "manhua-recap/crmn_ep18",
+      "section": "Tập 18: Đốt giấy nợ"
+    },
+    {
+      "panel": "p021.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Trên đường đi, anh ngã lăn khỏi ngựa, đành đổi sang xe cho chắc.",
+      "dir": "manhua-recap/crmn_ep18"
+    },
+    {
+      "panel": "p030.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lính gác định bắn tên đuổi khách lạ, nhưng vừa thấy kỵ binh phủ Bá tước liền sợ hãi mở cửa.",
+      "dir": "manhua-recap/crmn_ep18"
+    },
+    {
+      "panel": "p049.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Anh rút ngay giấy nợ máu một nghìn vàng, châm lửa đốt ngay trước mặt hắn.",
+      "dir": "manhua-recap/crmn_ep18"
+    },
+    {
+      "panel": "p054.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Điền Hoành giả vờ không nhớ gì, bảo chắc chắn là hiểu lầm.",
+      "dir": "manhua-recap/crmn_ep18"
+    },
+    {
+      "panel": "p061.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Thẩm Lãng không cần tranh cãi, ra lệnh mang hẳn một nghìn đồng vàng tới trả.",
+      "dir": "manhua-recap/crmn_ep18"
+    },
+    {
+      "panel": "p074.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tiện thể, anh nhắc tới chuyện Điền Thập Tam từng hống hách đòi đánh gãy chân người nhà mình.",
+      "dir": "manhua-recap/crmn_ep18"
+    },
+    {
+      "panel": "p080.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Điền Hoành lập tức ra lệnh đốt luôn cái ghế Thập Tam từng ngồi để tạ lỗi.",
+      "dir": "manhua-recap/crmn_ep18"
+    },
+    {
+      "panel": "p091.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Hắn chết lặng khi biết sự thật hoàn toàn ngược lại, kẻ vô dụng ngày nào giờ không ai dám đụng tới.",
+      "dir": "manhua-recap/crmn_ep18"
+    },
+    {
+      "panel": "p092.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Từ con nợ thành chủ nợ chỉ sau một cái đám cưới, đúng là lội ngược dòng ngoạn mục.",
+      "dir": "manhua-recap/crmn_ep18"
+    },
+    {
+      "panel": "p095.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trở về phủ, Mộc Lan bất ngờ gọi tên anh giữa hành lang, một bản tình báo mới lại âm thầm mở ra!",
+      "dir": "manhua-recap/crmn_ep18"
+    },
+    {
+      "panel": "p034.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Vừa giải quyết xong món nợ, Thẩm Lãng nghe một tin khiến anh lạnh người.",
+      "dir": "manhua-recap/crmn_ep19",
+      "section": "Tập 19: Người bạn bị bỏ rơi"
+    },
+    {
+      "panel": "p038.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Cha ruột định dùng tiền anh mới kiếm được để dựng hẳn một căn nhà mới.",
+      "dir": "manhua-recap/crmn_ep19"
+    },
+    {
+      "panel": "p043.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mẹ bỗng hớt hải chạy vào, báo tin người bạn duy nhất của Thẩm Lãng cũ gặp chuyện chẳng lành.",
+      "dir": "manhua-recap/crmn_ep19"
+    },
+    {
+      "panel": "p048.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Từ nhỏ mồ côi mẹ, bị mẹ kế đối xử như súc vật, ngủ đất, ăn cơm thiu, cả làng thi nhau bắt nạt.",
+      "dir": "manhua-recap/crmn_ep19"
+    },
+    {
+      "panel": "p057.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Tin đồn nói Đại Ngốc nhiều khả năng đã chết trong khe núi từ lâu.",
+      "dir": "manhua-recap/crmn_ep19"
+    },
+    {
+      "panel": "p061.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sau một canh giờ lùng sục, cuối cùng họ cũng tìm thấy anh giữa bụi rậm.",
+      "dir": "manhua-recap/crmn_ep19"
+    },
+    {
+      "panel": "p062.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Toàn thân Đại Ngốc đầy vết móng vuốt cào rách, máu me khắp lưng.",
+      "dir": "manhua-recap/crmn_ep19"
+    },
+    {
+      "panel": "p065.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Thẩm Lãng nắm chặt tay anh, nói lớn, Đại Ngốc, ta đến cứu huynh đây!",
+      "dir": "manhua-recap/crmn_ep19"
+    },
+    {
+      "panel": "p066.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đại Ngốc mỉm cười yếu ớt, nhận ra ngay người bạn Nhị Ngốc năm xưa.",
+      "dir": "manhua-recap/crmn_ep19"
+    },
+    {
+      "panel": "p068.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Hóa ra anh bị hổ cào vì lao vào cứu một đứa trẻ nghịch dại chọc phải thú dữ trên núi.",
+      "dir": "manhua-recap/crmn_ep19"
+    },
+    {
+      "panel": "p070.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Vậy mà chính cha ruột lại ném anh ở đó, mặc cho chết dần vì không có tiền chạy chữa.",
+      "dir": "manhua-recap/crmn_ep19"
+    },
+    {
+      "panel": "p071.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Ơn cứu mạng mà đáp trả bằng cách bỏ con lại rừng sâu, đúng là mất hết tính người.",
+      "dir": "manhua-recap/crmn_ep19"
+    },
+    {
+      "panel": "p072.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng siết chặt nắm tay, thề sẽ không để kẻ nhẫn tâm đó thoát tội!",
+      "dir": "manhua-recap/crmn_ep19"
+    },
+    {
+      "panel": "p007.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đại Ngốc tỉnh lại, thều thào nói mình sắp chết, khiến Thẩm Lãng chết lặng.",
+      "dir": "manhua-recap/crmn_ep20",
+      "section": "Tập 20: Suýt bị đuổi khỏi cổng"
+    },
+    {
+      "panel": "p009.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Vừa thoát hiểm, Đại Ngốc vẫn chỉ lo người bạn Nhị Ngốc có bị ai bắt nạt hay không.",
+      "dir": "manhua-recap/crmn_ep20"
+    },
+    {
+      "panel": "p012.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nghe xong, Thẩm Lãng nổi giận, gầm lên không ai được phép ức hiếp Đại Ngốc nữa.",
+      "dir": "manhua-recap/crmn_ep20"
+    },
+    {
+      "panel": "p027.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Gia đình đó thản nhiên thừa nhận, một tên ngốc như vậy chết thì cứ chết, có gì phải tiếc.",
+      "dir": "manhua-recap/crmn_ep20"
+    },
+    {
+      "panel": "p028.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Nuôi con mười mấy năm mà nói câu đó tỉnh bơ, đúng là hết thuốc chữa.",
+      "dir": "manhua-recap/crmn_ep20"
+    },
+    {
+      "panel": "p037.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng không kìm được, ra tay dạy cho gã cha dượng một bài học nhớ đời.",
+      "dir": "manhua-recap/crmn_ep20"
+    },
+    {
+      "panel": "p046.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Thẩm Lãng cười nhạt, chính mình mới là con rể phủ Bá tước, có giỏi thì cứ đi kiện.",
+      "dir": "manhua-recap/crmn_ep20"
+    },
+    {
+      "panel": "p050.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Vì làng quê không đủ thuốc men, anh quyết định đưa thẳng Đại Ngốc tới phủ Bá tước chữa trị.",
+      "dir": "manhua-recap/crmn_ep20"
+    },
+    {
+      "panel": "p058.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thủ lĩnh nội vệ Kim Trình thẳng thừng không tin một kẻ áo quần xuềnh xoàng lại là con rể chủ nhân.",
+      "dir": "manhua-recap/crmn_ep20"
+    },
+    {
+      "panel": "p066.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "May mắn đúng lúc đó, Mộc Lan xuất hiện, nhận ra ngay chồng mình.",
+      "dir": "manhua-recap/crmn_ep20"
+    },
+    {
+      "panel": "p073.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô lập tức ra lệnh mời đại phu, không để chậm trễ thêm giây nào.",
+      "dir": "manhua-recap/crmn_ep20"
+    },
+    {
+      "panel": "p074.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Đích thân Mộc Lan cầm cương đánh xe đi tìm thầy thuốc, cứu mạng người bạn của chồng mình!",
+      "dir": "manhua-recap/crmn_ep20"
+    }
+  ]
+}

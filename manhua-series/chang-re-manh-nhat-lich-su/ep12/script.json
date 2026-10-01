@@ -1,0 +1,26 @@
+{
+  "title": "5 ứng viên tranh làm rể, chỉ một câu trả lời khiến nữ tướng chọn ngay chàng rể vô dụng!?",
+  "chapters": "11",
+  "source_dir": "manhua-recap/crmn_ep12",
+  "description": "Kim Mộc Lan phỏng vấn 5 ứng viên chọn rể, ai cũng trả lời vì danh vọng và cơ nghiệp, riêng Thẩm Lãng chỉ nói hai chữ khiến cô chọn ngay anh. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 12.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "thumbnail": {"text": "CHỈ 2 CHỮ THẮNG CẢ 5 ỨNG VIÊN!?", "prompt": "Vertical 9:16 anime-style: a female general in white sitting across from a long-haired young man in a wooden study room, four other handsome suitors waiting in silhouette behind sliding doors. No text, leave top 25% empty."},
+  "beats": [
+    {"panel": "p004.jpg", "type": "HOOK", "kind": "recap", "narration": "Sáu chàng trai lần lượt bước vào sáu phòng sách, cuộc chọn rể chính thức bắt đầu!"},
+    {"panel": "p005.jpg", "type": "SETUP", "kind": "recap", "narration": "Trước trưa phải chọn xong người, tối nay thành thân ngay, người quyết định duy nhất là Kim Mộc Lan."},
+    {"panel": "p009.jpg", "type": "BUILD", "kind": "recap", "narration": "Người đầu tiên là Vương Liên, Chủ bộ thành Huyền Vũ, đã quen cô mười mấy năm."},
+    {"panel": "p013.jpg", "type": "BUILD", "kind": "recap", "narration": "Anh ta trả lời thẳng, sẽ thi lên tiến sĩ, giúp gia tộc Kim thị bước lên tầm cao mới."},
+    {"panel": "p019.jpg", "type": "BUILD", "kind": "recap", "narration": "Người tiếp theo thề sẽ dẫn quân chinh chiến khắp nơi, lập công trạng cho gia tộc."},
+    {"panel": "p022.jpg", "type": "BUILD", "kind": "recap", "narration": "Lần lượt từng người đều hứa hẹn quyền lực, công danh, cơ nghiệp trăm năm."},
+    {"panel": "p023.jpg", "type": "BUILD", "kind": "recap", "narration": "Cuối cùng cô đến phòng sách cuối, hỏi Thẩm Lãng đúng câu hỏi đó: ngươi có thể mang đến điều gì cho ta?"},
+    {"panel": "p030.jpg", "type": "REVEAL", "kind": "recap", "narration": "Anh đáp gọn lỏn, đó là tự do."},
+    {"panel": "p035.jpg", "type": "BUILD", "kind": "recap", "narration": "Không ràng buộc, không yêu cầu đổi lại, chỉ cần cô không ngoại tình là được làm gì cũng được."},
+    {"panel": "p043.jpg", "type": "REACTION", "kind": "recap", "narration": "Cặp mắt tinh tường của cô nhận ra ngay, đây không phải lời nịnh hót như những người kia."},
+    {"panel": "p046.jpg", "type": "BUILD", "kind": "recap", "narration": "Cô quỳ trước cha mẹ, tuyên bố đã chọn được người."},
+    {"panel": "p054.jpg", "type": "REVEAL", "kind": "recap", "narration": "Cha cô sốc nặng, ai cũng giỏi giang như vậy mà con lại chọn đúng Thẩm Lãng!?"},
+    {"panel": "p065.jpg", "type": "BUILD", "kind": "recap", "narration": "Cô giải thích, danh tiếng xấu của hắn lại là vũ khí, nhà họ Chúc thấy vậy sẽ coi là bị sỉ nhục mà rút lui."},
+    {"panel": "p066.jpg", "type": "REACTION", "kind": "commentary", "narration": "Vừa được chọn vì chân thành, vừa được chọn vì xấu danh tiếng, nghe mà dở khóc dở cười."},
+    {"panel": "p069.jpg", "type": "BUILD", "kind": "recap", "narration": "Thế tử nghe tin nổi giận đùng đùng, đấm thẳng vào tường, không chấp nhận gã nghịch tử này làm anh rể."},
+    {"panel": "p073.jpg", "type": "ENDING", "kind": "recap", "narration": "Đêm nay thành thân, số phận chàng rể vô dụng chính thức bước sang trang mới!"}
+  ]
+}

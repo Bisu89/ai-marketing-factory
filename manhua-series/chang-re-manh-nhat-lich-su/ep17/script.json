@@ -1,0 +1,27 @@
+{
+  "title": "Vợ mới cưới đưa luôn nha hoàn để thay mình, chàng rể từ chối thẳng khiến nữ tướng bất ngờ!?",
+  "chapters": "16",
+  "source_dir": "manhua-recap/crmn_ep17",
+  "description": "Kim Mộc Lan tuyên bố hôn nhân chỉ trên danh nghĩa, còn đưa nha hoàn tới thay mình hầu hạ, nhưng Thẩm Lãng từ chối thẳng. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 17.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "thumbnail": {"text": "VỢ ĐƯA NHA HOÀN THAY MÌNH, ANH TỪ CHỐI!?", "prompt": "Vertical 9:16 anime-style: a female general in red robes gesturing toward a blushing young maid standing beside a surprised long-haired groom in a lantern-lit bedroom. No text, leave top 25% empty."},
+  "beats": [
+    {"panel": "p004.jpg", "type": "HOOK", "kind": "recap", "narration": "Sáng hôm sau động phòng, Mộc Lan nghiêm mặt tuyên bố một điều khiến anh chết lặng."},
+    {"panel": "p007.jpg", "type": "SETUP", "kind": "recap", "narration": "Cô nói cả đời không định lấy chồng, chỉ vì bị nhà họ Chúc ép hôn nên mới chọn rể cho có."},
+    {"panel": "p009.jpg", "type": "BUILD", "kind": "recap", "narration": "Hôn nhân chỉ trên danh nghĩa, nghĩa vụ phu thê thật sự thì cô xin lỗi, không thể."},
+    {"panel": "p011.jpg", "type": "BUILD", "kind": "recap", "narration": "Anh thầm nghĩ, muốn thật sự ở bên cô thì phải chinh phục được trái tim cô trước đã."},
+    {"panel": "p015.jpg", "type": "BUILD", "kind": "recap", "narration": "Tối đến, Mộc Lan gọi nha hoàn thân cận Tiểu Băng vào phòng."},
+    {"panel": "p020.jpg", "type": "REVEAL", "kind": "recap", "narration": "Cô bảo Tiểu Băng ở lại hầu hạ chồng mình thật tốt, coi như bù đắp."},
+    {"panel": "p022.jpg", "type": "BUILD", "kind": "recap", "narration": "Thẩm Lãng sững người, nhưng lắc đầu từ chối thẳng, nói như vậy không ổn chút nào."},
+    {"panel": "p026.jpg", "type": "REACTION", "kind": "recap", "narration": "Tiểu Băng bật khóc, tủi thân vì nghĩ cả chủ nhân lẫn chồng hờ đều coi thường mình."},
+    {"panel": "p036.jpg", "type": "BUILD", "kind": "recap", "narration": "Anh dỗ dành, nói dù tốt xấu thế nào cũng không thể ép buộc người khác."},
+    {"panel": "p037.jpg", "type": "REACTION", "kind": "commentary", "narration": "Đẹp trai mà còn biết giữ lòng tự trọng cho người khác, điểm cộng cực lớn."},
+    {"panel": "p039.jpg", "type": "BUILD", "kind": "recap", "narration": "Anh tự nhắc mình, vào phủ Bá tước làm rể là để bảo vệ gia đình, không được tham lam hơn."},
+    {"panel": "p042.jpg", "type": "BUILD", "kind": "recap", "narration": "Sáng hôm sau, hai vợ chồng cùng mang lễ vật sang bái kiến cha mẹ Mộc Lan."},
+    {"panel": "p044.jpg", "type": "BUILD", "kind": "recap", "narration": "Mộc Lan dặn, từ giờ có mục tiêu hay suy nghĩ gì thì cứ nói thẳng với cô."},
+    {"panel": "p048.jpg", "type": "REVEAL", "kind": "recap", "narration": "Anh đổi ý, thú nhận mình có một mục tiêu rất lớn: bắt nhà họ Từ quỳ gối tạ lỗi."},
+    {"panel": "p051.jpg", "type": "REACTION", "kind": "recap", "narration": "Mộc Lan trêu, đàn ông gì mà hẹp hòi, nhưng vẫn mách nước giúp anh."},
+    {"panel": "p055.jpg", "type": "BUILD", "kind": "recap", "narration": "Cô nhắc, phủ Bá tước không thể động vào nhà họ Từ vì phe cánh Chúc thị đứng sau, nhưng việc riêng với Điền Hoành thì anh có thể tự xử."},
+    {"panel": "p061.jpg", "type": "ENDING", "kind": "recap", "narration": "Thẩm Lãng lập tức lên đường, mang theo thân phận cô gia phủ Bá tước đi tính sổ với trùm xã hội đen!"}
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "title": "Người bạn duy nhất của chủ cũ bị chính cha ruột vứt trong rừng cho hổ ăn thịt!?",
+  "chapters": "18",
+  "source_dir": "manhua-recap/crmn_ep19",
+  "description": "Thẩm Lãng về thăm nhà, nghe tin người bạn thời thơ ấu Đại Ngốc bị cha ruột bỏ mặc chờ chết trong rừng sau khi liều mình cứu người. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 19.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "thumbnail": {"text": "BẠN THÂN BỊ BỎ MẶC CHO HỔ ĂN!?", "prompt": "Vertical 9:16 anime-style: a giant gentle young man covered in bloody tiger claw wounds lying in a dark forest, a long-haired young man rushing to his side with a lantern, moonlight through trees. No text, leave top 25% empty."},
+  "beats": [
+    {"panel": "p034.jpg", "type": "HOOK", "kind": "recap", "narration": "Vừa giải quyết xong món nợ, Thẩm Lãng nghe một tin khiến anh lạnh người."},
+    {"panel": "p038.jpg", "type": "SETUP", "kind": "recap", "narration": "Cha ruột định dùng tiền anh mới kiếm được để dựng hẳn một căn nhà mới."},
+    {"panel": "p043.jpg", "type": "BUILD", "kind": "recap", "narration": "Mẹ bỗng hớt hải chạy vào, báo tin người bạn duy nhất của Thẩm Lãng cũ gặp chuyện chẳng lành."},
+    {"panel": "p046.jpg", "type": "BUILD", "kind": "recap", "narration": "Đại Ngốc, chàng trai cao hai mét mốt nhưng hiền lành chất phác, chính là người bạn ấy."},
+    {"panel": "p048.jpg", "type": "BUILD", "kind": "recap", "narration": "Từ nhỏ mồ côi mẹ, bị mẹ kế đối xử như súc vật, ngủ đất, ăn cơm thiu, cả làng thi nhau bắt nạt."},
+    {"panel": "p057.jpg", "type": "REVEAL", "kind": "recap", "narration": "Tin đồn nói Đại Ngốc nhiều khả năng đã chết trong khe núi từ lâu."},
+    {"panel": "p059.jpg", "type": "BUILD", "kind": "recap", "narration": "Cả nhà không chần chừ, lập tức lên núi giữa đêm tối đi tìm bằng được."},
+    {"panel": "p061.jpg", "type": "BUILD", "kind": "recap", "narration": "Sau một canh giờ lùng sục, cuối cùng họ cũng tìm thấy anh giữa bụi rậm."},
+    {"panel": "p062.jpg", "type": "REVEAL", "kind": "recap", "narration": "Toàn thân Đại Ngốc đầy vết móng vuốt cào rách, máu me khắp lưng."},
+    {"panel": "p064.jpg", "type": "BUILD", "kind": "recap", "narration": "May mắn thay, anh vẫn còn thở, cả nhóm thở phào nhẹ nhõm."},
+    {"panel": "p065.jpg", "type": "REVEAL", "kind": "recap", "narration": "Thẩm Lãng nắm chặt tay anh, nói lớn, Đại Ngốc, ta đến cứu huynh đây!"},
+    {"panel": "p066.jpg", "type": "BUILD", "kind": "recap", "narration": "Đại Ngốc mỉm cười yếu ớt, nhận ra ngay người bạn Nhị Ngốc năm xưa."},
+    {"panel": "p068.jpg", "type": "REVEAL", "kind": "recap", "narration": "Hóa ra anh bị hổ cào vì lao vào cứu một đứa trẻ nghịch dại chọc phải thú dữ trên núi."},
+    {"panel": "p070.jpg", "type": "REVEAL", "kind": "recap", "narration": "Vậy mà chính cha ruột lại ném anh ở đó, mặc cho chết dần vì không có tiền chạy chữa."},
+    {"panel": "p071.jpg", "type": "REACTION", "kind": "commentary", "narration": "Ơn cứu mạng mà đáp trả bằng cách bỏ con lại rừng sâu, đúng là mất hết tính người."},
+    {"panel": "p072.jpg", "type": "ENDING", "kind": "recap", "narration": "Thẩm Lãng siết chặt nắm tay, thề sẽ không để kẻ nhẫn tâm đó thoát tội!"}
+  ]
+}

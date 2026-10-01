@@ -1,0 +1,27 @@
+{
+  "title": "Đọc được cả văn bia thượng cổ, danh tiếng vô dụng của chàng rể sụp đổ ngay giữa tiệc cưới!?",
+  "chapters": "15",
+  "source_dir": "manhua-recap/crmn_ep16",
+  "description": "Một học giả lừng danh mang văn bia cổ ra thách đố, không ngờ Thẩm Lãng đọc vanh vách khiến danh tiếng vô dụng của anh sụp đổ hoàn toàn. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 16.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "thumbnail": {"text": "VĂN BIA THẤT TRUYỀN, ANH ĐỌC VANH VÁCH!?", "prompt": "Vertical 9:16 anime-style: a long-haired young man reading an ancient stone rubbing covered in archaic characters, a stunned white-haired scholar and noble crowd around him under red wedding lanterns. No text, leave top 25% empty."},
+  "beats": [
+    {"panel": "p006.jpg", "type": "HOOK", "kind": "recap", "narration": "Cả sảnh cười ồ khi nghe anh tự nhận mình ngốc, chẳng ai ngờ đó chỉ là màn dạo đầu."},
+    {"panel": "p009.jpg", "type": "SETUP", "kind": "recap", "narration": "Quan lớn Chúc Lâm chỉ khẽ nhíu mày, linh cảm có gì đó không đơn giản."},
+    {"panel": "p013.jpg", "type": "BUILD", "kind": "recap", "narration": "Trương Bá Ngôn, học giả lừng danh khắp vùng, bước ra với một thử thách khó nhằn hơn."},
+    {"panel": "p017.jpg", "type": "BUILD", "kind": "recap", "narration": "Ông đưa ra một bản dập văn bia thời thượng cổ, thứ chính ông cũng chưa từng đọc được."},
+    {"panel": "p020.jpg", "type": "BUILD", "kind": "recap", "narration": "Một tiểu thư may mắn nhận ra đúng một chữ, cả đám đông trầm trồ vì hiếm có ai biết tới."},
+    {"panel": "p022.jpg", "type": "REVEAL", "kind": "recap", "narration": "Thẩm Lãng chỉ liếc qua đã đọc trôi chảy toàn bộ văn bia trước mặt mọi người."},
+    {"panel": "p027.jpg", "type": "BUILD", "kind": "recap", "narration": "Trương Bá Ngôn thách thêm, nếu biết ý nghĩa thì cũng phải biết cách viết tự tay chứng minh."},
+    {"panel": "p039.jpg", "type": "BUILD", "kind": "recap", "narration": "Anh cầm bút viết lại không chút do dự, nét chữ dứt khoát khiến ai nấy nín thở."},
+    {"panel": "p045.jpg", "type": "REACTION", "kind": "recap", "narration": "Trương Bá Ngôn sững người, cả đời nghiên cứu chữ cổ cũng chưa từng thấy ai làm được."},
+    {"panel": "p063.jpg", "type": "BUILD", "kind": "recap", "narration": "Chúc Lâm cảm kích vỗ vai, dặn anh hãy nhớ kỹ cái ngày đã khiến mình nể phục này."},
+    {"panel": "p064.jpg", "type": "REACTION", "kind": "recap", "narration": "Cả đám đông từng cười nhạo giờ chết lặng, hóa ra mọi lời đồn vô dụng chỉ là giả."},
+    {"panel": "p065.jpg", "type": "REACTION", "kind": "commentary", "narration": "Giả vờ ngốc để câu giờ, cuối cùng vẫn là màn lội ngược dòng ngoạn mục nhất buổi tiệc."},
+    {"panel": "p066.jpg", "type": "BUILD", "kind": "recap", "narration": "Sang ngày trà lễ, cha mẹ Thẩm Lãng rụt rè ngồi mãi tận sảnh sau vì sợ con trai mất mặt."},
+    {"panel": "p069.jpg", "type": "BUILD", "kind": "recap", "narration": "Anh quỳ bái cha mẹ vợ, tự nhận mình là đứa con bất hiếu khiến ai cũng cảm động."},
+    {"panel": "p070.jpg", "type": "BUILD", "kind": "recap", "narration": "Đến lượt Mộc Lan quỳ bái, Thẩm Lãng chỉ biết luống cuống không dám nhận lễ."},
+    {"panel": "p078.jpg", "type": "BUILD", "kind": "recap", "narration": "Tối đến, cả hai bước vào phòng tân hôn giữa ánh nến đỏ rực."},
+    {"panel": "p085.jpg", "type": "ENDING", "kind": "recap", "narration": "Nhìn cô dâu xinh đẹp trước mặt, Thẩm Lãng thầm nghĩ, không ngờ mình thật sự cưới được nữ thần!"}
+  ]
+}

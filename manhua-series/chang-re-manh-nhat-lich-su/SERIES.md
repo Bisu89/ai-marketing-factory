@@ -73,16 +73,28 @@ lớn hơn xoay quanh phủ Bá tước Huyền Vũ (gia tộc Kim Mộc Lan —
 | 8 | 7 | `manhua-recap/crmn_ep8` | Phiên xử công khai; Thẩm Lãng thách đấu nhuộm màu tím (cực hiếm) để chứng minh trong sạch, thắng áp đảo; thợ nhuộm già trình sổ nghiên cứu chứng minh công thức vàng kim hợp pháp; nhà họ Từ vẫn ngoan cố, bị anh tung thêm vải tím đẹp hơn dập tắt hoàn toàn. | ✅ script (Claude viết), chưa build Short riêng |
 | 9 | 8 | `manhua-recap/crmn_ep9` | Trình diễn đỉnh cao lụa 7 màu cầu vồng; quan Chủ bộ Vương Liên phán Thẩm Lãng vô tội; flashback lý do Vương Liên thiên vị (nợ ân tình với Kim Mộc Lan, ghét Trương Tấn); twist: vụ nợ 1000 vàng từ đầu là âm mưu của Điền Hoành + họ Từ nhằm nô dịch cả gia đình anh vĩnh viễn, hạn chót mới trước khi mặt trời lặn. | ✅ script (Claude viết), chưa build Short riêng |
 | 10 | 9 | `manhua-recap/crmn_ep10` | Kim Mộc Lan khải hoàn về thành, vô tình gặp lại Thẩm Lãng (ân nhân 3 năm trước); đưa anh về phủ Bá tước chữa trị; lộ tình hình chính trị nguy hiểm (triều đình cắt giảm binh quyền quý tộc); Thẩm Lãng đánh liều tung tin nhà họ Chúc muốn cầu hôn Mộc Lan để xin yết kiến Bá tước Kim Trác. | ✅ script (Claude viết), chưa build Short riêng |
+| 11 | 10 | `manhua-recap/crmn_ep11` | Nhà họ Chúc đưa quân ép cầu hôn Mộc Lan; cô định tự hủy dung, cha cô mở cuộc "chọn rể" khẩn cấp với 5 ứng viên; Thẩm Lãng liều mạng xin tham gia, được nhận vào danh sách vì câu chuyện "Nhị Ngốc" thời thơ ấu. | ✅ script (Claude viết), chưa build Short riêng |
+| 12 | 11 | `manhua-recap/crmn_ep12` | Mộc Lan phỏng vấn 5 ứng viên, ai cũng hứa hẹn công danh/cơ nghiệp; Thẩm Lãng chỉ đáp "tự do" — câu trả lời chân thành khiến cô chọn ngay anh, bất chấp danh tiếng xấu (coi đó là vũ khí chọc tức nhà họ Chúc). | ✅ script (Claude viết), chưa build Short riêng |
+| 13 | 12 | `manhua-recap/crmn_ep13` | Thế tử phẫn nộ vì chị chọn rể vô dụng; song song đó Bang Hắc Y (chưa biết tin cưới hỏi) xông vào định bắt/giết cả nhà Thẩm Lãng để ép giao công thức — quản sự phủ Bá tước đến kịp lúc giải cứu, đưa cả nhà tới dự hôn lễ. | ✅ script (Claude viết), chưa build Short riêng |
+| 14 | 13 | `manhua-recap/crmn_ep14` | Hôn lễ long trọng giữa thành Huyền Vũ, tân lang che mặt bằng mặt nạ bí ẩn (tục lệ chỉ tháo trong phòng tân hôn); một người trong tiệc nhận ra dáng người quen thuộc nhưng tự trấn an là mình nhầm; kết bằng bản "tình báo" giới thiệu gia tộc Chúc thị. | ✅ script (Claude viết), chưa build Short riêng |
+| 15 | 14 | `manhua-recap/crmn_ep15` | Quan lớn Chúc Lâm ép tháo mặt nạ giữa tiệc, lộ ra đúng Thẩm Lãng; bạn học cũ Trương Tấn + học sinh giỏi nhất trường Nhan Hùng thách viết chữ để vạch trần "kẻ ngốc giả mạo" — Thẩm Lãng dùng "laptop trong đầu" tra cứu, đáp bằng điển tích uyên thâm khiến cả học giả lẫn thầy cũ câm nín. | ✅ script (Claude viết), chưa build Short riêng |
+| 16 | 15 | `manhua-recap/crmn_ep16` | Trương Bá Ngôn (học giả, cựu thành chủ) mang văn bia thượng cổ ra thách đố tiếp — Thẩm Lãng đọc trôi chảy và viết lại chính xác, đánh sập hoàn toàn danh tiếng "vô dụng"; sang ngày trà lễ, cha mẹ nghèo của anh rụt rè không dám nhận lễ từ con dâu; tối đến là đêm tân hôn thật sự đầu tiên. | ✅ script (Claude viết), chưa build Short riêng |
+| 17 | 16 | `manhua-recap/crmn_ep17` | Mộc Lan tuyên bố hôn nhân chỉ trên danh nghĩa (thề không lấy chồng thật, chỉ vì bị ép), còn đưa nha hoàn Tiểu Băng tới "thay mình" — Thẩm Lãng từ chối thẳng để giữ lòng tự trọng cho cô gái. Sau đó anh thú nhận mục tiêu lớn nhất: bắt nhà họ Từ quỳ tạ lỗi; Mộc Lan mách nước để anh tự xử Điền Hoành. | ✅ script (Claude viết), chưa build Short riêng |
+| 18 | 17 | `manhua-recap/crmn_ep18` | Mang thân phận cô gia phủ Bá tước, Thẩm Lãng xông vào Bang Hắc Y, đốt giấy nợ máu rồi trả dư cả trăm vàng để dằn mặt; ra lệnh Điền Hoành phạt Thập Tam (kẻ từng dọa đánh gãy chân em trai anh) — từ con nợ thành chủ nợ chỉ sau một đêm. | ✅ script (Claude viết), chưa build Short riêng |
+| 19 | 18 | `manhua-recap/crmn_ep19` | Về thăm nhà, Thẩm Lãng nghe tin Đại Ngốc — người bạn duy nhất chất phác thời thơ ấu, suốt đời bị mẹ kế và dân làng bắt nạt — bị chính cha ruột bỏ mặc chờ chết trong rừng sau khi liều mình cứu người khỏi hổ dữ. Cả nhà lên núi giữa đêm tìm và cứu được anh trong gang tấc. | ✅ script (Claude viết), chưa build Short riêng |
+| 20 | 19 | `manhua-recap/crmn_ep20` | Phẫn nộ, Thẩm Lãng dạy cho gia đình bạc bẽo của Đại Ngốc một bài học, rồi đưa bạn tới phủ Bá tước chữa trị vì làng quê thiếu thuốc men — nhưng lính gác mới không tin một người ăn mặc xuềnh xoàng là con rể chủ nhân, suýt đuổi cả hai ra ngoài; may mắn Mộc Lan xuất hiện kịp lúc, đích thân đi tìm thầy thuốc cứu người. | ✅ script (Claude viết), chưa build Short riêng |
 
 ## Video đã dựng
 
 | Video | Nội dung | Script | Trạng thái |
 |---|---|---|---|
 | Long 01 (16:9) | Tóm tắt tập 1–10, 122 beat, 10 phần | `long01_script.json` | ✅ project 149 / job_209, Final QA PASS 100 |
-| Short tóm tắt (9:16) | 13 beat, tóm tắt cả 10 tập | `short_summary_script.json` | ✅ project 150 / job_208, Final QA PASS 100 |
+| Short tóm tắt 1 (9:16) | 13 beat, tóm tắt cả 10 tập | `short_summary_script.json` | ✅ project 150 / job_208, Final QA PASS 100 |
+| Long 02 (16:9) | Tóm tắt tập 11–20, 117 beat, 10 phần | `long02_script.json` | ✅ project 151 / run 197 |
+| Short tóm tắt 2 (9:16) | 12 beat, tóm tắt tập 11–20 | `short_summary2_script.json` | ✅ project 152 / run 198 |
 
 Mục lục thời gian Long 01: 0:00 Tập 1 / 0:29 Tập 2 / 1:15 Tập 3 / 1:58 Tập 4 / 2:40 Tập 5 / 3:24 Tập 6 / 4:14 Tập 7 / 4:57 Tập 8 / 5:42 Tập 9 / 6:37 Tập 10.
-Build đa thư mục panel bằng script scratchpad gọi API (recap.py build chỉ nhận một thư mục).
+Build đa thư mục panel bằng script scratchpad gọi API (recap.py build chỉ nhận một thư mục). job_id/QA của Long 02 và Short 2 sẽ cập nhật sau khi render xong.
 
 ## Nhật ký
 

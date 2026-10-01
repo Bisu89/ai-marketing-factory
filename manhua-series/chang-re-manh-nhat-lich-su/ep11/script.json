@@ -1,0 +1,28 @@
+{
+  "title": "Nữ tướng phải tự hủy dung tránh cầu hôn, chàng rể xin được vào danh sách chọn rể!?",
+  "chapters": "10",
+  "source_dir": "manhua-recap/crmn_ep11",
+  "description": "Gia tộc Chúc thị đưa quân ép cầu hôn Kim Mộc Lan, cô định tự hủy khuôn mặt, còn Thẩm Lãng liều mạng xin vào danh sách chọn rể. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 11.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "thumbnail": {"text": "NỮ TƯỚNG ĐỊNH TỰ HỦY DUNG!?", "prompt": "Vertical 9:16 anime-style: a female general in white robes holding a dagger to her own face, a worried father reaching to stop her, a long-haired young man watching from the doorway. No text, leave top 25% empty."},
+  "beats": [
+    {"panel": "p006.jpg", "type": "HOOK", "kind": "recap", "narration": "Tin đồn về cuộc cầu hôn lan khắp phố, ai cũng xì xào về gã ở rể tên Thẩm Lãng."},
+    {"panel": "p009.jpg", "type": "SETUP", "kind": "recap", "narration": "Thẩm Lãng chỉ xin một điều kiện, cho hắn một công việc ở lại phủ Bá tước."},
+    {"panel": "p014.jpg", "type": "BUILD", "kind": "recap", "narration": "Hắn thừa nhận, mục đích thật sự là được gần nữ thần Kim Mộc Lan mỗi ngày."},
+    {"panel": "p016.jpg", "type": "BUILD", "kind": "recap", "narration": "Bá tước đồng ý, cho hắn theo Thế tử đi học, dặn phải chăm chỉ nên người."},
+    {"panel": "p019.jpg", "type": "REVEAL", "kind": "recap", "narration": "Đúng lúc đó, tin dữ ập tới: Tướng quân Bình Nam Chúc Lâm đang dẫn quân tiến thẳng về thành Huyền Vũ."},
+    {"panel": "p021.jpg", "type": "BUILD", "kind": "recap", "narration": "Thời hạn cầu hôn không còn nửa tháng, mà chỉ còn ba canh giờ."},
+    {"panel": "p031.jpg", "type": "REVEAL", "kind": "recap", "narration": "Nhà họ Chúc thực chất muốn tháo dỡ trụ cột quyền lực, cướp luôn binh quyền của phủ Bá tước."},
+    {"panel": "p035.jpg", "type": "BUILD", "kind": "recap", "narration": "Mộc Lan rút dao, nói sẽ tự hủy khuôn mặt mình để nhà họ Chúc hết đường cầu hôn."},
+    {"panel": "p036.jpg", "type": "REVEAL", "kind": "recap", "narration": "Mẹ cô xông vào cản, hét lên không, điều đầu tiên bà phải bảo vệ chính là con gái mình."},
+    {"panel": "p038.jpg", "type": "BUILD", "kind": "recap", "narration": "Nhưng cha cô nói thẳng, dù con có hủy mặt, nhà họ Chúc vẫn sẽ cầu hôn như cũ."},
+    {"panel": "p039.jpg", "type": "BUILD", "kind": "recap", "narration": "Trừ khi hôm nay con gái thành thân, chiêu rể vào cửa, thì họ mới đành rút lui."},
+    {"panel": "p046.jpg", "type": "BUILD", "kind": "recap", "narration": "Bá tước lập tức viết ra danh sách năm ứng viên ưu tú, sai người đi mời gấp."},
+    {"panel": "p049.jpg", "type": "BUILD", "kind": "recap", "narration": "Thẩm Lãng chen vào hỏi thẳng, bá tước đại nhân, tiểu nhân có thể tham gia cạnh tranh không?"},
+    {"panel": "p050.jpg", "type": "REACTION", "kind": "recap", "narration": "Mộc Lan sững sờ, buột miệng gọi tên, Thẩm Lãng!?"},
+    {"panel": "p063.jpg", "type": "BUILD", "kind": "recap", "narration": "Hóa ra cô từng nghe chuyện biệt danh Nhị Ngốc của hắn ở quê, nên có chút cảm tình trẻ con."},
+    {"panel": "p065.jpg", "type": "REVEAL", "kind": "recap", "narration": "Cô đồng ý, cho hắn vào danh sách để công bằng với mọi người."},
+    {"panel": "p069.jpg", "type": "REACTION", "kind": "commentary", "narration": "Được thương hại hay được để ý thì tính sau, có suất thi là mừng rồi."},
+    {"panel": "p071.jpg", "type": "ENDING", "kind": "recap", "narration": "Mộc Lan đích thân dẫn hắn tới phòng sách thứ sáu, màn chọn rể chính thức bắt đầu!"}
+  ]
+}

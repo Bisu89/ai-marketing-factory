@@ -1,0 +1,26 @@
+{
+  "title": "Nổi điên vì bạn bị bỏ rơi, chàng rể đến tận cổng phủ Bá tước cũng suýt bị đuổi ra ngoài!?",
+  "chapters": "19",
+  "source_dir": "manhua-recap/crmn_ep20",
+  "description": "Thẩm Lãng nổi giận vì gia đình ruột bỏ mặc Đại Ngốc, mang bạn đến phủ Bá tước cầu cứu nhưng suýt bị lính gác không tin đuổi thẳng ra ngoài. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 20.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "thumbnail": {"text": "CẦU CỨU BẠN, SUÝT BỊ ĐUỔI KHỎI CỔNG!?", "prompt": "Vertical 9:16 anime-style: a long-haired young man pleading at a grand armored palace gate, a guard blocking him with a spear, an injured giant man slumped in a carriage behind. No text, leave top 25% empty."},
+  "beats": [
+    {"panel": "p007.jpg", "type": "HOOK", "kind": "recap", "narration": "Đại Ngốc tỉnh lại, thều thào nói mình sắp chết, khiến Thẩm Lãng chết lặng."},
+    {"panel": "p009.jpg", "type": "SETUP", "kind": "recap", "narration": "Vừa thoát hiểm, Đại Ngốc vẫn chỉ lo người bạn Nhị Ngốc có bị ai bắt nạt hay không."},
+    {"panel": "p012.jpg", "type": "BUILD", "kind": "recap", "narration": "Nghe xong, Thẩm Lãng nổi giận, gầm lên không ai được phép ức hiếp Đại Ngốc nữa."},
+    {"panel": "p014.jpg", "type": "BUILD", "kind": "recap", "narration": "Anh lao thẳng tới nhà cha dượng Đại Ngốc, đấm thẳng không nương tay."},
+    {"panel": "p027.jpg", "type": "REVEAL", "kind": "recap", "narration": "Gia đình đó thản nhiên thừa nhận, một tên ngốc như vậy chết thì cứ chết, có gì phải tiếc."},
+    {"panel": "p028.jpg", "type": "REACTION", "kind": "commentary", "narration": "Nuôi con mười mấy năm mà nói câu đó tỉnh bơ, đúng là hết thuốc chữa."},
+    {"panel": "p037.jpg", "type": "BUILD", "kind": "recap", "narration": "Thẩm Lãng không kìm được, ra tay dạy cho gã cha dượng một bài học nhớ đời."},
+    {"panel": "p044.jpg", "type": "BUILD", "kind": "recap", "narration": "Gã la hét ầm ĩ, dọa sẽ kiện lên tận phủ Bá tước."},
+    {"panel": "p046.jpg", "type": "REVEAL", "kind": "recap", "narration": "Thẩm Lãng cười nhạt, chính mình mới là con rể phủ Bá tước, có giỏi thì cứ đi kiện."},
+    {"panel": "p050.jpg", "type": "BUILD", "kind": "recap", "narration": "Vì làng quê không đủ thuốc men, anh quyết định đưa thẳng Đại Ngốc tới phủ Bá tước chữa trị."},
+    {"panel": "p056.jpg", "type": "BUILD", "kind": "recap", "narration": "Nhưng tới cổng, lính canh mới không nhận ra anh, nghi ngờ đủ điều."},
+    {"panel": "p058.jpg", "type": "BUILD", "kind": "recap", "narration": "Thủ lĩnh nội vệ Kim Trình thẳng thừng không tin một kẻ áo quần xuềnh xoàng lại là con rể chủ nhân."},
+    {"panel": "p064.jpg", "type": "BUILD", "kind": "recap", "narration": "Họ định ném thẳng cả hai người ra ngoài, mặc kệ tính mạng Đại Ngốc đang nguy kịch."},
+    {"panel": "p066.jpg", "type": "REVEAL", "kind": "recap", "narration": "May mắn đúng lúc đó, Mộc Lan xuất hiện, nhận ra ngay chồng mình."},
+    {"panel": "p073.jpg", "type": "BUILD", "kind": "recap", "narration": "Cô lập tức ra lệnh mời đại phu, không để chậm trễ thêm giây nào."},
+    {"panel": "p074.jpg", "type": "ENDING", "kind": "recap", "narration": "Đích thân Mộc Lan cầm cương đánh xe đi tìm thầy thuốc, cứu mạng người bạn của chồng mình!"}
+  ]
+}

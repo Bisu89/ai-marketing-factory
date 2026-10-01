@@ -1,0 +1,26 @@
+{
+  "title": "Tân lang đeo mặt nạ bước vào hôn lễ, một người trong đám đông nhận ra dáng hình quen thuộc!?",
+  "chapters": "13",
+  "source_dir": "manhua-recap/crmn_ep14",
+  "description": "Lễ cưới của Kim Mộc Lan khiến cả thành Huyền Vũ xôn xao đoán tân lang, tân lang che mặt bằng mặt nạ nhưng dáng hình quen thuộc khiến một người trong tiệc rùng mình. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 14.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "thumbnail": {"text": "DÁNG NGƯỜI NÀY... KHÔNG THỂ NÀO!?", "prompt": "Vertical 9:16 anime-style: a masked groom in red wedding robes at a grand lantern-lit ceremony, a shocked man in the crowd staring at him with a sweat drop, red carpet and fireworks. No text, leave top 25% empty."},
+  "beats": [
+    {"panel": "p004.jpg", "type": "HOOK", "kind": "recap", "narration": "Quản sự phủ Bá tước đích thân tới đón cha mẹ Thẩm Lãng, cả nhà ngỡ ngàng không tin nổi."},
+    {"panel": "p009.jpg", "type": "SETUP", "kind": "recap", "narration": "Mười mấy võ sĩ hộ tống, kiệu hoa trải thảm, đưa họ thẳng tới hôn lễ."},
+    {"panel": "p029.jpg", "type": "BUILD", "kind": "recap", "narration": "Bên trong Bang Hắc Y, Điền Hoành chột dạ khi nghe tin thuộc hạ suýt đụng vào người nhà phủ Bá tước."},
+    {"panel": "p034.jpg", "type": "BUILD", "kind": "recap", "narration": "Hắn tự tay móc một mắt mình để tạ lỗi, rồi đích thân vào thành dò la cho chắc."},
+    {"panel": "p055.jpg", "type": "BUILD", "kind": "recap", "narration": "Khắp thành Huyền Vũ xôn xao bàn tán, ai mới xứng làm rể của tiểu thư Kim Mộc Lan."},
+    {"panel": "p057.jpg", "type": "BUILD", "kind": "recap", "narration": "Người ta đồn chắc nịch, ít nhất tân lang cũng phải đỗ tiến sĩ mới môn đăng hộ đối."},
+    {"panel": "p061.jpg", "type": "BUILD", "kind": "recap", "narration": "Đúng giờ lành, kiệu hoa rước dâu tiến vào giữa pháo hoa rực rỡ."},
+    {"panel": "p069.jpg", "type": "REVEAL", "kind": "recap", "narration": "Tân lang xuất hiện trong bộ lễ phục đỏ, che mặt bằng một chiếc mặt nạ trắng bí ẩn."},
+    {"panel": "p070.jpg", "type": "BUILD", "kind": "recap", "narration": "Một người trong đám đông nhìn dáng đứng ấy mà lạnh cả sống lưng, sao lại giống hắn đến vậy."},
+    {"panel": "p072.jpg", "type": "REACTION", "kind": "recap", "narration": "Hắn tự trấn an, chắc chỉ là mình tự dọa mình, phủ Bá tước sao lại chọn một kẻ tầm thường."},
+    {"panel": "p073.jpg", "type": "BUILD", "kind": "recap", "narration": "Theo tục lệ, chỉ khi vào động phòng mặt nạ mới được tháo ra, danh tính thật vẫn còn là bí ẩn."},
+    {"panel": "p078.jpg", "type": "BUILD", "kind": "recap", "narration": "Lễ chính thức bắt đầu, nhất bái thiên địa, nhị bái cao đường, phu thê đối bái."},
+    {"panel": "p083.jpg", "type": "BUILD", "kind": "recap", "narration": "Lễ xong, đôi tân nhân được đưa thẳng vào động phòng giữa tiếng reo hò."},
+    {"panel": "p085.jpg", "type": "REACTION", "kind": "commentary", "narration": "Cả thành đoán già đoán non tiến sĩ hay danh gia, ai ngờ đáp án lại khiến chính người trong cuộc rùng mình."},
+    {"panel": "p086.jpg", "type": "BUILD", "kind": "recap", "narration": "Ngay cả thành chủ Huyền Vũ cũng tò mò, rất muốn xem mặt vị anh tài nào mới xứng với Mộc Lan."},
+    {"panel": "p088.jpg", "type": "ENDING", "kind": "recap", "narration": "Giữa lúc cả thành còn bàng hoàng đồn đoán, một bản tình báo bí mật về Chàng Rể Mạnh Nhất Lịch Sử đã âm thầm được mở ra!"}
+  ]
+}
