@@ -1,0 +1,119 @@
+{
+  "title": "Gọi nữ tướng là vợ, chàng rể bị đấm bay rồi khiêng thẳng vào phủ Bá tước!?",
+  "chapters": "9",
+  "source_dir": "manhua-recap/crmn_ep10",
+  "description": "Thẩm Lãng chặn đường nữ tướng Kim Mộc Lan, bị đấm bay nhưng lại được đưa vào phủ Bá tước, rồi tung tin gây sốc về chuyện cầu hôn. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 10.",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "thumbnail": {
+    "text": "GỌI NỮ TƯỚNG LÀ VỢ, BỊ ĐẤM BAY!?",
+    "prompt": "Vertical 9:16 anime-style: a red-armored female general on a white warhorse punching a long-haired young man flying backward in a crowded ancient street, dust and speed lines, banners behind. No text, leave top 25% empty."
+  },
+  "beats": [
+    {
+      "panel": "p005.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Chàng rể chặn đầu đoàn kỵ binh, gọi nữ tướng là vợ, và nhận ngay một cú đấm bay người!?"
+    },
+    {
+      "panel": "p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Người ta bảo nhau, gia tộc họ Kim diễn võ trở về rồi, khí thế quá!"
+    },
+    {
+      "panel": "p010.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đó chính là thiên kim phủ Bá tước Huyền Vũ, Kim Mộc Lan."
+    },
+    {
+      "panel": "p011.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Thẩm Lãng mỉm cười, cuối cùng cũng đợi được cô."
+    },
+    {
+      "panel": "p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh lao ra giữa đường, hét to, vợ à, ba năm trước nàng cứu ta, giờ cứu thêm lần nữa, đưa ta về nhà đi!"
+    },
+    {
+      "panel": "p018.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Bàn tay sắt giáng thẳng xuống, anh bay ngược ra xa như diều đứt dây."
+    },
+    {
+      "panel": "p022.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô dừng ngựa, cúi xuống thấy chàng trai ngất xỉu, mặt mũi sao quen quen."
+    },
+    {
+      "panel": "p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô đưa tay thử hơi thở, đều đặn, vết thương không nặng lắm."
+    },
+    {
+      "panel": "p025.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Cô ra lệnh đưa anh về phủ chữa trị, không để người vô tội chết dưới vó ngựa."
+    },
+    {
+      "panel": "p035.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Phủ Bá tước nằm ngoài thành, đất phong năm trăm hecta, nhìn là biết gấp bội nhà họ Từ."
+    },
+    {
+      "panel": "p039.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trong đại sảnh, Mộc Lan bẩm với cha mẹ rằng diễn võ không làm mất mặt họ Kim."
+    },
+    {
+      "panel": "p042.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Nhưng Bá tước Kim Trác nhíu mày, nước Việt đang cắt giảm binh quyền và thu hồi đất phong của quý tộc."
+    },
+    {
+      "panel": "p043.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô thề cả đời không gả chồng, ở lại phò tá em trai bảo vệ cơ nghiệp trăm năm của họ Kim."
+    },
+    {
+      "panel": "p046.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đúng lúc đó gia nhân báo, chàng trai cô nhặt về đang cầu kiến, nói có chuyện gấp về hôn sự của tiểu thư."
+    },
+    {
+      "panel": "p055.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Thẩm Lãng cúi mình, nói nghe đồn gia tộc họ Chúc muốn cầu thân, Chúc Hồng Tuyết muốn cưới Kim Mộc Lan."
+    },
+    {
+      "panel": "p057.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Vừa bị đấm bay xong đã dám nói chuyện hôn sự của con gái người ta, thật là gan lớn bằng trời."
+    },
+    {
+      "panel": "p059.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Cả đại sảnh chết lặng, rốt cuộc là thật hay là nước cờ liều mạng của anh để cứu bốn người nhà họ Thẩm!?"
+    }
+  ]
+}

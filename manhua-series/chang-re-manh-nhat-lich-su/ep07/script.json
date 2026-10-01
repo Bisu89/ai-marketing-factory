@@ -1,0 +1,113 @@
+{
+  "title": "Bán công thức nhuộm lụa vàng kim được 2000 vàng, bị nhà vợ tố trộm!?",
+  "chapters": "6",
+  "source_dir": "manhua-recap/crmn_ep7",
+  "description": "Thẩm Lãng vào thành Huyền Vũ bán công thức nhuộm lụa vàng kim cho nhà họ Lâm, thu 2000 vàng, rồi bị người nhà họ Từ chặn cửa tố cáo. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 7.",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "thumbnail": {
+    "text": "2000 VÀNG TỪ MỘT MIẾNG LỤA!?",
+    "prompt": "Vertical 9:16 anime-style: a confident long-haired young man holding up a dazzling golden silk cloth in an ancient merchant hall, a shocked fat merchant in purple robes staring at it, golden sparkles. No text, leave top 25% empty."
+  },
+  "beats": [
+    {
+      "panel": "p004.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Chàng rể nghèo bước vào cửa hiệu giàu nhất thành, mở miệng đòi hai nghìn đồng vàng!?"
+    },
+    {
+      "panel": "p005.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Thành Huyền Vũ rộng lớn, hai trăm năm mươi nghìn dân, tường cao mười hai mét."
+    },
+    {
+      "panel": "p008.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh dừng chân trước một lầu các, tấm biển đề ba chữ Cẩm Tú Các."
+    },
+    {
+      "panel": "p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh muốn kiếm một món tiền lớn, đồng thời trả thù nhà họ Từ."
+    },
+    {
+      "panel": "p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhà họ Lâm cũng buôn tơ lụa, nhỏ hơn họ Từ một chút, nhưng là đối thủ không đội trời chung."
+    },
+    {
+      "panel": "p015.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh nói thẳng, ta có thể giúp ông chủ mỗi năm kiếm thêm ít nhất năm nghìn vàng."
+    },
+    {
+      "panel": "p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Gặp Lâm Mặc, anh chào bán công thức nhuộm, giá hai nghìn đồng vàng."
+    },
+    {
+      "panel": "p029.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Lâm Mặc cười khẩy, thời gian của ta quý lắm, tiễn khách!"
+    },
+    {
+      "panel": "p030.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Điền Thập Tam cũng tức điên, nghìn lượng đã hoang đường, mày còn dám đòi hai nghìn."
+    },
+    {
+      "panel": "p031.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Anh lặng lẽ đặt xuống bàn một miếng lụa nhuộm vàng kim rực rỡ."
+    },
+    {
+      "panel": "p034.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Lâm Mặc sững sờ, màu vàng kim này sao có thể!?"
+    },
+    {
+      "panel": "p035.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Họ Từ giàu lên nhờ thứ lụa vàng óng ánh cung cấp cho nhà vua, nếu họ Lâm đem tới trước thì sao?"
+    },
+    {
+      "panel": "p040.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Anh dám nhuộm lại ngay tại chỗ trong một canh giờ để chứng minh công thức là của mình."
+    },
+    {
+      "panel": "p044.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Thực ra chỉ là nấu hoa hòe thêm phèn chua, mà thợ cổ đại dùng quả sơn chi thì còn thua xa."
+    },
+    {
+      "panel": "p046.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Kiếm hai nghìn vàng chỉ nhờ biết chút hóa học, đúng là kiến thức hiện đại là sức mạnh."
+    },
+    {
+      "panel": "p056.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Tiền vừa tới tay, nhà họ Từ xông vào quát, ngươi dám bán công thức bí mật của họ Từ ta!"
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "title": "Lụa cầu vồng chấn động cả thành, nhưng nợ 1000 vàng hóa ra là bẫy!?",
+  "chapters": "8",
+  "source_dir": "manhua-recap/crmn_ep9",
+  "description": "Thẩm Lãng trình diễn lụa bảy màu, được quan Chủ bộ minh oan, nhưng phát hiện món nợ 1000 vàng là âm mưu ép anh giao công thức. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 9.",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "thumbnail": {
+    "text": "THẮNG RỒI NHƯNG VẪN SẬP BẪY!?",
+    "prompt": "Vertical 9:16 anime-style: a long-haired young man holding a glowing rainbow silk, then standing alone in a street at sunset looking grim, long shadow, a luxury carriage in the distance. No text, leave top 25% empty."
+  },
+  "beats": [
+    {
+      "panel": "p005.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Chàng rể tung ra tuyệt chiêu lụa bảy màu, khiến cả sân chết lặng, nhưng thắng rồi vẫn sập bẫy!?"
+    },
+    {
+      "panel": "p006.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Anh nhuộm từng đoạn đỏ, cam, vàng, lục, lam, chàm, tím trên cùng một tấm lụa, rực rỡ chói mắt."
+    },
+    {
+      "panel": "p010.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Quan Chủ bộ tròn mắt, màu chuyển tiếp tự nhiên thế này sao làm được!"
+    },
+    {
+      "panel": "p014.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Ông hỏi gia chủ họ Từ, tấm lụa này có phải trộm của nhà ông không, và đáp án là không phải."
+    },
+    {
+      "panel": "p016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhà họ Từ phải xin lỗi vì vu oan, dù trong lòng ấm ức vô cùng."
+    },
+    {
+      "panel": "p020.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Anh dám cược lớn thế vì biết vị Chủ bộ trẻ này có thù với Trương Tấn."
+    },
+    {
+      "panel": "p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ba năm trước, chủ cũ đang hái hoa thì một con gấu bị thương lao tới."
+    },
+    {
+      "panel": "p031.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Một nữ tướng áo đỏ phi thân đâm thẳng ngọn thương xuống, cứu mạng cậu ta."
+    },
+    {
+      "panel": "p033.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Cô chính là thiên kim phủ Bá tước Huyền Vũ, Kim Mộc Lan."
+    },
+    {
+      "panel": "p036.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Vương Liên từng đến dạy học cho Thẩm Lãng để lấy lòng Mộc Lan, nhưng chẳng bao giờ gặp được cô."
+    },
+    {
+      "panel": "p038.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cũng may anh ta hay chửi Trương Tấn khi dạy, nên hôm nay mới nghiêng về phía Thẩm Lãng."
+    },
+    {
+      "panel": "p048.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trong xe ngựa, Thiên Thiên đỏ mặt, bảo anh về làm thợ nhuộm, vì tin anh học nghề là vì cô."
+    },
+    {
+      "panel": "p050.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Lúc anh vô dụng thì đuổi, lúc có ích lại ngọt ngào, cô này đúng là chiêu trà xanh chính hiệu."
+    },
+    {
+      "panel": "p051.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Cô buông một câu lạnh tanh, anh vẫn còn nợ Điền Hoành một nghìn đồng vàng."
+    },
+    {
+      "panel": "p056.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Thập Tam cười nhạt, trước khi mặt trời lặn chỉ còn bảy canh giờ."
+    },
+    {
+      "panel": "p059.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh vỡ lẽ, trùm xã hội đen đã thỏa thuận từ lâu với nhà họ Từ, dùng mạng cha mẹ và em để ép anh giao công thức."
+    },
+    {
+      "panel": "p062.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Nếu không giao thì cả nhà gặp nguy, anh đứng giữa hoàng hôn, nắm chặt tay chờ bước đi cuối cùng!"
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "title": "Bị nhà vợ vu oan, đuổi ra đường, chàng rể gặp ngay trùm xã hội đen!?",
+  "chapters": "2",
+  "source_dir": "manhua-recap/crmn_ep3",
+  "description": "Thẩm Lãng bị nhà họ Từ vu cáo trộm tiền, đuổi khỏi nhà, rồi chạm trán bang chủ giết 279 người. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 3.",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "thumbnail": {
+    "text": "BỊ ĐUỔI RA ĐƯỜNG, GẶP TRÙM GIẾT 279 NGƯỜI!?",
+    "prompt": "Vertical 9:16 anime-style: a long-haired young man in simple robes walking a moonlit forest path, a scarred bearded gang boss in dark armor looming behind him, cyan glowing scanner outline around the boss. No text, leave top 25% empty."
+  },
+  "beats": [
+    {
+      "panel": "p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Chàng rể bị đuổi khỏi nhà vợ, vừa ra đường đã gặp trùm xã hội đen giết 279 người!?"
+    },
+    {
+      "panel": "p003.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Trương Tấn, con trai thái thú, ung dung ngồi bên cạnh tiểu thư nhà họ Từ."
+    },
+    {
+      "panel": "p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thiên Thiên quay sang xin lỗi Thẩm Lãng, nói anh lương thiện nhưng hai người không hợp nhau."
+    },
+    {
+      "panel": "p006.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh biết rõ mình không thể ở lại, nhưng bên ngoài còn nhiều cơ hội hơn."
+    },
+    {
+      "panel": "p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh nghe lỏm họ bàn chuyện bí mật cầu hôn công chúa Kim Mộc Lan của thành Huyền Vũ."
+    },
+    {
+      "panel": "p018.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chưa kịp nghe hết thì anh đã bị đạp văng ra ngoài."
+    },
+    {
+      "panel": "p019.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Quản gia họ Từ vu cáo anh trộm tiền, ngoại tình với nha hoàn, tuyên bố hủy hôn đuổi đi."
+    },
+    {
+      "panel": "p022.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Bị oan cả đống tội mà việc đầu tiên anh lo là bảo vệ khuôn mặt, đúng là sống chết vì nhan sắc."
+    },
+    {
+      "panel": "p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh quyết định về ngôi nhà trong ký ức của chủ cũ trước đã."
+    },
+    {
+      "panel": "p030.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Giữa rừng đêm, một gã đàn ông chặn đường, mắt anh quét ra đó là Điền Hoành."
+    },
+    {
+      "panel": "p031.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Bang chủ Bang Hắc Y, tay đã giết tới hai trăm bảy mươi chín mạng."
+    },
+    {
+      "panel": "p034.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Nhưng anh nhìn thấu trong người hắn có một cây kim, không lấy ra sẽ nguy hiểm tính mạng."
+    },
+    {
+      "panel": "p038.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn đòi nợ, em trai anh ba tháng trước vay năm đồng vàng để chữa bệnh cho cha, giờ lãi lên một trăm."
+    },
+    {
+      "panel": "p041.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Em trai và cha từng đến nhà họ Từ cầu cứu, kết quả bị đánh nằm lăn ra đất."
+    },
+    {
+      "panel": "p044.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Bọn côn đồ lạnh lùng ra lệnh, giết trước chôn sau, và gia đình anh đang nằm trong tay chúng!"
+    }
+  ]
+}

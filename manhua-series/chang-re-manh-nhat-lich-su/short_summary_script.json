@@ -1,0 +1,107 @@
+{
+  "title": "Chàng Rể Mạnh Nhất Lịch Sử: từ kẻ vô dụng lật kèo cả thành!?",
+  "chapters": "0-9",
+  "description": "Tóm tắt nhanh 10 tập đầu Chàng Rể Mạnh Nhất Lịch Sử. Xem bản đầy đủ ở video dài trên kênh.",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "thumbnail": {
+    "text": "VÔ DỤNG THÀNH THẦN Y!?",
+    "prompt": "Vertical 9:16 anime-style: a handsome long-haired young man in simple robes with glowing blue eyes, behind him floating scenes of rainbow silk, a red-armored female general and gold coins. No text, leave top 25% empty."
+  },
+  "beats": [
+    {
+      "dir": "manhua-recap/crmn_ep2",
+      "panel": "p003.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Bác sĩ hủy dung chết vì bom, tỉnh dậy thành mỹ nam, nhưng lại là chàng rể bị cả nhà vợ khinh!?"
+    },
+    {
+      "dir": "manhua-recap/crmn_ep2",
+      "panel": "p092.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Chủ cũ bị đầu độc, còn anh thì có thêm mắt thần nhìn xuyên thấu."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep3",
+      "panel": "p019.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhà vợ vu oan trộm tiền rồi đuổi anh ra đường."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep4",
+      "panel": "p015.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh ký giấy nợ máu một nghìn vàng, hạn ba ngày, nếu không cả nhà chết."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep5",
+      "panel": "p041.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Về nhà, anh mổ cứu cha bằng y thuật hiện đại, cả nhà há hốc mồm."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep6",
+      "panel": "p056.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Rồi anh tận mắt thấy băng đảng giết người chỉ vì món nợ nhỏ."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep7",
+      "panel": "p031.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Anh bán công thức nhuộm vàng kim, thu hai nghìn vàng trong một buổi."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep7",
+      "panel": "p046.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Kiến thức hiện đại đúng là sức mạnh khó cưỡng."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep8",
+      "panel": "p060.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Bị nhà vợ vu trộm, anh thách nhuộm tím và thắng áp đảo."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep9",
+      "panel": "p005.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Lụa bảy màu chấn động cả thành, nhưng món nợ hóa ra là cái bẫy."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep10",
+      "panel": "p018.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh còn dám gọi nữ tướng Kim Mộc Lan là vợ, và bị đấm bay."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep10",
+      "panel": "p055.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Rồi anh tung tin cầu hôn gây sốc để xin gặp Bá tước."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep10",
+      "panel": "p059.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Liệu đây là thật hay nước cờ liều mạng cứu cả nhà, xem trọn bộ ở video dài!"
+    }
+  ]
+}

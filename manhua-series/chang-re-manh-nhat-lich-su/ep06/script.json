@@ -1,0 +1,113 @@
+{
+  "title": "Thấy băng đảng giết người, chàng rể hứa kiếm 1000 vàng trong 3 canh giờ!?",
+  "chapters": "5",
+  "source_dir": "manhua-recap/crmn_ep6",
+  "description": "Thẩm Lãng bị hai tay sai áp giải vào thành, tận mắt thấy chúng giết người vì món nợ nhỏ, rồi tuyên bố kiếm đủ 1000 vàng trong 3 canh giờ. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 6.",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "thumbnail": {
+    "text": "1000 VÀNG TRONG 3 CANH GIỜ!?",
+    "prompt": "Vertical 9:16 anime-style: a calm long-haired young man in simple robes walking a country road between two armored thugs, one wiping a bloody sword, golden coins raining in the sky behind him. No text, leave top 25% empty."
+  },
+  "beats": [
+    {
+      "panel": "p004.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Chàng rể bị tay sai đòi nợ kề dao, vẫn tuyên bố kiếm một nghìn vàng ngay hôm nay!?"
+    },
+    {
+      "panel": "p008.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Trước đó, mẹ anh bưng chậu nước, đòi rửa chân cho đứa con vừa trở về."
+    },
+    {
+      "panel": "p012.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh từ chối vì thấy bất hiếu, bà liền rưng rưng, hỏi sao con không còn thích nữa."
+    },
+    {
+      "panel": "p019.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh đành đổi ý, ngồi yên cho mẹ rửa, vừa thấy ấm lòng vừa nghẹn ngào."
+    },
+    {
+      "panel": "p022.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Anh thề, món nợ của chủ cũ với cha mẹ và em trai, anh sẽ dùng cả đời này để trả."
+    },
+    {
+      "panel": "p026.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hôm sau, hai tay sai của trùm xã hội đen đã đứng ngay cửa nhà."
+    },
+    {
+      "panel": "p028.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chúng lạnh lùng nhắc, thời gian cấp bách, đi kiếm tiền đi."
+    },
+    {
+      "panel": "p040.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Mẹ thì cứ nhét trứng cho con ăn, đâu biết con đang bị đòi nợ đến nơi."
+    },
+    {
+      "panel": "p044.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bốn tiếng sau, trên đường vào thành Huyền Vũ, họ gặp hai người đàn ông quen mặt."
+    },
+    {
+      "panel": "p047.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Điền Thập Tam niềm nở chào, còn bảo ông chú nợ nhà mình ít tiền cũng đừng xa lạ."
+    },
+    {
+      "panel": "p053.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông chú cười gượng, hứa mai sẽ làm thịt heo tới thăm cha anh ta."
+    },
+    {
+      "panel": "p056.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Rồi Thập Tứ bước ra, thanh đao dính máu, bảo huynh đệ lo xử lý hai thi thể."
+    },
+    {
+      "panel": "p058.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Thẩm Lãng chết lặng, hai người vừa nãy đã bị giết, chỉ vì một món nợ."
+    },
+    {
+      "panel": "p065.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Điền Thập Tam thản nhiên bảo, ông ta nợ ba đồng, lãi lên hai mươi lăm, lại còn thua bạc thêm."
+    },
+    {
+      "panel": "p066.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Giết cả bạn thân của cha mình chỉ vì hai mươi lăm đồng vàng, đúng là băng đảng không có tình nghĩa."
+    },
+    {
+      "panel": "p072.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Hắn cười nhạo anh mơ mộng, nhưng anh chỉ đáp, trong vòng ba canh giờ, ta sẽ kiếm đủ một nghìn đồng vàng!"
+    }
+  ]
+}

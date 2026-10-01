@@ -1,0 +1,877 @@
+{
+  "template": "manhua_recap_long_vi",
+  "title": "Chàng Rể Mạnh Nhất Lịch Sử | Tóm tắt tập 1-10",
+  "chapters": "0-9",
+  "description": "Tóm tắt 10 tập đầu Chàng Rể Mạnh Nhất Lịch Sử: bác sĩ hủy dung xuyên không thành chàng rể vô dụng, dùng mắt thần và kiến thức hiện đại lật ngược thế cờ.",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "beats": [
+    {
+      "panel": "p003.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Hắn từng là thầy thuốc hoàn hảo trong mắt mọi người.",
+      "dir": "manhua-recap/crmn_ep1",
+      "section": "Tập 1: Giới thiệu truyện"
+    },
+    {
+      "panel": "p004.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Nhưng một tai nạn đã hủy hoại khuôn mặt, cố gắng nửa đời chỉ để tìm một người vợ.",
+      "dir": "manhua-recap/crmn_ep1"
+    },
+    {
+      "panel": "p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Giờ hắn xuyên không về cổ đại, trở thành người đàn ông đẹp trai tuyệt thế.",
+      "dir": "manhua-recap/crmn_ep1"
+    },
+    {
+      "panel": "p008.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Tất nhiên là tìm vợ, mà phải là con gái nhà quyền thế, đẹp nhất, giỏi nhất.",
+      "dir": "manhua-recap/crmn_ep1"
+    },
+    {
+      "panel": "p009.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Nửa đời không vợ, giờ có mặt đẹp là đòi hẳn mỹ nhân hạng nhất, tham vừa thôi anh.",
+      "dir": "manhua-recap/crmn_ep1"
+    },
+    {
+      "panel": "p011.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Rồi đột nhiên, tiếng phu quân vang lên.",
+      "dir": "manhua-recap/crmn_ep1"
+    },
+    {
+      "panel": "p017.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Hắn tròn mắt đứng giữa vòng vây, tiếng gọi vang từ mọi phía.",
+      "dir": "manhua-recap/crmn_ep1"
+    },
+    {
+      "panel": "p018.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Thậm chí còn có nữ tướng phi ngựa tới, nhiều quá vậy!",
+      "dir": "manhua-recap/crmn_ep1"
+    },
+    {
+      "panel": "p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Rốt cuộc anh chàng này sẽ chọn ai, Chàng Rể Mạnh Nhất Lịch Sử chính thức bắt đầu!",
+      "dir": "manhua-recap/crmn_ep1"
+    },
+    {
+      "panel": "p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bác sĩ bị hủy dung chết dưới bom đạn, tỉnh dậy lại thành mỹ nam tuyệt thế!?",
+      "dir": "manhua-recap/crmn_ep2",
+      "section": "Tập 2: Xuyên không vào kẻ vô dụng"
+    },
+    {
+      "panel": "p005.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Ở thế giới của anh, người xấu có tiền cũng chẳng ai thèm ngó.",
+      "dir": "manhua-recap/crmn_ep2"
+    },
+    {
+      "panel": "p011.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Anh từng đẹp trai, cho tới khi tai nạn axit hủy mặt, ai thấy cũng hét lên bỏ chạy.",
+      "dir": "manhua-recap/crmn_ep2"
+    },
+    {
+      "panel": "p015.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh đành làm bác sĩ chiến trường hai mươi năm, nổi tiếng khắp nơi.",
+      "dir": "manhua-recap/crmn_ep2"
+    },
+    {
+      "panel": "p021.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trước khi chết, anh chỉ ước kiếp sau được nhàn hạ hưởng phúc, và có lại khuôn mặt đẹp.",
+      "dir": "manhua-recap/crmn_ep2"
+    },
+    {
+      "panel": "p034.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mở mắt ra, anh nằm giữa một căn phòng cổ xưa.",
+      "dir": "manhua-recap/crmn_ep2"
+    },
+    {
+      "panel": "p041.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Soi gương, anh bật cười, mặt đẹp đến kinh thiên động địa!",
+      "dir": "manhua-recap/crmn_ep2"
+    },
+    {
+      "panel": "p053.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn ở rể nhà họ Từ để xung hỉ chữa bệnh cho tiểu thư, cô khỏi thật còn hắn thì bị khinh rẻ.",
+      "dir": "manhua-recap/crmn_ep2"
+    },
+    {
+      "panel": "p071.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Họ xông vào xem hắn tắt thở chưa, thì thấy hắn đứng đó sống sờ sờ.",
+      "dir": "manhua-recap/crmn_ep2"
+    },
+    {
+      "panel": "p080.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Anh chợt hiểu, hắn không phải bệnh chết mà là bị đầu độc.",
+      "dir": "manhua-recap/crmn_ep2"
+    },
+    {
+      "panel": "p092.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Chưa hết, mắt anh còn nhìn xuyên thấu được như máy X quang.",
+      "dir": "manhua-recap/crmn_ep2"
+    },
+    {
+      "panel": "p096.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Công nhận cái mắt thần này vừa tiện vừa hơi tinh quái.",
+      "dir": "manhua-recap/crmn_ep2"
+    },
+    {
+      "panel": "p110.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Còn cô vợ hiền kia có thật hiền không thì còn phải xem.",
+      "dir": "manhua-recap/crmn_ep2"
+    },
+    {
+      "panel": "p112.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cuối cùng cô báo cha mẹ ruột đến đón anh về, anh hiểu ngay, họ muốn đuổi mình đi!",
+      "dir": "manhua-recap/crmn_ep2"
+    },
+    {
+      "panel": "p001.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chàng rể bị đuổi khỏi nhà vợ, vừa ra đường đã gặp trùm xã hội đen giết 279 người!?",
+      "dir": "manhua-recap/crmn_ep3",
+      "section": "Tập 3: Bị đuổi khỏi nhà vợ"
+    },
+    {
+      "panel": "p003.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Trương Tấn, con trai thái thú, ung dung ngồi bên cạnh tiểu thư nhà họ Từ.",
+      "dir": "manhua-recap/crmn_ep3"
+    },
+    {
+      "panel": "p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thiên Thiên quay sang xin lỗi Thẩm Lãng, nói anh lương thiện nhưng hai người không hợp nhau.",
+      "dir": "manhua-recap/crmn_ep3"
+    },
+    {
+      "panel": "p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh nghe lỏm họ bàn chuyện bí mật cầu hôn công chúa Kim Mộc Lan của thành Huyền Vũ.",
+      "dir": "manhua-recap/crmn_ep3"
+    },
+    {
+      "panel": "p019.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Quản gia họ Từ vu cáo anh trộm tiền, ngoại tình với nha hoàn, tuyên bố hủy hôn đuổi đi.",
+      "dir": "manhua-recap/crmn_ep3"
+    },
+    {
+      "panel": "p022.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Bị oan cả đống tội mà việc đầu tiên anh lo là bảo vệ khuôn mặt, đúng là sống chết vì nhan sắc.",
+      "dir": "manhua-recap/crmn_ep3"
+    },
+    {
+      "panel": "p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh quyết định về ngôi nhà trong ký ức của chủ cũ trước đã.",
+      "dir": "manhua-recap/crmn_ep3"
+    },
+    {
+      "panel": "p031.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Bang chủ Bang Hắc Y, tay đã giết tới hai trăm bảy mươi chín mạng.",
+      "dir": "manhua-recap/crmn_ep3"
+    },
+    {
+      "panel": "p034.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Nhưng anh nhìn thấu trong người hắn có một cây kim, không lấy ra sẽ nguy hiểm tính mạng.",
+      "dir": "manhua-recap/crmn_ep3"
+    },
+    {
+      "panel": "p038.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn đòi nợ, em trai anh ba tháng trước vay năm đồng vàng để chữa bệnh cho cha, giờ lãi lên một trăm.",
+      "dir": "manhua-recap/crmn_ep3"
+    },
+    {
+      "panel": "p044.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bọn côn đồ lạnh lùng ra lệnh, giết trước chôn sau, và gia đình anh đang nằm trong tay chúng!",
+      "dir": "manhua-recap/crmn_ep3"
+    },
+    {
+      "panel": "p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chàng rể bị trùm xã hội đen dí kiếm vào cổ, vẫn dám hứa trả một nghìn đồng vàng!?",
+      "dir": "manhua-recap/crmn_ep4",
+      "section": "Tập 4: Nợ máu 1000 vàng"
+    },
+    {
+      "panel": "p005.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Anh nhận ra em trai mình đang quỳ giữa bọn côn đồ, nên phải gánh lấy món nợ này.",
+      "dir": "manhua-recap/crmn_ep4"
+    },
+    {
+      "panel": "p008.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn chỉ cho đúng ba ngày, không thêm một giờ.",
+      "dir": "manhua-recap/crmn_ep4"
+    },
+    {
+      "panel": "p009.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Anh chợt hiểu, hắn đã thỏa thuận với nhà họ Từ, giết được anh trong ba ngày sẽ nhận một trăm đồng vàng.",
+      "dir": "manhua-recap/crmn_ep4"
+    },
+    {
+      "panel": "p015.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Giấy nợ máu, nợ Điền Hoành một nghìn đồng vàng, ký tên Thẩm Lãng.",
+      "dir": "manhua-recap/crmn_ep4"
+    },
+    {
+      "panel": "p017.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trùm xã hội đen gằn giọng, trong ba ngày không đủ vàng thì giết cả nhà.",
+      "dir": "manhua-recap/crmn_ep4"
+    },
+    {
+      "panel": "p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Giữa rừng đêm, anh tự hỏi có cách nào kiếm một nghìn vàng trong ba ngày không.",
+      "dir": "manhua-recap/crmn_ep4"
+    },
+    {
+      "panel": "p025.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Rồi anh nghĩ ra, một mũi tên trúng ba đích: kiếm tiền, bảo vệ người nhà, báo thù họ Từ.",
+      "dir": "manhua-recap/crmn_ep4"
+    },
+    {
+      "panel": "p032.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trong nhà, người cha ho ra máu, vẫn đòi đến nhà họ Từ đòi người.",
+      "dir": "manhua-recap/crmn_ep4"
+    },
+    {
+      "panel": "p042.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Đúng lúc đó, cánh cửa mở ra, anh quỳ sụp xuống trước cha mẹ.",
+      "dir": "manhua-recap/crmn_ep4"
+    },
+    {
+      "panel": "p043.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bất hiếu, con trai về rồi đây! Cả nhà chết lặng, nhưng thời hạn đang chạy từng giây!",
+      "dir": "manhua-recap/crmn_ep4"
+    },
+    {
+      "panel": "p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chàng rể vừa về nhà đã dám nói, để con chữa bệnh cho cha!?",
+      "dir": "manhua-recap/crmn_ep5",
+      "section": "Tập 5: Thần y cứu cha"
+    },
+    {
+      "panel": "p005.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Mẹ ôm chầm lấy anh khóc, tưởng cả đời không gặp lại con.",
+      "dir": "manhua-recap/crmn_ep5"
+    },
+    {
+      "panel": "p010.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh thấy cả nhà thương mình quá, trong khi chủ cũ chỉ là kẻ chẳng ra gì.",
+      "dir": "manhua-recap/crmn_ep5"
+    },
+    {
+      "panel": "p021.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh liền đặt tay lên trán cha, người đã sốt, nghi có viêm.",
+      "dir": "manhua-recap/crmn_ep5"
+    },
+    {
+      "panel": "p023.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Mắt thần quét ra tận xương, phổi đang chảy máu, xương sườn nứt.",
+      "dir": "manhua-recap/crmn_ep5"
+    },
+    {
+      "panel": "p024.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Đây là trận đòn của nhà họ Từ ba tháng trước, xương mọc lệch mà chẳng ai chữa.",
+      "dir": "manhua-recap/crmn_ep5"
+    },
+    {
+      "panel": "p028.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tiếp đến chân em trai, đã sưng viêm, nhưng may xương gãy vẫn ngay ngắn.",
+      "dir": "manhua-recap/crmn_ep5"
+    },
+    {
+      "panel": "p033.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Hóa ra cậu bị đánh gãy chân khi tới nhà họ Từ hỏi thăm anh, cũng vẫn cười xòa.",
+      "dir": "manhua-recap/crmn_ep5"
+    },
+    {
+      "panel": "p040.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Về nhà, anh luộc dụng cụ bằng nước sôi, dựng tạm một phòng mổ thô sơ.",
+      "dir": "manhua-recap/crmn_ep5"
+    },
+    {
+      "panel": "p041.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Xong việc, người cha thở nhẹ nhõm, không còn ho ra máu nữa.",
+      "dir": "manhua-recap/crmn_ep5"
+    },
+    {
+      "panel": "p042.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Cả nhà chỉ biết há hốc mồm, trình mổ xẻ kiểu này ở thời cổ đại đúng là thần y.",
+      "dir": "manhua-recap/crmn_ep5"
+    },
+    {
+      "panel": "p052.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đừng quên, không đưa ra được nghìn đồng vàng, cả nhà ngươi chết thảm, chỉ còn hai ngày thôi!",
+      "dir": "manhua-recap/crmn_ep5"
+    },
+    {
+      "panel": "p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chàng rể bị tay sai đòi nợ kề dao, vẫn tuyên bố kiếm một nghìn vàng ngay hôm nay!?",
+      "dir": "manhua-recap/crmn_ep6",
+      "section": "Tập 6: Băng đảng tàn nhẫn"
+    },
+    {
+      "panel": "p008.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Trước đó, mẹ anh bưng chậu nước, đòi rửa chân cho đứa con vừa trở về.",
+      "dir": "manhua-recap/crmn_ep6"
+    },
+    {
+      "panel": "p012.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh từ chối vì thấy bất hiếu, bà liền rưng rưng, hỏi sao con không còn thích nữa.",
+      "dir": "manhua-recap/crmn_ep6"
+    },
+    {
+      "panel": "p022.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Anh thề, món nợ của chủ cũ với cha mẹ và em trai, anh sẽ dùng cả đời này để trả.",
+      "dir": "manhua-recap/crmn_ep6"
+    },
+    {
+      "panel": "p026.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hôm sau, hai tay sai của trùm xã hội đen đã đứng ngay cửa nhà.",
+      "dir": "manhua-recap/crmn_ep6"
+    },
+    {
+      "panel": "p040.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Mẹ thì cứ nhét trứng cho con ăn, đâu biết con đang bị đòi nợ đến nơi.",
+      "dir": "manhua-recap/crmn_ep6"
+    },
+    {
+      "panel": "p044.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bốn tiếng sau, trên đường vào thành Huyền Vũ, họ gặp hai người đàn ông quen mặt.",
+      "dir": "manhua-recap/crmn_ep6"
+    },
+    {
+      "panel": "p053.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông chú cười gượng, hứa mai sẽ làm thịt heo tới thăm cha anh ta.",
+      "dir": "manhua-recap/crmn_ep6"
+    },
+    {
+      "panel": "p056.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Rồi Thập Tứ bước ra, thanh đao dính máu, bảo huynh đệ lo xử lý hai thi thể.",
+      "dir": "manhua-recap/crmn_ep6"
+    },
+    {
+      "panel": "p058.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Thẩm Lãng chết lặng, hai người vừa nãy đã bị giết, chỉ vì một món nợ.",
+      "dir": "manhua-recap/crmn_ep6"
+    },
+    {
+      "panel": "p065.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Điền Thập Tam thản nhiên bảo, ông ta nợ ba đồng, lãi lên hai mươi lăm, lại còn thua bạc thêm.",
+      "dir": "manhua-recap/crmn_ep6"
+    },
+    {
+      "panel": "p066.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Giết cả bạn thân của cha mình chỉ vì hai mươi lăm đồng vàng, đúng là băng đảng không có tình nghĩa.",
+      "dir": "manhua-recap/crmn_ep6"
+    },
+    {
+      "panel": "p072.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn cười nhạo anh mơ mộng, nhưng anh chỉ đáp, trong vòng ba canh giờ, ta sẽ kiếm đủ một nghìn đồng vàng!",
+      "dir": "manhua-recap/crmn_ep6"
+    },
+    {
+      "panel": "p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chàng rể nghèo bước vào cửa hiệu giàu nhất thành, mở miệng đòi hai nghìn đồng vàng!?",
+      "dir": "manhua-recap/crmn_ep7",
+      "section": "Tập 7: Bán công thức nhuộm"
+    },
+    {
+      "panel": "p005.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Thành Huyền Vũ rộng lớn, hai trăm năm mươi nghìn dân, tường cao mười hai mét.",
+      "dir": "manhua-recap/crmn_ep7"
+    },
+    {
+      "panel": "p008.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh dừng chân trước một lầu các, tấm biển đề ba chữ Cẩm Tú Các.",
+      "dir": "manhua-recap/crmn_ep7"
+    },
+    {
+      "panel": "p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhà họ Lâm cũng buôn tơ lụa, nhỏ hơn họ Từ một chút, nhưng là đối thủ không đội trời chung.",
+      "dir": "manhua-recap/crmn_ep7"
+    },
+    {
+      "panel": "p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Gặp Lâm Mặc, anh chào bán công thức nhuộm, giá hai nghìn đồng vàng.",
+      "dir": "manhua-recap/crmn_ep7"
+    },
+    {
+      "panel": "p030.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Điền Thập Tam cũng tức điên, nghìn lượng đã hoang đường, mày còn dám đòi hai nghìn.",
+      "dir": "manhua-recap/crmn_ep7"
+    },
+    {
+      "panel": "p031.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Anh lặng lẽ đặt xuống bàn một miếng lụa nhuộm vàng kim rực rỡ.",
+      "dir": "manhua-recap/crmn_ep7"
+    },
+    {
+      "panel": "p034.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Lâm Mặc sững sờ, màu vàng kim này sao có thể!?",
+      "dir": "manhua-recap/crmn_ep7"
+    },
+    {
+      "panel": "p040.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Anh dám nhuộm lại ngay tại chỗ trong một canh giờ để chứng minh công thức là của mình.",
+      "dir": "manhua-recap/crmn_ep7"
+    },
+    {
+      "panel": "p044.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Thực ra chỉ là nấu hoa hòe thêm phèn chua, mà thợ cổ đại dùng quả sơn chi thì còn thua xa.",
+      "dir": "manhua-recap/crmn_ep7"
+    },
+    {
+      "panel": "p046.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Kiếm hai nghìn vàng chỉ nhờ biết chút hóa học, đúng là kiến thức hiện đại là sức mạnh.",
+      "dir": "manhua-recap/crmn_ep7"
+    },
+    {
+      "panel": "p056.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tiền vừa tới tay, nhà họ Từ xông vào quát, ngươi dám bán công thức bí mật của họ Từ ta!",
+      "dir": "manhua-recap/crmn_ep7"
+    },
+    {
+      "panel": "p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chàng rể bị cả nhà vợ chỉ mặt tố trộm công thức, vẫn bình tĩnh thách đấu ngược lại!?",
+      "dir": "manhua-recap/crmn_ep8",
+      "section": "Tập 8: Thách đấu nhuộm tím"
+    },
+    {
+      "panel": "p010.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Tiểu thư họ Từ rưng rưng nói thất vọng về anh, bảo anh nhận tội thì họ sẽ không truy cứu.",
+      "dir": "manhua-recap/crmn_ep8"
+    },
+    {
+      "panel": "p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Gia chủ họ Từ còn kéo cả quan viên phủ huyện tới, đòi làm chủ cho nhà mình.",
+      "dir": "manhua-recap/crmn_ep8"
+    },
+    {
+      "panel": "p022.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Anh bật cười, hỏi lại một câu, nói ta trộm thì chứng cứ đâu?",
+      "dir": "manhua-recap/crmn_ep8"
+    },
+    {
+      "panel": "p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nếu ta nhuộm ra màu vàng kim còn đẹp hơn, thì sự thật đã rõ rồi chứ?",
+      "dir": "manhua-recap/crmn_ep8"
+    },
+    {
+      "panel": "p030.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Chưa hết, ta thách các người so cả màu tím nữa.",
+      "dir": "manhua-recap/crmn_ep8"
+    },
+    {
+      "panel": "p033.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh chỉ có một mình, không có tiền, đấu với cả một gia tộc giàu có.",
+      "dir": "manhua-recap/crmn_ep8"
+    },
+    {
+      "panel": "p039.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Thời hạn ba canh giờ, sau đó so cao thấp, ai thắng sẽ làm rõ sự thật.",
+      "dir": "manhua-recap/crmn_ep8"
+    },
+    {
+      "panel": "p046.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ba canh giờ sau, nhà họ Từ trình ra tấm vải tím đẹp lộng lẫy của họ.",
+      "dir": "manhua-recap/crmn_ep8"
+    },
+    {
+      "panel": "p055.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Nhà họ Từ vẫn không chịu thua, quát lính bắt Thẩm Lãng ngay.",
+      "dir": "manhua-recap/crmn_ep8"
+    },
+    {
+      "panel": "p060.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Anh giơ tấm vải tím của mình lên, nói hãy xem màu tím mà ta làm ra đây!",
+      "dir": "manhua-recap/crmn_ep8"
+    },
+    {
+      "panel": "p064.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Nhìn mặt gia chủ họ Từ lúc đó đúng là đáng đồng tiền bát gạo.",
+      "dir": "manhua-recap/crmn_ep8"
+    },
+    {
+      "panel": "p066.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh mỉm cười hỏi thẳng, không lẽ màu tím này cũng là ta trộm của các người sao?",
+      "dir": "manhua-recap/crmn_ep8"
+    },
+    {
+      "panel": "p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chàng rể tung ra tuyệt chiêu lụa bảy màu, khiến cả sân chết lặng, nhưng thắng rồi vẫn sập bẫy!?",
+      "dir": "manhua-recap/crmn_ep9",
+      "section": "Tập 9: Lụa cầu vồng và cái bẫy"
+    },
+    {
+      "panel": "p006.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Anh nhuộm từng đoạn đỏ, cam, vàng, lục, lam, chàm, tím trên cùng một tấm lụa, rực rỡ chói mắt.",
+      "dir": "manhua-recap/crmn_ep9"
+    },
+    {
+      "panel": "p010.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Quan Chủ bộ tròn mắt, màu chuyển tiếp tự nhiên thế này sao làm được!",
+      "dir": "manhua-recap/crmn_ep9"
+    },
+    {
+      "panel": "p014.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Ông hỏi gia chủ họ Từ, tấm lụa này có phải trộm của nhà ông không, và đáp án là không phải.",
+      "dir": "manhua-recap/crmn_ep9"
+    },
+    {
+      "panel": "p020.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Anh dám cược lớn thế vì biết vị Chủ bộ trẻ này có thù với Trương Tấn.",
+      "dir": "manhua-recap/crmn_ep9"
+    },
+    {
+      "panel": "p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ba năm trước, chủ cũ đang hái hoa thì một con gấu bị thương lao tới.",
+      "dir": "manhua-recap/crmn_ep9"
+    },
+    {
+      "panel": "p031.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Một nữ tướng áo đỏ phi thân đâm thẳng ngọn thương xuống, cứu mạng cậu ta.",
+      "dir": "manhua-recap/crmn_ep9"
+    },
+    {
+      "panel": "p033.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Cô chính là thiên kim phủ Bá tước Huyền Vũ, Kim Mộc Lan.",
+      "dir": "manhua-recap/crmn_ep9"
+    },
+    {
+      "panel": "p038.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cũng may anh ta hay chửi Trương Tấn khi dạy, nên hôm nay mới nghiêng về phía Thẩm Lãng.",
+      "dir": "manhua-recap/crmn_ep9"
+    },
+    {
+      "panel": "p050.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Lúc anh vô dụng thì đuổi, lúc có ích lại ngọt ngào, cô này đúng là chiêu trà xanh chính hiệu.",
+      "dir": "manhua-recap/crmn_ep9"
+    },
+    {
+      "panel": "p051.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Cô buông một câu lạnh tanh, anh vẫn còn nợ Điền Hoành một nghìn đồng vàng.",
+      "dir": "manhua-recap/crmn_ep9"
+    },
+    {
+      "panel": "p056.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Thập Tam cười nhạt, trước khi mặt trời lặn chỉ còn bảy canh giờ.",
+      "dir": "manhua-recap/crmn_ep9"
+    },
+    {
+      "panel": "p059.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh vỡ lẽ, trùm xã hội đen đã thỏa thuận từ lâu với nhà họ Từ, dùng mạng cha mẹ và em để ép anh giao công thức.",
+      "dir": "manhua-recap/crmn_ep9"
+    },
+    {
+      "panel": "p062.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nếu không giao thì cả nhà gặp nguy, anh đứng giữa hoàng hôn, nắm chặt tay chờ bước đi cuối cùng!",
+      "dir": "manhua-recap/crmn_ep9"
+    },
+    {
+      "panel": "p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chàng rể chặn đầu đoàn kỵ binh, gọi nữ tướng là vợ, và nhận ngay một cú đấm bay người!?",
+      "dir": "manhua-recap/crmn_ep10",
+      "section": "Tập 10: Gặp nữ tướng Kim Mộc Lan"
+    },
+    {
+      "panel": "p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Người ta bảo nhau, gia tộc họ Kim diễn võ trở về rồi, khí thế quá!",
+      "dir": "manhua-recap/crmn_ep10"
+    },
+    {
+      "panel": "p011.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Thẩm Lãng mỉm cười, cuối cùng cũng đợi được cô.",
+      "dir": "manhua-recap/crmn_ep10"
+    },
+    {
+      "panel": "p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh lao ra giữa đường, hét to, vợ à, ba năm trước nàng cứu ta, giờ cứu thêm lần nữa, đưa ta về nhà đi!",
+      "dir": "manhua-recap/crmn_ep10"
+    },
+    {
+      "panel": "p018.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Bàn tay sắt giáng thẳng xuống, anh bay ngược ra xa như diều đứt dây.",
+      "dir": "manhua-recap/crmn_ep10"
+    },
+    {
+      "panel": "p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô đưa tay thử hơi thở, đều đặn, vết thương không nặng lắm.",
+      "dir": "manhua-recap/crmn_ep10"
+    },
+    {
+      "panel": "p025.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Cô ra lệnh đưa anh về phủ chữa trị, không để người vô tội chết dưới vó ngựa.",
+      "dir": "manhua-recap/crmn_ep10"
+    },
+    {
+      "panel": "p039.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trong đại sảnh, Mộc Lan bẩm với cha mẹ rằng diễn võ không làm mất mặt họ Kim.",
+      "dir": "manhua-recap/crmn_ep10"
+    },
+    {
+      "panel": "p042.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Nhưng Bá tước Kim Trác nhíu mày, nước Việt đang cắt giảm binh quyền và thu hồi đất phong của quý tộc.",
+      "dir": "manhua-recap/crmn_ep10"
+    },
+    {
+      "panel": "p046.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đúng lúc đó gia nhân báo, chàng trai cô nhặt về đang cầu kiến, nói có chuyện gấp về hôn sự của tiểu thư.",
+      "dir": "manhua-recap/crmn_ep10"
+    },
+    {
+      "panel": "p055.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Thẩm Lãng cúi mình, nói nghe đồn gia tộc họ Chúc muốn cầu thân, Chúc Hồng Tuyết muốn cưới Kim Mộc Lan.",
+      "dir": "manhua-recap/crmn_ep10"
+    },
+    {
+      "panel": "p057.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Vừa bị đấm bay xong đã dám nói chuyện hôn sự của con gái người ta, thật là gan lớn bằng trời.",
+      "dir": "manhua-recap/crmn_ep10"
+    },
+    {
+      "panel": "p059.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Cả đại sảnh chết lặng, rốt cuộc là thật hay là nước cờ liều mạng của anh để cứu bốn người nhà họ Thẩm!?",
+      "dir": "manhua-recap/crmn_ep10"
+    }
+  ]
+}

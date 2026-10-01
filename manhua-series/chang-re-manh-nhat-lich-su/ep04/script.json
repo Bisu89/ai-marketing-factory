@@ -1,0 +1,107 @@
+{
+  "title": "Ký giấy nợ máu 1000 vàng trong 3 ngày, chàng rể về quỳ trước cha mẹ!?",
+  "chapters": "3",
+  "source_dir": "manhua-recap/crmn_ep4",
+  "description": "Thẩm Lãng ký nợ máu 1000 vàng với trùm xã hội đen rồi trở về gặp lại gia đình nghèo khó. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 4.",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "thumbnail": {
+    "text": "NỢ MÁU 1000 VÀNG, 3 NGÀY!?",
+    "prompt": "Vertical 9:16 anime-style: a long-haired young man pressing a bleeding fingertip onto a torn paper IOU in a dark forest, scarred gang boss with glowing eyes looming behind. No text, leave top 25% empty."
+  },
+  "beats": [
+    {
+      "panel": "p004.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Chàng rể bị trùm xã hội đen dí kiếm vào cổ, vẫn dám hứa trả một nghìn đồng vàng!?"
+    },
+    {
+      "panel": "p005.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Anh nhận ra em trai mình đang quỳ giữa bọn côn đồ, nên phải gánh lấy món nợ này."
+    },
+    {
+      "panel": "p008.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn chỉ cho đúng ba ngày, không thêm một giờ."
+    },
+    {
+      "panel": "p009.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Anh chợt hiểu, hắn đã thỏa thuận với nhà họ Từ, giết được anh trong ba ngày sẽ nhận một trăm đồng vàng."
+    },
+    {
+      "panel": "p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Không cần giấy bút, anh cắn đầu ngón tay mà viết."
+    },
+    {
+      "panel": "p015.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Giấy nợ máu, nợ Điền Hoành một nghìn đồng vàng, ký tên Thẩm Lãng."
+    },
+    {
+      "panel": "p017.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trùm xã hội đen gằn giọng, trong ba ngày không đủ vàng thì giết cả nhà."
+    },
+    {
+      "panel": "p018.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn sai hai thủ hạ Thập Tam, Thập Tứ đi kèm, canh anh ba ngày liền."
+    },
+    {
+      "panel": "p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Giữa rừng đêm, anh tự hỏi có cách nào kiếm một nghìn vàng trong ba ngày không."
+    },
+    {
+      "panel": "p025.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Rồi anh nghĩ ra, một mũi tên trúng ba đích: kiếm tiền, bảo vệ người nhà, báo thù họ Từ."
+    },
+    {
+      "panel": "p030.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhà họ Thẩm ở lưng chừng núi, đơn độc, vì chuyển đến chưa từng hòa nhập với dân làng."
+    },
+    {
+      "panel": "p032.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trong nhà, người cha ho ra máu, vẫn đòi đến nhà họ Từ đòi người."
+    },
+    {
+      "panel": "p036.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cậu em què chân cũng thề mai sẽ liều mạng đón anh về."
+    },
+    {
+      "panel": "p042.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Đúng lúc đó, cánh cửa mở ra, anh quỳ sụp xuống trước cha mẹ."
+    },
+    {
+      "panel": "p043.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Bất hiếu, con trai về rồi đây! Cả nhà chết lặng, nhưng thời hạn đang chạy từng giây!"
+    }
+  ]
+}

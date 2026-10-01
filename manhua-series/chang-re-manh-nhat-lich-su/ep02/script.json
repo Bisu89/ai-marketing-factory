@@ -1,0 +1,119 @@
+{
+  "title": "Bác sĩ bị hủy dung chết vì bom, tỉnh dậy thành mỹ nam tuyệt thế!?",
+  "chapters": "1",
+  "source_dir": "manhua-recap/crmn_ep2",
+  "description": "Anh bác sĩ chiến trường bị hủy dung chết dưới bom, xuyên không thành chàng rể vô dụng bị cả nhà vợ khinh thường. Review truyện Chàng Rể Mạnh Nhất Lịch Sử – Tập 2.",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "thumbnail": {
+    "text": "XẤU XÍ CHẾT VÌ BOM, TỈNH LẠI THÀNH MỸ NAM!?",
+    "prompt": "Vertical 9:16 anime-style illustration: a disfigured bandaged doctor in a war-zone field hospital on the left fading into a stunningly handsome long-haired man in ancient Chinese robes on the right, glowing cyan eyes, golden light. No text, leave top 25% empty."
+  },
+  "beats": [
+    {
+      "panel": "p003.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Bác sĩ bị hủy dung chết dưới bom đạn, tỉnh dậy lại thành mỹ nam tuyệt thế!?"
+    },
+    {
+      "panel": "p005.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Ở thế giới của anh, người xấu có tiền cũng chẳng ai thèm ngó."
+    },
+    {
+      "panel": "p011.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Anh từng đẹp trai, cho tới khi tai nạn axit hủy mặt, ai thấy cũng hét lên bỏ chạy."
+    },
+    {
+      "panel": "p015.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh đành làm bác sĩ chiến trường hai mươi năm, nổi tiếng khắp nơi."
+    },
+    {
+      "panel": "p018.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Rồi một quả bom rơi thẳng xuống lều y tế."
+    },
+    {
+      "panel": "p021.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trước khi chết, anh chỉ ước kiếp sau được nhàn hạ hưởng phúc, và có lại khuôn mặt đẹp."
+    },
+    {
+      "panel": "p034.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mở mắt ra, anh nằm giữa một căn phòng cổ xưa."
+    },
+    {
+      "panel": "p041.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Soi gương, anh bật cười, mặt đẹp đến kinh thiên động địa!"
+    },
+    {
+      "panel": "p049.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng chủ cũ thân xác này cũng tên Thẩm Lãng, là kẻ vô dụng bị cả thành chửi."
+    },
+    {
+      "panel": "p053.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn ở rể nhà họ Từ để xung hỉ chữa bệnh cho tiểu thư, cô khỏi thật còn hắn thì bị khinh rẻ."
+    },
+    {
+      "panel": "p065.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Gia nhân ngoài cửa còn thì thầm, hình như có kẻ bỏ thêm thứ gì vào thuốc của hắn."
+    },
+    {
+      "panel": "p071.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Họ xông vào xem hắn tắt thở chưa, thì thấy hắn đứng đó sống sờ sờ."
+    },
+    {
+      "panel": "p080.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Anh chợt hiểu, hắn không phải bệnh chết mà là bị đầu độc."
+    },
+    {
+      "panel": "p092.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Chưa hết, mắt anh còn nhìn xuyên thấu được như máy X quang."
+    },
+    {
+      "panel": "p096.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Công nhận cái mắt thần này vừa tiện vừa hơi tinh quái."
+    },
+    {
+      "panel": "p110.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Còn cô vợ hiền kia có thật hiền không thì còn phải xem."
+    },
+    {
+      "panel": "p112.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Cuối cùng cô báo cha mẹ ruột đến đón anh về, anh hiểu ngay, họ muốn đuổi mình đi!"
+    }
+  ]
+}

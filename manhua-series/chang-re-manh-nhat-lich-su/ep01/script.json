@@ -1,0 +1,83 @@
+{
+  "title": "Bác sĩ hủy dung xuyên không, một mình bị cả dàn mỹ nhân réo tên!?",
+  "chapters": "0 (teaser)",
+  "source_dir": "manhua-recap/crmn_ep1",
+  "description": "Giới thiệu truyện Chàng Rể Mạnh Nhất Lịch Sử: bác sĩ xấu xí nửa đời không có vợ, xuyên không thành mỹ nam bị đủ loại mỹ nhân réo tên. Review truyện – Tập 1.",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "thumbnail": {
+    "text": "NỬA ĐỜI KHÔNG VỢ, GIỜ BỊ MỸ NHÂN VÂY!?",
+    "prompt": "Vertical 9:16 anime-style: a handsome long-haired man in ancient robes with a shocked comedic face surrounded by many beautiful women in colorful hanfu all pulling toward him, warm pastel glow. No text, leave top 25% empty."
+  },
+  "beats": [
+    {
+      "panel": "p003.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Hắn từng là thầy thuốc hoàn hảo trong mắt mọi người."
+    },
+    {
+      "panel": "p004.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Nhưng một tai nạn đã hủy hoại khuôn mặt, cố gắng nửa đời chỉ để tìm một người vợ."
+    },
+    {
+      "panel": "p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Giờ hắn xuyên không về cổ đại, trở thành người đàn ông đẹp trai tuyệt thế."
+    },
+    {
+      "panel": "p006.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn phân vân, lập nghiệp trước hay tìm vợ trước?"
+    },
+    {
+      "panel": "p008.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Tất nhiên là tìm vợ, mà phải là con gái nhà quyền thế, đẹp nhất, giỏi nhất."
+    },
+    {
+      "panel": "p009.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Nửa đời không vợ, giờ có mặt đẹp là đòi hẳn mỹ nhân hạng nhất, tham vừa thôi anh."
+    },
+    {
+      "panel": "p011.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Rồi đột nhiên, tiếng phu quân vang lên."
+    },
+    {
+      "panel": "p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hết cô này tới cô khác, đứa nào cũng réo tên Thẩm Lãng."
+    },
+    {
+      "panel": "p017.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Hắn tròn mắt đứng giữa vòng vây, tiếng gọi vang từ mọi phía."
+    },
+    {
+      "panel": "p018.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Thậm chí còn có nữ tướng phi ngựa tới, nhiều quá vậy!"
+    },
+    {
+      "panel": "p020.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Rốt cuộc anh chàng này sẽ chọn ai, Chàng Rể Mạnh Nhất Lịch Sử chính thức bắt đầu!"
+    }
+  ]
+}

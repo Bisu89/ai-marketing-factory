@@ -1,0 +1,119 @@
+{
+  "title": "Bị vu trộm công thức, chàng rể thách nhuộm tím đánh bại cả nhà họ Từ!?",
+  "chapters": "7",
+  "source_dir": "manhua-recap/crmn_ep8",
+  "description": "Thẩm Lãng bị nhà họ Từ tố trộm công thức nhuộm trước quan phủ, anh thách thi nhuộm màu tím quý hiếm và thắng áp đảo. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 8.",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "thumbnail": {
+    "text": "THÁCH NHUỘM TÍM, NHÀ HỌ TỪ NGÃ NGỬA!?",
+    "prompt": "Vertical 9:16 anime-style: a confident long-haired young man holding up a glowing vivid purple silk cloth in a lantern-lit courtyard, shocked wealthy family members and officials staring, purple sparkles. No text, leave top 25% empty."
+  },
+  "beats": [
+    {
+      "panel": "p009.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Chàng rể bị cả nhà vợ chỉ mặt tố trộm công thức, vẫn bình tĩnh thách đấu ngược lại!?"
+    },
+    {
+      "panel": "p010.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Tiểu thư họ Từ rưng rưng nói thất vọng về anh, bảo anh nhận tội thì họ sẽ không truy cứu."
+    },
+    {
+      "panel": "p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Gia chủ họ Từ còn kéo cả quan viên phủ huyện tới, đòi làm chủ cho nhà mình."
+    },
+    {
+      "panel": "p018.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh biết nhận tội là xong, nhưng họ có vì thể diện mà tha cho anh thật không?"
+    },
+    {
+      "panel": "p022.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Anh bật cười, hỏi lại một câu, nói ta trộm thì chứng cứ đâu?"
+    },
+    {
+      "panel": "p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nếu ta nhuộm ra màu vàng kim còn đẹp hơn, thì sự thật đã rõ rồi chứ?"
+    },
+    {
+      "panel": "p030.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Chưa hết, ta thách các người so cả màu tím nữa."
+    },
+    {
+      "panel": "p031.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Màu tím ở thế giới này khó nhất, phải cần ba trăm con ốc biển mới nhuộm được một gam."
+    },
+    {
+      "panel": "p033.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh chỉ có một mình, không có tiền, đấu với cả một gia tộc giàu có."
+    },
+    {
+      "panel": "p039.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Thời hạn ba canh giờ, sau đó so cao thấp, ai thắng sẽ làm rõ sự thật."
+    },
+    {
+      "panel": "p041.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh ra sân sau, nghiền địa y rồi nấu cùng nước tro để ra màu tím sống động."
+    },
+    {
+      "panel": "p046.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ba canh giờ sau, nhà họ Từ trình ra tấm vải tím đẹp lộng lẫy của họ."
+    },
+    {
+      "panel": "p052.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Vương Chủ bộ cầm cuốn sổ cũ của thợ nhuộm, thấy đã nhiều năm nghiên cứu màu vàng nên công thức vàng kim không phải của họ Từ."
+    },
+    {
+      "panel": "p055.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Nhà họ Từ vẫn không chịu thua, quát lính bắt Thẩm Lãng ngay."
+    },
+    {
+      "panel": "p060.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Anh giơ tấm vải tím của mình lên, nói hãy xem màu tím mà ta làm ra đây!"
+    },
+    {
+      "panel": "p064.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Nhìn mặt gia chủ họ Từ lúc đó đúng là đáng đồng tiền bát gạo."
+    },
+    {
+      "panel": "p066.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Anh mỉm cười hỏi thẳng, không lẽ màu tím này cũng là ta trộm của các người sao?"
+    }
+  ]
+}

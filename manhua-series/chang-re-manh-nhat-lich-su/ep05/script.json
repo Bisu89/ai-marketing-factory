@@ -1,0 +1,113 @@
+{
+  "title": "Chàng rể trổ tài mổ xẻ cứu cha, cả nhà há hốc mồm!?",
+  "chapters": "4",
+  "source_dir": "manhua-recap/crmn_ep5",
+  "description": "Thẩm Lãng dùng mắt thần chẩn bệnh, chữa vết thương cho cha và em trai bằng y thuật hiện đại. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 5.",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "thumbnail": {
+    "text": "CHỮA BỆNH CHO CHA BẰNG MẮT THẦN!?",
+    "prompt": "Vertical 9:16 anime-style: a long-haired young man with glowing green eyes examining a sick father, a green glowing X-ray skeleton overlay on the father's chest, poor stone cottage, warm candlelight. No text, leave top 25% empty."
+  },
+  "beats": [
+    {
+      "panel": "p003.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Chàng rể vừa về nhà đã dám nói, để con chữa bệnh cho cha!?"
+    },
+    {
+      "panel": "p005.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Mẹ ôm chầm lấy anh khóc, tưởng cả đời không gặp lại con."
+    },
+    {
+      "panel": "p010.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh thấy cả nhà thương mình quá, trong khi chủ cũ chỉ là kẻ chẳng ra gì."
+    },
+    {
+      "panel": "p018.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mẹ bảo dù nhà nghèo, họ vẫn nuôi anh, không bắt anh chịu khổ."
+    },
+    {
+      "panel": "p021.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh liền đặt tay lên trán cha, người đã sốt, nghi có viêm."
+    },
+    {
+      "panel": "p023.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Mắt thần quét ra tận xương, phổi đang chảy máu, xương sườn nứt."
+    },
+    {
+      "panel": "p024.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Đây là trận đòn của nhà họ Từ ba tháng trước, xương mọc lệch mà chẳng ai chữa."
+    },
+    {
+      "panel": "p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh vạch ngay kế hoạch, dẫn máu ra khỏi phổi, rồi dùng thảo dược tiêu viêm."
+    },
+    {
+      "panel": "p028.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tiếp đến chân em trai, đã sưng viêm, nhưng may xương gãy vẫn ngay ngắn."
+    },
+    {
+      "panel": "p033.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Hóa ra cậu bị đánh gãy chân khi tới nhà họ Từ hỏi thăm anh, cũng vẫn cười xòa."
+    },
+    {
+      "panel": "p039.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hôm sau anh lên núi hái thuốc cả ngày, có thủ hạ của trùm xã hội đen đi kèm."
+    },
+    {
+      "panel": "p040.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Về nhà, anh luộc dụng cụ bằng nước sôi, dựng tạm một phòng mổ thô sơ."
+    },
+    {
+      "panel": "p041.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Xong việc, người cha thở nhẹ nhõm, không còn ho ra máu nữa."
+    },
+    {
+      "panel": "p042.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Cả nhà chỉ biết há hốc mồm, trình mổ xẻ kiểu này ở thời cổ đại đúng là thần y."
+    },
+    {
+      "panel": "p050.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Nhưng khi anh ra ngoài hít thở, một giọng lạnh lùng vang lên."
+    },
+    {
+      "panel": "p052.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Đừng quên, không đưa ra được nghìn đồng vàng, cả nhà ngươi chết thảm, chỉ còn hai ngày thôi!"
+    }
+  ]
+}

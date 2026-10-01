@@ -63,16 +63,26 @@ lớn hơn xoay quanh phủ Bá tước Huyền Vũ (gia tộc Kim Mộc Lan —
 
 | Tập | Chương | Thư mục ảnh | Nội dung chính | Trạng thái |
 |---|---|---|---|---|
-| 1 | — (teaser) | `manhua-recap/crmn_ep1` | Giới thiệu truyện: bác sĩ chiến trường bị hủy dung ước tái sinh đẹp trai + nhàn hạ; xuyên không thành Thẩm Lãng, bị nhiều mỹ nhân vây quanh gọi tên, choáng ngợp. | ⏳ đã đọc, chưa viết script |
-| 2 | 1 | `manhua-recap/crmn_ep2` | Backstory đầy đủ: chết vì bom, xuyên không vào thân xác chàng rể vô dụng vừa bị đầu độc; thức dậy có khả năng nhìn xuyên thấu; Từ Thiên Thiên mừng rỡ; cuối tập lộ âm mưu đuổi anh về nhà cha mẹ ruột. | ⏳ đã đọc, chưa viết script |
-| 3 | 2 | `manhua-recap/crmn_ep3` | Lộ âm mưu hôn nhân chính trị Trương Tấn – Kim Mộc Lan; nhà họ Từ vu cáo, đuổi Thẩm Lãng; trên đường về gặp bang chủ Điền Hoành; hồi tưởng gia đình nghèo nợ nần, bị đánh đuổi khi cầu xin họ Từ giúp đỡ. | ⏳ đã đọc, chưa viết script |
-| 4 | 3 | `manhua-recap/crmn_ep4` | Thẩm Lãng hứa trả 1000 vàng trong 10 ngày để cứu con tin, phát hiện đó là âm mưu của họ Từ muốn giết anh; ký nợ máu, bị áp giải về làng; đoàn tụ xúc động với cha mẹ. | ⏳ đã đọc, chưa viết script |
-| 5 | 4 | `manhua-recap/crmn_ep5` | Khám phá nội thương thật của cha (từ trận đòn cũ ở nhà họ Từ) và vết thương em trai; phẫu thuật chỉnh xương + dẫn lưu máu phổi bằng y thuật hiện đại; cuối tập Thập Tam/Tứ đến đòi hạn chót còn 2 ngày. | ⏳ đã đọc, chưa viết script |
-| 6 | 5 | `manhua-recap/crmn_ep6` | Lên đường đến Huyền Vũ thành; chứng kiến Thập Tam giết bạn thân của cha vì nợ nhỏ — thấy rõ sự tàn bạo của Bang Hắc Y; Thẩm Lãng tuyên bố sẽ kiếm đủ 1000 vàng trong 3 canh giờ. | ⏳ đã đọc, chưa viết script |
-| 7 | 6 | `manhua-recap/crmn_ep7` | Bán công thức nhuộm vàng kim cho Lâm Mặc (Cẩm Tú Các, đối thủ họ Từ) được 2000 vàng; cuối tập bị người nhà họ Từ tố cáo trộm công thức. | ⏳ đã đọc, chưa viết script |
-| 8 | 7 | `manhua-recap/crmn_ep8` | Phiên xử công khai; Thẩm Lãng thách đấu nhuộm màu tím (cực hiếm) để chứng minh trong sạch, thắng áp đảo; thợ nhuộm già trình sổ nghiên cứu chứng minh công thức vàng kim hợp pháp; nhà họ Từ vẫn ngoan cố, bị anh tung thêm vải tím đẹp hơn dập tắt hoàn toàn. | ⏳ đã đọc, chưa viết script |
-| 9 | 8 | `manhua-recap/crmn_ep9` | Trình diễn đỉnh cao lụa 7 màu cầu vồng; quan Chủ bộ Vương Liên phán Thẩm Lãng vô tội; flashback lý do Vương Liên thiên vị (nợ ân tình với Kim Mộc Lan, ghét Trương Tấn); twist: vụ nợ 1000 vàng từ đầu là âm mưu của Điền Hoành + họ Từ nhằm nô dịch cả gia đình anh vĩnh viễn, hạn chót mới trước khi mặt trời lặn. | ⏳ đã đọc, chưa viết script |
-| 10 | 9 | `manhua-recap/crmn_ep10` | Kim Mộc Lan khải hoàn về thành, vô tình gặp lại Thẩm Lãng (ân nhân 3 năm trước); đưa anh về phủ Bá tước chữa trị; lộ tình hình chính trị nguy hiểm (triều đình cắt giảm binh quyền quý tộc); Thẩm Lãng đánh liều tung tin nhà họ Chúc muốn cầu hôn Mộc Lan để xin yết kiến Bá tước Kim Trác. | ⏳ đã đọc, chưa viết script |
+| 1 | — (teaser) | `manhua-recap/crmn_ep1` | Giới thiệu truyện: bác sĩ chiến trường bị hủy dung ước tái sinh đẹp trai + nhàn hạ; xuyên không thành Thẩm Lãng, bị nhiều mỹ nhân vây quanh gọi tên, choáng ngợp. | ✅ script (Claude viết), chưa build Short riêng |
+| 2 | 1 | `manhua-recap/crmn_ep2` | Backstory đầy đủ: chết vì bom, xuyên không vào thân xác chàng rể vô dụng vừa bị đầu độc; thức dậy có khả năng nhìn xuyên thấu; Từ Thiên Thiên mừng rỡ; cuối tập lộ âm mưu đuổi anh về nhà cha mẹ ruột. | ✅ script (Claude viết), chưa build Short riêng |
+| 3 | 2 | `manhua-recap/crmn_ep3` | Lộ âm mưu hôn nhân chính trị Trương Tấn – Kim Mộc Lan; nhà họ Từ vu cáo, đuổi Thẩm Lãng; trên đường về gặp bang chủ Điền Hoành; hồi tưởng gia đình nghèo nợ nần, bị đánh đuổi khi cầu xin họ Từ giúp đỡ. | ✅ script (Claude viết), chưa build Short riêng |
+| 4 | 3 | `manhua-recap/crmn_ep4` | Thẩm Lãng hứa trả 1000 vàng trong 10 ngày để cứu con tin, phát hiện đó là âm mưu của họ Từ muốn giết anh; ký nợ máu, bị áp giải về làng; đoàn tụ xúc động với cha mẹ. | ✅ script (Claude viết), chưa build Short riêng |
+| 5 | 4 | `manhua-recap/crmn_ep5` | Khám phá nội thương thật của cha (từ trận đòn cũ ở nhà họ Từ) và vết thương em trai; phẫu thuật chỉnh xương + dẫn lưu máu phổi bằng y thuật hiện đại; cuối tập Thập Tam/Tứ đến đòi hạn chót còn 2 ngày. | ✅ script (Claude viết), chưa build Short riêng |
+| 6 | 5 | `manhua-recap/crmn_ep6` | Lên đường đến Huyền Vũ thành; chứng kiến Thập Tam giết bạn thân của cha vì nợ nhỏ — thấy rõ sự tàn bạo của Bang Hắc Y; Thẩm Lãng tuyên bố sẽ kiếm đủ 1000 vàng trong 3 canh giờ. | ✅ script (Claude viết), chưa build Short riêng |
+| 7 | 6 | `manhua-recap/crmn_ep7` | Bán công thức nhuộm vàng kim cho Lâm Mặc (Cẩm Tú Các, đối thủ họ Từ) được 2000 vàng; cuối tập bị người nhà họ Từ tố cáo trộm công thức. | ✅ script (Claude viết), chưa build Short riêng |
+| 8 | 7 | `manhua-recap/crmn_ep8` | Phiên xử công khai; Thẩm Lãng thách đấu nhuộm màu tím (cực hiếm) để chứng minh trong sạch, thắng áp đảo; thợ nhuộm già trình sổ nghiên cứu chứng minh công thức vàng kim hợp pháp; nhà họ Từ vẫn ngoan cố, bị anh tung thêm vải tím đẹp hơn dập tắt hoàn toàn. | ✅ script (Claude viết), chưa build Short riêng |
+| 9 | 8 | `manhua-recap/crmn_ep9` | Trình diễn đỉnh cao lụa 7 màu cầu vồng; quan Chủ bộ Vương Liên phán Thẩm Lãng vô tội; flashback lý do Vương Liên thiên vị (nợ ân tình với Kim Mộc Lan, ghét Trương Tấn); twist: vụ nợ 1000 vàng từ đầu là âm mưu của Điền Hoành + họ Từ nhằm nô dịch cả gia đình anh vĩnh viễn, hạn chót mới trước khi mặt trời lặn. | ✅ script (Claude viết), chưa build Short riêng |
+| 10 | 9 | `manhua-recap/crmn_ep10` | Kim Mộc Lan khải hoàn về thành, vô tình gặp lại Thẩm Lãng (ân nhân 3 năm trước); đưa anh về phủ Bá tước chữa trị; lộ tình hình chính trị nguy hiểm (triều đình cắt giảm binh quyền quý tộc); Thẩm Lãng đánh liều tung tin nhà họ Chúc muốn cầu hôn Mộc Lan để xin yết kiến Bá tước Kim Trác. | ✅ script (Claude viết), chưa build Short riêng |
+
+## Video đã dựng
+
+| Video | Nội dung | Script | Trạng thái |
+|---|---|---|---|
+| Long 01 (16:9) | Tóm tắt tập 1–10, 122 beat, 10 phần | `long01_script.json` | ✅ project 149 / job_209, Final QA PASS 100 |
+| Short tóm tắt (9:16) | 13 beat, tóm tắt cả 10 tập | `short_summary_script.json` | ✅ project 150 / job_208, Final QA PASS 100 |
+
+Mục lục thời gian Long 01: 0:00 Tập 1 / 0:29 Tập 2 / 1:15 Tập 3 / 1:58 Tập 4 / 2:40 Tập 5 / 3:24 Tập 6 / 4:14 Tập 7 / 4:57 Tập 8 / 5:42 Tập 9 / 6:37 Tập 10.
+Build đa thư mục panel bằng script scratchpad gọi API (recap.py build chỉ nhận một thư mục).
 
 ## Nhật ký
 
@@ -80,3 +90,5 @@ lớn hơn xoay quanh phủ Bá tước Huyền Vũ (gia tộc Kim Mộc Lan —
   cho ep2–ep10; ep1 đọc trực tiếp 14 trang gốc vì chỉ là teaser). Viết tóm tắt nội dung từng tập + hồ sơ nhân vật vào
   SERIES.md này theo yêu cầu "viết nội dung từng tập trước". Chưa viết `script.json` cho tập nào. `crmn_ep2v5` được
   xác nhận là nội dung khác, bỏ qua theo yêu cầu chủ dự án, chưa rõ vị trí thật trong trình tự.
+
+- 2026-10-01: viết `ep01..ep10/script.json` (10 tập), dựng Long 01 + Short tóm tắt. Cả hai render qua ngay lần đầu, phải force-continue qua NEEDS_REVIEW như thường lệ.
