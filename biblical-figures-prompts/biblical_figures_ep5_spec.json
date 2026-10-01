@@ -1,0 +1,258 @@
+{
+ "episode": 5,
+ "figure": "Paul of Tarsus",
+ "cast": [
+  "paul",
+  "peter"
+ ],
+ "characters": {
+  "BN": "recurring character (this episode only) Barnabas: Cypriot Jewish man in his 40s, warm open face, short grey-streaked beard, weathered olive skin, plain undyed linen tunic, brown wool mantle, no jewelry; keep his face, beard and clothing identical whenever he appears",
+  "AN": "recurring character (this episode only) Ananias of Damascus: Jewish man in his 50s, plain grey beard, humble homespun tunic, simple head covering, no jewelry; keep his face, beard and clothing identical whenever he appears"
+ },
+ "thumbnail": {
+  "stem": "pl_face",
+  "scene": "Paul's face in close-up, intense searching expression, dim torchlit background",
+  "chars": ["PL"]
+ },
+ "reference": {
+  "stem": "pl_reference",
+  "scene": "Character reference portrait of Paul of Tarsus, facing the camera in a neutral three-quarter view, shoulders up, plain background, soft even light so every facial detail is clear",
+  "chars": ["PL"]
+ },
+ "long": [
+  {
+   "narration": "He once stood by, holding the coats of men throwing stones, approving of a killing. He would go on to write nearly half of the New Testament.",
+   "new": {"stem": "pl_face_portrait", "tags": "paul, portrait, hook", "scene": "Portrait of Paul from the chest up, intense searching expression, dim interior light", "chars": ["PL"]}
+  },
+  {
+   "narration": "His name, at the start of this story, was Saul -- a Jewish man, a Roman citizen by birth, from the city of Tarsus, trained as a Pharisee.",
+   "new": {"stem": "pl_saul_tarsus_student", "tags": "saul, tarsus, pharisee, student", "scene": "A young scholar seated among scrolls in a plain study room, intent and serious expression, soft daylight through a narrow window", "chars": ["PL"]}
+  },
+  {
+   "narration": "Tonight we follow a man who set out to crush a new religious movement, and instead became its most consequential missionary -- three shipwrecks, dozens of floggings, and letters that would shape Christian theology for two thousand years.",
+   "new": {"stem": "judea_desert_road_dawn", "tags": "road, desert, journey, establishing", "scene": "A dusty caravan road through hill country at dawn, long shadows, a lone traveler's figure far in the distance", "chars": []}
+  },
+  {
+   "narration": "The record opens with him approving of a killing. When an angry crowd stoned a young believer named Stephen to death outside Jerusalem, the witnesses laid their coats at the feet of a young man named Saul.",
+   "new": {"stem": "pl_stephen_stoning", "tags": "saul, stephen, stoning, witness", "scene": "A tense crowd gathered outside the city walls, a pile of folded coats on the ground near a watching young man, dust rising, non-graphic and symbolic, harsh midday light", "chars": ["PL"]}
+  },
+  {
+   "narration": "Acts says Saul went from house to house afterward, dragging off men and women who followed the new faith and having them imprisoned. In his own letters, years later, he describes himself the very same way: a violent persecutor of the church.",
+   "new": {"stem": "pl_persecutor_dragging", "tags": "saul, persecution, arrest, household", "scene": "A stern young man forcing a frightened family out of a modest stone doorway, onlookers watching uneasily, harsh daylight", "chars": ["PL"]}
+  },
+  {
+   "narration": "Still not satisfied, Saul asked the high priest for letters authorizing him to extend the arrests to the synagogues of Damascus, more than a hundred miles north.",
+   "new": {"stem": "pl_damascus_letters", "tags": "saul, high priest, authorization, damascus", "scene": "A young man receiving a sealed scroll from a seated elder priest in a formal stone chamber, dim lamplight", "chars": ["PL"]}
+  },
+  {
+   "narration": "On the road, Acts says, a light from the sky suddenly surrounded him. He fell to the ground and heard a voice: Saul, Saul, why do you persecute me?",
+   "new": {"stem": "pl_damascus_road_light", "tags": "saul, damascus road, conversion, light", "scene": "A robed traveler collapsed on a desert road under an overwhelming burst of light from the sky, startled companions and rearing horses nearby, no figure visible within the light itself, dramatic sky", "chars": ["PL"]}
+  },
+  {
+   "narration": "He got up blind. For three days, Acts says, he neither ate nor drank, led by the hand into Damascus to wait.",
+   "new": {"stem": "pl_blinded_damascus", "tags": "saul, blind, damascus, waiting", "scene": "A man being led by the arm through a city gate, eyes closed, a companion guiding him carefully, somber overcast light", "chars": ["PL"]}
+  },
+  {
+   "narration": "In the city lived a disciple named Ananias, who had his own vision: a voice telling him to go lay hands on the very man sent to arrest people like him. Ananias, reasonably, objected.",
+   "new": {"stem": "pl_ananias_vision", "tags": "ananias, vision, damascus, hesitation", "scene": "An older man in a modest plain room, looking upward in uneasy prayer, one hand raised as if in protest, dim interior light", "chars": ["AN"]}
+  },
+  {
+   "narration": "He went anyway. Acts says something like scales fell from Saul's eyes, his sight returned, and Ananias baptized him -- the very man he had been sent to warn against.",
+   "new": {"stem": "pl_ananias_healing", "tags": "ananias, healing, baptism, saul", "scene": "An older man placing both hands on the head of a kneeling man in a plain room, a basin of water set nearby, soft light through a shuttered window", "chars": ["AN", "PL"]}
+  },
+  {
+   "narration": "Within days, to the astonishment of everyone who knew him, Saul was in the synagogues of Damascus, arguing that the very man he had set out to suppress was the Son of God.",
+   "new": {"stem": "pl_preaching_synagogues", "tags": "saul, preaching, synagogue, damascus", "scene": "A man speaking with sudden conviction inside a small stone synagogue, bewildered listeners seated around him, light from high windows", "chars": ["PL"]}
+  },
+  {
+   "narration": "The reaction turned hostile fast. When a plot formed to kill him at the city gates, his new allies lowered him over the city wall at night, in a large basket.",
+   "new": {"stem": "pl_basket_escape", "tags": "saul, escape, basket, wall", "scene": "A man being lowered in a large woven basket down a stone city wall at night by rope, a few helpers straining above, moonlight", "chars": ["PL"]}
+  },
+  {
+   "narration": "Years later -- Paul's own letters suggest closer to three -- he went up to Jerusalem. The believers there, understandably, were afraid of him, until a man named Barnabas vouched for him and brought him to the apostles.",
+   "new": {"stem": "pl_jerusalem_barnabas_vouches", "tags": "barnabas, jerusalem, apostles, trust", "scene": "A warm bearded man placing a reassuring hand on a wary traveler's shoulder, introducing him to a small group of seated men in a courtyard, cautious expressions easing", "chars": ["BN", "PL"]}
+  },
+  {
+   "narration": "Barnabas later brought him to the city of Antioch, where believers in Jesus were first called, by outsiders, Christians -- originally more an insult than a label of honor.",
+   "new": {"stem": "antioch_christians_named", "tags": "antioch, barnabas, christians, naming", "scene": "Two men walking together into a bustling Syrian city gate, market crowds and Roman-era architecture around them, bright midday light", "chars": ["BN", "PL"]}
+  },
+  {
+   "narration": "From Antioch, Paul and Barnabas were sent out on what later tradition calls his first missionary journey, sailing first to the island of Cyprus.",
+   "reuse": "ep2_060_ship_leaving_caesarea.png"
+  },
+  {
+   "narration": "It is on Cyprus, at the city of Paphos, that Acts quietly starts calling him by a different name. Saul becomes Paul -- a small detail many readers miss entirely.",
+   "new": {"stem": "pl_paphos_renamed", "tags": "paul, cyprus, paphos, renaming", "scene": "Two travelers disembarking at a Mediterranean port town, white stone buildings and bright coastal light, a harbor behind them", "chars": ["PL", "BN"]}
+  },
+  {
+   "narration": "In Pisidian Antioch, in the hills of central Turkey, Paul preached in the synagogue on a Sabbath and won converts -- and provoked a backlash sharp enough that he and Barnabas were eventually driven out of the city.",
+   "new": {"stem": "pisidian_antioch_synagogue", "tags": "paul, synagogue, preaching, backlash", "scene": "A man addressing a mixed synagogue crowd, some listening intently and others whispering with open hostility, stone interior lit by high windows", "chars": ["PL"]}
+  },
+  {
+   "narration": "At Lystra, after Paul healed a man lame from birth, the crowd decided he and Barnabas were the gods Hermes and Zeus walking the earth, and brought oxen to sacrifice to them. Horrified, the two men tore their own clothes trying to stop it.",
+   "new": {"stem": "lystra_mistaken_gods", "tags": "lystra, mistaken gods, crowd, horror", "scene": "A startled crowd bringing a garlanded ox toward two alarmed men who are gesturing frantically to stop them, provincial town square, bright confused midday light", "chars": ["PL", "BN"]}
+  },
+  {
+   "narration": "The mood turned just as fast. Opponents who had followed him from other cities won the crowd over, and Paul was stoned and dragged outside the city, left for dead. Acts says he simply got up and walked back in.",
+   "new": {"stem": "pl_lystra_stoned", "tags": "paul, lystra, stoning, recovery", "scene": "A battered man slowly rising to his feet outside a town's stone walls at dusk, dust on his torn cloak, a few distant onlookers, no visible wounds", "chars": ["PL"]}
+  },
+  {
+   "narration": "Years later, a dispute threatened to split the growing movement in two: did a Gentile convert have to be circumcised and keep Jewish law to follow Jesus? Paul argued, forcefully, no. A council in Jerusalem, led by James, sided with him.",
+   "reuse": "ep2_012_temple_courts_wide.png"
+  },
+  {
+   "narration": "Not long after that council, Paul describes confronting Peter directly, in the city of Antioch, for pulling back from eating with Gentile believers under pressure from a visiting group -- the same clash we saw, from the other side, in the previous episode.",
+   "reuse": "ep4_029_pt_paul_confrontation.png"
+  },
+  {
+   "narration": "On a second journey, Paul had a vision of a man from Macedonia, in what is now northern Greece, pleading: come over and help us. He read it as a sign to cross into Europe.",
+   "new": {"stem": "pl_macedonia_vision", "tags": "paul, vision, macedonia, dream", "scene": "A man asleep on a ship's deck, a faint ghostly figure gesturing from across dark water in his dream, moonlit sea", "chars": ["PL"]}
+  },
+  {
+   "narration": "At Philippi, his first European convert was a woman named Lydia, a dealer in expensive purple cloth, baptized along with her household by a river outside the city.",
+   "new": {"stem": "philippi_lydia_convert", "tags": "philippi, lydia, baptism, convert", "scene": "A well-dressed woman kneeling at a riverbank being baptized, household members watching, soft daylight, bolts of dyed purple cloth set nearby", "chars": []}
+  },
+  {
+   "narration": "Also at Philippi, Paul and a companion were flogged and jailed after an exorcism cut into a slave-owner's profits. At midnight, Acts says, an earthquake shook the prison doors open -- and Paul stayed, rather than flee, saving the terrified jailer's life and converting his household instead.",
+   "new": {"stem": "philippi_jail_earthquake", "tags": "paul, prison, earthquake, jailer", "scene": "A stone prison interior at night, cracked walls and open cell doors after a tremor, two calm prisoners while a guard kneels in shock, torchlight", "chars": ["PL"]}
+  },
+  {
+   "narration": "In Athens, Paul stood before the city's philosophers at the Areopagus and pointed to an altar he had seen inscribed to an unknown god -- using their own uncertainty, he said, to introduce the god they didn't yet know.",
+   "new": {"stem": "athens_areopagus_speech", "tags": "athens, areopagus, philosophers, speech", "scene": "A man standing on a rocky outcrop addressing a small group of robed philosophers on a hilltop overlooking a Greek city, statues and columns in the background", "chars": ["PL"]}
+  },
+  {
+   "narration": "In Ephesus, years later, a silversmith named Demetrius started a riot, fearing Paul's preaching against idols was ruining his trade making shrines of the goddess Artemis. A mob packed the city's theater for two hours chanting her name.",
+   "new": {"stem": "ephesus_demetrius_riot", "tags": "ephesus, riot, demetrius, artemis", "scene": "A large ancient amphitheater packed with an agitated crowd, a man in the foreground gesturing angrily toward the masses, dramatic afternoon light", "chars": []}
+  },
+  {
+   "narration": "It was from Ephesus, most scholars think, that Paul wrote his surviving letters to the church at Corinth -- addressing, in blunt detail, infighting, lawsuits between believers, and arguments over resurrection.",
+   "reuse": "ep3_027_corinthians_scroll_no_name.png"
+  },
+  {
+   "narration": "In one of those letters, Paul mentions a thorn in the flesh, some chronic affliction he prayed three times to have removed. He never names it. Scholars have guessed at eye disease, epilepsy, and chronic illness ever since, without agreement.",
+   "new": {"stem": "pl_thorn_in_flesh", "tags": "paul, affliction, prayer, mystery", "scene": "A man alone in a dim room, head bowed in private prayer, one hand pressed to his own temple, a single oil lamp beside him", "chars": ["PL"]}
+  },
+  {
+   "narration": "In the same correspondence, Paul lists what the work actually cost him: flogged by synagogue authorities five times, beaten with rods three times, stoned once, shipwrecked three times, a night and a day adrift at sea.",
+   "new": {"stem": "pl_sufferings_catalogue", "tags": "paul, suffering, shipwreck, list", "scene": "A weathered man standing on a wind-battered shoreline, broken ship timbers washed up around him, stormy grey sky", "chars": ["PL"]}
+  },
+  {
+   "narration": "Years later still, back in Jerusalem, a riot broke out when Paul was wrongly accused of bringing a Gentile into a restricted area of the Temple. A mob dragged him outside the gates and was beating him when Roman soldiers intervened.",
+   "new": {"stem": "pl_jerusalem_temple_riot", "tags": "paul, temple, riot, rescue", "scene": "Roman soldiers pulling a man free from the grip of an angry crowd outside temple gates, chaotic but non-graphic struggle, dusty midday light", "chars": ["PL"]}
+  },
+  {
+   "narration": "As soldiers prepared to flog him for questioning, Paul asked a simple question: is it legal to whip a Roman citizen who hasn't been tried? It was not. The soldiers backed off immediately.",
+   "new": {"stem": "pl_reveals_citizenship", "tags": "paul, roman citizen, soldiers, protection", "scene": "A bound man calmly addressing a startled Roman officer who is lowering a whip, soldiers exchanging uneasy glances, stone barracks interior", "chars": ["PL"]}
+  },
+  {
+   "narration": "Brought before the Sanhedrin, Paul noticed the council was split between Pharisees and Sadducees, who disagreed sharply about resurrection. He simply declared himself on trial for believing in it -- and the council dissolved into an argument among themselves.",
+   "new": {"stem": "pl_before_sanhedrin_split", "tags": "paul, sanhedrin, pharisees, sadducees", "scene": "A seated council of priests erupting into argument with one another while a calm bound man stands watching at the center, formal hall, tense midday light", "chars": ["PL"]}
+  },
+  {
+   "narration": "He spent the next two years in custody at Caesarea, under a governor named Felix, who kept hoping, Acts says bluntly, for a bribe that never came.",
+   "reuse": "ep2_009_caesarea_harbor_wide.png"
+  },
+  {
+   "narration": "When a new governor, Festus, took over and floated sending him back to Jerusalem to face his accusers, Paul invoked a right only a Roman citizen had: I appeal to Caesar.",
+   "reuse": "ep2_018_stadium_soldiers_surround.png"
+  },
+  {
+   "narration": "The voyage to Rome went badly. A storm drove the ship for two weeks before it broke apart on the island of Malta. Everyone aboard, Acts says, made it to shore alive.",
+   "new": {"stem": "pl_shipwreck_malta", "tags": "shipwreck, malta, storm, survival", "scene": "A shattered wooden ship wreck washed against a rocky shoreline in a storm, survivors wading through surf toward shore, dramatic grey light", "chars": []}
+  },
+  {
+   "narration": "On the beach, a viper bit Paul's hand as he gathered firewood. The islanders expected him to drop dead. When he simply shook it off, Acts says, they decided he must be a god.",
+   "new": {"stem": "pl_malta_viper", "tags": "paul, malta, viper, wonder", "scene": "A man on a beach shaking a small snake off his hand near a campfire, local islanders watching with astonishment, coastal dusk light", "chars": ["PL"]}
+  },
+  {
+   "narration": "He finally reached Rome, and spent two more years there under house arrest, guarded but free to preach and receive visitors at his own expense. Acts ends there, mid-sentence, without ever saying how Paul's story actually ended.",
+   "new": {"stem": "pl_rome_house_arrest", "tags": "paul, rome, house arrest, writing", "scene": "A man under guard writing a letter at a small table inside a modest rented room, a Roman soldier posted calmly at the door, light through a shuttered window", "chars": ["PL"]}
+  },
+  {
+   "narration": "Tradition fills that silence: beheaded in Rome, during the same Neronian persecution that, tradition says, crucified Peter -- but by the sword, a cleaner death reserved, under Roman law, for a citizen.",
+   "new": {"stem": "pl_beheaded_nero", "tags": "paul, martyrdom, nero, tradition", "scene": "A sword resting across folded hands on a stone block, dramatic candlelight, no body shown, reverent and symbolic", "chars": []}
+  },
+  {
+   "narration": "Early Christian tradition places his burial on the Ostian Way, outside Rome, on the site where the Basilica of Saint Paul Outside the Walls now stands.",
+   "new": {"stem": "pl_san_paolo_burial", "tags": "paul, burial, basilica, rome", "scene": "A grand ancient basilica interior with tall columns and soft light from high windows, reverent and empty", "chars": []}
+  },
+  {
+   "narration": "Of the thirteen letters that carry his name, scholars broadly agree seven were written by Paul himself. The other six, including the letters to Timothy and Titus, many scholars think were written later by followers in his name -- the same pattern we saw with Peter's own letters.",
+   "reuse": "ep3_014_philo_writing_alexandria.png"
+  },
+  {
+   "narration": "So who was Paul of Tarsus? A man who once dragged believers from their homes, convinced he was serving God. A man who, after one blinding afternoon on a desert road, spent the rest of his life convinced of the opposite thing, just as completely.",
+   "new": {"stem": "pl_final_portrait", "tags": "paul, portrait, final, reflective", "scene": "A man standing alone on a rocky hillside at golden hour, looking out over a distant city, a worn traveling cloak moving in the wind, reflective expression", "chars": ["PL"]}
+  },
+  {
+   "narration": "Thirteen letters, three missionary journeys, three shipwrecks, and -- by his own count -- more floggings than anyone bothered to track. The persecutor who became the New Testament's most prolific writer, two thousand years on.",
+   "repeat": "pl_face_portrait"
+  }
+ ],
+ "short": [
+  {
+   "narration": "He once approved of a killing, dragging believers from their homes.",
+   "new": {"stem": "pl_face_close_short", "tags": "paul, portrait, hook", "scene": "Close-up portrait of Paul, stern intense expression, dim background", "chars": ["PL"]}
+  },
+  {
+   "narration": "Then a blinding light knocked him to the ground on the road to Damascus.",
+   "new": {"stem": "pl_damascus_light_short", "tags": "paul, damascus, light, conversion", "scene": "A robed man fallen on a desert road under an overwhelming burst of light from the sky, dramatic clouds", "chars": ["PL"]}
+  },
+  {
+   "narration": "Days later, he was preaching the very faith he had tried to destroy.",
+   "new": {"stem": "pl_preaching_short", "tags": "paul, preaching, synagogue", "scene": "A man speaking with conviction in a small stone synagogue interior, bewildered listeners", "chars": ["PL"]}
+  },
+  {
+   "narration": "Three missionary journeys. Three shipwrecks. Floggings he stopped counting.",
+   "new": {"stem": "pl_shipwreck_short", "tags": "paul, shipwreck, suffering", "scene": "A weathered man standing on a storm-battered shoreline amid broken ship timbers", "chars": ["PL"]}
+  },
+  {
+   "narration": "He wrote nearly half of the New Testament, often from prison.",
+   "new": {"stem": "pl_letters_short", "tags": "paul, letters, prison, writing", "scene": "A man under guard writing a letter at a small table, a soldier posted at the door", "chars": ["PL"]}
+  },
+  {
+   "narration": "Tradition says he was beheaded in Rome under Nero -- the same persecution that killed Peter.",
+   "new": {"stem": "pl_beheaded_short", "tags": "paul, martyrdom, nero, symbol", "scene": "A sword resting across folded hands on a stone block, candlelight, symbolic, no body shown", "chars": []}
+  },
+  {
+   "narration": "The persecutor who became Christianity's most influential missionary. Full story on the channel.",
+   "new": {"stem": "pl_back_hillside_short", "tags": "paul, ending, back view", "scene": "A man seen from behind on a rocky hillside at golden hour, looking out over a distant city", "chars": ["PL"]}
+  }
+ ],
+ "package": {
+  "long": {
+   "title": "Paul of Tarsus: The Persecutor Who Became an Apostle",
+   "description": "He once held the coats of men stoning a believer to death, and hunted down followers of a new faith house by house. Then a blinding light on the road to Damascus changed his mind completely.\n\nWe follow Paul of Tarsus from persecutor to the most consequential missionary of the early church -- the conversion, the escape in a basket over the Damascus wall, three missionary journeys across the Roman world, a sharp clash with Peter at Antioch, shipwrecks and floggings he listed himself, an arrest in Jerusalem, an appeal to Caesar, and a shipwreck off Malta -- before the documentary record falls silent and tradition takes over.\n\nWe separate what Acts and Paul's own letters actually record from the later tradition built on top of them.\n\nChapters (approximate):\n00:00 A persecutor in Jerusalem\n01:30 The road to Damascus\n03:00 From Saul to Paul\n04:45 The Jerusalem council, and the clash with Peter\n05:15 Macedonia, Philippi and Athens\n06:30 Ephesus, and the letters\n07:45 Arrest, trials, and an appeal to Caesar\n09:00 Shipwreck, Rome, and the silence of Acts\n09:45 Tradition: martyrdom and legacy\n\nNew figure from history every week -- subscribe so you don't miss the next one.\n\n#PaulOfTarsus #BibleHistory #HistoryDocumentary #AncientHistory #ApostlePaul #ChurchHistory",
+   "app_description": "He once dragged believers from their homes, convinced he was serving God. Then a blinding light on the road to Damascus changed his mind completely. We follow Paul of Tarsus from persecutor to missionary -- journeys, shipwrecks, a clash with Peter, and letters that make up nearly half the New Testament -- and separate Acts from later tradition.\n\nA new figure from history every week.",
+   "hashtags": ["PaulOfTarsus", "BibleHistory", "HistoryDocumentary", "AncientHistory", "ApostlePaul", "ChurchHistory"]
+  },
+  "short": {
+   "title": "He Persecuted Christians -- Then Became One #Shorts",
+   "description": "Paul of Tarsus once dragged believers from their homes. Then a blinding light on the road to Damascus changed everything. Full documentary on the channel.\n\n#Shorts #PaulOfTarsus #BibleHistory #History",
+   "hashtags": ["Shorts", "PaulOfTarsus", "BibleHistory", "History"]
+  }
+ },
+ "sources": [
+  "Acts 7:58-8:3 (Stephen's stoning, Saul's approval and the house-to-house persecution)",
+  "Acts 9:1-19; 22:3-16; 26:9-18 (the Damascus road, Ananias) -- three overlapping accounts in Acts itself",
+  "Galatians 1:11-24 (Paul's own account of his conversion and early years)",
+  "Acts 9:23-25; 2 Corinthians 11:32-33 (the escape over the Damascus wall in a basket)",
+  "Acts 11:19-26 (Antioch, believers first called 'Christians')",
+  "Acts 13-14 (first missionary journey: Cyprus, Pisidian Antioch, Lystra)",
+  "Acts 15; Galatians 2:1-10 (the Jerusalem council)",
+  "Galatians 2:11-14 (the confrontation with Peter at Antioch)",
+  "Acts 16 (Macedonian vision, Lydia, the Philippian jail and earthquake)",
+  "Acts 17:16-34 (Athens, the Areopagus, 'an unknown god')",
+  "Acts 18:1-18; 19:1-41 (Corinth, the Ephesus riot of Demetrius the silversmith)",
+  "1 & 2 Corinthians (letters written from Ephesus); 2 Corinthians 12:7-10 (the 'thorn in the flesh')",
+  "2 Corinthians 11:24-27 (Paul's own catalogue of sufferings)",
+  "Acts 21:27-22:29 (the Temple riot, arrest, and his Roman citizenship)",
+  "Acts 23:1-10 (before the Sanhedrin, Pharisees vs. Sadducees)",
+  "Acts 24 (two years in custody under Felix at Caesarea)",
+  "Acts 25-26 (Festus, Agrippa, and the appeal to Caesar)",
+  "Acts 27-28 (the shipwreck off Malta, the viper, and two years of house arrest in Rome)",
+  "Eusebius, Church History 2.25 (early tradition of Paul's beheading under Nero and burial on the Via Ostiense)",
+  "1 Clement 5 (c. 96 AD, an early reference pointing to Paul's martyrdom)",
+  "Modern scholarly consensus on seven undisputed Pauline letters versus six disputed (the Pastorals among them) -- the same authorship debate noted for 1 and 2 Peter in the previous episode"
+ ]
+}
