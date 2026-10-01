@@ -70,7 +70,16 @@ _SENTENCE_SPLIT_RE = re.compile(r"(?<=[.!?…])\s+")
 # a script has more sentences than this -- bounds worst-case wall-clock
 # time regardless of script length, at the cost of skipping a pause
 # between two sentences inside the same merged segment on longer scripts.
-_MAX_TTS_SEGMENTS = 8
+# Raised 8 -> 16 after a real, extensively-diagnosed Chapter 8 (VI) failure
+# (2026-09-30): one specific merged segment (~1200 chars, several sentences
+# joined) hit sustained NoAudioReceived failure streaks on Microsoft's free
+# endpoint far worse than shorter segments from the exact same script/voice
+# -- direct side-by-side testing repeatedly showed short (~1150 char)
+# segments succeeding almost immediately while this one failed 15/15
+# attempts. Smaller merged segments cost more total network round trips
+# (more wall-clock time under retries), but that's a smaller risk than one
+# oversized segment being unreliable enough to fail a whole run outright.
+_MAX_TTS_SEGMENTS = 16
 
 
 def _split_sentences(text: str) -> list[str]:
@@ -497,7 +506,18 @@ class EdgeTTSProvider(TTSProvider):
         # per-sentence calls): NoAudioReceived from Microsoft's free endpoint
         # arrives in bursts, so extra tries spaced further apart (and out of
         # lockstep with other parallel projects) recover almost all of them.
-        _SEGMENT_MAX_ATTEMPTS = 7
+        # Bumped 7 -> 15 after a real, extensively-diagnosed Chapter 8 (VI)
+        # failure (2026-09-30) traced to ONE specific merged segment (not the
+        # text content itself -- rewording, requoting, and re-ordering didn't
+        # change anything): a direct side-by-side script hammering that exact
+        # segment repeatedly showed real failure *streaks* of 3-6 consecutive
+        # NoAudioReceived responses before recovering, longer than 7 attempts
+        # can reliably absorb on a bad day. The existing backoff already caps
+        # per-attempt wait at 8s+jitter, so 15 attempts is still bounded
+        # (worst case ~2 extra minutes for one stubborn segment), and is
+        # cheap insurance against a whole run failing over a streak this
+        # provider has now been shown to actually produce.
+        _SEGMENT_MAX_ATTEMPTS = 15
         _SEGMENT_RETRY_BACKOFF_SEC = 2.0
         _SEGMENT_RETRY_BACKOFF_CAP_SEC = 8.0
 
