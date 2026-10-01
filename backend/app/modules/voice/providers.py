@@ -70,7 +70,8 @@ _SENTENCE_SPLIT_RE = re.compile(r"(?<=[.!?…])\s+")
 # a script has more sentences than this -- bounds worst-case wall-clock
 # time regardless of script length, at the cost of skipping a pause
 # between two sentences inside the same merged segment on longer scripts.
-# Raised 8 -> 16 after a real, extensively-diagnosed Chapter 8 (VI) failure
+# Raised 16 -> 24 after Chapter 9 (VI) failed twice with a ~1140-char merged
+# segment among 16 (shorter ones passed direct testing); raised 8 -> 16 after a real, extensively-diagnosed Chapter 8 (VI) failure
 # (2026-09-30): one specific merged segment (~1200 chars, several sentences
 # joined) hit sustained NoAudioReceived failure streaks on Microsoft's free
 # endpoint far worse than shorter segments from the exact same script/voice
@@ -79,7 +80,7 @@ _SENTENCE_SPLIT_RE = re.compile(r"(?<=[.!?…])\s+")
 # attempts. Smaller merged segments cost more total network round trips
 # (more wall-clock time under retries), but that's a smaller risk than one
 # oversized segment being unreliable enough to fail a whole run outright.
-_MAX_TTS_SEGMENTS = 16
+_MAX_TTS_SEGMENTS = 24
 
 
 def _split_sentences(text: str) -> list[str]:

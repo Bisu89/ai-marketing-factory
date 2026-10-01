@@ -103,7 +103,7 @@ chỗ, vốn đã không đủ cho cả nhóm gộp lại) hư hỏng, cần s�
 chết — nhưng kết thúc bằng một bí ẩn mới: Trung sĩ Baek bắt được một tín hiệu radio nhiễu sóng lạ,
 một giọng nói không rõ danh tính chỉ nói "Chúng chưa biến mất đâu" rồi mất sóng thành tiếng rè.
 
-**T9 "Tám Chỗ Ngồi"** (script xong, CSV 21 ảnh xong, **chưa dựng/render**): chờ sửa xe; bài toán 11 người / 8 ghế —
+**T9 "Tám Chỗ Ngồi"** (script + 21 ảnh + VI render xong, KO chưa làm): chờ sửa xe; bài toán 11 người / 8 ghế —
 Baek ra lệnh 7 dân thường + Kang lái, Yuri cãi lệnh và giành chỗ; cuối cùng 9 người nhồi vào xe 8 chỗ
 (bé gái ngồi lòng Cô Yoon), Baek + quân y ở lại trạm; bé gái ôm chiếc mũ len xám của người đàn ông to
 con, Jaehyun ngồi cạnh an ủi (để tang T6); con zombie thông minh xuất hiện đứng quan sát ở rìa cây rồi
@@ -139,7 +139,7 @@ Tất cả project dưới đây đã **render xong, QA PASS**. ID tra theo tên
 | 6 | 108 | 107 | |
 | 7 | 111 | 110 | |
 | 8 | **133** (bản render được, sau nhiều lần retry) | 122 | Project 123 (VI) là 14+ lần thử thất bại ban đầu — xem "Sự cố thật" bên dưới |
-| 9 | — | — | Mới có script + CSV; chưa tạo ảnh / dựng project |
+| 9 | **153** (render job 212, QA PASS 100) | chưa làm | 21 ảnh mới; TTS fail 2 lần → `_MAX_TTS_SEGMENTS` 16→24 rồi OK; cần `continue?force=true` để qua NEEDS_REVIEW (cảnh báo BODY liên tiếp, vô hại) |
 | Recap Short "Những Người Phụ Nữ Của Tận Thế" | 130 (54.85s) | 131 (56.38s, đã rút gọn khớp nhịp VI) | Tổng hợp cảnh hành động của Han/Soyeon/Mira/Yuri, 9:16, word_pop caption, không nhạc nền |
 
 ## Vị trí tài liệu
