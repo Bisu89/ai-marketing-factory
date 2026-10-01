@@ -47,22 +47,14 @@ Ephesus, kháng cáo lên Caesar, đắm tàu ở Malta, giam lỏng ở Rome (A
 chém đầu dưới Nero, mộ tại San Paolo fuori le Mura; tranh luận học thuật 7 thư thật/6 thư nghi ngờ.
 Project 146 (dài, 9:00) / 145 (short). Nhân vật mới (chỉ tập này): Barnabas, Ananias.
 
-## 6. John the Baptist — "Người dọn đường, bị chặt đầu vì một điệu nhảy" ✍️ SPEC ĐÃ VIẾT
+## 6. John the Baptist — "Người dọn đường, bị chặt đầu vì một điệu nhảy" ✅ ĐÃ LÀM
 
-**Hook:** Ông làm phép rửa cho chính Chúa Giêsu. Vài tháng sau, đầu ông nằm trên một cái mâm.
-**Đã ghi chép:** sinh ra muộn màng (cha mẹ già — Luke), sống khổ hạnh trong sa mạc, rao giảng ăn năn,
-làm phép rửa cho Jesus ở sông Jordan, công khai chỉ trích Herod Antipas cưới vợ của anh trai mình
-(Herodias), bị bỏ tù, bị chặt đầu vì lời hứa của Herod với con gái Herodias sau điệu nhảy (Mark
-không nêu tên cô, Josephus và truyền thống sau gọi là Salome).
-**Nguồn ngoài Kinh Thánh — điểm nhấn của tập:** Josephus (Antiquities 18.116-119) xác nhận việc John
-bị giết, nhưng ghi lý do khác: Herod sợ ảnh hưởng chính trị của ông, không nhắc gì tới điệu nhảy hay
-Herodias. Hai nguồn, hai động cơ — trình bày song song, không chọn phe.
-**Truyền thống:** đầu John được chôn/thờ ở nhiều nơi khác nhau (Damascus, Amiens...) — ví dụ tốt cho
-việc "thánh tích giả" nở rộ thời Trung Cổ.
-**Nhân vật mới:** JB (John the Baptist), HA (Herod Antipas đã có từ ep2), Herodias, con gái bà
-(Salome — không đặt tên trong lời kể nếu theo sát Mark, chỉ gọi "con gái của Herodias").
-**Tận dụng kho:** `herod_antipas_mocking` (ep2, đổi bối cảnh), `galilee_boat_dawn`/sông hồ (ep4).
-**Lưu ý:** đầu trên mâm — chỉ vẽ cái mâm phủ khăn hoặc cảnh trước/sau, không vẽ trực tiếp.
+Sinh ra muộn màng (Zechariah bị câm, Elizabeth), sống khổ hạnh sa mạc (giống Elijah), tự phủ nhận là
+Messiah/Elijah/Nhà Tiên Tri, làm phép rửa cho Jesus ở sông Jordan, chỉ trích Herod Antipas cưới
+Herodias, bị bỏ tù, nghi ngờ từ trong ngục. Trình bày song song 2 nguồn về cái chết: Mark (điệu nhảy +
+lời thề) và Josephus (Herod sợ ảnh hưởng chính trị, không nhắc Herodias). Truyền thống: thánh tích đầu
+John ở nhiều nơi (Damascus, Amiens). Project 148 (dài, 7:38) / 147 (short). Nhân vật mới: JB. HA/HD
+(Herod/Herodias) đã lên `bf_style.py` vĩnh viễn vì tái xuất ở Ep8.
 
 ## 7. Caiaphas — "Vị thầy tế tại vị lâu nhất, người quyết định số phận Chúa Giêsu"
 

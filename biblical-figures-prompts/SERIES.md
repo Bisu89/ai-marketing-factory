@@ -63,7 +63,7 @@ trong `bf_style.py` một lần duy nhất khi tập đó được viết.
 | 3 | Mary Magdalene | 126 / 127 | 9:58 | PASS 100 | 34 mới / 7 lặp / 4 kho | ✅ |
 | 4 | Simon Peter | 143 / 144 | 9:45 | PASS 100 | 34 mới / 2 lặp / 8 kho | ✅ |
 | 5 | Paul of Tarsus | 146 / 145 | 9:00 | PASS 100 | 34 mới / 1 lặp / 7 kho | ✅ |
-| 6 | John the Baptist | — | — | — | — | ✍️ spec+prompts xong, chờ tạo ảnh (`aigen 6`) |
+| 6 | John the Baptist | 148 / 147 | 7:38 | PASS 100 | 34 mới / 1 lặp / 3 kho | ✅ |
 | 7 | Caiaphas | — | — | — | — | ⏳ |
 | 8 | Herod Antipas | — | — | — | — | ⏳ |
 | 9 | Thomas | — | — | — | — | ⏳ |
@@ -74,7 +74,7 @@ trong `bf_style.py` một lần duy nhất khi tập đó được viết.
 | 14 | Herod the Great | — | — | — | — | ⏳ |
 | 15 | Stephen, the First Martyr | — | — | — | — | ⏳ (nối mạch với Ep5 Paul) |
 
-Kho ảnh hiện tại (`_pool/pool.csv`, 2026-10-01): **243 ảnh** — 153 `mini_low` (Ep2-5) dùng lại được,
+Kho ảnh hiện tại (`_pool/pool.csv`, 2026-10-01): **284 ảnh** — 194 `mini_low` (Ep2-6) dùng lại được,
 90 `cinematic` cũ (Ep1 + short Ep2) không trộn lẫn.
 
 ## Quy trình một tập (xem chi tiết ở RULES.md)
