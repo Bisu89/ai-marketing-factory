@@ -188,6 +188,7 @@ SQLite.
 156. [Readable output folder and video names](features/156-readable-output-names.md) — render folders become `job_<id>_<title>` and the final video `job_<id>_<title>.mp4` (was `job_<id>/output/video_hoan_chinh.mp4`), same for Storyteller episodes; existing folders are reused, never renamed
 157. [Remove unused features](features/157-remove-unused-features.md) — Viral Source Radar, News, Content Batches, Winner Detection, Competitor Analyzer, Affiliate Engine, Scene Cutter, Publishing (YouTube), Batches, Content Studio and Series deleted outright (code, routes, UI, settings, tests); Dashboard re-based on Project + latest FactoryRun; no database data dropped
 158. [zettruyen*.com fetch via headless browser](features/158-manhua-fetch-headless-browser.md) — Cloudflare on that site resets plain HTTP(S)/TLS-spoofed clients, so chapter HTML is now loaded via headless Chromium (Playwright); other sites unaffected
+159. [truyenqq.com.vn fetch support](features/159-manhua-fetch-truyenqq.md) — fourth supported manhua site for the chapter fetch; plain HTTP(S), no Cloudflare block, images from `sN.cc3t.net`
 
 ## Keeping this up to date
 

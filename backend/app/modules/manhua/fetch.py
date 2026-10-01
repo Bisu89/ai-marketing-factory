@@ -17,6 +17,9 @@ free ones (ch.11+ on Dai Quan Gia, 2026-09-28) come back with no images.
 zettruyen*.com (.../truyen-tranh/<slug>/chuong-N) serves pages from
 cdnN.zetimage.com/<slug>/<N>/<i>.jpg; that CDN answers 403 without a
 Referer from the site (hotlink protection), and /thumb/ holds sidebar covers.
+truyenqq.com.vn (.../<slug>/chapter-N, no "truyen-tranh/" segment) serves
+page images as <img data-src="https://sN.cc3t.net/chapters/...">; that CDN
+also 403s without a Referer, same as zettruyen.
 
 -- Recurring filler images --
 Every site inserts its own ad/domain-name/"read at ..."/anti-reup splash
@@ -196,6 +199,8 @@ def _chapter_page_urls(url: str, page=None) -> list[str]:
     elif "zettruyen" in url:
         urls = [u for u in dict.fromkeys(re.findall(r'(https?://cdn\d*\.zetimage\.com/[^"\'\s\\]+)', html))
                 if "/thumb/" not in u]
+    elif "truyenqq" in url:
+        urls = list(dict.fromkeys(re.findall(r'(https?://[\w.-]+\.cc3t\.net/chapters/[^"\'\s\\]+)', html)))
     else:
         urls = [u for u in re.findall(r'data-original="([^"]+)"', html) if COVER_PATH not in u]
     if not urls:

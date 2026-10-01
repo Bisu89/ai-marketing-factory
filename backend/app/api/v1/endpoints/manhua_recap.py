@@ -381,7 +381,7 @@ def create_manhua_script(payload: ManhuaScriptIn, settings: Settings = Depends(g
 
 class ManhuaFetchIn(BaseModel):
     url: str = Field(..., description="A chapter URL from a supported site "
-                                        "(manhuavn2.com, cotruyenday.com, zettruyen*.com)")
+                                        "(manhuavn2.com, cotruyenday.com, zettruyen*.com, truyenqq.com.vn)")
     chapter_dir: str = Field(..., description="Folder name under manhua-recap/, e.g. dqg_ep12")
     count: int = Field(default=1, ge=1, le=20, description="This chapter and the next count-1")
 

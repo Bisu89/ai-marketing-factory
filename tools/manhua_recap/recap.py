@@ -3,7 +3,7 @@
 Usage (backend running, with the backend venv's python):
     python recap.py fetch  <chapter_url> <chapter_dir> [--count N]
                                                           # download a chapter's page images (manhuavn2.com,
-                                                          # cotruyenday.com, zettruyen*.com);
+                                                          # cotruyenday.com, zettruyen*.com, truyenqq.com.vn);
                                                           # --count N = this chapter and the next N-1
     python recap.py script <chapter_dir> --mode premise   # multi-chapter "sell the series" recap
     python recap.py cut    <chapter_dir>                  # split pages into panels -> <chapter_dir>/_recap/panels/

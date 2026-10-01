@@ -115,7 +115,7 @@ export function ManhuaFetchPage() {
         </div>
 
         <p className="manhua-fetch-hint">
-          Hỗ trợ manhuavn2.com, cotruyenday.com, zettruyen*.com. Số chương &gt; 1 sẽ tải chương này và các chương kế
+          Hỗ trợ manhuavn2.com, cotruyenday.com, zettruyen*.com, truyenqq.com.vn. Số chương &gt; 1 sẽ tải chương này và các chương kế
           tiếp (link phải kết thúc bằng chuong-N / chapter-N).
         </p>
 
