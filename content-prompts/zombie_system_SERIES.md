@@ -103,7 +103,17 @@ chỗ, vốn đã không đủ cho cả nhóm gộp lại) hư hỏng, cần s�
 chết — nhưng kết thúc bằng một bí ẩn mới: Trung sĩ Baek bắt được một tín hiệu radio nhiễu sóng lạ,
 một giọng nói không rõ danh tính chỉ nói "Chúng chưa biến mất đâu" rồi mất sóng thành tiếng rè.
 
-## Nhánh truyện còn mở cho Tập 9
+**T9 "Tám Chỗ Ngồi"** (script xong, CSV 21 ảnh xong, **chưa dựng/render**): chờ sửa xe; bài toán 11 người / 8 ghế —
+Baek ra lệnh 7 dân thường + Kang lái, Yuri cãi lệnh và giành chỗ; cuối cùng 9 người nhồi vào xe 8 chỗ
+(bé gái ngồi lòng Cô Yoon), Baek + quân y ở lại trạm; bé gái ôm chiếc mũ len xám của người đàn ông to
+con, Jaehyun ngồi cạnh an ủi (để tang T6); con zombie thông minh xuất hiện đứng quan sát ở rìa cây rồi
+quay đi về hướng đông (không nhân hoá, không vội); radio sân vận động cuối cùng trả lời đúng mật hiệu
+("mất điện 3 tiếng"), Baek hỏi về đoạn đường phía đông nhưng không nói ra điều mình thấy; kết: Hệ Thống
+báo "Mục tiêu theo dõi... vị trí: phía trước" và nó đứng giữa đường nhựa chắn xe. Nhân vật mới: **Binh
+nhì Kang** (chính là "lính trẻ" T7-8, giờ có tên, thuộc đường đi sân vận động). Giọng radio bí ẩn T8 để
+mở tiếp, chưa giải thích.
+
+## Nhánh truyện còn mở cho Tập 9 (đã xử lý một phần ở T9 — xem trên; còn lại cho T10)
 
 - Xe hỏng chỉ chở được 8 người; nhóm gộp lại đã đông hơn thế và chưa ai bàn ai được lên xe.
 - Giọng nói radio bí ẩn ("Chúng chưa biến mất đâu") — cố tình để mơ hồ giữa đàn zombie / con zombie
@@ -129,6 +139,7 @@ Tất cả project dưới đây đã **render xong, QA PASS**. ID tra theo tên
 | 6 | 108 | 107 | |
 | 7 | 111 | 110 | |
 | 8 | **133** (bản render được, sau nhiều lần retry) | 122 | Project 123 (VI) là 14+ lần thử thất bại ban đầu — xem "Sự cố thật" bên dưới |
+| 9 | — | — | Mới có script + CSV; chưa tạo ảnh / dựng project |
 | Recap Short "Những Người Phụ Nữ Của Tận Thế" | 130 (54.85s) | 131 (56.38s, đã rút gọn khớp nhịp VI) | Tổng hợp cảnh hành động của Han/Soyeon/Mira/Yuri, 9:16, word_pop caption, không nhạc nền |
 
 ## Vị trí tài liệu
