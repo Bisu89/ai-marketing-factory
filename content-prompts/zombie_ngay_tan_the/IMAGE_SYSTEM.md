@@ -214,7 +214,7 @@ Danh sách sơ bộ cho 4 tập đầu:
 **TẬP 1**
 1. Taeho nghiêm trang trong quân phục, chứng kiến thử nghiệm (BG-17 + [TAEHO_QUÂN_PHỤC]).
 2. Minseo khóc sau tấm kính phòng thí nghiệm, Taeho đi ngang (BG-14).
-3. Minseo nhét ổ cứng vào tay Taeho (cận cảnh hai bàn tay).
+3. Minseo nhét thẻ nhớ vào tay Taeho (cận cảnh hai bàn tay).
 4. Đại tá Choi đưa quyết định kỷ luật cho Taeho (BG-18).
 5. Taeho bước tới nhà Dahee, mưa phùn (BG-16).
 6. Dahee bước xuống xe quân đội, Taeho nấp nhìn.
@@ -252,7 +252,7 @@ Danh sách sơ bộ cho 4 tập đầu:
 2. Cả nhóm đi men đường ray trong hầm (BG-13).
 3. Minseo chĩa ống tiêm từ bóng tối (BG-12).
 4. Yerin ôm Minseo (cảm xúc).
-5. Taeho đưa ổ cứng ra, hai người nhìn nhau.
+5. Taeho đưa vỏ thẻ quân nhân chứa thẻ nhớ ra, hai người nhìn nhau.
 6. Loa phóng thanh quân đội trên sảnh ga.
 7. Choi + Dahee + đội lính xuất hiện ở cửa ga.
 8. Dahee nhìn Taeho sửng sốt.

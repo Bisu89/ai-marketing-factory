@@ -58,7 +58,7 @@
              /                      |                        \
         KANG TAEHO ──(người yêu cũ, phản bội)── BAEK DAHEE     LEE MINSEO
              |   \                                   (trợ lý Choi)   |  (nhà khoa học
-             |    \__ Minseo đã gửi ổ cứng bằng chứng __________/    |   thoát khỏi viện)
+             |    \__ Minseo đã gửi thẻ nhớ bằng chứng __________/    |   thoát khỏi viện)
              |                                                        |
              |   Taeho từng được Yerin khâu vết thương ở bệnh viện dã chiến (5 năm trước)
              |                                                        |
@@ -71,7 +71,7 @@
        (cung thủ quốc gia)               (giáo viên)
 ```
 
-**Cách Taeho bị cuốn vào:** Lúc còn là lính gác ở Cheonma, **Minseo lén nhét ổ cứng bằng chứng** vào tay anh ("đưa cho người có thể công bố nó"). Anh định báo cáo cấp trên → bị Đại tá Choi dựng chuyện, loại ngũ. Dahee (người yêu) chính là người nghe lén và báo lại cho Choi. Mọi người sau đó gặp nhau gần như tình cờ nhưng thật ra đều kết nối qua Minseo, Yerin, Choi.
+**Cách Taeho bị cuốn vào:** Lúc còn là lính gác ở Cheonma, **Minseo lén nhét thẻ nhớ bằng chứng** vào tay anh ("đưa cho người có thể công bố nó"). Anh định báo cáo cấp trên → bị Đại tá Choi dựng chuyện, loại ngũ. Dahee (người yêu) chính là người nghe lén và báo lại cho Choi. Mọi người sau đó gặp nhau gần như tình cờ nhưng thật ra đều kết nối qua Minseo, Yerin, Choi.
 
 ---
 
@@ -220,18 +220,43 @@ Tiến triển năng lực của Taeho: từ "quân nhân làm theo giáo án" �
 
 ### TẬP 1 — "Người Lính Bị Loại" (Đêm Ngày 0)
 
-**Mục tiêu tập:** thiết lập Taeho, nỗi oan, sự phản bội, sự cố viện nghiên cứu. Chưa có nhóm.
+**Mục tiêu tập:** thiết lập Taeho, AEGIS-7, vụ hãm hại khiến anh bị loại khỏi quân ngũ, sự phản bội của Dahee, và cho thấy sự cố ở Cheonma bắt đầu lan ra ngoài. Chưa có nhóm.
 
-1. **Mở đầu (00:00–00:40):** Màn đen, tiếng thở dốc, ichor đen nhỏ giọt. Câu mở: _"Tôi đã báo cáo sự thật. Đáng lẽ tôi nên im lặng."_ (cắt ngay sang hồi tưởng 3 ngày trước).
-2. **Hồi tưởng (T−3 ngày):** Taeho, thượng sĩ đội đặc nhiệm, được điều đi gác ngoại vi viện Cheonma. Chứng kiến lính tình nguyện **bị tiêm AEGIS-7** — hồi đầu tăng sức mạnh thấy rõ, vài ngày sau co giật, mắt trắng đục, bị nhốt. Anh thấy một nhà khoa học nữ (Minseo) khóc sau kính. Minseo lén nhét **ổ cứng nhỏ** vào túi anh khi đi ngang: _"Đưa cho người sẽ công bố."_
-3. **Phản bội 1 (quân đội):** Taeho báo cáo lên chỉ huy, Đại tá Choi **dựng chứng cứ giả (bạo hành cấp dưới)** → **kỷ luật loại khỏi quân ngũ**. Bị tước quân hàm. Câu thoại đáng nhớ của Choi: _"Anh biết quá nhiều so với một thượng sĩ."_
-4. **Hiện tại (Ngày 0, 17:00):** Taeho lái xe về Seoryeong với ổ cứng giấu kín, định gặp người yêu **Baek Dahee** và cầu hôn — vì nghĩ cô là người duy nhất còn ở lại bên mình.
-5. **Phản bội 2 (người yêu):** Taeho tới nhà, thấy Dahee bước xuống xe quân đội của Choi, nghe lén cuộc nói chuyện: _"Anh ấy vẫn giữ ổ cứng. Em đã báo như anh dặn."_ Cô là người báo cáo mọi động thái của anh. Anh bỏ nhẫn xuống rãnh, rời đi, trái tim đóng băng.
-6. **Cảnh song song — viện Cheonma (19:42):** Minseo cố gửi dữ liệu ra ngoài; Subject-03 (lính thử nghiệm) phá cửa kính, **cắn hai bác sĩ**. Hai bác sĩ chết rồi đứng dậy. Báo động đỏ, Minseo giấu **ống mẫu gốc** vào hộp kim loại, chạy theo hầm dịch vụ. Choi ra lệnh **phong toả nội bộ, không cho ai ra** — kể cả nhân viên còn sống.
-7. **Cuối tập (cliffhanger):** Taeho dừng xe trên đường vành đai, điện thoại bị ngắt sóng. Còi xe cứu thương hỗn loạn. Từ bóng tối, một người dân chạy ra, **cổ chảy ichor đen**, lao vào kính xe. Taeho rút dao găm. Câu kết: _"Tôi từng nghĩ ngày tồi tệ nhất là hôm bị đuổi khỏi quân ngũ. Tôi đã sai."_
+1. **Mở đầu (00:00–00:40):** màn đen. Tiếng thở gấp. Một giọt ichor đen rơi xuống sàn, tiếng kim loại gõ dồn dập. Taeho thở dốc trong bóng tối.
+   *"Tôi đã báo cáo sự thật."* (im lặng) *"Đáng lẽ tôi nên im lặng."*
+   Cắt: **T−3 ngày.** (Cảnh mở chính là đoạn cliffhanger cuối tập — khán giả sẽ nhận ra ở cuối.)
 
-- **Zombie xuất hiện:** Walker (cuối tập), Runner (một lần ở viện).
-- **Hình ảnh then chốt:** hồi tưởng trong viện, cảnh Taeho thả nhẫn, Subject-03 phá kính.
+2. **T−3 ngày, viện Cheonma:** Taeho, thượng sĩ, được điều tới gác khu ngoại vi. Anh thấy một nhóm lính tình nguyện được đưa vào khu thử nghiệm AEGIS-7. Ban đầu họ khoẻ lên rõ rệt: sức mạnh, phản xạ. Vài ngày sau, một người co giật dữ dội, mất nhận thức, bị nhốt sau lớp kính. Taeho nhận ra quân đội đang giấu điều gì đó.
+
+3. **Minseo trao bằng chứng:** trong lúc Taeho đi qua khu nghiên cứu, Minseo chặn anh lại và đưa **một thẻ nhớ nhỏ**: phim thử nghiệm AEGIS-7, những người lính sau khi biến đổi, và tài liệu cho thấy cấp trên đã biết thử nghiệm có vấn đề.
+   *"Đừng đưa nó cho quân đội."* — *"Vậy tôi đưa cho ai?"* — (Minseo nhìn anh vài giây) *"Người có thể đưa nó ra ngoài."*
+   Đêm đó, Taeho **chép một bản sao vào một thẻ nhớ siêu nhỏ giấu trong vỏ thẻ quân nhân của mình**, rồi gọi cho Dahee báo rằng anh gặp chuyện lớn ở căn cứ và sẽ kể khi gặp. *(Đây là cách Dahee biết — gài sẵn cho cảnh 9.)*
+
+4. **Báo cáo và thẩm vấn:** Taeho báo cáo điều mình thấy lên cấp trên. Vài giờ sau anh bị gọi đi thẩm vấn. Choi xuất hiện, thái độ đã khác hẳn.
+
+5. **Bị đánh ngất:** sau buổi thẩm vấn, một nhóm quân nhân áp giải anh đi. Anh chống cự. Một cú đánh vào đầu. **Màn hình tối.**
+
+6. **Tỉnh lại:** Taeho tỉnh trong một phòng quân sự, đầu đau dữ dội. Trên sàn là một quân nhân bị thương, áo Taeho dính máu, con dao của anh nằm cạnh người đó, camera an ninh đang ghi. Một sĩ quan bước vào đọc cáo buộc: tấn công cấp dưới, gây thương tích cho quân nhân, chống lệnh, xâm nhập khu hạn chế, lấy cắp tài liệu mật. Taeho phủ nhận tất cả và hỏi: *"Thẻ nhớ đâu?"* Không ai trả lời. Choi xuất hiện sau lớp kính, chỉ nhìn anh: *"Anh đang nói về thứ gì?"*
+   *(Thẻ nhớ gốc bị tịch thu khi anh bất tỉnh; họ không biết anh còn bản sao trong vỏ thẻ quân nhân.)*
+
+7. **Bị loại khỏi quân ngũ:** hồ sơ hoàn tất rất nhanh. Taeho bị tước quân hàm, loại khỏi quân ngũ, không có cơ hội giải thích. Trước khi rời Cheonma anh thấy Choi từ xa. Choi nói: *"Có những chuyện anh càng biết nhiều, càng khó sống bình thường."* Đồ cá nhân trả lại, kể cả con dao riêng để trong cốp xe (con dao trong phòng là dao cấp phát, dùng để dựng hiện trường).
+
+8. **Ngày 0, 17:00:** Taeho lái xe về Seoryeong. Anh không biết Minseo còn sống hay không. Anh chỉ muốn gặp Dahee — người duy nhất anh nghĩ mình còn có thể tin. Trong xe, anh lấy chiếc nhẫn cầu hôn ra nhìn.
+
+9. **Phản bội của Dahee:** Taeho tới gần nhà cô nhưng chưa bước vào. Một chiếc xe quân sự dừng trước nhà, Dahee bước xuống, Choi ngồi bên trong. Anh nghe được một phần cuộc nói chuyện:
+   Dahee: *"Anh ấy vẫn giữ thứ đó."* Choi: *"Cô chắc chứ?"* Dahee: *"Em đã báo lại mọi chuyện, như anh dặn. Giờ anh giữ lời với em."*
+   (Câu cuối chỉ gợi ý có thoả thuận ngầm — mở đường cho hướng chuộc lỗi sau này, **không giải thích trong Tập 1**.)
+   Taeho đứng chết lặng. Không đối chất, không lời giải thích. Anh đặt chiếc nhẫn xuống rãnh nước rồi quay đi.
+
+10. **19:42, Cheonma:** Minseo cố gửi dữ liệu ra ngoài, thanh tải lên dừng giữa chừng. Có tiếng đập mạnh từ khu thử nghiệm. Subject-03 phá cửa kính, một bác sĩ bị cắn, người thứ hai bỏ chạy nhưng bị kéo ngã. Báo động đỏ vang khắp cơ sở. Minseo lấy **mẫu gốc** chạy xuống hầm dịch vụ.
+    Choi nhận báo cáo qua điện đàm **khi đang trên xe trở về căn cứ** (ông ta rời nhà Dahee từ chiều): *"Phong toả toàn bộ cơ sở."* Một sĩ quan: *"Nhưng vẫn còn người bên trong."* Choi im lặng vài giây. *"Tôi nói toàn bộ."*
+
+11. **Cliffhanger:** Taeho dừng xe trên đường vành đai, điện thoại mất sóng, thành phố phía trước bắt đầu hỗn loạn, xe cứu thương liên tục chạy qua. Một người đàn ông lao ra từ bóng tối, cổ đầy ichor đen, đập mạnh vào kính xe — **trùng với cảnh mở đầu**. Taeho đưa tay xuống con dao. Cắt đen.
+    *"Tôi từng nghĩ ngày tồi tệ nhất là hôm tôi bị loại khỏi quân ngũ."* (một tiếng đập nữa) *"Tôi đã sai."*
+    **HẾT TẬP 1.**
+
+- **Zombie xuất hiện:** Walker ở cuối tập; dạng chuyển hoá nhanh xuất hiện ở Cheonma nhưng chưa cần gọi tên Runner.
+- **Hình ảnh then chốt:** phòng thử nghiệm AEGIS-7, Minseo trao thẻ nhớ, Taeho tỉnh lại sau khi bị đánh ngất, hồ sơ cáo buộc giả, Taeho bỏ nhẫn, Subject-03 phá kính, Cheonma phong toả, người nhiễm lao vào xe.
 
 ### TẬP 2 — "Đêm Thành Phố Chết" (Ngày 0, đêm)
 
@@ -266,7 +291,7 @@ Tiến triển năng lực của Taeho: từ "quân nhân làm theo giáo án" �
 
 1. **Mở đầu (rạng sáng):** nhóm trú tạm trong tiệm tạp hoá. **Cảnh nghỉ ngơi đầu tiên**: Jiwoo viết nhật ký, Areum mài tên, Yerin băng cổ chân cho Jiwoo, Taeho đứng gác. Cảnh để khán giả gắn bó nhân vật. Yerin hỏi Taeho: _"Anh là ai trước khi mọi chuyện bắt đầu?"_ — Taeho chỉ nói: _"Một người lính đã bị loại."_
 2. **Xuống tàu điện ngầm Euljiro:** nhóm vào hầm ga ngập tối, đi men đường ray. **Minseo** bất ngờ chĩa ống tiêm vào họ từ bóng tối — cô nghĩ họ là lính truy sát. Yerin nhận ra: _"Minseo, là tớ đây."_ — hai bạn cũ ôm nhau.
-3. **Sự thật AEGIS-7 (hé một phần):** Minseo giải thích: virus được chế để tăng sức mạnh nhưng **gây chết não rồi tái hoạt hoá**. Cô là nguồn đã gửi ổ cứng cho Taeho — Taeho kéo ổ cứng ra từ balo, cả hai nhìn nhau: **mảnh ghép cuối cùng khớp**. _"Anh là người duy nhất tôi dám đưa."_
+3. **Sự thật AEGIS-7 (hé một phần):** Minseo giải thích: virus được chế để tăng sức mạnh nhưng **gây chết não rồi tái hoạt hoá**. Cô là nguồn đã gửi thẻ nhớ cho Taeho — Taeho kéo thẻ nhớ ra từ balo, cả hai nhìn nhau: **mảnh ghép cuối cùng khớp**. _"Anh là người duy nhất tôi dám đưa."_
 4. **Cuộc chạm trán:** loa phóng thanh quân đội vang lên: **"Phong toả thành phố lúc 06:00 sáng Ngày 4"** — nghĩa là họ chỉ còn ba ngày. Cùng lúc, **một đội lính do Đại tá Choi dẫn** xuất hiện ở cửa ga. Bên cạnh Choi là **Baek Dahee**. Dahee kinh hãi nhìn Taeho: _"Anh còn sống..."_ Taeho vẫn chưa phản ứng — chỉ nhìn Choi.
 5. **Cao trào:** Choi ra lệnh bắt Minseo "vì lý do an ninh quốc gia". Taeho từ chối. Choi cười: _"Anh nghĩ tôi cần mạng của anh sao?"_ — ra hiệu cho một người lính **tháo mũ**: gương mặt xám, mắt trắng — **Thể Giáp (Aegis Soldier)**, lính cường hoá hoàn toàn. Hắn lao vào. Cả nhóm chống cự: Areum bắn khớp gối, Taeho đâm sau gáy, Yerin kéo Minseo tránh, Jiwoo bật tất cả đèn khẩn cấp làm choáng zombie mắt nhạy sáng. Họ chỉ **thoát bằng cách đánh sập trần tàu điện ngầm**.
 6. **Cuối tập (cliffhanger):** trong bóng đen đường hầm sau lưng họ, một bóng người đứng im — **da còn nguyên, ánh mắt cố định**, **đang quan sát nhóm**. Đó là **Kẻ Săn Mồi đầu tiên** (Stalker). Nó không đuổi. Nó chỉ nhìn. Câu kết của Taeho: _"Mới chỉ là ngày đầu tiên."_
