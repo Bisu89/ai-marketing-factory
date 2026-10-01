@@ -90,11 +90,12 @@ lớn hơn xoay quanh phủ Bá tước Huyền Vũ (gia tộc Kim Mộc Lan —
 |---|---|---|---|
 | Long 01 (16:9) | Tóm tắt tập 1–10, 122 beat, 10 phần | `long01_script.json` | ✅ project 149 / job_209, Final QA PASS 100 |
 | Short tóm tắt 1 (9:16) | 13 beat, tóm tắt cả 10 tập | `short_summary_script.json` | ✅ project 150 / job_208, Final QA PASS 100 |
-| Long 02 (16:9) | Tóm tắt tập 11–20, 117 beat, 10 phần | `long02_script.json` | ✅ project 151 / run 197 |
-| Short tóm tắt 2 (9:16) | 12 beat, tóm tắt tập 11–20 | `short_summary2_script.json` | ✅ project 152 / run 198 |
+| Long 02 (16:9) | Tóm tắt tập 11–20, 117 beat, 10 phần | `long02_script.json` | ✅ project 151 / job_211, Final QA PASS 100 |
+| Short tóm tắt 2 (9:16) | 12 beat, tóm tắt tập 11–20 | `short_summary2_script.json` | ✅ project 152 / job_210, Final QA PASS 100 |
 
 Mục lục thời gian Long 01: 0:00 Tập 1 / 0:29 Tập 2 / 1:15 Tập 3 / 1:58 Tập 4 / 2:40 Tập 5 / 3:24 Tập 6 / 4:14 Tập 7 / 4:57 Tập 8 / 5:42 Tập 9 / 6:37 Tập 10.
-Build đa thư mục panel bằng script scratchpad gọi API (recap.py build chỉ nhận một thư mục). job_id/QA của Long 02 và Short 2 sẽ cập nhật sau khi render xong.
+Mục lục thời gian Long 02: 0:00 Tập 11 / 0:47 Tập 12 / 1:29 Tập 13 / 2:09 Tập 14 / 2:54 Tập 15 / 3:37 Tập 16 / 4:19 Tập 17 / 5:06 Tập 18 / 5:47 Tập 19 / 6:34 Tập 20.
+Build đa thư mục panel bằng script scratchpad gọi API (recap.py build chỉ nhận một thư mục).
 
 ## Nhật ký
 
@@ -104,3 +105,5 @@ Build đa thư mục panel bằng script scratchpad gọi API (recap.py build ch
   xác nhận là nội dung khác, bỏ qua theo yêu cầu chủ dự án, chưa rõ vị trí thật trong trình tự.
 
 - 2026-10-01: viết `ep01..ep10/script.json` (10 tập), dựng Long 01 + Short tóm tắt. Cả hai render qua ngay lần đầu, phải force-continue qua NEEDS_REVIEW như thường lệ.
+
+- 2026-10-01: viết `ep11..ep20/script.json` (10 tập), dựng Long 02 + Short tóm tắt 2. Cả hai render qua ngay lần đầu, force-continue qua NEEDS_REVIEW như thường lệ.
