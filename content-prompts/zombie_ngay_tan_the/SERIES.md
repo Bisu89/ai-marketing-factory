@@ -260,16 +260,29 @@ Tiến triển năng lực của Taeho: từ "quân nhân làm theo giáo án" �
 
 ### TẬP 2 — "Đêm Thành Phố Chết" (Ngày 0, đêm)
 
-**Mục tiêu tập:** vào thành phố, gặp Jiwoo, thấy Areum xuất hiện (qua điện thoại), hệ thống zombie được giải thích bằng hành động. Đồng thời mở nhánh Yerin.
+**Mục tiêu tập:** cho thấy Seoryeong thực sự sụp đổ, Taeho bắt đầu thích nghi với quy luật zombie (và mắc sai lầm đầu tiên), gặp Jiwoo, mở tuyến Yerin. Cuối tập giới thiệu Areum như một ẩn số.
 
-1. **Mở đầu:** cầu sông Hanyeon kẹt xe hàng km, người bỏ xe chạy. Taeho đi bộ, **dùng tiếng ồn làm mồi nhử** dẫn Walker đi chỗ khác — bài học tiếng ồn.
-2. **Gặp Jiwoo:** trường trung học Seoryeong, 20:30, họp giáo viên vừa tan. Jiwoo ở lại một mình chấm bài thì nghe tiếng hét ngoài hành lang. Đồng nghiệp bị cắn, chuyển hoá trước mặt cô. Cô **dùng cặp táp chặn cửa**, trốn vào phòng văn thư. Taeho đi qua trường trên đường tìm lối ra, cứu cô khỏi Runner. Jiwoo: _"Tôi phải tìm em gái, nó đang tập ở trường bắn cung quốc gia."_
-3. **Cảnh song song — Yerin ở bệnh viện:** ca trực đêm cấp cứu quá tải; hai bệnh nhân bị cắn cùng vết, một người đã chuyển hoá giữa phòng cấp cứu. Yerin **ra lệnh cách ly** nhưng bị giám đốc ép tiếp tục tiếp nhận. Cô phát hiện mối liên hệ: tất cả đều đến từ **hướng núi Cheonma**. Cô gọi cho **bạn cũ Minseo** — máy bận; Minseo đang chạy trốn.
-4. **Bước ngoặt:** trên đường đến trung tâm bắn cung, Taeho & Jiwoo đụng phải đàn Walker cả trăm con trong khu mua sắm. Taeho chỉ huy cách thoát: **đi men tường, tắt đèn, dùng chai nước làm ném nhử**. Jiwoo bất ngờ **nhớ đường tắt qua hầm gửi xe** → lần đầu họ hiểu nhau như một đội.
-5. **Cuối tập (cliffhanger):** họ đến cổng trung tâm bắn cung. Cổng khoá từ bên trong. Trên mái nhà, một bóng người giương cung ngắm thẳng vào đầu Taeho. Giọng Jiwoo vỡ ra: _"Areum, là chị đây!"_ — **mũi tên rời dây cung.** Cắt.
+1. **Mở đầu — Thành phố sụp đổ (00:00–01:30):** xe đâm nối tiếp nhau giữa phố, một chiếc bốc cháy, khói đen phủ kín. Còi xe và tiếng la hét vang giữa các dãy nhà. Zombie tràn ra từ hẻm và cửa hàng, lao vào đám đông, cắn những người không kịp chạy. Một người đàn ông vừa chạy vừa ngoái lại, một Walker bổ tới — **cắt.** Taeho xuất hiện giữa dòng người đang tháo chạy.
+   Xe của Taeho (từ cuối Tập 1) kẹt cứng giữa đường vành đai dẫn vào thành phố; anh bỏ xe, đi bộ vào trung tâm. Anh chưa có đích đến, chỉ biết phải đi qua thành phố để ra phía nam.
+
+2. **Cây cầu sông Hanyeon — sai lầm đầu tiên của Taeho:** cầu kẹt xe hàng km, người bỏ xe chạy bộ. Một đàn Walker chặn lối giữa cầu. Taeho không đánh trực diện: anh ném một chiếc điện thoại đang đổ chuông vào xe phía xa, kéo cả đàn sang hướng đó rồi lách qua. **Cách này hiệu quả với Walker — nhưng anh không tính tới tiếng ồn vọng xa trong thành phố vắng.** Từ phía sau, một tiếng gầm gừ rất nhanh tiến lại gần. Anh nhận ra thứ chạy tới không phải Walker, nhưng chưa hiểu nó là gì. Anh bỏ chạy khỏi cầu.
+
+3. **Gặp Jiwoo — trường trung học Seoryeong (20:30):** học sinh đã về từ chiều; cuộc họp giáo viên vừa kết thúc. Jiwoo ở lại một mình trong phòng giáo viên chấm bài. Một tiếng hét vang ngoài hành lang. Cô mở cửa nhìn ra: một đồng nghiệp bị người khác tấn công, gục xuống. Vài phút sau anh ta đứng dậy. Jiwoo đóng cửa, dùng bàn ghế và cặp táp chặn lối vào, trốn vào phòng văn thư. Tiếng đập cửa ngày càng mạnh.
+   Taeho tìm chỗ ẩn tránh con thứ đang đuổi mình nên chui vào khu trường, nghe thấy tiếng động và phát hiện Jiwoo kẹt trong đó. **Thứ đuổi theo anh cũng tới nơi: một Runner** lao qua hành lang, đúng lúc cánh cửa chặn của Jiwoo bắt đầu bung. Taeho hạ nó bằng dao găm, chỉ cách Jiwoo vài bước.
+   Jiwoo run rẩy nhưng không gào lên; cô hỏi anh ngay một câu: *"Anh có chắc là nó đuổi theo anh không?"* Taeho im lặng — lần đầu cô hiểu anh vừa cứu mình, vừa gần như đưa nó tới. Nhưng cô vẫn nói: *"Tôi phải tìm em gái tôi. Nó đang tập ở trung tâm bắn cung quốc gia."* Taeho: *"Tôi đang đi hướng đó."* (nói dối một nửa — anh chưa có hướng nào cả.)
+   Trước khi rời trường, Taeho cho Jiwoo biết điều đầu tiên anh chắc chắn về chúng: *những kẻ bị cắn xong chạy được thì chạy nhanh, còn những con đã lâu thì đi lê. Khác nhau ở chỗ virus còn mới hay không.* — đây là lúc nhóm thấy hai dạng Walker/Runner khác nhau (không gọi tên tập này).
+
+4. **Cảnh song song — Yerin ở bệnh viện:** khoa cấp cứu quá tải, người bị thương nằm khắp hành lang. Một bệnh nhân bị cắn đột ngột chuyển hoá giữa khu cấp cứu. Yerin lập tức yêu cầu cách ly, nhưng giám đốc ép tiếp tục tiếp nhận vì "chưa có lệnh". Bệnh viện không còn đủ nhân lực kiểm soát. Yerin nhận ra mọi ca bệnh đều có chung một điểm bất thường (vết cắn tiến triển nhanh hơn dự kiến; bệnh nhân đầu tiên đến từ hướng núi Cheonma). Cô cố gọi cho Minseo — **không liên lạc được.**
+
+5. **Taeho & Jiwoo — khu mua sắm mất điện:** hai người rời trường tìm đường tới trung tâm bắn cung, vào một khu mua sắm mất điện. Phía trước là đàn Walker kín đường. Lần này Taeho **không dùng tiếng ồn.** Anh tắt hết nguồn sáng, cho Jiwoo bước men theo tường bằng chân trần (tháo giày bệt), dẫn họ qua vùng tối. Nhưng đường thoát bị chặn bởi một đống kệ đổ. Jiwoo nhận ra họ đang gần cửa xuống **hầm gửi xe** mà cô từng đi qua nhiều lần, và dẫn Taeho qua đường tắt. Đây là lần đầu hai người phối hợp thành một đội: một người biết đường, một người biết cách đi.
+   Trong hầm, Taeho kiểm tra mọi lối ra trước khi để cô bước vào — một chi tiết nhỏ Jiwoo để ý.
+
+6. **Cliffhanger — Trung tâm bắn cung:** họ tới trước trung tâm. Cổng chính khoá từ bên trong, không một tiếng người. Taeho tiến lên. Một bóng người xuất hiện trên mái nhà: một cô gái giương cung, mũi tên hướng thẳng vào Taeho. Jiwoo nhận ra em mình.
+   **"Areum... là chị đây!"**
+   Ngón tay buông dây. **Mũi tên lao xuống.** Cắt đen.
 
 - **Zombie xuất hiện:** Walker, Runner.
-- **Hình ảnh then chốt:** cầu sông kẹt xe, trường học đêm, ER của Yerin, đám đông Walker trong trung tâm thương mại, bóng cung thủ trên mái.
+- **Hình ảnh then chốt:** thành phố hỗn loạn và cháy nổ, Taeho bỏ xe ở vành đai, cầu sông kẹt xe và chiếc điện thoại ném đi, trường học ban đêm, Jiwoo kẹt trong phòng văn thư, Runner lao qua hành lang, ER quá tải của Yerin, khu mua sắm mất điện, hầm gửi xe, trung tâm bắn cung và Areum trên mái nhà.
 
 ### TẬP 3 — "Mũi Tên Và Con Dao Mổ" (đêm sang rạng sáng Ngày 1)
 
