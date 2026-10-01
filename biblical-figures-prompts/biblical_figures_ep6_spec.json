@@ -1,0 +1,233 @@
+{
+ "episode": 6,
+ "figure": "John the Baptist",
+ "cast": [
+  "baptist",
+  "jesus",
+  "herod",
+  "herodias"
+ ],
+ "characters": {},
+ "thumbnail": {
+  "stem": "jb_face",
+  "scene": "John the Baptist's face in close-up, intense prophetic expression, dim wilderness background",
+  "chars": ["JB"]
+ },
+ "reference": {
+  "stem": "jb_reference",
+  "scene": "Character reference portrait of John the Baptist, facing the camera in a neutral three-quarter view, shoulders up, plain background, soft even light so every facial detail is clear",
+  "chars": ["JB"]
+ },
+ "long": [
+  {
+   "narration": "He baptized Jesus himself in the Jordan River. Months later, his head was presented on a platter at a party.",
+   "new": {"stem": "jb_face_portrait", "tags": "baptist, portrait, hook", "scene": "Portrait of John the Baptist from the chest up, intense weathered face, wild hair, dim wilderness light", "chars": ["JB"]}
+  },
+  {
+   "narration": "His mother Elizabeth was a relative of Mary, the mother of Jesus. Luke's Gospel says that when Mary, newly pregnant herself, came to visit, John leapt in his mother's womb, months before either child was born.",
+   "new": {"stem": "jb_birth_and_visitation", "tags": "elizabeth, mary, visitation, pregnancy", "scene": "Two pregnant women embracing warmly in a modest Judean courtyard doorway, soft afternoon light", "chars": []}
+  },
+  {
+   "narration": "Tonight we follow a wilderness preacher who baptized the man Christianity would come to worship, confronted a king to his face, and paid for it with his head.",
+   "new": {"stem": "judean_wilderness_establishing", "tags": "wilderness, judea, establishing", "scene": "A harsh, rocky wilderness landscape under a wide sky, sparse vegetation, early morning light, no figures", "chars": []}
+  },
+  {
+   "narration": "Months before that visit, Luke says, an angel had appeared to an elderly priest named Zechariah while he was on duty in the Temple, promising him a son in his old age. Zechariah doubted it -- and was struck mute on the spot.",
+   "new": {"stem": "jb_zechariah_announcement", "tags": "zechariah, angel, temple, silence", "scene": "An elderly priest recoiling in shock before a bright figure inside a dim Temple sanctuary, incense smoke curling upward", "chars": []}
+  },
+  {
+   "narration": "When the boy was born, the relatives assumed he'd be named after his father. Elizabeth insisted on John instead. Zechariah, still unable to speak, confirmed it in writing -- and got his voice back the instant he did.",
+   "new": {"stem": "jb_naming_zechariah_speaks", "tags": "zechariah, elizabeth, naming, voice restored", "scene": "A mute elderly man writing on a wax tablet surrounded by astonished relatives in a modest home, a woman holding a newborn nearby", "chars": []}
+  },
+  {
+   "narration": "He grew up and, at some point, withdrew into the wilderness entirely. Mark's Gospel says he lived there dressed in camel's hair with a leather belt, eating locusts and wild honey.",
+   "new": {"stem": "jb_camel_hair_locusts", "tags": "baptist, wilderness, ascetic", "scene": "A gaunt wilderness figure kneeling beside a small fire among rocks at dusk, a simple meal of honeycomb and dried locusts nearby", "chars": ["JB"]}
+  },
+  {
+   "narration": "His clothing alone was a loaded choice. Camel's hair and a leather belt was almost exactly how the Old Testament described the prophet Elijah, centuries earlier -- and some, including Jesus himself in Matthew's Gospel, identified John as the very Elijah a prophecy said would return.",
+   "new": {"stem": "jb_elijah_parallel", "tags": "baptist, elijah, prophecy, parallel", "scene": "A lone robed figure standing on a windswept ridge at dawn, arms slightly raised, echoing an ancient prophet's silhouette", "chars": ["JB"]}
+  },
+  {
+   "narration": "John himself wanted no part of that title, though. When priests and Levites came from Jerusalem to ask directly who he was -- the Messiah? Elijah? the Prophet? -- John's own Gospel says he denied all three, and called himself only a voice crying out in the wilderness.",
+   "new": {"stem": "jb_self_denial_not_messiah", "tags": "baptist, denial, humility, jerusalem priests", "scene": "A wild-haired man shaking his head firmly before a small delegation of formally dressed officials at the riverbank, plain and direct manner", "chars": ["JB"]}
+  },
+  {
+   "narration": "Then he began preaching -- a message of repentance, urging people to prepare -- and crowds came out from Jerusalem and all Judea just to hear him.",
+   "new": {"stem": "jb_preaching_repentance", "tags": "baptist, preaching, crowd", "scene": "A wild-haired preacher addressing a large attentive crowd gathered on a rocky slope, urgent gestures, bright midday light", "chars": ["JB"]}
+  },
+  {
+   "narration": "They came a long way for it, down from the city into some of the harshest, most unforgiving country in the region.",
+   "reuse": "ep5_003_judea_desert_road_dawn.png"
+  },
+  {
+   "narration": "At the Jordan River, John baptized those who repented -- a ritual washing so central to his preaching that it gave him his name: the Baptist.",
+   "new": {"stem": "jb_baptizing_jordan", "tags": "baptist, jordan, baptism, river", "scene": "A gaunt robed man immersing a kneeling figure in a shallow river, onlookers waiting on the bank, bright reflected water light", "chars": ["JB"]}
+  },
+  {
+   "narration": "Luke's Gospel adds something more concrete than fire and brimstone: when the crowds asked what they should actually do, John told them to share food and clothing with those who had none, told tax collectors not to overcharge, and told soldiers not to extort money or falsely accuse anyone -- just to be content with their pay.",
+   "new": {"stem": "jb_concrete_ethics", "tags": "baptist, ethics, tax collectors, soldiers", "scene": "A preacher speaking to a mixed crowd that includes a tax collector with a ledger and an armed soldier, all listening intently by the riverside", "chars": ["JB"]}
+  },
+  {
+   "narration": "Some historians note his wilderness life and emphasis on ritual washing echo the Essene community at nearby Qumran, who produced the Dead Sea Scrolls. There's no real evidence John was ever a member -- the resemblance may be coincidence, or simply the shared religious culture of the time.",
+   "new": {"stem": "jb_qumran_scrolls_echo", "tags": "qumran, scrolls, essenes, scholarship", "scene": "Ancient clay storage jars and rolled scrolls inside a dim desert cave, no figures, evocative archaeological stillness", "chars": []}
+  },
+  {
+   "narration": "When religious leaders came to be baptized themselves, Matthew's Gospel says John turned on them sharply: you brood of vipers, who warned you to flee the coming wrath?",
+   "new": {"stem": "jb_brood_of_vipers", "tags": "baptist, rebuke, pharisees", "scene": "A fierce wild-haired preacher pointing accusingly at a group of finely dressed religious leaders at the riverbank, tense confrontation, harsh light", "chars": ["JB"]}
+  },
+  {
+   "narration": "He was equally direct about his own role, though. Someone greater was coming after him, John said -- one whose sandals he wasn't even fit to untie.",
+   "new": {"stem": "jb_one_greater_coming", "tags": "baptist, humility, prophecy", "scene": "A robed preacher standing before a crowd gesturing toward the horizon with a humble, resolute expression, golden hour light", "chars": ["JB"]}
+  },
+  {
+   "narration": "Then, one day, Jesus himself came to be baptized. John hesitated -- Matthew says he tried to refuse, insisting it should be the other way around.",
+   "new": {"stem": "jb_jesus_arrives_jordan", "tags": "baptist, jesus, hesitation, jordan", "scene": "A wild-haired man stepping back with a startled, deferential expression as another man approaches him at the riverbank, soft morning light", "chars": ["JB", "JC"]}
+  },
+  {
+   "narration": "He did it anyway. As Jesus came up out of the water, the Gospels say, the sky opened, a dove descended, and a voice spoke: this is my beloved son.",
+   "new": {"stem": "jb_baptism_of_jesus", "tags": "baptist, jesus, baptism, dove", "scene": "A man rising from a river with water streaming off him, a dove descending from a bright parting in the clouds above, another man standing beside him in the water, dramatic light", "chars": ["JB", "JC"]}
+  },
+  {
+   "narration": "John had his own followers, separate from Jesus's, a detail easy to forget. John's own Gospel says at least two of them, including a fisherman named Andrew, left to follow Jesus instead -- on John's own recommendation.",
+   "new": {"stem": "jb_own_disciples", "tags": "baptist, disciples, andrew, departure", "scene": "A wilderness preacher nodding toward two younger men who are turning to follow a third figure walking away along the riverbank", "chars": ["JB"]}
+  },
+  {
+   "narration": "John's outspokenness eventually turned toward power itself. He publicly condemned Herod Antipas, ruler of Galilee, for marrying Herodias -- his own brother's wife, a union Jewish law considered unlawful.",
+   "new": {"stem": "jb_rebukes_herod", "tags": "baptist, herod, rebuke, marriage", "scene": "A gaunt preacher confronting a richly dressed ruler in an open courtyard, pointing accusingly, the ruler's guards tense nearby, harsh midday light", "chars": ["JB", "HA"]}
+  },
+  {
+   "narration": "Herod Antipas -- we met him briefly, mocking Jesus during his trial -- was no stranger to uncomfortable accusations.",
+   "reuse": "ep2_041_herod_antipas_mocking.png"
+  },
+  {
+   "narration": "Herod had him arrested and imprisoned in the fortress of Machaerus, east of the Dead Sea -- a hilltop palace-fortress built by Herod's own father and later reinforced by Antipas himself, according to the historian Josephus.",
+   "new": {"stem": "jb_arrested_machaerus", "tags": "baptist, arrest, machaerus, prison", "scene": "A gaunt prisoner being led in chains up a steep fortress stairway by armed guards, barren hills beyond, late afternoon light", "chars": ["JB"]}
+  },
+  {
+   "narration": "Josephus, writing decades after the Gospels, gives a purely political reason for what happened next: Herod feared John's enormous popularity might spark a rebellion he couldn't control, and moved first.",
+   "new": {"stem": "jb_josephus_political_fear", "tags": "herod, josephus, political fear", "scene": "A ruler watching uneasily from a high balcony over a vast distant crowd gathered in the countryside below, cold calculating expression", "chars": []}
+  },
+  {
+   "narration": "That account matters precisely because it's independent of the Gospels. Josephus confirms John really existed, really baptized people, and was widely regarded, in his own words, as a good man -- a rare point where a Roman-era historian with no reason to flatter early Christianity backs up the basic outline of a Gospel story.",
+   "new": {"stem": "jb_josephus_independent_confirmation", "tags": "josephus, independent source, confirmation", "scene": "An ancient historian's hand writing by lamplight at a wooden desk, a half-finished scroll of dense text, scholarly and quiet", "chars": []}
+  },
+  {
+   "narration": "Mark's Gospel tells a very different story about his death, though: Herodias herself held the grudge and wanted him dead, but Herod, oddly, protected him -- afraid of him as a righteous man, and, Mark adds, he actually liked listening to him.",
+   "new": {"stem": "jb_herodias_grudge", "tags": "herod, herodias, grudge, contrast", "scene": "A troubled ruler seated on a throne, a composed noblewoman standing beside him with a cold, unsatisfied expression", "chars": ["HA", "HD"]}
+  },
+  {
+   "narration": "From his cell, John sent his own disciples to ask Jesus a striking question: are you really the one, or should we expect someone else?",
+   "new": {"stem": "jb_doubt_in_prison", "tags": "baptist, prison, doubt, question", "scene": "A gaunt prisoner speaking quietly through iron bars to two visitors, dim torchlight, a note of uncertainty on his face", "chars": ["JB"]}
+  },
+  {
+   "narration": "Jesus didn't answer yes or no. He pointed to what was already happening around him -- the blind seeing, the lame walking -- and then praised John to the crowd as the greatest man ever born of a woman.",
+   "new": {"stem": "jb_jesus_answer_messengers", "tags": "jesus, messengers, praise, answer", "scene": "A calm teacher addressing two travel-worn messengers before a crowd, gesturing toward people being helped nearby, warm daylight", "chars": ["JC"]}
+  },
+  {
+   "narration": "On Herod's birthday, Mark says, Herodias's daughter danced for the assembled guests at a banquet, and pleased Herod enormously.",
+   "new": {"stem": "jb_herod_birthday_feast", "tags": "herod, banquet, dance, feast", "scene": "A lavish banquet hall with reclining guests watching a dancer, Herod seated at the head table looking delighted, warm lamplight", "chars": ["HA"]}
+  },
+  {
+   "narration": "Flattered, and probably drunk, Herod swore an oath in front of his guests: ask me for anything, he told her, up to half my kingdom.",
+   "new": {"stem": "jb_herod_rash_oath", "tags": "herod, oath, banquet, promise", "scene": "A ruler raising his cup grandly toward a young dancer before a hall of watching guests, flushed and expansive expression", "chars": ["HA"]}
+  },
+  {
+   "narration": "She went to her mother for advice. Herodias didn't hesitate: ask for John the Baptist's head.",
+   "new": {"stem": "jb_girl_asks_mother", "tags": "herodias, daughter, request", "scene": "A young woman in dancer's dress whispering to an older composed woman in a quiet side room, muffled feast sounds beyond a curtain", "chars": ["HD"]}
+  },
+  {
+   "narration": "She came back and asked for exactly that -- his head, she specified, on a platter.",
+   "new": {"stem": "jb_head_on_platter_request", "tags": "banquet, platter, shock, request", "scene": "A covered silver platter carried through a banquet hall doorway on a servant's tray, seated guests turning with shocked expressions, warm lamplight, nothing graphic shown", "chars": []}
+  },
+  {
+   "narration": "Herod was distressed, Mark says, but he had sworn the oath in front of his guests, and he wasn't willing to break his word in public. He gave the order.",
+   "new": {"stem": "jb_herod_reluctant_order", "tags": "herod, order, reluctance, oath", "scene": "A ruler sitting rigidly at the head table, hand raised in a reluctant gesture of command, guests watching in uneasy silence", "chars": ["HA"]}
+  },
+  {
+   "narration": "John's own disciples came for his body afterward and laid it in a tomb.",
+   "new": {"stem": "jb_disciples_bury_body", "tags": "baptist, burial, disciples, tomb", "scene": "A small group of somber men carrying a wrapped body toward a rock-cut tomb entrance at dusk, quiet and reverent", "chars": []}
+  },
+  {
+   "narration": "Mark never actually names the girl who danced. It's Josephus, in his Antiquities of the Jews, who names Herod's stepdaughter as Salome -- tradition has long since merged the two accounts into one story.",
+   "reuse": "ep3_014_philo_writing_alexandria.png"
+  },
+  {
+   "narration": "Medieval tradition multiplied what happened to his head afterward. Sites in Damascus, in Amiens in France, and elsewhere have each claimed, at different points in history, to hold it -- a vivid example of how relics multiplied across medieval Christendom.",
+   "new": {"stem": "jb_relic_veneration_damascus", "tags": "relic, veneration, medieval, tradition", "scene": "An ornate medieval reliquary shrine inside a grand candlelit cathedral interior, reverent and empty", "chars": []}
+  },
+  {
+   "narration": "When Jesus heard the news, Matthew's Gospel says, he withdrew by himself to a quiet place.",
+   "new": {"stem": "jb_jesus_withdraws_grief", "tags": "jesus, grief, withdrawal, solitude", "scene": "A lone robed figure walking away along a quiet lakeshore at dusk, seen from behind, still water", "chars": ["JC"]}
+  },
+  {
+   "narration": "One small, little-known legacy: a religious community called the Mandaeans, still living today mostly in Iraq and Iran, consider John the Baptist -- not Jesus -- their chief and final prophet.",
+   "new": {"stem": "jb_mandaean_legacy", "tags": "mandaean, legacy, modern, ritual", "scene": "A small group in plain white robes gathered at a calm riverside at dawn for a quiet ritual, distant and respectful framing, no distinguishable faces", "chars": []}
+  },
+  {
+   "narration": "So who was John the Baptist? A wilderness preacher who refused every title offered to him, baptized the man Christianity would come to worship, confronted a king to his face, and -- by his own words, sent from a prison cell -- was still genuinely unsure whether the one he announced was really the one at all.",
+   "new": {"stem": "jb_final_portrait", "tags": "baptist, portrait, final, reflective", "scene": "A gaunt robed figure standing alone at the edge of a river at golden hour, looking downstream, wind in his ragged cloak", "chars": ["JB"]}
+  },
+  {
+   "narration": "Herod killed him for a dance, or feared him as a threat to his throne -- the sources disagree on why, but not on how it ended: the man who prepared the way for Jesus died before he did, dignity intact, head on a platter at someone else's party.",
+   "repeat": "jb_face_portrait"
+  }
+ ],
+ "short": [
+  {
+   "narration": "He baptized Jesus himself, in the Jordan River.",
+   "new": {"stem": "jb_face_close_short", "tags": "baptist, portrait, hook", "scene": "Close-up portrait of John the Baptist, intense weathered face, wild hair, dim background", "chars": ["JB"]}
+  },
+  {
+   "narration": "He lived in the wilderness, dressed in camel's hair, eating locusts and wild honey.",
+   "new": {"stem": "jb_wilderness_short", "tags": "baptist, wilderness, ascetic", "scene": "A gaunt wilderness figure kneeling beside a small fire among rocks at dusk", "chars": ["JB"]}
+  },
+  {
+   "narration": "Then he publicly condemned a king for his marriage.",
+   "new": {"stem": "jb_rebuke_short", "tags": "baptist, herod, rebuke", "scene": "A wild-haired preacher confronting a richly dressed ruler in an open courtyard, pointing accusingly", "chars": ["JB", "HA"]}
+  },
+  {
+   "narration": "Herod had him arrested and thrown in prison.",
+   "new": {"stem": "jb_prison_short", "tags": "baptist, arrest, prison", "scene": "A gaunt prisoner behind iron bars in a dim stone cell, torchlight", "chars": ["JB"]}
+  },
+  {
+   "narration": "At a banquet, a dance earned a rash promise -- and the king's wife knew exactly what to ask for.",
+   "new": {"stem": "jb_banquet_short", "tags": "herod, banquet, dance, request", "scene": "A lavish banquet hall with a dancer performing before seated guests, a ruler watching, warm lamplight", "chars": ["HA"]}
+  },
+  {
+   "narration": "His head was brought in on a platter. He never saw it coming.",
+   "new": {"stem": "jb_platter_short", "tags": "platter, shock, banquet", "scene": "A covered silver platter carried through a banquet hall doorway, seated guests turning with shocked expressions", "chars": []}
+  },
+  {
+   "narration": "The man who baptized Jesus, gone before him. Full story on the channel.",
+   "new": {"stem": "jb_back_river_short", "tags": "baptist, ending, back view", "scene": "A gaunt robed figure seen from behind standing at the edge of a river at golden hour", "chars": ["JB"]}
+  }
+ ],
+ "package": {
+  "long": {
+   "title": "John the Baptist: He Baptized Jesus, Then Lost His Head",
+   "description": "He baptized Jesus himself in the Jordan River. Months later, his head was presented on a platter at a party.\n\nWe follow John the Baptist from an unusual birth to elderly parents, through a wilderness life of locusts and camel's hair, the baptism of Jesus and the voice from heaven, a public condemnation of a king's marriage, and the two very different accounts of why he was killed -- Mark's dance and a rash oath, and Josephus's cold political calculation.\n\nWe separate what the Gospels and the historian Josephus actually record from the medieval traditions built on top of them.\n\nChapters (approximate):\n00:00 An unusual birth\n01:30 A wilderness preacher\n04:15 The baptism of Jesus\n05:30 Confronting a king\n06:45 Two accounts of why he died\n08:00 The banquet and the dance\n09:15 Tradition, relics and legacy\n\nNew figure from history every week -- subscribe so you don't miss the next one.\n\n#JohnTheBaptist #BibleHistory #HistoryDocumentary #AncientHistory #JesusHistory #ChurchHistory",
+   "app_description": "He baptized Jesus himself in the Jordan River. Months later, his head was presented on a platter at a party. We follow John the Baptist from the wilderness to the Jordan River, and separate the Gospels' account of a king's rash promise from the historian Josephus's colder, political version of why he was really killed.\n\nA new figure from history every week.",
+   "hashtags": ["JohnTheBaptist", "BibleHistory", "HistoryDocumentary", "AncientHistory", "JesusHistory", "ChurchHistory"]
+  },
+  "short": {
+   "title": "He Baptized Jesus -- Then Lost His Head #Shorts",
+   "description": "John the Baptist baptized Jesus in the Jordan River. Months later, his head was brought to a banquet on a platter. Full documentary on the channel.\n\n#Shorts #JohnTheBaptist #BibleHistory #History",
+   "hashtags": ["Shorts", "JohnTheBaptist", "BibleHistory", "History"]
+  }
+ },
+ "sources": [
+  "Luke 1:5-25, 39-45, 57-80 (John's birth, the Visitation, Zechariah's silence and the naming)",
+  "Mark 1:1-8; Matthew 3:1-12; Luke 3:1-18 (John's ministry, preaching, clothing, 'brood of vipers', concrete ethical teaching)",
+  "John 1:19-28 (John's own denial that he was the Messiah, Elijah, or 'the Prophet')",
+  "2 Kings 1:8; Malachi 4:5; Matthew 11:7-14, 17:10-13 (the Elijah parallel and prophecy)",
+  "Matthew 3:13-17; Mark 1:9-11; Luke 3:21-22; John 1:29-34 (the baptism of Jesus)",
+  "John 1:35-42 (John's own disciples, including Andrew)",
+  "Mark 6:17-20; Matthew 14:3-5; Luke 3:19-20 (John's arrest and his condemnation of Herod's marriage to Herodias)",
+  "Josephus, Antiquities of the Jews 18.116-119, written c. 93-94 AD (a political motive for John's death -- no mention of Herodias or a dance)",
+  "Matthew 11:2-6; Luke 7:18-23 (John's question from prison, Jesus's answer)",
+  "Mark 6:21-29; Matthew 14:6-12 (the birthday banquet, the dance, and the beheading -- Mark does not name the daughter)",
+  "Matthew 14:13 (Jesus withdraws on hearing the news)",
+  "Medieval relic traditions: the Umayyad Mosque, Damascus; Amiens Cathedral, France (competing claims to hold John's head)",
+  "Mandaean religious tradition (modern Iraq and Iran): John the Baptist venerated as their chief and final prophet"
+ ]
+}

@@ -46,8 +46,10 @@ ChatGPT trước khi đổi hướng — vẫn giữ nguyên, không làm lại,
 | MM | Mary Magdalene | Ep3 |
 | PT | Simon Peter | Ep4 |
 | PL | Paul of Tarsus | Ep4 (phụ), chính ở Ep5 |
-| HA | Herod Antipas | Ep2 (phụ, "herod_antipas_mocking") |
+| HA | Herod Antipas | Ep2 (phụ), Ep6 (phụ), chính ở Ep8 |
 | B | Barabbas | Ep2 (phụ) |
+| HD | Herodias | Ep6 (phụ), nối sang kết cục ở Ep8 |
+| JB | John the Baptist | Ep6 |
 
 Nhân vật mới cho mỗi tập 5-15 liệt kê trong [EPISODES.md](EPISODES.md), thêm vào `CHAR`/`CHAR_NAMES`
 trong `bf_style.py` một lần duy nhất khi tập đó được viết.
@@ -61,7 +63,7 @@ trong `bf_style.py` một lần duy nhất khi tập đó được viết.
 | 3 | Mary Magdalene | 126 / 127 | 9:58 | PASS 100 | 34 mới / 7 lặp / 4 kho | ✅ |
 | 4 | Simon Peter | 143 / 144 | 9:45 | PASS 100 | 34 mới / 2 lặp / 8 kho | ✅ |
 | 5 | Paul of Tarsus | 146 / 145 | 9:00 | PASS 100 | 34 mới / 1 lặp / 7 kho | ✅ |
-| 6 | John the Baptist | — | — | — | — | ⏳ |
+| 6 | John the Baptist | — | — | — | — | ✍️ spec+prompts xong, chờ tạo ảnh (`aigen 6`) |
 | 7 | Caiaphas | — | — | — | — | ⏳ |
 | 8 | Herod Antipas | — | — | — | — | ⏳ |
 | 9 | Thomas | — | — | — | — | ⏳ |

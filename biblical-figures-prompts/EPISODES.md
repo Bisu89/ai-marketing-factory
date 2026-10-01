@@ -47,7 +47,7 @@ Ephesus, kháng cáo lên Caesar, đắm tàu ở Malta, giam lỏng ở Rome (A
 chém đầu dưới Nero, mộ tại San Paolo fuori le Mura; tranh luận học thuật 7 thư thật/6 thư nghi ngờ.
 Project 146 (dài, 9:00) / 145 (short). Nhân vật mới (chỉ tập này): Barnabas, Ananias.
 
-## 6. John the Baptist — "Người dọn đường, bị chặt đầu vì một điệu nhảy"
+## 6. John the Baptist — "Người dọn đường, bị chặt đầu vì một điệu nhảy" ✍️ SPEC ĐÃ VIẾT
 
 **Hook:** Ông làm phép rửa cho chính Chúa Giêsu. Vài tháng sau, đầu ông nằm trên một cái mâm.
 **Đã ghi chép:** sinh ra muộn màng (cha mẹ già — Luke), sống khổ hạnh trong sa mạc, rao giảng ăn năn,
