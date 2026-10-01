@@ -39,22 +39,13 @@ Project 143 (dài, 9:45) / 144 (short). Nhân vật: PT, PL (Paul, để dành t
 
 ---
 
-## 5. Paul of Tarsus — "Kẻ bắt đạo trở thành người truyền đạo khắp đế chế" ✍️ SPEC ĐÃ VIẾT
+## 5. Paul of Tarsus — "Kẻ bắt đạo trở thành người truyền đạo khắp đế chế" ✅ ĐÃ LÀM
 
-**Hook:** Người từng giữ áo cho đám đông ném đá chết Stephen, sau viết gần một nửa Tân Ước.
-**Đã ghi chép:** cuộc cải đạo trên đường Damascus (mù 3 ngày), 3 hành trình truyền giáo, bị đánh đòn
-3 lần, 1 lần ném đá, 3 lần đắm tàu (2 Corinthians 11), "cái dằm trong xác thịt" (bệnh gì — tranh
-luận học thuật), bị bắt ở Jerusalem, kháng cáo lên Caesar, bị giam lỏng ở Rome (Acts kết thúc ở đây —
-không nói ông chết thế nào).
-**Truyền thống:** bị chém đầu dưới thời Nero (vì là công dân Rome — không bị đóng đinh như Peter),
-mộ tại Vương cung thánh đường San Paolo fuori le Mura.
-**Tranh luận học thuật nên nêu trung lập:** 7 thư được giới học giả đồng thuận là của Paul, 6 thư còn
-lại (bao gồm Timothy, Titus) bị nhiều học giả nghi là viết sau bởi môn đệ — giống mô-típ "2 Peter"
-đã nhắc ở tập 4.
-**Nhân vật mới:** PL đã có. Cần thêm: Stephen (nếu không tách riêng — xem tập 15), Barnabas (bạn
-đồng hành), Ananias (người rửa tội cho Paul ở Damascus).
-**Tận dụng kho:** `pt_paul_confrontation` (ep4, có Paul), `corinthians_scroll_no_name` (ep3, thư
-Paul), `rome_forum_morning` (ep2), `ancient_church_oil_lamps`, cảnh tàu `ship_leaving_caesarea` (ep2).
+Stephen bị ném đá (Saul giữ áo), cải đạo trên đường Damascus, Ananias, 3 hành trình truyền giáo,
+Lystra tưởng là thần, va chạm với Peter ở Antioch (nối mạch tập 4), Areopagus ở Athens, bạo loạn
+Ephesus, kháng cáo lên Caesar, đắm tàu ở Malta, giam lỏng ở Rome (Acts dừng ở đây). Truyền thống:
+chém đầu dưới Nero, mộ tại San Paolo fuori le Mura; tranh luận học thuật 7 thư thật/6 thư nghi ngờ.
+Project 146 (dài, 9:00) / 145 (short). Nhân vật mới (chỉ tập này): Barnabas, Ananias.
 
 ## 6. John the Baptist — "Người dọn đường, bị chặt đầu vì một điệu nhảy"
 
