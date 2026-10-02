@@ -28,6 +28,7 @@ from app.api.v1.endpoints import (
     tags,
     videos,
     voice_generate,
+    voice_test,
 )
 
 # Cross-module orchestration composition roots -- see app/pipelines/__init__.py.
@@ -77,6 +78,7 @@ api_router.include_router(produced_videos.router, tags=["produced-videos"])
 api_router.include_router(factory_pipeline.router, tags=["factory-pipeline"])
 api_router.include_router(content_generate.router, tags=["content-generate"])
 api_router.include_router(voice_generate.router, tags=["voice-generate"])
+api_router.include_router(voice_test.router, tags=["voice-test"])
 api_router.include_router(motion_generate.router, tags=["motion-generate"])
 api_router.include_router(audio_generate.router, tags=["audio-generate"])
 api_router.include_router(caption_generate.router, tags=["caption-generate"])

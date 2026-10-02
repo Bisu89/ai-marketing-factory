@@ -189,6 +189,7 @@ SQLite.
 157. [Remove unused features](features/157-remove-unused-features.md) — Viral Source Radar, News, Content Batches, Winner Detection, Competitor Analyzer, Affiliate Engine, Scene Cutter, Publishing (YouTube), Batches, Content Studio and Series deleted outright (code, routes, UI, settings, tests); Dashboard re-based on Project + latest FactoryRun; no database data dropped
 158. [zettruyen*.com fetch via headless browser](features/158-manhua-fetch-headless-browser.md) — Cloudflare on that site resets plain HTTP(S)/TLS-spoofed clients, so chapter HTML is now loaded via headless Chromium (Playwright); other sites unaffected
 159. [truyenqq.com.vn fetch support](features/159-manhua-fetch-truyenqq.md) — fourth supported manhua site for the chapter fetch; plain HTTP(S), no Cloudflare block, images from `sN.cc3t.net`
+160. [Voice test bench](features/160-voice-test-bench.md) — "Thử giọng đọc" page: paste a story, pick voice + speed (default VI female), get an MP3
 
 ## Keeping this up to date
 

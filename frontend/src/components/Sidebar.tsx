@@ -13,6 +13,7 @@ import {
   NotebookPen,
   Wand2,
   ImageDown,
+  AudioLines,
 } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import "./Sidebar.css";
@@ -30,6 +31,7 @@ const NAV_ITEMS = [
   { to: "/videos", label: "Videos", icon: MonitorPlay },
   { to: "/asset-library", label: "Asset Library", icon: Images },
   { to: "/manhua-fetch", label: "Tải chương truyện", icon: ImageDown },
+  { to: "/voice-test", label: "Thử giọng đọc", icon: AudioLines },
   { to: "/settings", label: "Settings", icon: Settings },
 ];
 

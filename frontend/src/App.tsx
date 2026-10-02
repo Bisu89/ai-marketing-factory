@@ -13,6 +13,7 @@ import { VideoFactoryPage } from "./pages/VideoFactoryPage";
 import { VideosPage } from "./pages/VideosPage";
 import { AssetLibraryPage } from "./pages/AssetLibraryPage";
 import { ManhuaFetchPage } from "./pages/ManhuaFetchPage";
+import { VoiceTestPage } from "./pages/VoiceTestPage";
 import { SettingsPage } from "./pages/SettingsPage";
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
         <Route path="videos" element={<VideosPage />} />
         <Route path="asset-library" element={<AssetLibraryPage />} />
         <Route path="manhua-fetch" element={<ManhuaFetchPage />} />
+        <Route path="voice-test" element={<VoiceTestPage />} />
         <Route path="settings" element={<SettingsPage />} />
         <Route path="*" element={<Navigate to="/dashboard" replace />} />
       </Route>
