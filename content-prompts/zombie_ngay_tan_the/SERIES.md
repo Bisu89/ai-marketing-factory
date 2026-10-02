@@ -24,7 +24,7 @@
 ### 2.1 Thành phố & địa điểm
 
 - **Seoryeong (서령)** — thành phố hư cấu ~3 triệu dân, hai bên sông Hanyeon. Trung tâm: khu thương mại, bệnh viện lớn, ga tàu điện ngầm. Vùng ngoại ô phía bắc: **núi Cheonma** nơi đặt viện nghiên cứu.
-- **Viện Nghiên Cứu Dược Phẩm Quốc Phòng Cheonma** — cơ sở quân đội nửa chìm dưới núi, cách trung tâm thành phố ~12 km, nối với thành phố bằng đường cao tốc vành đai và một hầm dịch vụ cũ.
+- **Viện Nghiên Cứu Dược Phẩm Quốc Phòng Cheonma** — cơ sở quân đội nửa chìm dưới núi, cách trung tâm thành phố ~12 km, nối với thành phố bằng đường cao tốc vành đai và **một hầm sơ tán quân sự cũ dài ~12 km, đi thông tới tuyến tàu điện ngầm bỏ hoang và ló ra ở ga Euljiro** (rất ít người biết, Choi là một trong số đó).
 - **Dự án AEGIS-7 ("Thần Hộ")** — chương trình bí mật chế thuốc tăng cường chiến đấu cho lính: tăng sức mạnh, giảm đau, hồi phục nhanh. Thử nghiệm trên lính tình nguyện (nhiều người không biết rủi ro thật).
 - Chủng virus bị nhiễm từ AEGIS-7 → gọi dân gian là **"Bệnh Thần Hộ"**, quân đội gọi nội bộ là **"Mã Đỏ 07"**.
 
@@ -41,9 +41,11 @@
 
 ### 2.3 Mốc thời gian lớn
 
-- **T+0 (Ngày 0, 19:42):** sự cố phòng thí nghiệm, nhân viên bị cắn.
-- **T+3h:** lan ra vành đai ngoại ô; **T+5h:** bùng phát tại trung tâm Seoryeong (giờ cao điểm đêm).
-- **T+72h:** quân đội **phong toả toàn thành phố** và chuẩn bị "thanh tẩy" (sẽ làm rõ dần qua các tập). Đây là đồng hồ đếm ngược của cả đoạn đầu series.
+- **Ngày 0, 19:30–19:40:** đổi ca — một xe buýt nhân viên rời Cheonma về thành phố (trong đó có người đã bị nhiễm nhưng chưa biểu hiện).
+- **19:42:** sự cố phòng thí nghiệm, Subject-03 phá kính, nhân viên bị cắn. **~19:55:** xe cứu thương chở hai nhân viên bị cắn rời cổng "đi cấp cứu" trước khi lệnh phong toả kịp ban ra.
+- **~20:10–20:30:** ca đầu tiên chuyển hoá tại bệnh viện Đại học Seoryeong; người trên xe buýt lần lượt chuyển hoá giữa khu dân cư.
+- **21:00–23:00:** bùng phát ra cả trung tâm Seoryeong, mạng điện thoại nghẽn hoàn toàn.
+- **Ngày 4, 06:00:** quân đội **phong toả toàn thành phố** và chuẩn bị "thanh tẩy" (sẽ làm rõ dần qua các tập). Đây là đồng hồ đếm ngược của cả đoạn đầu series.
 
 ---
 
@@ -142,8 +144,8 @@
 | 2   | **Thể Cuồng (Runner)**                                       | Từ Tập 1               | Nạn nhân chuyển hoá từ bị cắn **sớm** (virus còn "tươi"), chạy rất nhanh, co giật, mắt trắng đục.                                        | Cung thủ hạ từ xa, bẫy chặn đường, cận chiến theo cặp.                         |
 | 3   | **Kẻ Hú (Screamer)**                                         | Từ Tập 3               | Cổ họng biến dạng, **hú gọi cả đàn** từ xa; thân gầy, hàm mở quá khổ.                                                                    | Hạ khẩn cấp (ưu tiên số 1), bịt tai, cung thủ.                                 |
 | 4   | **Thể Phình (Bloater)**                                      | Từ Tập 3               | Khổng lồ, bụng phình đầy ichor đen, **nổ tung** khi chết phun axit nhẹ làm mờ mắt/bỏng da.                                               | Không đánh gần; đánh khi đang đứng giữa đàn khác; né hướng gió.                |
-| 5   | **Kẻ Săn Mồi (Stalker)**                                     | Từ Tập 4 (bóng)        | **Zombie thông minh**: thân người còn nguyên, di chuyển im lặng, biết chờ và phối hợp đàn. Không thể thương lượng, không biểu cảm người. | Không bao giờ để nó thấy điểm yếu; bẫy phức tạp; ở Tập 5+ là mối đe doạ chính. |
-| 6   | **Thể Giáp (Armored / Aegis Soldier)**                       | Từ Tập 4 (cliffhanger) | Lính bị tiêm AEGIS-7 hoàn chỉnh, **cơ thể cường hoá** (da chai, cơ phình), vẫn giữ phản xạ chiến đấu, **không chết bằng một cú**.        | Tốn nhiều lượt: phá khớp → hạ gục; cần phối hợp cả nhóm.                       |
+| 5   | **Kẻ Săn Mồi (Stalker)**                                     | Từ Tập 4 (bóng)        | **Zombie thông minh**: thân người còn nguyên, di chuyển im lặng, biết chờ và phối hợp đàn. Không thể thương lượng, không biểu cảm người. | Không bao giờ để nó thấy điểm yếu; bẫy phức tạp; ở Tập 5+ là mối đe doạ chính. **Con đầu tiên chính là Subject-03** (thoát khỏi Cheonma theo hầm sơ tán, đeo vòng nhận dạng của viện). |
+| 6   | **Thể Giáp (Armored / Aegis Soldier)**                       | Từ Tập 4 (cliffhanger) | Lính bị tiêm AEGIS-7 hoàn chỉnh, **chưa chuyển hoá hẳn**: cơ thể cường hoá (da chai, cơ phình), còn phản xạ chiến đấu, **không chết bằng một cú**. Vẫn nghe lệnh Choi nhờ **liều ức chế định kỳ** — hết liều là mất kiểm soát.        | Tốn nhiều lượt: phá khớp → hạ gục; cần phối hợp cả nhóm.                       |
 | 7   | **Kẻ Nở Hoa (Spore Carrier)** _(dự phòng cho giai đoạn sau)_ | Từ Tập 8+              | Cơ thể mọc nấm/bào tử ichor, phát tán bụi độc ở không gian kín.                                                                          | Bịt kín, đi gió ngược, khẩu trang lọc của Minseo.                              |
 
 > Phần sau Tập 4 chỉ đặt hướng, chưa chốt.
@@ -189,7 +191,7 @@ Taeho bắt đầu bằng tư duy quân nhân (đánh giá → kế hoạch → 
 |---|---|---|
 | 2 | *(chưa gài — chờ chủ series quyết; cảnh khu mua sắm dùng tiếng ồn dụ một phần đàn là chỗ có thể gài)* | — |
 | 3 | Tin kho bệnh viện phía sau là lối vào an toàn, bỏ qua tiếng ồn xe tải | Bloater/đàn zombie đã đứng sẵn ở hành lang tầng 4; xe tải hỏng phải bỏ lại |
-| 4 | Cho nhóm nghỉ ở tiệm tạp hoá lâu hơn dự tính vì Jiwoo cần băng chân | Đội của Choi lần ra dấu vết/mùi nhóm — chạm trán ở ga |
+| 4 | Cho nhóm nghỉ ở tiệm tạp hoá lâu hơn dự tính vì Jiwoo cần băng chân | Tới ga muộn nửa ngày, đúng lúc đội truy quét của Choi tới — chạm trán |
 
 ### 5.9 Sổ tài nguyên (cập nhật mỗi tập, không được "hồi phục" vô cớ)
 | Hạng mục | Cuối T2 | Cuối T3 | Cuối T4 |
@@ -200,7 +202,7 @@ Taeho bắt đầu bằng tư duy quân nhân (đánh giá → kế hoạch → 
 | Pin bộ đàm | 100% | 60% | 40% |
 | Phương tiện | không (xe Taeho đã bỏ lại) | xe tải nhỏ hỏng, bỏ lại ở bệnh viện | đi bộ |
 | Nơi trú | — | sân thượng bệnh viện (tạm) | tiệm tạp hoá, rồi hầm tàu |
-| Thời gian còn lại tới phong toả | 72h | ~60h | ~48h |
+| Thời gian còn lại tới phong toả (Ngày 4, 06:00) | ~78h | ~73h | ~56h |
 
 > Con số là đề xuất; chỉnh khi viết lời đọc từng tập và cập nhật bảng này.
 
@@ -232,7 +234,7 @@ Năm người không quen nhau (trừ các cặp có sẵn: Jiwoo–Areum là ch
    *"Tôi đã báo cáo sự thật."* (im lặng) *"Đáng lẽ tôi nên im lặng."*
    Cắt: **T−3 ngày.** (Cảnh mở chính là đoạn cliffhanger cuối tập — khán giả sẽ nhận ra ở cuối.)
 
-2. **T−3 ngày, viện Cheonma:** Taeho, thượng sĩ, được điều tới gác khu ngoại vi. Anh thấy một nhóm lính tình nguyện được đưa vào khu thử nghiệm AEGIS-7. Ban đầu họ khoẻ lên rõ rệt: sức mạnh, phản xạ. Vài ngày sau, một người co giật dữ dội, mất nhận thức, bị nhốt sau lớp kính. Taeho nhận ra quân đội đang giấu điều gì đó.
+2. **T−3 ngày, viện Cheonma:** Taeho, thượng sĩ, được điều tới gác khu ngoại vi. Anh thấy một nhóm lính tình nguyện được đưa vào khu thử nghiệm AEGIS-7. Ban đầu họ khoẻ lên rõ rệt: sức mạnh, phản xạ. Vài ngày sau, một người co giật dữ dội, mất nhận thức, bị nhốt sau lớp kính. Taeho nhận ra quân đội đang giấu điều gì đó. Anh nghe lỏm rằng Đại tá Choi đang gấp rút hoàn tất **đợt tăng liều cuối** trước hạn nghiệm thu của bộ quốc phòng.
 
 3. **Minseo trao bằng chứng:** trong lúc Taeho đi qua khu nghiên cứu, Minseo chặn anh lại và đưa **một thẻ nhớ nhỏ**: phim thử nghiệm AEGIS-7, những người lính sau khi biến đổi, và tài liệu cho thấy cấp trên đã biết thử nghiệm có vấn đề.
    *"Đừng đưa nó cho quân đội."* — *"Vậy tôi đưa cho ai?"* — (Minseo nhìn anh vài giây) *"Người có thể đưa nó ra ngoài."*
@@ -245,7 +247,7 @@ Năm người không quen nhau (trừ các cặp có sẵn: Jiwoo–Areum là ch
 6. **Tỉnh lại:** Taeho tỉnh trong một phòng quân sự, đầu đau dữ dội. Trên sàn là một quân nhân bị thương, áo Taeho dính máu, con dao của anh nằm cạnh người đó, camera an ninh đang ghi. Một sĩ quan bước vào đọc cáo buộc: tấn công cấp dưới, gây thương tích cho quân nhân, chống lệnh, xâm nhập khu hạn chế, lấy cắp tài liệu mật. Taeho phủ nhận tất cả và hỏi: *"Thẻ nhớ đâu?"* Không ai trả lời. Choi xuất hiện sau lớp kính, chỉ nhìn anh: *"Anh đang nói về thứ gì?"*
    *(Thẻ nhớ gốc bị tịch thu khi anh bất tỉnh; họ không biết anh còn bản sao trong vỏ thẻ quân nhân.)*
 
-7. **Bị loại khỏi quân ngũ:** hồ sơ hoàn tất rất nhanh. Taeho bị tước quân hàm, loại khỏi quân ngũ, không có cơ hội giải thích. Trước khi rời Cheonma anh thấy Choi từ xa. Choi nói: *"Có những chuyện anh càng biết nhiều, càng khó sống bình thường."* Đồ cá nhân trả lại, kể cả con dao riêng để trong cốp xe (con dao trong phòng là dao cấp phát, dùng để dựng hiện trường).
+7. **Bị loại khỏi quân ngũ:** hồ sơ hoàn tất rất nhanh. Taeho bị tước quân hàm, loại khỏi quân ngũ, không có cơ hội giải thích. Trước khi rời Cheonma anh thấy Choi từ xa. Choi nói: *"Có những chuyện anh càng biết nhiều, càng khó sống bình thường."* **Choi cố ý để anh đi:** ông ta không thể giết một lính vừa bị kỷ luật mà không gây chú ý, nên cho người theo dõi Taeho để tìm bản sao và những ai anh liên lạc. Đồ cá nhân trả lại, kể cả con dao riêng để trong cốp xe (con dao trong phòng là dao cấp phát, dùng để dựng hiện trường).
 
 8. **Ngày 0, 17:00:** Taeho lái xe về Seoryeong. Anh không biết Minseo còn sống hay không. Anh chỉ muốn gặp Dahee — người duy nhất anh nghĩ mình còn có thể tin. Trong xe, anh lấy chiếc nhẫn cầu hôn ra nhìn.
 
@@ -254,7 +256,7 @@ Năm người không quen nhau (trừ các cặp có sẵn: Jiwoo–Areum là ch
    (Câu cuối chỉ gợi ý có thoả thuận ngầm — mở đường cho hướng chuộc lỗi sau này, **không giải thích trong Tập 1**.)
    Taeho đứng chết lặng. Không đối chất, không lời giải thích. Anh đặt chiếc nhẫn xuống rãnh nước rồi quay đi.
 
-10. **19:42, Cheonma:** Minseo cố gửi dữ liệu ra ngoài, thanh tải lên dừng giữa chừng. Có tiếng đập mạnh từ khu thử nghiệm. Subject-03 phá cửa kính, một bác sĩ bị cắn, người thứ hai bỏ chạy nhưng bị kéo ngã. Báo động đỏ vang khắp cơ sở. Minseo lấy **mẫu gốc** chạy xuống hầm dịch vụ.
+10. **19:42, Cheonma:** Minseo cố gửi dữ liệu ra ngoài, thanh tải lên dừng giữa chừng. Có tiếng đập mạnh từ khu thử nghiệm. Subject-03 phá cửa kính, một bác sĩ bị cắn, người thứ hai bỏ chạy nhưng bị kéo ngã. Báo động đỏ vang khắp cơ sở. Minseo lấy **mẫu gốc**, chạy xuống **hầm sơ tán quân sự** mà Choi chưa kịp khoá. (Nguyên nhân: đợt tăng liều cuối của Choi vượt ngưỡng chịu đựng của Subject-03.) Trước lệnh phong toả, **xe cứu thương chở hai nhân viên bị cắn và xe buýt đổi ca đã rời cổng** — không ai kịp chặn.
     Choi nhận báo cáo qua điện đàm **khi đang trên xe trở về căn cứ** (ông ta rời nhà Dahee từ chiều): *"Phong toả toàn bộ cơ sở."* Một sĩ quan: *"Nhưng vẫn còn người bên trong."* Choi im lặng vài giây. *"Tôi nói toàn bộ."*
 
 11. **Cliffhanger:** Taeho dừng xe trên đường vành đai, điện thoại mất sóng, thành phố phía trước bắt đầu hỗn loạn, xe cứu thương liên tục chạy qua. Một người đàn ông lao ra từ bóng tối, cổ đầy ichor đen, đập mạnh vào kính xe — **trùng với cảnh mở đầu**. Taeho đưa tay xuống con dao. Cắt đen.
@@ -270,10 +272,10 @@ Năm người không quen nhau (trừ các cặp có sẵn: Jiwoo–Areum là ch
 
 1. **Mở đầu — Thành phố sụp đổ:** Seoryeong chìm trong hỗn loạn. Xe cộ đâm nối tiếp nhau giữa đường, một chiếc bốc cháy, khói đen phủ kín phố. Người dân bỏ chạy tán loạn, tiếng còi xe và tiếng la hét vang khắp các dãy nhà. Zombie tràn ra từ hẻm và cửa hàng, lao vào đám đông, cắn những người không kịp chạy. Một người đàn ông vừa chạy vừa ngoái lại, một Walker lao tới. **Cắt.** Taeho xuất hiện giữa dòng người đang tháo chạy.
 
-2. **Gặp Jiwoo — Trường trung học Seoryeong (20:30):** cuộc họp giáo viên vừa kết thúc. Jiwoo ở lại một mình trong phòng giáo viên để hoàn thành công việc. Một tiếng hét vang ngoài hành lang. Cô mở cửa nhìn ra: một đồng nghiệp đang bị người khác tấn công, gục xuống. Vài phút sau anh ta đứng dậy. Jiwoo đóng cửa, dùng bàn ghế và cặp táp chặn lối vào rồi trốn vào phòng văn thư. Bên ngoài, tiếng đập cửa ngày càng mạnh.
-   Taeho đi qua khu trường học để tìm lối ra khỏi khu vực, nghe thấy tiếng động và phát hiện Jiwoo đang mắc kẹt. Một Runner bất ngờ lao ra; Taeho hạ nó trước khi nó tiếp cận Jiwoo. Jiwoo nói cô phải tìm em gái mình — **Areum**, đang ở trung tâm bắn cung quốc gia.
+2. **Gặp Jiwoo — Trường trung học Seoryeong (21:30):** cuộc họp giáo viên (tuần ôn thi) vừa kết thúc, học sinh đã về từ lâu. Jiwoo ở lại một mình trong phòng giáo viên để hoàn thành công việc. Một tiếng hét vang ngoài hành lang. Cô mở cửa nhìn ra: một đồng nghiệp đang bị người khác tấn công, gục xuống. Vài phút sau anh ta đứng dậy. Jiwoo đóng cửa, dùng bàn ghế và cặp táp chặn lối vào rồi trốn vào phòng văn thư. Bên ngoài, tiếng đập cửa ngày càng mạnh.
+   Taeho đi qua khu trường học để tìm lối ra khỏi khu vực, nghe thấy tiếng động và phát hiện Jiwoo đang mắc kẹt. Một Runner bất ngờ lao ra; Taeho hạ nó trước khi nó tiếp cận Jiwoo. Jiwoo nói cô phải tìm em gái mình — **Areum**, đang ở trung tâm bắn cung quốc gia. Cô đã gọi mãi không được vì **mạng nghẽn hoàn toàn**, nên chỉ còn cách đi bộ tới đó.
 
-3. **Cảnh song song — Yerin tại bệnh viện:** khoa cấp cứu quá tải, người bị thương nằm khắp hành lang. Một bệnh nhân bị cắn đột ngột chuyển hoá ngay trong khu cấp cứu. Yerin lập tức yêu cầu cách ly khu vực, nhưng bệnh viện không còn đủ nhân lực kiểm soát tất cả. Cô bắt đầu nhận ra các ca bệnh có chung một điểm bất thường. Cô cố gọi cho Minseo — **không liên lạc được.**
+3. **Cảnh song song — Yerin tại bệnh viện:** khoa cấp cứu quá tải, người bị thương nằm khắp hành lang. Ca đầu tiên là **nhân viên viện Cheonma do xe cứu thương chở tới** (báo là "tai nạn lao động"); anh ta đột ngột chuyển hoá ngay trong khu cấp cứu rồi cắn thêm người. Yerin lập tức yêu cầu cách ly khu vực, nhưng bệnh viện không còn đủ nhân lực kiểm soát tất cả. Cô nhận ra các ca bệnh có chung một điểm bất thường: đều bắt nguồn từ **hướng núi Cheonma** và vết cắn tiến triển nhanh hơn mọi thứ cô từng gặp. Cô cố gọi cho Minseo — **không liên lạc được.**
 
 4. **Taeho & Jiwoo — khu mua sắm:** hai người rời trường, tìm đường tới trung tâm bắn cung, vào một khu mua sắm đang mất điện. Phía trước là đàn Walker đông kín đường. Taeho không giao chiến trực diện: anh tắt nguồn sáng, dùng một vật phát tiếng động kéo một phần đàn zombie sang hướng khác, rồi dẫn Jiwoo men theo khu vực tối. Nhưng đường thoát bị chặn. Jiwoo nhận ra họ đang gần một lối xuống hầm gửi xe mà cô từng đi qua nhiều lần và dẫn Taeho qua đường tắt. Hai người lần đầu phối hợp thành một đội thực sự.
 
@@ -294,13 +296,13 @@ Năm người không quen nhau (trừ các cặp có sẵn: Jiwoo–Areum là ch
 
 3. **Hành trình đến bệnh viện:** nhóm dùng xe tải nhỏ lấy từ bãi xe của trung tâm. Ở ngã tư, **Kẻ Hú** (Screamer) xuất hiện, hú một tiếng gọi cả khu — Areum bắn hạ từ xa nhưng đã muộn: **đàn zombie cả trăm con đổ về.** Taeho dùng xe làm chướng ngại để vào bệnh viện qua cửa kho. Areum nhìn cách anh bỏ xe không do dự: *"Anh lúc nào cũng tính như vậy à?"* Taeho không đáp. (Xe hỏng phải bỏ lại.)
 
-4. **Bệnh viện — Yerin không đi:** Yerin **bị kẹt trên tầng thượng cùng bốn bệnh nhân còn sống**, cửa chống cháy chặn bằng giường bệnh. Taeho & Areum lên; Jiwoo ở dưới giữ bộ đàm báo đường lui. **Thể Phình** (Bloater) xuất hiện ở hành lang tầng 4 — Taeho dụ nó vào giữa đám Walker rồi **Areum bắn nổ ichor**, mở đường. Phối hợp của hai người còn vụng, chỉ vừa đủ.
+4. **Bệnh viện — Yerin không đi:** Yerin **bị kẹt trên tầng thượng cùng bốn bệnh nhân còn sống**: giám đốc bệnh viện đã bảo họ chờ **trực thăng sơ tán** ở bãi đáp, rồi bỏ đi; cửa chống cháy được chặn bằng giường bệnh. Taeho & Areum lên; Jiwoo ở dưới giữ bộ đàm báo đường lui. **Thể Phình** (Bloater) xuất hiện ở hành lang tầng 4 — Taeho dụ nó vào giữa đám Walker rồi **Areum bắn nổ ichor**, mở đường. Phối hợp của hai người còn vụng, chỉ vừa đủ.
    Yerin nhận ra Areum (bác sĩ đội cũ), nhưng nhìn Taeho: *"Tôi không đi. Bệnh nhân không đi nổi."* Taeho: *"Họ chết ở đây."* Yerin: *"Thì tôi chết cùng."* Areum thuyết phục: *"Chị Jiwoo gãy chân, cần chị."* Yerin chỉ đồng ý **chữa Jiwoo** — chưa đồng ý đi.
 
 5. **Mâu thuẫn — người bị cắn:** bốn bệnh nhân không thể đi nhanh. Một người giấu vết cắn nhỏ. Yerin phát hiện, **phải quyết định**; Taeho muốn bỏ lại cả bốn, Yerin từ chối. Người bị cắn chuyển hoá giữa cầu thang, Taeho hạ gục, cứu Yerin khỏi bị cắn. Yerin sau đó: *"Tôi hiểu vì sao anh làm vậy. Nhưng đừng bao giờ làm thế khi chưa hỏi tôi."* Không phải tha thứ, chỉ là chấp nhận.
    **Cái giá:** hai bệnh nhân còn lại tỉnh táo, tự chọn ở lại sân thượng khoá cửa — *"Chúng tôi đi cùng chỉ làm các người chậm."* Yerin để họ lại với lời hứa quay lại, và biết mình có thể không giữ được.
 
-6. **Cuối tập (cliffhanger):** Yerin nhận được **tin nhắn từ Minseo** (đến muộn do sóng yếu): *"Ở hầm tàu điện ngầm khu Euljiro. Tôi mang thứ có thể kết thúc việc này. Đừng tin quân đội."* Cô nói điều kiện với Taeho: *"Đưa tôi tới ga Euljiro. Sau đó tôi tự lo."* Taeho chấp nhận. Cùng lúc, **một trực thăng quân sự bay thấp quét đèn** rồi lướt qua — không cứu ai cả.
+6. **Cuối tập (cliffhanger):** Yerin nhận được **tin nhắn từ Minseo** (gửi từ lúc cô vừa ló ra khỏi đường hầm, tới muộn vì mạng nghẽn): *"Ở hầm tàu điện ngầm khu Euljiro. Tôi mang thứ có thể kết thúc việc này. Đừng tin quân đội."* Cô nói điều kiện với Taeho: *"Đưa tôi tới ga Euljiro. Sau đó tôi tự lo."* Taeho chấp nhận. Cùng lúc, **một trực thăng quân sự bay thấp quét đèn** về phía bãi đáp — rồi lướt qua, không hạ cánh. Yerin hiểu "sơ tán" là lời nói dối, và lệnh đó không bao giờ có thật.
 
 - **Zombie xuất hiện:** Walker, Runner, **Screamer**, **Bloater**.
 - **Hình ảnh then chốt:** Taeho đặt dao xuống trước cung của Areum, Jiwoo ngã khỏi hàng rào, Screamer ở ngã tư, Yerin trên sân thượng, Bloater nổ ichor, bệnh nhân chuyển hoá ở cầu thang, hai bệnh nhân ở lại.
@@ -309,19 +311,19 @@ Năm người không quen nhau (trừ các cặp có sẵn: Jiwoo–Areum là ch
 
 **Mục tiêu tập:** nhóm tạm thời gặp Minseo, bí mật AEGIS-7 hé lộ, phản diện chính xuất hiện, kết nối quá khứ Taeho, và lần đầu Taeho có mục tiêu ngoài bản thân.
 
-1. **Mở đầu — nghỉ ngơi, vẫn là những người xa lạ (rạng sáng):** nhóm trú tạm trong tiệm tạp hoá. Jiwoo viết nhật ký, Areum mài tên, Yerin băng chân cho Jiwoo nhưng **không nói với Taeho**, Taeho đứng gác. Areum hỏi thẳng: *"Anh bị đuổi khỏi quân ngũ à?"* — Taeho chỉ đáp: *"Một người lính đã bị loại."* Không ai kể thêm. Taeho cho mọi người nghỉ lâu hơn dự tính vì chân Jiwoo — **sai lầm đã gài** (đội của Choi lần ra dấu vết).
+1. **Mở đầu — nghỉ ngơi, vẫn là những người xa lạ (rạng sáng):** nhóm trú tạm trong tiệm tạp hoá. Jiwoo viết nhật ký, Areum mài tên, Yerin băng chân cho Jiwoo nhưng **không nói với Taeho**, Taeho đứng gác. Areum hỏi thẳng: *"Anh bị đuổi khỏi quân ngũ à?"* — Taeho chỉ đáp: *"Một người lính đã bị loại."* Không ai kể thêm. Taeho cho mọi người nghỉ lâu hơn dự tính vì chân Jiwoo — **sai lầm đã gài:** họ tới ga muộn nửa ngày, đúng lúc đội truy quét của Choi cũng tới.
 
-2. **Xuống tàu điện ngầm Euljiro:** nhóm vào hầm ga, đi men đường ray. **Minseo** bất ngờ chĩa ống tiêm từ bóng tối — cô tưởng đó là lính truy sát. Yerin gọi tên cô, hai bạn cũ ôm nhau. Minseo vẫn cảnh giác với ba người còn lại, nhất là người đàn ông mang dao.
+2. **Xuống tàu điện ngầm Euljiro:** nhóm vào hầm ga, đi men đường ray. **Minseo** bất ngờ chĩa ống tiêm từ bóng tối — cô tưởng đó là lính truy sát. Yerin gọi tên cô, hai bạn cũ ôm nhau. Minseo vẫn cảnh giác với ba người còn lại, nhất là người đàn ông mang dao. Cô kể mình đi bộ suốt đêm qua **hầm sơ tán quân sự** từ Cheonma — hầm này chỉ quân đội biết.
 
 3. **Sự thật AEGIS-7 (hé một phần) — Taeho là mảnh ghép:** Minseo giải thích: virus được chế để tăng sức mạnh nhưng **gây chết não rồi tái hoạt hoá.** Taeho tháo vỏ thẻ quân nhân, lấy thẻ nhớ bản sao ra. Minseo nhận ra ngay: *"Anh là người lính gác ở cổng phía bắc."* Cô muốn đưa mẫu gốc tới **phòng thí nghiệm Đại học Seoryeong** để kiểm chứng kháng thể trước khi mất nó. Taeho muốn ra khỏi thành phố. Hai mục tiêu va nhau; chưa ai nhượng bộ.
 
-4. **Choi xuất hiện:** loa phóng thanh quân đội vang lên: **"Phong toả thành phố lúc 06:00 sáng Ngày 4"** — họ chỉ còn ba ngày. Cùng lúc, **một đội lính do Đại tá Choi dẫn** xuất hiện ở cửa ga. Bên cạnh ông ta là **Baek Dahee.** Dahee kinh hãi nhìn Taeho: *"Anh còn sống..."* Taeho chỉ nhìn Choi.
+4. **Choi xuất hiện:** loa phóng thanh quân đội vang lên: **"Phong toả thành phố lúc 06:00 sáng Ngày 4"** — họ chỉ còn ba ngày. Cùng lúc, **một đội lính do Đại tá Choi dẫn** xuất hiện ở cửa ga: ông ta biết đầu ra của hầm sơ tán nên tới chặn Minseo, và mang theo **Baek Dahee** vì cô là người duy nhất đoán được Taeho sẽ đi đâu. Dahee kinh hãi nhìn Taeho: *"Anh còn sống..."* Taeho chỉ nhìn Choi.
 
-5. **Cao trào — chạy trốn chứ không phải phối hợp hoàn hảo:** Choi ra lệnh bắt Minseo "vì lý do an ninh quốc gia". Taeho từ chối. Choi: *"Anh nghĩ tôi cần mạng của anh sao?"* — ra hiệu cho một người lính **tháo mũ**: mặt xám, mắt trắng — **Thể Giáp.** Hắn lao vào. Cả nhóm xoay xở mỗi người một cách, không ăn ý: Areum bắn khớp gối (mất hai mũi tên), Taeho đâm sau gáy nhưng bị hất văng, Yerin kéo Minseo tránh, Jiwoo — chân què — bật đèn khẩn cấp làm choáng zombie mắt nhạy sáng. Họ chỉ **thoát bằng cách đánh sập trần hầm tàu.**
+5. **Cao trào — chạy trốn chứ không phải phối hợp hoàn hảo:** Choi ra lệnh bắt Minseo "vì lý do an ninh quốc gia". Taeho từ chối. Choi: *"Anh nghĩ tôi cần mạng của anh sao?"* — ra hiệu cho một người lính **tháo mũ**: mặt xám, mắt trắng, cơ bắp phình to quá khổ — **Thể Giáp**, chưa chuyển hoá hẳn nên vẫn nghe lệnh nhờ liều ức chế gắn ở đai lưng. Hắn lao vào. Cả nhóm xoay xở mỗi người một cách, không ăn ý: Areum bắn khớp gối (mất hai mũi tên), Taeho đâm sau gáy nhưng bị hất văng, Yerin kéo Minseo tránh, Jiwoo — chân què — bật đèn khẩn cấp làm choáng zombie mắt nhạy sáng. Choi quay sang hỏi Dahee anh ta chạy hướng nào; **cô chỉ sai đường** (Taeho không biết, khán giả thì thấy). Họ chỉ **thoát bằng cách đánh sập trần hầm tàu.**
 
 6. **Sau vụ sập — lần đầu họ nói chuyện thật:** trong đường hầm, mọi người thở dốc. Minseo thấy mình không còn lựa chọn tách ra. Taeho nói lần đầu một điều không liên quan chuyện thoát thân: *"Thứ trong thẻ nhớ này là lý do tôi mất hết. Nếu nó ra ngoài thì ít nhất chuyện đó có nghĩa."* Anh không hứa gì; chỉ đồng ý **đưa Minseo tới đại học** trước. Đây là lần đầu anh chọn một mục tiêu cho người khác. Areum nhìn anh, lần đầu gọi tên: *"Taeho."*
 
-7. **Cuối tập (cliffhanger):** trong bóng đen đường hầm sau lưng họ, một bóng người đứng im — **da còn nguyên, ánh mắt cố định**, **đang quan sát nhóm.** Đó là **Kẻ Săn Mồi đầu tiên.** Nó không đuổi, chỉ nhìn. Taeho: *"Mới chỉ là ngày đầu tiên."*
+7. **Cuối tập (cliffhanger):** trong bóng đen đường hầm sau lưng họ, một bóng người đứng im — **da còn nguyên, ánh mắt cố định**, **đang quan sát nhóm.** Đó là **Kẻ Săn Mồi đầu tiên**, cổ tay còn **vòng nhận dạng của viện Cheonma** (chính là Subject-03, nhưng nhân vật chưa biết). Nó không đuổi, chỉ nhìn. Taeho: *"Mới chỉ là ngày đầu tiên."*
 
 - **Zombie xuất hiện:** Walker, Runner, **Thể Giáp**, **Kẻ Săn Mồi (bóng)**.
 - **Hình ảnh then chốt:** nghỉ ngơi tiệm tạp hoá, hầm ga tối, Minseo cầm ống tiêm, Taeho đưa thẻ nhớ, Choi + Dahee ở cửa ga, Thể Giáp, trần hầm sập, Taeho nói chuyện trong hầm, Stalker trong bóng.
