@@ -1,0 +1,31 @@
+{
+  "title": "Tưởng chàng rể thua 16000 vàng, trùm xã hội đen hớn hở đi đòi nợ thì lộ ra mình mới là kẻ thua!?",
+  "chapters": "24",
+  "source_dir": "manhua-recap/crmn_ep25",
+  "description": "Điền Hoành và nhà họ Từ mừng thầm vì tin Thẩm Lãng thua nợ lớn, đến khi biết chính sòng bạc mới là bên mất 26000 vàng. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 25.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "thumbnail": {"text": "TƯỞNG NỢ NGƯỜI, HÓA RA MẤT 26000!?", "prompt": "Vertical 9:16 anime-style: a scarred gang boss in dark armor gripping a terrified servant by the collar in a sunlit hall, a calm official in purple robes behind him, scattered gold coins on the floor. No text, leave top 25% empty."},
+  "beats": [
+    {"panel": "p004.jpg", "type": "HOOK", "kind": "recap", "narration": "Điền Hoành cười khẩy khoe với Từ gia chủ, Thẩm Lãng bắt ta tự đánh gãy chân con nuôi, vậy mà hôm nay hắn tự mò tới sòng bạc nạp mạng!"},
+    {"panel": "p009.jpg", "type": "SETUP", "kind": "recap", "narration": "Hắn tính, chờ Thẩm Lãng thua mười nghìn vàng, không cần ra tay, phủ Bá tước cũng sẽ đuổi anh ra khỏi nhà."},
+    {"panel": "p011.jpg", "type": "BUILD", "kind": "recap", "narration": "Đúng lúc đó, Điền Thập Cửu hớt hải lao vào, nghĩa phụ, có chuyện lớn rồi!"},
+    {"panel": "p014.jpg", "type": "BUILD", "kind": "recap", "narration": "Hắn quỳ sụp, mặt tái mét, liên tục nhận sai."},
+    {"panel": "p017.jpg", "type": "BUILD", "kind": "recap", "narration": "Bá tước Huyền Vũ nuôi gần ba nghìn quân, lại thương dân như con nên tài chính càng nghèo, mười nghìn vàng là con số cực lớn."},
+    {"panel": "p018.jpg", "type": "REVEAL", "kind": "recap", "narration": "Chỉ cần Thẩm Lãng thua mười nghìn vàng, anh hoặc bị đuổi, hoặc bị đánh chết."},
+    {"panel": "p023.jpg", "type": "BUILD", "kind": "recap", "narration": "Từ gia chủ còn nói thẳng, quý tộc trăm năm mất đất phong và binh quyền thì cũng dần chết thôi."},
+    {"panel": "p027.jpg", "type": "BUILD", "kind": "recap", "narration": "Điền Hoành quyết định cầm giấy nợ của Thẩm Lãng tới phủ Bá tước đòi tiền."},
+    {"panel": "p030.jpg", "type": "BUILD", "kind": "recap", "narration": "Hắn quay sang quát, Thập Cửu, nói đi, Thẩm Lãng thua bao nhiêu, nợ bao nhiêu?"},
+    {"panel": "p031.jpg", "type": "REVEAL", "kind": "recap", "narration": "Thập Cửu run rẩy đáp, mười sáu nghìn vàng."},
+    {"panel": "p032.jpg", "type": "REACTION", "kind": "recap", "narration": "Điền Hoành cười ha hả, làm tốt lắm, Thẩm Lãng chết chắc rồi!"},
+    {"panel": "p036.jpg", "type": "REVEAL", "kind": "recap", "narration": "Nhưng Thập Cửu bật khóc, nghĩa phụ, không phải Thẩm Lãng thua mười sáu nghìn vàng."},
+    {"panel": "p038.jpg", "type": "REVEAL", "kind": "recap", "narration": "Là chúng ta thua mất mười sáu nghìn vàng!"},
+    {"panel": "p042.jpg", "type": "REACTION", "kind": "recap", "narration": "Điền Hoành túm cổ áo hắn gầm lên, ngươi nói cái gì, rốt cuộc ai thắng hay thua!?"},
+    {"panel": "p045.jpg", "type": "REACTION", "kind": "commentary", "narration": "Phường Phú Quý cả năm cũng chỉ kiếm được chừng đó, vậy mà bị một người vét sạch trong một buổi."},
+    {"panel": "p052.jpg", "type": "BUILD", "kind": "recap", "narration": "Từ gia chủ cũng hoang mang, chẳng phải bảo Thẩm Lãng là tên vô tích sự sao, sao đến cờ bạc cũng ghê gớm thế!"},
+    {"panel": "p055.jpg", "type": "BUILD", "kind": "recap", "narration": "Con gái họ Từ nhắc nhở, nổi nóng cũng chẳng ích gì, đến tận nơi xem sao, đừng quên thành chủ và thái thú là chỗ dựa của ông."},
+    {"panel": "p059.jpg", "type": "BUILD", "kind": "recap", "narration": "Điền Hoành phi ngựa tới Phường Phú Quý, thấy cả phố chật kín người."},
+    {"panel": "p067.jpg", "type": "REVEAL", "kind": "recap", "narration": "Thẩm Lãng cười tươi đón đầu, ta thắng mười chín nghìn vàng ở sòng bạc của ngươi, đưa lại tiền thật đi!"},
+    {"panel": "p070.jpg", "type": "REVEAL", "kind": "recap", "narration": "Mấy trăm người cược chung với anh cũng thắng thêm bảy nghìn vàng nữa."},
+    {"panel": "p071.jpg", "type": "ENDING", "kind": "recap", "narration": "Tổng cộng hai mươi sáu nghìn vàng, Điền Bang chủ đưa tiền ra cùng lúc đi!"}
+  ]
+}

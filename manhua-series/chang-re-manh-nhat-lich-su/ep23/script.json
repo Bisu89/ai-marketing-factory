@@ -1,0 +1,30 @@
+{
+  "title": "Thẳng tiến vào sòng bạc lớn nhất thành, chàng rể thắng liền tay làm cả sòng chết lặng!?",
+  "chapters": "22",
+  "source_dir": "manhua-recap/crmn_ep23",
+  "description": "Thẩm Lãng bước vào Phường Phú Quý của Điền Hoành, ký giấy nợ đổi chip rồi thắng liên tục mấy ván liền. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 23.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "thumbnail": {"text": "THẮNG LIÊN TIẾP, CẢ SÒNG CHẾT LẶNG!?", "prompt": "Vertical 9:16 anime-style: a calm long-haired young man in white robes at a red gambling table with three white dice, a smirking gambler and a blonde dealer beside him, crowd gasping behind. No text, leave top 25% empty."},
+  "beats": [
+    {"panel": "p004.jpg", "type": "HOOK", "kind": "recap", "narration": "Điền Hoành có tới năm sòng bạc trong thành, và Thẩm Lãng quyết định đánh thẳng vào nơi kiếm tiền nhất của hắn!"},
+    {"panel": "p005.jpg", "type": "SETUP", "kind": "recap", "narration": "Phường Phú Quý chiếm hơn sáu phần mười thu nhập của cả Bang Hắc Y."},
+    {"panel": "p006.jpg", "type": "BUILD", "kind": "recap", "narration": "Cách đối phó đơn giản và thô thiển nhất của anh chính là bước vào sòng bạc của hắn kiếm tiền."},
+    {"panel": "p008.jpg", "type": "BUILD", "kind": "recap", "narration": "Dân chúng thấy anh liền xì xào, đó chẳng phải con rể phủ Bá tước sao."},
+    {"panel": "p009.jpg", "type": "BUILD", "kind": "recap", "narration": "Họ cười, gia quy nghiêm thế mà còn cho con rể vào sòng bạc, vài hôm nữa sẽ bị đánh gãy chân đuổi ra thôi."},
+    {"panel": "p011.jpg", "type": "REACTION", "kind": "recap", "narration": "Hai hộ vệ đi theo thì thầm, chúng ta chỉ cần bảo vệ anh ta là được, anh ta muốn chết thì cứ để anh ta đi."},
+    {"panel": "p014.jpg", "type": "REVEAL", "kind": "recap", "narration": "Điền Thập Cửu, một trong những đứa con nuôi của Điền Hoành, vừa thấy anh đã lóe sáng mắt, không ngờ anh tự dâng mình tới cửa."},
+    {"panel": "p017.jpg", "type": "BUILD", "kind": "recap", "narration": "Anh nhàn nhã tuyên bố, ta nhất thời hứng chí, trong người không mang tiền, mượn trước được chứ?"},
+    {"panel": "p018.jpg", "type": "BUILD", "kind": "recap", "narration": "Hắn cười toe toét, thầm tính cho anh mượn mười nghìn vàng, đợi thua sạch rồi đem giấy nợ tới phủ Bá tước thì anh toi."},
+    {"panel": "p021.jpg", "type": "BUILD", "kind": "recap", "narration": "Anh ký giấy nợ một nghìn vàng, rồi đổi toàn bộ thành thẻ cược."},
+    {"panel": "p031.jpg", "type": "BUILD", "kind": "recap", "narration": "Hai bên chọn trò đơn giản nhất, đại tiểu, ba con xúc xắc, trên chín điểm là đại, dưới là tiểu."},
+    {"panel": "p035.jpg", "type": "BUILD", "kind": "recap", "narration": "Cô gái tóc vàng cầm chén lắc xúc xắc nhanh như chớp, tiếng sột soạt khắp phòng."},
+    {"panel": "p041.jpg", "type": "REVEAL", "kind": "recap", "narration": "Thẩm Lãng chỉ nhàn nhã nói, cược đại."},
+    {"panel": "p045.jpg", "type": "REVEAL", "kind": "recap", "narration": "Chén mở ra, mười ba điểm, Thẩm Lãng thắng rồi!"},
+    {"panel": "p047.jpg", "type": "REACTION", "kind": "recap", "narration": "Đám đông bàn tán, tên này may thật, ván đầu đã thắng một nghìn vàng."},
+    {"panel": "p057.jpg", "type": "REVEAL", "kind": "recap", "narration": "Ván sau anh cược hết, được hai nghìn vàng, cả sòng há hốc mồm."},
+    {"panel": "p063.jpg", "type": "REVEAL", "kind": "recap", "narration": "Rồi cược hết thêm lần nữa, mười lăm điểm, lại là đại, bốn nghìn vàng cho anh ăn sung mặc sướng mấy đời."},
+    {"panel": "p064.jpg", "type": "REACTION", "kind": "commentary", "narration": "Lợi nhuận cả tháng của sòng cũng chỉ hơn hai nghìn vàng, vậy mà anh thắng một lần bốn nghìn, bảo sao Điền Thập Cửu đổ mồ hôi."},
+    {"panel": "p068.jpg", "type": "BUILD", "kind": "recap", "narration": "Hắn hiểu ra, chỉ còn cách ra tay, vì cả sòng chỉ mình hắn biết chiêu đổi điểm xúc xắc ngay trên bàn."},
+    {"panel": "p071.jpg", "type": "ENDING", "kind": "recap", "narration": "Hắn tự mình cầm chén, cười lạnh, Thẩm Lãng, ngươi thua chắc rồi!"}
+  ]
+}

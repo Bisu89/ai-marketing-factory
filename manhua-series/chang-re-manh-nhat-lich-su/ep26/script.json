@@ -1,0 +1,31 @@
+{
+  "title": "Danh tiếng xấu là vũ khí, chàng rể dẫn cả đám con bạc thắng cho trùm xã hội đen phá sản!?",
+  "chapters": "25",
+  "source_dir": "manhua-recap/crmn_ep26",
+  "description": "Điền Hoành đứng trước món nợ 26000 vàng, Thẩm Lãng tiếp tục dẫn đám con bạc thắng sòng Phú Quý, còn nói thẳng vì sao anh không cần danh tiếng tốt. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 26.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "thumbnail": {"text": "THẮNG CHO TRÙM PHÁ SẢN!?", "prompt": "Vertical 9:16 anime-style: a long-haired young man in white holding a sack of glowing chips and pointing forward, a cheering crowd of gamblers behind him, a furious scarred gang boss with red glowing eyes in front. No text, leave top 25% empty."},
+  "beats": [
+    {"panel": "p003.jpg", "type": "HOOK", "kind": "recap", "narration": "Hai mươi sáu nghìn vàng gần bằng một nửa gia tài của Điền Hoành, trả hết thì hắn cũng gần như phá sản."},
+    {"panel": "p007.jpg", "type": "SETUP", "kind": "recap", "narration": "Hắn nghiến răng, Thẩm Lãng đê tiện, lại lôi cả đám con nghiện cờ bạc vào thắng cùng mình."},
+    {"panel": "p009.jpg", "type": "BUILD", "kind": "recap", "narration": "Con rể phủ Bá tước, lại có mấy trăm con bạc được lợi hộ tống, hiện trường thật không dễ đối phó."},
+    {"panel": "p011.jpg", "type": "BUILD", "kind": "recap", "narration": "Thẩm Lãng xách túi thẻ cược tới đòi, nhân vật lớn như ngươi chắc không quỵt nợ đâu nhỉ?"},
+    {"panel": "p014.jpg", "type": "BUILD", "kind": "recap", "narration": "Điền Hoành miễn cưỡng mời anh vào trong nói chuyện, nhưng đám con bạc không cho anh rời đi."},
+    {"panel": "p019.jpg", "type": "REVEAL", "kind": "recap", "narration": "Anh trấn an, xin các vị cứ yên tâm, ta sẽ không bán đứng lợi ích của mọi người."},
+    {"panel": "p023.jpg", "type": "BUILD", "kind": "recap", "narration": "Trên lầu hai, Điền Hoành thở dài, vì ép ta tự chặt tay con nuôi mà ngươi chấp nhận sa ngã chơi bạc, thủ đoạn thâm thật."},
+    {"panel": "p025.jpg", "type": "BUILD", "kind": "recap", "narration": "Hắn hỏi, ngươi không cần danh tiếng của phủ Bá tước nữa sao?"},
+    {"panel": "p027.jpg", "type": "REVEAL", "kind": "recap", "narration": "Thẩm Lãng đáp, danh tiếng tốt mà làm chuyện xấu thì thân bại danh liệt, còn nếu ta toàn tiếng xấu mà làm một việc tốt, ai cũng sẽ khen ta biết quay đầu."},
+    {"panel": "p033.jpg", "type": "BUILD", "kind": "recap", "narration": "Anh nói rõ, ta không dùng mười chín nghìn vàng để đổi chân Thập Tam, ngươi trả cả tiền, lại còn phải đánh gãy chân hắn."},
+    {"panel": "p038.jpg", "type": "REACTION", "kind": "recap", "narration": "Điền Hoành mắt đỏ ngầu, nổi điên rút kiếm, lính phủ Bá tước lập tức tuốt kiếm bảo vệ anh."},
+    {"panel": "p045.jpg", "type": "BUILD", "kind": "recap", "narration": "Hắn gầm lên, Thập Tam muốn giết cả nhà ngươi nhưng do ta cử đi, ta không động tới một sợi lông, nằm mơ đi!"},
+    {"panel": "p047.jpg", "type": "BUILD", "kind": "recap", "narration": "Hắn còn thách, có bản lĩnh thì bảo đại nhân nhà ngươi đến chỗ ta mà đòi nợ!"},
+    {"panel": "p050.jpg", "type": "REVEAL", "kind": "recap", "narration": "Rồi hắn thò đầu ra cửa sổ, tuyên bố trả hết tiền thắng của dân, thẻ nào cũng đổi thành tiền."},
+    {"panel": "p052.jpg", "type": "REACTION", "kind": "recap", "narration": "Đám con bạc reo hò, Điền Bang chủ muôn năm, riêng tiền của Thẩm Lãng hắn nhất quyết không đưa."},
+    {"panel": "p054.jpg", "type": "BUILD", "kind": "recap", "narration": "Hắn cười, không quá nửa tháng, chín nghìn vàng đó cũng sẽ về lại tay ta, thậm chí còn nhiều hơn."},
+    {"panel": "p058.jpg", "type": "REACTION", "kind": "commentary", "narration": "Trả cho dân thì rộng rãi, trả cho Thẩm Lãng thì nằm mơ, nghe đã thấy ván này còn lâu mới xong."},
+    {"panel": "p063.jpg", "type": "REVEAL", "kind": "recap", "narration": "Thẩm Lãng điềm nhiên, chỉ cần sòng bạc còn mở, ta muốn thắng bao nhiêu là thắng bấy nhiêu, còn dẫn người khác thắng cùng."},
+    {"panel": "p065.jpg", "type": "BUILD", "kind": "recap", "narration": "Anh nghiêng người ra cửa sổ hô lớn, mọi người đừng đi, ta dẫn các người tiếp tục thắng tiền!"},
+    {"panel": "p066.jpg", "type": "BUILD", "kind": "recap", "narration": "Chúng ta thắng cho Điền Bang chủ phá sản luôn!"},
+    {"panel": "p068.jpg", "type": "ENDING", "kind": "recap", "narration": "Cả đám con bạc reo hò Thẩm Lãng ta yêu ngài, còn anh nhẹ nhàng quay lại bàn cược, ta phải đi chơi tiếp đây!"}
+  ]
+}

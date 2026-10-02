@@ -1,0 +1,28 @@
+{
+  "title": "Nữ tướng quất roi lính gác vì dám cản chồng, rồi cha vợ giao bài kiểm tra khó nhất nhà!?",
+  "chapters": "20",
+  "source_dir": "manhua-recap/crmn_ep21",
+  "description": "Mộc Lan quất roi tên lính gác vô lễ, đại phu chữa cho Đại Ngốc, rồi Bá tước giao Thẩm Lãng cuốn Gia Huấn Kim Thị phải học cả tháng mới thuộc. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 21.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "thumbnail": {"text": "CUỐN GIA HUẤN KHÓ NHẤT NHÀ!?", "prompt": "Vertical 9:16 anime-style: a stern nobleman in white robes handing a huge heavy ancient book to a long-haired young man who looks stunned, wooden library shelves, warm golden light. No text, leave top 25% empty."},
+  "beats": [
+    {"panel": "p007.jpg", "type": "HOOK", "kind": "recap", "narration": "Thẩm Lãng hét lên mau đi mời đại phu, cứu người quan trọng, nhưng lính gác vẫn cứ chặn cổng."},
+    {"panel": "p009.jpg", "type": "SETUP", "kind": "recap", "narration": "Mộc Lan tự mình đánh xe, dịu giọng xin lỗi chồng vì để chàng phải chịu ấm ức."},
+    {"panel": "p013.jpg", "type": "BUILD", "kind": "recap", "narration": "Rồi cô xoay người, chiếc roi vút lên, nhắm thẳng tên thủ lĩnh Kim Trình."},
+    {"panel": "p021.jpg", "type": "REVEAL", "kind": "recap", "narration": "Cô nói, ta đánh ngươi vì hai lý do, thứ nhất thấy chết không cứu, trái đạo nghĩa phủ Bá tước."},
+    {"panel": "p022.jpg", "type": "BUILD", "kind": "recap", "narration": "Thứ hai, Thẩm Lãng là phu quân của ta, cũng là chủ nhân của ngươi, sau này phải chỉnh đốn thái độ."},
+    {"panel": "p025.jpg", "type": "BUILD", "kind": "recap", "narration": "Đại phu An Tái Thế khám cho Đại Ngốc, vết thương ngoài và trong thống nhất, không khó đoán chỗ chảy máu."},
+    {"panel": "p027.jpg", "type": "REVEAL", "kind": "recap", "narration": "Ông nói chữa được, chỉ hơi tốn thời gian, vì thể chất Đại Ngốc quá tốt, người khác thì chết lâu rồi."},
+    {"panel": "p030.jpg", "type": "REACTION", "kind": "commentary", "narration": "Gọi người bạn thân là đại ca của chồng mà chồng còn tự hỏi, vậy mình là Nhị Ngốc thật sao."},
+    {"panel": "p036.jpg", "type": "BUILD", "kind": "recap", "narration": "Bá tước Kim Trác gọi riêng anh vào thư phòng, hỏi con biết lỗi chưa."},
+    {"panel": "p038.jpg", "type": "BUILD", "kind": "recap", "narration": "Ông trách anh dám mượn danh Bá tước dọa Điền Hoành, còn đòi đánh gãy chân nghĩa tử của hắn."},
+    {"panel": "p044.jpg", "type": "REVEAL", "kind": "recap", "narration": "Anh kể hết chuyện nhà họ Từ, nhà họ Lâm và Điền Hoành đã làm với phủ Bá tước, kể cả việc bị bỏ tiền thuê người giết."},
+    {"panel": "p047.jpg", "type": "REACTION", "kind": "recap", "narration": "Bá tước đập bàn đứng dậy, kẻ nào ăn hiếp con rể ta xong thì đừng mong yên ổn!"},
+    {"panel": "p048.jpg", "type": "BUILD", "kind": "recap", "narration": "Nhưng chính thành chủ Liễu Vô Nham và Trương Tấn đã tới phủ tố cáo chuyện của anh trước."},
+    {"panel": "p055.jpg", "type": "BUILD", "kind": "recap", "narration": "Rồi ông đưa ra cuốn Gia Huấn Kim Thị, bảo, chỉ cần học thuộc là con sẽ khôi phục tự do."},
+    {"panel": "p059.jpg", "type": "REVEAL", "kind": "recap", "narration": "Ông còn cho biết, bản thân mình cũng phải mất ba mươi ba ngày, còn Mộc Lan mất hai mươi ba ngày mới thuộc."},
+    {"panel": "p065.jpg", "type": "REVEAL", "kind": "recap", "narration": "Nhưng Thẩm Lãng chỉ cần hơn một tiếng là thuộc toàn bộ."},
+    {"panel": "p084.jpg", "type": "REACTION", "kind": "commentary", "narration": "Trong lúc cả nhà lo anh học lâu, người ta đã đi ngủ ngon lành, đúng là thiên tài nhưng cũng biết cách hưởng thụ."},
+    {"panel": "p085.jpg", "type": "ENDING", "kind": "recap", "narration": "Sáng mai ông sẽ kiểm tra, và có vẻ ván cược trong nhà sắp có người thua thảm!"}
+  ]
+}

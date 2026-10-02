@@ -1,0 +1,1066 @@
+{
+  "template": "manhua_recap_long_vi",
+  "title": "Chàng Rể Mạnh Nhất Lịch Sử | Tóm tắt tập 21-30",
+  "chapters": "20-29",
+  "description": "Tóm tắt tập 21-30 Chàng Rể Mạnh Nhất Lịch Sử: thuộc lòng gia huấn trong một đêm, đại chiến sòng bạc với Bang Hắc Y, và âm mưu giẫm đạp chết người bị lật tẩy.",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "beats": [
+    {
+      "panel": "p007.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Thẩm Lãng hét lên mau đi mời đại phu, cứu người quan trọng, nhưng lính gác vẫn cứ chặn cổng.",
+      "dir": "manhua-recap/crmn_ep21",
+      "section": "Tập 21: Bài kiểm tra Gia Huấn"
+    },
+    {
+      "panel": "p009.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Mộc Lan tự mình đánh xe, dịu giọng xin lỗi chồng vì để chàng phải chịu ấm ức.",
+      "dir": "manhua-recap/crmn_ep21"
+    },
+    {
+      "panel": "p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Rồi cô xoay người, chiếc roi vút lên, nhắm thẳng tên thủ lĩnh Kim Trình.",
+      "dir": "manhua-recap/crmn_ep21"
+    },
+    {
+      "panel": "p021.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Cô nói, ta đánh ngươi vì hai lý do, thứ nhất thấy chết không cứu, trái đạo nghĩa phủ Bá tước.",
+      "dir": "manhua-recap/crmn_ep21"
+    },
+    {
+      "panel": "p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đại phu An Tái Thế khám cho Đại Ngốc, vết thương ngoài và trong thống nhất, không khó đoán chỗ chảy máu.",
+      "dir": "manhua-recap/crmn_ep21"
+    },
+    {
+      "panel": "p027.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Ông nói chữa được, chỉ hơi tốn thời gian, vì thể chất Đại Ngốc quá tốt, người khác thì chết lâu rồi.",
+      "dir": "manhua-recap/crmn_ep21"
+    },
+    {
+      "panel": "p030.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Gọi người bạn thân là đại ca của chồng mà chồng còn tự hỏi, vậy mình là Nhị Ngốc thật sao.",
+      "dir": "manhua-recap/crmn_ep21"
+    },
+    {
+      "panel": "p038.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông trách anh dám mượn danh Bá tước dọa Điền Hoành, còn đòi đánh gãy chân nghĩa tử của hắn.",
+      "dir": "manhua-recap/crmn_ep21"
+    },
+    {
+      "panel": "p044.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Anh kể hết chuyện nhà họ Từ, nhà họ Lâm và Điền Hoành đã làm với phủ Bá tước, kể cả việc bị bỏ tiền thuê người giết.",
+      "dir": "manhua-recap/crmn_ep21"
+    },
+    {
+      "panel": "p048.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng chính thành chủ Liễu Vô Nham và Trương Tấn đã tới phủ tố cáo chuyện của anh trước.",
+      "dir": "manhua-recap/crmn_ep21"
+    },
+    {
+      "panel": "p059.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Ông còn cho biết, bản thân mình cũng phải mất ba mươi ba ngày, còn Mộc Lan mất hai mươi ba ngày mới thuộc.",
+      "dir": "manhua-recap/crmn_ep21"
+    },
+    {
+      "panel": "p065.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Nhưng Thẩm Lãng chỉ cần hơn một tiếng là thuộc toàn bộ.",
+      "dir": "manhua-recap/crmn_ep21"
+    },
+    {
+      "panel": "p084.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Trong lúc cả nhà lo anh học lâu, người ta đã đi ngủ ngon lành, đúng là thiên tài nhưng cũng biết cách hưởng thụ.",
+      "dir": "manhua-recap/crmn_ep21"
+    },
+    {
+      "panel": "p085.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sáng mai ông sẽ kiểm tra, và có vẻ ván cược trong nhà sắp có người thua thảm!",
+      "dir": "manhua-recap/crmn_ep21"
+    },
+    {
+      "panel": "p007.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sáng hôm sau, Bá tước quát vang, sao con lười biếng thế, không lo đọc sách mà đã đi ngủ sớm?",
+      "dir": "manhua-recap/crmn_ep22",
+      "section": "Tập 22: Thuộc lòng trong một đêm"
+    },
+    {
+      "panel": "p009.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Thẩm Lãng chỉ cười, nhạc phụ hiểu lầm rồi, con đã học thuộc hết rồi.",
+      "dir": "manhua-recap/crmn_ep22"
+    },
+    {
+      "panel": "p010.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bá tước tức điên, Mộc Lan thông minh bẩm sinh còn mất hai mươi ba ngày, vậy mà ngươi nói một đêm!",
+      "dir": "manhua-recap/crmn_ep22"
+    },
+    {
+      "panel": "p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng vẫn bình tĩnh, nhạc phụ cứ kiểm tra con.",
+      "dir": "manhua-recap/crmn_ep22"
+    },
+    {
+      "panel": "p018.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Anh đọc vanh vách cả chương, giọng lưu loát như đã thuộc từ nhỏ.",
+      "dir": "manhua-recap/crmn_ep22"
+    },
+    {
+      "panel": "p021.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông không tin, đòi thêm chương mười sáu, đọc hoàn chỉnh cho ta.",
+      "dir": "manhua-recap/crmn_ep22"
+    },
+    {
+      "panel": "p024.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Chỉ vỏn vẹn ba phút, Thẩm Lãng đọc hết một lượt không sót chữ nào.",
+      "dir": "manhua-recap/crmn_ep22"
+    },
+    {
+      "panel": "p029.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Mẹ vợ cười tít mắt, vì ván cược với chồng bà là người thắng.",
+      "dir": "manhua-recap/crmn_ep22"
+    },
+    {
+      "panel": "p036.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Khi chỉ còn hai người, Bá tước hỏi nghiêm túc, Lãng nhi, sao con làm được?",
+      "dir": "manhua-recap/crmn_ep22"
+    },
+    {
+      "panel": "p038.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Anh đáp, bốn ngày trước tỉnh lại sau cơn bệnh nặng, đầu óc bỗng thông suốt, nhìn một lần là nhớ luôn.",
+      "dir": "manhua-recap/crmn_ep22"
+    },
+    {
+      "panel": "p043.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Ông kể, một trăm tám mươi năm trước có một vị tiền nhiệm nhà họ Kim cũng thông suốt sau trận bệnh suýt chết, từ kẻ vô dụng thành thiên tài võ thuật.",
+      "dir": "manhua-recap/crmn_ep22"
+    },
+    {
+      "panel": "p050.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bá tước hài lòng dỡ lệnh cấm túc, chuyện Điền Hoành cứ tạm để đó đi.",
+      "dir": "manhua-recap/crmn_ep22"
+    },
+    {
+      "panel": "p053.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Ông nói thẳng, ba năm gần đây đã có ba nhà quý tộc bị cướp đất phong, bỏ tước vị, thậm chí mất cả mạng.",
+      "dir": "manhua-recap/crmn_ep22"
+    },
+    {
+      "panel": "p059.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thành Huyền Vũ giờ thuộc địa bàn của triều đình, thuộc về Liễu Vô Nham và Trương Tấn.",
+      "dir": "manhua-recap/crmn_ep22"
+    },
+    {
+      "panel": "p066.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng chỉ cười, con sẽ khiến Điền Hoành thua một cách thảm hại, hợp tình hợp pháp, và chắc chắn con sẽ thắng!",
+      "dir": "manhua-recap/crmn_ep22"
+    },
+    {
+      "panel": "p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Điền Hoành có tới năm sòng bạc trong thành, và Thẩm Lãng quyết định đánh thẳng vào nơi kiếm tiền nhất của hắn!",
+      "dir": "manhua-recap/crmn_ep23",
+      "section": "Tập 23: Vào sòng bạc Phú Quý"
+    },
+    {
+      "panel": "p005.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Phường Phú Quý chiếm hơn sáu phần mười thu nhập của cả Bang Hắc Y.",
+      "dir": "manhua-recap/crmn_ep23"
+    },
+    {
+      "panel": "p006.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cách đối phó đơn giản và thô thiển nhất của anh chính là bước vào sòng bạc của hắn kiếm tiền.",
+      "dir": "manhua-recap/crmn_ep23"
+    },
+    {
+      "panel": "p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Họ cười, gia quy nghiêm thế mà còn cho con rể vào sòng bạc, vài hôm nữa sẽ bị đánh gãy chân đuổi ra thôi.",
+      "dir": "manhua-recap/crmn_ep23"
+    },
+    {
+      "panel": "p014.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Điền Thập Cửu, một trong những đứa con nuôi của Điền Hoành, vừa thấy anh đã lóe sáng mắt, không ngờ anh tự dâng mình tới cửa.",
+      "dir": "manhua-recap/crmn_ep23"
+    },
+    {
+      "panel": "p017.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh nhàn nhã tuyên bố, ta nhất thời hứng chí, trong người không mang tiền, mượn trước được chứ?",
+      "dir": "manhua-recap/crmn_ep23"
+    },
+    {
+      "panel": "p021.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh ký giấy nợ một nghìn vàng, rồi đổi toàn bộ thành thẻ cược.",
+      "dir": "manhua-recap/crmn_ep23"
+    },
+    {
+      "panel": "p035.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô gái tóc vàng cầm chén lắc xúc xắc nhanh như chớp, tiếng sột soạt khắp phòng.",
+      "dir": "manhua-recap/crmn_ep23"
+    },
+    {
+      "panel": "p041.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Thẩm Lãng chỉ nhàn nhã nói, cược đại.",
+      "dir": "manhua-recap/crmn_ep23"
+    },
+    {
+      "panel": "p045.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Chén mở ra, mười ba điểm, Thẩm Lãng thắng rồi!",
+      "dir": "manhua-recap/crmn_ep23"
+    },
+    {
+      "panel": "p057.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Ván sau anh cược hết, được hai nghìn vàng, cả sòng há hốc mồm.",
+      "dir": "manhua-recap/crmn_ep23"
+    },
+    {
+      "panel": "p063.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Rồi cược hết thêm lần nữa, mười lăm điểm, lại là đại, bốn nghìn vàng cho anh ăn sung mặc sướng mấy đời.",
+      "dir": "manhua-recap/crmn_ep23"
+    },
+    {
+      "panel": "p064.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Lợi nhuận cả tháng của sòng cũng chỉ hơn hai nghìn vàng, vậy mà anh thắng một lần bốn nghìn, bảo sao Điền Thập Cửu đổ mồ hôi.",
+      "dir": "manhua-recap/crmn_ep23"
+    },
+    {
+      "panel": "p068.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn hiểu ra, chỉ còn cách ra tay, vì cả sòng chỉ mình hắn biết chiêu đổi điểm xúc xắc ngay trên bàn.",
+      "dir": "manhua-recap/crmn_ep23"
+    },
+    {
+      "panel": "p071.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn tự mình cầm chén, cười lạnh, Thẩm Lãng, ngươi thua chắc rồi!",
+      "dir": "manhua-recap/crmn_ep23"
+    },
+    {
+      "panel": "p007.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng bỗng chán chơi đại tiểu, nói thẳng, ta muốn rút bài cửu.",
+      "dir": "manhua-recap/crmn_ep24",
+      "section": "Tập 24: Thần Bài Huyền Vũ"
+    },
+    {
+      "panel": "p010.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Điền Thập Cửu cười ha hả, đại tiểu dựa vào vận may còn dám đấu bài cửu với ta thì đúng là tự tìm đường chết.",
+      "dir": "manhua-recap/crmn_ep24"
+    },
+    {
+      "panel": "p012.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bài cửu rất đơn giản, úp ba mươi hai lá, mỗi người rút hai lá, phân thắng thua theo số điểm.",
+      "dir": "manhua-recap/crmn_ep24"
+    },
+    {
+      "panel": "p020.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Thẩm Lãng nói thẳng, ta không tin bài của các ngươi, sai người mua ngay một bộ bài mới.",
+      "dir": "manhua-recap/crmn_ep24"
+    },
+    {
+      "panel": "p021.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Điền Thập Cửu giật mình, chẳng lẽ hắn biết bài của Phường Phú Quý có ký hiệu?",
+      "dir": "manhua-recap/crmn_ep24"
+    },
+    {
+      "panel": "p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn nghĩ, dù không ăn gian, ta là cao thủ bài cửu số một thành Huyền Vũ, vẫn thắng thôi!",
+      "dir": "manhua-recap/crmn_ep24"
+    },
+    {
+      "panel": "p027.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Mắt Thẩm Lãng lóe lên ánh lục, thứ nhìn xuyên thấu vừa kích hoạt.",
+      "dir": "manhua-recap/crmn_ep24"
+    },
+    {
+      "panel": "p033.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Qua lưng bài, anh nhìn rõ từng điểm chấm bên trong, như đọc sách mở.",
+      "dir": "manhua-recap/crmn_ep24"
+    },
+    {
+      "panel": "p037.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Rồi anh thản nhiên cược một nghìn vàng, còn chẳng thèm nhìn bài.",
+      "dir": "manhua-recap/crmn_ep24"
+    },
+    {
+      "panel": "p042.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Bài mở ra, vừa vặn lớn hơn bài Điền Thập Cửu đúng một bậc!",
+      "dir": "manhua-recap/crmn_ep24"
+    },
+    {
+      "panel": "p050.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Thẩm Lãng thắng mãi, thắng mãi, mỗi ván đều không nhìn bài mà vẫn đặt đúng một nghìn thẻ.",
+      "dir": "manhua-recap/crmn_ep24"
+    },
+    {
+      "panel": "p052.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Đám đông reo hò, Thần Bài thật sự của thành Huyền Vũ là Thẩm Lãng, còn Điền Thập Cửu chỉ là cái rắm.",
+      "dir": "manhua-recap/crmn_ep24"
+    },
+    {
+      "panel": "p055.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Hắn thua mười ba nghìn vàng, người cứng đờ như tượng đá xanh.",
+      "dir": "manhua-recap/crmn_ep24"
+    },
+    {
+      "panel": "p057.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Thua cho một kẻ vô dụng mới nổi mấy ngày, đúng là nhục chồng nhục, nghĩa phụ sẽ lột da hắn mất.",
+      "dir": "manhua-recap/crmn_ep24"
+    },
+    {
+      "panel": "p062.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cả sòng hô vang thần bài, Thẩm gia muôn năm, còn kẻ thua thì mất sạch uy tín!",
+      "dir": "manhua-recap/crmn_ep24"
+    },
+    {
+      "panel": "p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Điền Hoành cười khẩy khoe với Từ gia chủ, Thẩm Lãng bắt ta tự đánh gãy chân con nuôi, vậy mà hôm nay hắn tự mò tới sòng bạc nạp mạng!",
+      "dir": "manhua-recap/crmn_ep25",
+      "section": "Tập 25: Trùm đòi nợ thành con nợ"
+    },
+    {
+      "panel": "p009.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Hắn tính, chờ Thẩm Lãng thua mười nghìn vàng, không cần ra tay, phủ Bá tước cũng sẽ đuổi anh ra khỏi nhà.",
+      "dir": "manhua-recap/crmn_ep25"
+    },
+    {
+      "panel": "p011.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đúng lúc đó, Điền Thập Cửu hớt hải lao vào, nghĩa phụ, có chuyện lớn rồi!",
+      "dir": "manhua-recap/crmn_ep25"
+    },
+    {
+      "panel": "p017.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bá tước Huyền Vũ nuôi gần ba nghìn quân, lại thương dân như con nên tài chính càng nghèo, mười nghìn vàng là con số cực lớn.",
+      "dir": "manhua-recap/crmn_ep25"
+    },
+    {
+      "panel": "p018.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Chỉ cần Thẩm Lãng thua mười nghìn vàng, anh hoặc bị đuổi, hoặc bị đánh chết.",
+      "dir": "manhua-recap/crmn_ep25"
+    },
+    {
+      "panel": "p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Điền Hoành quyết định cầm giấy nợ của Thẩm Lãng tới phủ Bá tước đòi tiền.",
+      "dir": "manhua-recap/crmn_ep25"
+    },
+    {
+      "panel": "p031.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Thập Cửu run rẩy đáp, mười sáu nghìn vàng.",
+      "dir": "manhua-recap/crmn_ep25"
+    },
+    {
+      "panel": "p032.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Điền Hoành cười ha hả, làm tốt lắm, Thẩm Lãng chết chắc rồi!",
+      "dir": "manhua-recap/crmn_ep25"
+    },
+    {
+      "panel": "p036.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Nhưng Thập Cửu bật khóc, nghĩa phụ, không phải Thẩm Lãng thua mười sáu nghìn vàng.",
+      "dir": "manhua-recap/crmn_ep25"
+    },
+    {
+      "panel": "p038.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Là chúng ta thua mất mười sáu nghìn vàng!",
+      "dir": "manhua-recap/crmn_ep25"
+    },
+    {
+      "panel": "p045.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Phường Phú Quý cả năm cũng chỉ kiếm được chừng đó, vậy mà bị một người vét sạch trong một buổi.",
+      "dir": "manhua-recap/crmn_ep25"
+    },
+    {
+      "panel": "p052.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Từ gia chủ cũng hoang mang, chẳng phải bảo Thẩm Lãng là tên vô tích sự sao, sao đến cờ bạc cũng ghê gớm thế!",
+      "dir": "manhua-recap/crmn_ep25"
+    },
+    {
+      "panel": "p059.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Điền Hoành phi ngựa tới Phường Phú Quý, thấy cả phố chật kín người.",
+      "dir": "manhua-recap/crmn_ep25"
+    },
+    {
+      "panel": "p067.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Thẩm Lãng cười tươi đón đầu, ta thắng mười chín nghìn vàng ở sòng bạc của ngươi, đưa lại tiền thật đi!",
+      "dir": "manhua-recap/crmn_ep25"
+    },
+    {
+      "panel": "p070.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Mấy trăm người cược chung với anh cũng thắng thêm bảy nghìn vàng nữa.",
+      "dir": "manhua-recap/crmn_ep25"
+    },
+    {
+      "panel": "p071.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tổng cộng hai mươi sáu nghìn vàng, Điền Bang chủ đưa tiền ra cùng lúc đi!",
+      "dir": "manhua-recap/crmn_ep25"
+    },
+    {
+      "panel": "p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hai mươi sáu nghìn vàng gần bằng một nửa gia tài của Điền Hoành, trả hết thì hắn cũng gần như phá sản.",
+      "dir": "manhua-recap/crmn_ep26",
+      "section": "Tập 26: Danh tiếng xấu là vũ khí"
+    },
+    {
+      "panel": "p007.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Hắn nghiến răng, Thẩm Lãng đê tiện, lại lôi cả đám con nghiện cờ bạc vào thắng cùng mình.",
+      "dir": "manhua-recap/crmn_ep26"
+    },
+    {
+      "panel": "p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Con rể phủ Bá tước, lại có mấy trăm con bạc được lợi hộ tống, hiện trường thật không dễ đối phó.",
+      "dir": "manhua-recap/crmn_ep26"
+    },
+    {
+      "panel": "p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Điền Hoành miễn cưỡng mời anh vào trong nói chuyện, nhưng đám con bạc không cho anh rời đi.",
+      "dir": "manhua-recap/crmn_ep26"
+    },
+    {
+      "panel": "p019.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Anh trấn an, xin các vị cứ yên tâm, ta sẽ không bán đứng lợi ích của mọi người.",
+      "dir": "manhua-recap/crmn_ep26"
+    },
+    {
+      "panel": "p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn hỏi, ngươi không cần danh tiếng của phủ Bá tước nữa sao?",
+      "dir": "manhua-recap/crmn_ep26"
+    },
+    {
+      "panel": "p027.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Thẩm Lãng đáp, danh tiếng tốt mà làm chuyện xấu thì thân bại danh liệt, còn nếu ta toàn tiếng xấu mà làm một việc tốt, ai cũng sẽ khen ta biết quay đầu.",
+      "dir": "manhua-recap/crmn_ep26"
+    },
+    {
+      "panel": "p038.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Điền Hoành mắt đỏ ngầu, nổi điên rút kiếm, lính phủ Bá tước lập tức tuốt kiếm bảo vệ anh.",
+      "dir": "manhua-recap/crmn_ep26"
+    },
+    {
+      "panel": "p047.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn còn thách, có bản lĩnh thì bảo đại nhân nhà ngươi đến chỗ ta mà đòi nợ!",
+      "dir": "manhua-recap/crmn_ep26"
+    },
+    {
+      "panel": "p050.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Rồi hắn thò đầu ra cửa sổ, tuyên bố trả hết tiền thắng của dân, thẻ nào cũng đổi thành tiền.",
+      "dir": "manhua-recap/crmn_ep26"
+    },
+    {
+      "panel": "p054.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn cười, không quá nửa tháng, chín nghìn vàng đó cũng sẽ về lại tay ta, thậm chí còn nhiều hơn.",
+      "dir": "manhua-recap/crmn_ep26"
+    },
+    {
+      "panel": "p058.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Trả cho dân thì rộng rãi, trả cho Thẩm Lãng thì nằm mơ, nghe đã thấy ván này còn lâu mới xong.",
+      "dir": "manhua-recap/crmn_ep26"
+    },
+    {
+      "panel": "p063.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Thẩm Lãng điềm nhiên, chỉ cần sòng bạc còn mở, ta muốn thắng bao nhiêu là thắng bấy nhiêu, còn dẫn người khác thắng cùng.",
+      "dir": "manhua-recap/crmn_ep26"
+    },
+    {
+      "panel": "p066.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chúng ta thắng cho Điền Bang chủ phá sản luôn!",
+      "dir": "manhua-recap/crmn_ep26"
+    },
+    {
+      "panel": "p068.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cả đám con bạc reo hò Thẩm Lãng ta yêu ngài, còn anh nhẹ nhàng quay lại bàn cược, ta phải đi chơi tiếp đây!",
+      "dir": "manhua-recap/crmn_ep26"
+    },
+    {
+      "panel": "p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng lại quay về sòng bạc, mang theo cơn lốc trăm trận trăm thắng!",
+      "dir": "manhua-recap/crmn_ep27",
+      "section": "Tập 27: Trùm nổi điên"
+    },
+    {
+      "panel": "p006.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Đám con bạc điên hết rồi, dễ nhất là đặt cược theo anh, chắc chắn thắng.",
+      "dir": "manhua-recap/crmn_ep27"
+    },
+    {
+      "panel": "p007.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Các tay chia bài mặt như tro tàn, thua đến mức nghi ngờ cuộc sống.",
+      "dir": "manhua-recap/crmn_ep27"
+    },
+    {
+      "panel": "p010.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Mỗi lần Thẩm Lãng chỉ giữ một đồng, phần còn lại là của lũ nghiện khốn kiếp kia.",
+      "dir": "manhua-recap/crmn_ep27"
+    },
+    {
+      "panel": "p012.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Điền Thập Tứ nổi giận, nghĩa phụ, con sẽ đuổi Thẩm Lãng đi!",
+      "dir": "manhua-recap/crmn_ep27"
+    },
+    {
+      "panel": "p019.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Thẩm Lãng cười nhạt, kẻ nào dám đánh cô gia phủ Bá tước thì nương tử ta giết cả nhà hắn!",
+      "dir": "manhua-recap/crmn_ep27"
+    },
+    {
+      "panel": "p023.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hộ vệ phủ Bá tước tuốt kiếm bảo vệ anh, đám lưu manh Hắc Y không dám manh động.",
+      "dir": "manhua-recap/crmn_ep27"
+    },
+    {
+      "panel": "p028.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Điền Hoành hít sâu, hôm nay Phường Phú Quý đóng cửa nghỉ kinh doanh.",
+      "dir": "manhua-recap/crmn_ep27"
+    },
+    {
+      "panel": "p031.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Thẩm Lãng không chịu thua, đóng cửa thì ta dẫn mọi người sang sòng bạc khác của Điền Bang chủ!",
+      "dir": "manhua-recap/crmn_ep27"
+    },
+    {
+      "panel": "p040.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Năm sòng bạc chiếm hơn sáu phần mười thu nhập, đóng cửa như vậy mỗi ngày tổn thất không biết bao nhiêu.",
+      "dir": "manhua-recap/crmn_ep27"
+    },
+    {
+      "panel": "p045.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hóa ra ba mươi lăm phần trăm sòng bạc phải chia cho nhà họ Trương để đổi lấy sự bảo vệ.",
+      "dir": "manhua-recap/crmn_ep27"
+    },
+    {
+      "panel": "p053.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Họ bàn tính, nếu không âm thầm xử hắn thì phải làm sao?",
+      "dir": "manhua-recap/crmn_ep27"
+    },
+    {
+      "panel": "p063.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trương Tấn hứa với Điền Hoành, sẽ có ngày chắc chắn xử chết Thẩm Lãng, đến lúc đó cho ông cửa một đao.",
+      "dir": "manhua-recap/crmn_ep27"
+    },
+    {
+      "panel": "p064.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Thẩm Lãng chỉ là tép riu, mục tiêu thật của họ là phủ Bá tước, nghe mà lạnh gáy.",
+      "dir": "manhua-recap/crmn_ep27"
+    },
+    {
+      "panel": "p077.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng lắc đầu, đó là giá khởi điểm, giờ phải đánh gãy cả hai tay hai chân Thập Tứ nữa.",
+      "dir": "manhua-recap/crmn_ep27"
+    },
+    {
+      "panel": "p086.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Điền Hoành mắt đỏ rực hét lên, ta giết ngươi, rồi túm cổ Thẩm Lãng nhấc bổng lên!",
+      "dir": "manhua-recap/crmn_ep27"
+    },
+    {
+      "panel": "p012.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Điền Hoành nghiến răng chưa chịu gật đầu, Thẩm Lãng liền cười, vậy thì điều kiện của ta lại thay đổi rồi.",
+      "dir": "manhua-recap/crmn_ep28",
+      "section": "Tập 28: Tự tay phế con nuôi"
+    },
+    {
+      "panel": "p014.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Hắn đành nhượng bộ, trước mặt mọi người sẽ đánh gãy chân Thập Tam, hai tay hai chân Thập Tứ.",
+      "dir": "manhua-recap/crmn_ep28"
+    },
+    {
+      "panel": "p016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chưa hết, còn phải đuổi chúng khỏi Bang Hắc Y, không được thăm hỏi, chữa trị hay đưa tiền.",
+      "dir": "manhua-recap/crmn_ep28"
+    },
+    {
+      "panel": "p018.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Điền Hoành ôm đầu gào lên, ta đồng ý với ngươi hết!",
+      "dir": "manhua-recap/crmn_ep28"
+    },
+    {
+      "panel": "p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trước cổng lớn Phường Phú Quý, dân chúng kéo tới chật kín.",
+      "dir": "manhua-recap/crmn_ep28"
+    },
+    {
+      "panel": "p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn lạnh giọng, hai đứa là con nuôi ta xem trọng nhường nào, vậy mà dám báo thù sau lưng, suýt gây họa lớn.",
+      "dir": "manhua-recap/crmn_ep28"
+    },
+    {
+      "panel": "p033.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Gậy giáng xuống, chân Thập Tam gãy ngay trước mắt mọi người.",
+      "dir": "manhua-recap/crmn_ep28"
+    },
+    {
+      "panel": "p040.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thập Tứ gào lên không phục, mình luôn vì bang mà làm việc, nhưng Điền Hoành chỉ quát câm miệng.",
+      "dir": "manhua-recap/crmn_ep28"
+    },
+    {
+      "panel": "p044.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Rồi hắn ra tay, Thập Tứ cũng bị đánh gãy cả tay lẫn chân.",
+      "dir": "manhua-recap/crmn_ep28"
+    },
+    {
+      "panel": "p050.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Từ nay Điền Hoành mất hai cánh tay đắc lực, danh tiếng cũng bị hạ bệ.",
+      "dir": "manhua-recap/crmn_ep28"
+    },
+    {
+      "panel": "p053.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Điền Hoành hỏi cộc lốc, lần này đã vừa ý chưa, Thẩm Lãng chỉ đáp, cũng tạm.",
+      "dir": "manhua-recap/crmn_ep28"
+    },
+    {
+      "panel": "p055.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Tự tay phế con nuôi mà đối phương chỉ nói cũng tạm, nghe mà lạnh gáy.",
+      "dir": "manhua-recap/crmn_ep28"
+    },
+    {
+      "panel": "p059.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Rồi anh tung thêm điều kiện, những thành viên Bang Hắc Y từng tới nhà anh cũng phải bị đánh gãy chân!",
+      "dir": "manhua-recap/crmn_ep28"
+    },
+    {
+      "panel": "p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng đòi nợ cứ như đi chợ, bảo Điền Hoành trả tiền thắng bạc đi, lát nữa vợ ta gọi về ăn cơm rồi.",
+      "dir": "manhua-recap/crmn_ep29",
+      "section": "Tập 29: Ném vàng cho dân"
+    },
+    {
+      "panel": "p004.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Điền Hoành nghiến răng, kho tiền Phường Phú Quý đã cạn, vậy mà hắn vẫn còn đòi.",
+      "dir": "manhua-recap/crmn_ep29"
+    },
+    {
+      "panel": "p007.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng cười tủm, hay trả trước hai nghìn, mười bảy nghìn còn lại viết giấy nợ.",
+      "dir": "manhua-recap/crmn_ep29"
+    },
+    {
+      "panel": "p012.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Điền Hoành tưởng tượng cảnh bóp chết hắn ngay tại chỗ, rồi lại nghiến răng nuốt giận.",
+      "dir": "manhua-recap/crmn_ep29"
+    },
+    {
+      "panel": "p019.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trên giấy dặn, cứ đưa tiền cho Thẩm Lãng, phủ Bá tước nghiêm ngặt sẽ không nhận tiền bạc bẩn, chính Bá tước sẽ đánh gãy chân hắn.",
+      "dir": "manhua-recap/crmn_ep29"
+    },
+    {
+      "panel": "p021.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn nhận ra đó là chỉ thị của nhà họ Trương.",
+      "dir": "manhua-recap/crmn_ep29"
+    },
+    {
+      "panel": "p030.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hai nghìn vàng mang tới, Thẩm Lãng xem giấy nợ rồi gật đầu, không có vấn đề.",
+      "dir": "manhua-recap/crmn_ep29"
+    },
+    {
+      "panel": "p033.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Hòm vàng mở ra, cả đám đông trầm trồ.",
+      "dir": "manhua-recap/crmn_ep29"
+    },
+    {
+      "panel": "p037.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Anh quay sang chất vấn, bao nhiêu người khuynh gia bại sản ở sòng ngươi, lương tâm ngươi ở đâu!",
+      "dir": "manhua-recap/crmn_ep29"
+    },
+    {
+      "panel": "p043.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Số vàng này ta không lấy đồng nào, toàn bộ trả về cho dân!",
+      "dir": "manhua-recap/crmn_ep29"
+    },
+    {
+      "panel": "p045.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Vừa thắng tiền vừa thắng lòng dân, ném vàng mà lãi nhất vẫn là Thẩm Lãng.",
+      "dir": "manhua-recap/crmn_ep29"
+    },
+    {
+      "panel": "p047.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Vàng bay tứ tung, đám đông chen nhau giành giật loạn cả phố.",
+      "dir": "manhua-recap/crmn_ep29"
+    },
+    {
+      "panel": "p053.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cả phố hô vang Thẩm Lãng muôn năm, phủ Bá tước muôn năm, còn hắn chỉ biết gào không đội trời chung.",
+      "dir": "manhua-recap/crmn_ep29"
+    },
+    {
+      "panel": "p056.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trên lầu cao, một kẻ nhìn xuống thầm chửi, tên bám váy đàn bà này diễn xảo trá đến thế.",
+      "dir": "manhua-recap/crmn_ep29"
+    },
+    {
+      "panel": "p060.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Rồi hắn cười lạnh, đông người thế này, lỡ xảy ra giẫm đạp thì cũng không liên quan đến chúng ta nhỉ!",
+      "dir": "manhua-recap/crmn_ep29"
+    },
+    {
+      "panel": "p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trên lầu cao, thành chủ Liễu Vô Nham bình thản bàn với tay sai, lỡ xảy ra giẫm đạp thì cũng không liên quan đến họ.",
+      "dir": "manhua-recap/crmn_ep30",
+      "section": "Tập 30: Lật tẩy thành chủ"
+    },
+    {
+      "panel": "p007.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Giẫm đạp thì người chết sẽ rất nhiều, mấy chục người cũng là chuyện thường.",
+      "dir": "manhua-recap/crmn_ep30"
+    },
+    {
+      "panel": "p008.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đến lúc đó Thẩm Lãng và phủ Bá tước khó mà thoát tội.",
+      "dir": "manhua-recap/crmn_ep30"
+    },
+    {
+      "panel": "p014.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Theo sắp xếp của Trương Tấn, mười mấy võ sĩ đã trà trộn vào đám đông, giả vờ giành tiền để áp sát Thẩm Lãng.",
+      "dir": "manhua-recap/crmn_ep30"
+    },
+    {
+      "panel": "p016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chúng sẽ đẩy bốn hộ vệ ra, đạp anh ngã xuống, rồi gây náo loạn giẫm đạp và đổ hết tội lên phủ Bá tước.",
+      "dir": "manhua-recap/crmn_ep30"
+    },
+    {
+      "panel": "p021.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Anh bất ngờ hô lớn, yên lặng, tất cả mọi người đừng cử động!",
+      "dir": "manhua-recap/crmn_ep30"
+    },
+    {
+      "panel": "p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh mở hòm trống không, tuyên bố đã phát hết tiền trong tay.",
+      "dir": "manhua-recap/crmn_ep30"
+    },
+    {
+      "panel": "p027.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Thẩm Lãng giơ cao tờ giấy nợ mười bảy nghìn vàng, nói mình cũng không lấy một đồng.",
+      "dir": "manhua-recap/crmn_ep30"
+    },
+    {
+      "panel": "p030.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đây là mồ hôi nước mắt, tiền xương máu của dân, tiền Điền Hoành nợ mọi người!",
+      "dir": "manhua-recap/crmn_ep30"
+    },
+    {
+      "panel": "p033.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Đám đông xúc động hô vang, phủ Bá tước hào phóng, Thẩm Lãng, ta yêu ngài!",
+      "dir": "manhua-recap/crmn_ep30"
+    },
+    {
+      "panel": "p038.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Nhưng Thẩm Lãng đã chặn đầu, ôi, thành chủ đại nhân, quả nhiên ngài ở đây!",
+      "dir": "manhua-recap/crmn_ep30"
+    },
+    {
+      "panel": "p041.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh hô to cho cả phố nghe thấy, đám đông hoan hô vang trời.",
+      "dir": "manhua-recap/crmn_ep30"
+    },
+    {
+      "panel": "p042.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Định mượn đám đông giết người, cuối cùng bị chính đám đông ép phải nhận trách nhiệm, đúng là gậy ông đập lưng ông.",
+      "dir": "manhua-recap/crmn_ep30"
+    },
+    {
+      "panel": "p044.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Anh trao giấy nợ, nói đây là hy vọng của bao dân nghèo, xin giao trách nhiệm cao cả này cho ngài.",
+      "dir": "manhua-recap/crmn_ep30"
+    },
+    {
+      "panel": "p047.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Thành chủ tái mặt, có cả chiêu này sao, tiêu rồi!",
+      "dir": "manhua-recap/crmn_ep30"
+    }
+  ]
+}

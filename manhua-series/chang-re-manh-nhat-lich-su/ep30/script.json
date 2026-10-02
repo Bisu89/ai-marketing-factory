@@ -1,0 +1,31 @@
+{
+  "title": "Âm mưu giẫm đạp chết hàng chục người bị lật tẩy, thành chủ tiêu đời tại chỗ!?",
+  "chapters": "29",
+  "source_dir": "manhua-recap/crmn_ep30",
+  "description": "Thành chủ Liễu Vô Nham và Trương Tấn cài sát thủ vào đám đông định gây thảm họa giẫm đạp, nhưng Thẩm Lãng nhận ra mặt từng kẻ và lật ngược thế cờ. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 30.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "thumbnail": {"text": "THÀNH CHỦ BỊ LẬT MẶT!?", "prompt": "Vertical 9:16 anime-style: a terrified official in teal robes with a sweating pale face cornered at a doorway by a smiling long-haired young man holding a paper scroll, cheering crowd behind. No text, leave top 25% empty."},
+  "beats": [
+    {"panel": "p003.jpg", "type": "HOOK", "kind": "recap", "narration": "Trên lầu cao, thành chủ Liễu Vô Nham bình thản bàn với tay sai, lỡ xảy ra giẫm đạp thì cũng không liên quan đến họ."},
+    {"panel": "p007.jpg", "type": "SETUP", "kind": "recap", "narration": "Giẫm đạp thì người chết sẽ rất nhiều, mấy chục người cũng là chuyện thường."},
+    {"panel": "p008.jpg", "type": "BUILD", "kind": "recap", "narration": "Đến lúc đó Thẩm Lãng và phủ Bá tước khó mà thoát tội."},
+    {"panel": "p009.jpg", "type": "REACTION", "kind": "recap", "narration": "Tay sai rùng mình, quan văn còn độc hơn quan võ, giết mấy chục mạng chỉ để vặn lại phủ Bá tước."},
+    {"panel": "p014.jpg", "type": "REVEAL", "kind": "recap", "narration": "Theo sắp xếp của Trương Tấn, mười mấy võ sĩ đã trà trộn vào đám đông, giả vờ giành tiền để áp sát Thẩm Lãng."},
+    {"panel": "p016.jpg", "type": "BUILD", "kind": "recap", "narration": "Chúng sẽ đẩy bốn hộ vệ ra, đạp anh ngã xuống, rồi gây náo loạn giẫm đạp và đổ hết tội lên phủ Bá tước."},
+    {"panel": "p018.jpg", "type": "BUILD", "kind": "recap", "narration": "Nhưng Thẩm Lãng nhớ mặt từng người, đây đều là những kẻ từng xuất hiện trong hôn lễ, người của Trương Tấn và thành chủ."},
+    {"panel": "p021.jpg", "type": "REVEAL", "kind": "recap", "narration": "Anh bất ngờ hô lớn, yên lặng, tất cả mọi người đừng cử động!"},
+    {"panel": "p024.jpg", "type": "BUILD", "kind": "recap", "narration": "Anh mở hòm trống không, tuyên bố đã phát hết tiền trong tay."},
+    {"panel": "p025.jpg", "type": "BUILD", "kind": "recap", "narration": "Đám cài cắm vẫn hô vang, chắc chắn còn tiền, mọi người xông lên lấy đi!"},
+    {"panel": "p027.jpg", "type": "REVEAL", "kind": "recap", "narration": "Thẩm Lãng giơ cao tờ giấy nợ mười bảy nghìn vàng, nói mình cũng không lấy một đồng."},
+    {"panel": "p030.jpg", "type": "BUILD", "kind": "recap", "narration": "Đây là mồ hôi nước mắt, tiền xương máu của dân, tiền Điền Hoành nợ mọi người!"},
+    {"panel": "p032.jpg", "type": "BUILD", "kind": "recap", "narration": "Anh sẽ đưa giấy nợ cho thành chủ, nhờ ngài đòi nợ cho dân, toàn bộ dùng cứu tế người nghèo."},
+    {"panel": "p033.jpg", "type": "REACTION", "kind": "recap", "narration": "Đám đông xúc động hô vang, phủ Bá tước hào phóng, Thẩm Lãng, ta yêu ngài!"},
+    {"panel": "p036.jpg", "type": "BUILD", "kind": "recap", "narration": "Anh lao thẳng vào Phường Phú Quý tìm thành chủ, khiến ông ta hoảng hốt định chuồn cửa sau."},
+    {"panel": "p038.jpg", "type": "REVEAL", "kind": "recap", "narration": "Nhưng Thẩm Lãng đã chặn đầu, ôi, thành chủ đại nhân, quả nhiên ngài ở đây!"},
+    {"panel": "p041.jpg", "type": "BUILD", "kind": "recap", "narration": "Anh hô to cho cả phố nghe thấy, đám đông hoan hô vang trời."},
+    {"panel": "p042.jpg", "type": "REACTION", "kind": "commentary", "narration": "Định mượn đám đông giết người, cuối cùng bị chính đám đông ép phải nhận trách nhiệm, đúng là gậy ông đập lưng ông."},
+    {"panel": "p044.jpg", "type": "REVEAL", "kind": "recap", "narration": "Anh trao giấy nợ, nói đây là hy vọng của bao dân nghèo, xin giao trách nhiệm cao cả này cho ngài."},
+    {"panel": "p045.jpg", "type": "BUILD", "kind": "recap", "narration": "Chỉ cần ngài ra mặt, Điền Hoành chắc chắn không dám quỵt nợ."},
+    {"panel": "p047.jpg", "type": "ENDING", "kind": "recap", "narration": "Thành chủ tái mặt, có cả chiêu này sao, tiêu rồi!"}
+  ]
+}

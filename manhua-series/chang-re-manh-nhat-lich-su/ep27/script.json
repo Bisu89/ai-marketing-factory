@@ -1,0 +1,32 @@
+{
+  "title": "Đóng cửa năm sòng bạc vẫn bị ép nhượng bộ, trùm xã hội đen nổi điên túm cổ chàng rể!?",
+  "chapters": "26",
+  "source_dir": "manhua-recap/crmn_ep27",
+  "description": "Thẩm Lãng dẫn đám con bạc thắng cho sòng Phú Quý đóng cửa, Điền Hoành mất hơn sáu phần thu nhập và bị nhà họ Trương ép, rồi nổi điên túm cổ anh. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 27.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "thumbnail": {"text": "TRÙM NỔI ĐIÊN TÚM CỔ CHÀNG RỂ!?", "prompt": "Vertical 9:16 anime-style: a furious scarred gang boss with glowing red eyes lifting a long-haired young man in white robes by the collar above a red gambling table, guards rushing in, red energy aura. No text, leave top 25% empty."},
+  "beats": [
+    {"panel": "p005.jpg", "type": "HOOK", "kind": "recap", "narration": "Thẩm Lãng lại quay về sòng bạc, mang theo cơn lốc trăm trận trăm thắng!"},
+    {"panel": "p006.jpg", "type": "SETUP", "kind": "recap", "narration": "Đám con bạc điên hết rồi, dễ nhất là đặt cược theo anh, chắc chắn thắng."},
+    {"panel": "p007.jpg", "type": "BUILD", "kind": "recap", "narration": "Các tay chia bài mặt như tro tàn, thua đến mức nghi ngờ cuộc sống."},
+    {"panel": "p009.jpg", "type": "BUILD", "kind": "recap", "narration": "Chủ nhân, đã thua ba nghìn vàng rồi, rồi năm nghìn, rồi bảy nghìn."},
+    {"panel": "p010.jpg", "type": "REVEAL", "kind": "recap", "narration": "Mỗi lần Thẩm Lãng chỉ giữ một đồng, phần còn lại là của lũ nghiện khốn kiếp kia."},
+    {"panel": "p012.jpg", "type": "REACTION", "kind": "recap", "narration": "Điền Thập Tứ nổi giận, nghĩa phụ, con sẽ đuổi Thẩm Lãng đi!"},
+    {"panel": "p014.jpg", "type": "BUILD", "kind": "recap", "narration": "Hắn dẫn đàn em xông tới, quát, không cút thì ta giúp ngươi cút!"},
+    {"panel": "p019.jpg", "type": "REVEAL", "kind": "recap", "narration": "Thẩm Lãng cười nhạt, kẻ nào dám đánh cô gia phủ Bá tước thì nương tử ta giết cả nhà hắn!"},
+    {"panel": "p023.jpg", "type": "BUILD", "kind": "recap", "narration": "Hộ vệ phủ Bá tước tuốt kiếm bảo vệ anh, đám lưu manh Hắc Y không dám manh động."},
+    {"panel": "p026.jpg", "type": "REACTION", "kind": "recap", "narration": "Ông lão hét lớn, bảo vệ soái ca Thẩm Lãng nhà ta, muốn đụng anh ấy thì bước qua xác ta trước!"},
+    {"panel": "p028.jpg", "type": "BUILD", "kind": "recap", "narration": "Điền Hoành hít sâu, hôm nay Phường Phú Quý đóng cửa nghỉ kinh doanh."},
+    {"panel": "p031.jpg", "type": "REVEAL", "kind": "recap", "narration": "Thẩm Lãng không chịu thua, đóng cửa thì ta dẫn mọi người sang sòng bạc khác của Điền Bang chủ!"},
+    {"panel": "p034.jpg", "type": "BUILD", "kind": "recap", "narration": "Hắn ra lệnh gấp, Thập Tứ, đi đóng hết các sòng bạc lại!"},
+    {"panel": "p040.jpg", "type": "REVEAL", "kind": "recap", "narration": "Năm sòng bạc chiếm hơn sáu phần mười thu nhập, đóng cửa như vậy mỗi ngày tổn thất không biết bao nhiêu."},
+    {"panel": "p045.jpg", "type": "BUILD", "kind": "recap", "narration": "Hóa ra ba mươi lăm phần trăm sòng bạc phải chia cho nhà họ Trương để đổi lấy sự bảo vệ."},
+    {"panel": "p048.jpg", "type": "REACTION", "kind": "recap", "narration": "Từ gia chủ đại diện nhà họ Trương đến chất vấn, còn không đóng cửa là thua sạch mất."},
+    {"panel": "p053.jpg", "type": "BUILD", "kind": "recap", "narration": "Họ bàn tính, nếu không âm thầm xử hắn thì phải làm sao?"},
+    {"panel": "p063.jpg", "type": "REVEAL", "kind": "recap", "narration": "Trương Tấn hứa với Điền Hoành, sẽ có ngày chắc chắn xử chết Thẩm Lãng, đến lúc đó cho ông cửa một đao."},
+    {"panel": "p064.jpg", "type": "REACTION", "kind": "commentary", "narration": "Thẩm Lãng chỉ là tép riu, mục tiêu thật của họ là phủ Bá tước, nghe mà lạnh gáy."},
+    {"panel": "p075.jpg", "type": "BUILD", "kind": "recap", "narration": "Điền Hoành nghiến răng, ta đồng ý đánh gãy hai chân Thập Tam trước mặt mọi người, ngươi về đi."},
+    {"panel": "p077.jpg", "type": "BUILD", "kind": "recap", "narration": "Thẩm Lãng lắc đầu, đó là giá khởi điểm, giờ phải đánh gãy cả hai tay hai chân Thập Tứ nữa."},
+    {"panel": "p086.jpg", "type": "ENDING", "kind": "recap", "narration": "Điền Hoành mắt đỏ rực hét lên, ta giết ngươi, rồi túm cổ Thẩm Lãng nhấc bổng lên!"}
+  ]
+}

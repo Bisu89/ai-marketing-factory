@@ -1,0 +1,30 @@
+{
+  "title": "Đổi sang rút bài cửu, chàng rể không thèm nhìn bài vẫn thắng 13000 vàng!?",
+  "chapters": "23",
+  "source_dir": "manhua-recap/crmn_ep24",
+  "description": "Thẩm Lãng đòi mua bộ bài mới để chơi bài cửu với Điền Thập Cửu, rồi thắng liên tiếp không cần nhìn bài, khiến cao thủ số một thành Huyền Vũ sụp đổ. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 24.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "thumbnail": {"text": "THẦN BÀI THÀNH HUYỀN VŨ!?", "prompt": "Vertical 9:16 anime-style: a smiling long-haired young man in white robes with glowing cyan eyes at a red gambling table, golden domino tiles flying around him, a sweating defeated gambler behind. No text, leave top 25% empty."},
+  "beats": [
+    {"panel": "p007.jpg", "type": "HOOK", "kind": "recap", "narration": "Thẩm Lãng bỗng chán chơi đại tiểu, nói thẳng, ta muốn rút bài cửu."},
+    {"panel": "p010.jpg", "type": "SETUP", "kind": "recap", "narration": "Điền Thập Cửu cười ha hả, đại tiểu dựa vào vận may còn dám đấu bài cửu với ta thì đúng là tự tìm đường chết."},
+    {"panel": "p012.jpg", "type": "BUILD", "kind": "recap", "narration": "Bài cửu rất đơn giản, úp ba mươi hai lá, mỗi người rút hai lá, phân thắng thua theo số điểm."},
+    {"panel": "p016.jpg", "type": "BUILD", "kind": "recap", "narration": "Nhưng cách chơi này dễ gian lận hơn, nhất là ký hiệu bí mật trên lưng bài."},
+    {"panel": "p020.jpg", "type": "REVEAL", "kind": "recap", "narration": "Thẩm Lãng nói thẳng, ta không tin bài của các ngươi, sai người mua ngay một bộ bài mới."},
+    {"panel": "p021.jpg", "type": "REACTION", "kind": "recap", "narration": "Điền Thập Cửu giật mình, chẳng lẽ hắn biết bài của Phường Phú Quý có ký hiệu?"},
+    {"panel": "p023.jpg", "type": "BUILD", "kind": "recap", "narration": "Hắn vội sai người mua mười bộ bài cửu mới, dặn không được mua ở tiệm nhà mình."},
+    {"panel": "p024.jpg", "type": "BUILD", "kind": "recap", "narration": "Hắn nghĩ, dù không ăn gian, ta là cao thủ bài cửu số một thành Huyền Vũ, vẫn thắng thôi!"},
+    {"panel": "p027.jpg", "type": "REVEAL", "kind": "recap", "narration": "Mắt Thẩm Lãng lóe lên ánh lục, thứ nhìn xuyên thấu vừa kích hoạt."},
+    {"panel": "p033.jpg", "type": "REVEAL", "kind": "recap", "narration": "Qua lưng bài, anh nhìn rõ từng điểm chấm bên trong, như đọc sách mở."},
+    {"panel": "p035.jpg", "type": "BUILD", "kind": "recap", "narration": "Hắn đặt trăm vàng cho ván đầu, anh rút bài, tổ hợp lớn thứ năm, thắng!"},
+    {"panel": "p037.jpg", "type": "BUILD", "kind": "recap", "narration": "Rồi anh thản nhiên cược một nghìn vàng, còn chẳng thèm nhìn bài."},
+    {"panel": "p042.jpg", "type": "REVEAL", "kind": "recap", "narration": "Bài mở ra, vừa vặn lớn hơn bài Điền Thập Cửu đúng một bậc!"},
+    {"panel": "p046.jpg", "type": "REACTION", "kind": "recap", "narration": "Hắn run rẩy, gặp ma rồi, đây có phải Thẩm Lãng vô dụng ngày xưa không?"},
+    {"panel": "p050.jpg", "type": "REVEAL", "kind": "recap", "narration": "Thẩm Lãng thắng mãi, thắng mãi, mỗi ván đều không nhìn bài mà vẫn đặt đúng một nghìn thẻ."},
+    {"panel": "p052.jpg", "type": "REACTION", "kind": "recap", "narration": "Đám đông reo hò, Thần Bài thật sự của thành Huyền Vũ là Thẩm Lãng, còn Điền Thập Cửu chỉ là cái rắm."},
+    {"panel": "p055.jpg", "type": "REVEAL", "kind": "recap", "narration": "Hắn thua mười ba nghìn vàng, người cứng đờ như tượng đá xanh."},
+    {"panel": "p057.jpg", "type": "REACTION", "kind": "commentary", "narration": "Thua cho một kẻ vô dụng mới nổi mấy ngày, đúng là nhục chồng nhục, nghĩa phụ sẽ lột da hắn mất."},
+    {"panel": "p060.jpg", "type": "BUILD", "kind": "recap", "narration": "Thẩm Lãng cười tươi, sao Điền Thập Cửu đi rồi, ta vẫn còn hứng chơi mà, hay là cô chơi với ta đi?"},
+    {"panel": "p062.jpg", "type": "ENDING", "kind": "recap", "narration": "Cả sòng hô vang thần bài, Thẩm gia muôn năm, còn kẻ thua thì mất sạch uy tín!"}
+  ]
+}

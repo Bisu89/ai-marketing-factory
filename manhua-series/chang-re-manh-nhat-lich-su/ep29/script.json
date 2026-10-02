@@ -1,0 +1,30 @@
+{
+  "title": "Ném cả hòm vàng thắng bạc cho dân, chàng rể bị thành chủ nhắm đạp chết giữa phố!?",
+  "chapters": "28",
+  "source_dir": "manhua-recap/crmn_ep29",
+  "description": "Thẩm Lãng phát hết số vàng thắng sòng bạc cho dân nghèo, trong khi thành chủ trên lầu cao đã tính sẵn chuyện giẫm đạp. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 29.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "thumbnail": {"text": "NÉM VÀNG CHO DÂN, BỊ NHẮM GIẾT!?", "prompt": "Vertical 9:16 anime-style: a long-haired young man in white tossing handfuls of gold coins into a cheering street crowd at sunset, a sinister official watching from a high window. No text, leave top 25% empty."},
+  "beats": [
+    {"panel": "p003.jpg", "type": "HOOK", "kind": "recap", "narration": "Thẩm Lãng đòi nợ cứ như đi chợ, bảo Điền Hoành trả tiền thắng bạc đi, lát nữa vợ ta gọi về ăn cơm rồi."},
+    {"panel": "p004.jpg", "type": "SETUP", "kind": "recap", "narration": "Điền Hoành nghiến răng, kho tiền Phường Phú Quý đã cạn, vậy mà hắn vẫn còn đòi."},
+    {"panel": "p007.jpg", "type": "BUILD", "kind": "recap", "narration": "Thẩm Lãng cười tủm, hay trả trước hai nghìn, mười bảy nghìn còn lại viết giấy nợ."},
+    {"panel": "p009.jpg", "type": "BUILD", "kind": "recap", "narration": "Anh còn dọa, nếu không giải quyết nhanh, e hai cái chân ta lại tự chạy tới sòng bạc của ngươi."},
+    {"panel": "p012.jpg", "type": "REACTION", "kind": "recap", "narration": "Điền Hoành tưởng tượng cảnh bóp chết hắn ngay tại chỗ, rồi lại nghiến răng nuốt giận."},
+    {"panel": "p017.jpg", "type": "BUILD", "kind": "recap", "narration": "Đúng lúc đó thuộc hạ dâng lên một mảnh giấy."},
+    {"panel": "p019.jpg", "type": "REVEAL", "kind": "recap", "narration": "Trên giấy dặn, cứ đưa tiền cho Thẩm Lãng, phủ Bá tước nghiêm ngặt sẽ không nhận tiền bạc bẩn, chính Bá tước sẽ đánh gãy chân hắn."},
+    {"panel": "p021.jpg", "type": "BUILD", "kind": "recap", "narration": "Hắn nhận ra đó là chỉ thị của nhà họ Trương."},
+    {"panel": "p025.jpg", "type": "BUILD", "kind": "recap", "narration": "Hắn nuốt giận, được, ta đưa!"},
+    {"panel": "p030.jpg", "type": "BUILD", "kind": "recap", "narration": "Hai nghìn vàng mang tới, Thẩm Lãng xem giấy nợ rồi gật đầu, không có vấn đề."},
+    {"panel": "p033.jpg", "type": "REVEAL", "kind": "recap", "narration": "Hòm vàng mở ra, cả đám đông trầm trồ."},
+    {"panel": "p037.jpg", "type": "REVEAL", "kind": "recap", "narration": "Anh quay sang chất vấn, bao nhiêu người khuynh gia bại sản ở sòng ngươi, lương tâm ngươi ở đâu!"},
+    {"panel": "p040.jpg", "type": "BUILD", "kind": "recap", "narration": "Anh tuyên bố dạy cho Phường Phú Quý một bài học, không phải vì mình mà vì con dân thành Huyền Vũ."},
+    {"panel": "p043.jpg", "type": "REVEAL", "kind": "recap", "narration": "Số vàng này ta không lấy đồng nào, toàn bộ trả về cho dân!"},
+    {"panel": "p045.jpg", "type": "REACTION", "kind": "commentary", "narration": "Vừa thắng tiền vừa thắng lòng dân, ném vàng mà lãi nhất vẫn là Thẩm Lãng."},
+    {"panel": "p047.jpg", "type": "BUILD", "kind": "recap", "narration": "Vàng bay tứ tung, đám đông chen nhau giành giật loạn cả phố."},
+    {"panel": "p049.jpg", "type": "REACTION", "kind": "recap", "narration": "Điền Hoành chết lặng, ngươi ép ta đánh gãy chân con nuôi, còn lấy tiền ta mua chuộc lòng người!?"},
+    {"panel": "p053.jpg", "type": "BUILD", "kind": "recap", "narration": "Cả phố hô vang Thẩm Lãng muôn năm, phủ Bá tước muôn năm, còn hắn chỉ biết gào không đội trời chung."},
+    {"panel": "p056.jpg", "type": "REVEAL", "kind": "recap", "narration": "Trên lầu cao, một kẻ nhìn xuống thầm chửi, tên bám váy đàn bà này diễn xảo trá đến thế."},
+    {"panel": "p060.jpg", "type": "ENDING", "kind": "recap", "narration": "Rồi hắn cười lạnh, đông người thế này, lỡ xảy ra giẫm đạp thì cũng không liên quan đến chúng ta nhỉ!"}
+  ]
+}

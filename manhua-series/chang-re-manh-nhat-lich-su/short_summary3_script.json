@@ -1,0 +1,114 @@
+{
+  "title": "Chàng rể thắng sập sòng bạc, lật tẩy âm mưu giẫm đạp của thành chủ!?",
+  "chapters": "20-29",
+  "description": "Những tình tiết hay nhất tập 21-30 Chàng Rể Mạnh Nhất Lịch Sử. Xem bản đầy đủ ở video dài trên kênh.",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "thumbnail": {
+    "text": "THẮNG SẬP SÒNG BẠC!?",
+    "prompt": "Vertical 9:16 anime-style: a calm long-haired young man in white robes sweeping golden coins off a red gambling table, a shocked scarred gang boss behind him, cheering crowd, golden light. No text, leave top 25% empty."
+  },
+  "beats": [
+    {
+      "dir": "manhua-recap/crmn_ep21",
+      "panel": "p065.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Cha vợ giao cuốn gia huấn phải học cả tháng mới thuộc, chàng rể chỉ cần hơn một tiếng!?"
+    },
+    {
+      "dir": "manhua-recap/crmn_ep22",
+      "panel": "p024.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Bá tước đem roi ra dọa, anh đọc vanh vách từng chương không sót chữ nào, cha vợ sững sờ."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep23",
+      "panel": "p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Rồi anh đánh thẳng vào sòng bạc kiếm tiền nhất của Điền Hoành, nơi chiếm hơn sáu phần thu nhập cả bang."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep23",
+      "panel": "p063.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Cược hết hai lần liền, anh ôm về bốn nghìn vàng, cả sòng há hốc mồm."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep24",
+      "panel": "p033.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Đối thủ đòi chơi bài cửu, anh đổi hẳn bộ bài mới, nhưng mắt thần vẫn nhìn xuyên lưng bài."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep24",
+      "panel": "p055.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Cao thủ số một thành Huyền Vũ thua mười ba nghìn vàng, người cứng đờ như tượng đá."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep25",
+      "panel": "p038.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trùm xã hội đen hớn hở đi đòi nợ, hóa ra chính sòng bạc của hắn mới là bên thua."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep26",
+      "panel": "p027.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Anh nói thẳng, danh tiếng xấu là vũ khí, làm một việc tốt thì ai cũng khen biết quay đầu."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep27",
+      "panel": "p086.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Bị dồn đến đường cùng, Điền Hoành mắt đỏ rực, túm cổ chàng rể nhấc bổng lên."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep28",
+      "panel": "p033.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Cuối cùng hắn phải đánh gãy chân con nuôi trước mặt cả bang, uy tín sụp đổ."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep28",
+      "panel": "p055.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Tự tay phế con nuôi mà đối phương chỉ nói cũng tạm, nghe mà lạnh gáy."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep29",
+      "panel": "p043.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Anh ném sạch số vàng thắng được cho dân nghèo, vừa thắng tiền vừa thắng lòng dân."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep30",
+      "panel": "p021.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Thành chủ định mượn đám đông giẫm đạp giết người, anh nhận ra từng gương mặt cài cắm và hô dừng lại."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep30",
+      "panel": "p047.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Rồi anh trao giấy nợ cho thành chủ ngay giữa phố, ép ông ta phải nhận trách nhiệm trước toàn dân!"
+    }
+  ]
+}

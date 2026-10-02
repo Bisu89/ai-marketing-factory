@@ -1,0 +1,28 @@
+{
+  "title": "Bị ép tự tay đánh gãy chân con nuôi, trùm xã hội đen mất sạch uy tín!?",
+  "chapters": "27",
+  "source_dir": "manhua-recap/crmn_ep28",
+  "description": "Điền Hoành buộc phải công khai phế hai đứa con nuôi trước toàn bang để thỏa mãn yêu sách của Thẩm Lãng. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 28.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "thumbnail": {"text": "TỰ TAY PHẾ CON NUÔI!?", "prompt": "Vertical 9:16 anime-style: a scarred gang boss in dark armor raising a wooden staff over a kneeling bound man in a crowded plaza, shocked onlookers, a calm long-haired young man in white smiling at the back. No text, leave top 25% empty."},
+  "beats": [
+    {"panel": "p012.jpg", "type": "HOOK", "kind": "recap", "narration": "Điền Hoành nghiến răng chưa chịu gật đầu, Thẩm Lãng liền cười, vậy thì điều kiện của ta lại thay đổi rồi."},
+    {"panel": "p014.jpg", "type": "SETUP", "kind": "recap", "narration": "Hắn đành nhượng bộ, trước mặt mọi người sẽ đánh gãy chân Thập Tam, hai tay hai chân Thập Tứ."},
+    {"panel": "p016.jpg", "type": "BUILD", "kind": "recap", "narration": "Chưa hết, còn phải đuổi chúng khỏi Bang Hắc Y, không được thăm hỏi, chữa trị hay đưa tiền."},
+    {"panel": "p017.jpg", "type": "BUILD", "kind": "recap", "narration": "Và hắn còn phải mở cửa sòng bạc, mặc cho Thẩm Lãng đại khai sát giới."},
+    {"panel": "p018.jpg", "type": "REVEAL", "kind": "recap", "narration": "Điền Hoành ôm đầu gào lên, ta đồng ý với ngươi hết!"},
+    {"panel": "p020.jpg", "type": "BUILD", "kind": "recap", "narration": "Trước cổng lớn Phường Phú Quý, dân chúng kéo tới chật kín."},
+    {"panel": "p022.jpg", "type": "BUILD", "kind": "recap", "narration": "Thập Tam và Thập Tứ bị trói quỳ giữa sân, cả phố xì xào, Điền Hoành muốn phạt chính con nuôi mình."},
+    {"panel": "p025.jpg", "type": "BUILD", "kind": "recap", "narration": "Hắn lạnh giọng, hai đứa là con nuôi ta xem trọng nhường nào, vậy mà dám báo thù sau lưng, suýt gây họa lớn."},
+    {"panel": "p033.jpg", "type": "REVEAL", "kind": "recap", "narration": "Gậy giáng xuống, chân Thập Tam gãy ngay trước mắt mọi người."},
+    {"panel": "p036.jpg", "type": "REACTION", "kind": "recap", "narration": "Đám đông xôn xao, không ngờ đứa con nuôi được xem trọng nhất cũng bị đánh gãy chân."},
+    {"panel": "p040.jpg", "type": "BUILD", "kind": "recap", "narration": "Thập Tứ gào lên không phục, mình luôn vì bang mà làm việc, nhưng Điền Hoành chỉ quát câm miệng."},
+    {"panel": "p044.jpg", "type": "REVEAL", "kind": "recap", "narration": "Rồi hắn ra tay, Thập Tứ cũng bị đánh gãy cả tay lẫn chân."},
+    {"panel": "p050.jpg", "type": "REVEAL", "kind": "recap", "narration": "Từ nay Điền Hoành mất hai cánh tay đắc lực, danh tiếng cũng bị hạ bệ."},
+    {"panel": "p051.jpg", "type": "BUILD", "kind": "recap", "narration": "Mọi người con nuôi khác bắt đầu nghi ngờ người bị hy sinh tiếp theo sẽ là mình, uy tín bang chủ tụt mạnh."},
+    {"panel": "p053.jpg", "type": "REACTION", "kind": "recap", "narration": "Điền Hoành hỏi cộc lốc, lần này đã vừa ý chưa, Thẩm Lãng chỉ đáp, cũng tạm."},
+    {"panel": "p055.jpg", "type": "REACTION", "kind": "commentary", "narration": "Tự tay phế con nuôi mà đối phương chỉ nói cũng tạm, nghe mà lạnh gáy."},
+    {"panel": "p057.jpg", "type": "BUILD", "kind": "recap", "narration": "Hắn gầm lên, đừng có ép ta, nhưng Thẩm Lãng đáp tỉnh bơ, ta không ép ngươi."},
+    {"panel": "p059.jpg", "type": "ENDING", "kind": "recap", "narration": "Rồi anh tung thêm điều kiện, những thành viên Bang Hắc Y từng tới nhà anh cũng phải bị đánh gãy chân!"}
+  ]
+}

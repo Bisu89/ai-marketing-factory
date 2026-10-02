@@ -1,0 +1,30 @@
+{
+  "title": "Thuộc lòng cả cuốn gia huấn chỉ trong một đêm, cha vợ sững sờ đến quên cả phạt!?",
+  "chapters": "21",
+  "source_dir": "manhua-recap/crmn_ep22",
+  "description": "Bá tước đem gia pháp ra dọa vì tưởng con rể lười học, ai ngờ Thẩm Lãng đã thuộc lòng từng chương. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 22.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "thumbnail": {"text": "MỘT ĐÊM THUỘC CẢ GIA HUẤN!?", "prompt": "Vertical 9:16 anime-style: a stern nobleman in a white robe slamming his hand on a wooden desk in shock, a calm long-haired young man smiling gently across from him, an ancient thick book between them, warm study room light. No text, leave top 25% empty."},
+  "beats": [
+    {"panel": "p007.jpg", "type": "HOOK", "kind": "recap", "narration": "Sáng hôm sau, Bá tước quát vang, sao con lười biếng thế, không lo đọc sách mà đã đi ngủ sớm?"},
+    {"panel": "p009.jpg", "type": "SETUP", "kind": "recap", "narration": "Thẩm Lãng chỉ cười, nhạc phụ hiểu lầm rồi, con đã học thuộc hết rồi."},
+    {"panel": "p010.jpg", "type": "BUILD", "kind": "recap", "narration": "Bá tước tức điên, Mộc Lan thông minh bẩm sinh còn mất hai mươi ba ngày, vậy mà ngươi nói một đêm!"},
+    {"panel": "p011.jpg", "type": "BUILD", "kind": "recap", "narration": "Ông hét gọi người mang roi tới, định dùng gia pháp xử thằng nhóc dám nói dối."},
+    {"panel": "p014.jpg", "type": "BUILD", "kind": "recap", "narration": "Thẩm Lãng vẫn bình tĩnh, nhạc phụ cứ kiểm tra con."},
+    {"panel": "p017.jpg", "type": "BUILD", "kind": "recap", "narration": "Ông hỏi thẳng, vậy chương thứ năm của Gia Huấn Kim Thị nói gì?"},
+    {"panel": "p018.jpg", "type": "REVEAL", "kind": "recap", "narration": "Anh đọc vanh vách cả chương, giọng lưu loát như đã thuộc từ nhỏ."},
+    {"panel": "p021.jpg", "type": "BUILD", "kind": "recap", "narration": "Ông không tin, đòi thêm chương mười sáu, đọc hoàn chỉnh cho ta."},
+    {"panel": "p024.jpg", "type": "REVEAL", "kind": "recap", "narration": "Chỉ vỏn vẹn ba phút, Thẩm Lãng đọc hết một lượt không sót chữ nào."},
+    {"panel": "p025.jpg", "type": "BUILD", "kind": "recap", "narration": "Ông còn tùy ý chọn một đoạn bất kỳ, anh vẫn tiếp lời dễ dàng, thậm chí còn giải thích được."},
+    {"panel": "p029.jpg", "type": "REACTION", "kind": "commentary", "narration": "Mẹ vợ cười tít mắt, vì ván cược với chồng bà là người thắng."},
+    {"panel": "p036.jpg", "type": "BUILD", "kind": "recap", "narration": "Khi chỉ còn hai người, Bá tước hỏi nghiêm túc, Lãng nhi, sao con làm được?"},
+    {"panel": "p038.jpg", "type": "REVEAL", "kind": "recap", "narration": "Anh đáp, bốn ngày trước tỉnh lại sau cơn bệnh nặng, đầu óc bỗng thông suốt, nhìn một lần là nhớ luôn."},
+    {"panel": "p043.jpg", "type": "REVEAL", "kind": "recap", "narration": "Ông kể, một trăm tám mươi năm trước có một vị tiền nhiệm nhà họ Kim cũng thông suốt sau trận bệnh suýt chết, từ kẻ vô dụng thành thiên tài võ thuật."},
+    {"panel": "p045.jpg", "type": "REACTION", "kind": "recap", "narration": "Thẩm Lãng thầm nghĩ, vị tổ tiên đó chẳng lẽ cũng là người xuyên không?"},
+    {"panel": "p050.jpg", "type": "BUILD", "kind": "recap", "narration": "Bá tước hài lòng dỡ lệnh cấm túc, chuyện Điền Hoành cứ tạm để đó đi."},
+    {"panel": "p053.jpg", "type": "REVEAL", "kind": "recap", "narration": "Ông nói thẳng, ba năm gần đây đã có ba nhà quý tộc bị cướp đất phong, bỏ tước vị, thậm chí mất cả mạng."},
+    {"panel": "p054.jpg", "type": "BUILD", "kind": "recap", "narration": "Điền Hoành giờ cũng gắn mác quan chức triều đình, quý tộc không được can thiệp chính vụ địa phương."},
+    {"panel": "p059.jpg", "type": "BUILD", "kind": "recap", "narration": "Thành Huyền Vũ giờ thuộc địa bàn của triều đình, thuộc về Liễu Vô Nham và Trương Tấn."},
+    {"panel": "p066.jpg", "type": "ENDING", "kind": "recap", "narration": "Thẩm Lãng chỉ cười, con sẽ khiến Điền Hoành thua một cách thảm hại, hợp tình hợp pháp, và chắc chắn con sẽ thắng!"}
+  ]
+}
