@@ -67,11 +67,17 @@ CHAR = {
         "undyed camel-hair tunic cinched with a wide leather belt, bare feet, no jewelry; keep his face, hair, "
         "beard and clothing identical whenever he appears"
     ),
+    "AN": (
+        "recurring character Annas the former high priest: elderly Judean man in his 70s, thin frame, long "
+        "white beard, deeply lined face, hooded shrewd eyes, white linen robe under a deep crimson outer "
+        "robe, white linen head covering, a thin gold chain; keep his face, beard and clothing identical "
+        "whenever he appears"
+    ),
 }
 
 # Which pool images a character key marks as "only reusable when this person is in the story".
 CHAR_NAMES = {"J": "judas", "JC": "jesus", "C": "caiaphas", "P": "pilate", "MM": "magdalene",
-             "PT": "peter", "PL": "paul", "HA": "herod", "HD": "herodias", "JB": "baptist"}
+             "PT": "peter", "PL": "paul", "HA": "herod", "HD": "herodias", "JB": "baptist", "AN": "annas"}
 
 # Style history: Ep1 used a photoreal "cinematic" look; from Ep2 the series is an aged old-master
 # painting look (user: the old-painting style suits Bible stories and earned the channel's views).

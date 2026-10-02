@@ -56,7 +56,9 @@ lời thề) và Josephus (Herod sợ ảnh hưởng chính trị, không nhắc
 John ở nhiều nơi (Damascus, Amiens). Project 148 (dài, 7:38) / 147 (short). Nhân vật mới: JB. HA/HD
 (Herod/Herodias) đã lên `bf_style.py` vĩnh viễn vì tái xuất ở Ep8.
 
-## 7. Caiaphas — "Vị thầy tế tại vị lâu nhất, người quyết định số phận Chúa Giêsu"
+## 7. Caiaphas — "Vị thầy tế tại vị lâu nhất, người quyết định số phận Chúa Giêsu" ✍️ SPEC + PROMPT XONG (chưa tạo ảnh/render)
+
+Spec: 39 beat dài (30 ảnh mới / 1 lặp / 8 kho), 7 beat short. Thêm Annas (AN) vào `bf_style.py`; Vitellius (V) khai trong spec. Thêm các chi tiết ngoài ghi chú gốc: áo lễ bị La Mã giữ ở Antonia (Josephus), Gratus phế Annas rồi 3 thầy tế khác, Vitellius phế Caiaphas năm 36, Nostra Aetate 1965, Dante Inferno.
 
 **Hook:** Mọi vị thầy tế trước và sau ông đều bị La Mã phế truất trong vài năm. Ông tại vị 18 năm.
 **Đã ghi chép:** con rể của Annas (thầy tế trước đó, vẫn có quyền lực ngầm), chủ trì phiên tòa tôn

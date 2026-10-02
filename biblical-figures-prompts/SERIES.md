@@ -50,6 +50,7 @@ ChatGPT trước khi đổi hướng — vẫn giữ nguyên, không làm lại,
 | B | Barabbas | Ep2 (phụ) |
 | HD | Herodias | Ep6 (phụ), nối sang kết cục ở Ep8 |
 | JB | John the Baptist | Ep6 |
+| AN | Annas | Ep7 |
 
 Nhân vật mới cho mỗi tập 5-15 liệt kê trong [EPISODES.md](EPISODES.md), thêm vào `CHAR`/`CHAR_NAMES`
 trong `bf_style.py` một lần duy nhất khi tập đó được viết.
@@ -64,7 +65,7 @@ trong `bf_style.py` một lần duy nhất khi tập đó được viết.
 | 4 | Simon Peter | 143 / 144 | 9:45 | PASS 100 | 34 mới / 2 lặp / 8 kho | ✅ |
 | 5 | Paul of Tarsus | 146 / 145 | 9:00 | PASS 100 | 34 mới / 1 lặp / 7 kho | ✅ |
 | 6 | John the Baptist | 148 / 147 | 7:38 | PASS 100 | 34 mới / 1 lặp / 3 kho | ✅ |
-| 7 | Caiaphas | — | — | — | — | ⏳ |
+| 7 | Caiaphas | — | ~10:25 (ước) | — | 30 mới / 1 lặp / 8 kho (short: 7 mới) | ✍️ spec + prompt xong, chờ `aigen` + `build` |
 | 8 | Herod Antipas | — | — | — | — | ⏳ |
 | 9 | Thomas | — | — | — | — | ⏳ |
 | 10 | James, Brother of Jesus | — | — | — | — | ⏳ |

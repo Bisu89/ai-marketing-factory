@@ -1,0 +1,492 @@
+{
+ "episode": 7,
+ "figure": "Caiaphas",
+ "cast": [
+  "caiaphas",
+  "pilate",
+  "jesus",
+  "peter"
+ ],
+ "characters": {
+  "V": "recurring character Vitellius: Roman governor of Syria, a Roman man in his 50s, clean-shaven, heavy jaw, receding gray hair, shrewd imperious expression, white toga with a broad purple stripe; keep his face and clothing identical whenever he appears"
+ },
+ "thumbnail": {
+  "stem": "cp_face",
+  "scene": "Caiaphas's face in extreme close-up, cold calculating expression, dark Temple background",
+  "chars": [
+   "C"
+  ]
+ },
+ "reference": {
+  "stem": "cp_reference",
+  "scene": "Character reference portrait of Caiaphas, facing the camera in a neutral three-quarter view, shoulders up, plain background, soft even light so every facial detail is clear",
+  "chars": [
+   "C"
+  ]
+ },
+ "long": [
+  {
+   "narration": "Under Roman rule, high priests rose and fell like the seasons. Rome appointed one, removed him within a few years, and appointed another. Caiaphas was the exception. He held the office for eighteen years.",
+   "new": {
+    "stem": "cp_face_portrait",
+    "tags": "caiaphas, portrait, hook",
+    "scene": "Portrait of Caiaphas the high priest from the chest up, stern calculating face, dim Temple interior light",
+    "chars": [
+     "C"
+    ]
+   }
+  },
+  {
+   "narration": "Those eighteen years included the night Jesus was brought before him. Was he a villain, or a political survivor doing cold arithmetic in an occupied country? Tonight we look at what the sources actually say.",
+   "new": {
+    "stem": "cp_council_doorway_night",
+    "tags": "caiaphas, council, night, doorway",
+    "scene": "A high priest in a deep indigo robe standing alone in a dim doorway at night, torchlight flickering in the street beyond",
+    "chars": [
+     "C"
+    ]
+   }
+  },
+  {
+   "narration": "To understand him, start with the job. In first-century Judea, the high priest ran the Temple, presided over the Jewish council, and served as the main go-between with the Roman governor -- real power, held entirely at Rome's pleasure.",
+   "new": {
+    "stem": "cp_temple_priests_procession",
+    "tags": "temple, priests, procession, power",
+    "scene": "A procession of white-robed priests crossing a vast sunlit Temple courtyard, incense rising, pilgrims watching from the edges",
+    "chars": []
+   }
+  },
+  {
+   "narration": "How entirely? Josephus tells us Rome kept the high priest's sacred robes locked in the Antonia fortress overlooking the Temple, releasing them only for festivals. The message was plain: the office belonged to the priests only as long as Rome allowed.",
+   "new": {
+    "stem": "cp_vestments_antonia_chest",
+    "tags": "vestments, antonia, roman control",
+    "scene": "A Roman soldier standing guard beside a locked chest of fine priestly robes inside a stone fortress chamber, lamp light",
+    "chars": []
+   }
+  },
+  {
+   "narration": "The governor before Pilate, Valerius Gratus, took this to extremes. Josephus says he removed the high priest Annas, then appointed and dismissed three more in quick succession, before settling on a man named Joseph, called Caiaphas, around the year 18.",
+   "new": {
+    "stem": "cp_gratus_appoints_priest",
+    "tags": "gratus, appointment, rome, priests",
+    "scene": "A Roman official in a white toga placing a priestly turban on a kneeling Judean priest in an ornate chamber, other priests waiting behind",
+    "chars": []
+   }
+  },
+  {
+   "narration": "He had the best connection available. Caiaphas was the son-in-law of Annas, the former high priest, as John's Gospel says directly. Josephus adds that five of Annas's sons eventually held the office too. This was not luck. This was a dynasty.",
+   "new": {
+    "stem": "cp_annas_portrait",
+    "tags": "annas, portrait, dynasty",
+    "scene": "An elderly white-bearded priest seated in a richly decorated chamber, hands folded, shrewd calculating gaze",
+    "chars": [
+     "AN"
+    ]
+   }
+  },
+  {
+   "narration": "And Annas never really left. Luke names both men as high priests when John the Baptist begins to preach, and in John's account Jesus is taken to Annas first. Many historians see Annas as the power in the background and Caiaphas as the man out front.",
+   "new": {
+    "stem": "cp_annas_whispers_caiaphas",
+    "tags": "annas, caiaphas, power behind throne",
+    "scene": "An elderly white-bearded priest murmuring into the ear of a younger priest in a shadowy colonnade",
+    "chars": [
+     "AN",
+     "C"
+    ]
+   }
+  },
+  {
+   "narration": "In the year 26, Pilate arrived as governor. For the next ten years, from everything we can tell, the two men simply made it work. Caiaphas kept the Temple orderly, and Pilate kept him in office.",
+   "new": {
+    "stem": "cp_priest_and_governor_terrace",
+    "tags": "caiaphas, pilate, partnership, terrace",
+    "scene": "A Roman governor and a high priest standing side by side on a palace terrace overlooking a city, an uneasy partnership",
+    "chars": [
+     "C",
+     "P"
+    ]
+   }
+  },
+  {
+   "narration": "The turning point, in John's Gospel, comes after Jesus raises Lazarus. The chief priests and Pharisees gather in alarm. This man performs many signs, they say, and if we let him go on, everyone will believe in him, and the Romans will come and take away our place and our nation.",
+   "new": {
+    "stem": "cp_council_lazarus_debate",
+    "tags": "council, sanhedrin, john 11, debate",
+    "scene": "A crowded lamplit council chamber, priests and elders arguing anxiously around a long table",
+    "chars": []
+   }
+  },
+  {
+   "narration": "Caiaphas answers them bluntly. You know nothing at all, he says. It is better for you that one man die for the people than that the whole nation perish.",
+   "new": {
+    "stem": "cp_one_man_should_die",
+    "tags": "caiaphas, speech, one man should die",
+    "scene": "A high priest rising from his seat to address a hushed council chamber, one hand raised, lamplight on his stern face",
+    "chars": [
+     "C"
+    ]
+   }
+  },
+  {
+   "narration": "Read coldly, that is not a speech about hatred. It is arithmetic. Rome had crushed revolts within living memory, and Josephus says two thousand rebels were crucified outside Jerusalem after Herod the Great died. Caiaphas had seen what happens when Rome loses patience.",
+   "reuse": "ep2_052_three_crosses_distant_hill.png"
+  },
+  {
+   "narration": "The Gospels give a second trigger: Jesus overturning the money tables in the Temple courts, the very marketplace the high-priestly families oversaw. To the priests, it looked less like a sermon than a challenge to their authority.",
+   "new": {
+    "stem": "cp_temple_tables_overturned",
+    "tags": "temple, tables overturned, coins, jesus",
+    "scene": "Overturned tables and scattered coins in a Temple courtyard, merchants fleeing, a calm robed figure standing at the center",
+    "chars": [
+     "JC"
+    ]
+   }
+  },
+  {
+   "narration": "Matthew says the chief priests and elders met in Caiaphas's palace to arrange Jesus's arrest quietly, and not during the festival, for fear of a riot. Then one of Jesus's own followers offered to help, for thirty pieces of silver -- the story of our first episode.",
+   "new": {
+    "stem": "cp_plot_in_palace_courtyard",
+    "tags": "caiaphas, plot, palace, night",
+    "scene": "Priests and elders gathered in a torch-lit palace courtyard at night, a high priest speaking to them quietly",
+    "chars": [
+     "C"
+    ]
+   }
+  },
+  {
+   "narration": "That night Jesus was arrested in the garden at Gethsemane. John says he was taken first to Annas, who questioned him informally, and then sent him, still bound, to Caiaphas.",
+   "reuse": "ep2_034_arrest_olive_grove_torches.png"
+  },
+  {
+   "narration": "The Synoptic Gospels place the main hearing in Caiaphas's house, in the dead of night, with much of the council already waiting for him.",
+   "new": {
+    "stem": "cp_jesus_led_bound_night_street",
+    "tags": "jesus, arrested, bound, street, night",
+    "scene": "A robed man with his hands bound being led by temple guards through a dark narrow Jerusalem street, torches overhead",
+    "chars": [
+     "JC"
+    ]
+   }
+  },
+  {
+   "narration": "Witnesses were brought in. Mark says they contradicted each other, so their testimony went nowhere. Jesus, for much of it, said nothing.",
+   "new": {
+    "stem": "cp_night_hearing_witnesses",
+    "tags": "trial, witnesses, sanhedrin, night",
+    "scene": "A bound robed man standing silent before a seated council of priests in a dim chamber, one priest in indigo leaning forward",
+    "chars": [
+     "C",
+     "JC"
+    ]
+   }
+  },
+  {
+   "narration": "Then Caiaphas stood and asked him directly: Are you the Messiah, the Son of the Blessed One? In Mark, Jesus answers, I am. In Matthew, his reply is more guarded: You have said so. Either way, it was enough for Caiaphas.",
+   "new": {
+    "stem": "cp_the_question_closeup",
+    "tags": "caiaphas, question, messiah, closeup",
+    "scene": "Close-up of Caiaphas in the middle of a question, eyes fixed forward, dim lamplit background",
+    "chars": [
+     "C"
+    ]
+   }
+  },
+  {
+   "narration": "He tore his robes and declared it blasphemy. The council voted that Jesus deserved death.",
+   "new": {
+    "stem": "cp_tearing_robes",
+    "tags": "caiaphas, blasphemy, torn robe",
+    "scene": "A high priest in an indigo robe tearing the neckline of his own garment in outrage, shocked council members around him",
+    "chars": [
+     "C"
+    ]
+   }
+  },
+  {
+   "narration": "Meanwhile, in the courtyard of the high priest's house, Peter was warming himself by a fire, and denying three times that he had ever known the prisoner inside -- the scene from our fourth episode.",
+   "new": {
+    "stem": "cp_peter_courtyard_fire",
+    "tags": "peter, denial, courtyard, fire",
+    "scene": "A stocky bearded fisherman warming his hands at a small courtyard fire at night, a servant girl watching him suspiciously",
+    "chars": [
+     "PT"
+    ]
+   }
+  },
+  {
+   "narration": "Historians have argued about this trial for generations. Later rabbinic rules forbid capital trials at night or on a festival, but those texts were written around 200 AD, and scholars disagree about whether they applied in Caiaphas's day. John's Gospel, notably, describes no formal verdict at all.",
+   "reuse": "ep2_004_sources_scrolls_candle.png"
+  },
+  {
+   "narration": "At dawn the council took Jesus to Pilate. Why? In John, the priests say they have no authority to execute anyone. Some scholars think Rome had reserved capital punishment for itself, others think the council's authority was simply limited. Both are debated.",
+   "new": {
+    "stem": "cp_priests_lead_to_pilate_dawn",
+    "tags": "priests, pilate, dawn, handover",
+    "scene": "A group of priests climbing the stone steps of a Roman governor's residence at dawn with a bound man at the center, seen from behind",
+    "chars": [
+     "JC"
+    ]
+   }
+  },
+  {
+   "narration": "Before Pilate, the charge changes. Blasphemy meant nothing to Rome, so the Gospels have the priests press a political claim: that Jesus called himself a king. In John, they even say, We have no king but Caesar -- exactly what a man who needs Rome's goodwill would say.",
+   "reuse": "ep2_025_angry_crowd_tribunal.png"
+  },
+  {
+   "narration": "Matthew adds a coda. The next day the chief priests asked Pilate to post guards at the tomb, remembering Jesus's prediction. When the tomb was found empty, Matthew says, the priests paid the guards to claim the disciples had stolen the body.",
+   "new": {
+    "stem": "cp_tomb_guards_sealed_stone",
+    "tags": "tomb, guards, seal, matthew 27",
+    "scene": "Roman soldiers sealing a large round stone across a rock-cut tomb at dusk while a few robed priests look on",
+    "chars": []
+   }
+  },
+  {
+   "narration": "Caiaphas appears again in the book of Acts. After Peter and John are arrested for preaching in the Temple, Acts 4 lists who questioned them: Annas the high priest, Caiaphas, and members of the high-priestly family.",
+   "reuse": "ep4_025_pt_before_sanhedrin.png"
+  },
+  {
+   "narration": "When the apostles were arrested again, some on the council wanted them killed. A respected Pharisee named Gamaliel urged caution: if this is from men, it will fail on its own, and if it is from God, you cannot stop it. The council relented -- after flogging them.",
+   "new": {
+    "stem": "cp_gamaliel_counsels_caution",
+    "tags": "gamaliel, council, caution, acts 5",
+    "scene": "An elderly Pharisee scholar rising calmly to address a tense council of priests, others looking on with arms folded",
+    "chars": []
+   }
+  },
+  {
+   "narration": "Notice what drives the council in every scene. Jerusalem at Passover swelled with pilgrims, and Roman soldiers stood watch over the Temple porticoes. Josephus records a single provocation there, decades later, that set off a riot ending in tens of thousands of deaths.",
+   "reuse": "ep2_012_temple_courts_wide.png"
+  },
+  {
+   "narration": "In the year 36, after Pilate's massacre of Samaritans, the Syrian governor Vitellius sent Pilate to Rome. Then he came to Jerusalem, handed back custody of the sacred robes, and removed Caiaphas, replacing him with Jonathan, another son of Annas.",
+   "new": {
+    "stem": "cp_vitellius_returns_vestments",
+    "tags": "vitellius, vestments, jerusalem, deposition",
+    "scene": "A Roman governor in a white toga with purple stripe arriving in Jerusalem, priests receiving a chest of sacred robes in a courtyard",
+    "chars": [
+     "V"
+    ]
+   }
+  },
+  {
+   "narration": "A man who survived eighteen years and two governors was removed in a single visit. Josephus gives no reason, and does not say where he went. The priest at the center of history's most famous trial simply disappears from the written record.",
+   "new": {
+    "stem": "cp_caiaphas_vanishes_street_dusk",
+    "tags": "caiaphas, vanishes, dusk, alone",
+    "scene": "An aging priest in a plain undecorated robe walking alone down a quiet Jerusalem street at dusk, long shadows",
+    "chars": [
+     "C"
+    ]
+   }
+  },
+  {
+   "narration": "Then, in 1990, archaeology gave him a second life. Workers building a water park in a Jerusalem neighborhood south of the Old City broke into a first-century burial cave containing twelve ossuaries, limestone boxes used to hold bones.",
+   "new": {
+    "stem": "cp_burial_cave_discovery",
+    "tags": "archaeology, burial cave, ossuaries, 1990",
+    "scene": "The dim interior of a rock-cut burial cave, rows of small limestone bone boxes on stone shelves, a single work lamp beyond the entrance",
+    "chars": []
+   }
+  },
+  {
+   "narration": "One was elaborately carved with rosettes, and inscribed in Aramaic: Yehosef bar Qafa, Joseph son of Caiaphas. Inside were the bones of six people, among them an infant, a child, a teenager, a woman, and a man of about sixty.",
+   "new": {
+    "stem": "cp_ossuary_inscription",
+    "tags": "ossuary, inscription, joseph son of caiaphas",
+    "scene": "A close-up of an ornately carved limestone ossuary with rosette patterns and a short Aramaic inscription, warm lamplight",
+    "chars": []
+   }
+  },
+  {
+   "narration": "Joseph, called Caiaphas, is exactly the name Josephus gives, and the rich carving fits a wealthy family. Many scholars think this is very likely the high priest's family tomb. A few caution that the spelling differs slightly from Josephus's Greek, and that Caiaphas could have been a family name.",
+   "new": {
+    "stem": "cp_scholars_examine_inscription",
+    "tags": "scholars, inscription, debate, caiaphas",
+    "scene": "Two scholars bent over an ancient carved stone box in a study lit by oil lamps, one holding a magnifying lens",
+    "chars": []
+   }
+  },
+  {
+   "narration": "A Byzantine-era tradition places Caiaphas's house on Mount Zion, where the Church of St Peter in Gallicantu now stands. That location is tradition, not proven fact. The bone box is the stronger evidence.",
+   "new": {
+    "stem": "cp_mount_zion_church_dawn",
+    "tags": "mount zion, church, traditional site",
+    "scene": "A stone hilltop church overlooking Jerusalem at dawn, terraced slopes below, no figures",
+    "chars": []
+   }
+  },
+  {
+   "narration": "So what kind of man was he? One reading says he feared Jesus as a threat to his own power. John's Gospel has the council fear losing their place, a word that can mean either their position or the Temple itself.",
+   "new": {
+    "stem": "cp_caiaphas_window_temple_night",
+    "tags": "caiaphas, window, temple, power, fear",
+    "scene": "A high priest alone at an arched window at night looking out at the illuminated Temple, hands clasped behind his back",
+    "chars": [
+     "C"
+    ]
+   }
+  },
+  {
+   "narration": "A second reading is political, not personal: a man keeping a fragile peace in an occupied province, where one riot could bring legions. He did not need to hate Jesus. He only needed to believe disorder was deadlier than one man's death. Both readings fit the evidence.",
+   "reuse": "ep2_015_standards_night_march.png"
+  },
+  {
+   "narration": "Priestly dynasties of the era did not have a good reputation. A generation later, Josephus complains of high-priestly servants seizing tithes from ordinary priests, and a rabbinic text laments, Woe to me because of the house of Hanin, woe to me because of their whisperings.",
+   "new": {
+    "stem": "cp_priestly_servants_tithes",
+    "tags": "priestly families, tithes, reputation, josephus",
+    "scene": "Servants of wealthy priests loading sacks of grain from a threshing floor while poorer priests watch from the side",
+    "chars": []
+   }
+  },
+  {
+   "narration": "That context matters for how the story was later used. For centuries, the trial narrative was read as blaming all Jews for Jesus's death, a reading behind real persecution. Mainstream churches have rejected it; the Catholic Church's 1965 declaration Nostra Aetate said the Passion cannot be charged against all Jews then living, or against Jews today.",
+   "reuse": "ep3_038_modern_readers_debate.png"
+  },
+  {
+   "narration": "In literature, he fared worse. Dante's Inferno places Caiaphas among the hypocrites, staked to the ground while every other sinner walks over him -- a medieval verdict, not a historical one.",
+   "new": {
+    "stem": "cp_dante_hypocrites_procession",
+    "tags": "dante, inferno, hypocrites, legacy",
+    "scene": "A slow procession of hooded figures in heavy gray leaden cloaks walking through a dim underground gallery, no faces visible",
+    "chars": []
+   }
+  },
+  {
+   "narration": "Whatever you make of him, he is one of the best-attested people in the Gospels. Josephus, the Gospels and the ossuary all agree on his name, his office and his era. Caiaphas was real. What remains open is how to read what he did.",
+   "new": {
+    "stem": "cp_scroll_and_ossuary_together",
+    "tags": "evidence, scroll, ossuary, historical",
+    "scene": "A rolled scroll and a carved limestone ossuary side by side on a wooden table in lamplight",
+    "chars": []
+   }
+  },
+  {
+   "narration": "So who was Caiaphas? A high priest who lasted eighteen years in a job Rome made nearly impossible to keep. A politician who judged one man's death cheaper than a nation's. And a name that survived on a limestone box. Villain or realist -- the evidence lets us ask, but not settle it.",
+   "repeat": "cp_face_portrait"
+  }
+ ],
+ "short": [
+  {
+   "narration": "Rome fired high priests every few years. Caiaphas lasted eighteen.",
+   "new": {
+    "stem": "cp_hook_short",
+    "tags": "caiaphas, portrait, hook",
+    "scene": "Close-up portrait of Caiaphas the high priest, stern calculating face, dim background",
+    "chars": [
+     "C"
+    ]
+   }
+  },
+  {
+   "narration": "He married into the family of Annas, a priestly dynasty Rome learned it could work with.",
+   "new": {
+    "stem": "cp_annas_short",
+    "tags": "annas, dynasty",
+    "scene": "An elderly white-bearded priest seated in a dim richly decorated chamber, shrewd gaze",
+    "chars": [
+     "AN"
+    ]
+   }
+  },
+  {
+   "narration": "When Jesus's miracles alarmed the council, Caiaphas said it was better for one man to die than for the whole nation to perish.",
+   "new": {
+    "stem": "cp_council_short",
+    "tags": "council, caiaphas, speech",
+    "scene": "A high priest rising to speak to a hushed lamplit council, one hand raised",
+    "chars": [
+     "C"
+    ]
+   }
+  },
+  {
+   "narration": "That night he questioned Jesus, tore his robes, and called it blasphemy.",
+   "new": {
+    "stem": "cp_tearing_robes_short",
+    "tags": "caiaphas, blasphemy, torn robe",
+    "scene": "A high priest in an indigo robe tearing the neckline of his garment in outrage",
+    "chars": [
+     "C"
+    ]
+   }
+  },
+  {
+   "narration": "At dawn, he handed him to Pilate.",
+   "new": {
+    "stem": "cp_to_pilate_short",
+    "tags": "priests, pilate, dawn",
+    "scene": "Priests climbing the stone steps of a Roman governor's residence at dawn, a bound man at the center seen from behind",
+    "chars": [
+     "JC"
+    ]
+   }
+  },
+  {
+   "narration": "In the year 36, Rome removed him. History never says what happened next.",
+   "new": {
+    "stem": "cp_vanishes_short",
+    "tags": "caiaphas, vanishes, dusk",
+    "scene": "An aging priest in a plain robe walking alone down a quiet Jerusalem street at dusk",
+    "chars": [
+     "C"
+    ]
+   }
+  },
+  {
+   "narration": "Until 1990, when a bone box turned up in Jerusalem: Joseph, son of Caiaphas. Full story on the channel.",
+   "new": {
+    "stem": "cp_ossuary_short",
+    "tags": "ossuary, inscription",
+    "scene": "A carved limestone ossuary with rosettes and a short inscription on a stone shelf, warm lamplight",
+    "chars": []
+   }
+  }
+ ],
+ "package": {
+  "long": {
+   "title": "Caiaphas: The High Priest Who Outlasted Pilate",
+   "description": "Rome removed high priests every few years. Caiaphas held the office for eighteen years, long enough to preside over the night hearing of Jesus.\n\nWe follow Caiaphas from the Roman system that made and unmade high priests, through his family ties to Annas, the council that decided one man's death was cheaper than a nation's, the night hearing and the handover to Pilate, his sudden removal in the year 36 -- and the 1990 discovery of a carved bone box inscribed \"Joseph son of Caiaphas.\"\n\nWe separate what the Gospels and the historian Josephus record from the later tradition built on top of them, and look at the two ways historians read his motives.\n\nChapters (approximate):\n00:00 The high priest Rome couldn't replace\n00:28 How the job worked under Rome\n02:08 \"Better that one man die\"\n03:34 The night hearing\n05:20 Pilate, and the tomb guards\n06:32 Removed in the year 36\n06:49 The bone box\n08:29 Villain or political survivor?\n\nNew figure from history every week -- subscribe so you don't miss the next one.\n\n#Caiaphas #BibleHistory #HistoryDocumentary #AncientHistory #JesusHistory #ChurchHistory",
+   "app_description": "Rome removed high priests every few years. Caiaphas held the office for eighteen years and presided over the night hearing of Jesus. We separate what the Gospels and Josephus record from later tradition, and look at the 1990 discovery of a bone box inscribed 'Joseph son of Caiaphas.'\n\nA new figure from history every week.",
+   "hashtags": [
+    "Caiaphas",
+    "BibleHistory",
+    "HistoryDocumentary",
+    "AncientHistory",
+    "JesusHistory",
+    "ChurchHistory"
+   ]
+  },
+  "short": {
+   "title": "The High Priest Rome Couldn't Remove for 18 Years #Shorts",
+   "description": "Caiaphas held the high priesthood for eighteen years under Roman rule -- and presided over the night hearing of Jesus. Full documentary on the channel.\n\n#Shorts #Caiaphas #BibleHistory #History",
+   "hashtags": [
+    "Shorts",
+    "Caiaphas",
+    "BibleHistory",
+    "History"
+   ]
+  }
+ },
+ "sources": [
+  "Josephus, Antiquities of the Jews 18.33-35 (Valerius Gratus deposes Annas and appoints Joseph Caiaphas), 18.90-95 (Vitellius returns the vestments and deposes Caiaphas), 20.197-203 (Annas's sons as high priests)",
+  "Josephus, Antiquities 17.295; War 2.75 (about 2,000 rebels crucified after Herod the Great's death)",
+  "Josephus, War 2.224-227; Antiquities 20.105-112 (a Passover disturbance in the Temple porticoes under Cumanus)",
+  "Luke 3:2; John 18:13, 24 (Annas and Caiaphas, son-in-law relationship)",
+  "John 11:45-53 (the council after Lazarus; 'it is better that one man die for the people')",
+  "Matthew 21:12-13; Mark 11:15-18 (the Temple tables, and the priests' response)",
+  "Matthew 26:3-5, 57-68; Mark 14:53-65; Luke 22:54, 66-71; John 18:12-27 (arrest, hearing before Annas and Caiaphas, 'blasphemy')",
+  "John 18:28-32; Luke 23:1-2; John 19:12-15 (handover to Pilate, the priests' political charge, 'we have no king but Caesar')",
+  "Matthew 27:62-66, 28:11-15 (the guard at the tomb)",
+  "Acts 4:5-22; Acts 5:17-42 (Peter and John before Annas and Caiaphas; Gamaliel's counsel)",
+  "Mishnah, Sanhedrin (rules on capital trials, compiled c. 200 AD) -- scholars debate how far they reflect first-century practice",
+  "Babylonian Talmud, Pesahim 57a (lament over the house of Hanin)",
+  "Ronny Reich, 'Caiaphas Name Inscribed on Ossuary,' Biblical Archaeology Review (1992); the 1990 Peace Forest tomb excavation in Jerusalem",
+  "Church of St Peter in Gallicantu, Mount Zion (traditional site of Caiaphas's house)",
+  "Dante, Inferno, Canto 23 (Caiaphas among the hypocrites)",
+  "Second Vatican Council, Nostra Aetate (1965), section 4"
+ ]
+}
