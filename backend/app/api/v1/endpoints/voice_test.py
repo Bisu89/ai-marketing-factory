@@ -11,6 +11,7 @@ thread and returns a job id; the page polls GET /jobs/{id}.
 """
 
 import logging
+import os
 import re
 import subprocess
 import threading
@@ -84,7 +85,7 @@ def _run_job(job_id: str, text: str, voice: str, speed: float, out_dir: Path) ->
         if proc.returncode != 0 or not mp3_path.exists():
             raise RuntimeError(f"Không xuất được MP3: {proc.stderr.strip()}")
         update = {
-            "status": "done", "file": str(mp3_path), "filename": mp3_path.name,
+            "status": "done", "file": str(mp3_path), "path": str(mp3_path), "filename": mp3_path.name,
             "duration_sec": round(result.duration_sec, 1), "elapsed_sec": round(time.time() - started, 1),
         }
     except Exception as exc:  # noqa: BLE001 -- surfaced to the page as the job's error text
@@ -133,6 +134,49 @@ def get_voice_test_job(job_id: str) -> dict:
     job = _get_job(job_id)
     job.pop("file", None)
     return job
+
+
+_FILE_NAME_RE = re.compile(r"^giong-doc_[\w-]+\.mp3$")
+
+
+def _file_path(name: str, settings: Settings) -> Path:
+    path = _output_dir(settings) / name
+    if not _FILE_NAME_RE.match(name) or not path.is_file():
+        raise NotFoundError(f"Không tìm thấy file {name}.")
+    return path
+
+
+@router.get("/voice-test/files")
+def list_voice_test_files(settings: Settings = Depends(get_settings)) -> dict:
+    """Every MP3 ever produced here (survives restarts, unlike the job list)."""
+    folder = _output_dir(settings)
+    files = sorted(folder.glob("giong-doc_*.mp3"), key=lambda p: p.stat().st_mtime, reverse=True)[:50]
+    return {
+        "folder": str(folder),
+        "files": [
+            {
+                "name": f.name, "path": str(f), "size_kb": round(f.stat().st_size / 1024),
+                "modified": datetime.fromtimestamp(f.stat().st_mtime).isoformat(timespec="seconds"),
+            }
+            for f in files
+        ],
+    }
+
+
+@router.get("/voice-test/files/{name}")
+def get_voice_test_file(name: str, download: bool = False, settings: Settings = Depends(get_settings)) -> FileResponse:
+    return FileResponse(
+        _file_path(name, settings), media_type="audio/mpeg", filename=name,
+        content_disposition_type="attachment" if download else "inline",
+    )
+
+
+@router.post("/voice-test/open-folder")
+def open_voice_test_folder(settings: Settings = Depends(get_settings)) -> dict:
+    """Opens the output folder in Windows Explorer (desktop app, local only)."""
+    folder = _output_dir(settings)
+    os.startfile(str(folder))  # noqa: S606 -- local desktop app, fixed app-owned path
+    return {"folder": str(folder)}
 
 
 @router.get("/voice-test/jobs/{job_id}/audio")

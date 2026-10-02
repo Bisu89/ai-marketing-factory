@@ -1,8 +1,16 @@
 import { useEffect, useRef, useState } from "react";
-import { AudioLines, Download, Loader2 } from "lucide-react";
+import { AudioLines, Copy, Download, FolderOpen, Loader2 } from "lucide-react";
 import { PageHeader } from "../components/PageHeader";
-import { getVoiceTestJob, listTestVoices, startVoiceTest, voiceTestAudioUrl } from "../api/voiceTest";
-import type { TestVoice, VoiceTestJob } from "../api/voiceTest";
+import {
+  getVoiceTestJob,
+  listTestVoices,
+  listVoiceTestFiles,
+  openVoiceTestFolder,
+  startVoiceTest,
+  voiceTestAudioUrl,
+  voiceTestFileUrl,
+} from "../api/voiceTest";
+import type { TestVoice, VoiceTestFile, VoiceTestJob } from "../api/voiceTest";
 import "./VoiceTestPage.css";
 
 const FALLBACK_VOICE: TestVoice = { id: "vi-VN-HoaiMyNeural", label: "Tiếng Việt — Hoài My (nữ)", language: "vi" };
@@ -27,6 +35,33 @@ export function VoiceTestPage() {
   const [now, setNow] = useState(Date.now());
   const pollRef = useRef<number | null>(null);
 
+  const [folder, setFolder] = useState("");
+  const [files, setFiles] = useState<VoiceTestFile[]>([]);
+  const [copied, setCopied] = useState(false);
+
+  function loadFiles() {
+    listVoiceTestFiles()
+      .then((data) => {
+        setFolder(data.folder);
+        setFiles(data.files);
+      })
+      .catch(() => undefined);
+  }
+
+  async function copyPath(path: string) {
+    try {
+      await navigator.clipboard.writeText(path);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 1500);
+    } catch {
+      setError("Không copy được, hãy chép đường dẫn bằng tay.");
+    }
+  }
+
+  function openFolder() {
+    openVoiceTestFolder().catch((err) => setError(err instanceof Error ? err.message : "Không mở được thư mục."));
+  }
+
   useEffect(() => {
     listTestVoices()
       .then((data) => {
@@ -34,6 +69,7 @@ export function VoiceTestPage() {
         setVoice(data.default);
       })
       .catch(() => undefined);
+    loadFiles();
     return () => {
       if (pollRef.current) window.clearInterval(pollRef.current);
     };
@@ -68,6 +104,7 @@ export function VoiceTestPage() {
           if (status.status !== "running" && pollRef.current) {
             window.clearInterval(pollRef.current);
             pollRef.current = null;
+            if (status.status === "done") loadFiles();
           }
         } catch (err) {
           setError(err instanceof Error ? err.message : "Mất kết nối khi kiểm tra tiến độ.");
@@ -146,12 +183,59 @@ export function VoiceTestPage() {
               <strong>{job.filename}</strong> · dài {formatDuration(job.duration_sec ?? 0)} · xử lý {job.elapsed_sec}s
             </div>
             <audio controls src={voiceTestAudioUrl(jobId)} />
-            <a className="voice-test-download" href={voiceTestAudioUrl(jobId, true)}>
-              <Download size={15} /> Tải MP3
-            </a>
+            {job.path && (
+              <div className="voice-test-path">
+                <span>Đã lưu tại:</span>
+                <code>{job.path}</code>
+              </div>
+            )}
+            <div className="voice-test-actions">
+              <a className="voice-test-download" href={voiceTestAudioUrl(jobId, true)}>
+                <Download size={15} /> Tải MP3
+              </a>
+              {job.path && (
+                <button type="button" className="voice-test-btn" onClick={() => copyPath(job.path as string)}>
+                  <Copy size={15} /> {copied ? "Đã copy" : "Copy đường dẫn"}
+                </button>
+              )}
+              <button type="button" className="voice-test-btn" onClick={openFolder}>
+                <FolderOpen size={15} /> Mở thư mục
+              </button>
+            </div>
           </div>
         )}
       </div>
+
+      <h2 className="voice-test-files-title">File đã tạo</h2>
+      {folder && (
+        <p className="voice-test-hint">
+          Thư mục: <code>{folder}</code>{" "}
+          <button type="button" className="voice-test-link" onClick={openFolder}>
+            Mở thư mục
+          </button>
+        </p>
+      )}
+      {files.length === 0 ? (
+        <p className="voice-test-hint">Chưa có file nào.</p>
+      ) : (
+        <ul className="voice-test-files">
+          {files.map((f) => (
+            <li key={f.name}>
+              <div className="voice-test-file-head">
+                <strong>{f.name}</strong>
+                <span>
+                  {f.size_kb} KB · {f.modified.replace("T", " ")}
+                </span>
+                <a href={voiceTestFileUrl(f.name, true)}>Tải</a>
+                <button type="button" className="voice-test-link" onClick={() => copyPath(f.path)}>
+                  Copy đường dẫn
+                </button>
+              </div>
+              <audio controls preload="none" src={voiceTestFileUrl(f.name)} />
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }
