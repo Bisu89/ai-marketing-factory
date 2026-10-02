@@ -65,7 +65,7 @@ trong `bf_style.py` một lần duy nhất khi tập đó được viết.
 | 4 | Simon Peter | 143 / 144 | 9:45 | PASS 100 | 34 mới / 2 lặp / 8 kho | ✅ |
 | 5 | Paul of Tarsus | 146 / 145 | 9:00 | PASS 100 | 34 mới / 1 lặp / 7 kho | ✅ |
 | 6 | John the Baptist | 148 / 147 | 7:38 | PASS 100 | 34 mới / 1 lặp / 3 kho | ✅ |
-| 7 | Caiaphas | — | ~10:25 (ước) | — | 30 mới / 1 lặp / 8 kho (short: 7 mới) | ✍️ spec + prompt xong, chờ `aigen` + `build` |
+| 7 | Caiaphas | 159 / 160 | 10:11 | PASS 100 | 30 mới / 1 lặp / 8 kho (short: 7 mới, 33s) | ✅ |
 | 8 | Herod Antipas | — | — | — | — | ⏳ |
 | 9 | Thomas | — | — | — | — | ⏳ |
 | 10 | James, Brother of Jesus | — | — | — | — | ⏳ |
