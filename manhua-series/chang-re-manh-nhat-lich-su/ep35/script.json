@@ -1,0 +1,30 @@
+{
+  "title": "Bị cấm túc nên đi học, chàng rể vừa nhập lớp đã bị cả đám con trai ghen ghét!?",
+  "chapters": "34",
+  "source_dir": "manhua-recap/crmn_ep35",
+  "description": "Thế tử xin lỗi vì lỡ dại, Thẩm Lãng nhận lệnh đến học đường họ Kim, nhưng vừa tới đã bị đám học trò ghen tị vì là chồng của nữ thần Mộc Lan. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 35.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "thumbnail": {"text": "ĐI HỌC BỊ CẢ LỚP GHEN!?", "prompt": "Vertical 9:16 anime-style: a handsome long-haired young man in white robes standing in a school hall, a group of jealous young men in brown robes glaring at him with dark shadowed faces, an elderly white-bearded teacher watching. No text, leave top 25% empty."},
+  "beats": [
+    {"panel": "p003.jpg", "type": "HOOK", "kind": "recap", "narration": "Thế tử cảm kích rối rít, tỷ phu, ơn không giết hôm nay Kim Mộc Thông ta xin ghi nhớ!"},
+    {"panel": "p004.jpg", "type": "SETUP", "kind": "recap", "narration": "Anh lạnh giọng hỏi, vậy nói cho ta biết, ai là người xúi đệ đến?"},
+    {"panel": "p005.jpg", "type": "BUILD", "kind": "recap", "narration": "Thế tử xua tay lia lịa, không được, làm người quan trọng nhất là nghĩa khí, đánh chết cũng không khai."},
+    {"panel": "p006.jpg", "type": "REACTION", "kind": "recap", "narration": "Anh cười thầm, cuối cùng cũng hiểu vì sao nhạc mẫu hay đánh cậu ta, bị người ta bán mà còn tính toán thay người ta."},
+    {"panel": "p009.jpg", "type": "BUILD", "kind": "recap", "narration": "Cậu vừa rời đi, anh khóa hết cửa lại, thầm nghĩ chuyện này chắc chắn không đơn giản."},
+    {"panel": "p010.jpg", "type": "REVEAL", "kind": "recap", "narration": "Anh ngồi tỉ mỉ cạo từng chút mốc trên hạt lúa mạch rồi thu thập lại."},
+    {"panel": "p011.jpg", "type": "REACTION", "kind": "commentary", "narration": "Nếu ai đó hiểu ra chắc bị dọa cho không dám nói gì, không biết anh định dùng thứ này hại ai."},
+    {"panel": "p017.jpg", "type": "BUILD", "kind": "recap", "narration": "Sáng hôm sau, anh hỏi Tiểu Băng một câu, cô có biết vì sao hổ trắng lại quý hiếm không?"},
+    {"panel": "p021.jpg", "type": "REVEAL", "kind": "recap", "narration": "Cô đoán vì phần lớn hổ đều màu vàng, anh lắc đầu, không phải, vì thời gian là vàng bạc, vàng bạc khó mua được thời gian."},
+    {"panel": "p023.jpg", "type": "REACTION", "kind": "recap", "narration": "Tiểu Băng ngẩn người, hai thứ này có liên quan gì, cô gia lại đang làm gì đây?"},
+    {"panel": "p027.jpg", "type": "BUILD", "kind": "recap", "narration": "Ăn sáng xong, anh nhận lệnh của Bá tước, bảo anh đi học."},
+    {"panel": "p028.jpg", "type": "BUILD", "kind": "recap", "narration": "Chủ nhân dặn cô gia học cùng Thế tử, đừng xao nhãng, nhưng thật ra chỉ cần giả bộ ra vẻ học hành là được."},
+    {"panel": "p030.jpg", "type": "REVEAL", "kind": "recap", "narration": "Anh thầm nghĩ, vừa hay có thể tới chỗ Thế tử thăm dò xem ai xúi giục cậu ta đến gây rắc rối cho mình."},
+    {"panel": "p031.jpg", "type": "BUILD", "kind": "recap", "narration": "Học đường trong phủ Bá tước có hơn trăm học sinh, chuyên dạy con em nội bộ họ Kim."},
+    {"panel": "p032.jpg", "type": "BUILD", "kind": "recap", "narration": "Cả lớp của Thế tử có mười mấy người từ mười lăm đến hai mươi tuổi, ai cũng bị người mới nhập học thu hút."},
+    {"panel": "p034.jpg", "type": "REACTION", "kind": "recap", "narration": "Anh thầm cười, xem ra fan của Mộc Lan nhiều thật, mấy người này chắc ghen vì mình cưới được cô."},
+    {"panel": "p038.jpg", "type": "REVEAL", "kind": "recap", "narration": "Cả đám vây lại, mặt mày đen sì, ngươi là Thẩm Lãng?"},
+    {"panel": "p041.jpg", "type": "BUILD", "kind": "recap", "narration": "Thế tử xông vào quát, đây là tỷ phu của ta, các người tôn trọng chút đi, nếu không ta đánh người đó!"},
+    {"panel": "p045.jpg", "type": "BUILD", "kind": "recap", "narration": "Thầy Lâm lão phu tử bước vào dạy Dịch Kinh, ông nói quyển sách này có hết mọi thứ trên trời dưới đất."},
+    {"panel": "p051.jpg", "type": "ENDING", "kind": "recap", "narration": "Nhìn thấy anh, ông cười, ta nhớ rồi, ngươi là kẻ học mười năm chưa kết thúc lớp vỡ lòng, hóa ra ông thầy này muốn khiêu khích mình đây!"}
+  ]
+}

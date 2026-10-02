@@ -92,6 +92,16 @@ lớn hơn xoay quanh phủ Bá tước Huyền Vũ (gia tộc Kim Mộc Lan —
 | 27 | 26 | `manhua-recap/crmn_ep27` | Bị dồn ép liên tục (casino đóng cửa hàng loạt, mất quá nửa doanh thu), Điền Hoành buộc phải nhượng bộ yêu cầu của Mộc Lan: đích thân đánh gãy chân Điền Thập Tam, gãy cả tay lẫn chân Điền Thập Tứ, đuổi cả hai khỏi bang — công khai trước mặt toàn bộ Bang Hắc Y để trừng phạt vụ hành hung gia đình Thẩm Lãng năm xưa. Uy tín của Điền Hoành sụp đổ nghiêm trọng trong mắt các con nuôi khác. Tập kết thúc với cảnh Điền Hoành phát điên, mắt đỏ ngầu, bất ngờ ra tay tấn công trong cơn thịnh nộ. | ✅ script (Claude viết), chưa build Short riêng |
 | 28 | 27 | `manhua-recap/crmn_ep28` | Thẩm Lãng tiếp tục ép Điền Hoành trả thêm tiền thắng bạc, mặc cho hắn gần như phát điên vì nhục nhã và vì không tự chủ nổi việc cứ phải quay lại trả nợ. Khi Điền Hoành cù nhầy bớt tiền, phủ Bá tước ra quy tắc: không nhận, Bá tước sẽ tự tay đánh gãy chân hắn thay. Cuối cùng Điền Hoành phải mang đủ 2000 vàng tới, còn lại ghi nợ 17000. Thẩm Lãng công khai đem toàn bộ số tiền thắng được ném phát cho dân nghèo giữa phố (gây hỗn loạn tranh giành), tuyên bố không giữ một đồng — khiến Điền Hoành tức điên vì vừa mất tiền vừa bị dùng để "mua lòng dân". Có người (hé lộ là thuộc phe thành chủ) nghi ngờ đây chỉ là màn kịch tính toán của Thẩm Lãng, không phải lòng tốt thật. | ✅ script (Claude viết), chưa build Short riêng |
 | 29 | 28 | `manhua-recap/crmn_ep29` | Thành chủ Huyền Vũ Liễu Vô Nham cấu kết với Trương Tấn, cài hơn chục võ sĩ giả dạng dân thường trà trộn vào đám đông nhận tiền của Thẩm Lãng, âm mưu tạo cảnh giẫm đạp chết hàng loạt người để đổ tội cho phủ Bá tước. Thẩm Lãng dùng mắt thần nhận ra toán giả trang, hô lớn ngăn chặn kịp thời, rồi tuyên bố đã phát hết tiền (không còn gì để tranh giành) để dập tắt nguy cơ hỗn loạn. Anh mang luôn giấy nợ 17000 vàng còn lại đến thẳng dinh thành chủ, công khai "giao trách nhiệm" đòi nợ giúp dân nghèo cho Liễu Vô Nham trước mặt toàn dân — khiến ông ta bị mắc kẹt, không thể từ chối mà không mất lòng dân. | ✅ script (Claude viết), chưa build Short riêng |
+| 31 | 30 | `manhua-recap/crmn_ep31` | Thành chủ cầm giấy nợ 17000 vàng bị dân vây không thoát được; về phủ, Thẩm Lãng bị cha vợ chặn cửa vì lẻn đi quá lâu. | ✅ script (Claude viết) |
+| 32 | 31 | `manhua-recap/crmn_ep32` | Bá tước mắng vì dám vào sòng bạc, phạt cấm túc lần hai; Mộc Lan khoác giáp đỏ ra đón, chàng đỏ mặt khi cởi giáp giúp vợ. | ✅ script (Claude viết) |
+| 33 | 32 | `manhua-recap/crmn_ep33` | Thế tử bị cha mẹ đánh thay chàng rể nên nổi giận kéo người đi tính sổ; thầy Hứa Văn Chiêu (đại quản gia) xúi giục. | ✅ script (Claude viết) |
+| 34 | 33 | `manhua-recap/crmn_ep34` | Thế tử thấy bức tường ghi tên kẻ thù với gạch đỏ của Thẩm Lãng, sợ mất mật bỏ chạy; phu nhân bắt quả tang Thế tử. | ✅ script (Claude viết) |
+| 35 | 34 | `manhua-recap/crmn_ep35` | Thẩm Lãng được cử đi học cùng Thế tử, bị cả lớp ghen tị; Lâm phu tử chuẩn bị khiêu khích. | ✅ script (Claude viết) |
+| 36 | 35 | `manhua-recap/crmn_ep36` | Giải Dịch Kinh khiến Lâm phu tử sững sờ; sang giờ toán, Hứa Văn Chiêu (cậu của Vương Liên) nhắm đánh anh. | ✅ script (Claude viết) |
+| 37 | 36 | `manhua-recap/crmn_ep37` | Cá cược đúng ba câu toán thì khỏi bị phạt; anh giải sạch mười câu bằng kiến thức hiện đại. | ✅ script (Claude viết) |
+| 38 | 37 | `manhua-recap/crmn_ep38` | Câu cuối ra hai mươi ba hàng vượt xa con số mười sáu hàng của thầy; thầy xé bài, anh có sẵn bản thứ hai. | ✅ script (Claude viết) |
+| 39 | 38 | `manhua-recap/crmn_ep39` | Thầy Hứa thua cược phải xin lỗi, nhưng đêm đó đem lễ nịnh Trương Tấn và bắt tay Điền Hoành lập kế hạ bệ chàng rể. | ✅ script (Claude viết) |
+| 40 | 39 | `manhua-recap/crmn_ep40` | Thẩm Lãng xông vào phòng cha mẹ vợ xin tra sổ sách nghi thầy Hứa tham ô; hai mươi năm sổ chỉ có một đêm trước khi ông ta về. | ✅ script (Claude viết) |
 
 ## Nhân vật mới (tập 21–29)
 
@@ -111,6 +121,8 @@ lớn hơn xoay quanh phủ Bá tước Huyền Vũ (gia tộc Kim Mộc Lan —
 | Short tóm tắt 2 (9:16) | 12 beat, tóm tắt tập 11–20 | `short_summary2_script.json` | ✅ project 152 / job_210, Final QA PASS 100 |
 | Long 03 (16:9) | Tóm tắt tập 21–30, 149 beat, 10 phần | `long03_script.json` | ✅ project 155 / job_215, Final QA PASS 100 |
 | Short tóm tắt 3 (9:16) | 14 beat, tổng hợp tình tiết hay nhất tập 21–30 | `short_summary3_script.json` | ✅ project 156 / job_214, Final QA PASS 100 |
+| Long 04 (16:9) | Tóm tắt tập 31–40, 144 beat, 10 phần | `long04_script.json` | ⏳ project 157 / run 206 (đang render) |
+| Short tóm tắt 4 (9:16) | 14 beat, tổng hợp tình tiết hay nhất tập 31–40 | `short_summary4_script.json` | ⏳ project 158 / run 207 (đang render) |
 
 Mục lục thời gian Long 01: 0:00 Tập 1 / 0:29 Tập 2 / 1:15 Tập 3 / 1:58 Tập 4 / 2:40 Tập 5 / 3:24 Tập 6 / 4:14 Tập 7 / 4:57 Tập 8 / 5:42 Tập 9 / 6:37 Tập 10.
 Mục lục thời gian Long 02: 0:00 Tập 11 / 0:47 Tập 12 / 1:29 Tập 13 / 2:09 Tập 14 / 2:54 Tập 15 / 3:37 Tập 16 / 4:19 Tập 17 / 5:06 Tập 18 / 5:47 Tập 19 / 6:34 Tập 20.
@@ -133,3 +145,5 @@ Build đa thư mục panel bằng script scratchpad gọi API (recap.py build ch
 - 2026-10-02: Claude đọc tập 26-30 (`crmn_ep26`..`crmn_ep30`, cut+sheets qua `recap.py`). Viết tóm tắt nội dung + nhân vật mới vào SERIES.md theo yêu cầu "tiếp 5 tập sau" — chưa viết `script.json` cho tập nào trong đợt này.
 
 - 2026-10-02: viết `ep21..ep30/script.json` (10 tập), dựng Long 03 + Short tóm tắt 3 (tổng hợp tình tiết hay nhất tập 21–30). Ảnh đọc cũ không còn trong bộ nhớ nên phải đọc lại sheets của tập 21–27 trước khi ghép khung.
+
+- 2026-10-02: viết `ep31..ep40/script.json` (10 tập), dựng Long 04 + Short tóm tắt 4. Ảnh đọc cũ không giữ lại được nên đọc sheets từng tập ngay trước khi ghép khung.

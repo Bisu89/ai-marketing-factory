@@ -1,0 +1,30 @@
+{
+  "title": "Giải Dịch Kinh khiến thầy già sững sờ, nhưng ngủ gật giờ toán lại bị thầy khác nhắm đánh!?",
+  "chapters": "35",
+  "source_dir": "manhua-recap/crmn_ep36",
+  "description": "Thẩm Lãng trả lời trôi chảy mọi câu hỏi Dịch Kinh của Lâm phu tử, nhưng sang giờ số học lại ngủ gật và bị thầy Hứa Văn Chiêu đòi đánh bằng thước. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 36.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "thumbnail": {"text": "NGỦ GẬT BỊ THẦY NHẮM ĐÁNH!?", "prompt": "Vertical 9:16 anime-style: an angry teacher with a red face and glowing eyes holding a wooden ruler over a calm long-haired young man standing in a classroom, students whispering in the background, warm sunlight. No text, leave top 25% empty."},
+  "beats": [
+    {"panel": "p002.jpg", "type": "HOOK", "kind": "recap", "narration": "Lâm lão phu tử hỏi, trước kia con đã học Dịch Kinh chưa, Thẩm Lãng đáp, cũng biết chút ít."},
+    {"panel": "p004.jpg", "type": "SETUP", "kind": "recap", "narration": "Ông thử ngay một câu, trời vận hành mạnh mẽ, quân tử phải tự cường không ngừng, giải thích thế nào?"},
+    {"panel": "p005.jpg", "type": "BUILD", "kind": "recap", "narration": "Anh đáp, đạo trời xoay một vòng rồi lại bắt đầu, không ai cản được, quân tử phải học theo, lập thân vững mạnh."},
+    {"panel": "p006.jpg", "type": "BUILD", "kind": "recap", "narration": "Ông hỏi tiếp, rồng bay cao quá sẽ hối hận, sao lại thế?"},
+    {"panel": "p007.jpg", "type": "REVEAL", "kind": "recap", "narration": "Anh nói, sự việc đến đỉnh điểm sẽ chuyển sang hướng ngược lại, làm người không nên theo đuổi sự hoàn hảo, phải để lại chút nuối tiếc."},
+    {"panel": "p008.jpg", "type": "REACTION", "kind": "recap", "narration": "Lâm phu tử trợn tròn mắt, đây là tên ngốc học hành chẳng ra gì trong lời đồn sao?"},
+    {"panel": "p011.jpg", "type": "BUILD", "kind": "recap", "narration": "Ông hỏi thêm vài câu nữa, câu nào anh cũng giải thích, trích dẫn trôi chảy, thậm chí vượt cả hiểu biết của ông."},
+    {"panel": "p012.jpg", "type": "REACTION", "kind": "commentary", "narration": "Giả vờ ngốc mà vẫn khiến cả thầy già phải thốt lên nhân tài, đúng là diễn sâu."},
+    {"panel": "p016.jpg", "type": "BUILD", "kind": "recap", "narration": "Tiếp theo là giờ số học, thầy dạy là Hứa Văn Chiêu, đại quản gia quản lý tiền bạc phủ Bá tước hơn hai mươi năm."},
+    {"panel": "p017.jpg", "type": "BUILD", "kind": "recap", "narration": "Ông nhìn anh với ánh mắt rất lạ, như thể có thù từ trước."},
+    {"panel": "p021.jpg", "type": "REACTION", "kind": "recap", "narration": "Anh thầm nghĩ, người năm mươi tuổi như ông ta chắc chẳng có ảo tưởng gì với Mộc Lan đâu."},
+    {"panel": "p023.jpg", "type": "BUILD", "kind": "recap", "narration": "Ông hỏi bài toán tam giác, cạnh đáy tăng gấp ba, chiều cao giảm sáu lần, diện tích thay đổi thế nào?"},
+    {"panel": "p024.jpg", "type": "REACTION", "kind": "recap", "narration": "Anh ngán ngẩm, đang giảng cái gì vậy trời, đây là toán lớp năm mà."},
+    {"panel": "p025.jpg", "type": "REVEAL", "kind": "recap", "narration": "Cả lớp ngủ gật hết, riêng anh gục xuống bàn, ông chỉ nhắm mỗi mình anh."},
+    {"panel": "p027.jpg", "type": "BUILD", "kind": "recap", "narration": "Hứa Văn Chiêu quát, Thẩm Lãng đứng lên, đi học không chú ý nghe giảng, đưa tay ra đây, đánh mười thước!"},
+    {"panel": "p034.jpg", "type": "REVEAL", "kind": "recap", "narration": "Anh chỉ đáp, thứ cho không thể làm theo, ông tức đỏ mặt, được, ngươi còn dám trả treo, đánh ba mươi thước rồi quỳ trước tượng thánh nhân ba canh giờ!"},
+    {"panel": "p037.jpg", "type": "REACTION", "kind": "recap", "narration": "Cả lớp xì xào, ngay cả Hứa Văn Chiêu cũng dám đấu lại, dữ dằn quá, rồi hứng chí chờ xem kịch hay."},
+    {"panel": "p041.jpg", "type": "BUILD", "kind": "recap", "narration": "Thế tử thì thầm, lần này huynh tiêu rồi, ít nhất ba mươi roi, cứ thế nằm trên giường nửa tháng."},
+    {"panel": "p045.jpg", "type": "REVEAL", "kind": "recap", "narration": "Hóa ra Hứa Văn Chiêu là cậu của Vương Liên, mà Vương Liên lại luôn muốn cưới Mộc Lan."},
+    {"panel": "p048.jpg", "type": "ENDING", "kind": "recap", "narration": "Anh cười thầm, ông ta xem mình như cái đinh trong mắt, thù này ắt phải báo!"}
+  ]
+}

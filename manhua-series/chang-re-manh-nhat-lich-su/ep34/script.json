@@ -1,0 +1,31 @@
+{
+  "title": "Thế tử xông tới đòi đánh chàng rể, thấy danh sách thù trên tường liền sợ mất mật bỏ chạy!?",
+  "chapters": "33",
+  "source_dir": "manhua-recap/crmn_ep34",
+  "description": "Thế tử hùng hổ dẫn người tới đánh Thẩm Lãng, nhưng thấy bức tường ghi tên kẻ thù với những dấu gạch đỏ thì hồn vía lên mây. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 34.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "thumbnail": {"text": "BỨC TƯỜNG GHI TÊN KẺ THÙ!?", "prompt": "Vertical 9:16 anime-style: a long-haired young man with glowing red eyes sitting on a wooden ladder writing names on a wall with a bloody brush, a terrified chubby nobleman in yellow robes staring up at him, dim warm hall. No text, leave top 25% empty."},
+  "beats": [
+    {"panel": "p003.jpg", "type": "HOOK", "kind": "recap", "narration": "Thế tử dẫn hai gã sai vặt xông tới, gào lên, Thẩm Lãng, ra đây, hôm nay không đánh ngươi rụng răng thì ta không mang họ Kim nữa!"},
+    {"panel": "p004.jpg", "type": "SETUP", "kind": "recap", "narration": "Hắn hùng hổ, một kẻ ở rể con con mà dám ăn hiếp thị nữ của phủ Bá tước, muốn chết sao!"},
+    {"panel": "p006.jpg", "type": "BUILD", "kind": "recap", "narration": "Nhưng cánh cửa hé mở, bên trong lặng ngắt như tờ."},
+    {"panel": "p008.jpg", "type": "BUILD", "kind": "recap", "narration": "Thẩm Lãng đang ngồi vắt vẻo trên thang gỗ, ung dung đáp, là Thế tử à, ta đang viết tên."},
+    {"panel": "p011.jpg", "type": "REVEAL", "kind": "recap", "narration": "Cả bức tường dán kín những cái tên, anh cầm bút lông nhúng mực."},
+    {"panel": "p012.jpg", "type": "BUILD", "kind": "recap", "narration": "Anh cười rùng rợn, đều là kẻ thù của ta, sợ quên mất nên phải viết lên tường nhắc nhở bản thân phải báo thù."},
+    {"panel": "p013.jpg", "type": "REVEAL", "kind": "recap", "narration": "Rồi anh vung bút, hai đường gạch chéo đỏ như máu cắt ngang hai cái tên."},
+    {"panel": "p014.jpg", "type": "BUILD", "kind": "recap", "narration": "Thế tử hỏi, gạch chéo nghĩa là sao, anh đáp, vì ta đã giải quyết hai kẻ này rồi, thù đã được báo."},
+    {"panel": "p015.jpg", "type": "REACTION", "kind": "recap", "narration": "Mỗi sáng thức dậy phải đọc tên bọn chúng ba lần, trước khi ngủ cũng đọc lại ba lần, anh bước tới, đôi mắt sáng rực."},
+    {"panel": "p017.jpg", "type": "BUILD", "kind": "recap", "narration": "Thế tử run rẩy hỏi, Điền Thập Tam có thù gì với ngươi, giết cha hay cướp vợ?"},
+    {"panel": "p019.jpg", "type": "REVEAL", "kind": "recap", "narration": "Anh đáp, ta bắt Điền Hoành đánh gãy hai chân hắn, hai chân hắn bị đánh thành năm sáu khúc rồi."},
+    {"panel": "p021.jpg", "type": "REVEAL", "kind": "recap", "narration": "Rồi anh nói thêm, tay chân Thập Tứ cũng gãy vụn hết, Thế tử thấy mình sắp ngất."},
+    {"panel": "p022.jpg", "type": "REACTION", "kind": "commentary", "narration": "Chỉ vì từng đe dọa mà bị viết tên lên tường mỗi ngày đọc ba lần, thù dai kiểu này đúng là lạnh gáy."},
+    {"panel": "p023.jpg", "type": "REACTION", "kind": "recap", "narration": "Thế tử thầm nghĩ, nếu mình đánh Thẩm Lãng, hắn chẳng phải sẽ chặt xác mình ra sao?"},
+    {"panel": "p027.jpg", "type": "BUILD", "kind": "recap", "narration": "Anh nghiêng đầu, hình như vừa nãy ta nghe có người hét muốn đánh ta, Thế tử vội cười gượng, đâu có, ai hét chứ?"},
+    {"panel": "p028.jpg", "type": "REACTION", "kind": "recap", "narration": "Hắn lắp bắp, ngươi cứ viết tiếp đi, ta về đây, rồi cắm đầu chạy cùng hai gã sai vặt."},
+    {"panel": "p032.jpg", "type": "REVEAL", "kind": "recap", "narration": "Chạy chưa được bao xa, phu nhân đã đứng sẵn quát, hay lắm, cái tên phản nghịch này, dám đến đánh Thẩm Lãng à!"},
+    {"panel": "p034.jpg", "type": "BUILD", "kind": "recap", "narration": "Thì ra thị nữ Tiểu Băng đã chạy đi mách trước, bị véo tai đau điếng, Thế tử kêu trời, mẹ, con còn chưa đánh mà!"},
+    {"panel": "p038.jpg", "type": "BUILD", "kind": "recap", "narration": "Thẩm Lãng cười hiền chắp tay, mẫu thân đừng giận, vừa rồi Thế tử chỉ tìm con nói chuyện, không cãi nhau, càng không đánh nhau."},
+    {"panel": "p044.jpg", "type": "BUILD", "kind": "recap", "narration": "Phu nhân vẫn rút roi, hôm nay mẹ phải đánh cho nó ngoan ngoãn, sau này mới biết kính trọng con."},
+    {"panel": "p048.jpg", "type": "ENDING", "kind": "recap", "narration": "Cuối cùng bà thở dài, con là tỷ phu của nó, thay ta trông coi dạy dỗ nó cho tốt, còn Thế tử thì sống sót đến hôm nay đúng là chẳng dễ dàng!"}
+  ]
+}

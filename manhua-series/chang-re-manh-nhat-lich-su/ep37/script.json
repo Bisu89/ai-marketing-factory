@@ -1,0 +1,30 @@
+{
+  "title": "Cá cược đúng ba câu toán thì khỏi bị đánh, chàng rể ra tay giải sạch cả mười câu!?",
+  "chapters": "36",
+  "source_dir": "manhua-recap/crmn_ep37",
+  "description": "Hứa Văn Chiêu tố Thẩm Lãng vô lễ, anh đề nghị làm đúng ba câu thì khỏi bị phạt, rồi nhẹ nhàng giải hết mười câu toán khiến thầy Hứa khiếp vía. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 37.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "thumbnail": {"text": "GIẢI SẠCH 10 CÂU TOÁN!?", "prompt": "Vertical 9:16 anime-style: a smiling long-haired young man in white robes writing quickly with a brush on a scroll in a classroom, a stunned bearded teacher with a red face behind him, glowing blue digital code in the background. No text, leave top 25% empty."},
+  "beats": [
+    {"panel": "p002.jpg", "type": "HOOK", "kind": "recap", "narration": "Thầy Hứa tức tối đi mách Bá tước, ta không thể dạy môn này nữa, chưa từng gặp kẻ nào vô giáo dục như vậy!"},
+    {"panel": "p004.jpg", "type": "SETUP", "kind": "recap", "narration": "Ông còn dọa, sợ sau này mọi người học theo thói của anh, phong tục học hành phủ Bá tước sẽ bị hủy hoại."},
+    {"panel": "p006.jpg", "type": "BUILD", "kind": "recap", "narration": "Thế tử lo lắng, tiêu rồi, học sinh với thầy giáo xung đột, ông già nhà mình chắc đánh học sinh trước."},
+    {"panel": "p008.jpg", "type": "BUILD", "kind": "recap", "narration": "Bá tước hỏi, ra ngoài hỗn xược thì thôi, sao ở nhà cũng ngông cuồng như vậy?"},
+    {"panel": "p010.jpg", "type": "REVEAL", "kind": "recap", "narration": "Thẩm Lãng đáp, con rất kính trọng thầy Hứa, nhưng thứ thầy dạy khá đơn giản, con đã biết từ lâu."},
+    {"panel": "p013.jpg", "type": "REACTION", "kind": "recap", "narration": "Hứa Văn Chiêu cười lớn, ngươi học ở Hàn Thủy mười năm vẫn ở lớp vỡ lòng, vậy mà dám nói toán học ta dạy đơn giản!"},
+    {"panel": "p014.jpg", "type": "BUILD", "kind": "recap", "narration": "Ông nói, ta ra mười đề, trả lời đúng ba đề thì chứng minh thứ ta dạy ngươi biết hết rồi, ta sẽ không phạt nữa."},
+    {"panel": "p016.jpg", "type": "BUILD", "kind": "recap", "narration": "Còn nếu không trả lời được câu nào thì phạt một trăm roi."},
+    {"panel": "p020.jpg", "type": "REVEAL", "kind": "recap", "narration": "Thẩm Lãng cười tươi, vậy nếu con trả lời đúng hết cả mười câu thì sao?"},
+    {"panel": "p022.jpg", "type": "REACTION", "kind": "recap", "narration": "Hứa Văn Chiêu cười khẩy, đừng nói mười câu, ngươi trả lời đúng được năm câu, ta sẽ công khai xin lỗi ngươi."},
+    {"panel": "p023.jpg", "type": "BUILD", "kind": "recap", "narration": "Được, quyết định như vậy, mời nhạc phụ đại nhân làm chứng, lão phu tử làm chủ, các bạn học làm chứng!"},
+    {"panel": "p026.jpg", "type": "BUILD", "kind": "recap", "narration": "Lâm phu tử vừa là thầy của Thế tử, vừa là thầy của Bá tước, gật đầu, được, lão phu Lâm chứng."},
+    {"panel": "p029.jpg", "type": "BUILD", "kind": "recap", "narration": "Hứa Văn Chiêu bắt đầu ra đề, đương nhiên ông ta sẽ không để Thẩm Lãng dễ dàng qua được."},
+    {"panel": "p031.jpg", "type": "REVEAL", "kind": "recap", "narration": "Ông cười gằn, phải ra đề khó nhất để ngươi không làm được câu nào cả!"},
+    {"panel": "p034.jpg", "type": "BUILD", "kind": "recap", "narration": "Nửa canh giờ sau, ông đặt đề xuống, cho ngươi một canh giờ, làm đi!"},
+    {"panel": "p037.jpg", "type": "REVEAL", "kind": "recap", "narration": "Anh liếc qua bật cười, chỉ có vậy thôi sao, để một thạc sĩ như ta giải mười câu của ông, đúng là giết gà dùng dao mổ trâu!"},
+    {"panel": "p039.jpg", "type": "BUILD", "kind": "recap", "narration": "Câu một, một trăm người cầm hạt gạo tăng dần, hỏi tổng số hạt, chẳng phải toán tiểu học sao?"},
+    {"panel": "p041.jpg", "type": "BUILD", "kind": "recap", "narration": "Câu hai, đếm ba dư hai, đếm năm dư ba, đếm bảy dư hai, anh nghĩ, phải dùng phương trình rồi, nhưng vẫn quá đơn giản!"},
+    {"panel": "p046.jpg", "type": "REVEAL", "kind": "recap", "narration": "Đến câu mười, hai mươi cây phải xếp thành nhiều hàng nhất mỗi hàng bốn cây, ít hơn mười sáu hàng là sai."},
+    {"panel": "p049.jpg", "type": "ENDING", "kind": "recap", "narration": "Anh cười thầm, Thẩm Lãng này sẽ dùng kỹ thuật của thế kỷ hai mươi mốt để hù chết ông, Hứa Văn Chiêu!"}
+  ]
+}

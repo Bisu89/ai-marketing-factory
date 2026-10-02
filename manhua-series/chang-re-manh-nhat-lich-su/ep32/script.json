@@ -1,0 +1,29 @@
+{
+  "title": "Thắng sập sòng bạc xong bị cha vợ phạt cấm túc lần hai, nữ tướng áo giáp đỏ ra đón!?",
+  "chapters": "31",
+  "source_dir": "manhua-recap/crmn_ep32",
+  "description": "Thẩm Lãng lập chiến công lớn nhưng vẫn bị cha vợ mắng vì dám bước vào sòng bạc, lại bị cấm túc, rồi được Mộc Lan khoác giáp đỏ ra đón. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 32.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "thumbnail": {"text": "LẬP CÔNG LỚN VẪN BỊ CẤM TÚC!?", "prompt": "Vertical 9:16 anime-style: a stern nobleman wagging a finger at a long-haired young man kneeling on the wooden floor, a kind noblewoman behind trying to calm him, warm lantern light. No text, leave top 25% empty."},
+  "beats": [
+    {"panel": "p003.jpg", "type": "HOOK", "kind": "recap", "narration": "Vừa lập chiến công lớn, Thẩm Lãng đã quỳ xuống xin lỗi, nhạc phụ đại nhân, con sai rồi!"},
+    {"panel": "p004.jpg", "type": "SETUP", "kind": "recap", "narration": "Bá tước quát, con nói có cách thắng Điền Hoành, ta tưởng cao minh lắm, hóa ra là chạy tới sòng bạc đánh bài!"},
+    {"panel": "p005.jpg", "type": "BUILD", "kind": "recap", "narration": "Mấy trăm năm lịch sử phủ Bá tước, chưa từng có con cháu nào bước chân vào nơi như vậy."},
+    {"panel": "p007.jpg", "type": "BUILD", "kind": "recap", "narration": "Anh vội cúi đầu hứa, sau này con rể sẽ không bước vào sòng bạc nữa."},
+    {"panel": "p010.jpg", "type": "REVEAL", "kind": "recap", "narration": "Phu nhân vội ngăn chồng lại, bảo Lãng nhi còn nhỏ, không hiểu chuyện cũng là bình thường mà."},
+    {"panel": "p012.jpg", "type": "BUILD", "kind": "recap", "narration": "Rồi bà quay sang dặn riêng, sau này không được đến nơi như vậy nữa, nếu không mẹ sẽ trừng phạt."},
+    {"panel": "p016.jpg", "type": "REVEAL", "kind": "recap", "narration": "Nhưng Bá tước vẫn tuyên bố lạnh lùng, từ hôm nay con lại bị cấm túc!"},
+    {"panel": "p018.jpg", "type": "REACTION", "kind": "recap", "narration": "Anh thầm than, không phải vừa mới hết cấm túc sao?"},
+    {"panel": "p021.jpg", "type": "BUILD", "kind": "recap", "narration": "Lần này không cần học thuộc sách hay biết chữ, không điều kiện gì hết, con cứ ngoan ngoãn ở trong phủ tu thân dưỡng tính."},
+    {"panel": "p023.jpg", "type": "REACTION", "kind": "recap", "narration": "Anh kêu trời, nhạc phụ ơi, sao người thay đổi rồi!"},
+    {"panel": "p025.jpg", "type": "BUILD", "kind": "recap", "narration": "Ông nghĩ thầm, ta cũng vì muốn tốt cho con, ở nhà tránh trận sóng gió này đi."},
+    {"panel": "p026.jpg", "type": "BUILD", "kind": "recap", "narration": "Ông ra lệnh cho cả phủ, từ hôm nay cô gia không được rời phủ Bá tước nửa bước, ai thấy cũng phải cản lại."},
+    {"panel": "p029.jpg", "type": "REACTION", "kind": "commentary", "narration": "Giải quyết xong cả đám người, thành tích như thần, vậy mà về nhà vẫn bị nhạc phụ nhốt lại, đúng là khổ thân."},
+    {"panel": "p035.jpg", "type": "BUILD", "kind": "recap", "narration": "Cùng lúc đó, Thế tử Kim Mộc Thông cũng bị đánh, dù chỉ chăm chú đọc binh thư."},
+    {"panel": "p038.jpg", "type": "BUILD", "kind": "recap", "narration": "Thẩm Lãng đứng một mình trước sân nhà ăn, buồn thiu trong đêm."},
+    {"panel": "p040.jpg", "type": "REVEAL", "kind": "recap", "narration": "Bỗng Mộc Lan vận giáp đỏ rực bước tới, cười nói, phu quân về rồi, ăn cơm thôi."},
+    {"panel": "p042.jpg", "type": "BUILD", "kind": "recap", "narration": "Anh hỏi, ở nhà sao nàng còn mặc giáp, cô đáp, lỡ chàng xảy ra chuyện trong thành, thiếp đưa binh vào cướp người."},
+    {"panel": "p044.jpg", "type": "BUILD", "kind": "recap", "narration": "Anh cười, để ta cởi giáp giúp nàng, rồi cùng ăn cơm."},
+    {"panel": "p053.jpg", "type": "ENDING", "kind": "recap", "narration": "Vừa cởi giáp, anh đã đỏ mặt tía tai, hóa ra nữ tướng của mình lại đẹp đến vậy!"}
+  ]
+}

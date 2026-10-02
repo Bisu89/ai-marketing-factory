@@ -1,0 +1,114 @@
+{
+  "title": "Cấm túc vẫn đi học, chàng rể lật mặt thầy giáo và lộ mưu đồ sau lưng!?",
+  "chapters": "30-39",
+  "description": "Những tình tiết hay nhất tập 31-40 Chàng Rể Mạnh Nhất Lịch Sử. Xem bản đầy đủ ở video dài trên kênh.",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "thumbnail": {
+    "text": "LẬT MẶT THẦY GIÁO!?",
+    "prompt": "Vertical 9:16 anime-style: a smiling long-haired young man in white robes standing in a classroom holding a paper scroll, an enraged bearded teacher tearing another paper, classmates cheering, warm golden light. No text, leave top 25% empty."
+  },
+  "beats": [
+    {
+      "dir": "manhua-recap/crmn_ep31",
+      "panel": "p012.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Anh ném tờ giấy nợ mười bảy nghìn vàng cho thành chủ ngay giữa phố rồi bình thản bỏ đi."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep32",
+      "panel": "p016.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Về tới phủ, lập công lớn vẫn bị cha vợ phạt cấm túc lần hai."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep32",
+      "panel": "p040.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng nữ tướng khoác giáp đỏ bước ra đón, cười bảo thiếp sẵn sàng đưa binh vào cướp người."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep33",
+      "panel": "p035.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Cha mẹ vợ không dám đánh rể nên đánh con trai ruột, Thế tử tức điên đi tìm chàng rể tính sổ."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep34",
+      "panel": "p013.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Nhưng vừa vào phòng, cậu ta thấy cả bức tường ghi tên kẻ thù với những dấu gạch đỏ như máu."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep34",
+      "panel": "p022.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Chỉ vì từng đe dọa mà bị viết tên lên tường mỗi ngày đọc ba lần, thù dai kiểu này đúng là lạnh gáy."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep36",
+      "panel": "p007.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Đi học, anh giải Dịch Kinh trôi chảy đến mức thầy già cũng phải sững sờ."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep37",
+      "panel": "p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thầy toán đòi đánh, anh đề nghị cá cược, làm đúng ba câu thì khỏi bị phạt."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep38",
+      "panel": "p024.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Câu cuối thầy mất mười mấy năm mới được mười sáu hàng, anh xếp ra hẳn hai mươi ba hàng."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep38",
+      "panel": "p035.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Thầy hóa điên xé nát bài, anh bình thản giơ ra bản thứ hai đã viết sẵn."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep39",
+      "panel": "p011.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Thua cược, thầy Hứa cắn răng xin lỗi học trò trước cả lớp."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep39",
+      "panel": "p048.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Nhưng ngay đêm đó, hắn bắt tay trùm xã hội đen lập kế phanh thây chàng rể."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep40",
+      "panel": "p012.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh xông vào phòng ngủ cha mẹ vợ giữa đêm, thẳng thắn nói nghi thầy Hứa tham ô."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep40",
+      "panel": "p047.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Hai mươi năm sổ sách chỉ có một đêm để tra, nhưng với anh thì không khó như người ta nghĩ!"
+    }
+  ]
+}

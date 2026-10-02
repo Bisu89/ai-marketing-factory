@@ -1,0 +1,29 @@
+{
+  "title": "Cha vợ không dám đánh rể, quay sang đánh con trai ruột, Thế tử tức điên đi tìm chàng rể tính sổ!?",
+  "chapters": "32",
+  "source_dir": "manhua-recap/crmn_ep33",
+  "description": "Thẩm Lãng bị cấm túc, còn Thế tử Kim Mộc Thông bị cha mẹ đánh thay vì chàng rể, nổi giận kéo người đến tận phòng anh. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 33.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "thumbnail": {"text": "THẾ TỬ BỊ ĐÁNH THAY CHÀNG RỂ!?", "prompt": "Vertical 9:16 anime-style: a chubby young nobleman in yellow robes with an angry blue aura storming down a corridor, a long-haired young man in white calmly sitting at a table in the background, warm wooden hall. No text, leave top 25% empty."},
+  "beats": [
+    {"panel": "p003.jpg", "type": "HOOK", "kind": "recap", "narration": "Bị cấm túc, Thẩm Lãng vẫn cười hì hì với vợ, nương tử tốt quá, cứ ở nhà đợi ta, sợ ta xảy ra chuyện."},
+    {"panel": "p004.jpg", "type": "SETUP", "kind": "recap", "narration": "Mộc Lan mỉm cười, hôm nay phu quân thắng lớn khiến thiếp cũng thấy vinh hạnh, nhưng sau này chàng nên suy xét kỹ trước khi hành động."},
+    {"panel": "p009.jpg", "type": "BUILD", "kind": "recap", "narration": "Chưa kịp đáp, tay anh đã lén tuột xuống, cô quay lại hỏi, phu quân, tay chàng để đâu đấy?"},
+    {"panel": "p010.jpg", "type": "REACTION", "kind": "recap", "narration": "Anh chối bay chối biến, không trách ta được, phải trách da nàng trơn quá!"},
+    {"panel": "p014.jpg", "type": "BUILD", "kind": "recap", "narration": "Cô bắt anh thề, đàn ông nói lời phải giữ lấy lời, nếu còn lần sau thì cứ chặt hai tay chàng đi."},
+    {"panel": "p018.jpg", "type": "BUILD", "kind": "recap", "narration": "Ăn xong, cô lại khoác giáp đỏ, dặn dẫn đội kỵ binh đi tuần đêm, tra đường bờ biển."},
+    {"panel": "p021.jpg", "type": "REACTION", "kind": "recap", "narration": "Cô nhắc nhở, phu quân ở nhà đừng gây chuyện nhé, anh chỉ biết im lặng."},
+    {"panel": "p024.jpg", "type": "REACTION", "kind": "commentary", "narration": "Thế tử bị cha mẹ đánh hết trận này tới trận khác mà chưa hiểu mình sai ở đâu."},
+    {"panel": "p026.jpg", "type": "BUILD", "kind": "recap", "narration": "Thầy dạy Thế tử là Hứa Văn Chiêu, đại quản gia phủ Bá tước, giữ sổ sách trong nhà hơn hai mươi năm."},
+    {"panel": "p027.jpg", "type": "BUILD", "kind": "recap", "narration": "Thế tử làm bài số học chỉ sai tám phần mười câu, thầy khen có tiến bộ."},
+    {"panel": "p029.jpg", "type": "REACTION", "kind": "recap", "narration": "Cậu ta ủ rũ, thầy nói xem có khi nào ta không phải con ruột của cha mẹ không?"},
+    {"panel": "p030.jpg", "type": "REVEAL", "kind": "recap", "narration": "Hứa Văn Chiêu liền kể rõ, Bá tước đánh cậu là vì Thẩm Lãng."},
+    {"panel": "p034.jpg", "type": "REVEAL", "kind": "recap", "narration": "Thẩm Lãng vào sòng bạc làm hỏng danh tiếng phủ Bá tước, nhưng hắn lại thắng Điền Hoành và là con rể ở rể nên không tiện đánh, thế là trút giận lên Thế tử."},
+    {"panel": "p035.jpg", "type": "REACTION", "kind": "recap", "narration": "Thế tử nổi đóa, được lắm, hóa ra là vì tên khốn kiếp đó!"},
+    {"panel": "p038.jpg", "type": "BUILD", "kind": "recap", "narration": "Cậu ta gào lên, hay cho tên Thẩm Lãng, đến nhà ta còn trêu ghẹo thị nữ chứ gì!"},
+    {"panel": "p042.jpg", "type": "BUILD", "kind": "recap", "narration": "Thầy Hứa còn khích thêm, Thẩm Lãng chẳng có võ công, sức trói gà còn không chặt, rồi Thế tử lao ra hét, người đâu, đi theo ta!"},
+    {"panel": "p044.jpg", "type": "REVEAL", "kind": "recap", "narration": "Thị nữ Tiểu Băng hốt hoảng chạy tới báo, cô gia không hay rồi, Thế tử đưa người sang đây để đánh cậu!"},
+    {"panel": "p047.jpg", "type": "BUILD", "kind": "recap", "narration": "Cô giục anh trốn đi, nhưng anh chỉ mỉm cười, không cần, ta có cách đối phó với Thế tử."},
+    {"panel": "p049.jpg", "type": "ENDING", "kind": "recap", "narration": "Anh ngồi yên pha trà, nhắm mắt cười, được rồi, ta biết rồi, còn Tiểu Băng thì chỉ biết dậm chân tức tối!"}
+  ]
+}

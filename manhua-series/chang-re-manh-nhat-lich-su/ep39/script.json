@@ -1,0 +1,31 @@
+{
+  "title": "Thầy giáo thua cược phải xin lỗi học trò, tối đến lại bắt tay trùm xã hội đen lập kế giết chàng rể!?",
+  "chapters": "38",
+  "source_dir": "manhua-recap/crmn_ep39",
+  "description": "Hứa Văn Chiêu bị ép xin lỗi Thẩm Lãng trước cả lớp, nhưng ngay đêm đó đã đem lễ vật nịnh Trương Tấn rồi bắt tay Điền Hoành bày mưu hạ bệ chàng rể. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 39.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "thumbnail": {"text": "BẮT TAY LẬP KẾ DIỆT CHÀNG RỂ!?", "prompt": "Vertical 9:16 anime-style: two men shaking hands in a dim candle-lit hall, one a scar-faced armored warlord, the other a thin sinister scholar with a goatee, long shadows on the wall. No text, leave top 25% empty."},
+  "beats": [
+    {"panel": "p003.jpg", "type": "HOOK", "kind": "recap", "narration": "Thẩm Lãng chặn đường thầy Hứa, hỏi thẳng, thầy nói trả lời đúng năm câu thì sẽ xin lỗi em, giờ nên làm thế nào đây?"},
+    {"panel": "p004.jpg", "type": "SETUP", "kind": "recap", "narration": "Hứa Văn Chiêu tức giận định bóp cổ anh, miệng quát bắt thầy xin lỗi học trò thì còn ra thể thống gì!"},
+    {"panel": "p005.jpg", "type": "BUILD", "kind": "recap", "narration": "Lâm phu tử nghiêm giọng nhắc, làm thầy phải dùng lời nói và hành vi làm gương."},
+    {"panel": "p006.jpg", "type": "REVEAL", "kind": "recap", "narration": "Đúng lúc đó, phu nhân Bá tước xuất hiện, nói rõ, làm sai phải dám nhận trách nhiệm, nói lời phải giữ lấy lời."},
+    {"panel": "p008.jpg", "type": "BUILD", "kind": "recap", "narration": "Thẩm Lãng thầm cười, bà là họ hàng xa của Hứa Văn Chiêu, vậy mà cũng lên tiếng, như vả vào mặt ông ta trước mọi người."},
+    {"panel": "p011.jpg", "type": "REVEAL", "kind": "recap", "narration": "Mặt đỏ như gấc, ông nghiến răng cúi đầu, xin lỗi Thẩm Lãng, là do ta quá lỗ mãng, trách lầm trò!"},
+    {"panel": "p012.jpg", "type": "REACTION", "kind": "recap", "narration": "Đám học trò ghé đầu nhìn trộm, ha ha, Hứa lão cẩu mà cũng xin lỗi kìa!"},
+    {"panel": "p014.jpg", "type": "BUILD", "kind": "recap", "narration": "Ông hậm hực thầm thề, Thẩm Lãng, từ giờ về sau ta với ngươi phải kẻ sống người chết mới thôi!"},
+    {"panel": "p016.jpg", "type": "REACTION", "kind": "recap", "narration": "Cả lớp vỗ tay reo hò, Thẩm Lãng tuyệt vời, cô gia oai quá!"},
+    {"panel": "p018.jpg", "type": "BUILD", "kind": "recap", "narration": "Bá tước nghiêm mặt gọi, đưa tay ra, anh ngơ ngác, thắng rồi mà cũng bị đánh sao?"},
+    {"panel": "p021.jpg", "type": "REACTION", "kind": "commentary", "narration": "Thắng cả thầy lẫn trò mà vẫn bị cha vợ phạt cái tội kiêu ngạo, đúng là thắng chưa kịp vui."},
+    {"panel": "p023.jpg", "type": "BUILD", "kind": "recap", "narration": "Đêm tối, ở một sân nhỏ ngoài thành, một kẻ trùm áo choàng đen âm thầm tới gõ cửa."},
+    {"panel": "p027.jpg", "type": "REVEAL", "kind": "recap", "narration": "Đó chính là Hứa Văn Chiêu, hắn dâng một hộp lễ, đây là lòng kính biếu nửa năm nay dành cho Trương Tấn công tử."},
+    {"panel": "p031.jpg", "type": "REVEAL", "kind": "recap", "narration": "Trong hộp là toàn bộ tình báo của phủ Bá tước, nhưng tài chính cụ thể thì hắn vẫn chưa tra rõ, cần làm rõ kho vàng bí mật ở đâu."},
+    {"panel": "p033.jpg", "type": "BUILD", "kind": "recap", "narration": "Kẻ gác cổng dặn, muốn công tử nhà ta đỗ kỳ thi võ lần này thì phải nhanh chóng xử lý xong chuyện này đi."},
+    {"panel": "p036.jpg", "type": "REVEAL", "kind": "recap", "narration": "Một lúc sau trong nhà Hứa Văn Chiêu, một người đàn ông ngồi chễm chệ, hắn giật mình, Điền Hoành!?"},
+    {"panel": "p040.jpg", "type": "BUILD", "kind": "recap", "narration": "Điền Hoành nói thẳng, Bá tước hài lòng với chàng rể, nhưng Thế tử bất tài, sau khi Bá tước qua đời thì ai trấn áp nổi Thẩm Lãng?"},
+    {"panel": "p043.jpg", "type": "BUILD", "kind": "recap", "narration": "Hắn bày kế, tung tin đồn nhào nặn hình tượng Thẩm Lãng thành kẻ có dã tâm, một ngày nào đó sẽ giành lấy ngôi vị."},
+    {"panel": "p046.jpg", "type": "BUILD", "kind": "recap", "narration": "Nếu lời đồn chưa đủ, thì dùng sát chiêu, chém Thẩm Lãng một dao chết ngay tại chỗ."},
+    {"panel": "p048.jpg", "type": "REVEAL", "kind": "recap", "narration": "Hai kẻ thù nhìn nhau rồi bắt tay, chúng ta có thể cùng chung một con đường."},
+    {"panel": "p049.jpg", "type": "ENDING", "kind": "recap", "narration": "Hứa Văn Chiêu nghiến răng, Thẩm Lãng, ta phải phanh thây ngươi, mãi mãi không được siêu sinh!"}
+  ]
+}

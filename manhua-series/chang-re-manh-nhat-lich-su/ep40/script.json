@@ -1,0 +1,30 @@
+{
+  "title": "Xông vào phòng ngủ cha mẹ vợ giữa đêm xin kiểm tra sổ sách, hai mươi năm sổ chỉ cho một đêm!?",
+  "chapters": "39",
+  "source_dir": "manhua-recap/crmn_ep40",
+  "description": "Thẩm Lãng nghi thầy Hứa tham ô tiền của phủ Bá tước, đề nghị tra sổ sách nhưng chỉ có đúng một đêm trước khi ông ta quay về. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 40.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "thumbnail": {"text": "20 NĂM SỔ SÁCH, CHỈ 1 ĐÊM!?", "prompt": "Vertical 9:16 anime-style: a long-haired young man in white robes standing before towering stacks of ancient ledgers reaching the ceiling, a sleepy white-bearded old scholar beside him, warm golden lamplight. No text, leave top 25% empty."},
+  "beats": [
+    {"panel": "p004.jpg", "type": "HOOK", "kind": "recap", "narration": "Giữa đêm khuya, Thẩm Lãng vội vã chạy tới phòng ngủ của nhạc phụ nhạc mẫu."},
+    {"panel": "p005.jpg", "type": "SETUP", "kind": "recap", "narration": "Bá tước cau mày quát, có chuyện gì không đợi ngày mai nói được sao, sao cứ phải là lúc này!"},
+    {"panel": "p008.jpg", "type": "BUILD", "kind": "recap", "narration": "Anh nói, thầy Hứa giận quá bỏ đi, mấy hôm tới không xuất hiện, nhưng sổ sách phủ Bá tước vẫn phải tiến hành như thường."},
+    {"panel": "p012.jpg", "type": "REVEAL", "kind": "recap", "narration": "Rồi anh thẳng thắn, con rể nghi ngờ thầy Hứa tham ô tiền tài của phủ Bá tước, nên phải kiểm tra kỹ sổ sách của ông ấy."},
+    {"panel": "p013.jpg", "type": "REACTION", "kind": "recap", "narration": "Bá tước đập bàn, xằng bậy, ta biết con với Hứa Văn Chiêu không ưa nhau, nhưng giờ con thắng rồi, không cần cứ quấn khư lấy chuyện này nữa!"},
+    {"panel": "p014.jpg", "type": "BUILD", "kind": "recap", "narration": "Anh đáp, bổng lộc mỗi năm của ông ta chỉ có hai trăm đồng vàng, nhưng ba đứa con ai cũng sống xa hoa."},
+    {"panel": "p015.jpg", "type": "REVEAL", "kind": "recap", "narration": "Ông ta còn có nhà đất cả trong thành Huyền Vũ lẫn quận Nộ Giang, vượt xa mức bổng lộc."},
+    {"panel": "p016.jpg", "type": "BUILD", "kind": "recap", "narration": "Bá tước hỏi, con có chứng cứ không, anh lấy ra hai quyển sổ ghi chép thu mua rượu nước yến tiệc của phủ."},
+    {"panel": "p019.jpg", "type": "REVEAL", "kind": "recap", "narration": "Anh nói rõ, chỉ hai quyển này thôi, con đã phát hiện ăn xén nghiêm trọng."},
+    {"panel": "p022.jpg", "type": "REACTION", "kind": "commentary", "narration": "Hai quyển sổ lấy từ đâu thì anh ấp úng, hóa ra nhờ Thế tử sang phòng thu chi lấy giúp, đúng là con trai ngốc."},
+    {"panel": "p025.jpg", "type": "BUILD", "kind": "recap", "narration": "Phu nhân nói, thiếp đã gả đến họ Kim thì là người họ Kim, nếu Hứa Văn Chiêu tham ô quá nhiều thì tuyệt đối không bỏ qua."},
+    {"panel": "p027.jpg", "type": "REVEAL", "kind": "recap", "narration": "Bá tước thở dài đồng ý, nhưng đưa ra ba điều kiện, thứ nhất phải làm cùng Lâm phu tử."},
+    {"panel": "p028.jpg", "type": "BUILD", "kind": "recap", "narration": "Thứ hai, kết quả điều tra phải đưa cho ông trước, thứ ba, khi Hứa Văn Chiêu quay về phải ngừng ngay, không được làm mất mặt ông ấy."},
+    {"panel": "p033.jpg", "type": "REACTION", "kind": "recap", "narration": "Hai vợ chồng thì thầm, Mộc Lan đã rộng lượng rồi, nếu Lãng nhi mà còn rộng lượng nữa thì nhà ta chịu thiệt mất."},
+    {"panel": "p037.jpg", "type": "BUILD", "kind": "recap", "narration": "Anh theo Lâm phu tử vào kho lưu trữ, trước mắt là những chồng sổ sách cao ngất ngưởng."},
+    {"panel": "p038.jpg", "type": "REACTION", "kind": "recap", "narration": "Anh há hốc mồm, đệch, nhiều quá vậy!?"},
+    {"panel": "p039.jpg", "type": "REVEAL", "kind": "recap", "narration": "Lão phu tử đáp, đây là sổ sách hai mươi mấy năm của phủ Bá tước, muốn xem hết cũng mất mấy tháng, phải cần mấy chục người."},
+    {"panel": "p040.jpg", "type": "BUILD", "kind": "recap", "narration": "Rồi ông nói thêm, cô gia chỉ có một đêm, người vừa mở cửa cho chúng ta là học trò cưng của Hứa Văn Chiêu, đã gửi tin ra ngoài rồi, sáng mai ông ta sẽ quay về."},
+    {"panel": "p043.jpg", "type": "BUILD", "kind": "recap", "narration": "Ông còn cảnh báo, ba năm trước từng có một người trà trộn vào đây làm gián điệp, không lâu sau thì bệnh nặng mà chết, nơi này nguy hiểm lắm."},
+    {"panel": "p047.jpg", "type": "ENDING", "kind": "recap", "narration": "Thẩm Lãng chỉ mỉm cười, với người khác thì khó như lên trời, nhưng với ta thì không phải thế, mời thầy chọn ra những quyển quan trọng đưa cho ta!"}
+  ]
+}

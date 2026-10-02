@@ -1,0 +1,31 @@
+{
+  "title": "Giải đúng cả mười câu toán, thầy Hứa hóa điên xé nát bài, chàng rể còn chuẩn bị sẵn bản thứ hai!?",
+  "chapters": "37",
+  "source_dir": "manhua-recap/crmn_ep38",
+  "description": "Thẩm Lãng nộp bài toán đúng hết, riêng câu cuối ra đến hai mươi ba hàng, vượt xa con số mười sáu hàng mà thầy Hứa mất cả chục năm mới tìm được. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 38.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "thumbnail": {"text": "XÉ NÁT BÀI VÌ TỨC ĐIÊN!?", "prompt": "Vertical 9:16 anime-style: an enraged bearded teacher with glowing red eyes tearing a paper scroll in half while a smiling long-haired young man in white holds up an identical second scroll, an old white-bearded scholar looking amazed, classroom warm light. No text, leave top 25% empty."},
+  "beats": [
+    {"panel": "p003.jpg", "type": "HOOK", "kind": "recap", "narration": "Thầy Hứa nhìn Thẩm Lãng nộp bài sớm liền cười thầm, chắc chín câu đầu bỏ cuộc hết, chỉ còn trông vào câu cuối thôi!"},
+    {"panel": "p004.jpg", "type": "SETUP", "kind": "recap", "narration": "Ông tự tin, câu cuối ta tốn mười mấy năm mới ra được mười sáu hàng, một tên vắt mũi chưa sạch như ngươi vẽ nổi mấy hàng?"},
+    {"panel": "p009.jpg", "type": "BUILD", "kind": "recap", "narration": "Thẩm Lãng bước lên đặt bài xuống bàn, nộp bài!"},
+    {"panel": "p011.jpg", "type": "BUILD", "kind": "recap", "narration": "Ông nghiến răng nghĩ, cái thứ học hành chẳng ra gì, đợi chết đi!"},
+    {"panel": "p014.jpg", "type": "REVEAL", "kind": "recap", "narration": "Cầm bài lên chấm, ông hoảng hồn, câu đầu tiên hắn trả lời đúng rồi, không thể nào!"},
+    {"panel": "p015.jpg", "type": "REACTION", "kind": "recap", "narration": "Câu hai cũng đúng, câu ba cũng đúng, từ câu sáu đến câu chín đều đúng hết cả!"},
+    {"panel": "p017.jpg", "type": "REACTION", "kind": "recap", "narration": "Ông ghê tởm nghĩ, chín câu này cả thành Huyền Vũ chẳng được mấy người làm nổi, vậy mà hắn chỉ tốn một lúc là xong."},
+    {"panel": "p018.jpg", "type": "BUILD", "kind": "recap", "narration": "Thẩm Lãng cười hỏi, thầy Hứa, em trả lời đúng hết mười câu rồi phải không?"},
+    {"panel": "p020.jpg", "type": "REVEAL", "kind": "recap", "narration": "Ông hét, vẫn còn câu cuối, rồi nhìn lại, trên giấy là một hình ngôi sao chi chít đường nối."},
+    {"panel": "p024.jpg", "type": "REVEAL", "kind": "recap", "narration": "Đếm đi đếm lại, ông mất bình tĩnh gào lên, hai mươi ba hàng, vì sao hai mươi cây mà hắn xếp được hai mươi ba hàng!?"},
+    {"panel": "p025.jpg", "type": "REACTION", "kind": "recap", "narration": "Ta tốn mười mấy năm mới được mười sáu hàng, còn ngươi mất bao lâu, rốt cuộc ngươi là người hay là ma!"},
+    {"panel": "p028.jpg", "type": "REACTION", "kind": "recap", "narration": "Ông cười như điên rồi xé toạc tờ bài làm, giẫm nát dưới chân."},
+    {"panel": "p032.jpg", "type": "BUILD", "kind": "recap", "narration": "Rồi ông quát, làm sai hết cả rồi, làm xằng làm bậy, ngươi nói xem làm sao đây!"},
+    {"panel": "p034.jpg", "type": "REVEAL", "kind": "recap", "narration": "Thẩm Lãng chỉ mỉm cười, anh đã đoán trước ông ta sẽ xé bài."},
+    {"panel": "p035.jpg", "type": "REVEAL", "kind": "recap", "narration": "Anh giơ tờ giấy thứ hai lên, trùng hợp quá, vừa nãy rảnh rỗi nên anh viết lại thêm một bản."},
+    {"panel": "p036.jpg", "type": "BUILD", "kind": "recap", "narration": "Anh quay sang Lâm phu tử, nhờ ông xem giúp mình đúng được mấy câu."},
+    {"panel": "p041.jpg", "type": "REVEAL", "kind": "recap", "narration": "Ông mừng rỡ, được đấy, bảy câu đầu đúng cả rồi, tám, chín... sao mà làm được vậy?"},
+    {"panel": "p043.jpg", "type": "REACTION", "kind": "commentary", "narration": "Chuẩn bị sẵn cả bản dự phòng, đúng là biết trước thầy giáo sẽ xé bài, tính toán thâm thật."},
+    {"panel": "p046.jpg", "type": "BUILD", "kind": "recap", "narration": "Lâm phu tử run run tuyên bố, đúng hết cả, hơn nữa trình độ của trò ấy đã vượt xa giới hạn của mười câu này."},
+    {"panel": "p049.jpg", "type": "BUILD", "kind": "recap", "narration": "Anh nói, là do em tự học cả, có lúc thiên tài xuất sắc như vậy chẳng cần lý lẽ."},
+    {"panel": "p052.jpg", "type": "ENDING", "kind": "recap", "narration": "Hứa Văn Chiêu mặt méo xệch định lẻn đi, nhưng Thẩm Lãng đã chặn lại, này, Hứa tiên sinh, ông đi đâu đấy!"}
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "title": "Ném củ khoai nóng sang thành chủ, chàng rể về nhà bị cha vợ chặn cửa!?",
+  "chapters": "30",
+  "source_dir": "manhua-recap/crmn_ep31",
+  "description": "Thẩm Lãng trao giấy nợ mười bảy nghìn vàng cho thành chủ ngay giữa phố rồi bình thản bỏ đi, nhưng về tới phủ Bá tước lại bị cha vợ bắt gặp. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 31.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "thumbnail": {"text": "NÉM KHOAI NÓNG CHO THÀNH CHỦ!?", "prompt": "Vertical 9:16 anime-style: a terrified official in green robes clutching a paper scroll while a giant blue serpent shadow looms behind him, a smiling long-haired young man in white walking away, cheering crowd. No text, leave top 25% empty."},
+  "beats": [
+    {"panel": "p003.jpg", "type": "HOOK", "kind": "recap", "narration": "Thành chủ cầm tờ giấy nợ mười bảy nghìn vàng trên tay, mặt cắt không còn giọt máu!"},
+    {"panel": "p004.jpg", "type": "SETUP", "kind": "recap", "narration": "Ông thầm nghiến răng, Thẩm Lãng, ngươi đúng là một con rắn độc!"},
+    {"panel": "p005.jpg", "type": "BUILD", "kind": "recap", "narration": "Bề ngoài sòng bạc là của Điền Hoành, nhưng số tiền thất thoát này lại chính là tiền của bọn họ."},
+    {"panel": "p006.jpg", "type": "BUILD", "kind": "recap", "narration": "Nhưng nếu không nhận tờ giấy nợ, ngày mai lời đồn sẽ lan ra khắp thành."},
+    {"panel": "p009.jpg", "type": "REVEAL", "kind": "recap", "narration": "Thẩm Lãng mỉm cười khen, thành chủ đại nhân đúng là thương dân như con!"},
+    {"panel": "p010.jpg", "type": "BUILD", "kind": "recap", "narration": "Anh nói to cho cả phố nghe, ta đã ủy thác toàn bộ mười bảy nghìn vàng cho thành chủ đại nhân."},
+    {"panel": "p012.jpg", "type": "REVEAL", "kind": "recap", "narration": "Rồi anh chắp tay, trời không còn sớm nữa, Thẩm Lãng xin đi trước một bước."},
+    {"panel": "p013.jpg", "type": "BUILD", "kind": "recap", "narration": "Đám đông hô vang, Thẩm gia muôn năm, Liễu thành chủ muôn năm."},
+    {"panel": "p015.jpg", "type": "REACTION", "kind": "recap", "narration": "Thành chủ định chuồn cửa sau, nhưng người dân đã ập tới, cầu xin ngài làm chủ cho chúng tôi."},
+    {"panel": "p017.jpg", "type": "REACTION", "kind": "commentary", "narration": "Ông bị ném củ khoai nóng giữa phố mà còn phải cười tươi, bị dồn đến mức này cũng đáng thương thật."},
+    {"panel": "p020.jpg", "type": "BUILD", "kind": "recap", "narration": "Đêm xuống, Bá tước hỏi Kim Trung, Thẩm Lãng vẫn chưa về sao?"},
+    {"panel": "p023.jpg", "type": "BUILD", "kind": "recap", "narration": "Ông ngẫm, mình sĩ diện quá, đã lỡ nói ra nên mới để Thẩm Lãng đi ra ngoài."},
+    {"panel": "p026.jpg", "type": "BUILD", "kind": "recap", "narration": "Sau lưng Điền Hoành là Liễu Vô Nham và Trương Tấn, một kẻ gian xảo một kẻ tàn độc, ông chỉ sợ thằng bé non kinh nghiệm rơi vào bẫy."},
+    {"panel": "p032.jpg", "type": "REVEAL", "kind": "recap", "narration": "Đúng lúc đó Kim Hối chạy vào báo, cô gia thắng lớn rồi, ép Điền Hoành đến mức phải đánh gãy chân con nuôi ngay trước mặt mọi người."},
+    {"panel": "p034.jpg", "type": "REACTION", "kind": "recap", "narration": "Hai vợ chồng Bá tước sững sờ, cái gì, sao có thể như vậy được!"},
+    {"panel": "p041.jpg", "type": "REVEAL", "kind": "recap", "narration": "Khi biết anh còn đem hết tiền thắng chia cho người nghèo, lại phá được kế độc của Trương Tấn và thành chủ, họ càng kinh ngạc."},
+    {"panel": "p046.jpg", "type": "BUILD", "kind": "recap", "narration": "Bá tước vẫn dặn, hôm nay thằng bé thắng nhưng quá nguy hiểm, phải mượn cớ này để dằn cái tính ngông cuồng của nó."},
+    {"panel": "p053.jpg", "type": "BUILD", "kind": "recap", "narration": "Cùng lúc ấy, Thẩm Lãng rón rén lẻn qua cửa, định về chỗ Mộc Lan trốn trước."},
+    {"panel": "p054.jpg", "type": "ENDING", "kind": "recap", "narration": "Nào ngờ cha vợ đã đứng sẵn đó, cười nhạt hỏi, ôi, Thần Bài về rồi à?"}
+  ]
+}
