@@ -81,7 +81,7 @@ class BuiltinTemplateTests(unittest.TestCase):
             {
                 "emotional_story", "couple_story", "horror", "horror_shorts",
                 "relationship_psychology_vi", "news_vi", "history_documentary", "military_history",
-                "zombie_system", "isekai_system_vi", "manhua_recap_vi", "manhua_ai_vi",
+                "zombie_system", "isekai_system_vi", "ngay_tan", "manhua_recap_vi", "manhua_ai_vi",
                 "manhua_recap_long_vi", "custom",
             },
         )
@@ -154,6 +154,17 @@ class BuiltinTemplateTests(unittest.TestCase):
         # this niche, not a unique AI image per beat.
         self.assertEqual(config.visual_generation.mode, "library")
         self.assertTrue(config.package.ai_metadata_enabled)
+
+    def test_ngay_tan_is_vietnamese_male_narrated_survival_fiction_without_system(self):
+        config = next(t.config for t in BUILTIN_TEMPLATES if t.id == "ngay_tan")
+        self.assertEqual(config.render.profile, "SOCIAL_LANDSCAPE")
+        self.assertEqual(config.content.language, "vi")
+        self.assertEqual(config.voice.voice_id, "vi-VN-NamMinhNeural")
+        self.assertEqual(config.voice.speed, 1.1)
+        self.assertNotIn("system-notification", config.content.style.lower())
+        self.assertIn("adults", config.visual_generation.image_style_prompt.lower())
+        self.assertEqual(config.visual_generation.mode, "library")
+        self.assertFalse(config.audio.music_enabled)
 
     def test_manhua_templates_share_the_recap_look_and_differ_only_in_visual_source(self):
         recap = next(t.config for t in BUILTIN_TEMPLATES if t.id == "manhua_recap_vi")

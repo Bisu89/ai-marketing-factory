@@ -1714,6 +1714,77 @@ ISEKAI_SYSTEM_VI_TEMPLATE = Template(
     ),
 )
 
+# "Ngày Tàn" -- original zombie SURVIVAL series (no System/level/skill UI), Vietnamese
+# narration, Korean-manhwa art with an all-adult main cast (series bible:
+# content-prompts/zombie_ngay_tan_the/SERIES.md, reusable image system in IMAGE_SYSTEM.md).
+# Sibling of ZOMBIE_SYSTEM_TEMPLATE (same flat-cel webtoon look + black-ichor blood, library
+# mode with a reused image pool) but a different story engine: grounded survival, a team that
+# forms with friction, scarce resources. Built incrementally -- grows as episodes get produced.
+NGAY_TAN_TEMPLATE = Template(
+    id="ngay_tan",
+    name="Ngày Tàn (Zombie Survival VI)",
+    description="Long-form (~10 min) Vietnamese fiction serial -- a grounded zombie-survival story "
+    "with NO game System: an ex-soldier and four skilled women (teacher, doctor, archer, scientist) "
+    "survive a city outbreak born from a secret military drug program. ONE episode per video, "
+    "first-person/close narration with a cliffhanger. 16:9, Korean-manhwa illustration style, "
+    "male Vietnamese narrator. Meant to run with Visuals = \"library\" against the reusable image "
+    "pool defined in the series' IMAGE_SYSTEM.md (character sheets, zombie sheets, empty "
+    "backgrounds), not a unique AI image per beat.",
+    version=1,
+    builtin=True,
+    config=ProjectConfig(
+        render=RenderProjectConfig(profile="SOCIAL_LANDSCAPE"),
+        motion=MotionProjectConfig(
+            default_preset=BeatMotionPreset.SLOW_PUSH_IN, intensity="MEDIUM", auto_rotate=True
+        ),
+        captions=CaptionsProjectConfig(
+            enabled=True, preset="cinematic", max_words=12, max_chars=70, max_lines=2, max_duration_sec=5.0
+        ),
+        # No BGM, same call as zombie_system / isekai_system_vi.
+        audio=AudioProjectConfig(narration_enabled=True, music_enabled=False, music_volume=0.15, ducking=True),
+        content=ContentProjectConfig(
+            language="vi",
+            tone="tense, grounded and cinematic -- plain spoken Vietnamese, short sentences, real "
+            "stakes and consequences; no slogans, no lecturing, no game-UI lines",
+            style="ONE episode of a continuing zombie-survival story per video, told mostly in "
+            "first person by the male lead (Kang Taeho, ex-soldier): survival comes from real skills, "
+            "scarce resources and costly choices, never a hidden System. The team forms slowly, each "
+            "member joining for their own reason and with friction. End on a cliffhanger.",
+            target_duration=600.0,  # ~10 minutes
+            audience="Vietnamese zombie/apocalypse fiction and webtoon-recap viewers",
+            cta_enabled=True,
+        ),
+        # Male VI narrator at 1.10x (series owner's pick after auditioning in the voice test bench).
+        voice=VoiceProjectConfig(
+            provider="edge_tts", voice_id="vi-VN-NamMinhNeural", language="vi",
+            speed=1.1, sentence_pause_sec=0.35,
+        ),
+        visual_generation=VisualGenerationProjectConfig(
+            image_style_prompt=(
+                # ZOMBIE_SYSTEM_TEMPLATE's drift-tested wording, minus its school setting, plus
+                # this series' adult-cast rule (see SERIES.md section 1).
+                "Korean manhwa webtoon illustration style, bold clean black ink linework, flat 2D "
+                "cel-shaded coloring with hard-edged shadows, absolutely NOT painterly, NOT "
+                "semi-realistic anime rendering, NOT a cinematic movie-still look, no soft "
+                "airbrushed gradients, vibrant saturated flat colors like a printed webtoon panel, "
+                "modern city and zombie-apocalypse setting, all main characters are adults, "
+                "tasteful non-explicit styling, any wound or blood must be ONLY thin black dark "
+                "ichor drips or smears -- never red, no red blood spatter or pooling, no "
+                "photorealistic gore, no corpses shown in detail, no text, no watermark, no "
+                "speech bubbles, widescreen composition"
+            ),
+        ),
+        outro=OutroProjectConfig(
+            enabled=True,
+            text="Tập tiếp theo sẽ ra mắt sớm -- theo dõi kênh để không bỏ lỡ.",
+            duration_sec=6.0,
+        ),
+        package=PackageProjectConfig(ai_metadata_enabled=True),
+        template_id="ngay_tan",
+        template_version=1,
+    ),
+)
+
 # Vietnamese manhua (Chinese cultivation-comic) recap shorts -- the format of
 # a real sample the user brought in (docs/features/153-manhua-recap.md):
 # ~50s, one comic panel on screen per 1.5-2.5s, a male AI voice reading a
@@ -1881,7 +1952,7 @@ CUSTOM_TEMPLATE = Template(
 # Note: BUILTIN_TEMPLATES' own `id`s ("emotional_story"/"couple_story"/
 # "horror"/"horror_shorts"/"relationship_psychology_vi"/"news_vi"/
 # "history_documentary"/"military_history"/
-# "zombie_system"/"isekai_system_vi"/"manhua_recap_vi"/"manhua_ai_vi"/"manhua_recap_long_vi"/"custom") are reserved -- template_service.save_custom_templates
+# "zombie_system"/"isekai_system_vi"/"ngay_tan"/"manhua_recap_vi"/"manhua_ai_vi"/"manhua_recap_long_vi"/"custom") are reserved -- template_service.save_custom_templates
 # below rejects a custom template trying to reuse one, so a built-in can
 # never be shadowed or overwritten by user data.
 BUILTIN_TEMPLATES: list[Template] = [
@@ -1895,6 +1966,7 @@ BUILTIN_TEMPLATES: list[Template] = [
     MILITARY_HISTORY_TEMPLATE,
     ZOMBIE_SYSTEM_TEMPLATE,
     ISEKAI_SYSTEM_VI_TEMPLATE,
+    NGAY_TAN_TEMPLATE,
     MANHUA_RECAP_VI_TEMPLATE,
     MANHUA_AI_VI_TEMPLATE,
     MANHUA_RECAP_LONG_VI_TEMPLATE,

@@ -190,6 +190,7 @@ SQLite.
 158. [zettruyen*.com fetch via headless browser](features/158-manhua-fetch-headless-browser.md) — Cloudflare on that site resets plain HTTP(S)/TLS-spoofed clients, so chapter HTML is now loaded via headless Chromium (Playwright); other sites unaffected
 159. [truyenqq.com.vn fetch support](features/159-manhua-fetch-truyenqq.md) — fourth supported manhua site for the chapter fetch; plain HTTP(S), no Cloudflare block, images from `sN.cc3t.net`
 160. [Voice test bench](features/160-voice-test-bench.md) — "Thử giọng đọc" page: paste a story, pick voice + speed (default VI female), get an MP3
+161. [Ngày Tàn template](features/161-ngay-tan-template.md) — built-in `ngay_tan`: VI zombie-survival serial, male narrator @1.10, no System, library visuals
 
 ## Keeping this up to date
 
