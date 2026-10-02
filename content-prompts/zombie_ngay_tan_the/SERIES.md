@@ -31,7 +31,180 @@
 ### 2.2 Luật lây nhiễm (nhất quán xuyên series)
 
 | Quy tắc              | Chi tiết                                                                                   |
-| --------------------
+| -------------------- | ------------------------------------------------------------------------------------------ |
+| Lây qua              | Cắn, nước bọt/ichor vào vết thương hở. Không lây qua không khí.                            |
+| Thời gian chuyển hoá | **10–40 phút** sau khi bị cắn (vết cắn gần cổ/đầu nhanh hơn).                              |
+| Giác quan zombie     | Thính giác rất nhạy, khứu giác (mùi máu/mồ hôi) tốt, thị giác kém trong tối.               |
+| Điểm yếu             | Phá não/cắt tuỷ sống. Đâm vào ngực vô tác dụng.                                            |
+| Ngày–đêm             | Ban ngày chậm hơn, ban đêm hung hăng hơn (virus phản ứng với nhiệt độ cơ thể và ánh sáng). |
+| Tiến hoá             | Virus đột biến theo thời gian → xuất hiện các loại zombie mới theo từng chặng (xem mục 4). |
+
+### 2.3 Mốc thời gian lớn
+
+- **T+0 (Ngày 0, 19:42):** sự cố phòng thí nghiệm, nhân viên bị cắn.
+- **T+3h:** lan ra vành đai ngoại ô; **T+5h:** bùng phát tại trung tâm Seoryeong (giờ cao điểm đêm).
+- **T+72h:** quân đội **phong toả toàn thành phố** và chuẩn bị "thanh tẩy" (sẽ làm rõ dần qua các tập). Đây là đồng hồ đếm ngược của cả đoạn đầu series.
+
+---
+
+## 3. Dàn nhân vật chính
+
+### Sơ đồ liên hệ (chặt chẽ — không ai là người lạ hoàn toàn)
+
+```
+                Đại tá Choi Gangsik (chỉ huy AEGIS-7, phản diện)
+               /                    |                    \
+   (đuổi Taeho khỏi quân ngũ)   (dùng làm người chỉ điểm)   (săn lùng mẫu gốc)
+             /                      |                        \
+        KANG TAEHO ──(người yêu cũ, phản bội)── BAEK DAHEE     LEE MINSEO
+             |   \                                   (trợ lý Choi)   |  (nhà khoa học
+             |    \__ Minseo đã gửi thẻ nhớ bằng chứng __________/    |   thoát khỏi viện)
+             |                                                        |
+             |   Taeho từng được Yerin khâu vết thương ở bệnh viện dã chiến (5 năm trước)
+             |                                                        |
+        HAN YERIN ───────────(bạn cùng phòng đại học)───────────────┘
+        (bác sĩ cấp cứu)
+             |
+             | (bác sĩ đội tuyển quốc gia, từng chữa vai cho Areum)
+             |
+        SEO AREUM ──────(em ruột)────── SEO JIWOO
+       (cung thủ quốc gia)               (giáo viên)
+```
+
+**Cách Taeho bị cuốn vào:** Lúc còn là lính gác ở Cheonma, **Minseo lén nhét thẻ nhớ bằng chứng** vào tay anh ("đưa cho người có thể công bố nó"). Anh định báo cáo cấp trên → bị Đại tá Choi dựng chuyện, loại ngũ. Dahee (người yêu) chính là người nghe lén và báo lại cho Choi. Mọi người sau đó gặp nhau gần như tình cờ nhưng thật ra đều kết nối qua Minseo, Yerin, Choi.
+
+---
+
+### 3.1 KANG TAEHO (강태호) — nam chính, 32 tuổi
+
+- **Vai trò:** cựu thượng sĩ lực lượng đặc biệt, thủ lĩnh thực dụng của nhóm.
+- **Sở trường:** **cận chiến + chiến thuật + sinh tồn thực địa.** Dùng dao găm chiến đấu, gậy sắt, tay không; đọc địa hình, dựng bẫy, kiểm soát tiếng ồn, lên kế hoạch rút lui.
+- **Tính cách:** ít nói, lạnh, trung thành tuyệt đối với người dưới quyền; bị phản bội nên khó tin người mới nhưng không bỏ rơi ai. Hay nói "Đếm số lối thoát trước khi vào."
+- **Vết thương lòng:** bị cả quân đội lẫn người yêu phản bội.
+- **Ngoại hình:** cao 1m87, vai rộng, thân hình săn chắc nhưng gọn (không quá cơ bắp). Tóc đen ngắn, kiểu undercut hơi rối. Mắt nâu đen, ánh nhìn sắc. **Vết sẹo ngắn qua lông mày trái**, râu lún phún. Cổ đeo dây thẻ quân nhân.
+- **Trang phục khởi đầu:** áo thun đen bó, áo khoác dã chiến xanh ô-liu (rách dần), quần túi hộp tối màu, ủng chiến đấu, găng hở ngón đen. Balo quân dụng nhỏ.
+- **Bảng màu nhận diện:** xanh ô-liu + đen.
+- **Tiến triển kỹ năng:** (T1–4) dựa hoàn toàn kinh nghiệm quân đội; càng về sau càng phải **thích nghi ngoài sách vở** (đánh du kích trong thành phố, đối phó Kẻ Săn Mồi). Không có buff siêu nhiên.
+
+### 3.2 SEO JIWOO (서지우) — giáo viên, 29 tuổi
+
+- **Vai trò:** giáo viên văn trường trung học Seoryeong (buổi tối ở lại họp giáo viên). Linh hồn kết nối của nhóm.
+- **Sở trường:** **điều phối – hậu cần – dẫn đường – đàm phán.** Thuộc bản đồ thành phố như lòng bàn tay (đi dạy nhiều khu), nhớ mọi thứ, trấn an người hoảng loạn, phân phối tài nguyên. Biết hapkido cơ bản đủ vật lộn thoát thân (không phải chiến binh).
+- **Tính cách:** dịu dàng nhưng cứng cỏi khi cần; bảo vệ em gái hết mình; trở thành "trái tim" giữ nhóm không tan rã. Có xu hướng ghi nhật ký mỗi đêm → thành "người kể chuyện" trong video.
+- **Ngoại hình:** cao 1m68, thân hình đồng hồ cát đầy đặn (tinh tế). Tóc nâu đậm gợn sóng dài, buộc đuôi ngựa thấp lỏng; thường đẩy cặp kính gọng mảnh lên đầu. Mắt tròn hiền, **nốt ruồi nhỏ dưới mắt trái**.
+- **Trang phục khởi đầu:** áo sơ mi trắng kem không tay, **cột nút ở eo** (sau khi rách vạt áo), chân váy bút chì ngắn **xẻ cao** (xé thêm cho dễ chạy), tất lưới rách một chân, giày cao gót đen.
+- **Bảng màu:** kem + nâu ấm.
+
+### 3.3 HAN YERIN (한예린) — bác sĩ, 30 tuổi
+
+- **Vai trò:** bác sĩ cấp cứu bệnh viện Đại học Seoryeong, kiêm bác sĩ đội tuyển bắn cung quốc gia.
+- **Sở trường:** **chữa thương + chẩn đoán + sơ cứu dã chiến.** Khâu vết thương, cầm máu, giải độc sơ bộ, nhận ra dấu hiệu nhiễm trùng sớm, ra quyết định "cứu hay không cứu" khi nguồn lực hạn chế. Về sau là người đầu tiên **phân tích được cơ chế lây** cùng Minseo.
+- **Tính cách:** lạnh lùng, thẳng như dao, nói chuyện ngắn; che giấu nỗi sợ bằng sự chuyên nghiệp. Rất ghét chuyện bỏ rơi bệnh nhân → mâu thuẫn với Taeho (thực dụng) thành nguồn kịch tính.
+- **Ngoại hình:** cao 1m72, thon cao, đôi chân dài. Tóc đen cắt bob ngang cằm, mái lệch. Mắt mèo sắc, **nốt ruồi nhỏ dưới khoé môi phải**.
+- **Trang phục khởi đầu:** áo scrub xanh navy cổ V không tay **bị cắt ngắn, buộc vạt phía trước**, áo blouse trắng đã **xé mất tay áo** khoác ngoài, quần lửng túi hộp màu xám, ống nghe quanh cổ, túi y tế đeo đùi.
+- **Bảng màu:** xanh navy + trắng.
+
+### 3.4 SEO AREUM (서아름) — vận động viên bắn cung, 26 tuổi
+
+- **Vai trò:** thành viên đội tuyển quốc gia, em ruột Jiwoo.
+- **Sở trường:** **thiện xạ tầm xa + hạ gục im lặng.** Cung thể thao (chế tạo thêm tên từ vật liệu nhặt được). Ưu điểm: giết xa, không tiếng động → không gọi thêm zombie. Nhược điểm: tên có hạn, cận chiến yếu → cần Taeho yểm trợ.
+- **Tính cách:** hoạt bát, cạnh tranh, hơi bốc đồng, hài hước chen vào lúc căng thẳng; mặt mạnh mẽ che sự non nớt cảm xúc. Sợ mất chị.
+- **Ngoại hình:** cao 1m75, thể hình vận động viên cân đối, chân dài săn chắc. Tóc nâu tro rất dài, bện **một bím dài**. Mắt hổ phách, quyết đoán.
+- **Trang phục khởi đầu:** áo crop thể thao đen ôm, **bảo hộ cẳng tay trái**, găng ngón bắn cung, quần short thể thao đen, **bó chân dài tới đùi**, Giày thể thao,túi tên đeo lưng, cung thể thao.
+- **Bảng màu:** đen + điểm nhấn đỏ cam.
+
+### 3.5 LEE MINSEO (이민서) — nữ tiến sĩ, 33 tuổi
+
+- **Vai trò:** nhà nghiên cứu cấp cao của AEGIS-7, thoát khỏi viện với **mẫu gốc + dữ liệu**; người nắm bí mật lớn nhất.
+- **Sở trường:** **khoa học – phân tích virus – chế tạo hoá chất/thuốc đối phó.** Chế dung dịch xua đuổi, khử mùi để đi qua đàn zombie, phân tích loại zombie mới, hack hệ thống dữ liệu quân đội.
+- **Tính cách:** thông minh, gai góc, tội lỗi ("tôi giúp tạo ra nó"), khó hợp tác lúc đầu vì sợ bị quân đội truy sát. Phản xạ thể chất yếu nhất nhóm → luôn được bảo vệ → tạo giá trị gắn kết.
+- **Ngoại hình:** cao 1m65, nhỏ nhắn nhưng đường cong rõ. Tóc bob ngắn đen nhuốm tím, rối. Kính tròn gọng đen **nứt một tròng**, quầng thâm. Thẻ nhân viên đeo cổ.
+- **Trang phục khởi đầu:** áo blouse phòng thí nghiệm **mở ngực khoác ngoài** áo ba lỗ trắng + quần short denim, giày thể thao, **hộp kim loại đựng mẫu** đeo chéo vai.
+- **Bảng màu:** xanh ngọc (teal) + trắng.
+
+---
+
+### 3.6 Nhân vật phản diện / phụ cố định
+
+| Nhân vật                     | Vai                                     | Ghi chú                                                                                                                                              |
+| ---------------------------- | --------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Đại tá Choi Gangsik**      | 50s, chỉ huy AEGIS-7                    | Lạnh, tính toán. Tóc muối tiêu cắt cua, quân phục chỉnh tề, huy hiệu đại tá. Sẽ "thanh tẩy" thành phố để xoá bằng chứng.                             |
+| **Baek Dahee**               | 30, người yêu cũ của Taeho, trợ lý Choi | Phản bội Taeho vì áp lực/tiền/bị đe doạ — không thuần ác, có hồi cuối mở đường chuộc lỗi hoặc bi kịch. Tóc dài thẳng, trang phục công sở sang trọng. |
+| **Thể Giáp (Aegis Soldier)** | lính bị tiêm AEGIS-7 hoàn chỉnh         | Xem loại zombie số 6.                                                                                                                                |
+
+---
+
+## 4. Các loại zombie (bestiary — dùng cho cả kịch bản lẫn thư viện ảnh)
+
+| #   | Tên                                                          | Xuất hiện              | Đặc điểm                                                                                                                                 | Cách đối phó                                                                   |
+| --- | ------------------------------------------------------------ | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| 1   | **Kẻ Lang Thang (Walker)**                                   | Từ Tập 1               | Chậm, đi thành đàn, bị tiếng ồn thu hút. Ban ngày yếu.                                                                                   | Né, dùng cận chiến phá não, không để thành đàn.                                |
+| 2   | **Thể Cuồng (Runner)**                                       | Từ Tập 1               | Nạn nhân chuyển hoá từ bị cắn **sớm** (virus còn "tươi"), chạy rất nhanh, co giật, mắt trắng đục.                                        | Cung thủ hạ từ xa, bẫy chặn đường, cận chiến theo cặp.                         |
+| 3   | **Kẻ Hú (Screamer)**                                         | Từ Tập 3               | Cổ họng biến dạng, **hú gọi cả đàn** từ xa; thân gầy, hàm mở quá khổ.                                                                    | Hạ khẩn cấp (ưu tiên số 1), bịt tai, cung thủ.                                 |
+| 4   | **Thể Phình (Bloater)**                                      | Từ Tập 3               | Khổng lồ, bụng phình đầy ichor đen, **nổ tung** khi chết phun axit nhẹ làm mờ mắt/bỏng da.                                               | Không đánh gần; đánh khi đang đứng giữa đàn khác; né hướng gió.                |
+| 5   | **Kẻ Săn Mồi (Stalker)**                                     | Từ Tập 4 (bóng)        | **Zombie thông minh**: thân người còn nguyên, di chuyển im lặng, biết chờ và phối hợp đàn. Không thể thương lượng, không biểu cảm người. | Không bao giờ để nó thấy điểm yếu; bẫy phức tạp; ở Tập 5+ là mối đe doạ chính. |
+| 6   | **Thể Giáp (Armored / Aegis Soldier)**                       | Từ Tập 4 (cliffhanger) | Lính bị tiêm AEGIS-7 hoàn chỉnh, **cơ thể cường hoá** (da chai, cơ phình), vẫn giữ phản xạ chiến đấu, **không chết bằng một cú**.        | Tốn nhiều lượt: phá khớp → hạ gục; cần phối hợp cả nhóm.                       |
+| 7   | **Kẻ Nở Hoa (Spore Carrier)** _(dự phòng cho giai đoạn sau)_ | Từ Tập 8+              | Cơ thể mọc nấm/bào tử ichor, phát tán bụi độc ở không gian kín.                                                                          | Bịt kín, đi gió ngược, khẩu trang lọc của Minseo.                              |
+
+> Phần sau Tập 4 chỉ đặt hướng, chưa chốt.
+
+---
+
+## 5. Logic sinh tồn
+
+Sinh tồn không được dạy bằng khẩu hiệu hay lời thoại giảng giải. Nó hiện ra qua **quy luật thế giới, tài nguyên hữu hạn, hành động và hậu quả**. Nhân vật sống sót vì biết tận dụng cái đang có và chịu trả giá, không phải vì luôn chọn đúng.
+
+### 5.1 Giới hạn của từng người
+| Người | Làm được | Giới hạn |
+|---|---|---|
+| Taeho | chiến đấu, đọc địa hình, lập kế hoạch | không thể một mình bảo vệ cả nhóm; bị thương là nhóm mất lực lượng chính |
+| Jiwoo | điều phối, dẫn đường, giữ nhóm không tan | không biến được tuyến đường nguy hiểm thành an toàn; chỉ vật lộn thoát thân (hapkido cơ bản) |
+| Yerin | chữa thương, chẩn đoán | thuốc, băng gạc, dụng cụ, thời gian đều hữu hạn |
+| Areum | hạ zombie từ xa, gần như không tiếng động | tên có hạn, cận chiến yếu |
+| Minseo | hiểu virus, phân tích, chế hoá chất | thể chất yếu nhất nhóm |
+
+### 5.2 Mọi giải pháp có cái giá
+Nguy hiểm không biến mất, chỉ đổi dạng. Ví dụ: kéo Walker đi bằng tiếng ồn có thể gọi Runner từ khu khác; dùng thuốc cứu người thì kho thuốc vơi; bắn xa thì mất mũi tên; đi đường vòng thì tốn thời gian và sức; cứu thêm người sống sót thì cả nhóm chậm hơn; ở lại nghỉ lâu thì dễ bị phát hiện.
+
+### 5.3 Tài nguyên có tính liên tục
+Theo dõi xuyên series: nước sạch, thức ăn, thuốc/băng gạc, tên của Areum, pin, nhiên liệu, phương tiện, dụng cụ, nơi trú ẩn, thời gian. Cái đã dùng/mất **không tự xuất hiện lại** nếu chưa có nguồn mới; xe đã bỏ hoặc phá hỏng thì không dùng lại như chưa có chuyện gì. Sổ theo dõi nằm ở mục 5.9.
+
+### 5.4 Kỹ năng thể hiện bằng hành động
+Không nhân vật nào nói "luật sinh tồn". Khán giả tự nhận ra: Taeho kiểm tra lối ra rồi mới cho nhóm vào; Yerin xem vết thương rồi mới quyết định người đó đi tiếp được không; Areum chỉ bắn khi mục tiêu đáng một mũi tên; Jiwoo nhớ tuyến đường, chỗ trú, đường rút; Minseo đổi cách xử lý máu, mùi, vật dụng trước khi vào khu nhiều Walker.
+
+### 5.5 Sai lầm có hậu quả
+Taeho không luôn đúng: có thể đếm sai zombie, chọn sai đường, bỏ sót lối vào, tin một chỗ đã an toàn, đánh giá thấp loại zombie mới. Sai lầm không nhất thiết gây chết người ngay nhưng phải để lại hậu quả ở cảnh/tập sau, không được sửa bằng may mắn hay tình tiết thuận tiện.
+
+### 5.6 Kinh nghiệm cũ không phải lúc nào cũng đúng
+Taeho bắt đầu bằng tư duy quân nhân (đánh giá → kế hoạch → thực hiện → rút lui). Zombie tiến hoá, tài nguyên cạn, con người thành mối đe doạ khác, nên quy trình cũ dần thất bại. Tiến triển của anh không phải yếu → mạnh, mà là: quân nhân theo giáo án → người sống sót biết thích nghi → người dẫn đầu hiểu rằng không có kế hoạch nào luôn đúng.
+
+### 5.7 Logic tiến triển theo giai đoạn
+- **T1–2:** chưa hiểu dịch; ưu tiên sống, tìm đường, tránh tiếp xúc.
+- **T3–4:** bắt đầu nắm quy luật Walker/Runner/Screamer/Bloater và tận dụng khi đánh, khi di chuyển.
+- **T5+:** Kẻ Săn Mồi và biến thể mới làm kinh nghiệm cũ không đủ; phải quan sát, thử, đổi cách.
+- **Về sau:** phải cân bằng zombie, quân đội, các nhóm sống sót khác, tài nguyên, và mục tiêu đưa mẫu gốc + bằng chứng ra khỏi thành phố.
+
+### 5.8 Sai lầm đã gài cho 4 tập đầu (Taeho)
+| Tập | Sai lầm | Hậu quả |
+|---|---|---|
+| 2 | *(chưa gài — chờ chủ series quyết; cảnh khu mua sắm dùng tiếng ồn dụ một phần đàn là chỗ có thể gài)* | — |
+| 3 | Tin kho bệnh viện phía sau là lối vào an toàn, bỏ qua tiếng ồn xe tải | Bloater/đàn zombie đã đứng sẵn ở hành lang tầng 4; xe tải hỏng phải bỏ lại |
+| 4 | Cho nhóm nghỉ ở tiệm tạp hoá lâu hơn dự tính vì Jiwoo cần băng chân | Đội của Choi lần ra dấu vết/mùi nhóm — chạm trán ở ga |
+
+### 5.9 Sổ tài nguyên (cập nhật mỗi tập, không được "hồi phục" vô cớ)
+| Hạng mục | Cuối T2 | Cuối T3 | Cuối T4 |
+|---|---|---|---|
+| Tên Areum | 16 | 11 (bắn 9, thu hồi 4) | 4 (còn lại gãy/kẹt khi sập hầm); bắt đầu tự chế |
+| Thuốc/băng Yerin | túi nhỏ: 2 cuộn băng, 1 bộ khâu, 6 viên kháng sinh, 1 chai sát khuẩn | dùng băng + khâu; nhặt thêm ở kho bệnh viện: 20 viên kháng sinh, 1 ống giảm đau | sát khuẩn còn nửa, hết băng nẹp, dùng đồ thay thế |
+| Nước sạch (balo Taeho) | 3 chai | 3 chai | 2 chai |
+| Pin bộ đàm | 100% | 60% | 40% |
+| Phương tiện | không (xe Taeho đã bỏ lại) | xe tải nhỏ hỏng, bỏ lại ở bệnh viện | đi bộ |
+| Nơi trú | — | sân thượng bệnh viện (tạm) | tiệm tạp hoá, rồi hầm tàu |
+| Thời gian còn lại tới phong toả | 72h | ~60h | ~48h |
+
+> Con số là đề xuất; chỉnh khi viết lời đọc từng tập và cập nhật bảng này.
+
+---
 
 ## 6. MẠCH TRUYỆN 4 TẬP ĐẦU (để review)
 
