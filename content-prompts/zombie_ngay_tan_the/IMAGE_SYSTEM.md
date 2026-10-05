@@ -325,3 +325,7 @@ Mọi bảng nhân vật và bảng quái vật trong series dùng **cùng một
 4. Bản poster tổng hợp (`poster_nam_nhan_vat_chinh.png`, `poster_tong_hop_quai_vat.png`, `bieu_do_so_sanh_kich_thuoc.png`) dùng để đối chiếu cuối cùng, không dùng làm ảnh dựng video.
 
 **Bảng nhân vật tổng hợp (đã chốt):** một ảnh chứa cả 7 nhân vật, mỗi người có nhãn tên: KANG TAEHO (강태호), SEO JIWOO (서지우), HAN YERIN (한예린), SEO AREUM (서아름), LEE MINSEO (이민서), CHOI GANGSIK (최강식), BAEK DAHEE (백다희). Ảnh này được tạo sẵn ở đầu cuộc trò chuyện GPT dùng để tạo ảnh cảnh, nên prompt chỉ cần **gọi lại theo tên** trong bảng (không đính kèm/up lại ảnh) (đã áp dụng cho `ngay_tan_ep1_scenes_v3.csv`); chỉ mô tả thêm khi trang phục thay đổi hoặc rách/bẩn. Quái vật dùng bảng zombie riêng.
+
+**Bảng quái vật tổng hợp (đã chốt):** một ảnh chứa 10 loại + 8 biến thể Kẻ Lang Thang, có số và tên in sẵn: 1 KẺ LANG THANG, 2 THỂ CUỒNG, 3 KẺ HÚ, 4 THỂ PHÌNH, 5 KẺ SĂN MỒI, 6 THỂ GIÁP, 7 KẺ BÒ, 8 KẺ BÁM TRẦN, 9 CHÓ NHIỄM, 10 KẺ NỞ HOA; biến thể 11 Dân Thường, 12 Bác Sĩ, 13 Y Tá, 14 Nhân Viên Văn Phòng, 15 Công Nhân, 16 Nhân Viên Giao Hàng, 17 Học Sinh, 18 Lính Cấp Dưới. Prompt cảnh gọi lại theo **tên + số** trong bảng (đã tạo sẵn trong cuộc trò chuyện GPT, không up lại). Kẻ Săn Mồi số 1 (Subject-03) chính là ô số 5 (người mặc đồ xám nhạt, đeo vòng tay nhựa).
+
+> **Không dùng biến thể 17 "Học Sinh"** trong prompt/cảnh: series không có nhân vật vị thành niên (SERIES.md mục 1). Cần zombie mặc đồng phục thì dùng "Sinh Viên" người lớn hoặc các biến thể 11–16, 18.

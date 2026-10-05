@@ -39,6 +39,16 @@ ROSTER = {
 }
 
 
+# Bảng quái vật tổng hợp (chủ series đã tạo): số thứ tự + tên in trên bảng.
+# 1 KẺ LANG THANG, 2 THỂ CUỒNG, 3 KẺ HÚ, 4 THỂ PHÌNH, 5 KẺ SĂN MỒI, 6 THỂ GIÁP, 7 KẺ BÒ, 8 KẺ BÁM TRẦN, 9 CHÓ NHIỄM, 10 KẺ NỞ HOA;
+# biến thể Kẻ Lang Thang: 11 Dân Thường, 12 Bác Sĩ, 13 Y Tá, 14 Nhân Viên Văn Phòng, 15 Công Nhân, 16 Nhân Viên Giao Hàng,
+# 17 Học Sinh (KHÔNG dùng: series không có nhân vật vị thành niên), 18 Lính Cấp Dưới.
+ZOMBIES = {
+    'Kẻ Lang Thang': 'KẺ LANG THANG (số 1 trong bảng)',
+    'Kẻ Săn Mồi số 1': 'KẺ SĂN MỒI (số 5 trong bảng: người đàn ông mặc đồ xám nhạt, đeo vòng tay nhựa)',
+}
+
+
 def make_prompt(shot, names, text, sfx):
     parts = []
     if names:
@@ -52,7 +62,9 @@ def make_prompt(shot, names, text, sfx):
                      f'Nhân vật được gọi theo tên ghi trong bảng: {mapping}. Giữ đúng khuôn mặt, kiểu tóc, trang phục và dáng người '
                      'của nhân vật có đúng tên đó trong bảng (trừ chỗ được nêu thay đổi bên dưới).')
         if monsters:
-            head += (f' Quái vật {", ".join(monsters)} giữ đúng hình dáng như bảng zombie tương ứng đã tạo trước đó trong cuộc trò chuyện này.')
+            zmap = '; '.join(f'{n} = {ZOMBIES[n]}' for n in monsters)
+            head += (f' Quái vật được gọi theo tên và số ghi trong bảng quái vật tổng hợp đã tạo trước đó trong cuộc trò chuyện này: {zmap}. '
+                     'Giữ đúng hình dáng của quái vật có đúng tên và số đó trong bảng.')
         parts.append(head.strip())
     parts.append(f'[{shot}] {text}')
     parts.append('Tất cả nhân vật trong ảnh đều là người trưởng thành.')
