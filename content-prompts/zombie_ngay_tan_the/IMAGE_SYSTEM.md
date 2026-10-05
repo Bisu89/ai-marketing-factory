@@ -323,3 +323,5 @@ Mọi bảng nhân vật và bảng quái vật trong series dùng **cùng một
 2. Khi tạo cảnh: đính kèm bảng liên quan làm ảnh tham chiếu và thêm câu: *"Giữ đúng khuôn mặt, kiểu tóc, trang phục và hình dáng như ảnh tham chiếu."*
 3. Cảnh có nhiều nhân vật: tạo từng người riêng rồi ghép trong khâu dựng nếu AI làm sai mặt.
 4. Bản poster tổng hợp (`poster_nam_nhan_vat_chinh.png`, `poster_tong_hop_quai_vat.png`, `bieu_do_so_sanh_kich_thuoc.png`) dùng để đối chiếu cuối cùng, không dùng làm ảnh dựng video.
+
+**Bảng nhân vật tổng hợp (đã chốt):** một ảnh chứa cả 7 nhân vật, mỗi người có nhãn tên: KANG TAEHO (강태호), SEO JIWOO (서지우), HAN YERIN (한예린), SEO AREUM (서아름), LEE MINSEO (이민서), CHOI GANGSIK (최강식), BAEK DAHEE (백다희). Lưu với tên `bang_nhan_vat_tong_hop.png`. Prompt ảnh cảnh chỉ cần đính kèm ảnh này và gọi nhân vật đúng theo tên trong bảng (đã áp dụng cho `ngay_tan_ep1_scenes_v3.csv`); chỉ mô tả thêm khi trang phục thay đổi hoặc rách/bẩn. Quái vật dùng bảng zombie riêng.
