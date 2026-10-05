@@ -44,18 +44,16 @@ def make_prompt(shot, names, text, sfx):
     if names:
         humans = [n for n in names if n in ROSTER]
         monsters = [n for n in names if n not in ROSTER]
-        files = []
-        if humans:
-            files.append(f'{ROSTER_FILE} (bảng nhân vật tổng hợp)')
-        files += [REF[n] for n in monsters]
-        head = f'[Đính kèm ảnh tham chiếu: {", ".join(files)}]'
+        # Ảnh mẫu đã được tạo sẵn trong cuộc trò chuyện GPT này: gọi lại theo tên, không đính kèm/up lại ảnh.
+        head = ''
         if humans:
             mapping = '; '.join(f'{n} = {ROSTER[n]}' for n in humans)
-            head += (f' Nhân vật được gọi theo tên ghi trong bảng: {mapping}. Giữ đúng khuôn mặt, kiểu tóc, trang phục và dáng người '
+            head += (f'Dùng lại bảng nhân vật tổng hợp đã tạo ở đầu cuộc trò chuyện này (không cần đính kèm lại ảnh). '
+                     f'Nhân vật được gọi theo tên ghi trong bảng: {mapping}. Giữ đúng khuôn mặt, kiểu tóc, trang phục và dáng người '
                      'của nhân vật có đúng tên đó trong bảng (trừ chỗ được nêu thay đổi bên dưới).')
         if monsters:
-            head += (f' Quái vật {", ".join(monsters)} giữ đúng hình dáng như bảng zombie tương ứng.')
-        parts.append(head)
+            head += (f' Quái vật {", ".join(monsters)} giữ đúng hình dáng như bảng zombie tương ứng đã tạo trước đó trong cuộc trò chuyện này.')
+        parts.append(head.strip())
     parts.append(f'[{shot}] {text}')
     parts.append('Tất cả nhân vật trong ảnh đều là người trưởng thành.')
     if sfx:
