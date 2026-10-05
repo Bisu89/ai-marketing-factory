@@ -14,3 +14,5 @@ Design note: the real Voice Factory stage already supports a per-beat voice (`Be
 Key files: `backend/app/modules/beat/schemas.py`, `backend/app/api/v1/endpoints/voice_test.py`, `frontend/src/pages/VoiceTestPage.tsx`, `backend/tests/api/test_voice_test.py`.
 
 Verified: unit tests for section split / voice choice (7), template tests (55 total pass), a real 3-section synthesis (VI male body + auto female bookends) produced one valid MP3; `npx tsc -b --noEmit` clean.
+
+Korean Ep1 (`scripts/ep1_ko.md`, 80 paragraphs, ~1,190 words, built from the numbered check file `ko_ep1_check.txt` by script; corruption scan found only the Vietnamese section-header letters) is the first KO script; a short real run (male intro/outro + female body) synthesized fine in the test bench.
