@@ -45,6 +45,11 @@ ROSTER = {
 # 17 Học Sinh (KHÔNG dùng: series không có nhân vật vị thành niên), 18 Lính Cấp Dưới.
 ZOMBIES = {
     'Kẻ Lang Thang': 'KẺ LANG THANG (số 1 trong bảng)',
+    'Dân Thường': 'KẺ LANG THANG biến thể số 11 DÂN THƯỜNG (người đàn ông mặc áo hoodie xám và quần jeans)',
+    'Bác Sĩ': 'KẺ LANG THANG biến thể số 12 BÁC SĨ (áo blouse rách)',
+    'Nhân Viên Văn Phòng': 'KẺ LANG THANG biến thể số 14 NHÂN VIÊN VĂN PHÒNG (áo sơ mi, cà vạt đỏ)',
+    'Công Nhân': 'KẺ LANG THANG biến thể số 15 CÔNG NHÂN (mũ bảo hộ, áo phản quang)',
+    'Nhân Viên Giao Hàng': 'KẺ LANG THANG biến thể số 16 NHÂN VIÊN GIAO HÀNG (áo đỏ, túi giao hàng)',
     'Kẻ Săn Mồi số 1': 'KẺ SĂN MỒI (số 5 trong bảng: người đàn ông mặc đồ xám nhạt, đeo vòng tay nhựa)',
 }
 
@@ -73,6 +78,9 @@ def make_prompt(shot, names, text, sfx):
     parts += [STYLE, RATIO, NEG_SFX if sfx else NEG]
     return ' '.join(parts)
 
+
+# Đàn Kẻ Lang Thang trộn các biến thể trong bảng (không dùng ô 17 Học Sinh).
+HORDE = ['Kẻ Lang Thang', 'Dân Thường', 'Nhân Viên Văn Phòng', 'Công Nhân', 'Bác Sĩ', 'Nhân Viên Giao Hàng']
 
 SHOTS = []
 
@@ -340,28 +348,28 @@ S('dong_xe_don_lai_xe_cuu_thuong_vuot', ['P68'], 'A', True, 'Cảnh rộng', Non
 S('taeho_giam_toc_do', ['P69'], 'C', True, 'Cận cảnh bàn chân', ['Taeho'],
   'Cận cảnh bàn chân Taeho từ từ nhả chân ga rồi đặt lên phanh, đèn pha xe phía trước loang trên mặt đường.', None,
   'taeho, giảm tốc, chân phanh', '태호, 감속, 브레이크')
-S('nguoi_chay_ra_giua_xe_bo_lai', ['P70'], 'A', True, 'Cảnh rộng', ['Kẻ Lang Thang'],
-  f'Một Kẻ Lang Thang (người đàn ông bị nhiễm) bất ngờ chạy ra từ giữa những chiếc xe bỏ lại trên đường vành đai ban đêm, dáng chúi về phía trước. {BG["vanh_dai"]}', None,
+S('nguoi_chay_ra_giua_xe_bo_lai', ['P70'], 'A', True, 'Cảnh rộng', ['Dân Thường'],
+  f'Một Kẻ Lang Thang biến thể Dân Thường (người đàn ông bị nhiễm) bất ngờ chạy ra từ giữa những chiếc xe bỏ lại trên đường vành đai ban đêm, dáng chúi về phía trước. {BG["vanh_dai"]}', None,
   'người nhiễm, chạy ra, xe bỏ lại, đường vành đai', '감염자, 튀어나오다, 버려진 차, 순환도로')
-S('nguoi_nhiem_dap_nap_capo', ['P71'], 'A', True, 'Trung cảnh nhìn từ trong xe', ['Kẻ Lang Thang'],
-  f'Nhìn từ trong xe: Kẻ Lang Thang đập hai tay lên nắp capo rồi lao thẳng về phía kính chắn gió. {BG["vanh_dai"]}', ['쾅!'],
+S('nguoi_nhiem_dap_nap_capo', ['P71'], 'A', True, 'Trung cảnh nhìn từ trong xe', ['Dân Thường'],
+  f'Nhìn từ trong xe: Kẻ Lang Thang biến thể Dân Thường đập hai tay lên nắp capo rồi lao thẳng về phía kính chắn gió. {BG["vanh_dai"]}', ['쾅!'],
   'người nhiễm, đập capo, kính chắn gió', '감염자, 보닛, 앞유리')
 S('taeho_dap_phanh_phan_xa', ['P71'], 'B', True, 'Cận cảnh', ['Taeho'],
   'Cận cảnh Taeho giật mình đạp phanh, hai tay siết vô-lăng, mắt mở lớn, ánh đèn pha phản chiếu trên kính.', ['끼익!'],
   'taeho, đạp phanh, phản xạ', '태호, 급브레이크, 반사 신경')
-S('nguoi_nhiem_dap_kinh_xe', ['P72', 'P73'], 'A', True, 'Cảnh nhìn từ trong xe', ['Taeho', 'Kẻ Lang Thang'],
-  f'Nhìn từ trong xe: Kẻ Lang Thang đập hai tay lên kính chắn gió rồi chống tay ngẩng mặt lên, chất lỏng đen sẫm loãng chảy từ cổ xuống áo; ở góc dưới Taeho siết cán dao găm, kính xe bắt đầu rạn nứt. {BG["vanh_dai"]}',
+S('nguoi_nhiem_dap_kinh_xe', ['P72', 'P73'], 'A', True, 'Cảnh nhìn từ trong xe', ['Taeho', 'Dân Thường'],
+  f'Nhìn từ trong xe: Kẻ Lang Thang biến thể Dân Thường đập hai tay lên kính chắn gió rồi chống tay ngẩng mặt lên, chất lỏng đen sẫm loãng chảy từ cổ xuống áo; ở góc dưới Taeho siết cán dao găm, kính xe bắt đầu rạn nứt. {BG["vanh_dai"]}',
   ['쾅! 쾅!', '우지직'], 'người nhiễm, đập kính xe, taeho, dao', '감염자, 앞유리, 태호, 칼')
-S('mat_nguoi_nhiem_ap_kinh_can_mat', ['P73', 'P74'], 'B', True, 'Cận mặt qua kính', ['Kẻ Lang Thang'],
+S('mat_nguoi_nhiem_ap_kinh_can_mat', ['P73', 'P74'], 'B', True, 'Cận mặt qua kính', ['Dân Thường'],
   'Cận mặt qua lớp kính chắn gió rạn: gương mặt người đàn ông bị nhiễm áp sát vào kính, da trắng bệch, mắt đục ngầu, miệng há, hơi thở làm mờ kính.', None,
   'người nhiễm, cận mặt, áp kính, mắt đục', '감염자, 클로즈업, 유리, 흐린 눈')
-S('chat_long_den_chay_tu_co', ['P74'], 'B', True, 'Cực cận cổ', ['Kẻ Lang Thang'],
+S('chat_long_den_chay_tu_co', ['P74'], 'B', True, 'Cực cận cổ', ['Dân Thường'],
   'Cực cận cổ và cổ áo của người bị nhiễm, một dòng chất lỏng đen sẫm loãng chảy từ vết thương xuống áo, tông màu tối, tiết chế, không máu đỏ.', None,
   'chất lỏng đen, cổ, vết thương, cực cận', '검은 액체, 목, 상처, 클로즈업')
-S('bong_nguoi_xuat_hien_phia_sau', ['P75'], 'A', True, 'Cảnh rộng', ['Kẻ Lang Thang'],
-  f'Cảnh rộng ban đêm trên đường vành đai: phía sau chiếc xe dừng, vài Kẻ Lang Thang xiêu vẹo bắt đầu xuất hiện trên con đường tối giữa những chiếc xe bỏ lại. {BG["vanh_dai"]}',
+S('bong_nguoi_xuat_hien_phia_sau', ['P75'], 'A', True, 'Cảnh rộng', HORDE,
+  f'Cảnh rộng ban đêm trên đường vành đai: phía sau chiếc xe dừng, vài Kẻ Lang Thang xiêu vẹo (trộn các biến thể Dân Thường, Nhân Viên Văn Phòng, Công Nhân, Bác Sĩ, Nhân Viên Giao Hàng) bắt đầu xuất hiện trên con đường tối giữa những chiếc xe bỏ lại. {BG["vanh_dai"]}',
   ['터벅터벅'], 'đàn zombie, bóng người, đường tối, xuất hiện', '좀비 떼, 그림자, 어두운 길, 나타나다')
-S('nguoi_di_xieu_vao_dap_than_xe', ['P75'], 'B', True, 'Trung cảnh', ['Kẻ Lang Thang'],
+S('nguoi_di_xieu_vao_dap_than_xe', ['P75'], 'B', True, 'Trung cảnh', HORDE,
   f'Một Kẻ Lang Thang đi xiêu vẹo đập tay vào thân xe bỏ hoang bên đường, tiếng kim loại vang lên, vài bóng khác phía sau cùng đi về một hướng. {BG["vanh_dai"]}', ['쾅!', '크르르'],
   'zombie, đập thân xe, đi xiêu vẹo', '좀비, 차체, 비틀거림')
 S('ban_tay_taeho_truot_xuong_dao', ['P76'], 'A', True, 'Cận cảnh', ['Taeho'],
@@ -370,17 +378,17 @@ S('ban_tay_taeho_truot_xuong_dao', ['P76'], 'A', True, 'Cận cảnh', ['Taeho']
 S('taeho_co_the_nhan_ra_nguy_hiem', ['P76'], 'B', True, 'Cận mặt', ['Taeho'],
   'Cận mặt Taeho, ánh mắt chuyển sang chế độ chiến đấu: tập trung, cơ hàm siết, mồ hôi nhỏ trên thái dương, đèn pha phản chiếu trong con ngươi.', None,
   'taeho, cận mặt, chiến đấu, bản năng', '태호, 클로즈업, 전투 태세, 본능')
-S('nguoi_nhiem_cham_rai_ngang_dau', ['P77'], 'A', True, 'Cận cảnh qua kính', ['Kẻ Lang Thang'],
+S('nguoi_nhiem_cham_rai_ngang_dau', ['P77'], 'A', True, 'Cận cảnh qua kính', ['Dân Thường'],
   'Qua kính xe nứt, người đàn ông bị nhiễm từ từ ngẩng đầu lên lần nữa, ánh mắt trắng đục nhìn thẳng vào Taeho, một bên kính đã vỡ thành nhiều vết rạn.', None,
   'người nhiễm, ngẩng đầu, kính nứt', '감염자, 고개를 들다, 금 간 유리')
-S('bong_thu_hai_hien_ra', ['P78'], 'B', True, 'Cảnh rộng', ['Kẻ Lang Thang'],
+S('bong_thu_hai_hien_ra', ['P78'], 'B', True, 'Cảnh rộng', HORDE,
   f'Phía sau người đàn ông nhiễm, một bóng người thứ hai bước ra từ bóng tối, rồi bóng thứ ba, xếp thành hàng không đều trên con đường vành đai tối. {BG["vanh_dai"]}', ['터벅터벅'],
   'bóng thứ hai, zombie, đàn, đường tối', '두 번째 그림자, 좀비, 떼, 어두운 길')
 S('taeho_nhan_ra_su_that', ['P79'], 'A', True, 'Cận mặt', ['Taeho'],
   'Cận mặt Taeho, ánh mắt chuyển từ nghi ngờ sang nhận thức lạnh buốt, đồng tử co lại, ánh đèn pha xe phía sau hắt viền sáng quanh khuôn mặt.', None,
   'taeho, nhận ra, cận mặt, sững sờ', '태호, 깨닫다, 클로즈업, 충격')
-S('dan_quai_tien_lai_toan_canh_ket_tap', ['P80'], 'A', True, 'Toàn cảnh kết tập', ['Kẻ Lang Thang'],
-  f'Toàn cảnh kết tập: chiếc xe nhỏ của Taeho dừng giữa đường vành đai tối, phía trước và phía sau là hàng chục bóng Kẻ Lang Thang tiến lại từ mọi hướng, phía xa là ánh sáng thành phố mờ trong khói; không khí bị bao vây. {BG["vanh_dai"]}',
+S('dan_quai_tien_lai_toan_canh_ket_tap', ['P80'], 'A', True, 'Toàn cảnh kết tập', HORDE,
+  f'Toàn cảnh kết tập: chiếc xe nhỏ của Taeho dừng giữa đường vành đai tối, phía trước và phía sau là hàng chục Kẻ Lang Thang tiến lại từ mọi hướng (trộn các biến thể Dân Thường, Nhân Viên Văn Phòng, Công Nhân, Bác Sĩ, Nhân Viên Giao Hàng), phía xa là ánh sáng thành phố mờ trong khói; không khí bị bao vây. {BG["vanh_dai"]}',
   ['터벅터벅', '크르르'], 'đàn zombie, bao vây, kết tập, toàn cảnh', '좀비 떼, 포위, 엔딩, 전경')
 
 rows = []
