@@ -113,6 +113,18 @@ báo "Mục tiêu theo dõi... vị trí: phía trước" và nó đứng giữa
 nhì Kang** (chính là "lính trẻ" T7-8, giờ có tên, thuộc đường đi sân vận động). Giọng radio bí ẩn T8 để
 mở tiếp, chưa giải thích.
 
+**T10 "Lối Đi Duy Nhất"** (script + CSV 23 ảnh xong, **chưa tạo ảnh / dựng**): xe phanh cách con zombie
+thông minh 60m; Yuri đòi tông; Danger-sense của Jaehyun lại chỉ sang hai bên — sương tan lộ hàng trăm
+con đứng bất động xếp hàng trong ruộng (đàn T8 không bị đánh bại, chỉ rút về vị trí — "Chúng chưa biến
+mất đâu" nghĩa là vậy); xe lùi thì nó tiến từng bước theo; bé gái: "Nó đang nghe"; Hệ Thống: nhiệm vụ
+"Phá vỡ vòng vây"; bộ đàm của Kang vang giọng một phụ nữ chỉ đường bảo trì (rẽ trái ở cột điện đổ),
+Kang xác nhận đường đó có thật; Doyun lùi hết ga, con zombie cất một nốt thấp, cả đàn đồng loạt tràn
+ra; thoát vào đường bảo trì, Yuri + Soyeon chặn phía sau, Soyeon kéo Jaehyun ngồi xuống (Adrenaline Edge
+còn 38%, lần đầu cậu chọn không chiến đấu); con zombie không đuổi — như thể nó đã biết đường đó;
+nhà máy xử lý nước: một **kỹ sư nữ cuối 30, kính tròn, áo khoác công nhân xám** mở cổng, gọi đúng
+tên Jaehyun; Hệ Thống: "Không thể đọc đối tượng." (Ý tưởng mới đề xuất: giọng bộ đàm = người này,
+chưa đặt tên; hướng này có thể đổi nếu muốn.)
+
 ## Nhánh truyện còn mở cho Tập 9 (đã xử lý một phần ở T9 — xem trên; còn lại cho T10)
 
 - Xe hỏng chỉ chở được 8 người; nhóm gộp lại đã đông hơn thế và chưa ai bàn ai được lên xe.
