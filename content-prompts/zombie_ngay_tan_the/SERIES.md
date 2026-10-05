@@ -150,8 +150,11 @@
 | 5   | **Kẻ Săn Mồi (Stalker)**                                     | Từ Tập 4 (bóng)        | **Zombie thông minh**: thân người còn nguyên, di chuyển im lặng, biết chờ và phối hợp đàn. Không thể thương lượng, không biểu cảm người. | Không bao giờ để nó thấy điểm yếu; bẫy phức tạp; ở Tập 5+ là mối đe doạ chính. **Con đầu tiên chính là Subject-03** (thoát khỏi Cheonma theo hầm sơ tán, đeo vòng nhận dạng của viện). |
 | 6   | **Thể Giáp (Armored / Aegis Soldier)**                       | Từ Tập 4 (cliffhanger) | Lính bị tiêm AEGIS-7 hoàn chỉnh, **chưa chuyển hoá hẳn**: cơ thể cường hoá (da chai, cơ phình), còn phản xạ chiến đấu, **không chết bằng một cú**. Vẫn nghe lệnh Choi nhờ **liều ức chế định kỳ** — hết liều là mất kiểm soát.        | Tốn nhiều lượt: phá khớp → hạ gục; cần phối hợp cả nhóm.                       |
 | 7   | **Kẻ Nở Hoa (Spore Carrier)** _(dự phòng cho giai đoạn sau)_ | Từ Tập 8+              | Cơ thể mọc nấm/bào tử ichor, phát tán bụi độc ở không gian kín.                                                                          | Bịt kín, đi gió ngược, khẩu trang lọc của Minseo.                              |
+| 8   | **Kẻ Bò (Crawler)** _(đề xuất, chưa gài vào tập nào)_ | Từ Tập 5+ (hầm/đường ống) | Mất hai chân từ đầu gối, bò rất nhanh sát nền, khó thấy trong tối; bò theo vệt tiếng ồn. | Chiếu sáng thấp, đừng đi giữa hầm hẹp; cận chiến vùng đầu ở góc thấp. |
+| 9   | **Kẻ Bám Trần (Lurker)** _(đề xuất, chưa gài vào tập nào)_ | Từ Tập 6+ (toà nhà tối) | Tứ chi dài, bám ngược trần và tường, phục kích từ trên cao, rơi xuống khi có người đi ngay dưới. | Nhìn lên trước khi bước vào phòng kín; cung thủ ngắm từ xa; không đứng sát trần thấp. |
+| 10  | **Chó Nhiễm (Hound)** _(đề xuất, chưa gài vào tập nào)_ | Từ Tập 6+ (ngoài trời) | Chó lớn bị nhiễm, chạy bầy, nhanh hơn Thể Cuồng, đánh hơi mùi nhóm. | Che mùi (Minseo), cung thủ hạ từ xa, dùng chướng ngại vật. |
 
-> Phần sau Tập 4 chỉ đặt hướng, chưa chốt.
+> Phần sau Tập 4 chỉ đặt hướng, chưa chốt. Bảng ảnh khoá nhận diện cho **toàn bộ** loại zombie ở trên nằm trong `ngay_tan_series_library.csv` (quy tắc tạo ảnh: IMAGE_SYSTEM.md mục C2 và I).
 
 ---
 

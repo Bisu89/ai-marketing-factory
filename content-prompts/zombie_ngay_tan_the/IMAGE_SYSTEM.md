@@ -111,6 +111,37 @@ Một zombie dáng người cân đối còn nguyên vẹn, quần áo gần nh�
 Một người lính cường hoá thành zombie, thân hình cơ bắp phình to quá khổ, da xám chai cứng như giáp, đường gân đen nổi khắp người, mắt trắng đục, mũ trận đã tháo để lộ mặt xám, trang phục quân đội rách tả tơi, hai nắm đấm to quá khổ.
 ```
 
+### C2. Khoá nhận diện thêm (đã được chốt cùng bảng quái vật trong `ngay_tan_series_library.csv`)
+
+Dùng nguyên văn các khối dưới đây cho mọi cảnh có quái vật tương ứng.
+
+**[Z_KESANMOI_SO1 – Kẻ Săn Mồi số 1 = Subject-03]** (chỉ dùng cho con đầu tiên; các Kẻ Săn Mồi khác dùng [Z_KESANMOI])
+```
+Một người đàn ông trưởng thành thể hình rắn chắc mặc đồ thử nghiệm màu xám nhạt còn khá sạch, đeo một chiếc vòng nhận dạng nhựa ở cổ tay phải, da xám nhạt không có vết thương, đứng bất động hoàn toàn, đôi mắt đục trắng nhìn thẳng không chớp, biểu cảm hoàn toàn trống rỗng, đứng giữa bóng tối.
+```
+**[Z_KEBO – Kẻ Bò (Crawler)]** — hầm, đường ống, không gian thấp
+```
+Một zombie bò sát nền, hai chân đã mất từ đầu gối trở xuống với phần cụt khô đen quấn vải rách, hai cánh tay dài khoẻ chống xuống kéo thân người về phía trước, da xám nhợt gân đen, mắt trắng đục, quần áo rách bám bụi, ichor đen sẫm loãng loang thành vệt kéo trên sàn.
+```
+**[Z_KEBAMTRAN – Kẻ Bám Trần (Lurker)]** — phục kích trong toà nhà tối
+```
+Một zombie gầy với tứ chi dài bất thường, bám ngược vào trần nhà bằng các đầu ngón tay cong như móc, đầu nghiêng nhìn xuống, da xám tái xanh, mắt trắng đục, quần áo rách rưới treo thõng, ichor đen sẫm loãng nhỏ giọt từ đầu ngón tay.
+```
+**[Z_CHONHIEM – Chó Nhiễm (Hound)]** — chạy theo bầy, đuổi nhanh ngoài đường
+```
+Một con chó lớn bị nhiễm, lông rụng từng mảng để lộ da xám nhợt có gân đen, xương sườn nhô lên, mắt trắng đục, hàm há để lộ răng, thân chúi thấp sẵn sàng lao tới, ichor đen sẫm loãng nhỏ giọt từ miệng.
+```
+**[Z_KENOHOA – Kẻ Nở Hoa (Spore Carrier)]** — giai đoạn sau, không gian kín
+```
+Một zombie người trưởng thành có từng mảng bào tử xám nâu như nấm mọc trên vai, lưng và cổ, vài túi bào tử phồng lên phát ra bụi mờ, da xám nhợt, mắt trắng đục, đứng chùng vai, ichor đen sẫm loãng rỉ từ các túi bào tử.
+```
+**[Z_BIENTHE – Walker biến thể trang phục]** — dùng để đổi cảnh (bệnh viện, văn phòng, công trường) mà vẫn là Kẻ Lang Thang
+```
+Sáu zombie Walker người trưởng thành đứng thành hàng, mỗi người mặc một trang phục khác nhau: bác sĩ với áo blouse rách, y tá với đồng phục nhạt màu, nhân viên văn phòng với áo sơ mi và cà vạt xộc xệch, công nhân với áo bảo hộ, nhân viên giao hàng với áo khoác và túi đeo, lính cấp dưới với quân phục rách; tất cả da xám nhợt có đường gân đen, mắt trắng đục, miệng hơi há, tư thế gù, hai tay buông thõng, ichor đen sẫm loãng nhỏ giọt từ vết thương.
+```
+
+> Quy tắc chung mọi quái vật: da xám nhợt, mắt trắng đục, máu/ichor là chất lỏng đen sẫm loãng, **không** máu đỏ, **không** nội tạng, **không** chi tiết xác chết. Quái vật là người trưởng thành hoặc động vật; không bao giờ vẽ quái vật có hình dạng trẻ em.
+
 ---
 
 ## D. KHỐI BỐI CẢNH (phông nền trống — tạo MỘT LẦN, tái dùng nhiều lần)
@@ -276,3 +307,19 @@ content-prompts/zombie_ngay_tan_the/images/
   scenes/       ep1_s01.png ...
 ```
 Tag khi import vào Asset Library: `nhân_vật:taeho`, `bối_cảnh:bg-12`, `zombie:kesanmoi`, `tập:1`... để tìm lại nhanh khi dựng.
+
+---
+
+## I. MẪU BẢNG THIẾT KẾ CHUẨN (template ảnh để khoá nhân vật / quái vật)
+
+Mọi bảng nhân vật và bảng quái vật trong series dùng **cùng một khung** để mặt, dáng, bảng màu không trôi. Các bảng đã có sẵn prompt trong `ngay_tan_ep1_scenes.csv` (nhân vật) và `ngay_tan_series_library.csv` (quái vật + poster).
+
+**Khung chuẩn nhân vật** — một ảnh gồm: ba góc nhìn toàn thân (chính diện, nghiêng, sau lưng) trên phông trắng trơn, thấy rõ bàn tay và bàn chân; một dải năm ô màu thể hiện bảng màu nhận diện của nhân vật (xanh ô-liu + đen cho Taeho, kem + nâu cho Jiwoo, navy + trắng cho Yerin, đen + đỏ cam cho Areum, teal + trắng cho Minseo); tuyệt đối không có chữ.
+
+**Khung chuẩn quái vật** — ba tư thế đặc trưng xếp thành ba cột, toàn thân trên phông trắng, một ô cận cảnh chi tiết nhận diện (vòng nhận dạng, bụng phình, túi bào tử...), dải năm ô màu chủ đạo; không có chữ.
+
+**Cách dùng để khoá nhất quán**
+1. Tạo bảng của từng nhân vật/quái vật một lần; chọn bản đẹp nhất, lưu đúng tên file trong CSV.
+2. Khi tạo cảnh: đính kèm bảng liên quan làm ảnh tham chiếu và thêm câu: *"Giữ đúng khuôn mặt, kiểu tóc, trang phục và hình dáng như ảnh tham chiếu."*
+3. Cảnh có nhiều nhân vật: tạo từng người riêng rồi ghép trong khâu dựng nếu AI làm sai mặt.
+4. Bản poster tổng hợp (`poster_nam_nhan_vat_chinh.png`, `poster_tong_hop_quai_vat.png`, `bieu_do_so_sanh_kich_thuoc.png`) dùng để đối chiếu cuối cùng, không dùng làm ảnh dựng video.
