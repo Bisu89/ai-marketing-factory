@@ -18,13 +18,13 @@ HDR = ['STT', 'Ten file (filename.png)', 'Tags (dan khi import)', 'Prompt day du
 REF = {
     'Taeho': 'bang_nhan_vat_taeho.png', 'Minseo': 'bang_nhan_vat_minseo.png', 'Choi': 'bang_nhan_vat_choi.png',
     'Dahee': 'bang_nhan_vat_dahee.png', 'Kẻ Lang Thang': 'bang_zombie_lang_thang.png',
-    'Kẻ Săn Mồi số 1': 'bang_zombie_ke_san_moi_so1.png',
+    'Kẻ Săn Mồi': 'bang_zombie_ke_san_moi_so1.png',
 }
 NEG_SFX = NEG.replace('chữ, logo, watermark', 'phụ đề, bóng thoại, mọi chữ khác ngoài chữ hiệu ứng đã chỉ định, logo, watermark')
 UNI = 'mặc quân phục dã chiến thượng sĩ và đội mũ nồi đen'
 WET = 'áo khoác ướt mưa'
 CAS = 'đồ thường ngày (áo len sáng màu và quần jeans)'
-SUBJ = 'Subject-03 (Kẻ Săn Mồi số 1 khi còn là người, mặc đồ thử nghiệm xám nhạt)'
+SUBJ = 'KẺ SĂN MỒI (số 5 trong bảng) khi còn là người: người đàn ông mặc đồ xám nhạt, đeo vòng tay nhựa'
 
 
 def sfx_text(items):
@@ -50,7 +50,7 @@ ZOMBIES = {
     'Nhân Viên Văn Phòng': 'KẺ LANG THANG biến thể số 14 NHÂN VIÊN VĂN PHÒNG (áo sơ mi, cà vạt đỏ)',
     'Công Nhân': 'KẺ LANG THANG biến thể số 15 CÔNG NHÂN (mũ bảo hộ, áo phản quang)',
     'Nhân Viên Giao Hàng': 'KẺ LANG THANG biến thể số 16 NHÂN VIÊN GIAO HÀNG (áo đỏ, túi giao hàng)',
-    'Kẻ Săn Mồi số 1': 'KẺ SĂN MỒI (số 5 trong bảng: người đàn ông mặc đồ xám nhạt, đeo vòng tay nhựa)',
+    'Kẻ Săn Mồi': 'KẺ SĂN MỒI (số 5 trong bảng: người đàn ông mặc đồ xám nhạt, đeo vòng tay nhựa)',
 }
 
 
@@ -105,7 +105,7 @@ S('ba_linh_bi_cach_ly', ['P02'], 'B', True, 'Góc nhìn qua kính', None,
 S('ong_thuoc_aegis7_phat_sang', ['P02'], 'B', True, 'Cận cảnh', None,
   'Cận cảnh một giá đựng các ống thuốc nhỏ phát ra ánh xanh lạnh trong phòng thí nghiệm, vài ống có nhãn trống (không chữ), đèn trần phản chiếu trên mặt kính, không khí bí mật.', None,
   'aegis-7, ống thuốc, phòng thí nghiệm, ánh xanh', '이지스-7, 약병, 연구실, 푸른 빛')
-S('linh_co_giat_sau_kinh', ['P03', 'P04'], 'A', True, 'Cảnh rộng', ['Kẻ Săn Mồi số 1'],
+S('linh_co_giat_sau_kinh', ['P03', 'P04'], 'A', True, 'Cảnh rộng', ['Kẻ Săn Mồi'],
   f'Nhìn từ ngoài kính: {SUBJ}, nằm co giật dữ dội trên giường bệnh, đôi mắt bắt đầu phủ trắng đục; một bác sĩ chạy tới giữ vai; không máu me. {BG["lab"]}',
   ['쾅!', '쾅!'], 'subject-03, co giật, giường bệnh, thử nghiệm, aegis-7', '3호 피험자, 경련, 병상, 시험, 이지스-7')
 S('ban_tay_bau_chat_thanh_giuong', ['P04'], 'B', True, 'Cận cảnh', None,
@@ -288,11 +288,11 @@ S('dong_ho_tuong_7_gio_42', ['P51'], 'B', True, 'Cận cảnh', None,
 S('minseo_nghe_tieng_dap_tu_khu_thi_nghiem', ['P52'], 'B', True, 'Cận mặt', ['Minseo'],
   'Cận mặt Minseo ngẩng đầu lên khỏi màn hình, ánh mắt giật mình hướng về phía cửa kính, âm thanh nặng vọng lại.', ['쿵!'],
   'minseo, nghe tiếng động, giật mình', '민서, 소리, 놀람')
-S('subject03_dung_day_nghieng_dau', ['P53'], 'A', True, 'Trung cảnh sau kính', ['Kẻ Săn Mồi số 1'],
-  f'Qua lớp kính: Subject-03 đứng dậy từ giường bệnh, đầu nghiêng như đang làm quen với cơ thể mình, da bắt đầu xám nhợt, mắt trắng đục, các bác sĩ phía sau chưa kịp nhận ra. {BG["lab"]}', None,
+S('ke_san_moi_dung_day_nghieng_dau', ['P53'], 'A', True, 'Trung cảnh sau kính', ['Kẻ Săn Mồi'],
+  f'Qua lớp kính: KẺ SĂN MỒI (số 5 trong bảng, người đàn ông mặc đồ xám nhạt đeo vòng tay nhựa) đứng dậy từ giường bệnh, đầu nghiêng như đang làm quen với cơ thể mình, da bắt đầu xám nhợt, mắt trắng đục, các bác sĩ phía sau chưa kịp nhận ra. {BG["lab"]}', None,
   'subject-03, đứng dậy, nghiêng đầu, biến đổi', '3호 피험자, 일어서다, 고개를 갸웃, 변이')
-S('subject03_dap_vo_kinh', ['P53', 'P54'], 'A', True, 'Cảnh rộng hành động', ['Kẻ Săn Mồi số 1'],
-  f'Subject-03 (Kẻ Săn Mồi số 1, vừa biến đổi) lao vào ô kính khiến kính rạn nứt, một bác sĩ ngã xuống phía sau; đèn báo động đỏ nhấp nháy khắp phòng. {BG["lab_do"]} Cảnh tiết chế, không chi tiết máu me.',
+S('ke_san_moi_dap_vo_kinh', ['P53', 'P54'], 'A', True, 'Cảnh rộng hành động', ['Kẻ Săn Mồi'],
+  f'KẺ SĂN MỒI (số 5 trong bảng, vừa biến đổi, người đàn ông mặc đồ xám nhạt đeo vòng tay nhựa) lao vào ô kính khiến kính rạn nứt, một bác sĩ ngã xuống phía sau; đèn báo động đỏ nhấp nháy khắp phòng. {BG["lab_do"]} Cảnh tiết chế, không chi tiết máu me.',
   ['쾅!', '쨍그랑!'], 'subject-03, đập kính, bác sĩ ngã, báo động', '3호 피험자, 유리를 깨다, 의사, 경보')
 S('bac_si_bi_can_bong_den', ['P54', 'P55'], 'B', True, 'Cảnh bóng đen', None,
   'Cảnh dạng bóng đen (silhouette) trước ánh đèn báo động đỏ: một bác sĩ ngã xuống sàn, một bóng người khác lao vào, người thứ hai cố kéo đồng nghiệp ra; không chi tiết máu me, chỉ hình khối đen và ánh đỏ.',

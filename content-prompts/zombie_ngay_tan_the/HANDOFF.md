@@ -39,6 +39,7 @@ Tập 2 cần chú ý ảnh: Jiwoo, Yerin, Areum xuất hiện lần đầu (đ�
 - Nhóm không thành đội ngay: mỗi người nhập có điều kiện, ma sát (SERIES §6.0). Đội thật từ Tập 5.
 - Máu = chất lỏng đen sẫm; không nội tạng; nữ chiến binh không bị cắn trên màn hình; không nhân vật vị thành niên; trang phục "ít vải" chỉ ở mức tinh tế, không khoả thân.
 - Không đặt tên vũ khí thật trong prompt ảnh.
+- Prompt ảnh chỉ dùng **từ có trong bảng nhân vật/quái vật** (tên + số). GPT không hiểu từ nội bộ như "Subject-03" hay "Kẻ Săn Mồi số 1": gọi là "KẺ SĂN MỒI (số 5 trong bảng)".
 - Muốn **nhiều ảnh** (đầu tư giữ chân người xem), không rút gọn xuống 20 ảnh/tập.
 
 ## Việc còn mở

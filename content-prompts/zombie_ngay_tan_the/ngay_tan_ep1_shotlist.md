@@ -70,8 +70,8 @@
 | 64 | 064_thanh_tien_trinh_chay_cham.png | P51 | 저녁 일곱 시 사십이 분이었다. | B | có |  |
 | 65 | 065_dong_ho_tuong_7_gio_42.png | P51 | 저녁 일곱 시 사십이 분이었다. | B | có | có |
 | 66 | 066_minseo_nghe_tieng_dap_tu_khu_thi_nghiem.png | P52 | 시험동 쪽에서 쿵 하는 둔탁한 소리가 울렸다. | B | có | có |
-| 67 | 067_subject03_dung_day_nghieng_dau.png | P53 | 유리 너머로, 사흘 동안 갇혀 있던 병사가 일어서고 있었다. | A | có |  |
-| 68 | 068_subject03_dap_vo_kinh.png | P53, P54 | 유리 너머로, 사흘 동안 갇혀 있던 병사가 일어서고 있었다. | A | có | có |
+| 67 | 067_ke_san_moi_dung_day_nghieng_dau.png | P53 | 유리 너머로, 사흘 동안 갇혀 있던 병사가 일어서고 있었다. | A | có |  |
+| 68 | 068_ke_san_moi_dap_vo_kinh.png | P53, P54 | 유리 너머로, 사흘 동안 갇혀 있던 병사가 일어서고 있었다. | A | có | có |
 | 69 | 069_bac_si_bi_can_bong_den.png | P54, P55 | 유리가 흔들렸다. | B | có | có |
 | 70 | 070_hanh_lang_bao_dong_do_hoang_loan.png | P55 | 다른 의사가 동료를 끌어내려고 달려갔지만 이미 늦었다. | B | có | có |
 | 71 | 071_minseo_nhin_man_hinh_lan_cuoi.png | P56 | 민서는 화면을 한 번 더 쳐다보았다. | B | có | có |
