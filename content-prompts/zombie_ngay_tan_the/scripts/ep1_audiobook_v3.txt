@@ -1,6 +1,9 @@
-NGÀY TÀN — ĐỘI SINH TỒN SEORYEONG
-TẬP 1 — NGƯỜI LÍNH BỊ LOẠI
+## NGÀY TÀN — ĐỘI SINH TỒN SEORYEONG | TẬP 1 — NGƯỜI LÍNH BỊ LOẠI
+## Phiên bản VI: giọng chính nam; GIỚI THIỆU và KẾT đọc bằng giọng nữ (xem docs/features/162).
+## GIỚI THIỆU
+Seoryeong, ba ngày trước khi thành phố sụp đổ. Một người lính đã nhìn thấy thứ mà quân đội không muốn ai nhìn thấy. Ngày Tàn, tập một: Người Lính Bị Loại.
 
+## TRUYỆN
 Ba ngày trước, tôi vẫn còn là một người lính.
 
 Đêm đó, khu nghiên cứu Cheonma lạnh hơn bình thường. Tôi đứng ở hành lang phía ngoài khu thử nghiệm, nhìn qua lớp kính dày vào căn phòng có ba người lính đang bị giữ lại sau một đợt thử thuốc. AEGIS-7 được giới thiệu với chúng tôi như một dự án quân sự: tăng sức chịu đựng của cơ thể, rút ngắn thời gian hồi phục, giúp binh sĩ duy trì thể lực trong những điều kiện mà người bình thường không thể chịu nổi.
@@ -160,3 +163,6 @@ Phía sau anh ta, thêm một bóng người xuất hiện. Rồi một bóng n�
 Đến lúc đó, tôi mới hiểu.
 
 Những thứ đang đứng trước mặt tôi không còn là con người nữa.
+
+## KẾT
+Thành phố đã bắt đầu chết. Và người đàn ông trong chiếc xe đó vừa mất tất cả, trừ một bí mật. Tập hai: Đêm Thành Phố Chết. Theo dõi kênh để không bỏ lỡ.

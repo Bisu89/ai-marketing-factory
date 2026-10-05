@@ -81,7 +81,7 @@ class BuiltinTemplateTests(unittest.TestCase):
             {
                 "emotional_story", "couple_story", "horror", "horror_shorts",
                 "relationship_psychology_vi", "news_vi", "history_documentary", "military_history",
-                "zombie_system", "isekai_system_vi", "ngay_tan", "manhua_recap_vi", "manhua_ai_vi",
+                "zombie_system", "isekai_system_vi", "ngay_tan", "ngay_tan_ko", "manhua_recap_vi", "manhua_ai_vi",
                 "manhua_recap_long_vi", "custom",
             },
         )
@@ -165,6 +165,15 @@ class BuiltinTemplateTests(unittest.TestCase):
         self.assertIn("adults", config.visual_generation.image_style_prompt.lower())
         self.assertEqual(config.visual_generation.mode, "library")
         self.assertFalse(config.audio.music_enabled)
+
+    def test_ngay_tan_ko_is_korean_female_narrated_and_shares_the_visuals(self):
+        ko = next(t.config for t in BUILTIN_TEMPLATES if t.id == "ngay_tan_ko")
+        vi = next(t.config for t in BUILTIN_TEMPLATES if t.id == "ngay_tan")
+        self.assertEqual(ko.content.language, "ko")
+        self.assertEqual(ko.voice.voice_id, "ko-KR-SunHiNeural")
+        self.assertEqual(vi.voice.voice_id, "vi-VN-NamMinhNeural")
+        self.assertEqual(ko.visual_generation.image_style_prompt, vi.visual_generation.image_style_prompt)
+        self.assertEqual(ko.visual_generation.mode, "library")
 
     def test_manhua_templates_share_the_recap_look_and_differ_only_in_visual_source(self):
         recap = next(t.config for t in BUILTIN_TEMPLATES if t.id == "manhua_recap_vi")

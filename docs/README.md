@@ -191,6 +191,7 @@ SQLite.
 159. [truyenqq.com.vn fetch support](features/159-manhua-fetch-truyenqq.md) — fourth supported manhua site for the chapter fetch; plain HTTP(S), no Cloudflare block, images from `sN.cc3t.net`
 160. [Voice test bench](features/160-voice-test-bench.md) — "Thử giọng đọc" page: paste a story, pick voice + speed (default VI female), get an MP3
 161. [Ngày Tàn template](features/161-ngay-tan-template.md) — built-in `ngay_tan`: VI zombie-survival serial, male narrator @1.10, no System, library visuals
+162. [Ngày Tàn Korean edition](features/162-ngay-tan-korean-edition.md) — `ngay_tan_ko` template; intro/outro read by an opposite-gender voice (voice test bench `## GIỚI THIỆU/KẾT` sections)
 
 ## Keeping this up to date
 

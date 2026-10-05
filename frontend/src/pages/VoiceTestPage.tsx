@@ -27,6 +27,7 @@ export function VoiceTestPage() {
   const [voices, setVoices] = useState<TestVoice[]>([FALLBACK_VOICE]);
   const [voice, setVoice] = useState(FALLBACK_VOICE.id);
   const [speed, setSpeed] = useState(1.0);
+  const [bookend, setBookend] = useState("auto");
 
   const [jobId, setJobId] = useState<string | null>(null);
   const [job, setJob] = useState<VoiceTestJob | null>(null);
@@ -83,6 +84,7 @@ export function VoiceTestPage() {
     return () => window.clearInterval(t);
   }, [running]);
 
+  const hasBookends = /^##\s*(GIỚI THIỆU|INTRO|KẾT|OUTRO)/im.test(text);
   const words = text.split(/\s+/).filter((w) => w && !w.startsWith("##")).length;
   const canSubmit = text.trim().length > 0 && !running;
 
@@ -95,7 +97,7 @@ export function VoiceTestPage() {
     setStartedAt(Date.now());
     setNow(Date.now());
     try {
-      const { job_id } = await startVoiceTest(text, voice, speed);
+      const { job_id } = await startVoiceTest(text, voice, speed, bookend);
       setJobId(job_id);
       pollRef.current = window.setInterval(async () => {
         try {
@@ -152,6 +154,24 @@ export function VoiceTestPage() {
           </label>
 
           <label className="voice-test-field">
+            <span>Giọng đọc phần GIỚI THIỆU / KẾT</span>
+            <select value={bookend} onChange={(e) => setBookend(e.target.value)}>
+              <option value="auto">Tự động (đảo giới tính so với giọng chính)</option>
+              <option value="same">Giống giọng chính</option>
+              {voices.map((v) => (
+                <option key={v.id} value={v.id}>
+                  {v.label}
+                </option>
+              ))}
+            </select>
+            <small>
+              {hasBookends
+                ? "Đã thấy mục ## GIỚI THIỆU / ## KẾT trong truyện — hai phần này sẽ đọc bằng giọng này."
+                : "Chỉ áp dụng khi truyện có dòng ## GIỚI THIỆU, ## TRUYỆN, ## KẾT."}
+            </small>
+          </label>
+
+          <label className="voice-test-field">
             <span>Tốc độ: {speed.toFixed(2)}x</span>
             <input
               type="range"
@@ -180,7 +200,8 @@ export function VoiceTestPage() {
         {job?.status === "done" && jobId && (
           <div className="voice-test-result">
             <div>
-              <strong>{job.filename}</strong> · dài {formatDuration(job.duration_sec ?? 0)} · xử lý {job.elapsed_sec}s
+              <strong>{job.filename}</strong>
+              {job.bookend_voice && <> · giới thiệu/kết: {job.bookend_voice}</>} · dài {formatDuration(job.duration_sec ?? 0)} · xử lý {job.elapsed_sec}s
             </div>
             <audio controls src={voiceTestAudioUrl(jobId)} />
             {job.path && (

@@ -1785,6 +1785,60 @@ NGAY_TAN_TEMPLATE = Template(
     ),
 )
 
+# Korean edition of NGAY_TAN_TEMPLATE -- the series' primary channel (a Korean-language test of the
+# earlier zombie series got views where the Vietnamese one got none, so production focuses on KO).
+# Same story/visuals; narration is a FEMALE Korean voice. By series rule the episode intro and outro
+# are read by the opposite-gender voice (male ko-KR-InJoonNeural here; the VI edition does the reverse)
+# -- set via Beat.voice_id on the intro/outro beats, see docs/features/162-ngay-tan-korean-edition.md.
+# Korean script text: write short simple sentences and re-read them to check for corruption (see the
+# zombie_system notes in docs) before splicing into beats.
+NGAY_TAN_KO_TEMPLATE = Template(
+    id="ngay_tan_ko",
+    name="Ngày Tàn (Zombie Survival KO)",
+    description="Long-form (~10 min) Korean fiction serial -- same grounded zombie-survival story as "
+    "the Vietnamese 'ngay_tan' template, narrated by a female Korean voice; episode intro and outro "
+    "by a male voice (set Beat.voice_id on those beats). 16:9, Korean-manhwa illustration style, "
+    "Visuals = \"library\" against the series' reusable image pool.",
+    version=1,
+    builtin=True,
+    config=ProjectConfig(
+        render=RenderProjectConfig(profile="SOCIAL_LANDSCAPE"),
+        motion=MotionProjectConfig(
+            default_preset=BeatMotionPreset.SLOW_PUSH_IN, intensity="MEDIUM", auto_rotate=True
+        ),
+        captions=CaptionsProjectConfig(
+            enabled=True, preset="cinematic", max_words=12, max_chars=70, max_lines=2, max_duration_sec=5.0
+        ),
+        audio=AudioProjectConfig(narration_enabled=True, music_enabled=False, music_volume=0.15, ducking=True),
+        content=ContentProjectConfig(
+            language="ko",
+            tone="tense, grounded and cinematic -- plain spoken Korean, short sentences, real stakes "
+            "and consequences; no slogans, no lecturing, no game-UI lines",
+            style="ONE episode of a continuing zombie-survival story per video, told mostly in first "
+            "person by the male lead (Kang Taeho, ex-soldier): survival comes from real skills, scarce "
+            "resources and costly choices, never a hidden System. The team forms slowly, each member "
+            "joining for their own reason and with friction. Open with a short intro and close with a "
+            "short outro (read by a second, male voice). End on a cliffhanger.",
+            target_duration=600.0,
+            audience="Korean zombie/apocalypse fiction and webtoon-recap viewers",
+            cta_enabled=True,
+        ),
+        voice=VoiceProjectConfig(
+            provider="edge_tts", voice_id="ko-KR-SunHiNeural", language="ko",
+            speed=1.0, sentence_pause_sec=0.4,
+        ),
+        visual_generation=NGAY_TAN_TEMPLATE.config.visual_generation,
+        outro=OutroProjectConfig(
+            enabled=True,
+            text="다음 화가 곧 공개됩니다. 구독하고 기다려 주세요.",
+            duration_sec=6.0,
+        ),
+        package=PackageProjectConfig(ai_metadata_enabled=True),
+        template_id="ngay_tan_ko",
+        template_version=1,
+    ),
+)
+
 # Vietnamese manhua (Chinese cultivation-comic) recap shorts -- the format of
 # a real sample the user brought in (docs/features/153-manhua-recap.md):
 # ~50s, one comic panel on screen per 1.5-2.5s, a male AI voice reading a
@@ -1952,7 +2006,7 @@ CUSTOM_TEMPLATE = Template(
 # Note: BUILTIN_TEMPLATES' own `id`s ("emotional_story"/"couple_story"/
 # "horror"/"horror_shorts"/"relationship_psychology_vi"/"news_vi"/
 # "history_documentary"/"military_history"/
-# "zombie_system"/"isekai_system_vi"/"ngay_tan"/"manhua_recap_vi"/"manhua_ai_vi"/"manhua_recap_long_vi"/"custom") are reserved -- template_service.save_custom_templates
+# "zombie_system"/"isekai_system_vi"/"ngay_tan"/"ngay_tan_ko"/"manhua_recap_vi"/"manhua_ai_vi"/"manhua_recap_long_vi"/"custom") are reserved -- template_service.save_custom_templates
 # below rejects a custom template trying to reuse one, so a built-in can
 # never be shadowed or overwritten by user data.
 BUILTIN_TEMPLATES: list[Template] = [
@@ -1967,6 +2021,7 @@ BUILTIN_TEMPLATES: list[Template] = [
     ZOMBIE_SYSTEM_TEMPLATE,
     ISEKAI_SYSTEM_VI_TEMPLATE,
     NGAY_TAN_TEMPLATE,
+    NGAY_TAN_KO_TEMPLATE,
     MANHUA_RECAP_VI_TEMPLATE,
     MANHUA_AI_VI_TEMPLATE,
     MANHUA_RECAP_LONG_VI_TEMPLATE,

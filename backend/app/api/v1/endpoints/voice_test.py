@@ -26,7 +26,7 @@ from pydantic import BaseModel, Field
 
 from app.core.config import Settings, get_settings
 from app.core.exceptions import NotFoundError, ValidationError
-from app.modules.voice.providers import EdgeTTSProvider
+from app.modules.voice.providers import EdgeTTSProvider, synthesize_voice_runs
 
 logger = logging.getLogger(__name__)
 router = APIRouter()
@@ -36,16 +36,26 @@ DEFAULT_VOICE = "vi-VN-HoaiMyNeural"
 
 # Small curated edge_tts set (same free service the rest of the app uses).
 VOICES = [
-    {"id": "vi-VN-HoaiMyNeural", "label": "Tiếng Việt — Hoài My (nữ)", "language": "vi"},
-    {"id": "vi-VN-NamMinhNeural", "label": "Tiếng Việt — Nam Minh (nam)", "language": "vi"},
-    {"id": "ko-KR-SunHiNeural", "label": "Tiếng Hàn — Sun-Hi (nữ)", "language": "ko"},
-    {"id": "ko-KR-InJoonNeural", "label": "Tiếng Hàn — In-Joon (nam)", "language": "ko"},
-    {"id": "en-US-JennyNeural", "label": "English (US) — Jenny (nữ)", "language": "en"},
-    {"id": "en-US-AriaNeural", "label": "English (US) — Aria (nữ)", "language": "en"},
-    {"id": "en-US-GuyNeural", "label": "English (US) — Guy (nam)", "language": "en"},
-    {"id": "en-GB-SoniaNeural", "label": "English (UK) — Sonia (nữ)", "language": "en"},
+    {"id": "vi-VN-HoaiMyNeural", "label": "Tiếng Việt — Hoài My (nữ)", "language": "vi", "gender": "f"},
+    {"id": "vi-VN-NamMinhNeural", "label": "Tiếng Việt — Nam Minh (nam)", "language": "vi", "gender": "m"},
+    {"id": "ko-KR-SunHiNeural", "label": "Tiếng Hàn — Sun-Hi (nữ)", "language": "ko", "gender": "f"},
+    {"id": "ko-KR-InJoonNeural", "label": "Tiếng Hàn — In-Joon (nam)", "language": "ko", "gender": "m"},
+    {"id": "en-US-JennyNeural", "label": "English (US) — Jenny (nữ)", "language": "en", "gender": "f"},
+    {"id": "en-US-AriaNeural", "label": "English (US) — Aria (nữ)", "language": "en", "gender": "f"},
+    {"id": "en-US-GuyNeural", "label": "English (US) — Guy (nam)", "language": "en", "gender": "m"},
+    {"id": "en-GB-SoniaNeural", "label": "English (UK) — Sonia (nữ)", "language": "en", "gender": "f"},
 ]
 _VOICE_LANGUAGE = {v["id"]: v["language"] for v in VOICES}
+_VOICE_GENDER = {v["id"]: v["gender"] for v in VOICES}
+
+# Section headers inside a pasted script (they are '##' lines, which are otherwise notes and
+# dropped): the intro and outro of an episode are read by a second voice -- by series rule the
+# opposite gender of the main narrator (KO: female narrator + male bookends; VI: the reverse).
+_INTRO_RE = re.compile(r"^##\s*(GIỚI THIỆU|INTRO)\b", re.IGNORECASE)
+_OUTRO_RE = re.compile(r"^##\s*(KẾT|OUTRO)\b", re.IGNORECASE)
+_BODY_RE = re.compile(r"^##\s*(TRUYỆN|BODY|LỜI ĐỌC|NỘI DUNG)\b", re.IGNORECASE)
+BOOKEND_AUTO = "auto"
+BOOKEND_SAME = "same"
 
 _jobs: dict[str, dict] = {}
 _jobs_lock = threading.Lock()
@@ -55,14 +65,67 @@ class VoiceTestIn(BaseModel):
     text: str
     voice: str = DEFAULT_VOICE
     speed: float = Field(default=1.0, ge=0.5, le=2.0)
+    # Voice for sections marked INTRO/OUTRO: "auto" = opposite gender of `voice` in the same
+    # language, "same" = no second voice, or an explicit voice id.
+    bookend_voice: str = BOOKEND_AUTO
+
+
+def _tidy(text: str) -> str:
+    return re.sub(r"\n{3,}", "\n\n", text).strip()
 
 
 def clean_story_text(raw: str) -> str:
     """Drops script notes (lines starting with '##') and collapses blank
     lines, so a story file can be pasted as-is."""
     lines = [ln.strip() for ln in raw.splitlines() if not ln.strip().startswith("##")]
-    text = "\n".join(lines)
-    return re.sub(r"\n{3,}", "\n\n", text).strip()
+    return _tidy("\n".join(lines))
+
+
+def split_sections(raw: str) -> list[tuple[str, str]]:
+    """[(role, text)] in reading order, role in {"intro", "body", "outro"}. Text before any
+    section header is body; any other '##' line is a note and is dropped."""
+    role = "body"
+    buckets: list[tuple[str, list[str]]] = [(role, [])]
+    for line in raw.splitlines():
+        stripped = line.strip()
+        new_role = (
+            "intro" if _INTRO_RE.match(stripped)
+            else "outro" if _OUTRO_RE.match(stripped)
+            else "body" if _BODY_RE.match(stripped)
+            else None
+        )
+        if new_role:
+            role = new_role
+            buckets.append((role, []))
+        elif not stripped.startswith("##"):
+            buckets[-1][1].append(stripped)
+    sections = [(r, _tidy("\n".join(ls))) for r, ls in buckets]
+    return [(r, t) for r, t in sections if t]
+
+
+def resolve_bookend_voice(main_voice: str, choice: str) -> str:
+    if choice == BOOKEND_SAME:
+        return main_voice
+    if choice != BOOKEND_AUTO:
+        return choice
+    wanted = "m" if _VOICE_GENDER.get(main_voice) == "f" else "f"
+    language = _VOICE_LANGUAGE.get(main_voice)
+    for v in VOICES:
+        if v["language"] == language and v["gender"] == wanted:
+            return v["id"]
+    return main_voice
+
+
+def build_runs(sections: list[tuple[str, str]], main_voice: str, bookend_voice: str) -> list[tuple[str, str]]:
+    """[(text, voice_id)], consecutive sections with the same voice merged."""
+    runs: list[tuple[str, str]] = []
+    for role, text in sections:
+        voice = bookend_voice if role in ("intro", "outro") else main_voice
+        if runs and runs[-1][1] == voice:
+            runs[-1] = (f"{runs[-1][0]}\n\n{text}", voice)
+        else:
+            runs.append((text, voice))
+    return runs
 
 
 def _output_dir(settings: Settings) -> Path:
@@ -71,13 +134,18 @@ def _output_dir(settings: Settings) -> Path:
     return path
 
 
-def _run_job(job_id: str, text: str, voice: str, speed: float, out_dir: Path) -> None:
+def _run_job(job_id: str, runs: list[tuple[str, str]], voice: str, speed: float, out_dir: Path) -> None:
     stamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     wav_path = out_dir / f".{job_id}.wav"
     mp3_path = out_dir / f"giong-doc_{stamp}_{job_id[:6]}.mp3"
     started = time.time()
     try:
-        result = EdgeTTSProvider().synthesize(text, voice, _VOICE_LANGUAGE.get(voice, "vi"), speed, wav_path)
+        provider = EdgeTTSProvider()
+        language = _VOICE_LANGUAGE.get(voice, "vi")
+        if len(runs) == 1:
+            result = provider.synthesize(runs[0][0], runs[0][1], language, speed, wav_path)
+        else:
+            result = synthesize_voice_runs(provider, runs, language, speed, wav_path)
         proc = subprocess.run(
             ["ffmpeg", "-y", "-v", "error", "-i", str(wav_path), "-codec:a", "libmp3lame", "-q:a", "2", str(mp3_path)],
             capture_output=True, text=True, stdin=subprocess.DEVNULL,
@@ -104,21 +172,33 @@ def list_test_voices() -> dict:
 
 @router.post("/voice-test/synthesize")
 def start_voice_test(payload: VoiceTestIn, settings: Settings = Depends(get_settings)) -> dict:
-    text = clean_story_text(payload.text)
+    sections = split_sections(payload.text)
+    text = "\n\n".join(t for _, t in sections)
     if not text:
         raise ValidationError("Chưa có nội dung để đọc.")
     if len(text) > MAX_TEXT_CHARS:
         raise ValidationError(f"Truyện quá dài ({len(text)} ký tự, tối đa {MAX_TEXT_CHARS}). Hãy chia nhỏ ra.")
     if payload.voice not in _VOICE_LANGUAGE:
         raise ValidationError(f"Giọng đọc không hỗ trợ: {payload.voice}")
+    if payload.bookend_voice not in (BOOKEND_AUTO, BOOKEND_SAME) and payload.bookend_voice not in _VOICE_LANGUAGE:
+        raise ValidationError(f"Giọng giới thiệu/kết không hỗ trợ: {payload.bookend_voice}")
+
+    bookend = resolve_bookend_voice(payload.voice, payload.bookend_voice)
+    runs = build_runs(sections, payload.voice, bookend)
+    has_bookends = any(role in ("intro", "outro") for role, _ in sections)
 
     job_id = uuid.uuid4().hex
+    info = {
+        "chars": len(text), "words": len(text.split()),
+        "bookend_voice": bookend if has_bookends else None,
+        "sections": [role for role, _ in sections],
+    }
     with _jobs_lock:
-        _jobs[job_id] = {"status": "running", "chars": len(text), "words": len(text.split())}
+        _jobs[job_id] = {"status": "running", **info}
     threading.Thread(
-        target=_run_job, args=(job_id, text, payload.voice, payload.speed, _output_dir(settings)), daemon=True,
+        target=_run_job, args=(job_id, runs, payload.voice, payload.speed, _output_dir(settings)), daemon=True,
     ).start()
-    return {"job_id": job_id, "chars": len(text), "words": len(text.split())}
+    return {"job_id": job_id, **info}
 
 
 def _get_job(job_id: str) -> dict:

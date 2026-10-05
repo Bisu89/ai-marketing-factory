@@ -14,6 +14,8 @@ export interface VoiceTestJob {
   words?: number;
   filename?: string;
   path?: string;
+  bookend_voice?: string | null;
+  sections?: string[];
   duration_sec?: number;
   elapsed_sec?: number;
 }
@@ -26,8 +28,9 @@ export function startVoiceTest(
   text: string,
   voice: string,
   speed: number,
+  bookendVoice: string,
 ): Promise<{ job_id: string; chars: number; words: number }> {
-  return apiPost("/voice-test/synthesize", { text, voice, speed });
+  return apiPost("/voice-test/synthesize", { text, voice, speed, bookend_voice: bookendVoice });
 }
 
 export function getVoiceTestJob(jobId: string): Promise<VoiceTestJob> {

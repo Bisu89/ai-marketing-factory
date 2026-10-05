@@ -3,7 +3,10 @@
 > Tên tạm: **"Ngày Tàn: Đội Sinh Tồn Seoryeong"** (có thể đổi).
 > Thể loại: zombie sinh tồn thuần túy, **KHÔNG có Hệ Thống / status window / level / skill-quest**.
 > Sức mạnh nhân vật đến từ **kỹ năng thật + kinh nghiệm + phối hợp nhóm**.
-> Ngôn ngữ: toàn bộ tiếng Việt (kể cả prompt ảnh). Thời lượng: ~10 phút / tập (~1800–2100 từ lời đọc).
+> Ngôn ngữ: tài liệu thiết kế và prompt ảnh viết tiếng Việt. Thời lượng: ~10 phút / tập (~1800–2100 từ lời đọc).
+> **Ưu tiên phát hành: bản tiếng Hàn (KO).** Lý do: lần thử trước với series zombie cũ, bản Hàn có view ngay còn bản Việt 0 view. Bản VI vẫn giữ nhưng làm sau.
+> **Mỗi tập có câu GIỚI THIỆU (đầu tập) và câu KẾT (cuối tập, hẹn tập sau).** Giọng đọc: **KO = giọng chính nữ (`ko-KR-SunHiNeural`), giới thiệu + kết giọng nam (`ko-KR-InJoonNeural`)**; **VI = giọng chính nam (`vi-VN-NamMinhNeural`, 1.10x), giới thiệu + kết giọng nữ (`vi-VN-HoaiMyNeural`)**. Template: `ngay_tan_ko`, `ngay_tan`. File kịch bản dùng mục `## GIỚI THIỆU` / `## TRUYỆN` / `## KẾT` để menu "Thử giọng đọc" tự đổi giọng.
+> Viết tiếng Hàn: bắt buộc dùng file kiểm tra đánh số (xem `scripts/ko_bookends_check.txt`) — câu ngắn, đọc lại bằng Read để soát ký tự lỗi trước khi ghép.
 > Phong cách ảnh: manhwa/manhua Hàn Quốc, flat cel-shaded (giống `zombie_system`). Hệ thống ảnh tái sử dụng: xem [`IMAGE_SYSTEM.md`](IMAGE_SYSTEM.md).
 
 ---
