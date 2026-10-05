@@ -133,13 +133,14 @@ lớn hơn xoay quanh phủ Bá tước Huyền Vũ (gia tộc Kim Mộc Lan —
 | Short tóm tắt 3 (9:16) | 14 beat, tổng hợp tình tiết hay nhất tập 21–30 | `short_summary3_script.json` | ✅ project 156 / job_214, Final QA PASS 100 |
 | Long 04 (16:9) | Tóm tắt tập 31–40, 144 beat, 10 phần | `long04_script.json` | ✅ project 157 / job_217, Final QA PASS 100 |
 | Short tóm tắt 4 (9:16) | 14 beat, tổng hợp tình tiết hay nhất tập 31–40 | `short_summary4_script.json` | ✅ project 158 / job_216, Final QA PASS 100 |
-| Long 05 (16:9) | Tóm tắt tập 41–50, 168 beat, 10 phần | `long05_script.json` | ⏳ project 161 / run 210 (đang render) |
-| Short tóm tắt 5 (9:16) | 11 beat, tổng hợp tình tiết hay nhất tập 41–50 | `short_summary5_script.json` | ⏳ project 162 / run 211 (đang render) |
+| Long 05 (16:9) | Tóm tắt tập 41–50, 168 beat, 10 phần | `long05_script.json` | ✅ project 161 / job_221, Final QA PASS 100 |
+| Short tóm tắt 5 (9:16) | 11 beat, tổng hợp tình tiết hay nhất tập 41–50 | `short_summary5_script.json` | ✅ project 162 / job_220, Final QA PASS 100 |
 
 Mục lục thời gian Long 01: 0:00 Tập 1 / 0:29 Tập 2 / 1:15 Tập 3 / 1:58 Tập 4 / 2:40 Tập 5 / 3:24 Tập 6 / 4:14 Tập 7 / 4:57 Tập 8 / 5:42 Tập 9 / 6:37 Tập 10.
 Mục lục thời gian Long 02: 0:00 Tập 11 / 0:47 Tập 12 / 1:29 Tập 13 / 2:09 Tập 14 / 2:54 Tập 15 / 3:37 Tập 16 / 4:19 Tập 17 / 5:06 Tập 18 / 5:47 Tập 19 / 6:34 Tập 20.
 Mục lục thời gian Long 03: 0:00 Tập 21 / 0:58 Tập 22 / 1:58 Tập 23 / 2:57 Tập 24 / 3:55 Tập 25 / 4:55 Tập 26 / 5:59 Tập 27 / 7:00 Tập 28 / 7:49 Tập 29 / 8:46 Tập 30.
 Mục lục thời gian Long 04: 0:00 Tập 31 / 0:56 Tập 32 / 1:52 Tập 33 / 2:52 Tập 34 / 4:00 Tập 35 / 5:01 Tập 36 / 6:03 Tập 37 / 7:05 Tập 38 / 8:12 Tập 39 / 9:24 Tập 40.
+Mục lục thời gian Long 05: 0:00 Tập 41 / 1:10 Tập 42 / 2:15 Tập 43 / 3:35 Tập 44 / 4:49 Tập 45 / 6:06 Tập 46 / 7:38 Tập 47 / 8:56 Tập 48 / 10:23 Tập 49 / 11:33 Tập 50.
 Build đa thư mục panel bằng script scratchpad gọi API (recap.py build chỉ nhận một thư mục).
 
 ## Nhật ký
