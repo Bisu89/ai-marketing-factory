@@ -1,0 +1,30 @@
+{
+  "title": "Thầy Hứa khóc lóc kêu oan trước Bá tước, chàng rể đặt báo cáo lên bàn bóc trần khoản tham ô 30000 vàng!?",
+  "chapters": "40",
+  "source_dir": "manhua-recap/crmn_ep41",
+  "description": "Nghe tin bị kiểm tra sổ sách, Hứa Văn Chiêu chạy tới khóc lóc với Bá tước, nhưng Thẩm Lãng đã chuẩn bị sẵn bản báo cáo suốt đêm. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 41.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "thumbnail": {"text": "THAM Ô 30000 VÀNG BỊ BÓC TRẦN!?", "prompt": "Vertical 9:16 anime-style: a tearful thin scholar in white and blue robes kneeling on a stone floor before a stern nobleman, a smiling long-haired young man in white placing a thick blue ledger on a wooden table. No text, leave top 25% empty."},
+  "beats": [
+    {"panel": "p003.jpg", "type": "HOOK", "kind": "recap", "narration": "Tên học trò cưng của thầy Hứa hớt hải chạy về báo tin gấp, cô gia đang tra sổ sách của ông ở phòng thu chi!"},
+    {"panel": "p005.jpg", "type": "SETUP", "kind": "recap", "narration": "Hứa Văn Chiêu mắt trợn tròn, thầm nghĩ, Thẩm Lãng, lần này ngươi không chỉ làm ta mất mặt mà còn muốn ta gánh hậu quả."},
+    {"panel": "p009.jpg", "type": "BUILD", "kind": "recap", "narration": "Ông ta không chờ nổi, chạy thẳng tới phủ Bá tước, quyết đi trước một bước."},
+    {"panel": "p011.jpg", "type": "REVEAL", "kind": "recap", "narration": "Vừa thấy Bá tước, ông quỳ sụp xuống, hỏi, đại nhân không còn tin ta nữa sao?"},
+    {"panel": "p014.jpg", "type": "BUILD", "kind": "recap", "narration": "Ông gào lên, suốt hai mươi năm người phục vụ và dốc hết tâm huyết cho Bá tước chính là ta đây!"},
+    {"panel": "p019.jpg", "type": "REACTION", "kind": "recap", "narration": "Nước mắt nước mũi chảy ròng ròng, ông còn đòi đâm đầu chết ngay tại chỗ để chứng minh trong sạch."},
+    {"panel": "p022.jpg", "type": "BUILD", "kind": "recap", "narration": "Bá tước thở dài, đứng lên đi, ta biết lòng trung thành của ông, rồi sai người bảo Thẩm Lãng ngừng điều tra."},
+    {"panel": "p026.jpg", "type": "BUILD", "kind": "recap", "narration": "Ông ta thầm mỉa mai, Thẩm Lãng không biết tự lượng sức, Bá tước vốn lương thiện mềm yếu, rất coi trọng sĩ diện thuộc hạ."},
+    {"panel": "p030.jpg", "type": "REVEAL", "kind": "recap", "narration": "Ông còn thêm dầu vào lửa, trong thành đang có lời đồn Thẩm Lãng cố ý giả ngốc, trà trộn bên cạnh tiểu thư Mộc Lan, chỉ sợ hắn có dã tâm."},
+    {"panel": "p033.jpg", "type": "BUILD", "kind": "recap", "narration": "Bá tước im lặng suy nghĩ, thấy hắn nhiều khuyết điểm nhưng không có dã tâm, ngược lại Hứa Văn Chiêu mới có điều gì đó không đúng."},
+    {"panel": "p035.jpg", "type": "BUILD", "kind": "recap", "narration": "Đúng lúc đó, Thẩm Lãng bước vào, bái kiến nhạc phụ."},
+    {"panel": "p036.jpg", "type": "REACTION", "kind": "recap", "narration": "Hứa Văn Chiêu gào lên, ta đã đắc tội cậu chỗ nào, sao cậu cứ muốn vội vàng đuổi ta đi, chẳng lẽ giấu giếm điều gì không muốn cho ai biết!"},
+    {"panel": "p038.jpg", "type": "REVEAL", "kind": "recap", "narration": "Thẩm Lãng chỉ cười, ta đã nghi ông tham ô, nhưng không ngờ ông lại tham nhiều như vậy!"},
+    {"panel": "p042.jpg", "type": "REVEAL", "kind": "recap", "narration": "Anh nói gọn, ba mươi nghìn."},
+    {"panel": "p044.jpg", "type": "BUILD", "kind": "recap", "narration": "Hai mươi năm qua, người đứng đầu phòng thu chi, con ngoan của phủ Bá tước, đã tham ô gần ba mươi nghìn đồng vàng."},
+    {"panel": "p045.jpg", "type": "REACTION", "kind": "recap", "narration": "Hứa Văn Chiêu hét, ba mươi nghìn vàng đủ cho cả quân đội phủ Bá tước ăn lương và lương thực trong một năm, ngươi dám vu khống ta!"},
+    {"panel": "p053.jpg", "type": "REVEAL", "kind": "recap", "narration": "Anh vặn lại, binh sĩ không tăng thêm, sao chi tiêu lương thực với lương bổng quân đội lại ngày càng lớn?"},
+    {"panel": "p056.jpg", "type": "REVEAL", "kind": "recap", "narration": "Rồi anh chỉ ra thêm, sản lượng sắt không tăng mà lại giảm, muối của lãnh địa cũng giảm, trong khi bao gai với sọt tre lại tăng vọt."},
+    {"panel": "p059.jpg", "type": "REVEAL", "kind": "recap", "narration": "Bởi ông đã dùng những bao gai với sọt tre đó để đóng gói muối với sắt của phủ Bá tước mang đi, đó là sơ hở ông để lộ!"},
+    {"panel": "p066.jpg", "type": "ENDING", "kind": "recap", "narration": "Hứa Văn Chiêu cười khan chối bay chối biến, còn Thẩm Lãng đặt bản báo cáo làm suốt đêm xuống bàn, nói đây là chứng cứ ông muốn!"}
+  ]
+}

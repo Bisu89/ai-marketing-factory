@@ -1,0 +1,31 @@
+{
+  "title": "Thầy Hứa chối bay chối biến, chàng rể lôi ra cả bí mật dưới hầm núi hoang!?",
+  "chapters": "41",
+  "source_dir": "manhua-recap/crmn_ep42",
+  "description": "Hứa Văn Chiêu cố chối tội trước toàn bộ người làm trong phủ, nhưng Thẩm Lãng đã tính ra kho tiền bí mật của ông và dẫn kỵ binh tới tận nơi. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 42.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "thumbnail": {"text": "KHO TIỀN BÍ MẬT BỊ LỘ!?", "prompt": "Vertical 9:16 anime-style: a long-haired young man with glowing cyan eyes pointing at the ground in a ruined mountain outpost, armored soldiers dragging a pale sweating scholar, green holographic outline of a hidden underground vault. No text, leave top 25% empty."},
+  "beats": [
+    {"panel": "p003.jpg", "type": "HOOK", "kind": "recap", "narration": "Bản báo cáo suốt đêm của Thẩm Lãng khiến Bá tước sững sờ, ông không ngờ anh xử lý số liệu sổ sách rõ ràng đến vậy."},
+    {"panel": "p005.jpg", "type": "SETUP", "kind": "recap", "narration": "Anh chỉ ra từng sơ hở, như lễ chúc năm mới mua thêm một nghìn bình rượu, uống chưa hết thì lại được trả về."},
+    {"panel": "p006.jpg", "type": "BUILD", "kind": "recap", "narration": "Tiền rượu trả về chỉ nhận lại bảy phần, tính cả vào chi ra, phủ Bá tước đã tổn thất mấy chục đồng vàng."},
+    {"panel": "p008.jpg", "type": "REACTION", "kind": "recap", "narration": "Bá tước nổi giận, hay lắm Hứa Văn Chiêu, dám ăn cây táo rào cây sung, lại tham ô nhiều tiền như vậy!"},
+    {"panel": "p011.jpg", "type": "REVEAL", "kind": "recap", "narration": "Lâm phu tử xem xong liền thở dài, Thẩm công tử đúng là kỳ tài thiên hạ, cách tính sổ này già đây mới thấy lần đầu."},
+    {"panel": "p013.jpg", "type": "BUILD", "kind": "recap", "narration": "Bá tước nhìn thẳng, Hứa Văn Chiêu, ông còn gì để nói?"},
+    {"panel": "p014.jpg", "type": "REACTION", "kind": "recap", "narration": "Ông ta nghiến răng tự nhủ, tuyệt đối không được nhận tội, nhận tội là tiêu ngay!"},
+    {"panel": "p017.jpg", "type": "BUILD", "kind": "recap", "narration": "Ông gào lên với đám người làm đứng xem, mọi người nhìn xem, cô gia muốn loại trừ người không phải của mình, kẻ ra tay với những người lâu năm như chúng ta!"},
+    {"panel": "p018.jpg", "type": "REACTION", "kind": "recap", "narration": "Ta không phục, lấy thứ hắn viết bậy rồi đổ tội cho ta, có chết ta cũng không phục!"},
+    {"panel": "p021.jpg", "type": "BUILD", "kind": "recap", "narration": "Thẩm Lãng chẳng buồn tranh cãi, lặng lẽ kéo ghế ngồi xuống."},
+    {"panel": "p022.jpg", "type": "REVEAL", "kind": "recap", "narration": "Anh cười, ông còn dám cãi sao, ta biết bằng chứng quyết định nằm ở đâu thật đấy."},
+    {"panel": "p024.jpg", "type": "REVEAL", "kind": "recap", "narration": "Kho tiền bí mật của ông đã bị ta phát hiện ra rồi."},
+    {"panel": "p025.jpg", "type": "REACTION", "kind": "recap", "narration": "Ông ta cười lớn, sao ngay cả chuyện này mà ngươi cũng biết chứ, ngươi nghĩ ngươi là thần tiên sao!"},
+    {"panel": "p026.jpg", "type": "BUILD", "kind": "recap", "narration": "Anh bình thản đáp, ta thì không để bụng mà làm thần tiên thử một lần đầu."},
+    {"panel": "p027.jpg", "type": "BUILD", "kind": "recap", "narration": "Rồi anh mời nhạc phụ cùng đi xem kho tiền bí mật của thầy Hứa."},
+    {"panel": "p028.jpg", "type": "BUILD", "kind": "recap", "narration": "Anh dặn Kim Trung dẫn theo một trăm kỵ binh, mọi thứ nghe theo dặn dò của cô gia."},
+    {"panel": "p030.jpg", "type": "BUILD", "kind": "recap", "narration": "Nửa canh giờ sau, họ tới một hẻm núi hoang vu."},
+    {"panel": "p033.jpg", "type": "REACTION", "kind": "recap", "narration": "Hứa Văn Chiêu mặt xanh như tàu lá, lẩm bẩm, sao có thể, sao hắn lại biết được."},
+    {"panel": "p037.jpg", "type": "REVEAL", "kind": "recap", "narration": "Bỗng một mũi tên độc xé gió lao tới, Kim Trung rút kiếm gạt phăng, hét lên, có mai phục!"},
+    {"panel": "p040.jpg", "type": "REVEAL", "kind": "recap", "narration": "Binh sĩ quét sạch xung quanh và bắt được kẻ bắn tên, đó chính là Hứa Điền, con trai của Hứa Văn Chiêu."},
+    {"panel": "p048.jpg", "type": "ENDING", "kind": "recap", "narration": "Mắt thần của Thẩm Lãng quét xuyên mặt đất, anh mỉm cười, tìm thấy rồi, dưới đất có cánh cửa ngầm, đào lên đi!"}
+  ]
+}

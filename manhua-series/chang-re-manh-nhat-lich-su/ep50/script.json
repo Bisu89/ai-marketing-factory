@@ -1,0 +1,32 @@
+{
+  "title": "Bị bắt ngay giữa tiệc quan lớn, trùm xã hội đen hoảng loạn ra lệnh giết người diệt khẩu!?",
+  "chapters": "49",
+  "source_dir": "manhua-recap/crmn_ep50",
+  "description": "Lời khai đảo ngược của Tống thị khiến Điền Hoành bị trói ngay tại sảnh, Thẩm Lãng đứng dưới trời đêm cười châm chọc, còn hắn thì hoảng hốt tìm cách bịt đầu mối cuối cùng. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 50.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "thumbnail": {"text": "BỊ TRÓI GIỮA TIỆC, RA LỆNH DIỆT KHẨU!?", "prompt": "Vertical 9:16 anime-style: a scarred gang boss in dark armor tied with thick rope kneeling in a night courtyard, a smiling long-haired young man in white standing over him with arms crossed, grey-haired official in a black cloak watching from a carriage. No text, leave top 25% empty."},
+  "beats": [
+    {"panel": "p003.jpg", "type": "HOOK", "kind": "recap", "narration": "Người của thái thú dìu bà Tống thị đứng dậy, trước mặt các quan lớn, bà cuối cùng cũng có cơ hội nói hết nỗi oan."},
+    {"panel": "p006.jpg", "type": "SETUP", "kind": "recap", "narration": "Bà khóc kể, con trai mình vốn bị thương không nguy hiểm đến tính mạng, vậy mà chỉ sau một đêm đã được báo là chết."},
+    {"panel": "p007.jpg", "type": "BUILD", "kind": "recap", "narration": "Rồi chồng bà quay về bảo phải đổ tội cho Thẩm Lãng, Điền Hoành còn muốn bà khẳng định chắc nịch anh là hung thủ."},
+    {"panel": "p009.jpg", "type": "REACTION", "kind": "recap", "narration": "Điền Hoành quỳ rạp xuống kêu oan, bảo tất cả là âm mưu của Thẩm Lãng, hắn độc ác nham hiểm vô cùng."},
+    {"panel": "p011.jpg", "type": "REVEAL", "kind": "recap", "narration": "Thái thú Trương Xung lạnh lùng ra lệnh cho thành chủ Liễu Vô Nham, bắt người."},
+    {"panel": "p013.jpg", "type": "BUILD", "kind": "recap", "narration": "Điền Hoành và Tống Nghị bị trói gô, lôi ra ngay giữa sảnh tiệc."},
+    {"panel": "p015.jpg", "type": "REACTION", "kind": "recap", "narration": "Bà Tống thị run rẩy than thầm, tiêu rồi, bị đưa về là chết chắc."},
+    {"panel": "p019.jpg", "type": "BUILD", "kind": "recap", "narration": "Phu nhân Bá tước nhẹ nhàng an ủi, cũng là người làm mẹ, ta hiểu nỗi đau của ngươi, mấy hôm tới cứ ở lại phủ cho an toàn."},
+    {"panel": "p021.jpg", "type": "REVEAL", "kind": "recap", "narration": "Thái thú gật đầu đồng ý, Tống thị cứ ở lại phủ Bá tước đi."},
+    {"panel": "p023.jpg", "type": "BUILD", "kind": "recap", "narration": "Rồi ông dặn thành chủ, ngài phải điều tra cho rõ vụ này, cho mọi người một câu trả lời."},
+    {"panel": "p025.jpg", "type": "REACTION", "kind": "recap", "narration": "Sứ giả tổng đốc cũng quay sang khen Bá tước, vị con rể này của ngài đúng là phải khiến người ta nhìn bằng con mắt khác."},
+    {"panel": "p029.jpg", "type": "BUILD", "kind": "recap", "narration": "Giữa sân đêm, Điền Hoành bị trói đứng cạnh Thẩm Lãng, hắn nghiến răng nhìn anh bằng ánh mắt căm hận."},
+    {"panel": "p030.jpg", "type": "REVEAL", "kind": "recap", "narration": "Thẩm Lãng khoanh tay cười, Điền bang chủ, sao lại nhìn ta bằng ánh mắt đó, sợ quá đi hà."},
+    {"panel": "p036.jpg", "type": "REACTION", "kind": "recap", "narration": "Hắn gào lên, trong vòng ba ngày ta sẽ ra khỏi nhà lao, hơn nữa còn chắc chắn không bị tội gì!"},
+    {"panel": "p041.jpg", "type": "BUILD", "kind": "recap", "narration": "Binh sĩ giữ chặt hắn, Thẩm Lãng nhàn nhã cúi xuống thì thầm."},
+    {"panel": "p042.jpg", "type": "REVEAL", "kind": "recap", "narration": "Điền Hoành, ngươi sắp phải chết rồi."},
+    {"panel": "p045.jpg", "type": "BUILD", "kind": "recap", "narration": "Thành chủ bước tới cắt ngang, vụ án chưa kết thúc, đừng nói chắc như thế, mai ta sẽ cho gọi cậu vào phủ thành chủ."},
+    {"panel": "p054.jpg", "type": "BUILD", "kind": "recap", "narration": "Thái thú trầm giọng hỏi Điền Hoành, tối nay ai bảo ngươi xuất hiện?"},
+    {"panel": "p056.jpg", "type": "REACTION", "kind": "recap", "narration": "Hắn quỳ xuống nhận tội, thầm biết mình không nên xuất hiện tối nay, nhưng thật sự không nhịn được."},
+    {"panel": "p063.jpg", "type": "REVEAL", "kind": "recap", "narration": "Thái thú gằn giọng, người ta đi một bước tính trước ba bước, còn các ngươi chỉ lo cái trước mắt, tham lam không chịu bỏ."},
+    {"panel": "p066.jpg", "type": "REVEAL", "kind": "recap", "narration": "Trong xe ngựa, ông ta ra lệnh khẽ, đi giết Điền Thập Tam, chỉ mong các ngươi vẫn còn kịp."},
+    {"panel": "p071.jpg", "type": "ENDING", "kind": "recap", "narration": "Điền Hoành tái mặt, Thập Tam biết hết bí mật của ta, nếu nó khai ra thì tiêu, nhanh cử người đi giết Điền Thập Tam!"}
+  ]
+}

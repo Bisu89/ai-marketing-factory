@@ -1,0 +1,31 @@
+{
+  "title": "Vợ nạn nhân bất ngờ khai ngược trước mặt quan lớn, màn vu oan của Điền Hoành vỡ tại chỗ!?",
+  "chapters": "48",
+  "source_dir": "manhua-recap/crmn_ep49",
+  "description": "Tống Nghị và Điền Hoành dựng màn kêu oan trước đông đủ quan lớn, nhưng người vợ nghe theo lời bóng ma đêm trước đã khai sự thật khiến cả kế hoạch sụp đổ. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 49.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "thumbnail": {"text": "VỢ KHAI NGƯỢC, KẾ HOẠCH VỠ!?", "prompt": "Vertical 9:16 anime-style: a bloodied muscular man kneeling beside a coffin pointing angrily at a woman in torn grey clothes who stares back with a cold defiant face, officials in green and black robes watching shocked in a golden banquet hall. No text, leave top 25% empty."},
+  "beats": [
+    {"panel": "p003.jpg", "type": "HOOK", "kind": "recap", "narration": "Tống Nghị xé áo con trai, phơi ra những vết bầm tím chằng chịt, gào lên cầu xin các quan lớn làm chủ."},
+    {"panel": "p006.jpg", "type": "SETUP", "kind": "recap", "narration": "Ông khai, con trai bị Thẩm Lãng đánh đập tàn nhẫn rồi chết ngay trong đêm hôm đó."},
+    {"panel": "p008.jpg", "type": "BUILD", "kind": "recap", "narration": "Bị hỏi vì sao kéo dài tới giờ mới đến, ông nói sợ hãi, vì Thẩm Lãng cho tiền và đe dọa giết cả nhà."},
+    {"panel": "p013.jpg", "type": "BUILD", "kind": "recap", "narration": "Ông còn khẳng định có nhân chứng, ngay lập tức đám người từ thôn Phong Diệp bị gọi vào sảnh."},
+    {"panel": "p016.jpg", "type": "BUILD", "kind": "recap", "narration": "Họ quỳ xuống khai, chính mắt thấy Thẩm Lãng xông vào nhà Tống Nghị, rồi nghe thấy tiếng đánh nhau và tiếng la thảm."},
+    {"panel": "p019.jpg", "type": "REVEAL", "kind": "recap", "narration": "Thẩm Lãng bình thản thừa nhận mình có vào nhà, nhưng chỉ để đưa tiền, vì Đại Ngốc là bạn của anh."},
+    {"panel": "p020.jpg", "type": "REACTION", "kind": "recap", "narration": "Tống Nghị quát, ngươi nói dối, vợ ta tận mắt thấy ngươi đá chết con ta, nàng cũng có thể làm chứng!"},
+    {"panel": "p022.jpg", "type": "BUILD", "kind": "recap", "narration": "Thành chủ quay sang bà vợ, hỏi, Tống thị, ngươi chắc là mình đã nhìn thấy chứ?"},
+    {"panel": "p023.jpg", "type": "REACTION", "kind": "recap", "narration": "Bà ngẩng lên, đôi mắt đen sì lạnh lẽo, rồi đáp, đúng là tiểu nhân đã nhìn thấy."},
+    {"panel": "p031.jpg", "type": "BUILD", "kind": "recap", "narration": "Thành chủ chốt lại, theo luật nước Việt, giết người thì phải đền mạng."},
+    {"panel": "p033.jpg", "type": "REVEAL", "kind": "recap", "narration": "Điền Hoành cười thầm, Thẩm Lãng, mặc ngươi nhiều mưu kế thế nào, giờ ta có đủ nhân chứng vật chứng ở đây!"},
+    {"panel": "p035.jpg", "type": "BUILD", "kind": "recap", "narration": "Nhưng Thẩm Lãng chỉ ra, con trai bà vốn bị thương không nặng, đưa vào thành chữa là sắp khỏi."},
+    {"panel": "p036.jpg", "type": "REACTION", "kind": "recap", "narration": "Vậy mà sau khi Điền Hoành tới thăm hỏi thì cậu ta lại chết bất đắc kỳ tử, lại còn chết thê thảm."},
+    {"panel": "p041.jpg", "type": "REACTION", "kind": "recap", "narration": "Cả sảnh nghi ngờ, đúng lúc Tống Nghị chợt thấy vợ mình thay đổi khác thường, ông hoảng hốt hỏi, nàng sao thế!"},
+    {"panel": "p050.jpg", "type": "REVEAL", "kind": "recap", "narration": "Bà gào lên, Thẩm Lãng đến nhà chúng ta là để đưa tiền, vì cậu ấy lo Đại Ngốc ở nhà không được ăn no!"},
+    {"panel": "p053.jpg", "type": "BUILD", "kind": "recap", "narration": "Thành chủ nghiêm giọng cảnh cáo, trước nhiều quan lớn thế này, người làm giả chứng cứ sẽ gánh hậu quả rất nghiêm trọng."},
+    {"panel": "p057.jpg", "type": "REVEAL", "kind": "recap", "narration": "Bà kể thật, hôm đó con trai bà lên nhìn trộm người ta tắm, Tống Nghị về phát hiện, giận quá đã đá cậu một cước."},
+    {"panel": "p058.jpg", "type": "REACTION", "kind": "recap", "narration": "Tống Nghị há hốc mồm gào, cái gì, nàng điên rồi sao, nàng điên rồi!"},
+    {"panel": "p061.jpg", "type": "BUILD", "kind": "recap", "narration": "Điền Hoành trừng mắt cảnh cáo, đừng tự tổn hại chính mình, làm chuyện bất lợi cho mình mà lại có lợi cho kẻ thù!"},
+    {"panel": "p062.jpg", "type": "REACTION", "kind": "commentary", "narration": "Tới nước này vẫn còn nói nếu có người đe dọa thì cứ nói ra, đúng là không biết ai mới là người đang bị dồn."},
+    {"panel": "p066.jpg", "type": "ENDING", "kind": "recap", "narration": "Người vợ quỳ rạp xuống xin hai vị quan làm chủ cho dân phụ, kế hoạch mà Điền Hoành dày công dựng nên đang vỡ ngay trước mắt cả thành!"}
+  ]
+}

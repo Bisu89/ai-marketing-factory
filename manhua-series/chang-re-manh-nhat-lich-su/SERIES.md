@@ -102,6 +102,16 @@ lớn hơn xoay quanh phủ Bá tước Huyền Vũ (gia tộc Kim Mộc Lan —
 | 38 | 37 | `manhua-recap/crmn_ep38` | Câu cuối ra hai mươi ba hàng vượt xa con số mười sáu hàng của thầy; thầy xé bài, anh có sẵn bản thứ hai. | ✅ script (Claude viết) |
 | 39 | 38 | `manhua-recap/crmn_ep39` | Thầy Hứa thua cược phải xin lỗi, nhưng đêm đó đem lễ nịnh Trương Tấn và bắt tay Điền Hoành lập kế hạ bệ chàng rể. | ✅ script (Claude viết) |
 | 40 | 39 | `manhua-recap/crmn_ep40` | Thẩm Lãng xông vào phòng cha mẹ vợ xin tra sổ sách nghi thầy Hứa tham ô; hai mươi năm sổ chỉ có một đêm trước khi ông ta về. | ✅ script (Claude viết) |
+| 41 | 40 | `manhua-recap/crmn_ep41` | Hứa Văn Chiêu chạy tới khóc lóc kêu oan trước Bá tước, Thẩm Lãng đặt báo cáo làm suốt đêm bóc trần khoản tham ô gần 30000 vàng qua chi tiêu lương thực, sắt, muối, bao gai. | ✅ script (Claude viết) |
+| 42 | 41 | `manhua-recap/crmn_ep42` | Hứa Văn Chiêu cố chối, bị người trong phủ chứng kiến; Thẩm Lãng dẫn kỵ binh tới hẻm núi hoang, bắt được con trai ông ta bắn tên mai phục, mắt thần phát hiện cửa ngầm dưới đất. | ✅ script (Claude viết) |
+| 43 | 42 | `manhua-recap/crmn_ep43` | Cửa hầm khóa kim loại không chém nổi, anh nhìn ra chìa khóa trong búi tóc thầy Hứa; kho báu tham ô lộ ra (11000 vàng, 52 bức tranh, 5 rương châu báu); anh nhắc Bá tước phải giết kẻ tham ô. | ✅ script (Claude viết) |
+| 44 | 43 | `manhua-recap/crmn_ep44` | Bá tước không thể tự tay giết quan chức; tộc trưởng họ Hứa tới đưa hắn về từ đường xử theo gia quy (tội thông dâm), xử phạt trước mấy trăm người; Thẩm Lãng xin tự do làm phần thưởng nhưng nhạc phụ bỏ chạy. | ✅ script (Claude viết) |
+| 45 | 44 | `manhua-recap/crmn_ep45` | Mộc Lan bắt chàng rể "tập thể lực" khiến anh chảy máu mũi; đêm đến anh lén chuẩn bị thuốc gây ảo giác, trong khi thái thú Trương Xung cho biết mục tiêu thật là phủ Bá tước Huyền Vũ. | ✅ script (Claude viết) |
+| 46 | 45 | `manhua-recap/crmn_ep46` | Anh xoa vai vợ rồi xoa vai mẹ vợ để được gỡ cấm túc, rời phủ cải trang; hóa ma dọa bà mẹ kế Đại Ngốc bằng lửa xanh, ép bà khai ngược lời. | ✅ script (Claude viết) |
+| 47 | 46 | `manhua-recap/crmn_ep47` | Màn giả ma tiếp tục: phốt pho trắng làm lửa ma, kali nitrat trong hộp băng, ba trăm vàng chôn dưới giường; anh đốt váy mượn của vợ; tổng đốc sắp tới phủ Bá tước. | ✅ script (Claude viết) |
+| 48 | 47 | `manhua-recap/crmn_ep48` | Giới thiệu sứ giả tổng đốc Ngôn Vô Kỵ và thái thú Trương Xung; bàn chia đảo Kim Sơn (bẫy: khoáng sản nằm phía bắc); giữa tiệc Điền Hoành cho khiêng quan tài tới đòi mạng Thẩm Lãng. | ✅ script (Claude viết) |
+| 49 | 48 | `manhua-recap/crmn_ep49` | Tống Nghị kêu oan, nhân chứng xác nhận; nhưng bà vợ khai ngược đúng như lời "bóng ma" dặn, nói con trai bị chính chồng đá khi nhìn trộm người khác tắm; màn vu oan vỡ trước quan lớn. | ✅ script (Claude viết) |
+| 50 | 49 | `manhua-recap/crmn_ep50` | Điền Hoành và Tống Nghị bị bắt, Tống thị được giữ lại phủ Bá tước; Thẩm Lãng châm chọc Điền Hoành dưới trời đêm; thái thú ngầm ra lệnh diệt khẩu Điền Thập Tam, Điền Hoành hoảng hốt cử người đi giết trước. | ✅ script (Claude viết) |
 
 ## Nhân vật mới (tập 21–29)
 
@@ -123,6 +133,8 @@ lớn hơn xoay quanh phủ Bá tước Huyền Vũ (gia tộc Kim Mộc Lan —
 | Short tóm tắt 3 (9:16) | 14 beat, tổng hợp tình tiết hay nhất tập 21–30 | `short_summary3_script.json` | ✅ project 156 / job_214, Final QA PASS 100 |
 | Long 04 (16:9) | Tóm tắt tập 31–40, 144 beat, 10 phần | `long04_script.json` | ✅ project 157 / job_217, Final QA PASS 100 |
 | Short tóm tắt 4 (9:16) | 14 beat, tổng hợp tình tiết hay nhất tập 31–40 | `short_summary4_script.json` | ✅ project 158 / job_216, Final QA PASS 100 |
+| Long 05 (16:9) | Tóm tắt tập 41–50, 168 beat, 10 phần | `long05_script.json` | ⏳ project 161 / run 210 (đang render) |
+| Short tóm tắt 5 (9:16) | 11 beat, tổng hợp tình tiết hay nhất tập 41–50 | `short_summary5_script.json` | ⏳ project 162 / run 211 (đang render) |
 
 Mục lục thời gian Long 01: 0:00 Tập 1 / 0:29 Tập 2 / 1:15 Tập 3 / 1:58 Tập 4 / 2:40 Tập 5 / 3:24 Tập 6 / 4:14 Tập 7 / 4:57 Tập 8 / 5:42 Tập 9 / 6:37 Tập 10.
 Mục lục thời gian Long 02: 0:00 Tập 11 / 0:47 Tập 12 / 1:29 Tập 13 / 2:09 Tập 14 / 2:54 Tập 15 / 3:37 Tập 16 / 4:19 Tập 17 / 5:06 Tập 18 / 5:47 Tập 19 / 6:34 Tập 20.
@@ -148,3 +160,5 @@ Build đa thư mục panel bằng script scratchpad gọi API (recap.py build ch
 - 2026-10-02: viết `ep21..ep30/script.json` (10 tập), dựng Long 03 + Short tóm tắt 3 (tổng hợp tình tiết hay nhất tập 21–30). Ảnh đọc cũ không còn trong bộ nhớ nên phải đọc lại sheets của tập 21–27 trước khi ghép khung.
 
 - 2026-10-02: viết `ep31..ep40/script.json` (10 tập), dựng Long 04 + Short tóm tắt 4. Ảnh đọc cũ không giữ lại được nên đọc sheets từng tập ngay trước khi ghép khung.
+
+- 2026-10-05: viết `ep41..ep50/script.json` (10 tập), dựng Long 05 + Short tóm tắt 5. Mạch lớn: bóc trần quản gia tham ô → giả ma ép mẹ kế khai ngược → màn vu oan giết người giữa tiệc quan lớn bị lật; thái thú Trương Xung ngầm nhắm vào phủ Bá tước và ra lệnh diệt khẩu Điền Thập Tam.

@@ -1,0 +1,93 @@
+{
+  "title": "Giả ma dọa mẹ kế, chàng rể lật ngược màn vu oan giết người giữa tiệc quan lớn!?",
+  "chapters": "40-49",
+  "description": "Những tình tiết hay nhất tập 41-50 Chàng Rể Mạnh Nhất Lịch Sử. Xem bản đầy đủ ở video dài trên kênh.",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "thumbnail": {
+    "text": "GIẢ MA LẬT NGƯỢC VU OAN!?",
+    "prompt": "Vertical 9:16 anime-style: a pale long-haired female ghost in blue and white robes glowing with green fire hovering over a terrified woman, a coffin and bound gang boss in the background, dark eerie palette. No text, leave top 25% empty."
+  },
+  "beats": [
+    {
+      "dir": "manhua-recap/crmn_ep41",
+      "panel": "p038.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Thầy quản gia khóc lóc kêu oan trước Bá tước, chàng rể bình thản đặt bản báo cáo suốt đêm xuống bàn."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep41",
+      "panel": "p042.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Hai mươi năm tham ô gần ba mươi nghìn vàng bị bóc trần chỉ bằng vài con số."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep43",
+      "panel": "p005.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Cửa hầm bí mật khóa kín, mắt thần nhìn ra chìa khóa nằm ngay trong búi tóc của ông ta."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep44",
+      "panel": "p032.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Cuối cùng tộc trưởng họ Hứa đưa kẻ tham ô về từ đường xử phạt trước mặt mấy trăm người."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep45",
+      "panel": "p016.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Nữ tướng bắt chàng rể chơi trò rèn luyện thể lực, máu mũi anh chảy ròng ròng."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep46",
+      "panel": "p023.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh xoa vai nịnh vợ rồi nịnh luôn mẹ vợ để được gỡ lệnh cấm túc."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep47",
+      "panel": "p005.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Rồi anh cải trang bóng ma, dùng ngọn lửa xanh dọa bà mẹ kế phải khai ngược lời."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep48",
+      "panel": "p067.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Điền Hoành cho khiêng cả quan tài đến tận tiệc phủ Bá tước, đòi mạng chàng rể."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep49",
+      "panel": "p050.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Nhưng người vợ nạn nhân bất ngờ khai ngược, cả màn vu oan vỡ ngay trước mặt quan lớn."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep50",
+      "panel": "p013.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Điền Hoành bị trói gô ngay giữa sảnh tiệc, hoảng loạn nghĩ cách bịt đầu mối cuối cùng."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep50",
+      "panel": "p071.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Hắn gào lên ra lệnh cho người đi giết Điền Thập Tam, liệu còn kịp không!?"
+    }
+  ]
+}
