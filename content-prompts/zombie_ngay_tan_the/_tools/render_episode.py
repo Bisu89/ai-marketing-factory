@@ -29,16 +29,16 @@ D = HERE.parent
 # Cấu hình theo ngôn ngữ. wps = từ/giây thực đo được, chỉ để ước lượng Beat.duration (Voice stage ghi đè bằng thời lượng thật).
 # Quy tắc series: KO = giọng chính nữ + giới thiệu/kết nam; VI = giọng chính nam + giới thiệu/kết nữ.
 LANGS = {
-    'ko': {'template': 'ngay_tan_ko', 'bookend_voice': 'ko-KR-InJoonNeural', 'wps': 1.8, 'label': 'KO', 'short_speed': 1.2},
-    'vi': {'template': 'ngay_tan', 'bookend_voice': 'vi-VN-HoaiMyNeural', 'wps': 3.6, 'label': 'VI', 'short_speed': 1.4},
+    'ko': {'template': 'ngay_tan_ko', 'bookend_voice': 'ko-KR-InJoonNeural', 'wps': 1.8, 'label': 'KO', 'long_speed': 1.0, 'short_speed': 1.2},
+    'vi': {'template': 'ngay_tan', 'bookend_voice': 'vi-VN-HoaiMyNeural', 'wps': 3.6, 'label': 'VI', 'long_speed': 1.0, 'short_speed': 1.4},
 }
 
 
-def call(method, path, body=None):
+def call(method, path, body=None, timeout=120):
     data = None if body is None else json.dumps(body).encode('utf-8')
     req = urllib.request.Request(API + path, data=data, method=method, headers={'Content-Type': 'application/json'})
     try:
-        with urllib.request.urlopen(req, timeout=120) as r:
+        with urllib.request.urlopen(req, timeout=timeout) as r:
             raw = r.read()
             return json.loads(raw) if raw else None
     except urllib.error.HTTPError as e:
@@ -167,6 +167,38 @@ def allocate(ep, shots, lang='ko', kind='long'):
     return out, ' '.join(' '.join(s) for s in paras.values())
 
 
+def narration_meta_path(pid):
+    return HERE.parents[2] / 'backend' / 'data' / 'library' / '_voice' / f'project_{pid}' / 'narration.meta.json'
+
+
+def voice_timing_gap(pid):
+    """Khoảng trống lớn nhất (giây) giữa các mốc thời gian từ trong narration.meta.json, hoặc None nếu không đọc được.
+    Giọng NamMinh hay lỗi NoAudioReceived; khi một đoạn phải đọc không có word-boundary thì đoạn đó không có mốc thời gian
+    (khoảng trống lớn) -> phụ đề/ảnh bị lệch so với tiếng. Phát hiện ở đây để đọc lại giọng trước khi dựng."""
+    path = narration_meta_path(pid)
+    if not path.exists():
+        return None
+    meta = json.loads(path.read_text(encoding='utf-8'))
+    w = meta.get('word_timestamps') or []
+    if len(w) < 2:
+        return meta.get('duration_sec') or 0.0
+    gap = max(w[i + 1]['start'] - w[i]['end'] for i in range(len(w) - 1))
+    tail = (meta.get('duration_sec') or w[-1]['end']) - w[-1]['end']
+    return max(gap, tail)
+
+
+def ensure_clean_voice(pid, max_tries=6, max_gap=3.0):
+    for attempt in range(1, max_tries + 1):
+        t0 = time.time()
+        call('POST', f'/projects/{pid}/regenerate-voice', timeout=3600)
+        gap = voice_timing_gap(pid)
+        print(f'Giọng lần {attempt}: {time.time() - t0:.0f}s, khoảng trống lớn nhất giữa các từ = '
+              f'{"?" if gap is None else f"{gap:.1f}s"}', flush=True)
+        if gap is None or gap <= max_gap:
+            return
+    print('CẢNH BÁO: sau nhiều lần vẫn còn đoạn thiếu mốc thời gian từ; video có thể lệch phụ đề ở đoạn đó.', flush=True)
+
+
 def main(ep, lang='ko', force=False, kind='long'):
     cfg = LANGS[lang]
     short = kind == 'short'
@@ -220,9 +252,9 @@ def main(ep, lang='ko', force=False, kind='long'):
     pid = proj['id']
     print('Project', pid, name, '| beats:', len(beats))
     draft = call('GET', f'/projects/{pid}')
+    draft['config']['voice']['speed'] = cfg['short_speed'] if short else cfg['long_speed']  # chỉ đặt trong project, không đổi template
     if short:  # video dọc 9:16, không thêm thẻ outro (lời kết đã nằm trong beat cuối)
-        draft['config']['render']['profile'] = 'SOCIAL_VERTICAL'
-        draft['config']['voice']['speed'] = cfg['short_speed']  # short đọc nhanh hơn video dài (KO 1.2, VI 1.4); chỉ đặt trong project, không đổi template
+        draft['config']['render']['profile'] = 'SOCIAL_VERTICAL'  # short đọc nhanh hơn video dài (KO 1.2, VI 1.4); chỉ đặt trong project, không đổi template
         draft['config']['outro']['enabled'] = False
     plan = {
         'video_id': draft.get('video_id'), 'script_text': script_body, 'beats': beats, 'project_name': name,
@@ -230,6 +262,7 @@ def main(ep, lang='ko', force=False, kind='long'):
         'script_locked': True,
     }
     call('PUT', f'/projects/{pid}/beat-plan', plan)
+    ensure_clean_voice(pid)  # đọc giọng trước, kiểm tra mốc thời gian; Factory sẽ tái dùng giọng đã sạch (cùng fingerprint)
     run = call('POST', f'/projects/{pid}/factory-run')
     print('Factory run', run['id'], run['status'])
     last = None
