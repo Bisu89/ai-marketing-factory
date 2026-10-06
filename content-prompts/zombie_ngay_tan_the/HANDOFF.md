@@ -9,7 +9,7 @@ Series zombie sinh tồn gốc, **ưu tiên bản tiếng Hàn (KO)**, bản Vi�
 | Lời đọc VI | `scripts/ep1_audiobook_v3.txt` (đã có `## GIỚI THIỆU/TRUYỆN/KẾT`) | `scripts/ep2_audiobook_v1.txt` (nháp, chờ duyệt) |
 | Lời đọc KO | `scripts/ep1_ko.md` (dịch từ v3, chờ người đọc Hàn soát) | **chưa dịch** |
 | Giới thiệu/kết KO | trong `scripts/ko_bookends_check.txt` (E1_*) | trong cùng file (E2_*) |
-| CSV ảnh | `ngay_tan_ep1_scenes_v3.csv` (100 ảnh) + `ngay_tan_ep1_shotlist.md` | **chưa làm** |
+| CSV ảnh | `ngay_tan_ep1_scenes_v3.csv` (100 ảnh) + `ngay_tan_ep1_shotlist.md`; **short**: 14 ảnh dọc (xem mục Video SHORT) | **chưa làm** (long + short) |
 | Ảnh đã tạo | bảng nhân vật tổng hợp (7 người) của chủ series; bảng zombie | — |
 
 Chủ series chưa báo kết quả tạo thử ảnh (đặc biệt chữ hiệu ứng Hangul và ảnh nhiều nhân vật).
@@ -32,6 +32,9 @@ Chủ series chưa báo kết quả tạo thử ảnh (đặc biệt chữ hiệ
 6. Thử giọng bằng menu "Thử giọng đọc" (dán file có các mục `##`), rồi mới dựng.
 
 Tập 2 cần chú ý ảnh: Jiwoo, Yerin, Areum xuất hiện lần đầu (đã có trong bảng tổng hợp); Kẻ Lang Thang + Thể Cuồng (Runner); Areum giương cung cuối tập.
+
+## Video SHORT (mỗi tập có 1 video short 9:16)
+Tập 1 đã có: lời đọc `scripts/ep1_short_vi.txt` + `scripts/ep1_short_ko.md` (từ `scripts/ko_ep1_short_check.txt`, KO đo thật ~66s), CSV 14 ảnh dọc `ngay_tan_ep1_short_scenes.csv` (tag `short, 9x16, rieng_short_tap1`), shot list `ngay_tan_ep1_short_shotlist.md`, công cụ `_tools/build_ep1_short.py` (copy cho tập khác). Short = hook (giọng giới thiệu) + tóm các nhịp then chốt của tập (ngôi "tôi") + kết kêu gọi xem tập đầy đủ và tập sau; ảnh dọc dựng lại bố cục (chừa chỗ phụ đề). Tập 2 cũng cần 1 short.
 
 ## Quy tắc chủ series đã nhắc (đừng vi phạm)
 - Beat do chủ series viết (Tập 1, Tập 2): chỉ làm mượt câu chữ; ý mới đưa vào mục "đề xuất" riêng, không tự nhét vào cốt truyện.
