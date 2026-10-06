@@ -1,0 +1,31 @@
+{
+  "title": "Cưỡi chung ngựa phi đêm cứu kẻ thù, nhưng sát thủ đã tới trước một bước!?",
+  "chapters": "50",
+  "source_dir": "manhua-recap/crmn_ep51",
+  "description": "Thẩm Lãng cùng Mộc Lan phi ngựa cứu Điền Thập Tam khỏi lệnh diệt khẩu, trong khi tại nhà hắn, lòng trung thành với nghĩa phụ khiến hắn chọn đứng một mình đối mặt toán sát thủ. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 51.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "thumbnail": {"text": "CỨU KẺ THÙ, NHƯNG KỊP KHÔNG!?", "prompt": "Vertical 9:16 anime-style: a long-haired young man clinging to the back of a galloping white horse at night beside a female general in white and black riding gear, a dark mansion with glowing windows ahead, speed lines. No text, leave top 25% empty."},
+  "beats": [
+    {"panel": "p002.jpg", "type": "HOOK", "kind": "recap", "narration": "Không kịp giải thích, Thẩm Lãng kéo vợ lên ngựa, đêm nay phải cứu bằng được Điền Thập Tam!"},
+    {"panel": "p004.jpg", "type": "SETUP", "kind": "recap", "narration": "Anh hỏi, nếu đối đầu ba cao thủ như thành chủ, Trương Tấn, Điền Hoành, nàng có đánh lại không?"},
+    {"panel": "p005.jpg", "type": "BUILD", "kind": "recap", "narration": "Mộc Lan đáp gọn, không thành vấn đề, rồi lập tức dẫn cao thủ đi theo anh."},
+    {"panel": "p011.jpg", "type": "BUILD", "kind": "recap", "narration": "Anh thú nhận mình không biết cưỡi ngựa, đành xin cưỡi chung một con với nàng."},
+    {"panel": "p015.jpg", "type": "REACTION", "kind": "recap", "narration": "Ngựa phóng như bay, anh bám chặt cổ ngựa mà hồn vía lên mây."},
+    {"panel": "p018.jpg", "type": "BUILD", "kind": "recap", "narration": "Kim Trình thắc mắc, sao lúc trước không đi cứu Thập Tam, giờ mới phải vội vã thế này?"},
+    {"panel": "p020.jpg", "type": "REVEAL", "kind": "recap", "narration": "Anh giải thích, nếu kẻ địch không ra tay giết Thập Tam thì cứu cũng vô nghĩa, phải để cả bên kia lộ mặt trước."},
+    {"panel": "p022.jpg", "type": "BUILD", "kind": "recap", "narration": "Cùng lúc đó tại nhà Thập Tam, đã ba ngày ba đêm hắn nằm đó mà chưa từng chợp mắt."},
+    {"panel": "p025.jpg", "type": "BUILD", "kind": "recap", "narration": "Năm xưa, chính Điền Hoành đã cứu hắn khi đói rách, nên hắn xem ông là cha, là thần tượng, là chủ nhân."},
+    {"panel": "p027.jpg", "type": "REVEAL", "kind": "recap", "narration": "Vậy mà chỉ vì lợi ích sòng bạc, ông đã đánh gãy chân hắn, thần tượng trong lòng hắn cũng vỡ vụn."},
+    {"panel": "p029.jpg", "type": "BUILD", "kind": "recap", "narration": "Nhưng Điền Hoành sau đó vẫn đích thân tới nhà nối xương, đưa cho cha mẹ hắn một trăm vàng."},
+    {"panel": "p034.jpg", "type": "BUILD", "kind": "recap", "narration": "Trái lại Thẩm Lãng không hỏi han, không chữa trị, không cho tiền, khiến lòng hắn thêm phần ấm áp với nghĩa phụ."},
+    {"panel": "p035.jpg", "type": "REACTION", "kind": "recap", "narration": "Hắn tự nhủ, dù nghĩa phụ đánh gãy chân ta cũng là do tình thế ép buộc, ta tuyệt đối không phản bội ông!"},
+    {"panel": "p041.jpg", "type": "REVEAL", "kind": "recap", "narration": "Đúng lúc đó, một toán sát thủ bịt mặt bước vào, nhận ra ngay hai người là đại ca, thất ca của hắn."},
+    {"panel": "p046.jpg", "type": "BUILD", "kind": "recap", "narration": "Hắn hỏi, nghĩa phụ sai hai người đến giết ta đúng không, rồi cắn răng van xin tha cho cha mẹ vì họ không biết gì."},
+    {"panel": "p050.jpg", "type": "REACTION", "kind": "recap", "narration": "Tên sát thủ chỉ đáp lạnh lùng, xin lỗi, phải diệt cỏ tận gốc."},
+    {"panel": "p053.jpg", "type": "BUILD", "kind": "recap", "narration": "Hắn gào lên tại sao, rồi phóng người tấn công dù chân còn đang gãy, nhưng vẫn bị đánh văng xuống đất."},
+    {"panel": "p057.jpg", "type": "REACTION", "kind": "recap", "narration": "Cha mẹ hắn bị lôi ra quỳ xuống, van xin giết họ thôi, hãy tha cho chồng và con trai bà."},
+    {"panel": "p060.jpg", "type": "REACTION", "kind": "commentary", "narration": "Hắn tưởng mình trọng nghĩa khí, cuối cùng chỉ là kẻ ngốc bị chính người mình tin tưởng bán đứng."},
+    {"panel": "p073.jpg", "type": "BUILD", "kind": "recap", "narration": "Hắn vùng lên liều mạng, nhưng chỉ kịp thấy lưỡi kiếm kề cổ mẹ mình, và thầm hối hận vì đã không chịu cầu cứu Thẩm Lãng."},
+    {"panel": "p078.jpg", "type": "ENDING", "kind": "recap", "narration": "Lưỡi kiếm rạch xuống ngay trước mắt hắn, mà người cứu hắn thì vẫn còn đang trên đường phi tới!"}
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "title": "Cùng Thế tử viết tiểu thuyết đăng tranh minh họa, bị cha vợ bắt quả tang nhưng lại được khen hay!?",
+  "chapters": "58",
+  "source_dir": "manhua-recap/crmn_ep59",
+  "description": "Thẩm Lãng vẽ minh họa còn Thế tử chép chữ, cuốn Phong Nguyệt Vô Biên hoàn thành chỉ trong nửa tháng, nhưng Bá tước bất ngờ xông vào, đánh Thẩm Lãng một trận rồi lại khen sách hay hết lời. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 59.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "thumbnail": {"text": "BỊ ĐÁNH RỒI MỚI ĐƯỢC KHEN!?", "prompt": "Vertical 9:16 anime-style: a stern long-haired nobleman holding a thick manuscript with a surprisingly proud smile, a bruised long-haired young man in white rubbing his sore palm and sulking beside him, warm study room light. No text, leave top 25% empty."},
+  "beats": [
+    {"panel": "p002.jpg", "type": "HOOK", "kind": "recap", "narration": "Thẩm Lãng đích thân ra trận vẽ tranh minh họa, còn Thế tử thì nghe và chép, hai người hợp sức làm nên một cuốn sách."},
+    {"panel": "p003.jpg", "type": "SETUP", "kind": "recap", "narration": "Anh dùng kỹ thuật vẽ phương Tây nên người trong tranh trông cực kỳ chân thực, với đàn ông thời đại này thì đúng là bùng nổ."},
+    {"panel": "p004.jpg", "type": "REACTION", "kind": "recap", "narration": "Thế tử xem mà máu mũi chảy ròng ròng, còn bảo chính nhờ sức mê người của tỷ phu mà đệ mới hiểu thấu cơ thể phụ nữ."},
+    {"panel": "p006.jpg", "type": "BUILD", "kind": "recap", "narration": "Cậu ta còn thắc mắc, sao những người phụ nữ trong tranh đều quen quen, trông rất giống Từ Thiên Thiên, anh chỉ cười, trùng hợp thôi."},
+    {"panel": "p008.jpg", "type": "REVEAL", "kind": "recap", "narration": "Cuối cùng, trước ngày Từ Thiên Thiên đính hôn còn hai mươi lăm ngày, họ đã hoàn thành cả sáng tác lẫn tranh vẽ."},
+    {"panel": "p009.jpg", "type": "BUILD", "kind": "recap", "narration": "Quyển sách lấy tên là Phong Nguyệt Vô Biên, hai người bàn nhau chọn bút danh, anh cười bảo, Lãng Lãng Tiếu Tiếu Sinh."},
+    {"panel": "p011.jpg", "type": "BUILD", "kind": "recap", "narration": "Thế tử hào hứng, ta thấy quyển sách sẽ nổi, nửa tháng tới phải in thật nhiều rồi tung ra thị trường."},
+    {"panel": "p016.jpg", "type": "BUILD", "kind": "recap", "narration": "Thế tử xin mang bản thảo về đọc kỹ tối nay, anh đồng ý nhưng dặn, đừng đọc quá khuya hại sức khỏe."},
+    {"panel": "p020.jpg", "type": "REACTION", "kind": "recap", "narration": "Anh thầm cười, sau này Kim Mộc Thông đệ cũng là một đại văn hào rồi."},
+    {"panel": "p023.jpg", "type": "REVEAL", "kind": "recap", "narration": "Đêm khuya, Thế tử mặt mày bầm tím lao vào báo, tỷ phu chạy mau, cha ta sắp đánh tới rồi!"},
+    {"panel": "p025.jpg", "type": "REACTION", "kind": "recap", "narration": "Cậu ta thú nhận, vì mải đọc nhập tâm nên không phát hiện cha vào, thế là ông đánh cậu suýt chết rồi cầm cả bản thảo đi."},
+    {"panel": "p027.jpg", "type": "REACTION", "kind": "recap", "narration": "Thế tử bỏ chạy, còn anh ngồi một mình lẩm bẩm, làm sao đây, nhạc phụ đại nhân nhắc nhở như thế mà con trai viết sách người lớn."},
+    {"panel": "p031.jpg", "type": "BUILD", "kind": "recap", "narration": "Một tiếng sau, anh vẫn chưa nghĩ ra cách, hai tiếng sau thì chui vào chăn run rẩy chờ nhạc phụ đến."},
+    {"panel": "p036.jpg", "type": "REVEAL", "kind": "recap", "narration": "Ba tiếng sau, Bá tước đến, mặt mày u ám, đi thẳng tới đập bản thảo xuống bàn, hỏi, cái này do con viết sao?"},
+    {"panel": "p040.jpg", "type": "BUILD", "kind": "recap", "narration": "Anh vâng một tiếng, ông rút cây thước đánh vào lòng bàn tay anh liền ba cái, đau điếng."},
+    {"panel": "p043.jpg", "type": "REACTION", "kind": "recap", "narration": "Đau rồi anh mới nhận ra, sao ông không đánh nữa, thì ông nói, sách viết hay lắm, không, phải nói là rất rất hay!"},
+    {"panel": "p046.jpg", "type": "REVEAL", "kind": "recap", "narration": "Ông nhận xét, quyển sách có trình độ chữ nghĩa cao, đưa ra lập luận sâu sắc về sự trần trụi của tính người và bản chất xã hội, đúng là kiệt tác hiếm có."},
+    {"panel": "p052.jpg", "type": "REACTION", "kind": "commentary", "narration": "Vừa đánh con rể vừa khen sách hay, may mà ông không xé bỏ, cái gu văn học của nhạc phụ này đúng là rộng mở."},
+    {"panel": "p054.jpg", "type": "BUILD", "kind": "recap", "narration": "Nhưng ông vẫn yêu cầu, một kiệt tác thế này sao con lại nhét mấy thứ linh tinh, mấy câu chuyện nát nhà họ Từ vào, sửa hết lại cho ta đi."},
+    {"panel": "p057.jpg", "type": "REVEAL", "kind": "recap", "narration": "Anh thẳng thắn đáp, con viết quyển này hoàn toàn để trả thù Từ Quang Doãn và Từ Thiên Thiên, và chiêu này có hai mục đích."},
+    {"panel": "p059.jpg", "type": "ENDING", "kind": "recap", "narration": "Cả hai ngồi bàn bạc, đối thủ trong cuộc chiến đảo Kim Sơn đã đến lúc thò đầu ra, và cuốn sách này sắp trở thành vũ khí của anh!"}
+  ]
+}

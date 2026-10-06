@@ -1,0 +1,32 @@
+{
+  "title": "Người chết ở phiên xử hóa ra là em song sinh, trùm xã hội đen tự hủy mặt rồi mò đến nhà chàng rể giữa đêm!?",
+  "chapters": "54",
+  "source_dir": "manhua-recap/crmn_ep55",
+  "description": "Bí mật cái chết của Điền Hoành được vén màn: kẻ đâm đầu vào cột đá chỉ là em trai song sinh, còn hắn thì dùng mặt nạ tẩm axit hủy dung rồi lẻn tới nhà Thẩm Lãng trong đêm. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 55.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "thumbnail": {"text": "NGƯỜI CHẾT LÀ EM SONG SINH!?", "prompt": "Vertical 9:16 anime-style: two identical shirtless scarred muscular men standing face to face in a candle-lit underground chamber, one of them holding a dripping brown mask, dim golden light, ominous mood. No text, leave top 25% empty."},
+  "beats": [
+    {"panel": "p003.jpg", "type": "HOOK", "kind": "recap", "narration": "Trong một mật thất ở thành Huyền Vũ, Điền Hoành cùng thành chủ và nhà họ Từ ngồi bàn bạc, và bên cạnh là một kẻ giống hắn như đúc."},
+    {"panel": "p004.jpg", "type": "SETUP", "kind": "recap", "narration": "Người phụ nữ họ Từ đưa chiếc mặt nạ tẩm phèn sắt, chỉ cần đeo lên là khuôn mặt bị hủy hoàn toàn."},
+    {"panel": "p008.jpg", "type": "BUILD", "kind": "recap", "narration": "Thì ra kẻ đập đầu vào cột đá chết giữa phiên xử chỉ là em trai, được anh dạy từng câu từng chữ."},
+    {"panel": "p011.jpg", "type": "BUILD", "kind": "recap", "narration": "Một ngày trước, Điền Hoành đi xuống căn hầm bí mật, mở cánh cửa chạm khắc dẫn tới nơi người em đang ẩn náu."},
+    {"panel": "p014.jpg", "type": "BUILD", "kind": "recap", "narration": "Người em cười tít mắt, đệ còn chưa đếm tới ba trăm nghìn mà huynh đã đến thăm rồi."},
+    {"panel": "p016.jpg", "type": "BUILD", "kind": "recap", "narration": "Điền Hoành mang theo bánh bao nóng và rượu, hai anh em ngồi ăn như hồi còn nhỏ."},
+    {"panel": "p020.jpg", "type": "REVEAL", "kind": "recap", "narration": "Người em nhắc lại, ngày xưa vì báu vật mà anh giết sạch huynh đệ tiêu cục, còn ép em giết cùng, giờ em phải trốn dưới hầm mãi."},
+    {"panel": "p027.jpg", "type": "BUILD", "kind": "recap", "narration": "Hai anh em so tài võ công, em đấm một phát vỡ cả bức tường, anh gật đầu khen tuyệt."},
+    {"panel": "p029.jpg", "type": "REVEAL", "kind": "recap", "narration": "Họ cởi áo đứng cạnh nhau, trên ngực cả hai đều có vết rạch chéo giống hệt."},
+    {"panel": "p033.jpg", "type": "BUILD", "kind": "recap", "narration": "Em bắt chước giọng anh rồi hỏi, anh thấy em giống không, Điền Hoành đáp, giống, còn giống hơn cả ta nữa!"},
+    {"panel": "p038.jpg", "type": "REVEAL", "kind": "recap", "narration": "Rồi chính người em đó đã đứng giữa phiên xử, gào lên câu nói anh dạy và đâm đầu vào cột, khiến cả thành tưởng Điền Hoành đã chết."},
+    {"panel": "p040.jpg", "type": "REACTION", "kind": "recap", "narration": "Điền Hoành cầm mặt nạ nghiến răng, Thẩm Lãng, ngươi hại chết em ta, ta không báo thù thì thề không làm người!"},
+    {"panel": "p041.jpg", "type": "REVEAL", "kind": "recap", "narration": "Hắn úp mặt nạ lên mặt, khói trắng bốc lên, nước phèn sắt ăn mòn từng lớp da."},
+    {"panel": "p042.jpg", "type": "REACTION", "kind": "commentary", "narration": "Mặt bị axit ăn mà không rên một tiếng, kẻ này đúng là còn đáng sợ hơn cả cái tên của hắn."},
+    {"panel": "p043.jpg", "type": "BUILD", "kind": "recap", "narration": "Người phụ nữ họ Từ nói, từ nay Điền Hoành biến mất hoàn toàn, nhiều chuyện trước đây không tiện làm, ông giờ làm được rồi."},
+    {"panel": "p048.jpg", "type": "REVEAL", "kind": "recap", "narration": "Hắn đáp, Thẩm Lãng hại ta mất em, ta cũng phải cho hắn nếm mùi mất đi người thân."},
+    {"panel": "p050.jpg", "type": "BUILD", "kind": "recap", "narration": "Thành chủ bày sẵn lý do, Tống Nghị vu oan Thẩm Lãng, bị đày ra khu mỏ rồi trốn về giết cả nhà hắn, nghe rất hợp lý."},
+    {"panel": "p051.jpg", "type": "REACTION", "kind": "recap", "narration": "Điền Hoành quay lưng đi, đại nhân đợi đó, ta sẽ giết sạch cả nhà Thẩm Lãng, dùng máu chúng nấu rượu dâng ngài."},
+    {"panel": "p052.jpg", "type": "BUILD", "kind": "recap", "narration": "Không lâu sau, trong đêm tối ở thôn Phong Diệp, một bóng đen xách đao tiến về căn nhà của Thẩm Lãng."},
+    {"panel": "p054.jpg", "type": "BUILD", "kind": "recap", "narration": "Hắn nghe được hơi thở của ba người bên trong, trong đó có một người thở không bình thường, chắc chắn là cha Thẩm Lãng."},
+    {"panel": "p056.jpg", "type": "REVEAL", "kind": "recap", "narration": "Lưỡi đao luồn qua khe cửa, chém đứt then cài trong im lặng."},
+    {"panel": "p058.jpg", "type": "ENDING", "kind": "recap", "narration": "Hắn lau nước mắt rồi nghiến răng, Thẩm Lãng, ta phải khiến ngươi hối hận cả đời vì đã đối đầu với ta!"}
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "title": "Trùm xã hội đen đâm đầu vào cột chết ngay phiên xử, chàng rể nghi ngay hắn chưa chết!?",
+  "chapters": "53",
+  "source_dir": "manhua-recap/crmn_ep54",
+  "description": "Thành chủ và Trương Tấn cãi nhau có nên giết Điền Hoành, hôm sau hắn đâm đầu vào cột đá chết ngay giữa phiên xử công khai, nhưng Thẩm Lãng linh cảm có điều bất thường. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 54.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "thumbnail": {"text": "CHẾT THẬT HAY GIẢ CHẾT!?", "prompt": "Vertical 9:16 anime-style: a bloodied gang boss locked in a wooden pillory ramming his head against a stone pillar in a packed public courtroom, shocked crowd, a calm long-haired young man in white watching suspiciously from the side, glowing cyan eye. No text, leave top 25% empty."},
+  "beats": [
+    {"panel": "p005.jpg", "type": "HOOK", "kind": "recap", "narration": "Trương Tấn xông vào nhà họ Từ quát lớn, ngày trước Thẩm Lãng chỉ là gã ngốc, sao giờ lại gian xảo thế này!"},
+    {"panel": "p006.jpg", "type": "SETUP", "kind": "recap", "narration": "Người phụ nữ nhà họ Từ nghiến răng, chính cô cũng không ngờ hắn giờ vừa tinh ranh vừa độc ác đến vậy."},
+    {"panel": "p007.jpg", "type": "BUILD", "kind": "recap", "narration": "Cô hỏi cha chồng nói gì, Trương Tấn đáp, cha bảo ta phải giết Điền Hoành."},
+    {"panel": "p010.jpg", "type": "REVEAL", "kind": "recap", "narration": "Nhưng thành chủ chặn lại, giết hắn thì mất mặt, thua trận này trước Thẩm Lãng, lại không ai thay hắn quản bang phái và sòng bạc."},
+    {"panel": "p013.jpg", "type": "BUILD", "kind": "recap", "narration": "Còn nếu không giết, những chuyện bẩn thỉu hắn từng làm cho họ rất có thể bị khui ra."},
+    {"panel": "p015.jpg", "type": "BUILD", "kind": "recap", "narration": "Đúng lúc đó có tin báo, Điền Hoành bí mật xin gặp hai vị đại nhân."},
+    {"panel": "p018.jpg", "type": "BUILD", "kind": "recap", "narration": "Hôm sau, sảnh lớn phủ thành chủ chật kín dân chúng đến xem phiên xử công khai."},
+    {"panel": "p019.jpg", "type": "BUILD", "kind": "recap", "narration": "Điền Hoành bị tố giết Tống Sung và vu oan cho Thẩm Lãng, tội ác chồng chất khắp thành Huyền Vũ."},
+    {"panel": "p021.jpg", "type": "REVEAL", "kind": "recap", "narration": "Hắn bị cùm trong gông gỗ, người đầy máu, bất ngờ bật cười ha hả như điên dại."},
+    {"panel": "p022.jpg", "type": "REACTION", "kind": "recap", "narration": "Hắn gào lên, ta có chết cũng phải chết oanh liệt, tên quan chó chết kia, lúc cần thì xem ta như quân bài, lúc không cần thì xem ta là con tốt thí mạng!"},
+    {"panel": "p024.jpg", "type": "REVEAL", "kind": "recap", "narration": "Rồi hắn lao đầu thẳng vào cột đá, máu bắn tung tóe giữa sảnh."},
+    {"panel": "p026.jpg", "type": "REACTION", "kind": "recap", "narration": "Cả đám đông chết lặng, không ngờ trùm xã hội đen khét tiếng lại chết như vậy."},
+    {"panel": "p028.jpg", "type": "BUILD", "kind": "recap", "narration": "Nửa canh giờ sau, tại phủ Bá tước, thuộc hạ bẩm báo cô gia mọi chuyện vừa xảy ra."},
+    {"panel": "p031.jpg", "type": "BUILD", "kind": "recap", "narration": "Trong nhà giam, Điền Thập Tam đang cặm cụi viết ra sổ tội ác của nghĩa phụ mình."},
+    {"panel": "p034.jpg", "type": "REVEAL", "kind": "recap", "narration": "Thẩm Lãng bước vào, bảo không cần viết nữa đâu, Điền Hoành chết rồi."},
+    {"panel": "p038.jpg", "type": "BUILD", "kind": "recap", "narration": "Anh hỏi, Điền Hoành từng có người nào giống y như đúc để làm thế thân không?"},
+    {"panel": "p040.jpg", "type": "BUILD", "kind": "recap", "narration": "Thập Tam đáp chưa từng nghe, nhưng Thẩm Lãng vẫn thấy có gì đó không ổn."},
+    {"panel": "p046.jpg", "type": "REACTION", "kind": "commentary", "narration": "Giải thích trực giác bằng câu người đẹp thì trực giác nhạy, vừa khen mình vừa khéo nịnh vợ."},
+    {"panel": "p048.jpg", "type": "REVEAL", "kind": "recap", "narration": "Anh nói thẳng với vợ, ta nghĩ Điền Hoành chưa chết, nhưng không có chứng cứ, chỉ là trực giác."},
+    {"panel": "p059.jpg", "type": "REVEAL", "kind": "recap", "narration": "Hai người tới nơi đặt thi thể, xác đã cháy thành than, không thể nhận ra qua lớp da bên ngoài."},
+    {"panel": "p061.jpg", "type": "REVEAL", "kind": "recap", "narration": "Nhưng mắt thần của anh quét qua, anh khẽ reo lên, tìm thấy rồi!"},
+    {"panel": "p065.jpg", "type": "ENDING", "kind": "recap", "narration": "Anh quay sang vợ, nương tử, chúng ta phải chuẩn bị đàng hoàng, tối nay sẽ có một vở kịch hay, kết cục ta đã thấy trước rồi!"}
+  ]
+}

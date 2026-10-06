@@ -112,6 +112,16 @@ lớn hơn xoay quanh phủ Bá tước Huyền Vũ (gia tộc Kim Mộc Lan —
 | 48 | 47 | `manhua-recap/crmn_ep48` | Giới thiệu sứ giả tổng đốc Ngôn Vô Kỵ và thái thú Trương Xung; bàn chia đảo Kim Sơn (bẫy: khoáng sản nằm phía bắc); giữa tiệc Điền Hoành cho khiêng quan tài tới đòi mạng Thẩm Lãng. | ✅ script (Claude viết) |
 | 49 | 48 | `manhua-recap/crmn_ep49` | Tống Nghị kêu oan, nhân chứng xác nhận; nhưng bà vợ khai ngược đúng như lời "bóng ma" dặn, nói con trai bị chính chồng đá khi nhìn trộm người khác tắm; màn vu oan vỡ trước quan lớn. | ✅ script (Claude viết) |
 | 50 | 49 | `manhua-recap/crmn_ep50` | Điền Hoành và Tống Nghị bị bắt, Tống thị được giữ lại phủ Bá tước; Thẩm Lãng châm chọc Điền Hoành dưới trời đêm; thái thú ngầm ra lệnh diệt khẩu Điền Thập Tam, Điền Hoành hoảng hốt cử người đi giết trước. | ✅ script (Claude viết) |
+| 51 | 50 | `manhua-recap/crmn_ep51` | Thẩm Lãng cùng Mộc Lan phi ngựa đêm cứu Điền Thập Tam khỏi lệnh diệt khẩu; Thập Tam từng xem Điền Hoành như cha, nhưng một toán sát thủ do chính nghĩa phụ phái tới đã ập vào nhà. | ✅ script (Claude viết) |
+| 52 | 51 | `manhua-recap/crmn_ep52` | Mộc Lan hạ cả toán sát thủ; Thẩm Lãng nhắn Điền Hoành rửa cổ chờ chết; Thập Tam tâm phục nhận chủ, đổi tên Thẩm Thập Tam, cha mẹ hắn được đón vào phủ Bá tước. | ✅ script (Claude viết) |
+| 53 | 52 | `manhua-recap/crmn_ep53` | Thành chủ và Trương Tấn cân nhắc có nên giết Điền Hoành (tay sai nộp 20–35% lợi nhuận); thái thú ra lệnh giết hắn; Điền Hoành tuyệt vọng vì bị đồng minh bỏ rơi rồi bước vào lối đi bí mật. | ✅ script (Claude viết) |
+| 54 | 53 | `manhua-recap/crmn_ep54` | Điền Hoành đâm đầu vào cột đá chết giữa phiên xử; Thẩm Lãng linh cảm hắn chưa chết, mắt thần xác nhận xác cháy khác thường. | ✅ script (Claude viết) |
+| 55 | 54 | `manhua-recap/crmn_ep55` | Người chết là em song sinh; Điền Hoành đeo mặt nạ axit hủy dung rồi đột nhập nhà Thẩm Lãng ở thôn Phong Diệp giữa đêm. | ✅ script (Claude viết) |
+| 56 | 55 | `manhua-recap/crmn_ep56` | Bẫy sẵn: nạn nhân bị chém là vợ con ruột Điền Hoành; hắn bị Kim Mộc Lan hạ trong một chiêu và chết. | ✅ script (Claude viết) |
+| 57 | 56 | `manhua-recap/crmn_ep57` | Thẩm Lãng lấy lời khai cuối của Điền Hoành, gửi đầu hắn cho thành chủ, dọn sạch kho vàng 13000 của thành chủ tại Sơn Trang Bạch Tuyết, để lại mảnh giấy khiêu khích. | ✅ script (Claude viết) |
+| 58 | 57 | `manhua-recap/crmn_ep58` | Cha mẹ anh từ chối dọn gần phủ Bá tước; anh thú nhận đốt váy của vợ; nhận thiệp đính hôn của Từ Thiên Thiên và dụ Thế tử viết tiểu thuyết bôi nhọ nhà họ Từ. | ✅ script (Claude viết) |
+| 59 | 58 | `manhua-recap/crmn_ep59` | Hoàn thành "Phong Nguyệt Vô Biên" (bút danh Lãng Lãng Tiếu Tiếu Sinh); Bá tước bắt quả tang, đánh Thẩm Lãng nhưng khen sách hay; anh khai sách để trả thù nhà họ Từ và phục vụ cuộc chiến đảo Kim Sơn. | ✅ script (Claude viết) |
+| 60 | 59 | `manhua-recap/crmn_ep60` | Anh và Thế tử tới thành sách Lan Sơn tìm nơi xuất bản; Chúc Văn Hoa (con thứ tử tước Lan Sơn, tác giả Mộng Uyên Ương) chặn đường mọi nhà sách; anh vẫn có sẵn kế hoạch A, B, C. | ✅ script (Claude viết) |
 
 ## Nhân vật mới (tập 21–29)
 
@@ -135,6 +145,8 @@ lớn hơn xoay quanh phủ Bá tước Huyền Vũ (gia tộc Kim Mộc Lan —
 | Short tóm tắt 4 (9:16) | 14 beat, tổng hợp tình tiết hay nhất tập 31–40 | `short_summary4_script.json` | ✅ project 158 / job_216, Final QA PASS 100 |
 | Long 05 (16:9) | Tóm tắt tập 41–50, 168 beat, 10 phần | `long05_script.json` | ✅ project 161 / job_221, Final QA PASS 100 |
 | Short tóm tắt 5 (9:16) | 11 beat, tổng hợp tình tiết hay nhất tập 41–50 | `short_summary5_script.json` | ✅ project 162 / job_220, Final QA PASS 100 |
+| Long 06 (16:9) | Tóm tắt tập 51–60, 157 beat, 10 phần | `long06_script.json` | ⏳ project 169 / run 218 (đang render) |
+| Short tóm tắt 6 (9:16) | 12 beat, tổng hợp tình tiết hay nhất tập 51–60 | `short_summary6_script.json` | ⏳ project 170 / run 219 (đang render) |
 
 Mục lục thời gian Long 01: 0:00 Tập 1 / 0:29 Tập 2 / 1:15 Tập 3 / 1:58 Tập 4 / 2:40 Tập 5 / 3:24 Tập 6 / 4:14 Tập 7 / 4:57 Tập 8 / 5:42 Tập 9 / 6:37 Tập 10.
 Mục lục thời gian Long 02: 0:00 Tập 11 / 0:47 Tập 12 / 1:29 Tập 13 / 2:09 Tập 14 / 2:54 Tập 15 / 3:37 Tập 16 / 4:19 Tập 17 / 5:06 Tập 18 / 5:47 Tập 19 / 6:34 Tập 20.
@@ -163,3 +175,5 @@ Build đa thư mục panel bằng script scratchpad gọi API (recap.py build ch
 - 2026-10-02: viết `ep31..ep40/script.json` (10 tập), dựng Long 04 + Short tóm tắt 4. Ảnh đọc cũ không giữ lại được nên đọc sheets từng tập ngay trước khi ghép khung.
 
 - 2026-10-05: viết `ep41..ep50/script.json` (10 tập), dựng Long 05 + Short tóm tắt 5. Mạch lớn: bóc trần quản gia tham ô → giả ma ép mẹ kế khai ngược → màn vu oan giết người giữa tiệc quan lớn bị lật; thái thú Trương Xung ngầm nhắm vào phủ Bá tước và ra lệnh diệt khẩu Điền Thập Tam.
+
+- 2026-10-06: viết `ep51..ep60/script.json` (10 tập), dựng Long 06 + Short tóm tắt 6. Mạch lớn: cứu Điền Thập Tam, Điền Hoành giả chết rồi bị chính bẫy của Thẩm Lãng hạ gục, dọn kho vàng thành chủ, mở màn kế hoạch trả thù họ Từ bằng tiểu thuyết và đi tìm nơi xuất bản ở thành Lan Sơn.

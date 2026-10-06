@@ -1,0 +1,31 @@
+{
+  "title": "Nữ tướng một mình quét sạch toán sát thủ, kẻ thù bị cứu tâm phục khẩu phục quỳ nhận chủ!?",
+  "chapters": "51",
+  "source_dir": "manhua-recap/crmn_ep52",
+  "description": "Kim Mộc Lan xông vào hạ cả toán sát thủ của Điền Hoành, Thẩm Lãng cứu được Điền Thập Tam và nhận anh ta làm gia bộc, đổi tên thành Thẩm Thập Tam. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 52.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "thumbnail": {"text": "KẺ THÙ QUỲ XUỐNG NHẬN CHỦ!?", "prompt": "Vertical 9:16 anime-style: a bloodied battered man kneeling and bowing deeply before a calm long-haired young man in white robes inside a candle-lit room, a female general in white and black stands behind with arms crossed, scattered blood on the floor. No text, leave top 25% empty."},
+  "beats": [
+    {"panel": "p002.jpg", "type": "HOOK", "kind": "recap", "narration": "Mộc Lan vừa xông vào, thanh kiếm trong tay cô đã xé toang cả toán sát thủ trong chớp mắt!"},
+    {"panel": "p004.jpg", "type": "SETUP", "kind": "recap", "narration": "Máu bắn tung tóe, hai tay cầm dao của kẻ địch bị chém đứt ngay tại chỗ."},
+    {"panel": "p006.jpg", "type": "BUILD", "kind": "recap", "narration": "Tên sát thủ run rẩy nhận ra cô, chính là công chúa thành Huyền Vũ, đệ nhất mỹ nhân Kim Mộc Lan."},
+    {"panel": "p009.jpg", "type": "REACTION", "kind": "recap", "narration": "Thẩm Lãng thò đầu vào cửa nhìn, nương tử nhanh quá vậy, ta còn chưa kịp thấy gì mà nàng đã xong rồi?"},
+    {"panel": "p011.jpg", "type": "BUILD", "kind": "recap", "narration": "Anh nài nỉ, nàng biểu diễn lại lần nữa được không, rồi ngó quanh toàn máu và thi thể."},
+    {"panel": "p014.jpg", "type": "REACTION", "kind": "recap", "narration": "Anh thắc mắc, nàng giỏi thế thì một mình đủ xử hết, sao còn đưa theo ba cao thủ nữa?"},
+    {"panel": "p016.jpg", "type": "REVEAL", "kind": "recap", "narration": "Cô lạnh nhạt đáp, ba người này không phải để đánh nhau, mà là để bảo vệ người đẹp trai như chàng."},
+    {"panel": "p018.jpg", "type": "BUILD", "kind": "recap", "narration": "Anh cười trừ dỗ vợ, lỡ ngày nào đó cơn giận nàng lên đến đỉnh điểm thì hãy nể tình vợ chồng, nhắc ta một câu để ta còn biết đường chạy."},
+    {"panel": "p022.jpg", "type": "REVEAL", "kind": "recap", "narration": "Rồi anh quay sang đám sát thủ sống sót, bảo, về nói với Điền Hoành, rửa sạch cổ đợi chết đi!"},
+    {"panel": "p023.jpg", "type": "REACTION", "kind": "recap", "narration": "Hai tên sát thủ nghiến răng nghĩ thầm, một khi Điền Thập Tam rơi vào tay hắn, mọi bí mật đều sẽ bị lộ."},
+    {"panel": "p024.jpg", "type": "BUILD", "kind": "recap", "narration": "Bởi vậy nghĩa phụ sẽ thành sơ hở lớn nhất của thành chủ, hoặc bị Thẩm Lãng vạch trần, hoặc chính tay thành chủ diệt khẩu."},
+    {"panel": "p027.jpg", "type": "BUILD", "kind": "recap", "narration": "Anh dặn thêm, nói với thành chủ và Trương Tấn, lúc giết Điền Hoành nhớ mời ta tới xem, ta lớn chừng này mà chưa từng thấy cảnh chém đầu."},
+    {"panel": "p029.jpg", "type": "REACTION", "kind": "recap", "narration": "Bọn sát thủ cắn răng rút lui, không dám nhìn lại, vết chém đứt tay vẫn còn rỉ máu."},
+    {"panel": "p033.jpg", "type": "REVEAL", "kind": "recap", "narration": "Nhưng vừa bước ra, chúng đã đụng ngay một hàng lính cầm đuốc của phủ Bá tước đứng chờ sẵn."},
+    {"panel": "p035.jpg", "type": "REACTION", "kind": "recap", "narration": "Khắp sân thi thể nằm la liệt, không còn ai sống sót để đem lời về cho Điền Hoành."},
+    {"panel": "p040.jpg", "type": "BUILD", "kind": "recap", "narration": "Trong nhà, Thẩm Lãng nắm chuôi kiếm cắm sâu vào chân Điền Thập Tam, thử rút ra mà không nổi."},
+    {"panel": "p042.jpg", "type": "REACTION", "kind": "commentary", "narration": "Anh ta cắm sâu thế này, muốn rút ra còn khó hơn cả đối phó cả toán sát thủ."},
+    {"panel": "p045.jpg", "type": "REVEAL", "kind": "recap", "narration": "Cuối cùng anh nghiến răng rút phăng thanh kiếm, máu bắn tung tóe."},
+    {"panel": "p047.jpg", "type": "REACTION", "kind": "recap", "narration": "Điền Thập Tam cười đau đớn, tiền vàng, địa vị, lời hứa, Thẩm Lãng muốn mua chuộc ta thì không cần dùng những thứ này."},
+    {"panel": "p050.jpg", "type": "REVEAL", "kind": "recap", "narration": "Nước mắt hắn tuôn ra, nghĩa phụ muốn giết ta, còn Thẩm Lãng lại cứu ta, từ giờ ta là con chó của Thẩm Lãng!"},
+    {"panel": "p054.jpg", "type": "ENDING", "kind": "recap", "narration": "Thẩm Lãng mỉm cười, tốt lắm, từ nay ngươi đổi tên thành Thẩm Thập Tam, làm gia bộc của ta!"}
+  ]
+}

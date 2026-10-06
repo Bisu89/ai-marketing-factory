@@ -1,0 +1,100 @@
+{
+  "title": "Cứu kẻ thù, lật mặt trùm xã hội đen giả chết, rồi viết tiểu thuyết báo thù cả nhà vợ cũ!?",
+  "chapters": "50-59",
+  "description": "Những tình tiết hay nhất tập 51-60 Chàng Rể Mạnh Nhất Lịch Sử. Xem bản đầy đủ ở video dài trên kênh.",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "thumbnail": {
+    "text": "NGƯỜI CHẾT LÀ EM SONG SINH!?",
+    "prompt": "Vertical 9:16 anime-style: two identical scarred shirtless men standing face to face in a candle-lit underground chamber, one holding a dripping mask, behind them a calm long-haired young man in white watching from the shadows, ominous warm golden light. No text, leave top 25% empty."
+  },
+  "beats": [
+    {
+      "dir": "manhua-recap/crmn_ep51",
+      "panel": "p002.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Anh kéo vợ lên ngựa phi đêm, quyết cứu bằng được người thân tín của kẻ thù trước khi sát thủ ra tay."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep52",
+      "panel": "p004.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Nữ tướng xông vào, cả toán sát thủ ngã xuống chỉ trong chớp mắt."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep52",
+      "panel": "p054.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Kẻ thù bị cứu tâm phục khẩu phục, quỳ xuống nhận anh làm chủ và đổi tên thành Thẩm Thập Tam."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep54",
+      "panel": "p024.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trùm xã hội đen đâm đầu vào cột đá chết ngay phiên xử, nhưng chàng rể nghi ngay hắn chưa chết."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep55",
+      "panel": "p029.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Hóa ra người chết là em song sinh, còn hắn tự hủy mặt để mò tới nhà chàng rể giữa đêm."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep56",
+      "panel": "p037.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Hắn xông vào chém giết, nhìn kỹ mới biết toàn là vợ con ruột của chính mình."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep56",
+      "panel": "p074.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Cuối cùng hắn gục dưới kiếm nữ tướng, khép lại ân oán dài."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep57",
+      "panel": "p045.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Cả kho vàng bí mật của thành chủ bị dọn sạch, còn đầu kẻ thù được gói tặng tận tay."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep58",
+      "panel": "p061.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Nhận thiệp đính hôn của người cũ, anh lập tức rủ Thế tử viết tiểu thuyết bôi nhọ cả nhà họ Từ."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep59",
+      "panel": "p046.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Bị cha vợ bắt quả tang rồi đánh một trận, ông lại khen sách hay hết lời."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep60",
+      "panel": "p042.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Mang bản thảo tới thành sách, đại tài tử ném thẳng xuống đất và cấm nhà sách nhận in."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep60",
+      "panel": "p053.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Nhưng chàng rể vẫn cười, vì anh đã có sẵn kế hoạch A, B, C!"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "title": "Hết giá trị thì cắt đầu gói quà tặng thành chủ, chàng rể còn dọn sạch kho vàng 13000 của quan lớn!?",
+  "chapters": "56",
+  "source_dir": "manhua-recap/crmn_ep57",
+  "description": "Thẩm Lãng vắt kiệt lời khai cuối cùng của Điền Hoành rồi gửi đầu hắn cho thành chủ, đồng thời dọn sạch kho vàng bí mật của Liễu Vô Nham ở Sơn Trang Bạch Tuyết và để lại một mảnh giấy khiêu khích. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 57.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "thumbnail": {"text": "GỬI ĐẦU TẶNG THÀNH CHỦ!?", "prompt": "Vertical 9:16 anime-style: a shocked official in teal robes staring into an opened black wooden box on his desk, an aide pale with fear beside him, warm amber office light, bold dramatic composition. No text, leave top 25% empty."},
+  "beats": [
+    {"panel": "p005.jpg", "type": "HOOK", "kind": "recap", "narration": "Điền Hoành sắp tắt thở, Thẩm Lãng vẫn gọi lớn, đừng chết, nhanh tỉnh dậy đi, ngươi chưa được phép chết!"},
+    {"panel": "p007.jpg", "type": "SETUP", "kind": "recap", "narration": "Hắn tát cho đối phương tỉnh, ta vất vả lắm mới tìm được ngươi, trước khi chết phải khai ra chút gì cho ta chứ."},
+    {"panel": "p010.jpg", "type": "BUILD", "kind": "recap", "narration": "Điền Hoành gào, không ngờ ngươi lại lấy cả mạng con trai ta ra đe dọa!"},
+    {"panel": "p011.jpg", "type": "BUILD", "kind": "recap", "narration": "Thẩm Lãng đáp, ta không giống ngươi, ta vẫn còn tính người, chỉ cần ngươi khai thật, sau này ta sẽ chăm sóc thằng bé."},
+    {"panel": "p012.jpg", "type": "REVEAL", "kind": "recap", "narration": "Hắn run rẩy nói, hầm đất ở sân bên trái Sơn Trang Bạch Tuyết là kho vàng bí mật của Liễu Vô Nham."},
+    {"panel": "p013.jpg", "type": "BUILD", "kind": "recap", "narration": "Anh hỏi tiếp, chỉ có chừng đó thôi sao, ngươi không biết chứng cứ phạm tội nào của hắn à?"},
+    {"panel": "p014.jpg", "type": "REACTION", "kind": "recap", "narration": "Hắn bật cười chua chát, đám quan văn toàn kẻ gian xảo, sao có điểm yếu chí mạng nào để ta nắm được."},
+    {"panel": "p017.jpg", "type": "REVEAL", "kind": "recap", "narration": "Thẩm Lãng gật đầu, nếu ngươi không còn gì cho ta nữa thì yên tâm mà chết đi."},
+    {"panel": "p022.jpg", "type": "BUILD", "kind": "recap", "narration": "Anh ra lệnh lạnh lùng, cắt đầu hắn xuống, đóng gói bằng hộp tốt nhất, tặng cho Trương Tấn và thành chủ."},
+    {"panel": "p023.jpg", "type": "BUILD", "kind": "recap", "narration": "Rồi quay sang vợ, nương tử, chuyện không thể chậm trễ, chúng ta tới Sơn Trang Bạch Tuyết đi kiếm món tiền trời cho."},
+    {"panel": "p025.jpg", "type": "REVEAL", "kind": "recap", "narration": "Cửa hầm mở ra, từng rương vàng chất đầy ánh lên lấp lánh."},
+    {"panel": "p027.jpg", "type": "BUILD", "kind": "recap", "narration": "Mộc Lan tính, hơn mười ba nghìn đồng vàng, đây là toàn bộ gia tài còn lại, phần lớn đã đem đi hối lộ quan trên."},
+    {"panel": "p028.jpg", "type": "REACTION", "kind": "commentary", "narration": "Dọn luôn cả tiền dưỡng già của thành chủ, nghe là đã thấy ông ta sắp đứng tim."},
+    {"panel": "p032.jpg", "type": "BUILD", "kind": "recap", "narration": "Phủ Bá tước hằng năm đều phải trả nợ, hai món tiền lớn này giúp họ giải quyết rất nhiều áp lực."},
+    {"panel": "p033.jpg", "type": "BUILD", "kind": "recap", "narration": "Anh còn tính thêm một chiêu, nên để lại cho thành chủ chút gì đó, còn Mộc Lan thì đã biết, phu quân lại muốn giở trò rồi."},
+    {"panel": "p041.jpg", "type": "REVEAL", "kind": "recap", "narration": "Trong phủ thành chủ, có người dâng một chiếc hộp, nói là của Điền bang chủ, mọi chuyện đã ổn thỏa."},
+    {"panel": "p043.jpg", "type": "REACTION", "kind": "recap", "narration": "Mở nắp ra, ông ta hét lên thất thanh, Điền Hoành!?"},
+    {"panel": "p045.jpg", "type": "REVEAL", "kind": "recap", "narration": "Chưa kịp hoàng hồn, thuộc hạ chạy vào báo, toàn bộ tiền vàng ở Sơn Trang Bạch Tuyết đã bị cướp sạch."},
+    {"panel": "p048.jpg", "type": "REVEAL", "kind": "recap", "narration": "Kẻ cướp để lại một mảnh giấy, kẻ cướp vàng không phải Thẩm Lãng."},
+    {"panel": "p050.jpg", "type": "REACTION", "kind": "recap", "narration": "Ông ta gào lên, Thẩm Lãng, con mẹ nó!"},
+    {"panel": "p052.jpg", "type": "BUILD", "kind": "recap", "narration": "Cùng lúc, Thẩm Lãng đứng viết tên kẻ thù lên tường, gạch chéo đỏ lên cái tên Điền Hoành."},
+    {"panel": "p058.jpg", "type": "ENDING", "kind": "recap", "narration": "Anh dang tay hét ta nhảy đây, mong được vợ ôm, nhưng khi mở mắt ra mình vẫn đứng nguyên chỗ cũ, vợ đã nhanh chân né mất rồi!"}
+  ]
+}

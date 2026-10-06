@@ -1,0 +1,32 @@
+{
+  "title": "Mang bản thảo tới thành sách, bị đại tài tử chặn đường cấm nhà sách nhận, chàng rể vẫn mỉm cười!?",
+  "chapters": "59",
+  "source_dir": "manhua-recap/crmn_ep60",
+  "description": "Thẩm Lãng và Thế tử đến thành Lan Sơn tìm nơi xuất bản Phong Nguyệt Vô Biên, nhưng tác giả sách bán chạy Chúc Văn Hoa chặn đường mọi nhà sách, còn anh đã có sẵn kế hoạch A, B, C. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 60.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "thumbnail": {"text": "BỊ CẤM NHẬN SÁCH, VẪN CƯỜI!?", "prompt": "Vertical 9:16 anime-style: a smiling long-haired young man in white and teal robes standing in a lantern-lit bookshop street at night with a manuscript under his arm, a plump nobleman beside him, a sneering scholar in a purple-collared robe tossing a book aside behind them. No text, leave top 25% empty."},
+  "beats": [
+    {"panel": "p002.jpg", "type": "HOOK", "kind": "recap", "narration": "Dưới sức ép của nhạc phụ, Thẩm Lãng vẫn phải ngồi sửa lại cả cuốn Phong Nguyệt Vô Biên, gạch bỏ từng cái tên nhắm thẳng vào nhà họ Từ."},
+    {"panel": "p004.jpg", "type": "SETUP", "kind": "recap", "narration": "Hôm sau, anh và Thế tử ngồi xe ngựa hơn trăm dặm tới thành Lan Sơn, nơi nổi tiếng với nghề xuất bản sách."},
+    {"panel": "p005.jpg", "type": "BUILD", "kind": "recap", "narration": "Thành Huyền Vũ là thành tơ lụa, còn Lan Sơn là thành sách, tuy gần nhau nhưng thuộc quận khác, là đất của gia tộc Chúc thị."},
+    {"panel": "p006.jpg", "type": "BUILD", "kind": "recap", "narration": "Khác với các quý tộc lâu đời, nhà họ Chúc chủ động hiến đất phong và binh quyền để đổi lấy sự khen thưởng của nhà vua."},
+    {"panel": "p010.jpg", "type": "BUILD", "kind": "recap", "narration": "Khắp phố đâu đâu cũng rao quyển Mộng Uyên Ương, phần hai còn mười sáu ngày nữa là ra mắt."},
+    {"panel": "p011.jpg", "type": "REACTION", "kind": "recap", "narration": "Anh nhìn mà cười thầm, Mộng Uyên Ương hot thật, nhưng đợi Phong Nguyệt Vô Biên của mình lên kệ thì cứ chờ xem."},
+    {"panel": "p015.jpg", "type": "BUILD", "kind": "recap", "narration": "Vào Như Ngọc Các, anh lật vài trang rồi chỉ phì một tiếng, toàn tình tiết máu chó lừa tiền mấy thiếu nữ ngây thơ."},
+    {"panel": "p017.jpg", "type": "REVEAL", "kind": "recap", "narration": "Bỗng một giọng vang lên, vị huynh đài này thấy buồn cười lắm sao, đó chính là Chúc Văn Hoa, tác giả của Mộng Uyên Ương."},
+    {"panel": "p020.jpg", "type": "BUILD", "kind": "recap", "narration": "Mười sáu tuổi đã đỗ cử nhân, lại viết ra tác phẩm bán chạy, danh tiếng lẫy lừng, là thần tượng của vô số cô gái."},
+    {"panel": "p022.jpg", "type": "REVEAL", "kind": "recap", "narration": "Anh nhìn ra ngay, đây chẳng khác gì phiên bản nam của Từ Thiên Thiên, chỉ muốn kéo danh tiếng để leo lên làm con rể thái thú Trương Xung."},
+    {"panel": "p028.jpg", "type": "BUILD", "kind": "recap", "narration": "Thế tử bước ra giới thiệu, ta là Kim Mộc Thông, thế tử phủ Bá tước Huyền Vũ, còn đây là tỷ phu của ta, Thẩm Lãng."},
+    {"panel": "p029.jpg", "type": "REACTION", "kind": "recap", "narration": "Chúc Văn Hoa mỉa mai, hóa ra là hai kẻ làm xấu mặt gia đình, một gã đần độn như con heo, một tên ở rể ham hư vinh."},
+    {"panel": "p031.jpg", "type": "BUILD", "kind": "recap", "narration": "Thẩm Lãng cười tươi đáp ngay, đúng đúng, ta chính là tên ăn bám không có học đó đấy."},
+    {"panel": "p032.jpg", "type": "REVEAL", "kind": "recap", "narration": "Anh rút bản thảo đưa ông chủ tiệm, xin ông đọc thử quyển sách mà kẻ ăn bám này viết, giúp đưa ra đánh giá."},
+    {"panel": "p037.jpg", "type": "REACTION", "kind": "recap", "narration": "Ông chủ vừa đọc vừa kinh hãi, lời văn câu thơ có đúng do họ viết ra không, ngòi bút phân tích mổ xẻ tính người và thế tục sâu sắc như thế!"},
+    {"panel": "p040.jpg", "type": "BUILD", "kind": "recap", "narration": "Chúc Văn Hoa giật lấy bản thảo xem rồi lật trang, nét mặt sa sầm."},
+    {"panel": "p042.jpg", "type": "REVEAL", "kind": "recap", "narration": "Hắn ném quyển sách xuống đất, tuyên bố, sách của ta không thể bày chung với thứ dung tục bản thỉu này, ông muốn xuất bản thì sách ta rút khỏi hiệu sách của ông."},
+    {"panel": "p044.jpg", "type": "BUILD", "kind": "recap", "narration": "Ông chủ tiệm đành xin lỗi, cửa hiệu nhỏ này dạo này không có ý định ra sách mới, mời hai vị tìm nơi khác, chẳng hạn Mục Hương Lâu."},
+    {"panel": "p047.jpg", "type": "BUILD", "kind": "recap", "narration": "Thế tử nổi giận định xông vào đánh, còn Thẩm Lãng chỉ khẽ nói, được rồi, chúng ta đi thôi."},
+    {"panel": "p048.jpg", "type": "REVEAL", "kind": "recap", "narration": "Bởi trong đầu anh đã có kế hoạch chu toàn, không chỉ để Phong Nguyệt Vô Biên nổi nhanh mà còn để hạ bệ cả Chúc Văn Hoa, thậm chí có cả phương án A, B, C."},
+    {"panel": "p050.jpg", "type": "REACTION", "kind": "commentary", "narration": "Đi hết một lượt các nhà sách mà chẳng nơi nào chịu nhận, vậy mà anh vẫn giữ nụ cười, đúng là có chuẩn bị sẵn từ trước."},
+    {"panel": "p053.jpg", "type": "ENDING", "kind": "recap", "narration": "Đêm xuống, hai người bước vào một hiệu sách nhỏ cuối cùng, ông chủ Đặng Tiên chậm rãi hỏi, là hai người muốn xuất bản sách?"}
+  ]
+}
