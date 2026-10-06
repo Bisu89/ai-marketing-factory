@@ -29,8 +29,8 @@ D = HERE.parent
 # Cấu hình theo ngôn ngữ. wps = từ/giây thực đo được, chỉ để ước lượng Beat.duration (Voice stage ghi đè bằng thời lượng thật).
 # Quy tắc series: KO = giọng chính nữ + giới thiệu/kết nam; VI = giọng chính nam + giới thiệu/kết nữ.
 LANGS = {
-    'ko': {'template': 'ngay_tan_ko', 'bookend_voice': 'ko-KR-InJoonNeural', 'wps': 1.8, 'label': 'KO'},
-    'vi': {'template': 'ngay_tan', 'bookend_voice': 'vi-VN-HoaiMyNeural', 'wps': 3.6, 'label': 'VI'},
+    'ko': {'template': 'ngay_tan_ko', 'bookend_voice': 'ko-KR-InJoonNeural', 'wps': 1.8, 'label': 'KO', 'short_speed': 1.2},
+    'vi': {'template': 'ngay_tan', 'bookend_voice': 'vi-VN-HoaiMyNeural', 'wps': 3.6, 'label': 'VI', 'short_speed': 1.4},
 }
 
 
@@ -222,6 +222,7 @@ def main(ep, lang='ko', force=False, kind='long'):
     draft = call('GET', f'/projects/{pid}')
     if short:  # video dọc 9:16, không thêm thẻ outro (lời kết đã nằm trong beat cuối)
         draft['config']['render']['profile'] = 'SOCIAL_VERTICAL'
+        draft['config']['voice']['speed'] = cfg['short_speed']  # short đọc nhanh hơn video dài (KO 1.2, VI 1.4); chỉ đặt trong project, không đổi template
         draft['config']['outro']['enabled'] = False
     plan = {
         'video_id': draft.get('video_id'), 'script_text': script_body, 'beats': beats, 'project_name': name,
