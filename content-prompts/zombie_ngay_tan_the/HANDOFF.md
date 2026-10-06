@@ -38,6 +38,7 @@ Tập 1 đã có: lời đọc `scripts/ep1_short_vi.txt` + `scripts/ep1_short_k
 
 ## Dựng thử trong app (đã chạy cho Tập 1)
 `_tools/render_episode.py N` (backend phải đang chạy): đăng ký ảnh trong `ngay_tan_epN_images/` (tag từ CSV) → tạo project template `ngay_tan_ko` → beat plan (mỗi shot = 1 beat, đã gán ảnh; lời đọc rải theo shot; giới thiệu/kết beat riêng giọng InJoon) → Factory run. Cần `ngay_tan_epN_shotlist.md`, `ngay_tan_epN_scenes_v3.csv`, `scripts/ko_epN_check.txt`, E{N}_ trong `ko_bookends_check.txt`. Tên file ảnh phải đúng CSV (lần đầu có 2 file gõ sai tên, đã đổi lại).
+Bản VI: `python render_episode.py 1 vi force` (template `ngay_tan`, giọng chính NamMinh 1.10, giới thiệu/kết HoaiMy; bản Việt có đúng 80 đoạn = P01..P80 của bản Hàn nên dùng chung shot list; `force` tự chấp nhận cảnh báo Quality Gate). Kết quả Tập 1 VI: project 164, render job 223, QA PASS 100. Lưu ý: giọng NamMinh của Microsoft hay trả `NoAudioReceived` ngẫu nhiên nên bước tạo giọng VI mất ~25 phút (KO chỉ ~1 phút); toàn bộ ~40 phút.
 Kết quả Tập 1 (long, KO): project 163, render job 222, 11:47, 1080p, QA PASS 100; thời gian ~20 phút (voice ~1', motion ~10', render ~9'). Quality Gate cho NEEDS_REVIEW 82 (chỉ cảnh báo: pacing, 100 beat cùng loại BODY, ảnh bị coi "độ phân giải thấp" vì ảnh ChatGPT nhỏ hơn 1920x1080) → dùng `POST /factory-runs/{id}/continue?force=true` để chấp nhận cảnh báo và render. Mô tả/hashtag tự sinh bằng tiếng Anh (cần sửa tay).
 
 ## Quy tắc chủ series đã nhắc (đừng vi phạm)

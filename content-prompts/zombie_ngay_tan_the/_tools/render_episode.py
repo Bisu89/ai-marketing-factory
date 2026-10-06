@@ -1,6 +1,6 @@
 """Dựng thử một tập (video dài) trong app qua API: đăng ký ảnh -> tạo project -> beat plan (mỗi shot = 1 beat, đã gán ảnh) -> Factory run.
 
-Dùng:  python render_episode.py 1            (Tập 1, bản Hàn, template ngay_tan_ko)
+Dùng:  python render_episode.py 1 [ko|vi] [force]   (force = tự chấp nhận cảnh báo Quality Gate để render; Tập 1; ko = template ngay_tan_ko, vi = template ngay_tan; mặc định ko)
 Cần: backend đang chạy ở 127.0.0.1:8000; ảnh đã nằm trong ngay_tan_epN_images/ đúng tên file theo CSV;
      scripts/ko_epN_check.txt (câu Hàn đánh số), scripts/ko_bookends_check.txt (E{N}_INTRO/OUTRO), ngay_tan_epN_shotlist.md (cột Đoạn).
 Ghi chú thiết kế:
@@ -25,9 +25,12 @@ from PIL import Image
 API = 'http://127.0.0.1:8000/api/v1'
 HERE = Path(__file__).resolve().parent
 D = HERE.parent
-BOOKEND_VOICE = 'ko-KR-InJoonNeural'
-TEMPLATE = 'ngay_tan_ko'
-WPS_KO = 1.8  # từ/giây thực đo được, chỉ để ước lượng Beat.duration (Voice stage ghi đè bằng thời lượng thật)
+# Cấu hình theo ngôn ngữ. wps = từ/giây thực đo được, chỉ để ước lượng Beat.duration (Voice stage ghi đè bằng thời lượng thật).
+# Quy tắc series: KO = giọng chính nữ + giới thiệu/kết nam; VI = giọng chính nam + giới thiệu/kết nữ.
+LANGS = {
+    'ko': {'template': 'ngay_tan_ko', 'bookend_voice': 'ko-KR-InJoonNeural', 'wps': 1.8, 'label': 'KO'},
+    'vi': {'template': 'ngay_tan', 'bookend_voice': 'vi-VN-HoaiMyNeural', 'wps': 3.6, 'label': 'VI'},
+}
 
 
 def call(method, path, body=None):
@@ -88,11 +91,29 @@ def register_assets(ep, shots, tags):
     return ids
 
 
-def allocate(ep, shots):
+def vi_sections(ep):
+    """Đọc scripts/epN_audiobook_v*.txt (bản Việt, bản mới nhất) -> (đoạn phần truyện, giới thiệu, kết).
+    Bản Việt có đúng cùng số đoạn với bản Hàn (P01..PNN theo thứ tự) nên dùng chung shot list."""
+    path = sorted((D / 'scripts').glob(f'ep{ep}_audiobook_v*.txt'))[-1]
+    text = path.read_text(encoding='utf-8')
+    body = text[text.index('## TRUYỆN') + len('## TRUYỆN'):text.index('## KẾT')]
+    intro = text[text.index('## GIỚI THIỆU') + len('## GIỚI THIỆU'):text.index('## TRUYỆN')]
+    outro = text[text.index('## KẾT') + len('## KẾT'):]
+    clean = lambda t: ' '.join(ln.strip() for ln in t.splitlines() if ln.strip() and not ln.strip().startswith('##'))
+    paras = [p.strip() for p in re.split(r'\n\s*\n', body) if p.strip() and not p.strip().startswith('##')]
+    return paras, clean(intro), clean(outro)
+
+
+def allocate(ep, shots, lang='ko'):
     """Chia lời đọc phần truyện cho từng shot. Trả về list narration (cùng thứ tự shots)."""
     paras = OrderedDict()
-    for k, t in read_pairs(f'ko_ep{ep}_check.txt'):
-        paras.setdefault(k.rsplit('-', 1)[0], []).append(t)
+    if lang == 'ko':
+        for k, t in read_pairs(f'ko_ep{ep}_check.txt'):
+            paras.setdefault(k.rsplit('-', 1)[0], []).append(t)
+    else:
+        vi_paras, _, _ = vi_sections(ep)
+        for i, ptxt in enumerate(vi_paras, 1):
+            paras[f'P{i:02d}'] = [ptxt]
     words, pstart = [], {}
     for pid, sents in paras.items():
         pstart[pid] = len(words)
@@ -110,7 +131,7 @@ def allocate(ep, shots):
     starts[0] = 0
 
     def natural(idx):  # ranh giới tự nhiên: từ trước đó kết thúc câu/mệnh đề
-        return idx > 0 and re.search(r'[.!?,"”]$', words[idx - 1]) is not None
+        return idx > 0 and re.search(r'[.!?,"”…]$', words[idx - 1]) is not None
 
     for i in range(1, len(starts)):
         s = starts[i]
@@ -134,18 +155,22 @@ def allocate(ep, shots):
     return out, ' '.join(' '.join(s) for s in paras.values())
 
 
-def main(ep):
+def main(ep, lang='ko', force=False):
+    cfg = LANGS[lang]
     shots = parse_shotlist(ep)
     tags = csv_tags(ep)
     ids = register_assets(ep, shots, tags)
-    narr, script_body = allocate(ep, shots)
+    narr, script_body = allocate(ep, shots, lang)
 
-    book = {'INTRO': [], 'OUTRO': []}
-    for k, t in read_pairs('ko_bookends_check.txt'):
-        if k.startswith(f'E{ep}_'):
-            book['INTRO' if 'INTRO' in k else 'OUTRO'].append(t)
-    intro, outro = ' '.join(book['INTRO']), ' '.join(book['OUTRO'])
-    assert intro and outro, 'thiếu giới thiệu/kết KO trong ko_bookends_check.txt'
+    if lang == 'ko':
+        book = {'INTRO': [], 'OUTRO': []}
+        for k, t in read_pairs('ko_bookends_check.txt'):
+            if k.startswith(f'E{ep}_'):
+                book['INTRO' if 'INTRO' in k else 'OUTRO'].append(t)
+        intro, outro = ' '.join(book['INTRO']), ' '.join(book['OUTRO'])
+    else:
+        _, intro, outro = vi_sections(ep)
+    assert intro and outro, 'thiếu giới thiệu/kết'
 
     beats = []
 
@@ -153,19 +178,19 @@ def main(ep):
         n = len(beats) + 1
         beats.append({
             'id': f'b{n:03d}', 'order': n, 'type': btype, 'narration': text,
-            'duration': round(min(120.0, max(1.5, len(text.split()) / WPS_KO)), 2),
+            'duration': round(min(120.0, max(1.5, len(text.split()) / cfg['wps'])), 2),
             'visual_hint': hint, 'asset_id': asset_id, 'voice_id': voice,
         })
 
-    add(intro, ids[shots[1][0]], 'HOOK', 'intro', BOOKEND_VOICE)
+    add(intro, ids[shots[1][0]], 'HOOK', 'intro', cfg['bookend_voice'])
     for (fn, _), text in zip(shots, narr):
         add(text, ids[fn], 'BODY', re.sub(r'^\d+_|\.png$', '', fn).replace('_', ' '))
-    add(outro, ids[shots[-1][0]], 'ENDING', 'outro', BOOKEND_VOICE)
+    add(outro, ids[shots[-1][0]], 'ENDING', 'outro', cfg['bookend_voice'])
 
-    name = f'Ngày Tàn T{ep} (KO) [test render]'
+    name = f'Ngày Tàn T{ep} ({cfg["label"]}) [test render]'
     proj = call('POST', '/projects', {
-        'name': name, 'script_text': script_body, 'template_id': TEMPLATE, 'visual_generation_mode': 'library',
-        'content_language': 'ko', 'ai_metadata_enabled': False,
+        'name': name, 'script_text': script_body, 'template_id': cfg['template'], 'visual_generation_mode': 'library',
+        'content_language': lang, 'ai_metadata_enabled': False,
     })
     pid = proj['id']
     print('Project', pid, name, '| beats:', len(beats))
@@ -179,18 +204,25 @@ def main(ep):
     run = call('POST', f'/projects/{pid}/factory-run')
     print('Factory run', run['id'], run['status'])
     last = None
+    forced = False
     while True:
         time.sleep(15)
         r = call('GET', f'/factory-runs/{run["id"]}')
         if r['status'] != last:
             print(time.strftime('%H:%M:%S'), r['status'], flush=True)
             last = r['status']
+        if r['status'] == 'NEEDS_REVIEW' and force and not forced and not r.get('failed_stage'):
+            # Quality Gate chỉ có cảnh báo (pacing/độ phân giải ảnh): chấp nhận để render tiếp.
+            forced = True
+            call('POST', f'/factory-runs/{run["id"]}/continue?force=true')
+            print('Chấp nhận cảnh báo Quality Gate (force) -> render', flush=True)
+            last = None
+            continue
         if r['status'] in ('COMPLETED', 'FAILED', 'NEEDS_REVIEW', 'READY_TO_RENDER', 'CANCELLED') or r.get('completed_at'):
             print(json.dumps({k: r.get(k) for k in (
                 'status', 'failed_stage', 'error_code', 'error_message', 'render_job_id', 'quality_status', 'quality_score',
                 'qa_status', 'qa_score')}, ensure_ascii=False))
             break
 
-
 if __name__ == '__main__':
-    main(int(sys.argv[1]) if len(sys.argv) > 1 else 1)
+    main(int(sys.argv[1]) if len(sys.argv) > 1 else 1, sys.argv[2] if len(sys.argv) > 2 else 'ko', 'force' in sys.argv[3:])
