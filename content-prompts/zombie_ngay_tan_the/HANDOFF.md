@@ -36,6 +36,10 @@ Tập 2 cần chú ý ảnh: Jiwoo, Yerin, Areum xuất hiện lần đầu (đ�
 ## Video SHORT (mỗi tập có 1 video short 9:16)
 Tập 1 đã có: lời đọc `scripts/ep1_short_vi.txt` + `scripts/ep1_short_ko.md` (từ `scripts/ko_ep1_short_check.txt`, KO đo thật ~66s), CSV 14 ảnh dọc `ngay_tan_ep1_short_scenes.csv` (tag `short, 9x16, rieng_short_tap1`), shot list `ngay_tan_ep1_short_shotlist.md`, công cụ `_tools/build_ep1_short.py` (copy cho tập khác). Short = hook (giọng giới thiệu) + tóm các nhịp then chốt của tập (ngôi "tôi") + kết kêu gọi xem tập đầy đủ và tập sau; ảnh dọc dựng lại bố cục (chừa chỗ phụ đề). Tập 2 cũng cần 1 short.
 
+## Dựng thử trong app (đã chạy cho Tập 1)
+`_tools/render_episode.py N` (backend phải đang chạy): đăng ký ảnh trong `ngay_tan_epN_images/` (tag từ CSV) → tạo project template `ngay_tan_ko` → beat plan (mỗi shot = 1 beat, đã gán ảnh; lời đọc rải theo shot; giới thiệu/kết beat riêng giọng InJoon) → Factory run. Cần `ngay_tan_epN_shotlist.md`, `ngay_tan_epN_scenes_v3.csv`, `scripts/ko_epN_check.txt`, E{N}_ trong `ko_bookends_check.txt`. Tên file ảnh phải đúng CSV (lần đầu có 2 file gõ sai tên, đã đổi lại).
+Kết quả Tập 1 (long, KO): project 163, render job 222, 11:47, 1080p, QA PASS 100; thời gian ~20 phút (voice ~1', motion ~10', render ~9'). Quality Gate cho NEEDS_REVIEW 82 (chỉ cảnh báo: pacing, 100 beat cùng loại BODY, ảnh bị coi "độ phân giải thấp" vì ảnh ChatGPT nhỏ hơn 1920x1080) → dùng `POST /factory-runs/{id}/continue?force=true` để chấp nhận cảnh báo và render. Mô tả/hashtag tự sinh bằng tiếng Anh (cần sửa tay).
+
 ## Quy tắc chủ series đã nhắc (đừng vi phạm)
 - Beat do chủ series viết (Tập 1, Tập 2): chỉ làm mượt câu chữ; ý mới đưa vào mục "đề xuất" riêng, không tự nhét vào cốt truyện.
 - Không khẩu hiệu/"bài học sinh tồn". Sinh tồn qua hạn chế thật + hậu quả (SERIES §5).
