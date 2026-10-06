@@ -1,0 +1,4 @@
+Ảnh dùng chung cả series (không theo tập): bảng nhân vật, bảng quái vật, poster. Tên gợi ý bên dưới.
+
+bang_nhan_vat_tong_hop.png
+bang_quai_vat_tong_hop.png

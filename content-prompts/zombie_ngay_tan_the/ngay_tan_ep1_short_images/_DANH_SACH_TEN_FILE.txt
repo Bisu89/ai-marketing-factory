@@ -1,0 +1,16 @@
+Ảnh Tập 1 (video SHORT 9:16) - lưu ảnh vào thư mục này với ĐÚNG tên file dưới đây (theo ngay_tan_ep1_short_scenes.csv).
+
+S01_mo_dau_taeho_quan_phuc_nghiem_nghi.png
+S02_linh_co_giat_sau_kinh_doc.png
+S03_minseo_nhet_the_nho_vao_tay_doc.png
+S04_choi_can_mat_lanh_lung_doc.png
+S05_taeho_bi_tuoc_quan_ham_doc.png
+S06_taeho_lai_xe_hop_nhan_doc.png
+S07_taeho_dung_ngoai_cua_nghe_len_doc.png
+S08_dahee_va_choi_trong_nha_doc.png
+S09_taeho_tha_nhan_xuong_ranh_doc.png
+S10_ke_san_moi_dap_vo_kinh_doc.png
+S11_xe_cuu_thuong_roi_cong_doc.png
+S12_nguoi_nhiem_dap_kinh_xe_doc.png
+S13_dan_quai_bao_vay_doc.png
+S14_ket_taeho_nhin_len_nen_toi.png
