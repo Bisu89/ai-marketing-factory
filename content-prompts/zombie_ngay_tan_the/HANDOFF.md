@@ -6,7 +6,7 @@ Series zombie sinh tồn gốc, **ưu tiên bản tiếng Hàn (KO)**, bản Vi�
 | Hạng mục | Tập 1 | Tập 2 |
 |---|---|---|
 | Cốt truyện (SERIES.md §6) | xong | xong (bản của chủ series, chỉ vá logic nhỏ) |
-| Lời đọc VI | `scripts/ep1_audiobook_v3.txt` (đã có `## GIỚI THIỆU/TRUYỆN/KẾT`) | `scripts/ep2_audiobook_v1.txt` (nháp, chờ duyệt) |
+| Lời đọc VI | `scripts/ep1_audiobook_v3.txt` (đã có `## GIỚI THIỆU/TRUYỆN/KẾT`) | `scripts/ep2_audiobook_v3.txt` (bản chủ series viết lại theo lối kể truyện; **bản mới nhất**, chờ duyệt; v1 là bản cũ của Claude, không dùng) |
 | Lời đọc KO | `scripts/ep1_ko.md` (dịch từ v3, chờ người đọc Hàn soát) | **chưa dịch** |
 | Giới thiệu/kết KO | trong `scripts/ko_bookends_check.txt` (E1_*) | trong cùng file (E2_*) |
 | CSV ảnh | `ngay_tan_ep1_scenes_v3.csv` (100 ảnh) + `ngay_tan_ep1_shotlist.md`; **short**: 14 ảnh dọc (xem mục Video SHORT) | **chưa làm** (long + short) |
@@ -17,7 +17,7 @@ Chủ series chưa báo kết quả tạo thử ảnh (đặc biệt chữ hiệ
 ## Đọc theo thứ tự để làm Tập 2
 1. `HANDOFF.md` (file này).
 2. `SERIES.md` — §1 quy tắc nội dung, §3 nhân vật, §4 bestiary, §5 logic sinh tồn (sổ tài nguyên 5.9), §6.0 cách nhóm hình thành, **§6 Tập 2** (và Tập 3 để biết cliffhanger). Đầu file có quy tắc giọng đọc.
-3. `scripts/ep2_audiobook_v1.txt` — lời đọc VI Tập 2 (ngôi "tôi" Taeho; cảnh Jiwoo/Yerin kể lại).
+3. `scripts/ep2_audiobook_v3.txt` — lời đọc VI Tập 2 (bản mới nhất) (ngôi "tôi" Taeho; cảnh Jiwoo/Yerin kể lại).
 4. `scripts/ko_ep1_check.txt` + `scripts/ep1_ko.md` + `scripts/ko_bookends_check.txt` — mẫu phương pháp dịch Hàn và định dạng.
 5. `IMAGE_SYSTEM.md` (khối prompt, mục C2 quái vật, mục I khung bảng chuẩn) và `ngay_tan_series_library.csv` (bảng quái vật đã có prompt).
 6. `ngay_tan_ep1_shotlist.md` + `_tools/build_ep1_csv.py` — mẫu cách chia ảnh theo đoạn.
@@ -52,6 +52,9 @@ Kết quả Tập 1 (long, KO): project 163, render job 222, 11:47, 1080p, QA PA
 - Muốn **nhiều ảnh** (đầu tư giữ chân người xem), không rút gọn xuống 20 ảnh/tập.
 
 ## Việc còn mở
+- **Tập 2 thực tế đã đổi so với SERIES §6:** trong bản của chủ series, Jiwoo, Yerin (bệnh viện, không còn kẹt trên sân thượng) và Areum (cuối tập) đều xuất hiện ở Tập 2; cảnh khu mua sắm/hầm xe có xe tải hết xăng thay vì đường lách bằng tiếng ồn; Taeho tự đặt tên Runner/Walker (v3 đã đổi thành mô tả). Cần cập nhật SERIES §6 Tập 2–3 và sổ tài nguyên §5.9 cho khớp (Tập 3 giờ bắt đầu khi cả bốn đã đi cùng nhau; Yerin nhập nhóm nhanh nên có thể cần thêm ma sát ở Tập 3). Hỏi chủ series trước khi sửa Tập 3.
+- **Zombie mặc đồng phục ở trường (Tập 2):** bản chủ series ghi "áo đồng phục học sinh"; v3 để "đồng phục của trường". Khi làm ảnh KHÔNG vẽ nhân vật vị thành niên (dùng nhân viên/bảo vệ người lớn, ô số 17 Học Sinh trong bảng quái vật không dùng); báo chủ series.
+
 - Chủ series duyệt Ep1 v3 (VI) và `ep1_ko.md`; thử tạo ảnh nhóm A (ví dụ ảnh 6, 99, 100 và cảnh có hai nhân vật).
 - Tập 2: dịch KO + shot list + (có thể) 2 câu thoại đề xuất cho Taeho–Jiwoo (Jiwoo: "đưa tôi tới chỗ em gái, tôi dẫn anh đi đường tắt"; Taeho: "tôi không hứa gì ngoài chuyện đó") — **chưa áp dụng vào bản của chủ series**.
 - SERIES §5.8 (sai lầm Taeho Tập 3–4) chưa chỉnh khớp Tập 3–4 mới; §8 có các câu hỏi chờ quyết (Dahee có chuộc lỗi không, thêm nam phụ T5, mức trang phục, tên series).
