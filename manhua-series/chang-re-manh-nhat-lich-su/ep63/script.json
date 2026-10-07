@@ -1,0 +1,33 @@
+{
+  "title": "Cả ngàn thư sinh châm lửa đốt sách chàng rể, hóa ra đốt nhầm chiếu thư chính sách mới của nhà vua!?",
+  "chapters": "62",
+  "source_dir": "manhua-recap/crmn_ep63",
+  "description": "Chúc Văn Hoa xúi đám đông tới đập phá hiệu sách của Đặng Tiên và đốt sạch Phong Nguyệt Vô Biên, nhưng đống sách bị châm lửa lại lẫn cả chiếu thư chính sách mới do chính nhà vua ban bố. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 63.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "thumbnail": {"text": "ĐỐT NHẦM CHIẾU THƯ NHÀ VUA!?", "prompt": "Vertical 9:16 anime-style: a huge night bonfire in a stone courtyard, a panicked man in a red robe holding a half-burnt black and gold imperial book, a calm long-haired young man in white standing behind him smiling, a crowd of shocked students holding torches. No text, leave top 25% empty."},
+  "beats": [
+    {"panel": "p002.jpg", "type": "HOOK", "kind": "recap", "narration": "Chúc Văn Hoa tiêu ba mươi đồng vàng để đám nịnh bợ tìm hai trăm thư sinh kéo đến."},
+    {"panel": "p003.jpg", "type": "SETUP", "kind": "recap", "narration": "Trên đường tới phường sách người lớn của Đặng Tiên, dân ưa hóng chuyện kéo theo, tới nơi đã hơn một nghìn người."},
+    {"panel": "p004.jpg", "type": "BUILD", "kind": "recap", "narration": "Một kẻ cầm đầu hét, thứ sách thấp kém như Phong Nguyệt Vô Biên mà ông cũng dám xuất bản, chẳng phải làm ô uế tâm linh người đọc sao!"},
+    {"panel": "p006.jpg", "type": "BUILD", "kind": "recap", "narration": "Chúng ra tối hậu thư, giao toàn bộ Phong Nguyệt Vô Biên ra, đốt sạch trước mặt mọi người."},
+    {"panel": "p007.jpg", "type": "REACTION", "kind": "recap", "narration": "Đặng Tiên cười hề hề, thật sự là giờ nhà ta chẳng còn quyển nào nữa, không còn thật mà!"},
+    {"panel": "p008.jpg", "type": "BUILD", "kind": "recap", "narration": "Cả đám quát, một tên bán sách nhường ông lại nói trong phường không có sách, rồi hô xông vào đập phá, đốt hết mớ bản thảo ô uế."},
+    {"panel": "p012.jpg", "type": "REACTION", "kind": "recap", "narration": "Chúc Văn Hoa đứng ngoài lạnh lùng thầm nghĩ, Thẩm Lãng, cứ đợi ta đốt sạch sách của ngươi đi!"},
+    {"panel": "p013.jpg", "type": "REVEAL", "kind": "recap", "narration": "Cuối cùng chúng lôi ra từ chỗ giấu những thùng sách nặng trịch, bên trong đều là Phong Nguyệt Vô Biên."},
+    {"panel": "p016.jpg", "type": "BUILD", "kind": "recap", "narration": "Tên cầm đầu cười đắc ý, uổng thế Minh, ngươi làm việc được lắm, lần trước hứa trả hai đồng bạc nếu đốt được trăm quyển, lần này phải trả cho ngươi kha khá."},
+    {"panel": "p017.jpg", "type": "BUILD", "kind": "recap", "narration": "Chúng thấy chỗ này có hơn hai nghìn quyển, lại còn lừa bọn ta nói là không có."},
+    {"panel": "p019.jpg", "type": "REVEAL", "kind": "recap", "narration": "Hắn hét lớn, các vị hương thân ở Lan Sơn, đây là những thứ độc hại làm ô uế tâm linh, bây giờ ta sẽ đốt hết chúng!"},
+    {"panel": "p021.jpg", "type": "BUILD", "kind": "recap", "narration": "Ngọn lửa bùng lên giữa sân, cả đám đông hô vang, hay, đốt hay lắm!"},
+    {"panel": "p023.jpg", "type": "REACTION", "kind": "recap", "narration": "Chúc Văn Hoa cười thầm, đã quá, ta chỉ dùng chút kế đã khiến ngươi khó chịu đến vậy rồi."},
+    {"panel": "p025.jpg", "type": "BUILD", "kind": "recap", "narration": "Nhưng bên cạnh đống lửa có người la lên, không được đốt, thật sự là không được đốt, nhanh dập lửa."},
+    {"panel": "p029.jpg", "type": "REVEAL", "kind": "recap", "narration": "Đặng Tiên quỳ xuống hét, ai nói đây là thứ độc hại chứ, đây là chiếu thư chính sách mới do nhà vua ban bố!"},
+    {"panel": "p030.jpg", "type": "REACTION", "kind": "recap", "narration": "Các người dám nói là sách độc hại, hơn nữa còn đốt hết, các người đang khi quân phạm thượng đó!"},
+    {"panel": "p032.jpg", "type": "BUILD", "kind": "recap", "narration": "Tên cầm đầu cười lớn, tên gian thương, lúc nào rồi mà còn dám mượn danh nhà vua, đúng là muốn chết mà!"},
+    {"panel": "p033.jpg", "type": "REVEAL", "kind": "recap", "narration": "Đặng Tiên thách, không tin thì ngươi xem đi, rồi hắn lôi quyển sách cháy dở ra khỏi đống lửa."},
+    {"panel": "p035.jpg", "type": "REVEAL", "kind": "recap", "narration": "Bìa đen viền vàng hiện lên, đúng là chiếu thư chính sách mới!"},
+    {"panel": "p038.jpg", "type": "REACTION", "kind": "recap", "narration": "Tên cầm đầu run rẩy, sao có thể, một tên thương nhân lại in cái này, chiếu thư chính sách mới có tới mấy trăm nghìn chữ."},
+    {"panel": "p041.jpg", "type": "REACTION", "kind": "recap", "narration": "Cả đám hoang mang, những quyển sách vừa đốt bên ngoài đề là Phong Nguyệt Vô Biên, mà bên trong lại là chiếu thư của nhà vua."},
+    {"panel": "p043.jpg", "type": "REVEAL", "kind": "recap", "narration": "Thẩm Lãng bước ra từ trong bóng tối, mỉm cười, các ngươi thiêu hủy chiếu thư chính sách mới của nhà vua, là trong lòng bất mãn, ý muốn mưu phản à!"},
+    {"panel": "p044.jpg", "type": "ENDING", "kind": "recap", "narration": "Chúc Văn Hoa nghe vậy mặt tái mét, hét lên một tiếng, Thẩm Lãng!"}
+  ]
+}

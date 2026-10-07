@@ -1,0 +1,33 @@
+{
+  "title": "Ông chủ sách người lớn khen hết lời, chàng rể cam kết bán 3000 cuốn rồi thêm cả nhân vật mới để trả đũa!?",
+  "chapters": "60",
+  "source_dir": "manhua-recap/crmn_ep61",
+  "description": "Đặng Tiên, ông chủ hiệu sách ở Lan Sơn, đọc xong bản thảo Phong Nguyệt Vô Biên liền nhận in, Thẩm Lãng cam kết 3000 cuốn rồi bí mật thêm nhân vật mới và tranh minh họa để phục vụ kế hoạch. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 61.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "thumbnail": {"text": "CAM KẾT 3000 CUỐN, PHÁ MỌI KỶ LỤC!?", "prompt": "Vertical 9:16 anime-style: a delighted shopkeeper in purple robes holding a thick manuscript with a nosebleed, a confident long-haired young man in white and teal robes laying a bag of gold coins on the desk, a plump nobleman beside them, warm bookshop lamplight. No text, leave top 25% empty."},
+  "beats": [
+    {"panel": "p002.jpg", "type": "HOOK", "kind": "recap", "narration": "Trong hiệu sách nhỏ, ông chủ Đặng Tiên vừa lật bản thảo vừa lẩm bẩm, nét mặt từ nghi ngờ chuyển sang ngạc nhiên."},
+    {"panel": "p005.jpg", "type": "SETUP", "kind": "recap", "narration": "Ông reo lên, hay quá, đặc sắc quá, không ngờ còn có tranh minh họa vẽ tuyệt đến vậy."},
+    {"panel": "p006.jpg", "type": "BUILD", "kind": "recap", "narration": "Thế tử hỏi, vậy ông có đồng ý xuất bản quyển sách này của bọn ta không, ông đáp ngay, đương nhiên!"},
+    {"panel": "p009.jpg", "type": "BUILD", "kind": "recap", "narration": "Thế tử lo, ông không sợ bị Chúc Văn Hoa chặn kế sinh nhai sao, ông cười, người bán tranh sách người lớn như ta còn sợ gì."},
+    {"panel": "p012.jpg", "type": "REVEAL", "kind": "recap", "narration": "Hóa ra Đặng Tiên là ông chủ số một về sách người lớn ở Lan Sơn, hàng của ông phủ khắp hai mươi mấy thành, ở bốn năm quận xung quanh."},
+    {"panel": "p013.jpg", "type": "BUILD", "kind": "recap", "narration": "Ông đoán, tác phẩm hay thế này chắc chắn bán rất chạy, có thể đột phá ba nghìn cuốn."},
+    {"panel": "p014.jpg", "type": "BUILD", "kind": "recap", "narration": "Thẩm Lãng chỉ đưa ra một yêu cầu, sách phải được tung ra thị trường cùng lúc với phần sau của Mộng Uyên Ương, rồi đàn áp hắn không còn gì."},
+    {"panel": "p015.jpg", "type": "REACTION", "kind": "recap", "narration": "Ông thở dài nói khó, vì phần đầu của Mộng Uyên Ương đã bán bốn nghìn sáu trăm cuốn, đứng đầu mọi kỷ lục."},
+    {"panel": "p016.jpg", "type": "BUILD", "kind": "recap", "narration": "Kênh phát hành của Lan Sơn phủ khắp ba bốn mươi thành, lại có sức hút từ giới hâm mộ nên khách mua cả trăm cuốn để tặng người khác."},
+    {"panel": "p018.jpg", "type": "REACTION", "kind": "recap", "narration": "Còn sách người lớn của ông nhiều nhất chỉ bán được hai nghìn bảy trăm cuốn, lại còn là kiểu dung tục trắng trợn."},
+    {"panel": "p021.jpg", "type": "REVEAL", "kind": "recap", "narration": "Thẩm Lãng cười đáp, mục tiêu của ta là phá vỡ tất cả kỷ lục."},
+    {"panel": "p023.jpg", "type": "BUILD", "kind": "recap", "narration": "Anh đặt túi vàng xuống bàn, ông cứ việc in, nếu không bán được ba nghìn cuốn thì ta móc tiền bù vào."},
+    {"panel": "p024.jpg", "type": "REVEAL", "kind": "recap", "narration": "Ông mừng rỡ giơ hai ngón tay, mỗi cuốn ngài được hai mươi phần trăm!"},
+    {"panel": "p025.jpg", "type": "BUILD", "kind": "recap", "narration": "Anh còn xin thêm vài trang tranh, và lén thêm một nhân vật mới tên Chúc Văn Sơn vào bản thảo."},
+    {"panel": "p026.jpg", "type": "REVEAL", "kind": "recap", "narration": "Người này xuất thân từ quý tộc sa sút, là con của vợ lẽ, vì muốn sống giàu sang mà làm em trai nuôi của Tây Môn đại quan nhân."},
+    {"panel": "p029.jpg", "type": "REACTION", "kind": "recap", "narration": "Thế tử thầm nghĩ, tỷ phu ghê thật, nếu sách nổi thì danh tiếng của Chúc Văn Hoa coi như tiêu tùng."},
+    {"panel": "p032.jpg", "type": "BUILD", "kind": "recap", "narration": "Về nhà, anh hóa thân thành nhà nghệ thuật tài ba, bắt tay vẽ tiếp, lần này là tranh quảng cáo tiêu chuẩn cực cao."},
+    {"panel": "p034.jpg", "type": "REACTION", "kind": "commentary", "narration": "Thế tử xem tranh mà máu mũi chảy ròng ròng, đúng là ra trận cùng tỷ phu phải có sức khỏe tốt."},
+    {"panel": "p041.jpg", "type": "BUILD", "kind": "recap", "narration": "Đang hăng say thì Mộc Lan bước vào hỏi, phu quân, chàng với đệ đệ làm gì vậy?"},
+    {"panel": "p044.jpg", "type": "REACTION", "kind": "recap", "narration": "Anh hốt hoảng giơ tay, Mộc Lan, không phải như vậy đâu, nàng nghe ta giải thích đã!"},
+    {"panel": "p048.jpg", "type": "REVEAL", "kind": "recap", "narration": "Mười lăm ngày sau, Phong Nguyệt Vô Biên chính thức ra mắt, cùng ngày với phần hai Mộng Uyên Ương của Chúc Văn Hoa."},
+    {"panel": "p053.jpg", "type": "BUILD", "kind": "recap", "narration": "Giữa lúc người ta xếp hàng chờ gặp tài tử số một thành Lan Sơn, hắn chỉ mỉm cười tự mãn nghĩ, người xứng với ta chỉ có Trương Xuân Hoa."},
+    {"panel": "p056.jpg", "type": "ENDING", "kind": "recap", "narration": "Cùng lúc đó, một tấm áp phích khổng lồ vẽ cặp đôi trong truyện bật mở trên mái nhà, cả đám đông ngẩng đầu nhìn lên!"}
+  ]
+}

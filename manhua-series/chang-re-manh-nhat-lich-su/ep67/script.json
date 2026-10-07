@@ -1,0 +1,32 @@
+{
+  "title": "Vị hôn phu đánh thẳng tay người vợ sắp cưới vì bị bêu xấu, cha hắn lại dặn mục tiêu thật chỉ có phủ Bá tước!?",
+  "chapters": "66",
+  "source_dir": "manhua-recap/crmn_ep67",
+  "description": "Trương Tấn tát Từ Thiên Thiên vì cuốn sách bôi nhọ, Thái thú Trương Xung dạy con đừng sa đà vào Thẩm Lãng mà hãy nhắm vào phủ Bá tước Huyền Vũ, còn Thẩm Lãng và Mộc Lan biết ba vị khách đáng ngại sắp đến tiệc đính hôn. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 67.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "thumbnail": {"text": "BA VỊ KHÁCH ĐÁNG SỢ SẮP TỚI!?", "prompt": "Vertical 9:16 anime-style: a stern grey-haired nobleman in dark robes with green jade ornaments lecturing a broad-shouldered young man in pale green robes in a sunlit hall, a red-haired female general in white and red smiling beside a calm long-haired young man in white, ominous gold circular emblem in the background. No text, leave top 25% empty."},
+  "beats": [
+    {"panel": "p002.jpg", "type": "HOOK", "kind": "recap", "narration": "Giữa đại sảnh, Trương Tấn lao tới tát thẳng vào mặt vị hôn thê Từ Thiên Thiên, tại sao lúc đó cô không giết quách tên súc sinh đó đi!"},
+    {"panel": "p005.jpg", "type": "SETUP", "kind": "recap", "narration": "Cô ôm má đỏ bừng, nước mắt lăn dài, giọng lạnh đi hỏi lại, Trương công tử, lúc vợ chưa cưới của công tử bị tổn thương, chẳng lẽ công tử chỉ biết phát tiết cơn giận với cô ấy thôi sao?"},
+    {"panel": "p010.jpg", "type": "BUILD", "kind": "recap", "narration": "Hắn cuồng nộ, mắt đỏ rực, tung một quyền đập nát cả nền đá, gào lên hối hận vì lúc đó không giết chết Thẩm Lãng."},
+    {"panel": "p014.jpg", "type": "BUILD", "kind": "recap", "narration": "Cô dịu giọng khuyên, Trương lang, bớt giận đi, rồi hắn bước đi nói, ta đi tìm cha."},
+    {"panel": "p017.jpg", "type": "BUILD", "kind": "recap", "narration": "Trong phủ thái thú Nộ Giang, Trương Xung đã đọc xong bản Phong Nguyệt Vô Biên, khen viết rất hay, đầy tài năng, hoàn toàn không giống do người trẻ viết ra."},
+    {"panel": "p022.jpg", "type": "REVEAL", "kind": "recap", "narration": "Hắn hỏi, con muốn ta cấm tiệt cuốn sách này sao, ông đáp, cấm chỉ khiến nó càng nổi, chỉ có giết chết Thẩm Lãng mới tiêu diệt được phong trào, mà muốn hắn chết thì phải tiêu diệt phủ Bá tước Huyền Vũ."},
+    {"panel": "p025.jpg", "type": "REACTION", "kind": "recap", "narration": "Trương Tấn bật dậy, chẳng lẽ cứ để mặc tên súc sinh đó bôi nhọ danh tiếng của Thiên Thiên bên ngoài sao, thế chẳng khác nào nhà họ Trương chúng ta bị biến thành trò cười!"},
+    {"panel": "p027.jpg", "type": "REVEAL", "kind": "recap", "narration": "Ông đáp lạnh lùng, ta chỉ là một thanh đao trong tay nhà vua, ta không muốn làm một vị quan hiền có tiếng lưu danh sử sách, mục tiêu của chúng ta chỉ có một là đánh bại phủ Bá tước Huyền Vũ."},
+    {"panel": "p029.jpg", "type": "BUILD", "kind": "recap", "narration": "Ông dặn, làm hôn lễ cho thật hoành tráng, tiệc cưới này là khúc nhạc dạo, phải phóng tầm mắt ra xa hơn, đừng cứ dây dưa mãi với Thẩm Lãng."},
+    {"panel": "p031.jpg", "type": "REACTION", "kind": "recap", "narration": "Hắn giật mình, ngay cả chuyện hắn đánh Từ Thiên Thiên mà cha cũng đoán được."},
+    {"panel": "p034.jpg", "type": "BUILD", "kind": "recap", "narration": "Hắn nghĩ thầm, chỉ cần tiêu diệt được phủ Bá tước thì dựa vào công lao đó cha có thể làm đô đốc ở Diễm Châu, nhưng cũng không thể thiếu một trăm nghìn đồng vàng của nhà họ Từ."},
+    {"panel": "p036.jpg", "type": "REVEAL", "kind": "recap", "narration": "Cùng lúc đó trong phủ Bá tước, Mộc Lan mỉm cười, kẻ thù của phu quân chính là kẻ thù của thiếp."},
+    {"panel": "p038.jpg", "type": "BUILD", "kind": "recap", "narration": "Anh vui vẻ nói, vừa hay tiệc đính hôn tối nay không phải tiệc đính hôn mà là buổi diễn thử của chính trị tấn công phủ Bá tước Huyền Vũ."},
+    {"panel": "p039.jpg", "type": "REACTION", "kind": "recap", "narration": "Nhìn lên bức tường ghi tên kẻ thù, anh tuyên bố, đến lúc đó kẻ nào dám nhảy ra thì phải chết, ta phải khiến chúng trả giá!"},
+    {"panel": "p041.jpg", "type": "BUILD", "kind": "recap", "narration": "Tuy Thẩm Lãng tràn đầy tự tin, nhưng Bá tước Huyền Vũ lại thấy áp lực đè nặng như núi."},
+    {"panel": "p042.jpg", "type": "REVEAL", "kind": "recap", "narration": "Có ba vị khách mà ông hoàn toàn không nghĩ tới, không ngờ cũng đến tham gia tiệc đính hôn của Trương Tấn."},
+    {"panel": "p043.jpg", "type": "BUILD", "kind": "recap", "narration": "Người thứ nhất là thế tử Đường Doãn của phủ Bá tước Tấn Hải ở phía Bắc, người thứ hai là Nam Cung Bính, nhị công tử của Trấn Bắc Hầu."},
+    {"panel": "p046.jpg", "type": "REVEAL", "kind": "recap", "narration": "Người thứ ba là sứ giả Hội Ẩn Nguyên, chủ nợ lớn nhất của phủ Bá tước Huyền Vũ, ngân hàng tư nhân lớn nhất vương triều, làm ăn phân bố khắp mười mấy quốc gia."},
+    {"panel": "p052.jpg", "type": "REACTION", "kind": "commentary", "narration": "Ba thế lực lớn cùng đổ về một bữa tiệc đính hôn, đúng là cả thiên hạ đều đang ngóng chờ kết cục của phủ Bá tước."},
+    {"panel": "p054.jpg", "type": "BUILD", "kind": "recap", "narration": "Bá tước nói với Thẩm Lãng, thứ mà phủ Bá tước Huyền Vũ ta sợ nhất là cô lập, xung quanh toàn là kẻ thù."},
+    {"panel": "p057.jpg", "type": "REVEAL", "kind": "recap", "narration": "Ông đặt quân cờ xuống bàn, từ trước đến nay người mà chúng ta nương nhờ được là Trấn Bắc Hầu, nhưng giờ Trương Xung giở thủ đoạn khiến lập trường của ông ta nghiêng hẳn về phía chính sách mới."},
+    {"panel": "p059.jpg", "type": "ENDING", "kind": "recap", "narration": "Như vậy phủ Bá tước Huyền Vũ trở thành quý tộc cũ lớn nhất ở tỉnh Thiên Nam, đơn độc phơi mình ra trước ánh sáng của chính sách mới của nhà vua!"}
+  ]
+}

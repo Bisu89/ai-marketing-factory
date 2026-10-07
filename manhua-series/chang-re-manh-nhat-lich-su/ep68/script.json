@@ -1,0 +1,125 @@
+{
+  "title": "Đoán trước cả bước đi của thái thú, chàng rể gọi tên đúng cuộc chiến sống còn của phủ Bá tước trước giờ tiệc đính hôn!?",
+  "chapters": "67",
+  "source_dir": "manhua-recap/crmn_ep68",
+  "description": "Thẩm Lãng phân tích cho nhạc phụ thấy mấu chốt thắng thua với Trương Xung là đảo Kim Sơn, đoán đúng giờ sứ giả Hội Ẩn Nguyên tới thăm, rồi cùng Mộc Lan bước vào tiệc đính hôn gây sửng sốt cả cửa lớn. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 68.",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "thumbnail": {
+    "text": "ĐOÁN ĐÚNG CẢ GIỜ KHÁCH ĐẾN!?",
+    "prompt": "Vertical 9:16 anime-style: a long-haired young man in white and teal robes pointing at an old strategy map spread on a wooden table, black and white stones placed on it, an old bald advisor and a stern ponytailed nobleman staring at him in shock, warm study room light. No text, leave top 25% empty."
+  },
+  "beats": [
+    {
+      "panel": "p002.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Nhạc phụ đập bàn đứng dậy, chắc chắn Trương Xung đã sắp đặt chuyện này từ lâu, nhưng phủ Bá tước cũng không phải không có cách phản đòn!"
+    },
+    {
+      "panel": "p003.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Thẩm Lãng nói thẳng, chiêu này của Trương Xung chỉ là chiêu che mắt, thứ ông ta muốn là chúng ta rót nguồn vốn chiến lược vào Trấn Bắc Hầu để lấy lại lập trường của ông ấy."
+    },
+    {
+      "panel": "p005.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Bước thứ hai của Trương Xung sẽ là cắt đứt nguồn tiền, phủ Bá tước đang thiếu nợ tới cả tỷ, vòng xoay vốn gặp vấn đề thì hậu quả khó tưởng tượng."
+    },
+    {
+      "panel": "p008.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Anh đoán không lầm, rất nhanh thôi nhà vua sẽ hạ chỉ xác định đảo Kim Sơn thuộc về ai trong một lần luôn."
+    },
+    {
+      "panel": "p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Khi mất đảo Kim Sơn, chủ nợ lấy lý do không đủ khả năng trả nợ để đòi vật thế chấp, mà vật thế chấp chính là đảo Vọng Nhai, nơi chiếm hơn sáu mươi phần trăm lợi ích thu mỗi năm của phủ Bá tước."
+    },
+    {
+      "panel": "p014.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Nhạc phụ vỡ lẽ, thì ra mấu chốt thắng thua chính là đảo Kim Sơn, đúng là được sáng tỏ thông suốt!"
+    },
+    {
+      "panel": "p017.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Anh chỉ ra, đối thủ trong cuộc chiến này không chỉ có phủ Bá tước Tấn Hải mà còn có Trương Xung, Chúc Nhung, thậm chí cả nhà vua lúc ẩn lúc hiện."
+    },
+    {
+      "panel": "p022.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh hỏi, nhạc phụ đại nhân, tại sao khi xưa ông nội lại vay một khoản tiền lớn như vậy, nhạc phụ nghiến răng nhớ lại một đội tàu thuyền ba nghìn quân bị tiêu diệt toàn bộ."
+    },
+    {
+      "panel": "p027.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Anh cười lớn, nếu tiệc đính hôn tối nay con không đánh cho kẻ nào kẻ nấy tối tăm mặt mày, thì người khác sẽ tưởng phủ Bá tước dễ bắt nạt thật đấy!"
+    },
+    {
+      "panel": "p028.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh còn tính, chắc lát nữa người của Hội Ẩn Nguyên sẽ đến chào hỏi, khoảng ba khắc nữa thôi, dù người đó nói gì chỉ cần gật đầu tỏ vẻ là phải, trong lòng cứ coi ông ta đang thả rắm."
+    },
+    {
+      "panel": "p029.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Nhạc phụ nhìn con rể đoán cả thời gian chính xác mà chỉ biết ngẩn người, đúng là đoán nhiều đến mức phát sợ."
+    },
+    {
+      "panel": "p031.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Bốn mươi lăm phút sau, thuộc hạ báo, chủ nhân, khách quý phương Bắc đến chào hỏi, và đúng là sứ giả Hội Ẩn Nguyên, thời gian không lệch chút nào."
+    },
+    {
+      "panel": "p037.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tối hôm tiệc đính hôn của Từ Thiên Thiên và Trương Tấn, trước cửa lớn khách khứa tấp nập, ai nấy ăn vận sặc sỡ."
+    },
+    {
+      "panel": "p039.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Đúng lúc đó một chàng trai áo xanh đen tóc dài bước xuống xe, đám đông thì thầm, người này đẹp trai quá, cậu ta là ai thế?"
+    },
+    {
+      "panel": "p042.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Anh nghiêng đầu, ta biết ta rất đẹp trai, sẽ gây áp lực khá lớn cho nàng, nhưng nàng yên tâm đi, đơn thuần về mặt nhan sắc thì nàng vẫn rất xứng với ta."
+    },
+    {
+      "panel": "p045.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Đám đông chợt sững người, Kim, Kim Mộc Lan, đẹp quá, mấy gã đàn ông trố mắt, tim bay thành hình trái tim."
+    },
+    {
+      "panel": "p049.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Người gác cổng cao giọng thông báo, tiểu thư Kim Mộc Lan, cô gia Thẩm Lãng của phủ Bá tước Huyền Vũ đến!"
+    },
+    {
+      "panel": "p052.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Giữa vô số ánh nhìn, anh bỗng nhận ra trong một ánh mắt có ý thù địch, và khẽ nhếch môi cười, màn chính của đêm nay chính thức bắt đầu!"
+    }
+  ]
+}

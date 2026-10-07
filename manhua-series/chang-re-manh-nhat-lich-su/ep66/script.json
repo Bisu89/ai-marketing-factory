@@ -1,0 +1,33 @@
+{
+  "title": "Sách bán sạch cả thành Huyền Vũ, tiểu thư nhà họ Từ nhận ra mình bị chế giễu trong truyện rồi ngất xỉu!?",
+  "chapters": "65",
+  "source_dir": "manhua-recap/crmn_ep66",
+  "description": "Thẩm Lãng rời Lan Sơn an toàn nhờ Mộc Lan dẫn kỵ binh ra đón, Phong Nguyệt Vô Biên bán sạch ở Huyền Vũ thành, còn nhà họ Từ vừa khoe tiệc đính hôn thì phát hiện nhân vật bị bôi nhọ trong sách chính là Từ Thiên Thiên. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 66.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "thumbnail": {"text": "NHẬN RA MÌNH TRONG SÁCH, NGẤT XỈU!?", "prompt": "Vertical 9:16 anime-style: a young woman in a pink and gold dress fainting backward on a wooden balcony with a hand over her bleeding mouth, a shocked bearded man in purple and blue robes reaching out to her, a thick open book and a crowd pointing from the street below, warm afternoon light. No text, leave top 25% empty."},
+  "beats": [
+    {"panel": "p003.jpg", "type": "HOOK", "kind": "recap", "narration": "Chúc Văn Hoa quỳ giữa biển lửa nhìn chồng sách cháy rụi, từ đó về sau ai cũng nhớ hắn là kẻ đáng thương bị Thẩm Lãng chà đạp."},
+    {"panel": "p004.jpg", "type": "SETUP", "kind": "recap", "narration": "Hắn gào lên, ta với ngươi không đội trời chung, còn Thẩm Lãng chỉ đáp, được, ta đợi."},
+    {"panel": "p006.jpg", "type": "BUILD", "kind": "recap", "narration": "Lúc ra về anh còn nhắc to, nếu ta xảy ra chuyện trên đường thì nhất định là do Chúc Lan Đình làm."},
+    {"panel": "p007.jpg", "type": "REACTION", "kind": "recap", "narration": "Tử tước Lan Sơn chết đứng, thầm chửi, rõ ràng ta đang âm chỉ để giết người, sao lại thành bị người ta chặn họng trước."},
+    {"panel": "p008.jpg", "type": "BUILD", "kind": "recap", "narration": "Thẩm Lãng rời thành Lan Sơn, Kim Mộc Lan đã sớm dẫn kỵ binh ra đón, dọc đường cực kỳ an toàn."},
+    {"panel": "p009.jpg", "type": "REVEAL", "kind": "recap", "narration": "Thậm chí Chúc Lan Đình còn phải cử mười mấy người âm thầm bảo vệ anh đi đến tận Huyền Vũ thành."},
+    {"panel": "p011.jpg", "type": "REACTION", "kind": "recap", "narration": "Thẩm Lãng ngồi trong xe, cười thầm, Chúc Lan Đình đúng là người tốt."},
+    {"panel": "p012.jpg", "type": "BUILD", "kind": "recap", "narration": "Sau hôm đó, Phong Nguyệt Vô Biên ngày càng hot, chuyện đêm qua khiến nó thành đề tài nóng, ai ủng hộ ai cũng mua về để nhận xét."},
+    {"panel": "p013.jpg", "type": "REVEAL", "kind": "recap", "narration": "Hai ngày sau, Đặng Tiên dẫn hàng chục người vận chuyển hơn ba nghìn quyển tới Huyền Vũ thành, bắt đầu bán ở đại bản doanh của Thẩm Lãng."},
+    {"panel": "p014.jpg", "type": "BUILD", "kind": "recap", "narration": "Trước đó anh đã bỏ tiền thuê nhiều người thổi phồng, tin đồn quyển sách có hiệu quả trị bệnh đặc biệt lan khắp nơi, chỉ trong hai giờ hơn ba nghìn cuốn bán sạch."},
+    {"panel": "p016.jpg", "type": "BUILD", "kind": "recap", "narration": "Trong từ phủ, Từ gia chủ hỏi con gái, tiệc đính hôn, Kim Mộc Lan và Thẩm Lãng có đến không?"},
+    {"panel": "p017.jpg", "type": "REACTION", "kind": "recap", "narration": "Thiên Thiên cười, đến hay không cũng không sao, sứ giả tổng đốc, đại nhân quốc đô, cả thế tử Tấn Hải đều đích thân tới, Thẩm Lãng chỉ là một tên con rể nhãi nhép."},
+    {"panel": "p019.jpg", "type": "REVEAL", "kind": "recap", "narration": "Ông nói, Trương Xung một lần hủy diệt hai phong địa Bá tước, nhất định một bước lên trời, sẽ vào đô thành làm chủ quan."},
+    {"panel": "p022.jpg", "type": "REACTION", "kind": "recap", "narration": "Ông còn nói thêm, thuyền lớn của phủ Bá tước Huyền Vũ sắp chìm, Thẩm Lãng có nhảy xuống cũng không thoát được, Điền Hoành chết thật oan uổng."},
+    {"panel": "p023.jpg", "type": "REVEAL", "kind": "recap", "narration": "Đúng lúc đó quản gia hớt hải chạy vào, chủ nhân, tiểu thư, đại sự không hay rồi!"},
+    {"panel": "p025.jpg", "type": "BUILD", "kind": "recap", "narration": "Ông ta bẩm, quyển Phong Nguyệt Vô Biên mà Thẩm Lãng viết không chỉ bán được hơn ngàn quyển ở Huyền Vũ thành."},
+    {"panel": "p026.jpg", "type": "REVEAL", "kind": "recap", "narration": "Từ gia chủ cầm lên xem tranh minh họa, người phụ nữ trong tranh sao quen quen, mặt ông bỗng cứng lại."},
+    {"panel": "p031.jpg", "type": "REACTION", "kind": "recap", "narration": "Thiên Thiên giật mình đọc theo, nước mắt trào ra, cô nghiến răng, tên Thẩm Lãng chết tiệt, ngươi muốn hủy hoại thanh danh của cả nhà họ Từ!"},
+    {"panel": "p035.jpg", "type": "BUILD", "kind": "recap", "narration": "Dưới tầng, người ta xì xào, đây chính là nhà Tây Môn Tiêm Tiêm sao, tại sao lại viết là họ Từ."},
+    {"panel": "p036.jpg", "type": "REVEAL", "kind": "recap", "narration": "Một kẻ chỉ tay hét lớn, nhìn đi, chính là nữ nhân đó, chính là khuôn mặt đó!"},
+    {"panel": "p038.jpg", "type": "REACTION", "kind": "recap", "narration": "Cô gái lảo đảo trên ban công, ngất xỉu ngay giữa tiếng reo hò của đám đông, tái hiện kinh điển!"},
+    {"panel": "p042.jpg", "type": "REACTION", "kind": "commentary", "narration": "Tưởng đang mở tiệc đính hôn khoe khoang, ai ngờ bị chính cuốn sách của người cũ lột trần ngay trước mặt cả thành."},
+    {"panel": "p046.jpg", "type": "ENDING", "kind": "recap", "narration": "Tỉnh dậy, cô cắn răng thừa nhận quyển sách này viết quá hay, sẽ thành kinh điển trong vòng mười năm, nhưng người bị lột trần trong đó lại chính là Từ Thiên Thiên ta!"}
+  ]
+}

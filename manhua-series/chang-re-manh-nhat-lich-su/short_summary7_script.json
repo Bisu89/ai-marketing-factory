@@ -1,0 +1,100 @@
+{
+  "title": "Bán sách phá kỷ lục, đại tài tử đốt nhầm chiếu thư nhà vua, rồi chàng rể đến dự tiệc đính hôn người cũ!?",
+  "chapters": "60-69",
+  "description": "Những tình tiết hay nhất tập 61-70 Chàng Rể Mạnh Nhất Lịch Sử. Xem bản đầy đủ ở video dài trên kênh.",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "thumbnail": {
+    "text": "ĐỐT NHẦM CHIẾU THƯ NHÀ VUA!?",
+    "prompt": "Vertical 9:16 anime-style: a huge night bonfire in a stone courtyard, a panicked man in a red robe holding a half-burnt black and gold imperial book, a calm long-haired young man in white standing behind him smiling, a crowd of shocked students holding torches. No text, leave top 25% empty."
+  },
+  "beats": [
+    {
+      "dir": "manhua-recap/crmn_ep61",
+      "panel": "p023.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Anh cam kết bán ba nghìn cuốn sách, đặt túi vàng xuống bàn để ông chủ yên tâm in."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep62",
+      "panel": "p016.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Sách bán sạch ba nghìn cuốn trong một ngày, đại tài tử nhận ra mình bị bôi nhọ trong truyện rồi xé nát bản thảo."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep63",
+      "panel": "p029.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Cả đám thư sinh châm lửa đốt sách, nào ngờ đốt nhầm chiếu thư chính sách mới của nhà vua."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep64",
+      "panel": "p010.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Anh tuyên án lưu đày, kẻ cầm đầu bị đánh nát tay ngay giữa sân."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep65",
+      "panel": "p034.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Tử tước phải tát con trai ruột đến chảy máu trước mặt mọi người."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep65",
+      "panel": "p047.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Rồi bắt chính tay hắn đốt sạch năm nghìn cuốn sách của mình."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep66",
+      "panel": "p038.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Cô gái nhà họ Từ nhận ra mình bị bôi nhọ trong truyện, ngất xỉu ngay trên ban công."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep67",
+      "panel": "p022.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Cha vị hôn phu dặn mục tiêu thật là hạ bệ phủ Bá tước, chứ không phải đôi co với chàng rể."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep68",
+      "panel": "p008.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Chàng rể đoán trước thế cờ, chỉ ra mấu chốt thắng thua là cuộc chiến đảo Kim Sơn."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep69",
+      "panel": "p017.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Ở cổng tiệc đính hôn, anh trả tiền công khai để lột bẫy kỹ nữ do chính quản gia nhà họ Từ thuê."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep70",
+      "panel": "p009.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Rồi tự tay quật gãy chân lão quản gia giữa cổng tiệc."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep70",
+      "panel": "p053.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Mọi nhân vật quyền lực nhất vùng đã tề tựu, và đêm tiệc đính hôn thực sự mới chỉ bắt đầu!"
+    }
+  ]
+}

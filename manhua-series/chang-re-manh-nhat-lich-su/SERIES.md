@@ -122,6 +122,16 @@ lớn hơn xoay quanh phủ Bá tước Huyền Vũ (gia tộc Kim Mộc Lan —
 | 58 | 57 | `manhua-recap/crmn_ep58` | Cha mẹ anh từ chối dọn gần phủ Bá tước; anh thú nhận đốt váy của vợ; nhận thiệp đính hôn của Từ Thiên Thiên và dụ Thế tử viết tiểu thuyết bôi nhọ nhà họ Từ. | ✅ script (Claude viết) |
 | 59 | 58 | `manhua-recap/crmn_ep59` | Hoàn thành "Phong Nguyệt Vô Biên" (bút danh Lãng Lãng Tiếu Tiếu Sinh); Bá tước bắt quả tang, đánh Thẩm Lãng nhưng khen sách hay; anh khai sách để trả thù nhà họ Từ và phục vụ cuộc chiến đảo Kim Sơn. | ✅ script (Claude viết) |
 | 60 | 59 | `manhua-recap/crmn_ep60` | Anh và Thế tử tới thành sách Lan Sơn tìm nơi xuất bản; Chúc Văn Hoa (con thứ tử tước Lan Sơn, tác giả Mộng Uyên Ương) chặn đường mọi nhà sách; anh vẫn có sẵn kế hoạch A, B, C. | ✅ script (Claude viết) |
+| 61 | 60 | `manhua-recap/crmn_ep61` | Đặng Tiên (ông chủ sách người lớn số một Lan Sơn) nhận in Phong Nguyệt Vô Biên; Thẩm Lãng cam kết 3000 cuốn, thêm nhân vật Chúc Văn Sơn để nhắm vào Chúc Văn Hoa; sách ra mắt cùng ngày với phần hai Mộng Uyên Ương. | ✅ script (Claude viết) |
+| 62 | 61 | `manhua-recap/crmn_ep62` | Sách bán sạch hơn 3000 cuốn trong một ngày; Chúc Văn Hoa nhận ra hình mình bị bôi nhọ trong truyện, xé sách rồi kéo đám thư sinh tới phủ thành chủ Lý Phương đòi cấm sách. | ✅ script (Claude viết) |
+| 63 | 62 | `manhua-recap/crmn_ep63` | Đám thư sinh tới phường sách của Đặng Tiên đốt sách nhưng đốt nhầm chiếu thư chính sách mới của nhà vua (bọc bìa Phong Nguyệt Vô Biên); Thẩm Lãng lộ diện buộc tội mưu phản. | ✅ script (Claude viết) |
+| 64 | 63 | `manhua-recap/crmn_ep64` | Thẩm Lãng tuyên án lưu đày đảo Nam Thiên, kẻ cầm đầu bị đánh nát tay; thành chủ Lý Phương xin thương lượng; Tử tước Lan Sơn Chúc Lan Đình xuất hiện. | ✅ script (Claude viết) |
+| 65 | 64 | `manhua-recap/crmn_ep65` | Anh đòi Tử tước tát con trai ruột và bắt Chúc Văn Hoa tự tay đốt hơn 5000 cuốn Mộng Uyên Ương phần hai, dọa viết cả nhà ông vào sách; Tử tước phải chấp nhận. | ✅ script (Claude viết) |
+| 66 | 65 | `manhua-recap/crmn_ep66` | Thẩm Lãng về Huyền Vũ an toàn; sách bán sạch ở Huyền Vũ thành; Từ Thiên Thiên nhận ra mình bị bôi nhọ thành nhân vật trong sách ngay giữa lễ chuẩn bị đính hôn rồi ngất xỉu. | ✅ script (Claude viết) |
+| 67 | 66 | `manhua-recap/crmn_ep67` | Trương Tấn tát Thiên Thiên; Thái thú Trương Xung dạy con mục tiêu thật chỉ là phủ Bá tước; Thẩm Lãng biết ba vị khách đáng ngại (thế tử Tấn Hải, công tử Trấn Bắc Hầu, sứ giả Hội Ẩn Nguyên) sẽ dự tiệc. | ✅ script (Claude viết) |
+| 68 | 67 | `manhua-recap/crmn_ep68` | Anh phân tích cho Bá tước: mấu chốt thắng thua là cuộc chiến đảo Kim Sơn, chủ nợ sẽ đòi đảo Vọng Nhai nếu mất đảo; đoán đúng giờ sứ giả Hội Ẩn Nguyên tới; cùng Mộc Lan bước vào tiệc đính hôn. | ✅ script (Claude viết) |
+| 69 | 68 | `manhua-recap/crmn_ep69` | Kỹ nữ chặn cổng vu Thẩm Lãng; anh trả tiền công khai, bày kế để chính Từ quản gia (kẻ thuê) lộ mặt; Trương Tấn ra lệnh đánh gãy chân quản gia để che đậy. | ✅ script (Claude viết) |
+| 70 | 69 | `manhua-recap/crmn_ep70` | Thẩm Lãng tự tay đánh quản gia rồi vào tiệc, bị xếp ngồi hàng chót; các nhân vật quyền lực lần lượt xuất hiện (Chúc Vô Biên, Đường Doãn thế tử Tấn Hải, Lý Văn Chính tuần giám sứ, Nam Cung Bính, Thư Đình Ngọc của Hội Ẩn Nguyên). | ✅ script (Claude viết) |
 
 ## Nhân vật mới (tập 21–29)
 
@@ -147,6 +157,8 @@ lớn hơn xoay quanh phủ Bá tước Huyền Vũ (gia tộc Kim Mộc Lan —
 | Short tóm tắt 5 (9:16) | 11 beat, tổng hợp tình tiết hay nhất tập 41–50 | `short_summary5_script.json` | ✅ project 162 / job_220, Final QA PASS 100 |
 | Long 06 (16:9) | Tóm tắt tập 51–60, 157 beat, 10 phần | `long06_script.json` | ✅ project 169 / job_229, Final QA PASS 100 |
 | Short tóm tắt 6 (9:16) | 12 beat, tổng hợp tình tiết hay nhất tập 51–60 | `short_summary6_script.json` | ✅ project 170 / job_228, Final QA PASS 100 |
+| Long 07 (16:9) | Tóm tắt tập 61–70, 169 beat, 10 phần | `long07_script.json` | ⏳ project 174 / run 223 (đang render) |
+| Short tóm tắt 7 (9:16) | 12 beat, tổng hợp tình tiết hay nhất tập 61–70 | `short_summary7_script.json` | ⏳ project 175 / run 224 (đang render) |
 
 Mục lục thời gian Long 01: 0:00 Tập 1 / 0:29 Tập 2 / 1:15 Tập 3 / 1:58 Tập 4 / 2:40 Tập 5 / 3:24 Tập 6 / 4:14 Tập 7 / 4:57 Tập 8 / 5:42 Tập 9 / 6:37 Tập 10.
 Mục lục thời gian Long 02: 0:00 Tập 11 / 0:47 Tập 12 / 1:29 Tập 13 / 2:09 Tập 14 / 2:54 Tập 15 / 3:37 Tập 16 / 4:19 Tập 17 / 5:06 Tập 18 / 5:47 Tập 19 / 6:34 Tập 20.
@@ -178,3 +190,5 @@ Build đa thư mục panel bằng script scratchpad gọi API (recap.py build ch
 - 2026-10-05: viết `ep41..ep50/script.json` (10 tập), dựng Long 05 + Short tóm tắt 5. Mạch lớn: bóc trần quản gia tham ô → giả ma ép mẹ kế khai ngược → màn vu oan giết người giữa tiệc quan lớn bị lật; thái thú Trương Xung ngầm nhắm vào phủ Bá tước và ra lệnh diệt khẩu Điền Thập Tam.
 
 - 2026-10-06: viết `ep51..ep60/script.json` (10 tập), dựng Long 06 + Short tóm tắt 6. Mạch lớn: cứu Điền Thập Tam, Điền Hoành giả chết rồi bị chính bẫy của Thẩm Lãng hạ gục, dọn kho vàng thành chủ, mở màn kế hoạch trả thù họ Từ bằng tiểu thuyết và đi tìm nơi xuất bản ở thành Lan Sơn.
+
+- 2026-10-07: viết `ep61..ep70/script.json` (10 tập), dựng Long 07 + Short tóm tắt 7. Mạch lớn: sách Phong Nguyệt Vô Biên phá kỷ lục, trả đũa Chúc Văn Hoa/Tử tước Lan Sơn, rồi đưa cả Từ Thiên Thiên vào trò báo thù; mở màn tiệc đính hôn nơi quy tụ các thế lực nhắm phủ Bá tước.

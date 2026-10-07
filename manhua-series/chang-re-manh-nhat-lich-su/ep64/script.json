@@ -1,0 +1,33 @@
+{
+  "title": "Đám thư sinh bị tuyên án lưu đày vì đốt chiếu thư, thành chủ năn nỉ chàng rể tha cho đại tài tử!?",
+  "chapters": "63",
+  "source_dir": "manhua-recap/crmn_ep64",
+  "description": "Thẩm Lãng tuyên án đám thư sinh đốt chiếu thư chính sách mới, kẻ cầm đầu bị đánh nát tay, thành chủ Lý Phương xuất hiện thương lượng để cứu Chúc Văn Hoa, cuối cùng cha hắn là Tử tước Lan Sơn xuất hiện. Review Chàng Rể Mạnh Nhất Lịch Sử – Tập 64.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "thumbnail": {"text": "THÀNH CHỦ NĂN NỈ TIN CHẠM TỬ TƯỚC!?", "prompt": "Vertical 9:16 anime-style: a calm long-haired young man in a teal and white robe standing in a courtyard at night, a plump official with a beard bowing and pleading to him, a smug scholar in white and purple collar sneering at the side, a white-haired elder in white robes with soldiers entering the gate behind. No text, leave top 25% empty."},
+  "beats": [
+    {"panel": "p003.jpg", "type": "HOOK", "kind": "recap", "narration": "Thẩm Lãng đứng giữa đống lửa tuyên bố, ngang nhiên chống đối chính sách mới của nhà vua là tội nặng, tước hết công danh, đánh ba mươi gậy, lưu đày tới đảo Nam Thiên!"},
+    {"panel": "p005.jpg", "type": "SETUP", "kind": "recap", "narration": "Đảo Nam Thiên cô lập ngoài biển, cách ly xã hội văn minh, khắp nơi toàn chướng khí và thú hoang, lưu đày tới đó chính là đường chết."},
+    {"panel": "p006.jpg", "type": "BUILD", "kind": "recap", "narration": "Anh thầm cười, có những thứ vốn không nhìn thấy, nhưng bị lửa đốt thì sẽ hiện ra, đây là kỹ thuật mà các người không biết đến được."},
+    {"panel": "p008.jpg", "type": "REACTION", "kind": "recap", "narration": "Tên cầm đầu gào lên, Thẩm Lãng chó chết, ta liều mạng với ngươi, nhưng bị lính chặn lại."},
+    {"panel": "p010.jpg", "type": "REVEAL", "kind": "recap", "narration": "Một gậy giáng xuống, bàn tay hắn bị đánh nát bét, hắn ôm tay kêu thảm, tay của ta, tay của ta!"},
+    {"panel": "p012.jpg", "type": "BUILD", "kind": "recap", "narration": "Thẩm Lãng chậm rãi, lưu đày là sự trừng phạt của nhà nước dành cho ngươi, cá nhân ta còn có hình phạt khác cơ."},
+    {"panel": "p014.jpg", "type": "BUILD", "kind": "recap", "narration": "Anh hô lớn cho mọi người nghe, ai cũng thấy rồi, là kẻ này ra tay trước, chúng ta chỉ tự vệ chính đáng!"},
+    {"panel": "p015.jpg", "type": "REACTION", "kind": "recap", "narration": "Chúc Văn Hoa nghiến răng nhìn, Thẩm Lãng, lần này xem như là ngươi thắng!"},
+    {"panel": "p017.jpg", "type": "REVEAL", "kind": "recap", "narration": "Anh quay sang đám thư sinh, ai muốn lấy công chuộc tội, giảm nhẹ hình phạt, chỉ cần tố giác việc xấu, ta có thể giúp các người!"},
+    {"panel": "p020.jpg", "type": "BUILD", "kind": "recap", "narration": "Đúng lúc đó có tiếng báo, thành chủ đến, thật ra thành chủ Lý Phương đã đưa người tới gần phường sách từ lâu."},
+    {"panel": "p022.jpg", "type": "BUILD", "kind": "recap", "narration": "Anh bẩm với thành chủ, Chúc Văn Hoa xúi giục mọi người ngăn chặn chính sách mới, đến phường sách đốt chiếu thư chính sách mới, chỉ vì phủ tử tước Lan Sơn mới mất đất phong và binh quyền nên hắn ôm hận."},
+    {"panel": "p025.jpg", "type": "REVEAL", "kind": "recap", "narration": "Đám thư sinh chỉ thẳng, đúng vậy, là Chúc Văn Hoa bỏ tiền thuê bọn tiểu nhân đến đốt sách, tiểu nhân không biết bên trong là chiếu thư!"},
+    {"panel": "p027.jpg", "type": "REACTION", "kind": "recap", "narration": "Chúc Văn Hoa chết lặng, ngay cả đám người đó cũng khai hắn, hắn hét lên, vô sỉ, đúng là vô sỉ!"},
+    {"panel": "p028.jpg", "type": "REVEAL", "kind": "recap", "narration": "Thành chủ thầm than, ta chỉ không muốn ngươi làm ta thất vọng thôi, không ngờ ngươi hung hãn như vậy, ra tay là tiệt luôn đường sống của người ta."},
+    {"panel": "p029.jpg", "type": "BUILD", "kind": "recap", "narration": "Ông cười nói, Thẩm công tử, ta với cậu như bạn tri kỷ đã lâu, Phong Nguyệt Vô Biên là sách quý, cậu có thể dời bước để trò chuyện không?"},
+    {"panel": "p031.jpg", "type": "BUILD", "kind": "recap", "narration": "Dưới ánh trăng, ông thú thật, ta biết cậu muốn xử chết Chúc Văn Hoa, thậm chí muốn gia tộc Chúc thị rớt đài."},
+    {"panel": "p033.jpg", "type": "REVEAL", "kind": "recap", "narration": "Nhưng nhà vua vừa biểu dương phủ tử tước Lan Sơn vì giao đất phong và binh quyền, nếu giờ cả họ bị xử chết thì quý tộc khác sẽ nghĩ sao."},
+    {"panel": "p034.jpg", "type": "BUILD", "kind": "recap", "narration": "Ông cúi đầu van, vậy nên Thẩm công tử, cậu hãy thu lại việc vừa làm đi, thật sự là ta không thể làm gì Chúc Văn Hoa."},
+    {"panel": "p037.jpg", "type": "REACTION", "kind": "recap", "narration": "Thẩm Lãng chỉ mỉm cười, thành chủ đại nhân, ngài yên tâm đi, những chuyện này ta hiểu cả, đại nhân ở một bên nhìn là được rồi."},
+    {"panel": "p039.jpg", "type": "REACTION", "kind": "commentary", "narration": "Thành chủ nhìn bóng lưng anh mà buột miệng, ngầu quá, rõ ràng đang bị dắt mũi mà vẫn thấy nể."},
+    {"panel": "p043.jpg", "type": "BUILD", "kind": "recap", "narration": "Chúc Văn Hoa hả hê chỉ tay, muốn gán tội chống đối chính sách mới lên người ta, chuyện này là không thể, đúng là nằm mơ!"},
+    {"panel": "p045.jpg", "type": "REACTION", "kind": "recap", "narration": "Hắn cười lớn, chỉ dựa vào một tên ở rể còn con như ngươi mà cũng dám hoang tưởng cha ta sẽ đích thân đến gặp người ư?"},
+    {"panel": "p046.jpg", "type": "ENDING", "kind": "recap", "narration": "Đúng lúc ấy có tiếng hô vang, Tử tước Lan Sơn đến, một lão nhân tóc bạc cùng binh lính bước vào, Chúc Văn Hoa sững người, cha, sao người lại đến đây!?"}
+  ]
+}
