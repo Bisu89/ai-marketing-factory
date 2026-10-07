@@ -169,6 +169,20 @@ Mục lục thời gian Long 06: 0:00 Tập 51 / 0:57 Tập 52 / 2:03 Tập 53 /
 Mục lục thời gian Long 07: 0:00 Tập 61 / 1:12 Tập 62 / 2:47 Tập 63 / 4:00 Tập 64 / 5:33 Tập 65 / 7:04 Tập 66 / 8:28 Tập 67 / 10:10 Tập 68 / 11:40 Tập 69 / 13:09 Tập 70.
 Build đa thư mục panel bằng script scratchpad gọi API (recap.py build chỉ nhận một thư mục).
 
+### Bản dọc 9:16 của Long 01–07
+
+Dựng từ chính các script long (bỏ `template` để dùng template Short 9:16), file `long0N_916_script.json`:
+
+| Bản | Tập | Project / job | Trạng thái |
+|---|---|---|---|
+| Long 01 (9:16) | 1–10 | 178 / job_238 | ✅ QA 100 |
+| Long 02 (9:16) | 11–20 | 179 / job_237 | ✅ QA 100 |
+| Long 03 (9:16) | 21–30 | 182 / job_239 | ✅ QA 100 |
+| Long 04 (9:16) | 31–40 | 181 / job_240 | ✅ QA 100 |
+| Long 05 (9:16) | 41–50 | 187 / job_244 | ✅ QA 100 |
+| Long 06 (9:16) | 51–60 | 186 / job_243 | ✅ QA 100 |
+| Long 07 (9:16) | 61–70 | 190 / job_246 | ✅ QA 100 |
+
 ## Nhật ký
 
 - 2026-10-01: Claude đọc toàn bộ tập 1–10 (`crmn_ep1`..`crmn_ep10`, cắt panel + tạo sheets bằng `recap.py cut`/`sheets`
@@ -193,3 +207,5 @@ Build đa thư mục panel bằng script scratchpad gọi API (recap.py build ch
 - 2026-10-06: viết `ep51..ep60/script.json` (10 tập), dựng Long 06 + Short tóm tắt 6. Mạch lớn: cứu Điền Thập Tam, Điền Hoành giả chết rồi bị chính bẫy của Thẩm Lãng hạ gục, dọn kho vàng thành chủ, mở màn kế hoạch trả thù họ Từ bằng tiểu thuyết và đi tìm nơi xuất bản ở thành Lan Sơn.
 
 - 2026-10-07: viết `ep61..ep70/script.json` (10 tập), dựng Long 07 + Short tóm tắt 7. Mạch lớn: sách Phong Nguyệt Vô Biên phá kỷ lục, trả đũa Chúc Văn Hoa/Tử tước Lan Sơn, rồi đưa cả Từ Thiên Thiên vào trò báo thù; mở màn tiệc đính hôn nơi quy tụ các thế lực nhắm phủ Bá tước.
+
+- 2026-10-07: render bản dọc 9:16 cho Long 01–07 (7 project, qua ngay lần đầu). Lưu ý: luồng nền bị dừng khi hết giờ nên phải chạy lại luồng chờ + force-continue NEEDS_REVIEW.
