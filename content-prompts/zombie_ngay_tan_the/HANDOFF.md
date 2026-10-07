@@ -9,7 +9,7 @@ Series zombie sinh tồn gốc, **ưu tiên bản tiếng Hàn (KO)**, bản Vi�
 | Lời đọc VI | `scripts/ep1_audiobook_v3.txt` (đã có `## GIỚI THIỆU/TRUYỆN/KẾT`) | `scripts/ep2_audiobook_v3.txt` (bản chủ series viết lại theo lối kể truyện; **bản mới nhất**, chờ duyệt; v1 là bản cũ của Claude, không dùng) |
 | Lời đọc KO | `scripts/ep1_ko.md` (dịch từ v3, chờ người đọc Hàn soát) | **chưa dịch** |
 | Giới thiệu/kết KO | trong `scripts/ko_bookends_check.txt` (E1_*) | trong cùng file (E2_*) |
-| CSV ảnh | `ngay_tan_ep1_scenes_v3.csv` (100 ảnh) + `ngay_tan_ep1_shotlist.md`; **short**: 14 ảnh dọc (xem mục Video SHORT) | **chưa làm** (long + short) |
+| CSV ảnh | `ngay_tan_ep1_scenes_v3.csv` (100 ảnh) + `ngay_tan_ep1_shotlist.md`; **short**: 14 ảnh dọc (xem mục Video SHORT) | long: `ngay_tan_ep2_scenes_v3.csv` (128 ảnh, bám 57 đoạn của `ep2_audiobook_v3.txt`) + `ngay_tan_ep2_shotlist.md` + thư mục `ngay_tan_ep2_images/`; **short chưa làm** |
 | Ảnh đã tạo | bảng nhân vật tổng hợp (7 người) của chủ series; bảng zombie | — |
 
 Chủ series chưa báo kết quả tạo thử ảnh (đặc biệt chữ hiệu ứng Hangul và ảnh nhiều nhân vật).
@@ -43,6 +43,9 @@ Short: thêm tham số `short` (`python render_episode.py 1 ko force short`, r�
 **Lệch hình/chữ ở bản VI (nguyên nhân thật):** giọng NamMinh hay lỗi nên có đoạn phải đọc "không word-boundary" → đoạn đó (bản 164 mất ~27 giây ở giây 129) không có mốc thời gian từ → phụ đề/beat bị lệch; không phải do tốc độ 1.10. `render_episode.py` giờ đọc giọng TRƯỚC (`regenerate-voice`), kiểm tra khoảng trống lớn nhất giữa các từ trong `backend/data/library/_voice/project_N/narration.meta.json` (>3s = lỗi) và đọc lại tối đa 6 lần, rồi mới chạy Factory (tái dùng giọng sạch). Tốc độ đặt trong project: video dài KO 1.0 / VI 1.0, short KO 1.2 / VI 1.4 (template `ngay_tan` vẫn 1.10, chưa đổi vì sửa backend lúc app chạy sẽ làm app treo). Bản VI long chính thức: project 171, render job 230 (khoảng trống lớn nhất 1.0s, QA PASS 100); bản cũ job 223 (1.10, lệch) vẫn còn.
 **Short Tập 1 bản chốt** (lời kể ngôi thứ ba "anh", intro hỏi người xem, bỏ câu thoại giải thích; VI = `ep1_short_vi.txt`, KO = `ko_ep1_short_check.txt` → `ep1_short_ko.md`): KO project 176 / job 234, VI project 177 / job 235, QA PASS 100; các short cũ (job 224–227) đã xoá. Phong cách chủ series: lời short là giới thiệu/teaser, không giải thích nhiều; khi báo cáo cho chủ series phải ngắn gọn, không liệt kê kiểu hỏi đáp/QA.
 Kết quả Tập 1 (long, KO): project 163, render job 222, 11:47, 1080p, QA PASS 100; thời gian ~20 phút (voice ~1', motion ~10', render ~9'). Quality Gate cho NEEDS_REVIEW 82 (chỉ cảnh báo: pacing, 100 beat cùng loại BODY, ảnh bị coi "độ phân giải thấp" vì ảnh ChatGPT nhỏ hơn 1920x1080) → dùng `POST /factory-runs/{id}/continue?force=true` để chấp nhận cảnh báo và render. Mô tả/hashtag tự sinh bằng tiếng Anh (cần sửa tay).
+
+## Tập 2: ảnh (đã xuất)
+`_tools/build_ep2_csv.py` → `ngay_tan_ep2_scenes_v3.csv` (128 ảnh: A 50, B 63, C 15), `ngay_tan_ep2_shotlist.md`, thư mục `ngay_tan_ep2_images/` kèm danh sách tên file. Đoạn P01..P57 = đoạn của `scripts/ep2_audiobook_v3.txt`; nếu chủ series sửa lời Tập 2 phải cập nhật shot list và bản dịch Hàn giữ đúng 57 đoạn. Zombie mặc đồng phục trường (P10, P12-P13) được vẽ là nhân viên bảo vệ người lớn (THỂ CUỒNG); không dùng ô 17 Học Sinh. Lời đọc Tập 2 dài (~2.480 từ VI ≈ 11–12 phút; bản Hàn dự kiến ~14 phút) nên cân nhắc cắt trước khi dựng.
 
 ## Quy tắc chủ series đã nhắc (đừng vi phạm)
 - Beat do chủ series viết (Tập 1, Tập 2): chỉ làm mượt câu chữ; ý mới đưa vào mục "đề xuất" riêng, không tự nhét vào cốt truyện.
