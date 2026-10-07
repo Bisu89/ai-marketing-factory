@@ -157,8 +157,8 @@ lớn hơn xoay quanh phủ Bá tước Huyền Vũ (gia tộc Kim Mộc Lan —
 | Short tóm tắt 5 (9:16) | 11 beat, tổng hợp tình tiết hay nhất tập 41–50 | `short_summary5_script.json` | ✅ project 162 / job_220, Final QA PASS 100 |
 | Long 06 (16:9) | Tóm tắt tập 51–60, 157 beat, 10 phần | `long06_script.json` | ✅ project 169 / job_229, Final QA PASS 100 |
 | Short tóm tắt 6 (9:16) | 12 beat, tổng hợp tình tiết hay nhất tập 51–60 | `short_summary6_script.json` | ✅ project 170 / job_228, Final QA PASS 100 |
-| Long 07 (16:9) | Tóm tắt tập 61–70, 169 beat, 10 phần | `long07_script.json` | ⏳ project 174 / run 223 (đang render) |
-| Short tóm tắt 7 (9:16) | 12 beat, tổng hợp tình tiết hay nhất tập 61–70 | `short_summary7_script.json` | ⏳ project 175 / run 224 (đang render) |
+| Long 07 (16:9) | Tóm tắt tập 61–70, 169 beat, 10 phần | `long07_script.json` | ✅ project 174 / job_236, Final QA PASS 100 |
+| Short tóm tắt 7 (9:16) | 12 beat, tổng hợp tình tiết hay nhất tập 61–70 | `short_summary7_script.json` | ✅ project 175 / job_233, Final QA PASS 100 |
 
 Mục lục thời gian Long 01: 0:00 Tập 1 / 0:29 Tập 2 / 1:15 Tập 3 / 1:58 Tập 4 / 2:40 Tập 5 / 3:24 Tập 6 / 4:14 Tập 7 / 4:57 Tập 8 / 5:42 Tập 9 / 6:37 Tập 10.
 Mục lục thời gian Long 02: 0:00 Tập 11 / 0:47 Tập 12 / 1:29 Tập 13 / 2:09 Tập 14 / 2:54 Tập 15 / 3:37 Tập 16 / 4:19 Tập 17 / 5:06 Tập 18 / 5:47 Tập 19 / 6:34 Tập 20.
@@ -166,6 +166,7 @@ Mục lục thời gian Long 03: 0:00 Tập 21 / 0:58 Tập 22 / 1:58 Tập 23 /
 Mục lục thời gian Long 04: 0:00 Tập 31 / 0:56 Tập 32 / 1:52 Tập 33 / 2:52 Tập 34 / 4:00 Tập 35 / 5:01 Tập 36 / 6:03 Tập 37 / 7:05 Tập 38 / 8:12 Tập 39 / 9:24 Tập 40.
 Mục lục thời gian Long 05: 0:00 Tập 41 / 1:10 Tập 42 / 2:15 Tập 43 / 3:35 Tập 44 / 4:49 Tập 45 / 6:06 Tập 46 / 7:38 Tập 47 / 8:56 Tập 48 / 10:23 Tập 49 / 11:33 Tập 50.
 Mục lục thời gian Long 06: 0:00 Tập 51 / 0:57 Tập 52 / 2:03 Tập 53 / 3:27 Tập 54 / 4:36 Tập 55 / 5:48 Tập 56 / 6:59 Tập 57 / 8:07 Tập 58 / 9:21 Tập 59 / 10:40 Tập 60.
+Mục lục thời gian Long 07: 0:00 Tập 61 / 1:12 Tập 62 / 2:47 Tập 63 / 4:00 Tập 64 / 5:33 Tập 65 / 7:04 Tập 66 / 8:28 Tập 67 / 10:10 Tập 68 / 11:40 Tập 69 / 13:09 Tập 70.
 Build đa thư mục panel bằng script scratchpad gọi API (recap.py build chỉ nhận một thư mục).
 
 ## Nhật ký
