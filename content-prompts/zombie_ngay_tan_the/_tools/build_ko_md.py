@@ -1,9 +1,11 @@
-"""Ghép scripts/ko_epN_check.txt (câu Hàn đánh số) + bookends thành scripts/epN_ko.md. Đang cấu hình cho Tập 1; đổi tên file và tiền tố E1_ cho tập khác."""
-import os, re
+"""Ghép scripts/ko_epN_check.txt (câu Hàn đánh số) + bookends thành scripts/epN_ko.md. Chạy: python build_ko_md.py [N] (mặc định Tập 1). Tiêu đề KO từng tập khai báo trong KO_TITLES."""
+import os, re, sys
 from collections import OrderedDict
 
 from pathlib import Path
 base = str(Path(__file__).resolve().parent.parent / 'scripts')
+EP = int(sys.argv[1]) if len(sys.argv) > 1 else 1
+KO_TITLES = {1: '쫓겨난 군인', 2: '죽음의 도시의 밤'}
 
 
 def read_pairs(name):
@@ -18,18 +20,18 @@ def read_pairs(name):
 
 
 body = OrderedDict()
-for key, text in read_pairs('ko_ep1_check.txt'):
+for key, text in read_pairs(f'ko_ep{EP}_check.txt'):
     para = key.rsplit('-', 1)[0]
     body.setdefault(para, []).append(text)
 
 book = OrderedDict()
 for key, text in read_pairs('ko_bookends_check.txt'):
-    if key.startswith('E1_'):
+    if key.startswith(f'E{EP}_'):
         part = 'INTRO' if 'INTRO' in key else 'OUTRO'
         book.setdefault(part, []).append(text)
 
 out = []
-out.append('## 종말의 날 | 제1화 — 쫓겨난 군인 (한국어판, 본문은 여성 내레이션 / 소개·결말은 남성 목소리)')
+out.append(f'## 종말의 날 | 제{EP}화 — {KO_TITLES[EP]} (한국어판, 본문은 여성 내레이션 / 소개·결말은 남성 목소리)')
 out.append('## GIỚI THIỆU')
 out.append(' '.join(book['INTRO']))
 out.append('')
@@ -40,7 +42,7 @@ for para, sents in body.items():
 out.append('## KẾT')
 out.append(' '.join(book['OUTRO']))
 text = '\n'.join(out) + '\n'
-open(os.path.join(base, 'ep1_ko.md'), 'w', encoding='utf-8', newline='\n').write(text)
+open(os.path.join(base, f'ep{EP}_ko.md'), 'w', encoding='utf-8', newline='\n').write(text)
 
 # corruption scan: only Hangul, ASCII, and common punctuation/space allowed (plus the Vietnamese header lines)
 bad = set()

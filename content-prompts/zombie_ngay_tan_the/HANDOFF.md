@@ -7,7 +7,7 @@ Series zombie sinh tồn gốc, **ưu tiên bản tiếng Hàn (KO)**, bản Vi�
 |---|---|---|
 | Cốt truyện (SERIES.md §6) | xong | xong (bản của chủ series, chỉ vá logic nhỏ) |
 | Lời đọc VI | `scripts/ep1_audiobook_v3.txt` (đã có `## GIỚI THIỆU/TRUYỆN/KẾT`) | `scripts/ep2_audiobook_v3.txt` (bản chủ series viết lại theo lối kể truyện; **bản mới nhất**, chờ duyệt; v1 là bản cũ của Claude, không dùng) |
-| Lời đọc KO | `scripts/ep1_ko.md` (dịch từ v3, chờ người đọc Hàn soát) | **chưa dịch** |
+| Lời đọc KO | `scripts/ep1_ko.md` (dịch từ v3, chờ người đọc Hàn soát) | `scripts/ep2_ko.md` (dịch từ v3, 57 đoạn = P01..P57, ~1.560 từ Hàn ≈ 14–15 phút ở tốc độ 1.0; từ `ko_ep2_check.txt`, chờ người đọc Hàn soát) |
 | Giới thiệu/kết KO | trong `scripts/ko_bookends_check.txt` (E1_*) | trong cùng file (E2_*) |
 | CSV ảnh | `ngay_tan_ep1_scenes_v3.csv` (100 ảnh) + `ngay_tan_ep1_shotlist.md`; **short**: 14 ảnh dọc (xem mục Video SHORT) | long: `ngay_tan_ep2_scenes_v3.csv` (128 ảnh, bám 57 đoạn của `ep2_audiobook_v3.txt`) + `ngay_tan_ep2_shotlist.md` + thư mục `ngay_tan_ep2_images/`; **short chưa làm** |
 | Ảnh đã tạo | bảng nhân vật tổng hợp (7 người) của chủ series; bảng zombie | — |
@@ -46,6 +46,9 @@ Kết quả Tập 1 (long, KO): project 163, render job 222, 11:47, 1080p, QA PA
 
 ## Tập 2: ảnh (đã xuất)
 `_tools/build_ep2_csv.py` → `ngay_tan_ep2_scenes_v3.csv` (128 ảnh: A 50, B 63, C 15), `ngay_tan_ep2_shotlist.md`, thư mục `ngay_tan_ep2_images/` kèm danh sách tên file. Đoạn P01..P57 = đoạn của `scripts/ep2_audiobook_v3.txt`; nếu chủ series sửa lời Tập 2 phải cập nhật shot list và bản dịch Hàn giữ đúng 57 đoạn. Zombie mặc đồng phục trường (P10, P12-P13) được vẽ là nhân viên bảo vệ người lớn (THỂ CUỒNG); không dùng ô 17 Học Sinh. Lời đọc Tập 2 dài (~2.480 từ VI ≈ 11–12 phút; bản Hàn dự kiến ~14 phút) nên cân nhắc cắt trước khi dựng.
+
+## Tập 2: bản Hàn
+`scripts/ko_ep2_check.txt` (203 câu đánh số) + `E2_*` trong `ko_bookends_check.txt` → `python _tools/build_ko_md.py 2` → `scripts/ep2_ko.md`. Giữ đúng 57 đoạn của bản Việt v3 để dùng chung shot list Tập 2. Outro KO không nêu tên Tập 3 (Tập 3 chưa chốt). Chưa làm: short Tập 2 (lời + ảnh dọc), dựng thử Tập 2.
 
 ## Quy tắc chủ series đã nhắc (đừng vi phạm)
 - Beat do chủ series viết (Tập 1, Tập 2): chỉ làm mượt câu chữ; ý mới đưa vào mục "đề xuất" riêng, không tự nhét vào cốt truyện.
