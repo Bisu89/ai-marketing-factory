@@ -1,0 +1,105 @@
+{
+  "title": "Gia nô nuốt cả trận pháp, một đêm vọt lên Tụ Khí cảnh!?",
+  "chapters": "5",
+  "source_dir": "manhua-recap/dqgl_ep5",
+  "written_by": "Claude (đọc tay từ panels), 2026-10-08",
+  "description": "Thu hết âm sát của trận pháp vừa giết sạch kẻ thù, Trác Phàm một mạch phá cảnh giới ngay trong rừng. Nhưng khi cả nhóm kéo về Phong Lâm Thành nương nhờ Thái gia, ở một nơi khác, kẻ chủ mưu thật sự của vụ truy sát đã bắt đầu đếm ngược.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tập 5 (chương 5).\n◀ Tập 4: Gia nô bán chủ cầu vinh, hóa ra là dẫn kẻ thù vào trận!?",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "NUỐT CẢ TRẬN PHÁP!?",
+    "prompt": "A young man in a tattered brown cloak with glowing red eyes standing in a dark forest, arms spread wide, swirling dark-green and crimson energy streams being pulled into his body, a blinding golden pillar of light bursting upward from his chest into the night sky, a young noble woman in a red dress shielding her face in the background. Chinese manhua cover art style, full-colour digital illustration, bold clean linework, cel shading with dramatic glow and rim light, high contrast, vertical 9:16 composition (keep the subject inside the centre 2:3 area so it survives cropping), close-up that fills the frame, leave the top 25% as darker empty background for a title overlay, NO text, NO letters, NO speech bubbles, NO watermark"
+  },
+  "beats": [
+    {
+      "panel": "p004.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Gã gia nô vừa tiêu diệt kẻ thù đã quát một chữ quy, và hút thẳng âm sát của trận pháp vào người."
+    },
+    {
+      "panel": "p006.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Tiểu thư kinh hãi nhìn trận pháp mất kiểm soát, còn hắn thì một mạch phá từ Trúc Cơ tầng bảy lên tầng chín."
+    },
+    {
+      "panel": "p018.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Ai cũng sợ cạn sức, riêng hắn lại cười: đột phá lúc này, về sau càng có giá trị."
+    },
+    {
+      "panel": "p023.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Một tiếng phá vang lên, và gã nô tài chưa từng tụ khí đã bước thẳng vào Tụ Khí cảnh."
+    },
+    {
+      "panel": "p034.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hai chị em và Bàng thống lĩnh tìm tới, hắn bịa chuyện trận thiếu linh thạch nên mới mất kiểm soát."
+    },
+    {
+      "panel": "p041.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bàng thống lĩnh quỳ xuống xin lỗi vì trước đó lỗ mãng, cho hắn mắng hay đánh cũng không dám trách."
+    },
+    {
+      "panel": "p043.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Hắn thầm nghĩ: giá như tên đệ tử năm xưa có được nửa lòng trung thành này."
+    },
+    {
+      "panel": "p047.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Rồi hắn nhường hết công diệt Tôn quản gia cho tiểu thư, nói là nhờ cô bày trận."
+    },
+    {
+      "panel": "p054.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Cả nhóm định tới nhờ cậy Thái gia ở Phong Lâm Thành, nhà có hôn ước với tiểu thư."
+    },
+    {
+      "panel": "p066.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cùng lúc đó ở Hắc Phong Sơn, một thanh niên áo đen mỉm cười nghe tin Tôn quản gia sắp mang công pháp về."
+    },
+    {
+      "panel": "p076.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Hắn bước vào phòng trong, nơi sư phụ nằm liệt giường, thì thầm sẽ tiễn cả hai đoàn tụ khi có được Hồi Long Chưởng."
+    },
+    {
+      "panel": "p080.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Năm ngày sau, nhóm Lạc gia đặt chân tới Phong Lâm Thành."
+    },
+    {
+      "panel": "p102.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Giữa chợ, một lão bán hàng quả quyết viên mặc ngọc của mình là hàng thật, còn một cô gái lại bảo nó giả."
+    },
+    {
+      "panel": "p112.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Cả chợ cười nhạo cô, nhưng gã gia nô đứng gần đó chen vào: ta có cách chứng minh đây là đồ giả."
+    }
+  ]
+}

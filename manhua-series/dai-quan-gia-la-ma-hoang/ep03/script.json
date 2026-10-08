@@ -1,0 +1,111 @@
+{
+  "title": "Gia nô quăng tiểu thư xuống đất, rồi đòi cả gia tài Lạc gia!?",
+  "chapters": "3",
+  "source_dir": "manhua-recap/dqgl_ep3",
+  "written_by": "Claude (đọc tay từ panels), 2026-10-08",
+  "description": "Trốn chạy trong đêm, Trác Phàm quăng tiểu thư xuống đất, rồi đòi toàn bộ gia tài của Lạc gia để đặt cược vào một trận pháp mà không ai biết hắn học ở đâu. Kẻ truy đuổi sắp tới, và hắn đã ngồi chờ sẵn.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tập 3 (chương 3).\n◀ Tập 2: Ma Hoàng bị trói vào... một tiểu thư!?",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "CƯỢC CẢ GIA TÀI!?",
+    "prompt": "A young man in a tattered brown cloak standing alone in a misty dark forest at night, one hand glowing with golden light, a huge purple energy vortex swirling in the sky above the trees behind him, a noble young lady in a red dress clutching a small boy in the far background watching in shock. Chinese manhua cover art style, full-colour digital illustration, bold clean linework, cel shading with dramatic glow and rim light, high contrast, vertical 9:16 composition (keep the subject inside the centre 2:3 area so it survives cropping), close-up that fills the frame, leave the top 25% as darker empty background for a title overlay, NO text, NO letters, NO speech bubbles, NO watermark"
+  },
+  "beats": [
+    {
+      "panel": "p004.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Gã gia nô vác hai chị em Lạc gia chạy trốn trong rừng, mặc cho tiểu thư gào đòi quay lại cứu hộ vệ."
+    },
+    {
+      "panel": "p007.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Hắn thẳng tay quăng cô xuống đất, bảo kẻ thù sắp tới nơi mà còn giở tính tiểu thư."
+    },
+    {
+      "panel": "p018.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Quăng cả tiểu thư, dọa đòn cả thiếu gia, vậy mà hai chị em vẫn phải bám theo hắn."
+    },
+    {
+      "panel": "p021.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Hết đường chạy, tiểu thư chỉ còn nhớ Rừng Sương Mù phía tây Hắc Phong Sơn, nơi sương dày quanh năm, vào rồi khó ra."
+    },
+    {
+      "panel": "p036.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô định ở lại cầm chân sơn tặc, nhưng hắn từ chối thẳng và dọa bóp chết thiếu gia nếu cô dám bỏ đi."
+    },
+    {
+      "panel": "p040.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Rồi hắn đưa ra một ý điên rồ: diệt luôn đám người của Tôn quản gia ngay trong khu rừng này."
+    },
+    {
+      "panel": "p042.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô gạt phắt: Tôn quản gia tụ khí cấp sáu, cô mới cấp ba, còn hắn thậm chí chưa tụ khí."
+    },
+    {
+      "panel": "p051.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Hắn chỉ xòe tay đòi linh thạch, và tiểu thư nghiến răng ném cho hắn chiếc nhẫn: toàn bộ gia tài."
+    },
+    {
+      "panel": "p055.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Cược cả gia tài Lạc gia vào một gã nô tài, thảo nào cô thề có chết làm ma cũng không tha cho hắn."
+    },
+    {
+      "panel": "p063.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Hắn đi sâu vào rừng và nhận ra ngay một trận đồ thiên nhiên mà chẳng ai khác nhìn ra."
+    },
+    {
+      "panel": "p068.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Hắn mở Cửu Âm Minh Phủ, gọi tà sát từ bốn phương nhập vào trận."
+    },
+    {
+      "panel": "p072.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Cả khu rừng cuộn thành một xoáy tím khổng lồ, khiến hai chị em đứng nhìn sững sờ."
+    },
+    {
+      "panel": "p083.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Trận cấp một thôi cũng đã hơn mười vạn linh thạch, vậy mà người bày trận lại chỉ là một gã gia nô."
+    },
+    {
+      "panel": "p091.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đêm xuống, Tôn quản gia kéo người vào rừng, lôi theo cả Bàng thống lĩnh bị trói."
+    },
+    {
+      "panel": "p097.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Giữa rừng, gã gia nô ngồi chờ sẵn, mỉm cười: Tôn quản gia, ta đợi ông lâu lắm rồi."
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "title": "Gia nô bán chủ cầu vinh, hóa ra là dẫn kẻ thù vào trận!?",
+  "chapters": "4",
+  "source_dir": "manhua-recap/dqgl_ep4",
+  "written_by": "Claude (đọc tay từ panels), 2026-10-08",
+  "description": "Trác Phàm chủ động đề nghị bán đứng hai chị em Lạc gia cho Tôn quản gia để đổi lấy tiền đồ. Nhưng ông ta không biết mình đang bị dắt thẳng vào trận pháp mà hắn bày sẵn trong Rừng Sương Mù.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tập 4 (chương 4).\n◀ Tập 3: Gia nô quăng tiểu thư xuống đất, rồi đòi cả gia tài Lạc gia!?",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "BÁN CHỦ LÀ BẪY!?",
+    "prompt": "A young man in a tattered brown cloak with glowing red eyes and a calm sinister smile standing in a dark blue misty forest, thorny black-green spikes erupting from the ground around him and piercing shadowy enemies in the background, a glowing golden magic circle on the forest floor. Chinese manhua cover art style, full-colour digital illustration, bold clean linework, cel shading with dramatic glow and rim light, high contrast, vertical 9:16 composition (keep the subject inside the centre 2:3 area so it survives cropping), close-up that fills the frame, leave the top 25% as darker empty background for a title overlay, NO text, NO letters, NO speech bubbles, NO watermark"
+  },
+  "beats": [
+    {
+      "panel": "p003.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Lưỡi đao cứa vào tay mà gã gia nô vẫn mỉm cười, rồi quay sang đề nghị Tôn quản gia một giao dịch."
+    },
+    {
+      "panel": "p013.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Hắn sẽ giao hai chị em Lạc gia, đổi lấy một tiền đồ ở Hắc Phong Sơn."
+    },
+    {
+      "panel": "p018.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông ta hỏi vì sao lại bán đứng chủ cũ, hắn đáp gọn: người không vì mình, trời tru đất diệt."
+    },
+    {
+      "panel": "p021.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn nói hai chị em đang trốn ở đầu kia một sợi dây đỏ, và dùng chính sợi dây làm ký hiệu dẫn đường."
+    },
+    {
+      "panel": "p028.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Hai kẻ đều nói không tin ai, rồi cùng bật cười. Nghe mà lạnh gáy."
+    },
+    {
+      "panel": "p033.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Từ xa, tiểu thư mắng hắn là cẩu nô tài, bán chủ cầu vinh, nhưng hắn mặc kệ và vẫn dẫn đường."
+    },
+    {
+      "panel": "p042.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Giữa rừng hắn đột nhiên dừng lại: ta tiễn các người tới đây thôi, đường xuống hoàng tuyền phải tự đi."
+    },
+    {
+      "panel": "p047.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Tôn quản gia vồ tới, nhưng người trước mặt đã biến mất, để ông ta đứng sững."
+    },
+    {
+      "panel": "p050.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Họ quay lại theo đường cũ, nhưng sợi dây đỏ đã đứt, và cả Bàng thống lĩnh cũng biến mất."
+    },
+    {
+      "panel": "p059.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Sương mù chuyển sang màu đỏ, người của ông ta lần lượt biến mất, và ông ta tái mặt nhận ra: đây là trận pháp."
+    },
+    {
+      "panel": "p069.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bên ngoài trận, tiểu thư nhận ra Bàng thống lĩnh đã được cứu, và hỏi hắn bước tiếp theo."
+    },
+    {
+      "panel": "p075.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn đứng sau lưng cô, bảo cô tập trung làm theo mình, và tay cô vừa chạm đất, trận pháp liền sáng lên."
+    },
+    {
+      "panel": "p077.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Cô còn chưa kịp hoàn hồn thì sức mạnh của trận đã khiến chính cô sững sờ."
+    },
+    {
+      "panel": "p079.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Hắn quát một chữ: giết! Cả khu rừng mọc lên vô số gai đen xanh."
+    },
+    {
+      "panel": "p092.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Gai đâm xuyên từng tên hộ vệ, và Tôn quản gia bỏ chạy cũng không thoát."
+    },
+    {
+      "panel": "p103.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Ông ta hỏi hắn rốt cuộc là ai, hắn chỉ cười mắt đỏ: xuống địa ngục mà hỏi Diêm Vương."
+    }
+  ]
+}
