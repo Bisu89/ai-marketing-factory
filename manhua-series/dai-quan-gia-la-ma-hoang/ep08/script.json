@@ -17,23 +17,114 @@
     "prompt": "A young man in a red-trimmed beige tunic with glowing crimson eyes facing a stern middle-aged nobleman in blue and gold robes with a thin moustache, the nobleman's palm bleeding as a shockwave of purple and golden energy ripples between them over a green courtyard, a young woman in a red dress watching in the background. Chinese manhua cover art style, full-colour digital illustration, bold clean linework, cel shading with dramatic glow and rim light, high contrast, vertical 9:16 composition (keep the subject inside the centre 2:3 area so it survives cropping), close-up that fills the frame, leave the top 25% as darker empty background for a title overlay, NO text, NO letters, NO speech bubbles, NO watermark"
   },
   "beats": [
-    {"panel": "p003.jpg", "type": "HOOK", "kind": "recap", "narration": "Vừa tát xong hai người trước mặt cả Thái phủ, gã gia nô còn chưa kịp thở thì đã bị đòi quỳ xuống dập đầu."},
-    {"panel": "p008.jpg", "type": "SETUP", "kind": "recap", "narration": "Hắn tự hỏi vì sao Ma Hoàng như mình lại chịu thiệt vì một cô tiểu thư, rồi đổ hết cho cái tâm ma đáng ghét."},
-    {"panel": "p015.jpg", "type": "BUILD", "kind": "recap", "narration": "Hắn lau nước mắt cho cô, khoác vai dẫn đi, nhưng Vũ Phi lập tức chặn đường: đánh người xong còn muốn bỏ đi à?"},
-    {"panel": "p020.jpg", "type": "BUILD", "kind": "recap", "narration": "Cô ta ra điều kiện: tất cả quỳ xuống dập đầu ba cái, đặc biệt là hắn, và còn lôi cậu em ra làm con tin."},
-    {"panel": "p026.jpg", "type": "REACTION", "kind": "commentary", "narration": "Tiểu thư nhắm mắt định quỳ, cứ như chịu nhục thêm một lần nữa là xong chuyện."},
-    {"panel": "p029.jpg", "type": "REVEAL", "kind": "recap", "narration": "Hắn lao tới nắm đầu hai kẻ kia, đập mặt xuống đất ngay trước mặt mọi người."},
-    {"panel": "p036.jpg", "type": "BUILD", "kind": "recap", "narration": "Vũ Phi máu chảy ròng ròng, gào lên rằng có quỳ xin tha cũng muộn rồi."},
-    {"panel": "p038.jpg", "type": "REVEAL", "kind": "recap", "narration": "Hắn đá bay cả hai, rồi buông một câu nhẹ tênh: muốn ta quỳ ư, các người nghĩ nhiều quá."},
-    {"panel": "p043.jpg", "type": "BUILD", "kind": "recap", "narration": "Nhưng chưa kịp rời đi thì một người đàn ông trung niên áo xanh lao tới. Thái Hiếu Đình mừng rỡ gọi: cha đến đúng lúc lắm."},
-    {"panel": "p050.jpg", "type": "REVEAL", "kind": "recap", "narration": "Gia chủ Thái gia vừa nhìn đã nhận ra tu vi của hắn, còn hắn cũng thẳng thừng đáp trả: Luyện Cốt cảnh bát trọng."},
-    {"panel": "p055.jpg", "type": "REACTION", "kind": "commentary", "narration": "Ông ta nghi ngờ lai lịch của hắn, nhưng lại sợ động vào một thế lực đứng sau, đúng kiểu người già giang hồ."},
-    {"panel": "p063.jpg", "type": "BUILD", "kind": "recap", "narration": "Hắn thẳng thắn vạch trần: ông nói nghe cao thượng thế, chung quy cũng chỉ vì chữ lợi mới hủy hôn."},
-    {"panel": "p066.jpg", "type": "BUILD", "kind": "recap", "narration": "Gia chủ nổi giận, ra đề bài: mỗi người nhận của ta một chưởng, dùng hai phần sức, sống chết tùy mệnh."},
-    {"panel": "p069.jpg", "type": "REVEAL", "kind": "recap", "narration": "Bàng thống lĩnh gào lên rằng hai phần sức đó còn hơn cả Tụ Khí cửu trọng, còn hắn chỉ mỉm cười: được, ta ra tay trước."},
-    {"panel": "p073.jpg", "type": "REVEAL", "kind": "recap", "narration": "Hai lòng bàn tay va vào nhau, và gia nô mới Tụ Khí nhị trọng lại đỡ trọn hai phần sức của một cao thủ Luyện Cốt."},
-    {"panel": "p077.jpg", "type": "REVEAL", "kind": "recap", "narration": "Hắn nói mình chưa bao giờ tin vào vận mệnh, chỉ dựa vào thực lực. Lòng bàn tay gia chủ đã đầy máu."},
-    {"panel": "p083.jpg", "type": "BUILD", "kind": "recap", "narration": "Rồi hắn chỉ sang Thái Hiếu Đình đang ho ra máu: ta có thể lấy mạng con trai ông bất cứ lúc nào."},
-    {"panel": "p087.jpg", "type": "ENDING", "kind": "recap", "narration": "Hắn quay lưng bỏ đi, để lại một câu: hôm nay ông không thèm để ý tới ta, ngày mai ta sẽ cho ông không với tới được."}
-  ]
+    {
+      "panel": "p003.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Vừa tát xong hai người trước mặt cả Thái phủ, gã gia nô còn chưa kịp thở thì đã bị đòi quỳ xuống dập đầu."
+    },
+    {
+      "panel": "p008.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Hắn tự hỏi vì sao Ma Hoàng như mình lại chịu thiệt vì một cô tiểu thư, rồi đổ hết cho cái tâm ma đáng ghét."
+    },
+    {
+      "panel": "p015.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn lau nước mắt cho cô, khoác vai dẫn đi, nhưng Vũ Phi lập tức chặn đường: đánh người xong còn muốn bỏ đi à?"
+    },
+    {
+      "panel": "p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô ta ra điều kiện: tất cả quỳ xuống dập đầu ba cái, đặc biệt là hắn, và còn lôi cậu em ra làm con tin."
+    },
+    {
+      "panel": "p026.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Tiểu thư nhắm mắt định quỳ, cứ như chịu nhục thêm một lần nữa là xong chuyện."
+    },
+    {
+      "panel": "p029.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Hắn lao tới nắm đầu hai kẻ kia, đập mặt xuống đất ngay trước mặt mọi người."
+    },
+    {
+      "panel": "p036.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Vũ Phi máu chảy ròng ròng, gào lên rằng có quỳ xin tha cũng muộn rồi."
+    },
+    {
+      "panel": "p038.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Hắn đá bay cả hai, rồi buông một câu nhẹ tênh: muốn ta quỳ ư, các người nghĩ nhiều quá."
+    },
+    {
+      "panel": "p043.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng chưa kịp rời đi thì một người đàn ông trung niên áo xanh lao tới. Thái Hiếu Đình mừng rỡ gọi: cha đến đúng lúc lắm."
+    },
+    {
+      "panel": "p050.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Gia chủ Thái gia vừa nhìn đã nhận ra tu vi của hắn, còn hắn cũng thẳng thừng đáp trả: Luyện Cốt cảnh bát trọng."
+    },
+    {
+      "panel": "p055.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Ông ta nghi ngờ lai lịch của hắn, nhưng lại sợ động vào một thế lực đứng sau, đúng kiểu người già giang hồ."
+    },
+    {
+      "panel": "p063.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn thẳng thắn vạch trần: ông nói nghe cao thượng thế, chung quy cũng chỉ vì chữ lợi mới hủy hôn."
+    },
+    {
+      "panel": "p066.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Gia chủ nổi giận, ra đề bài: mỗi người nhận của ta một chưởng, dùng hai phần sức, sống chết tùy mệnh."
+    },
+    {
+      "panel": "p069.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Bàng thống lĩnh gào lên rằng hai phần sức đó còn hơn cả Tụ Khí cửu trọng, còn hắn chỉ mỉm cười: được, ta ra tay trước."
+    },
+    {
+      "panel": "p073.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Hai lòng bàn tay va vào nhau, và gia nô mới Tụ Khí nhị trọng lại đỡ trọn hai phần sức của một cao thủ Luyện Cốt."
+    },
+    {
+      "panel": "p077.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Hắn nói mình chưa bao giờ tin vào vận mệnh, chỉ dựa vào thực lực. Lòng bàn tay gia chủ đã đầy máu."
+    },
+    {
+      "panel": "p083.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Rồi hắn chỉ sang Thái Hiếu Đình đang ho ra máu: ta có thể lấy mạng con trai ông bất cứ lúc nào."
+    },
+    {
+      "panel": "p087.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Hắn quay lưng bỏ đi, để lại một câu: hôm nay ông không thèm để ý tới ta, ngày mai ta sẽ cho ông không với tới được."
+    }
+  ],
+  "status": "DRAFT -- so khung (panel) chua kiem chung voi anh that, KHONG build tu file nay; se thay bang 3 Short tong hop (xem PLAN_10CH.md)"
 }

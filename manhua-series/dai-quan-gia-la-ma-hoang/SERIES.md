@@ -47,14 +47,14 @@ Tên tiểu thư Lạc Vân Thường là tên theo truyện gốc, chưa thấy
 |---|---|---|---|---|
 | 1 | 1 | `manhua-recap/dqg_ep1` | Ma Hoàng bị chính đệ tử phản bội!? | ✅ script (Claude viết) |
 | 2 | 2 | `manhua-recap/dqg_ep2` | Ma Hoàng bị trói vào... một tiểu thư!? | ✅ script (Claude viết) |
-| 3 | 3 | `manhua-recap/dqgl_ep3` | Gia nô quăng tiểu thư xuống đất, rồi đòi cả gia tài Lạc gia!? | ✅ script (Claude viết), chưa cut/build |
-| 4 | 4 | `manhua-recap/dqgl_ep4` | Gia nô bán chủ cầu vinh, hóa ra là dẫn kẻ thù vào trận!? | ✅ script (Claude viết), chưa cut/build |
-| 5 | 5 | `manhua-recap/dqgl_ep5` | Gia nô nuốt cả trận pháp, một đêm vọt lên Tụ Khí cảnh!? | ✅ script (Claude viết), chưa cut/build |
-| 6 | 6 | `manhua-recap/dqgl_ep6` | Mua ngọc giả giá mười viên, hóa ra là báu vật Ma Đế còn không có!? | ✅ script (Claude viết), chưa cut/build |
-| 7 | 7 | `manhua-recap/dqgl_ep7` | Gia nô nhỏ máu luyện báu vật, rồi bị cả Thái phủ coi như ăn xin!? | ✅ script (Claude viết), chưa cut/build |
-| 8 | 8 | `manhua-recap/dqgl_ep8` | Gia chủ Thái gia ra tay lấy mạng, gia nô đỡ nổi rồi còn đe ngược!? | ✅ script (Claude viết), chưa cut/build |
-| 9 | 9 | `manhua-recap/dqgl_ep9` | Gia nô mang tranh vẽ tay đi liên minh, được trả 20 vạn vẫn bảo không bán!? | ✅ script (Claude viết), chưa cut/build |
-| 10 | 10 | `manhua-recap/dqgl_ep10` | Gia nô đòi 1000 vạn cho bức tranh tự vẽ, cả Tiềm Long Các phải cúi đầu!? | ✅ script (Claude viết), chưa cut/build |
+| 3 | 3 | `manhua-recap/dqgl_ep3` | Gia nô quăng tiểu thư xuống đất, rồi đòi cả gia tài Lạc gia!? | ⚠ bản nháp, số khung chưa kiểm chứng (xem PLAN_10CH.md) |
+| 4 | 4 | `manhua-recap/dqgl_ep4` | Gia nô bán chủ cầu vinh, hóa ra là dẫn kẻ thù vào trận!? | ⚠ bản nháp, số khung chưa kiểm chứng (xem PLAN_10CH.md) |
+| 5 | 5 | `manhua-recap/dqgl_ep5` | Gia nô nuốt cả trận pháp, một đêm vọt lên Tụ Khí cảnh!? | ⚠ bản nháp, số khung chưa kiểm chứng (xem PLAN_10CH.md) |
+| 6 | 6 | `manhua-recap/dqgl_ep6` | Mua ngọc giả giá mười viên, hóa ra là báu vật Ma Đế còn không có!? | ⚠ bản nháp, số khung chưa kiểm chứng (xem PLAN_10CH.md) |
+| 7 | 7 | `manhua-recap/dqgl_ep7` | Gia nô nhỏ máu luyện báu vật, rồi bị cả Thái phủ coi như ăn xin!? | ⚠ bản nháp, số khung chưa kiểm chứng (xem PLAN_10CH.md) |
+| 8 | 8 | `manhua-recap/dqgl_ep8` | Gia chủ Thái gia ra tay lấy mạng, gia nô đỡ nổi rồi còn đe ngược!? | ⚠ bản nháp, số khung chưa kiểm chứng (xem PLAN_10CH.md) |
+| 9 | 9 | `manhua-recap/dqgl_ep9` | Gia nô mang tranh vẽ tay đi liên minh, được trả 20 vạn vẫn bảo không bán!? | ⚠ bản nháp, số khung chưa kiểm chứng (xem PLAN_10CH.md) |
+| 10 | 10 | `manhua-recap/dqgl_ep10` | Gia nô đòi 1000 vạn cho bức tranh tự vẽ, cả Tiềm Long Các phải cúi đầu!? | ⚠ bản nháp, số khung chưa kiểm chứng (xem PLAN_10CH.md) |
 | 11 | 11 | `manhua-recap/dqg_ep11` | Ma Hoàng thắng Ma Đạo, nhưng kẻ thù thật sự mới vừa xuất hiện!? | ✅ project 124 / job_183, Final QA PASS 100 (51.44s, 1080×1920) |
 | 11 (KR) | 11 | `manhua-recap/dqg_ep11` | 마황, 마도 고수를 이겼지만 진짜 적은 이제 막 나타났다!? | ✅ project 125 / job_184, Final QA PASS 100 (71.0s, 1080×1920) |
 | 12 | 12 | `manhua-recap/dqg_ep12` | Ma Hoàng liều mạng luyện công, đánh thức quỷ dữ trong chính mình!? | ✅ project 128 / job_187, Final QA PASS 100 (50.04s, 1080×1920) |

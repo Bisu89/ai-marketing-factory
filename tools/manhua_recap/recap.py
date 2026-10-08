@@ -330,15 +330,19 @@ def cmd_build(
     known = {str(Path(a["path"])).lower(): a for a in call("GET", "/assets?q=manhua_recap&asset_type=image")}
     beats = []
     for i, b in enumerate(script["beats"], 1):
-        path = (panels_dir / b["panel"]).resolve()
+        # "dqgl_ep3/p004.jpg" = a panel cut in a sibling chapter folder, so one
+        # script can summarise several already-cut chapters (no re-cutting).
+        sub, _, fname = b["panel"].rpartition("/")
+        beat_tag = re.sub(r"[^a-z0-9]+", "_", sub.lower()).strip("_") if sub else tag
+        path = ((chapter.parent / sub / "_recap" / "panels" / fname) if sub else (panels_dir / fname)).resolve()
         if not path.exists():
-            sys.exit(f"Beat {i}: panel file {b['panel']} not found in {panels_dir}")
+            sys.exit(f"Beat {i}: panel file {b['panel']} not found ({path})")
         asset = known.get(str(path).lower())
         if asset is None:
             with Image.open(path) as img:
                 w, h = img.size
-            asset = call("POST", "/assets", {"filename": f"{tag}_{path.name}", "path": str(path), "type": "image",
-                                             "width": w, "height": h, "tags": ["manhua_recap", tag]})
+            asset = call("POST", "/assets", {"filename": f"{beat_tag}_{path.name}", "path": str(path), "type": "image",
+                                             "width": w, "height": h, "tags": ["manhua_recap", beat_tag]})
         text = b["narration"].strip()
         beats.append({
             "id": f"b{i}", "order": i,
