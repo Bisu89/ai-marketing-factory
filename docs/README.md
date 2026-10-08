@@ -189,6 +189,7 @@ SQLite.
 157. [Remove unused features](features/157-remove-unused-features.md) — Viral Source Radar, News, Content Batches, Winner Detection, Competitor Analyzer, Affiliate Engine, Scene Cutter, Publishing (YouTube), Batches, Content Studio and Series deleted outright (code, routes, UI, settings, tests); Dashboard re-based on Project + latest FactoryRun; no database data dropped
 158. [zettruyen*.com fetch via headless browser](features/158-manhua-fetch-headless-browser.md) — Cloudflare on that site resets plain HTTP(S)/TLS-spoofed clients, so chapter HTML is now loaded via headless Chromium (Playwright); other sites unaffected
 159. [truyenqq.com.vn fetch support](features/159-manhua-fetch-truyenqq.md) — fourth supported manhua site for the chapter fetch; plain HTTP(S), no Cloudflare block, images from `sN.cc3t.net`
+160. [Manhua fetch filler fixes](features/160-manhua-fetch-filler-fixes.md) — pages a site serves twice keep their first copy; re-fetching a chapter no longer flags its own pages (cache keyed per chapter URL)
 160. [Voice test bench](features/160-voice-test-bench.md) — "Thử giọng đọc" page: paste a story, pick voice + speed (default VI female), get an MP3
 161. [Ngày Tàn template](features/161-ngay-tan-template.md) — built-in `ngay_tan`: VI zombie-survival serial, male narrator @1.10, no System, library visuals
 162. [Ngày Tàn Korean edition](features/162-ngay-tan-korean-edition.md) — `ngay_tan_ko` template; intro/outro read by an opposite-gender voice (voice test bench `## GIỚI THIỆU/KẾT` sections)

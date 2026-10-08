@@ -35,7 +35,11 @@ each other by chance, but a recompressed duplicate does.
 Both caches are process-wide (not keyed by site/series) so they keep
 getting better at recognizing a site's recurring filler over time, and
 live on disk (not in the DB) so the CLI tool works without the backend
-running.
+running. Each cached hash remembers the chapter URLs it was seen in, and
+only counts as filler when seen in a *different* chapter -- so re-fetching
+a chapter doesn't flag its own pages. A page repeated inside one chapter is
+the site serving it twice, not an ad: the first copy is kept (see
+_find_filler).
 """
 
 from __future__ import annotations
@@ -48,7 +52,6 @@ import re
 import urllib.error
 import urllib.parse
 import urllib.request
-from collections import Counter
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Callable
@@ -135,27 +138,83 @@ def _closest_phash(ph: str, candidates: dict) -> str | None:
     return best
 
 
-def _cluster_phashes(phashes: list[str | None]) -> list[int]:
-    """Groups this run's pages into near-duplicate buckets (Hamming <=
-    PHASH_MAX_DIST of the bucket's first member). Returns, per page, the
-    size of its bucket (1 for a None hash or a bucket of its own) -- >1
-    means the same image recurred within this run."""
-    reps: list[str] = []          # one representative hash per bucket
-    counts: list[int] = []
-    bucket_of: list[int | None] = []
-    for ph in phashes:
-        if ph is None:
-            bucket_of.append(None)
-            continue
-        match = next((b for b, rep in enumerate(reps) if _hamming(ph, rep) <= PHASH_MAX_DIST), None)
-        if match is None:
+MAX_CACHE_CHAPTERS = 5   # chapters remembered per cached hash
+
+
+def _bucket_pages(exact_hashes: list[str], phashes: list[str | None]) -> list[int]:
+    """Bucket id per page: pages with the same sha1, or a perceptual hash
+    within PHASH_MAX_DIST of a bucket's first member, share a bucket."""
+    reps: list[str | None] = []   # one representative perceptual hash per bucket
+    by_exact: dict[str, int] = {}
+    out: list[int] = []
+    for h, ph in zip(exact_hashes, phashes):
+        bucket = by_exact.get(h)
+        if bucket is None and ph is not None:
+            bucket = next((b for b, rep in enumerate(reps) if rep is not None and _hamming(ph, rep) <= PHASH_MAX_DIST), None)
+        if bucket is None:
+            bucket = len(reps)
             reps.append(ph)
-            counts.append(1)
-            bucket_of.append(len(reps) - 1)
+        by_exact[h] = bucket
+        out.append(bucket)
+    return out
+
+
+def _entry_chapters(entry) -> list[str]:
+    """Chapters a cached hash was seen in. Old caches stored a bare count
+    that can't tell a re-fetched chapter from a recurring ad, so only counts
+    of 3+ (clearly recurring) survive, as opaque placeholders that never
+    equal a real chapter URL; smaller counts are forgotten."""
+    if isinstance(entry, list):
+        return entry
+    if isinstance(entry, int) and entry >= 3:
+        return [f"legacy{i}" for i in range(min(entry, MAX_CACHE_CHAPTERS))]
+    return []
+
+
+def _remember(table: dict, key: str, chapter: str) -> None:
+    chapters = list(_entry_chapters(table.get(key)))
+    if chapter not in chapters:
+        chapters.append(chapter)
+    table[key] = chapters[-MAX_CACHE_CHAPTERS:]
+
+
+def _find_filler(
+    chapter_of: list[int], chapter_keys: list[str], exact_hashes: list[str], phashes: list[str | None], cache: dict,
+) -> list[bool]:
+    """Which pages are recurring ad/filler images (and updates `cache`).
+
+    - Same image on pages of *different* chapters in this run: filler, every copy.
+    - Same image repeated within *one* chapter: the site just served the page
+      twice -- keep the first copy, drop the rest.
+    - Same image already cached from a *different* chapter: filler. Re-fetching
+      a chapter never flags its own pages (the cache keys on chapter URL)."""
+    buckets = _bucket_pages(exact_hashes, phashes)
+    members: dict[int, list[int]] = {}
+    for i, b in enumerate(buckets):
+        members.setdefault(b, []).append(i)
+    filler = [False] * len(buckets)
+    for idx in members.values():
+        if len(idx) < 2:
+            continue
+        if len({chapter_of[i] for i in idx}) > 1:
+            for i in idx:
+                filler[i] = True
         else:
-            counts[match] += 1
-            bucket_of.append(match)
-    return [1 if b is None else counts[b] for b in bucket_of]
+            for i in idx[1:]:
+                filler[i] = True
+
+    for i, (h, ph) in enumerate(zip(exact_hashes, phashes)):
+        key = chapter_keys[chapter_of[i]]
+        near = _closest_phash(ph, cache["phash"]) if ph is not None else None
+        seen_elsewhere = any(c != key for c in _entry_chapters(cache["exact"].get(h)))
+        if near is not None:
+            seen_elsewhere = seen_elsewhere or any(c != key for c in _entry_chapters(cache["phash"][near]))
+        if seen_elsewhere:
+            filler[i] = True
+        _remember(cache["exact"], h, key)
+        if ph is not None:
+            _remember(cache["phash"], near or ph, key)  # fold near-dups into one key, don't grow unbounded
+    return filler
 
 
 def _get(url: str, timeout: int = 60, referer: str | None = None) -> bytes:
@@ -227,11 +286,14 @@ def fetch_chapters(
     referer = "{0.scheme}://{0.netloc}/".format(urllib.parse.urlparse(url))
     chapter_dir.mkdir(parents=True, exist_ok=True)
 
+    chapter_keys: list[str] = []
+
     def _run(page) -> list[tuple[int | None, list[bytes]]]:
         fetched: list[tuple[int | None, list[bytes]]] = []
         for k in range(count):
             n = int(match.group(1)) + k if match else None
             chapter_url = url if k == 0 else url[:match.start(1)] + str(n) + url[match.end(1):]
+            chapter_keys.append(chapter_url)
             urls = _chapter_page_urls(chapter_url, page)
             pages = []
             for i, image_url in enumerate(urls, 1):
@@ -257,21 +319,8 @@ def fetch_chapters(
     all_data = [data for _, pages in fetched for data in pages]
     exact_hashes = [hashlib.sha1(data).hexdigest() for data in all_data]
     phashes = [_ahash(data) for data in all_data]
-    exact_tally = Counter(exact_hashes)
-    run_bucket_sizes = _cluster_phashes(phashes)
-
-    # A page is filler if its exact hash, or a near-duplicate perceptual hash
-    # (recompressed/re-scaled copy of the same image), was already flagged in
-    # a past fetch call (cache) or recurs within this run.
-    filler = []
-    for h, ph, bucket_size in zip(exact_hashes, phashes, run_bucket_sizes):
-        exact_hit = cache["exact"].get(h, 0) > 0 or exact_tally[h] > 1
-        phash_hit = ph is not None and (bucket_size > 1 or _closest_phash(ph, cache["phash"]) is not None)
-        filler.append(exact_hit or phash_hit)
-        cache["exact"][h] = cache["exact"].get(h, 0) + 1
-        if ph is not None:
-            hit = _closest_phash(ph, cache["phash"])  # fold near-dups into one cache key, don't grow unbounded
-            cache["phash"][hit or ph] = cache["phash"].get(hit or ph, 0) + 1
+    chapter_of = [ci for ci, (_, pages) in enumerate(fetched) for _ in pages]
+    filler = _find_filler(chapter_of, chapter_keys, exact_hashes, phashes, cache)
     COMMON_HASH_CACHE.parent.mkdir(parents=True, exist_ok=True)
     COMMON_HASH_CACHE.write_text(json.dumps(cache), encoding="utf-8")
 
