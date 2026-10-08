@@ -132,6 +132,16 @@ lớn hơn xoay quanh phủ Bá tước Huyền Vũ (gia tộc Kim Mộc Lan —
 | 68 | 67 | `manhua-recap/crmn_ep68` | Anh phân tích cho Bá tước: mấu chốt thắng thua là cuộc chiến đảo Kim Sơn, chủ nợ sẽ đòi đảo Vọng Nhai nếu mất đảo; đoán đúng giờ sứ giả Hội Ẩn Nguyên tới; cùng Mộc Lan bước vào tiệc đính hôn. | ✅ script (Claude viết) |
 | 69 | 68 | `manhua-recap/crmn_ep69` | Kỹ nữ chặn cổng vu Thẩm Lãng; anh trả tiền công khai, bày kế để chính Từ quản gia (kẻ thuê) lộ mặt; Trương Tấn ra lệnh đánh gãy chân quản gia để che đậy. | ✅ script (Claude viết) |
 | 70 | 69 | `manhua-recap/crmn_ep70` | Thẩm Lãng tự tay đánh quản gia rồi vào tiệc, bị xếp ngồi hàng chót; các nhân vật quyền lực lần lượt xuất hiện (Chúc Vô Biên, Đường Doãn thế tử Tấn Hải, Lý Văn Chính tuần giám sứ, Nam Cung Bính, Thư Đình Ngọc của Hội Ẩn Nguyên). | ✅ script (Claude viết) |
+| 71 | 70 | `manhua-recap/crmn_ep71` | Vương Liên say rượu chặn bàn đòi lại lời thề với Mộc Lan; Thẩm Lãng viết sẵn tên kẻ thù; một vị khách tố anh ăn cắp thơ, Lý Văn Chính tung chiêu thứ hai. | ✅ script (Claude viết) |
+| 72 | 71 | `manhua-recap/crmn_ep72` | Vương Liên giơ bài thi tám năm trước làm chứng; mắt thần lật tẩy bài thi cắt ghép chữ; Thẩm Lãng mắng cả bàn quan khách đến tiệc là để làm chó. | ✅ script (Claude viết) |
+| 73 | 72 | `manhua-recap/crmn_ep73` | Mộc Lan bắn thuốc nói thật vào chén Vương Liên; hắn khai thành chủ Liễu Vô Nham sai khiến; Thẩm Lãng chuẩn bị bảy bước làm thơ. | ✅ script (Claude viết) |
+| 74 | 73 | `manhua-recap/crmn_ep74` | Thơ ẩn đọc ngược ra bốn chữ đại nghịch; Lý Văn Chính ra lệnh bắt Thẩm Lãng, Mộc Lan rút kiếm chặn cả đội, binh sĩ vây kín. | ✅ script (Claude viết) |
+| 75 | 74 | `manhua-recap/crmn_ep75` | Thẩm Lãng vạch trần Sa Cần (Nam Âu) mưu phản; thư báo khẩn đúng lúc tới, Lý Văn Chính gục ngã; anh tặng sách bản màu cho Trương Tấn rồi rời tiệc. | ✅ script (Claude viết) |
+| 76 | 75 | `manhua-recap/crmn_ep76` | Vương Liên bị thả cho hai con chó dữ; thái thú Trương Xung đánh giá Thẩm Lãng là kẻ địch ghê gớm, sai con gái Trương Xuân Hoa đi dụ anh; Bá tước quyết dâng tấu chương thứ hai. | ✅ script (Claude viết) |
+| 77 | 76 | `manhua-recap/crmn_ep77` | Trương Xuân Hoa đến phủ, đọc bài thơ ẩn hẹn anh tới cầu mái che giờ sửu; Mộc Lan ngồi cạnh xem diễn. | ✅ script (Claude viết) |
+| 78 | 77 | `manhua-recap/crmn_ep78` | Đại Ngốc tỉnh lại, có thiên phú võ đạo; Thẩm Lãng trèo tường rình tắm, máu mũi phun lên sách, bị Mộc Lan nhìn thấy. | ✅ script (Claude viết) |
+| 79 | 78 | `manhua-recap/crmn_ep79` | Thánh chỉ ban thân phận giám sinh Thái học; Thẩm Lãng cãi vợ chuyện rình tắm rồi đòi luyện võ. | ✅ script (Claude viết) |
+| 80 | 79 | `manhua-recap/crmn_ep80` | Luyện võ nửa canh giờ đã đòi bỏ cuộc; Lý Văn Chính được tha nhẹ, quay lại kéo binh vu kỵ binh của Mộc Lan giẫm chết dân, bắt Kim Kiếm Nương. | ✅ script (Claude viết) |
 
 ## Nhân vật mới (tập 21–29)
 
@@ -159,6 +169,8 @@ lớn hơn xoay quanh phủ Bá tước Huyền Vũ (gia tộc Kim Mộc Lan —
 | Short tóm tắt 6 (9:16) | 12 beat, tổng hợp tình tiết hay nhất tập 51–60 | `short_summary6_script.json` | ✅ project 170 / job_228, Final QA PASS 100 |
 | Long 07 (16:9) | Tóm tắt tập 61–70, 169 beat, 10 phần | `long07_script.json` | ✅ project 174 / job_236, Final QA PASS 100 |
 | Short tóm tắt 7 (9:16) | 12 beat, tổng hợp tình tiết hay nhất tập 61–70 | `short_summary7_script.json` | ✅ project 175 / job_233, Final QA PASS 100 |
+| Long 08 (16:9) | Tóm tắt tập 71–80, 180 beat, 10 phần | `long08_script.json` | ✅ project 191 / job_249, Final QA PASS 100 (18:17, 1920×1080) |
+| Short tóm tắt 8 (9:16) | 12 beat, tổng hợp tình tiết hay nhất tập 71–80 | `short_summary8_script.json` | ✅ project 192 / job_248, Final QA PASS 100 (45s) |
 
 Mục lục thời gian Long 01: 0:00 Tập 1 / 0:29 Tập 2 / 1:15 Tập 3 / 1:58 Tập 4 / 2:40 Tập 5 / 3:24 Tập 6 / 4:14 Tập 7 / 4:57 Tập 8 / 5:42 Tập 9 / 6:37 Tập 10.
 Mục lục thời gian Long 02: 0:00 Tập 11 / 0:47 Tập 12 / 1:29 Tập 13 / 2:09 Tập 14 / 2:54 Tập 15 / 3:37 Tập 16 / 4:19 Tập 17 / 5:06 Tập 18 / 5:47 Tập 19 / 6:34 Tập 20.
@@ -167,6 +179,7 @@ Mục lục thời gian Long 04: 0:00 Tập 31 / 0:56 Tập 32 / 1:52 Tập 33 /
 Mục lục thời gian Long 05: 0:00 Tập 41 / 1:10 Tập 42 / 2:15 Tập 43 / 3:35 Tập 44 / 4:49 Tập 45 / 6:06 Tập 46 / 7:38 Tập 47 / 8:56 Tập 48 / 10:23 Tập 49 / 11:33 Tập 50.
 Mục lục thời gian Long 06: 0:00 Tập 51 / 0:57 Tập 52 / 2:03 Tập 53 / 3:27 Tập 54 / 4:36 Tập 55 / 5:48 Tập 56 / 6:59 Tập 57 / 8:07 Tập 58 / 9:21 Tập 59 / 10:40 Tập 60.
 Mục lục thời gian Long 07: 0:00 Tập 61 / 1:12 Tập 62 / 2:47 Tập 63 / 4:00 Tập 64 / 5:33 Tập 65 / 7:04 Tập 66 / 8:28 Tập 67 / 10:10 Tập 68 / 11:40 Tập 69 / 13:09 Tập 70.
+Mục lục thời gian Long 08: 0:00 Tập 71 / 1:24 Tập 72 / 3:06 Tập 73 / 4:29 Tập 74 / 6:20 Tập 75 / 8:03 Tập 76 / 10:07 Tập 77 / 11:55 Tập 78 / 13:50 Tập 79 / 15:49 Tập 80.
 Build đa thư mục panel bằng script scratchpad gọi API (recap.py build chỉ nhận một thư mục).
 
 ### Bản dọc 9:16 của Long 01–07
@@ -209,3 +222,5 @@ Dựng từ chính các script long (bỏ `template` để dùng template Short 
 - 2026-10-07: viết `ep61..ep70/script.json` (10 tập), dựng Long 07 + Short tóm tắt 7. Mạch lớn: sách Phong Nguyệt Vô Biên phá kỷ lục, trả đũa Chúc Văn Hoa/Tử tước Lan Sơn, rồi đưa cả Từ Thiên Thiên vào trò báo thù; mở màn tiệc đính hôn nơi quy tụ các thế lực nhắm phủ Bá tước.
 
 - 2026-10-07: render bản dọc 9:16 cho Long 01–07 (7 project, qua ngay lần đầu). Lưu ý: luồng nền bị dừng khi hết giờ nên phải chạy lại luồng chờ + force-continue NEEDS_REVIEW.
+
+- 2026-10-08: viết `ep71..ep80/script.json` (10 tập), dựng Long 08 + Short tóm tắt 8. Mạch lớn: lật mặt thành chủ bằng thuốc nói thật, thoát tội mưu phản nhờ vụ Sa Cần (Nam Âu), thái thú Trương Xung tung mỹ nhân kế (Trương Xuân Hoa), quốc quân ban thân phận giám sinh Thái học, Lý Văn Chính được tha nhẹ rồi vu kỵ binh của Mộc Lan giẫm chết dân. Long 08 chọn 18 beat/tập cách đều; chưa dựng bản dọc 9:16.

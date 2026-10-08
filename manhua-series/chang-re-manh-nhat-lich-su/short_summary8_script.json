@@ -1,0 +1,100 @@
+{
+  "title": "Lật mặt thành chủ giữa tiệc, bị vu mưu phản bằng bài thơ ẩn, rồi nữ tướng vợ bị bắt vì tội giẫm chết dân!?",
+  "chapters": "70-79",
+  "thumbnail": {
+    "text": "VU OAN KỴ BINH GIẪM CHẾT DÂN!?",
+    "prompt": "Vertical 9:16 anime-style: a night scene in front of a grand mansion gate, a sinister official in a black hat and dark green embroidered robe on horseback smiling coldly, a row of injured villagers on mats in the foreground, a red-haired woman in a white outfit and a long-haired young man in a dark blue collar robe facing him grimly. No text, leave top 25% empty."
+  },
+  "description": "Tóm tắt tình tiết hay nhất tập 71-80 Chàng Rể Mạnh Nhất Lịch Sử: lật mặt thành chủ, thoát tội mưu phản, mỹ nhân kế và âm mưu vu oan kỵ binh phủ Bá tước.",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "beats": [
+    {
+      "dir": "manhua-recap/crmn_ep71",
+      "panel": "p017.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Giữa tiệc đính hôn, chủ bộ Vương Liên lao tới đòi lại lời thề với vợ anh, nhưng Thẩm Lãng chỉ cầm bút viết sẵn tên kẻ thù."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep72",
+      "panel": "p026.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn cầm bài thi tám năm trước vu anh ăn cắp thơ, nhưng mắt thần của anh nhìn ra từng chữ bị cắt ghép."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep73",
+      "panel": "p022.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Mộc Lan khẽ bắn viên thuốc vào chén rượu, Vương Liên say thuốc nói thật, khai ra chính thành chủ sai hắn vu oan."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep74",
+      "panel": "p026.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh ngâm thơ ẩn, tuần sát ngân y Lý Văn Chính đọc ngược ra bốn chữ đại nghịch rồi ra lệnh bắt anh về tội mưu phản."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep75",
+      "panel": "p035.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Đúng lúc đó thư báo khẩn bay tới, vua Nam Âu làm phản, Lý Văn Chính ngã quỵ vì chính hắn bị gài vào vụ cấu kết."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep76",
+      "panel": "p039.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sáng hôm sau, Vương Liên tỉnh dậy trong căn nhà bí mật, và Thẩm Lãng thả hắn vào chuồng hai con chó dữ."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep76",
+      "panel": "p053.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thái thú Trương Xung cười lạnh gọi anh là kẻ địch ghê gớm, rồi sai con gái tài nữ đi dụ dỗ anh."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep77",
+      "panel": "p063.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trương Xuân Hoa đến phủ, đọc bài thơ lộn xộn, hóa ra là thơ ẩn hẹn anh tới cầu mái che lúc giờ sửu."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep78",
+      "panel": "p041.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Đêm đó anh trèo tường đọc sách dưới trăng, rồi máu mũi phun lên trang sách khi nhìn thấy vợ tắm."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep79",
+      "panel": "p011.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Quốc quân ban chỉ phong anh làm giám sinh Thái học, vừa là công lao vừa là một cái tát."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep80",
+      "panel": "p036.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Lý Văn Chính được tha nhẹ liền kéo binh vây phủ Bá tước, vu kỵ binh của Mộc Lan giẫm chết dân."
+    },
+    {
+      "dir": "manhua-recap/crmn_ep80",
+      "panel": "p048.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Kim Kiếm Nương rơi vào tay kẻ địch, Mộc Lan sắp phải đi vào phủ thái thú, và Thẩm Lãng sẽ ra tay thế nào!"
+    }
+  ]
+}
