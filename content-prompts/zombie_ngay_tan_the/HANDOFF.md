@@ -9,7 +9,7 @@ Series zombie sinh tồn gốc, **ưu tiên bản tiếng Hàn (KO)**, bản Vi�
 | Lời đọc VI | `scripts/ep1_audiobook_v3.txt` (đã có `## GIỚI THIỆU/TRUYỆN/KẾT`) | `scripts/ep2_audiobook_v3.txt` (bản chủ series viết lại theo lối kể truyện; **bản mới nhất**, chờ duyệt; v1 là bản cũ của Claude, không dùng) |
 | Lời đọc KO | `scripts/ep1_ko.md` (dịch từ v3, chờ người đọc Hàn soát) | `scripts/ep2_ko.md` (dịch từ v3, 57 đoạn = P01..P57, ~1.560 từ Hàn ≈ 14–15 phút ở tốc độ 1.0; từ `ko_ep2_check.txt`, chờ người đọc Hàn soát) |
 | Giới thiệu/kết KO | trong `scripts/ko_bookends_check.txt` (E1_*) | trong cùng file (E2_*) |
-| CSV ảnh | `ngay_tan_ep1_scenes_v3.csv` (100 ảnh) + `ngay_tan_ep1_shotlist.md`; **short**: 14 ảnh dọc (xem mục Video SHORT) | long: `ngay_tan_ep2_scenes_v3.csv` (128 ảnh, bám 57 đoạn của `ep2_audiobook_v3.txt`) + `ngay_tan_ep2_shotlist.md` + thư mục `ngay_tan_ep2_images/`; **short chưa làm** |
+| CSV ảnh | `ngay_tan_ep1_scenes_v3.csv` (100 ảnh) + `ngay_tan_ep1_shotlist.md`; **short**: 14 ảnh dọc (xem mục Video SHORT) | long: `ngay_tan_ep2_scenes_v3.csv` (128 ảnh, bám 57 đoạn của `ep2_audiobook_v3.txt`) + `ngay_tan_ep2_shotlist.md` + thư mục `ngay_tan_ep2_images/`; **short**: 15 ảnh dọc `ngay_tan_ep2_short_scenes.csv` + `_short_shotlist.md`, lời `scripts/ep2_short_vi.txt` + `ep2_short_ko.md` (từ `ko_ep2_short_check.txt`), công cụ `_tools/build_ep2_short.py`; chưa tạo ảnh/chưa render |
 | Ảnh đã tạo | bảng nhân vật tổng hợp (7 người) của chủ series; bảng zombie | — |
 
 Chủ series chưa báo kết quả tạo thử ảnh (đặc biệt chữ hiệu ứng Hangul và ảnh nhiều nhân vật).
