@@ -25,13 +25,14 @@ nhiều chương mà không phải cắt lại. Chạy: `recap.py build manhua-r
 
 Title, description, hashtag, thumbnail của từng video nằm trong `script.json` của nó (xem `ep19/script.json` làm mẫu).
 
-## Kết quả (2026-10-08, chương 1-10, đã render, Final QA PASS 100 cả 4)
+## Kết quả (2026-10-08, chương 1-10, đã render, Final QA PASS 100)
 | Video | Thư mục script | Project / job | Độ dài | Khổ |
 |---|---|---|---|---|
 | Short A (ch 1-3) | `short_a/` | 196 / job_253 | 57s | 1080x1920 |
 | Short B (ch 4-7) | `short_b/` | 193 / job_257 | 49s | 1080x1920 |
 | Short C (ch 8-10) | `short_c/` | 194 / job_258 | 55s | 1080x1920 |
-| Long (ch 1-10) | `long_1_10/` | 195 / job_259 | 5:01 | 1920x1080 |
+| Long (ch 1-10), bản đầy đủ 147 đoạn | `long_1_10/` | 199 / job_261 | 10:21 | 1920x1080 |
+| (bản rút gọn 71 đoạn, không dùng nữa) | | 195 / job_259 | 5:01 | 1920x1080 |
 
 Mỗi `script.json` có sẵn title, description, hashtag, thumbnail (text + prompt). Title của Long giữ như Long01 cũ.
 Mục lục thời gian của Long (dán vào mô tả/bình luận ghim):
@@ -39,13 +40,13 @@ Mục lục thời gian của Long (dán vào mô tả/bình luận ghim):
 0:00 Mở đầu: Ma Hoàng bị phản bội
 0:34 Tâm ma: bị trói vào Lạc gia
 0:56 Rừng Sương Mù: cái bẫy chết người
-1:26 Kế lừa: Trác Phàm bán chủ?
-1:55 Đột phá lên Tụ Khí cảnh
-2:24 Viên ngọc giả
-2:52 Luyện Huyết Anh, Thái phủ trở mặt
-3:22 Một chưởng của gia chủ
-3:56 Ngự Hạ Thất Thế Gia
-4:30 Bức tranh trị giá ngàn vạn
+1:59 Kế lừa: Trác Phàm bán chủ?
+3:07 Đột phá lên Tụ Khí cảnh
+4:06 Viên ngọc giả
+5:08 Luyện Huyết Anh, Thái phủ trở mặt
+6:17 Một chưởng của gia chủ
+7:41 Ngự Hạ Thất Thế Gia
+9:15 Bức tranh trị giá ngàn vạn
 ```
 Video nằm ở `backend/data/library/_video_composer/job_<số>_<tên>/output/`.
 

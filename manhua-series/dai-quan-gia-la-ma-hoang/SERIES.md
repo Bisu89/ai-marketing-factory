@@ -69,7 +69,7 @@ Tên tiểu thư Lạc Vân Thường là tên theo truyện gốc, chưa thấy
 
 ## Bản mới: 3 Short + 1 Long cho chương 1-10 (2026-10-08)
 
-Xem [`PLAN_10CH.md`](PLAN_10CH.md): Short A/B/C = project 196/193/194, Long = project 195, đều Final QA PASS 100.
+Xem [`PLAN_10CH.md`](PLAN_10CH.md): Short A/B/C = project 196/193/194, Long = project 199 (10:21, bản đầy đủ; bản 5 phút project 195 bỏ), đều Final QA PASS 100.
 Khung chương 3-10 trong các bản này chưa kiểm chứng.
 
 ## Video dài
