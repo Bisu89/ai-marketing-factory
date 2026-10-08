@@ -1,0 +1,111 @@
+{
+  "title": "Gia nô đỡ một chưởng của gia chủ, rồi đem tranh vẽ tay đi bán!?",
+  "chapters": "8-10",
+  "source_dir": "manhua-recap/dqgl_ep8",
+  "written_by": "Claude tự viết, 2026-10-08. Khung chương 1-2 đã xem thật; khung chương 3-10 chưa kiểm chứng",
+  "description": "Trác Phàm đối đầu gia chủ Thái gia mạnh hơn hắn cả một đại cảnh giới, đỡ được một chưởng và đe ngược ông ta. Biết mình đắc tội Ngự Hạ Thất Thế Gia, hắn mang một bức tranh vẽ tay tới Tiềm Long Các để liên minh.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tóm tắt chương 8 đến 10.\n◀ Phần 2: chương 4-7",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "ĐỠ NỔI MỘT CHƯỞNG!?",
+    "prompt": "A young man in red-trimmed beige tunic facing a stern middle-aged nobleman in blue and gold robes, shockwave of purple and golden energy between them, an unrolled ancient scroll on a table in the foreground. Chinese manhua cover art style, full-colour digital illustration, bold clean linework, cel shading with dramatic glow and rim light, high contrast, vertical 9:16 composition (keep the subject inside the centre 2:3 area), leave the top 25% as darker empty background for a title overlay, NO text, NO letters, NO speech bubbles, NO watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep8/p003.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Vừa tát xong hai người trước mặt cả Thái phủ, gã gia nô còn chưa kịp thở thì đã bị đòi quỳ xuống dập đầu."
+    },
+    {
+      "panel": "dqgl_ep8/p029.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Hắn lao tới nắm đầu hai kẻ kia, đập mặt xuống đất ngay trước mặt mọi người."
+    },
+    {
+      "panel": "dqgl_ep8/p043.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng chưa kịp rời đi thì một người đàn ông trung niên áo xanh lao tới. Thái Hiếu Đình mừng rỡ gọi: cha đến đúng lúc lắm."
+    },
+    {
+      "panel": "dqgl_ep8/p055.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Ông ta nghi ngờ lai lịch của hắn, nhưng lại sợ động vào một thế lực đứng sau, đúng kiểu người già giang hồ."
+    },
+    {
+      "panel": "dqgl_ep8/p077.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Hắn nói mình chưa bao giờ tin vào vận mệnh, chỉ dựa vào thực lực. Lòng bàn tay gia chủ đã đầy máu."
+    },
+    {
+      "panel": "dqgl_ep9/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Vừa rời Thái phủ, gã gia nô quay sang hỏi tiểu thư: cô có biết Ngự Hạ Thất Thế Gia là gì không?"
+    },
+    {
+      "panel": "dqgl_ep9/p020.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Hắn chỉ hỏi nhẹ một câu: trong số đó có Tôn gia không? Và cô run rẩy xác nhận: Tôn Vũ Phi thuộc Thất Thế Gia."
+    },
+    {
+      "panel": "dqgl_ep9/p054.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lính gác khinh khỉnh bảo quản sự không gặp những kẻ vô danh. Hắn đáp gọn: có gặp hay không các ngươi cũng phải báo, chưa tới lượt hai tên nô tài làm chủ."
+    },
+    {
+      "panel": "dqgl_ep9/p069.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn nói mình đến để bán một bảo vật gia truyền, và vị tiểu thư lập tức mời cả nhóm vào phòng khách."
+    },
+    {
+      "panel": "dqgl_ep9/p087.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô đưa ra mức hai mươi vạn linh thạch, khiến Bàng thống lĩnh và tiểu thư há hốc mồm."
+    },
+    {
+      "panel": "dqgl_ep10/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô gái áo xanh ra giá hai mươi vạn, nói đây chỉ là một bức trận thức đồ nhất cấp bình thường."
+    },
+    {
+      "panel": "dqgl_ep10/p021.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Giữa lúc giằng co, một tiểu thư Tiềm Long Các khác bước vào, đòi lấy lại bức đồ thay cô."
+    },
+    {
+      "panel": "dqgl_ep10/p060.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trác Phàm dẫm nát bức đồ ngay trước mặt mọi người: giá này quá thấp."
+    },
+    {
+      "panel": "dqgl_ep10/p078.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Long Cửu gật đầu: coi như Tiềm Long Các chúng ta nợ Lạc gia các người một ân tình."
+    },
+    {
+      "panel": "dqgl_ep10/p093.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Cả nhóm rời Tiềm Long Các trong ánh nắng, tiểu thư và thiếu gia chạy phía trước, còn gã gia nô lặng lẽ bước theo sau với một nụ cười khó hiểu."
+    }
+  ]
+}

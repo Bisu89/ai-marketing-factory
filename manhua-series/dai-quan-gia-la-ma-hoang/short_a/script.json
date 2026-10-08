@@ -1,0 +1,135 @@
+{
+  "title": "Ma Hoàng bị đệ tử đâm lén, tỉnh dậy thành gia nô phải bảo vệ người lạ!?",
+  "chapters": "1-3",
+  "source_dir": "manhua-recap/dqgl_ep1",
+  "written_by": "Claude tự viết, 2026-10-08. Khung chương 1-2 đã xem thật; khung chương 3-10 chưa kiểm chứng",
+  "description": "Ma Hoàng Trác Nhất Phàm bị chính đệ tử ruột phản bội, tự bạo rồi tỉnh dậy trong thân xác một gia nô. Tâm ma của gia nô cũ buộc hắn phải bảo vệ Lạc gia, dù hắn chỉ muốn thoát thân.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tóm tắt chương 1 đến 3.\n▶ Phần 2: chương 4-7",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "MA HOÀNG THÀNH GIA NÔ!?",
+    "prompt": "A powerful demon emperor with long dark hair and glowing red eyes in tattered armor, his shadow falling over a young servant in a plain brown cloak who clutches his chest in pain, a young noble lady and a small boy behind him. Chinese manhua cover art style, full-colour digital illustration, bold clean linework, cel shading with dramatic glow and rim light, high contrast, vertical 9:16 composition (keep the subject inside the centre 2:3 area), leave the top 25% as darker empty background for a title overlay, NO text, NO letters, NO speech bubbles, NO watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep1/p008.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Ma Hoàng mạnh nhất Thánh Vực vừa nắm trong tay bí kíp của Ma Đế, thì cả đại lục kéo đến vây hắn."
+    },
+    {
+      "panel": "dqgl_ep1/p010.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chính đạo và Thánh Vực đồng loạt tấn công Thiên Ma Phong để đoạt bí kíp."
+    },
+    {
+      "panel": "dqgl_ep1/p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn chỉ cười khinh: một đám tạp binh mà cũng dám hống hách với ta?"
+    },
+    {
+      "panel": "dqgl_ep1/p029.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Nhưng đệ tử ruột Triệu Thành đã đứng về phía kẻ thù, và hắn bị đâm lén ngay từ phía sau."
+    },
+    {
+      "panel": "dqgl_ep1/p084.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Hắn tự bạo để hủy bí kíp, rồi tỉnh dậy trong thân xác một gia nô: ta là Ma Hoàng, Trác Nhất Phàm!"
+    },
+    {
+      "panel": "dqgl_ep1/p090.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn dùng Thiên Ma Đại Hóa Quyết hút tu vi của kẻ khác, mạnh dần chỉ sau một đêm."
+    },
+    {
+      "panel": "dqgl_ep1/p099.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Vừa sống lại đã thề trả thù cả Kiếm Hoàng lẫn đệ tử phản bội. Đúng kiểu ma đầu không biết bỏ cuộc."
+    },
+    {
+      "panel": "dqgl_ep1/p109.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Rồi hắn thấy hai chị em Lạc gia bị bao vây, thà chết chứ không chịu giao báu vật."
+    },
+    {
+      "panel": "dqgl_ep1/p114.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn chưa kịp quay đi thì tim đã đau thắt lại."
+    },
+    {
+      "panel": "dqgl_ep2/p011.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Càng rời xa cô tiểu thư ấy, ngực hắn càng đau đớn vô cùng: đó là tâm ma của gia nô cũ."
+    },
+    {
+      "panel": "dqgl_ep2/p026.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm cũ chết đi với một chấp niệm duy nhất: bảo vệ Lạc gia."
+    },
+    {
+      "panel": "dqgl_ep2/p035.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tôn quản gia đòi cuốn mật tịch của Lạc gia, nói đó chỉ là bí kíp tầm thường."
+    },
+    {
+      "panel": "dqgl_ep2/p050.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn mới Trúc Cơ tầng bảy, trong khi đối thủ cao hơn hắn hai cấp."
+    },
+    {
+      "panel": "dqgl_ep2/p066.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Hắn vác cả hai chị em lên vai, bỏ chạy khỏi vòng vây."
+    },
+    {
+      "panel": "dqgl_ep2/p012.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Ma Hoàng mà phải làm nô tài vì cái tâm ma này, nghe mà vừa thương vừa buồn cười."
+    },
+    {
+      "panel": "dqgl_ep3/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Gã gia nô vác hai chị em Lạc gia chạy trốn trong rừng, mặc cho tiểu thư gào đòi quay lại cứu hộ vệ."
+    },
+    {
+      "panel": "dqgl_ep3/p007.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Hắn thẳng tay quăng cô xuống đất, bảo kẻ thù sắp tới nơi mà còn giở tính tiểu thư."
+    },
+    {
+      "panel": "dqgl_ep3/p055.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Cược cả gia tài Lạc gia vào một gã nô tài, thảo nào cô thề có chết làm ma cũng không tha cho hắn."
+    },
+    {
+      "panel": "dqgl_ep3/p072.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Cả khu rừng cuộn thành một xoáy tím khổng lồ, khiến hai chị em đứng nhìn sững sờ."
+    }
+  ]
+}

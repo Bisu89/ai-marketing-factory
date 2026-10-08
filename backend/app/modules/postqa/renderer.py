@@ -53,7 +53,7 @@ def probe_final_video(path: Path) -> VideoStreamInfo:
     result = subprocess.run(
         ["ffprobe", "-v", "error", "-show_entries", "stream=codec_type,codec_name,width,height,r_frame_rate,pix_fmt",
          "-show_entries", "format=duration", "-of", "json", str(path)],
-        capture_output=True, text=True, stdin=subprocess.DEVNULL,
+        capture_output=True, text=True, encoding="utf-8", errors="replace", stdin=subprocess.DEVNULL,
     )
     if result.returncode != 0 or not result.stdout.strip():
         return VideoStreamInfo(
@@ -106,7 +106,7 @@ def probe_audio_levels(video_path: Path) -> AudioLevelInfo:
         return AudioLevelInfo(mean_volume_db=None, max_volume_db=None, probed=False)
     result = subprocess.run(
         ["ffmpeg", "-nostdin", "-hide_banner", "-i", str(video_path), "-af", "volumedetect", "-f", "null", "-"],
-        capture_output=True, text=True, stdin=subprocess.DEVNULL,
+        capture_output=True, text=True, encoding="utf-8", errors="replace", stdin=subprocess.DEVNULL,
     )
     mean_match = re.search(r"mean_volume:\s*(-?\d+(?:\.\d+)?)\s*dB", result.stderr)
     max_match = re.search(r"max_volume:\s*(-?\d+(?:\.\d+)?)\s*dB", result.stderr)

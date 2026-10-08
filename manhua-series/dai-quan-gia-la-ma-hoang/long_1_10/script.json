@@ -1,0 +1,457 @@
+{
+  "template": "manhua_recap_long_vi",
+  "title": "Ma Hoàng thành quản gia | Tóm tắt chương 1-10",
+  "chapters": "1-10",
+  "source_dir": "manhua-recap/dqgl_ep1",
+  "written_by": "Claude tự viết, 2026-10-08. Khung chương 1-2 đã xem thật; khung chương 3-10 chưa kiểm chứng",
+  "description": "Ma Hoàng mạnh nhất Thánh Vực bị chính đệ tử phản bội, trọng sinh vào thân xác một gia nô và bị tâm ma trói buộc phải bảo vệ Lạc gia. Tóm tắt truyện Đại Quản Gia Là Ma Hoàng, chương 1 đến 10, kèm bình luận.\nMục lục thời gian: xem bình luận ghim.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#TomTatTruyen"
+  ],
+  "thumbnail": {
+    "text": "MA HOÀNG THÀNH QUẢN GIA",
+    "prompt": "A young man with dark messy hair and glowing violet eyes in a plain brown servant robe, smirking with arms crossed; behind him a giant shadowy silhouette of a demon emperor with red eyes and a dark crown; a young noble lady in red beside him. Chinese manhua cover art style, full-colour digital illustration, bold clean linework, cel shading with dramatic glow and rim light, high contrast, vertical 9:16 composition (keep the subject inside the centre 2:3 area), leave the top 25% as darker empty background for a title overlay, NO text, NO letters, NO speech bubbles, NO watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep1/p008.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Ma Hoàng mạnh nhất Thánh Vực vừa nắm trong tay bí kíp của Ma Đế, thì cả đại lục kéo đến vây hắn.",
+      "section": "Mở đầu: Ma Hoàng bị phản bội"
+    },
+    {
+      "panel": "dqgl_ep1/p010.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chính đạo và Thánh Vực đồng loạt tấn công Thiên Ma Phong để đoạt bí kíp."
+    },
+    {
+      "panel": "dqgl_ep1/p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn chỉ cười khinh: một đám tạp binh mà cũng dám hống hách với ta?"
+    },
+    {
+      "panel": "dqgl_ep1/p029.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Nhưng đệ tử ruột Triệu Thành đã đứng về phía kẻ thù, và hắn bị đâm lén ngay từ phía sau."
+    },
+    {
+      "panel": "dqgl_ep1/p084.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Hắn tự bạo để hủy bí kíp, rồi tỉnh dậy trong thân xác một gia nô: ta là Ma Hoàng, Trác Nhất Phàm!"
+    },
+    {
+      "panel": "dqgl_ep1/p090.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn dùng Thiên Ma Đại Hóa Quyết hút tu vi của kẻ khác, mạnh dần chỉ sau một đêm."
+    },
+    {
+      "panel": "dqgl_ep1/p099.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Vừa sống lại đã thề trả thù cả Kiếm Hoàng lẫn đệ tử phản bội. Đúng kiểu ma đầu không biết bỏ cuộc."
+    },
+    {
+      "panel": "dqgl_ep1/p109.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Rồi hắn thấy hai chị em Lạc gia bị bao vây, thà chết chứ không chịu giao báu vật."
+    },
+    {
+      "panel": "dqgl_ep1/p114.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn chưa kịp quay đi thì tim đã đau thắt lại."
+    },
+    {
+      "panel": "dqgl_ep2/p011.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Càng rời xa cô tiểu thư ấy, ngực hắn càng đau đớn vô cùng: đó là tâm ma của gia nô cũ.",
+      "section": "Tâm ma: bị trói vào Lạc gia"
+    },
+    {
+      "panel": "dqgl_ep2/p026.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm cũ chết đi với một chấp niệm duy nhất: bảo vệ Lạc gia."
+    },
+    {
+      "panel": "dqgl_ep2/p035.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tôn quản gia đòi cuốn mật tịch của Lạc gia, nói đó chỉ là bí kíp tầm thường."
+    },
+    {
+      "panel": "dqgl_ep2/p050.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn mới Trúc Cơ tầng bảy, trong khi đối thủ cao hơn hắn hai cấp."
+    },
+    {
+      "panel": "dqgl_ep2/p066.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Hắn vác cả hai chị em lên vai, bỏ chạy khỏi vòng vây."
+    },
+    {
+      "panel": "dqgl_ep2/p012.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Ma Hoàng mà phải làm nô tài vì cái tâm ma này, nghe mà vừa thương vừa buồn cười."
+    },
+    {
+      "panel": "dqgl_ep3/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Gã gia nô vác hai chị em Lạc gia chạy trốn trong rừng, mặc cho tiểu thư gào đòi quay lại cứu hộ vệ.",
+      "section": "Rừng Sương Mù: cái bẫy chết người"
+    },
+    {
+      "panel": "dqgl_ep3/p018.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Quăng cả tiểu thư, dọa đòn cả thiếu gia, vậy mà hai chị em vẫn phải bám theo hắn."
+    },
+    {
+      "panel": "dqgl_ep3/p040.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Rồi hắn đưa ra một ý điên rồ: diệt luôn đám người của Tôn quản gia ngay trong khu rừng này."
+    },
+    {
+      "panel": "dqgl_ep3/p051.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Hắn chỉ xòe tay đòi linh thạch, và tiểu thư nghiến răng ném cho hắn chiếc nhẫn: toàn bộ gia tài."
+    },
+    {
+      "panel": "dqgl_ep3/p063.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Hắn đi sâu vào rừng và nhận ra ngay một trận đồ thiên nhiên mà chẳng ai khác nhìn ra."
+    },
+    {
+      "panel": "dqgl_ep3/p083.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Trận cấp một thôi cũng đã hơn mười vạn linh thạch, vậy mà người bày trận lại chỉ là một gã gia nô."
+    },
+    {
+      "panel": "dqgl_ep3/p097.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Giữa rừng, gã gia nô ngồi chờ sẵn, mỉm cười: Tôn quản gia, ta đợi ông lâu lắm rồi."
+    },
+    {
+      "panel": "dqgl_ep4/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lưỡi đao cứa vào tay mà gã gia nô vẫn mỉm cười, rồi quay sang đề nghị Tôn quản gia một giao dịch.",
+      "section": "Kế lừa: Trác Phàm bán chủ?"
+    },
+    {
+      "panel": "dqgl_ep4/p018.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông ta hỏi vì sao lại bán đứng chủ cũ, hắn đáp gọn: người không vì mình, trời tru đất diệt."
+    },
+    {
+      "panel": "dqgl_ep4/p033.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Từ xa, tiểu thư mắng hắn là cẩu nô tài, bán chủ cầu vinh, nhưng hắn mặc kệ và vẫn dẫn đường."
+    },
+    {
+      "panel": "dqgl_ep4/p050.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Họ quay lại theo đường cũ, nhưng sợi dây đỏ đã đứt, và cả Bàng thống lĩnh cũng biến mất."
+    },
+    {
+      "panel": "dqgl_ep4/p069.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bên ngoài trận, tiểu thư nhận ra Bàng thống lĩnh đã được cứu, và hỏi hắn bước tiếp theo."
+    },
+    {
+      "panel": "dqgl_ep4/p077.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Cô còn chưa kịp hoàn hồn thì sức mạnh của trận đã khiến chính cô sững sờ."
+    },
+    {
+      "panel": "dqgl_ep4/p103.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông ta hỏi hắn rốt cuộc là ai, hắn chỉ cười mắt đỏ: xuống địa ngục mà hỏi Diêm Vương."
+    },
+    {
+      "panel": "dqgl_ep5/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Gã gia nô vừa tiêu diệt kẻ thù đã quát một chữ quy, và hút thẳng âm sát của trận pháp vào người.",
+      "section": "Đột phá lên Tụ Khí cảnh"
+    },
+    {
+      "panel": "dqgl_ep5/p018.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Ai cũng sợ cạn sức, riêng hắn lại cười: đột phá lúc này, về sau càng có giá trị."
+    },
+    {
+      "panel": "dqgl_ep5/p034.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hai chị em và Bàng thống lĩnh tìm tới, hắn bịa chuyện trận thiếu linh thạch nên mới mất kiểm soát."
+    },
+    {
+      "panel": "dqgl_ep5/p043.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Hắn thầm nghĩ: giá như tên đệ tử năm xưa có được nửa lòng trung thành này."
+    },
+    {
+      "panel": "dqgl_ep5/p066.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cùng lúc đó ở Hắc Phong Sơn, một thanh niên áo đen mỉm cười nghe tin Tôn quản gia sắp mang công pháp về."
+    },
+    {
+      "panel": "dqgl_ep5/p080.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Năm ngày sau, nhóm Lạc gia đặt chân tới Phong Lâm Thành."
+    },
+    {
+      "panel": "dqgl_ep5/p112.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cả chợ cười nhạo cô, nhưng gã gia nô đứng gần đó chen vào: ta có cách chứng minh đây là đồ giả."
+    },
+    {
+      "panel": "dqgl_ep6/p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lão bán ngọc gào lên đòi bằng chứng, còn gã gia nô chỉ mỉm cười: thật hay giả, thử một lần là biết.",
+      "section": "Viên ngọc giả"
+    },
+    {
+      "panel": "dqgl_ep6/p018.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Nước đổi sang đỏ sẫm, sủi bọt, và lão hoảng hốt hỏi sao lại thế này."
+    },
+    {
+      "panel": "dqgl_ep6/p026.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô gái áo xanh nói cô chỉ biết ngọc giả, may có hắn chứng minh giúp."
+    },
+    {
+      "panel": "dqgl_ep6/p037.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn một mình chặn lão bán ngọc trong con hẻm vắng: cuối cùng cũng tìm được ông."
+    },
+    {
+      "panel": "dqgl_ep6/p053.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đám tay sai rút đao xông lên, còn gã gia nô chỉ nhẹ giọng: ta không thích chém giết."
+    },
+    {
+      "panel": "dqgl_ep6/p063.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Về khách điếm, hắn đặt viên ngọc lên bàn, rồi dùng ma lực đốt lớp vỏ bên ngoài."
+    },
+    {
+      "panel": "dqgl_ep6/p082.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn nhỏ máu lên viên đá, cười khẽ: ngay cả Ma Đế còn chưa có, mà ta đã có được rồi."
+    },
+    {
+      "panel": "dqgl_ep7/p007.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Giữa đêm khuya, gã gia nô liên tục nhỏ máu tươi lên viên Huyết Tinh Linh, mất máu đến hoa cả mắt.",
+      "section": "Luyện Huyết Anh, Thái phủ trở mặt"
+    },
+    {
+      "panel": "dqgl_ep7/p017.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Đến mạng còn không giữ nổi thì giữ báu vật này làm gì, nghe thôi đã thấy hắn đang đứng sát mép vực."
+    },
+    {
+      "panel": "dqgl_ep7/p021.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chính đệ tử ruột của hắn quỳ xuống xin lỗi, rồi đứng hẳn về phía kẻ thù: Phản đồ!"
+    },
+    {
+      "panel": "dqgl_ep7/p045.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Một bóng hình nhỏ bé, đôi mắt đỏ rực hiện ra giữa luồng máu: Bổn Mệnh Huyết Anh đã ra đời."
+    },
+    {
+      "panel": "dqgl_ep7/p072.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Hộ vệ Thái phủ chẳng thèm nể, mỉa mai lại thêm hai kẻ đến ăn xin."
+    },
+    {
+      "panel": "dqgl_ep7/p102.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Thái Hiếu Đình nói thẳng: trong mắt hắn giờ chỉ có Vũ Phi, nữ nhân khác chỉ là đống phân."
+    },
+    {
+      "panel": "dqgl_ep7/p129.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một bóng người lao tới, hai cái tát vang lên: một đôi gian phu dâm phụ, dám làm hỏng chuyện của ta."
+    },
+    {
+      "panel": "dqgl_ep8/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Vừa tát xong hai người trước mặt cả Thái phủ, gã gia nô còn chưa kịp thở thì đã bị đòi quỳ xuống dập đầu.",
+      "section": "Một chưởng của gia chủ"
+    },
+    {
+      "panel": "dqgl_ep8/p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô ta ra điều kiện: tất cả quỳ xuống dập đầu ba cái, đặc biệt là hắn, và còn lôi cậu em ra làm con tin."
+    },
+    {
+      "panel": "dqgl_ep8/p036.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Vũ Phi máu chảy ròng ròng, gào lên rằng có quỳ xin tha cũng muộn rồi."
+    },
+    {
+      "panel": "dqgl_ep8/p043.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng chưa kịp rời đi thì một người đàn ông trung niên áo xanh lao tới. Thái Hiếu Đình mừng rỡ gọi: cha đến đúng lúc lắm."
+    },
+    {
+      "panel": "dqgl_ep8/p063.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn thẳng thắn vạch trần: ông nói nghe cao thượng thế, chung quy cũng chỉ vì chữ lợi mới hủy hôn."
+    },
+    {
+      "panel": "dqgl_ep8/p073.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Hai lòng bàn tay va vào nhau, và gia nô mới Tụ Khí nhị trọng lại đỡ trọn hai phần sức của một cao thủ Luyện Cốt."
+    },
+    {
+      "panel": "dqgl_ep8/p087.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn quay lưng bỏ đi, để lại một câu: hôm nay ông không thèm để ý tới ta, ngày mai ta sẽ cho ông không với tới được."
+    },
+    {
+      "panel": "dqgl_ep9/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Vừa rời Thái phủ, gã gia nô quay sang hỏi tiểu thư: cô có biết Ngự Hạ Thất Thế Gia là gì không?",
+      "section": "Ngự Hạ Thất Thế Gia"
+    },
+    {
+      "panel": "dqgl_ep9/p017.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Họ nắm lãnh địa và thế lực vượt trên mọi thế gia khác, là vùng cấm mà không ai dám đụng vào."
+    },
+    {
+      "panel": "dqgl_ep9/p034.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Cậu em nhỏ vừa dứt lời gọi hắn là cẩu nô tài hôm trước, hôm nay đã quay sang gọi hắn là anh rể tương lai."
+    },
+    {
+      "panel": "dqgl_ep9/p054.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lính gác khinh khỉnh bảo quản sự không gặp những kẻ vô danh. Hắn đáp gọn: có gặp hay không các ngươi cũng phải báo, chưa tới lượt hai tên nô tài làm chủ."
+    },
+    {
+      "panel": "dqgl_ep9/p065.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Hóa ra đó chính là cô gái áo xanh ở chợ ngọc, và hắn mỉm cười: nếu vậy thì chuyện này dễ rồi."
+    },
+    {
+      "panel": "dqgl_ep9/p081.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Hắn đặt lên bàn một cuộn giấy, và vừa mở ra, cô gái áo xanh đã khựng lại: đây là gì, không lẽ nhầm!?"
+    },
+    {
+      "panel": "dqgl_ep9/p089.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn khẽ cười, rồi hỏi ngược: cô định cho ăn mày à? Ta không bán."
+    },
+    {
+      "panel": "dqgl_ep10/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô gái áo xanh ra giá hai mươi vạn, nói đây chỉ là một bức trận thức đồ nhất cấp bình thường.",
+      "section": "Bức tranh trị giá ngàn vạn"
+    },
+    {
+      "panel": "dqgl_ep10/p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô nâng giá lên ba mươi vạn, khẳng định cả đế quốc chỉ Tiềm Long Các mới đủ sức mua nó."
+    },
+    {
+      "panel": "dqgl_ep10/p033.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chuyện đến tai chính chủ nhân Tiềm Long Các ở Phong Lâm Thành: Thần Nhãn Long Cửu, tức Cửu gia."
+    },
+    {
+      "panel": "dqgl_ep10/p057.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông ra giá một trăm tám mươi vạn, nói đó là toàn bộ số tiền mặt ông có thể điều động ngay."
+    },
+    {
+      "panel": "dqgl_ep10/p069.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Cô gái áo xanh trừng mắt hỏi: Cửu gia, ngài sợ rồi sao? Một câu khích tướng giữa thương trường."
+    },
+    {
+      "panel": "dqgl_ep10/p078.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Long Cửu gật đầu: coi như Tiềm Long Các chúng ta nợ Lạc gia các người một ân tình."
+    },
+    {
+      "panel": "dqgl_ep10/p093.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Cả nhóm rời Tiềm Long Các trong ánh nắng, tiểu thư và thiếu gia chạy phía trước, còn gã gia nô lặng lẽ bước theo sau với một nụ cười khó hiểu."
+    }
+  ]
+}

@@ -25,16 +25,41 @@ nhiều chương mà không phải cắt lại. Chạy: `recap.py build manhua-r
 
 Title, description, hashtag, thumbnail của từng video nằm trong `script.json` của nó (xem `ep19/script.json` làm mẫu).
 
-## Tình trạng thật (cần biết)
-- Đã xem ảnh thật: chương 2 (p001–p070) và một phần chương 1 (p001–p036, p079–p114).
-- **Chưa xem được ảnh chương 3–10** (công cụ đọc ảnh trả "media removed"). Vì vậy `ep03`…`ep10/script.json`
-  mình viết hôm nay là **bản nháp, số khung đoán**, đã gắn `"status": "DRAFT"`. Đừng build từ các file đó.
-- 3 Short + Long mới **chưa viết**, vì cần xem lại ảnh chương 3–10 để chọn khung đúng.
-- `manhua-recap/dqg_long01` đang trống trên máy này, nên bản Long01 cũ không dựng lại được nếu không tải lại ảnh.
-  Hướng tiếp: dựng Long mới từ khung `dqgl_ep1..10` bằng cú pháp nhiều thư mục ở trên.
+## Kết quả (2026-10-08, chương 1-10, đã render, Final QA PASS 100 cả 4)
+| Video | Thư mục script | Project / job | Độ dài | Khổ |
+|---|---|---|---|---|
+| Short A (ch 1-3) | `short_a/` | 196 / job_253 | 57s | 1080x1920 |
+| Short B (ch 4-7) | `short_b/` | 193 / job_257 | 49s | 1080x1920 |
+| Short C (ch 8-10) | `short_c/` | 194 / job_258 | 55s | 1080x1920 |
+| Long (ch 1-10) | `long_1_10/` | 195 / job_259 | 5:01 | 1920x1080 |
 
-## Việc còn lại (theo thứ tự)
-1. Xem lại sheets chương 1–10 (đọc được ảnh), ghi chú khung chính từng chương.
-2. Viết `short_a/`, `short_b/`, `short_c/` và `long_1_10/script.json`.
-3. `recap.py build` từng bản, render, in mục lục thời gian cho Long.
-4. Cập nhật `SERIES.md` + bảng này khi xong.
+Mỗi `script.json` có sẵn title, description, hashtag, thumbnail (text + prompt). Title của Long giữ như Long01 cũ.
+Mục lục thời gian của Long (dán vào mô tả/bình luận ghim):
+```
+0:00 Mở đầu: Ma Hoàng bị phản bội
+0:34 Tâm ma: bị trói vào Lạc gia
+0:56 Rừng Sương Mù: cái bẫy chết người
+1:26 Kế lừa: Trác Phàm bán chủ?
+1:55 Đột phá lên Tụ Khí cảnh
+2:24 Viên ngọc giả
+2:52 Luyện Huyết Anh, Thái phủ trở mặt
+3:22 Một chưởng của gia chủ
+3:56 Ngự Hạ Thất Thế Gia
+4:30 Bức tranh trị giá ngàn vạn
+```
+Video nằm ở `backend/data/library/_video_composer/job_<số>_<tên>/output/`.
+
+## Cần biết
+- **Khung chương 3-10 chưa được kiểm chứng với ảnh thật** (lúc viết, công cụ đọc ảnh trả "media removed"). Chương 1-2 đã xem
+  thật. Vì vậy ở Short B, Short C và các phần chương 3-10 của Long, hình có thể không khớp lời kể. Bạn xem video, chỗ nào lệch thì
+  báo chương/giây để sửa số khung rồi build lại (chỉ cần sửa `script.json`, không phải cắt lại).
+- `ep03`...`ep10/script.json` (bản mỗi chương một Short) là bản nháp, có `"status": "DRAFT"`, không dùng.
+- Lỗi gặp khi render: FINAL_QA sập vì ffmpeg in UTF-8 mà Windows đọc cp1252 (đã sửa, xem docs/features/161). Voice edge-tts có thể
+  chập chờn, nếu fail thì chạy lại run.
+- Mỗi lần build mới sẽ tạo project mới, nên project cũ (Long01 = 121) vẫn còn.
+
+## Quy trình cho 10 chương tiếp theo
+1. `fetch` + `cut` + `sheets` các chương (đã có cho 21-100 ở bước fetch, chưa cut).
+2. Xem sheets, ghi khung chính từng chương.
+3. Viết `short_*/script.json` (3 bản) và `long_*/script.json` (1 bản) với khung dạng `thư-mục/pNNN.jpg`.
+4. `recap.py build manhua-recap/<thư mục đầu> --script <file> --name "..."`, render, in mục lục bằng `recap.py timestamps`.

@@ -67,6 +67,11 @@ Tên tiểu thư Lạc Vân Thường là tên theo truyện gốc, chưa thấy
 | 19 | 19 | `manhua-recap/dqgl_ep19` | Dương Minh bày cả vở kịch, đến cha nuôi cũng chỉ là quân cờ!? | ✅ project 138 / job_198, Final QA PASS 100 (44.98s, 1080×1920) |
 | 20+ | theo arc | | | Chưa làm tiếp sau tập 19. Ảnh chương 3–10 tải lại từ truyenqq.com.vn 2026-10-08 (zettruyen2.com bị Cloudflare chặn, xem docs/features/158); chương 21–100 cũng đã tải, chưa cắt/viết script. Script 3–10 giờ là Short riêng từng chương (không gộp Long01 nữa). Từ chương 15, thư mục ảnh đổi tên thành `dqgl_epNN` (gõ nhầm của phiên khác, không phải `dqg_epNN`) |
 
+## Bản mới: 3 Short + 1 Long cho chương 1-10 (2026-10-08)
+
+Xem [`PLAN_10CH.md`](PLAN_10CH.md): Short A/B/C = project 196/193/194, Long = project 195, đều Final QA PASS 100.
+Khung chương 3-10 trong các bản này chưa kiểm chứng.
+
 ## Video dài
 
 | Video | Chương | Thư mục ảnh | Tiêu đề | Trạng thái |
