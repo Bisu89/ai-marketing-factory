@@ -21,6 +21,7 @@ import app.modules.ai.hook.models  # noqa: F401
 import app.modules.ai.story.models  # noqa: F401
 import app.modules.asset.models  # noqa: F401
 import app.modules.beat.models  # noqa: F401
+import app.modules.documentary.models  # noqa: F401
 import app.modules.factory.models  # noqa: F401
 import app.modules.manhua.models  # noqa: F401
 import app.modules.story.models  # noqa: F401

@@ -3,7 +3,7 @@ import sys
 from pathlib import Path
 
 from fastapi import APIRouter, Depends, HTTPException
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 from app.api.deps import get_download_engine
 from app.core.config import (
@@ -11,6 +11,7 @@ from app.core.config import (
     get_settings,
     update_ai_provider,
     update_anthropic_api_key,
+    update_elevenlabs_settings,
     update_library_dir,
     update_openai_api_key,
     update_render_cache_retention_days,
@@ -31,6 +32,19 @@ class AnthropicApiKeyIn(BaseModel):
 
 class OpenAIApiKeyIn(BaseModel):
     api_key: str
+
+
+class ElevenLabsSettingsIn(BaseModel):
+    """Every field optional: only the ones sent are changed. api_key, when
+    sent, must be non-empty (use it to rotate, not to clear)."""
+
+    api_key: str | None = None
+    voice_id: str | None = None
+    model_id: str | None = None
+    stability: float | None = Field(default=None, ge=0, le=1)
+    similarity_boost: float | None = Field(default=None, ge=0, le=1)
+    style: float | None = Field(default=None, ge=0, le=1)
+    speed: float | None = Field(default=None, ge=0.7, le=1.2)
 
 
 class AIProviderIn(BaseModel):
@@ -70,7 +84,36 @@ def read_settings(settings: Settings = Depends(get_settings)):
         # Render-cache auto-cleanup (0 = off). See
         # app/api/v1/endpoints/assets_cleanup.py.
         "render_cache_retention_days": settings.render_cache_retention_days,
+        "elevenlabs": _elevenlabs_view(settings),
     }
+
+
+def _elevenlabs_view(settings: Settings) -> dict:
+    return {
+        "has_api_key": bool(settings.elevenlabs_api_key),  # the key itself is never returned
+        "voice_id": settings.elevenlabs_voice_id,
+        "model_id": settings.elevenlabs_model_id,
+        "stability": settings.elevenlabs_stability,
+        "similarity_boost": settings.elevenlabs_similarity_boost,
+        "style": settings.elevenlabs_style,
+        "speed": settings.elevenlabs_speed,
+        "ready": bool(settings.elevenlabs_api_key and settings.elevenlabs_voice_id),
+    }
+
+
+@router.put("/settings/elevenlabs")
+def set_elevenlabs(payload: ElevenLabsSettingsIn):
+    values: dict[str, str] = {}
+    for name, value in payload.model_dump(exclude_none=True).items():
+        if isinstance(value, str):
+            value = value.strip()
+            if not value:
+                raise HTTPException(status_code=400, detail=f"{name} khong duoc de trong")
+        values[name] = str(value)
+    if not values:
+        raise HTTPException(status_code=400, detail="Khong co truong nao de cap nhat")
+    update_elevenlabs_settings(values)
+    return _elevenlabs_view(get_settings())
 
 
 @router.put("/settings/render-cache-retention")

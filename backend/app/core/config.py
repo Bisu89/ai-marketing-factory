@@ -145,6 +145,18 @@ class Settings(BaseSettings):
     ai_provider: str = "anthropic"
     openai_api_key: str | None = None
 
+    # Vox Documentary Factory narration (feature 163). ElevenLabs is read
+    # server-side only; the key is never echoed back by GET /settings.
+    # voice_id has no default on purpose: voices are account-specific and
+    # a made-up ID would just fail at the first TTS call.
+    elevenlabs_api_key: str | None = None
+    elevenlabs_voice_id: str | None = None
+    elevenlabs_model_id: str = "eleven_multilingual_v2"
+    elevenlabs_stability: float = 0.5
+    elevenlabs_similarity_boost: float = 0.75
+    elevenlabs_style: float = 0.0
+    elevenlabs_speed: float = 1.0
+
 
 
 @lru_cache
@@ -174,4 +186,12 @@ def update_openai_api_key(key: str) -> None:
 
 def update_ai_provider(provider: str) -> None:
     set_key(ENV_FILE_PATH, "APP_AI_PROVIDER", provider)
+    get_settings.cache_clear()
+
+
+def update_elevenlabs_settings(values: dict[str, str]) -> None:
+    """Persist any subset of the APP_ELEVENLABS_* settings (keys given
+    without the prefix, e.g. {"voice_id": "..."})."""
+    for name, value in values.items():
+        set_key(ENV_FILE_PATH, f"APP_ELEVENLABS_{name.upper()}", value)
     get_settings.cache_clear()

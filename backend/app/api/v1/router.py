@@ -41,6 +41,7 @@ from app.modules.ai.hook.router import router as hook_router
 from app.modules.ai.story.router import router as story_router
 from app.modules.asset.router import router as asset_router
 from app.modules.beat.router import router as beat_router
+from app.modules.documentary.router import router as documentary_router
 from app.modules.storyteller.router import router as storyteller_router
 from app.modules.story.router import router as story_planning_router
 from app.modules.video_composer.router import router as video_composer_router
@@ -64,6 +65,7 @@ api_router.include_router(story_router, tags=["story"])
 api_router.include_router(hook_router, tags=["hook"])
 api_router.include_router(storyteller_router, tags=["storyteller"])
 api_router.include_router(beat_router, tags=["beat"])
+api_router.include_router(documentary_router, tags=["documentary"])
 api_router.include_router(story_planning_router, tags=["story-planning"])
 api_router.include_router(story_pipeline.router, tags=["story-planning"])
 api_router.include_router(story_compile.router, tags=["story-planning"])
