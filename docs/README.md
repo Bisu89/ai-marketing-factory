@@ -198,6 +198,7 @@ SQLite.
 164. [Documentary research & script](features/164-documentary-research-script.md) — manual sources/claims, 7-section script versions, mock + LLM providers, content-checked gates 1–2
 165. [Documentary storyboard & assets](features/165-documentary-storyboard-assets.md) — scenes with stable IDs, cost-ladder visual policy, asset registry + license checks, manual-image CSV export/import, gate 3
 166. [Documentary narration](features/166-documentary-narration.md) — per-segment TTS cache, edge/ElevenLabs/mock backends, usage ledger + budget/confirm, master audio, gate 4 audio checks
+167. [Documentary alignment & timeline](features/167-documentary-alignment-timeline.md) — script-to-audio word alignment (TTS stamps / local Whisper / flagged estimate), contiguous scene timeline, subtitles + SRT, manual boundary fixes, gate 4
 
 ## Keeping this up to date
 

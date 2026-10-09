@@ -16,6 +16,7 @@ from app.modules.documentary.research import ResearchService
 from app.modules.documentary.schemas import GateStatus, ProjectCreate, ProjectDetail, ProjectOut, ScriptSave
 from app.modules.documentary.script import ScriptService
 from app.modules.documentary.storyboard import StoryboardService
+from app.modules.documentary.timeline import TimelineService
 
 DEMO_TITLE = "[MẪU] Dự án demo — không phải nội dung lịch sử đã kiểm chứng"
 DEMO_TOPIC = (
@@ -173,7 +174,7 @@ class DocumentaryService:
 
             issues = AssetService(self.db, self._root()).review(p.id)
         elif gate == "narration_timing":
-            issues = NarrationService(self.db, self._root()).review(p.id)
+            issues = TimelineService(self.db, self._root()).review(p.id).issues
         else:
             return
         if issues:

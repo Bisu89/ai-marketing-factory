@@ -29,3 +29,12 @@ alembic==1.14.0
 # chapter HTML is loaded in a real headless Chromium instead. Requires a
 # one-time `python -m playwright install chromium` (not run by this file).
 playwright==1.62.0
+
+# Vox Documentary Factory (features 163-167): local speech-to-text word timestamps for
+# aligning the known narration script to audio (CPU, int8; model downloaded on first use).
+# NOT yet added to AIContentLibrary.spec -- a packaged build would need its hidden imports.
+faster-whisper==1.2.1
+# ctranslate2 4.8.2 hard-crashes (access violation) while loading ANY model on this Windows
+# machine; 4.6.0 works but still imports pkg_resources, which needs setuptools<81.
+ctranslate2==4.6.0
+setuptools<81

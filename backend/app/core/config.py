@@ -160,6 +160,10 @@ class Settings(BaseSettings):
     # plans differ and a made-up price would make budget checks lie. None = cost unknown.
     elevenlabs_usd_per_1k_chars: float | None = None
 
+    # Local forced-alignment model for the documentary timeline (faster-whisper, CPU int8).
+    # 'small' ~480 MB first-use download; 'medium' ~1.5 GB, more accurate, much slower on CPU.
+    documentary_whisper_model: str = "small"
+
 
 
 @lru_cache

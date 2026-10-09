@@ -268,7 +268,7 @@ class NarrationService:
             done.append(seg.segment_key)
         return {"generated": done, "skipped_cached": skipped, "failed": failed}
 
-    def _master_digest(self, segments: list[DocumentaryNarrationSegment]) -> str:
+    def master_digest(self, segments: list[DocumentaryNarrationSegment]) -> str:
         return hashlib.sha256(
             ("|".join(s.cache_key or "" for s in segments) + f"|gap={self.policy.gap_sec}").encode("utf-8")
         ).hexdigest()[:16]
@@ -279,7 +279,7 @@ class NarrationService:
         stale = [s.segment_key for s in segments if not self.is_current(s)]
         if not segments or stale:
             raise ValidationError(f"Chưa đủ audio để ghép master — còn thiếu/cũ: {stale or 'chưa có đoạn nào'}.")
-        digest = self._master_digest(segments)
+        digest = self.master_digest(segments)
         master, meta_path = self.master_path(project_id), self._meta_path(project_id)
         if master.is_file() and meta_path.is_file():
             try:
@@ -324,7 +324,7 @@ class NarrationService:
             elif not self.is_current(s):
                 issues.append(ReviewIssue(code="segment_not_ready", message=f"Đoạn {s.segment_key}: chưa có audio cho văn bản/giọng hiện tại."))
         if not issues:
-            digest = self._master_digest(segments)
+            digest = self.master_digest(segments)
             try:
                 fresh = json.loads(self._meta_path(project_id).read_text(encoding="utf-8")).get("hash") == digest
             except (OSError, json.JSONDecodeError):

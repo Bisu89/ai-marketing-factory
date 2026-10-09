@@ -233,3 +233,67 @@ class DocumentaryUsage(Base):
     cost_usd: Mapped[float | None] = mapped_column(Float, nullable=True)
     ok: Mapped[bool] = mapped_column(Boolean, nullable=False, default=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow, nullable=False)
+
+
+class DocumentarySegmentAlignment(Base):
+    """Word timing for one narration segment's audio, LOCAL to that audio
+    (seconds from its start). Keyed by the segment's cache_key, so an
+    unchanged segment is never re-aligned (Whisper on CPU is the slow part)."""
+
+    __tablename__ = "documentary_segment_alignment"
+    __table_args__ = (UniqueConstraint("project_id", "segment_key"),)
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    project_id: Mapped[int] = mapped_column(ForeignKey("documentary_project.id"), nullable=False, index=True)
+    segment_key: Mapped[str] = mapped_column(String, nullable=False)
+    cache_key: Mapped[str] = mapped_column(String, nullable=False)
+    source: Mapped[str] = mapped_column(String, nullable=False)  # tts_provider | whisper_local | estimated
+    coverage: Mapped[float] = mapped_column(Float, nullable=False)
+    words: Mapped[list] = mapped_column(JSON, nullable=False, default=list)  # [text, start, end, matched]
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow, nullable=False)
+
+
+class DocumentaryTimingOverride(Base):
+    """A manual correction of where one scene starts, local to its segment's
+    audio. Dropped automatically if that segment's audio is regenerated."""
+
+    __tablename__ = "documentary_timing_override"
+    __table_args__ = (UniqueConstraint("project_id", "scene_key"),)
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    project_id: Mapped[int] = mapped_column(ForeignKey("documentary_project.id"), nullable=False, index=True)
+    scene_key: Mapped[str] = mapped_column(String, nullable=False)
+    segment_cache_key: Mapped[str] = mapped_column(String, nullable=False)
+    local_start: Mapped[float] = mapped_column(Float, nullable=False)
+
+
+class DocumentarySceneTiming(Base):
+    """Assembled, absolute (master-audio) timeline for each scene."""
+
+    __tablename__ = "documentary_scene_timing"
+    __table_args__ = (UniqueConstraint("project_id", "scene_key"),)
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    project_id: Mapped[int] = mapped_column(ForeignKey("documentary_project.id"), nullable=False, index=True)
+    scene_key: Mapped[str] = mapped_column(String, nullable=False)
+    order_index: Mapped[int] = mapped_column(Integer, nullable=False)
+    start: Mapped[float] = mapped_column(Float, nullable=False)
+    end: Mapped[float] = mapped_column(Float, nullable=False)
+    source: Mapped[str] = mapped_column(String, nullable=False)  # tts_provider | whisper_local | estimated | manual
+    coverage: Mapped[float] = mapped_column(Float, nullable=False)
+    needs_review: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
+    master_hash: Mapped[str] = mapped_column(String, nullable=False)
+    words: Mapped[list] = mapped_column(JSON, nullable=False, default=list)
+
+
+class DocumentarySubtitle(Base):
+    __tablename__ = "documentary_subtitle"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    project_id: Mapped[int] = mapped_column(ForeignKey("documentary_project.id"), nullable=False, index=True)
+    order_index: Mapped[int] = mapped_column(Integer, nullable=False)
+    start: Mapped[float] = mapped_column(Float, nullable=False)
+    end: Mapped[float] = mapped_column(Float, nullable=False)
+    text: Mapped[str] = mapped_column(Text, nullable=False)
+    scene_key: Mapped[str | None] = mapped_column(String, nullable=True)
+    source: Mapped[str] = mapped_column(String, nullable=False)

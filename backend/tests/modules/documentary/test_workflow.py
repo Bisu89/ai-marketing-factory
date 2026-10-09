@@ -106,6 +106,11 @@ class _ServiceCase(unittest.TestCase):
         self.svc.plan_narration(self.p.id)
         self.svc.generate_narration(self.p.id, "mock", None, False)
         NarrationService(self.db, self.root).build_master(self.p.id)
+        from app.modules.documentary.timeline import TimelineService
+
+        tl = TimelineService(self.db, self.root)
+        tl.align(self.p.id, "estimated")  # deterministic; never loads a Whisper model in tests
+        tl.assemble(self.p.id)
 
     def go_to(self, state: str):
         """Walk the happy path, approving each gate when reached."""

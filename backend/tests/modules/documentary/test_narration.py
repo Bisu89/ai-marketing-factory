@@ -85,6 +85,13 @@ class NarrationCase(sb._Case):
         tts_mod.register_backend(self.flaky)
         self.addCleanup(lambda: tts_mod._REGISTRY.pop("flaky", None))
 
+    def align_all(self):
+        from app.modules.documentary.timeline import TimelineService
+
+        tl = TimelineService(self.db, self.root)
+        tl.align(self.p.id, "estimated")
+        tl.assemble(self.p.id)
+
     def to_audio_ready(self):
         self.ready(hook_text=sentences_(14))
         for _ in range(3):
@@ -271,6 +278,7 @@ class MasterTests(NarrationCase):
             self.svc.approve(self.p.id, "narration_timing")
         self.svc.generate_narration(self.p.id, "mock", None, False)
         self.narr.build_master(self.p.id)
+        self.align_all()
         self.svc.approve(self.p.id, "narration_timing")
 
     def test_regenerating_narration_after_approval_revokes_it(self):
@@ -278,6 +286,7 @@ class MasterTests(NarrationCase):
         self.svc.plan_narration(self.p.id)
         self.svc.generate_narration(self.p.id, "mock", None, False)
         self.narr.build_master(self.p.id)
+        self.align_all()
         self.svc.approve(self.p.id, "narration_timing")
         scene = self.db.query(DocumentaryScene).filter_by(project_id=self.p.id, order_index=1).one()
         scene.narration_text += " Câu mới."

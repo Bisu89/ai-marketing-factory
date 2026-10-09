@@ -1,9 +1,12 @@
 """Documentary project API. Thin: every rule lives in state_machine.py /
 service.py, so the backend (not the UI) enforces the approval gates."""
 
+from pathlib import Path
+
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
+from app.core.config import Settings, get_settings
 from app.core.exceptions import NotFoundError
 from app.db.session import get_db
 from app.modules.documentary import state_machine as sm
@@ -33,8 +36,8 @@ from app.modules.documentary.service import DocumentaryService
 router = APIRouter(prefix="/documentary")
 
 
-def _svc(db: Session = Depends(get_db)) -> DocumentaryService:
-    return DocumentaryService(db)
+def _svc(db: Session = Depends(get_db), settings: Settings = Depends(get_settings)) -> DocumentaryService:
+    return DocumentaryService(db, library_root=Path(settings.library_dir))
 
 
 @router.get("/workflow")
@@ -234,3 +237,7 @@ router.include_router(_storyboard_router)
 from app.modules.documentary.router_narration import router as _narration_router  # noqa: E402
 
 router.include_router(_narration_router)
+
+from app.modules.documentary.router_timeline import router as _timeline_router  # noqa: E402
+
+router.include_router(_timeline_router)
