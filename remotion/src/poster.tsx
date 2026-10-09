@@ -73,17 +73,18 @@ function useMove(scene: Scene) {
   };
 }
 
-function CutHeadline({ text, at, rot = -2 }: { text: string; at: number; rot?: number }) {
+function CutHeadline({ text, at, rot = -2, center = false }: { text: string; at: number; rot?: number; center?: boolean }) {
   const p = useEnter(at, 10);
-  const size = fit(text, 150, 14);
+  const size = center ? Math.max(66, fit(text, 120, 26)) : fit(text, 150, 14);
   return (
     <div
       style={{
         position: "absolute",
         left: 90,
         right: 90,
-        top: 110,
+        ...(center ? { top: 0, bottom: 120 } : { top: 110 }),
         display: "flex",
+        alignItems: center ? "center" : undefined,
         justifyContent: "center",
         transform: `rotate(${rot}deg) scale(${0.6 + 0.4 * p})`,
         opacity: p,
@@ -146,9 +147,9 @@ export function PosterScene({ scene }: PresetProps) {
       ) : (
         <AbsoluteFill style={{ background: `radial-gradient(circle at 30% 30%, rgba(255,255,255,0.18), rgba(0,0,0,0.18))` }} />
       )}
-      <Confetti scene={scene} />
-      {head && <CutHeadline text={head.text} at={head.cueFrame} />}
-      {!scene.imageSrc && !head && tags[0] && <CutHeadline text={tags[0].text} at={tags[0].cueFrame} />}
+      <Confetti scene={scene} count={scene.imageSrc ? 14 : 30} />
+      {scene.imageSrc && head && <CutHeadline text={head.text} at={head.cueFrame} />}
+      {!scene.imageSrc && (head ?? tags[0]) && <CutHeadline text={(head ?? tags[0]).text} at={(head ?? tags[0]).cueFrame} center />}
       {scene.imageSrc && tags.map((t) => <SmallTag key={t.text} text={t.text} at={t.cueFrame} />)}
     </AbsoluteFill>
   );

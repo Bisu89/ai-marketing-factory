@@ -845,13 +845,8 @@
    ]
   },
   "S029": {
-   "preset": "EvidenceBoard",
-   "texts": [
-    [
-     "Herod feared that John's great influence over the people might lead to a rebellion",
-     "caption"
-    ]
-   ]
+   "preset": "PhotoKenBurns",
+   "texts": []
   },
   "S031": {
    "preset": "SplitComparison",
@@ -876,13 +871,8 @@
    ]
   },
   "S036": {
-   "preset": "HeadlineImpact",
-   "texts": [
-    [
-     "up to half my kingdom",
-     "headline"
-    ]
-   ]
+   "preset": "PhotoKenBurns",
+   "texts": []
   },
   "S037": {
    "preset": "HeadlineImpact",
@@ -968,6 +958,22 @@
      "headline"
     ]
    ]
+  },
+  "S001": {
+   "preset": "PhotoKenBurns",
+   "texts": []
+  },
+  "S008": {
+   "preset": "PhotoKenBurns",
+   "texts": []
+  },
+  "S035": {
+   "preset": "PhotoKenBurns",
+   "texts": []
+  },
+  "S049": {
+   "preset": "PhotoKenBurns",
+   "texts": []
   }
  },
  "images": [
@@ -1404,6 +1410,72 @@
    "commons_title": "File:Leonardo da Vinci - Saint John the Baptist C2RMF retouched.jpg",
    "use": [
     "S047"
+   ]
+  },
+  {
+   "key": "poster_S001",
+   "kind": "file",
+   "path": "C:/Users/hoavx/Desktop/AI-Marketing-Factory/biblical-figures-prompts/vox/poster_test/S001_poster.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (ChatGPT), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "use": [
+    "S001"
+   ]
+  },
+  {
+   "key": "poster_S008",
+   "kind": "file",
+   "path": "C:/Users/hoavx/Desktop/AI-Marketing-Factory/biblical-figures-prompts/vox/poster_test/S008_poster.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (ChatGPT), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "use": [
+    "S008"
+   ]
+  },
+  {
+   "key": "poster_S029",
+   "kind": "file",
+   "path": "C:/Users/hoavx/Desktop/AI-Marketing-Factory/biblical-figures-prompts/vox/poster_test/S029_poster.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (ChatGPT), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "use": [
+    "S029"
+   ]
+  },
+  {
+   "key": "poster_S035",
+   "kind": "file",
+   "path": "C:/Users/hoavx/Desktop/AI-Marketing-Factory/biblical-figures-prompts/vox/poster_test/S035_poster.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (ChatGPT), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "use": [
+    "S035"
+   ]
+  },
+  {
+   "key": "poster_S036",
+   "kind": "file",
+   "path": "C:/Users/hoavx/Desktop/AI-Marketing-Factory/biblical-figures-prompts/vox/poster_test/S036_poster.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (ChatGPT), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "use": [
+    "S036"
+   ]
+  },
+  {
+   "key": "poster_S049",
+   "kind": "file",
+   "path": "C:/Users/hoavx/Desktop/AI-Marketing-Factory/biblical-figures-prompts/vox/poster_test/S049_poster.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (ChatGPT), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "use": [
+    "S049"
    ]
   }
  ]
