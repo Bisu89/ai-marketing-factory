@@ -4,11 +4,12 @@ Mounted under the same /documentary prefix by router.py."""
 from pathlib import Path
 
 from fastapi import APIRouter, Depends
-from fastapi.responses import Response
+from fastapi.responses import FileResponse, Response
 from sqlalchemy.orm import Session
 
 from app.core.config import Settings, get_settings
 from app.db.session import get_db
+from app.core.exceptions import NotFoundError
 from app.modules.documentary.assets import AssetService, asset_state
 from app.modules.documentary.schemas import (
     AssetImportIn,
@@ -184,3 +185,14 @@ def import_image_folder(
     if report["imported"]:
         svc.storyboard_changed(project_id)
     return report
+
+
+@router.get("/projects/{project_id}/assets/{asset_id}/file")
+def asset_file(project_id: int, asset_id: int, db: Session = Depends(get_db), settings: Settings = Depends(get_settings)):
+    """Serves the registry's own copy of an image (path comes from the DB row,
+    never from the request), for the contact sheet."""
+    DocumentaryService(db).get(project_id)
+    asset = _assets(db, settings).get(project_id, asset_id)
+    if not Path(asset.path).is_file():
+        raise NotFoundError("asset file", asset_id)
+    return FileResponse(asset.path)

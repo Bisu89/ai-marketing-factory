@@ -14,6 +14,7 @@ import {
   Wand2,
   ImageDown,
   AudioLines,
+  Landmark,
 } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import "./Sidebar.css";
@@ -32,6 +33,7 @@ const NAV_ITEMS = [
   { to: "/asset-library", label: "Asset Library", icon: Images },
   { to: "/manhua-fetch", label: "Tải chương truyện", icon: ImageDown },
   { to: "/voice-test", label: "Thử giọng đọc", icon: AudioLines },
+  { to: "/documentary", label: "Phim tài liệu", icon: Landmark },
   { to: "/settings", label: "Settings", icon: Settings },
 ];
 

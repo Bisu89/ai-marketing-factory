@@ -15,6 +15,8 @@ import { AssetLibraryPage } from "./pages/AssetLibraryPage";
 import { ManhuaFetchPage } from "./pages/ManhuaFetchPage";
 import { VoiceTestPage } from "./pages/VoiceTestPage";
 import { SettingsPage } from "./pages/SettingsPage";
+import { DocumentaryListPage } from "./pages/DocumentaryListPage";
+import { DocumentaryProjectPage } from "./pages/DocumentaryProjectPage";
 
 function App() {
   return (
@@ -35,6 +37,8 @@ function App() {
         <Route path="asset-library" element={<AssetLibraryPage />} />
         <Route path="manhua-fetch" element={<ManhuaFetchPage />} />
         <Route path="voice-test" element={<VoiceTestPage />} />
+        <Route path="documentary" element={<DocumentaryListPage />} />
+        <Route path="documentary/:id" element={<DocumentaryProjectPage />} />
         <Route path="settings" element={<SettingsPage />} />
         <Route path="*" element={<Navigate to="/dashboard" replace />} />
       </Route>

@@ -410,6 +410,27 @@ class ManualLoopTests(_Case):
         self.assertIn(follower.scene_key, [s.scene_key for s in self.assets.needing_images(self.p.id)])
         self.assertNotIn(head.scene_key, [s.scene_key for s in self.assets.needing_images(self.p.id)])
 
+    def test_asset_file_endpoint_serves_registry_copy_only(self):
+        from fastapi.testclient import TestClient
+
+        from app.core.config import Settings, get_settings
+        from app.db.session import get_db
+        from app.main import app
+
+        a, _ = self.assets.import_file(self.p.id, self.png("pic.png", (7, 7, 7)))
+        app.dependency_overrides[get_db] = lambda: self.db
+        app.dependency_overrides[get_settings] = lambda: Settings(library_dir=str(self.root), _env_file=None)
+        try:
+            c = TestClient(app)
+            r = c.get(f"/api/v1/documentary/projects/{self.p.id}/assets/{a.id}/file")
+            self.assertEqual((r.status_code, r.content[1:4]), (200, b"PNG"))
+            other = self.svc.create(ProjectCreate(title="O", topic="o"))
+            self.assertEqual(c.get(f"/api/v1/documentary/projects/{other.id}/assets/{a.id}/file").status_code, 404)
+            Path(a.path).unlink()
+            self.assertEqual(c.get(f"/api/v1/documentary/projects/{self.p.id}/assets/{a.id}/file").status_code, 404)
+        finally:
+            app.dependency_overrides.clear()
+
     def test_missing_folder(self):
         with self.assertRaises(ValidationError):
             self.assets.import_folder(self.p.id, Path(self.tmp.name) / "nope")
