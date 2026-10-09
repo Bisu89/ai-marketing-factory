@@ -45,6 +45,7 @@ STAGGER = 9
 DATA_PRESETS = frozenset({"TimelineBuild", "BigNumber", "MapZoom"})
 # Bump when the render/mux pipeline changes in a way that alters the output file, so cached
 # renders from the old pipeline are not reused.
+EARLY_CUE_FRAMES = 6  # picture-less cards show their text this soon after the scene starts
 THEMES = ("collage", "cinematic", "poster")
 PIPELINE_VERSION = 3
 MUSIC_EXTENSIONS = (".mp3", ".wav", ".m4a", ".ogg", ".flac")
@@ -279,10 +280,15 @@ def build_manifest(db: Session, root: Path, project_id: int, params: RenderParam
             # A timeline with no years / a big number with no number would be an empty frame:
             # show the narration's own opening phrase instead.
             preset, texts = "HeadlineImpact", derive_texts("HeadlineImpact", sc.narration_text)
-        rows = [
-            {"text": x["text"], "role": x["role"], "sub": x.get("sub"), "cueFrame": min(dur - 1, cue_frame(x["anchor"], t.words, t.start, FPS, k))}
-            for k, x in enumerate(texts)
-        ]
+        def cue(x: dict, k: int) -> int:
+            c = min(dur - 1, cue_frame(x["anchor"], t.words, t.start, FPS, k))
+            # A card with no picture is empty until its text appears, so words that are not a staged
+            # date/number show almost at once instead of waiting for the narrator to reach them.
+            if image is None and x["role"] not in ("date", "number"):
+                c = min(c, EARLY_CUE_FRAMES)
+            return c
+
+        rows = [{"text": x["text"], "role": x["role"], "sub": x.get("sub"), "cueFrame": cue(x, k)} for k, x in enumerate(texts)]
         scene_rows.append(
             {
                 "key": sc.scene_key, "preset": preset,
