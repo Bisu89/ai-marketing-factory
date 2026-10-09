@@ -30,7 +30,7 @@ kết hợp ảnh tư liệu)  4. `README.md` (làm một tập mới từng bư
 | Hạng mục | Trạng thái |
 |---|---|
 | Phase 1–5 backend + giao diện + 5 cổng duyệt | **Xong, đã commit** (xem mục 9) |
-| Chủ đề hình ảnh | `collage` (giấy cắt dán) và **`cinematic`** (ảnh tràn khung, nền tối, chữ vàng — người dùng thấy collage "lởm", cinematic là mặc định trong UI) |
+| Chủ đề hình ảnh | **`collage` là phong cách chốt và mặc định cho mọi truyện kể** (2026-10-09: giấy kraft, ảnh dán trên giấy rách có băng keo, chữ cắt dán, số lớn/timeline/hộp bằng chứng, phụ đề nền xám — như bản đầu Constantinople). `cinematic` và `poster` đã **bỏ khỏi tab Render** (code engine còn, chưa xóa). Ảnh màu thì **tắt** "Ảnh đen trắng" |
 | Dự án chạy thử thật | **Dự án #1 "Constantinople 1453"** trong DB thật (`backend/data/library.db`), trạng thái `approved`. Bản cuối collage 1920×1080 118.57s tại `backend/data/library/_documentary/project_1/render/job_5/output.mp4`; preview cinematic ở `job_6`. Đã render **bản cuối cinematic** (job 7) và **xuất** thử (trạng thái `exported`; cổng 5 là duyệt thử của AI, người dùng chưa xem/nghe). |
 | Ảnh của dự án #1 | 4 ảnh miền công cộng + 1 ảnh **CC BY-SA 4.0 (Tường thành — cần thay trước khi dùng thương mại)**. Do tôi (AI) bấm duyệt khi chạy thử, **người dùng chưa tự duyệt** — xem `RULES.md` mục Ảnh |
 | Test | `pytest tests/modules/documentary` ≈ 170+ test pass (~3 phút); `npx tsc -b --noEmit` (frontend) và `npx tsc --noEmit` (remotion) sạch |
@@ -83,7 +83,7 @@ Dữ liệu trên đĩa: `<library_dir>/_documentary/project_<id>/{assets,narrat
 | 7. **Cổng 3** | **Người** | |
 | 8. Giọng đọc (edge miễn phí / ElevenLabs trả phí), master, căn chỉnh timeline | Công cụ | tab "Giọng đọc & Timeline"; nghe lại master |
 | 9. **Cổng 4** | **Người** | nghe toàn bài; cảnh timing "ước lượng" bị liệt kê |
-| 10. Render preview → bản cuối (chọn chủ đề cinematic/collage) | Công cụ | tab Render; bản cuối phải đạt kiểm tra tự động |
+| 10. Render preview → bản cuối (chủ đề collage, tắt ảnh đen trắng nếu ảnh màu) | Công cụ | tab Render; bản cuối phải đạt kiểm tra tự động |
 | 11. **Cổng 5** + đăng | **Người** | **chưa có** export/đăng tự động — người tự lấy file ở trang Videos |
 
 ## 6. Chạy & phát triển
@@ -113,6 +113,7 @@ cd frontend && npm run dev                              # tsc kiểm tra: npx ts
 - Hash render gồm `PIPELINE_VERSION` + mã nguồn Remotion + chủ đề: đổi cách ghép/giao diện ⇒ render lại (không dùng cache cũ).
 
 ## 7. Chủ đề hình ảnh
+- **Chốt: dùng `collage`** (xem bảng trạng thái). Mô tả `cinematic` dưới đây chỉ để tham khảo lịch sử.
 - `collage`: nền giấy, thẻ giấy rách, băng keo, highlight vàng, vòng đỏ (người dùng đánh giá "lởm").
 - `cinematic`: ảnh tràn khung + trôi chậm (hướng theo seed của cảnh), vignette, hạt phim; ảnh dọc → nền mờ + ảnh giữa;
   cảnh dữ liệu (năm, số lớn, bằng chứng, tiêu đề) trên nền da tối viền vàng, chữ serif vàng/kem. Phụ đề không hộp, bóng chữ.

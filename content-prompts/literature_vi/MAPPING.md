@@ -10,7 +10,7 @@ và ví dụ `biblical-figures-prompts/vox/ep6.spec.json`), đưa vào app bằn
 | work_title, episode_title | `title`, `topic` của spec | |
 | language | `language` (spec) → dự án | `vi` mặc định (giọng `edge`); `en` dùng `edge_en` |
 | target_duration | không có | độ dài thật đo từ audio; chỉ ước lượng khi lập kịch bản |
-| visual_style_id | theme lúc render: `poster` / `cinematic` / `collage` | chọn ở tab Render |
+| visual_style_id | theme lúc render: `collage` (mặc định, duy nhất hiện trong tab Render) | chọn ở tab Render |
 | beat_id, sequence | `scene_key` S001… + `order_index` | công cụ tự gán, ổn định, không tái dùng |
 | narrative_function | `section_kind` (hook/context/timeline/evidence/turning_point/consequences/conclusion) | 7 loại cố định |
 | narration_text | `narration_text` của cảnh (cắt theo câu từ kịch bản) | |
@@ -35,6 +35,6 @@ và ví dụ `biblical-figures-prompts/vox/ep6.spec.json`), đưa vào app bằn
 
 ## Việc cần sửa nhỏ khi bắt đầu tập đầu tiên (đề xuất, chưa làm)
 1. `episode_builder.py`: cho `fetch` kiểu `wikisource` nhận `lang` (`vi.wikisource.org`) và `page`.
-2. Theme `poster`: kiểm thử dấu tiếng Việt của tiêu đề; đổi font nếu thiếu glyph.
+2. Theme `collage`: kiểm thử dấu tiếng Việt của dải chữ cắt dán/tiêu đề; đổi font nếu thiếu glyph.
 3. (Tùy chọn) trường `mode` cho đoạn kịch bản nếu muốn lưu chế độ lời đọc trong DB.
 4. Preset đặc thù văn học (thẻ trích dẫn có nguồn) — hiện dùng `EvidenceBoard`.

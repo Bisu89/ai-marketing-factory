@@ -3,7 +3,7 @@
 > Thư mục này **riêng cho kênh văn học (nhiều tác phẩm, không chỉ một truyện)** (không dùng chung nội dung với Biblical Figures hay kênh khác).
 > Chỉ **máy dựng** là dùng chung: `content-prompts/vox_documentary_template/tools/episode_builder.py`, backend
 > `app/modules/documentary`, Remotion theme `cinematic`, 5 cổng duyệt. Bản gốc của prompt này đã được review; các thay đổi
-> chính: chốt phong cách `poster` (Vox collage), bỏ schema JSON thứ hai (dùng `spec.json`), làm theo giai đoạn, giữ cổng duyệt của người.
+> chính: chốt phong cách `collage` (giấy cắt dán) làm mặc định, bỏ schema JSON thứ hai (dùng `spec.json`), làm theo giai đoạn, giữ cổng duyệt của người.
 >
 > Cách dùng: mở session mới, dán nguyên nội dung dưới dòng `---` làm yêu cầu.
 
@@ -33,16 +33,16 @@ work does not contain); quality bar (research, script review, original commentar
 (placeholder the owner fills), because that is what makes the channel more than a retelling.
 
 ## 2. Visual direction (`VISUAL.md`)
-Decision made by the owner: the **`poster`** theme (vox-director look): every scene is a designed collage poster image (flat colour per scene,
-die-cut cut-out figures, newsprint scraps, tape, halftone, torn-paper headline) with code-driven push/wobble, paper confetti and black-outlined
-subtitles. Already implemented in Remotion (`remotion/src/poster.tsx`) and selectable in the Render tab. `cinematic`/`collage` remain available
-but are not the channel look. Do not build layered cut-out parallax; that is out of scope.
-Vietnamese rule: AI image models garble Vietnamese diacritics, so poster images contain **no text**; headlines are drawn by code. The theme's
+Decision made by the owner: the **`collage`** theme is the channel look and the default for every story-type production (it matches the first Constantinople
+render: kraft paper, torn-edge photos with tape, ransom-note headlines, big numbers/timeline/evidence cards, grey subtitle boxes). The `cinematic` and
+`poster` themes were removed from the Render tab. Images inside the paper frames may be poster-style collage art (flat colour, die-cut figures), made by the owner
+from a CSV; grayscale must be off for coloured images.
+Vietnamese rule: AI image models garble Vietnamese diacritics, so images contain **no text**; headlines are drawn by code. The theme's
 headline font (`Impact`) must be tested for Vietnamese stacked diacritics before the first episode and changed if glyphs are missing.
 Define an original channel look: palette (flat colours, one per scene, adjacent scenes differ; a secondary palette per work), accent-colour
 meaning, character reference sheet workflow (mark invented looks as interpretation), scene patterns (establishing, portrait, interaction,
 flashback, symbolic, map/timeline, analysis card, turning point, ending), asset reuse/naming/licence recording, and a populatable image-prompt
-template. Images are made by the owner from a CSV; never wire an image API. Reference: `biblical-figures-prompts/vox/poster_test/` (six tested poster prompts and results).
+template. Images are made by the owner from a CSV; never wire an image API. Reference: `biblical-figures-prompts/vox/poster_test/` (six tested poster-style prompts and results).
 
 ## 3. Script template (`SCRIPT_TEMPLATE.md`)
 6–9 minute Vietnamese episode. Map the flexible beats to the system's 7 section kinds:

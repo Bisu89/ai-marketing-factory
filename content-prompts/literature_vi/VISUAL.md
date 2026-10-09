@@ -1,4 +1,4 @@
-# VISUAL — phong cách poster collage (dùng theme `poster`)
+# VISUAL — phong cách collage giấy cắt dán (theme `collage`, ảnh bên trong kiểu poster)
 
 Cảm hứng chung từ kiểu giải thích "giấy cắt dán" của Vox; **không** sao chép thương hiệu hay bố cục cụ thể của ai. Áp dụng cho mọi tác phẩm.
 
@@ -7,11 +7,11 @@ Mỗi cảnh là **một tờ poster collage**: nền một màu phẳng đổi 
 băng keo, chấm halftone, vài hình khối giấy (tam giác, tròn, zigzag), mép giấy rách, nhiều lớp tiền–trung–hậu cảnh, **một chủ thể chính**.
 Nhân vật vẽ kiểu khắc gỗ/in cổ, ít màu phẳng. Chừa ~22% phía dưới khá yên để đặt phụ đề.
 Tránh: ảnh AI trình chiếu kiểu chung chung, chân thực quá mức/3D, gradient, hào quang, chuyển cảnh rườm, lặp lại cùng một bố cục, chuyển động không phục vụ kể chuyện.
-Chuyển động do code (theme `poster`): đẩy chậm + rung tay nhẹ, confetti giấy bay, tiêu đề cắt dán, phụ đề trắng viền đen.
+Dựng bằng theme `collage` (giống bản đầu của Constantinople): nền kraft có chấm, ảnh dán trên giấy rách có băng keo, dải chữ cắt dán từng chữ đổi màu nền, số lớn, mốc thời gian, hộp bằng chứng, phụ đề nền xám. Ảnh poster (tạo từ CSV) nằm trong khung giấy; **tắt chế độ ảnh đen trắng** (chỉ bật cho ảnh tư liệu cổ).
 
 ## 2. Chữ trên hình (khác với tập tiếng Anh)
-Tạo ảnh AI **hay làm hỏng dấu tiếng Việt**. Quy tắc: ảnh poster của kênh này **không chứa chữ**; tiêu đề lớn (1–4 từ) do Remotion vẽ (`on_screen_text` role `headline`).
-Cần kiểm thử trước tập đầu: font tiêu đề của theme (`Impact`) có thể thiếu dấu xếp chồng tiếng Việt; nếu lỗi, đổi sang font có đủ glyph (Arial/Arial Black) — đây là việc **chưa làm**, ghi trong báo cáo khi bắt đầu tập đầu tiên.
+Tạo ảnh AI **hay làm hỏng dấu tiếng Việt**. Quy tắc: ảnh của kênh này **không chứa chữ**; tiêu đề lớn (1–4 từ) do Remotion vẽ (`on_screen_text` role `headline`).
+Cần kiểm thử trước tập đầu: font chữ cắt dán/tiêu đề của theme (`Impact`) có thể thiếu dấu xếp chồng tiếng Việt; nếu lỗi, đổi sang font có đủ glyph (Arial/Arial Black) — đây là việc **chưa làm**, ghi trong báo cáo khi bắt đầu tập đầu tiên.
 
 ## 3. Bảng màu và chỉ dẫn
 - Màu thương hiệu kênh (gợi ý, chọn khi thiết lập kênh): kem giấy `#F6EFE0`, mực `#16130F`, cam đỏ `#E8532B`, vàng mù tạt `#F2B632`, xanh dương `#2F7FB5`, đỏ đậm `#C8302F`, xanh ngọc `#2E8B6A`.

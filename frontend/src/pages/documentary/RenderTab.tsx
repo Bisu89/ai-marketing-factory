@@ -67,11 +67,12 @@ export function RenderTab({ project, reloadProject }: TabProps) {
 
   const [seconds, setSeconds] = useState("30");
   const [scale, setScale] = useState("0.5");
-  const [theme, setTheme] = useState<"collage" | "cinematic" | "poster">("cinematic");
+  const [theme, setTheme] = useState<"collage" | "cinematic" | "poster">("collage");
   const [musicPath, setMusicPath] = useState("");
   const [musicDb, setMusicDb] = useState("-24");
   const [musicCredit, setMusicCredit] = useState("");
   const [burn, setBurn] = useState(true);
+  const [gray, setGray] = useState(false);
   const [normalize, setNormalize] = useState(true);
   const [playing, setPlaying] = useState<number | null>(null);
   const [logFor, setLogFor] = useState<{ id: number; text: string } | null>(null);
@@ -104,8 +105,8 @@ export function RenderTab({ project, reloadProject }: TabProps) {
       : {};
     const body =
       kind === "final"
-        ? { kind, theme, burn_subtitles: burn, normalize_audio: normalize, ...music }
-        : { kind, theme, scale: Number(scale), seconds: seconds === "" ? null : Number(seconds), burn_subtitles: burn, normalize_audio: normalize, ...music };
+        ? { kind, theme, grayscale: gray, burn_subtitles: burn, normalize_audio: normalize, ...music }
+        : { kind, theme, grayscale: gray, scale: Number(scale), seconds: seconds === "" ? null : Number(seconds), burn_subtitles: burn, normalize_audio: normalize, ...music };
     const job = await run("start", () => startRender(id, body));
     if (!job) return;
     if (job.reused) notify("Đầu vào không đổi so với lần render trước — dùng lại kết quả, không render lại.");
@@ -151,9 +152,7 @@ export function RenderTab({ project, reloadProject }: TabProps) {
         <div className="doc-row">
           <Field label="Chủ đề" hint="Áp dụng cho cả preview và bản cuối.">
             <select value={theme} onChange={(e) => setTheme(e.target.value as "collage" | "cinematic" | "poster")}>
-              <option value="cinematic">Điện ảnh — ảnh tràn khung, chuyển động chậm, chữ vàng trên nền tối</option>
-              <option value="poster">Poster collage — ảnh poster tràn khung, confetti giấy, phụ đề viền đen (kiểu Vox)</option>
-              <option value="collage">Collage giấy cắt dán — khung giấy rách, băng keo</option>
+              <option value="collage">Collage giấy cắt dán (mặc định) — khung giấy rách, băng keo, chữ cắt dán, số lớn</option>
             </select>
           </Field>
         </div>
@@ -206,6 +205,9 @@ export function RenderTab({ project, reloadProject }: TabProps) {
           </Field>
           <label className="doc-check">
             <input type="checkbox" checked={burn} onChange={(e) => setBurn(e.target.checked)} /> Ghi phụ đề lên hình
+          </label>
+          <label className="doc-check">
+            <input type="checkbox" checked={gray} onChange={(e) => setGray(e.target.checked)} /> Ảnh đen trắng (cho ảnh tư liệu cổ; bỏ chọn nếu ảnh màu)
           </label>
           <label className="doc-check">
             <input type="checkbox" checked={normalize} onChange={(e) => setNormalize(e.target.checked)} /> Chuẩn hóa âm lượng

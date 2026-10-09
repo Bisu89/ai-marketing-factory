@@ -399,6 +399,7 @@ export interface RenderRequest {
   scale?: number;
   seconds?: number | null;
   burn_subtitles?: boolean;
+  grayscale?: boolean;
   normalize_audio?: boolean;
   theme?: "collage" | "cinematic" | "poster";
   music_path?: string | null;

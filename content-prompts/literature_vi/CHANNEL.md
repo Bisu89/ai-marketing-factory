@@ -38,7 +38,7 @@ Công thức (điền tên nhân vật/tác phẩm; không hứa dữ kiện kh�
 - Câu hỏi tâm lý: "Vì sao [nhân vật] [hành động khó hiểu]?"
 - Thế khó xã hội: "[Nhân vật] có còn đường nào khác không?"
 - Đọc lại hôm nay: "Nếu [nhân vật] sống ở thời nay …" (chỉ khi phần bình luận thật sự bàn điều đó).
-Thumbnail: một khuôn mặt/hình tượng lớn, ≤ 4 chữ, nền màu phẳng của phong cách poster (xem `VISUAL.md`); chữ do người làm đặt, không để AI tự vẽ chữ tiếng Việt.
+Thumbnail: một khuôn mặt/hình tượng lớn, ≤ 4 chữ, nền màu phẳng của phong cách collage (xem `VISUAL.md`); chữ do người làm đặt, không để AI tự vẽ chữ tiếng Việt.
 
 ## 6. Chuẩn sản xuất tối thiểu
 | Hạng mục | Yêu cầu |
