@@ -8,3 +8,4 @@ Series Biblical Figures (tiếng Anh) chuyển sang quy trình Vox, bắt đầu
 - Giới hạn: Whisper vẫn mặc định `vi` (dùng `method="tts"` cho tiếng Anh); luật số lớn/năm của storyboard là tiếng Việt, cảnh tiếng Anh chủ yếu ra `PhotoKenBurns`.
 Commit: "feat: documentary English voice backend + Biblical Figures ep6 Vox spec".
 - Nút **Duyệt tất cả ảnh đang chờ** ở tab Ảnh (có hộp xác nhận): chỉ gồm ảnh AI/tự nhập; ảnh tư liệu vẫn phải đọc giấy phép và duyệt riêng. Endpoint nhập ảnh nhận thêm `origin=ai_manual`.
+- Theme **poster** (kiểu vox-director): ảnh poster collage tràn khung (do bạn tạo từ CSV), confetti giấy bay, chuyển động đẩy nhẹ, chữ tiêu đề cắt dán, phụ đề viền đen. Thử 6 cảnh tập 6: `biblical-figures-prompts/vox/poster_test/`.

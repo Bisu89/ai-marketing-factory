@@ -67,7 +67,7 @@ export function RenderTab({ project, reloadProject }: TabProps) {
 
   const [seconds, setSeconds] = useState("30");
   const [scale, setScale] = useState("0.5");
-  const [theme, setTheme] = useState<"collage" | "cinematic">("cinematic");
+  const [theme, setTheme] = useState<"collage" | "cinematic" | "poster">("cinematic");
   const [musicPath, setMusicPath] = useState("");
   const [musicDb, setMusicDb] = useState("-24");
   const [musicCredit, setMusicCredit] = useState("");
@@ -150,8 +150,9 @@ export function RenderTab({ project, reloadProject }: TabProps) {
         <h3>Phong cách hình ảnh</h3>
         <div className="doc-row">
           <Field label="Chủ đề" hint="Áp dụng cho cả preview và bản cuối.">
-            <select value={theme} onChange={(e) => setTheme(e.target.value as "collage" | "cinematic")}>
+            <select value={theme} onChange={(e) => setTheme(e.target.value as "collage" | "cinematic" | "poster")}>
               <option value="cinematic">Điện ảnh — ảnh tràn khung, chuyển động chậm, chữ vàng trên nền tối</option>
+              <option value="poster">Poster collage — ảnh poster tràn khung, confetti giấy, phụ đề viền đen (kiểu Vox)</option>
               <option value="collage">Collage giấy cắt dán — khung giấy rách, băng keo</option>
             </select>
           </Field>
@@ -242,7 +243,7 @@ export function RenderTab({ project, reloadProject }: TabProps) {
               <div className="doc-item-head">
                 <strong>#{j.id}</strong>
                 <Badge tone={j.kind === "final" ? "info" : "muted"}>{j.kind === "final" ? "bản cuối" : "preview"}</Badge>
-                <Badge tone="muted">{j.params.theme === "cinematic" ? "điện ảnh" : "collage"}</Badge>
+                <Badge tone="muted">{j.params.theme === "cinematic" ? "điện ảnh" : j.params.theme === "poster" ? "poster" : "collage"}</Badge>
                 <Badge tone={STATUS_VI[j.status].tone}>{STATUS_VI[j.status].label}</Badge>
                 {j.qc && (j.qc.ok ? <Badge tone="ok">Đạt kiểm tra</Badge> : <Badge tone="bad">{j.qc.issues.length} lỗi</Badge>)}
                 <span className="doc-muted">

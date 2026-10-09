@@ -723,12 +723,75 @@
   }
  ],
  "scene_overrides": {
+  "S003": {
+   "preset": "HeadlineImpact",
+   "texts": [
+    [
+     "paid for it with his head",
+     "headline"
+    ]
+   ]
+  },
+  "S005": {
+   "preset": "HeadlineImpact",
+   "texts": [
+    [
+     "struck mute on the spot",
+     "headline"
+    ]
+   ]
+  },
+  "S010": {
+   "preset": "EvidenceBoard",
+   "texts": [
+    [
+     "the Elijah whose return the prophet Malachi foretold",
+     "caption"
+    ]
+   ]
+  },
   "S011": {
    "preset": "HeadlineImpact",
    "texts": [
     [
      "wanted no part of that title",
      "headline"
+    ]
+   ]
+  },
+  "S013": {
+   "preset": "MapZoom",
+   "texts": [
+    [
+     "Judea",
+     "label"
+    ]
+   ]
+  },
+  "S014": {
+   "preset": "MapZoom",
+   "texts": [
+    [
+     "wilderness",
+     "label"
+    ]
+   ]
+  },
+  "S015": {
+   "preset": "MapZoom",
+   "texts": [
+    [
+     "Jordan River",
+     "label"
+    ]
+   ]
+  },
+  "S017": {
+   "preset": "EvidenceBoard",
+   "texts": [
+    [
+     "not to take more than they were owed",
+     "caption"
     ]
    ]
   },
@@ -750,6 +813,37 @@
     ]
    ]
   },
+  "S024": {
+   "preset": "BigNumber",
+   "texts": [
+    [
+     "two",
+     "number"
+    ],
+    [
+     "of his own followers",
+     "label"
+    ]
+   ]
+  },
+  "S026": {
+   "preset": "EvidenceBoard",
+   "texts": [
+    [
+     "Herodias had divorced Herod's brother Philip to marry him",
+     "caption"
+    ]
+   ]
+  },
+  "S028": {
+   "preset": "MapZoom",
+   "texts": [
+    [
+     "Machaerus",
+     "label"
+    ]
+   ]
+  },
   "S029": {
    "preset": "EvidenceBoard",
    "texts": [
@@ -760,11 +854,33 @@
    ]
   },
   "S031": {
+   "preset": "SplitComparison",
+   "texts": [
+    [
+     "Josephus: fear of rebellion",
+     "label"
+    ],
+    [
+     "Mark: a grudge and an oath",
+     "label"
+    ]
+   ]
+  },
+  "S034": {
    "preset": "EvidenceBoard",
    "texts": [
     [
-     "Herodias held the grudge and wanted him dead, but Herod, oddly, protected him",
+     "none was greater than John",
      "caption"
+    ]
+   ]
+  },
+  "S036": {
+   "preset": "HeadlineImpact",
+   "texts": [
+    [
+     "up to half my kingdom",
+     "headline"
     ]
    ]
   },
@@ -773,6 +889,15 @@
    "texts": [
     [
      "ask for the head of John the Baptist",
+     "headline"
+    ]
+   ]
+  },
+  "S039": {
+   "preset": "HeadlineImpact",
+   "texts": [
+    [
+     "he would not break his word in public",
      "headline"
     ]
    ]
@@ -786,11 +911,29 @@
     ]
    ]
   },
+  "S042": {
+   "preset": "HeadlineImpact",
+   "texts": [
+    [
+     "the dance of Salome",
+     "headline"
+    ]
+   ]
+  },
   "S043": {
    "preset": "EvidenceBoard",
    "texts": [
     [
      "Damascus, Rome and Amiens in France have each claimed to hold it",
+     "caption"
+    ]
+   ]
+  },
+  "S045": {
+   "preset": "EvidenceBoard",
+   "texts": [
+    [
+     "their greatest and final prophet",
      "caption"
     ]
    ]
@@ -1252,8 +1395,7 @@
    "kind": "commons",
    "commons_title": "File:Salome with the Head of John the Baptist-Caravaggio (1610).jpg",
    "use": [
-    "S041",
-    "S042"
+    "S041"
    ]
   },
   {

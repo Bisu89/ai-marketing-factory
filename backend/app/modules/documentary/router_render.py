@@ -28,7 +28,7 @@ class RenderIn(BaseModel):
     burn_subtitles: bool = True
     grayscale: bool = True
     normalize_audio: bool = True
-    theme: Literal["collage", "cinematic"] = "collage"
+    theme: Literal["collage", "cinematic", "poster"] = "collage"
     music_path: str | None = Field(default=None, max_length=1000)
     music_db: float = Field(default=-24.0, ge=-40, le=-6)
     music_credit: str | None = Field(default=None, max_length=300)

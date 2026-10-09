@@ -1,0 +1,5 @@
+# Vox collage poster style (test)
+
+Modern editorial paper-collage poster in the style of a Vox explainer: hand-cut paper cut-outs with white die-cut outlines and soft drop shadows, torn paper edges, strips of masking tape, scraps of old newsprint with illegible text, halftone dots, flat bold colour background, a few simple flat paper shapes (triangles, circles, zigzags). Cut-out illustrated figures drawn in a vintage engraving / woodcut line style with limited flat colour fills. Strong foreground / middle / background layering, one clear focal subject, leave the bottom 22% fairly calm (subtitles go there). 16:9 landscape, 1536x1024. No photorealism, no 3D render, no gradients, no halos, no glowing light, no blood, no gore, no logos, no watermark. Any text is ONLY the exact headline given, in huge bold torn-paper-strip lettering; no other words or letters anywhere.
+
+Rules: one flat background colour per scene (change it every scene); headline 1-3 words only on headline scenes; keep John/Herod/Herodias descriptions identical to `_tools/bf_style.py`; no gore (the platter is empty or covered); save as `S###_poster.png` (scene key first) so the importer can match.

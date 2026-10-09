@@ -45,7 +45,7 @@ STAGGER = 9
 DATA_PRESETS = frozenset({"TimelineBuild", "BigNumber", "MapZoom"})
 # Bump when the render/mux pipeline changes in a way that alters the output file, so cached
 # renders from the old pipeline are not reused.
-THEMES = ("collage", "cinematic")
+THEMES = ("collage", "cinematic", "poster")
 PIPELINE_VERSION = 3
 MUSIC_EXTENSIONS = (".mp3", ".wav", ".m4a", ".ogg", ".flac")
 MAX_MUSIC_BYTES = 100 * 1024 * 1024

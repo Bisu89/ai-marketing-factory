@@ -43,7 +43,7 @@ export const subtitleSchema = z.object({
   text: z.string(),
 });
 
-export const THEMES = ["collage", "cinematic"] as const;
+export const THEMES = ["collage", "cinematic", "poster"] as const;
 
 export const documentarySchema = z.object({
   theme: z.enum(THEMES),

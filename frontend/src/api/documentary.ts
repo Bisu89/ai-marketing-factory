@@ -385,7 +385,7 @@ export interface RenderJob {
   status: "queued" | "running" | "succeeded" | "failed" | "cancelled";
   phase: string | null;
   progress: number;
-  params: { scale: number; seconds: number | null; burn_subtitles: boolean; grayscale: boolean; normalize_audio: boolean; theme?: "collage" | "cinematic"; music_path?: string | null; music_db?: number; music_credit?: string | null };
+  params: { scale: number; seconds: number | null; burn_subtitles: boolean; grayscale: boolean; normalize_audio: boolean; theme?: "collage" | "cinematic" | "poster"; music_path?: string | null; music_db?: number; music_credit?: string | null };
   error: string | null;
   duration_sec: number | null;
   qc: { ok: boolean; issues: QcItem[]; warnings: QcItem[]; width: number | null; height: number | null; has_audio: boolean; black_intervals: number } | null;
@@ -400,7 +400,7 @@ export interface RenderRequest {
   seconds?: number | null;
   burn_subtitles?: boolean;
   normalize_audio?: boolean;
-  theme?: "collage" | "cinematic";
+  theme?: "collage" | "cinematic" | "poster";
   music_path?: string | null;
   music_db?: number;
   music_credit?: string | null;
