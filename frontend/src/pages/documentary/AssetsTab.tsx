@@ -177,6 +177,8 @@ export function AssetsTab({ project, reloadProject }: TabProps) {
   const unassigned = assetList.filter((a) => !used.has(a.id));
   const programmatic = sceneList.filter((s) => s.asset_strategy === "programmatic").length;
 
+  const pendingOwn = assetList.filter((a) => a.approval_status === "pending" && a.origin !== "archival");
+
   async function copy(text: string, key: string) {
     try {
       await navigator.clipboard.writeText(text);
@@ -254,6 +256,33 @@ export function AssetsTab({ project, reloadProject }: TabProps) {
               </button>
               {busy === "folder" && <Busy />}
             </div>
+            {pendingOwn.length > 0 && (
+              <div className="doc-actions">
+                <button
+                  className="btn doc-btn-sm"
+                  disabled={busy !== null}
+                  onClick={async () => {
+                    if (!window.confirm(`Duyệt ${pendingOwn.length} ảnh đang chờ (ảnh AI/ảnh tự nhập)? Hãy chắc bạn đã xem qua các ảnh.`)) return;
+                    await run("approve-all", async () => {
+                      const failed: string[] = [];
+                      for (const a of pendingOwn) {
+                        try {
+                          await approveAsset(id, a.id);
+                        } catch (e) {
+                          failed.push(`#${a.id}: ${e instanceof Error ? e.message : "lỗi"}`);
+                        }
+                      }
+                      if (failed.length) throw new Error(`Không duyệt được ${failed.length} ảnh — ${failed.join("; ")}`);
+                      return true;
+                    });
+                    refresh();
+                  }}
+                >
+                  Duyệt tất cả ảnh đang chờ ({pendingOwn.length})
+                </button>
+                <span className="doc-muted">Không gồm ảnh tư liệu — loại đó cần bạn đọc giấy phép và duyệt riêng.</span>
+              </div>
+            )}
             {report && (
               <Notice kind={report.failed.length || report.unmatched.length ? "warn" : "ok"}>
                 Đã nhập {report.imported.length} ảnh

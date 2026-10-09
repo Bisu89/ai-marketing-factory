@@ -1131,6 +1131,17 @@
    "paragraphs": [
     37
    ]
+  },
+  {
+   "key": "S050_outro",
+   "kind": "file",
+   "path": "C:/Users/hoavx/Desktop/AI-Marketing-Factory/biblical-figures-prompts/vox/ep6_missing/S050.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "use": [
+    "S050"
+   ]
   }
  ]
 }

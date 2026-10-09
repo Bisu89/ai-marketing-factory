@@ -7,3 +7,4 @@ Series Biblical Figures (tiếng Anh) chuyển sang quy trình Vox, bắt đầu
 - **Spec**: `biblical-figures-prompts/vox/ep6.spec.json` (19 nguồn, 27 khẳng định, 39 đoạn, 1.198 từ, 37 ảnh Baroque sẵn có: 34 của tập 6 + 3 từ kho). Kịch bản sửa so với bản cũ cho khớp nguồn: bỏ "months later" (nguồn không nói), bỏ chi tiết pháo đài Machaerus không có nguồn, thuyết Essene ghi rõ là giả thuyết (`disputed`), thêm câu outro cố định của series.
 - Giới hạn: Whisper vẫn mặc định `vi` (dùng `method="tts"` cho tiếng Anh); luật số lớn/năm của storyboard là tiếng Việt, cảnh tiếng Anh chủ yếu ra `PhotoKenBurns`.
 Commit: "feat: documentary English voice backend + Biblical Figures ep6 Vox spec".
+- Nút **Duyệt tất cả ảnh đang chờ** ở tab Ảnh (có hộp xác nhận): chỉ gồm ảnh AI/tự nhập; ảnh tư liệu vẫn phải đọc giấy phép và duyệt riêng. Endpoint nhập ảnh nhận thêm `origin=ai_manual`.

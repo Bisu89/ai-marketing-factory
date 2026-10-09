@@ -269,7 +269,7 @@ class AssetOut(BaseModel):
 
 class AssetImportIn(BaseModel):
     path: str = Field(min_length=1, max_length=1000)
-    origin: Literal["imported", "archival"] = "imported"
+    origin: Literal["imported", "archival", "ai_manual"] = "imported"
     license: str | None = Field(default=None, max_length=300)
     attribution: str | None = Field(default=None, max_length=500)
     source_url: str | None = Field(default=None, max_length=2000)
