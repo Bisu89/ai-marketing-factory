@@ -50,10 +50,12 @@ class StoryboardPolicy:
         "horizontal 16:9, no text, no lettering, no watermark"
     )
     map_words: tuple[str, ...] = (
-        "bản đồ", "biên giới", "lãnh thổ", "hải trình", "tuyến đường", "vùng", "quần đảo", "eo biển", "thành phố",
-    )
+        "bản đồ", "biên giới", "lãnh thổ", "hải trình", "tuyến đường", "quần đảo", "eo biển",
+    )  # deliberately not "thành phố"/"vùng": they occur in almost every sentence
     big_number_pattern: str = r"\b\d[\d.,]*\s*(?:%|phần trăm|người|tấn|triệu|nghìn|ngàn|tỷ|km|mét|con tàu|binh sĩ)"
-    year_pattern: str = r"\b(?:năm\s*)?(1\d{3}|20\d{2}|\d{3})\b"
+    # A year is 'năm 330' (3 digits need the word) or a 4-digit 1000-2099 -- never a piece of a
+    # grouped number: the '000' in '7.000' used to count as a year.
+    year_pattern: str = r"(?<![\d.,])(?:năm\s+\d{3}|1\d{3}|20\d{2})(?!\d|[.,]\d)"
 
 
 _SENTENCE_SPLIT = re.compile(r"(?<=[.!?…])\s+")

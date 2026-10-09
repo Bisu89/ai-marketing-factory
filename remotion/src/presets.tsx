@@ -18,6 +18,12 @@ function fit(text: string, base: number, maxChars: number): number {
   return Math.round(base * Math.min(1, maxChars / Math.max(text.length, 1)));
 }
 
+/** Largest font size (<= max) at which `text` still fits a w x h box of ~1.2 line height. */
+function fitBox(text: string, w: number, h: number, max: number): number {
+  const area = Math.max(w - 88, 1) * Math.max(h - 104, 1);
+  return Math.max(24, Math.min(max, Math.floor(Math.sqrt(area / (Math.max(text.length, 1) * 0.62)))));
+}
+
 function Photo({ scene, grayscale, style }: { scene: Scene; grayscale: boolean; style?: CSSProperties }) {
   if (!scene.imageSrc) return null;
   return (
@@ -259,7 +265,7 @@ export function BigNumber({ scene }: PresetProps) {
         </div>
       )}
       {unit && (
-        <Label at={Math.max(unit.cueFrame, 16)} style={{ left: 0, right: 0, bottom: 200, display: "flex", justifyContent: "center" }}>
+        <Label at={Math.max(unit.cueFrame, 16)} style={{ left: 0, right: 0, top: 690, display: "flex", justifyContent: "center" }}>
           {unit.text}
         </Label>
       )}
@@ -271,17 +277,19 @@ export function BigNumber({ scene }: PresetProps) {
 export function EvidenceBoard({ scene }: PresetProps) {
   const cards = scene.texts.slice(0, 4);
   const stamp = useEnter(40, 10);
+  // Fewer cards => bigger cards and bigger type, so one sentence never floats tiny in an empty board.
+  const dim = cards.length === 1 ? { w: 1120, h: 470, font: 72, max: 60 } : cards.length === 2 ? { w: 780, h: 380, font: 62, max: 46 } : { w: 700, h: 330, font: 56, max: 40 };
   const LAYOUTS: Record<number, { x: number; y: number }[]> = {
     0: [],
-    1: [{ x: 610, y: 380 }],
-    2: [{ x: 170, y: 380 }, { x: 1050, y: 340 }],
+    1: [{ x: 400, y: 290 }],
+    2: [{ x: 110, y: 350 }, { x: 1030, y: 300 }],
     3: [{ x: 200, y: 150 }, { x: 1000, y: 180 }, { x: 600, y: 580 }],
     4: [{ x: 200, y: 130 }, { x: 1000, y: 160 }, { x: 260, y: 560 }, { x: 1040, y: 590 }],
   };
   const pos = LAYOUTS[cards.length] ?? LAYOUTS[4];
   const r = rng(scene.key);
   const rots = cards.map(() => (r() - 0.5) * 6);
-  const pins = cards.map((_, i) => ({ x: pos[i].x + 350, y: pos[i].y + 24 }));
+  const pins = cards.map((_, i) => ({ x: pos[i].x + dim.w / 2, y: pos[i].y + 24 }));
   const drawn = useEnter(26, 24);
   return (
     <AbsoluteFill>
@@ -294,8 +302,8 @@ export function EvidenceBoard({ scene }: PresetProps) {
       </svg>
       {cards.map((t, i) => (
         <Appear key={i} at={Math.max(t.cueFrame, i * MOTION.stagger)} style={{ position: "absolute", left: 0, top: 0 }}>
-          <PaperCard seed={`${scene.key}-${i}`} rotate={rots[i]} style={{ left: pos[i].x, top: pos[i].y, width: 700, height: 330 }} jitter={0.8}>
-            <div style={{ padding: "52px 40px", fontFamily: FONTS.serif, fontWeight: 700, fontSize: fit(t.text, 56, 40), color: COLORS.ink, lineHeight: 1.18 }}>{t.text}</div>
+          <PaperCard seed={`${scene.key}-${i}`} rotate={rots[i]} style={{ left: pos[i].x, top: pos[i].y, width: dim.w, height: dim.h }} jitter={0.8}>
+            <div style={{ padding: "52px 44px", fontFamily: FONTS.serif, fontWeight: 700, fontSize: fitBox(t.text, dim.w, dim.h, dim.font), color: COLORS.ink, lineHeight: 1.18 }}>{t.text}</div>
           </PaperCard>
           <div style={{ position: "absolute", left: pins[i].x - 14, top: pins[i].y - 14, width: 28, height: 28, borderRadius: 28, background: COLORS.red, boxShadow: `0 4px 6px ${COLORS.shadow}` }} />
         </Appear>

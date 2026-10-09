@@ -39,6 +39,8 @@ class DeriveTextTests(unittest.TestCase):
         b = derive_texts("BigNumber", "Khoảng 80.000 quân Ottoman bao vây thành phố.")
         self.assertEqual([o["text"] for o in b], ["80.000", "quân Ottoman"])
         self.assertEqual(derive_texts("BigNumber", "Không có con số nào ở đây."), [])
+        r = derive_texts("BigNumber", "Các nghiên cứu ước tính từ 50.000 đến 80.000 binh sĩ.")
+        self.assertEqual([o["text"] for o in r], ["50.000–80.000", "binh sĩ"])  # a range stays a range
 
     def test_proper_nouns_are_capitalised_runs_not_lowercase_vietnamese(self):
         self.assertEqual(proper_noun("Quân đội tiến qua eo biển Bosphorus gần thành."), "Bosphorus")
@@ -301,6 +303,40 @@ class StartTests(ManifestCase):
         self.assertEqual(self.render.final_review(self.p.id).issues[0].code, "render_stale")
 
 
+class RelativePathTests(unittest.TestCase):
+    def test_remotion_gets_absolute_paths_even_when_the_library_dir_is_relative(self):
+        """Regression from the first real run: './data/library' made Remotion (different cwd) fail with
+        'neither valid JSON nor a file path'."""
+        import tempfile
+        from unittest.mock import MagicMock
+
+        captured = {}
+
+        class FakeProc:
+            stdout = iter([])
+            returncode = 1
+
+            def __init__(self, cmd, **kw):
+                captured["cmd"], captured["cwd"] = cmd, kw.get("cwd")
+
+            def wait(self):
+                return 1
+
+            def poll(self):
+                return 1
+
+        with tempfile.TemporaryDirectory() as tmp:
+            fake_remotion = Path(tmp) / "remotion"
+            (fake_remotion / "node_modules").mkdir(parents=True)
+            job = MagicMock(id=999)
+            with patch.object(render_mod, "REMOTION_DIR", fake_remotion), patch.object(render_mod.shutil, "which", return_value="npx"),                     patch.object(render_mod.subprocess, "Popen", FakeProc), patch.object(render_mod, "_update"):
+                with self.assertRaises(ValidationError):
+                    render_mod._remotion_render(MagicMock(), job, MagicMock(), Path("rel/props.json"), Path("rel/public"), Path("rel/out.mp4"), 10, 0.5)
+        flags = {a.split("=", 1)[0]: a.split("=", 1)[1] for a in captured["cmd"] if a.startswith(("--props=", "--public-dir="))}
+        self.assertTrue(Path(flags["--props"]).is_absolute() and Path(flags["--public-dir"]).is_absolute(), flags)
+        self.assertTrue(Path(captured["cmd"][5]).is_absolute())  # the output file
+
+
 def make_video(path: Path, *, w=960, h=540, seconds=2.0, audio=True, black=None):
     """Tiny test clip with ffmpeg. `black=(start, end)` blanks that interval."""
     vf = f"color=c=white:s={w}x{h}:r=30:d={seconds}"
@@ -368,6 +404,8 @@ class RealRenderTests(ManifestCase):
         self.assertTrue(out.is_file())
         self.assertTrue(job.qc["ok"], job.qc["issues"])
         self.assertTrue(job.qc["has_audio"])
+        self.assertEqual(job.qc["audio_sample_rate"], 48000)  # regression: loudnorm used to leave it at 96 kHz
+        self.assertEqual([w for w in job.qc["warnings"] if w["code"] == "audio_sample_rate"], [])
         self.assertEqual((job.qc["width"], job.qc["height"]), (480, 270))
         self.assertAlmostEqual(job.duration_sec, 1.5, delta=0.15)
         self.assertIn("job", render.log_tail(job).lower())

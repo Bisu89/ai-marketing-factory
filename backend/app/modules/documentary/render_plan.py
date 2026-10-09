@@ -42,6 +42,9 @@ FADE_FRAMES = 6
 STAGGER = 9
 # Presets that draw only data derived from the narration: with none, they would render empty.
 DATA_PRESETS = frozenset({"TimelineBuild", "BigNumber", "MapZoom"})
+# Bump when the render/mux pipeline changes in a way that alters the output file, so cached
+# renders from the old pipeline are not reused.
+PIPELINE_VERSION = 2
 REMOTION_DIR = Path(__file__).resolve().parents[4] / "remotion"
 
 _UNIT_AFTER_YEAR = re.compile(r"^\s*(người|tấn|km|mét|triệu|nghìn|ngàn|tỷ|%|phần trăm|con tàu|binh sĩ|lính|quân|năm)\b", re.I)
@@ -115,8 +118,12 @@ def derive_texts(preset: str, narration: str, policy: StoryboardPolicy | None = 
             if len(out) == 5:
                 break
     elif preset == "BigNumber":
+        unit_alt = policy.big_number_pattern.split("(?:", 1)[1].rsplit(")", 1)[0]  # the unit alternatives
+        rng = re.search(rf"(\d[\d.,]*\d)\s*(?:đến|tới|-|–)\s*(\d[\d.,]*\d)\s*({unit_alt})", narration, re.I)
         m = re.search(policy.big_number_pattern, narration, re.I)
-        if m:
+        if rng:  # 'từ 50.000 đến 80.000 binh sĩ' must not collapse to just '80.000'
+            num, unit, end = f"{rng.group(1)}–{rng.group(2)}", rng.group(3), rng.end()
+        elif m:
             raw = m.group(0)
             num = re.match(r"\d[\d.,]*", raw).group(0).rstrip(".,")
             unit = raw[len(num):].strip()
@@ -135,8 +142,9 @@ def derive_texts(preset: str, narration: str, policy: StoryboardPolicy | None = 
         first = re.split(r"[,;:.!?…]", narration.strip())[0]
         out.append({"text": " ".join(first.split()[:8]), "role": "headline", "anchor": first.split()[0] if first.split() else ""})
     elif preset == "EvidenceBoard":
+        limit = 150 if len(sents) == 1 else 100 if len(sents) == 2 else 80  # one card has room for a whole sentence
         for s in sents[:4]:
-            out.append({"text": _clip(s, 80), "role": "caption", "anchor": s.split()[0]})
+            out.append({"text": _clip(s, limit), "role": "caption", "anchor": s.split()[0]})
     elif preset == "NewspaperStack":
         for s in sents[:3]:
             out.append({"text": _clip(s, 62), "role": "headline", "anchor": s.split()[0]})
@@ -241,7 +249,7 @@ def build_manifest(db: Session, root: Path, project_id: int, params: RenderParam
         ],
     }
     digest_src = json.dumps(
-        {"m": manifest, "audio": narr.master_digest(segments), "remotion": remotion_source_hash(),
+        {"m": manifest, "audio": narr.master_digest(segments), "remotion": remotion_source_hash(), "pipeline": PIPELINE_VERSION,
          "normalize": params.normalize_audio, "seconds": params.seconds, "scale": params.scale},
         sort_keys=True, ensure_ascii=False,
     )

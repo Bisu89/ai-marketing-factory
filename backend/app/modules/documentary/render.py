@@ -289,6 +289,9 @@ def _remotion_render(db: Session, job: DocumentaryRenderJob, log, props: Path, p
     npx = shutil.which("npx")
     if not npx or not (REMOTION_DIR / "node_modules").is_dir():
         raise ValidationError("Chưa cài Remotion: chạy `npm install` trong thư mục remotion/.")
+    # Remotion runs with its own working directory, so every path must be absolute: the app's
+    # library dir is relative by default ("./data/library") and would resolve to nothing there.
+    props, public_dir, out = props.resolve(), public_dir.resolve(), out.resolve()
     cmd = [
         npx, "remotion", "render", "src/index.ts", "Documentary", str(out), f"--props={props}", f"--public-dir={public_dir}",
         "--muted", f"--scale={scale}", f"--frames=0-{last_frame}", "--log=info",
@@ -332,9 +335,10 @@ def _mux(video: Path, audio: Path, out: Path, video_sec: float, normalize: bool,
     if not audio.is_file():
         raise ValidationError("Không thấy narration master để ghép tiếng.")
     af = ("loudnorm=I=-16:TP=-1.5:LRA=11," if normalize else "") + "apad"
+    # loudnorm upsamples internally, so the output rate/channels are pinned explicitly (-ar/-ac).
     cmd = [
         "ffmpeg", "-y", "-v", "error", "-i", str(video), "-i", str(audio), "-map", "0:v:0", "-map", "1:a:0",
-        "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-af", af, "-t", f"{video_sec:.3f}", "-movflags", "+faststart", str(out),
+        "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-af", af, "-ar", "48000", "-ac", "2", "-t", f"{video_sec:.3f}", "-movflags", "+faststart", str(out),
     ]
     r = subprocess.run(cmd, capture_output=True, text=True, stdin=subprocess.DEVNULL, timeout=1800)
     _log(log, f"ffmpeg mux exit {r.returncode} {r.stderr.strip()[-300:]}")
@@ -387,6 +391,9 @@ def quality_check(db: Session, project_id: int, video: Path, expect: dict, video
             issues.append({"code": "bad_fps", "message": f"Tốc độ khung {fps:.2f} fps, cần {FPS}."})
     if a is None:
         issues.append({"code": "no_audio", "message": "File không có luồng âm thanh."})
+    elif int(a.get("sample_rate", 0) or 0) != 48000:
+        # A first real render came out at 96 kHz (loudnorm upsampling): playable, but not the standard.
+        warnings.append({"code": "audio_sample_rate", "message": f"Âm thanh {a.get('sample_rate')} Hz, chuẩn là 48000 Hz."})
     if abs(duration - video_sec) > DURATION_TOL_SEC:
         issues.append({"code": "bad_duration", "message": f"Thời lượng {duration:.2f}s, mong đợi {video_sec:.2f}s."})
     if full_length and master.is_file():
@@ -419,5 +426,5 @@ def quality_check(db: Session, project_id: int, video: Path, expect: dict, video
     return {
         "ok": not issues, "issues": issues, "warnings": warnings, "duration_sec": duration,
         "width": v.get("width") if v else None, "height": v.get("height") if v else None,
-        "has_audio": a is not None, "black_intervals": len(blacks),
+        "has_audio": a is not None, "audio_sample_rate": int(a.get("sample_rate", 0) or 0) if a else None, "black_intervals": len(blacks),
     }

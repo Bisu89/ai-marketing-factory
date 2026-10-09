@@ -86,6 +86,14 @@ class ClassifyTests(unittest.TestCase):
         self.assertEqual(self.c("evidence", "Có hai cách giải thích."), ("EvidenceBoard", "programmatic"))
         self.assertEqual(self.c("context", "Ông ngồi một mình bên cửa sổ."), ("PhotoKenBurns", "image"))
 
+    def test_grouped_numbers_are_not_years_and_generic_words_are_not_maps(self):
+        # real trial regressions: '7.000' / '80.000' were read as years; 'thành phố' as a map cue
+        self.assertEqual(self.c("evidence", "Quân phòng thủ chỉ khoảng 7.000 người, dưới 8.000 người nếu tính cả tình nguyện."), ("BigNumber", "programmatic"))
+        self.assertEqual(self.c("evidence", "Từ 50.000 đến 80.000 binh sĩ."), ("BigNumber", "programmatic"))
+        self.assertEqual(self.c("hook", "Một thành phố từng đứng vững suốt nhiều thế kỷ đã thất thủ."), ("PhotoKenBurns", "image"))
+        self.assertEqual(self.c("context", "Từ năm 330 đến năm 1204 thành phố bị bao vây nhiều lần."), ("TimelineBuild", "programmatic"))
+        self.assertEqual(self.c("context", "Còn lại 330 kẻ sống sót."), ("PhotoKenBurns", "image"))  # 3 digits without 'năm' is not a year
+
     def test_ai_video_is_never_a_strategy(self):
         self.assertFalse(POLICY.allow_ai_video)
         for kind in SECTION_ORDER:
