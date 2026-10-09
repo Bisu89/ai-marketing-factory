@@ -75,7 +75,8 @@ def excerpt(text: str, needles: list[str]) -> str:
         para = next((p for p in paras if n in p), None)
         if para is None:
             raise SystemExit(f"Needle not found in the article (fix the spec, do not paraphrase): {n!r}")
-        sent = next((s.strip() for s in para.split(". ") if n in s), para)
+        core = n.rstrip(".!?")  # sentences are split on ". ", which eats the full stop of every piece but the last
+        sent = next((s.strip() for s in para.split(". ") if core in s), para)
         out.append(sent if sent.endswith(".") else sent + ".")
     return " ".join(out)
 
@@ -101,15 +102,16 @@ def fetch_source(s: dict, cache: Path) -> dict:
                 "publisher": "World English Bible (public domain)", "author": "Biblical text"}
     if kind == "wikisource":
         page = f["page"]
-        cf = cache / ("wikisource_" + re.sub(r"\W+", "_", page) + ".txt")
+        cf = cache / ("wikisource_" + f.get("lang", "en") + "_" + re.sub(r"\W+", "_", page) + ".txt")
         if not cf.is_file():
             import html as _html
-            url = ("https://en.wikisource.org/w/api.php?action=parse&page=" + urllib.parse.quote(page, safe="/")
+            lang = f.get("lang", "en")
+            url = (f"https://{lang}.wikisource.org/w/api.php?action=parse&page=" + urllib.parse.quote(page, safe="/")
                    + "&prop=text&format=json&formatversion=2&disabletoc=1")
             d = json.load(urllib.request.urlopen(urllib.request.Request(url, headers=commons.UA), timeout=120))
             cf.write_text(_html.unescape(re.sub(r"<[^>]+>", "", d["parse"]["text"])), encoding="utf-8")
-        return {"excerpt": excerpt(cf.read_text(encoding="utf-8"), f["needles"]), "url": "https://en.wikisource.org/wiki/" + page,
-                "publisher": "Wikisource (William Whiston translation, public domain)", "author": f.get("author", "Flavius Josephus")}
+        return {"excerpt": excerpt(cf.read_text(encoding="utf-8"), f["needles"]), "url": f"https://{f.get('lang', 'en')}.wikisource.org/wiki/" + urllib.parse.quote(page, safe="/"),
+                "publisher": f.get("publisher", "Wikisource (William Whiston translation, public domain)"), "author": f.get("author", "Flavius Josephus")}
     if kind == "wikipedia":
         w = {"lang": f.get("lang", "en"), "title": f["title"]}
         return {"excerpt": excerpt(wiki_text({"wiki": w}, cache), f["needles"]), "url": f"https://{w['lang']}.wikipedia.org/wiki/{w['title']}",

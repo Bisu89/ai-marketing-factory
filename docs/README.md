@@ -210,6 +210,7 @@ SQLite.
 173. [Documentary export + auto credits](features/173-documentary-export-and-auto-credits.md) — export bundle (video, SRT, credits, sources, script, manifest with hashes), automatic AI/attribution labels on screen, timeline context captions
 174. [Documentary background music + docs](features/174-documentary-background-music-and-docs.md) — optional looped/ducked music (user-supplied, credited in export), full documentation set in `docs/documentary/`
 175. [Documentary English + Biblical Figures Ep6](features/175-documentary-english-biblical-ep6.md) — `edge_en` voice, primary-text sources (Bible/Josephus), Ep6 John the Baptist in Vox style
+176. [Literature channel template + Chí Phèo example](features/176-literature-channel-template.md) — collage template for many works, Wikisource (vi) sources, builder excerpt fix
 
 ## Keeping this up to date
 

@@ -1,0 +1,126 @@
+{
+ "title": "TÊN TÁC PHẨM — tập N",
+ "topic": "Câu hỏi trung tâm của tập (một giả thuyết, không phải kết luận).",
+ "language": "vi",
+ "budget_usd": null,
+ "accessed": "YYYY-MM-DD",
+ "sources": [
+  {
+   "key": "s1",
+   "title": "Tên tác phẩm — đoạn/chương",
+   "fetch": {
+    "kind": "wikisource",
+    "lang": "vi",
+    "page": "Tên_trang_Wikisource",
+    "needles": [
+     "câu có thật trong văn bản, cắt nguyên văn"
+    ],
+    "author": "Tác giả",
+    "publisher": "Wikisource tiếng Việt (miền công cộng)"
+   }
+  }
+ ],
+ "claims": [
+  {
+   "key": "c1",
+   "status": "verified",
+   "sources": [
+    "s1"
+   ],
+   "text": "Một sự kiện của tác phẩm, diễn đạt lại đúng như văn bản."
+  }
+ ],
+ "script": [
+  {
+   "kind": "hook",
+   "heading": "Mở đầu",
+   "paragraphs": [
+    {
+     "text": "…",
+     "claims": [
+      "c1"
+     ],
+     "factual": true
+    }
+   ]
+  },
+  {
+   "kind": "context",
+   "heading": "Bối cảnh, nhân vật",
+   "paragraphs": [
+    {
+     "text": "…",
+     "claims": [
+      "c1"
+     ],
+     "factual": true
+    }
+   ]
+  },
+  {
+   "kind": "timeline",
+   "heading": "Diễn tiến theo thời gian",
+   "paragraphs": [
+    {
+     "text": "…",
+     "claims": [
+      "c1"
+     ],
+     "factual": true
+    }
+   ]
+  },
+  {
+   "kind": "evidence",
+   "heading": "Xung đột và dẫn chứng",
+   "paragraphs": [
+    {
+     "text": "…",
+     "claims": [
+      "c1"
+     ],
+     "factual": true
+    }
+   ]
+  },
+  {
+   "kind": "turning_point",
+   "heading": "Bước ngoặt",
+   "paragraphs": [
+    {
+     "text": "…",
+     "claims": [
+      "c1"
+     ],
+     "factual": true
+    }
+   ]
+  },
+  {
+   "kind": "consequences",
+   "heading": "Cao trào, hệ quả",
+   "paragraphs": [
+    {
+     "text": "…",
+     "claims": [
+      "c1"
+     ],
+     "factual": true
+    }
+   ]
+  },
+  {
+   "kind": "conclusion",
+   "heading": "Bình luận và câu hỏi mở",
+   "paragraphs": [
+    {
+     "text": "…",
+     "claims": [],
+     "factual": false
+    }
+   ]
+  }
+ ],
+ "scene_overrides": {},
+ "images": []
+}

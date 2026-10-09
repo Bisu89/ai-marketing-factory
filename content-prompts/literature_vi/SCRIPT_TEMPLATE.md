@@ -7,12 +7,13 @@
 |---|---|---|
 | Mở đầu | `hook` | 0:00–0:35: một khoảnh khắc cụ thể + câu hỏi thật |
 | Bối cảnh, nhân vật | `context` | –1:40: ai, ở đâu, lúc nào, vì sao người xem cần quan tâm |
+| Diễn tiến theo thời gian | `timeline` | **bắt buộc có** (máy dựng đòi đủ 7 phần): các mốc/giai đoạn của nhân vật theo thứ tự |
 | Xung đột chính + phân tích | `evidence` | –3:00: xung đột, kèm dẫn chứng thật; thẻ bằng chứng |
 | Bước ngoặt | `turning_point` | –4:25 |
 | Cao trào, hệ quả | `consequences` | –6:10 |
 | Bình luận riêng | `conclusion` (nhóm đoạn 1) | –7:30: góc nhìn của chủ kênh, có lý lẽ |
 | Kết, câu hỏi mở | `conclusion` (nhóm đoạn 2) | tổng thời lượng tự nhiên |
-Máy dựng chỉ có 7 loại phần cố định; "bình luận riêng" và "kết" cùng thuộc `conclusion`, phân biệt bằng tiêu đề phần/ghi chú.
+Máy dựng **bắt buộc đủ 7 loại phần** (thiếu phần nào kiểm tra kịch bản báo `missing_section`); "bình luận riêng" và "kết" cùng thuộc `conclusion`, phân biệt bằng tiêu đề phần/ghi chú.
 
 ## 2. Ba chế độ lời đọc (nhãn ghi ở đầu mỗi đoạn trong bản nháp)
 | Chế độ | Dùng cho | Lưu trong spec |
