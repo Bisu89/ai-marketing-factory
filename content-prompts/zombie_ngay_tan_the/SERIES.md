@@ -202,7 +202,7 @@ Taeho bắt đầu bằng tư duy quân nhân (đánh giá → kế hoạch → 
 ### 5.9 Sổ tài nguyên (cập nhật mỗi tập, không được "hồi phục" vô cớ)
 | Hạng mục | Cuối T2 | Cuối T3 | Cuối T4 |
 |---|---|---|---|
-| Tên Areum | 16 | 11 (bắn 9, thu hồi 4) | 4 (còn lại gãy/kẹt khi sập hầm); bắt đầu tự chế |
+| Tên Areum | 16 | 12 (Tập 3 bản chốt: bắn 4 từ 16, chưa thu hồi) | 4 (còn lại gãy/kẹt khi sập hầm); bắt đầu tự chế |
 | Thuốc/băng Yerin | túi nhỏ: 2 cuộn băng, 1 bộ khâu, 6 viên kháng sinh, 1 chai sát khuẩn | dùng băng + khâu; nhặt thêm ở kho bệnh viện: 20 viên kháng sinh, 1 ống giảm đau | sát khuẩn còn nửa, hết băng nẹp, dùng đồ thay thế |
 | Nước sạch (balo Taeho) | 3 chai | 3 chai | 2 chai |
 | Pin bộ đàm | 100% | 60% | 40% |

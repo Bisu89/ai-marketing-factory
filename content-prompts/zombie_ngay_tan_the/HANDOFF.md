@@ -50,6 +50,9 @@ Kết quả Tập 1 (long, KO): project 163, render job 222, 11:47, 1080p, QA PA
 ## Tập 2: bản Hàn
 `scripts/ko_ep2_check.txt` (203 câu đánh số) + `E2_*` trong `ko_bookends_check.txt` → `python _tools/build_ko_md.py 2` → `scripts/ep2_ko.md`. Giữ đúng 57 đoạn của bản Việt v3 để dùng chung shot list Tập 2. Outro KO không nêu tên Tập 3 (Tập 3 chưa chốt). Chưa làm: short Tập 2 (lời + ảnh dọc), dựng thử Tập 2.
 
+## Tập 3 (kịch bản đã chốt)
+`scripts/ep3_audiobook_v2.txt` = bản của chủ series, đã chốt (v1 là nháp cũ của Claude, không dùng). Cốt truyện: mũi tên cứu Taeho, Areum chĩa cung, Jiwoo gãy cổ chân, xe tải + Kẻ Hú, khu y tế quận (Thể Phình tầng 4, người giao hàng bị cắn, ông Oh + thực tập sinh ở lại sân thượng), tin nhắn Minseo (ga Euljiro), trực thăng không hạ cánh. Mũi tên Areum còn 12. Lời đọc ~3.900 từ VI (Tập 2 ~2.400 ≈ 15 phút KO) nên có thể ~24 phút KO: cân nhắc cắt/tách trước khi dịch. Chưa làm: dịch KO, shot list/ảnh, short. Tên tập "Con Dao Mổ" chưa có cảnh dao mổ.
+
 ## Quy tắc chủ series đã nhắc (đừng vi phạm)
 - Beat do chủ series viết (Tập 1, Tập 2): chỉ làm mượt câu chữ; ý mới đưa vào mục "đề xuất" riêng, không tự nhét vào cốt truyện.
 - Không khẩu hiệu/"bài học sinh tồn". Sinh tồn qua hạn chế thật + hậu quả (SERIES §5).
