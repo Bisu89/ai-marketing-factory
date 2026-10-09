@@ -14,6 +14,7 @@ const EMPTY: DocumentaryProps = {
   width: VIDEO.width,
   height: VIDEO.height,
   durationInFrames: VIDEO.fps * 2,
+  theme: "collage",
   fadeFrames: 6,
   grayscale: true,
   burnSubtitles: false,

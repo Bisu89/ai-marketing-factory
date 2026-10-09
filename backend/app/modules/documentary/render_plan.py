@@ -44,6 +44,7 @@ STAGGER = 9
 DATA_PRESETS = frozenset({"TimelineBuild", "BigNumber", "MapZoom"})
 # Bump when the render/mux pipeline changes in a way that alters the output file, so cached
 # renders from the old pipeline are not reused.
+THEMES = ("collage", "cinematic")
 PIPELINE_VERSION = 2
 REMOTION_DIR = Path(__file__).resolve().parents[4] / "remotion"
 
@@ -61,10 +62,11 @@ class RenderParams:
     burn_subtitles: bool = True
     grayscale: bool = True
     normalize_audio: bool = True
+    theme: str = "collage"  # collage (paper cut-outs) | cinematic (full-bleed paintings, gold type)
 
     def to_json(self) -> dict:
         return {
-            "kind": self.kind, "scale": self.scale, "seconds": self.seconds,
+            "kind": self.kind, "scale": self.scale, "seconds": self.seconds, "theme": self.theme,
             "burn_subtitles": self.burn_subtitles, "grayscale": self.grayscale, "normalize_audio": self.normalize_audio,
         }
 
@@ -216,11 +218,12 @@ def build_manifest(db: Session, root: Path, project_id: int, params: RenderParam
         start = bounds[i]
         dur = max(1, bounds[i + 1] - start)
         asset = assets.get(sc.asset_id) if sc.asset_id else None
-        image = None
+        image, aspect = None, None
         if asset is not None and asset_state(sc, asset) == "approved":
             rel = f"images/{asset.content_hash[:16]}{Path(asset.path).suffix.lower()}"
             public[rel] = Path(asset.path)
             image = rel
+            aspect = round(asset.width / asset.height, 4) if asset.width and asset.height else None
         user_texts = [{"text": x["text"], "role": x["role"], "anchor": x["text"]} for x in (sc.on_screen_text or [])]
         texts = user_texts or derive_texts(sc.visual_preset, sc.narration_text)
         preset = sc.visual_preset if sc.visual_preset in PRESETS else "PhotoKenBurns"
@@ -235,12 +238,12 @@ def build_manifest(db: Session, root: Path, project_id: int, params: RenderParam
         scene_rows.append(
             {
                 "key": sc.scene_key, "preset": preset,
-                "startFrame": start, "durationFrames": dur, "imageSrc": image, "texts": rows,
+                "startFrame": start, "durationFrames": dur, "imageSrc": image, "imageAspect": aspect, "texts": rows,
                 "claimStatus": claim_status_for(sc.claim_ids or [], statuses),
             }
         )
     manifest = {
-        "fps": FPS, "width": WIDTH, "height": HEIGHT,  # layout is in 1920x1080 units; previews shrink with --scale
+        "theme": params.theme, "fps": FPS, "width": WIDTH, "height": HEIGHT,  # layout is in 1920x1080 units; previews shrink with --scale
         "durationInFrames": total_frames, "fadeFrames": FADE_FRAMES, "grayscale": params.grayscale,
         "burnSubtitles": params.burn_subtitles, "scenes": scene_rows,
         "subtitles": [

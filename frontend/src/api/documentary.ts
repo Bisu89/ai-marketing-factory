@@ -385,7 +385,7 @@ export interface RenderJob {
   status: "queued" | "running" | "succeeded" | "failed" | "cancelled";
   phase: string | null;
   progress: number;
-  params: { scale: number; seconds: number | null; burn_subtitles: boolean; grayscale: boolean; normalize_audio: boolean };
+  params: { scale: number; seconds: number | null; burn_subtitles: boolean; grayscale: boolean; normalize_audio: boolean; theme?: "collage" | "cinematic" };
   error: string | null;
   duration_sec: number | null;
   qc: { ok: boolean; issues: QcItem[]; warnings: QcItem[]; width: number | null; height: number | null; has_audio: boolean; black_intervals: number } | null;
@@ -400,6 +400,7 @@ export interface RenderRequest {
   seconds?: number | null;
   burn_subtitles?: boolean;
   normalize_audio?: boolean;
+  theme?: "collage" | "cinematic";
 }
 export const renderPreflight = (id: number) => apiGet<Review>(`${P(id)}/render/preflight`);
 export const renderTools = () => apiGet<Record<string, boolean>>(`${B}/render-tools`);

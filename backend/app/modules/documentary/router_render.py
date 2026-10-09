@@ -28,6 +28,7 @@ class RenderIn(BaseModel):
     burn_subtitles: bool = True
     grayscale: bool = True
     normalize_audio: bool = True
+    theme: Literal["collage", "cinematic"] = "collage"
 
 
 class RenderJobOut(BaseModel):
@@ -82,7 +83,7 @@ def start_render(project_id: int, body: RenderIn, db: Session = Depends(get_db),
     scale = body.scale if body.scale is not None else (1.0 if body.kind == "final" else 0.5)
     params = RenderParams(
         kind=body.kind, scale=scale, seconds=body.seconds, burn_subtitles=body.burn_subtitles,
-        grayscale=body.grayscale, normalize_audio=body.normalize_audio,
+        grayscale=body.grayscale, normalize_audio=body.normalize_audio, theme=body.theme,
     )
     job, reused = svc.start_render(project_id, params)
     return _out(job, reused)

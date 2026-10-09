@@ -29,6 +29,8 @@ export const sceneSchema = z.object({
   startFrame: z.number().int().min(0),
   durationFrames: z.number().int().min(1),
   imageSrc: z.string().nullable(),
+  // width / height of the image (null when unknown) -- lets a theme lay out portrait images differently.
+  imageAspect: z.number().positive().nullable(),
   texts: z.array(textSchema),
   claimStatus: z.enum(["verified", "disputed", "unverified"]).nullable(),
 });
@@ -39,7 +41,10 @@ export const subtitleSchema = z.object({
   text: z.string(),
 });
 
+export const THEMES = ["collage", "cinematic"] as const;
+
 export const documentarySchema = z.object({
+  theme: z.enum(THEMES),
   fps: z.number().int().positive(),
   width: z.number().int().positive(),
   height: z.number().int().positive(),

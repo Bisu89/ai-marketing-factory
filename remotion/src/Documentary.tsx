@@ -1,11 +1,12 @@
 import { AbsoluteFill, Sequence, interpolate, useCurrentFrame } from "remotion";
+import { CINE_COMPONENTS, CineSubtitles } from "./cinematic";
 import { PRESET_COMPONENTS } from "./presets";
 import { COLORS, FONTS } from "./theme";
 import type { DocumentaryProps, Scene } from "./schema";
 
-function SceneView({ scene, fade, first, grayscale }: { scene: Scene; fade: number; first: boolean; grayscale: boolean }) {
+function SceneView({ scene, fade, first, grayscale, theme }: { scene: Scene; fade: number; first: boolean; grayscale: boolean; theme: DocumentaryProps["theme"] }) {
   const frame = useCurrentFrame();
-  const Preset = PRESET_COMPONENTS[scene.preset];
+  const Preset = (theme === "cinematic" ? CINE_COMPONENTS : PRESET_COMPONENTS)[scene.preset];
   // Each scene fades in OVER the previous one (which keeps playing underneath for `fade`
   // frames), so a cut can never expose a black frame.
   const opacity = first || fade === 0 ? 1 : interpolate(frame, [0, fade], [0, 1], { extrapolateRight: "clamp" });
@@ -16,10 +17,11 @@ function SceneView({ scene, fade, first, grayscale }: { scene: Scene; fade: numb
   );
 }
 
-function Subtitles({ subtitles }: { subtitles: DocumentaryProps["subtitles"] }) {
+function Subtitles({ subtitles, theme }: { subtitles: DocumentaryProps["subtitles"]; theme: DocumentaryProps["theme"] }) {
   const frame = useCurrentFrame();
   const cur = subtitles.find((s) => frame >= s.startFrame && frame < s.endFrame);
   if (!cur) return null;
+  if (theme === "cinematic") return <CineSubtitles text={cur.text} />;
   return (
     <AbsoluteFill style={{ justifyContent: "flex-end", alignItems: "center", paddingBottom: 54 }}>
       <div
@@ -45,7 +47,7 @@ function Subtitles({ subtitles }: { subtitles: DocumentaryProps["subtitles"] }) 
 export const Documentary = (props: DocumentaryProps) => {
   const last = props.scenes.length - 1;
   return (
-    <AbsoluteFill style={{ background: COLORS.paper }}>
+    <AbsoluteFill style={{ background: props.theme === "cinematic" ? "#0e0c09" : COLORS.paper }}>
       {props.scenes.map((scene, i) => (
         <Sequence
           key={scene.key}
@@ -54,10 +56,10 @@ export const Documentary = (props: DocumentaryProps) => {
           durationInFrames={scene.durationFrames + (i < last ? props.fadeFrames : 0)}
           layout="none"
         >
-          <SceneView scene={scene} fade={props.fadeFrames} first={i === 0} grayscale={props.grayscale} />
+          <SceneView scene={scene} fade={props.fadeFrames} first={i === 0} grayscale={props.grayscale} theme={props.theme} />
         </Sequence>
       ))}
-      {props.burnSubtitles && <Subtitles subtitles={props.subtitles} />}
+      {props.burnSubtitles && <Subtitles subtitles={props.subtitles} theme={props.theme} />}
     </AbsoluteFill>
   );
 };

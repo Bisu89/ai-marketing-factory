@@ -1,0 +1,34 @@
+{
+  "title": "TÊN TẬP",
+  "topic": "Câu hỏi lịch sử mà tập này trả lời (1–2 câu).",
+  "budget_usd": null,
+  "wiki": {"lang": "en", "title": "Tên_bài_Wikipedia", "accessed": "YYYY-MM-DD", "publisher": "Wikimedia Foundation"},
+
+  "sources": [
+    {"key": "s1", "title": "Wikipedia — <bài> (<mục>)", "needles": ["cụm từ có thật trong bài, dùng để cắt trích đoạn nguyên văn"]}
+  ],
+
+  "claims": [
+    {"key": "c1", "status": "verified", "sources": ["s1"], "text": "Một sự kiện/số liệu, viết lại bằng tiếng Việt, đúng như nguồn nói."},
+    {"key": "c2", "status": "disputed", "sources": ["s1"], "note": "Vì sao còn tranh cãi / các cách giải thích khác nhau.", "text": "Khẳng định còn tranh cãi."}
+  ],
+
+  "script": [
+    {"kind": "hook", "heading": "Mở đầu", "paragraphs": [{"text": "Hook ≤ 3 giây.", "claims": ["c1"]}]},
+    {"kind": "context", "heading": "Bối cảnh", "paragraphs": [{"text": "…", "claims": ["c1"]}]},
+    {"kind": "timeline", "heading": "Dòng thời gian", "paragraphs": [{"text": "… (viết năm 4 chữ số)", "claims": ["c1"]}]},
+    {"kind": "evidence", "heading": "Bằng chứng và cách giải thích khác nhau", "paragraphs": [{"text": "… (số viết bằng chữ số)", "claims": ["c2"]}]},
+    {"kind": "turning_point", "heading": "Bước ngoặt", "paragraphs": [{"text": "…", "claims": ["c1"]}]},
+    {"kind": "consequences", "heading": "Hệ quả", "paragraphs": [{"text": "…", "claims": ["c1"]}]},
+    {"kind": "conclusion", "heading": "Kết luận và câu hỏi bỏ ngỏ", "paragraphs": [{"text": "…", "claims": ["c2"]}]}
+  ],
+
+  "scene_overrides": {
+    "S001": {"preset": "PhotoKenBurns", "texts": [["Tranh: <tác giả>", "caption"]], "objective": "Mô tả ảnh / prompt cho cảnh này"}
+  },
+
+  "images": [
+    {"key": "anh1", "kind": "commons", "commons_title": "File:Tên file trên Commons.jpg", "use": ["S001"]},
+    {"key": "anh2", "kind": "file", "path": "~/anh/anh2.png", "origin": "imported", "license": "ảnh tự chụp", "attribution": "Tên bạn", "use": ["S003"]}
+  ]
+}

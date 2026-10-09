@@ -49,3 +49,8 @@ backend/data/manhua_common_hashes.json
 # Story Remix batches (downloaded source videos + transcripts + drafts)
 story-remix/
 tools/story_remix/__pycache__/
+
+# Vox documentary episode builder caches (downloaded article text/images, per-spec state)
+content-prompts/vox_documentary_template/**/.cache/
+content-prompts/vox_documentary_template/**/*.state.json
+content-prompts/vox_documentary_template/**/__pycache__/

@@ -1,0 +1,24 @@
+TIÊU ĐỀ (≤ 70 ký tự, không giật gân vượt nguồn; gợi câu hỏi mà tập trả lời)
+  <Câu hỏi hoặc mâu thuẫn có thật trong nguồn> | <chủ đề ngắn>
+
+MÔ TẢ
+  <1–2 câu tóm tắt tập, nêu rõ có phần còn tranh cãi nếu có>
+
+  Dòng thời gian:
+  00:00 Mở đầu
+  <mm:ss> <mốc 1>
+  <mm:ss> <mốc 2>
+  (lấy mốc thời gian từ trang Timeline trong app, cột Từ → Đến)
+
+NGUỒN
+  - <Tên nguồn 1> — <URL>  (truy cập <YYYY-MM-DD>)
+  - <Tên nguồn 2> — <URL>
+
+HÌNH ẢNH
+  - <Mô tả ảnh> — <Tác giả>, <Giấy phép>, <URL trang nguồn>
+  - Các cảnh có nhãn "Minh họa AI" là hình minh họa do AI tạo, không phải tư liệu thời đó.
+
+GHI CHÚ ĐĂNG
+  - [ ] Khai báo nội dung tổng hợp/AI khi đăng (nếu có ảnh AI trông như thật)
+  - [ ] Phụ đề: tải subtitles.srt từ trang Timeline (Phụ đề → Tải SRT)
+  - [ ] Thẻ/hashtag: #lichsu #<chu_de>

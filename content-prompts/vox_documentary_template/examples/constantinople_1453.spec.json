@@ -1,0 +1,78 @@
+{
+  "title": "Constantinople 1453 — dự án chạy thử",
+  "topic": "Vì sao thành Constantinople thất thủ năm 1453? Dự án chạy thử toàn bộ quy trình bằng nguồn thật.",
+  "budget_usd": null,
+  "wiki": {"lang": "en", "title": "Fall_of_Constantinople", "accessed": "2026-10-09", "publisher": "Wikimedia Foundation"},
+
+  "sources": [
+    {"key": "lead", "title": "Wikipedia — Fall of Constantinople (phần mở đầu)",
+     "needles": ["captured by the Ottoman Empire on 29 May 1453", "commanded by Sultan Mehmed II", "replacing Adrianople", "watershed moment", "Theodosian walls, protected"]},
+    {"key": "background", "title": "Wikipedia — Fall of Constantinople (bối cảnh)", "needles": ["imperial capital since its consecration in 330"]},
+    {"key": "defenders", "title": "Wikipedia — Fall of Constantinople (lực lượng phòng thủ)", "needles": ["totalling about 7,000 men", "something under 8,000 men"]},
+    {"key": "ottomans", "title": "Wikipedia — Fall of Constantinople (lực lượng Ottoman)", "needles": ["some 50,000–80,000 Ottoman soldiers", "Contemporaneous Western witnesses"]},
+    {"key": "orban", "title": "Wikipedia — Fall of Constantinople (khẩu pháo của Orban)", "needles": ["His 27-foot-long (8.2 m) cannon", "Orban initially tried to sell his services to the Byzantines"]},
+    {"key": "horn", "title": "Wikipedia — Fall of Constantinople (dây xích và vịnh Golden Horn)", "needles": ["defensive chain be placed at the mouth of the harbour", "dragged his ships over the hill, directly into the Golden Horn on 22 April"]}
+  ],
+
+  "claims": [
+    {"key": "fall", "status": "verified", "sources": ["lead"], "text": "Ngày 29 tháng 5 năm 1453, Constantinople bị Đế quốc Ottoman chiếm, kết thúc cuộc vây hãm kéo dài 53 ngày bắt đầu từ ngày 6 tháng 4."},
+    {"key": "commanders", "status": "verified", "sources": ["lead"], "text": "Quân Ottoman do Sultan Mehmed Đệ Nhị chỉ huy; quân Byzantine do Hoàng đế Constantine Đệ Thập Nhất Palaiologos dẫn đầu."},
+    {"key": "capital", "status": "verified", "sources": ["background"], "text": "Constantinople là kinh đô của đế quốc từ năm 330; trong mười một thế kỷ sau đó thành phố bị bao vây nhiều lần nhưng chỉ bị chiếm một lần, năm 1204, trong cuộc Thập tự chinh thứ tư."},
+    {"key": "walls", "status": "verified", "sources": ["lead"], "text": "Các bức tường thành, nhất là Tường Theodosius, đã bảo vệ thành phố suốt 800 năm và được xem là một trong những hệ thống phòng thủ tiên tiến nhất thời bấy giờ."},
+    {"key": "chain", "status": "verified", "sources": ["horn"], "text": "Hoàng đế Constantine Đệ Thập Nhất ra lệnh căng một sợi dây xích nổi trên các khúc gỗ ở cửa vịnh Golden Horn để ngăn tàu Ottoman tiến vào."},
+    {"key": "ships", "status": "verified", "sources": ["horn"], "text": "Ngày 22 tháng 4, Mehmed cho kéo tàu qua đồi Galata trên con đường gỗ bôi mỡ để vào vịnh Golden Horn, vượt qua sợi dây xích."},
+    {"key": "defenders", "status": "verified", "sources": ["defenders"], "text": "Quân phòng thủ chỉ khoảng 7.000 người, và dưới 8.000 người nếu tính cả tình nguyện viên."},
+    {"key": "ottomans", "status": "disputed", "sources": ["ottomans"],
+     "note": "Nguồn nêu rõ các nhân chứng phương Tây đương thời có xu hướng phóng đại sức mạnh của Sultan; các con số khác nhau giữa các nhân chứng và giữa các nghiên cứu.",
+     "text": "Quy mô quân Ottoman: các nghiên cứu gần đây ước tính khoảng 50.000 đến 80.000 binh sĩ; các nhân chứng phương Tây đương thời ghi con số cao hơn nhiều, từ 160.000 đến 300.000."},
+    {"key": "orban", "status": "verified", "sources": ["orban"], "text": "Kỹ sư người Hung Orban, sau khi không được người Byzantine thuê vì thiếu tiền, đã đến với Mehmed và đúc khẩu pháo dài 8,2 mét bắn đạn đá nặng 270 kg đi xa hơn 1,6 km."},
+    {"key": "gunpowder", "status": "verified", "sources": ["lead"], "text": "Các tường thành bị bộ binh Ottoman vượt qua nhờ thuốc súng, đặc biệt là đại bác và pháo cối, mở ra một thay đổi trong chiến tranh công thành."},
+    {"key": "capital2", "status": "verified", "sources": ["lead"], "text": "Sau khi chiếm thành, Mehmed Đệ Nhị biến Constantinople thành kinh đô mới của Ottoman, thay cho Adrianople."},
+    {"key": "watershed", "status": "verified", "sources": ["lead"], "text": "Nhiều sử gia hiện đại xem sự kiện này là điểm kết thúc của thời Trung cổ và là dấu chấm hết thực sự của Đế quốc La Mã, một nhà nước khởi đầu từ khoảng năm 27 trước Công nguyên và tồn tại gần 1.500 năm."}
+  ],
+
+  "script": [
+    {"kind": "hook", "heading": "Mở đầu", "paragraphs": [
+      {"text": "Ngày 29 tháng 5 năm 1453, một thành phố từng đứng vững suốt nhiều thế kỷ đã thất thủ, chỉ sau năm mươi ba ngày bị vây hãm.", "claims": ["fall"]}]},
+    {"kind": "context", "heading": "Bối cảnh", "paragraphs": [
+      {"text": "Constantinople là kinh đô của đế quốc từ năm 330. Suốt mười một thế kỷ sau đó, thành phố bị bao vây nhiều lần, nhưng chỉ bị chiếm đúng một lần, vào năm 1204, trong cuộc Thập tự chinh thứ tư.", "claims": ["capital"]},
+      {"text": "Các bức tường thành, nhất là Tường Theodosius, đã che chở nơi đây suốt tám trăm năm.", "claims": ["walls"]}]},
+    {"kind": "timeline", "heading": "Dòng thời gian", "paragraphs": [
+      {"text": "Cuộc vây hãm bắt đầu ngày 6 tháng 4 năm 1453. Quân Ottoman do Sultan Mehmed Đệ Nhị chỉ huy, còn quân Byzantine do Hoàng đế Constantine Đệ Thập Nhất dẫn đầu.", "claims": ["fall", "commanders"]},
+      {"text": "Hoàng đế cho căng một sợi dây xích nổi ở cửa vịnh Golden Horn để ngăn tàu địch tiến vào.", "claims": ["chain"]},
+      {"text": "Ngày 22 tháng 4, Mehmed cho kéo tàu qua đồi Galata trên con đường gỗ bôi mỡ, đưa chúng vào vịnh Golden Horn và vượt qua sợi dây xích.", "claims": ["ships"]}]},
+    {"kind": "evidence", "heading": "Bằng chứng và những con số", "paragraphs": [
+      {"text": "Lực lượng hai bên chênh lệch rất lớn. Quân phòng thủ chỉ khoảng 7.000 người, và dưới 8.000 người nếu tính cả tình nguyện viên.", "claims": ["defenders"]},
+      {"text": "Còn quân Ottoman thì các nghiên cứu gần đây ước tính từ 50.000 đến 80.000 binh sĩ. Nhưng những nhân chứng phương Tây đương thời lại ghi những con số cao hơn nhiều, từ 160.000 đến 300.000, và các sử gia cho rằng họ có xu hướng phóng đại sức mạnh của Sultan.", "claims": ["ottomans"]}]},
+    {"kind": "turning_point", "heading": "Bước ngoặt", "paragraphs": [
+      {"text": "Bước ngoặt đến từ thuốc súng. Một kỹ sư người Hung tên Orban, sau khi không được người Byzantine thuê vì thiếu tiền, đã tìm đến Mehmed và đúc một khẩu pháo dài tám phẩy hai mét, bắn đạn đá nặng hai trăm bảy mươi ký đi xa hơn một phẩy sáu ki-lô-mét.", "claims": ["orban"]}]},
+    {"kind": "consequences", "heading": "Hệ quả", "paragraphs": [
+      {"text": "Sau khi chiếm thành, Mehmed Đệ Nhị biến Constantinople thành kinh đô mới của Ottoman, thay cho Adrianople.", "claims": ["capital2"]},
+      {"text": "Nhiều sử gia hiện đại xem đây là điểm kết thúc của thời Trung cổ, và là dấu chấm hết thực sự của Đế quốc La Mã, một nhà nước khởi đầu từ khoảng năm hai mươi bảy trước Công nguyên và tồn tại gần một nghìn năm trăm năm.", "claims": ["watershed"]}]},
+    {"kind": "conclusion", "heading": "Kết luận", "paragraphs": [
+      {"text": "Thuốc súng đã vượt qua những bức tường từng được xem là một trong những hệ thống phòng thủ tiên tiến nhất thế giới, và mở ra một thay đổi trong cách người ta công thành.", "claims": ["gunpowder", "walls"]},
+      {"text": "Còn quy mô thật sự của đội quân vây thành vẫn là câu hỏi chưa ngã ngũ giữa các nguồn.", "claims": ["ottomans"]}]}
+  ],
+
+  "scene_overrides": {
+    "S001": {"preset": "PhotoKenBurns", "texts": [["Tranh: Panagiotis Zographos", "caption"]], "objective": "Ảnh tư liệu: tranh vẽ cảnh thất thủ Constantinople (Zographos)."},
+    "S003": {"texts": [["Ảnh: Peter Christian Riemann · CC BY-SA 4.0", "caption"]]},
+    "S004": {"preset": "SplitComparison", "texts": [["Sultan Mehmed Đệ Nhị", "label"], ["Hoàng đế Constantine Đệ Thập Nhất", "label"]], "objective": "Ảnh tư liệu: chân dung Sultan Mehmed II của Gentile Bellini."},
+    "S007": {"preset": "BigNumber"},
+    "S008": {"preset": "BigNumber"},
+    "S009": {"preset": "EvidenceBoard"},
+    "S011": {"texts": [["Tranh: Panagiotis Zographos", "caption"]]},
+    "S012": {"preset": "ArchivalPortrait", "texts": [["Mehmed Đệ Nhị", "headline"], ["Chân dung: Gentile Bellini", "label"]], "objective": "Ảnh tư liệu: chân dung Sultan Mehmed II của Gentile Bellini."},
+    "S013": {"texts": [["Tranh: Benjamin-Constant, 1876", "caption"]]},
+    "S014": {"texts": [["Ảnh: Peter Christian Riemann · CC BY-SA 4.0", "caption"]]},
+    "S015": {"preset": "HeadlineImpact", "texts": [["Quân số thật sự: chưa ngã ngũ", "headline"]]}
+  },
+
+  "images": [
+    {"key": "battle", "kind": "commons", "commons_title": "File:Zografos-Makriyannis 02 The fall of Konstantinople.jpg", "use": ["S001", "S011"]},
+    {"key": "entry", "kind": "commons", "commons_title": "File:Benjamin-Constant-The Entry of Mahomet II into Constantinople-1876.jpg", "use": ["S013"]},
+    {"key": "mehmed", "kind": "commons", "commons_title": "File:Bellini, Gentile - Sultan Mehmet II.jpg", "use": ["S004", "S012"]},
+    {"key": "walls", "kind": "commons", "commons_title": "File:Theodosian Walls of Constantinople, Istanbul (1991).jpg", "use": ["S003", "S014"],
+     "note": "CC BY-SA 4.0 (share-alike): thay bằng ảnh miền công cộng hoặc ảnh AI trước khi dùng thương mại."}
+  ]
+}

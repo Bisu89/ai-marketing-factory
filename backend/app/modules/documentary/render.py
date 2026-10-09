@@ -31,7 +31,7 @@ from sqlalchemy.orm import Session
 from app.core.exceptions import NotFoundError, ValidationError
 from app.modules.documentary import media
 from app.modules.documentary.models import DocumentaryRenderJob, DocumentarySceneTiming
-from app.modules.documentary.render_plan import FPS, HEIGHT, REMOTION_DIR, WIDTH, RenderParams, build_manifest, preflight
+from app.modules.documentary.render_plan import FPS, HEIGHT, REMOTION_DIR, THEMES, WIDTH, RenderParams, build_manifest, preflight
 from app.modules.documentary.schemas import ReviewIssue, ReviewOut
 
 logger = logging.getLogger(__name__)
@@ -112,6 +112,8 @@ class RenderService:
             raise ValidationError("scale phải trong khoảng 0.2–1.0.")
         if params.seconds is not None and params.seconds <= 0:
             raise ValidationError("seconds phải > 0.")
+        if params.theme not in THEMES:
+            raise ValidationError(f"theme phải là một trong: {', '.join(THEMES)}.")
         issues = self.preflight(project_id)
         if issues:
             raise ValidationError("Chưa thể render: " + "; ".join(i.message for i in issues[:8]) + ("…" if len(issues) > 8 else ""))
@@ -163,7 +165,7 @@ class RenderService:
         p = job.params
         params = RenderParams(
             kind="final", scale=1.0, seconds=None, burn_subtitles=p.get("burn_subtitles", True),
-            grayscale=p.get("grayscale", True), normalize_audio=p.get("normalize_audio", True),
+            grayscale=p.get("grayscale", True), normalize_audio=p.get("normalize_audio", True), theme=p.get("theme", "collage"),
         )
         try:
             _m, _pub, digest = build_manifest(self.db, self.root, project_id, params)
@@ -227,7 +229,7 @@ def _run_job(db: Session, root: Path, job: DocumentaryRenderJob) -> None:
     p = job.params
     params = RenderParams(
         kind=job.kind, scale=p["scale"], seconds=p["seconds"], burn_subtitles=p["burn_subtitles"],
-        grayscale=p["grayscale"], normalize_audio=p["normalize_audio"],
+        grayscale=p["grayscale"], normalize_audio=p["normalize_audio"], theme=p.get("theme", "collage"),
     )
     jdir = svc.job_dir(job.project_id, job.id)
     jdir.mkdir(parents=True, exist_ok=True)

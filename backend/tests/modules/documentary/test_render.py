@@ -144,6 +144,28 @@ class ManifestTests(ManifestCase):
         row = {r["key"]: r for r in self.manifest()[0]["scenes"]}[sc.scene_key]
         self.assertEqual((row["preset"], row["texts"][0]["text"]), ("TimelineBuild", "1453"))
 
+    def test_theme_is_part_of_the_manifest_and_the_hash(self):
+        self.timeline_ready()
+        m1, _, h1 = self.manifest()
+        m2, _, h2 = self.manifest(theme="cinematic")
+        self.assertEqual((m1["theme"], m2["theme"]), ("collage", "cinematic"))
+        self.assertNotEqual(h1, h2)  # same data, different look -> different video, never a cache hit
+
+    def test_image_aspect_is_reported_for_image_scenes_only(self):
+        self.timeline_ready()
+        m, _, _ = self.manifest()
+        for row in m["scenes"]:
+            if row["imageSrc"]:
+                self.assertGreater(row["imageAspect"], 0)
+            else:
+                self.assertIsNone(row["imageAspect"])
+
+    def test_unknown_theme_is_refused(self):
+        self.timeline_ready()
+        with patch.object(render_mod, "_execute"):
+            with self.assertRaises(ValidationError):
+                RenderService(self.db, self.root).start(self.p.id, self.params(theme="neon"))
+
     def test_user_text_overrides_derived_text(self):
         self.timeline_ready()
         sc = self.db.query(DocumentaryScene).filter_by(project_id=self.p.id, order_index=1).one()

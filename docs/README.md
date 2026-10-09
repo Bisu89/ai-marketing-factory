@@ -7,6 +7,8 @@ SQLite.
 
 ## Start here
 
+- **Vox Documentary Factory handoff:** [`content-prompts/vox_documentary_template/HANDOFF.md`](../content-prompts/vox_documentary_template/HANDOFF.md) — read first when picking up the documentary work in a new session or machine
+
 - [Architecture](architecture.md) — layers, folder structure, how the pieces fit together
 - [Database](database.md) — every table and how they relate
 
@@ -203,6 +205,7 @@ SQLite.
 169. [Documentary render](features/169-documentary-render.md) — 9 Remotion collage presets on real images, timeline-driven manifest, render jobs with cache/cancel, ffmpeg mux, ffprobe + black-frame QC by scene, gate 5
 170. [Documentary real trial run](features/170-documentary-trial-run.md) — full pipeline on a real project (Constantinople 1453) in the live app; bugs only real data exposed (DB column drift, relative paths, planner regex, 96 kHz audio)
 171. [Documentary on the Videos page](features/171-documentary-in-videos-page.md) — final documentary renders listed with Factory renders (thumbnail, open folder, link back to the project)
+172. [Documentary cinematic theme + template](features/172-documentary-cinematic-theme-and-template.md) — full-bleed painting theme, `content-prompts/vox_documentary_template/` (HANDOFF, rules, image style, episode builder)
 
 ## Keeping this up to date
 
