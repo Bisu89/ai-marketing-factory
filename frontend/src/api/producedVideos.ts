@@ -13,6 +13,10 @@ export function listProducedVideos(query: ProducedVideoQuery = {}): Promise<Prod
   return apiGet(`/produced-videos${qs ? `?${qs}` : ""}`);
 }
 
+export function openDocumentaryVideoFolder(jobId: number): Promise<void> {
+  return apiPost(`/produced-videos/documentary/${jobId}/open-folder`);
+}
+
 export function openProducedVideoFolder(renderJobId: number): Promise<void> {
   return apiPost(`/produced-videos/${renderJobId}/open-folder`);
 }

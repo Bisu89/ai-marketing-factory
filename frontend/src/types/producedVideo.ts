@@ -19,6 +19,10 @@ export interface ProducedVideo {
   thumbnail_url: string | null;
   created_at: string;
   completed_at: string | null;
+  // "documentary" items are final renders of a documentary project; render_job_id is that
+  // source's own id, so always pair it with `source`.
+  source?: "factory" | "documentary";
+  documentary_project_id?: number | null;
 }
 
 export interface ProducedVideoList {

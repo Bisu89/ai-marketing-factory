@@ -202,6 +202,7 @@ SQLite.
 168. [Documentary UI](features/168-documentary-ui.md) — Vietnamese pages for projects, gates, research, script, storyboard, image contact sheet, narration/timeline, ElevenLabs settings
 169. [Documentary render](features/169-documentary-render.md) — 9 Remotion collage presets on real images, timeline-driven manifest, render jobs with cache/cancel, ffmpeg mux, ffprobe + black-frame QC by scene, gate 5
 170. [Documentary real trial run](features/170-documentary-trial-run.md) — full pipeline on a real project (Constantinople 1453) in the live app; bugs only real data exposed (DB column drift, relative paths, planner regex, 96 kHz audio)
+171. [Documentary on the Videos page](features/171-documentary-in-videos-page.md) — final documentary renders listed with Factory renders (thumbnail, open folder, link back to the project)
 
 ## Keeping this up to date
 

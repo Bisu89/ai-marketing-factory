@@ -14,7 +14,7 @@ import { PageHeader } from "../components/PageHeader";
 import { EmptyState } from "../components/EmptyState";
 import { Pagination } from "../features/library/components/Pagination";
 import { mediaUrl } from "../api/client";
-import { listProducedVideos, openProducedVideoFolder } from "../api/producedVideos";
+import { listProducedVideos, openDocumentaryVideoFolder, openProducedVideoFolder } from "../api/producedVideos";
 import type { ProducedVideo, ProducedVideoList } from "../types/producedVideo";
 import "./VideosPage.css";
 
@@ -115,7 +115,8 @@ export function VideosPage() {
 
   async function handleOpenFolder(video: ProducedVideo) {
     try {
-      await openProducedVideoFolder(video.render_job_id);
+      if (video.source === "documentary") await openDocumentaryVideoFolder(video.render_job_id);
+      else await openProducedVideoFolder(video.render_job_id);
       setActionNote("Đã mở thư mục.");
     } catch (err) {
       setActionNote(err instanceof Error ? err.message : "Không mở được thư mục.");
@@ -172,10 +173,16 @@ export function VideosPage() {
         <>
           <div className={`videos-grid${loading ? " is-loading" : ""}`}>
             {items.map((video) => (
-              <button key={video.render_job_id} className="video-card" onClick={() => setSelected(video)}>
+              <button key={`${video.source ?? "factory"}-${video.render_job_id}`} className="video-card" onClick={() => setSelected(video)}>
                 <div className="video-card-thumb">
                   {video.thumbnail_url ? (
-                    <img src={mediaUrl(video.thumbnail_url)} alt="" loading="lazy" />
+                    <img
+                      src={mediaUrl(video.thumbnail_url)}
+                      alt=""
+                      loading="lazy"
+                      // the card is portrait-shaped; a landscape (16:9) video is shown whole instead of cropped
+                      style={video.width && video.height && video.width > video.height ? { objectFit: "contain", background: "#0b0c12" } : undefined}
+                    />
                   ) : (
                     <div className="video-card-thumb-fallback">
                       <Clapperboard size={22} />
@@ -193,6 +200,7 @@ export function VideosPage() {
                 <div className="video-card-body">
                   <span className="video-card-title">{video.title}</span>
                   <span className="video-card-sub">
+                    {video.source === "documentary" ? "Phim tài liệu · " : ""}
                     {dateLabel(video.created_at)}
                   </span>
                 </div>
@@ -214,7 +222,7 @@ export function VideosPage() {
             <div className="videos-drawer-player">
               {selected.output_media_url ? (
                 <video
-                  key={selected.render_job_id}
+                  key={`${selected.source ?? "factory"}-${selected.render_job_id}`}
                   src={mediaUrl(selected.output_media_url)}
                   controls
                   playsInline
@@ -276,6 +284,11 @@ export function VideosPage() {
               )}
 
               <div className="videos-drawer-actions">
+                {selected.source === "documentary" && selected.documentary_project_id != null && (
+                  <Link className="btn btn-secondary" to={`/documentary/${selected.documentary_project_id}`}>
+                    <ExternalLink size={14} /> Mở trong Phim tài liệu
+                  </Link>
+                )}
                 {selected.project_id != null && (
                   <Link className="btn btn-secondary" to={`/video-factory?project=${selected.project_id}`}>
                     <ExternalLink size={14} /> Mở trong Video Factory

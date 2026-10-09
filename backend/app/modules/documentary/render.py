@@ -275,6 +275,7 @@ def _run_job(db: Session, root: Path, job: DocumentaryRenderJob) -> None:
             error=None if ok else "Video không đạt kiểm tra: " + "; ".join(i["message"] for i in report["issues"][:4]),
         )
         if ok and job.kind == "final":
+            ensure_thumbnail(out)
             from app.modules.documentary.service import DocumentaryService
 
             # A new final render supersedes any earlier final approval.
@@ -344,6 +345,23 @@ def _mux(video: Path, audio: Path, out: Path, video_sec: float, normalize: bool,
     _log(log, f"ffmpeg mux exit {r.returncode} {r.stderr.strip()[-300:]}")
     if r.returncode != 0 or not out.is_file():
         raise ValidationError(f"Ghép audio thất bại: {r.stderr.strip()[-300:]}")
+
+
+def ensure_thumbnail(video: Path) -> Path | None:
+    """thumbnail.jpg next to the video, the same convention the Videos page already uses.
+    Best effort: a missing thumbnail only means a placeholder card, never a failed render."""
+    thumb = video.with_name("thumbnail.jpg")
+    if thumb.is_file():
+        return thumb
+    try:
+        duration = media.probe_duration(video)
+        r = subprocess.run(
+            ["ffmpeg", "-y", "-v", "error", "-ss", f"{min(8.0, duration * 0.2):.2f}", "-i", str(video), "-frames:v", "1", "-vf", "scale=640:-1", str(thumb)],
+            capture_output=True, text=True, stdin=subprocess.DEVNULL, timeout=120,
+        )
+    except (ValidationError, subprocess.SubprocessError, OSError):
+        return None
+    return thumb if r.returncode == 0 and thumb.is_file() else None
 
 
 # =====================================================================================

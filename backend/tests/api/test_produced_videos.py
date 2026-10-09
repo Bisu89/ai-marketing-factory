@@ -19,6 +19,7 @@ from app.db.base import Base
 from app.modules.beat.models import Project
 from app.modules.beat.project_service import create_project, set_project_render_job_id
 from app.modules.beat.schemas import ProjectConfig
+from app.modules.documentary.models import DocumentaryProject, DocumentaryRenderJob
 from app.modules.video_composer.models import VideoComposeClip, VideoComposeJob
 
 
@@ -34,7 +35,8 @@ class _ProducedVideosTestCase(unittest.TestCase):
             f"sqlite:///{self.tmp_path / 'test.db'}", connect_args={"check_same_thread": False, "timeout": 30}
         )
         Base.metadata.create_all(
-            bind=self.engine, tables=[Project.__table__, VideoComposeJob.__table__, VideoComposeClip.__table__]
+            bind=self.engine,
+            tables=[Project.__table__, VideoComposeJob.__table__, VideoComposeClip.__table__, DocumentaryProject.__table__, DocumentaryRenderJob.__table__],
         )
         self.TestSessionLocal = sessionmaker(bind=self.engine)
         self.settings = Settings(library_dir=str(self.tmp_path))
@@ -130,6 +132,76 @@ class ProducedVideosTests(_ProducedVideosTestCase):
             set(),
             {r.render_job_id for r in page1.items} & {r.render_job_id for r in page2.items},
         )
+
+
+
+class DocumentaryVideosTests(_ProducedVideosTestCase):
+    """Final renders of documentary projects appear next to Factory renders (Videos page)."""
+
+    def _doc_job(self, project_id: int, status="succeeded", kind="final", name="output.mp4", with_file=True) -> int:
+        out = self.tmp_path / "_documentary" / f"project_{project_id}" / "render" / f"job_{name}" / "output.mp4"
+        if with_file:
+            out.parent.mkdir(parents=True, exist_ok=True)
+            out.write_bytes(b"not a real video")
+        db = self._db()
+        try:
+            job = DocumentaryRenderJob(
+                project_id=project_id, kind=kind, status=status, input_hash=f"h{name}", params={}, output_path=str(out) if with_file else None,
+                duration_sec=61.5, qc={"width": 1920, "height": 1080}, created_at=_utcnow(), finished_at=_utcnow(),
+            )
+            db.add(job)
+            db.commit()
+            return job.id
+        finally:
+            db.close()
+
+    def _project(self, title="Phim thử") -> int:
+        db = self._db()
+        try:
+            p = DocumentaryProject(title=title, topic="t")
+            db.add(p)
+            db.commit()
+            return p.id
+        finally:
+            db.close()
+
+    def test_final_render_is_listed_with_source_and_media_url(self):
+        pid = self._project("Constantinople 1453")
+        jid = self._doc_job(pid)
+        with patch("app.api.v1.endpoints.produced_videos.ensure_thumbnail", return_value=None):
+            result = self._list(status="ALL")
+        doc = [i for i in result.items if i.source == "documentary"]
+        self.assertEqual(len(doc), 1)
+        self.assertEqual((doc[0].render_job_id, doc[0].title, doc[0].job_status), (jid, "Constantinople 1453", "COMPLETED"))
+        self.assertEqual((doc[0].width, doc[0].height, doc[0].documentary_project_id), (1920, 1080, pid))
+        self.assertTrue(doc[0].output_media_url.startswith("/media/_documentary/project_"))
+
+    def test_previews_and_superseded_finals_are_not_listed(self):
+        pid = self._project()
+        self._doc_job(pid, kind="preview", name="p")
+        old = self._doc_job(pid, name="old")
+        new = self._doc_job(pid, name="new")
+        with patch("app.api.v1.endpoints.produced_videos.ensure_thumbnail", return_value=None):
+            ids = [i.render_job_id for i in self._list(status="ALL").items if i.source == "documentary"]
+        self.assertEqual(ids, [new])  # newest successful final only
+        self.assertNotIn(old, ids)
+
+    def test_failed_final_only_shows_under_failed_filter(self):
+        pid = self._project()
+        self._doc_job(pid, status="failed", with_file=False)
+        with patch("app.api.v1.endpoints.produced_videos.ensure_thumbnail", return_value=None):
+            self.assertEqual([i for i in self._list().items if i.source == "documentary"], [])
+            failed = [i for i in self._list(status="FAILED").items if i.source == "documentary"]
+        self.assertEqual([i.job_status for i in failed], ["FAILED"])
+
+    def test_factory_items_keep_working_and_are_labelled(self):
+        self._insert_job("Video factory")
+        pid = self._project()
+        self._doc_job(pid)
+        with patch("app.api.v1.endpoints.produced_videos.ensure_thumbnail", return_value=None):
+            items = self._list().items
+        self.assertEqual({i.source for i in items}, {"factory", "documentary"})
+        self.assertEqual(items, sorted(items, key=lambda i: i.created_at, reverse=True))
 
 
 if __name__ == "__main__":
