@@ -192,3 +192,115 @@ class ReviewOut(BaseModel):
     ok: bool
     issues: list[ReviewIssue]
     warnings: list[ReviewIssue] = Field(default_factory=list)
+
+
+# -- storyboard & assets ------------------------------------------------------
+VisualPreset = Literal[
+    "NewspaperStack", "ArchivalPortrait", "MapZoom", "TimelineBuild", "BigNumber",
+    "EvidenceBoard", "PhotoKenBurns", "HeadlineImpact", "SplitComparison",
+]
+
+
+class OnScreenText(BaseModel):
+    text: str = Field(min_length=1, max_length=300)
+    role: Literal["headline", "label", "date", "number", "caption"] = "caption"
+
+
+class SceneOut(BaseModel):
+    id: int
+    scene_key: str
+    order_index: int
+    section_kind: str
+    narration_text: str
+    claim_ids: list[int]
+    visual_objective: str
+    visual_preset: str
+    asset_strategy: str
+    image_group: str | None
+    asset_id: int | None
+    asset_state: str
+    on_screen_text: list[OnScreenText]
+    motion_notes: str | None
+    sfx_cues: list[str]
+    expected_duration: float
+    actual_duration: float | None
+    render_status: str
+    user_edited: bool
+
+
+class SceneUpdate(BaseModel):
+    visual_preset: VisualPreset | None = None
+    visual_objective: str | None = Field(default=None, min_length=1, max_length=3000)
+    on_screen_text: list[OnScreenText] | None = None
+    motion_notes: str | None = Field(default=None, max_length=1000)
+    sfx_cues: list[str] | None = None
+
+
+class PlanOut(BaseModel):
+    scenes: int
+    created: int
+    kept: int
+    removed: int
+    image_groups: int
+    programmatic: int
+
+
+class AssetOut(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: int
+    project_id: int
+    path: str
+    type: str
+    origin: str
+    source_url: str | None
+    license: str | None
+    attribution: str | None
+    prompt: str | None
+    model: str | None
+    input_hash: str | None
+    content_hash: str
+    width: int | None
+    height: int | None
+    tags: list[str]
+    approval_status: str
+    created_at: datetime
+
+
+class AssetImportIn(BaseModel):
+    path: str = Field(min_length=1, max_length=1000)
+    origin: Literal["imported", "archival"] = "imported"
+    license: str | None = Field(default=None, max_length=300)
+    attribution: str | None = Field(default=None, max_length=500)
+    source_url: str | None = Field(default=None, max_length=2000)
+    tags: list[str] = Field(default_factory=list)
+
+    @field_validator("source_url")
+    @classmethod
+    def _http_only(cls, v: str | None) -> str | None:
+        if v is None or not v.strip():
+            return None
+        _http_url.validate_python(v.strip())
+        return v.strip()
+
+
+class AssetPatch(BaseModel):
+    license: str | None = Field(default=None, max_length=300)
+    attribution: str | None = Field(default=None, max_length=500)
+    source_url: str | None = Field(default=None, max_length=2000)
+    tags: list[str] | None = None
+
+
+class AssignIn(BaseModel):
+    asset_id: int | None
+
+
+class FolderImportIn(BaseModel):
+    folder: str = Field(min_length=1, max_length=1000)
+
+
+class CsvExportOut(BaseModel):
+    to_generate: int
+    reused_from_cache: int
+    filename: str
+    csv: str

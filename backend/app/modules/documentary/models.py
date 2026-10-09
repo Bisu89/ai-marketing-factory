@@ -113,3 +113,71 @@ class DocumentaryScript(Base):
     outline: Mapped[list] = mapped_column(JSON, nullable=False, default=list)
     sections: Mapped[list] = mapped_column(JSON, nullable=False, default=list)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow, nullable=False)
+
+
+class DocumentaryAsset(Base):
+    """Project asset registry. `origin` records where the file came from and
+    `license`/`attribution` are mandatory before an archival asset can be
+    approved -- a publicly visible image is never assumed to be reusable."""
+
+    __tablename__ = "documentary_asset"
+    __table_args__ = (UniqueConstraint("project_id", "content_hash"),)
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    project_id: Mapped[int] = mapped_column(ForeignKey("documentary_project.id"), nullable=False, index=True)
+    path: Mapped[str] = mapped_column(String, nullable=False)
+    type: Mapped[str] = mapped_column(String, nullable=False, default="image")
+    origin: Mapped[str] = mapped_column(String, nullable=False)  # imported | archival | ai_manual
+    source_url: Mapped[str | None] = mapped_column(String, nullable=True)
+    license: Mapped[str | None] = mapped_column(String, nullable=True)
+    attribution: Mapped[str | None] = mapped_column(String, nullable=True)
+    prompt: Mapped[str | None] = mapped_column(Text, nullable=True)
+    model: Mapped[str | None] = mapped_column(String, nullable=True)
+    input_hash: Mapped[str | None] = mapped_column(String, nullable=True, index=True)
+    content_hash: Mapped[str] = mapped_column(String, nullable=False)
+    width: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    height: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    tags: Mapped[list] = mapped_column(JSON, nullable=False, default=list)
+    approval_status: Mapped[str] = mapped_column(String, nullable=False, default="pending")
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow, nullable=False)
+
+
+class DocumentaryScene(Base):
+    __tablename__ = "documentary_scene"
+    __table_args__ = (UniqueConstraint("project_id", "scene_key"),)
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    project_id: Mapped[int] = mapped_column(ForeignKey("documentary_project.id"), nullable=False, index=True)
+    # Stable across re-plans for unchanged narration; never reused after deletion.
+    scene_key: Mapped[str] = mapped_column(String, nullable=False)
+    order_index: Mapped[int] = mapped_column(Integer, nullable=False)
+    section_kind: Mapped[str] = mapped_column(String, nullable=False)
+    narration_text: Mapped[str] = mapped_column(Text, nullable=False)
+    narration_hash: Mapped[str] = mapped_column(String, nullable=False)
+    claim_ids: Mapped[list] = mapped_column(JSON, nullable=False, default=list)
+    visual_objective: Mapped[str] = mapped_column(Text, nullable=False)
+    visual_preset: Mapped[str] = mapped_column(String, nullable=False)
+    asset_strategy: Mapped[str] = mapped_column(String, nullable=False)  # programmatic | image
+    image_group: Mapped[str | None] = mapped_column(String, nullable=True)
+    asset_id: Mapped[int | None] = mapped_column(ForeignKey("documentary_asset.id"), nullable=True)
+    input_hash: Mapped[str | None] = mapped_column(String, nullable=True)
+    # input_hash at the moment the current asset was assigned; a later mismatch means the image is stale.
+    assigned_hash: Mapped[str | None] = mapped_column(String, nullable=True)
+    on_screen_text: Mapped[list] = mapped_column(JSON, nullable=False, default=list)
+    motion_notes: Mapped[str | None] = mapped_column(Text, nullable=True)
+    sfx_cues: Mapped[list] = mapped_column(JSON, nullable=False, default=list)
+    expected_duration: Mapped[float] = mapped_column(Float, nullable=False)
+    actual_duration: Mapped[float | None] = mapped_column(Float, nullable=True)
+    render_status: Mapped[str] = mapped_column(String, nullable=False, default="pending")
+    user_edited: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow, nullable=False)
+
+
+class DocumentaryProjectCounter(Base):
+    """Monotonic scene-key counter per project, so a deleted scene's key is
+    never handed out again."""
+
+    __tablename__ = "documentary_scene_counter"
+
+    project_id: Mapped[int] = mapped_column(ForeignKey("documentary_project.id"), primary_key=True)
+    next_scene: Mapped[int] = mapped_column(Integer, nullable=False, default=1)

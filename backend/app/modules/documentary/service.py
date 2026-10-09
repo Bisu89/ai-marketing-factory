@@ -3,6 +3,8 @@ this layer only reads/writes rows and applies them."""
 
 from __future__ import annotations
 
+from pathlib import Path
+
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
@@ -12,6 +14,7 @@ from app.modules.documentary.models import DocumentaryApproval, DocumentaryProje
 from app.modules.documentary.research import ResearchService
 from app.modules.documentary.schemas import GateStatus, ProjectCreate, ProjectDetail, ProjectOut, ScriptSave
 from app.modules.documentary.script import ScriptService
+from app.modules.documentary.storyboard import StoryboardService
 
 DEMO_TITLE = "[MẪU] Dự án demo — không phải nội dung lịch sử đã kiểm chứng"
 DEMO_TOPIC = (
@@ -21,8 +24,9 @@ DEMO_TOPIC = (
 
 
 class DocumentaryService:
-    def __init__(self, db: Session):
+    def __init__(self, db: Session, library_root: Path | None = None):
         self.db = db
+        self.library_root = library_root  # None -> settings.library_dir (tests pass a temp dir)
 
     # -- projects ---------------------------------------------------------
     def create(self, data: ProjectCreate, *, is_demo: bool = False) -> DocumentaryProject:
@@ -157,6 +161,11 @@ class DocumentaryService:
             issues = ResearchService(self.db).review(p.id)
         elif gate == "script":
             issues = ScriptService(self.db).review(p.id).issues
+        elif gate == "storyboard_assets":
+            from app.core.config import get_settings
+            from app.modules.documentary.assets import AssetService
+
+            issues = AssetService(self.db, self.library_root or Path(get_settings().library_dir)).review(p.id)
         else:
             return
         if issues:
@@ -244,3 +253,17 @@ class DocumentaryService:
         scripts._check_claim_refs(p.id, data)  # validate before bumping the version
         p = self.bump_artifact(project_id, "script")
         return scripts.save(p, data, origin)
+
+    def plan_storyboard(self, project_id: int) -> dict:
+        p = self.get(project_id)
+        if "script" not in self.valid_gates(p):
+            raise ValidationError("Cần duyệt kịch bản (cổng 'script') trước khi lập storyboard.")
+        result = StoryboardService(self.db).plan(p)
+        # New/removed scenes make any storyboard approval stale; an identical
+        # re-plan changes nothing. Upstream (research/script) is never touched.
+        if result["created"] or result["removed"]:
+            self.bump_artifact(project_id, "storyboard")
+        return result
+
+    def storyboard_changed(self, project_id: int) -> None:
+        self.bump_artifact(project_id, "storyboard")

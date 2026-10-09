@@ -226,3 +226,7 @@ def generate_script(project_id: int, body: ScriptGenerate, db: Session = Depends
 def script_review(project_id: int, db: Session = Depends(get_db)):
     DocumentaryService(db).get(project_id)
     return ScriptService(db).review(project_id)
+
+from app.modules.documentary.router_storyboard import router as _storyboard_router  # noqa: E402
+
+router.include_router(_storyboard_router)

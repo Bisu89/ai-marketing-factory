@@ -56,7 +56,8 @@ class _ServiceCase(unittest.TestCase):
             bind=self.engine, tables=[t for n, t in Base.metadata.tables.items() if n.startswith("documentary_")]
         )
         self.db = sessionmaker(bind=self.engine)()
-        self.svc = DocumentaryService(self.db)
+        self.root = Path(self.tmp.name) / "lib"
+        self.svc = DocumentaryService(self.db, library_root=self.root)
         self.p = self.svc.create(ProjectCreate(title="T", topic="topic"))
 
     def tearDown(self):
@@ -81,11 +82,29 @@ class _ServiceCase(unittest.TestCase):
             self.svc.save_script(p.id, outline, "mock")
             self.svc.save_script(p.id, scripts.generate_script(p, "mock"), "mock")
 
+    def seed_assets(self):
+        """Plan the storyboard and give every image group an approved file."""
+        from PIL import Image
+
+        from app.modules.documentary.assets import AssetService
+
+        self.svc.plan_storyboard(self.p.id)
+        assets = AssetService(self.db, self.root)
+        for n, head in enumerate(assets.needing_images(self.p.id)):
+            f = Path(self.tmp.name) / f"img{n}.png"
+            Image.new("RGB", (16, 9), (n * 10 % 255, 0, 0)).save(f)
+            a, _ = assets.import_file(self.p.id, f, origin="imported")
+            assets.approve(self.p.id, a.id)
+            assets.assign(self.p.id, head.id, a.id)
+        self.svc.storyboard_changed(self.p.id)
+
     def go_to(self, state: str):
         """Walk the happy path, approving each gate when reached."""
         while self.svc.get(self.p.id).state != state:
             cur = self.svc.get(self.p.id).state
             self.seed_for(cur)
+            if cur == "asset_review":
+                self.seed_assets()
             for g, (review, _) in sm.GATES.items():
                 if review == cur:
                     self.svc.approve(self.p.id, g)
