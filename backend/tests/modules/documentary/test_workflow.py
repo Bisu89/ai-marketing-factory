@@ -10,8 +10,10 @@ from sqlalchemy.orm import sessionmaker
 from app.core.exceptions import NotFoundError, ValidationError
 from app.db.base import Base
 from app.modules.documentary import state_machine as sm
-from app.modules.documentary.models import DocumentaryApproval, DocumentaryProject
-from app.modules.documentary.schemas import ProjectCreate
+from app.modules.documentary.models import DocumentaryProject
+from app.modules.documentary.research import ResearchService
+from app.modules.documentary.schemas import ClaimIn, ProjectCreate, SourceIn
+from app.modules.documentary.script import ScriptService
 from app.modules.documentary.service import DocumentaryService
 
 
@@ -51,7 +53,7 @@ class _ServiceCase(unittest.TestCase):
             f"sqlite:///{Path(self.tmp.name) / 't.db'}", connect_args={"check_same_thread": False}
         )
         Base.metadata.create_all(
-            bind=self.engine, tables=[DocumentaryProject.__table__, DocumentaryApproval.__table__]
+            bind=self.engine, tables=[t for n, t in Base.metadata.tables.items() if n.startswith("documentary_")]
         )
         self.db = sessionmaker(bind=self.engine)()
         self.svc = DocumentaryService(self.db)
@@ -65,14 +67,36 @@ class _ServiceCase(unittest.TestCase):
         except PermissionError:  # known Windows SQLite tmpdir race
             pass
 
+    def seed_for(self, state: str):
+        """Give gates 1-2 the real content their content checks demand."""
+        if state == "research_review" and not ResearchService(self.db).list_claims(self.p.id):
+            r = ResearchService(self.db)
+            src = r.add_source(self.p.id, SourceIn(title="Nguồn thử nghiệm"))
+            r.add_claim(self.p.id, ClaimIn(text="Khẳng định thử.", status="verified", source_ids=[src.id]))
+            self.svc.research_changed(self.p.id)
+        if state == "script_review" and ScriptService(self.db).current_row(self.p.id) is None:
+            scripts = ScriptService(self.db)
+            p = self.svc.get(self.p.id)
+            outline = scripts.generate_outline(p, "mock")
+            self.svc.save_script(p.id, outline, "mock")
+            self.svc.save_script(p.id, scripts.generate_script(p, "mock"), "mock")
+
     def go_to(self, state: str):
         """Walk the happy path, approving each gate when reached."""
         while self.svc.get(self.p.id).state != state:
             cur = self.svc.get(self.p.id).state
+            self.seed_for(cur)
             for g, (review, _) in sm.GATES.items():
                 if review == cur:
                     self.svc.approve(self.p.id, g)
             self.svc.advance(self.p.id)
+        self.seed_for(state)
+
+    def resave_script(self):
+        scripts = ScriptService(self.db)
+        row = scripts.current_row(self.p.id)
+        from app.modules.documentary.schemas import ScriptSave
+        self.svc.save_script(self.p.id, ScriptSave(outline=row.outline, sections=row.sections), "manual")
 
 
 class WorkflowTests(_ServiceCase):
@@ -118,9 +142,10 @@ class WorkflowTests(_ServiceCase):
     def test_editing_approved_script_invalidates_downstream(self):
         self.go_to("audio_ready")
         self.svc.approve(self.p.id, "narration_timing")
+        before = self.svc.get(self.p.id).script_version
         p = self.svc.bump_artifact(self.p.id, "script")
         self.assertEqual(p.state, "script_review")
-        self.assertEqual(p.script_version, 2)
+        self.assertEqual(p.script_version, before + 1)
         status = {g.gate: g.status for g in self.svc.gate_statuses(p)}
         self.assertEqual(status["research"], "approved")  # upstream untouched
         for g in ("script", "storyboard_assets", "narration_timing", "final"):
@@ -140,11 +165,12 @@ class WorkflowTests(_ServiceCase):
     def test_approval_history_is_append_only_and_records_version(self):
         self.go_to("script_review")
         self.svc.approve(self.p.id, "script")
-        self.svc.bump_artifact(self.p.id, "script")
+        self.resave_script()  # bumps to v+1 and revokes
         self.svc.approve(self.p.id, "script")
         rows = [r for r in self.svc.history(self.p.id) if r.gate == "script"]
+        v = self.svc.get(self.p.id).script_version
         self.assertEqual([(r.decision, r.artifact_version) for r in rows],
-                         [("approved", 1), ("revoked", 1), ("approved", 2)])
+                         [("approved", v - 1), ("revoked", v - 1), ("approved", v)])
 
     def test_rewind_revokes_gates_from_that_stage(self):
         self.go_to("audio_ready")

@@ -12,6 +12,7 @@ from app.api.v1.endpoints import (
     content_generate,
     dashboard,
     detect,
+    documentary_llm,  # noqa: F401 -- import registers the "llm" script provider
     downloads,
     emotions,
     final_qa,

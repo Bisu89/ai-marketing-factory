@@ -9,7 +9,9 @@ from sqlalchemy.orm import Session
 from app.core.exceptions import NotFoundError, ValidationError
 from app.modules.documentary import state_machine as sm
 from app.modules.documentary.models import DocumentaryApproval, DocumentaryProject
-from app.modules.documentary.schemas import GateStatus, ProjectCreate, ProjectDetail, ProjectOut
+from app.modules.documentary.research import ResearchService
+from app.modules.documentary.schemas import GateStatus, ProjectCreate, ProjectDetail, ProjectOut, ScriptSave
+from app.modules.documentary.script import ScriptService
 
 DEMO_TITLE = "[MẪU] Dự án demo — không phải nội dung lịch sử đã kiểm chứng"
 DEMO_TOPIC = (
@@ -143,10 +145,22 @@ class DocumentaryService:
             raise ValidationError(
                 f"Cổng '{gate}' chỉ được duyệt khi dự án ở trạng thái '{review_state}' (hiện tại: '{p.state}')."
             )
+        self._check_gate(p, gate)
         self._record(p, gate, "approved", note)
         self.db.commit()
         self.db.refresh(p)
         return p
+
+    def _check_gate(self, p: DocumentaryProject, gate: str) -> None:
+        """Content checks a gate needs beyond "you are in the right state"."""
+        if gate == "research":
+            issues = ResearchService(self.db).review(p.id)
+        elif gate == "script":
+            issues = ScriptService(self.db).review(p.id).issues
+        else:
+            return
+        if issues:
+            raise ValidationError(f"Chưa thể duyệt cổng '{gate}': " + "; ".join(i.message for i in issues))
 
     def reject(self, project_id: int, gate: str, note: str | None = None) -> DocumentaryProject:
         p = self.get(project_id)
@@ -219,3 +233,14 @@ class DocumentaryService:
         self.db.commit()
         self.db.refresh(p)
         return p
+
+    # -- research / script edits (each invalidates what depends on it) ---------
+    def research_changed(self, project_id: int) -> None:
+        self.bump_artifact(project_id, "research")
+
+    def save_script(self, project_id: int, data: ScriptSave, origin: str):
+        p = self.get(project_id)
+        scripts = ScriptService(self.db)
+        scripts._check_claim_refs(p.id, data)  # validate before bumping the version
+        p = self.bump_artifact(project_id, "script")
+        return scripts.save(p, data, origin)
