@@ -5,7 +5,7 @@ from collections import OrderedDict
 from pathlib import Path
 base = str(Path(__file__).resolve().parent.parent / 'scripts')
 EP = int(sys.argv[1]) if len(sys.argv) > 1 else 1
-KO_TITLES = {1: '쫓겨난 군인', 2: '죽음의 도시의 밤'}
+KO_TITLES = {1: '쫓겨난 군인', 2: '죽음의 도시의 밤', 3: '화살과 메스'}
 
 
 def read_pairs(name):

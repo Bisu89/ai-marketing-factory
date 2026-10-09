@@ -1,5 +1,8 @@
 # NGÀY TÀN — HANDOFF (đọc file này đầu tiên khi mở session mới)
 
+> **QUY TRÌNH MỚI (từ Tập 3, chủ series chốt 2026-10-09): CHỈ PHÁT HÀNH BẢN HÀN. Bản gốc viết thẳng bằng tiếng Hàn; bản Việt chỉ là bản DỊCH ĐỂ CHỦ SERIES DUYỆT, không dựng video VI nữa (tạm dừng).**
+> Cách làm mỗi tập mới: (1) soạn cốt truyện/lời đọc; (2) viết lời Hàn bằng *file kiểm tra đánh số* `scripts/ko_epN_check.txt` (+ `E{N}_` trong `ko_bookends_check.txt`), tối ưu độ dài ~1.500–1.700 từ Hàn (≈15–16 phút ở tốc độ 1.0; Tập 2 = 1.504 từ), ghép bằng `_tools/build_ko_md.py N` ra `scripts/epN_ko.md` (nhớ thêm tiêu đề vào `KO_TITLES`); (3) viết bản dịch Việt sát nghĩa `scripts/epN_review_vi.txt` (đoạn đánh dấu `[PNN]` khớp bản Hàn) để chủ series duyệt; (4) shot list/CSV ảnh bám theo đoạn P của bản Hàn; (5) dựng KO (`render_episode.py N ko force`, short: `... ko force short`). Các mục "VI" bên dưới là lịch sử Tập 1–2; Tập 3 trở đi KHÔNG làm file `epN_audiobook` VI để dựng (có thì chỉ là bản nháp ý tưởng). Từ vựng quái vật bản Hàn Tập 3: Thể Cuồng = 광폭체, Kẻ Hú = 비명체, Thể Phình = 팽창체, Kẻ Lang Thang = 떠돌이, Taeho gọi Areum "군인 아저씨" (bản Việt: "anh lính").
+
 Series zombie sinh tồn gốc, **ưu tiên bản tiếng Hàn (KO)**, bản Việt (VI) làm sau. Không có "Hệ Thống". Toàn bộ nhân vật chính là người trưởng thành.
 
 ## Trạng thái hiện tại
@@ -50,8 +53,8 @@ Kết quả Tập 1 (long, KO): project 163, render job 222, 11:47, 1080p, QA PA
 ## Tập 2: bản Hàn
 `scripts/ko_ep2_check.txt` (203 câu đánh số) + `E2_*` trong `ko_bookends_check.txt` → `python _tools/build_ko_md.py 2` → `scripts/ep2_ko.md`. Giữ đúng 57 đoạn của bản Việt v3 để dùng chung shot list Tập 2. Outro KO không nêu tên Tập 3 (Tập 3 chưa chốt). Chưa làm: short Tập 2 (lời + ảnh dọc), dựng thử Tập 2.
 
-## Tập 3 (kịch bản đã chốt)
-`scripts/ep3_audiobook_v2.txt` = bản của chủ series, đã chốt (v1 là nháp cũ của Claude, không dùng). Cốt truyện: mũi tên cứu Taeho, Areum chĩa cung, Jiwoo gãy cổ chân, xe tải + Kẻ Hú, khu y tế quận (Thể Phình tầng 4, người giao hàng bị cắn, ông Oh + thực tập sinh ở lại sân thượng), tin nhắn Minseo (ga Euljiro), trực thăng không hạ cánh. Mũi tên Areum còn 12. Lời đọc ~3.900 từ VI (Tập 2 ~2.400 ≈ 15 phút KO) nên có thể ~24 phút KO: cân nhắc cắt/tách trước khi dịch. Chưa làm: dịch KO, shot list/ảnh, short. Tên tập "Con Dao Mổ" chưa có cảnh dao mổ.
+## Tập 3 (kịch bản đã chốt, bản Hàn xong)
+Nguồn VI của chủ series: `scripts/ep3_audiobook_v2.txt` (đã chốt cốt truyện, ~3.900 từ VI — quá dài, đã tối ưu khi chuyển Hàn). **Bản Hàn chính thức: `scripts/ko_ep3_check.txt` → `scripts/ep3_ko.md`** (45 đoạn P01..P45, ~1.680 từ Hàn ≈ 16 phút; bản đầy đủ chưa cắt lưu ở `ko_ep3_check_full.txt`, ~2.170 từ). Bản dịch Việt để duyệt: `scripts/ep3_review_vi.txt`. Giới thiệu/kết KO: `E3_*` trong `ko_bookends_check.txt`; tiêu đề KO "화살과 메스" (Tên tập "Con Dao Mổ" chưa có cảnh dao mổ — chờ chủ series quyết). Cốt truyện: mũi tên cứu Taeho, Areum chĩa cung, Jiwoo gãy cổ chân, xe tải + Kẻ Hú, trạm y tế cũ (Thể Phình tầng 4, người giao hàng bị cắn, ông Oh + thực tập sinh ở lại sân thượng), tin nhắn Minseo (ga Euljiro), trực thăng không hạ cánh. Mũi tên Areum còn 12. Cắt bỏ khi tối ưu: các câu độc thoại/lặp ý, giữ nguyên mọi nhịp cốt truyện. Chưa làm: duyệt của chủ series, shot list/CSV ảnh, short, dựng.
 
 ## Quy tắc chủ series đã nhắc (đừng vi phạm)
 - Beat do chủ series viết (Tập 1, Tập 2): chỉ làm mượt câu chữ; ý mới đưa vào mục "đề xuất" riêng, không tự nhét vào cốt truyện.
