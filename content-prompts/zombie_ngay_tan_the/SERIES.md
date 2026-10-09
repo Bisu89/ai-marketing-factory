@@ -292,7 +292,7 @@ Năm người không quen nhau (trừ các cặp có sẵn: Jiwoo–Areum là ch
 - **Zombie xuất hiện:** Walker, Runner.
 - **Hình ảnh then chốt:** thành phố hỗn loạn và cháy nổ, trường học ban đêm, Jiwoo mắc kẹt trong phòng văn thư, bệnh viện quá tải, khu mua sắm mất điện, trung tâm bắn cung và Areum trên mái nhà.
 
-### TẬP 3 — "Mũi Tên Và Con Dao Mổ" (đêm sang rạng sáng Ngày 1)
+### TẬP 3 — "Mũi Tên Và Lời Hứa" (đêm sang rạng sáng Ngày 1)
 
 **Mục tiêu tập:** Areum và Yerin lần lượt gia nhập bằng thoả thuận, không bằng thiện cảm; giới thiệu Screamer và Bloater; bài toán thiếu y tế; mở nghi vấn Minseo.
 
