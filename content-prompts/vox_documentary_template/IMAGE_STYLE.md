@@ -1,4 +1,7 @@
-# Ảnh AI cho phim tài liệu — phong cách Baroque (lấy từ Biblical Figures) + chiến lược kết hợp
+# Ảnh AI cho phim tài liệu — ảnh đặt trong khung collage (Baroque hoặc poster) + chiến lược kết hợp
+
+> Phong cách dựng chuẩn là **collage** (`RULES.md` mục 8): ảnh được dán trên giấy rách có băng keo, nên ảnh 16:9 kiểu tranh sơn dầu Baroque (mục 2) hoặc ảnh poster collage
+> (nền màu phẳng, nhân vật cắt viền trắng, mảnh báo, băng keo; ví dụ prompt: `biblical-figures-prompts/vox/poster_test/STYLE.md`) đều dùng được. Ảnh màu → tắt "Ảnh đen trắng" khi render.
 
 Khối prompt gốc nằm ở `biblical-figures-prompts/_tools/bf_style.py` (`LONG_STYLE`, tiếng Anh, 16:9). Ở đây là bản **đã
 điều chỉnh cho phim lịch sử không tôn giáo**: bỏ các ràng buộc riêng của tranh tôn giáo (halo, tia sáng thần thánh), thay

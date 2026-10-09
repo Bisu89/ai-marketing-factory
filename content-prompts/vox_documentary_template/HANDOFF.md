@@ -61,7 +61,7 @@ backend/app/api/v1/endpoints/            # composition roots (được phép n�
   documentary_media.py · produced_videos.py (liệt kê render final trên trang Videos)
 backend/alembic/versions/0009…0015_documentary_*.py   (0015 = vá cột assigned_hash thiếu trên DB dev)
 remotion/src/                            # package Node riêng (remotion 4.0.534 ghim chính xác, zod 3.22.3)
-  schema.ts (manifest zod) · theme.ts + collage.tsx + presets.tsx (collage) · cinematic.tsx · Documentary.tsx · Root.tsx
+  schema.ts (manifest zod) · theme.ts + collage.tsx + presets.tsx (collage) · cinematic.tsx/poster.tsx (không còn trong UI) · Documentary.tsx · Root.tsx
 frontend/src/pages/DocumentaryListPage.tsx, DocumentaryProjectPage.tsx, documentary/*Tab.tsx   (tiếng Việt)
 frontend/src/api/documentary.ts
 content-prompts/vox_documentary_template/    # thư mục này: quy tắc, prompt, template, công cụ dựng tập
@@ -114,8 +114,8 @@ cd frontend && npm run dev                              # tsc kiểm tra: npx ts
 
 ## 7. Chủ đề hình ảnh
 - **Chốt: dùng `collage`** (xem bảng trạng thái). Mô tả `cinematic` dưới đây chỉ để tham khảo lịch sử.
-- `collage`: nền giấy, thẻ giấy rách, băng keo, highlight vàng, vòng đỏ (người dùng đánh giá "lởm").
-- `cinematic`: ảnh tràn khung + trôi chậm (hướng theo seed của cảnh), vignette, hạt phim; ảnh dọc → nền mờ + ảnh giữa;
+- `collage` (**chuẩn**): nền kraft có chấm, ảnh dán giấy rách + băng keo, dải chữ cắt dán đổi màu, số lớn, timeline, hộp bằng chứng + dấu "CÒN TRANH CÃI", phụ đề nền xám. Chi tiết quy ước: `RULES.md` mục 8. (Trước đây từng bị hiểu nhầm là "lởm" và bị thay bằng cinematic; đó là sai ý chủ kênh.)
+- `cinematic` (đã bỏ khỏi UI, chỉ để tham khảo): ảnh tràn khung + trôi chậm (hướng theo seed của cảnh), vignette, hạt phim; ảnh dọc → nền mờ + ảnh giữa;
   cảnh dữ liệu (năm, số lớn, bằng chứng, tiêu đề) trên nền da tối viền vàng, chữ serif vàng/kem. Phụ đề không hộp, bóng chữ.
 - 9 preset (đều có ở cả hai chủ đề): PhotoKenBurns, ArchivalPortrait, NewspaperStack, MapZoom, TimelineBuild, BigNumber,
   EvidenceBoard, HeadlineImpact, SplitComparison. Preset dữ liệu mà không suy ra được chữ ⇒ tự chuyển HeadlineImpact.

@@ -35,7 +35,7 @@ vox_documentary_template/
 8. **Ảnh:** điền `images` (Commons: `python tools/commons.py "truy vấn"` để tìm) → `episode_builder.py images ...`; cảnh còn thiếu ảnh ⇒ tab Ảnh → xuất CSV
    → tạo ảnh AI theo `IMAGE_STYLE.md` → nhập thư mục. **Tự đọc giấy phép từng ảnh rồi duyệt** → duyệt **cổng 3**.
 9. Tab **Giọng đọc & Timeline**: chia đoạn → ước tính → tạo audio (edge miễn phí) → ghép master → **nghe lại** → căn chỉnh → duyệt **cổng 4**.
-10. Tab **Render**: preview (chủ đề điện ảnh) → xem → bản cuối → soát `checklists/qc_checklist.md` → duyệt **cổng 5**. Lấy file ở trang **Videos**.
+10. Tab **Render**: preview 30–70 giây (chủ đề collage, tắt "Ảnh đen trắng" nếu ảnh màu) → xem → bản cuối → soát `checklists/qc_checklist.md` → duyệt **cổng 5**. Lấy file ở trang **Videos**.
 
 Công cụ **không duyệt thay bạn** ở bất kỳ cổng nào, và không tự đăng.
 

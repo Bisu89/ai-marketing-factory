@@ -31,7 +31,7 @@ Tập: ____________________  Dự án #: ____  Ngày bắt đầu: ________
 - [ ] **Tôi đã duyệt cổng 4**
 
 ## Cổng 5 — Video cuối
-- [ ] Đã xem preview ở chủ đề đã chọn (cinematic/collage)
+- [ ] Đã xem preview ở chủ đề đã chọn (collage; ảnh màu thì tắt đen trắng)
 - [ ] Bản cuối 1920×1080 đạt kiểm tra tự động (0 khung đen, có tiếng 48 kHz)
 - [ ] Đã soát `qc_checklist.md` bằng mắt/tai
 - [ ] **Tôi đã duyệt cổng 5**

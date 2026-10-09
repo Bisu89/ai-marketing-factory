@@ -10,7 +10,7 @@
 | Khung hình | 1920×1080, 30 fps, 16:9 |
 | Ngôn ngữ | Lời đọc tiếng Việt; giao diện/tài liệu tiếng Việt, code/API tiếng Anh |
 | Giọng | edge `vi-VN-NamMinhNeural` (miễn phí, có timestamp từng từ) hoặc ElevenLabs (trả phí, cần `voice_id`) |
-| Chủ đề hình ảnh | `cinematic` (mặc định) hoặc `collage` |
+| Chủ đề hình ảnh | **`collage`** (chuẩn, mặc định, duy nhất trong tab Render); xem mục 8 |
 | Nhạc/SFX | Mặc định tắt (chưa có tính năng) |
 | Cảnh | ~35–50 cảnh/10 phút; cắt theo câu/đoạn, **không** cắt theo số giây cố định |
 
@@ -23,6 +23,7 @@
 5. LLM **không** được đặt trạng thái `verified`.
 
 ## 3. Kịch bản (cổng 2)
+0. Máy dựng **bắt buộc đủ 7 phần** (hook, context, timeline, evidence, turning_point, consequences, conclusion); thiếu phần nào kiểm tra kịch bản báo `missing_section`.
 1. 7 phần theo thứ tự: **hook → bối cảnh → dòng thời gian → bằng chứng & cách giải thích khác nhau → bước ngoặt → hệ quả → kết luận & câu hỏi bỏ ngỏ**.
 2. Hook ≤ 3 giây, một câu mạnh, không giật gân vượt quá nguồn.
 3. Mỗi đoạn nêu sự kiện (`factual=true`) phải trích khẳng định; chỉ câu nối/dẫn dắt mới `factual=false`.
@@ -58,3 +59,16 @@
 - Công cụ **không tự đăng**. Khi đăng lên YouTube: khai báo nội dung tổng hợp/AI nếu có ảnh AI trông như thật về sự kiện/người thật
   (kiểm tra chính sách hiện hành), ghi nguồn + ghi công ảnh trong mô tả, tiêu đề không giật gân quá nguồn.
 - Rủi ro kênh: loạt video làm hàng loạt từ hình AI có thể bị coi là nội dung sản xuất đại trà — giữ ảnh tư liệu thật, nguồn rõ, lời dẫn độc đáo.
+
+## 8. Phong cách chuẩn: `collage` (chốt 2026-10-09, áp dụng cho mọi truyện kể)
+Nhìn như bản đầu của Constantinople: nền **kraft có chấm**, ảnh **dán trên giấy rách có băng keo** (nhãn ghi công/"AI illustration" ở góc), dải chữ **cắt dán
+từng chữ đổi màu nền** cho tiêu đề, **số lớn**, mốc thời gian, hộp bằng chứng có dấu "CÒN TRANH CÃI" khi khẳng định bị tranh cãi, phụ đề **nền xám** viền vàng.
+Quy ước:
+1. **Nhịp:** ảnh xen thẻ dữ liệu (khoảng 40–50% cảnh là thẻ như Constantinople); một chuỗi toàn ảnh trôi chậm là chưa đúng phong cách.
+2. **Thẻ dữ liệu** (`HeadlineImpact`, `EvidenceBoard`, `BigNumber`, `TimelineBuild`, `MapZoom`, `SplitComparison`): chữ cắt từ chính lời đọc. Tiếng Việt: bộ luật tự dò chữ chạy được; **tiếng Anh/ngôn ngữ khác: viết tay `scene_overrides`** (`texts: [[chữ, vai trò]]`).
+3. **Thẻ không có ảnh** hiện chữ ngay từ đầu cảnh (trừ mốc năm/số lớn, hiện theo lời đọc) để khỏi có khung trống.
+4. **Màu ảnh:** ảnh màu (AI, tranh màu) → **tắt "Ảnh đen trắng"** ở tab Render (mặc định tắt). Chỉ bật cho ảnh tư liệu cổ muốn đồng nhất tông xám.
+5. **Ảnh bên trong khung giấy:** ảnh tranh/ảnh AI 16:9 (Baroque của Biblical Figures hoặc ảnh kiểu poster collage — xem `IMAGE_STYLE.md`); ảnh dọc được xử lý nền mờ.
+6. Không nhúng chữ vào ảnh AI (chữ do code vẽ; riêng tiếng Việt vì AI hay hỏng dấu).
+7. Preview thử chỉ 30–70 giây (`seconds`), không render đủ tập.
+8. `cinematic` và `poster` đã bỏ khỏi UI; engine còn code nhưng **không dùng** nếu chủ kênh chưa nói. Không tự đổi phong cách.
