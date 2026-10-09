@@ -13,6 +13,7 @@ from app.api.v1.endpoints import (
     dashboard,
     detect,
     documentary_llm,  # noqa: F401 -- import registers the "llm" script provider
+    documentary_tts,  # noqa: F401 -- import registers the "edge" / "elevenlabs" TTS backends
     downloads,
     emotions,
     final_qa,

@@ -299,6 +299,34 @@ class FolderImportIn(BaseModel):
     folder: str = Field(min_length=1, max_length=1000)
 
 
+class NarrationSegmentOut(BaseModel):
+    segment_key: str
+    order_index: int
+    text: str
+    scene_keys: list[str]
+    status: str
+    is_current: bool
+    duration_sec: float | None
+    chars: int
+    provider: str | None
+    voice: str | None
+    cost_usd: float | None
+    has_word_stamps: bool
+    attempts: int
+    error: str | None
+    master_start: float | None
+    master_end: float | None
+
+
+class NarrationBackendIn(BaseModel):
+    backend: str = Field(min_length=1, max_length=40)
+
+
+class NarrationGenerateIn(NarrationBackendIn):
+    only: list[str] | None = None
+    confirm: bool = False
+
+
 class CsvExportOut(BaseModel):
     to_generate: int
     reused_from_cache: int

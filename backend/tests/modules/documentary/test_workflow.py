@@ -75,6 +75,8 @@ class _ServiceCase(unittest.TestCase):
             src = r.add_source(self.p.id, SourceIn(title="Nguồn thử nghiệm"))
             r.add_claim(self.p.id, ClaimIn(text="Khẳng định thử.", status="verified", source_ids=[src.id]))
             self.svc.research_changed(self.p.id)
+        if state == "audio_ready":
+            self.seed_narration()
         if state == "script_review" and ScriptService(self.db).current_row(self.p.id) is None:
             scripts = ScriptService(self.db)
             p = self.svc.get(self.p.id)
@@ -97,6 +99,13 @@ class _ServiceCase(unittest.TestCase):
             assets.approve(self.p.id, a.id)
             assets.assign(self.p.id, head.id, a.id)
         self.svc.storyboard_changed(self.p.id)
+
+    def seed_narration(self):
+        from app.modules.documentary.narration import NarrationService
+
+        self.svc.plan_narration(self.p.id)
+        self.svc.generate_narration(self.p.id, "mock", None, False)
+        NarrationService(self.db, self.root).build_master(self.p.id)
 
     def go_to(self, state: str):
         """Walk the happy path, approving each gate when reached."""

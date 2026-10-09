@@ -230,3 +230,7 @@ def script_review(project_id: int, db: Session = Depends(get_db)):
 from app.modules.documentary.router_storyboard import router as _storyboard_router  # noqa: E402
 
 router.include_router(_storyboard_router)
+
+from app.modules.documentary.router_narration import router as _narration_router  # noqa: E402
+
+router.include_router(_narration_router)

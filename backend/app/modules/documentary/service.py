@@ -11,6 +11,7 @@ from sqlalchemy.orm import Session
 from app.core.exceptions import NotFoundError, ValidationError
 from app.modules.documentary import state_machine as sm
 from app.modules.documentary.models import DocumentaryApproval, DocumentaryProject
+from app.modules.documentary.narration import NarrationService
 from app.modules.documentary.research import ResearchService
 from app.modules.documentary.schemas import GateStatus, ProjectCreate, ProjectDetail, ProjectOut, ScriptSave
 from app.modules.documentary.script import ScriptService
@@ -155,6 +156,11 @@ class DocumentaryService:
         self.db.refresh(p)
         return p
 
+    def _root(self) -> Path:
+        from app.core.config import get_settings
+
+        return self.library_root or Path(get_settings().library_dir)
+
     def _check_gate(self, p: DocumentaryProject, gate: str) -> None:
         """Content checks a gate needs beyond "you are in the right state"."""
         if gate == "research":
@@ -165,7 +171,9 @@ class DocumentaryService:
             from app.core.config import get_settings
             from app.modules.documentary.assets import AssetService
 
-            issues = AssetService(self.db, self.library_root or Path(get_settings().library_dir)).review(p.id)
+            issues = AssetService(self.db, self._root()).review(p.id)
+        elif gate == "narration_timing":
+            issues = NarrationService(self.db, self._root()).review(p.id)
         else:
             return
         if issues:
@@ -267,3 +275,20 @@ class DocumentaryService:
 
     def storyboard_changed(self, project_id: int) -> None:
         self.bump_artifact(project_id, "storyboard")
+
+    # -- narration (expensive: needs gate 3) ---------------------------------------
+    def plan_narration(self, project_id: int) -> dict:
+        self.get(project_id)
+        result = NarrationService(self.db, self._root()).plan(project_id)
+        if result["created"] or result["removed"]:
+            self.bump_artifact(project_id, "narration")
+        return result
+
+    def generate_narration(self, project_id: int, backend: str, only: list[str] | None, confirm: bool) -> dict:
+        p = self.get(project_id)
+        if "storyboard_assets" not in self.valid_gates(p):
+            raise ValidationError("Cần duyệt cổng storyboard_assets trước khi tạo audio (bước tốn chi phí).")
+        result = NarrationService(self.db, self._root()).generate(p, backend, only=only, confirm=confirm)
+        if result["generated"]:
+            self.bump_artifact(project_id, "narration")
+        return result

@@ -45,6 +45,7 @@ class ElevenLabsSettingsIn(BaseModel):
     similarity_boost: float | None = Field(default=None, ge=0, le=1)
     style: float | None = Field(default=None, ge=0, le=1)
     speed: float | None = Field(default=None, ge=0.7, le=1.2)
+    usd_per_1k_chars: float | None = Field(default=None, ge=0)
 
 
 class AIProviderIn(BaseModel):
@@ -97,6 +98,7 @@ def _elevenlabs_view(settings: Settings) -> dict:
         "similarity_boost": settings.elevenlabs_similarity_boost,
         "style": settings.elevenlabs_style,
         "speed": settings.elevenlabs_speed,
+        "usd_per_1k_chars": settings.elevenlabs_usd_per_1k_chars,
         "ready": bool(settings.elevenlabs_api_key and settings.elevenlabs_voice_id),
     }
 

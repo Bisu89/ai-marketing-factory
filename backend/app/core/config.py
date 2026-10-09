@@ -156,6 +156,9 @@ class Settings(BaseSettings):
     elevenlabs_similarity_boost: float = 0.75
     elevenlabs_style: float = 0.0
     elevenlabs_speed: float = 1.0
+    # USD per 1,000 characters for your ElevenLabs plan. No default on purpose:
+    # plans differ and a made-up price would make budget checks lie. None = cost unknown.
+    elevenlabs_usd_per_1k_chars: float | None = None
 
 
 

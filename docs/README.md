@@ -197,6 +197,7 @@ SQLite.
 163. [Documentary foundation](features/163-documentary-foundation.md) — Vox Documentary Factory Phase 1: project + 5 approval gates enforced by backend, ElevenLabs voice config, Remotion package
 164. [Documentary research & script](features/164-documentary-research-script.md) — manual sources/claims, 7-section script versions, mock + LLM providers, content-checked gates 1–2
 165. [Documentary storyboard & assets](features/165-documentary-storyboard-assets.md) — scenes with stable IDs, cost-ladder visual policy, asset registry + license checks, manual-image CSV export/import, gate 3
+166. [Documentary narration](features/166-documentary-narration.md) — per-segment TTS cache, edge/ElevenLabs/mock backends, usage ledger + budget/confirm, master audio, gate 4 audio checks
 
 ## Keeping this up to date
 

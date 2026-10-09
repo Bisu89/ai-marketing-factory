@@ -181,3 +181,55 @@ class DocumentaryProjectCounter(Base):
 
     project_id: Mapped[int] = mapped_column(ForeignKey("documentary_project.id"), primary_key=True)
     next_scene: Mapped[int] = mapped_column(Integer, nullable=False, default=1)
+    next_segment: Mapped[int] = mapped_column(Integer, nullable=False, default=1)
+
+
+class DocumentaryNarrationSegment(Base):
+    """One TTS request's worth of narration (a few scenes, roughly a
+    paragraph). `cache_key` records exactly which text+voice produced the
+    audio on disk, so an unchanged segment is never re-synthesised."""
+
+    __tablename__ = "documentary_narration_segment"
+    __table_args__ = (UniqueConstraint("project_id", "segment_key"),)
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    project_id: Mapped[int] = mapped_column(ForeignKey("documentary_project.id"), nullable=False, index=True)
+    segment_key: Mapped[str] = mapped_column(String, nullable=False)  # N001...
+    order_index: Mapped[int] = mapped_column(Integer, nullable=False)
+    text: Mapped[str] = mapped_column(Text, nullable=False)
+    text_hash: Mapped[str] = mapped_column(String, nullable=False)
+    scene_keys: Mapped[list] = mapped_column(JSON, nullable=False, default=list)
+    cache_key: Mapped[str | None] = mapped_column(String, nullable=True)
+    audio_path: Mapped[str | None] = mapped_column(String, nullable=True)
+    duration_sec: Mapped[float | None] = mapped_column(Float, nullable=True)
+    chars: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    provider: Mapped[str | None] = mapped_column(String, nullable=True)
+    voice: Mapped[str | None] = mapped_column(String, nullable=True)
+    cost_usd: Mapped[float | None] = mapped_column(Float, nullable=True)  # None = unknown, never a guessed 0
+    # Word timestamps handed back by the TTS provider itself (None when it has none).
+    word_stamps: Mapped[list | None] = mapped_column(JSON, nullable=True)
+    status: Mapped[str] = mapped_column(String, nullable=False, default="pending")  # pending | ready | failed
+    attempts: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    attempt_key: Mapped[str | None] = mapped_column(String, nullable=True)  # cache key the attempts count belongs to
+    error: Mapped[str | None] = mapped_column(Text, nullable=True)
+    master_start: Mapped[float | None] = mapped_column(Float, nullable=True)
+    master_end: Mapped[float | None] = mapped_column(Float, nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow, nullable=False)
+
+
+class DocumentaryUsage(Base):
+    """Append-only ledger of provider spend/usage, so regenerating a segment
+    never erases what the earlier attempt cost."""
+
+    __tablename__ = "documentary_usage"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    project_id: Mapped[int] = mapped_column(ForeignKey("documentary_project.id"), nullable=False, index=True)
+    kind: Mapped[str] = mapped_column(String, nullable=False)  # tts | alignment | ...
+    provider: Mapped[str] = mapped_column(String, nullable=False)
+    model: Mapped[str | None] = mapped_column(String, nullable=True)
+    ref: Mapped[str | None] = mapped_column(String, nullable=True)  # e.g. segment key
+    chars: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    cost_usd: Mapped[float | None] = mapped_column(Float, nullable=True)
+    ok: Mapped[bool] = mapped_column(Boolean, nullable=False, default=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow, nullable=False)
