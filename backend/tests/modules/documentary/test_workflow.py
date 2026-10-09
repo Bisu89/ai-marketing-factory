@@ -196,6 +196,75 @@ class WorkflowTests(_ServiceCase):
         self.seed_final_render()
         self.svc.approve(self.p.id, "final")
 
+    # -- export ---------------------------------------------------------------------------
+    def test_export_bundle_has_everything_and_marks_the_project_exported(self):
+        import hashlib
+        import json
+
+        from app.modules.documentary.models import DocumentaryAsset
+
+        self.go_to("render_preview")
+        # the licence changes the on-screen credit, so it must be set BEFORE the final render exists
+        a = self.db.query(DocumentaryAsset).filter_by(project_id=self.p.id).first()
+        a.origin, a.license, a.attribution, a.source_url = "archival", "CC BY-SA 4.0", "Ann — Wikimedia Commons", "https://example.org/f"
+        self.db.commit()
+        self.go_to("approved")
+        row = self.svc.export_project(self.p.id)
+        folder = Path(row.path)
+        self.assertEqual(self.svc.get(self.p.id).state, "exported")
+        self.assertTrue(folder.name.startswith("t_"))  # ASCII slug of the title
+        for name in ("video.mp4", "subtitles.srt", "credits.json", "credits.txt", "sources.json", "script.md", "timeline.json", "description.txt", "manifest.json"):
+            self.assertTrue((folder / name).is_file(), name)
+        self.assertEqual((folder / "video.mp4").read_bytes(), b"stub")  # copied, not re-encoded
+        manifest = json.loads((folder / "manifest.json").read_text(encoding="utf-8"))
+        for name, meta in manifest["files"].items():
+            self.assertEqual(hashlib.sha256((folder / name).read_bytes()).hexdigest(), meta["sha256"], name)
+        credits = json.loads((folder / "credits.json").read_text(encoding="utf-8"))
+        self.assertIn("CC BY-SA 4.0", [c["license"] for c in credits])
+        self.assertIn("https://example.org/f", (folder / "credits.txt").read_text(encoding="utf-8"))
+        sources = json.loads((folder / "sources.json").read_text(encoding="utf-8"))
+        self.assertTrue(sources["claims"] and sources["claims"][0]["source_ids"])
+        self.assertIn("[c", (folder / "script.md").read_text(encoding="utf-8"))
+        desc = (folder / "description.txt").read_text(encoding="utf-8")
+        self.assertIn("Chương:", desc)
+        self.assertIn("NGUỒN", desc)
+        self.assertEqual(desc.count("Nguồn thử nghiệm"), 1)  # one line per page, not per excerpt
+        codes = {w["code"] for w in row.warnings}
+        self.assertIn("licence_needs_review", codes)  # CC BY-SA is flagged, never silently accepted
+        self.assertIn("timing_unverified", codes)  # the seeded timeline is an estimate
+
+    def test_export_only_after_gate_five(self):
+        self.go_to("final_review")
+        with self.assertRaises(ValidationError):
+            self.svc.export_project(self.p.id)
+
+    def test_export_refused_when_data_changed_after_the_final_render(self):
+        from app.modules.documentary.models import DocumentaryScene
+
+        self.go_to("approved")
+        sc = self.db.query(DocumentaryScene).filter_by(project_id=self.p.id, order_index=1).one()
+        sc.on_screen_text = [{"text": "Đổi sau khi render", "role": "headline"}]
+        self.db.commit()
+        with self.assertRaises(ValidationError) as cm:
+            self.svc.export_project(self.p.id)
+        self.assertIn("render", str(cm.exception))
+
+    def test_a_second_export_gets_its_own_folder(self):
+        import time
+
+        self.go_to("approved")
+        first = self.svc.export_project(self.p.id)
+        time.sleep(1.1)
+        second = self.svc.export_project(self.p.id)  # state is 'exported' now; re-exporting is allowed
+        self.assertNotEqual(first.path, second.path)
+        self.assertTrue(Path(first.path).is_dir() and Path(second.path).is_dir())
+
+    def test_slug_is_ascii(self):
+        from app.modules.documentary.export import slug
+
+        self.assertEqual(slug("Constantinople 1453 — dự án chạy thử"), "constantinople_1453_du_an_chay_thu")
+        self.assertEqual(slug("???"), "documentary")
+
     def test_reject_blocks_advance(self):
         self.go_to("script_review")
         self.svc.reject(self.p.id, "script", "needs work")

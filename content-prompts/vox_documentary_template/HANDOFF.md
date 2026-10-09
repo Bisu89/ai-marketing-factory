@@ -31,10 +31,11 @@ kết hợp ảnh tư liệu)  4. `README.md` (làm một tập mới từng bư
 |---|---|
 | Phase 1–5 backend + giao diện + 5 cổng duyệt | **Xong, đã commit** (xem mục 9) |
 | Chủ đề hình ảnh | `collage` (giấy cắt dán) và **`cinematic`** (ảnh tràn khung, nền tối, chữ vàng — người dùng thấy collage "lởm", cinematic là mặc định trong UI) |
-| Dự án chạy thử thật | **Dự án #1 "Constantinople 1453"** trong DB thật (`backend/data/library.db`), trạng thái `approved`. Bản cuối collage 1920×1080 118.57s tại `backend/data/library/_documentary/project_1/render/job_5/output.mp4`; preview cinematic ở `job_6`. Chưa render **bản cuối** cinematic. |
+| Dự án chạy thử thật | **Dự án #1 "Constantinople 1453"** trong DB thật (`backend/data/library.db`), trạng thái `approved`. Bản cuối collage 1920×1080 118.57s tại `backend/data/library/_documentary/project_1/render/job_5/output.mp4`; preview cinematic ở `job_6`. Đã render **bản cuối cinematic** (job 7) và **xuất** thử (trạng thái `exported`; cổng 5 là duyệt thử của AI, người dùng chưa xem/nghe). |
 | Ảnh của dự án #1 | 4 ảnh miền công cộng + 1 ảnh **CC BY-SA 4.0 (Tường thành — cần thay trước khi dùng thương mại)**. Do tôi (AI) bấm duyệt khi chạy thử, **người dùng chưa tự duyệt** — xem `RULES.md` mục Ảnh |
 | Test | `pytest tests/modules/documentary` ≈ 170+ test pass (~3 phút); `npx tsc -b --noEmit` (frontend) và `npx tsc --noEmit` (remotion) sạch |
-| **Chưa làm** (Phase 6) | export (video+SRT+bản quyền ảnh+manifest), nhạc nền/ducking, SFX, bộ tài liệu theo brief gốc (README/SETUP/ARCHITECTURE/PROVIDERS/COSTS/TROUBLESHOOTING), chú thích ngữ cảnh cho cảnh timeline, đóng gói PyInstaller (`remotion/` + faster-whisper), prompt ảnh AI tự động theo từng cảnh |
+| Export (Phase 6, xong) | Tab **Xuất**: gói 9 file (video, SRT, credits, sources, script, timeline, description, manifest+SHA-256); ghi công/nhãn "Minh họa AI" tự động trên hình; chú thích ngữ cảnh cho năm trong cảnh timeline (feature 173) |
+| **Chưa làm** | nhạc nền/ducking + SFX, bộ tài liệu theo brief gốc (README/SETUP/ARCHITECTURE/PROVIDERS/COSTS/TROUBLESHOOTING), đóng gói PyInstaller (`remotion/` + faster-whisper), prompt ảnh AI tự động theo từng cảnh, tập thứ hai |
 
 ## 4. Kiến trúc (file map)
 
@@ -130,16 +131,14 @@ cd frontend && npm run dev                              # tsc kiểm tra: npx ts
 ## 9. Lịch sử commit (nhánh main)
 `eb4a686` nền tảng/state machine/ElevenLabs config · `7409e7e` nghiên cứu+kịch bản · `b025640` storyboard+ảnh+CSV ·
 `5448a33` giọng đọc/TTS/cache/master · `082c1c3` căn chỉnh/timeline/phụ đề · `f02cb8f` giao diện · `8948fc8` render Remotion/QC/tab Render ·
-`236d2af` sửa lỗi từ lần chạy thật · `cb2dafc` hiện trên trang Videos · (commit tiếp theo: chủ đề cinematic + template này).
+`236d2af` sửa lỗi từ lần chạy thật · `cb2dafc` hiện trên trang Videos · `c063a2f` chủ đề cinematic + template này · (tiếp theo: export + ghi công tự động, feature 173).
 
 ## 10. Việc tiếp theo (theo thứ tự đề xuất)
-1. **Export** (Phase 6): thư mục xuất gồm `video.mp4`, `subtitles.srt`, `credits.txt/json` (giấy phép+ghi công mọi ảnh),
-   `manifest.json`, `sources.json`; cổng 5 bắt buộc; trạng thái `exported`.
+1. ~~Export~~ (xong, feature 173).
 2. **Nhạc nền tùy chọn** (ducking dưới giọng) + SFX nhẹ; mặc định tắt.
-3. **Chú thích ngữ cảnh cho cảnh timeline** (năm 330/1204 hiện chỉ có con số) — lấy cụm từ quanh năm trong lời dẫn.
-4. **Nhãn "Minh họa AI"/ghi công tự động** theo `asset.origin` (ai_manual → "Minh họa AI").
+3. ~~Chú thích ngữ cảnh timeline~~ và 4. ~~nhãn ghi công/AI tự động~~ (xong, feature 173).
 5. Tập thứ hai trên chủ đề thật của người dùng (dùng `README.md`); thay ảnh CC BY-SA.
-6. Render **bản cuối cinematic** cho dự án #1 để so với collage.
+6. Người dùng **xem/nghe và tự duyệt** dự án #1 (hoặc thay ảnh CC BY-SA).
 7. Bộ tài liệu theo brief gốc (README/SETUP/ARCHITECTURE/PROVIDERS/COSTS/TROUBLESHOOTING) — tổng hợp từ file này + docs/features.
 8. Đóng gói PyInstaller: thêm `remotion/` và faster-whisper vào `AIContentLibrary.spec`.
 9. Gợi ý prompt ảnh AI theo cảnh bằng LLM (provider `llm`), vẫn xuất CSV cho người tạo tay.

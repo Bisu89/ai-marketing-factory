@@ -271,17 +271,18 @@ def _run_job(db: Session, root: Path, job: DocumentaryRenderJob) -> None:
         report = quality_check(db, job.project_id, out, expect, video_sec, params.seconds is None, narr_master)
         _log(log, "QC: " + json.dumps(report, ensure_ascii=False))
         ok = not report["issues"]
+        if ok and job.kind == "final":
+            ensure_thumbnail(out)
+            from app.modules.documentary.service import DocumentaryService
+
+            # A new final render supersedes any earlier final approval. Done BEFORE the job is reported
+            # as succeeded, so nobody can see "succeeded" next to a still-valid old approval.
+            DocumentaryService(db, library_root=root).bump_artifact(job.project_id, "render")
         _update(
             db, job, status="succeeded" if ok else "failed", phase="done", progress=1.0, output_path=str(out) if out.is_file() else None,
             duration_sec=report.get("duration_sec"), qc=report, finished_at=_now(),
             error=None if ok else "Video không đạt kiểm tra: " + "; ".join(i["message"] for i in report["issues"][:4]),
         )
-        if ok and job.kind == "final":
-            ensure_thumbnail(out)
-            from app.modules.documentary.service import DocumentaryService
-
-            # A new final render supersedes any earlier final approval.
-            DocumentaryService(db, library_root=root).bump_artifact(job.project_id, "render")
 
 
 _PROGRESS = re.compile(r"Rendered (\d+)/(\d+)")

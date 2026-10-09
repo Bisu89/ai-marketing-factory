@@ -245,3 +245,7 @@ router.include_router(_timeline_router)
 from app.modules.documentary.router_render import router as _render_router  # noqa: E402
 
 router.include_router(_render_router)
+
+from app.modules.documentary.router_export import router as _export_router  # noqa: E402
+
+router.include_router(_export_router)

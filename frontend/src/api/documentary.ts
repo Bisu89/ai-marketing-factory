@@ -410,6 +410,19 @@ export const cancelRender = (id: number, jobId: number) => apiPost<RenderJob>(`$
 export const renderLogUrl = (id: number, jobId: number) => `${config.apiBaseUrl}${P(id)}/render/jobs/${jobId}/log`;
 export const renderVideoUrl = (id: number, jobId: number) => `${config.apiBaseUrl}${P(id)}/render/jobs/${jobId}/video`;
 
+// ---- export --------------------------------------------------------------------------------
+export interface ExportBundle {
+  id: number;
+  render_job_id: number;
+  path: string;
+  files: Record<string, { sha256: string; bytes: number }>;
+  warnings: { code: string; message: string }[];
+  created_at: string;
+}
+export const exportProject = (id: number) => apiPost<ExportBundle>(`${P(id)}/export`);
+export const listExports = (id: number) => apiGet<ExportBundle[]>(`${P(id)}/exports`);
+export const openExportFolder = (id: number, exportId: number) => apiPost<void>(`${P(id)}/exports/${exportId}/open-folder`);
+
 // ---- ElevenLabs voice settings ---------------------------------------------------------
 export interface ElevenLabsSettings {
   has_api_key: boolean;

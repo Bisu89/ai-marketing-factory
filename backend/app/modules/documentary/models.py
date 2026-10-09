@@ -320,3 +320,17 @@ class DocumentaryRenderJob(Base):
     qc: Mapped[dict | None] = mapped_column(JSON, nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow, nullable=False)
     finished_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+
+
+class DocumentaryExport(Base):
+    """One export bundle written to disk (video + SRT + credits + sources + manifest)."""
+
+    __tablename__ = "documentary_export"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    project_id: Mapped[int] = mapped_column(ForeignKey("documentary_project.id"), nullable=False, index=True)
+    render_job_id: Mapped[int] = mapped_column(Integer, nullable=False)
+    path: Mapped[str] = mapped_column(String, nullable=False)
+    files: Mapped[dict] = mapped_column(JSON, nullable=False, default=dict)  # name -> {sha256, bytes}
+    warnings: Mapped[list] = mapped_column(JSON, nullable=False, default=list)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow, nullable=False)

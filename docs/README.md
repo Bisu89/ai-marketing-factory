@@ -206,6 +206,7 @@ SQLite.
 170. [Documentary real trial run](features/170-documentary-trial-run.md) — full pipeline on a real project (Constantinople 1453) in the live app; bugs only real data exposed (DB column drift, relative paths, planner regex, 96 kHz audio)
 171. [Documentary on the Videos page](features/171-documentary-in-videos-page.md) — final documentary renders listed with Factory renders (thumbnail, open folder, link back to the project)
 172. [Documentary cinematic theme + template](features/172-documentary-cinematic-theme-and-template.md) — full-bleed painting theme, `content-prompts/vox_documentary_template/` (HANDOFF, rules, image style, episode builder)
+173. [Documentary export + auto credits](features/173-documentary-export-and-auto-credits.md) — export bundle (video, SRT, credits, sources, script, manifest with hashes), automatic AI/attribution labels on screen, timeline context captions
 
 ## Keeping this up to date
 

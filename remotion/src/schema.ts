@@ -17,6 +17,8 @@ export const PRESET_NAMES = [
 
 export const textSchema = z.object({
   text: z.string().min(1),
+  // optional one-line context shown under a date (what happened then), cut from the narration
+  sub: z.string().nullable(),
   role: z.enum(["headline", "label", "date", "number", "caption"]),
   // Frame (relative to the scene start) at which this text should appear, anchored
   // to the moment the matching word is spoken when timestamps allow.

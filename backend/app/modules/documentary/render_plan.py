@@ -103,6 +103,23 @@ def proper_noun(narration: str) -> str | None:
     return " ".join(run) or None
 
 
+_CONNECTORS = {"năm", "vào", "từ", "đến", "tới", "trong", "khi", "lúc", "ngày", "tháng", "vào", "là"}
+
+
+def date_context(narration: str, start: int, end: int) -> str | None:
+    """The few words that say what happened at a year: the clause after it, else the clause before it
+    (minus dangling 'từ năm' connectors). Cut from the narration itself, never written."""
+    rest = re.split(r"[;:.!?…]", narration[end:], maxsplit=1)[0]  # to the end of the sentence
+    for clause in rest.split(","):  # first clause with real content ('1204, trong cuộc Thập tự chinh' skips the empty one)
+        words = clause.split()
+        if len(words) >= 2:
+            return " ".join(words[:7])
+    before = re.split(r"[,;:.!?…]", narration[:start])[-1].split()
+    while before and before[-1].lower().strip("()") in _CONNECTORS:
+        before.pop()
+    return " ".join(before[-7:]) or None
+
+
 def derive_texts(preset: str, narration: str, policy: StoryboardPolicy | None = None) -> list[dict]:
     """-> [{"text", "role", "anchor"}] where `anchor` is the narration words that should be
     spoken when the text appears (used to cue it). Only text found in the narration is used."""
@@ -116,7 +133,7 @@ def derive_texts(preset: str, narration: str, policy: StoryboardPolicy | None = 
             if y in seen or _UNIT_AFTER_YEAR.match(narration[m.end():]) or not (100 <= int(y) <= 2100):
                 continue
             seen.add(y)
-            out.append({"text": y, "role": "date", "anchor": y})
+            out.append({"text": y, "role": "date", "anchor": y, "sub": date_context(narration, m.start(), m.end())})
             if len(out) == 5:
                 break
     elif preset == "BigNumber":
@@ -180,6 +197,21 @@ def claim_status_for(claim_ids: list[int], statuses: dict[int, str]) -> str | No
     return "verified" if all(s == "verified" for s in have) else "unverified"
 
 
+def credit_text(origin: str, license_: str | None, attribution: str | None) -> str | None:
+    """On-screen credit an image needs: AI illustrations are labelled, attribution-licensed images credit
+    their author, public-domain / own images need none."""
+    if origin == "ai_manual":
+        return "Minh họa AI"
+    if origin != "archival":
+        return None
+    lic = (license_ or "").strip()
+    low = lic.lower()
+    if not lic or low.startswith("public domain") or "cc0" in low or low == "pd":
+        return None
+    artist = re.sub(r"\s*[—-]\s*Wikimedia Commons\s*$", "", attribution or "").strip()
+    return f"Ảnh: {artist} · {lic}" if artist else lic
+
+
 # -- manifest ---------------------------------------------------------------------------------------
 def remotion_source_hash() -> str:
     h = hashlib.sha256()
@@ -227,12 +259,18 @@ def build_manifest(db: Session, root: Path, project_id: int, params: RenderParam
         user_texts = [{"text": x["text"], "role": x["role"], "anchor": x["text"]} for x in (sc.on_screen_text or [])]
         texts = user_texts or derive_texts(sc.visual_preset, sc.narration_text)
         preset = sc.visual_preset if sc.visual_preset in PRESETS else "PhotoKenBurns"
+        if image is not None and preset in ("PhotoKenBurns", "ArchivalPortrait"):
+            role = "caption" if preset == "PhotoKenBurns" else "label"
+            if not any(x["role"] in ("caption", "label") for x in texts):  # never duplicate what the user typed
+                credit = credit_text(asset.origin, asset.license, asset.attribution)
+                if credit:
+                    texts = texts + [{"text": credit, "role": role, "anchor": ""}]
         if not texts and image is None and preset in DATA_PRESETS:
             # A timeline with no years / a big number with no number would be an empty frame:
             # show the narration's own opening phrase instead.
             preset, texts = "HeadlineImpact", derive_texts("HeadlineImpact", sc.narration_text)
         rows = [
-            {"text": x["text"], "role": x["role"], "cueFrame": min(dur - 1, cue_frame(x["anchor"], t.words, t.start, FPS, k))}
+            {"text": x["text"], "role": x["role"], "sub": x.get("sub"), "cueFrame": min(dur - 1, cue_frame(x["anchor"], t.words, t.start, FPS, k))}
             for k, x in enumerate(texts)
         ]
         scene_rows.append(

@@ -231,6 +231,7 @@ export function TimelineBuild({ scene }: PresetProps) {
             <div style={{ ...headlineStyle, fontSize: fit(d.text, 112, 8) }}>
               <Highlight delay={at + 6}>{d.text}</Highlight>
             </div>
+            {d.sub && <div style={{ marginTop: 14, fontFamily: FONTS.serif, fontStyle: "italic", fontSize: 34, lineHeight: 1.15, color: COLORS.inkSoft }}>{d.sub}</div>}
           </Appear>
         );
       })}

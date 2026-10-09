@@ -11,6 +11,7 @@ from sqlalchemy.orm import Session
 from app.core.exceptions import NotFoundError, ValidationError
 from app.modules.documentary import state_machine as sm
 from app.modules.documentary.models import DocumentaryApproval, DocumentaryProject
+from app.modules.documentary.export import ExportService
 from app.modules.documentary.narration import NarrationService
 from app.modules.documentary.render import RenderService
 from app.modules.documentary.render_plan import RenderParams
@@ -304,3 +305,13 @@ class DocumentaryService:
         if "narration_timing" not in self.valid_gates(p):
             raise ValidationError("Cần duyệt cổng narration_timing (cổng 4) trước khi render.")
         return RenderService(self.db, self._root()).start(project_id, params)
+
+    # -- export (needs gate 5) ----------------------------------------------------------
+    def export_project(self, project_id: int):
+        p = self.get(project_id)
+        if p.state not in ("approved", "exported"):
+            raise ValidationError("Chỉ xuất được khi dự án đã duyệt cổng 5 (trạng thái 'Đã duyệt').")
+        row = ExportService(self.db, self._root()).export(p)
+        if p.state == "approved":
+            self.advance(project_id)  # approved -> exported (re-checks that the final gate is valid)
+        return row

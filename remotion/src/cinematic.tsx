@@ -210,12 +210,22 @@ export function CineTimeline({ scene }: PresetProps) {
   return (
     <Frame>
       <div style={{ position: "absolute", left: 160, top: 536, width: 1600 * draw, height: 3, background: CINE.gold }} />
-      {dates.map((d, i) => (
-        <Fade key={i} at={Math.max(d.cueFrame, 20 + i * 9)} style={{ position: "absolute", left: xs[i] - 200, top: i % 2 === 0 ? 300 : 580, width: 400, textAlign: "center", fontFamily: CINE.serif, fontWeight: 700, fontSize: fit(d.text, 120, 8), color: CINE.gold }}>
-          {d.text}
-          <div style={{ position: "absolute", left: 188, top: i % 2 === 0 ? 150 : -45, width: 24, height: 24, borderRadius: 24, background: CINE.parchment, border: `4px solid ${CINE.gold}` }} />
-        </Fade>
-      ))}
+      {dates.map((d, i) => {
+        const above = i % 2 === 0;
+        const at = Math.max(d.cueFrame, 20 + i * 9);
+        return (
+          <div key={i}>
+            {/* year + context sit on one side of the line (above: bottom-anchored to it), the ring marks the line itself */}
+            <Fade at={at} style={{ position: "absolute", left: xs[i] - 220, width: 440, textAlign: "center", ...(above ? { bottom: 1080 - 506 } : { top: 570 }) }}>
+              <div style={{ fontFamily: CINE.serif, fontWeight: 700, fontSize: fit(d.text, 120, 8), color: CINE.gold, lineHeight: 1 }}>{d.text}</div>
+              {d.sub && <div style={{ marginTop: 12, fontFamily: CINE.serif, fontStyle: "italic", fontSize: 32, lineHeight: 1.15, color: CINE.cream, opacity: 0.9 }}>{d.sub}</div>}
+            </Fade>
+            <Fade at={at} style={{ position: "absolute", left: xs[i] - 12, top: 525, width: 24, height: 24, borderRadius: 24, background: CINE.parchment, border: `4px solid ${CINE.gold}` }}>
+              <span />
+            </Fade>
+          </div>
+        );
+      })}
       {notes.map((n, i) => (
         <Fade key={`n${i}`} at={Math.max(n.cueFrame, 30)} style={{ position: "absolute", left: 160, bottom: 190 + i * 64, fontFamily: CINE.serif, fontStyle: "italic", fontSize: 40, color: CINE.cream }}>
           {n.text}

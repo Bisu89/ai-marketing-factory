@@ -19,7 +19,9 @@ from app.modules.documentary.render_plan import (
     RenderParams,
     build_manifest,
     claim_status_for,
+    credit_text,
     cue_frame,
+    date_context,
     derive_texts,
     proper_noun,
 )
@@ -55,6 +57,21 @@ class DeriveTextTests(unittest.TestCase):
             self.assertIn(o["text"].rstrip("…"), narr)  # only text already in the narration
         long = "Một câu rất dài " * 20 + "."
         self.assertTrue(derive_texts("NewspaperStack", long)[0]["text"].endswith("…"))
+
+    def test_dates_carry_the_words_around_them(self):
+        n = "Constantinople là kinh đô của đế quốc từ năm 330. Suốt mười một thế kỷ, thành phố bị bao vây, nhưng chỉ bị chiếm vào năm 1204, trong cuộc Thập tự chinh thứ tư."
+        out = derive_texts("TimelineBuild", n)
+        self.assertEqual([(o["text"], o["sub"]) for o in out], [("330", "Constantinople là kinh đô của đế quốc"), ("1204", "trong cuộc Thập tự chinh thứ tư")])
+        for o in out:
+            self.assertIn(o["sub"], n)  # only words that are in the narration
+        self.assertIsNone(date_context("1453.", 0, 4))
+
+    def test_credit_text_policy(self):
+        self.assertEqual(credit_text("ai_manual", None, None), "Minh họa AI")
+        self.assertIsNone(credit_text("archival", "Public domain", "Bellini — Wikimedia Commons"))
+        self.assertIsNone(credit_text("archival", "CC0", "X"))
+        self.assertIsNone(credit_text("imported", None, None))
+        self.assertEqual(credit_text("archival", "CC BY-SA 4.0", "Peter Riemann — Wikimedia Commons"), "Ảnh: Peter Riemann · CC BY-SA 4.0")
 
     def test_presets_without_derivable_text_stay_clean(self):
         self.assertEqual(derive_texts("PhotoKenBurns", "Bất kỳ lời dẫn nào."), [])
@@ -165,6 +182,39 @@ class ManifestTests(ManifestCase):
         with patch.object(render_mod, "_execute"):
             with self.assertRaises(ValidationError):
                 RenderService(self.db, self.root).start(self.p.id, self.params(theme="neon"))
+
+    def _photo_scene(self):
+        for sc in self.db.query(DocumentaryScene).filter_by(project_id=self.p.id).order_by(DocumentaryScene.order_index):
+            if sc.visual_preset == "PhotoKenBurns" and sc.asset_id:
+                return sc
+        self.fail("no photo scene with an asset")
+
+    def test_ai_images_are_labelled_and_attribution_licences_are_credited_automatically(self):
+        self.timeline_ready()
+        sc = self._photo_scene()
+        asset = self.assets.get(self.p.id, sc.asset_id)
+        asset.origin = "ai_manual"
+        self.db.commit()
+        row = {r["key"]: r for r in self.manifest()[0]["scenes"]}[sc.scene_key]
+        self.assertIn(("Minh họa AI", "caption"), [(t["text"], t["role"]) for t in row["texts"]])
+        asset.origin, asset.license, asset.attribution = "archival", "CC BY-SA 4.0", "Ann Author — Wikimedia Commons"
+        self.db.commit()
+        row = {r["key"]: r for r in self.manifest()[0]["scenes"]}[sc.scene_key]
+        self.assertIn("Ảnh: Ann Author · CC BY-SA 4.0", [t["text"] for t in row["texts"]])
+        asset.license = "Public domain"
+        self.db.commit()
+        row = {r["key"]: r for r in self.manifest()[0]["scenes"]}[sc.scene_key]
+        self.assertEqual([t for t in row["texts"] if t["role"] in ("caption", "label")], [])  # nothing owed
+
+    def test_auto_credit_never_duplicates_what_the_user_typed(self):
+        self.timeline_ready()
+        sc = self._photo_scene()
+        asset = self.assets.get(self.p.id, sc.asset_id)
+        asset.origin = "ai_manual"
+        sc.on_screen_text = [{"text": "Tranh minh họa của tôi", "role": "caption"}]
+        self.db.commit()
+        row = {r["key"]: r for r in self.manifest()[0]["scenes"]}[sc.scene_key]
+        self.assertEqual([t["text"] for t in row["texts"]], ["Tranh minh họa của tôi"])
 
     def test_user_text_overrides_derived_text(self):
         self.timeline_ready()
