@@ -63,8 +63,8 @@ Chế độ: **NGƯỜI KỂ** (sự kiện của truyện, gắn nguồn nguyê
 
 ## Bình luận và câu hỏi mở (`conclusion`)
 
-- **[BÌNH LUẬN CỦA CHỦ KÊNH]** [BÌNH LUẬN NHÁP, chủ kênh viết lại bằng giọng của mình] Theo mình, bi kịch không nằm ở chỗ Chí Phèo không đủ tốt để lương thiện. Nó nằm ở chỗ lương thiện cần người khác công nhận. Bá Kiến chỉ cho phép thứ lương thiện có lợi cho ông. Bà cô chỉ cho phép thứ lương thiện của người có gia đình. Còn vết sẹo trên mặt hắn thì không ai xóa được.
+- **[BÌNH LUẬN CỦA CHỦ KÊNH]** Theo mình, bi kịch không nằm ở chỗ Chí Phèo không đủ tốt để lương thiện. Nó nằm ở chỗ lương thiện cần người khác công nhận. Bá Kiến chỉ cho phép thứ lương thiện có lợi cho ông. Bà cô chỉ cho phép thứ lương thiện của người có gia đình. Còn vết sẹo trên mặt hắn thì không ai xóa được.  _(BÌNH LUẬN NHÁP: chủ kênh viết lại bằng giọng của mình)_
 - **[BÌNH LUẬN CỦA CHỦ KÊNH]** Có một cách đọc khác, và mình thấy nó cũng đúng: chính Chí Phèo là người cầm dao. Hoàn cảnh giải thích, nhưng không xóa lựa chọn. Hai cách đọc ấy không loại trừ nhau, và có lẽ Nam Cao muốn ta giữ cả hai.
 - **[BÌNH LUẬN CỦA CHỦ KÊNH]** Nếu một người từng làm điều sai muốn quay lại, xã hội cần cho họ điều gì ngoài lời tha thứ? Bạn nghĩ sao?
 
-_27 đoạn, 782 từ (≈ 5.6 phút với giọng edge; đo lại bằng audio thật)._
+_27 đoạn, 771 từ (≈ 5.5 phút với giọng edge; đo lại bằng audio thật)._

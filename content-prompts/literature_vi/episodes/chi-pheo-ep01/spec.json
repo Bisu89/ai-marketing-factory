@@ -461,7 +461,7 @@
    "heading": "Bình luận và câu hỏi mở",
    "paragraphs": [
     {
-     "text": "[BÌNH LUẬN NHÁP, chủ kênh viết lại bằng giọng của mình] Theo mình, bi kịch không nằm ở chỗ Chí Phèo không đủ tốt để lương thiện. Nó nằm ở chỗ lương thiện cần người khác công nhận. Bá Kiến chỉ cho phép thứ lương thiện có lợi cho ông. Bà cô chỉ cho phép thứ lương thiện của người có gia đình. Còn vết sẹo trên mặt hắn thì không ai xóa được.",
+     "text": "Theo mình, bi kịch không nằm ở chỗ Chí Phèo không đủ tốt để lương thiện. Nó nằm ở chỗ lương thiện cần người khác công nhận. Bá Kiến chỉ cho phép thứ lương thiện có lợi cho ông. Bà cô chỉ cho phép thứ lương thiện của người có gia đình. Còn vết sẹo trên mặt hắn thì không ai xóa được.",
      "claims": [],
      "factual": false
     },
@@ -478,7 +478,123 @@
    ]
   }
  ],
- "scene_overrides": {},
+ "scene_overrides": {
+  "S002": {
+   "preset": "HeadlineImpact",
+   "texts": [
+    [
+     "tao muốn làm người lương thiện",
+     "headline"
+    ]
+   ]
+  },
+  "S004": {
+   "preset": "TimelineBuild",
+   "texts": [
+    [
+     "1941",
+     "date"
+    ]
+   ]
+  },
+  "S008": {
+   "preset": "EvidenceBoard",
+   "texts": [
+    [
+     "Mỗi người nói một cách",
+     "caption"
+    ]
+   ]
+  },
+  "S010": {
+   "preset": "PhotoKenBurns",
+   "texts": []
+  },
+  "S011": {
+   "preset": "PhotoKenBurns",
+   "texts": []
+  },
+  "S012": {
+   "preset": "PhotoKenBurns",
+   "texts": []
+  },
+  "S013": {
+   "preset": "EvidenceBoard",
+   "texts": [
+    [
+     "Chí Phèo không anh hùng, nhưng liều",
+     "caption"
+    ]
+   ]
+  },
+  "S014": {
+   "preset": "HeadlineImpact",
+   "texts": [
+    [
+     "người mà ai cũng sợ",
+     "headline"
+    ]
+   ]
+  },
+  "S015": {
+   "preset": "PhotoKenBurns",
+   "texts": []
+  },
+  "S016": {
+   "preset": "HeadlineImpact",
+   "texts": [
+    [
+     "cứ để họ sợ",
+     "headline"
+    ]
+   ]
+  },
+  "S018": {
+   "preset": "HeadlineImpact",
+   "texts": [
+    [
+     "hối hận về tội ác khi không đủ sức mà ác nữa",
+     "headline"
+    ]
+   ]
+  },
+  "S021": {
+   "preset": "HeadlineImpact",
+   "texts": [
+    [
+     "xứng đôi",
+     "headline"
+    ]
+   ]
+  },
+  "S022": {
+   "preset": "EvidenceBoard",
+   "texts": [
+    [
+     "ai lại đi lấy thằng Chí Phèo",
+     "caption"
+    ]
+   ]
+  },
+  "S025": {
+   "preset": "HeadlineImpact",
+   "texts": [
+    [
+     "ai cho tao lương thiện?",
+     "headline"
+    ]
+   ]
+  },
+  "S035": {
+   "preset": "HeadlineImpact",
+   "texts": [
+    [
+     "Bạn nghĩ sao?",
+     "headline"
+    ]
+   ]
+  }
+ },
  "images": [],
  "_notes": "scene_overrides và images để trống: mã cảnh S### chỉ có sau bước storyboard; thêm thẻ chữ (HeadlineImpact/EvidenceBoard) và ảnh theo characters.md + image_prompts.md. Đoạn BÌNH LUẬN là nháp của chủ kênh."
 }

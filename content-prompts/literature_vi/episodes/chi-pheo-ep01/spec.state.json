@@ -1,0 +1,30 @@
+{
+ "project_id": 3,
+ "sources": {
+  "open": 26,
+  "pub": 27,
+  "birth": 28,
+  "prison": 29,
+  "bakien": 30,
+  "thino": 31,
+  "bacô": 32,
+  "end": 33
+ },
+ "claims": {
+  "open": 40,
+  "pub": 41,
+  "birth": 42,
+  "canh": 43,
+  "prison": 44,
+  "return": 45,
+  "gate": 46,
+  "bakien": 47,
+  "sorrow": 48,
+  "porridge": 49,
+  "pair": 50,
+  "aunt": 51,
+  "wish": 52,
+  "kill": 53,
+  "after": 54
+ }
+}
