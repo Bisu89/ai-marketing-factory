@@ -279,7 +279,7 @@ export function EvidenceBoard({ scene }: PresetProps) {
   const cards = scene.texts.slice(0, 4);
   const stamp = useEnter(40, 10);
   // Fewer cards => bigger cards and bigger type, so one sentence never floats tiny in an empty board.
-  const dim = cards.length === 1 ? { w: 1120, h: 470, font: 72, max: 60 } : cards.length === 2 ? { w: 780, h: 380, font: 62, max: 46 } : { w: 700, h: 330, font: 56, max: 40 };
+  const dim = cards.length === 1 ? { w: 1180, h: 520, font: 96, max: 60 } : cards.length === 2 ? { w: 780, h: 380, font: 62, max: 46 } : { w: 700, h: 330, font: 56, max: 40 };
   const LAYOUTS: Record<number, { x: number; y: number }[]> = {
     0: [],
     1: [{ x: 400, y: 290 }],
@@ -304,7 +304,7 @@ export function EvidenceBoard({ scene }: PresetProps) {
       {cards.map((t, i) => (
         <Appear key={i} at={Math.max(t.cueFrame, i * MOTION.stagger)} style={{ position: "absolute", left: 0, top: 0 }}>
           <PaperCard seed={`${scene.key}-${i}`} rotate={rots[i]} style={{ left: pos[i].x, top: pos[i].y, width: dim.w, height: dim.h }} jitter={0.8}>
-            <div style={{ padding: "52px 44px", fontFamily: FONTS.serif, fontWeight: 700, fontSize: fitBox(t.text, dim.w, dim.h, dim.font), color: COLORS.ink, lineHeight: 1.18 }}>{t.text}</div>
+            <div style={{ boxSizing: "border-box", width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center", padding: "44px 48px", fontFamily: FONTS.serif, fontWeight: 700, fontSize: fitBox(t.text, dim.w, dim.h, dim.font), color: COLORS.ink, lineHeight: 1.18 }}>{t.text}</div>
           </PaperCard>
           <div style={{ position: "absolute", left: pins[i].x - 14, top: pins[i].y - 14, width: 28, height: 28, borderRadius: 28, background: COLORS.red, boxShadow: `0 4px 6px ${COLORS.shadow}` }} />
         </Appear>
@@ -368,7 +368,7 @@ export function SplitComparison({ scene, grayscale }: PresetProps) {
         <Halftone opacity={0.12} />
         {b && (
           <Appear at={Math.max(b.cueFrame, 24)} style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", padding: 60, textAlign: "center" }}>
-            <div style={{ ...headlineStyle, fontSize: fit(b.text, 96, 16) }}>
+            <div style={{ ...headlineStyle, fontSize: fit(b.text, 110, 14), textAlign: "center" }}>
               <Highlight delay={Math.max(b.cueFrame, 24) + 8}>{b.text}</Highlight>
             </div>
           </Appear>
