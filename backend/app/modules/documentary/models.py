@@ -297,3 +297,26 @@ class DocumentarySubtitle(Base):
     text: Mapped[str] = mapped_column(Text, nullable=False)
     scene_key: Mapped[str | None] = mapped_column(String, nullable=True)
     source: Mapped[str] = mapped_column(String, nullable=False)
+
+
+class DocumentaryRenderJob(Base):
+    """One Remotion render + ffmpeg mux. `input_hash` covers everything that affects
+    the pixels or sound, so an identical request reuses the finished file."""
+
+    __tablename__ = "documentary_render_job"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    project_id: Mapped[int] = mapped_column(ForeignKey("documentary_project.id"), nullable=False, index=True)
+    kind: Mapped[str] = mapped_column(String, nullable=False)  # preview | final
+    status: Mapped[str] = mapped_column(String, nullable=False, default="queued")  # queued|running|succeeded|failed|cancelled
+    phase: Mapped[str | None] = mapped_column(String, nullable=True)
+    progress: Mapped[float] = mapped_column(Float, nullable=False, default=0.0)
+    input_hash: Mapped[str] = mapped_column(String, nullable=False, index=True)
+    params: Mapped[dict] = mapped_column(JSON, nullable=False, default=dict)
+    output_path: Mapped[str | None] = mapped_column(String, nullable=True)
+    log_path: Mapped[str | None] = mapped_column(String, nullable=True)
+    error: Mapped[str | None] = mapped_column(Text, nullable=True)
+    duration_sec: Mapped[float | None] = mapped_column(Float, nullable=True)
+    qc: Mapped[dict | None] = mapped_column(JSON, nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow, nullable=False)
+    finished_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)

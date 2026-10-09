@@ -200,6 +200,7 @@ SQLite.
 166. [Documentary narration](features/166-documentary-narration.md) — per-segment TTS cache, edge/ElevenLabs/mock backends, usage ledger + budget/confirm, master audio, gate 4 audio checks
 167. [Documentary alignment & timeline](features/167-documentary-alignment-timeline.md) — script-to-audio word alignment (TTS stamps / local Whisper / flagged estimate), contiguous scene timeline, subtitles + SRT, manual boundary fixes, gate 4
 168. [Documentary UI](features/168-documentary-ui.md) — Vietnamese pages for projects, gates, research, script, storyboard, image contact sheet, narration/timeline, ElevenLabs settings
+169. [Documentary render](features/169-documentary-render.md) — 9 Remotion collage presets on real images, timeline-driven manifest, render jobs with cache/cancel, ffmpeg mux, ffprobe + black-frame QC by scene, gate 5
 
 ## Keeping this up to date
 

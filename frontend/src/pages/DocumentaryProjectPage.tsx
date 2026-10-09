@@ -10,6 +10,7 @@ import { ScriptTab } from "./documentary/ScriptTab";
 import { StoryboardTab } from "./documentary/StoryboardTab";
 import { AssetsTab } from "./documentary/AssetsTab";
 import { NarrationTab } from "./documentary/NarrationTab";
+import { RenderTab } from "./documentary/RenderTab";
 import { VoiceSettingsTab } from "./documentary/VoiceSettingsTab";
 import "./documentary/documentary.css";
 
@@ -20,6 +21,7 @@ const TABS = [
   { id: "storyboard", label: "Storyboard" },
   { id: "assets", label: "Ảnh" },
   { id: "narration", label: "Giọng đọc & Timeline" },
+  { id: "render", label: "Render" },
   { id: "voice", label: "Cài đặt giọng" },
 ] as const;
 type TabId = (typeof TABS)[number]["id"];
@@ -88,6 +90,7 @@ export function DocumentaryProjectPage() {
       {tab === "storyboard" && <StoryboardTab key={project.id} {...props} />}
       {tab === "assets" && <AssetsTab key={project.id} {...props} />}
       {tab === "narration" && <NarrationTab key={project.id} {...props} />}
+      {tab === "render" && <RenderTab key={project.id} {...props} />}
       {tab === "voice" && <VoiceSettingsTab />}
     </div>
   );

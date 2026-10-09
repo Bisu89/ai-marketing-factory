@@ -12,6 +12,8 @@ from app.core.exceptions import NotFoundError, ValidationError
 from app.modules.documentary import state_machine as sm
 from app.modules.documentary.models import DocumentaryApproval, DocumentaryProject
 from app.modules.documentary.narration import NarrationService
+from app.modules.documentary.render import RenderService
+from app.modules.documentary.render_plan import RenderParams
 from app.modules.documentary.research import ResearchService
 from app.modules.documentary.schemas import GateStatus, ProjectCreate, ProjectDetail, ProjectOut, ScriptSave
 from app.modules.documentary.script import ScriptService
@@ -173,6 +175,8 @@ class DocumentaryService:
             from app.modules.documentary.assets import AssetService
 
             issues = AssetService(self.db, self._root()).review(p.id)
+        elif gate == "final":
+            issues = RenderService(self.db, self._root()).final_review(p.id).issues
         elif gate == "narration_timing":
             issues = TimelineService(self.db, self._root()).review(p.id).issues
         else:
@@ -293,3 +297,10 @@ class DocumentaryService:
         if result["generated"]:
             self.bump_artifact(project_id, "narration")
         return result
+
+    # -- render (needs gate 4) ------------------------------------------------------
+    def start_render(self, project_id: int, params: RenderParams):
+        p = self.get(project_id)
+        if "narration_timing" not in self.valid_gates(p):
+            raise ValidationError("Cần duyệt cổng narration_timing (cổng 4) trước khi render.")
+        return RenderService(self.db, self._root()).start(project_id, params)

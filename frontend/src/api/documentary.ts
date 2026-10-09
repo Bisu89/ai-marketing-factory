@@ -78,6 +78,7 @@ export function getGateReview(id: number, gate: string): Promise<Review> {
     script: "script/review",
     storyboard_assets: "assets/review",
     narration_timing: "timeline/review",
+    final: "render/review",
   };
   const p = path[gate];
   if (!p) return Promise.resolve({ ok: true, issues: [], warnings: [] });
@@ -370,6 +371,44 @@ export const clearSceneStart = (id: number, sceneKey: string) =>
 export const srtUrl = (id: number) => `${config.apiBaseUrl}${P(id)}/subtitles.srt`;
 export const csvDownloadUrl = (id: number) => `${config.apiBaseUrl}${P(id)}/images/export-csv/download`;
 
+// ---- render ------------------------------------------------------------------------------
+export interface QcItem {
+  code: string;
+  message: string;
+  scene?: string;
+  start?: number;
+  end?: number;
+}
+export interface RenderJob {
+  id: number;
+  kind: "preview" | "final";
+  status: "queued" | "running" | "succeeded" | "failed" | "cancelled";
+  phase: string | null;
+  progress: number;
+  params: { scale: number; seconds: number | null; burn_subtitles: boolean; grayscale: boolean; normalize_audio: boolean };
+  error: string | null;
+  duration_sec: number | null;
+  qc: { ok: boolean; issues: QcItem[]; warnings: QcItem[]; width: number | null; height: number | null; has_audio: boolean; black_intervals: number } | null;
+  has_output: boolean;
+  created_at: string;
+  finished_at: string | null;
+  reused: boolean;
+}
+export interface RenderRequest {
+  kind: "preview" | "final";
+  scale?: number;
+  seconds?: number | null;
+  burn_subtitles?: boolean;
+  normalize_audio?: boolean;
+}
+export const renderPreflight = (id: number) => apiGet<Review>(`${P(id)}/render/preflight`);
+export const renderTools = () => apiGet<Record<string, boolean>>(`${B}/render-tools`);
+export const startRender = (id: number, b: RenderRequest) => apiPost<RenderJob>(`${P(id)}/render`, b);
+export const listRenderJobs = (id: number) => apiGet<RenderJob[]>(`${P(id)}/render/jobs`);
+export const cancelRender = (id: number, jobId: number) => apiPost<RenderJob>(`${P(id)}/render/jobs/${jobId}/cancel`);
+export const renderLogUrl = (id: number, jobId: number) => `${config.apiBaseUrl}${P(id)}/render/jobs/${jobId}/log`;
+export const renderVideoUrl = (id: number, jobId: number) => `${config.apiBaseUrl}${P(id)}/render/jobs/${jobId}/video`;
+
 // ---- ElevenLabs voice settings ---------------------------------------------------------
 export interface ElevenLabsSettings {
   has_api_key: boolean;
@@ -396,6 +435,15 @@ export const saveElevenLabsSettings = (b: Partial<{
 }>) => apiPut<ElevenLabsSettings>("/settings/elevenlabs", b);
 
 // ---- display helpers --------------------------------------------------------------------
+export const PHASE_LABELS: Record<string, string> = {
+  preparing: "Chuẩn bị dữ liệu",
+  bundling: "Đóng gói Remotion",
+  rendering: "Vẽ từng khung hình",
+  muxing: "Ghép tiếng",
+  validating: "Kiểm tra video",
+  done: "Xong",
+};
+
 export const STATE_LABELS: Record<string, string> = {
   draft: "Nháp",
   research_review: "Duyệt nghiên cứu",

@@ -77,6 +77,8 @@ class _ServiceCase(unittest.TestCase):
             self.svc.research_changed(self.p.id)
         if state == "audio_ready":
             self.seed_narration()
+        if state == "final_review":
+            self.seed_final_render()
         if state == "script_review" and ScriptService(self.db).current_row(self.p.id) is None:
             scripts = ScriptService(self.db)
             p = self.svc.get(self.p.id)
@@ -99,6 +101,25 @@ class _ServiceCase(unittest.TestCase):
             assets.approve(self.p.id, a.id)
             assets.assign(self.p.id, head.id, a.id)
         self.svc.storyboard_changed(self.p.id)
+
+    def seed_final_render(self):
+        """Gate 5 needs a finished, QC-passing final render of the *current* data. The render
+        itself is exercised in test_render.py; here a stub job stands in for it."""
+        from app.modules.documentary.models import DocumentaryRenderJob
+        from app.modules.documentary.render_plan import RenderParams, build_manifest
+
+        if self.db.query(DocumentaryRenderJob).filter_by(project_id=self.p.id, kind="final").count():
+            return
+        params = RenderParams(kind="final", scale=1.0)
+        _m, _pub, digest = build_manifest(self.db, self.root, self.p.id, params)
+        out = self.root / "final_stub.mp4"
+        out.parent.mkdir(parents=True, exist_ok=True)
+        out.write_bytes(b"stub")
+        self.db.add(DocumentaryRenderJob(
+            project_id=self.p.id, kind="final", status="succeeded", input_hash=digest, params=params.to_json(),
+            output_path=str(out), qc={"ok": True, "issues": [], "warnings": []},
+        ))
+        self.db.commit()
 
     def seed_narration(self):
         from app.modules.documentary.narration import NarrationService
@@ -165,6 +186,15 @@ class WorkflowTests(_ServiceCase):
         self.svc.approve(self.p.id, "final")
         self.svc.advance(self.p.id)
         self.assertEqual(self.svc.get(self.p.id).state, "approved")
+
+    def test_final_gate_refused_without_a_final_render(self):
+        self.go_to("render_preview")
+        self.svc.advance(self.p.id)  # -> final_review (no gate needed to *enter* it)
+        with self.assertRaises(ValidationError) as cm:
+            self.svc.approve(self.p.id, "final")
+        self.assertIn("render final", str(cm.exception))
+        self.seed_final_render()
+        self.svc.approve(self.p.id, "final")
 
     def test_reject_blocks_advance(self):
         self.go_to("script_review")

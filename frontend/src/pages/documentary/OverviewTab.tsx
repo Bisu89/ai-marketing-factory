@@ -92,8 +92,7 @@ export function OverviewTab({ project, reloadProject }: TabProps) {
         )}
         {!project.next_state && project.state !== "failed" && <p className="doc-muted">Dự án đã ở bước cuối.</p>}
         <p className="doc-muted">
-          Các bước render preview, duyệt video cuối và xuất file chưa có công cụ trong phiên bản này (đang phát triển) —
-          hiện luồng làm việc dừng ở cổng 4.
+          Render preview/bản cuối ở tab “Render”. Xuất file (export) chưa có trong phiên bản này.
         </p>
       </div>
 
