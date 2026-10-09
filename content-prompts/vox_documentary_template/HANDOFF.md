@@ -35,7 +35,8 @@ kết hợp ảnh tư liệu)  4. `README.md` (làm một tập mới từng bư
 | Ảnh của dự án #1 | 4 ảnh miền công cộng + 1 ảnh **CC BY-SA 4.0 (Tường thành — cần thay trước khi dùng thương mại)**. Do tôi (AI) bấm duyệt khi chạy thử, **người dùng chưa tự duyệt** — xem `RULES.md` mục Ảnh |
 | Test | `pytest tests/modules/documentary` ≈ 170+ test pass (~3 phút); `npx tsc -b --noEmit` (frontend) và `npx tsc --noEmit` (remotion) sạch |
 | Export (Phase 6, xong) | Tab **Xuất**: gói 9 file (video, SRT, credits, sources, script, timeline, description, manifest+SHA-256); ghi công/nhãn "Minh họa AI" tự động trên hình; chú thích ngữ cảnh cho năm trong cảnh timeline (feature 173) |
-| **Chưa làm** | nhạc nền/ducking + SFX, bộ tài liệu theo brief gốc (README/SETUP/ARCHITECTURE/PROVIDERS/COSTS/TROUBLESHOOTING), đóng gói PyInstaller (`remotion/` + faster-whisper), prompt ảnh AI tự động theo từng cảnh, tập thứ hai |
+| Nhạc nền + tài liệu (xong) | Nhạc tùy chọn do người dùng cung cấp (lặp, ducking, ghi công khi xuất) và bộ tài liệu `docs/documentary/` (feature 174) |
+| **Chưa làm** | SFX, đóng gói PyInstaller (`remotion/` + faster-whisper), prompt ảnh AI tự động theo từng cảnh, tập thứ hai, người dùng xem/nghe/duyệt dự án #1 |
 
 ## 4. Kiến trúc (file map)
 
@@ -131,14 +132,14 @@ cd frontend && npm run dev                              # tsc kiểm tra: npx ts
 ## 9. Lịch sử commit (nhánh main)
 `eb4a686` nền tảng/state machine/ElevenLabs config · `7409e7e` nghiên cứu+kịch bản · `b025640` storyboard+ảnh+CSV ·
 `5448a33` giọng đọc/TTS/cache/master · `082c1c3` căn chỉnh/timeline/phụ đề · `f02cb8f` giao diện · `8948fc8` render Remotion/QC/tab Render ·
-`236d2af` sửa lỗi từ lần chạy thật · `cb2dafc` hiện trên trang Videos · `c063a2f` chủ đề cinematic + template này · (tiếp theo: export + ghi công tự động, feature 173).
+`236d2af` sửa lỗi từ lần chạy thật · `cb2dafc` hiện trên trang Videos · `c063a2f` chủ đề cinematic + template này · `2a68c2c` export + ghi công tự động (173) · (tiếp theo: nhạc nền + tài liệu, 174).
 
 ## 10. Việc tiếp theo (theo thứ tự đề xuất)
 1. ~~Export~~ (xong, feature 173).
-2. **Nhạc nền tùy chọn** (ducking dưới giọng) + SFX nhẹ; mặc định tắt.
+2. ~~Nhạc nền tùy chọn~~ (xong, feature 174); còn **SFX nhẹ** (mặc định tắt).
 3. ~~Chú thích ngữ cảnh timeline~~ và 4. ~~nhãn ghi công/AI tự động~~ (xong, feature 173).
 5. Tập thứ hai trên chủ đề thật của người dùng (dùng `README.md`); thay ảnh CC BY-SA.
 6. Người dùng **xem/nghe và tự duyệt** dự án #1 (hoặc thay ảnh CC BY-SA).
-7. Bộ tài liệu theo brief gốc (README/SETUP/ARCHITECTURE/PROVIDERS/COSTS/TROUBLESHOOTING) — tổng hợp từ file này + docs/features.
+7. ~~Bộ tài liệu theo brief gốc~~ (xong: `docs/documentary/`).
 8. Đóng gói PyInstaller: thêm `remotion/` và faster-whisper vào `AIContentLibrary.spec`.
 9. Gợi ý prompt ảnh AI theo cảnh bằng LLM (provider `llm`), vẫn xuất CSV cho người tạo tay.

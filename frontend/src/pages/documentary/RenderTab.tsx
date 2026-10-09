@@ -68,6 +68,9 @@ export function RenderTab({ project, reloadProject }: TabProps) {
   const [seconds, setSeconds] = useState("30");
   const [scale, setScale] = useState("0.5");
   const [theme, setTheme] = useState<"collage" | "cinematic">("cinematic");
+  const [musicPath, setMusicPath] = useState("");
+  const [musicDb, setMusicDb] = useState("-24");
+  const [musicCredit, setMusicCredit] = useState("");
   const [burn, setBurn] = useState(true);
   const [normalize, setNormalize] = useState(true);
   const [playing, setPlaying] = useState<number | null>(null);
@@ -96,10 +99,13 @@ export function RenderTab({ project, reloadProject }: TabProps) {
 
   async function start(kind: "preview" | "final") {
     if (kind === "final" && !window.confirm("Render bản cuối 1920×1080 cho toàn bộ video. Việc này chiếm CPU và có thể mất nhiều phút. Tiếp tục?")) return;
+    const music = musicPath.trim()
+      ? { music_path: musicPath.trim(), music_db: Number(musicDb), music_credit: musicCredit.trim() || null }
+      : {};
     const body =
       kind === "final"
-        ? { kind, theme, burn_subtitles: burn, normalize_audio: normalize }
-        : { kind, theme, scale: Number(scale), seconds: seconds === "" ? null : Number(seconds), burn_subtitles: burn, normalize_audio: normalize };
+        ? { kind, theme, burn_subtitles: burn, normalize_audio: normalize, ...music }
+        : { kind, theme, scale: Number(scale), seconds: seconds === "" ? null : Number(seconds), burn_subtitles: burn, normalize_audio: normalize, ...music };
     const job = await run("start", () => startRender(id, body));
     if (!job) return;
     if (job.reused) notify("Đầu vào không đổi so với lần render trước — dùng lại kết quả, không render lại.");
@@ -150,6 +156,30 @@ export function RenderTab({ project, reloadProject }: TabProps) {
             </select>
           </Field>
         </div>
+      </div>
+
+      <div className="doc-card">
+        <h3>Nhạc nền (tùy chọn)</h3>
+        <p className="doc-muted">
+          Bạn tự cung cấp file nhạc <strong>miễn phí bản quyền</strong> (mp3, wav, m4a, ogg, flac). Nhạc được lặp lại cho đủ độ dài, tự hạ nhỏ khi có giọng đọc
+          và nhỏ dần ở 3 giây cuối. Để trống = không có nhạc.
+        </p>
+        <div className="doc-row">
+          <Field label="Đường dẫn file nhạc (đầy đủ)">
+            <input value={musicPath} onChange={(e) => setMusicPath(e.target.value)} placeholder="C:\Users\bạn\Music\nen.mp3" />
+          </Field>
+          <Field label="Mức nhạc (dB, trước khi hạ)">
+            <select value={musicDb} onChange={(e) => setMusicDb(e.target.value)}>
+              <option value="-30">-30 (rất nhỏ)</option>
+              <option value="-24">-24 (mặc định)</option>
+              <option value="-18">-18 (rõ hơn)</option>
+              <option value="-12">-12 (to)</option>
+            </select>
+          </Field>
+        </div>
+        <Field label="Giấy phép / ghi công của bản nhạc" hint="Sẽ ghi vào mô tả và credits khi xuất. Bắt buộc nên điền nếu dùng nhạc.">
+          <input value={musicCredit} onChange={(e) => setMusicCredit(e.target.value)} placeholder="VD: 'Tên bài' — Tác giả, CC0, nguồn" />
+        </Field>
       </div>
 
       <div className="doc-card">

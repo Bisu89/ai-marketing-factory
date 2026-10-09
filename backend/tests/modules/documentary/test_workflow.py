@@ -220,7 +220,8 @@ class WorkflowTests(_ServiceCase):
         for name, meta in manifest["files"].items():
             self.assertEqual(hashlib.sha256((folder / name).read_bytes()).hexdigest(), meta["sha256"], name)
         credits = json.loads((folder / "credits.json").read_text(encoding="utf-8"))
-        self.assertIn("CC BY-SA 4.0", [c["license"] for c in credits])
+        self.assertIn("CC BY-SA 4.0", [c["license"] for c in credits["images"]])
+        self.assertIsNone(credits["music"])  # no background track was used
         self.assertIn("https://example.org/f", (folder / "credits.txt").read_text(encoding="utf-8"))
         sources = json.loads((folder / "sources.json").read_text(encoding="utf-8"))
         self.assertTrue(sources["claims"] and sources["claims"][0]["source_ids"])

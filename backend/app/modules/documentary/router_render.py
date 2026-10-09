@@ -29,6 +29,9 @@ class RenderIn(BaseModel):
     grayscale: bool = True
     normalize_audio: bool = True
     theme: Literal["collage", "cinematic"] = "collage"
+    music_path: str | None = Field(default=None, max_length=1000)
+    music_db: float = Field(default=-24.0, ge=-40, le=-6)
+    music_credit: str | None = Field(default=None, max_length=300)
 
 
 class RenderJobOut(BaseModel):
@@ -84,6 +87,7 @@ def start_render(project_id: int, body: RenderIn, db: Session = Depends(get_db),
     params = RenderParams(
         kind=body.kind, scale=scale, seconds=body.seconds, burn_subtitles=body.burn_subtitles,
         grayscale=body.grayscale, normalize_audio=body.normalize_audio, theme=body.theme,
+        music_path=body.music_path, music_db=body.music_db, music_credit=body.music_credit,
     )
     job, reused = svc.start_render(project_id, params)
     return _out(job, reused)

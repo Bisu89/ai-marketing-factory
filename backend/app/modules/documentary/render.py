@@ -31,7 +31,18 @@ from sqlalchemy.orm import Session
 from app.core.exceptions import NotFoundError, ValidationError
 from app.modules.documentary import media
 from app.modules.documentary.models import DocumentaryRenderJob, DocumentarySceneTiming
-from app.modules.documentary.render_plan import FPS, HEIGHT, REMOTION_DIR, THEMES, WIDTH, RenderParams, build_manifest, preflight
+from app.modules.documentary.render_plan import (
+    FPS,
+    HEIGHT,
+    MAX_MUSIC_BYTES,
+    MUSIC_EXTENSIONS,
+    REMOTION_DIR,
+    THEMES,
+    WIDTH,
+    RenderParams,
+    build_manifest,
+    preflight,
+)
 from app.modules.documentary.schemas import ReviewIssue, ReviewOut
 
 logger = logging.getLogger(__name__)
@@ -101,6 +112,22 @@ class RenderService:
         t = tools()
         return preflight(self.db, self.root, project_id, {"node": bool(t["node"] and t["npx"]), "ffmpeg": bool(t["ffmpeg"] and t["ffprobe"])})
 
+    @staticmethod
+    def _check_music(params: RenderParams) -> None:
+        if not params.music_path:
+            return
+        f = Path(params.music_path)
+        if not f.is_absolute() or not f.is_file():
+            raise ValidationError("File nhạc nền phải là đường dẫn đầy đủ tới một file có thật.")
+        if f.suffix.lower() not in MUSIC_EXTENSIONS:
+            raise ValidationError(f"Nhạc nền chỉ nhận {', '.join(MUSIC_EXTENSIONS)}.")
+        if f.stat().st_size > MAX_MUSIC_BYTES:
+            raise ValidationError("File nhạc nền quá lớn (> 100 MB).")
+        if not media.has_audio_stream(f):
+            raise ValidationError("File nhạc nền không có luồng âm thanh đọc được.")
+        if not (-40.0 <= params.music_db <= -6.0):
+            raise ValidationError("Mức nhạc nền (music_db) phải trong khoảng -40 đến -6 dB.")
+
     # -- start / cancel -----------------------------------------------------------------
     def start(self, project_id: int, params: RenderParams) -> tuple[DocumentaryRenderJob, bool]:
         """-> (job, reused). Raises ValidationError listing every blocking problem."""
@@ -114,6 +141,7 @@ class RenderService:
             raise ValidationError("seconds phải > 0.")
         if params.theme not in THEMES:
             raise ValidationError(f"theme phải là một trong: {', '.join(THEMES)}.")
+        self._check_music(params)
         issues = self.preflight(project_id)
         if issues:
             raise ValidationError("Chưa thể render: " + "; ".join(i.message for i in issues[:8]) + ("…" if len(issues) > 8 else ""))
@@ -166,6 +194,7 @@ class RenderService:
         params = RenderParams(
             kind="final", scale=1.0, seconds=None, burn_subtitles=p.get("burn_subtitles", True),
             grayscale=p.get("grayscale", True), normalize_audio=p.get("normalize_audio", True), theme=p.get("theme", "collage"),
+            music_path=p.get("music_path"), music_db=p.get("music_db", -24.0), music_credit=p.get("music_credit"),
         )
         try:
             _m, _pub, digest = build_manifest(self.db, self.root, project_id, params)
@@ -230,6 +259,7 @@ def _run_job(db: Session, root: Path, job: DocumentaryRenderJob) -> None:
     params = RenderParams(
         kind=job.kind, scale=p["scale"], seconds=p["seconds"], burn_subtitles=p["burn_subtitles"],
         grayscale=p["grayscale"], normalize_audio=p["normalize_audio"], theme=p.get("theme", "collage"),
+        music_path=p.get("music_path"), music_db=p.get("music_db", -24.0), music_credit=p.get("music_credit"),
     )
     jdir = svc.job_dir(job.project_id, job.id)
     jdir.mkdir(parents=True, exist_ok=True)
@@ -263,7 +293,7 @@ def _run_job(db: Session, root: Path, job: DocumentaryRenderJob) -> None:
         out = jdir / "output.mp4"
         video_sec = (last_frame + 1) / FPS
         narr_master = root / "_documentary" / f"project_{job.project_id}" / "narration" / "narration_master.wav"
-        _mux(silent, narr_master, out, video_sec, params.normalize_audio, log)
+        _mux(silent, narr_master, out, video_sec, params.normalize_audio, log, params.music_path, params.music_db)
         silent.unlink(missing_ok=True)
 
         _update(db, job, phase="validating", progress=0.95)
@@ -335,15 +365,33 @@ def _remotion_render(db: Session, job: DocumentaryRenderJob, log, props: Path, p
         raise ValidationError(f"Remotion thoát với mã {code} — xem log render.")
 
 
-def _mux(video: Path, audio: Path, out: Path, video_sec: float, normalize: bool, log) -> None:
+def mux_command(video: Path, audio: Path, out: Path, video_sec: float, normalize: bool, music: str | None = None, music_db: float = -24.0) -> list[str]:
+    """ffmpeg arguments for the final mix. With music: the track loops, sits at `music_db`, and is ducked
+    (sidechain compression keyed by the narration) so the voice always stays on top."""
+    final = ("loudnorm=I=-16:TP=-1.5:LRA=11," if normalize else "") + "apad"
+    cmd = ["ffmpeg", "-y", "-v", "error", "-i", str(video), "-i", str(audio)]
+    if music:
+        fade_at = max(0.0, video_sec - 3.0)
+        graph = (
+            "[1:a]asplit=2[vo][key];"
+            f"[2:a]volume={music_db:.1f}dB[m];"
+            "[m][key]sidechaincompress=threshold=0.02:ratio=10:attack=25:release=500[duck];"
+            f"[duck]afade=t=in:d=2,afade=t=out:st={fade_at:.2f}:d=3[bed];"
+            "[vo][bed]amix=inputs=2:duration=first:normalize=0[mix];"
+            f"[mix]{final}[aout]"
+        )
+        cmd += ["-stream_loop", "-1", "-i", music, "-filter_complex", graph, "-map", "0:v:0", "-map", "[aout]"]
+    else:
+        cmd += ["-map", "0:v:0", "-map", "1:a:0", "-af", final]
+    # loudnorm upsamples internally, so the output rate/channels are pinned explicitly (-ar/-ac).
+    cmd += ["-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-ac", "2", "-t", f"{video_sec:.3f}", "-movflags", "+faststart", str(out)]
+    return cmd
+
+
+def _mux(video: Path, audio: Path, out: Path, video_sec: float, normalize: bool, log, music: str | None = None, music_db: float = -24.0) -> None:
     if not audio.is_file():
         raise ValidationError("Không thấy narration master để ghép tiếng.")
-    af = ("loudnorm=I=-16:TP=-1.5:LRA=11," if normalize else "") + "apad"
-    # loudnorm upsamples internally, so the output rate/channels are pinned explicitly (-ar/-ac).
-    cmd = [
-        "ffmpeg", "-y", "-v", "error", "-i", str(video), "-i", str(audio), "-map", "0:v:0", "-map", "1:a:0",
-        "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-af", af, "-ar", "48000", "-ac", "2", "-t", f"{video_sec:.3f}", "-movflags", "+faststart", str(out),
-    ]
+    cmd = mux_command(video, audio, out, video_sec, normalize, music, music_db)
     r = subprocess.run(cmd, capture_output=True, text=True, stdin=subprocess.DEVNULL, timeout=1800)
     _log(log, f"ffmpeg mux exit {r.returncode} {r.stderr.strip()[-300:]}")
     if r.returncode != 0 or not out.is_file():

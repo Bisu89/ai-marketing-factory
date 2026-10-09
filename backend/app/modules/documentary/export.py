@@ -104,16 +104,17 @@ class ExportService:
         (folder / "subtitles.srt").write_text(timeline.srt(pid), encoding="utf-8")
 
         assets, credits = self._credits(pid)
-        (folder / "credits.json").write_text(json.dumps(credits, ensure_ascii=False, indent=2), encoding="utf-8")
-        (folder / "credits.txt").write_text(self._credits_txt(credits), encoding="utf-8")
+        music = self._music(job)
+        (folder / "credits.json").write_text(json.dumps({"images": credits, "music": music}, ensure_ascii=False, indent=2), encoding="utf-8")
+        (folder / "credits.txt").write_text(self._credits_txt(credits, music), encoding="utf-8")
         sources = self._sources(pid)
         (folder / "sources.json").write_text(json.dumps(sources, ensure_ascii=False, indent=2), encoding="utf-8")
         (folder / "script.md").write_text(self._script_md(project, sources), encoding="utf-8")
         tl = self._timeline(pid)
         (folder / "timeline.json").write_text(json.dumps(tl, ensure_ascii=False, indent=2), encoding="utf-8")
-        (folder / "description.txt").write_text(self._description(project, tl, sources, credits), encoding="utf-8")
+        (folder / "description.txt").write_text(self._description(project, tl, sources, credits, music), encoding="utf-8")
 
-        warnings = self._warnings(credits, tl, job)
+        warnings = self._warnings(credits, tl, job, music)
         files = {p.name: {"sha256": sha256_file(p), "bytes": p.stat().st_size} for p in sorted(folder.iterdir())}
         manifest = {
             "generator": "Vox Documentary Factory export v1",
@@ -158,7 +159,16 @@ class ExportService:
         return assets, credits
 
     @staticmethod
-    def _credits_txt(credits: list[dict]) -> str:
+    def _music(job) -> dict | None:
+        """The background track of the exported render, if any (its credit is the user's to supply)."""
+        p = job.params or {}
+        if not p.get("music_path"):
+            return None
+        f = Path(p["music_path"])
+        return {"file": f.name, "credit": p.get("music_credit"), "level_db": p.get("music_db"), "sha256": sha256_file(f) if f.is_file() else None}
+
+    @staticmethod
+    def _credits_txt(credits: list[dict], music: dict | None = None) -> str:
         lines = ["HÌNH ẢNH VÀ GHI CÔNG", ""]
         for c in credits:
             kind = {"archival": "Tư liệu", "ai_manual": "Minh họa AI", "imported": "Ảnh tự nhập"}.get(c["origin"], c["origin"])
@@ -166,6 +176,8 @@ class ExportService:
             lines.append(" · ".join(parts) + f"  — cảnh {', '.join(c['scenes'])}")
             if c["source_url"]:
                 lines.append(f"    {c['source_url']}")
+        if music:
+            lines += ["", "NHẠC NỀN", f"{music['file']} — {music['credit'] or '(chưa ghi giấy phép/ghi công)'}"]
         return "\n".join(lines) + "\n"
 
     def _sources(self, pid: int) -> dict:
@@ -210,7 +222,7 @@ class ExportService:
             )
         return rows
 
-    def _description(self, project: DocumentaryProject, tl: list[dict], sources: dict, credits: list[dict]) -> str:
+    def _description(self, project: DocumentaryProject, tl: list[dict], sources: dict, credits: list[dict], music: dict | None = None) -> str:
         seen, chapters = set(), []
         for r in tl:
             if r["section"] not in seen:
@@ -235,10 +247,14 @@ class ExportService:
                 lines.append(f"- {c['attribution'] or 'Không rõ tác giả'}, {c['license'] or 'không rõ giấy phép'}" + (f" — {c['source_url']}" if c["source_url"] else ""))
         if any(c["origin"] == "ai_manual" for c in credits):
             lines.append("- Các cảnh gắn nhãn \"Minh họa AI\" là hình minh họa do AI tạo, không phải tư liệu thời đó.")
+        if music and music["credit"]:
+            lines += ["", "NHẠC", f"- {music['credit']}"]
         return "\n".join(lines) + "\n"
 
-    def _warnings(self, credits: list[dict], tl: list[dict], job) -> list[dict]:
+    def _warnings(self, credits: list[dict], tl: list[dict], job, music: dict | None = None) -> list[dict]:
         w: list[dict] = []
+        if music and not music["credit"]:
+            w.append({"code": "music_no_credit", "message": f"Có nhạc nền ({music['file']}) nhưng chưa ghi giấy phép/ghi công — hãy bổ sung trước khi đăng."})
         for c in credits:
             lic = (c["license"] or "")
             if c["origin"] == "archival" and (not lic or any(lic.startswith(p) for p in NEEDS_REVIEW_LICENCES)):

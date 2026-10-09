@@ -45,7 +45,9 @@ DATA_PRESETS = frozenset({"TimelineBuild", "BigNumber", "MapZoom"})
 # Bump when the render/mux pipeline changes in a way that alters the output file, so cached
 # renders from the old pipeline are not reused.
 THEMES = ("collage", "cinematic")
-PIPELINE_VERSION = 2
+PIPELINE_VERSION = 3
+MUSIC_EXTENSIONS = (".mp3", ".wav", ".m4a", ".ogg", ".flac")
+MAX_MUSIC_BYTES = 100 * 1024 * 1024
 REMOTION_DIR = Path(__file__).resolve().parents[4] / "remotion"
 
 _UNIT_AFTER_YEAR = re.compile(r"^\s*(người|tấn|km|mét|triệu|nghìn|ngàn|tỷ|%|phần trăm|con tàu|binh sĩ|lính|quân|năm)\b", re.I)
@@ -63,10 +65,14 @@ class RenderParams:
     grayscale: bool = True
     normalize_audio: bool = True
     theme: str = "collage"  # collage (paper cut-outs) | cinematic (full-bleed paintings, gold type)
+    music_path: str | None = None  # optional background track the user supplies (looped, ducked under the voice)
+    music_db: float = -24.0  # level of the music before ducking
+    music_credit: str | None = None  # licence/credit line for the track, shown in the export
 
     def to_json(self) -> dict:
         return {
             "kind": self.kind, "scale": self.scale, "seconds": self.seconds, "theme": self.theme,
+            "music_path": self.music_path, "music_db": self.music_db, "music_credit": self.music_credit,
             "burn_subtitles": self.burn_subtitles, "grayscale": self.grayscale, "normalize_audio": self.normalize_audio,
         }
 
@@ -289,8 +295,14 @@ def build_manifest(db: Session, root: Path, project_id: int, params: RenderParam
             for s in subs
         ],
     }
+    music_sha = None
+    if params.music_path:
+        from app.modules.documentary.assets import sha256_file
+
+        music_sha = sha256_file(Path(params.music_path))  # a different track (or an edit) is a different video
     digest_src = json.dumps(
         {"m": manifest, "audio": narr.master_digest(segments), "remotion": remotion_source_hash(), "pipeline": PIPELINE_VERSION,
+         "music": [music_sha, params.music_db] if music_sha else None,
          "normalize": params.normalize_audio, "seconds": params.seconds, "scale": params.scale},
         sort_keys=True, ensure_ascii=False,
     )

@@ -7,6 +7,7 @@ SQLite.
 
 ## Start here
 
+- **Vox Documentary Factory docs:** [`docs/documentary/README.md`](documentary/README.md) (SETUP, ARCHITECTURE, PROVIDERS, COSTS, TROUBLESHOOTING)
 - **Vox Documentary Factory handoff:** [`content-prompts/vox_documentary_template/HANDOFF.md`](../content-prompts/vox_documentary_template/HANDOFF.md) — read first when picking up the documentary work in a new session or machine
 
 - [Architecture](architecture.md) — layers, folder structure, how the pieces fit together
@@ -207,6 +208,7 @@ SQLite.
 171. [Documentary on the Videos page](features/171-documentary-in-videos-page.md) — final documentary renders listed with Factory renders (thumbnail, open folder, link back to the project)
 172. [Documentary cinematic theme + template](features/172-documentary-cinematic-theme-and-template.md) — full-bleed painting theme, `content-prompts/vox_documentary_template/` (HANDOFF, rules, image style, episode builder)
 173. [Documentary export + auto credits](features/173-documentary-export-and-auto-credits.md) — export bundle (video, SRT, credits, sources, script, manifest with hashes), automatic AI/attribution labels on screen, timeline context captions
+174. [Documentary background music + docs](features/174-documentary-background-music-and-docs.md) — optional looped/ducked music (user-supplied, credited in export), full documentation set in `docs/documentary/`
 
 ## Keeping this up to date
 

@@ -10,6 +10,7 @@ from unittest.mock import patch
 from sqlalchemy.orm import sessionmaker
 
 from app.core.exceptions import ValidationError
+from app.modules.documentary import media
 from app.modules.documentary import render as render_mod
 from app.modules.documentary.models import DocumentaryRenderJob, DocumentaryScene, DocumentarySceneTiming
 from app.modules.documentary.render import RenderService, quality_check
@@ -176,6 +177,22 @@ class ManifestTests(ManifestCase):
                 self.assertGreater(row["imageAspect"], 0)
             else:
                 self.assertIsNone(row["imageAspect"])
+
+    def test_music_changes_the_hash_and_is_validated_on_start(self):
+        self.timeline_ready()
+        tracks = Path(self.tmp.name) / "tracks"
+        tracks.mkdir()
+        a, b = tracks / "a.wav", tracks / "b.wav"
+        tone(a, 1.0, freq=200)
+        tone(b, 1.0, freq=300)
+        h0 = self.manifest()[2]
+        ha = self.manifest(music_path=str(a))[2]
+        hb = self.manifest(music_path=str(b))[2]
+        self.assertEqual(len({h0, ha, hb}), 3)  # no music / track A / track B are three different videos
+        self.assertNotEqual(self.manifest(music_path=str(a), music_db=-18.0)[2], ha)
+        with patch.object(render_mod, "_execute"):
+            with self.assertRaises(ValidationError):
+                RenderService(self.db, self.root).start(self.p.id, self.params(music_path="nope.mp3"))
 
     def test_unknown_theme_is_refused(self):
         self.timeline_ready()
@@ -407,6 +424,98 @@ class RelativePathTests(unittest.TestCase):
         flags = {a.split("=", 1)[0]: a.split("=", 1)[1] for a in captured["cmd"] if a.startswith(("--props=", "--public-dir="))}
         self.assertTrue(Path(flags["--props"]).is_absolute() and Path(flags["--public-dir"]).is_absolute(), flags)
         self.assertTrue(Path(captured["cmd"][5]).is_absolute())  # the output file
+
+
+def tone(path: Path, seconds: float, freq=440, volume=0.5, silence_after: float = 0.0):
+    """A sine WAV; `silence_after` pads silence at the end (so 'voice only in the first N seconds' is possible)."""
+    cmd = ["ffmpeg", "-y", "-v", "error", "-f", "lavfi", "-i", f"sine=frequency={freq}:duration={seconds}", "-af", f"volume={volume}"]
+    if silence_after:
+        cmd += ["-af", f"volume={volume},apad=pad_dur={silence_after}"]
+    subprocess.run(cmd + ["-ar", "48000", "-ac", "1", str(path)], check=True)
+
+
+def mean_volume(path: Path, start: float, length: float) -> float:
+    r = subprocess.run(["ffmpeg", "-v", "info", "-ss", str(start), "-t", str(length), "-i", str(path), "-af", "volumedetect", "-vn", "-f", "null", "-"],
+                       capture_output=True, text=True)
+    import re as _re
+
+    m = _re.search(r"mean_volume: (-?[\d.]+|-inf) dB", r.stderr)
+    return float("-inf") if not m or m.group(1) == "-inf" else float(m.group(1))
+
+
+@unittest.skipUnless(shutil.which("ffmpeg"), "ffmpeg not installed")
+class MusicMixTests(unittest.TestCase):
+    def setUp(self):
+        import tempfile
+
+        self.tmp = tempfile.TemporaryDirectory()
+        self.dir = Path(self.tmp.name)
+        self.video = self.dir / "v.mp4"
+        subprocess.run(["ffmpeg", "-y", "-v", "error", "-f", "lavfi", "-i", "color=c=white:s=320x180:r=30:d=6", "-pix_fmt", "yuv420p", str(self.video)], check=True)
+        self.voice = self.dir / "voice.wav"
+        tone(self.voice, 2.0, volume=0.6, silence_after=4.0)  # speech-like energy only in the first 2 s
+        self.music = self.dir / "music.wav"
+        tone(self.music, 1.5, freq=220, volume=0.8)  # shorter than the video: must loop
+
+    def tearDown(self):
+        try:
+            self.tmp.cleanup()
+        except PermissionError:
+            pass
+
+    def mix(self, music=None, db=-24.0):
+        out = self.dir / ("with.mp4" if music else "without.mp4")
+        cmd = render_mod.mux_command(self.video, self.voice, out, 6.0, False, str(music) if music else None, db)
+        r = subprocess.run(cmd, capture_output=True, text=True)
+        self.assertEqual(r.returncode, 0, r.stderr[-400:])
+        return out
+
+    def test_command_shape(self):
+        plain = render_mod.mux_command(self.video, self.voice, self.dir / "o.mp4", 6.0, True)
+        self.assertNotIn("-filter_complex", plain)
+        with_music = render_mod.mux_command(self.video, self.voice, self.dir / "o.mp4", 6.0, True, str(self.music), -20.0)
+        self.assertIn("-stream_loop", with_music)
+        graph = with_music[with_music.index("-filter_complex") + 1]
+        self.assertIn("sidechaincompress", graph)
+        self.assertIn("volume=-20.0dB", graph)
+
+    def test_music_loops_under_silence_and_fades_out(self):
+        out = self.mix(self.music, db=-12.0)
+        info = media.probe_duration(out)
+        self.assertAlmostEqual(info, 6.0, delta=0.15)
+        self.assertTrue(media.has_audio_stream(out))
+        # after the voice ends (2 s) and after the 1.5 s file is exhausted, the looped music is still audible...
+        mid = mean_volume(out, 3.0, 0.4)
+        self.assertGreater(mid, -45.0)
+        # ...and the fade-out (last 3 s) makes the very end quieter than the middle
+        end = mean_volume(out, 5.6, 0.3)
+        self.assertLess(end, mid - 3.0)
+        # without music the same stretch is silent
+        self.assertLess(mean_volume(self.mix(None), 3.0, 0.4), -60.0)
+
+    def test_voice_stays_on_top_while_music_plays(self):
+        voice_only = mean_volume(self.mix(None), 0.2, 1.5)
+        mixed = mean_volume(self.mix(self.music, db=-12.0), 0.2, 1.5)
+        # the ducked bed may add a little energy, but never more than ~3 dB above the voice alone
+        self.assertLess(mixed - voice_only, 3.0)
+
+    def test_music_file_is_validated(self):
+        check = RenderService._check_music
+        check(RenderParams(music_path=str(self.music)))  # fine
+        with self.assertRaises(ValidationError):
+            check(RenderParams(music_path="relative/music.mp3"))
+        with self.assertRaises(ValidationError):
+            check(RenderParams(music_path=str(self.dir / "missing.mp3")))
+        bad_ext = self.dir / "song.txt"
+        bad_ext.write_text("x")
+        with self.assertRaises(ValidationError):
+            check(RenderParams(music_path=str(bad_ext)))
+        fake = self.dir / "fake.mp3"
+        fake.write_text("not audio at all")
+        with self.assertRaises(ValidationError):
+            check(RenderParams(music_path=str(fake)))
+        with self.assertRaises(ValidationError):
+            check(RenderParams(music_path=str(self.music), music_db=0.0))
 
 
 def make_video(path: Path, *, w=960, h=540, seconds=2.0, audio=True, black=None):
