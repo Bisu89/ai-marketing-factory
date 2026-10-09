@@ -27,6 +27,7 @@ from app.modules.voice.schemas import VoiceError
 logger = logging.getLogger(__name__)
 
 EDGE_VOICE = "vi-VN-NamMinhNeural"
+EDGE_VOICE_EN = "en-US-GuyNeural"  # English-language series (e.g. Biblical Figures); backend name "edge_en"
 EDGE_SPEED = 1.0
 ELEVEN_URL = "https://api.elevenlabs.io/v1/text-to-speech/{voice_id}/with-timestamps"
 ELEVEN_OUTPUT_FORMAT = "mp3_44100_128"
@@ -40,20 +41,30 @@ class EdgeBackend(TTSBackend):
 
     name = "edge"
     extension = ".wav"
+    voice = EDGE_VOICE
+    lang = "vi"
 
     def fingerprint(self) -> str:
-        return f"edge:{EDGE_VOICE}:{EDGE_SPEED:.2f}"
+        return f"edge:{self.voice}:{EDGE_SPEED:.2f}"
 
     def estimate_cost(self, chars: int) -> float | None:
         return 0.0
 
     def synthesize(self, text: str, out_path: Path) -> SynthResult:
         try:
-            audio = get_voice_provider("edge_tts").synthesize(text, EDGE_VOICE, "vi", EDGE_SPEED, out_path)
+            audio = get_voice_provider("edge_tts").synthesize(text, self.voice, self.lang, EDGE_SPEED, out_path)
         except VoiceError as exc:
             raise ExternalServiceError(f"edge-tts thất bại: {exc}") from exc
         stamps = [WordStamp(w.text, w.start, w.end) for w in audio.word_timestamps] or None
-        return SynthResult(path=out_path, chars=len(text), model="edge-tts", voice=EDGE_VOICE, cost_usd=0.0, word_stamps=stamps)
+        return SynthResult(path=out_path, chars=len(text), model="edge-tts", voice=self.voice, cost_usd=0.0, word_stamps=stamps)
+
+
+class EdgeEnglishBackend(EdgeBackend):
+    """Same free edge-tts engine with an English voice -- chosen per run, so Vietnamese projects keep their cached audio."""
+
+    name = "edge_en"
+    voice = EDGE_VOICE_EN
+    lang = "en"
 
 
 def words_from_char_alignment(chars: list[str], starts: list[float], ends: list[float]) -> list[WordStamp]:
@@ -157,4 +168,5 @@ class ElevenLabsBackend(TTSBackend):
 
 
 register_backend(EdgeBackend())
+register_backend(EdgeEnglishBackend())
 register_backend(ElevenLabsBackend())

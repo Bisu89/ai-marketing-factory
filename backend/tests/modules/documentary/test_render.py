@@ -69,6 +69,8 @@ class DeriveTextTests(unittest.TestCase):
 
     def test_credit_text_policy(self):
         self.assertEqual(credit_text("ai_manual", None, None), "Minh họa AI")
+        self.assertEqual(credit_text("ai_manual", None, None, "en"), "AI illustration")
+        self.assertEqual(credit_text("archival", "CC BY 4.0", "Jane — Wikimedia Commons", "en"), "Image: Jane · CC BY 4.0")
         self.assertIsNone(credit_text("archival", "Public domain", "Bellini — Wikimedia Commons"))
         self.assertIsNone(credit_text("archival", "CC0", "X"))
         self.assertIsNone(credit_text("imported", None, None))

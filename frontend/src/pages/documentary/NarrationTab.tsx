@@ -33,6 +33,7 @@ const SOURCE_VI: Record<SceneTiming["source"], { label: string; tone: "ok" | "wa
 
 const BACKEND_VI: Record<string, string> = {
   edge: "edge — Microsoft Edge (miễn phí, có timestamp từng từ)",
+  edge_en: "edge_en — giọng tiếng Anh (miễn phí, có timestamp từng từ)",
   elevenlabs: "elevenlabs — trả phí",
   mock: "mock — im lặng, chỉ để thử luồng",
 };

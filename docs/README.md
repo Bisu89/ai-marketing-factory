@@ -209,6 +209,7 @@ SQLite.
 172. [Documentary cinematic theme + template](features/172-documentary-cinematic-theme-and-template.md) — full-bleed painting theme, `content-prompts/vox_documentary_template/` (HANDOFF, rules, image style, episode builder)
 173. [Documentary export + auto credits](features/173-documentary-export-and-auto-credits.md) — export bundle (video, SRT, credits, sources, script, manifest with hashes), automatic AI/attribution labels on screen, timeline context captions
 174. [Documentary background music + docs](features/174-documentary-background-music-and-docs.md) — optional looped/ducked music (user-supplied, credited in export), full documentation set in `docs/documentary/`
+175. [Documentary English + Biblical Figures Ep6](features/175-documentary-english-biblical-ep6.md) — `edge_en` voice, primary-text sources (Bible/Josephus), Ep6 John the Baptist in Vox style
 
 ## Keeping this up to date
 

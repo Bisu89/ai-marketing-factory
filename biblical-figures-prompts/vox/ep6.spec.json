@@ -1,0 +1,1136 @@
+{
+ "title": "Biblical Figures 6: John the Baptist (Vox style)",
+ "topic": "John the Baptist: what the Gospels and the historian Josephus actually record about his life and death, and why the sources disagree about why he was killed.",
+ "language": "en",
+ "budget_usd": null,
+ "accessed": "2026-10-09",
+ "sources": [
+  {
+   "key": "l1",
+   "title": "Luke 1:8-20 (Zechariah in the Temple)",
+   "fetch": {
+    "kind": "bible",
+    "ref": "Luke 1:8-20"
+   }
+  },
+  {
+   "key": "l1b",
+   "title": "Luke 1:36-45 (Mary visits Elizabeth)",
+   "fetch": {
+    "kind": "bible",
+    "ref": "Luke 1:36-45"
+   }
+  },
+  {
+   "key": "l1c",
+   "title": "Luke 1:57-64 (the naming of John)",
+   "fetch": {
+    "kind": "bible",
+    "ref": "Luke 1:57-64"
+   }
+  },
+  {
+   "key": "mk1",
+   "title": "Mark 1:1-8 (John's ministry)",
+   "fetch": {
+    "kind": "bible",
+    "ref": "Mark 1:1-8"
+   }
+  },
+  {
+   "key": "l3",
+   "title": "Luke 3:7-14 (John's ethical teaching)",
+   "fetch": {
+    "kind": "bible",
+    "ref": "Luke 3:7-14"
+   }
+  },
+  {
+   "key": "mt3a",
+   "title": "Matthew 3:7-12 (John and the religious leaders)",
+   "fetch": {
+    "kind": "bible",
+    "ref": "Matthew 3:7-12"
+   }
+  },
+  {
+   "key": "mt3b",
+   "title": "Matthew 3:13-17 (the baptism of Jesus)",
+   "fetch": {
+    "kind": "bible",
+    "ref": "Matthew 3:13-17"
+   }
+  },
+  {
+   "key": "jn1",
+   "title": "John 1:19-28 (John's denial)",
+   "fetch": {
+    "kind": "bible",
+    "ref": "John 1:19-28"
+   }
+  },
+  {
+   "key": "jn1b",
+   "title": "John 1:35-42 (John's disciples follow Jesus)",
+   "fetch": {
+    "kind": "bible",
+    "ref": "John 1:35-42"
+   }
+  },
+  {
+   "key": "k2",
+   "title": "2 Kings 1:8 (Elijah's clothing)",
+   "fetch": {
+    "kind": "bible",
+    "ref": "2 Kings 1:8"
+   }
+  },
+  {
+   "key": "mal",
+   "title": "Malachi 4:5-6 (the return of Elijah)",
+   "fetch": {
+    "kind": "bible",
+    "ref": "Malachi 4:5-6"
+   }
+  },
+  {
+   "key": "mt11",
+   "title": "Matthew 11:2-14 (John's question from prison)",
+   "fetch": {
+    "kind": "bible",
+    "ref": "Matthew 11:2-14"
+   }
+  },
+  {
+   "key": "mk6",
+   "title": "Mark 6:17-29 (the death of John)",
+   "fetch": {
+    "kind": "bible",
+    "ref": "Mark 6:17-29"
+   }
+  },
+  {
+   "key": "mt14",
+   "title": "Matthew 14:13 (Jesus withdraws)",
+   "fetch": {
+    "kind": "bible",
+    "ref": "Matthew 14:13"
+   }
+  },
+  {
+   "key": "jos1",
+   "title": "Josephus, Antiquities of the Jews 18.5.2 (John the Baptist)",
+   "fetch": {
+    "kind": "wikisource",
+    "page": "The_Antiquities_of_the_Jews/Book_XVIII",
+    "needles": [
+     "as a punishment of what he did against John, that was called the Baptist",
+     "Herod, who feared lest the great influence John had",
+     "Accordingly he was sent a prisoner"
+    ]
+   },
+   "notes": "Primary source, William Whiston translation (public domain), via Wikisource. Josephus wrote c. AD 93-94."
+  },
+  {
+   "key": "jos2",
+   "title": "Josephus, Antiquities of the Jews 18.5.4 (Herodias and Salome)",
+   "fetch": {
+    "kind": "wikisource",
+    "page": "The_Antiquities_of_the_Jews/Book_XVIII",
+    "needles": [
+     "But Herodias, their sister, was married to Herod [Philip]",
+     "was married to Herod [Antipas], her husband's brother by the father's side"
+    ]
+   },
+   "notes": "Primary source, William Whiston translation (public domain), via Wikisource."
+  },
+  {
+   "key": "wp_ess",
+   "title": "Wikipedia - John the Baptist (the Essene theory)",
+   "fetch": {
+    "kind": "wikipedia",
+    "lang": "en",
+    "title": "John_the_Baptist",
+    "needles": [
+     "Some scholars think that John belonged to the Essenes"
+    ]
+   },
+   "notes": "Secondary source: reports a scholarly theory, not a recorded fact."
+  },
+  {
+   "key": "wp_rel",
+   "title": "Wikipedia - John the Baptist (claimed relics of the head)",
+   "fetch": {
+    "kind": "wikipedia",
+    "lang": "en",
+    "title": "John_the_Baptist",
+    "needles": [
+     "Two Catholic churches and one mosque claim to have the head of John the Baptist"
+    ]
+   },
+   "notes": "Secondary source."
+  },
+  {
+   "key": "wp_man",
+   "title": "Wikipedia - John the Baptist (the Mandaeans)",
+   "fetch": {
+    "kind": "wikipedia",
+    "lang": "en",
+    "title": "John_the_Baptist",
+    "needles": [
+     "the followers of John the Baptist are the Mandaeans"
+    ]
+   },
+   "notes": "Secondary source."
+  }
+ ],
+ "claims": [
+  {
+   "key": "birth_visit",
+   "status": "verified",
+   "sources": [
+    "l1b"
+   ],
+   "text": "Luke's Gospel calls Elizabeth a relative of Mary; when Mary visited her, the baby leapt in Elizabeth's womb."
+  },
+  {
+   "key": "zech",
+   "status": "verified",
+   "sources": [
+    "l1"
+   ],
+   "text": "Luke reports that an angel told the elderly priest Zechariah, while he served in the Temple, that Elizabeth would bear a son named John; Zechariah doubted and was struck mute."
+  },
+  {
+   "key": "naming",
+   "status": "verified",
+   "sources": [
+    "l1c"
+   ],
+   "text": "Luke reports that Elizabeth insisted on the name John, Zechariah confirmed it in writing, and his speech returned."
+  },
+  {
+   "key": "wild",
+   "status": "verified",
+   "sources": [
+    "mk1"
+   ],
+   "text": "Mark says John was in the wilderness, wearing camel's hair with a leather belt, eating locusts and wild honey."
+  },
+  {
+   "key": "elijah",
+   "status": "verified",
+   "sources": [
+    "k2",
+    "mal",
+    "mt11"
+   ],
+   "text": "2 Kings describes Elijah as a hairy man with a leather belt; Malachi foretells Elijah's return; in Matthew, Jesus says of John, 'he is Elijah, who is to come'."
+  },
+  {
+   "key": "denial",
+   "status": "verified",
+   "sources": [
+    "jn1"
+   ],
+   "text": "In John's Gospel, priests and Levites asked John who he was; he said he was not the Christ, not Elijah, not the Prophet, but 'the voice of one crying in the wilderness'."
+  },
+  {
+   "key": "preach",
+   "status": "verified",
+   "sources": [
+    "mk1"
+   ],
+   "text": "Mark says John preached a baptism of repentance, and all the country of Judea and Jerusalem went out to him and were baptized in the Jordan River."
+  },
+  {
+   "key": "ethics",
+   "status": "verified",
+   "sources": [
+    "l3"
+   ],
+   "text": "In Luke, John told the crowds to share clothing and food, told tax collectors to collect no more than appointed, and told soldiers not to extort or accuse falsely and to be content with their wages."
+  },
+  {
+   "key": "essene",
+   "status": "disputed",
+   "sources": [
+    "wp_ess"
+   ],
+   "text": "Some scholars think John belonged to the Essenes, the Jewish community at Qumran that produced the Dead Sea Scrolls; this is a scholarly theory, not something the Gospels state.",
+   "note": "Wikipedia reports it as what 'some scholars think'; no ancient source says John was an Essene."
+  },
+  {
+   "key": "vipers",
+   "status": "verified",
+   "sources": [
+    "mt3a"
+   ],
+   "text": "In Matthew, John called the Pharisees and Sadducees who came for baptism a 'brood of vipers' and asked who warned them to flee the coming wrath."
+  },
+  {
+   "key": "greater",
+   "status": "verified",
+   "sources": [
+    "mk1"
+   ],
+   "text": "In Mark, John said one mightier than he was coming, whose sandals he was not worthy to untie."
+  },
+  {
+   "key": "baptism",
+   "status": "verified",
+   "sources": [
+    "mt3b"
+   ],
+   "text": "In Matthew, John tried to prevent Jesus from being baptized; when Jesus came up out of the water the heavens opened, the Spirit descended like a dove, and a voice said 'This is my beloved Son'."
+  },
+  {
+   "key": "disciples",
+   "status": "verified",
+   "sources": [
+    "jn1b"
+   ],
+   "text": "In John's Gospel, two of John's own disciples, one of them Andrew, heard John point to Jesus and followed Jesus."
+  },
+  {
+   "key": "rebuke",
+   "status": "verified",
+   "sources": [
+    "mk6",
+    "jos2"
+   ],
+   "text": "Mark says John told Herod it was not lawful to have his brother's wife; Josephus identifies the marriage as Herodias, divorced from Herod Philip, marrying Herod Antipas, tetrarch of Galilee."
+  },
+  {
+   "key": "arrest",
+   "status": "verified",
+   "sources": [
+    "mk6",
+    "jos1"
+   ],
+   "text": "Mark says Herod arrested John and bound him in prison because of Herodias; Josephus says John was sent a prisoner to the castle of Macherus and put to death there."
+  },
+  {
+   "key": "jos_motive",
+   "status": "disputed",
+   "sources": [
+    "jos1",
+    "mk6"
+   ],
+   "text": "Josephus gives a political reason for John's death - Herod feared John's influence over the people might lead to a rebellion - while Mark blames Herodias's grudge and a rash oath.",
+   "note": "The two sources give different reasons and neither mentions the other's; both agree Herod put John to death."
+  },
+  {
+   "key": "jos_good",
+   "status": "verified",
+   "sources": [
+    "jos1"
+   ],
+   "text": "Josephus calls John a good man who commanded the Jews to practise virtue and righteousness and to come to baptism."
+  },
+  {
+   "key": "grudge",
+   "status": "verified",
+   "sources": [
+    "mk6"
+   ],
+   "text": "Mark says Herodias held a grudge and wanted John killed, but Herod feared John, knowing he was a righteous man, protected him, and liked to hear him."
+  },
+  {
+   "key": "prison_q",
+   "status": "verified",
+   "sources": [
+    "mt11"
+   ],
+   "text": "In Matthew, John in prison sent his disciples to ask Jesus whether he was the one who was to come or whether they should look for another."
+  },
+  {
+   "key": "praise",
+   "status": "verified",
+   "sources": [
+    "mt11"
+   ],
+   "text": "Jesus answered by pointing to the blind who see and the lame who walk, and told the crowds that among those born of women none was greater than John."
+  },
+  {
+   "key": "banquet",
+   "status": "verified",
+   "sources": [
+    "mk6"
+   ],
+   "text": "Mark says Herodias's daughter danced at Herod's birthday banquet, Herod swore to give her whatever she asked up to half his kingdom, and at her mother's urging she asked for John's head on a platter."
+  },
+  {
+   "key": "reluctant",
+   "status": "verified",
+   "sources": [
+    "mk6"
+   ],
+   "text": "Mark says Herod was exceedingly sorry but, because of his oaths and his guests, would not refuse her, and ordered it done."
+  },
+  {
+   "key": "burial",
+   "status": "verified",
+   "sources": [
+    "mk6"
+   ],
+   "text": "Mark says John's disciples took his body and laid it in a tomb."
+  },
+  {
+   "key": "salome",
+   "status": "verified",
+   "sources": [
+    "jos2",
+    "mk6"
+   ],
+   "text": "Mark does not name the dancing girl; Josephus names Herodias's daughter as Salome but does not connect her to John's death."
+  },
+  {
+   "key": "withdraw",
+   "status": "verified",
+   "sources": [
+    "mt14"
+   ],
+   "text": "In Matthew, when Jesus heard the news, he withdrew by boat to a deserted place by himself."
+  },
+  {
+   "key": "relics",
+   "status": "disputed",
+   "sources": [
+    "wp_rel"
+   ],
+   "text": "Several places claim to hold John's head, including the Umayyad Mosque in Damascus, San Silvestro in Capite in Rome, and Amiens Cathedral in France.",
+   "note": "Competing claims; at most one can be genuine and none is verified."
+  },
+  {
+   "key": "mand",
+   "status": "verified",
+   "sources": [
+    "wp_man"
+   ],
+   "text": "The Mandaeans, an ancient ethnoreligious group, regard John the Baptist as their greatest and final prophet."
+  }
+ ],
+ "script": [
+  {
+   "kind": "hook",
+   "heading": "Hook",
+   "paragraphs": [
+    {
+     "text": "He baptized Jesus himself in the Jordan River. Later, his head was presented on a platter at a party.",
+     "claims": [
+      "baptism",
+      "banquet"
+     ],
+     "factual": true
+    },
+    {
+     "text": "His mother Elizabeth was a relative of Mary, the mother of Jesus. Luke's Gospel says that when Mary, newly pregnant herself, came to visit, John leapt in his mother's womb, before either child was born.",
+     "claims": [
+      "birth_visit"
+     ],
+     "factual": true
+    },
+    {
+     "text": "Tonight we follow a wilderness preacher who baptized the man Christianity would come to worship, confronted a king to his face, and paid for it with his head.",
+     "claims": [],
+     "factual": false
+    }
+   ]
+  },
+  {
+   "kind": "context",
+   "heading": "Birth and the wilderness",
+   "paragraphs": [
+    {
+     "text": "Before that visit, Luke says, an angel had appeared to an elderly priest named Zechariah while he was on duty in the Temple, promising him a son in his old age. Zechariah doubted it, and was struck mute on the spot.",
+     "claims": [
+      "zech"
+     ],
+     "factual": true
+    },
+    {
+     "text": "When the boy was born, the relatives assumed he would be named after his father. Elizabeth insisted on John instead. Zechariah, still unable to speak, confirmed it in writing, and got his voice back the instant he did.",
+     "claims": [
+      "naming"
+     ],
+     "factual": true
+    },
+    {
+     "text": "He grew up and, at some point, withdrew into the wilderness. Mark's Gospel says he lived there dressed in camel's hair with a leather belt, eating locusts and wild honey.",
+     "claims": [
+      "wild"
+     ],
+     "factual": true
+    },
+    {
+     "text": "His clothing alone was a loaded choice. Camel's hair and a leather belt was almost exactly how the Old Testament described the prophet Elijah, centuries earlier. And Jesus himself, in Matthew's Gospel, identifies John as the Elijah whose return the prophet Malachi foretold.",
+     "claims": [
+      "elijah"
+     ],
+     "factual": true
+    },
+    {
+     "text": "John himself wanted no part of that title, though. When priests and Levites came from Jerusalem to ask who he was, John's own Gospel says he denied being the Christ, denied being Elijah, denied being the Prophet, and called himself only a voice crying out in the wilderness.",
+     "claims": [
+      "denial"
+     ],
+     "factual": true
+    }
+   ]
+  },
+  {
+   "kind": "timeline",
+   "heading": "Ministry and the baptism of Jesus",
+   "paragraphs": [
+    {
+     "text": "Then he began preaching a message of repentance, and crowds came out from Jerusalem and all Judea just to hear him.",
+     "claims": [
+      "preach"
+     ],
+     "factual": true
+    },
+    {
+     "text": "They came a long way for it, out of the city and into the wilderness.",
+     "claims": [],
+     "factual": false
+    },
+    {
+     "text": "At the Jordan River, John baptized those who repented, a ritual washing so central to his preaching that it gave him his name: the Baptist.",
+     "claims": [
+      "preach"
+     ],
+     "factual": true
+    },
+    {
+     "text": "Luke's Gospel adds something more concrete than fire and brimstone. When the crowds asked what they should actually do, John told them to share food and clothing with those who had none. He told tax collectors not to take more than they were owed. And he told soldiers not to extort money or accuse anyone falsely, just to be content with their pay.",
+     "claims": [
+      "ethics"
+     ],
+     "factual": true
+    },
+    {
+     "text": "Some scholars see an echo of his wilderness life and ritual washing in the Essene community at Qumran, the people who produced the Dead Sea Scrolls. It is a scholarly theory, not a recorded fact, and no ancient source says John was ever one of them.",
+     "claims": [
+      "essene"
+     ],
+     "factual": true
+    },
+    {
+     "text": "When religious leaders came to be baptized themselves, Matthew's Gospel says John turned on them sharply: you brood of vipers, who warned you to flee the coming wrath?",
+     "claims": [
+      "vipers"
+     ],
+     "factual": true
+    },
+    {
+     "text": "He was equally direct about his own role, though. Someone mightier was coming after him, John said, one whose sandals he was not even worthy to untie.",
+     "claims": [
+      "greater"
+     ],
+     "factual": true
+    },
+    {
+     "text": "Then, one day, Jesus himself came to be baptized. John tried to stop him. Matthew says John insisted it should be the other way around.",
+     "claims": [
+      "baptism"
+     ],
+     "factual": true
+    },
+    {
+     "text": "Jesus went ahead anyway. As he came up out of the water, the Gospel says, the heavens opened, a dove descended, and a voice spoke: this is my beloved Son.",
+     "claims": [
+      "baptism"
+     ],
+     "factual": true
+    },
+    {
+     "text": "John had his own followers, separate from Jesus's, a detail that is easy to forget. John's own Gospel says that two of them, including a fisherman named Andrew, heard John point to Jesus, and left to follow him instead.",
+     "claims": [
+      "disciples"
+     ],
+     "factual": true
+    }
+   ]
+  },
+  {
+   "kind": "evidence",
+   "heading": "Two accounts of why he died",
+   "paragraphs": [
+    {
+     "text": "John's outspokenness eventually turned toward power itself. He told Herod Antipas, ruler of Galilee, that it was not lawful for him to have his brother's wife. Herodias had divorced Herod's brother Philip to marry him.",
+     "claims": [
+      "rebuke"
+     ],
+     "factual": true
+    },
+    {
+     "text": "We met Herod Antipas briefly, mocking Jesus during his trial. He was no stranger to uncomfortable questions.",
+     "claims": [],
+     "factual": false
+    },
+    {
+     "text": "Herod had John arrested and bound in prison. Josephus says he was sent as a prisoner to the castle of Machaerus, and was put to death there.",
+     "claims": [
+      "arrest"
+     ],
+     "factual": true
+    },
+    {
+     "text": "Josephus gives a purely political reason for what happened next. Herod feared that John's great influence over the people might lead to a rebellion he could not control, and so he struck first.",
+     "claims": [
+      "jos_motive"
+     ],
+     "factual": true
+    },
+    {
+     "text": "That account matters because it comes from outside the Gospels. Josephus confirms that John really existed, that he called the Jews to baptism, and that he thought of him, in his own words, as a good man.",
+     "claims": [
+      "jos_good"
+     ],
+     "factual": true
+    },
+    {
+     "text": "Mark's Gospel tells a very different story about his death. Herodias held the grudge and wanted him dead, but Herod, oddly, protected him. He feared John as a righteous man, and Mark adds that he actually liked listening to him.",
+     "claims": [
+      "grudge"
+     ],
+     "factual": true
+    },
+    {
+     "text": "From his cell, John sent his own disciples to ask Jesus a striking question: are you the one who is to come, or should we look for another?",
+     "claims": [
+      "prison_q"
+     ],
+     "factual": true
+    },
+    {
+     "text": "Jesus did not answer yes or no. He pointed to what was already happening around him, the blind seeing, the lame walking, and then told the crowds that among those born of women, none was greater than John.",
+     "claims": [
+      "praise"
+     ],
+     "factual": true
+    }
+   ]
+  },
+  {
+   "kind": "turning_point",
+   "heading": "The banquet",
+   "paragraphs": [
+    {
+     "text": "On Herod's birthday, Mark says, Herodias's daughter danced for the assembled guests at a banquet, and pleased Herod enormously.",
+     "claims": [
+      "banquet"
+     ],
+     "factual": true
+    },
+    {
+     "text": "Flattered, and with his guests watching, Herod swore an oath: ask me for anything, he told her, up to half my kingdom.",
+     "claims": [
+      "banquet"
+     ],
+     "factual": true
+    },
+    {
+     "text": "She went to her mother for advice. Herodias did not hesitate: ask for the head of John the Baptist.",
+     "claims": [
+      "banquet"
+     ],
+     "factual": true
+    },
+    {
+     "text": "She came back and asked for exactly that: his head, she specified, on a platter.",
+     "claims": [
+      "banquet"
+     ],
+     "factual": true
+    },
+    {
+     "text": "Herod was distressed, Mark says, but he had sworn the oath in front of his guests, and he would not break his word in public. He gave the order.",
+     "claims": [
+      "reluctant"
+     ],
+     "factual": true
+    }
+   ]
+  },
+  {
+   "kind": "consequences",
+   "heading": "Afterward",
+   "paragraphs": [
+    {
+     "text": "John's own disciples came for his body afterward and laid it in a tomb.",
+     "claims": [
+      "burial"
+     ],
+     "factual": true
+    },
+    {
+     "text": "Mark never names the girl who danced. Josephus names Herodias's daughter as Salome, though he never ties her to John's death. Over the centuries, the two accounts were blended into the story we know as the dance of Salome.",
+     "claims": [
+      "salome"
+     ],
+     "factual": true
+    },
+    {
+     "text": "Medieval tradition multiplied what happened to his head afterward. Damascus, Rome and Amiens in France have each claimed to hold it, a vivid example of how relics multiplied across medieval Christendom.",
+     "claims": [
+      "relics"
+     ],
+     "factual": true
+    },
+    {
+     "text": "When Jesus heard the news, Matthew's Gospel says, he withdrew by himself to a quiet place.",
+     "claims": [
+      "withdraw"
+     ],
+     "factual": true
+    },
+    {
+     "text": "One small, little-known legacy: the Mandaeans, an ancient religious community that survives today, consider John the Baptist, not Jesus, their greatest and final prophet.",
+     "claims": [
+      "mand"
+     ],
+     "factual": true
+    }
+   ]
+  },
+  {
+   "kind": "conclusion",
+   "heading": "Conclusion",
+   "paragraphs": [
+    {
+     "text": "So who was John the Baptist? A wilderness preacher who refused every title offered to him, baptized the man Christianity would come to worship, confronted a king to his face, and, by his own words sent from a prison cell, was still unsure whether the one he announced was really the one at all.",
+     "claims": [
+      "denial",
+      "prison_q"
+     ],
+     "factual": true
+    },
+    {
+     "text": "Herod killed him for a dance, or feared him as a threat to his throne. The sources disagree on why, but not on how it ended: the man who prepared the way for Jesus died before he did, head on a platter at someone else's party.",
+     "claims": [
+      "jos_motive"
+     ],
+     "factual": true
+    },
+    {
+     "text": "If you made it this far, subscribe. A new figure from history every week.",
+     "claims": [],
+     "factual": false
+    }
+   ]
+  }
+ ],
+ "scene_overrides": {},
+ "images": [
+  {
+   "key": "ep6_001_jb_face_portrait",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep6_long_images\\ep6_001_jb_face_portrait.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    1,
+    38
+   ]
+  },
+  {
+   "key": "ep6_002_jb_birth_and_visitation",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep6_long_images\\ep6_002_jb_birth_and_visitation.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    2
+   ]
+  },
+  {
+   "key": "ep6_003_judean_wilderness_establishing",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep6_long_images\\ep6_003_judean_wilderness_establishing.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    3
+   ]
+  },
+  {
+   "key": "ep6_004_jb_zechariah_announcement",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep6_long_images\\ep6_004_jb_zechariah_announcement.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    4
+   ]
+  },
+  {
+   "key": "ep6_005_jb_naming_zechariah_speaks",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep6_long_images\\ep6_005_jb_naming_zechariah_speaks.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    5
+   ]
+  },
+  {
+   "key": "ep6_006_jb_camel_hair_locusts",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep6_long_images\\ep6_006_jb_camel_hair_locusts.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    6
+   ]
+  },
+  {
+   "key": "ep6_007_jb_elijah_parallel",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep6_long_images\\ep6_007_jb_elijah_parallel.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    7
+   ]
+  },
+  {
+   "key": "ep6_008_jb_self_denial_not_messiah",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep6_long_images\\ep6_008_jb_self_denial_not_messiah.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    8
+   ]
+  },
+  {
+   "key": "ep6_009_jb_preaching_repentance",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep6_long_images\\ep6_009_jb_preaching_repentance.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    9
+   ]
+  },
+  {
+   "key": "ep5_003_judea_desert_road_dawn",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep5_long_images\\ep5_003_judea_desert_road_dawn.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    10
+   ]
+  },
+  {
+   "key": "ep6_011_jb_baptizing_jordan",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep6_long_images\\ep6_011_jb_baptizing_jordan.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    11
+   ]
+  },
+  {
+   "key": "ep6_012_jb_concrete_ethics",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep6_long_images\\ep6_012_jb_concrete_ethics.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    12
+   ]
+  },
+  {
+   "key": "ep6_013_jb_qumran_scrolls_echo",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep6_long_images\\ep6_013_jb_qumran_scrolls_echo.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    13
+   ]
+  },
+  {
+   "key": "ep6_014_jb_brood_of_vipers",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep6_long_images\\ep6_014_jb_brood_of_vipers.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    14
+   ]
+  },
+  {
+   "key": "ep6_015_jb_one_greater_coming",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep6_long_images\\ep6_015_jb_one_greater_coming.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    15
+   ]
+  },
+  {
+   "key": "ep6_016_jb_jesus_arrives_jordan",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep6_long_images\\ep6_016_jb_jesus_arrives_jordan.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    16
+   ]
+  },
+  {
+   "key": "ep6_017_jb_baptism_of_jesus",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep6_long_images\\ep6_017_jb_baptism_of_jesus.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    17
+   ]
+  },
+  {
+   "key": "ep6_018_jb_own_disciples",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep6_long_images\\ep6_018_jb_own_disciples.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    18
+   ]
+  },
+  {
+   "key": "ep6_019_jb_rebukes_herod",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep6_long_images\\ep6_019_jb_rebukes_herod.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    19
+   ]
+  },
+  {
+   "key": "ep2_041_herod_antipas_mocking",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep2_long_images\\ep2_041_herod_antipas_mocking.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    20
+   ]
+  },
+  {
+   "key": "ep6_021_jb_arrested_machaerus",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep6_long_images\\ep6_021_jb_arrested_machaerus.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    21
+   ]
+  },
+  {
+   "key": "ep6_022_jb_josephus_political_fear",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep6_long_images\\ep6_022_jb_josephus_political_fear.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    22
+   ]
+  },
+  {
+   "key": "ep6_023_jb_josephus_independent_confirmation",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep6_long_images\\ep6_023_jb_josephus_independent_confirmation.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    23
+   ]
+  },
+  {
+   "key": "ep6_024_jb_herodias_grudge",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep6_long_images\\ep6_024_jb_herodias_grudge.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    24
+   ]
+  },
+  {
+   "key": "ep6_025_jb_doubt_in_prison",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep6_long_images\\ep6_025_jb_doubt_in_prison.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    25
+   ]
+  },
+  {
+   "key": "ep6_026_jb_jesus_answer_messengers",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep6_long_images\\ep6_026_jb_jesus_answer_messengers.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    26
+   ]
+  },
+  {
+   "key": "ep6_027_jb_herod_birthday_feast",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep6_long_images\\ep6_027_jb_herod_birthday_feast.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    27
+   ]
+  },
+  {
+   "key": "ep6_028_jb_herod_rash_oath",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep6_long_images\\ep6_028_jb_herod_rash_oath.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    28
+   ]
+  },
+  {
+   "key": "ep6_029_jb_girl_asks_mother",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep6_long_images\\ep6_029_jb_girl_asks_mother.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    29
+   ]
+  },
+  {
+   "key": "ep6_030_jb_head_on_platter_request",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep6_long_images\\ep6_030_jb_head_on_platter_request.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    30
+   ]
+  },
+  {
+   "key": "ep6_031_jb_herod_reluctant_order",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep6_long_images\\ep6_031_jb_herod_reluctant_order.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    31
+   ]
+  },
+  {
+   "key": "ep6_032_jb_disciples_bury_body",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep6_long_images\\ep6_032_jb_disciples_bury_body.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    32
+   ]
+  },
+  {
+   "key": "ep3_014_philo_writing_alexandria",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep3_long_images\\ep3_014_philo_writing_alexandria.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    33
+   ]
+  },
+  {
+   "key": "ep6_034_jb_relic_veneration_damascus",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep6_long_images\\ep6_034_jb_relic_veneration_damascus.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    34
+   ]
+  },
+  {
+   "key": "ep6_035_jb_jesus_withdraws_grief",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep6_long_images\\ep6_035_jb_jesus_withdraws_grief.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    35
+   ]
+  },
+  {
+   "key": "ep6_036_jb_mandaean_legacy",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep6_long_images\\ep6_036_jb_mandaean_legacy.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    36
+   ]
+  },
+  {
+   "key": "ep6_037_jb_final_portrait",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep6_long_images\\ep6_037_jb_final_portrait.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    37
+   ]
+  }
+ ]
+}

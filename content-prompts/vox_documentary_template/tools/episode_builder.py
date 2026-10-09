@@ -80,21 +80,62 @@ def excerpt(text: str, needles: list[str]) -> str:
     return " ".join(out)
 
 
+def fetch_source(s: dict, cache: Path) -> dict:
+    """Primary-text sources beyond the spec's default Wikipedia article. Always cut, never retyped.
+      {"fetch": {"kind": "bible", "ref": "Mark 6:17-29"}}      World English Bible (public domain) via bible-api.com
+      {"fetch": {"kind": "wikisource", "page": "...", "needles": [...]}}   a Wikisource page (e.g. Whiston's Josephus)
+      {"fetch": {"kind": "wikipedia", "lang": "en", "title": "...", "needles": [...]}}   another article
+    -> {"excerpt", "url", "publisher", "author"} (spec keys url/publisher/author/accessed override)."""
+    f = s["fetch"]
+    kind = f["kind"]
+    cache.mkdir(parents=True, exist_ok=True)
+    if kind == "bible":
+        ref = f["ref"]
+        cf = cache / ("bible_" + re.sub(r"\W+", "_", ref) + ".json")
+        if not cf.is_file():
+            url = "https://bible-api.com/" + urllib.parse.quote(ref) + "?translation=web"
+            cf.write_text(urllib.request.urlopen(urllib.request.Request(url, headers=commons.UA), timeout=60).read().decode("utf-8"), encoding="utf-8")
+        d = json.loads(cf.read_text(encoding="utf-8"))
+        text = " ".join(v["text"].strip().replace("\n", " ") for v in d["verses"])
+        return {"excerpt": text, "url": "https://bible-api.com/" + urllib.parse.quote(ref) + "?translation=web",
+                "publisher": "World English Bible (public domain)", "author": "Biblical text"}
+    if kind == "wikisource":
+        page = f["page"]
+        cf = cache / ("wikisource_" + re.sub(r"\W+", "_", page) + ".txt")
+        if not cf.is_file():
+            import html as _html
+            url = ("https://en.wikisource.org/w/api.php?action=parse&page=" + urllib.parse.quote(page, safe="/")
+                   + "&prop=text&format=json&formatversion=2&disabletoc=1")
+            d = json.load(urllib.request.urlopen(urllib.request.Request(url, headers=commons.UA), timeout=120))
+            cf.write_text(_html.unescape(re.sub(r"<[^>]+>", "", d["parse"]["text"])), encoding="utf-8")
+        return {"excerpt": excerpt(cf.read_text(encoding="utf-8"), f["needles"]), "url": "https://en.wikisource.org/wiki/" + page,
+                "publisher": "Wikisource (William Whiston translation, public domain)", "author": f.get("author", "Flavius Josephus")}
+    if kind == "wikipedia":
+        w = {"lang": f.get("lang", "en"), "title": f["title"]}
+        return {"excerpt": excerpt(wiki_text({"wiki": w}, cache), f["needles"]), "url": f"https://{w['lang']}.wikipedia.org/wiki/{w['title']}",
+                "publisher": "Wikimedia Foundation", "author": "Wikipedia contributors"}
+    raise SystemExit(f"unknown fetch kind {kind!r}")
+
+
 # -- commands ----------------------------------------------------------------------------------------
 def cmd_create(spec_arg: str) -> None:
     spec, path, state = load_spec(spec_arg)
     if state.get("project_id"):
         raise SystemExit(f"Already created (project {state['project_id']}). Delete {path.with_suffix('.state.json').name} to start over.")
-    text = wiki_text(spec, path.parent / ".cache")
-    w = spec["wiki"]
-    page_url = f"https://{w['lang']}.wikipedia.org/wiki/{w['title']}"
-    pid = call("POST", "/projects", {"title": spec["title"], "topic": spec["topic"], "budget_usd": spec.get("budget_usd")})["id"]
+    w = spec.get("wiki")
+    text = wiki_text(spec, path.parent / ".cache") if w else ""
+    page_url = f"https://{w['lang']}.wikipedia.org/wiki/{w['title']}" if w else None
+    w = w or {"accessed": spec["accessed"], "publisher": ""}
+    pid = call("POST", "/projects", {"title": spec["title"], "topic": spec["topic"], "budget_usd": spec.get("budget_usd"), "language": spec.get("language", "vi")})["id"]
     state["project_id"] = pid
     src_ids, claim_ids = {}, {}
     for s in spec["sources"]:
+        got = fetch_source(s, path.parent / ".cache") if s.get("fetch") else {
+            "excerpt": excerpt(text, s["needles"]), "url": page_url, "publisher": w.get("publisher", "Wikimedia Foundation"), "author": "Wikipedia contributors"}
         src_ids[s["key"]] = call("POST", f"/projects/{pid}/sources", {
-            "title": s["title"], "url": page_url, "publisher": w.get("publisher", "Wikimedia Foundation"), "author": "Wikipedia contributors",
-            "accessed_date": w["accessed"], "excerpt": excerpt(text, s["needles"]), "notes": s.get("notes", "Nguồn thứ cấp: đối chiếu thêm sách chuyên khảo trước khi đăng."),
+            "title": s["title"], "url": s.get("url", got["url"]), "publisher": s.get("publisher", got["publisher"]), "author": s.get("author", got["author"]),
+            "accessed_date": s.get("accessed", w["accessed"]), "excerpt": got["excerpt"],
+            "notes": s.get("notes", "Nguồn thứ cấp: đối chiếu thêm sách chuyên khảo trước khi đăng."),
         })["id"]
     for c in spec["claims"]:
         claim_ids[c["key"]] = call("POST", f"/projects/{pid}/claims", {
@@ -161,7 +202,15 @@ def cmd_images(spec_arg: str) -> None:
             else:
                 raise SystemExit(f"unknown image kind {img['kind']!r}")
             assets[key] = a["id"]
-        for sk in img.get("use", []):
+        use = list(img.get("use", []))
+        if img.get("paragraphs"):  # 1-based script paragraphs; the scenes cut from them get this image (max 3 per image)
+            flat = [p["text"] for sec in spec["script"] for p in sec["paragraphs"]]
+            for n in img["paragraphs"]:
+                got = [k for k, sc in scenes.items() if sc["narration_text"].strip() in flat[n - 1]]
+                if len(got) > 3:
+                    print(f"  ! paragraph {n} has {len(got)} scenes but one image serves at most 3 - {got[3:]} need another image")
+                use += got[:3]
+        for sk in use:
             if sk in scenes:
                 call("PUT", f"/projects/{pid}/scenes/{scenes[sk]['id']}/asset", {"asset_id": assets[key]})
     save_state(path, state)

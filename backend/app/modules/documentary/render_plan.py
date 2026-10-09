@@ -28,6 +28,7 @@ from app.modules.documentary.assets import asset_state
 from app.modules.documentary.models import (
     DocumentaryAsset,
     DocumentaryClaim,
+    DocumentaryProject,
     DocumentaryScene,
     DocumentarySceneTiming,
     DocumentarySubtitle,
@@ -203,11 +204,12 @@ def claim_status_for(claim_ids: list[int], statuses: dict[int, str]) -> str | No
     return "verified" if all(s == "verified" for s in have) else "unverified"
 
 
-def credit_text(origin: str, license_: str | None, attribution: str | None) -> str | None:
+def credit_text(origin: str, license_: str | None, attribution: str | None, language: str = "vi") -> str | None:
     """On-screen credit an image needs: AI illustrations are labelled, attribution-licensed images credit
     their author, public-domain / own images need none."""
+    en = language.lower().startswith("en")
     if origin == "ai_manual":
-        return "Minh họa AI"
+        return "AI illustration" if en else "Minh họa AI"
     if origin != "archival":
         return None
     lic = (license_ or "").strip()
@@ -215,7 +217,7 @@ def credit_text(origin: str, license_: str | None, attribution: str | None) -> s
     if not lic or low.startswith("public domain") or "cc0" in low or low == "pd":
         return None
     artist = re.sub(r"\s*[—-]\s*Wikimedia Commons\s*$", "", attribution or "").strip()
-    return f"Ảnh: {artist} · {lic}" if artist else lic
+    return f"{'Image' if en else 'Ảnh'}: {artist} · {lic}" if artist else lic
 
 
 # -- manifest ---------------------------------------------------------------------------------------
@@ -232,6 +234,8 @@ def build_manifest(db: Session, root: Path, project_id: int, params: RenderParam
     """-> (manifest, {public-relative path: source file}, input hash)."""
     narr = NarrationService(db, root)
     segments = narr.list(project_id)
+    project = db.get(DocumentaryProject, project_id)
+    language = project.language if project else "vi"
     timings = list(
         db.scalars(select(DocumentarySceneTiming).where(DocumentarySceneTiming.project_id == project_id).order_by(DocumentarySceneTiming.order_index))
     )
@@ -268,7 +272,7 @@ def build_manifest(db: Session, root: Path, project_id: int, params: RenderParam
         if image is not None and preset in ("PhotoKenBurns", "ArchivalPortrait"):
             role = "caption" if preset == "PhotoKenBurns" else "label"
             if not any(x["role"] in ("caption", "label") for x in texts):  # never duplicate what the user typed
-                credit = credit_text(asset.origin, asset.license, asset.attribution)
+                credit = credit_text(asset.origin, asset.license, asset.attribution, language)
                 if credit:
                     texts = texts + [{"text": credit, "role": role, "anchor": ""}]
         if not texts and image is None and preset in DATA_PRESETS:
