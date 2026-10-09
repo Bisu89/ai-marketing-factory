@@ -25,7 +25,7 @@ Phong cách webtoon/manhwa Hàn Quốc, nét mực đen đậm sạch sẽ, tô 
 
 **[PHỦ_ĐỊNH_CHUNG]** (đặt cuối mọi prompt)
 ```
-PHỦ ĐỊNH: giải phẫu sai, thừa/thiếu ngón tay, mặt biến dạng, khoả thân, lộ ngực hoặc vùng nhạy cảm, tư thế gợi dục, phong cách sơn dầu, ảnh thực, anime bán thực, 3D, máu đỏ tươi, chữ, logo, watermark, ký hiệu lạ.
+PHỦ ĐỊNH: giải phẫu sai, thừa/thiếu ngón tay, mặt biến dạng, khoả thân, phong cách sơn dầu, ảnh thực, anime bán thực, 3D, máu đỏ tươi, chữ, logo, watermark, ký hiệu lạ.
 ```
 
 **[PHỦ_ĐỊNH_NGƯỜI_LỚN]** (dùng khi cảnh chỉ có người lớn)
@@ -202,7 +202,7 @@ Ghép sau [KHỐI NHÂN VẬT] + [TRANG PHỤC]. Chọn 1 mã:
 ```
 **Ví dụ hoàn chỉnh (Areum giương cung, 16:9):**
 ```
-Phong cách webtoon/manhwa Hàn Quốc, nét mực đen đậm sạch sẽ, tô màu phẳng 2D kiểu cel-shading, bóng đổ cứng cạnh, màu sắc rực rỡ bão hoà, bố cục điện ảnh. Tuyệt đối KHÔNG phong cách vẽ sơn dầu, KHÔNG anime bán thực, KHÔNG ảnh chụp thực tế, KHÔNG 3D render. Máu luôn là chất lỏng đen sẫm loãng (ichor), không bao giờ màu đỏ. Tỷ lệ khung hình 16:9 ngang. Seo Areum, nữ 26 tuổi, cao 1m75, thể hình vận động viên cân đối, đôi chân dài săn chắc. Tóc nâu tro rất dài bện thành một bím dài buông sau lưng. Mắt hổ phách quyết đoán, biểu cảm tự tin hơi bướng. Áo crop thể thao đen ôm sát, bảo hộ cẳng tay trái màu đen có viền đỏ cam, găng ngón bắn cung, quần short thể thao đen, bó chân dài tới đùi, túi đựng tên đeo chéo sau lưng, cầm một cây cung thể thao. Giương cung hết cỡ, mắt nheo ngắm mục tiêu, một chân bước trước, cánh tay vững như đá. Đứng trên mái nhà vòm của sân tập bắn cung quốc gia ban đêm, đèn pha sân tập phía sau tạo ánh sáng ngược, vài zombie nhỏ ở xa bên dưới. PHỦ ĐỊNH: giải phẫu sai, thừa/thiếu ngón tay, mặt biến dạng, khoả thân, lộ ngực hoặc vùng nhạy cảm, tư thế gợi dục, phong cách sơn dầu, ảnh thực, anime bán thực, 3D, máu đỏ tươi, chữ, logo, watermark, ký hiệu lạ. PHỦ ĐỊNH BỔ SUNG: trẻ em, thiếu niên, nhân vật trông trẻ con.
+Phong cách webtoon/manhwa Hàn Quốc, nét mực đen đậm sạch sẽ, tô màu phẳng 2D kiểu cel-shading, bóng đổ cứng cạnh, màu sắc rực rỡ bão hoà, bố cục điện ảnh. Tuyệt đối KHÔNG phong cách vẽ sơn dầu, KHÔNG anime bán thực, KHÔNG ảnh chụp thực tế, KHÔNG 3D render. Máu luôn là chất lỏng đen sẫm loãng (ichor), không bao giờ màu đỏ. Tỷ lệ khung hình 16:9 ngang. Seo Areum, nữ 26 tuổi, cao 1m75, thể hình vận động viên cân đối, đôi chân dài săn chắc. Tóc nâu tro rất dài bện thành một bím dài buông sau lưng. Mắt hổ phách quyết đoán, biểu cảm tự tin hơi bướng. Áo crop thể thao đen ôm sát, bảo hộ cẳng tay trái màu đen có viền đỏ cam, găng ngón bắn cung, quần short thể thao đen, bó chân dài tới đùi, túi đựng tên đeo chéo sau lưng, cầm một cây cung thể thao. Giương cung hết cỡ, mắt nheo ngắm mục tiêu, một chân bước trước, cánh tay vững như đá. Đứng trên mái nhà vòm của sân tập bắn cung quốc gia ban đêm, đèn pha sân tập phía sau tạo ánh sáng ngược, vài zombie nhỏ ở xa bên dưới. PHỦ ĐỊNH: giải phẫu sai, thừa/thiếu ngón tay, mặt biến dạng, khoả thân, phong cách sơn dầu, ảnh thực, anime bán thực, 3D, máu đỏ tươi, chữ, logo, watermark, ký hiệu lạ. PHỦ ĐỊNH BỔ SUNG: trẻ em, thiếu niên, nhân vật trông trẻ con.
 ```
 
 ### F2. Ảnh nhóm

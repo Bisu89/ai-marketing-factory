@@ -8,8 +8,8 @@ STYLE = ('Phong cách webtoon/manhwa Hàn Quốc, nét mực đen đậm sạch 
          'KHÔNG anime bán thực, KHÔNG ảnh chụp thực tế, KHÔNG 3D render. Máu luôn là chất lỏng đen sẫm loãng '
          '(ichor), không bao giờ màu đỏ.')
 RATIO = 'Tỷ lệ khung hình 16:9 ngang.'
-NEG = ('PHỦ ĐỊNH: giải phẫu sai, thừa/thiếu ngón tay, mặt biến dạng, khoả thân, lộ ngực hoặc vùng nhạy cảm, '
-       'tư thế gợi dục, phong cách sơn dầu, ảnh thực, anime bán thực, 3D, máu đỏ tươi, chữ, logo, watermark, '
+NEG = ('PHỦ ĐỊNH: giải phẫu sai, thừa/thiếu ngón tay, mặt biến dạng, khoả thân, '
+       'phong cách sơn dầu, ảnh thực, anime bán thực, 3D, máu đỏ tươi, chữ, logo, watermark, '
        'ký hiệu lạ. PHỦ ĐỊNH BỔ SUNG: trẻ em, thiếu niên, nhân vật trông trẻ con.')
 NEG_SHEET = NEG + ' Cắt mất đầu, cắt mất chân, thiếu bàn tay, góc nhìn méo mó.'
 
