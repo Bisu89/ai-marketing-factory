@@ -722,7 +722,111 @@
    ]
   }
  ],
- "scene_overrides": {},
+ "scene_overrides": {
+  "S011": {
+   "preset": "HeadlineImpact",
+   "texts": [
+    [
+     "wanted no part of that title",
+     "headline"
+    ]
+   ]
+  },
+  "S019": {
+   "preset": "EvidenceBoard",
+   "texts": [
+    [
+     "It is a scholarly theory, not a recorded fact",
+     "caption"
+    ]
+   ]
+  },
+  "S020": {
+   "preset": "HeadlineImpact",
+   "texts": [
+    [
+     "brood of vipers",
+     "headline"
+    ]
+   ]
+  },
+  "S029": {
+   "preset": "EvidenceBoard",
+   "texts": [
+    [
+     "Herod feared that John's great influence over the people might lead to a rebellion",
+     "caption"
+    ]
+   ]
+  },
+  "S031": {
+   "preset": "EvidenceBoard",
+   "texts": [
+    [
+     "Herodias held the grudge and wanted him dead, but Herod, oddly, protected him",
+     "caption"
+    ]
+   ]
+  },
+  "S037": {
+   "preset": "HeadlineImpact",
+   "texts": [
+    [
+     "ask for the head of John the Baptist",
+     "headline"
+    ]
+   ]
+  },
+  "S041": {
+   "preset": "PhotoKenBurns",
+   "texts": [
+    [
+     "Painting: Caravaggio, 1610",
+     "caption"
+    ]
+   ]
+  },
+  "S043": {
+   "preset": "EvidenceBoard",
+   "texts": [
+    [
+     "Damascus, Rome and Amiens in France have each claimed to hold it",
+     "caption"
+    ]
+   ]
+  },
+  "S046": {
+   "preset": "HeadlineImpact",
+   "texts": [
+    [
+     "So who was John the Baptist?",
+     "headline"
+    ]
+   ]
+  },
+  "S047": {
+   "preset": "ArchivalPortrait",
+   "texts": [
+    [
+     "John the Baptist",
+     "headline"
+    ],
+    [
+     "Painting: Leonardo da Vinci",
+     "label"
+    ]
+   ]
+  },
+  "S048": {
+   "preset": "HeadlineImpact",
+   "texts": [
+    [
+     "Herod killed him for a dance",
+     "headline"
+    ]
+   ]
+  }
+ },
  "images": [
   {
    "key": "ep6_001_jb_face_portrait",
@@ -1141,6 +1245,23 @@
    "attribution": "Biblical Figures channel",
    "use": [
     "S050"
+   ]
+  },
+  {
+   "key": "commons_caravaggio_salome",
+   "kind": "commons",
+   "commons_title": "File:Salome with the Head of John the Baptist-Caravaggio (1610).jpg",
+   "use": [
+    "S041",
+    "S042"
+   ]
+  },
+  {
+   "key": "commons_leonardo_jb",
+   "kind": "commons",
+   "commons_title": "File:Leonardo da Vinci - Saint John the Baptist C2RMF retouched.jpg",
+   "use": [
+    "S047"
    ]
   }
  ]

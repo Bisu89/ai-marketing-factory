@@ -211,7 +211,7 @@ def cmd_images(spec_arg: str) -> None:
                     print(f"  ! paragraph {n} has {len(got)} scenes but one image serves at most 3 - {got[3:]} need another image")
                 use += got[:3]
         for sk in use:
-            if sk in scenes:
+            if sk in scenes and scenes[sk].get("asset_strategy") != "programmatic":  # data cards need no image
                 call("PUT", f"/projects/{pid}/scenes/{scenes[sk]['id']}/asset", {"asset_id": assets[key]})
     save_state(path, state)
     print("All images are PENDING. NEXT (human): open the 'Ảnh' tab, read each licence, approve/reject.")
