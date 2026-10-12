@@ -1,0 +1,75 @@
+{
+  "title": "Ma Hoàng đại chiến đệ tử Ngự Hạ Thất Thế Gia rồi quay sang bắt tay!?",
+  "chapters": "58-60",
+  "source_dir": "manhua-recap/dqgl_ep51",
+  "written_by": "Claude tổng hợp từ script ep51-60 đã lưu, 2026-10-12",
+  "description": "Trác Phàm giao đấu với công tử tóc xanh, đệ tử của Ngự Hạ Thất Thế Gia, rồi bất ngờ đề nghị hợp tác để lấy toàn bộ Kim Cương Lưu Sa.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tóm tắt chương 58 đến 60.\n◀ Phần trước: chương 54-57",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "ĐỐI THỦ THÀNH ĐỒNG MINH!",
+    "prompt": "A young butler cultivator with a purple demonic blade crossing swords with a green-haired swordsman in white armour in a night forest, a red-haired girl watching from behind a tree. Chinese manhua cover art style, full-colour digital illustration, bold clean linework, cel shading with dramatic glow and rim light, high contrast, vertical 9:16 composition (keep the subject inside the centre 2:3 area), leave the top 25% as darker empty background for a title overlay, NO text, NO letters, NO speech bubbles, NO watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep58/p017.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm gạt bỏ lời xin lỗi: dù linh thú có chủ hay không, hôm nay hắn nhất định phải có được nó."
+    },
+    {
+      "panel": "dqgl_ep58/p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Qua những đòn va chạm, Trác Phàm đoán kẻ trước mặt là đệ tử hạt tâm của Ngự Hạ Thất Thế Gia, thậm chí có thể là người thừa kế."
+    },
+    {
+      "panel": "dqgl_ep58/p033.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Trác Phàm bình thản thốt lên: một kiếm đổi một mạng. Hai luồng sức mạnh lao vào nhau, báo hiệu trận chiến sẽ phân định sống chết chỉ trong khoảnh khắc."
+    },
+    {
+      "panel": "dqgl_ep59/p011.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đối thủ tự nhận mình là thiên tài trong số các thiên tài, từ khi cầm kiếm đến nay chưa từng thất bại. Hắn tức giận vì vừa rồi đã phải dùng toàn lực."
+    },
+    {
+      "panel": "dqgl_ep59/p019.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm không vội trả lời mà chuyển sang hỏi đối phương có muốn hợp tác với nhóm mình hay không."
+    },
+    {
+      "panel": "dqgl_ep59/p030.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Công tử tóc xanh trình bày: Kim Cương Lưu Sa bị địa tâm áp bức nên sẽ chảy vào hồ. Chỉ cần nước hồ tràn ra ngoài, họ có thể dùng chuột chũi đào một nhánh hầm để dẫn một phần lưu sa tới chỗ mình."
+    },
+    {
+      "panel": "dqgl_ep60/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm đề nghị nếu Thiên Dương tin mình, hắn có thể lấy toàn bộ Kim Cương Lưu Sa, không để U Minh Cốc được một hạt nào. Đổi lại, hai bên sẽ chia đôi chiến lợi phẩm."
+    },
+    {
+      "panel": "dqgl_ep60/p022.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm tiết lộ mình đã ký khế ước đồng minh với Tiềm Long Các. Nếu Kiếm Hầu Phủ cũng muốn kết minh với họ, hắn hoan nghênh."
+    },
+    {
+      "panel": "dqgl_ep60/p036.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thiên Dương nghi ngờ Trác Phàm có liên hệ với Hoàng thất. Trác Phàm chỉ đáp rằng mình đã nói rồi, tin hay không là tùy hắn, nhưng hiện tại cả nhóm đang hợp tác."
+    }
+  ]
+}
