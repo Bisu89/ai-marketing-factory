@@ -8,7 +8,14 @@
   "bakien": 30,
   "thino": 31,
   "bacô": 32,
-  "end": 33
+  "end": 33,
+  "gate": 82,
+  "taodoi": 83,
+  "drunk": 84,
+  "thino0": 85,
+  "awake": 86,
+  "hope": 87,
+  "rift": 88
  },
  "claims": {
   "open": 40,
@@ -25,6 +32,13 @@
   "aunt": 51,
   "wish": 52,
   "kill": 53,
-  "after": 54
+  "after": 54,
+  "use": 111,
+  "taodoi": 112,
+  "drunk": 113,
+  "thino0": 114,
+  "awake": 115,
+  "hope": 116,
+  "rift": 117
  }
 }

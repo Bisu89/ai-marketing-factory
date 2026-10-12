@@ -15,7 +15,7 @@
 - Văn bản truyện lấy từ Wikisource tiếng Việt; **mọi trích đoạn nguồn** trong `spec.json` được công cụ cắt nguyên văn (0 lỗi khi chạy).
 - **Đã chạy thật** `episode_builder.py create` trên backend tạm (DB riêng): 8 nguồn, 15 khẳng định, kịch bản qua kiểm tra nguồn (`script review: OK`). Phát hiện: máy dựng bắt buộc đủ 7 phần (có `timeline`) nên template đã sửa.
 - **Chưa** tạo dự án trong DB thật, chưa chạy cổng duyệt, chưa tạo ảnh/giọng/render.
-- Kịch bản ~782 từ ≈ 5–6 phút: ngắn hơn khung 6–9 phút; chủ kênh bổ sung phần bình luận và đo lại bằng audio thật.
+- Kịch bản đã mở rộng lên ~1.350 từ (36 đoạn, ước tính ≈ 7–9 phút); đo lại bằng audio thật sau khi tạo giọng.
 - Đoạn BÌNH LUẬN là **bản nháp** do AI viết; chủ kênh viết lại bằng giọng của mình trước cổng 2.
 - Cần đối chiếu một bản in (chính tả cũ/hiện đại, văn bản Wikisource có thể khác bản nhà xuất bản).
 - Việc nhỏ cần làm khi chạy lần đầu: kiểm thử dấu tiếng Việt của chữ cắt dán trong theme collage.

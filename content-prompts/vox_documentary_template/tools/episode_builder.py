@@ -163,7 +163,14 @@ def cmd_storyboard(spec_arg: str) -> None:
     pid = state["project_id"]
     print("plan:", call("POST", f"/projects/{pid}/storyboard/plan"))
     scenes = {s["scene_key"]: s for s in call("GET", f"/projects/{pid}/scenes")}
-    for key, ov in spec.get("scene_overrides", {}).items():
+    overrides = dict(spec.get("scene_overrides", {}))
+    for card in spec.get("cards_by_phrase", []):  # data cards addressed by a phrase of the narration, not a scene key
+        hit = next((k for k, sc in scenes.items() if card["phrase"].lower() in sc["narration_text"].lower()), None)
+        if hit is None:
+            print(f"  ! no scene contains {card['phrase']!r} - card skipped")
+        else:
+            overrides.setdefault(hit, {"preset": card["preset"], "texts": card["texts"]})
+    for key, ov in overrides.items():
         if key not in scenes:
             print(f"  ! scene {key} does not exist any more (narration changed?) - skipped")
             continue
