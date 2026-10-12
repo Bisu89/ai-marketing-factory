@@ -298,7 +298,7 @@ def build_manifest(db: Session, root: Path, project_id: int, params: RenderParam
         )
     manifest = {
         "theme": params.theme, "fps": FPS, "width": WIDTH, "height": HEIGHT,  # layout is in 1920x1080 units; previews shrink with --scale
-        "durationInFrames": total_frames, "fadeFrames": FADE_FRAMES, "grayscale": params.grayscale,
+        "durationInFrames": total_frames, "fadeFrames": FADE_FRAMES, "grayscale": params.grayscale, "language": language,
         "burnSubtitles": params.burn_subtitles, "scenes": scene_rows,
         "subtitles": [
             {"startFrame": round(s.start * FPS), "endFrame": max(round(s.start * FPS) + 1, round(s.end * FPS)), "text": s.text}

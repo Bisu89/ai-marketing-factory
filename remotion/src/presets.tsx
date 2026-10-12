@@ -2,6 +2,7 @@ import type { CSSProperties, ReactNode } from "react";
 import { AbsoluteFill, Img, interpolate, staticFile, useCurrentFrame } from "remotion";
 import { ARCHIVAL_FILTER, COLORS, FONTS, MOTION } from "./theme";
 import { Halftone, Highlight, PaperBackground, PaperCard, RedCircle, Tape, ease, headlineStyle, rng, tornPolygon, useEnter } from "./collage";
+import { useStampLabel } from "./lang";
 import type { Scene, SceneText } from "./schema";
 
 export interface PresetProps {
@@ -276,6 +277,7 @@ export function BigNumber({ scene }: PresetProps) {
 
 // ---- 7. EvidenceBoard -----------------------------------------------------------------------------------------
 export function EvidenceBoard({ scene }: PresetProps) {
+  const stampLabel = useStampLabel(scene.claimStatus === "disputed" ? "disputed" : "verified");
   const cards = scene.texts.slice(0, 4);
   const stamp = useEnter(40, 10);
   // Fewer cards => bigger cards and bigger type, so one sentence never floats tiny in an empty board.
@@ -311,7 +313,7 @@ export function EvidenceBoard({ scene }: PresetProps) {
       ))}
       {scene.claimStatus && scene.claimStatus !== "unverified" && (
         <div style={{ position: "absolute", right: 120, bottom: 190, transform: `rotate(-6deg) scale(${1.4 - 0.4 * stamp})`, opacity: stamp, border: `8px solid ${scene.claimStatus === "disputed" ? COLORS.red : COLORS.blue}`, color: scene.claimStatus === "disputed" ? COLORS.red : COLORS.blue, fontFamily: FONTS.display, fontSize: 60, padding: "6px 26px", letterSpacing: "0.04em" }}>
-          {scene.claimStatus === "disputed" ? "CÒN TRANH CÃI" : "ĐÃ XÁC MINH"}
+          {stampLabel}
         </div>
       )}
     </AbsoluteFill>

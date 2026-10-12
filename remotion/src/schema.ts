@@ -53,6 +53,7 @@ export const documentarySchema = z.object({
   durationInFrames: z.number().int().positive(),
   fadeFrames: z.number().int().min(0),
   grayscale: z.boolean(),
+  language: z.string().default("vi"),
   burnSubtitles: z.boolean(),
   scenes: z.array(sceneSchema),
   subtitles: z.array(subtitleSchema),

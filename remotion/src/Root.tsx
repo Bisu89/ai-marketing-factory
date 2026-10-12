@@ -17,6 +17,7 @@ const EMPTY: DocumentaryProps = {
   theme: "collage",
   fadeFrames: 6,
   grayscale: true,
+  language: "vi",
   burnSubtitles: false,
   scenes: [],
   subtitles: [],

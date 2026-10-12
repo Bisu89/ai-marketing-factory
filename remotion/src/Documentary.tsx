@@ -2,6 +2,7 @@ import { AbsoluteFill, Sequence, interpolate, useCurrentFrame } from "remotion";
 import { CINE_COMPONENTS, CineSubtitles } from "./cinematic";
 import { POSTER_COMPONENTS, PosterSubtitles } from "./poster";
 import { PRESET_COMPONENTS } from "./presets";
+import { LanguageContext } from "./lang";
 import { COLORS, FONTS } from "./theme";
 import type { DocumentaryProps, Scene } from "./schema";
 
@@ -49,6 +50,7 @@ function Subtitles({ subtitles, theme }: { subtitles: DocumentaryProps["subtitle
 export const Documentary = (props: DocumentaryProps) => {
   const last = props.scenes.length - 1;
   return (
+    <LanguageContext.Provider value={props.language ?? "vi"}>
     <AbsoluteFill style={{ background: props.theme === "cinematic" ? "#0e0c09" : props.theme === "poster" ? "#1d1b1a" : COLORS.paper }}>
       {props.scenes.map((scene, i) => (
         <Sequence
@@ -63,5 +65,6 @@ export const Documentary = (props: DocumentaryProps) => {
       ))}
       {props.burnSubtitles && <Subtitles subtitles={props.subtitles} theme={props.theme} />}
     </AbsoluteFill>
+    </LanguageContext.Provider>
   );
 };
