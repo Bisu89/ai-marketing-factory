@@ -804,7 +804,217 @@
    ]
   }
  ],
- "scene_overrides": {},
+ "scene_overrides": {
+  "S004": {
+   "preset": "MapZoom",
+   "texts": [
+    [
+     "Antonia",
+     "label"
+    ]
+   ]
+  },
+  "S009": {
+   "preset": "HeadlineImpact",
+   "texts": [
+    [
+     "Caiaphas stayed too",
+     "headline"
+    ]
+   ]
+  },
+  "S010": {
+   "preset": "PhotoKenBurns",
+   "texts": []
+  },
+  "S012": {
+   "preset": "PhotoKenBurns",
+   "texts": []
+  },
+  "S015": {
+   "preset": "PhotoKenBurns",
+   "texts": []
+  },
+  "S017": {
+   "preset": "PhotoKenBurns",
+   "texts": []
+  },
+  "S018": {
+   "preset": "PhotoKenBurns",
+   "texts": []
+  },
+  "S019": {
+   "preset": "PhotoKenBurns",
+   "texts": []
+  },
+  "S020": {
+   "preset": "PhotoKenBurns",
+   "texts": []
+  },
+  "S022": {
+   "preset": "PhotoKenBurns",
+   "texts": []
+  },
+  "S023": {
+   "preset": "PhotoKenBurns",
+   "texts": []
+  },
+  "S026": {
+   "preset": "PhotoKenBurns",
+   "texts": []
+  },
+  "S027": {
+   "preset": "PhotoKenBurns",
+   "texts": []
+  },
+  "S011": {
+   "preset": "HeadlineImpact",
+   "texts": [
+    [
+     "less like a sermon than a challenge",
+     "headline"
+    ]
+   ]
+  },
+  "S013": {
+   "preset": "HeadlineImpact",
+   "texts": [
+    [
+     "one man die for the people",
+     "headline"
+    ]
+   ]
+  },
+  "S014": {
+   "preset": "BigNumber",
+   "texts": [
+    [
+     "two thousand",
+     "number"
+    ],
+    [
+     "rebels were crucified",
+     "label"
+    ]
+   ]
+  },
+  "S016": {
+   "preset": "HeadlineImpact",
+   "texts": [
+    [
+     "Not during the feast",
+     "headline"
+    ]
+   ]
+  },
+  "S021": {
+   "preset": "HeadlineImpact",
+   "texts": [
+    [
+     "I am",
+     "headline"
+    ]
+   ]
+  },
+  "S024": {
+   "preset": "EvidenceBoard",
+   "texts": [
+    [
+     "Matthew puts the hearing in Caiaphas's house",
+     "caption"
+    ],
+    [
+     "Mark says only that Jesus was taken to the high priest",
+     "caption"
+    ],
+    [
+     "John has Annas question him first",
+     "caption"
+    ]
+   ]
+  },
+  "S025": {
+   "preset": "HeadlineImpact",
+   "texts": [
+    [
+     "Historians still argue",
+     "headline"
+    ]
+   ]
+  },
+  "S028": {
+   "preset": "HeadlineImpact",
+   "texts": [
+    [
+     "we have no king but Caesar",
+     "headline"
+    ]
+   ]
+  },
+  "S034": {
+   "preset": "HeadlineImpact",
+   "texts": [
+    [
+     "simply disappears from the page",
+     "headline"
+    ]
+   ]
+  },
+  "S035": {
+   "preset": "MapZoom",
+   "texts": [
+    [
+     "Peace Forest",
+     "label"
+    ]
+   ]
+  },
+  "S037": {
+   "preset": "EvidenceBoard",
+   "texts": [
+    [
+     "The evidence is suggestive, not settled",
+     "caption"
+    ]
+   ]
+  },
+  "S038": {
+   "preset": "EvidenceBoard",
+   "texts": [
+    [
+     "Miriam, daughter of Yeshua, son of Caiaphas",
+     "caption"
+    ]
+   ]
+  },
+  "S041": {
+   "preset": "HeadlineImpact",
+   "texts": [
+    [
+     "He did not need to hate Jesus",
+     "headline"
+    ]
+   ]
+  },
+  "S043": {
+   "preset": "HeadlineImpact",
+   "texts": [
+    [
+     "how the story was later used",
+     "headline"
+    ]
+   ]
+  },
+  "S048": {
+   "preset": "HeadlineImpact",
+   "texts": [
+    [
+     "Villain or realist",
+     "headline"
+    ]
+   ]
+  }
+ },
  "images": [
   {
    "key": "ep7_001_cp_face_portrait",
