@@ -775,7 +775,204 @@
    ]
   }
  ],
- "scene_overrides": {},
+ "scene_overrides": {
+  "S014": {
+   "preset": "PhotoKenBurns",
+   "texts": []
+  },
+  "S016": {
+   "preset": "PhotoKenBurns",
+   "texts": []
+  },
+  "S017": {
+   "preset": "PhotoKenBurns",
+   "texts": []
+  },
+  "S019": {
+   "preset": "PhotoKenBurns",
+   "texts": []
+  },
+  "S021": {
+   "preset": "PhotoKenBurns",
+   "texts": []
+  },
+  "S022": {
+   "preset": "PhotoKenBurns",
+   "texts": []
+  },
+  "S024": {
+   "preset": "PhotoKenBurns",
+   "texts": []
+  },
+  "S025": {
+   "preset": "PhotoKenBurns",
+   "texts": []
+  },
+  "S027": {
+   "preset": "PhotoKenBurns",
+   "texts": []
+  },
+  "S028": {
+   "preset": "PhotoKenBurns",
+   "texts": []
+  },
+  "S030": {
+   "preset": "PhotoKenBurns",
+   "texts": []
+  },
+  "S032": {
+   "preset": "PhotoKenBurns",
+   "texts": []
+  },
+  "S034": {
+   "preset": "PhotoKenBurns",
+   "texts": []
+  },
+  "S009": {
+   "preset": "HeadlineImpact",
+   "texts": [
+    [
+     "some of them by force",
+     "headline"
+    ]
+   ]
+  },
+  "S015": {
+   "preset": "MapZoom",
+   "texts": [
+    [
+     "Machaerus",
+     "label"
+    ]
+   ]
+  },
+  "S018": {
+   "preset": "HeadlineImpact",
+   "texts": [
+    [
+     "a voice he would not obey",
+     "headline"
+    ]
+   ]
+  },
+  "S020": {
+   "preset": "EvidenceBoard",
+   "texts": [
+    [
+     "Josephus calls Herodias's daughter Salome",
+     "caption"
+    ]
+   ]
+  },
+  "S023": {
+   "preset": "HeadlineImpact",
+   "texts": [
+    [
+     "John I beheaded",
+     "headline"
+    ]
+   ]
+  },
+  "S026": {
+   "preset": "EvidenceBoard",
+   "texts": [
+    [
+     "Manaen, brought up with Herod the tetrarch",
+     "caption"
+    ]
+   ]
+  },
+  "S029": {
+   "preset": "HeadlineImpact",
+   "texts": [
+    [
+     "Jesus answered him nothing",
+     "headline"
+    ]
+   ]
+  },
+  "S031": {
+   "preset": "HeadlineImpact",
+   "texts": [
+    [
+     "became friends that very day",
+     "headline"
+    ]
+   ]
+  },
+  "S033": {
+   "preset": "EvidenceBoard",
+   "texts": [
+    [
+     "That is a guess, not a source",
+     "caption"
+    ]
+   ]
+  },
+  "S035": {
+   "preset": "EvidenceBoard",
+   "texts": [
+    [
+     "historians do not trust it",
+     "caption"
+    ]
+   ]
+  },
+  "S038": {
+   "preset": "HeadlineImpact",
+   "texts": [
+    [
+     "independent confirmations",
+     "headline"
+    ]
+   ]
+  },
+  "S044": {
+   "preset": "HeadlineImpact",
+   "texts": [
+    [
+     "could not deny the armor",
+     "headline"
+    ]
+   ]
+  },
+  "S047": {
+   "preset": "MapZoom",
+   "texts": [
+    [
+     "Lyons",
+     "label"
+    ]
+   ]
+  },
+  "S051": {
+   "preset": "EvidenceBoard",
+   "texts": [
+    [
+     "nothing in the ground confirms the dance",
+     "caption"
+    ]
+   ]
+  },
+  "S057": {
+   "preset": "HeadlineImpact",
+   "texts": [
+    [
+     "They agree on how it ended",
+     "headline"
+    ]
+   ]
+  },
+  "S058": {
+   "preset": "HeadlineImpact",
+   "texts": [
+    [
+     "A new figure from history every week",
+     "headline"
+    ]
+   ]
+  }
+ },
  "images": [
   {
    "key": "ep8_001_ha_face_portrait",
