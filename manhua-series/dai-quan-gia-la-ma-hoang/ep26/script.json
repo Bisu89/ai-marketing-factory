@@ -1,0 +1,32 @@
+﻿{
+  "title": "Trác Phàm triệu hồi Cửu Thiên Bàn Long Trận, đánh trọng thương trưởng lão U Minh Cốc!",
+  "chapters": "26",
+  "source_dir": "manhua-recap/dqgl_ep26",
+  "written_by": "Claude (đọc tay từ panels), 2026-10-09",
+  "description": "Sau khi bị Trác Phàm từ chối lời mời gia nhập U Minh Cốc, trưởng lão tóc vàng nổi giận và ra tay bằng Hắc Minh Tỏa. Trác Phàm hỏi vì sao U Minh Cốc phải mượn tay Hắc Phong Sơn rồi diệt khẩu, nhưng đối phương không chịu tiết lộ kẻ đứng sau. Cuộc chiến bùng nổ: Trác Phàm né đòn, còn trưởng lão kinh ngạc khi hắn thi triển Ngũ Cấp Trận Thức Bàn Long Trận. Trác Phàm biến trận thành Cửu Thiên Bàn Long Trận, hóa ra nhiều Kim Long áp đảo đối thủ. Dù bị đánh đến thổ huyết, trưởng lão vẫn ngoan cố đòi giết hắn. Trác Phàm chế giễu U Minh Cốc, rồi hỏi làm sao một kẻ như vậy có thể ngồi vào hàng trưởng lão.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tập 26 (chương 26).\n◀ Tập 25: Trưởng lão U Minh Cốc ngỏ lời chiêu mộ Trác Phàm!",
+  "hashtags": ["#DaiQuanGiaLaMaHoang", "#ReviewManhua", "#Manhua", "#TuTien", "#XuyenKhong", "#ReviewTruyen"],
+  "thumbnail": {
+    "text": "CỬU THIÊN BÀN LONG TRẬN!",
+    "prompt": "A confident dark-haired young cultivator in a tan robe with a vivid red collar stands calmly as multiple enormous golden dragons surge around him, overwhelming a long-haired blond elder in dark blue robes who is blasted backward; Chinese cultivation manhua cover art, dramatic full-colour digital illustration, clean linework, cel shading, high contrast, vertical 9:16 composition, subjects centered, leave top 25% darker empty background for title overlay, NO text, NO letters, NO speech bubbles, NO watermark"
+  },
+  "beats": [
+    {"panel":"p001.jpg","type":"HOOK","kind":"recap","narration":"Đêm ấy, trưởng lão U Minh Cốc dẫn người tìm đến Lạc gia. Trác Phàm lạnh lùng hỏi: các ngươi cũng xứng sao?"},
+    {"panel":"p004.jpg","type":"BUILD","kind":"recap","narration":"Lão già cảnh cáo Trác Phàm phải biết điều, rồi tung Hắc Minh Tỏa đánh về phía hắn."},
+    {"panel":"p007.jpg","type":"REVEAL","kind":"recap","narration":"Trác Phàm hỏi thẳng: U Minh Cốc đã mượn tay Hắc Phong Sơn, sao còn phải giết cả bọn?"},
+    {"panel":"p008.jpg","type":"TURN","kind":"recap","narration":"Trưởng lão đáp rằng nếu chuyện bại lộ, họ sẽ bị nghi ngờ và để lại chứng cứ. Trác Phàm lập tức truy hỏi: bọn chúng là ai?"},
+    {"panel":"p010.jpg","type":"REACTION","kind":"commentary","narration":"Lão già không trả lời, chỉ buông lời thách thức. Trác Phàm bật cười, cho rằng U Minh Cốc trong mắt hắn còn chẳng bằng lũ kiến."},
+    {"panel":"p011.jpg","type":"TURN","kind":"recap","narration":"Bị chọc giận, trưởng lão quát muốn chết rồi bất ngờ lao tới tấn công."},
+    {"panel":"p014.jpg","type":"BUILD","kind":"recap","narration":"Trác Phàm né đòn trong gang tấc, còn đối thủ nhận ra hắn không hề tầm thường."},
+    {"panel":"p017.jpg","type":"TURN","kind":"recap","narration":"Thiếu nữ áo đen định chen vào giao chiến, nhưng Trác Phàm chỉ thở dài, gọi cô là cô nương ngốc rồi tự mình nghênh chiến."},
+    {"panel":"p020.jpg","type":"BUILD","kind":"recap","narration":"Trưởng lão dồn dập ra đòn, còn Trác Phàm phản công bằng chưởng lực rực sáng."},
+    {"panel":"p023.jpg","type":"REVEAL","kind":"recap","narration":"Khi thấy Trác Phàm điều khiển trận pháp, lão già kinh ngạc: tuổi trẻ như vậy mà đã thông thạo Ngũ Cấp Trận Thức Bàn Long Trận!"},
+    {"panel":"p025.jpg","type":"CLIMAX","kind":"recap","narration":"Trưởng lão tưởng cảnh giới của Trác Phàm không thể điều khiển trận pháp Ngũ Cấp, nhưng hắn đã khiến đối phương phải trả giá."},
+    {"panel":"p027.jpg","type":"TURN","kind":"recap","narration":"Trác Phàm kết ấn, hô Nhất Trọng Thiên! Một Kim Long khổng lồ lập tức hiện ra."},
+    {"panel":"p030.jpg","type":"REVEAL","kind":"recap","narration":"Trưởng lão bàng hoàng khi nhận ra đây không phải Bàn Long Trận bình thường, mà là Cửu Thiên Bàn Long Trận!"},
+    {"panel":"p033.jpg","type":"BUILD","kind":"recap","narration":"Trác Phàm tuyên bố đây là Ngũ Cấp Trận Thức, Cửu Thiên Bàn Long Trận, rồi khiêu khích đối thủ xông vào."},
+    {"panel":"p038.jpg","type":"CLIMAX","kind":"recap","narration":"Nhiều Kim Long đồng loạt giáng đòn, phá tan thế công của trưởng lão và đánh lão văng đi."},
+    {"panel":"p040.jpg","type":"TURN","kind":"recap","narration":"Trưởng lão phun máu nhưng vẫn cố vùng dậy, tuyên bố nhất định phải giết Trác Phàm."},
+    {"panel":"p042.jpg","type":"REACTION","kind":"commentary","narration":"Trác Phàm mỉa mai: chỉ có chút bản lĩnh như vậy mà cũng làm trưởng lão U Minh Cốc được sao?"},
+    {"panel":"p044.jpg","type":"ENDING","kind":"recap","narration":"Lão già gầm lên sẽ không để Trác Phàm sống sót. Trận chiến vẫn chưa ngã ngũ — liệu hắn có thể kết thúc đối thủ ngay trong đêm nay?"}
+  ]
+}

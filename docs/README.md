@@ -217,3 +217,4 @@ SQLite.
 See the "Documentation" section in `CLAUDE.md` at the repo root — every
 completed feature gets a new file under `features/`, numbered next in
 sequence, and a line added to the list above.
+177. [DQG ch 21-30 Long + 3 Short](features/177-dqg-ch21-30-long-and-shorts.md) — rebuilt from saved ep21-30 scripts; Long 12:04 + Short D/E/F, QA 100

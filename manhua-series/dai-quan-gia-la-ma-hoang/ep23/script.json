@@ -1,0 +1,26 @@
+﻿{
+  "title": "Tiềm Long Các vây đánh U Minh Cốc, Trác Phàm phát hiện ma vật!?",
+  "chapters": "23",
+  "source_dir": "manhua-recap/dqgl_ep23",
+  "written_by": "Claude (đọc tay từ panels), 2026-10-09",
+  "description": "Trác Phàm vừa kết thúc tĩnh tu thì trận chiến giữa Tiềm Long Các và U Minh Cốc đã nổ ra. Long Cửu dẫn đầu phe địch, công khai chế giễu Giản Phàm vì thân phận Thần Nhãn Kim Nhân đã mất. Nhưng khi lão tung Đằng Long Trảo, Tam trưởng lão Tiềm Long Các bất ngờ bị đánh trọng thương. Giữa hỗn chiến, Trác Phàm nhận ra con quạ đen bên cạnh Giản Phàm chính là Thôn Phệ Quỷ Nha — ma vật có thể cắn nuốt vạn vật và hấp thu thuộc tính của chúng.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tập 23 (chương 23).\n◀ Tập 22: U Minh Cốc nhắm vào Lạc gia!",
+  "hashtags": ["#DaiQuanGiaLaMaHoang", "#ReviewManhua", "#Manhua", "#TuTien", "#XuyenKhong", "#ReviewTruyen"],
+  "thumbnail": {
+    "text": "TRÁC PHÀM NHÌN THẤU MA VẬT!",
+    "prompt": "A calm dark-haired young cultivator in a tan and red robe watches a fierce battle between a white-haired elder wielding a golden dragon-shaped energy claw and a shadowy bald elder surrounded by crimson demonic aura, a black raven with a glowing purple eye perched nearby; Chinese cultivation manhua cover art, dramatic full-colour digital illustration, clean linework, cel shading, high contrast, vertical 9:16 composition, keep subjects in centre, leave top 25% darker empty background for title overlay, NO text, NO letters, NO speech bubbles, NO watermark"
+  },
+  "beats": [
+    {"panel":"p001.jpg","type":"HOOK","kind":"recap","narration":"Trác Phàm vừa kết thúc tĩnh tu thì cảm nhận được chấn động dữ dội: hai phe đã bắt đầu giao chiến!"},
+    {"panel":"p004.jpg","type":"BUILD","kind":"recap","narration":"Lao tới chiến trường, hắn thấy Long Cửu cùng cao thủ U Minh Cốc đối đầu Tiềm Long Các ngay trước cửa Lạc gia."},
+    {"panel":"p008.jpg","type":"REVEAL","kind":"recap","narration":"Long Cửu khẳng định hai bên đã không còn đường hòa giải, rồi mỉa mai Giản Phàm vì thân phận Thần Nhãn Kim Nhân đã mất."},
+    {"panel":"p012.jpg","type":"BUILD","kind":"recap","narration":"Bị khích bác, Giản Phàm lập tức gọi ra Đằng Long Trảo, quyết một phen sống mái với kẻ thù."},
+    {"panel":"p016.jpg","type":"REVEAL","kind":"recap","narration":"Trác Phàm nhận ra Tử Lôi Kim Nhãn từng được xem là một trong tam đại thiên phú mạnh nhất của Thập Đế thượng cổ."},
+    {"panel":"p020.jpg","type":"BUILD","kind":"recap","narration":"Long Cửu tung đòn dữ dội, nhưng Tiềm Long Các cũng có viện binh: Tam trưởng lão và Ngũ trưởng lão cùng xuất hiện."},
+    {"panel":"p024.jpg","type":"TURN","kind":"recap","narration":"Giản Phàm bất ngờ dùng Tiềm Long Trảo đánh bật Long Cửu. Lão ta lập tức nhận ra đối thủ đã không còn như xưa."},
+    {"panel":"p028.jpg","type":"REACTION","kind":"commentary","narration":"Long Cửu vẫn cố áp đảo, nhưng đúng lúc ấy Tam trưởng lão Tiềm Long Các lao tới cứu viện."},
+    {"panel":"p032.jpg","type":"REVEAL","kind":"recap","narration":"Một luồng công kích chớp nhoáng khiến Tam trưởng lão hộc máu, còn những người xung quanh chỉ kịp kinh hãi nhìn theo."},
+    {"panel":"p035.jpg","type":"BUILD","kind":"recap","narration":"Giản Phàm lập tức gọi Tam trưởng lão, nhưng bóng dáng kẻ ra tay vẫn chưa lộ rõ giữa hỗn chiến."},
+    {"panel":"p038.jpg","type":"REVEAL","kind":"recap","narration":"Trác Phàm nhìn thấy con quạ đen bên cạnh Giản Phàm và nhận ra đó là Thôn Phệ Quỷ Nha, ma vật có thể cắn nuốt vạn vật."},
+    {"panel":"p041.jpg","type":"ENDING","kind":"recap","narration":"Con quạ còn mang khí tức Tử Lôi Hỏa Nhãn — thứ dường như đã bị Long Cửu cướp mất. Trác Phàm lập tức hiểu ra cơ hội trước mắt: phen này có việc để làm rồi!"}
+  ]
+}

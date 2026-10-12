@@ -1,0 +1,27 @@
+﻿{
+  "title": "Trác Phàm một chiêu áp đảo cao thủ U Minh Cốc!",
+  "chapters": "25",
+  "source_dir": "manhua-recap/dqgl_ep25",
+  "written_by": "Claude (đọc tay từ panels), 2026-10-09",
+  "description": "Trong lúc Tiềm Long Các truy kích tàn quân U Minh Cốc, Trác Phàm phát hiện một nhóm địch đang lẻn vào Lạc gia. Hắn bất ngờ ra tay, hạ gục cả toán thích khách rồi đối đầu hai tên cầm đầu. Một kẻ nhận ra hắn là quản gia Lạc gia và lập tức hạ lệnh giết sạch người nhà họ Lạc. Trác Phàm đáp trả bằng sức mạnh áp đảo, triệu hồi Kim Long đánh tan đối thủ. Khi hắn định kết liễu tên còn lại, một thiếu nữ U Minh Cốc bất ngờ xuất hiện ngăn cản. Trưởng lão phe địch còn trơ trẽn mời Trác Phàm gia nhập, mở ra cuộc đối thoại đầy căng thẳng.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tập 25 (chương 25).\n◀ Tập 24: Trác Phàm tuyên bố trận chiến mới chỉ bắt đầu!",
+  "hashtags": ["#DaiQuanGiaLaMaHoang", "#ReviewManhua", "#Manhua", "#TuTien", "#XuyenKhong", "#ReviewTruyen"],
+  "thumbnail": {
+    "text": "TRÁC PHÀM MỘT CHIÊU DIỆT ĐỊCH!",
+    "prompt": "A confident dark-haired young cultivator in a tan and red robe summons a gigantic glowing golden dragon to overwhelm a shocked blue-haired enemy cultivator, with a purple-haired female warrior rushing in to stop the finishing blow; Chinese cultivation manhua cover art, vivid dramatic full-colour digital illustration, clean linework, cel shading, high contrast, vertical 9:16 composition, subjects centered, leave top 25% darker empty background for title overlay, NO text, NO letters, NO speech bubbles, NO watermark"
+  },
+  "beats": [
+    {"panel":"p001.jpg","type":"HOOK","kind":"recap","narration":"Đêm xuống, nhóm thích khách U Minh Cốc đồng loạt xông vào Lạc gia — nhưng con mồi đã chờ sẵn!"},
+    {"panel":"p004.jpg","type":"TURN","kind":"recap","narration":"Một bóng người áo trắng lao vào chặn đường, dễ dàng đỡ kiếm của tên đi đầu."},
+    {"panel":"p008.jpg","type":"BUILD","kind":"recap","narration":"Đó là đệ tử Tiềm Long Các. Họ đã mai phục từ trước và nhanh chóng đánh tan nhóm đột nhập."},
+    {"panel":"p011.jpg","type":"REACTION","kind":"commentary","narration":"Trác Phàm nhìn những kẻ nằm la liệt rồi hỏi một câu tỉnh bơ: đây chính là Điều Hổ Sơn sao?"},
+    {"panel":"p014.jpg","type":"REVEAL","kind":"recap","narration":"Hắn đoán U Minh Cốc đã tốn công như vậy chỉ để khiến Lạc gia chết trong tay mình, nhưng vẫn chưa rõ âm mưu thực sự là gì."},
+    {"panel":"p018.jpg","type":"BUILD","kind":"recap","narration":"Một cao thủ áo tím dẫn người tiến lên, ra lệnh dùng Hồi Long Chưởng giết sạch người nhà Lạc gia."},
+    {"panel":"p021.jpg","type":"TURN","kind":"recap","narration":"Trác Phàm không tiếp tục giả vờ. Hắn bất ngờ áp sát, khiến đối thủ nhận ra mình đã đánh giá thấp hắn."},
+    {"panel":"p024.jpg","type":"REVEAL","kind":"recap","narration":"Tên áo tím tưởng Trác Phàm cũng chỉ là phế vật tụ khí, nhưng một đòn đã chứng minh hắn mạnh hơn cả U Tuyền."},
+    {"panel":"p027.jpg","type":"BUILD","kind":"recap","narration":"Trác Phàm lạnh lùng tuyên án: kẻ phế vật đối đầu với hắn đều phải chết — rồi triệu hồi Kim Long khổng lồ."},
+    {"panel":"p030.jpg","type":"CLIMAX","kind":"recap","narration":"Kim Long giáng xuống, đánh tan đối thủ. Trưởng lão U Minh Cốc còn lại bị dồn vào đường cùng."},
+    {"panel":"p033.jpg","type":"TURN","kind":"recap","narration":"Ngay trước khi Trác Phàm ra đòn kết liễu, một thiếu nữ áo đen chạy tới hét lên: dừng tay!"},
+    {"panel":"p036.jpg","type":"REVEAL","kind":"recap","narration":"Trưởng lão bị thương vẫn khăng khăng muốn tự tay lấy mạng Trác Phàm, nhưng thiếu nữ lại bảo hắn hãy gia nhập U Minh Cốc."},
+    {"panel":"p039.jpg","type":"ENDING","kind":"recap","narration":"Long Cửu xuất hiện, chế giễu trưởng lão rằng hắn chẳng khác nào con kiến trước mặt Trác Phàm. Lời mời chiêu mộ này rốt cuộc là thật lòng hay một cái bẫy?"}
+  ]
+}

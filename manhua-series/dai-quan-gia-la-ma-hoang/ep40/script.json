@@ -1,0 +1,27 @@
+﻿{
+  "title": "Đại tiểu thư say ngủ trong bếp chỉ để nấu cho Trác Phàm!",
+  "chapters": "40",
+  "source_dir": "manhua-recap/dqgl_ep40",
+  "written_by": "Claude (đọc tay từ panels), 2026-10-09",
+  "description": "Vị lão giả trao cho Trác Phàm văn thư kết minh giữa Lạc gia và Tiềm Long Các. Thỏa thuận sẽ giúp Tiềm Long Các trở thành chỗ dựa cho Lạc gia, đồng thời bảo vệ gia tộc trong lúc Trác Phàm phát triển thế lực. Trác Phàm ký tên với tư cách quản gia, khiến liên minh chính thức được xác lập. Sau đó anh trở về Lạc gia và hỏi người hầu Lão Bàng về đại tiểu thư. Lão Bàng dẫn anh đến nhà bếp, nơi đại tiểu thư đã uống say rồi ngủ gục bên bàn ăn. Hóa ra cô muốn tự tay nấu một bữa ngon để cảm ơn Trác Phàm, nhưng tay nghề vụng về khiến căn bếp bừa bộn. Trác Phàm nếm thử món ăn, vẫn cố khen để cô vui lòng. Khi tỉnh dậy, đại tiểu thư ngượng ngùng hỏi liệu Trác Phàm có ở bên mình suốt đêm không. Cô bất ngờ chủ động áp sát và hôn anh, khép lại tập phim bằng một bước ngoặt tình cảm.
+Review truyện Đại Quản Gia Là Ma Hoàng – Tập 40 (chương 40).
+◀ Tập 39: Phương Thu Bạch ngỏ ý nhận Trác Phàm làm đồ đệ, nhưng hắn từ chối!",
+  "hashtags": ["#DaiQuanGiaLaMaHoang", "#ReviewManhua", "#Manhua", "#TuTien", "#XuyenKhong", "#ReviewTruyen"],
+  "thumbnail": {
+    "text": "ĐẠI TIỂU THƯ SAY RƯỢU RỒI HÔN TRÁC PHÀM!",
+    "prompt": "A brown-haired young man in a tan robe with vivid red trim caught by surprise as a cute orange-haired young woman in a red and white outfit leans close to kiss him, warm lantern-lit traditional Chinese kitchen and dining room, spilled dishes and a cozy late-night mood, romantic comedy cultivation manhua cover art, dramatic full-colour digital illustration, clean linework, cel shading, expressive faces, vertical 9:16 composition, subjects centered, leave top 25% darker empty background for title overlay, NO text, NO letters, NO speech bubbles, NO watermark"
+  },
+  "beats": [
+    {"panel":"p001.jpg","type":"HOOK","kind":"recap","narration":"Sau trận phục kích, vị lão giả đưa Trác Phàm văn thư kết minh giữa Lạc gia và Tiềm Long Các. Đây chính là món quà có thể giúp hắn củng cố thế lực."},
+    {"panel":"p003.jpg","type":"REVEAL","kind":"recap","narration":"Văn thư quy định Tiềm Long Các sẽ làm chỗ dựa cho Lạc gia, đồng thời bảo vệ gia tộc vô điều kiện trong thời gian tới."},
+    {"panel":"p005.jpg","type":"BUILD","kind":"recap","narration":"Vị lão giả hỏi Trác Phàm có phải đã biết trước chuyện này. Hắn đáp rằng mọi việc mình làm đều nhằm đạt được tờ khế ước ấy."},
+    {"panel":"p008.jpg","type":"TURN","kind":"recap","narration":"Trác Phàm ký tên vào hiệp định với tư cách quản gia Lạc gia. Vị lão giả xác nhận liên minh này do chính Trác Phàm đứng ra kết ước."},
+    {"panel":"p011.jpg","type":"TRANSITION","kind":"recap","narration":"Trời đã tối, Trác Phàm trở về Lạc gia. Một người hầu bắt gặp anh và ngạc nhiên khi thấy anh về muộn."},
+    {"panel":"p014.jpg","type":"COMEDY","kind":"recap","narration":"Trác Phàm hỏi đại tiểu thư đang ở đâu. Người hầu chỉ về phía nhà bếp, khiến anh khó hiểu vì sao cô lại ở đó giờ này."},
+    {"panel":"p017.jpg","type":"REVEAL","kind":"recap","narration":"Trong bếp, đại tiểu thư ngủ gục bên bàn sau khi uống say. Cô đã cố nấu ăn để Trác Phàm được thưởng thức một bữa ngon."},
+    {"panel":"p020.jpg","type":"COMEDY","kind":"recap","narration":"Nhà bếp bừa bộn, còn món ăn thì chẳng có vẻ gì hấp dẫn. Trác Phàm vẫn nếm thử, còn người hầu vội chữa rằng đại tiểu thư chưa từng có tay nghề nấu nướng."},
+    {"panel":"p023.jpg","type":"REACTION","kind":"recap","narration":"Trác Phàm nói mình đang đói và không chê món ăn. Đại tiểu thư tỉnh dậy, đỏ mặt khi biết anh đã ở cạnh mình."},
+    {"panel":"p026.jpg","type":"TURN","kind":"recap","narration":"Cô bối rối hỏi Trác Phàm có ở bên mình cả đêm không. Anh không kịp giải thích thì cô đã bất ngờ tiến sát lại."},
+    {"panel":"p029.jpg","type":"ENDING","kind":"recap","narration":"Đại tiểu thư chủ động hôn Trác Phàm. Nụ hôn bất ngờ khép lại một buổi tối vốn bắt đầu bằng hiệp ước liên minh."}
+  ]
+}

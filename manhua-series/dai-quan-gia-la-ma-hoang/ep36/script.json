@@ -1,0 +1,26 @@
+﻿{
+  "title": "Trác Phàm bị đánh lén? Một cú đá lật ngược trận đấu!",
+  "chapters": "36",
+  "source_dir": "manhua-recap/dqgl_ep36",
+  "written_by": "Claude (đọc tay từ panels), 2026-10-09",
+  "description": "Công tử áo vàng nổi giận khi nghĩ Trác Phàm là tình địch của mình, rồi thách hắn đấu tay đôi để giành lại thể diện trước Long Quỷ. Trác Phàm nhận lời nhưng nhắc rằng hộ vệ của đối phương đều mạnh hơn mình; công tử liền đuổi họ ra xa, tuyên bố sẽ không ai được can thiệp. Cả nhóm đi vào rừng để phân định thắng thua. Trác Phàm vẫn tỏ vẻ yếu thế và còn lo đối phương có thể mai phục, khiến công tử càng đinh ninh rằng hắn chỉ là kẻ nhát gan. Nhưng ngay khi trận đấu bắt đầu, công tử bất ngờ tung đòn đánh lén. Trác Phàm lập tức phản kích bằng một cú đá mạnh, hất văng đối thủ. Long Quỷ kinh ngạc kêu lên, còn Trác Phàm lạnh lùng nhắc rằng chính đối phương đã đòi bắt đầu trước. Hóa ra vẻ ngoài ngây thơ, yếu thế chỉ là màn kịch của Ma Hoàng để đối thủ tự lộ sơ hở.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tập 36 (chương 36).\n◀ Tập 35: Long Quỷ từ chối lời cầu hôn, Trác Phàm vướng hiểu lầm!",
+  "hashtags": ["#DaiQuanGiaLaMaHoang", "#ReviewManhua", "#Manhua", "#TuTien", "#XuyenKhong", "#ReviewTruyen"],
+  "thumbnail": {
+    "text": "TRÁC PHÀM ĐÁ BAY KẺ ĐÁNH LÉN!",
+    "prompt": "A brown-haired young cultivator in a tan robe with vivid red trim launching a powerful kick, sending a heavy purple-haired man in a bright yellow robe flying through the air, a beautiful dark-haired woman in pale green robes watching in shock, forest clearing, comedic action cultivation manhua cover art, dramatic full-colour digital illustration, clean linework, cel shading, high contrast, vertical 9:16 composition, subjects centered, leave top 25% darker empty background for title overlay, NO text, NO letters, NO speech bubbles, NO watermark"
+  },
+  "beats": [
+    {"panel":"p001.jpg","type":"HOOK","kind":"recap","narration":"Công tử áo vàng vẫn cay cú vì nghĩ Trác Phàm cướp mất người trong mộng. Hắn nhất quyết phải đánh cho đối phương một trận để hả giận."},
+    {"panel":"p003.jpg","type":"BUILD","kind":"recap","narration":"Trác Phàm theo Long Quỷ và gã công tử vào rừng. Hắn hỏi đối phương có định đưa hộ vệ theo cùng không."},
+    {"panel":"p005.jpg","type":"COMEDY","kind":"recap","narration":"Gã công tử tự tin rằng một mình cũng đủ thắng, lại cho rằng thắng trận sẽ khiến Long Quỷ nể phục mình hơn."},
+    {"panel":"p007.jpg","type":"REACTION","kind":"recap","narration":"Trác Phàm nhắc đối thủ đừng giở trò mai phục. Gã công tử giật mình, cố tỏ ra mình đường đường chính chính."},
+    {"panel":"p009.jpg","type":"TURN","kind":"recap","narration":"Trác Phàm chỉ ra rằng hộ vệ của đối phương đều mạnh hơn mình. Nếu họ cùng xông vào thì trận đấu này chẳng còn công bằng."},
+    {"panel":"p011.jpg","type":"BUILD","kind":"recap","narration":"Để chứng minh mình quân tử, công tử áo vàng ra lệnh cho đám thuộc hạ đứng ngoài, không được can thiệp vào trận đấu."},
+    {"panel":"p014.jpg","type":"REACTION","kind":"recap","narration":"Long Quỷ lo Trác Phàm sẽ bị thương. Hắn vẫn bình thản nhận lời, như thể đã có tính toán riêng."},
+    {"panel":"p017.jpg","type":"COMEDY","kind":"recap","narration":"Công tử tiếp tục khoe khoang rằng dù có bị đánh thì người thắng sau cùng vẫn là mình. Trác Phàm chỉ cười, thuận theo sự tự tin ấy."},
+    {"panel":"p020.jpg","type":"REVEAL","kind":"recap","narration":"Khi hai người vào thế, công tử áo vàng bất ngờ vung nắm đấm trước. Hắn đã phá vỡ lời hứa không ra tay lén."},
+    {"panel":"p023.jpg","type":"CLIMAX","kind":"recap","narration":"Trác Phàm trúng đòn trong thoáng chốc, khiến đối thủ tưởng mình đã chiếm ưu thế. Nhưng Ma Hoàng không để cú đánh ấy qua đi dễ dàng."},
+    {"panel":"p027.jpg","type":"CLIMAX","kind":"recap","narration":"Trác Phàm lập tức tung cú đá phản công, hất văng gã công tử áo vàng. Long Quỷ đứng ngoài cũng phải kinh ngạc."},
+    {"panel":"p031.jpg","type":"ENDING","kind":"recap","narration":"Đối thủ ngỡ ngàng hỏi chẳng phải Trác Phàm đã nói bắt đầu trận đấu sao. Hắn chỉ thản nhiên đáp rằng trận đấu quả thật đã bắt đầu rồi!"}
+  ]
+}

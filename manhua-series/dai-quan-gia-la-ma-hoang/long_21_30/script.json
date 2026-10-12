@@ -1,0 +1,907 @@
+{
+  "template": "manhua_recap_long_vi",
+  "title": "Ma Hoàng thành quản gia | Tóm tắt chương 21-30",
+  "chapters": "21-30",
+  "source_dir": "manhua-recap/dqgl_ep21",
+  "written_by": "Claude tổng hợp từ script ep21-30 đã lưu, 2026-10-12",
+  "description": "Trác Phàm cảnh báo Tiềm Long Các, đón đánh U Minh Cốc, triệu hồi Cửu Thiên Bàn Long Trận và hạ trưởng lão Giản. Tóm tắt truyện Đại Quản Gia Là Ma Hoàng, chương 21 đến 30, kèm bình luận.\nMục lục thời gian: xem bình luận ghim.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#TomTatTruyen"
+  ],
+  "thumbnail": {
+    "text": "MA HOÀNG ĐẠI CHIẾN U MINH CỐC",
+    "prompt": "A young man with dark messy hair and glowing violet eyes in a tan butler robe, golden dragons coiling behind him over a night battlefield, shadowy dark-robed cultivators of a demonic sect retreating, a young noble lady in red beside him. Chinese manhua cover art style, full-colour digital illustration, bold clean linework, cel shading with dramatic glow and rim light, high contrast, vertical 9:16 composition (keep the subject inside the centre 2:3 area), leave the top 25% as darker empty background for a title overlay, NO text, NO letters, NO speech bubbles, NO watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep21/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Mười ngày sau, Trác Phàm vừa về Lạc gia đã bị cô tiểu thư nhỏ nhào tới ôm chầm lấy.",
+      "section": "Tập 21: Tiềm Long Các trưởng lão quay người vì người"
+    },
+    {
+      "panel": "dqgl_ep21/p007.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Nhưng cuộc đoàn tụ nhanh chóng chùng xuống khi Nghĩa Phụ xuất hiện, nhận mình là thủ lĩnh đã hủy diệt Quy Vân Trang."
+    },
+    {
+      "panel": "dqgl_ep21/p010.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông còn quỳ xuống xin chịu tội, khiến mọi người vội can ngăn."
+    },
+    {
+      "panel": "dqgl_ep21/p014.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trác Phàm đoán Nghĩa Phụ chỉ là người bị Dương Minh lợi dụng rồi kéo vào vụ thảm sát Lạc gia."
+    },
+    {
+      "panel": "dqgl_ep21/p018.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nghĩa Phụ thú nhận mình và Trác Nam từng kết nghĩa huynh đệ, nhưng ông đã giấu kín mối quan hệ ấy."
+    },
+    {
+      "panel": "dqgl_ep21/p022.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Lạc gia vốn mang danh vọng tộc, còn Nghĩa Phụ lại xuất thân sơn tặc, nên hai người chỉ âm thầm qua lại."
+    },
+    {
+      "panel": "dqgl_ep21/p026.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Khi Trác Phàm hỏi về võ công gia truyền, ông tiết lộ đã truyền linh cấp võ công Kinh Lôi Chỉ cho Đinh Nhi."
+    },
+    {
+      "panel": "dqgl_ep21/p029.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Trác Phàm nghe xong chỉ cười: cuối cùng cũng biết kẻ thù nhắm vào thứ gì rồi."
+    },
+    {
+      "panel": "dqgl_ep21/p032.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Sau đó, hắn tìm đến Tiềm Long Các nhưng bị người trong các lạnh lùng đuổi đi."
+    },
+    {
+      "panel": "dqgl_ep21/p036.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm nói mình có chuyện quan trọng cần gặp Long Cửu, mặc cho nữ nhân trong các chẳng tin hắn."
+    },
+    {
+      "panel": "dqgl_ep21/p039.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Hắn tiết lộ đã điều tra U Minh Cốc và biết chúng sắp tấn công Tiềm Long Các."
+    },
+    {
+      "panel": "dqgl_ep21/p040.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Nàng tưởng hắn bịa chuyện, nhưng lời cảnh báo này có vẻ sắp thành sự thật."
+    },
+    {
+      "panel": "dqgl_ep21/p042.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Đêm xuống, Trác Phàm vừa gặp Long Cửu thì cao thủ U Minh Cốc đã kéo tới. Hắn gọi đây là chuyện lớn hay chuyện nhỏ đây?"
+    },
+    {
+      "panel": "dqgl_ep21/p046.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Một con rồng lửa khổng lồ bùng lên, và Trác Phàm lập tức nhận ra có điều chẳng lành."
+    },
+    {
+      "panel": "dqgl_ep22/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Trác Phàm vừa xuất chiêu đã khiến cao thủ Tiềm Long Các giật mình: đó là Kim Cương Chỉ!",
+      "section": "Tập 22: Trác Phàm ra tay, U Minh Cốc lập tức đổi kế hoạch"
+    },
+    {
+      "panel": "dqgl_ep22/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hai trưởng lão nhận ra thực lực của hắn không tầm thường, còn ông lão áo vàng lập tức gọi hắn là Trác Phàm."
+    },
+    {
+      "panel": "dqgl_ep22/p007.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Vừa mới gặp đã bị gọi tiểu tử, Trác Phàm vẫn tỉnh bơ đáp lễ, đúng là chẳng ngán ai."
+    },
+    {
+      "panel": "dqgl_ep22/p010.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn bảo mình ngông với Cửu ca vì xem ông như người nhà, còn gặp kẻ hẹp hòi thì chẳng dại gì chọc vào."
+    },
+    {
+      "panel": "dqgl_ep22/p014.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Thái độ thẳng thắn khiến trưởng lão áo đỏ thích Trác Phàm, thậm chí muốn nhận hắn làm đồ đệ."
+    },
+    {
+      "panel": "dqgl_ep22/p018.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm lập tức kéo câu chuyện về việc U Minh Cốc sắp tấn công Tiềm Long Các."
+    },
+    {
+      "panel": "dqgl_ep22/p021.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Hắn tiết lộ nửa tháng trước đã phát hiện thêm hai luồng khí tức rất mạnh, nhưng chưa rõ đối phương còn giấu bao nhiêu người."
+    },
+    {
+      "panel": "dqgl_ep22/p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nghe xong, trưởng lão nóng tính muốn giết sạch kẻ địch ngay, còn Trác Phàm nhắc ông đừng hành sự lỗ mãng."
+    },
+    {
+      "panel": "dqgl_ep22/p027.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trác Phàm còn khẳng định người của U Minh Cốc sẽ hành động trong ba ngày tới."
+    },
+    {
+      "panel": "dqgl_ep22/p030.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Hắn bất ngờ lấy ra một viên cửu phẩm đan dược để giúp người bị thương hồi phục nhanh."
+    },
+    {
+      "panel": "dqgl_ep22/p033.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Một viên đan dược quý đến mức Hắc Phong Sơn cướp cả năm cũng chưa chắc mua nổi, vậy mà hắn đem tặng như tiền lãi."
+    },
+    {
+      "panel": "dqgl_ep22/p036.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Câu chuyện chuyển sang mật thất Tôn gia, nơi U Minh Cốc đang tụ họp bàn kế."
+    },
+    {
+      "panel": "dqgl_ep22/p038.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Kẻ cầm đầu khen người ẩn thân ở Hắc Phong Sơn suốt nhiều năm, rồi giao nhiệm vụ tiếp theo cho một tiểu cô nương."
+    },
+    {
+      "panel": "dqgl_ep22/p041.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Dù có chút ngoài ý muốn, chúng vẫn quyết định lui xuống và chờ hành động sau ba ngày."
+    },
+    {
+      "panel": "dqgl_ep22/p044.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Mệnh lệnh cuối cùng lạnh lùng vang lên: Lạc gia không thể tha, đặc biệt là..."
+    },
+    {
+      "panel": "dqgl_ep23/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Trác Phàm vừa kết thúc tĩnh tu thì cảm nhận được chấn động dữ dội: hai phe đã bắt đầu giao chiến!",
+      "section": "Tập 23: Tiềm Long Các vây đánh U Minh Cốc, Trác Phàm phát hiện ma vật"
+    },
+    {
+      "panel": "dqgl_ep23/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lao tới chiến trường, hắn thấy Long Cửu cùng cao thủ U Minh Cốc đối đầu Tiềm Long Các ngay trước cửa Lạc gia."
+    },
+    {
+      "panel": "dqgl_ep23/p008.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Long Cửu khẳng định hai bên đã không còn đường hòa giải, rồi mỉa mai Giản Phàm vì thân phận Thần Nhãn Kim Nhân đã mất."
+    },
+    {
+      "panel": "dqgl_ep23/p012.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bị khích bác, Giản Phàm lập tức gọi ra Đằng Long Trảo, quyết một phen sống mái với kẻ thù."
+    },
+    {
+      "panel": "dqgl_ep23/p016.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trác Phàm nhận ra Tử Lôi Kim Nhãn từng được xem là một trong tam đại thiên phú mạnh nhất của Thập Đế thượng cổ."
+    },
+    {
+      "panel": "dqgl_ep23/p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Long Cửu tung đòn dữ dội, nhưng Tiềm Long Các cũng có viện binh: Tam trưởng lão và Ngũ trưởng lão cùng xuất hiện."
+    },
+    {
+      "panel": "dqgl_ep23/p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Giản Phàm bất ngờ dùng Tiềm Long Trảo đánh bật Long Cửu. Lão ta lập tức nhận ra đối thủ đã không còn như xưa."
+    },
+    {
+      "panel": "dqgl_ep23/p028.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Long Cửu vẫn cố áp đảo, nhưng đúng lúc ấy Tam trưởng lão Tiềm Long Các lao tới cứu viện."
+    },
+    {
+      "panel": "dqgl_ep23/p032.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Một luồng công kích chớp nhoáng khiến Tam trưởng lão hộc máu, còn những người xung quanh chỉ kịp kinh hãi nhìn theo."
+    },
+    {
+      "panel": "dqgl_ep23/p035.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Giản Phàm lập tức gọi Tam trưởng lão, nhưng bóng dáng kẻ ra tay vẫn chưa lộ rõ giữa hỗn chiến."
+    },
+    {
+      "panel": "dqgl_ep23/p038.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trác Phàm nhìn thấy con quạ đen bên cạnh Giản Phàm và nhận ra đó là Thôn Phệ Quỷ Nha, ma vật có thể cắn nuốt vạn vật."
+    },
+    {
+      "panel": "dqgl_ep23/p041.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Con quạ còn mang khí tức Tử Lôi Hỏa Nhãn — thứ dường như đã bị Long Cửu cướp mất. Trác Phàm lập tức hiểu ra cơ hội trước mắt: phen này có việc để làm rồi!"
+    },
+    {
+      "panel": "dqgl_ep24/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Giản Phàm kinh hãi nhận ra Tử Lôi Kim Nhãn của mình đang nằm trên con ma vật Long Cửu vừa luyện hóa!",
+      "section": "Tập 24: Trác Phàm tương kế tựu kế, đánh úp ngay giữa chiến trường"
+    },
+    {
+      "panel": "dqgl_ep24/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Long Cửu đắc ý tuyên bố hôm nay sẽ dùng chính con mắt ấy để lấy mạng chủ nhân cũ."
+    },
+    {
+      "panel": "dqgl_ep24/p008.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thôn Phệ Quỷ Nha bất ngờ lao tới tấn công, buộc Tam trưởng lão phải lập tức chống đỡ."
+    },
+    {
+      "panel": "dqgl_ep24/p012.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Tam trưởng lão vận sức thi triển Long Phá Trảo, đòn võ công cấp cao đánh nổ con quạ giữa không trung."
+    },
+    {
+      "panel": "dqgl_ep24/p016.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Long Cửu tưởng ma vật sẽ giúp mình áp đảo, nào ngờ vừa mất nó đã phải đối mặt với cả ba trưởng lão Tiềm Long Các."
+    },
+    {
+      "panel": "dqgl_ep24/p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bị dồn vào thế bất lợi, Long Cửu gọi toàn bộ thuộc hạ cùng xông lên, đồng thời hóa thân thành rồng vàng phản kích."
+    },
+    {
+      "panel": "dqgl_ep24/p024.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Long Cửu kéo dài cuộc chiến nhờ Tử Lôi Kim Nhãn, nhưng Trác Phàm đã nhìn ra thực lực ba trưởng lão không thể cầm cự lâu."
+    },
+    {
+      "panel": "dqgl_ep24/p028.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đúng lúc nguy cấp, Trác Phàm giơ tay triệu hồi một ma vật đỏ rực, bất ngờ đánh úp Long Cửu."
+    },
+    {
+      "panel": "dqgl_ep24/p032.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Long Cửu và đồng bọn sửng sốt khi phe Tiềm Long Các cũng dùng ma vật để phản công."
+    },
+    {
+      "panel": "dqgl_ep24/p035.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trác Phàm khẳng định con quỷ nha chỉ là món đồ hắn trộm được, còn ba trưởng lão thì nhân cơ hội phối hợp áp chế Long Cửu."
+    },
+    {
+      "panel": "dqgl_ep24/p038.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Long Cửu cùng thuộc hạ buộc phải rút lui, ba trưởng lão lập tức đuổi theo. Trác Phàm mỉm cười: màn mở đầu đã xong, phần chính còn ở phía trước!"
+    },
+    {
+      "panel": "dqgl_ep25/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Đêm xuống, nhóm thích khách U Minh Cốc đồng loạt xông vào Lạc gia — nhưng con mồi đã chờ sẵn!",
+      "section": "Tập 25: Trác Phàm một chiêu áp đảo cao thủ U Minh Cốc"
+    },
+    {
+      "panel": "dqgl_ep25/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một bóng người áo trắng lao vào chặn đường, dễ dàng đỡ kiếm của tên đi đầu."
+    },
+    {
+      "panel": "dqgl_ep25/p008.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đó là đệ tử Tiềm Long Các. Họ đã mai phục từ trước và nhanh chóng đánh tan nhóm đột nhập."
+    },
+    {
+      "panel": "dqgl_ep25/p011.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Trác Phàm nhìn những kẻ nằm la liệt rồi hỏi một câu tỉnh bơ: đây chính là Điều Hổ Sơn sao?"
+    },
+    {
+      "panel": "dqgl_ep25/p014.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Hắn đoán U Minh Cốc đã tốn công như vậy chỉ để khiến Lạc gia chết trong tay mình, nhưng vẫn chưa rõ âm mưu thực sự là gì."
+    },
+    {
+      "panel": "dqgl_ep25/p018.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một cao thủ áo tím dẫn người tiến lên, ra lệnh dùng Hồi Long Chưởng giết sạch người nhà Lạc gia."
+    },
+    {
+      "panel": "dqgl_ep25/p021.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm không tiếp tục giả vờ. Hắn bất ngờ áp sát, khiến đối thủ nhận ra mình đã đánh giá thấp hắn."
+    },
+    {
+      "panel": "dqgl_ep25/p024.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Tên áo tím tưởng Trác Phàm cũng chỉ là phế vật tụ khí, nhưng một đòn đã chứng minh hắn mạnh hơn cả U Tuyền."
+    },
+    {
+      "panel": "dqgl_ep25/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm lạnh lùng tuyên án: kẻ phế vật đối đầu với hắn đều phải chết — rồi triệu hồi Kim Long khổng lồ."
+    },
+    {
+      "panel": "dqgl_ep25/p030.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Kim Long giáng xuống, đánh tan đối thủ. Trưởng lão U Minh Cốc còn lại bị dồn vào đường cùng."
+    },
+    {
+      "panel": "dqgl_ep25/p033.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngay trước khi Trác Phàm ra đòn kết liễu, một thiếu nữ áo đen chạy tới hét lên: dừng tay!"
+    },
+    {
+      "panel": "dqgl_ep25/p036.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trưởng lão bị thương vẫn khăng khăng muốn tự tay lấy mạng Trác Phàm, nhưng thiếu nữ lại bảo hắn hãy gia nhập U Minh Cốc."
+    },
+    {
+      "panel": "dqgl_ep25/p039.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Long Cửu xuất hiện, chế giễu trưởng lão rằng hắn chẳng khác nào con kiến trước mặt Trác Phàm. Lời mời chiêu mộ này rốt cuộc là thật lòng hay một cái bẫy?"
+    },
+    {
+      "panel": "dqgl_ep26/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Đêm ấy, trưởng lão U Minh Cốc dẫn người tìm đến Lạc gia. Trác Phàm lạnh lùng hỏi: các ngươi cũng xứng sao?",
+      "section": "Tập 26: Trác Phàm triệu hồi Cửu Thiên Bàn Long Trận, đánh trọng thương trưởng lão U Minh Cốc"
+    },
+    {
+      "panel": "dqgl_ep26/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lão già cảnh cáo Trác Phàm phải biết điều, rồi tung Hắc Minh Tỏa đánh về phía hắn."
+    },
+    {
+      "panel": "dqgl_ep26/p007.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trác Phàm hỏi thẳng: U Minh Cốc đã mượn tay Hắc Phong Sơn, sao còn phải giết cả bọn?"
+    },
+    {
+      "panel": "dqgl_ep26/p008.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trưởng lão đáp rằng nếu chuyện bại lộ, họ sẽ bị nghi ngờ và để lại chứng cứ. Trác Phàm lập tức truy hỏi: bọn chúng là ai?"
+    },
+    {
+      "panel": "dqgl_ep26/p010.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Lão già không trả lời, chỉ buông lời thách thức. Trác Phàm bật cười, cho rằng U Minh Cốc trong mắt hắn còn chẳng bằng lũ kiến."
+    },
+    {
+      "panel": "dqgl_ep26/p011.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bị chọc giận, trưởng lão quát muốn chết rồi bất ngờ lao tới tấn công."
+    },
+    {
+      "panel": "dqgl_ep26/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm né đòn trong gang tấc, còn đối thủ nhận ra hắn không hề tầm thường."
+    },
+    {
+      "panel": "dqgl_ep26/p017.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thiếu nữ áo đen định chen vào giao chiến, nhưng Trác Phàm chỉ thở dài, gọi cô là cô nương ngốc rồi tự mình nghênh chiến."
+    },
+    {
+      "panel": "dqgl_ep26/p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trưởng lão dồn dập ra đòn, còn Trác Phàm phản công bằng chưởng lực rực sáng."
+    },
+    {
+      "panel": "dqgl_ep26/p023.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Khi thấy Trác Phàm điều khiển trận pháp, lão già kinh ngạc: tuổi trẻ như vậy mà đã thông thạo Ngũ Cấp Trận Thức Bàn Long Trận!"
+    },
+    {
+      "panel": "dqgl_ep26/p025.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trưởng lão tưởng cảnh giới của Trác Phàm không thể điều khiển trận pháp Ngũ Cấp, nhưng hắn đã khiến đối phương phải trả giá."
+    },
+    {
+      "panel": "dqgl_ep26/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm kết ấn, hô Nhất Trọng Thiên! Một Kim Long khổng lồ lập tức hiện ra."
+    },
+    {
+      "panel": "dqgl_ep26/p030.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trưởng lão bàng hoàng khi nhận ra đây không phải Bàn Long Trận bình thường, mà là Cửu Thiên Bàn Long Trận!"
+    },
+    {
+      "panel": "dqgl_ep26/p033.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm tuyên bố đây là Ngũ Cấp Trận Thức, Cửu Thiên Bàn Long Trận, rồi khiêu khích đối thủ xông vào."
+    },
+    {
+      "panel": "dqgl_ep26/p038.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Nhiều Kim Long đồng loạt giáng đòn, phá tan thế công của trưởng lão và đánh lão văng đi."
+    },
+    {
+      "panel": "dqgl_ep26/p040.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trưởng lão phun máu nhưng vẫn cố vùng dậy, tuyên bố nhất định phải giết Trác Phàm."
+    },
+    {
+      "panel": "dqgl_ep26/p042.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Trác Phàm mỉa mai: chỉ có chút bản lĩnh như vậy mà cũng làm trưởng lão U Minh Cốc được sao?"
+    },
+    {
+      "panel": "dqgl_ep26/p044.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Lão già gầm lên sẽ không để Trác Phàm sống sót. Trận chiến vẫn chưa ngã ngũ — liệu hắn có thể kết thúc đối thủ ngay trong đêm nay?"
+    },
+    {
+      "panel": "dqgl_ep27/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Trưởng lão U Minh Cốc gầm lên rằng dù Trác Phàm có quỳ xuống cầu xin, lão cũng nhất định sẽ giết hắn!",
+      "section": "Tập 27: Trác Phàm tung uy lực thật sự của Cửu Thiên Bàn Long Trận"
+    },
+    {
+      "panel": "dqgl_ep27/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm khinh thường hỏi: đối phó một kẻ tu khí cảnh mà cũng phải dùng đến Ma Bảo, các người không sợ mất mặt sao?"
+    },
+    {
+      "panel": "dqgl_ep27/p006.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Lão già cười lớn: người chết rồi thì làm sao truyền chuyện này ra ngoài được!"
+    },
+    {
+      "panel": "dqgl_ep27/p008.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Trác Phàm vốn muốn kích đối thủ thu lại Nguyên Luân, nhưng lão ta đúng là cao thủ ma đạo chẳng biết liêm sỉ."
+    },
+    {
+      "panel": "dqgl_ep27/p010.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trưởng lão lập tức xông tới với Tam Phẩm Ma Bảo Tà Nguyệt Luân, quyết không cho Trác Phàm chạy thoát."
+    },
+    {
+      "panel": "dqgl_ep27/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tà Nguyệt Luân chém trúng Kim Long, khiến Trác Phàm nhận ra tốc độ và sức phá hoại của nó vượt xa dự tính."
+    },
+    {
+      "panel": "dqgl_ep27/p018.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Đòn truy kích quá nhanh! Trưởng lão tin rằng lần này Trác Phàm không thể thoát khỏi tay mình."
+    },
+    {
+      "panel": "dqgl_ep27/p021.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Lão còn khoe rằng Trác Phàm là tu khí cảnh đầu tiên có thể chết dưới Tà Nguyệt Luân."
+    },
+    {
+      "panel": "dqgl_ep27/p024.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Một tiếng nổ vang lên giữa trận chiến. Khi khói bụi tan đi, máu vương trên mặt đất và cục diện bất ngờ đổi khác."
+    },
+    {
+      "panel": "dqgl_ep27/p026.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một trưởng lão phe Lạc gia xuất hiện bên cạnh Trác Phàm, khiến đối thủ sững sờ hỏi ông là ai."
+    },
+    {
+      "panel": "dqgl_ep27/p030.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Nhờ Trác Phàm, ông lão không chỉ hồi phục thực lực mà còn đột phá Thiên Huyền Cảnh. Trác Phàm nghe vậy chỉ đáp: tốt!"
+    },
+    {
+      "panel": "dqgl_ep27/p031.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm ra lệnh cho lão gia tử phối hợp, lần này họ sẽ lấy mạng trưởng lão U Minh Cốc."
+    },
+    {
+      "panel": "dqgl_ep27/p032.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đối thủ cười nhạo rằng mình đã phá trận pháp, lại vừa đột phá Thiên Huyền Cảnh nên chẳng cần sợ ai."
+    },
+    {
+      "panel": "dqgl_ep27/p033.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Trác Phàm vẫn bình thản: hắn dùng người xưa nay không hề tính sai như lần này. Rồi hắn gọi lão gia tử xông lên!"
+    },
+    {
+      "panel": "dqgl_ep27/p036.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hai trưởng lão cùng lao vào. Địch thủ nhận ra trận pháp của Trác Phàm quá kỳ dị và quyết xử hắn trước."
+    },
+    {
+      "panel": "dqgl_ep27/p041.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lão gia tử bị đánh bật ra, nhưng Trác Phàm lập tức chặn đòn tiếp theo và chuẩn bị phản kích."
+    },
+    {
+      "panel": "dqgl_ep27/p043.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Lão gia tử cảm ơn Trác Phàm đã giúp mình. Hắn đáp: bây giờ ta sẽ cho ngươi thấy uy lực thật sự của Cửu Thiên Bàn Long Trận!"
+    },
+    {
+      "panel": "dqgl_ep27/p048.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Ánh sáng trận pháp cuồn cuộn nuốt chửng chiến trường. Trưởng lão U Minh Cốc không tin một kẻ tu khí cảnh lại có thể tạo ra sức mạnh kinh khủng đến vậy."
+    },
+    {
+      "panel": "dqgl_ep27/p051.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Cửu Thiên Bàn Long Trận bùng nổ, mở ra đòn quyết định nhằm vào kẻ địch. Trưởng lão U Minh Cốc lần này còn đường sống nào không?"
+    },
+    {
+      "panel": "dqgl_ep28/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Cửu Thiên Bàn Long Trận nổ tung, cuốn phăng chiến trường. Kẻ địch còn sống sót sẽ phản ứng thế nào trước sức mạnh của Trác Phàm?",
+      "section": "Tập 28: Trác Phàm đoạt Tà Nguyệt Luân, kịp thời cứu Lôi Vũ Đình"
+    },
+    {
+      "panel": "dqgl_ep28/p003.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Đám người phe đối thủ nhận ra có cao thủ đang giao chiến gần Tiềm Long Các. Không muốn mắc kẹt giữa trận chiến, chúng vội tìm đường rút lui."
+    },
+    {
+      "panel": "dqgl_ep28/p006.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Những kẻ áo choàng của U Minh Cốc cũng bỏ chạy khi biết ba vị trưởng lão Tiềm Long Các đã quay về."
+    },
+    {
+      "panel": "dqgl_ep28/p009.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Lôi Vân Thiên thừa nhận đòn vừa rồi chỉ cầm chân được đối thủ. Uy lực kinh người của Trác Phàm khiến ông hiểu rằng mình khó lòng chống đỡ nếu bị đánh trực diện."
+    },
+    {
+      "panel": "dqgl_ep28/p011.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm nhờ Lôi Vân Thiên trông nom Lạc gia rồi lập tức lên đường tìm Lôi Vũ Đình."
+    },
+    {
+      "panel": "dqgl_ep28/p014.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trước khi rời đi, Trác Phàm phát hiện Tam Phẩm Ma Bảo Tà Nguyệt Luân còn nằm lại giữa chiến trường. Hắn quyết định thu lấy để phòng khi cần dùng."
+    },
+    {
+      "panel": "dqgl_ep28/p018.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trong rừng đêm, Lôi Vũ Đình chặn đường một nam nhân bị thương. Hắn là sư huynh cũ, nhưng giờ đã trở thành kẻ phản bội."
+    },
+    {
+      "panel": "dqgl_ep28/p022.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Vũ Đình tuyên bố sẽ thay môn hộ trừng trị hắn. Hắn chế giễu rằng cô không có tư cách đại diện cho môn phái, càng không đủ sức giết mình."
+    },
+    {
+      "panel": "dqgl_ep28/p024.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Trước khi quyết chiến, Vũ Đình hỏi điều day dứt nhất: hắn đã từng thật lòng thích cô chưa?"
+    },
+    {
+      "panel": "dqgl_ep28/p025.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Hắn đáp bằng những lời cay nghiệt, cho rằng thân phận và gia thế của cô không xứng với một thiên tài như hắn."
+    },
+    {
+      "panel": "dqgl_ep28/p026.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Vũ Đình gạt bỏ hy vọng cuối cùng, tuyên bố hôm nay cả hai sẽ kết thúc mọi chuyện rồi vận công, gọi sấm điện quanh mình."
+    },
+    {
+      "panel": "dqgl_ep28/p029.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Hai người lao vào giao chiến. Vũ Đình đánh trúng đối thủ, nhưng hắn vẫn chống trả dữ dội và khiến cô rơi vào thế nguy hiểm."
+    },
+    {
+      "panel": "dqgl_ep28/p032.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Một giọng nói vang lên: đó là bản mệnh huyết anh của Trác Phàm! Vũ Đình nhận ra linh vật nhỏ bé này đã cứu mình."
+    },
+    {
+      "panel": "dqgl_ep28/p034.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Được Trác Phàm thu lấy Ma Bảo rồi ném tới hỗ trợ, Vũ Đình lại có cơ hội phản công. Cô không định tha cho kẻ đã phản bội mình."
+    },
+    {
+      "panel": "dqgl_ep28/p038.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đúng lúc tình thế đổi chiều, trưởng lão Giản xuất hiện. Ông kinh ngạc thấy người của mình bị thương nặng, rồi hỏi kế hoạch đã tiến triển đến đâu."
+    },
+    {
+      "panel": "dqgl_ep28/p040.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Trưởng lão Giản bất ngờ chĩa sát ý vào Lôi Vũ Đình, quát phải tiêu diệt cô trước. Trác Phàm ở đâu, và liệu hắn có kịp ngăn đòn đánh này?"
+    },
+    {
+      "panel": "dqgl_ep29/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Trưởng lão Giản quát Lôi Vũ Đình phải chết rồi tung chưởng đánh xuống. Trác Phàm có đến kịp để cứu cô không?",
+      "section": "Tập 29: Trác Phàm và Lôi Vũ Đình hợp lực hạ trưởng lão Giản"
+    },
+    {
+      "panel": "dqgl_ep29/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một luồng sáng xé toạc màn đêm, đánh bật trưởng lão Giản. Trác Phàm xuất hiện cùng Tà Nguyệt Luân trong tay."
+    },
+    {
+      "panel": "dqgl_ep29/p007.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Trưởng lão Giản nhận ra Ma Bảo của U Minh Cốc đang nằm trong tay Trác Phàm, nhưng vẫn ngạo mạn cho rằng chỉ Tà Nguyệt Luân mới có thể làm mình bị thương."
+    },
+    {
+      "panel": "dqgl_ep29/p010.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm bảo Vũ Đình dùng truyền âm nhắm vào kinh mạch của đối thủ. Hắn sẽ lo phần còn lại."
+    },
+    {
+      "panel": "dqgl_ep29/p013.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Vũ Đình hiểu rõ chênh lệch cảnh giới: cô không thể phá phòng ngự của cao thủ Thiên Huyền Cảnh bằng sức mình. Trác Phàm cũng đang bị thương, nhưng vẫn chọn tự mình đối mặt."
+    },
+    {
+      "panel": "dqgl_ep29/p018.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Vũ Đình quyết định liều mạng để mở cơ hội cho Trác Phàm. Cô bất ngờ ra tay, còn hắn phối hợp áp sát trưởng lão Giản."
+    },
+    {
+      "panel": "dqgl_ep29/p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trưởng lão Giản tin rằng mình đã nhìn thấu trò che mắt của Trác Phàm. Nhưng đó lại chính là lúc lão mất cảnh giác."
+    },
+    {
+      "panel": "dqgl_ep29/p027.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trác Phàm đánh trúng trưởng lão Giản, khiến lão mất một cánh tay. Lão nổi giận, định ép ma vật trong người hắn bộc phát để trả đũa."
+    },
+    {
+      "panel": "dqgl_ep29/p029.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Vũ Đình lao vào phối hợp với Trác Phàm. Đòn đánh của cô khiến trưởng lão Giản không kịp phòng bị."
+    },
+    {
+      "panel": "dqgl_ep29/p031.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trác Phàm chỉ ra rằng trưởng lão Giản lại mắc lừa. Kế hoạch của hai người đã khiến lão trả giá bằng một vết thương chí mạng."
+    },
+    {
+      "panel": "dqgl_ep29/p034.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trưởng lão Giản ngã gục giữa rừng. Hắn kinh ngạc trước mưu kế của Trác Phàm, người đã dùng chính sơ hở của lão để lật ngược cục diện."
+    },
+    {
+      "panel": "dqgl_ep29/p036.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Trác Phàm thở dốc sau khi xử lý xong đối thủ. Lôi Vũ Đình xin lỗi vì huyết anh bị thương trong trận chiến."
+    },
+    {
+      "panel": "dqgl_ep29/p039.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trác Phàm giải thích rằng huyết anh bị thương nên nội lực của hắn cũng chịu ảnh hưởng. Vũ Đình nhận ra Tà Nguyệt Luân có liên hệ với khí tức sinh mệnh của trưởng lão Giản."
+    },
+    {
+      "panel": "dqgl_ep29/p043.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Trác Phàm hỏi trên người trưởng lão U Minh Cốc còn thứ gì đáng lấy không. Sau một trận sinh tử, hắn đã nhắm đến những bí mật và bảo vật của đối thủ."
+    },
+    {
+      "panel": "dqgl_ep30/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Trác Phàm bảo Vũ Đình lột hết đồ trên người trưởng lão Giản. Sau trận chiến, chiến lợi phẩm mới là thứ hắn quan tâm.",
+      "section": "Tập 30: Trác Phàm thu chiến lợi phẩm, Lạc gia đón các cường giả Tiềm Long Các"
+    },
+    {
+      "panel": "dqgl_ep30/p003.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trong đống đồ để lại có một chiếc túi đặc biệt, được nhận xét là có thể chứa sinh vật sống. Trác Phàm lập tức nhận ra giá trị của nó."
+    },
+    {
+      "panel": "dqgl_ep30/p004.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Vũ Đình ngượng ngùng khi Trác Phàm hỏi sao cô lại có vẻ lúng túng. Cô vội gạt đi, bảo hắn xem thử trong túi có bảo vật gì."
+    },
+    {
+      "panel": "dqgl_ep30/p006.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm tìm thấy một chiếc nhẫn và nhận ra đó là vật của Lôi gia, còn chiếc túi cùng những thứ bên trong có thể giúp hắn tìm hiểu bí mật Tử Lôi Kim Nhãn."
+    },
+    {
+      "panel": "dqgl_ep30/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn quyết định giữ chiếc túi quý hiếm vì nó có thể nuôi dưỡng sinh vật bên trong. Với Trác Phàm, món đồ này có ích hơn linh thạch hay công pháp."
+    },
+    {
+      "panel": "dqgl_ep30/p011.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Vũ Đình đề nghị trả chiếc nhẫn cho Trác Phàm, nhưng hắn gọi nó là thứ rẻ rúng và bảo cô cứ giữ lấy."
+    },
+    {
+      "panel": "dqgl_ep30/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm nói theo quy định sơn tặc, gặp mặt thì chia đôi chiến lợi phẩm, phần còn lại thuộc về cô. Sau đó hai người chuẩn bị trở về Lạc gia."
+    },
+    {
+      "panel": "dqgl_ep30/p017.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Vũ Đình đỡ Trác Phàm đang bị thương. Cô hỏi Tiểu Tứ Dương Minh đâu, còn hắn chỉ xem cậu ta là nhân vật nhỏ không đáng bận tâm."
+    },
+    {
+      "panel": "dqgl_ep30/p020.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Tại Tiềm Long Các, các trưởng lão hỏi về trận chiến đêm qua. Họ tưởng tiếng động lớn là do ba trưởng lão giao đấu với U Minh Cốc."
+    },
+    {
+      "panel": "dqgl_ep30/p023.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lôi Vân Thiên kể rằng phe đối phương đã chuẩn bị nhiều nhân mã và tấn công bằng âm thanh, nhưng cuối cùng phần lớn đều bị đánh bại."
+    },
+    {
+      "panel": "dqgl_ep30/p026.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Chỉ vài cao thủ Đoạn Cốt trốn thoát. Các trưởng lão Tiềm Long Các khen Lôi Vân Thiên và những người trẻ đã tiến bộ, còn muốn biểu dương công lao của họ."
+    },
+    {
+      "panel": "dqgl_ep30/p029.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Lôi Vân Thiên khiêm tốn nhận lỗi, nói rằng mình vừa đột phá nên chưa đủ thực lực bảo vệ Trác Phàm. Ông cũng nhắc đến một cao thủ Thiên Huyền Cảnh được gọi là Văn trưởng lão."
+    },
+    {
+      "panel": "dqgl_ep30/p032.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Các trưởng lão sửng sốt khi biết U Vân Thanh, một trong mười hai trưởng lão U Minh Cốc, cũng đã xuất hiện trong trận chiến."
+    },
+    {
+      "panel": "dqgl_ep30/p034.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Lôi Vân Thiên khẳng định nếu không có Trác Phàm, mọi người khó tránh khỏi cái chết. Các trưởng lão bàng hoàng hỏi làm sao chuyện đó có thể xảy ra."
+    }
+  ]
+}

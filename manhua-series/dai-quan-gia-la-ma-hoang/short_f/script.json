@@ -1,0 +1,81 @@
+{
+  "title": "Trác Phàm lột sạch trưởng lão U Minh Cốc, chiến lợi phẩm khiến cả nhà ngã ngửa!?",
+  "chapters": "28-30",
+  "source_dir": "manhua-recap/dqgl_ep21",
+  "written_by": "Claude tổng hợp từ script ep21-30 đã lưu, 2026-10-12",
+  "description": "Trác Phàm đoạt Tà Nguyệt Luân, kịp cứu Lôi Vũ Đình rồi cùng cô hạ trưởng lão Giản. Chiến lợi phẩm lớn đến mức các trưởng lão Tiềm Long Các cũng phải kinh ngạc.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tóm tắt chương 28 đến 30.\n◀ Phần trước: chương 25-27",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "CHIẾN LỢI PHẨM TRƯỞNG LÃO!",
+    "prompt": "A sly dark-haired young butler cultivator holding a glowing crescent-moon blade and a mysterious storage bag in a moonlit forest, a purple-haired female cultivator beside him, a defeated one-armed old elder lying on the ground. Chinese manhua cover art style, full-colour digital illustration, bold clean linework, cel shading with dramatic glow and rim light, high contrast, vertical 9:16 composition (keep the subject inside the centre 2:3 area), leave the top 25% as darker empty background for a title overlay, NO text, NO letters, NO speech bubbles, NO watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep28/p014.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trước khi rời đi, Trác Phàm phát hiện Tam Phẩm Ma Bảo Tà Nguyệt Luân còn nằm lại giữa chiến trường. Hắn quyết định thu lấy để phòng khi cần dùng."
+    },
+    {
+      "panel": "dqgl_ep28/p026.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Vũ Đình gạt bỏ hy vọng cuối cùng, tuyên bố hôm nay cả hai sẽ kết thúc mọi chuyện rồi vận công, gọi sấm điện quanh mình."
+    },
+    {
+      "panel": "dqgl_ep28/p034.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Được Trác Phàm thu lấy Ma Bảo rồi ném tới hỗ trợ, Vũ Đình lại có cơ hội phản công. Cô không định tha cho kẻ đã phản bội mình."
+    },
+    {
+      "panel": "dqgl_ep29/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một luồng sáng xé toạc màn đêm, đánh bật trưởng lão Giản. Trác Phàm xuất hiện cùng Tà Nguyệt Luân trong tay."
+    },
+    {
+      "panel": "dqgl_ep29/p010.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm bảo Vũ Đình dùng truyền âm nhắm vào kinh mạch của đối thủ. Hắn sẽ lo phần còn lại."
+    },
+    {
+      "panel": "dqgl_ep29/p027.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trác Phàm đánh trúng trưởng lão Giản, khiến lão mất một cánh tay. Lão nổi giận, định ép ma vật trong người hắn bộc phát để trả đũa."
+    },
+    {
+      "panel": "dqgl_ep29/p031.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trác Phàm chỉ ra rằng trưởng lão Giản lại mắc lừa. Kế hoạch của hai người đã khiến lão trả giá bằng một vết thương chí mạng."
+    },
+    {
+      "panel": "dqgl_ep30/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Trác Phàm bảo Vũ Đình lột hết đồ trên người trưởng lão Giản. Sau trận chiến, chiến lợi phẩm mới là thứ hắn quan tâm."
+    },
+    {
+      "panel": "dqgl_ep30/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm nói theo quy định sơn tặc, gặp mặt thì chia đôi chiến lợi phẩm, phần còn lại thuộc về cô. Sau đó hai người chuẩn bị trở về Lạc gia."
+    },
+    {
+      "panel": "dqgl_ep30/p034.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Lôi Vân Thiên khẳng định nếu không có Trác Phàm, mọi người khó tránh khỏi cái chết. Các trưởng lão bàng hoàng hỏi làm sao chuyện đó có thể xảy ra."
+    }
+  ]
+}

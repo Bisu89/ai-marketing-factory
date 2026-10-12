@@ -1,0 +1,25 @@
+﻿{
+  "title": "Trác Phàm ngang nhiên từ chối lệnh triệu kiến của hoàng thất!",
+  "chapters": "41",
+  "source_dir": "manhua-recap/dqgl_ep41",
+  "written_by": "Claude (đọc tay từ panels), 2026-10-09",
+  "description": "Nụ hôn bất ngờ giữa Trác Phàm và đại tiểu thư bị Lão Bàng phá ngang. Cô nàng xấu hổ đến mức ngất đi, còn Trác Phàm đành bế cô về phòng và lấy cớ sức khỏe không tốt để khất buổi gặp khách sang ngày hôm sau. Người khách mang kim bài ngự thị đến phủ, khiến gia nhân lo lắng vì đó là tín vật của hoàng gia hộ vệ, ngay cả gia chủ các thế gia cũng không thể tùy tiện từ chối. Trác Phàm vẫn bình thản bảo đối phương chờ đến mai. Sau đó, hắn nhắc chuyện Phương Thu Bạch từng muốn thu nhận mình làm đồ đệ. Khi Lão Bàng sửng sốt trước lời ấy, Trác Phàm lại khẳng định vị Kiếm Thần kia chưa đủ tư cách làm sư phụ của hắn.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tập 41 (chương 41).\n◀ Tập 40: Đại tiểu thư say ngủ trong bếp vì nấu cho Trác Phàm!",
+  "hashtags": ["#DaiQuanGiaLaMaHoang", "#ReviewManhua", "#Manhua", "#TuTien", "#XuyenKhong", "#ReviewTruyen"],
+  "thumbnail": {
+    "text": "TRÁC PHÀM TỪ CHỐI CẢ LỆNH TRIỆU KIẾN HOÀNG THẤT!",
+    "prompt": "A confident brown-haired young man in a tan robe with vivid red trim lounges casually in a traditional Chinese audience hall, an ornate golden imperial guard token presented before him by a stern court envoy, a worried male attendant beside them, dramatic comedic tension, cultivation manhua cover art, full-colour digital illustration, clean linework, cel shading, expressive faces, vertical 9:16 composition, subjects centered, leave top 25% darker empty background for title overlay, NO text, NO letters, NO speech bubbles, NO watermark"
+  },
+  "beats": [
+    {"panel":"p001.jpg","type":"HOOK","kind":"recap","narration":"Ngay sau nụ hôn bất ngờ, Lão Bàng xuất hiện gọi đại tiểu thư. Cả cô lẫn Trác Phàm đều giật mình, khiến khoảnh khắc thân mật lập tức trở nên ngượng ngùng."},
+    {"panel":"p003.jpg","type":"COMEDY","kind":"recap","narration":"Đại tiểu thư đỏ bừng mặt rồi ngất lịm. Trác Phàm đỡ lấy cô, còn Lão Bàng vội giải thích rằng cô đang không khỏe."},
+    {"panel":"p005.jpg","type":"TRANSITION","kind":"recap","narration":"Trác Phàm bế cô về phòng nghỉ. Lão Bàng định báo thêm chuyện, nhưng hắn bảo cứ để sau rồi tính."},
+    {"panel":"p007.jpg","type":"REVEAL","kind":"recap","narration":"Lão Bàng nhắc có người muốn mời đại tiểu thư đến phủ và tuyệt đối không thể đắc tội. Người đó còn mang theo kim bài ngự thị."},
+    {"panel":"p009.jpg","type":"TURN","kind":"recap","narration":"Kim bài ngự thị là tín vật của hoàng gia hộ vệ; ngay cả gia chủ các thế gia cũng phải nể mặt. Trác Phàm vẫn lạnh nhạt bảo rằng đại tiểu thư không khỏe, hẹn đối phương ngày mai hãy đến."},
+    {"panel":"p011.jpg","type":"REACTION","kind":"recap","narration":"Lão Bàng kinh ngạc vì Trác Phàm dám khất lời triệu kiến. Đại tiểu thư tỉnh lại đúng lúc, vội thúc giục hắn chuẩn bị đi gặp khách."},
+    {"panel":"p013.jpg","type":"COMEDY","kind":"recap","narration":"Trác Phàm tiếp tục giả vờ rằng cô vừa ngất nên không thể đi đâu. Đại tiểu thư đỏ mặt phản đối, còn người hầu chỉ biết đứng nhìn cảnh khó xử."},
+    {"panel":"p015.jpg","type":"TRANSITION","kind":"recap","narration":"Sau khi đại tiểu thư rời đi, Trác Phàm tự hỏi sao phụ nữ lại khó hiểu đến vậy. Tại phòng khách, người mang kim bài ngự thị đã chờ sẵn."},
+    {"panel":"p017.jpg","type":"BUILD","kind":"recap","narration":"Lão Bàng vẫn lo Trác Phàm sẽ gây chuyện với sứ giả hoàng gia. Hắn thì cho rằng đối phương chẳng qua sợ mất mặt sau lần bị mình dạy dỗ hôm trước."},
+    {"panel":"p021.jpg","type":"REVEAL","kind":"recap","narration":"Trác Phàm chuyển sang kể chuyện Phương Thu Bạch từng muốn nhận hắn làm đồ đệ. Lão Bàng nghe vậy thì không tin nổi, bởi người đề nghị chính là vị Kiếm Thần danh tiếng."},
+    {"panel":"p027.jpg","type":"ENDING","kind":"recap","narration":"Trác Phàm cười khẩy, nói Phương Thu Bạch còn chưa đủ tư cách làm sư phụ mình. Lão Bàng chết lặng trước sự ngạo mạn của vị quản gia trẻ tuổi."}
+  ]
+}
