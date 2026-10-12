@@ -1,0 +1,28 @@
+﻿{
+  "title": "Trác Phàm diệt cả toán Tiết gia, tuyên bố không để ai sống sót!",
+  "chapters": "51",
+  "source_dir": "manhua-recap/dqgl_ep51",
+  "written_by": "Claude (đọc tay từ panels), 2026-10-12",
+  "description": "Cô bé tóc đỏ vừa gọi tên Trác Phàm thì người của Tiết gia đuổi kịp. Tiết đại thiếu gia yêu cầu cô về, còn Trác Phàm lập tức nhận cô là người của mình. Khi đám người kia định động thủ, hắn cảnh cáo muốn chạm vào cô thì phải bước qua hắn trước. Tiết đại thiếu gia tự tin tung Linh Giáo Cao Chiếu, nhưng Trác Phàm dễ dàng đánh bật đám thuộc hạ bằng Huyết Ảnh Chưởng. Cô bé kinh ngạc trước thực lực của hắn, còn Tiết đại thiếu gia tức tối vì không thể cử động. Trác Phàm nói mình chẳng sợ Tiết gia, chỉ ngại rắc rối; để tránh bị truy đuổi khắp núi trong ba tháng tới, hắn quyết định biến vụ việc thành án không đầu mối. Hắn ra tay khiến toàn bộ người của Tiết gia im lặng vĩnh viễn, rồi tóm lấy Tiết đại thiếu gia. Cô bé gọi hắn là Tiết đại thiếu gia và Trác Phàm bảo cô yên tâm, sau khi hắn chết sẽ đưa nô tài của hắn xuống bầu bạn. Tập khép lại giữa cuộc thanh toán đẫm máu và quyết tâm xóa sạch dấu vết của Trác Phàm.",
+  "hashtags": ["#DaiQuanGiaLaMaHoang", "#ReviewManhua", "#Manhua", "#TuTien", "#XuyenKhong", "#ReviewTruyen"],
+  "thumbnail": {"text": "Trác Phàm một mình diệt Tiết gia!", "prompt": "Manhua recap thumbnail, Trác Phàm áo choàng nâu tung Huyết Ảnh Chưởng giữa toán võ giả Tiết gia áo trắng vàng bị đánh văng, tay còn lại bảo vệ cô bé tóc đỏ, Tiết đại thiếu gia kinh hoàng ở phía trước, hiệu ứng đỏ đen dữ dội, chừa khoảng trống chữ lớn: Không để ai sống sót!"},
+  "beats": [
+    {"panel":"p001.jpg","type":"HOOK","kind":"recap","narration":"Cô bé tóc đỏ vừa gọi đúng tên Trác Phàm thì đám người truy đuổi đã đuổi tới. Kẻ cầm đầu ra lệnh cho cô quay về."},
+    {"panel":"p005.jpg","type":"SCENE","kind":"recap","narration":"Tên cầm đầu nói đây là chuyện của Tiết gia, yêu cầu người ngoài tránh đường. Trác Phàm nhận ra cô bé đã vướng vào một thế lực lớn."},
+    {"panel":"p007.jpg","type":"SCENE","kind":"recap","narration":"Hắn không hề lùi bước. Trác Phàm kéo cô bé về phía mình, tuyên bố từ giờ cô là người của hắn."},
+    {"panel":"p008.jpg","type":"SCENE","kind":"recap","narration":"Tiết đại thiếu gia tức giận vì Trác Phàm dám xen vào chuyện của Tiết gia. Hắn ra lệnh cho thuộc hạ bắt lấy cả hai."},
+    {"panel":"p009.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm cười nhạt, nói mình đã tìm hiểu Tiết gia: ở Thanh Minh Thành, họ chỉ là một thế gia hạng nhì, chẳng đáng để hắn bận tâm."},
+    {"panel":"p011.jpg","type":"SCENE","kind":"recap","narration":"Cô bé phản đối khi nghe Trác Phàm gọi Tiết gia là chó của U Minh Cốc. Hắn ngạc nhiên: đang bênh vực hắn mà cô lại trách ngược hắn sao?"},
+    {"panel":"p012.jpg","type":"SCENE","kind":"recap","narration":"Tiết đại thiếu gia nổi giận, cho rằng Trác Phàm dám xúc phạm Tiết gia ngay trước mặt mình. Hắn lập tức hạ lệnh tấn công."},
+    {"panel":"p014.jpg","type":"SCENE","kind":"recap","narration":"Đám thuộc hạ đồng loạt lao tới. Trác Phàm vẫn bình thản, để Huyết Ảnh Chưởng bùng lên trong lòng bàn tay."},
+    {"panel":"p016.jpg","type":"SCENE","kind":"recap","narration":"Chỉ một chưởng, hắn đánh văng cả toán người. Tiết đại thiếu gia sững sờ khi thấy đám thuộc hạ bị hạ gục trong nháy mắt."},
+    {"panel":"p017.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm mỉa mai rằng Tiết đại thiếu gia có chút bản lĩnh, nhưng chẳng trách hắn dám ngông cuồng như vậy. Cô bé không ngờ hắn mạnh đến thế."},
+    {"panel":"p019.jpg","type":"SCENE","kind":"recap","narration":"Tiết đại thiếu gia tung Linh Giáo Cao Chiếu, tự tin hỏi Trác Phàm có sợ mình không. Trác Phàm đáp hắn không sợ, chỉ ngại phiền phức."},
+    {"panel":"p021.jpg","type":"SCENE","kind":"recap","narration":"Đám người lại xông lên. Trác Phàm quyết định nếu đã đắc tội Tiết gia thì phải dọn sạch toàn bộ để khỏi bị truy đuổi khắp núi suốt ba tháng."},
+    {"panel":"p023.jpg","type":"SCENE","kind":"recap","narration":"Huyết Ảnh Chưởng quét ngang, cuốn phăng những kẻ vây quanh. Đòn đánh dữ dội khiến ngay cả Tiết đại thiếu gia cũng không thể tin vào mắt mình."},
+    {"panel":"p025.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm áp sát, tung đòn khiến Tiết đại thiếu gia không thể nhúc nhích. Hắn nhắc rằng người kia vừa dọa sẽ xử lý mình sau khi bắt được cô bé."},
+    {"panel":"p027.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm tuyên bố sẽ để tất cả những kẻ có mặt im lặng vĩnh viễn, để tai họa này không biến thành một vụ truy sát kéo dài."},
+    {"panel":"p030.jpg","type":"SCENE","kind":"recap","narration":"Cô bé xác nhận người bị hắn khống chế là Tiết đại thiếu gia. Trác Phàm bảo cô yên tâm: sau khi hắn chết, hắn sẽ đưa đám nô tài xuống cho hắn."},
+    {"panel":"p032.jpg","type":"ENDING","kind":"recap","narration":"Trác Phàm ra tay thanh toán những kẻ còn lại, quyết biến toàn bộ sự việc thành một vụ án không đầu mối. Tiết gia vừa mất người, còn hắn và cô bé vẫn phải tìm cách rời khỏi thành."}
+  ]
+}

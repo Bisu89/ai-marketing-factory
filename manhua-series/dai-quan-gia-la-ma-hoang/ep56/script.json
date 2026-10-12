@@ -1,0 +1,31 @@
+﻿{
+  "title": "Ngưng Hương dẫn Trác Phàm đến nơi có Kim Cương Lưu Sa!",
+  "chapters": "56",
+  "source_dir": "manhua-recap/dqgl_ep56",
+  "written_by": "Claude (đọc tay từ panels), 2026-10-12",
+  "description": "Ngưng Hương đồng ý đi cùng Trác Phàm đến Vạn Thú Sơn Mạch, nhưng vẫn chưa tắm xong. Trác Phàm tìm thấy một dòng suối gần đó rồi trêu cô, khiến Ngưng Hương đỏ mặt và mắng hắn đồ lưu manh. Trong lúc chờ, Trác Phàm suy nghĩ về việc mình đã trở nên mềm lòng hơn sau khi tiếp xúc với Lạc gia. Tắm xong, Ngưng Hương thay trang phục sáng màu và cùng hắn lên đường. Trác Phàm hỏi Kim Cương Lưu Sa xuất hiện ở đâu; cô giải thích khu vực ấy chắc chắn có rất nhiều người canh giữ, nên nếu đi thẳng sẽ bị phát hiện. Cô đã đưa hắn đến một lối tiếp cận kín đáo. Khi nhìn ra nơi đó, Trác Phàm bắt đầu nhận ra điều gì đang chờ phía trước.",
+  "hashtags": ["#DaiQuanGiaLaMaHoang", "#ReviewManhua", "#Manhua", "#TuTien", "#XuyenKhong", "#ReviewTruyen"],
+  "thumbnail": {"text": "Lối bí mật tới Kim Cương Lưu Sa!", "prompt": "Manhua recap thumbnail, Trác Phàm áo choàng nâu đen cùng Tiết Ngưng Hương tóc đỏ mặc trang phục vàng cam đứng trên mỏm núi nhìn xuống nơi ẩn giấu Kim Cương Lưu Sa, rừng núi Vạn Thú Sơn Mạch xanh mờ, ánh mắt cảnh giác và bí ẩn, phong cách tu tiên phiêu lưu, chừa khoảng trống chữ lớn: Kim Cương Lưu Sa ở đâu?"},
+  "beats": [
+    {"panel":"p001.jpg","type":"HOOK","kind":"recap","narration":"Ngưng Hương còn ngập ngừng trước lời hứa của Trác Phàm. Hắn nhắc cô xuống lối bí mật rồi giục lên đường."},
+    {"panel":"p002.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm hứa sau khi xong việc ở Vạn Thú Sơn Mạch sẽ đưa Ngưng Hương ra ngoài, xem như giao dịch của họ kết thúc."},
+    {"panel":"p003.jpg","type":"SCENE","kind":"recap","narration":"Hai người đã tới Vạn Thú Sơn Mạch. Một con thỏ nhỏ xuất hiện giữa bụi cây, nhưng Ngưng Hương nhanh tay chụp hụt khiến cô ngã nhào xuống đất."},
+    {"panel":"p005.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm quay lại giục cô nhanh lên. Ngưng Hương vất vả bò khỏi chỗ ngã, còn hắn vẫn thúc giục như thể chẳng hề để ý."},
+    {"panel":"p006.jpg","type":"SCENE","kind":"recap","narration":"Cô mắng Trác Phàm xấu xa, bắt hắn phải kéo mình dậy. Hắn thản nhiên thừa nhận mình vốn xấu xa như thế."},
+    {"panel":"p008.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm phát hiện gần đó có dòng suối và hỏi Ngưng Hương có muốn tắm không. Cô lập tức đi theo hướng hắn chỉ."},
+    {"panel":"p010.jpg","type":"SCENE","kind":"recap","narration":"Ngưng Hương đỏ mặt la lên khi Trác Phàm bất ngờ cởi áo choàng. Hắn tỉnh bơ đáp rằng tất nhiên mình cũng cần tắm."},
+    {"panel":"p011.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm xuống suối tắm trước, còn Ngưng Hương quay lưng chờ trên bờ. Hắn bảo cô cứ tự nhiên đợi đến lượt mình."},
+    {"panel":"p013.jpg","type":"SCENE","kind":"recap","narration":"Hắn còn trêu rằng nếu Ngưng Hương muốn tắm cùng thì mình cũng không ngại. Cô xấu hổ mắng hắn là đồ mặt dày."},
+    {"panel":"p014.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm tự hỏi ma đạo tu giả vốn không cần thể diện thì còn phải đi đâu tìm thể diện. Tắm xong, hắn chuẩn bị lên bờ."},
+    {"panel":"p016.jpg","type":"SCENE","kind":"recap","narration":"Ngưng Hương thú nhận mình vẫn chưa tắm. Trác Phàm nhắc cô mau lên rồi quay đi, còn cô ngượng ngùng vì hắn cứ đứng gần đó."},
+    {"panel":"p019.jpg","type":"SCENE","kind":"recap","narration":"Ngưng Hương nhận ra Trác Phàm cố ý trêu mình, nhưng rồi bất chợt giục hắn trốn vào rừng và đừng nhìn lên."},
+    {"panel":"p021.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm làm bộ chê nước còn chưa sạch, khiến Ngưng Hương ngơ ngác hỏi mình chưa sạch chỗ nào."},
+    {"panel":"p022.jpg","type":"SCENE","kind":"recap","narration":"Ngưng Hương tự tin khẳng định mình sạch sẽ. Cô đã kịp thay sang bộ trang phục mới trước khi cả hai tiếp tục hành trình."},
+    {"panel":"p023.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm nghe động tĩnh rồi quay lại hỏi cô tắm xong chưa. Ngưng Hương đồng ý, và hắn bảo giờ hai người có thể đi tiếp."},
+    {"panel":"p025.jpg","type":"SCENE","kind":"recap","narration":"Ngưng Hương xuất hiện trong bộ đồ mới, khiến Trác Phàm khựng lại một thoáng. Hắn nhanh chóng hỏi Kim Cương Lưu Sa xuất hiện ở đâu."},
+    {"panel":"p028.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm bảo Ngưng Hương đi trước dẫn đường. Hắn tự hỏi vì sao gặp mỹ nữ lại khiến mình cư xử khác thường như vậy."},
+    {"panel":"p030.jpg","type":"SCENE","kind":"recap","narration":"Từ trên cao, Trác Phàm thấy khu vực có Kim Cương Lưu Sa. Hắn ngạc nhiên vì chưa thấy ai xuất hiện ở đó."},
+    {"panel":"p032.jpg","type":"SCENE","kind":"recap","narration":"Ngưng Hương giải thích nếu đi thẳng đến nơi ấy thì sẽ bị người khác phát hiện. Vì vậy cô mới dẫn Trác Phàm vòng tới vị trí này."},
+    {"panel":"p033.jpg","type":"ENDING","kind":"recap","narration":"Ngưng Hương chỉ ra nơi Kim Cương Lưu Sa thật sự xuất hiện. Trác Phàm nhìn theo và bắt đầu nhận ra một điều bất ngờ."}
+  ]
+}

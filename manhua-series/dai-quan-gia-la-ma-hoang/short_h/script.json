@@ -1,0 +1,81 @@
+{
+  "title": "Gã công tử mập đòi quyết đấu vì Trác Phàm, bị đá bay một cú!?",
+  "chapters": "35-37",
+  "source_dir": "manhua-recap/dqgl_ep31",
+  "written_by": "Claude tổng hợp từ script ep31-40 đã lưu, 2026-10-12",
+  "description": "Trác Phàm đến Tiềm Long Các lại vướng hiểu lầm tình địch với một công tử mập, bị đánh lén rồi phản công bằng một cú đá, để rồi cả hai cùng rơi vào ổ phục kích.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tóm tắt chương 35 đến 37.\n◀ Phần trước: chương 31-34\n▶ Phần sau: chương 38-40",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "TÌNH ĐỊCH ĐÒI QUYẾT ĐẤU!",
+    "prompt": "A sly young butler cultivator in a tan robe kicking a chubby young noble in golden robes flying backwards in a forest clearing, a pretty girl in pale robes watching in shock, comedic dramatic action. Chinese manhua cover art style, full-colour digital illustration, bold clean linework, cel shading with dramatic glow and rim light, high contrast, vertical 9:16 composition (keep the subject inside the centre 2:3 area), leave the top 25% as darker empty background for a title overlay, NO text, NO letters, NO speech bubbles, NO watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep35/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Trác Phàm đến Tiềm Long Các và bắt gặp một công tử mập mạp đang chờ trước cổng. Người này vừa nhìn đã khiến hắn phải tự hỏi sao có thể béo đến vậy."
+    },
+    {
+      "panel": "dqgl_ep35/p020.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Long Quỷ thừa nhận người kia đã cầu hôn mình suốt mười năm, từ khi cô mới mười tuổi. Anh ta đã cầu hôn đến cả ngàn lần."
+    },
+    {
+      "panel": "dqgl_ep35/p024.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Công tử nổi cơn ghen và hỏi người kia là ai. Trác Phàm lúng túng, chỉ mong mình không bị kéo vào chuyện tình cảm này."
+    },
+    {
+      "panel": "dqgl_ep36/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Công tử áo vàng vẫn cay cú vì nghĩ Trác Phàm cướp mất người trong mộng. Hắn nhất quyết phải đánh cho đối phương một trận để hả giận."
+    },
+    {
+      "panel": "dqgl_ep36/p020.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Khi hai người vào thế, công tử áo vàng bất ngờ vung nắm đấm trước. Hắn đã phá vỡ lời hứa không ra tay lén."
+    },
+    {
+      "panel": "dqgl_ep36/p027.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trác Phàm lập tức tung cú đá phản công, hất văng gã công tử áo vàng. Long Quỷ đứng ngoài cũng phải kinh ngạc."
+    },
+    {
+      "panel": "dqgl_ep36/p031.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Đối thủ ngỡ ngàng hỏi chẳng phải Trác Phàm đã nói bắt đầu trận đấu sao. Hắn chỉ thản nhiên đáp rằng trận đấu quả thật đã bắt đầu rồi!"
+    },
+    {
+      "panel": "dqgl_ep37/p017.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một nhóm người áo đen bất ngờ xuất hiện giữa rừng, bao vây cả ba người. Cuộc hòa giải vừa xong đã lập tức bị cắt ngang."
+    },
+    {
+      "panel": "dqgl_ep37/p020.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Công tử áo vàng nhận ra nhóm phục kích nhắm vào mình. Hắn nói chúng không liên quan đến Trác Phàm và Long Quỷ."
+    },
+    {
+      "panel": "dqgl_ep37/p029.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trác Phàm bước lên chắn trước công tử áo vàng. Ánh mắt hắn lạnh đi: muốn lấy mạng người này thì phải bước qua xác hắn trước đã."
+    }
+  ]
+}

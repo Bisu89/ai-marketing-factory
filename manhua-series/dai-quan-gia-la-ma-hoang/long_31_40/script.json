@@ -1,0 +1,781 @@
+{
+  "template": "manhua_recap_long_vi",
+  "title": "Ma Hoàng thành quản gia | Tóm tắt chương 31-40",
+  "chapters": "31-40",
+  "source_dir": "manhua-recap/dqgl_ep31",
+  "written_by": "Claude tổng hợp từ script ep31-40 đã lưu, 2026-10-12",
+  "description": "Trác Phàm được Lôi Vân Thiên kết nghĩa, nghe bí mật Tử Lôi Kim Nhãn, vướng hiểu lầm tình địch, hạ nhóm sát thủ và ký liên minh Lạc gia – Tiềm Long Các. Tóm tắt truyện Đại Quản Gia Là Ma Hoàng, chương 31 đến 40, kèm bình luận.\nMục lục thời gian: xem bình luận ghim.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#TomTatTruyen"
+  ],
+  "thumbnail": {
+    "text": "MA HOÀNG KẾT MINH TIỀM LONG CÁC",
+    "prompt": "A young man with dark messy hair and glowing violet eyes in a tan butler robe, a purple glowing magic treasure floating behind him, a chubby young noble in gold, two pretty girls on either side, ancient pavilion in background. Chinese manhua cover art style, full-colour digital illustration, bold clean linework, cel shading with dramatic glow and rim light, high contrast, vertical 9:16 composition (keep the subject inside the centre 2:3 area), leave the top 25% as darker empty background for a title overlay, NO text, NO letters, NO speech bubbles, NO watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep31/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Các trưởng lão không tin Trác Phàm, một người chỉ ở Tụ Khí Cảnh, lại có thể đánh bại U Vân Thanh. Lôi Vân Thiên xác nhận chính hắn đã làm được.",
+      "section": "Tập 31: Lôi Vân Thiên xem Trác Phàm như huynh đệ ruột"
+    },
+    {
+      "panel": "dqgl_ep31/p003.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Lôi Vân Thiên hỏi sau đó chuyện gì xảy ra. Mọi người muốn biết làm sao một người ở cảnh giới thấp lại có thể đối đầu cao thủ Thiên Huyền Cảnh."
+    },
+    {
+      "panel": "dqgl_ep31/p005.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trác Phàm dùng thực lực Tụ Khí Cảnh bức lùi U Vân Thanh. Ông lão nói các vị đừng xem thường tiểu tử này."
+    },
+    {
+      "panel": "dqgl_ep31/p007.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Các trưởng lão phản bác: trong lịch sử chưa từng có chuyện Tụ Khí Cảnh đánh lui cao thủ Thiên Huyền Cảnh. Lôi Vân Thiên giải thích U Vân Thanh không kịp rút lui và đã bị Trác Phàm giết ngay tại chỗ."
+    },
+    {
+      "panel": "dqgl_ep31/p010.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm thản nhiên nhận rằng hắn ra tay vì có ân oán với trưởng lão U Minh Cốc kia. Hắn còn nói Lôi Vân Thiên chắc sẽ không trách mình gây náo động."
+    },
+    {
+      "panel": "dqgl_ep31/p012.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Lôi Vân Thiên hối hận vì đã không thể tự tay giải quyết kẻ thù cũ, để Trác Phàm phải ra tay thay ông."
+    },
+    {
+      "panel": "dqgl_ep31/p014.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trước sự ngỡ ngàng của mọi người, Lôi Vân Thiên tuyên bố từ hôm nay sẽ đối đãi với Trác Phàm như huynh đệ ruột, và sẵn lòng giúp đỡ nếu hắn cần."
+    },
+    {
+      "panel": "dqgl_ep31/p016.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Trác Phàm chỉ cười, nói rằng hắn ra tay cũng chỉ là tiện tay. Nhưng lời kết nghĩa huynh đệ của Lôi Vân Thiên khiến những người xung quanh không khỏi bất ngờ."
+    },
+    {
+      "panel": "dqgl_ep31/p018.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lôi Vân Thiên đưa thuốc trị thương và dặn Trác Phàm uống vào, ba ngày sau sẽ hồi phục. Ông còn nhờ thêm hộ vệ ở lại bảo vệ Tiểu Viện."
+    },
+    {
+      "panel": "dqgl_ep31/p021.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Lạc phu nhân không tin một người Tụ Khí Cảnh có thể giết cao thủ Thiên Huyền Cảnh. Trác Phàm lại tự nhận mình chỉ gặp may."
+    },
+    {
+      "panel": "dqgl_ep31/p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm nói nếu vận khí hôm đó tệ hơn, U Vân Thanh đã không dễ bị hạ như vậy. Lôi Vân Thiên vẫn khẳng định hắn xứng đáng được kính trọng."
+    },
+    {
+      "panel": "dqgl_ep31/p026.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Lôi Vân Thiên dặn các trưởng lão ở lại chăm sóc Trác Phàm, còn ông và một vị trưởng lão khác sẽ báo tin về tổng bộ."
+    },
+    {
+      "panel": "dqgl_ep31/p028.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Trác Phàm gọi Tam ca, Ngũ ca rồi bảo mọi người ra ngoài. Hắn và Lôi Vân Thiên có chuyện riêng cần bàn — đó sẽ là gì?"
+    },
+    {
+      "panel": "dqgl_ep32/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Sau khi kết nghĩa huynh đệ, Trác Phàm gọi Lôi Vân Thiên ở lại vì có món quà đặc biệt dành cho ông.",
+      "section": "Tập 32: Bí mật Tử Lôi Kim Nhãn và di tích Thiên Đế"
+    },
+    {
+      "panel": "dqgl_ep32/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lôi Vân Thiên đùa rằng Lạc gia chắc chẳng có thứ gì đáng giá. Trác Phàm lại tin món quà này nhất định sẽ khiến ông hài lòng."
+    },
+    {
+      "panel": "dqgl_ep32/p005.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trác Phàm lấy ra con ma thú trong túi của Giản Phàm. Sau khi chủ cũ chết, nó đã thành vật vô chủ; hắn mang về để thuần hóa làm linh thú cho Lôi Vân Thiên."
+    },
+    {
+      "panel": "dqgl_ep32/p007.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Lôi Vân Thiên cảm ơn món quà, nhưng Trác Phàm thắc mắc: nếu đã có thể luyện thành một Tử Lôi Kim Nhãn, sao không thử luyện thêm con mắt thứ hai?"
+    },
+    {
+      "panel": "dqgl_ep32/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lôi Vân Thiên giải thích con mắt ấy đến từ một kỳ ngộ hiếm có thời trẻ, chứ không phải bí pháp của Tiềm Long Các. Cơ duyên như vậy không thể tùy tiện lặp lại."
+    },
+    {
+      "panel": "dqgl_ep32/p011.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Ông kể đại lục có ba vùng hiểm địa: Vách Lạc Lôi, Băng Ngọc Sơn và Thiên Viêm Động. Người thường khó tìm ra chúng, bởi vị trí các nơi này luôn thay đổi."
+    },
+    {
+      "panel": "dqgl_ep32/p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bên trong những vùng hiểm địa là lốc xoáy kỳ dị, kẻ bị cuốn vào gần như không thể thoát ra. Lôi Vân Thiên cho rằng chúng được tạo nên bởi trận pháp của cao nhân."
+    },
+    {
+      "panel": "dqgl_ep32/p015.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thời trẻ, Lôi Vân Thiên bị cuốn vào Vách Lạc Lôi. Sấm sét đánh chết những cao thủ xung quanh, nhưng khi tia sét trúng mắt ông, cảm giác đau đớn dần chuyển thành lạnh buốt."
+    },
+    {
+      "panel": "dqgl_ep32/p017.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Tử Lôi dường như bị con mắt hấp thu. Theo ghi chép Cửu U Bí Lục, Tử Lôi Kim Nhãn có thể hủy diệt vạn vật, nhưng bản thân con mắt lại không bị sức mạnh ấy phá hủy."
+    },
+    {
+      "panel": "dqgl_ep32/p019.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lôi Vân Thiên kể lúc ấy ông liều mạng chống lại Tử Lôi. Một giọng nói vang lên, khiến ông mơ hồ vận công theo khẩu quyết và sống sót sau cơn lốc."
+    },
+    {
+      "panel": "dqgl_ep32/p021.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Sau tai biến, chỉ Lôi Vân Thiên còn sống. Ông cho rằng chính họa được phúc đã giúp mình luyện thành Tử Lôi Kim Nhãn."
+    },
+    {
+      "panel": "dqgl_ep32/p023.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Khẩu quyết khai nhãn đã thất lạc trong lúc hỗn loạn, nên ông không thể tu luyện con mắt còn lại. Trác Phàm lập tức nhận ra Vách Lạc Lôi là di tích Thiên Đế để lại."
+    },
+    {
+      "panel": "dqgl_ep32/p025.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trong di tích ấy có thể tồn tại công pháp tu luyện của Tiên Đế và bí linh Cửu U Ma Đế. Trác Phàm nghĩ đến những di sản quyền năng nhất của thời thượng cổ."
+    },
+    {
+      "panel": "dqgl_ep32/p027.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Nhìn con mắt đỏ rực, Trác Phàm tự hỏi thiên hạ này còn ai có thể là đối thủ của mình. Khí thế tự tin ấy khiến hắn bật cười."
+    },
+    {
+      "panel": "dqgl_ep32/p028.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Trác Phàm nhớ ra mình lại xuất hiện ở Phạm Giai sau lần đoạt xá trùng sinh. Câu chuyện khép lại bằng tiếng cười đầy bí ẩn của hắn. Hắn sẽ tìm đến di tích Thiên Đế chứ?"
+    },
+    {
+      "panel": "dqgl_ep33/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Một tháng sau ở Phong Lâm Thành, Trác Phàm đã bình phục sau trận chiến. Cảnh giới của hắn cũng tăng lên Tụ Khí Ngũ Trọng.",
+      "section": "Tập 33: Một tháng sau, Trác Phàm bị hai mỹ nữ tranh đồ ăn"
+    },
+    {
+      "panel": "dqgl_ep33/p002.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Tụ Vi và Huyết Anh đều đột phá lên Tụ Khí Ngũ Trọng. Trác Phàm mừng cho hai hộ vệ, dù vẫn tiếc vì bản thân không hấp thu được nguyên lực của hai cao thủ Thiên Huyền."
+    },
+    {
+      "panel": "dqgl_ep33/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nếu hấp thu được nguồn lực ấy, hắn có lẽ đã đột phá cả Cốt Cảnh. Đúng lúc đó, một cô bé nhận ra Trác Phàm và hoảng hốt bỏ chạy."
+    },
+    {
+      "panel": "dqgl_ep33/p005.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Trác Phàm ngơ ngác: hắn đâu phải quái vật ăn thịt người. Nhưng rồi hắn nhớ lần trước mình bắt Tiểu Thúy về quá thô bạo, khiến cô bé có thể vẫn còn ám ảnh."
+    },
+    {
+      "panel": "dqgl_ep33/p007.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Trác Phàm tự hỏi có phải mình đã quá ác với hai cô gái. Đúng lúc ấy, có người gọi hắn là Trác huynh đệ."
+    },
+    {
+      "panel": "dqgl_ep33/p009.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Tiểu Thúy vui vẻ cảm ơn Trác Phàm vì đã cứu mình hôm trước. Cô mang theo một giỏ thức ăn và nói đây là chút tâm ý của Sở Khuynh Thành."
+    },
+    {
+      "panel": "dqgl_ep33/p011.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm nghe nói Sở Khuynh Thành tự tay nấu ăn mỗi ngày thì lập tức tò mò. Hắn khen món ăn thơm ngon, còn hỏi quán nào ở Phong Lâm Thành bán được đồ hấp dẫn như vậy."
+    },
+    {
+      "panel": "dqgl_ep33/p014.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Tiểu Thúy giải thích Sở Khuynh Thành tự nấu để Trác Phàm bồi bổ trong thời gian dưỡng thương. Hắn ngạc nhiên vì cô đã chuẩn bị phần ăn cho mình suốt cả tháng."
+    },
+    {
+      "panel": "dqgl_ep33/p017.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sở Khuynh Thành nhắc Trác Phàm vừa mới hồi phục, nên về ăn để nguội sẽ không tốt cho sức khỏe. Hắn cảm ơn nhưng bảo mình không cần nhiều thức ăn."
+    },
+    {
+      "panel": "dqgl_ep33/p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đúng lúc đó, Lạc Vân Thường và Lạc Vân Hải mang bữa sáng đến. Trác Phàm nhìn hai giỏ đồ ăn rồi chợt nhận ra sáng nay mình có nhiều lựa chọn hơn dự tính."
+    },
+    {
+      "panel": "dqgl_ep33/p023.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Lạc Vân Thường tự hào nói món ăn là do mình làm. Trác Phàm mở giỏ ra, nhưng món bên trong cháy đen đến mức chính hắn cũng phải dè chừng."
+    },
+    {
+      "panel": "dqgl_ep33/p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm đành chỉ vào những món trông có vẻ ăn được. Hai cô gái lập tức nhắc hắn đã hứa ăn cả hai phần, khiến hắn khó xử."
+    },
+    {
+      "panel": "dqgl_ep33/p027.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Sở Khuynh Thành và Lạc Vân Thường bỗng tranh nhau xem Trác Phàm nên ăn món của ai trước. Hắn ngồi giữa hai người, chẳng hiểu vì sao bữa sáng lại biến thành cuộc đối đầu."
+    },
+    {
+      "panel": "dqgl_ep33/p032.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Trác Phàm chỉ biết ngồi im giữa hai mỹ nữ đang căng thẳng nhìn nhau. Rốt cuộc ai mới là người khiến cả hai bỗng trở nên như nước với lửa?"
+    },
+    {
+      "panel": "dqgl_ep34/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Trác Phàm quyết định nếm món Sở Khuynh Thành nấu trước. Hai cô gái hồi hộp chờ xem hắn sẽ đánh giá thế nào.",
+      "section": "Tập 34: Hoàng đế dập tranh cãi, bí mật ngàn năm sắp lộ"
+    },
+    {
+      "panel": "dqgl_ep34/p003.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Vừa nếm thử, Trác Phàm đã khen ngon và khen tay nghề của Sở Khuynh Thành. Cô vui vẻ khoe tiểu thư nhà mình mới mười tuổi đã biết nấu nướng."
+    },
+    {
+      "panel": "dqgl_ep34/p006.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lạc Vân Thường cũng thúc giục Trác Phàm thử món mình chuẩn bị. Nhưng khi mở xửng thức ăn, hắn chỉ thấy một món cháy đen bốc khói."
+    },
+    {
+      "panel": "dqgl_ep34/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm lỡ miệng nói độc dược còn ngon hơn món này. Hắn vội chữa lời, nhưng Lạc Vân Thường đã nghe thấy hết."
+    },
+    {
+      "panel": "dqgl_ep34/p013.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Trác Phàm bảo mình phải đến Tiềm Long Các một chuyến và dặn mọi người ở lại, đề phòng người của U Minh Cốc vẫn còn quanh thành."
+    },
+    {
+      "panel": "dqgl_ep34/p016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tiểu Thúy phấn khởi cho rằng Trác Phàm thích tiểu thư nhà mình hơn. Trong lúc đó, câu chuyện chuyển đến hoàng cung Thiên Vũ Đế Quốc."
+    },
+    {
+      "panel": "dqgl_ep34/p019.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "U Minh Cốc chủ U Vân Sơn và Long Đạt Phi của Tiềm Long Các cùng vào chầu hoàng đế. Nhà vua hỏi nguyên do khiến hai thế lực lớn bất hòa."
+    },
+    {
+      "panel": "dqgl_ep34/p021.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "U Vân Sơn tố cáo Tiềm Long Các giết hai trưởng lão U Minh Cốc và phá hoại hiệp nghị Thất Thế Gia. Ông yêu cầu hoàng đế đứng ra trừng phạt."
+    },
+    {
+      "panel": "dqgl_ep34/p023.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Long Đạt Phi phản bác, cho rằng U Minh Cốc mới là bên có lỗi. Ông nhắc lại ân oán hai mươi năm trước, khi sáu trưởng lão Tiềm Long Các bị lừa đến Lạc Diệp Thành và một mắt của ông bị hủy hoại."
+    },
+    {
+      "panel": "dqgl_ep34/p026.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "U Vân Sơn biện hộ rằng trưởng lão của mình chỉ đến Phong Lâm Thành để điều tra vụ đệ tử bị giết. Long Đạt Phi đáp rằng việc U Minh Cốc tự tiện xông vào địa bàn Tiềm Long Các cũng không thể xem nhẹ."
+    },
+    {
+      "panel": "dqgl_ep34/p028.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Hoàng đế đập bàn, tuyên bố cả hai bên đều không thỏa đáng. Ông ra lệnh chấm dứt tranh cãi và xử lý dứt điểm chuyện này."
+    },
+    {
+      "panel": "dqgl_ep34/p030.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Nhà vua quyết định Tiềm Long Các và U Minh Cốc phải rút khỏi Phong Lâm Thành, đồng thời cấm để tin đồn về việc Thất Thế Gia đấu đá lan rộng."
+    },
+    {
+      "panel": "dqgl_ep34/p032.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sau khi hai bên lui xuống, hoàng đế nhận ra các thế lực dường như đã biết về mật lệnh ngàn năm trước. Hoàng thành là nơi thị phi, nơi tai mắt của các đại thế lực ở khắp nơi."
+    },
+    {
+      "panel": "dqgl_ep34/p034.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Hoàng đế quyết định bắt đầu kế hoạch của mình. Khi “Ngọc Thi” phát sáng, chuyện gì sẽ xảy ra với Thiên Vũ Đế Quốc?"
+    },
+    {
+      "panel": "dqgl_ep35/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Trác Phàm đến Tiềm Long Các và bắt gặp một công tử mập mạp đang chờ trước cổng. Người này vừa nhìn đã khiến hắn phải tự hỏi sao có thể béo đến vậy.",
+      "section": "Tập 35: Long Quỷ từ chối lời cầu hôn, Trác Phàm vướng hiểu lầm"
+    },
+    {
+      "panel": "dqgl_ep35/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Dù vẻ ngoài tròn trịa, công tử lại có đội hộ vệ toàn cao thủ. Trác Phàm đoán hắn hẳn có thân phận đáng kể trong Tiềm Long Các."
+    },
+    {
+      "panel": "dqgl_ep35/p005.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Trác Phàm nghĩ người này nếu là thành viên Tiềm Long Các thì chẳng cần đứng chờ ngoài cổng. Công tử lập tức lớn tiếng gọi hắn lại."
+    },
+    {
+      "panel": "dqgl_ep35/p007.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Công tử hỏi Trác Phàm có phải người của Tiềm Long Các không. Trác Phàm đáp mình chỉ quen biết vài người ở đây, không phải thành viên."
+    },
+    {
+      "panel": "dqgl_ep35/p009.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Người kia nhờ Trác Phàm chuyển lời cho Long Quỷ tiểu thư. Anh ta muốn gặp cô và sẵn sàng ở lì cả ngày nếu cô không chịu ra."
+    },
+    {
+      "panel": "dqgl_ep35/p012.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm đoán gã mập này chính là người theo đuổi Long Quỷ. Dù ngại phiền phức, hắn vẫn nhận lời nhắn giúp."
+    },
+    {
+      "panel": "dqgl_ep35/p015.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Long Quỷ xuất hiện. Trác Phàm hỏi thăm cô và tìm Long Cửu, nhưng cô nói cả Long Cửu lẫn Long Kiệt đều không có nhà."
+    },
+    {
+      "panel": "dqgl_ep35/p018.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm định quay về hôm sau rồi, nhưng chuyện vị công tử mập cứ bám riết cũng khiến hắn phải hỏi cho ra lẽ."
+    },
+    {
+      "panel": "dqgl_ep35/p020.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Long Quỷ thừa nhận người kia đã cầu hôn mình suốt mười năm, từ khi cô mới mười tuổi. Anh ta đã cầu hôn đến cả ngàn lần."
+    },
+    {
+      "panel": "dqgl_ep35/p022.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nghe Long Quỷ nói mình có thể cảm động, gã công tử mừng rỡ. Nhưng cô lập tức nói trong lòng đã có người khác."
+    },
+    {
+      "panel": "dqgl_ep35/p024.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Công tử nổi cơn ghen và hỏi người kia là ai. Trác Phàm lúng túng, chỉ mong mình không bị kéo vào chuyện tình cảm này."
+    },
+    {
+      "panel": "dqgl_ep35/p026.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Trác Phàm cố thanh minh rằng có lẽ người kia hiểu lầm. Nhưng gã công tử nhìn hắn đầy nghi hoặc, còn Long Quỷ cũng không làm rõ danh tính người mình yêu."
+    },
+    {
+      "panel": "dqgl_ep35/p028.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Công tử chất vấn vì sao Trác Phàm có thể ra vào Tiềm Long Các tự do như vậy. Trác Phàm gọi hắn là huynh đệ, càng khiến tình hình rối thêm."
+    },
+    {
+      "panel": "dqgl_ep35/p030.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Trác Phàm chỉ biết than trời khi gã công tử vẫn chưa chịu buông tha. Liệu hắn có thoát khỏi màn ghen tuông và hiểu lầm này không?"
+    },
+    {
+      "panel": "dqgl_ep36/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Công tử áo vàng vẫn cay cú vì nghĩ Trác Phàm cướp mất người trong mộng. Hắn nhất quyết phải đánh cho đối phương một trận để hả giận.",
+      "section": "Tập 36: Trác Phàm bị đánh lén? Một cú đá lật ngược trận đấu"
+    },
+    {
+      "panel": "dqgl_ep36/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm theo Long Quỷ và gã công tử vào rừng. Hắn hỏi đối phương có định đưa hộ vệ theo cùng không."
+    },
+    {
+      "panel": "dqgl_ep36/p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Gã công tử tự tin rằng một mình cũng đủ thắng, lại cho rằng thắng trận sẽ khiến Long Quỷ nể phục mình hơn."
+    },
+    {
+      "panel": "dqgl_ep36/p007.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Trác Phàm nhắc đối thủ đừng giở trò mai phục. Gã công tử giật mình, cố tỏ ra mình đường đường chính chính."
+    },
+    {
+      "panel": "dqgl_ep36/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm chỉ ra rằng hộ vệ của đối phương đều mạnh hơn mình. Nếu họ cùng xông vào thì trận đấu này chẳng còn công bằng."
+    },
+    {
+      "panel": "dqgl_ep36/p011.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Để chứng minh mình quân tử, công tử áo vàng ra lệnh cho đám thuộc hạ đứng ngoài, không được can thiệp vào trận đấu."
+    },
+    {
+      "panel": "dqgl_ep36/p014.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Long Quỷ lo Trác Phàm sẽ bị thương. Hắn vẫn bình thản nhận lời, như thể đã có tính toán riêng."
+    },
+    {
+      "panel": "dqgl_ep36/p017.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Công tử tiếp tục khoe khoang rằng dù có bị đánh thì người thắng sau cùng vẫn là mình. Trác Phàm chỉ cười, thuận theo sự tự tin ấy."
+    },
+    {
+      "panel": "dqgl_ep36/p020.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Khi hai người vào thế, công tử áo vàng bất ngờ vung nắm đấm trước. Hắn đã phá vỡ lời hứa không ra tay lén."
+    },
+    {
+      "panel": "dqgl_ep36/p023.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trác Phàm trúng đòn trong thoáng chốc, khiến đối thủ tưởng mình đã chiếm ưu thế. Nhưng Ma Hoàng không để cú đánh ấy qua đi dễ dàng."
+    },
+    {
+      "panel": "dqgl_ep36/p027.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trác Phàm lập tức tung cú đá phản công, hất văng gã công tử áo vàng. Long Quỷ đứng ngoài cũng phải kinh ngạc."
+    },
+    {
+      "panel": "dqgl_ep36/p031.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Đối thủ ngỡ ngàng hỏi chẳng phải Trác Phàm đã nói bắt đầu trận đấu sao. Hắn chỉ thản nhiên đáp rằng trận đấu quả thật đã bắt đầu rồi!"
+    },
+    {
+      "panel": "dqgl_ep37/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Công tử áo vàng gượng đứng dậy sau cú đá của Trác Phàm, tức giận mắng hắn đã làm mình bẽ mặt trước Long Quỷ.",
+      "section": "Tập 37: Trác Phàm ra tay cứu tình địch khỏi cuộc phục kích"
+    },
+    {
+      "panel": "dqgl_ep37/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm nhắc đối phương vừa rồi đã gật đầu cho trận đấu bắt đầu. Công tử nghẹn lời vì chính mình tự chuốc lấy cú đá ấy."
+    },
+    {
+      "panel": "dqgl_ep37/p005.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Công tử nhận ra Trác Phàm chưa dùng hết sức. Hắn thừa nhận nếu cả hai nghiêm túc giao đấu thì phần thua vẫn thuộc về mình."
+    },
+    {
+      "panel": "dqgl_ep37/p008.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Dù không ưa Trác Phàm vì chuyện Long Quỷ, công tử vẫn khâm phục thực lực của hắn. Một tu sĩ tu khí cảnh lại có thể đánh bại cao thủ Thiên Huyền cảnh."
+    },
+    {
+      "panel": "dqgl_ep37/p011.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm chìa tay làm hòa. Công tử bắt tay hắn, còn khen Long Quỷ quả nhiên có mắt nhìn người."
+    },
+    {
+      "panel": "dqgl_ep37/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Công tử áo vàng hào sảng tuyên bố Trác Phàm sau này nhất định sẽ thành nhân vật lớn. Trác Phàm chỉ đáp rằng lời cảm ơn lúc này còn hơi sớm."
+    },
+    {
+      "panel": "dqgl_ep37/p017.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một nhóm người áo đen bất ngờ xuất hiện giữa rừng, bao vây cả ba người. Cuộc hòa giải vừa xong đã lập tức bị cắt ngang."
+    },
+    {
+      "panel": "dqgl_ep37/p020.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Công tử áo vàng nhận ra nhóm phục kích nhắm vào mình. Hắn nói chúng không liên quan đến Trác Phàm và Long Quỷ."
+    },
+    {
+      "panel": "dqgl_ep37/p023.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tên cầm đầu áo đen lạnh lùng tuyên bố bọn chúng không bao giờ để lại kẻ sống sót. Long Quỷ hỏi phải làm sao trước tình thế nguy cấp."
+    },
+    {
+      "panel": "dqgl_ep37/p029.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trác Phàm bước lên chắn trước công tử áo vàng. Ánh mắt hắn lạnh đi: muốn lấy mạng người này thì phải bước qua xác hắn trước đã."
+    },
+    {
+      "panel": "dqgl_ep38/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Nhóm sát thủ áo đen vây kín khu rừng. Chúng tranh nhau xem nên giết Trác Phàm hay công tử áo vàng trước.",
+      "section": "Tập 38: Trác Phàm tung Ma Bảo Tam Phẩm, áp đảo nhóm phục kích"
+    },
+    {
+      "panel": "dqgl_ep38/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thủ lĩnh cho rằng Trác Phàm chỉ là kẻ tu khí cảnh, có thể xử lý dễ dàng. Hắn ra lệnh hạ gục Trác Phàm trước để hoàn thành nhiệm vụ."
+    },
+    {
+      "panel": "dqgl_ep38/p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Công tử áo vàng nói đám người kia nhắm vào mình, rồi bảo Trác Phàm đưa Long Quỷ về Tiềm Long Các để tránh nguy hiểm."
+    },
+    {
+      "panel": "dqgl_ep38/p007.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Trác Phàm chỉ ra rằng với tốc độ của công tử, chạy chưa được mười mét đã có thể bị giết. Hắn hỏi nên làm gì rồi nở nụ cười đầy sát khí."
+    },
+    {
+      "panel": "dqgl_ep38/p009.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trác Phàm triệu hồi Ma Bảo Tam Phẩm. Ánh sáng tím bùng lên khiến thủ lĩnh áo đen giật mình nhận ra thứ vũ khí đáng sợ."
+    },
+    {
+      "panel": "dqgl_ep38/p011.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ma Bảo quét ngang chiến trường, đánh văng thủ lĩnh và hất ngã những kẻ đứng gần. Đám phục kích không ngờ Trác Phàm có thể ra tay mạnh đến vậy."
+    },
+    {
+      "panel": "dqgl_ep38/p014.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Công tử áo vàng sững sờ trước uy áp tỏa ra từ Trác Phàm. Cảm giác áp chế ấy gợi hắn nhớ đến Phụ Hoàng, thậm chí còn dữ dội hơn."
+    },
+    {
+      "panel": "dqgl_ep38/p017.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thấy thủ lĩnh bị đánh gục, những sát thủ còn lại đồng loạt xông lên. Trác Phàm chẳng hề nao núng, tiếp tục vung Ma Bảo phản công."
+    },
+    {
+      "panel": "dqgl_ep38/p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Từng đường quét của Ma Bảo đánh bật kẻ địch ra xa. Trác Phàm xoay người giữa vòng vây, khiến đám sát thủ không thể áp sát."
+    },
+    {
+      "panel": "dqgl_ep38/p023.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Nhìn Trác Phàm chiến đấu, công tử áo vàng càng kinh ngạc trước sức mạnh vượt xa cảnh giới tu luyện của hắn."
+    },
+    {
+      "panel": "dqgl_ep38/p025.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Trác Phàm đứng giữa những kẻ bị đánh gục, đôi mắt đỏ rực. Hắn cảnh cáo đám người dám đến địa bàn của mình gây chuyện rằng tất cả sẽ bị đuổi cùng giết tận."
+    },
+    {
+      "panel": "dqgl_ep39/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Trác Phàm tiếp tục vung Ma Bảo giữa vòng vây. Những đường sáng tím xé toạc hàng ngũ sát thủ áo đen.",
+      "section": "Tập 39: Trác Phàm được Phương Thu Bạch ngỏ ý nhận làm đồ đệ"
+    },
+    {
+      "panel": "dqgl_ep39/p003.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Tên cầm đầu gằn giọng hỏi ai cho phép Trác Phàm đến gây chuyện. Hắn chỉ bình thản hỏi ngược lại ai đã kéo đám người này tới đây."
+    },
+    {
+      "panel": "dqgl_ep39/p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một tên sát thủ định ra tay, nhưng Trác Phàm nhanh chóng đánh gục hắn. Long Quỷ không khỏi lo lắng trước mức độ quyết liệt của trận chiến."
+    },
+    {
+      "panel": "dqgl_ep39/p008.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trác Phàm nhận ra kẻ địch chỉ là những cao thủ Thần Chiếu cảnh. Trong mắt hắn, thực lực ấy vẫn chưa đủ để tạo thành mối đe dọa."
+    },
+    {
+      "panel": "dqgl_ep39/p011.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đúng lúc giao chiến căng thẳng, một người tóc trắng cầm tiêu xuất hiện. Công tử áo vàng nhận ra đó là lão sư Phương Thu Bạch."
+    },
+    {
+      "panel": "dqgl_ep39/p014.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Phương Thu Bạch đi cùng một vị lão giả có địa vị lớn trong hoàng thất. Họ đã chứng kiến Trác Phàm một mình đối mặt với cả nhóm cao thủ."
+    },
+    {
+      "panel": "dqgl_ep39/p017.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Vị lão giả khen Trác Phàm có nhãn quan sắc bén và giữ được bình tĩnh trước nhiều đối thủ. Phương Thu Bạch cũng thừa nhận tài năng của hắn."
+    },
+    {
+      "panel": "dqgl_ep39/p020.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Phương Thu Bạch chủ động ngỏ ý nhận Trác Phàm làm đồ đệ. Long Quỷ và công tử áo vàng đều bất ngờ trước lời đề nghị ấy."
+    },
+    {
+      "panel": "dqgl_ep39/p023.jpg",
+      "type": "REACTION",
+      "kind": "COMEDY",
+      "narration": "Trác Phàm từ chối khéo: với thân phận Ma Hoàng, người muốn làm sư phụ hắn phải là cao thủ ở đẳng cấp cao hơn. Phương Thu Bạch chỉ biết bật cười trước sự tự tin ấy."
+    },
+    {
+      "panel": "dqgl_ep39/p026.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Phương Thu Bạch khen Trác Phàm thông minh, biết tiến biết lùi, rồi cùng vị lão giả rời đi. Trác Phàm cũng nói chuyện hôm nay sẽ được xem như chưa từng xảy ra."
+    },
+    {
+      "panel": "dqgl_ep39/p029.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Trước khi đi, vị lão giả gọi Trác Phàm lại và đưa cho hắn một món đồ. Trác Phàm ngạc nhiên hỏi đó là gì, để lại một bí ẩn cho phần tiếp theo."
+    },
+    {
+      "panel": "dqgl_ep40/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Sau trận phục kích, vị lão giả đưa Trác Phàm văn thư kết minh giữa Lạc gia và Tiềm Long Các. Đây chính là món quà có thể giúp hắn củng cố thế lực.",
+      "section": "Tập 40: Đại tiểu thư say ngủ trong bếp chỉ để nấu cho Trác Phàm"
+    },
+    {
+      "panel": "dqgl_ep40/p003.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Văn thư quy định Tiềm Long Các sẽ làm chỗ dựa cho Lạc gia, đồng thời bảo vệ gia tộc vô điều kiện trong thời gian tới."
+    },
+    {
+      "panel": "dqgl_ep40/p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Vị lão giả hỏi Trác Phàm có phải đã biết trước chuyện này. Hắn đáp rằng mọi việc mình làm đều nhằm đạt được tờ khế ước ấy."
+    },
+    {
+      "panel": "dqgl_ep40/p008.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm ký tên vào hiệp định với tư cách quản gia Lạc gia. Vị lão giả xác nhận liên minh này do chính Trác Phàm đứng ra kết ước."
+    },
+    {
+      "panel": "dqgl_ep40/p011.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trời đã tối, Trác Phàm trở về Lạc gia. Một người hầu bắt gặp anh và ngạc nhiên khi thấy anh về muộn."
+    },
+    {
+      "panel": "dqgl_ep40/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm hỏi đại tiểu thư đang ở đâu. Người hầu chỉ về phía nhà bếp, khiến anh khó hiểu vì sao cô lại ở đó giờ này."
+    },
+    {
+      "panel": "dqgl_ep40/p017.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trong bếp, đại tiểu thư ngủ gục bên bàn sau khi uống say. Cô đã cố nấu ăn để Trác Phàm được thưởng thức một bữa ngon."
+    },
+    {
+      "panel": "dqgl_ep40/p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhà bếp bừa bộn, còn món ăn thì chẳng có vẻ gì hấp dẫn. Trác Phàm vẫn nếm thử, còn người hầu vội chữa rằng đại tiểu thư chưa từng có tay nghề nấu nướng."
+    },
+    {
+      "panel": "dqgl_ep40/p023.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Trác Phàm nói mình đang đói và không chê món ăn. Đại tiểu thư tỉnh dậy, đỏ mặt khi biết anh đã ở cạnh mình."
+    },
+    {
+      "panel": "dqgl_ep40/p026.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô bối rối hỏi Trác Phàm có ở bên mình cả đêm không. Anh không kịp giải thích thì cô đã bất ngờ tiến sát lại."
+    },
+    {
+      "panel": "dqgl_ep40/p029.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Đại tiểu thư chủ động hôn Trác Phàm. Nụ hôn bất ngờ khép lại một buổi tối vốn bắt đầu bằng hiệp ước liên minh."
+    }
+  ]
+}

@@ -218,3 +218,4 @@ See the "Documentation" section in `CLAUDE.md` at the repo root — every
 completed feature gets a new file under `features/`, numbered next in
 sequence, and a line added to the list above.
 177. [DQG ch 21-30 Long + 3 Short](features/177-dqg-ch21-30-long-and-shorts.md) — rebuilt from saved ep21-30 scripts; Long 12:04 + Short D/E/F, QA 100
+178. [DQG ch 31-50 Long + 6 Short](features/178-dqg-ch31-50-long-and-shorts.md) — 2 Long (13:16, 15:53) + Short G-L from saved ep31-50 scripts, QA 100

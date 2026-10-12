@@ -1,0 +1,75 @@
+{
+  "title": "Trác Phàm từ chối hoàng thất, bí mật hiệp ước nghìn năm lộ diện!?",
+  "chapters": "41-44",
+  "source_dir": "manhua-recap/dqgl_ep41",
+  "written_by": "Claude tổng hợp từ script ep41-50 đã lưu, 2026-10-12",
+  "description": "Trác Phàm khất lời triệu kiến của hoàng thất, rồi tới hội đàm ba gia tộc, nghe bí mật hiệp ước nghìn năm và bí thuật dung hợp võ công Huyền giai.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tóm tắt chương 41 đến 44.\n◀ Phần trước: chương 35-40\n▶ Phần sau: chương 45-47",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "HIỆP ƯỚC NGHÌN NĂM!",
+    "prompt": "A sly dark-haired young butler cultivator in a tan robe at a grand council hall, a young prince in imperial robes and three family heads seated around a table, an ancient scroll glowing on the table. Chinese manhua cover art style, full-colour digital illustration, bold clean linework, cel shading with dramatic glow and rim light, high contrast, vertical 9:16 composition (keep the subject inside the centre 2:3 area), leave the top 25% as darker empty background for a title overlay, NO text, NO letters, NO speech bubbles, NO watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep41/p007.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Lão Bàng nhắc có người muốn mời đại tiểu thư đến phủ và tuyệt đối không thể đắc tội. Người đó còn mang theo kim bài ngự thị."
+    },
+    {
+      "panel": "dqgl_ep41/p011.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Lão Bàng kinh ngạc vì Trác Phàm dám khất lời triệu kiến. Đại tiểu thư tỉnh lại đúng lúc, vội thúc giục hắn chuẩn bị đi gặp khách."
+    },
+    {
+      "panel": "dqgl_ep42/p011.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Hoàng tử nói mình mời ba gia chủ đến để nhắc lại mối nhân duyên nghìn năm giữa các gia tộc. Lời mở đầu lập tức khiến mọi người chăm chú lắng nghe."
+    },
+    {
+      "panel": "dqgl_ep42/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Theo hiệp ước từ thuở khai quốc, Lạc gia, Thái gia và Lôi gia đều là công thần lập quốc. Họ được giao quyền cai quản và phải hỗ trợ lẫn nhau."
+    },
+    {
+      "panel": "dqgl_ep43/p007.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thất Thế Gia cũng có thế lực đáng gờm, thậm chí khiến hoàng thất phải dè chừng. Cán cân giữa họ được dựng lên để không phe nào có thể tùy ý áp đảo phe còn lại."
+    },
+    {
+      "panel": "dqgl_ep43/p022.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hoàng thất còn nắm một bí thuật có thể dung hợp võ công của ba nhà thành một môn Huyền giai. Võ công tổ truyền của Lạc gia, Thái gia và Lôi gia vốn có chung nguồn gốc."
+    },
+    {
+      "panel": "dqgl_ep44/p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm bảo hoàng tử không cần lo. Hắn đã đoạt lại võ công tổ truyền của Thái gia và Lôi gia từ U Minh Cốc."
+    },
+    {
+      "panel": "dqgl_ep44/p007.jpg",
+      "type": "REACTION",
+      "kind": "REVEAL",
+      "narration": "Các gia chủ kinh ngạc khi biết Trác Phàm lấy lại được những bí kíp thất lạc. Lôi gia thở phào, vì nếu không có hắn, họ có thể đã gặp nguy hiểm."
+    },
+    {
+      "panel": "dqgl_ep44/p028.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Cậu bé nhà Lạc đập bàn, tuyên bố ba nhà chỉ có một gia tộc đủ tư cách làm gia chủ liên minh — đó chính là Lạc gia. Tuyên bố táo bạo khiến tất cả sững sờ."
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "title": "Ma Hoàng từ chối làm đồ đệ, đại tiểu thư say ngủ trong bếp vì hắn!?",
+  "chapters": "38-40",
+  "source_dir": "manhua-recap/dqgl_ep31",
+  "written_by": "Claude tổng hợp từ script ep31-40 đã lưu, 2026-10-12",
+  "description": "Trác Phàm tung Ma Bảo Tam Phẩm đánh tan nhóm sát thủ, khéo từ chối lời nhận đồ đệ, ký liên minh Lạc gia – Tiềm Long Các, rồi trở về gặp đại tiểu thư say ngủ trong bếp.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tóm tắt chương 38 đến 40.\n◀ Phần trước: chương 35-37",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "TỪ CHỐI LÀM ĐỒ ĐỆ!",
+    "prompt": "A young butler cultivator with glowing red eyes wielding a purple glowing magic treasure over defeated black-robed assassins in a forest, a white-haired flute player and an old man watching from afar. Chinese manhua cover art style, full-colour digital illustration, bold clean linework, cel shading with dramatic glow and rim light, high contrast, vertical 9:16 composition (keep the subject inside the centre 2:3 area), leave the top 25% as darker empty background for a title overlay, NO text, NO letters, NO speech bubbles, NO watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep38/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thủ lĩnh cho rằng Trác Phàm chỉ là kẻ tu khí cảnh, có thể xử lý dễ dàng. Hắn ra lệnh hạ gục Trác Phàm trước để hoàn thành nhiệm vụ."
+    },
+    {
+      "panel": "dqgl_ep38/p007.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Trác Phàm chỉ ra rằng với tốc độ của công tử, chạy chưa được mười mét đã có thể bị giết. Hắn hỏi nên làm gì rồi nở nụ cười đầy sát khí."
+    },
+    {
+      "panel": "dqgl_ep38/p009.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trác Phàm triệu hồi Ma Bảo Tam Phẩm. Ánh sáng tím bùng lên khiến thủ lĩnh áo đen giật mình nhận ra thứ vũ khí đáng sợ."
+    },
+    {
+      "panel": "dqgl_ep38/p011.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ma Bảo quét ngang chiến trường, đánh văng thủ lĩnh và hất ngã những kẻ đứng gần. Đám phục kích không ngờ Trác Phàm có thể ra tay mạnh đến vậy."
+    },
+    {
+      "panel": "dqgl_ep39/p011.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đúng lúc giao chiến căng thẳng, một người tóc trắng cầm tiêu xuất hiện. Công tử áo vàng nhận ra đó là lão sư Phương Thu Bạch."
+    },
+    {
+      "panel": "dqgl_ep39/p020.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Phương Thu Bạch chủ động ngỏ ý nhận Trác Phàm làm đồ đệ. Long Quỷ và công tử áo vàng đều bất ngờ trước lời đề nghị ấy."
+    },
+    {
+      "panel": "dqgl_ep39/p023.jpg",
+      "type": "REACTION",
+      "kind": "COMEDY",
+      "narration": "Trác Phàm từ chối khéo: với thân phận Ma Hoàng, người muốn làm sư phụ hắn phải là cao thủ ở đẳng cấp cao hơn. Phương Thu Bạch chỉ biết bật cười trước sự tự tin ấy."
+    },
+    {
+      "panel": "dqgl_ep40/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Sau trận phục kích, vị lão giả đưa Trác Phàm văn thư kết minh giữa Lạc gia và Tiềm Long Các. Đây chính là món quà có thể giúp hắn củng cố thế lực."
+    },
+    {
+      "panel": "dqgl_ep40/p017.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trong bếp, đại tiểu thư ngủ gục bên bàn sau khi uống say. Cô đã cố nấu ăn để Trác Phàm được thưởng thức một bữa ngon."
+    },
+    {
+      "panel": "dqgl_ep40/p029.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Đại tiểu thư chủ động hôn Trác Phàm. Nụ hôn bất ngờ khép lại một buổi tối vốn bắt đầu bằng hiệp ước liên minh."
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+﻿{
+  "title": "Tiết Vạn Long giao Ngưng Hương cho Trác Phàm!",
+  "chapters": "55",
+  "source_dir": "manhua-recap/dqgl_ep55",
+  "written_by": "Claude (đọc tay từ panels), 2026-10-12",
+  "description": "Tiết Vạn Long cuối cùng nhận thua, khiến Tiết Lâm sửng sốt vì cho rằng cha đã nương tay. Trác Phàm cũng nhận ra gia chủ Tiết gia chưa hề dùng toàn lực và những chiêu vừa rồi chỉ là thăm dò. Sau khi hiểu Trác Phàm đã cố tình không tung sát chiêu, Tiết Vạn Long tâm phục khẩu phục, còn xem hắn là người trẻ đáng tin nhất mình từng gặp. Lão quyết định giao con gái Ngưng Hương cho Trác Phàm, dặn hắn đừng phụ lòng cô. Trước khi rời đi, lão ôm con gái và bảo cô hãy sống cuộc đời mình mong muốn. Trác Phàm ngạc nhiên khi biết cô là tiểu thư Tiết gia, rồi càu nhàu rằng mình đã đánh nhau với cha và huynh trưởng cô cả buổi, suýt nữa còn giết cả nhà cô. Ngưng Hương nói cô vốn cũng muốn rời thành để đến Vạn Thú Sơn Mạch. Trác Phàm miễn cưỡng chấp nhận đưa cô theo, hứa sau khi xong việc ở núi sẽ đưa cô ra ngoài và xem như giao dịch của họ kết thúc.",
+  "hashtags": ["#DaiQuanGiaLaMaHoang", "#ReviewManhua", "#Manhua", "#TuTien", "#XuyenKhong", "#ReviewTruyen"],
+  "thumbnail": {"text": "Gia chủ Tiết gia giao con gái cho Trác Phàm!", "prompt": "Manhua recap thumbnail, Tiết Vạn Long tóc bạc giáp vàng trang nghiêm trao con gái tóc đỏ Ngưng Hương cho Trác Phàm áo choàng nâu đen cầm Tà Nguyệt Luân, cô gái xúc động rơi nước mắt, rừng núi xanh lạnh phía sau, phong cách tu tiên cảm xúc, chừa khoảng trống chữ lớn: Giao phó Ngưng Hương!"},
+  "beats": [
+    {"panel":"p001.jpg","type":"HOOK","kind":"recap","narration":"Tiết Vạn Long cúi đầu nhận thua. Trác Phàm ngỡ ngàng vì cuộc cược đã kết thúc, còn Tiết Lâm không thể tin cha mình lại chịu nhường."},
+    {"panel":"p003.jpg","type":"SCENE","kind":"recap","narration":"Tiết Lâm cho rằng cha chắc chắn đã nương tay với Trác Phàm. Cậu ta vẫn không phục khi thấy cha mình chịu thua."},
+    {"panel":"p004.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm nhận xét Tiết Vạn Long chưa hề dùng hết sức. Những chiêu vừa rồi chỉ là thăm dò, hoàn toàn không có sát ý."},
+    {"panel":"p005.jpg","type":"SCENE","kind":"recap","narration":"Tiết Lâm khoe rằng nếu cha không nhường, Trác Phàm đã chết từ lâu. Trác Phàm nghe vậy càng hiểu rõ đối thủ đã kiềm chế trong suốt trận đấu."},
+    {"panel":"p006.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm xin lỗi vì đã khiến Tiết Vạn Long phải nhường tay, nhưng thừa nhận nếu lão dùng toàn lực thì tình thế có thể khác."},
+    {"panel":"p008.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm hiểu Tà Nguyệt Luân giúp tốc độ của hắn không thua kém Tiết Vạn Long, còn Mê Tông Huyễn Ảnh Bộ tạo cơ hội tung sát chiêu."},
+    {"panel":"p010.jpg","type":"SCENE","kind":"recap","narration":"Hắn nhận ra chính ảo ảnh đã khiến Tiết Vạn Long mất cảnh giác, để hắn áp sát từ phía sau. Nếu Trác Phàm thật sự muốn giết, lão đã không còn đứng đây."},
+    {"panel":"p011.jpg","type":"SCENE","kind":"recap","narration":"Tiết Vạn Long cũng hiểu rõ điều đó nên tâm phục khẩu phục. Lão gọi Trác Phàm là người thanh niên đáng tin nhất mình từng gặp."},
+    {"panel":"p012.jpg","type":"SCENE","kind":"recap","narration":"Tiết Vạn Long quyết định giao Ngưng Hương cho Trác Phàm, dặn hắn tuyệt đối không được phụ lòng con gái mình. Trác Phàm bối rối, không hiểu lão đang tính chuyện gì."},
+    {"panel":"p014.jpg","type":"SCENE","kind":"recap","narration":"Lão ôm con gái, bảo Ngưng Hương hãy đi và sống cuộc đời mà cô mong muốn. Cô nghẹn ngào gọi cha trong nước mắt."},
+    {"panel":"p015.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm ngạc nhiên khi biết cô bé tóc đỏ là tiểu thư Tiết gia, Tiết Ngưng Hương. Hắn không ngờ người mình vừa bảo vệ lại là con gái của đối thủ."},
+    {"panel":"p017.jpg","type":"SCENE","kind":"recap","narration":"Tiết Vạn Long nói mình đã giao con gái cho Trác Phàm. Lão cảnh cáo nếu sau này biết hắn đối xử tệ với Ngưng Hương, lão sẽ liều mạng tính sổ."},
+    {"panel":"p018.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm vội phủ nhận, còn Ngưng Hương thì khóc nức nở. Cuộc chia tay giữa hai cha con khiến hắn không biết nên phản ứng ra sao."},
+    {"panel":"p019.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm nghĩ lại: mình đã đánh nhau với cha và huynh trưởng của cô suốt nửa ngày, suýt chút nữa giết cả nhà cô. Thảo nào Ngưng Hương nhìn hắn đầy oán trách."},
+    {"panel":"p020.jpg","type":"SCENE","kind":"recap","narration":"Hắn tự hỏi từ lúc nào mình lại bắt đầu dao động tình cảm như vậy. Ngưng Hương đứng bên cạnh vẫn còn rơm rớm nước mắt."},
+    {"panel":"p023.jpg","type":"SCENE","kind":"recap","narration":"Tiết Lâm lo chuyện này sẽ khiến U Minh Cốc trách phạt, nhưng Trác Phàm bảo cứ để hắn tự lo. Ngưng Hương cũng nói cô vốn muốn rời thành để đến Vạn Thú Sơn Mạch."},
+    {"panel":"p026.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm càu nhàu rằng mình đã giao đấu với cha con Tiết gia đến mấy chục hiệp, suýt giết cả nhà họ mà cuối cùng lại bị cô lừa."},
+    {"panel":"p028.jpg","type":"SCENE","kind":"recap","narration":"Ngưng Hương xin Trác Phàm đừng tức giận. Cô muốn rời khỏi thành, còn hắn cũng đang cần đến Vạn Thú Sơn Mạch nên hai người có thể cùng đường."},
+    {"panel":"p031.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm tự hỏi có phải thời gian gần đây tiếp xúc với Lạc gia đã khiến mình quan tâm đến những người xung quanh nhiều hơn, không còn giống một ma đạo tu giả."},
+    {"panel":"p033.jpg","type":"ENDING","kind":"recap","narration":"Trác Phàm hứa sau khi xong việc ở Vạn Thú Sơn Mạch sẽ đưa Ngưng Hương ra ngoài, xem như giao dịch giữa hai người chấm dứt. Ngưng Hương bất ngờ trước lời hứa ấy."}
+  ]
+}

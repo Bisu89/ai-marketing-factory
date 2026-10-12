@@ -1,0 +1,87 @@
+{
+  "title": "Quản gia dám giành ngôi liên minh, hoàng tử phải kết bái huynh đệ!?",
+  "chapters": "45-47",
+  "source_dir": "manhua-recap/dqgl_ep41",
+  "written_by": "Claude tổng hợp từ script ep41-50 đã lưu, 2026-10-12",
+  "description": "Trác Phàm lật ngược buổi hội đàm khiến Lạc gia đứng đầu liên minh, được Tam Hoàng tử kết bái, trong khi U Minh Cốc chủ nổi giận và hắn trở lại Hắc Phong Sơn.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tóm tắt chương 45 đến 47.\n◀ Phần trước: chương 41-44\n▶ Phần sau: chương 48-50",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "HOÀNG TỬ KẾT BÁI!",
+    "prompt": "A young butler cultivator and a young prince in imperial robes swearing brotherhood with raised hands in a palace hall, a defeated rival family head bowing in the background. Chinese manhua cover art style, full-colour digital illustration, bold clean linework, cel shading with dramatic glow and rim light, high contrast, vertical 9:16 composition (keep the subject inside the centre 2:3 area), leave the top 25% as darker empty background for a title overlay, NO text, NO letters, NO speech bubbles, NO watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep45/p006.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Theo cậu, Lạc gia mới là thế lực mạnh nhất, bởi trong nhà có Trác quản gia. Trác Phàm nghe vậy cũng hiếm khi tỏ vẻ hài lòng."
+    },
+    {
+      "panel": "dqgl_ep45/p008.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm bình tĩnh lấy ra minh ước giữa Lạc gia và Tiềm Long các. Tờ giấy khiến phía Thái gia cùng Hoàng tử bất ngờ."
+    },
+    {
+      "panel": "dqgl_ep45/p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm tuyên bố: chẳng cần Minh Châu Mật Lệnh, chỉ cần có hắn thì Lạc gia sớm muộn cũng bước vào hàng ngũ thế gia hàng đầu."
+    },
+    {
+      "panel": "dqgl_ep45/p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hoàng tử bình thản rút lại lời mời, quyết định để Thái gia làm chủ liên minh và cùng Lôi gia phò tá Lạc gia hoàn thành mật lệnh."
+    },
+    {
+      "panel": "dqgl_ep45/p022.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trước khí thế của Hoàng tử, Thái gia chủ đành cúi đầu nhận thua, tuyên bố Thái gia nguyện quy thuận Lạc gia."
+    },
+    {
+      "panel": "dqgl_ep46/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm vừa định thưa chuyện thì Hoàng tử đã bảo hắn không cần khách sáo: từ nay hắn nói gì, Trác Phàm cứ làm theo là được."
+    },
+    {
+      "panel": "dqgl_ep46/p007.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm cũng xin thề kết bái, nhưng cảnh báo nếu Hoàng tử phản bội mình, hắn sẽ trả đũa — lời thề nghe chẳng giống nghi thức huynh đệ bình thường."
+    },
+    {
+      "panel": "dqgl_ep47/p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "U Cốc chủ tức giận: kế hoạch hơn mười năm của ông đã bị phá hỏng, vậy mà đối phương còn dám chất vấn mình."
+    },
+    {
+      "panel": "dqgl_ep47/p030.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cát Trường Phong cho rằng Hoàng đế có thể đang muốn lập thế gia thứ tám, nhưng vẫn chưa rõ mục đích thật sự của kế hoạch ấy."
+    },
+    {
+      "panel": "dqgl_ep47/p035.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ở Hắc Phong Sơn, rừng Mê Vụ, Trác Phàm trở lại kiểm tra linh vật mình gửi nuôi trong hồ máu."
+    },
+    {
+      "panel": "dqgl_ep47/p038.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Trác Phàm nhìn linh vật mới trưởng thành, ánh mắt ánh lên quyết tâm: đã đến lúc rời đi."
+    }
+  ]
+}

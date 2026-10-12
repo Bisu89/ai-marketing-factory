@@ -1,0 +1,37 @@
+﻿{
+  "title": "Trác Phàm đối đầu cao thủ Tiết gia!",
+  "chapters": "58",
+  "source_dir": "manhua-recap/dqgl_ep58",
+  "written_by": "Claude (đọc tay từ panels), 2026-10-12",
+  "description": "Trong lúc nghỉ chân giữa rừng, Trác Phàm và Tiết Ngưng Hương bắt được một con chuột chũi linh thú. Trác Phàm muốn thuần hóa nó thật nhanh, còn Ngưng Hương xót xa vì hắn định dùng đồ ăn để dụ con vật. Đúng lúc ấy, một công tử tóc xanh xuất hiện, tuyên bố họ đã mạo phạm linh sủng của mình. Trác Phàm không nhượng bộ, quyết giành lấy con chuột chũi. Hai bên lập tức giao thủ: Trác Phàm dùng Tam Phẩm Ma Báo, còn đối thủ rút kiếm thi triển kiếm chiêu sắc bén. Kẻ tóc xanh nhận ra thân pháp khó lường của Trác Phàm, nhưng trận chiến nhanh chóng chuyển thành cuộc so tài một chiêu quyết định. Tập kết thúc khi cả hai dồn sức tung đòn, chưa rõ ai sẽ là người sống sót.",
+  "hashtags": ["#DaiQuanGiaLaMaHoang", "#ReviewManhua", "#Manhua", "#TuTien", "#XuyenKhong", "#ReviewTruyen"],
+  "thumbnail": {
+    "text": "Một chiêu phân thắng bại!",
+    "prompt": "Manhua recap thumbnail, Trác Phàm áo choàng nâu đỏ tung chưởng ma khí tím đối đầu công tử tóc xanh mặc bạch y cầm trường kiếm phát sáng xanh, giữa rừng Vạn Thú Sơn Mạch, Tiết Ngưng Hương tóc đỏ ôm chuột chũi linh thú đứng phía sau, khoảnh khắc hai đòn sắp va chạm, phong cách tu tiên hành động kịch tính, chừa chỗ chữ lớn: Một chiêu phân thắng bại!"
+  },
+  "beats": [
+    {"panel":"p001.jpg","type":"HOOK","kind":"recap","narration":"Đêm trong rừng, Trác Phàm và Ngưng Hương đang nướng thức ăn bên đống lửa thì một con vật nhỏ lén bò tới."},
+    {"panel":"p002.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm nhận ra con chuột chũi linh thú và lập tức ra tay bắt nó. Ngưng Hương kinh ngạc khi hắn đột nhiên săn đuổi con vật."},
+    {"panel":"p003.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm tóm được chuột chũi, còn Ngưng Hương trách hắn đối xử thô bạo với linh thú."},
+    {"panel":"p004.jpg","type":"SCENE","kind":"recap","narration":"Hắn cho rằng linh thú đâu dễ bị thương như vậy, nhưng Ngưng Hương nhắc rằng ở nhà cô cũng nuôi nhiều linh thú nhỏ và chúng chẳng bao giờ chịu nghe lời."},
+    {"panel":"p005.jpg","type":"SCENE","kind":"recap","narration":"Ngưng Hương ôm lấy chuột chũi, còn Trác Phàm cau mặt nhận ra con vật này quả thật rất khó thuần."},
+    {"panel":"p006.jpg","type":"SCENE","kind":"recap","narration":"Khi Ngưng Hương hỏi hắn định làm gì, Trác Phàm đã nghĩ ra cách xử lý."},
+    {"panel":"p007.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm trấn an Ngưng Hương rằng mình không định làm hại nó, chỉ muốn cho nó ăn một thứ."},
+    {"panel":"p008.jpg","type":"SCENE","kind":"recap","narration":"Hắn giải thích muốn thuần hóa linh thú nhanh thì chỉ có hai cách: rèn luyện nó thật lâu hoặc dùng thức ăn dụ dỗ."},
+    {"panel":"p009.jpg","type":"SCENE","kind":"recap","narration":"Ngưng Hương miễn cưỡng đưa chuột chũi một con sâu làm mồi, dù chính cô cũng thấy món đó hơi buồn nôn."},
+    {"panel":"p011.jpg","type":"SCENE","kind":"recap","narration":"Con chuột chũi bất ngờ phóng vụt đi. Trác Phàm lập tức cảnh báo Ngưng Hương cẩn thận."},
+    {"panel":"p013.jpg","type":"SCENE","kind":"recap","narration":"Cô và con chuột chũi đều tránh được cú va chạm, nhưng một người tóc xanh xuất hiện phía trên, lạnh lùng cho rằng họ đã động vào linh sủng của mình."},
+    {"panel":"p016.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm nhận ra con chuột chũi đã có chủ. Ngưng Hương định giải thích rằng chuyện vừa rồi là ngoài ý muốn."},
+    {"panel":"p017.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm gạt bỏ lời xin lỗi: dù linh thú có chủ hay không, hôm nay hắn nhất định phải có được nó."},
+    {"panel":"p018.jpg","type":"SCENE","kind":"recap","narration":"Công tử tóc xanh mỉa mai sự ngạo mạn của Trác Phàm và Ngưng Hương, rồi tuyên bố sẽ kết liễu cả hai vì dám xúc phạm thú cưng của mình."},
+    {"panel":"p020.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm lập tức tung đòn ma khí. Đối thủ nhận ra hắn thi triển Tam Phẩm Ma Báo, nhưng sức mạnh của chiêu thức vẫn khiến trận đấu bùng nổ."},
+    {"panel":"p021.jpg","type":"SCENE","kind":"recap","narration":"Người tóc xanh đánh trả bằng kiếm. Trác Phàm nhận định đối phương có tu vi Huyền Giai Võ Công, Đoạn Cốt thất trọng và là Tứ Phẩm Linh Binh."},
+    {"panel":"p024.jpg","type":"SCENE","kind":"recap","narration":"Qua những đòn va chạm, Trác Phàm đoán kẻ trước mặt là đệ tử hạt tâm của Ngự Hạ Thất Thế Gia, thậm chí có thể là người thừa kế."},
+    {"panel":"p025.jpg","type":"SCENE","kind":"recap","narration":"Đối thủ cũng hiểu rằng hôm nay đã kết thù với Trác Phàm thì sau này sẽ còn nhiều phiền phức, nên quyết tâm giết hắn."},
+    {"panel":"p027.jpg","type":"SCENE","kind":"recap","narration":"Kẻ tóc xanh tự tin mình đang chiếm thế thượng phong, nhưng vẫn ngạc nhiên trước sát ý của đối phương và tự hỏi Trác Phàm có thể giết được mình hay không."},
+    {"panel":"p028.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm dùng thân pháp biến hóa, để lại nhiều tàn ảnh khiến đối thủ khó xác định vị trí thật."},
+    {"panel":"p029.jpg","type":"SCENE","kind":"recap","narration":"Công tử tóc xanh hỏi liệu đó có phải sát chiêu của Trác Phàm, rồi vung kiếm tạo thành những luồng kiếm khí xanh liên tiếp."},
+    {"panel":"p031.jpg","type":"SCENE","kind":"recap","narration":"Hắn khen Trác Phàm có thiên phú, nhưng cho rằng đối thủ đã gặp phải mình thì chỉ còn đường thất bại."},
+    {"panel":"p033.jpg","type":"ENDING","kind":"recap","narration":"Trác Phàm bình thản thốt lên: một kiếm đổi một mạng. Hai luồng sức mạnh lao vào nhau, báo hiệu trận chiến sẽ phân định sống chết chỉ trong khoảnh khắc."}
+  ]
+}

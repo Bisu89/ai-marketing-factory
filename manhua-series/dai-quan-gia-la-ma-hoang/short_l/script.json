@@ -1,0 +1,81 @@
+{
+  "title": "Ma Hoàng rời Lạc gia, nhận 600 đứa trẻ làm hộ vệ, bị cô bé lạ bám theo!?",
+  "chapters": "48-50",
+  "source_dir": "manhua-recap/dqgl_ep41",
+  "written_by": "Claude tổng hợp từ script ep41-50 đã lưu, 2026-10-12",
+  "description": "Trác Phàm rời Lạc gia đi chiêu mộ cường giả, trao Ma Sát Quyết cho Lão Bàng, nhận 600 đứa trẻ làm hộ vệ rồi cải trang vào thành U Minh Cốc và gặp cô bé tóc đỏ bí ẩn.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tóm tắt chương 48 đến 50.\n◀ Phần trước: chương 45-47",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "MA HOÀNG RỜI LẠC GIA!",
+    "prompt": "A hooded young butler cultivator in a dark cloak walking towards a fortified city gate at dusk, a small red-haired girl clinging to his sleeve, rows of children in training robes in the far background. Chinese manhua cover art style, full-colour digital illustration, bold clean linework, cel shading with dramatic glow and rim light, high contrast, vertical 9:16 composition (keep the subject inside the centre 2:3 area), leave the top 25% as darker empty background for a title overlay, NO text, NO letters, NO speech bubbles, NO watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep48/p006.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm lạnh lùng báo rằng hắn phải đi. Lạc Vân Thường không hiểu vì sao Lạc gia đang ngày một hưng thịnh mà hắn lại rời khỏi phủ."
+    },
+    {
+      "panel": "dqgl_ep48/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn trao cho Lạc Vân Thường trận quyết Hắc Phong Sơn Tứ Đại Trận, dặn chỉ một mình cô được biết và tuyệt đối không tiết lộ."
+    },
+    {
+      "panel": "dqgl_ep48/p026.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm tiết lộ có cách giúp Lão Bàng thoát thai hoán cốt và sở hữu thực lực mạnh mẽ hơn."
+    },
+    {
+      "panel": "dqgl_ep49/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Trác Phàm đã cảnh báo cái giá của Ma Sát Quyết, nhưng Lão Bàng vẫn không hề do dự. Với ông, cơ hội mạnh lên này đáng để đánh đổi."
+    },
+    {
+      "panel": "dqgl_ep49/p008.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lão Bàng nói nỗi đau lớn nhất đời mình là nhìn gia chủ chết thảm mà bất lực. Tâm nguyện duy nhất của ông là bảo vệ tiểu thư và thiếu gia."
+    },
+    {
+      "panel": "dqgl_ep49/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nàng báo đã tìm đủ 600 đứa trẻ khoảng mười tuổi. Tất cả đều có tư chất tốt và đang chờ Trác Phàm chỉ dạy."
+    },
+    {
+      "panel": "dqgl_ep49/p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nàng bất ngờ ghé sát hôn lên má Trác Phàm rồi nói sẽ đưa hắn về. Trác Phàm đứng sững, còn Lôi Cô Nương bình thản bước ra cửa."
+    },
+    {
+      "panel": "dqgl_ep50/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Muốn tăng thực lực, tu giả cần linh thú. Vì vậy Trác Phàm lên đường tới Vạn Thú Sơn Mạch, nhưng con đường gần nhất lại phải đi qua địa bàn U Minh Cốc."
+    },
+    {
+      "panel": "dqgl_ep50/p011.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một cô bé tóc đỏ bất ngờ lao vào người hắn. Trác Phàm nhanh tay đỡ lấy cô, còn cô lập tức xin hắn đừng lên tiếng."
+    },
+    {
+      "panel": "dqgl_ep50/p030.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô bé đề nghị một cuộc trao đổi: nếu Trác Phàm tình nguyện đưa cô ra khỏi thành, cô sẽ dẫn hắn vào Vạn Thú Sơn Mạch bằng đường nhỏ và giúp hắn tìm Kim Cương Lưu Sa."
+    }
+  ]
+}

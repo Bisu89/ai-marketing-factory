@@ -1,0 +1,75 @@
+{
+  "title": "Tụ Khí Cảnh đánh lui cao thủ Thiên Huyền, Lôi Vân Thiên kết nghĩa huynh đệ!?",
+  "chapters": "31-34",
+  "source_dir": "manhua-recap/dqgl_ep31",
+  "written_by": "Claude tổng hợp từ script ep31-40 đã lưu, 2026-10-12",
+  "description": "Trác Phàm khiến các trưởng lão chấn động, được Lôi Vân Thiên kết nghĩa, nghe bí mật Tử Lôi Kim Nhãn và di tích Thiên Đế, rồi bị hai mỹ nữ tranh nhau đút đồ ăn.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tóm tắt chương 31 đến 34.\n◀ Phần trước: chương 28-30\n▶ Phần sau: chương 35-37",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "KẾT NGHĨA HUYNH ĐỆ!",
+    "prompt": "A sly dark-haired young butler cultivator in a tan robe clasping hands with a stern grey-haired elder with a glowing golden third eye, elders in white robes astonished behind them, ancient ruins glowing in the background. Chinese manhua cover art style, full-colour digital illustration, bold clean linework, cel shading with dramatic glow and rim light, high contrast, vertical 9:16 composition (keep the subject inside the centre 2:3 area), leave the top 25% as darker empty background for a title overlay, NO text, NO letters, NO speech bubbles, NO watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep31/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Các trưởng lão không tin Trác Phàm, một người chỉ ở Tụ Khí Cảnh, lại có thể đánh bại U Vân Thanh. Lôi Vân Thiên xác nhận chính hắn đã làm được."
+    },
+    {
+      "panel": "dqgl_ep31/p014.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trước sự ngỡ ngàng của mọi người, Lôi Vân Thiên tuyên bố từ hôm nay sẽ đối đãi với Trác Phàm như huynh đệ ruột, và sẵn lòng giúp đỡ nếu hắn cần."
+    },
+    {
+      "panel": "dqgl_ep32/p005.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trác Phàm lấy ra con ma thú trong túi của Giản Phàm. Sau khi chủ cũ chết, nó đã thành vật vô chủ; hắn mang về để thuần hóa làm linh thú cho Lôi Vân Thiên."
+    },
+    {
+      "panel": "dqgl_ep32/p015.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thời trẻ, Lôi Vân Thiên bị cuốn vào Vách Lạc Lôi. Sấm sét đánh chết những cao thủ xung quanh, nhưng khi tia sét trúng mắt ông, cảm giác đau đớn dần chuyển thành lạnh buốt."
+    },
+    {
+      "panel": "dqgl_ep32/p025.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trong di tích ấy có thể tồn tại công pháp tu luyện của Tiên Đế và bí linh Cửu U Ma Đế. Trác Phàm nghĩ đến những di sản quyền năng nhất của thời thượng cổ."
+    },
+    {
+      "panel": "dqgl_ep33/p005.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Trác Phàm ngơ ngác: hắn đâu phải quái vật ăn thịt người. Nhưng rồi hắn nhớ lần trước mình bắt Tiểu Thúy về quá thô bạo, khiến cô bé có thể vẫn còn ám ảnh."
+    },
+    {
+      "panel": "dqgl_ep33/p027.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Sở Khuynh Thành và Lạc Vân Thường bỗng tranh nhau xem Trác Phàm nên ăn món của ai trước. Hắn ngồi giữa hai người, chẳng hiểu vì sao bữa sáng lại biến thành cuộc đối đầu."
+    },
+    {
+      "panel": "dqgl_ep34/p028.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Hoàng đế đập bàn, tuyên bố cả hai bên đều không thỏa đáng. Ông ra lệnh chấm dứt tranh cãi và xử lý dứt điểm chuyện này."
+    },
+    {
+      "panel": "dqgl_ep34/p034.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Hoàng đế quyết định bắt đầu kế hoạch của mình. Khi “Ngọc Thi” phát sáng, chuyện gì sẽ xảy ra với Thiên Vũ Đế Quốc?"
+    }
+  ]
+}

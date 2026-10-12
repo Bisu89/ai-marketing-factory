@@ -1,0 +1,27 @@
+﻿{
+  "title": "Trác Phàm quyết giết Tiết gia, cao thủ Đoạn Cốt Cảnh xuất hiện!",
+  "chapters": "52",
+  "source_dir": "manhua-recap/dqgl_ep52",
+  "written_by": "Claude (đọc tay từ panels), 2026-10-12",
+  "description": "Trác Phàm siết cổ Tiết đại thiếu gia, quyết biến cuộc đụng độ thành một vụ án không đầu mối. Ngung Nhi khóc xin hắn dừng tay, nói dù Tiết gia là kẻ thù của mình, cô cũng không muốn giết họ. Nhưng Trác Phàm cho rằng cô nên nói sớm hơn: giờ đây Tiết gia đã trở thành kẻ thù của cả hai, mà kẻ thù của hắn chỉ có một kết cục. Hắn đánh bại Tiết đại thiếu gia và đám thuộc hạ, rồi đưa Ngung Nhi rời đi. Trên đường tới Vạn Thú Sơn Mạch, Trác Phàm cân nhắc phải tránh gây động tĩnh vì khu vực có nhiều cao thủ Đoạn Cốt Cảnh trở lên. Ngung Nhi dẫn hắn đến một lối vào bí mật mà cô từng dùng hồi nhỏ để theo anh trai lên núi. Khi hai người tiến sâu vào rừng, một cao thủ tóc bạc mặc giáp vàng xuất hiện. Ngung Nhi vội gọi Trác Phàm dừng tay, còn hắn nhận ra đối phương là cường giả Đoạn Cốt Cảnh đỉnh phong—một mối đe dọa vượt xa đám người Tiết gia vừa rồi.",
+  "hashtags": ["#DaiQuanGiaLaMaHoang", "#ReviewManhua", "#Manhua", "#TuTien", "#XuyenKhong", "#ReviewTruyen"],
+  "thumbnail": {"text": "Cao thủ Đoạn Cốt Cảnh chặn đường Trác Phàm!", "prompt": "Manhua recap thumbnail, Trác Phàm áo choàng nâu che chở cô bé tóc đỏ Ngung Nhi trong rừng núi, đối diện một lão giả tóc bạc mặc giáp vàng tỏa khí thế áp đảo, ánh mắt Trác Phàm căng thẳng, phong cách tu tiên kịch tính, chừa khoảng trống chữ lớn: Cường giả Đoạn Cốt Cảnh!"},
+  "beats": [
+    {"panel":"p001.jpg","type":"HOOK","kind":"recap","narration":"Tiết đại thiếu gia đã bị Trác Phàm khống chế. Hắn định giết người cuối cùng để xóa sạch dấu vết, biến chuyện này thành một vụ án không đầu mối."},
+    {"panel":"p005.jpg","type":"SCENE","kind":"recap","narration":"Ngung Nhi bật khóc, hỏi Trác Phàm đang làm gì. Cô thú nhận Tiết gia là kẻ thù của mình, nhưng vẫn không muốn hắn giết những người kia."},
+    {"panel":"p006.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm hỏi sao cô không nói sớm hơn. Ngung Nhi chỉ biết khóc, còn hắn lạnh lùng nhắc rằng bây giờ mọi chuyện đã quá muộn."},
+    {"panel":"p008.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm nói những kẻ kia giờ không chỉ là kẻ thù của Ngung Nhi mà còn là kẻ thù của hắn. Kẻ thù của hắn chỉ có một kết cục."},
+    {"panel":"p009.jpg","type":"SCENE","kind":"recap","narration":"Không chần chừ, Trác Phàm ra tay kết liễu Tiết đại thiếu gia. Ngung Nhi đau đớn trách hắn, nhưng cũng đành chấp nhận vì đã đồng ý để hắn giúp mình."},
+    {"panel":"p011.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm nhắc rằng trong thế giới này, kẻ xấu xa mới có cách sống sót; người tốt thường chỉ có thể xuống địa ngục."},
+    {"panel":"p013.jpg","type":"SCENE","kind":"recap","narration":"Hắn vẫn giữ lời hứa, đưa Ngung Nhi rời khỏi Tiết gia và yêu cầu cô dẫn đường đến Vạn Thú Sơn Mạch."},
+    {"panel":"p016.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm biết quanh đây có nhiều cường giả Đoạn Cốt Cảnh trở lên. Với Tam Phẩm Ma Bảo Tà Nguyệt Luân và Bản Mệnh Huyết Anh, hắn đủ sức xông vào, nhưng phải tránh gây động tĩnh."},
+    {"panel":"p017.jpg","type":"SCENE","kind":"recap","narration":"Ở phía sau, một lão giả tóc bạc phát hiện người nhà Tiết nằm la liệt. Ông bàng hoàng nhận ra Tiết Cường Nhi đã gặp chuyện."},
+    {"panel":"p021.jpg","type":"SCENE","kind":"recap","narration":"Lão giả tức giận vì có kẻ dám đắc tội Tiết gia ở Thanh Minh Thành, thề rằng kẻ đó sẽ phải trả giá."},
+    {"panel":"p023.jpg","type":"SCENE","kind":"recap","narration":"Trong rừng, Trác Phàm hỏi Ngung Nhi lối bí mật nằm ở đâu. Cô bảo hắn cứ đi theo mình."},
+    {"panel":"p029.jpg","type":"SCENE","kind":"recap","narration":"Ngung Nhi chỉ ra một lối vào khuất trong núi. Cô kể hồi nhỏ thường lén theo anh trai lên đây chơi."},
+    {"panel":"p031.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm nhận xét lối đi này rất kín đáo, người ngoài khó lòng tìm ra nếu không có người bản địa dẫn đường. Hắn đồng ý để Ngung Nhi xuống trước."},
+    {"panel":"p034.jpg","type":"SCENE","kind":"recap","narration":"Khi Trác Phàm sắp ra tay, Ngung Nhi bất ngờ hét lên bảo hắn dừng lại, đừng giết người kia."},
+    {"panel":"p035.jpg","type":"SCENE","kind":"recap","narration":"Một lão giả tóc bạc mặc giáp vàng xuất hiện giữa rừng. Khí thế của ông khiến tình hình lập tức đổi khác."},
+    {"panel":"p037.jpg","type":"ENDING","kind":"recap","narration":"Trác Phàm nhận ra đối phương là cường giả Đoạn Cốt Cảnh đỉnh phong. Lối đi bí mật vừa đưa hai người đến núi, cũng có thể dẫn họ thẳng vào một trận chiến mới."}
+  ]
+}

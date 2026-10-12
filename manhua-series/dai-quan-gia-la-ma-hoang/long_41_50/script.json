@@ -1,0 +1,931 @@
+{
+  "template": "manhua_recap_long_vi",
+  "title": "Ma Hoàng thành quản gia | Tóm tắt chương 41-50",
+  "chapters": "41-50",
+  "source_dir": "manhua-recap/dqgl_ep41",
+  "written_by": "Claude tổng hợp từ script ep41-50 đã lưu, 2026-10-12",
+  "description": "Trác Phàm dự hội đàm ba gia tộc, giành ngôi đứng đầu liên minh cho Lạc gia, kết bái Tam Hoàng tử rồi rời Lạc gia đi chiêu mộ cường giả. Tóm tắt truyện Đại Quản Gia Là Ma Hoàng, chương 41 đến 50, kèm bình luận.\nMục lục thời gian: xem bình luận ghim.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#TomTatTruyen"
+  ],
+  "thumbnail": {
+    "text": "MA HOÀNG GIÀNH NGÔI LIÊN MINH",
+    "prompt": "A young man with dark messy hair and glowing violet eyes in a tan butler robe standing confidently before a grand council hall, a young prince in imperial robes beside him, three rival family heads bowing in the background. Chinese manhua cover art style, full-colour digital illustration, bold clean linework, cel shading with dramatic glow and rim light, high contrast, vertical 9:16 composition (keep the subject inside the centre 2:3 area), leave the top 25% as darker empty background for a title overlay, NO text, NO letters, NO speech bubbles, NO watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep41/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Ngay sau nụ hôn bất ngờ, Lão Bàng xuất hiện gọi đại tiểu thư. Cả cô lẫn Trác Phàm đều giật mình, khiến khoảnh khắc thân mật lập tức trở nên ngượng ngùng.",
+      "section": "Tập 41: Trác Phàm ngang nhiên từ chối lệnh triệu kiến của hoàng thất"
+    },
+    {
+      "panel": "dqgl_ep41/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đại tiểu thư đỏ bừng mặt rồi ngất lịm. Trác Phàm đỡ lấy cô, còn Lão Bàng vội giải thích rằng cô đang không khỏe."
+    },
+    {
+      "panel": "dqgl_ep41/p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm bế cô về phòng nghỉ. Lão Bàng định báo thêm chuyện, nhưng hắn bảo cứ để sau rồi tính."
+    },
+    {
+      "panel": "dqgl_ep41/p007.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Lão Bàng nhắc có người muốn mời đại tiểu thư đến phủ và tuyệt đối không thể đắc tội. Người đó còn mang theo kim bài ngự thị."
+    },
+    {
+      "panel": "dqgl_ep41/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Kim bài ngự thị là tín vật của hoàng gia hộ vệ; ngay cả gia chủ các thế gia cũng phải nể mặt. Trác Phàm vẫn lạnh nhạt bảo rằng đại tiểu thư không khỏe, hẹn đối phương ngày mai hãy đến."
+    },
+    {
+      "panel": "dqgl_ep41/p011.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Lão Bàng kinh ngạc vì Trác Phàm dám khất lời triệu kiến. Đại tiểu thư tỉnh lại đúng lúc, vội thúc giục hắn chuẩn bị đi gặp khách."
+    },
+    {
+      "panel": "dqgl_ep41/p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm tiếp tục giả vờ rằng cô vừa ngất nên không thể đi đâu. Đại tiểu thư đỏ mặt phản đối, còn người hầu chỉ biết đứng nhìn cảnh khó xử."
+    },
+    {
+      "panel": "dqgl_ep41/p015.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sau khi đại tiểu thư rời đi, Trác Phàm tự hỏi sao phụ nữ lại khó hiểu đến vậy. Tại phòng khách, người mang kim bài ngự thị đã chờ sẵn."
+    },
+    {
+      "panel": "dqgl_ep41/p017.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lão Bàng vẫn lo Trác Phàm sẽ gây chuyện với sứ giả hoàng gia. Hắn thì cho rằng đối phương chẳng qua sợ mất mặt sau lần bị mình dạy dỗ hôm trước."
+    },
+    {
+      "panel": "dqgl_ep41/p021.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trác Phàm chuyển sang kể chuyện Phương Thu Bạch từng muốn nhận hắn làm đồ đệ. Lão Bàng nghe vậy thì không tin nổi, bởi người đề nghị chính là vị Kiếm Thần danh tiếng."
+    },
+    {
+      "panel": "dqgl_ep41/p027.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Trác Phàm cười khẩy, nói Phương Thu Bạch còn chưa đủ tư cách làm sư phụ mình. Lão Bàng chết lặng trước sự ngạo mạn của vị quản gia trẻ tuổi."
+    },
+    {
+      "panel": "dqgl_ep42/p003.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Trác Phàm và đại tiểu thư đến dự hội đàm giữa ba gia tộc. Hoàng tử là người đứng ra chủ trì, còn các gia chủ đều có mặt.",
+      "section": "Tập 42: Bí mật hiệp ước nghìn năm của ba đại gia tộc"
+    },
+    {
+      "panel": "dqgl_ep42/p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm nhận ra đây là cuộc gặp giữa các gia chủ của ba nhà. Hắn dặn mọi người giữ phong thái đĩnh đạc, đừng để đối phương xem thường Lạc gia."
+    },
+    {
+      "panel": "dqgl_ep42/p008.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Hoàng tử quan sát Trác Phàm và đánh giá hắn là một người biết giữ lễ. Đại tiểu thư cũng nghiêm túc chào hỏi hoàng tử."
+    },
+    {
+      "panel": "dqgl_ep42/p011.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Hoàng tử nói mình mời ba gia chủ đến để nhắc lại mối nhân duyên nghìn năm giữa các gia tộc. Lời mở đầu lập tức khiến mọi người chăm chú lắng nghe."
+    },
+    {
+      "panel": "dqgl_ep42/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Theo hiệp ước từ thuở khai quốc, Lạc gia, Thái gia và Lôi gia đều là công thần lập quốc. Họ được giao quyền cai quản và phải hỗ trợ lẫn nhau."
+    },
+    {
+      "panel": "dqgl_ep42/p017.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Đổi lại, ba gia tộc phải ở lại Phong Lâm Thành, không tự ý rời đi cho đến khi Minh Châu định phóng ra quang mang. Hiệp ước còn trao cho họ quyền lực lớn, gần như ngang hàng với hoàng thất."
+    },
+    {
+      "panel": "dqgl_ep42/p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hai mươi năm sau, thế lực của Thất Thế Gia ngày một lớn mạnh. Tranh giành lợi ích dẫn đến chiến loạn, khiến hoàng thất dần không còn đủ sức khống chế họ."
+    },
+    {
+      "panel": "dqgl_ep42/p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sau đại chiến, sinh linh đồ thán và quốc lực suy kiệt, thậm chí có nguy cơ mất nước. Trác Phàm nghe đến đây liền hỏi chuyện ấy liên quan gì đến ba gia tộc của họ."
+    },
+    {
+      "panel": "dqgl_ep42/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hoàng tử tiếp tục giải thích về hiệp ước xưa và mối quan hệ giữa hoàng thất với các công thần khai quốc. Những người có mặt bắt đầu nhận ra chuyện này không chỉ là một buổi hội đàm thông thường."
+    },
+    {
+      "panel": "dqgl_ep42/p032.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Khi Trác Phàm nhắc đến Tứ Trụ, các gia chủ đồng loạt kinh ngạc. Bí mật gắn với hiệp ước nghìn năm vẫn chưa được hé lộ hết."
+    },
+    {
+      "panel": "dqgl_ep43/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Hoàng tử tiết lộ ba gia tộc từng là công thần khai quốc. Nếu triều đình vẫn còn hùng mạnh, họ có thể sánh ngang với Tứ Trụ.",
+      "section": "Tập 43: Bí thuật dung hợp võ công có thể giúp Lạc gia quật khởi"
+    },
+    {
+      "panel": "dqgl_ep43/p004.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Tứ Trụ nắm quân đội, kinh tế và vận mệnh của Thiên Vũ Đế Quốc. Đây là trụ cột quyền lực lớn nhất của hoàng thất."
+    },
+    {
+      "panel": "dqgl_ep43/p007.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thất Thế Gia cũng có thế lực đáng gờm, thậm chí khiến hoàng thất phải dè chừng. Cán cân giữa họ được dựng lên để không phe nào có thể tùy ý áp đảo phe còn lại."
+    },
+    {
+      "panel": "dqgl_ep43/p010.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đại tiểu thư thắc mắc vì sao triều đình lại dung túng cho các gia tộc lớn. Trác Phàm giải thích mục đích là giữ cân bằng, bởi chiến tranh thường nổ ra khi một bên quá mạnh."
+    },
+    {
+      "panel": "dqgl_ep43/p013.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Hoàng tử khen Trác Phàm nhìn thấu vấn đề. Hắn không bị đánh lạc hướng bởi danh nghĩa hiệp ước, mà hỏi thẳng cách giúp Lạc gia trở thành thế gia thứ tám."
+    },
+    {
+      "panel": "dqgl_ep43/p016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hoàng tử cho biết một gia tộc muốn quật khởi phải đủ mạnh mà không bị các thế lực khác phát hiện quá sớm. Trác Phàm lập tức hiểu vì sao hoàng thất cần duy trì thế cân bằng."
+    },
+    {
+      "panel": "dqgl_ep43/p019.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Theo hoàng tử, linh thạch hay đan dược chỉ là vật ngoài thân; cường giả mới bảo đảm sự hưng thịnh lâu dài. Mỗi thế lực lớn đều dựa vào những cao thủ và bí pháp riêng."
+    },
+    {
+      "panel": "dqgl_ep43/p022.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hoàng thất còn nắm một bí thuật có thể dung hợp võ công của ba nhà thành một môn Huyền giai. Võ công tổ truyền của Lạc gia, Thái gia và Lôi gia vốn có chung nguồn gốc."
+    },
+    {
+      "panel": "dqgl_ep43/p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm nhanh chóng đoán ra bí quyết dung hợp. Hoàng tử bất ngờ trước sự nhạy bén của hắn, rồi yêu cầu ba vị gia chủ đem võ công tổ truyền ra."
+    },
+    {
+      "panel": "dqgl_ep43/p032.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Các gia chủ đồng loạt sững sờ khi nghe nhắc đến võ công Huyền giai. Họ lần lượt thú nhận bí kíp tổ truyền đã thất lạc, khiến hoàng tử cũng phải giật mình."
+    },
+    {
+      "panel": "dqgl_ep44/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Buổi hội đàm vừa bàn đến chuyện dung hợp võ công thì các gia chủ đã hỏi xin hoàng thất ban thêm bí kíp. Hoàng tử nghe vậy liền nổi giận.",
+      "section": "Tập 44: Trác Phàm lấy lại bí kíp thất lạc, ba nhà chuẩn bị hợp nhất"
+    },
+    {
+      "panel": "dqgl_ep44/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hoàng tử quát rằng võ công Huyền giai quý hiếm, không phải thứ muốn xin là có. Bí kíp của hoàng thất còn phải đăng ký, không thể tùy tiện đem ra ban phát."
+    },
+    {
+      "panel": "dqgl_ep44/p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm bảo hoàng tử không cần lo. Hắn đã đoạt lại võ công tổ truyền của Thái gia và Lôi gia từ U Minh Cốc."
+    },
+    {
+      "panel": "dqgl_ep44/p007.jpg",
+      "type": "REACTION",
+      "kind": "REVEAL",
+      "narration": "Các gia chủ kinh ngạc khi biết Trác Phàm lấy lại được những bí kíp thất lạc. Lôi gia thở phào, vì nếu không có hắn, họ có thể đã gặp nguy hiểm."
+    },
+    {
+      "panel": "dqgl_ep44/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hoàng tử vui mừng ôm lấy Trác Phàm, cảm ơn hắn đã giúp hoàn thành nhiệm vụ của phụ hoàng. Trác Phàm chỉ nói mình cũng hành động vì Lạc gia."
+    },
+    {
+      "panel": "dqgl_ep44/p011.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hoàng tử nhắc lại kế hoạch hợp nhất ba nhà. Theo Minh Châu Mật Lệnh, gia tộc mạnh nhất sau khi sáp nhập sẽ có một gia chủ nắm quyền quản lý võ công Huyền giai."
+    },
+    {
+      "panel": "dqgl_ep44/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thái gia tự tin tuyên bố hiện nay nhà mình mạnh nhất. Họ cho rằng Lạc gia chỉ còn vài người, còn Lôi gia cũng không đủ sức cạnh tranh."
+    },
+    {
+      "panel": "dqgl_ep44/p017.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Nữ thủ lĩnh phía Lôi gia đáp rằng cô đã triệu tập hơn sáu trăm thuộc hạ cũ của Hắc Phong Sơn, trong đó quá nửa là cao thủ Tụ Khí Cảnh."
+    },
+    {
+      "panel": "dqgl_ep44/p021.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thái gia khinh miệt gọi họ là sơn tặc và cho rằng họ không đủ tư cách bước vào đại hội. Cô gái lập tức nổi giận trước lời xúc phạm ấy."
+    },
+    {
+      "panel": "dqgl_ep44/p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đại tiểu thư Lạc gia cũng nhận ra hai nhà kia đang xem thường gia tộc mình. Không khí hội đàm càng lúc càng căng thẳng."
+    },
+    {
+      "panel": "dqgl_ep44/p028.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Cậu bé nhà Lạc đập bàn, tuyên bố ba nhà chỉ có một gia tộc đủ tư cách làm gia chủ liên minh — đó chính là Lạc gia. Tuyên bố táo bạo khiến tất cả sững sờ."
+    },
+    {
+      "panel": "dqgl_ep45/p003.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Lạc gia yếu nhất trong ba nhà mà cũng đòi làm gia chủ liên minh? Người Thái gia cười nhạo cậu bé, cho rằng nhà họ chẳng có tư cách.",
+      "section": "Tập 45: Trác Phàm khiến Hoàng tử đổi ý, Lạc gia đứng đầu liên minh"
+    },
+    {
+      "panel": "dqgl_ep45/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cậu bé đáp lại: Lạc gia hiện chỉ còn bốn người nương tựa nhau, nhưng họ có Trác Phàm — vị quản gia mà cả cậu cũng đặt trọn niềm tin."
+    },
+    {
+      "panel": "dqgl_ep45/p006.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Theo cậu, Lạc gia mới là thế lực mạnh nhất, bởi trong nhà có Trác quản gia. Trác Phàm nghe vậy cũng hiếm khi tỏ vẻ hài lòng."
+    },
+    {
+      "panel": "dqgl_ep45/p007.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thái gia chủ gạt phăng lời cậu bé, cho rằng một hạ nhân không thể khiến họ phải e dè. Ông ta nhắc cậu đừng xen vào chuyện người lớn."
+    },
+    {
+      "panel": "dqgl_ep45/p008.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm bình tĩnh lấy ra minh ước giữa Lạc gia và Tiềm Long các. Tờ giấy khiến phía Thái gia cùng Hoàng tử bất ngờ."
+    },
+    {
+      "panel": "dqgl_ep45/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hoàng tử kinh ngạc hỏi liệu đó có thật là minh ước bình đẳng với Tiềm Long các hay không. Trác Phàm chỉ im lặng, để tờ minh ước tự lên tiếng."
+    },
+    {
+      "panel": "dqgl_ep45/p012.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hoàng tử không tin một quản gia có thể làm được chuyện ấy. Trác Phàm quay lại, chuẩn bị nói rõ vì sao Lạc gia đủ sức đứng đầu."
+    },
+    {
+      "panel": "dqgl_ep45/p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm tuyên bố: chẳng cần Minh Châu Mật Lệnh, chỉ cần có hắn thì Lạc gia sớm muộn cũng bước vào hàng ngũ thế gia hàng đầu."
+    },
+    {
+      "panel": "dqgl_ep45/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn nói thêm rằng hai nhà kia chẳng giúp được gì cho Lạc gia, trái lại còn có thể trở thành gánh nặng."
+    },
+    {
+      "panel": "dqgl_ep45/p016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hoàng tử ngỏ ý nhờ Trác Phàm giúp mình. Trác Phàm đáp rằng ở lại gia tộc thế tục thật thiệt thòi cho Hoàng tử, rồi mời người suy nghĩ lại."
+    },
+    {
+      "panel": "dqgl_ep45/p017.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thái gia chủ nổi giận, không thể tin Trác Phàm lại mạnh đến mức khiến Hoàng thất phải tự mình tranh thủ."
+    },
+    {
+      "panel": "dqgl_ep45/p019.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm mỉm cười gọi Hoàng tử là người quá ghen tị. Hắn hỏi liệu Hoàng tử cũng muốn Lạc gia góp sức cho Hoàng thất hay không."
+    },
+    {
+      "panel": "dqgl_ep45/p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hoàng tử bình thản rút lại lời mời, quyết định để Thái gia làm chủ liên minh và cùng Lôi gia phò tá Lạc gia hoàn thành mật lệnh."
+    },
+    {
+      "panel": "dqgl_ep45/p021.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thái gia chủ định phản đối, nhưng vừa lên tiếng đã bị Hoàng tử dùng uy áp chặn lại. Trác Phàm lập tức nhận ra tình thế đổi chiều."
+    },
+    {
+      "panel": "dqgl_ep45/p022.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trước khí thế của Hoàng tử, Thái gia chủ đành cúi đầu nhận thua, tuyên bố Thái gia nguyện quy thuận Lạc gia."
+    },
+    {
+      "panel": "dqgl_ep45/p023.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hoàng tử trấn an những người còn lại, khẳng định mọi chuyện đã được quyết định. Lão phu nhà Lạc cũng thề sẽ phò tá Hoàng tử và dốc sức vì đại cuộc."
+    },
+    {
+      "panel": "dqgl_ep45/p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hoàng tử chấp thuận lời quy thuận của Lạc gia và hỏi còn ai phản đối không. Khi không ai lên tiếng, ông tuyên bố cứ thực hiện như vậy."
+    },
+    {
+      "panel": "dqgl_ep45/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Buổi hội đàm kết thúc, các gia chủ lần lượt rời đi. Trác Phàm cùng mọi người cũng chuẩn bị trở về."
+    },
+    {
+      "panel": "dqgl_ep45/p028.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Ngay lúc ấy, Hoàng tử gọi Trác Phàm ở lại. Vì sao ông muốn nói chuyện riêng với vị quản gia đã làm cả cục diện liên minh đảo chiều?"
+    },
+    {
+      "panel": "dqgl_ep46/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Chương 46: Tâm kế. Hoàng tử gọi Trác Phàm ở lại sau buổi hội đàm — lời đề nghị bất ngờ nào đang chờ hắn?",
+      "section": "Tập 46: Tâm kế: Hoàng tử kết bái với Trác Phàm, bí mật Minh Châu Mật Lệnh"
+    },
+    {
+      "panel": "dqgl_ep46/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm vừa định thưa chuyện thì Hoàng tử đã bảo hắn không cần khách sáo: từ nay hắn nói gì, Trác Phàm cứ làm theo là được."
+    },
+    {
+      "panel": "dqgl_ep46/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tự xưng Tam Hoàng tử Thiên Vũ Đế quốc Vũ Văn Thông, Hoàng tử giơ tay xin thề với trời, muốn kết bái huynh đệ với quản gia Lạc gia."
+    },
+    {
+      "panel": "dqgl_ep46/p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hoàng tử thề sinh cùng sinh, tử cùng tử. Trác Phàm nghe xong chỉ ngơ ngác: chuyện kết nghĩa diễn ra nhanh đến mức hắn chưa kịp hiểu."
+    },
+    {
+      "panel": "dqgl_ep46/p006.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hoàng tử giục Trác Phàm đáp lễ. Dù còn thấy khó hiểu, Trác Phàm nghĩ kết giao với Hoàng tử có lẽ cũng có lợi."
+    },
+    {
+      "panel": "dqgl_ep46/p007.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm cũng xin thề kết bái, nhưng cảnh báo nếu Hoàng tử phản bội mình, hắn sẽ trả đũa — lời thề nghe chẳng giống nghi thức huynh đệ bình thường."
+    },
+    {
+      "panel": "dqgl_ep46/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hoàng tử nhắc lời hẹn hôm trước về Quỷ Mị: người thua phải từ bỏ. Nhưng dù đã thua, ông vẫn chưa thể buông bỏ tình cảm ấy."
+    },
+    {
+      "panel": "dqgl_ep46/p010.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Vì thế Hoàng tử quyết định kết bái với Trác Phàm và hứa sẽ không để thế tử nhà Lạc bị ức hiếp."
+    },
+    {
+      "panel": "dqgl_ep46/p011.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hoàng tử tuyên bố từ nay sẽ hoàn toàn hết hy vọng với Quỷ Mị. Trác Phàm nhìn ông, không chắc lời này là thật lòng hay chỉ để tự an ủi."
+    },
+    {
+      "panel": "dqgl_ep46/p012.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm thẳng thắn hỏi rốt cuộc Minh Châu Mật Lệnh thực sự có nội dung gì. Câu hỏi khiến Hoàng tử khựng lại."
+    },
+    {
+      "panel": "dqgl_ep46/p016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm đánh giá kế hoạch của Hoàng tử khá chặt chẽ, mục tiêu cũng chính đáng. Nhưng quy mô ấy quá nhỏ, chẳng giống khí phách của một vị khai quốc đế vương."
+    },
+    {
+      "panel": "dqgl_ep46/p017.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Theo Trác Phàm, chỉ một vị đế vương khai quốc mới đủ khí phách dung hòa thế lực thất thế gia và giấu một kế hoạch suốt ngàn năm."
+    },
+    {
+      "panel": "dqgl_ep46/p019.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hoàng tử nói ông thật sự không biết toàn bộ chân tướng, chỉ nhận thánh chỉ và cố hoàn thành mật lệnh. Trác Phàm tự hỏi liệu Hoàng tử có đang diễn kịch hay không."
+    },
+    {
+      "panel": "dqgl_ep46/p021.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm nghi U Minh Cốc biết nhiều hơn những gì họ tiết lộ. Họ ngăn cản mật lệnh, nhưng cũng có thể đã cố ý để lộ một phần thông tin."
+    },
+    {
+      "panel": "dqgl_ep46/p022.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hoàng tử thừa nhận suy luận ấy có lý: chuyện bị che giấu cả ngàn năm bỗng nhiên lộ ra khiến người ta khó tránh nghi ngờ."
+    },
+    {
+      "panel": "dqgl_ep46/p023.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm nhấn mạnh mật lệnh có thể chỉ hé lộ một phần chân tướng. Hoàng tử giật mình, nhận ra vấn đề còn sâu xa hơn."
+    },
+    {
+      "panel": "dqgl_ep46/p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm quyết định thôi không đào sâu: chỉ cần việc này có lợi cho Lạc gia thì hắn không cần suy nghĩ quá nhiều."
+    },
+    {
+      "panel": "dqgl_ep46/p026.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm chào Hoàng tử rồi rời đi, hẹn nếu có cơ hội sẽ gặp lại. Vũ Văn Thông nhìn theo, vừa nể phục vừa thấy cậu thiếu niên thật đáng sợ."
+    },
+    {
+      "panel": "dqgl_ep46/p029.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Chu Cát Trường Phong hỏi Hoàng tử thấy Trác Phàm giống ai. Ông cho rằng kết bái với Trác Phàm có lẽ là lựa chọn đúng đắn nhất đời mình — một ngày nào đó, Trác Phàm sẽ trở thành trụ cột giúp ông chấp chưởng thiên hạ."
+    },
+    {
+      "panel": "dqgl_ep47/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Đêm ở Đế Đô, U Minh Cốc chủ trở về sau thất bại. Hơn mười năm tâm huyết của ông có nguy cơ đổ sông đổ biển.",
+      "section": "Tập 47: U Minh Cốc chủ nổi giận, Trác Phàm trở lại Hắc Phong Sơn"
+    },
+    {
+      "panel": "dqgl_ep47/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông hỏi chuyện gì đã xảy ra. Thuộc hạ báo rằng Hoàng đế bảo U Minh Cốc rời Phong Lâm Thành vĩnh viễn, đồng thời hạn chế sáu gia tộc khác."
+    },
+    {
+      "panel": "dqgl_ep47/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "U Cốc chủ lập tức hiểu ra người đứng sau chuyện này. Ông chất vấn vì sao Minh Châu Mật Lệnh lại bị tiết lộ, còn Hoàng thất thì muốn lập thế gia thứ tám thay thế U Minh Cốc."
+    },
+    {
+      "panel": "dqgl_ep47/p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "U Cốc chủ tức giận: kế hoạch hơn mười năm của ông đã bị phá hỏng, vậy mà đối phương còn dám chất vấn mình."
+    },
+    {
+      "panel": "dqgl_ep47/p006.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cát Trường Phong đáp rằng U Minh Cốc vốn là một trong những thế lực thuộc thất thế gia. Ngay cả ba gia tộc thế tục cũng chẳng thể làm gì hai lão quái vật như họ."
+    },
+    {
+      "panel": "dqgl_ep47/p007.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Dẫu vậy, U Cốc chủ vẫn không chịu nhận thua. Ông cảnh cáo lần này đối phương gặp may, lần sau sẽ không dễ dàng như thế."
+    },
+    {
+      "panel": "dqgl_ep47/p008.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cát Trường Phong cho rằng mất danh hiệu cũng là chuyện đương nhiên nếu thực lực không đủ. U Cốc chủ nổi giận, không chấp nhận lời khiêu khích ấy."
+    },
+    {
+      "panel": "dqgl_ep47/p010.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cát Trường Phong khẳng định U Minh Cốc hiểu biết hơn người, nhưng kế hoạch lâu năm của họ vẫn bị nhìn thấu."
+    },
+    {
+      "panel": "dqgl_ep47/p012.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hai bên nhắc đến hai cao thủ Âm Dương Song Lão. Cát Trường Phong nhận xét việc mời được họ chứng tỏ Hoàng thất đã chuẩn bị kỹ càng."
+    },
+    {
+      "panel": "dqgl_ep47/p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngay cả khi U Cốc chủ không phục, Cát Trường Phong cũng không dám xem thường Hoàng thất. Ông cho rằng chẳng ai có thể đoán hết toan tính của Hoàng đế."
+    },
+    {
+      "panel": "dqgl_ep47/p022.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "U Cốc chủ hỏi trên đời này còn ai là đối thủ của Cát Trường Phong. Ông đáp: phải tính cả Hoàng thất."
+    },
+    {
+      "panel": "dqgl_ep47/p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cát Trường Phong cảm thán rằng chẳng trách U Cốc chủ thất bại ở Phong Lâm Thành: sức mạnh thật sự không thể chỉ nhìn biểu hiện bên ngoài."
+    },
+    {
+      "panel": "dqgl_ep47/p026.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông tự nhận mình cũng không phải người thông minh nhất Thiên Vũ. Khi U Cốc chủ hỏi ai mới là người đứng trên ông, Cát Trường Phong chỉ về phía Hoàng đế."
+    },
+    {
+      "panel": "dqgl_ep47/p028.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cát Trường Phong thú nhận sau bốn mươi năm phò tá, ông vẫn chưa hiểu rõ Hoàng đế. U Cốc chủ được khuyên trở về và đừng gây chuyện thêm, kẻo bị Hoàng thất nắm lấy cơ hội."
+    },
+    {
+      "panel": "dqgl_ep47/p030.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cát Trường Phong cho rằng Hoàng đế có thể đang muốn lập thế gia thứ tám, nhưng vẫn chưa rõ mục đích thật sự của kế hoạch ấy."
+    },
+    {
+      "panel": "dqgl_ep47/p032.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trong đêm, Cát Trường Phong tự hỏi rốt cuộc Bệ hạ định làm gì và Minh Châu Mật Lệnh thực chất là thứ gì."
+    },
+    {
+      "panel": "dqgl_ep47/p035.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ở Hắc Phong Sơn, rừng Mê Vụ, Trác Phàm trở lại kiểm tra linh vật mình gửi nuôi trong hồ máu."
+    },
+    {
+      "panel": "dqgl_ep47/p037.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đã ba tháng trôi qua, Hàn Đàm Tuyết Tằm cũng đã trưởng thành. Trác Phàm quyết định đổi tên nó thành Hàn Đàm Huyết Tằm."
+    },
+    {
+      "panel": "dqgl_ep47/p038.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Trác Phàm nhìn linh vật mới trưởng thành, ánh mắt ánh lên quyết tâm: đã đến lúc rời đi."
+    },
+    {
+      "panel": "dqgl_ep48/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Trở về Lạc phủ, Trác Phàm vừa xuất hiện đã khiến đại tiểu thư Lạc Vân Thường vui mừng gọi tên hắn.",
+      "section": "Tập 48: Trác Phàm rời Lạc gia, hứa giúp Lão Bàng đổi mệnh"
+    },
+    {
+      "panel": "dqgl_ep48/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm bảo cô theo mình vào trong. Lạc Vân Thường còn chưa hiểu chuyện gì thì hắn đã đóng cửa lại."
+    },
+    {
+      "panel": "dqgl_ep48/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô hỏi Trác quản gia định làm gì. Lạc Vân Thường đỏ mặt, trong đầu thoáng nghĩ đến một khả năng khiến cô bối rối."
+    },
+    {
+      "panel": "dqgl_ep48/p006.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm lạnh lùng báo rằng hắn phải đi. Lạc Vân Thường không hiểu vì sao Lạc gia đang ngày một hưng thịnh mà hắn lại rời khỏi phủ."
+    },
+    {
+      "panel": "dqgl_ep48/p008.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm giải thích chuyến đi là vì sự an toàn của Lạc gia. Dù tạm thời chưa gặp nguy hiểm, họ đã chấp hành Minh Châu Mật Lệnh và có thể đắc tội U Minh Cốc."
+    },
+    {
+      "panel": "dqgl_ep48/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn nhắc rằng ngoài U Minh Cốc còn có Tiềm Long các. Nếu Lạc gia không thể trở thành thất thế gia ngang hàng, các thế lực ấy sẽ không dễ dàng buông tha."
+    },
+    {
+      "panel": "dqgl_ep48/p011.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lạc Vân Thường nghẹn ngào hỏi Trác Phàm đi rồi họ phải làm sao. Hắn dịu giọng trấn an cô."
+    },
+    {
+      "panel": "dqgl_ep48/p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm nói lần này ra ngoài là để chiêu mộ cường giả, bảo đảm an toàn lâu dài cho Lạc gia."
+    },
+    {
+      "panel": "dqgl_ep48/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn trao cho Lạc Vân Thường trận quyết Hắc Phong Sơn Tứ Đại Trận, dặn chỉ một mình cô được biết và tuyệt đối không tiết lộ."
+    },
+    {
+      "panel": "dqgl_ep48/p015.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nếu Trác Phàm không có mặt mà Lạc gia gặp biến cố, Lạc Vân Thường có thể dùng bốn trận Thức Ngũ Cấp cùng trận pháp đã bố trí ở Mê Vực để ứng phó."
+    },
+    {
+      "panel": "dqgl_ep48/p017.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lạc Vân Thường hỏi hắn sẽ đi bao lâu. Trác Phàm đáp không biết, nhưng chuyến đi sẽ nhanh thôi."
+    },
+    {
+      "panel": "dqgl_ep48/p018.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn bảo cô gọi Thống Lĩnh và Vân Hải vào. Chuyến đi này không chỉ để mời cao thủ về cho Lạc gia."
+    },
+    {
+      "panel": "dqgl_ep48/p019.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm còn muốn tìm di tích của Thiên Đế Lạc Tuyết Hiệp. Hắn tin nâng cao thực lực mới là cách tốt nhất để bảo toàn tính mạng."
+    },
+    {
+      "panel": "dqgl_ep48/p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lạc Vân Thường níu kéo, nhưng Trác Phàm đã quyết định lên đường. Trước khi đi, hắn bất ngờ cúi xuống hôn cô."
+    },
+    {
+      "panel": "dqgl_ep48/p021.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lạc Vân Thường đỏ mặt dặn hắn về sớm. Trác Phàm chỉ bảo cô đi gọi mọi người, khiến cô vừa ngượng vừa không biết đáp sao."
+    },
+    {
+      "panel": "dqgl_ep48/p023.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm quay sang Lão Bàng, nhắc rằng ông là nam đinh duy nhất của Lạc gia và phải chăm sóc Tỷ Tỷ như một gia chủ."
+    },
+    {
+      "panel": "dqgl_ep48/p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lão Bàng nhớ lời Long Quỳ: với tư chất của ông, cùng lắm chỉ đạt Tụ Khí Cảnh. Trác Phàm nói trên đời không có gì là tuyệt đối."
+    },
+    {
+      "panel": "dqgl_ep48/p026.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm tiết lộ có cách giúp Lão Bàng thoát thai hoán cốt và sở hữu thực lực mạnh mẽ hơn."
+    },
+    {
+      "panel": "dqgl_ep48/p028.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Cái giá là phải chịu đau đớn sống còn khổ hơn chết, có thể cả đời không dứt. Trác Phàm hỏi Lão Bàng có bằng lòng đánh đổi hay không."
+    },
+    {
+      "panel": "dqgl_ep49/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Trác Phàm đã cảnh báo cái giá của Ma Sát Quyết, nhưng Lão Bàng vẫn không hề do dự. Với ông, cơ hội mạnh lên này đáng để đánh đổi.",
+      "section": "Tập 49: Lão Bàng quyết chịu khổ, Trác Phàm nhận 600 đứa trẻ làm hộ vệ"
+    },
+    {
+      "panel": "dqgl_ep49/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lão Bàng nói mình sẵn sàng chịu đau đớn, chỉ cần có thể trở nên mạnh hơn."
+    },
+    {
+      "panel": "dqgl_ep49/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm giải thích Ma Sát Quyết là công pháp luyện thể Huyền giai trung cấp. Nó không cần tư chất tu luyện, nhưng quá trình rèn luyện còn đáng sợ hơn địa ngục."
+    },
+    {
+      "panel": "dqgl_ep49/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một khi bắt đầu, Lão Bàng không thể bỏ dở. Nếu không chịu nổi đến cùng, thân thể lẫn thần hồn đều sẽ bị hủy hoại."
+    },
+    {
+      "panel": "dqgl_ep49/p006.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Dù công pháp có uy lực ngang Huyền giai cao cấp, nhiều ma tu còn không dám luyện. Trác Phàm cảnh báo nó có thể khiến Lão Bàng phát điên rồi mất mạng."
+    },
+    {
+      "panel": "dqgl_ep49/p008.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lão Bàng nói nỗi đau lớn nhất đời mình là nhìn gia chủ chết thảm mà bất lực. Tâm nguyện duy nhất của ông là bảo vệ tiểu thư và thiếu gia."
+    },
+    {
+      "panel": "dqgl_ep49/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông cảm ơn Trác Phàm đã cho mình cơ hội, khẳng định không hối hận và mong lần sau gặp lại, mình sẽ có thực lực thật sự."
+    },
+    {
+      "panel": "dqgl_ep49/p011.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm cười bảo cứ yên tâm, mạng của Lão Bàng cứng lắm. Ông còn dặn Trác Phàm đi sớm về sớm, vì Lạc gia không thể thiếu người."
+    },
+    {
+      "panel": "dqgl_ep49/p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lôi Cô Nương xuất hiện, hỏi chuyện của Trác Phàm đã giải quyết xong chưa. Hắn đáp mình sắp phải đi."
+    },
+    {
+      "panel": "dqgl_ep49/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nàng báo đã tìm đủ 600 đứa trẻ khoảng mười tuổi. Tất cả đều có tư chất tốt và đang chờ Trác Phàm chỉ dạy."
+    },
+    {
+      "panel": "dqgl_ep49/p017.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm thoáng nhớ đến lần mình từng hết lòng nuôi dạy một cô nhi nhưng cuối cùng vẫn bị phản bội. Dẫu vậy, hắn vẫn quyết định nhận trách nhiệm huấn luyện đám trẻ."
+    },
+    {
+      "panel": "dqgl_ep49/p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn trao cho Lôi Cô Nương linh giới trung cấp chứa công pháp Tiềm Ảnh Quyết, rồi chỉ nàng cách tổ chức đội hộ vệ và ám vệ để âm thầm bảo vệ gia tộc."
+    },
+    {
+      "panel": "dqgl_ep49/p021.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Theo chỉ dẫn, trẻ tư chất hạ đẳng vào đội hộ vệ thường, trung đẳng vào đội ám vệ; những đứa thượng đẳng sẽ được Lão Bàng bí mật rèn luyện."
+    },
+    {
+      "panel": "dqgl_ep49/p023.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lôi Cô Nương ngạc nhiên hỏi sao Trác Phàm không đích thân dạy chúng. Hắn chỉ đáp rằng mình phải đi rồi."
+    },
+    {
+      "panel": "dqgl_ep49/p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nàng bất ngờ ghé sát hôn lên má Trác Phàm rồi nói sẽ đưa hắn về. Trác Phàm đứng sững, còn Lôi Cô Nương bình thản bước ra cửa."
+    },
+    {
+      "panel": "dqgl_ep49/p026.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Nhìn nàng rời đi, Trác Phàm ngơ ngác tự hỏi: lại nữa sao? Chẳng lẽ nữ nhân đều thích làm vậy?"
+    },
+    {
+      "panel": "dqgl_ep50/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Muốn tăng thực lực, tu giả cần linh thú. Vì vậy Trác Phàm lên đường tới Vạn Thú Sơn Mạch, nhưng con đường gần nhất lại phải đi qua địa bàn U Minh Cốc.",
+      "section": "Tập 50: Trác Phàm cải trang vào U Minh Cốc, cô bé bí ẩn nhận ra hắn"
+    },
+    {
+      "panel": "dqgl_ep50/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cải trang trong áo choàng, Trác Phàm tiến đến cổng thành. Lính gác lập tức chặn lại, đòi xem giấy thông hành."
+    },
+    {
+      "panel": "dqgl_ep50/p007.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm đưa ra kim bài để qua cửa. Hắn cho rằng trạm kiểm soát này chỉ làm khó những kẻ nhát gan; tu giả đủ mạnh thì chẳng cần e ngại."
+    },
+    {
+      "panel": "dqgl_ep50/p010.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Vừa vào thành, hắn đã nghe tiếng người truy đuổi hỏi nhau đã tìm thấy ai chưa. Trác Phàm không muốn gây chú ý giữa địa bàn U Minh Cốc."
+    },
+    {
+      "panel": "dqgl_ep50/p011.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một cô bé tóc đỏ bất ngờ lao vào người hắn. Trác Phàm nhanh tay đỡ lấy cô, còn cô lập tức xin hắn đừng lên tiếng."
+    },
+    {
+      "panel": "dqgl_ep50/p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Những kẻ truy đuổi chạy ngang qua, vẫn mải miết tìm cô bé. Trác Phàm mặc kệ cuộc truy bắt và định tiếp tục lên đường."
+    },
+    {
+      "panel": "dqgl_ep50/p015.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô bé nói mình trộm đồ của đám người kia; nếu bị bắt lại, họ nhất định sẽ không tha. Cô cầu xin Trác Phàm đưa mình ra khỏi thành."
+    },
+    {
+      "panel": "dqgl_ep50/p018.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm bảo cô muốn rời thành thì tự đi, không cần hắn giúp. Nhưng cô vẫn lẽo đẽo theo sau, gọi hắn là đại ca."
+    },
+    {
+      "panel": "dqgl_ep50/p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn nhận ra cô bé mới chừng mười lăm mười sáu tuổi mà đã có tu vi Tụ Khí, còn mạnh hơn người thường cùng tuổi. Trác Phàm nghi ngờ thân phận ăn mày của cô."
+    },
+    {
+      "panel": "dqgl_ep50/p023.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm nói giúp cô chỉ khiến mình đắc tội với thế lực lớn, nên chẳng có lý do gì phải nhúng tay. Cô bé im lặng, rồi hỏi có phải hắn đang định tới Vạn Thú Sơn Mạch."
+    },
+    {
+      "panel": "dqgl_ep50/p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô giải thích hiện giờ không thể vào núi: người muốn tới đó phải đợi ba tháng, vì U Minh Cốc chuẩn bị phong tỏa khu vực."
+    },
+    {
+      "panel": "dqgl_ep50/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Vạn Thú Sơn Mạch sắp xuất hiện Kim Cương Lưu Sa. U Minh Cốc muốn giữ kín tin tức nên không cho người ngoài tiến vào."
+    },
+    {
+      "panel": "dqgl_ep50/p029.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Kim Cương Lưu Sa là nguyên liệu quý hiếm để luyện ngũ cấp linh binh. Trác Phàm còn nhận ra nó rất hợp để rèn luyện thân thể và tăng sức mạnh Bản Mệnh Huyết Anh."
+    },
+    {
+      "panel": "dqgl_ep50/p030.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô bé đề nghị một cuộc trao đổi: nếu Trác Phàm tình nguyện đưa cô ra khỏi thành, cô sẽ dẫn hắn vào Vạn Thú Sơn Mạch bằng đường nhỏ và giúp hắn tìm Kim Cương Lưu Sa."
+    },
+    {
+      "panel": "dqgl_ep50/p032.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm cân nhắc rằng có người dẫn đường thì chuyến đi sẽ thuận lợi hơn, rồi chấp nhận thỏa thuận."
+    },
+    {
+      "panel": "dqgl_ep50/p034.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Cô bé vui mừng vì cuối cùng cũng có người giúp mình rời khỏi nơi quỷ quái này. Nhưng ngay sau đó, cô quay sang gọi thẳng: “Trác Phàm!” Thân phận cải trang của hắn đã bị nhìn thấu."
+    }
+  ]
+}
