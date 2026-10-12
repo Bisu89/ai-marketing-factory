@@ -43,6 +43,10 @@ Mẫu chỉ để thống nhất, không bắt mọi tập theo cùng thứ tự
 Kho `pool.csv` của kênh: tên file `<tacpham>_<tap>_<ma-canh>_<mo-ta>.png`, khung, nhân vật trong ảnh, quy tắc dùng lại (`any`/`with:<nhân vật>`), tập đã dùng, nguồn/giấy phép/prompt.
 Dùng lại nền, vật thể, kết cấu giấy; **ảnh có nhân vật chính của tập luôn tạo mới**. Một ảnh một lần trong một video; hạn chế lặp tập liền trước.
 Đặt phiên bản `v2`… khi sửa; ghi prompt cùng ảnh để tạo lại.
+**Số lượng ảnh không cố định theo một con số**: để `episode_builder.py storyboard` cắt cảnh thật rồi đếm, không áp
+đặt trước. Ở chuẩn thời lượng hiện tại (~15 phút, xem `SCRIPT_TEMPLATE.md`) và nhịp ~35–50 cảnh/10 phút của
+`RULES.md`, một tập thường ra khoảng 35–45 ảnh cần tạo tay (một ảnh dùng chung tối đa 3 cảnh liền kề); tập ngắn/dài
+hơn thì số ảnh đổi theo, không phải theo thời lượng cũ 6–9 phút.
 
 ## 7. Khuôn prompt ảnh (điền được bằng code)
 ```

@@ -1,6 +1,6 @@
 {
- "title": "Chí Phèo: tập 1 (ví dụ template kênh văn học)",
- "topic": "Vì sao mong muốn trở lại làm người lương thiện của Chí Phèo lại thành bi kịch? Đọc lại truyện ngắn của Nam Cao qua các chi tiết trong văn bản.",
+ "title": "Chí Phèo: tập 1 — Một người muốn làm người lương thiện",
+ "topic": "Vì sao mong muốn trở lại làm người lương thiện của Chí Phèo lại thành bi kịch? Đọc lại truyện ngắn của Nam Cao qua các chi tiết trong văn bản, bản ~15 phút.",
  "language": "vi",
  "budget_usd": null,
  "accessed": "2026-10-12",
@@ -14,6 +14,9 @@
     "page": "Chí Phèo",
     "needles": [
      "Hắn vừa đi vừa chửi.",
+     "giời có của riêng nhà nào",
+     "đời là tất cả nhưng chẳng là ai",
+     "Chắc nó trừ mình ra!",
      "Không ai lên tiếng cả."
     ],
     "author": "Nam Cao",
@@ -34,7 +37,7 @@
     "author": "Nam Cao",
     "publisher": "Wikisource tiếng Việt (văn bản miền công cộng; Nam Cao mất năm 1951)"
    },
-   "notes": "Văn bản tác phẩm trên Wikisource tiếng Việt (chính tả cũ, có gạch nối). Cần đối chiếu bản in trước khi đăng."
+   "notes": "Dòng mô tả ở đầu trang Wikisource (tóm tắt, không phải văn bản truyện); đối chiếu thêm nguồn xuất bản khác nếu cần dùng cho khẳng định quan trọng."
   },
   {
    "key": "birth",
@@ -45,6 +48,7 @@
     "page": "Chí Phèo",
     "needles": [
      "Một anh đi thả ống lươn",
+     "Người đàn bà góa mù này bán hắn cho một bác phó cối không con",
      "Năm hai mươi tuổi, hắn làm canh điền"
     ],
     "author": "Nam Cao",
@@ -78,7 +82,41 @@
     "page": "Chí Phèo",
     "needles": [
      "Và họ thấy Chí-phèo lăn lộn dưới đất, vừa kêu vừa lấy mảnh chai cào mặt.",
-     "lại còn giết gà mua rượu cho hắn uống"
+     "lại còn giết gà mua rượu cho hắn uống",
+     "Mày muốn lôi thôi gì? Cái thằng không cha không mẹ này!"
+    ],
+    "author": "Nam Cao",
+    "publisher": "Wikisource tiếng Việt (văn bản miền công cộng; Nam Cao mất năm 1951)"
+   },
+   "notes": "Văn bản tác phẩm trên Wikisource tiếng Việt (chính tả cũ, có gạch nối). Cần đối chiếu bản in trước khi đăng."
+  },
+  {
+   "key": "distracted",
+   "title": "Chí Phèo: bá Kiến bận tâm chuyện nhà trước lúc chết",
+   "fetch": {
+    "kind": "wikisource",
+    "lang": "vi",
+    "page": "Chí Phèo",
+    "needles": [
+     "cụ chỉ muốn bà tư đừng đi lâu quá thế",
+     "Cụ năm nay đã ngoài sáu mươi"
+    ],
+    "author": "Nam Cao",
+    "publisher": "Wikisource tiếng Việt (văn bản miền công cộng; Nam Cao mất năm 1951)"
+   },
+   "notes": "Đoạn bá Kiến nằm nghỉ trưa, bực vì bà tư đi lâu, ngay trước khi Chí Phèo đến lần cuối. Văn bản chính tả cũ; đối chiếu bản in trước khi đăng."
+  },
+  {
+   "key": "calm",
+   "title": "Chí Phèo: bá Kiến xử nhũn",
+   "fetch": {
+    "kind": "wikisource",
+    "lang": "vi",
+    "page": "Chí Phèo",
+    "needles": [
+     "Anh Chí ơi! sao anh lại làm ra thế?",
+     "Nào đứng lên đi. Cứ vào đây uống nước đã.",
+     "Khổ quá! giá có tôi ở nhà thì có đâu nên nỗi."
     ],
     "author": "Nam Cao",
     "publisher": "Wikisource tiếng Việt (văn bản miền công cộng; Nam Cao mất năm 1951)"
@@ -96,12 +134,53 @@
      "Không phải cụ đớn, chính thật cụ khôn róc đời.",
      "Thứ nhất sợ kẻ anh-hùng, thứ nhì sợ kẻ cố cùng liều thân.",
      "Những thằng ấy chính là những thằng được việc.",
-     "Khi cần đến, chỉ cho nó dăm hào uống rượu, là có thể sai nó đến tác hại bất cứ anh nào không nghe mình."
+     "Khi cần đến, chỉ cho nó dăm hào uống rượu, là có thể sai nó đến tác hại bất cứ anh nào không nghe mình.",
+     "Thế nào là mềm nắn, rắn buông?",
+     "nếu nhất nhất cái gì cũng đè đầu ấn cổ thì lại bán nhà đi cho sớm."
     ],
     "author": "Nam Cao",
     "publisher": "Wikisource tiếng Việt (văn bản miền công cộng; Nam Cao mất năm 1951)"
    },
    "notes": "Văn bản tác phẩm trên Wikisource tiếng Việt (chính tả cũ, có gạch nối). Cần đối chiếu bản in trước khi đăng."
+  },
+  {
+   "key": "succession",
+   "title": "Chí Phèo: Năm Thọ và binh Chức, hai kẻ đến trước",
+   "fetch": {
+    "kind": "wikisource",
+    "lang": "vi",
+    "page": "Chí Phèo",
+    "needles": [
+     "Năm Thọ vốn là một thằng đầu bò đầu bướu.",
+     "nó vượt ngục và về đây nhờ ông lý một cái thẻ mang tên một người lương-thiện và một trăm đồng bạc để trốn đi",
+     "Năm Thọ vừa đi, lại có binh Chức ở đâu lần về.",
+     "Hồi tôi còn tại ngũ, tôi gửi về nhà có trăm.",
+     "Cho mãi đến năm ngoái đây, hắn chết...",
+     "Thì năm nay lại nẩy ra Chí-Phèo.",
+     "có thể thay cho binh Chức được."
+    ],
+    "author": "Nam Cao",
+    "publisher": "Wikisource tiếng Việt (văn bản miền công cộng; Nam Cao mất năm 1951)"
+   },
+   "notes": "Đoạn hồi tưởng của bá Kiến về Năm Thọ và binh Chức, hai kẻ đầu bò cụ dùng trước Chí Phèo. Văn bản chính tả cũ; đối chiếu bản in trước khi đăng."
+  },
+  {
+   "key": "factions",
+   "title": "Chí Phèo: cánh bè và quy luật làng Vũ Đại",
+   "fetch": {
+    "kind": "wikisource",
+    "lang": "vi",
+    "page": "Chí Phèo",
+    "needles": [
+     "Mười thằng đã đi ra, thì chín thằng giở về với cái vẻ hung-đồ, cái tính ương-ngạnh học được từ phương xa.",
+     "cánh cụ bá Kiến, cánh ông đội Tảo, cánh ông tư Đạm, cánh ông bát Tùng",
+     "quần ngư tranh thực",
+     "dân quá hai nghìn, xa phủ, xa tỉnh"
+    ],
+    "author": "Nam Cao",
+    "publisher": "Wikisource tiếng Việt (văn bản miền công cộng; Nam Cao mất năm 1951)"
+   },
+   "notes": "Đoạn bá Kiến suy nghĩ về quy luật chung của làng (nhiều cánh tranh nhau). Văn bản chính tả cũ; đối chiếu bản in trước khi đăng."
   },
   {
    "key": "taodoi",
@@ -130,12 +209,34 @@
     "needles": [
      "Bởi vì từ đấy, hắn bao giờ cũng say.",
      "Tất cả dân làng đều sợ hắn, và tránh mặt hắn mỗi lần hắn qua.",
-     "nó không còn phải là mặt người"
+     "nó không còn phải là mặt người",
+     "làm chẩy máu và nước mắt của bao nhiêu người lương-thiện.",
+     "hắn say thì hắn làm bất cứ cái gì người ta sai hắn làm.",
+     "hắn đã thành người không tuổi rồi",
+     "biết bao nhiêu là sẹo, vết những mảnh chai của bao nhiêu lần",
+     "ngay đến cái thẻ có biên tên tuổi hắn cũng không có",
+     "trong sổ làng người ta vẫn khai hắn vào hạng dân lưu-tán, lâu năm không về làng"
     ],
     "author": "Nam Cao",
     "publisher": "Wikisource tiếng Việt (văn bản miền công cộng; Nam Cao mất năm 1951)"
    },
    "notes": "Văn bản tác phẩm trên Wikisource tiếng Việt (chính tả cũ, có gạch nối). Cần đối chiếu bản in trước khi đăng."
+  },
+  {
+   "key": "tulang",
+   "title": "Chí Phèo: tự Lãng, người bạn rượu",
+   "fetch": {
+    "kind": "wikisource",
+    "lang": "vi",
+    "page": "Chí Phèo",
+    "needles": [
+     "Hai thằng say rượu ngả vào nhau mà cười, như một đôi tri-kỷ cuồng.",
+     "Chưa bao giờ Chí-Phèo được thỏa-thuê đến thế!"
+    ],
+    "author": "Nam Cao",
+    "publisher": "Wikisource tiếng Việt (văn bản miền công cộng; Nam Cao mất năm 1951)"
+   },
+   "notes": "Cảnh Chí Phèo uống rượu với tự Lãng (thầy cúng kiêm nghề hoạn lợn). Văn bản chính tả cũ; đối chiếu bản in trước khi đăng."
   },
   {
    "key": "thino0",
@@ -155,6 +256,58 @@
    "notes": "Văn bản tác phẩm trên Wikisource tiếng Việt (chính tả cũ, có gạch nối). Cần đối chiếu bản in trước khi đăng."
   },
   {
+   "key": "meet",
+   "title": "Chí Phèo: gặp Thị Nở bên bờ sông",
+   "fetch": {
+    "kind": "wikisource",
+    "lang": "vi",
+    "page": "Chí Phèo",
+    "needles": [
+     "một người đàn bà ngồi tênh hênh",
+     "Thị ngủ ngon lành và say-sưa",
+     "hắn lẳng-lặng ngồi xuống bên sườn thị"
+    ],
+    "author": "Nam Cao",
+    "publisher": "Wikisource tiếng Việt (văn bản miền công cộng; Nam Cao mất năm 1951)"
+   },
+   "notes": "Cảnh gặp nhau bên bờ sông, đêm trăng. Văn bản chính tả cũ; đối chiếu bản in trước khi đăng. Không dùng chi tiết thân thể để viết lời đọc (chỉ dùng để xác nhận bối cảnh gặp)."
+  },
+  {
+   "key": "rescue",
+   "title": "Chí Phèo: Thị Nở chăm lúc trở bệnh",
+   "fetch": {
+    "kind": "wikisource",
+    "lang": "vi",
+    "page": "Chí Phèo",
+    "needles": [
+     "mửa thốc, mửa tháo, mửa ồng ộc, mửa đến cả ruột",
+     "Thị để hắn nằm lên, và đi nhặt-nhạnh tất cả các manh chiếu rách đắp lên cho hắn",
+     "Thị kiêu-ngạo vì đã cứu sống cho một người",
+     "Nhưng cũng có cả lòng yêu của một người chịu ơn"
+    ],
+    "author": "Nam Cao",
+    "publisher": "Wikisource tiếng Việt (văn bản miền công cộng; Nam Cao mất năm 1951)"
+   },
+   "notes": "Cảnh Chí Phèo trở bệnh gần sáng sau đêm gặp Thị Nở, và Thị chăm sóc. Văn bản chính tả cũ; đối chiếu bản in trước khi đăng."
+  },
+  {
+   "key": "fivedays",
+   "title": "Chí Phèo: năm ngày sống chung",
+   "fetch": {
+    "kind": "wikisource",
+    "lang": "vi",
+    "page": "Chí Phèo",
+    "needles": [
+     "Thị ở nhà hắn cả ngày lẫn đêm, trừ những lúc đi kiếm tiền",
+     "Hắn không còn kinh rượu nhưng cố uống cho thật ít",
+     "để tỉnh táo mà yêu nhau"
+    ],
+    "author": "Nam Cao",
+    "publisher": "Wikisource tiếng Việt (văn bản miền công cộng; Nam Cao mất năm 1951)"
+   },
+   "notes": "Đoạn tả năm ngày Thị Nở và Chí Phèo sống chung trước khi thị nhớ ra bà cô. Văn bản chính tả cũ; đối chiếu bản in trước khi đăng."
+  },
+  {
    "key": "awake",
    "title": "Chí Phèo: buổi sáng tỉnh rượu",
    "fetch": {
@@ -166,6 +319,7 @@
      "Hắn sợ rượu cũng như những người ốm thường sợ cơm.",
      "Hình như có một thời hắn đã ao ước có một gia-đình nho-nhỏ.",
      "Chồng cuốc mướn cầy thuê.",
+     "Chúng bỏ lại một con lợn nuôi để làm vốn liếng. Khá giả thì mua dăm sào ruộng làm.",
      "Chí-Phèo hình như đã trông trước thấy tuổi già của hắn, đói rét và ốm đau, và cô độc, cái này còn đáng sợ hơn đói rét và ốm đau."
     ],
     "author": "Nam Cao",
@@ -185,7 +339,13 @@
      "Người ta hay hối hận về tội ác khi không đủ sức mà ác nữa.",
      "Đời hắn chưa bao giờ được săn-sóc bởi một bàn tay đàn bà.",
      "Hắn thấy lòng thành trẻ con.",
-     "Chúng sẽ làm thành một cặp rất xứng đôi."
+     "Chúng sẽ làm thành một cặp rất xứng đôi.",
+     "lần này là lần thứ nhất hắn được một người đàn bà cho",
+     "Hắn vẫn phải dọa nạt hay là dật cướp.",
+     "mày thực-thà quá! con giai gì mới hai mươi tuổi mà đã như ông già",
+     "Chả nhẽ tao gọi mày vào để chỉ bóp chân thế này thôi ư?",
+     "Hắn chỉ thấy nhục, chứ yêu đương gì. Không, hắn chưa được một người đàn bà nào yêu cả.",
+     "Hắn có thể tìm bạn được, sao lại chỉ gây kẻ thù?"
     ],
     "author": "Nam Cao",
     "publisher": "Wikisource tiếng Việt (văn bản miền công cộng; Nam Cao mất năm 1951)"
@@ -201,9 +361,13 @@
     "page": "Chí Phèo",
     "needles": [
      "Muốn ác, phải là kẻ mạnh.",
+     "Hắn đâu còn mạnh nữa.",
+     "hắn thèm lương-thiện, hắn muốn làm hòa với mọi người biết bao!",
      "Họ sẽ lại nhận hắn vào cái xã-hội bằng-phẳng, thân-thiện của những người lương-thiện",
      "Giá cứ thế này mãi thì thích nhỉ?",
-     "Hay là mình sang đây ở với tớ một nhà cho vui."
+     "Hay là mình sang đây ở với tớ một nhà cho vui.",
+     "hắn mơ hồ thấy rằng sẽ có một lúc mà người ta không thể liều được nữa",
+     "Bấy giờ mới nguy!"
     ],
     "author": "Nam Cao",
     "publisher": "Wikisource tiếng Việt (văn bản miền công cộng; Nam Cao mất năm 1951)"
@@ -219,7 +383,8 @@
     "page": "Chí Phèo",
     "needles": [
      "Đã nhịn được đến bằng này tuổi thì nhịn hẳn; ai lại đi lấy thằng Chí-Phèo!",
-     "Ai lại đi lấy thằng chỉ có một nghề là"
+     "Ai lại đi lấy thằng chỉ có một nghề là",
+     "Bà nghĩ đến cái đời dài dằng-dặc của bà, không có chồng. Bà thấy chua xót lắm."
     ],
     "author": "Nam Cao",
     "publisher": "Wikisource tiếng Việt (văn bản miền công cộng; Nam Cao mất năm 1951)"
@@ -258,7 +423,14 @@
      "Hắn rút dao ra, xông vào.",
      "Có nhiều kẻ mừng thầm.",
      "Giời có mắt đấy, anh em ạ!",
+     "Thằng bố chết, thằng con lớp này không khỏi người ta cho ăn bùn",
+     "Tre già măng mọc, thằng ấy chết, còn thằng khác, chúng mình cũng chẳng lợi tý gì đâu",
+     "Le bè vừa vừa chứ, tôi không phải là cái kho",
+     "Cầm lấy mà cút đi đi cho rảnh",
+     "Họ tuốn đến để hỏi thăm, nhưng chính là để nhìn lý Cường bằng những con mắt thỏa-mãn và khiêu-khích",
+     "Phúc đời nhà mày, con nhé. Chả ôm lấy ông Chí-Phèo.",
      "Sao có lúc nó hiền như đất.",
+     "Nói dại, nếu mình chửa, bây giờ hắn chết rồi, thì làm ăn thế nào?",
      "Đột nhiên thị thấy thoáng hiện ra một cái lò gạch cũ bỏ không"
     ],
     "author": "Nam Cao",
@@ -271,755 +443,373 @@
   {
    "key": "open",
    "status": "verified",
-   "sources": [
-    "open"
-   ],
-   "text": "Truyện mở đầu bằng cảnh Chí Phèo say rượu vừa đi vừa chửi trời, chửi đời, chửi cả làng Vũ Đại, và không ai lên tiếng."
+   "sources": ["open"],
+   "text": "Truyện mở đầu bằng cảnh Chí Phèo say rượu vừa đi vừa chửi trời (giời có của riêng nhà nào), chửi đời (đời là tất cả nhưng chẳng là ai), chửi cả làng Vũ Đại; cả làng ai cũng tự nhủ chắc nó trừ mình ra, và không ai lên tiếng."
   },
   {
    "key": "pub",
    "status": "verified",
-   "sources": [
-    "pub"
-   ],
+   "sources": ["pub"],
    "text": "Truyện được phát hành đầu tiên năm 1941 với tiêu đề Đôi lứa xứng đôi (theo ghi chú của Wikisource)."
   },
   {
    "key": "birth",
    "status": "verified",
-   "sources": [
-    "birth"
-   ],
-   "text": "Chí Phèo bị bỏ bên một cái lò gạch bỏ không, được người đi thả ống lươn nhặt đem cho một người đàn bà góa mù, rồi đi ở hết nhà này đến nhà khác."
+   "sources": ["birth"],
+   "text": "Chí Phèo bị bỏ bên một cái lò gạch bỏ không, được người đi thả ống lươn nhặt đem cho một người đàn bà góa mù, bà bán hắn cho một bác phó cối không con; bác phó cối chết, hắn lại bơ vơ đi ở hết nhà này đến nhà khác."
   },
   {
    "key": "canh",
    "status": "verified",
-   "sources": [
-    "birth",
-    "thino"
-   ],
+   "sources": ["birth", "thino"],
    "text": "Năm hai mươi tuổi hắn làm canh điền cho lý Kiến (sau là bá Kiến); bà ba bắt hắn bóp chân, hắn thấy nhục hơn là thích."
   },
   {
    "key": "prison",
    "status": "disputed",
-   "sources": [
-    "prison"
-   ],
+   "sources": ["prison"],
    "text": "Chí Phèo bị giải huyện rồi đi tù, nhưng truyện nêu nhiều cách giải thích khác nhau về lý do (ông lý ghen, hoặc hắn lấy trộm tiền thóc) mà không khẳng định.",
    "note": "Chính văn bản để ngỏ lý do; không có bên nào được xác nhận."
   },
   {
    "key": "return",
    "status": "verified",
-   "sources": [
-    "prison"
-   ],
+   "sources": ["prison"],
    "text": "Sau bảy, tám năm hắn trở về với diện mạo khác hẳn: đầu trọc lốc, răng cạo trắng hớn, mặt đen rắn cơng cơng, ngực xăm rồng phượng."
   },
   {
    "key": "gate",
    "status": "verified",
-   "sources": [
-    "prison",
-    "gate"
-   ],
-   "text": "Hôm sau, say khướt, hắn xách vỏ chai đến cổng nhà bá Kiến chửi; ở đó hắn lăn lộn dưới đất, vừa kêu làng vừa lấy mảnh chai cào mặt."
+   "sources": ["prison", "gate"],
+   "text": "Hôm sau, say khướt, hắn xách vỏ chai đến cổng nhà bá Kiến chửi; cổng đóng chặt vì nhà toàn đàn bà. Hắn lăn lộn dưới đất, kêu làng và lấy mảnh chai cào mặt. Lý Cường, con cụ bá, về tới và quát thẳng vào mặt hắn: mày muốn lôi thôi gì, cái thằng không cha không mẹ này; rồi đánh hắn."
+  },
+  {
+   "key": "calm",
+   "status": "verified",
+   "sources": ["calm", "gate"],
+   "text": "Khi bá Kiến về, cụ không đánh mắng; cụ gạt những người xem đi, hỏi Chí Phèo sao anh lại làm ra thế, rồi mời hắn vào nhà uống nước, nói sẽ nói chuyện tử tế với nhau."
   },
   {
    "key": "bakien",
    "status": "verified",
-   "sources": [
-    "bakien",
-    "gate"
-   ],
-   "text": "Truyện nói bá Kiến khôn róc đời, sợ kẻ liều thân; ông không vu vạ gì cho Chí Phèo mà còn giết gà, cho rượu và tiền."
+   "sources": ["bakien", "gate"],
+   "text": "Truyện nói bá Kiến khôn róc đời, sợ kẻ liều thân; ông không vu vạ gì cho Chí Phèo mà còn giết gà, cho rượu và tiền. Cụ có triết lý mềm nắn, rắn buông: đè đầu ấn cổ dân làng quá thì chính mình cũng sớm phải bán nhà mà đi."
   },
   {
-   "key": "use",
+   "key": "succession",
    "status": "verified",
-   "sources": [
-    "bakien"
-   ],
-   "text": "Truyện nói bá Kiến biết dùng những kẻ bạt mạng không sợ chết; chỉ cần cho dăm hào uống rượu là có thể sai chúng hại bất cứ ai không nghe mình."
+   "sources": ["succession"],
+   "text": "Trước Chí Phèo, bá Kiến đã dùng Năm Thọ (bỏ tù rồi vượt ngục, đòi một thẻ tên giả và trăm đồng để trốn hẳn) và sau đó binh Chức (vợ bị lợi dụng khi anh đi lính; khi về, anh dọa giết vợ con nếu cụ không che giấu án cũ, cụ phải chu cấp tiền đến khi anh chết năm ngoái); năm nay bá Kiến nhận ra Chí Phèo có thể thay thế vai trò ấy.",
+   "note": "Đoạn hồi tưởng/suy nghĩ của bá Kiến trong truyện, không phải lời bình bên ngoài."
+  },
+  {
+   "key": "factions",
+   "status": "verified",
+   "sources": ["factions"],
+   "text": "Truyện nói làng Vũ Đại chia thành nhiều cánh tranh giành nhau (cánh bá Kiến, cánh Đội Tảo, cánh tư Đạm, cánh bát Tùng), như cảnh 'quần ngư tranh thực'; và rằng mười người bị đè nén bỏ làng ra đi thì chín người trở về với vẻ hung đồ học được từ nơi khác. Làng lại có hơn hai nghìn dân, xa phủ, xa tỉnh, nên cai quản không đơn giản."
   },
   {
    "key": "taodoi",
    "status": "verified",
-   "sources": [
-    "taodoi"
-   ],
+   "sources": ["taodoi"],
    "text": "Bá Kiến sai Chí Phèo đi đòi món nợ năm mươi đồng của Đội Tảo, tính rằng hắn thắng hay thua thì đằng nào cũng lợi cho mình; xong việc, hắn được cho một mảnh vườn."
   },
   {
    "key": "drunk",
    "status": "verified",
-   "sources": [
-    "drunk"
-   ],
-   "text": "Truyện nói từ đó Chí Phèo bao giờ cũng say, cả làng sợ hắn và tránh mặt hắn, và mặt hắn đầy sẹo đến mức không còn phải là mặt người."
+   "sources": ["drunk"],
+   "text": "Truyện nói từ đó Chí Phèo bao giờ cũng say, cả làng sợ hắn và tránh mặt hắn, mặt hắn đầy sẹo đến mức không còn phải là mặt người, và hắn làm chảy máu, nước mắt của nhiều người lương thiện mà không biết, vì lúc say hắn làm bất cứ điều gì người ta sai."
+  },
+  {
+   "key": "noage",
+   "status": "verified",
+   "sources": ["drunk"],
+   "text": "Truyện viết hắn đã thành một người không tuổi (ba mươi tám hay bốn mươi, không ai rõ); mặt hắn đầy sẹo là vết mảnh chai của nhiều lần ăn vạ; và làng không giữ cho hắn cái thẻ biên tên tuổi, chỉ khai hắn vào sổ là dân lưu tán lâu năm không về."
+  },
+  {
+   "key": "tulang",
+   "status": "verified",
+   "sources": ["tulang"],
+   "text": "Chí Phèo có một người uống rượu cùng là tự Lãng (thầy cúng kiêm nghề hoạn lợn, sống một mình); truyện tả hai người cười với nhau như một đôi tri kỷ, và đó là lần Chí Phèo được thỏa thuê hiếm có."
   },
   {
    "key": "thino0",
    "status": "verified",
-   "sources": [
-    "thino0"
-   ],
+   "sources": ["thino0"],
    "text": "Truyện tả Thị Nở nghèo, bị cả làng tránh, ngoài ba mươi tuổi vẫn chưa có chồng."
+  },
+  {
+   "key": "meet",
+   "status": "verified",
+   "sources": ["meet"],
+   "text": "Đêm trăng bên bờ sông, Chí Phèo thấy Thị Nở đang ngồi ngủ cạnh hai lọ nước, rồi lặng lẽ ngồi xuống bên thị."
+  },
+  {
+   "key": "rescue",
+   "status": "verified",
+   "sources": ["rescue"],
+   "text": "Gần sáng, Chí Phèo trở bệnh, nôn mửa; Thị Nở đỡ hắn vào lều, đắp chiếu rách cho ngủ. Truyện viết thị tự hào vì đã cứu sống một người, và cảm thấy đó là lòng yêu của người làm ơn lẫn lòng yêu của người chịu ơn."
   },
   {
    "key": "awake",
    "status": "verified",
-   "sources": [
-    "awake"
-   ],
-   "text": "Sáng hôm sau hắn tỉnh rượu như tỉnh dậy sau một cơn say rất dài, sợ rượu, nhớ ra ước mong ngày xưa về một gia đình nhỏ và thấy trước tuổi già cô độc."
+   "sources": ["awake"],
+   "text": "Sáng hôm sau hắn tỉnh rượu như tỉnh dậy sau một cơn say rất dài, sợ rượu, nhớ ra ước mong ngày xưa về một gia đình nhỏ (chồng cày thuê, vợ dệt vải, nuôi lợn làm vốn, khá giả thì mua ruộng) và thấy trước tuổi già cô độc."
   },
   {
    "key": "sorrow",
    "status": "verified",
-   "sources": [
-    "thino"
-   ],
+   "sources": ["thino"],
    "text": "Truyện viết rằng người ta hay hối hận về tội ác khi không đủ sức mà ác nữa."
   },
   {
    "key": "porridge",
    "status": "verified",
-   "sources": [
-    "thino"
-   ],
+   "sources": ["thino"],
    "text": "Thị Nở mang đến cho hắn bát cháo hành; hắn nhận ra đời mình chưa từng được một bàn tay đàn bà chăm sóc, và thấy lòng thành trẻ con."
+  },
+  {
+   "key": "firstgift",
+   "status": "verified",
+   "sources": ["thino"],
+   "text": "Truyện viết đây là lần đầu tiên hắn được một người đàn bà cho cái gì; xưa nay hắn vẫn phải dọa nạt hay giật cướp mới có được."
+  },
+  {
+   "key": "babamem",
+   "status": "verified",
+   "sources": ["thino"],
+   "text": "Trong lúc ăn cháo, hắn nhớ lại năm hai mươi tuổi bị bà ba gọi vào chỉ để bóp chân rồi mắng là thực thà quá, con trai gì mà đã như ông già; hắn chỉ thấy nhục, không phải yêu, và truyện viết rằng hắn chưa bao giờ được một bàn tay đàn bà chăm sóc hay yêu."
+  },
+  {
+   "key": "friendnotenemy",
+   "status": "verified",
+   "sources": ["thino"],
+   "text": "Truyện khép đoạn bát cháo hành bằng câu hỏi để ngỏ cho chính hắn: hắn có thể tìm bạn được, sao lại chỉ gây kẻ thù?"
+  },
+  {
+   "key": "notstrong",
+   "status": "verified",
+   "sources": ["hope"],
+   "text": "Truyện viết: muốn ác phải là kẻ mạnh, mà hắn đâu còn mạnh nữa; hắn thèm lương thiện, muốn làm hòa với mọi người."
+  },
+  {
+   "key": "risky",
+   "status": "verified",
+   "sources": ["hope"],
+   "text": "Truyện viết hắn mơ hồ thấy sẽ có lúc hắn không thể liều được nữa, và lúc đó mới nguy."
   },
   {
    "key": "hope",
    "status": "verified",
-   "sources": [
-    "hope"
-   ],
+   "sources": ["hope"],
    "text": "Hắn nghĩ rằng Thị Nở sẽ mở đường để mọi người nhận hắn vào xã hội của những người lương thiện; hắn nói giá cứ thế này mãi thì thích, và rủ thị sang ở cùng."
   },
   {
    "key": "pair",
    "status": "verified",
-   "sources": [
-    "thino"
-   ],
+   "sources": ["thino"],
    "text": "Truyện viết hai người sẽ làm thành một cặp rất xứng đôi."
+  },
+  {
+   "key": "fivedays",
+   "status": "verified",
+   "sources": ["fivedays"],
+   "text": "Truyện viết suốt năm ngày Thị Nở ở nhà Chí Phèo cả ngày lẫn đêm (trừ lúc đi kiếm tiền); hắn không kinh rượu nữa nhưng cố uống ít, một phần để tỉnh táo mà yêu nhau."
   },
   {
    "key": "aunt",
    "status": "verified",
-   "sources": [
-    "bacô"
-   ],
+   "sources": ["bacô"],
    "text": "Bà cô Thị Nở gào lên: đã nhịn đến bằng này tuổi thì nhịn hẳn, ai lại đi lấy thằng Chí Phèo."
+  },
+  {
+   "key": "auntbg",
+   "status": "verified",
+   "sources": ["bacô"],
+   "text": "Truyện viết bà cô cũng năm mươi tuổi, không chồng, nghĩ đến cái đời dài dằng dặc của mình mà thấy chua xót."
   },
   {
    "key": "rift",
    "status": "verified",
-   "sources": [
-    "rift"
-   ],
+   "sources": ["rift"],
    "text": "Nghe lời bà cô do Thị Nở lặp lại, hắn ngẩn người, khóc rưng rức, uống mà càng tỉnh, rồi cầm dao đi nhưng lại đi thẳng qua nhà thị."
+  },
+  {
+   "key": "distracted",
+   "status": "verified",
+   "sources": ["distracted"],
+   "text": "Ngay trước lần cuối Chí Phèo đến, truyện tả bá Kiến (ngoài sáu mươi) đang nằm nghỉ trưa, hơi bực vì bà tư, còn trẻ, đi đâu mãi chưa về — một chi tiết đời thường, không có gì báo trước."
   },
   {
    "key": "wish",
    "status": "verified",
-   "sources": [
-    "end"
-   ],
-   "text": "Chí Phèo nói với bá Kiến: tao muốn làm người lương thiện; bá Kiến đáp chỉ cần hắn lương thiện cho thiên hạ nhờ; hắn lắc đầu: ai cho tao lương thiện?"
+   "sources": ["end"],
+   "text": "Trước khi nghe hắn, bá Kiến quát nhẹ 'le bè vừa vừa chứ, tôi không phải là cái kho' và ném năm hào bảo hắn cút cho rảnh. Chí Phèo nói với bá Kiến: tao muốn làm người lương thiện; bá Kiến đáp chỉ cần hắn lương thiện cho thiên hạ nhờ; hắn lắc đầu: ai cho tao lương thiện?"
   },
   {
    "key": "kill",
    "status": "verified",
-   "sources": [
-    "end"
-   ],
+   "sources": ["end"],
    "text": "Hắn rút dao xông vào bá Kiến; khi người ta đến, chính hắn cũng đang giẫy giụa giữa máu."
   },
   {
    "key": "after",
    "status": "verified",
-   "sources": [
-    "end"
-   ],
+   "sources": ["end"],
    "text": "Cả làng bàn tán, nhiều kẻ mừng thầm, có người nói giời có mắt; Thị Nở nghĩ thầm sao có lúc hắn hiền như đất và thoáng thấy hiện ra một cái lò gạch cũ bỏ không."
+  },
+  {
+   "key": "aftermath2",
+   "status": "verified",
+   "sources": ["end"],
+   "text": "Đội Tảo nói toang ngoài chợ rằng thằng con (lý Cường) khó tránh bị người ta cho ăn bùn; người biết điều hơn lại chép miệng: tre già măng mọc, người này chết thì người khác lên, dân làng cũng chẳng lợi gì."
+  },
+  {
+   "key": "vultures",
+   "status": "verified",
+   "sources": ["end"],
+   "text": "Truyện viết bọn kỳ hào trong làng tuốn đến hỏi thăm, nhưng chính là để nhìn lý Cường bằng những con mắt thỏa mãn và khiêu khích."
+  },
+  {
+   "key": "pregnant_hint",
+   "status": "disputed",
+   "sources": ["end"],
+   "text": "Bà cô nói với Thị Nở: phúc đời nhà mày, chả ôm lấy ông Chí Phèo; thị nghĩ thầm nói dại nếu mình có chửa thì làm ăn thế nào, ngay trước khi hiện ra hình ảnh cái lò gạch cũ.",
+   "note": "Văn bản chỉ để thị tự hỏi 'nói dại... nếu mình chửa'; không xác nhận thị có mang thai. Thường được đọc như một gợi ý vòng lặp (một Chí Phèo khác), không phải sự kiện chắc chắn — giữ nguyên tính mở của truyện."
   }
  ],
  "script": [
   {
    "kind": "hook",
-   "heading": "Mở đầu",
+   "heading": "Phần 1 — Một người không ai muốn nghe",
    "paragraphs": [
-    {
-     "text": "Hắn vừa đi vừa chửi. Chửi trời, chửi đời, chửi cả làng Vũ Đại. Và không ai đáp lại.",
-     "claims": [
-      "open"
-     ],
-     "factual": true
-    },
-    {
-     "text": "Đến cuối truyện, chính người say ấy nói với bá Kiến một câu rất khác: tao muốn làm người lương thiện.",
-     "claims": [
-      "wish"
-     ],
-     "factual": true
-    },
-    {
-     "text": "Một điều nhỏ như vậy, vì sao lại thành bi kịch? Hôm nay mình kể lại Chí Phèo của Nam Cao theo cách đi tìm câu trả lời đó.",
-     "claims": [],
-     "factual": false
-    }
+    {"text": "Hắn vừa đi vừa chửi. Bắt đầu hắn chửi giời — có hề gì, giời có của riêng nhà nào. Rồi hắn chửi đời: đời là tất cả, nhưng chẳng là ai. Tức mình, hắn chửi cả làng Vũ Đại. Nhưng cả làng, ai cũng tự nhủ: chắc nó trừ mình ra. Không ai lên tiếng cả.", "claims": ["open"], "factual": true},
+    {"text": "Đến cuối truyện, chính người say ấy đứng trước mặt bá Kiến và nói một câu rất khác: tao muốn làm người lương thiện.", "claims": ["wish"], "factual": true},
+    {"text": "Một câu nói nhỏ như vậy mà thành bi kịch. Hôm nay mình kể lại Chí Phèo của Nam Cao, không phải để tóm tắt cho xong một tác phẩm trong sách giáo khoa, mà để đi tìm xem: ai, hoặc cái gì, đã đứng giữa Chí Phèo và cái quyền được làm một người lương thiện.", "claims": [], "factual": false}
    ]
   },
   {
    "kind": "context",
-   "heading": "Lai lịch",
+   "heading": "Phần 2 — Đứa trẻ không có nơi để trở về",
    "paragraphs": [
-    {
-     "text": "Truyện ra đời năm 1941, ban đầu có tên Đôi lứa xứng đôi.",
-     "claims": [
-      "pub"
-     ],
-     "factual": true
-    },
-    {
-     "text": "Chí Phèo không biết ai đã sinh ra mình. Một buổi sáng, người đi thả ống lươn thấy hắn nằm bên một cái lò gạch bỏ không, rồi đem cho một người đàn bà góa mù. Lớn lên, hắn đi ở hết nhà này đến nhà khác.",
-     "claims": [
-      "birth"
-     ],
-     "factual": true
-    },
-    {
-     "text": "Hai mươi tuổi, hắn làm canh điền cho lý Kiến, sau này là cụ bá Kiến. Bà ba nhà ông lý bắt hắn bóp chân. Hắn không thấy thích. Hắn thấy nhục.",
-     "claims": [
-      "canh"
-     ],
-     "factual": true
-    },
-    {
-     "text": "Rồi hắn bị giải lên huyện và đi tù. Vì sao thì chính truyện cũng không chắc. Người bảo ông lý ghen, người bảo hắn lấy trộm tiền thóc. Mỗi người nói một cách.",
-     "claims": [
-      "prison"
-     ],
-     "factual": true
-    },
-    {
-     "text": "Mình dừng ở chi tiết này, vì nó quan trọng: về quá khứ của Chí Phèo, câu chuyện luôn là do người khác kể. Một kẻ không cha, không mẹ, không nhà, thì ai sẽ đứng ra nói giúp cho hắn?",
-     "claims": [],
-     "factual": false
-    }
+    {"text": "Truyện phát hành lần đầu năm 1941 trên tạp chí Đời Mới, với tên gọi ban đầu là Đôi lứa xứng đôi.", "claims": ["pub"], "factual": true},
+    {"text": "Chí Phèo không biết ai đã sinh ra mình. Một buổi sáng tinh sương, một người đi thả ống lươn thấy hắn trần truồng bên một cái lò gạch bỏ không, rồi đem cho một người đàn bà góa mù. Bà bán hắn cho một bác phó cối không con. Bác phó cối chết, hắn lại bơ vơ, đi ở nhà này sang nhà khác.", "claims": ["birth"], "factual": true},
+    {"text": "Hai mươi tuổi, hắn đi làm canh điền cho lý Kiến, người sau này thành cụ bá Kiến. Có những lần bà ba nhà ông lý, còn trẻ, hay bắt hắn bóp chân, xoa bụng. Hắn không thấy thích. Hắn thấy nhục.", "claims": ["canh"], "factual": true},
+    {"text": "Rồi một hôm, hắn bị giải lên huyện, nghe đâu phải đi tù. Vì sao thì ngay chính truyện cũng không chắc: người bảo ông lý ghen với một anh canh điền khỏe mạnh, người bảo anh ta được bà ba tin cẩn nên ăn trộm tiền thóc. Mỗi người nói một cách, chẳng biết đâu mà lần.", "claims": ["prison"], "factual": true},
+    {"text": "Để ý chi tiết này: ngay cả lý do khiến Chí Phèo vào tù, tác phẩm cũng không cho một câu trả lời chắc chắn. Về quá khứ của một đứa trẻ không cha, không mẹ, không ai giữ phần đúng cho nó, câu chuyện luôn thuộc về người kể lại, chứ không thuộc về hắn.", "claims": [], "factual": false}
    ]
   },
   {
    "kind": "timeline",
-   "heading": "Người trở về làng Vũ Đại",
+   "heading": "Phần 3 (I) — Khi nỗi sợ trở thành công cụ: một kẻ không ai nhận ra trở về",
    "paragraphs": [
-    {
-     "text": "Bảy, tám năm sau hắn trở về, và không ai nhận ra. Đầu trọc lốc, răng cạo trắng hớn, mặt đen rắn cơng cơng, ngực xăm rồng phượng.",
-     "claims": [
-      "return"
-     ],
-     "factual": true
-    },
-    {
-     "text": "Hôm sau, say khướt, hắn xách vỏ chai ra cổng nhà bá Kiến mà chửi. Cổng đóng chặt. Hắn đập chai, lăn ra đất, kêu làng, rồi lấy mảnh chai cào mặt mình cho máu chảy. Những vết sẹo trên mặt hắn, ít nhất có một phần, bắt đầu từ những lần ăn vạ như thế.",
-     "claims": [
-      "gate"
-     ],
-     "factual": true
-    },
-    {
-     "text": "Bá Kiến không đàn áp. Truyện nói cụ khôn róc đời: sợ kẻ anh hùng, sợ cả kẻ cố cùng liều thân. Chí Phèo không anh hùng, nhưng liều. Nên cụ giết gà, cho rượu, cho cả tiền.",
-     "claims": [
-      "bakien"
-     ],
-     "factual": true
-    },
-    {
-     "text": "Và Nam Cao nói thẳng cụ nghĩ gì. Những kẻ bạt mạng không sợ chết là những kẻ được việc. Chỉ cần dăm hào uống rượu, là có thể sai chúng hại bất cứ ai không nghe mình.",
-     "claims": [
-      "use"
-     ],
-     "factual": true
-    },
-    {
-     "text": "Việc đầu tiên: đòi cho cụ năm mươi đồng Đội Tảo còn nợ. Cụ tính sẵn rồi: nếu Chí Phèo thắng thì tốt, nếu thua thì cụ cũng không thiệt gì, đằng nào cũng lợi cho cụ. Hắn đến chửi từ đầu ngõ, và nhà Đội Tảo trả tiền cho yên chuyện. Hắn được một mảnh vườn. Chí Phèo bỗng thành ra có nhà.",
-     "claims": [
-      "taodoi"
-     ],
-     "factual": true
-    }
+    {"text": "Bảy, tám năm sau, hắn trở về làng, và không ai nhận ra. Đầu trọc lốc, răng cạo trắng hớn, mặt đen rắn cơng cơng, ngực xăm rồng phượng và một ông tướng cầm chùy.", "claims": ["return"], "factual": true},
+    {"text": "Đây là chỗ mình tưởng tượng, không phải lời Nam Cao. Có thể hắn đã đứng ở đầu làng một lúc, nhìn những nóc nhà quen mà không còn ai quen mình, trước khi bước vào.", "claims": [], "factual": false},
+    {"text": "Hôm sau, hắn xách vỏ chai đến cổng nhà bá Kiến chửi. Cổng đóng chặt, nhà lúc ấy toàn đàn bà, không ai dám ra. Hắn đập chai vào cột cổng, lăn ra đất, lấy mảnh chai cào mặt mình cho máu chảy, miệng kêu làng như bị cắt họng.", "claims": ["gate"], "factual": true},
+    {"text": "Đúng lúc đó lý Cường, con cụ bá, về tới, quát thẳng vào mặt hắn: mày muốn lôi thôi gì, cái thằng không cha không mẹ này? Một cái tát rất kêu, rồi tiếng đấm đá nhau bình bịch ngay trước ngõ.", "claims": ["gate"], "factual": true},
+    {"text": "Nhưng khi bá Kiến về, cụ không đánh, không mắng. Cụ gạt các bà vợ vào nhà, giục người xem về, rồi ngồi xuống bên Chí Phèo, hỏi: anh Chí ơi, sao anh lại làm ra thế? Rồi giục hắn: nào đứng lên đi, cứ vào đây uống nước đã, ta nói chuyện tử tế với nhau.", "claims": ["calm"], "factual": true},
+    {"text": "Nam Cao viết thẳng vì sao cụ làm vậy: không phải cụ đớn, chính thật cụ khôn róc đời, thứ nhất sợ kẻ anh hùng, thứ nhì sợ kẻ cố cùng liều thân. Chí Phèo không anh hùng, nhưng liều. Với người liều, đè nén không lợi; cụ chọn mềm.", "claims": ["bakien"], "factual": true},
+    {"text": "Cụ có hẳn một triết lý cho nghề của mình: mềm nắn, rắn buông — cái gì cũng đè đầu ấn cổ dân làng thì chính cụ cũng sớm phải bán nhà mà đi. Làng này lại hơn hai nghìn dân, xa phủ, xa tỉnh: không phải cứ làm lý trưởng là ngồi mà khoét được.", "claims": ["bakien", "factions"], "factual": true},
+    {"text": "Và đây không phải lần đầu cụ tính bài này. Trước Chí Phèo, có Năm Thọ: một kẻ đầu bò bị cụ bỏ tù, rồi vượt ngục trở về đòi một cái thẻ mang tên người lương thiện và một trăm đồng bạc để trốn hẳn. Năm Thọ đi, đến lượt binh Chức: vợ anh ta bị lợi dụng suốt những năm anh đi lính xa; khi về, anh cầm dao dọa giết cả vợ con nếu cụ không che giấu án cũ của mình. Cụ che. Và mỗi lần có việc, cụ vẫn phải xì tiền ra cho hắn, đến tận năm ngoái, khi hắn chết.", "claims": ["succession"], "factual": true},
+    {"text": "Năm nay, đến lượt Chí Phèo. Cụ nhận ra ngay: đây là người có thể thay cho binh Chức.", "claims": ["succession"], "factual": true},
+    {"text": "Để ý trình tự đó: Năm Thọ, rồi binh Chức, rồi Chí Phèo. Không phải Bá Kiến tình cờ gặp một kẻ hung hãn rồi lợi dụng. Cụ cần đúng loại người này để giữ làng theo ý cụ; và khi một kẻ như vậy mất đi, làng lại sinh ra kẻ khác.", "claims": [], "factual": false},
+    {"text": "Bá Kiến từng tự nhận ra quy luật ấy: mười thằng bị đè nén bỏ làng mà đi, thì chín thằng trở về với vẻ hung đồ học được từ phương xa. Làng Vũ Đại lại chia thành nhiều cánh — cánh cụ bá, cánh Đội Tảo, cánh tư Đạm, cánh bát Tùng — tranh nhau một miếng mồi chung, như một bầy cá giành mồi trong cùng một dòng nước. Muốn giữ phần của mình, mỗi cánh cũng cần những kẻ liều mạng riêng.", "claims": ["factions"], "factual": true},
+    {"text": "Việc đầu tiên cụ giao cho Chí Phèo: đòi nợ năm mươi đồng của Đội Tảo, một người có vây cánh riêng. Cụ tính sẵn: Chí Phèo thắng thì cụ lợi, thua thì cụ cũng chẳng mất gì. Hắn đến chửi từ đầu ngõ; nhà Đội Tảo trả tiền cho yên việc. Cụ chia cho hắn năm đồng, còn giữ lại bán cho hắn một mảnh vườn. Chí Phèo, lần đầu trong đời, có một chỗ gọi là nhà.", "claims": ["taodoi"], "factual": true}
    ]
   },
   {
    "kind": "evidence",
-   "heading": "Bá Kiến và cái giá của việc bị sợ",
+   "heading": "Phần 3 (II) — Khi nỗi sợ trở thành công cụ: cái giá của việc bị sợ",
    "paragraphs": [
-    {
-     "text": "Từ đó, truyện nói, hắn bao giờ cũng say. Cả làng sợ hắn và tránh mặt hắn mỗi lần hắn qua. Mặt hắn đầy sẹo đến mức không còn phải là mặt người.",
-     "claims": [
-      "drunk"
-     ],
-     "factual": true
-    },
-    {
-     "text": "Từ lúc đó, Chí Phèo có một chỗ đứng trong làng: người mà ai cũng sợ. Nhưng được sợ không phải là được coi là người. Và để ý ai là người hưởng lợi từ cái sợ ấy.",
-     "claims": [],
-     "factual": false
-    },
-    {
-     "text": "Đây là phần mình tưởng tượng, không phải lời Nam Cao. Nếu hắn tự nghĩ, có lẽ là thế này: mất hết rồi thì còn sợ gì. Họ tránh mình, thì cứ để họ sợ.",
-     "claims": [],
-     "factual": false
-    }
+    {"text": "Từ đó, Nam Cao viết, hắn bao giờ cũng say; những cơn say chồng lên nhau thành một cơn dài, mênh mông. Cả làng sợ hắn, tránh mặt hắn mỗi lần hắn qua, và mặt hắn đầy sẹo đến mức không còn phải là mặt người.", "claims": ["drunk"], "factual": true},
+    {"text": "Hắn đã thành một người không tuổi: ba mươi tám hay bốn mươi, không ai rõ, vì mặt hắn vằn ngang vằn dọc bởi biết bao nhiêu là sẹo — vết mảnh chai của bao nhiêu lần ăn vạ kêu làng. Ngay cả cái thẻ có biên tên tuổi hắn, làng cũng không giữ; trong sổ làng, người ta chỉ khai hắn là dân lưu tán, lâu năm không về.", "claims": ["noage"], "factual": true},
+    {"text": "Không chỉ bị sợ, hắn còn bị xóa khỏi giấy tờ của chính làng mình. Một người không tuổi, không tên trong sổ, thì khó mà được công nhận là người, trước khi nói đến lương thiện.", "claims": [], "factual": false},
+    {"text": "Hắn làm chảy máu và nước mắt của bao nhiêu người lương thiện mà không hề biết mình đang làm chuyện ấy, vì hắn say thì hắn làm bất cứ cái gì người ta sai hắn làm.", "claims": ["drunk"], "factual": true},
+    {"text": "Chỉ còn một người trong làng không tránh hắn, và cũng không vì tốt bụng: tự Lãng, ông thầy cúng kiêm nghề hoạn lợn, mất vợ, con bỏ đi, sống một mình, chỉ muốn có người uống cùng. Hai kẻ bị làng bỏ ngoài lề ngồi dưới trăng cười với nhau như một đôi tri kỷ — lần hiếm hoi Chí Phèo được thỏa thuê đến vậy.", "claims": ["tulang"], "factual": true},
+    {"text": "Nếu hắn tự nghĩ về chỗ đứng của mình lúc ấy, có lẽ là thế này: mất hết rồi thì còn sợ gì nữa. Họ tránh mình, thì cứ để họ sợ.", "claims": [], "factual": false},
+    {"text": "Từ lúc đó, Chí Phèo có một chỗ đứng trong làng: người mà ai cũng sợ. Nhưng được sợ không phải là được coi là người. Và ai hưởng lợi từ cái sợ ấy, thì chắc chắn không phải là Chí Phèo.", "claims": [], "factual": false}
    ]
   },
   {
    "kind": "turning_point",
-   "heading": "Bát cháo hành",
+   "heading": "Phần 4 — Thị Nở và bát cháo hành",
    "paragraphs": [
-    {
-     "text": "Rồi một đêm trăng, hắn gặp Thị Nở. Nam Cao tả thị là người nghèo, ngoài ba mươi tuổi vẫn chưa có chồng, và bị cả làng tránh. Hai con người bị gạt ra rìa gặp nhau.",
-     "claims": [
-      "thino0"
-     ],
-     "factual": true
-    },
-    {
-     "text": "Sáng hôm sau, Chí Phèo tỉnh dậy, và đó là lần đầu tiên hắn tỉnh. Hắn bâng khuâng như tỉnh dậy sau một cơn say rất dài. Hắn sợ cả rượu. Ngoài kia, chim hót, người đi chợ nói chuyện giá vải, anh thuyền chài gõ mái chèo. Những tiếng quen thuộc ấy hôm nào chả có. Nhưng hôm nay hắn mới nghe thấy.",
-     "claims": [
-      "awake"
-     ],
-     "factual": true
-    },
-    {
-     "text": "Và hắn nhớ ra một điều rất xa. Hình như có một thời hắn đã ao ước một gia đình nho nhỏ. Chồng cuốc mướn cày thuê. Vợ dệt vải. Rồi hắn nhìn thấy tuổi già của mình: đói rét, ốm đau, và cô độc, thứ còn đáng sợ hơn cả đói rét và ốm đau.",
-     "claims": [
-      "awake"
-     ],
-     "factual": true
-    },
-    {
-     "text": "Đúng lúc đó Thị Nở bước vào, mang theo một bát cháo hành. Hắn húp một húp, và nhận ra đời mình chưa từng được một bàn tay đàn bà chăm sóc. Hắn thấy lòng thành trẻ con.",
-     "claims": [
-      "porridge"
-     ],
-     "factual": true
-    },
-    {
-     "text": "Nam Cao viết một câu rất đáng nhớ: người ta hay hối hận về tội ác khi không đủ sức mà ác nữa.",
-     "claims": [
-      "sorrow"
-     ],
-     "factual": true
-    },
-    {
-     "text": "Rồi hắn hy vọng. Hắn nghĩ Thị Nở sẽ mở đường cho hắn: thị sống yên ổn với hắn được, thì người khác cũng thế. Họ sẽ lại nhận hắn vào cái xã hội bằng phẳng, thân thiện của những người lương thiện. Hắn nói với thị: giá cứ thế này mãi thì thích nhỉ? Hay là sang đây ở với tớ một nhà cho vui.",
-     "claims": [
-      "hope"
-     ],
-     "factual": true
-    },
-    {
-     "text": "Mình thử đặt mình vào hắn, đây là diễn giải: lần đầu tiên có người nấu cho mình ăn. Không ai đòi gì. Không ai sợ mình. Có lẽ đó là lần đầu hắn thấy mình còn có thể là một người bình thường.",
-     "claims": [],
-     "factual": false
-    },
-    {
-     "text": "Hai người nhận ra mình xứng đôi, và nhất định lấy nhau.",
-     "claims": [
-      "pair"
-     ],
-     "factual": true
-    },
-    {
-     "text": "Nhưng bà cô Thị Nở gào lên: đã nhịn đến bằng này tuổi thì nhịn hẳn, ai lại đi lấy thằng Chí Phèo.",
-     "claims": [
-      "aunt"
-     ],
-     "factual": true
-    },
-    {
-     "text": "Bà cô không hẳn là người xấu. Bà có nỗi tủi và cái lý của bà. Nhưng chính câu nói ấy đóng lại cánh cửa duy nhất vừa mở ra với Chí Phèo.",
-     "claims": [],
-     "factual": false
-    }
+    {"text": "Đêm trăng rằm, bên bờ sông cạnh vườn chuối của hắn, Chí Phèo gặp một người đàn bà ngồi tênh hênh giữa hai lọ nước, đã ngủ say. Đó là Thị Nở: ngoài ba mươi tuổi chưa chồng, bị cả làng tránh như tránh một vật gớm ghiếc, nghèo và có phần ngẩn ngơ.", "claims": ["meet", "thino0"], "factual": true},
+    {"text": "Hắn lẳng lặng ngồi xuống bên thị. Hai con người bị làng gạt ra ngoài rìa, gặp nhau dưới một đêm trăng.", "claims": ["meet"], "factual": true},
+    {"text": "Gần sáng, hắn trở bệnh nặng, nôn mửa; Thị Nở dậy, đỡ hắn vào lều và đắp chiếu cho ngủ. Nam Cao viết thị tự hào vì đã cứu sống một người — đó là lòng yêu của người làm ơn, mà cũng là lòng yêu của người chịu ơn.", "claims": ["rescue"], "factual": true},
+    {"text": "Sáng hôm sau, Chí Phèo tỉnh dậy, và đó là lần đầu tiên hắn thật sự tỉnh. Miệng đắng, lòng mơ hồ buồn, người bủn rủn. Hắn sợ rượu, như người ốm sợ cơm. Ngoài kia chim hót, người đi chợ bàn giá vải, anh thuyền chài gõ mái chèo đuổi cá — những tiếng quen thuộc ấy hôm nào chẳng có, nhưng hôm nay hắn mới nghe thấy.", "claims": ["awake"], "factual": true},
+    {"text": "Đây là đoạn mình tưởng tượng thêm, không phải lời Nam Cao: cái tỉnh dậy ấy chắc không êm. Cả một đời say chợt bị ánh sáng ban ngày soi vào, chắc cũng chói mắt như vậy.", "claims": [], "factual": false},
+    {"text": "Hắn nhớ ra một điều rất xa: có một thời hắn đã ao ước một gia đình nho nhỏ. Chồng cuốc mướn cày thuê, vợ dệt vải, nuôi một con lợn làm vốn, khá giả thì mua dăm sào ruộng. Rồi hắn nhìn thấy trước tuổi già của mình: đói rét, ốm đau, và cô độc — thứ còn đáng sợ hơn cả đói rét và ốm đau.", "claims": ["awake"], "factual": true},
+    {"text": "Thị Nở bước vào, mang theo một nồi cháo hành còn nóng. Lần đầu tiên trong đời, hắn được một người đàn bà cho cái gì mà không phải dọa nạt hay giật cướp để có.", "claims": ["porridge", "firstgift"], "factual": true},
+    {"text": "Hắn húp một húp, thấy lòng thành trẻ con. Nam Cao viết một câu đáng nhớ: người ta hay hối hận về tội ác khi không đủ sức mà ác nữa.", "claims": ["sorrow", "porridge"], "factual": true},
+    {"text": "Giữa bữa cháo, hắn nhớ lại năm hai mươi tuổi: bà ba từng gọi hắn vào chỉ để bóp chân, rồi mắng hắn thực thà quá, con trai gì mà đã như ông già. Lúc đó hắn chỉ thấy nhục, không phải yêu. Nam Cao viết thẳng: đời hắn chưa bao giờ được một bàn tay đàn bà chăm sóc, chưa một người đàn bà nào yêu hắn cả.", "claims": ["babamem"], "factual": true},
+    {"text": "Nam Cao khép đoạn ấy bằng một câu hỏi để ngỏ cho chính hắn: hắn có thể tìm bạn được, sao lại chỉ gây kẻ thù?", "claims": ["friendnotenemy"], "factual": true},
+    {"text": "Hai lần có đàn bà trong đời hắn: một lần để bị dùng, một lần để được cho. Khác nhau đúng một chỗ — ai coi hắn là người.", "claims": [], "factual": false},
+    {"text": "Đón bát cháo, có lẽ hắn nghĩ: không ai đòi gì ở mình, không ai sợ mình. Lần đầu tiên hắn thấy mình có thể chỉ là một người bình thường.", "claims": [], "factual": false},
+    {"text": "Muốn ác, phải là kẻ mạnh, Nam Cao viết — mà hắn đâu còn mạnh nữa. Hắn thèm lương thiện, hắn muốn làm hòa với mọi người biết bao.", "claims": ["notstrong"], "factual": true},
+    {"text": "Nhưng hắn cũng mơ hồ thấy: sẽ có lúc hắn không thể liều được nữa, và lúc đó mới nguy — bởi liều là thứ duy nhất hắn từng có để sống.", "claims": ["risky"], "factual": true},
+    {"text": "Hắn hy vọng: Thị Nở sống yên ổn với hắn được, thì người khác cũng thế, rồi họ sẽ nhận hắn lại vào cái xã hội bằng phẳng, thân thiện của những người lương thiện. Hắn nói với thị: giá cứ thế này mãi thì thích nhỉ? Hay là mình sang đây ở với tớ một nhà cho vui.", "claims": ["hope"], "factual": true},
+    {"text": "Hai người thấy mình xứng đôi, và nhất định lấy nhau.", "claims": ["pair"], "factual": true},
+    {"text": "Suốt năm ngày, Thị ở nhà hắn cả ngày lẫn đêm, trừ lúc đi kiếm tiền. Hắn không kinh rượu nữa, nhưng cố uống cho thật ít — để khỏi tốn tiền, và để tỉnh táo mà yêu nhau.", "claims": ["fivedays"], "factual": true},
+    {"text": "Nhưng bà cô Thị Nở gào lên: đã nhịn được đến bằng này tuổi thì nhịn hẳn, ai lại đi lấy thằng Chí Phèo.", "claims": ["aunt"], "factual": true},
+    {"text": "Bà cô không phải người ác bẩm sinh. Bà năm mươi tuổi, cũng không chồng, và Nam Cao viết rõ: bà nghĩ đến cái đời dài dằng dặc của bà, bà thấy chua xót lắm. Nhưng chính cái chua xót ấy lại đổ xuống đầu người duy nhất bà có quyền mắng, và câu nói của bà đóng sập cánh cửa vừa mở ra với Chí Phèo.", "claims": ["auntbg"], "factual": false}
    ]
   },
   {
    "kind": "consequences",
-   "heading": "Câu hỏi cuối cùng",
+   "heading": "Phần 5 (I) — Bi kịch",
    "paragraphs": [
-    {
-     "text": "Thị Nở trút lại cho hắn tất cả lời bà cô. Hắn ngẩn người. Rồi hắn khóc rưng rức, và uống. Nhưng càng uống lại càng tỉnh. Hắn cầm dao ra đi, lảm nhảm là phải đâm chết nó, nhưng lại cứ đi thẳng qua nhà Thị Nở. Nam Cao nhận xét rằng những kẻ điên và những kẻ say không bao giờ làm điều mà lúc ra đi chúng định làm.",
-     "claims": [
-      "rift"
-     ],
-     "factual": true
-    },
-    {
-     "text": "Hắn đến nhà bá Kiến và nói: tao muốn làm người lương thiện. Bá Kiến cười: tôi chỉ cần anh lương thiện cho thiên hạ nhờ.",
-     "claims": [
-      "wish"
-     ],
-     "factual": true
-    },
-    {
-     "text": "Hắn lắc đầu: ai cho tao lương thiện? Làm thế nào cho mất được những vết mảnh chai trên mặt này?",
-     "claims": [
-      "wish"
-     ],
-     "factual": true
-    },
-    {
-     "text": "Rồi hắn rút dao xông vào. Bá Kiến chỉ kịp kêu một tiếng. Khi người ta đến, chính hắn cũng đang giẫy giụa giữa bao nhiêu là máu.",
-     "claims": [
-      "kill"
-     ],
-     "factual": true
-    },
-    {
-     "text": "Cả làng bàn tán. Nhiều kẻ mừng thầm. Có người nói: giời có mắt đấy. Còn Thị Nở thì nghĩ thầm: sao có lúc hắn hiền như đất. Rồi thị thoáng thấy hiện ra một cái lò gạch cũ bỏ không.",
-     "claims": [
-      "after"
-     ],
-     "factual": true
-    },
-    {
-     "text": "Cái lò gạch gợi lại đoạn mở đầu, nơi hắn bị bỏ lại lúc còn là đứa trẻ. Đó là cách đọc của mình: vòng tròn khép lại.",
-     "claims": [],
-     "factual": false
-    }
+    {"text": "Nếu hắn tự nghĩ lúc nghe lại câu của bà cô qua lời Thị Nở, có lẽ là thế này: cánh cửa vừa hé ra đã đóng lại, và lần này đóng bởi đúng người lẽ ra sẽ mở nó.", "claims": [], "factual": false},
+    {"text": "Hắn ngẩn người, khóc rưng rức, rồi uống. Nhưng tức quá, càng uống lại càng tỉnh ra; tỉnh ra, chao ôi buồn. Hắn cầm dao ra đi, miệng lảm nhảm phải đâm chết nó, nhưng cứ đi thẳng qua nhà Thị Nở. Nam Cao viết: những kẻ điên và những kẻ say rượu không bao giờ làm điều mà lúc ra đi chúng định làm.", "claims": ["rift"], "factual": true},
+    {"text": "Ngay trước đó, cụ còn đang hơi bực vì bà tư — vợ trẻ của cụ — đi đâu mãi chưa về; cụ đã ngoài sáu mươi, bà thì còn trẻ. Chuyện vãn nhà cửa như mọi hôm, không có gì khác thường.", "claims": ["distracted"], "factual": true},
+    {"text": "Hắn đến nhà bá Kiến. Cụ quát, nhẹ nhàng như mọi lần: le bè vừa vừa chứ, tôi không phải là cái kho — rồi ném năm hào xuống đất, bảo cầm lấy mà cút cho rảnh. Hắn gạt ra: tao không đến đây xin năm hào, tao muốn làm người lương thiện. Bá Kiến cười: tôi chỉ cần anh lương thiện cho thiên hạ nhờ. Hắn lắc đầu: ai cho tao lương thiện? Làm thế nào cho mất được những vết mảnh chai trên mặt này?", "claims": ["wish"], "factual": true},
+    {"text": "Rồi hắn rút dao xông vào. Bá Kiến chỉ kịp kêu một tiếng. Khi người ta đến, chính hắn cũng đang giẫy giụa giữa máu.", "claims": ["kill"], "factual": true},
+    {"text": "Cả làng bàn tán. Nhiều kẻ mừng thầm; có người nói giời có mắt. Đội Tảo, đối thủ cũ của Bá Kiến, nói toang ngoài chợ: thằng bố chết, thằng con lớp này không khỏi người ta cho ăn bùn. Nhưng người biết điều hơn thì chép miệng: tre già măng mọc, thằng ấy chết, còn thằng khác, chúng mình cũng chẳng lợi gì đâu.", "claims": ["after", "aftermath2"], "factual": true},
+    {"text": "Bọn kỳ hào trong làng kéo đến, nhưng chủ yếu để nhìn lý Cường — con cụ bá — bằng những con mắt vừa thỏa mãn vừa khiêu khích. Một cánh vừa yếu đi, những cánh khác đã nhìn thấy cơ hội.", "claims": ["vultures"], "factual": true},
+    {"text": "Bà cô Thị Nở chỉ vào mặt cháu: phúc đời nhà mày, con nhé, chả ôm lấy ông Chí Phèo. Thị cười, nói lảng, rồi nghĩ thầm: sao có lúc nó hiền như đất. Thị nhìn xuống bụng mình, lo nói dại nếu mình có chửa thì làm ăn thế nào. Đột nhiên, thị thấy thoáng hiện ra một cái lò gạch cũ bỏ không, xa nhà cửa, vắng người lại qua.", "claims": ["after", "pregnant_hint"], "factual": true}
    ]
   },
   {
    "kind": "conclusion",
-   "heading": "Bình luận và câu hỏi mở",
+   "heading": "Phần 5 (II) — Góc nhìn riêng và câu hỏi mở",
    "paragraphs": [
-    {
-     "text": "Theo mình, bi kịch không nằm ở chỗ Chí Phèo không đủ tốt để lương thiện. Nó nằm ở chỗ lương thiện cần người khác công nhận. Bá Kiến chỉ cho phép thứ lương thiện có lợi cho ông. Bà cô chỉ cho phép thứ lương thiện của người có gia đình. Còn vết sẹo trên mặt hắn thì không ai xóa được.",
-     "claims": [],
-     "factual": false
-    },
-    {
-     "text": "Và đáng chú ý, người đẩy hắn xuống cũng chính là người đã tạo ra hắn. Cụ bá cần những kẻ như Chí Phèo để làng yên theo ý cụ. Khi hắn muốn thôi làm việc ấy, hắn không còn giá trị nữa.",
-     "claims": [],
-     "factual": false
-    },
-    {
-     "text": "Có một cách đọc khác, và mình thấy nó cũng đúng: chính Chí Phèo là người cầm dao. Hoàn cảnh giải thích, nhưng không xóa lựa chọn. Hai cách đọc ấy không loại trừ nhau, và có lẽ Nam Cao muốn ta giữ cả hai.",
-     "claims": [],
-     "factual": false
-    },
-    {
-     "text": "Nếu một người từng làm điều sai muốn quay lại, xã hội cần cho họ điều gì ngoài lời tha thứ? Bạn nghĩ sao?",
-     "claims": [],
-     "factual": false
-    }
+    {"text": "Cái lò gạch ấy là nơi mở đầu truyện, nơi một đứa trẻ bị bỏ lại. Đọc theo cách của mình, đó là một vòng tròn: nơi Chí Phèo bắt đầu, cũng có thể là nơi một Chí Phèo khác bắt đầu.", "claims": [], "factual": false},
+    {"text": "Theo mình, bi kịch không phải vì Chí Phèo không đủ tốt để lương thiện. Lương thiện ở làng Vũ Đại cần người khác công nhận, và cụ bá chỉ công nhận loại lương thiện có lợi cho cụ, bà cô chỉ công nhận loại lương thiện của người có gia đình. Còn vết sẹo trên mặt hắn thì không bản án nào xóa được.", "claims": [], "factual": false},
+    {"text": "Và nhớ lại Năm Thọ, rồi binh Chức: Chí Phèo không phải một trường hợp lạ, mà là trường hợp thứ ba. Giết bá Kiến, hắn giết một người, không giết cái hệ thống cần những người như hắn. Đội Tảo đã nói đúng hơn hắn tưởng: tre già măng mọc.", "claims": [], "factual": false},
+    {"text": "Đọc bằng ngôn ngữ hôm nay, chuỗi Năm Thọ — binh Chức — Chí Phèo giống một mô hình quen: một hệ thống cần người làm việc bẩn, dùng xong một người thì thay người khác, còn hệ thống thì vẫn đứng. Phần khó hơn không phải là lên án hệ thống đó — ai cũng làm được — mà là nhìn thẳng vào phần của Chí Phèo trong chính bi kịch của hắn, như Nam Cao đã làm, mà không biến hắn thành nạn nhân tuyệt đối hay con quái vật tuyệt đối.", "claims": [], "factual": false},
+    {"text": "Có một cách đọc khác, và mình nghĩ nó cũng đúng: chính Chí Phèo là người cầm dao. Hoàn cảnh giải thích, nhưng không thay hắn chọn. Hai cách đọc này không cần loại nhau; có thể Nam Cao muốn người đọc giữ cả hai.", "claims": [], "factual": false},
+    {"text": "Nếu một người từng làm điều sai muốn quay lại làm người tử tế, xã hội cần cho họ điều gì, ngoài một lời tha thứ? Bạn nghĩ sao?", "claims": [], "factual": false}
    ]
   }
  ],
- "scene_overrides": {
-  "S040": {
-   "preset": "PhotoKenBurns",
-   "texts": []
-  },
-  "S041": {
-   "preset": "PhotoKenBurns",
-   "texts": []
-  },
-  "S042": {
-   "preset": "PhotoKenBurns",
-   "texts": []
-  },
-  "S043": {
-   "preset": "PhotoKenBurns",
-   "texts": []
-  },
-  "S047": {
-   "preset": "PhotoKenBurns",
-   "texts": []
-  },
-  "S048": {
-   "preset": "PhotoKenBurns",
-   "texts": []
-  },
-  "S054": {
-   "preset": "PhotoKenBurns",
-   "texts": []
-  },
-  "S055": {
-   "preset": "PhotoKenBurns",
-   "texts": []
-  },
-  "S056": {
-   "preset": "PhotoKenBurns",
-   "texts": []
-  },
-  "S059": {
-   "preset": "PhotoKenBurns",
-   "texts": []
-  },
-  "S045": {
-   "preset": "EvidenceBoard",
-   "texts": [
-    [
-     "Chỉ cần dăm hào uống rượu",
-     "caption"
-    ]
-   ]
-  },
-  "S050": {
-   "preset": "HeadlineImpact",
-   "texts": [
-    [
-     "ai là người hưởng lợi",
-     "headline"
-    ]
-   ]
-  },
-  "S016": {
-   "preset": "HeadlineImpact",
-   "texts": [
-    [
-     "cứ để họ sợ",
-     "headline"
-    ]
-   ]
-  },
-  "S052": {
-   "preset": "HeadlineImpact",
-   "texts": [
-    [
-     "hai con người bị gạt ra rìa",
-     "headline"
-    ]
-   ]
-  },
-  "S061": {
-   "preset": "HeadlineImpact",
-   "texts": [
-    [
-     "sang đây ở với tớ một nhà",
-     "headline"
-    ]
-   ]
-  },
-  "S019": {
-   "preset": "HeadlineImpact",
-   "texts": [
-    [
-     "lần đầu tiên có người nấu cho mình ăn",
-     "headline"
-    ]
-   ]
-  },
-  "S062": {
-   "preset": "HeadlineImpact",
-   "texts": [
-    [
-     "không ai sợ mình",
-     "headline"
-    ]
-   ]
-  }
- },
+ "scene_overrides": {},
  "cards_by_phrase": [
-  {
-   "phrase": "tao muốn làm người lương thiện. Bá Kiến cười",
-   "preset": "HeadlineImpact",
-   "texts": [
-    [
-     "tao muốn làm người lương thiện",
-     "headline"
-    ]
-   ]
-  },
-  {
-   "phrase": "Truyện ra đời năm 1941",
-   "preset": "TimelineBuild",
-   "texts": [
-    [
-     "1941",
-     "date"
-    ]
-   ]
-  },
-  {
-   "phrase": "Mỗi người nói một cách",
-   "preset": "EvidenceBoard",
-   "texts": [
-    [
-     "Mỗi người nói một cách",
-     "caption"
-    ]
-   ]
-  },
-  {
-   "phrase": "Những kẻ bạt mạng không sợ chết",
-   "preset": "HeadlineImpact",
-   "texts": [
-    [
-     "những kẻ bạt mạng không sợ chết",
-     "headline"
-    ]
-   ]
-  },
-  {
-   "phrase": "đằng nào cũng lợi cho cụ",
-   "preset": "EvidenceBoard",
-   "texts": [
-    [
-     "đằng nào cũng lợi cho cụ",
-     "caption"
-    ]
-   ]
-  },
-  {
-   "phrase": "Chí Phèo bỗng thành ra có nhà",
-   "preset": "HeadlineImpact",
-   "texts": [
-    [
-     "bỗng thành ra có nhà",
-     "headline"
-    ]
-   ]
-  },
-  {
-   "phrase": "không còn phải là mặt người",
-   "preset": "HeadlineImpact",
-   "texts": [
-    [
-     "không còn phải là mặt người",
-     "headline"
-    ]
-   ]
-  },
-  {
-   "phrase": "được sợ không phải là được coi là người",
-   "preset": "HeadlineImpact",
-   "texts": [
-    [
-     "được sợ không phải là được coi là người",
-     "headline"
-    ]
-   ]
-  },
-  {
-   "phrase": "Hắn sợ cả rượu",
-   "preset": "HeadlineImpact",
-   "texts": [
-    [
-     "lần đầu tiên hắn tỉnh",
-     "headline"
-    ]
-   ]
-  },
-  {
-   "phrase": "Chồng cuốc mướn cày thuê",
-   "preset": "EvidenceBoard",
-   "texts": [
-    [
-     "Chồng cuốc mướn cày thuê. Vợ dệt vải.",
-     "caption"
-    ]
-   ]
-  },
-  {
-   "phrase": "còn đáng sợ hơn cả đói rét",
-   "preset": "HeadlineImpact",
-   "texts": [
-    [
-     "cô độc",
-     "headline"
-    ]
-   ]
-  },
-  {
-   "phrase": "người ta hay hối hận về tội ác",
-   "preset": "HeadlineImpact",
-   "texts": [
-    [
-     "hối hận khi không đủ sức mà ác nữa",
-     "headline"
-    ]
-   ]
-  },
-  {
-   "phrase": "cái xã hội bằng phẳng",
-   "preset": "EvidenceBoard",
-   "texts": [
-    [
-     "cái xã hội bằng phẳng, thân thiện của những người lương thiện",
-     "caption"
-    ]
-   ]
-  },
-  {
-   "phrase": "Hai người nhận ra mình xứng đôi",
-   "preset": "HeadlineImpact",
-   "texts": [
-    [
-     "xứng đôi",
-     "headline"
-    ]
-   ]
-  },
-  {
-   "phrase": "ai lại đi lấy thằng Chí Phèo",
-   "preset": "EvidenceBoard",
-   "texts": [
-    [
-     "ai lại đi lấy thằng Chí Phèo",
-     "caption"
-    ]
-   ]
-  },
-  {
-   "phrase": "Nhưng càng uống lại càng tỉnh",
-   "preset": "HeadlineImpact",
-   "texts": [
-    [
-     "càng uống lại càng tỉnh",
-     "headline"
-    ]
-   ]
-  },
-  {
-   "phrase": "ai cho tao lương thiện",
-   "preset": "HeadlineImpact",
-   "texts": [
-    [
-     "ai cho tao lương thiện?",
-     "headline"
-    ]
-   ]
-  },
-  {
-   "phrase": "giời có mắt đấy",
-   "preset": "EvidenceBoard",
-   "texts": [
-    [
-     "giời có mắt đấy",
-     "caption"
-    ]
-   ]
-  },
-  {
-   "phrase": "Bạn nghĩ sao?",
-   "preset": "HeadlineImpact",
-   "texts": [
-    [
-     "Bạn nghĩ sao?",
-     "headline"
-    ]
-   ]
-  }
+  {"phrase": "tao muốn làm người lương thiện. Bá Kiến cười", "preset": "HeadlineImpact", "texts": [["tao muốn làm người lương thiện", "headline"]]},
+  {"phrase": "Truyện phát hành lần đầu năm 1941", "preset": "TimelineBuild", "texts": [["1941", "date"]]},
+  {"phrase": "Mỗi người nói một cách", "preset": "EvidenceBoard", "texts": [["mỗi người nói một cách", "caption"]]},
+  {"phrase": "mày thực-thà quá", "preset": "HeadlineImpact", "texts": [["không cha không mẹ", "headline"]]},
+  {"phrase": "có thể thay cho binh Chức", "preset": "EvidenceBoard", "texts": [["Năm Thọ — binh Chức — Chí Phèo", "caption"]]},
+  {"phrase": "tranh nhau một miếng mồi chung", "preset": "EvidenceBoard", "texts": [["quần ngư tranh thực", "caption"]]},
+  {"phrase": "Chí Phèo, lần đầu trong đời, có một chỗ gọi là nhà", "preset": "HeadlineImpact", "texts": [["lần đầu có một chỗ gọi là nhà", "headline"]]},
+  {"phrase": "không còn phải là mặt người", "preset": "HeadlineImpact", "texts": [["không còn phải là mặt người", "headline"]]},
+  {"phrase": "đôi tri kỷ", "preset": "EvidenceBoard", "texts": [["hai kẻ bị làng bỏ ngoài lề", "caption"]]},
+  {"phrase": "được sợ không phải là được coi là người", "preset": "HeadlineImpact", "texts": [["được sợ không phải là được coi là người", "headline"]]},
+  {"phrase": "nhưng hôm nay hắn mới nghe thấy", "preset": "HeadlineImpact", "texts": [["lần đầu tiên hắn thật sự tỉnh", "headline"]]},
+  {"phrase": "Chồng cuốc mướn cày thuê", "preset": "EvidenceBoard", "texts": [["chồng cày thuê, vợ dệt vải", "caption"]]},
+  {"phrase": "thứ còn đáng sợ hơn cả đói rét", "preset": "HeadlineImpact", "texts": [["cô độc", "headline"]]},
+  {"phrase": "không phải dọa nạt hay giật cướp để có", "preset": "HeadlineImpact", "texts": [["lần đầu được cho, không phải giành giật", "headline"]]},
+  {"phrase": "người ta hay hối hận về tội ác", "preset": "HeadlineImpact", "texts": [["hối hận khi không đủ sức mà ác nữa", "headline"]]},
+  {"phrase": "ai coi hắn là người", "preset": "HeadlineImpact", "texts": [["ai coi hắn là người", "headline"]]},
+  {"phrase": "cái xã hội bằng phẳng", "preset": "EvidenceBoard", "texts": [["cái xã hội bằng phẳng, thân thiện của người lương thiện", "caption"]]},
+  {"phrase": "Hai người thấy mình xứng đôi", "preset": "HeadlineImpact", "texts": [["xứng đôi", "headline"]]},
+  {"phrase": "ai lại đi lấy thằng Chí Phèo", "preset": "EvidenceBoard", "texts": [["ai lại đi lấy thằng Chí Phèo", "caption"]]},
+  {"phrase": "tỉnh ra, chao ôi buồn", "preset": "HeadlineImpact", "texts": [["càng uống lại càng tỉnh", "headline"]]},
+  {"phrase": "ai cho tao lương thiện", "preset": "HeadlineImpact", "texts": [["ai cho tao lương thiện?", "headline"]]},
+  {"phrase": "giời có mắt đấy", "preset": "EvidenceBoard", "texts": [["giời có mắt đấy", "caption"]]},
+  {"phrase": "tre già măng mọc", "preset": "HeadlineImpact", "texts": [["tre già măng mọc", "headline"]]},
+  {"phrase": "một vòng tròn", "preset": "HeadlineImpact", "texts": [["vòng tròn khép lại", "headline"]]},
+  {"phrase": "Bạn nghĩ sao?", "preset": "HeadlineImpact", "texts": [["Bạn nghĩ sao?", "headline"]]}
  ],
  "images": [],
- "_notes": "scene_overrides do bước resolve_cards.py điền sau khi có storyboard (khớp theo cụm chữ). Đoạn BÌNH LUẬN là nháp của chủ kênh."
+ "_notes": "scene_overrides để trống; cards_by_phrase được episode_builder.py storyboard tự khớp theo cụm chữ sau khi có storyboard thật (không có resolve_cards.py riêng — logic nằm trong cmd_storyboard của episode_builder.py). Đoạn BÌNH LUẬN là nháp của AI; chủ kênh viết lại trước cổng 2. Refactor 2026-10-12: mở rộng từ ~9 phút lên ~15 phút, thêm Năm Thọ/binh Chức, cánh bè làng Vũ Đại, tự Lãng, cảnh gặp Thị Nở, ký ức bà ba, lời Đội Tảo và gợi ý mang thai ở cuối truyện."
 }

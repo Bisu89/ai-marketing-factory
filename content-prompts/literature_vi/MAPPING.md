@@ -32,9 +32,23 @@ và ví dụ `biblical-figures-prompts/vox/ep6.spec.json`), đưa vào app bằn
 - Mỗi đoạn trong `script[]` ghi chế độ lời đọc bằng **tiền tố trong `heading` của phần** hoặc trong `script.md` (ví dụ phần "Bình luận của chủ kênh").
 - Trích dẫn tác phẩm luôn là **nguồn** (excerpt nguyên văn), và khẳng định là cách diễn đạt lại ("Trong truyện, X làm Y") — không đưa câu trích vào lời đọc trừ khi nguồn chứa đúng câu đó.
 - Nhân vật: bảng cast trong `characters.md`, dán dòng cast vào prompt ảnh.
+- **5 nhóm biên tập (`SCRIPT_TEMPLATE.md` mục 1) không phải trường trong spec.** Chúng chỉ là tiêu đề các mục trong
+  `script.md`/`heading` của từng phần; khi một nhóm biên tập trải qua nhiều `kind` kỹ thuật (ví dụ một nhóm vừa có
+  `timeline` vừa có `evidence`), tạo hai phần `script[]` riêng (hai `kind` khác nhau), đặt `heading` theo kiểu
+  "Phần 3 (I) — …" / "Phần 3 (II) — …" như `episodes/chi-pheo-ep01/script.md` đã làm, không gộp cứng vào một `kind`.
+- `cards_by_phrase` (khớp theo cụm chữ sau khi có storyboard) được chính `episode_builder.py storyboard` xử lý —
+  xem hàm `cmd_storyboard` trong file đó. Không có script `resolve_cards.py` riêng; nếu `_notes` của một spec cũ nói
+  vậy thì đó là ghi chú lỗi thời, sửa lại khi chạm vào spec đó. `scene_overrides` theo khóa cảnh cố định (`S0xx`) chỉ
+  dùng được sau khi đã chạy `storyboard` với đúng bản kịch bản đó; nếu kịch bản bị viết lại/đổi số đoạn, xóa
+  `scene_overrides` cũ (sẽ bị công cụ báo "không còn tồn tại" và bỏ qua) và ưu tiên `cards_by_phrase` vì khớp theo
+  nội dung, không theo số thứ tự.
 
-## Việc cần sửa nhỏ khi bắt đầu tập đầu tiên (đề xuất, chưa làm)
-1. `episode_builder.py`: cho `fetch` kiểu `wikisource` nhận `lang` (`vi.wikisource.org`) và `page`.
-2. Theme `collage`: kiểm thử dấu tiếng Việt của dải chữ cắt dán/tiêu đề; đổi font nếu thiếu glyph.
-3. (Tùy chọn) trường `mode` cho đoạn kịch bản nếu muốn lưu chế độ lời đọc trong DB.
-4. Preset đặc thù văn học (thẻ trích dẫn có nguồn) — hiện dùng `EvidenceBoard`.
+## Đã xác nhận khi chạy tập đầu tiên (2026-10-12)
+1. `episode_builder.py`: `fetch` kiểu `wikisource` đã nhận `lang` (`vi.wikisource.org`) và `page` — **đã hoạt động**,
+   không còn là đề xuất (xem `fetch_source()` trong `episode_builder.py`); đã dùng thật để lấy và xác minh toàn bộ
+   trích dẫn của `episodes/chi-pheo-ep01/spec.json`.
+2. Theme `collage`: **chưa kiểm thử thật** dấu tiếng Việt của dải chữ cắt dán/tiêu đề trong app (cần làm trước khi
+   duyệt cổng 3 của tập đầu); đổi font nếu thiếu glyph.
+3. (Tùy chọn, vẫn chưa làm) trường `mode` cho đoạn kịch bản nếu muốn lưu chế độ lời đọc trong DB thay vì chỉ ghi
+   trong `heading`/`script.md`.
+4. Preset đặc thù văn học (thẻ trích dẫn có nguồn) — hiện dùng `EvidenceBoard`, vẫn chưa có preset riêng.
