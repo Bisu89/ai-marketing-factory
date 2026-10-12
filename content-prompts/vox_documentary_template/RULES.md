@@ -68,7 +68,7 @@ Quy ước:
 2. **Thẻ dữ liệu** (`HeadlineImpact`, `EvidenceBoard`, `BigNumber`, `TimelineBuild`, `MapZoom`, `SplitComparison`): chữ cắt từ chính lời đọc. Tiếng Việt: bộ luật tự dò chữ chạy được; **tiếng Anh/ngôn ngữ khác: viết tay `scene_overrides`** (`texts: [[chữ, vai trò]]`).
 3. **Thẻ không có ảnh** hiện chữ ngay từ đầu cảnh (trừ mốc năm/số lớn, hiện theo lời đọc) để khỏi có khung trống.
 4. **Màu ảnh:** ảnh màu (AI, tranh màu) → **tắt "Ảnh đen trắng"** ở tab Render (mặc định tắt). Chỉ bật cho ảnh tư liệu cổ muốn đồng nhất tông xám.
-5. **Ảnh bên trong khung giấy:** ảnh tranh/ảnh AI 16:9 (Baroque của Biblical Figures hoặc ảnh kiểu poster collage — xem `IMAGE_STYLE.md`); ảnh dọc được xử lý nền mờ.
+5. **Ảnh bên trong khung giấy: ưu tiên ảnh kiểu poster collage** (nền màu phẳng đổi theo cảnh, nhân vật cắt viền trắng, mảnh báo, băng keo, tiêu đề cắt dán trong ảnh; chủ kênh đã duyệt kiểu này, 2026-10-12). Ảnh Baroque/tranh sơn dầu vẫn dùng được cho cảnh cần tranh tư liệu. Nếu ảnh poster **đã có tiêu đề trong ảnh** thì cảnh đó **không thêm thẻ chữ** (tránh chữ chồng chữ). Ảnh dọc được xử lý nền mờ. Xem `IMAGE_STYLE.md`.
 6. Không nhúng chữ vào ảnh AI (chữ do code vẽ; riêng tiếng Việt vì AI hay hỏng dấu).
 7. Preview thử chỉ 30–70 giây (`seconds`), không render đủ tập.
 8. `cinematic` và `poster` đã bỏ khỏi UI; engine còn code nhưng **không dùng** nếu chủ kênh chưa nói. Không tự đổi phong cách.

@@ -1,6 +1,6 @@
 # Ảnh AI cho phim tài liệu — ảnh đặt trong khung collage (Baroque hoặc poster) + chiến lược kết hợp
 
-> Phong cách dựng chuẩn là **collage** (`RULES.md` mục 8): ảnh được dán trên giấy rách có băng keo, nên ảnh 16:9 kiểu tranh sơn dầu Baroque (mục 2) hoặc ảnh poster collage
+> Phong cách dựng chuẩn là **collage** (`RULES.md` mục 8): ảnh được dán trên giấy rách có băng keo. **Ảnh poster collage là kiểu ưu tiên** (đã được chủ kênh duyệt); ảnh 16:9 kiểu tranh sơn dầu Baroque (mục 2) chỉ dùng khi cần tranh/tư liệu. Ảnh poster collage
 > (nền màu phẳng, nhân vật cắt viền trắng, mảnh báo, băng keo; ví dụ prompt: `biblical-figures-prompts/vox/poster_test/STYLE.md`) đều dùng được. Ảnh màu → tắt "Ảnh đen trắng" khi render.
 
 Khối prompt gốc nằm ở `biblical-figures-prompts/_tools/bf_style.py` (`LONG_STYLE`, tiếng Anh, 16:9). Ở đây là bản **đã
