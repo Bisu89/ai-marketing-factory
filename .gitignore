@@ -54,3 +54,7 @@ tools/story_remix/__pycache__/
 content-prompts/vox_documentary_template/**/.cache/
 content-prompts/vox_documentary_template/**/*.state.json
 content-prompts/vox_documentary_template/**/__pycache__/
+biblical-figures-prompts/vox/.cache/
+biblical-figures-prompts/vox/**/*.state.json
+biblical-figures-prompts/_tools/__pycache__/
+content-prompts/zombie_ngay_tan_the/_tools/__pycache__/
