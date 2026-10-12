@@ -1,0 +1,1147 @@
+{
+ "title": "Biblical Figures 8: Herod Antipas (Vox style)",
+ "topic": "Herod Antipas, ruler of Galilee: the tetrarch who killed John the Baptist, mocked Jesus and fell to his wife's ambition; what the Gospels and Josephus say.",
+ "language": "en",
+ "budget_usd": null,
+ "accessed": "2026-10-12",
+ "sources": [
+  {
+   "key": "lk3",
+   "title": "Luke 3:1-2, 19-20 (Herod the tetrarch)",
+   "fetch": {
+    "kind": "bible",
+    "ref": "Luke 3:1-2"
+   }
+  },
+  {
+   "key": "lk3b",
+   "title": "Luke 3:19-20 (Herod imprisons John)",
+   "fetch": {
+    "kind": "bible",
+    "ref": "Luke 3:19-20"
+   }
+  },
+  {
+   "key": "mk6",
+   "title": "Mark 6:14-29 (Herod, John and the banquet)",
+   "fetch": {
+    "kind": "bible",
+    "ref": "Mark 6:14-29"
+   }
+  },
+  {
+   "key": "lk9",
+   "title": "Luke 9:7-9 (Herod perplexed)",
+   "fetch": {
+    "kind": "bible",
+    "ref": "Luke 9:7-9"
+   }
+  },
+  {
+   "key": "lk13a",
+   "title": "Luke 13:1 (the Galileans)",
+   "fetch": {
+    "kind": "bible",
+    "ref": "Luke 13:1"
+   }
+  },
+  {
+   "key": "lk13b",
+   "title": "Luke 13:31-33 ('that fox')",
+   "fetch": {
+    "kind": "bible",
+    "ref": "Luke 13:31-33"
+   }
+  },
+  {
+   "key": "lk23",
+   "title": "Luke 23:6-12 (Jesus before Herod)",
+   "fetch": {
+    "kind": "bible",
+    "ref": "Luke 23:6-12"
+   }
+  },
+  {
+   "key": "ac4",
+   "title": "Acts 4:27-28 (Herod and Pilate)",
+   "fetch": {
+    "kind": "bible",
+    "ref": "Acts 4:27-28"
+   }
+  },
+  {
+   "key": "lk8",
+   "title": "Luke 8:1-3 (Joanna, wife of Chuza)",
+   "fetch": {
+    "kind": "bible",
+    "ref": "Luke 8:1-3"
+   }
+  },
+  {
+   "key": "ac13",
+   "title": "Acts 13:1 (Manaen)",
+   "fetch": {
+    "kind": "bible",
+    "ref": "Acts 13:1"
+   }
+  },
+  {
+   "key": "mk3",
+   "title": "Mark 3:6 (the Herodians)",
+   "fetch": {
+    "kind": "bible",
+    "ref": "Mark 3:6"
+   }
+  },
+  {
+   "key": "mk8",
+   "title": "Mark 8:15 (the leaven of Herod)",
+   "fetch": {
+    "kind": "bible",
+    "ref": "Mark 8:15"
+   }
+  },
+  {
+   "key": "jos_s",
+   "title": "Josephus, Antiquities 18.2.1 (Sepphoris)",
+   "fetch": {
+    "kind": "wikisource",
+    "page": "The_Antiquities_of_the_Jews/Book_XVIII",
+    "needles": [
+     "Herod also built a wall about Sepphoris"
+    ]
+   },
+   "notes": "Primary source, William Whiston translation (public domain), via Wikisource."
+  },
+  {
+   "key": "jos_t",
+   "title": "Josephus, Antiquities 18.2.3 (Tiberias)",
+   "fetch": {
+    "kind": "wikisource",
+    "page": "The_Antiquities_of_the_Jews/Book_XVIII",
+    "needles": [
+     "built a city of the same name with him, and called it Tiberias",
+     "because many sepulchers were to be here taken away"
+    ]
+   },
+   "notes": "Primary source, William Whiston translation (public domain), via Wikisource."
+  },
+  {
+   "key": "jos_a",
+   "title": "Josephus, Antiquities 18.5.1 (Herodias, Aretas and the war)",
+   "fetch": {
+    "kind": "wikisource",
+    "page": "The_Antiquities_of_the_Jews/Book_XVIII",
+    "needles": [
+     "Herod the tetrarch had, married the daughter of Aretas",
+     "one article of this marriage also was this, that he should divorce Aretas's daughter",
+     "she desired him to send her to Macherus",
+     "all Herod's army was destroyed by the treachery of some fugitives",
+     "wrote to Vitellius to make war upon him"
+    ]
+   },
+   "notes": "Primary source, William Whiston translation (public domain), via Wikisource."
+  },
+  {
+   "key": "jos_j",
+   "title": "Josephus, Antiquities 18.5.2 (John and the defeat)",
+   "fetch": {
+    "kind": "wikisource",
+    "page": "The_Antiquities_of_the_Jews/Book_XVIII",
+    "needles": [
+     "some of the Jews thought that the destruction of Herod's army came from God"
+    ]
+   },
+   "notes": "Primary source, William Whiston translation (public domain), via Wikisource."
+  },
+  {
+   "key": "jos_sal",
+   "title": "Josephus, Antiquities 18.5.4 (Salome)",
+   "fetch": {
+    "kind": "wikisource",
+    "page": "The_Antiquities_of_the_Jews/Book_XVIII",
+    "needles": [
+     "who had a daughter, Salome"
+    ]
+   },
+   "notes": "Primary source, William Whiston translation (public domain), via Wikisource."
+  },
+  {
+   "key": "jos_e",
+   "title": "Josephus, Antiquities 18.7.1-2 (Herodias and the crown)",
+   "fetch": {
+    "kind": "wikisource",
+    "page": "The_Antiquities_of_the_Jews/Book_XVIII",
+    "needles": [
+     "took this authority of her brother in an envious manner",
+     "she excited her husband, and desired him that he would sail to Rome",
+     "he opposed her request at this time, out of the love of ease",
+     "she left not off till she engaged him"
+    ]
+   },
+   "notes": "Primary source, William Whiston translation (public domain), via Wikisource."
+  },
+  {
+   "key": "jos_x",
+   "title": "Josephus, Antiquities 18.7.2 (accusation and exile)",
+   "fetch": {
+    "kind": "wikisource",
+    "page": "The_Antiquities_of_the_Jews/Book_XVIII",
+    "needles": [
+     "he had armor sufficient for seventy thousand men ready in his armory",
+     "Caius took that to be a sufficient proof of the accusation",
+     "awarded him a perpetual banishment, and appointed Lyons, a city of Gaul",
+     "the kindness which I have for my husband hinders me",
+     "Caius was angry at her, and sent her with Herod into banishment"
+    ]
+   },
+   "notes": "Primary source, William Whiston translation (public domain), via Wikisource."
+  },
+  {
+   "key": "wp_a",
+   "title": "Wikipedia - Herod Antipas (rule, coins, end)",
+   "fetch": {
+    "kind": "wikipedia",
+    "lang": "en",
+    "title": "Herod_Antipas",
+    "needles": [
+     "Herod Antipas was recognized as tetrarch by Caesar Augustus",
+     "His coins carried no images",
+     "a Roman counter-offensive was ordered by Tiberius but abandoned upon that emperor's death in 37",
+     "In 39 Antipas was accused by his nephew Agrippa I",
+     "Antipas and his brothers successfully petitioned for their removal"
+    ]
+   },
+   "notes": "Secondary source."
+  },
+  {
+   "key": "wp_m",
+   "title": "Wikipedia - Machaerus (the palace)",
+   "fetch": {
+    "kind": "wikipedia",
+    "lang": "en",
+    "title": "Machaerus",
+    "needles": [
+     "Herod constructed a palace, cisterns, a mikveh, a triclinium, and a peristyle within the fortress"
+    ]
+   },
+   "notes": "Secondary source."
+  },
+  {
+   "key": "wp_t",
+   "title": "Wikipedia - Tiberias (centre of learning)",
+   "fetch": {
+    "kind": "wikipedia",
+    "lang": "en",
+    "title": "Tiberias",
+    "needles": [
+     "much of the Mishna and the Jerusalem Talmud were compiled there"
+    ]
+   },
+   "notes": "Secondary source."
+  },
+  {
+   "key": "wp_g",
+   "title": "Wikipedia - Gospel of Peter",
+   "fetch": {
+    "kind": "wikipedia",
+    "lang": "en",
+    "title": "Gospel_of_Peter",
+    "needles": [
+     "was condemned as heretical"
+    ]
+   },
+   "notes": "Secondary source; the text is outside the New Testament."
+  }
+ ],
+ "claims": [
+  {
+   "key": "tetrarch",
+   "status": "verified",
+   "sources": [
+    "lk3",
+    "wp_a"
+   ],
+   "text": "Luke names Herod as tetrarch of Galilee, and Augustus recognised Antipas as tetrarch after the death of Herod the Great."
+  },
+  {
+   "key": "sepphoris",
+   "status": "verified",
+   "sources": [
+    "jos_s"
+   ],
+   "text": "Josephus says Herod built a wall about Sepphoris, which he calls the security of all Galilee, and made it the metropolis of the country."
+  },
+  {
+   "key": "tiberias",
+   "status": "verified",
+   "sources": [
+    "jos_t"
+   ],
+   "text": "Josephus says Herod built a city named Tiberias at the lake, and notes that to make it a habitation was to transgress Jewish law, because many sepulchres had to be removed for it."
+  },
+  {
+   "key": "coins",
+   "status": "verified",
+   "sources": [
+    "wp_a"
+   ],
+   "text": "Antipas's coins carried no images, which would have violated Jewish prescriptions against idolatry."
+  },
+  {
+   "key": "shields",
+   "status": "verified",
+   "sources": [
+    "wp_a"
+   ],
+   "text": "When Pilate placed votive shields in Jerusalem, Antipas and his brothers successfully petitioned for their removal."
+  },
+  {
+   "key": "marriage",
+   "status": "verified",
+   "sources": [
+    "jos_a"
+   ],
+   "text": "Josephus says Herod the tetrarch, married to Aretas's daughter, fell in love with Herodias while at Rome and agreed to divorce his wife in order to marry her."
+  },
+  {
+   "key": "flight",
+   "status": "verified",
+   "sources": [
+    "jos_a"
+   ],
+   "text": "Josephus says the wife learned of the plan, asked to be sent to Machaerus on the border of Aretas's land, and travelled on to her father."
+  },
+  {
+   "key": "mark_john",
+   "status": "verified",
+   "sources": [
+    "mk6",
+    "lk3b"
+   ],
+   "text": "Mark says John told Herod it was not lawful to have his brother's wife; Herod had him imprisoned, protected him because he knew him to be righteous, and heard him gladly although he was perplexed."
+  },
+  {
+   "key": "banquet",
+   "status": "verified",
+   "sources": [
+    "mk6"
+   ],
+   "text": "Mark says that at Herod's birthday banquet Herodias's daughter danced, Herod swore an oath, and John was beheaded in prison."
+  },
+  {
+   "key": "salome",
+   "status": "verified",
+   "sources": [
+    "jos_sal",
+    "mk6"
+   ],
+   "text": "Josephus names Herodias's daughter as Salome; Mark does not name the girl."
+  },
+  {
+   "key": "perplexed",
+   "status": "verified",
+   "sources": [
+    "lk9"
+   ],
+   "text": "Luke says Herod was perplexed by reports about Jesus, and said: 'John I beheaded, but who is this?' and he sought to see him."
+  },
+  {
+   "key": "fox",
+   "status": "verified",
+   "sources": [
+    "lk13b"
+   ],
+   "text": "In Luke, Pharisees warned Jesus that Herod wanted to kill him, and Jesus answered: 'Go and tell that fox, I cast out demons and perform cures today and tomorrow.'"
+  },
+  {
+   "key": "joanna",
+   "status": "verified",
+   "sources": [
+    "lk8",
+    "ac13"
+   ],
+   "text": "Luke names Joanna, wife of Chuza, Herod's steward, among the women who supported Jesus, and Acts lists Manaen, brought up with Herod the tetrarch, among the prophets and teachers at Antioch."
+  },
+  {
+   "key": "before_herod",
+   "status": "verified",
+   "sources": [
+    "lk23"
+   ],
+   "text": "Luke says Pilate sent Jesus to Herod when he learned he was a Galilean; Herod was glad, questioned him at length, got no answer, mocked him, dressed him in a gorgeous robe and sent him back."
+  },
+  {
+   "key": "friends",
+   "status": "verified",
+   "sources": [
+    "lk23",
+    "ac4"
+   ],
+   "text": "Luke says Herod and Pilate became friends that day, and Acts lists Herod and Pilate together among those gathered against Jesus."
+  },
+  {
+   "key": "galileans",
+   "status": "verified",
+   "sources": [
+    "lk13a"
+   ],
+   "text": "Luke mentions Galileans whose blood Pilate had mixed with their sacrifices."
+  },
+  {
+   "key": "peter",
+   "status": "disputed",
+   "sources": [
+    "wp_g"
+   ],
+   "text": "The non-canonical Gospel of Peter places the responsibility for the crucifixion on Herod Antipas rather than Pilate; it was condemned as heretical by about AD 200.",
+   "note": "Not treated by historians as reliable evidence for the events."
+  },
+  {
+   "key": "war",
+   "status": "verified",
+   "sources": [
+    "jos_a"
+   ],
+   "text": "Josephus says Herod's army was destroyed in the war with Aretas, through the treachery of some fugitives."
+  },
+  {
+   "key": "john_pun",
+   "status": "verified",
+   "sources": [
+    "jos_j"
+   ],
+   "text": "Josephus says some of the Jews thought the destruction of Herod's army came from God, as a punishment for what he did to John called the Baptist."
+  },
+  {
+   "key": "tiberius",
+   "status": "verified",
+   "sources": [
+    "jos_a",
+    "wp_a"
+   ],
+   "text": "Josephus says Tiberius wrote to Vitellius to make war on Aretas; the counter-offensive was abandoned on Tiberius's death in 37."
+  },
+  {
+   "key": "envy",
+   "status": "verified",
+   "sources": [
+    "jos_e"
+   ],
+   "text": "Josephus says Herodias envied her brother Agrippa's royal dignity and urged her husband to sail to Rome to seek equal honours; Herod resisted out of love of ease, but she did not stop until he agreed."
+  },
+  {
+   "key": "accuse",
+   "status": "verified",
+   "sources": [
+    "jos_x"
+   ],
+   "text": "Josephus says Agrippa's letters accused Herod of plotting with Parthia and of having armour for seventy thousand men; Caius took Herod's confession that the armour existed as sufficient proof."
+  },
+  {
+   "key": "exile",
+   "status": "verified",
+   "sources": [
+    "jos_x",
+    "wp_a"
+   ],
+   "text": "Josephus says Caius took away Herod's tetrarchy, banished him and appointed Lyons in Gaul as his residence; Wikipedia dates the accusation to the year 39."
+  },
+  {
+   "key": "loyal",
+   "status": "verified",
+   "sources": [
+    "jos_x"
+   ],
+   "text": "Josephus says Caius offered to spare Herodias because she was Agrippa's sister, but she refused to abandon her husband, and Caius sent her into exile with him."
+  },
+  {
+   "key": "legacy",
+   "status": "verified",
+   "sources": [
+    "wp_t"
+   ],
+   "text": "Much of the Mishna and the Jerusalem Talmud were compiled at Tiberias."
+  },
+  {
+   "key": "palace",
+   "status": "verified",
+   "sources": [
+    "wp_m"
+   ],
+   "text": "Machaerus had a palace with a triclinium (a dining hall), built by Herod the Great."
+  },
+  {
+   "key": "herodians",
+   "status": "verified",
+   "sources": [
+    "mk3",
+    "mk8"
+   ],
+   "text": "Mark says the Herodians plotted with the Pharisees against Jesus, and that Jesus warned his disciples to beware the leaven of Herod."
+  }
+ ],
+ "script": [
+  {
+   "kind": "hook",
+   "heading": "Hook",
+   "paragraphs": [
+    {
+     "text": "He is the Herod you meet most often in the Gospels. He had John the Baptist beheaded. He hoped for years to see Jesus perform a sign. And when Jesus finally stood in front of him, he dressed him in a gorgeous robe and mocked him.",
+     "claims": [
+      "mark_john",
+      "before_herod"
+     ],
+     "factual": true
+    },
+    {
+     "text": "Tonight we follow a ruler who silenced the messenger, mocked the one the messenger announced, and ended in exile, not for anything he did to Jesus, but because of his wife's ambition.",
+     "claims": [],
+     "factual": false
+    },
+    {
+     "text": "His name was Herod Antipas, and his world was Galilee, the green lakeside country where Jesus spent most of his ministry. Luke names him tetrarch of Galilee, and for nearly all of it he was the man in charge.",
+     "claims": [
+      "tetrarch"
+     ],
+     "factual": true
+    }
+   ]
+  },
+  {
+   "kind": "context",
+   "heading": "A ruler and his cities",
+   "paragraphs": [
+    {
+     "text": "He was a son of Herod the Great. When his father died, the emperor Augustus recognised Antipas as tetrarch, the ruler of a quarter, a modest title next to a king's.",
+     "claims": [
+      "tetrarch"
+     ],
+     "factual": true
+    },
+    {
+     "text": "He was a builder. Josephus says he built a wall about Sepphoris, which he calls the security of all Galilee, and made it the capital of the country.",
+     "claims": [
+      "sepphoris"
+     ],
+     "factual": true
+    },
+    {
+     "text": "Then he founded a city on the lake and named it Tiberias, after the emperor. Josephus admits there was a problem: many tombs had to be removed to make room for it, and Jewish law called anyone living on such ground unclean. So Antipas had to bring people in, some of them by force.",
+     "claims": [
+      "tiberias"
+     ],
+     "factual": true
+    },
+    {
+     "text": "Yet he was careful with Jewish sensitivities. His coins carried no images, which would have broken the ban on idols. When Pilate placed votive shields in Jerusalem, Antipas and his brothers petitioned successfully to have them removed.",
+     "claims": [
+      "coins",
+      "shields"
+     ],
+     "factual": true
+    },
+    {
+     "text": "That balance cracked over a marriage. Josephus says Herod the tetrarch was married to the daughter of Aretas, a neighboring king. Then, on a visit to Rome, he fell in love with Herodias, the wife of his brother. She agreed to marry him on one condition: that he divorce Aretas's daughter.",
+     "claims": [
+      "marriage"
+     ],
+     "factual": true
+    }
+   ]
+  },
+  {
+   "kind": "timeline",
+   "heading": "Herodias, John and Jesus",
+   "paragraphs": [
+    {
+     "text": "His wife found out first. Josephus says she asked to be sent to Machaerus, a fortress on the border of her father's land, and from there traveled on to her father. Machaerus is the same hilltop fortress where John the Baptist would later be held.",
+     "claims": [
+      "flight"
+     ],
+     "factual": true
+    },
+    {
+     "text": "John the Baptist told Herod it was not lawful for him to have his brother's wife. Mark says Herodias held a grudge, but that Herod protected John, knowing him to be righteous.",
+     "claims": [
+      "mark_john"
+     ],
+     "factual": true
+    },
+    {
+     "text": "Mark adds a detail that is easy to miss. Herod was perplexed by John, and yet he heard him gladly. A ruler drawn to a voice he would not obey.",
+     "claims": [
+      "mark_john"
+     ],
+     "factual": true
+    },
+    {
+     "text": "We told the rest in episode six: the birthday banquet, the dance, the oath made in front of guests, and the request for John's head on a platter. Mark never names the girl. Josephus calls Herodias's daughter Salome, and says nothing of a dance.",
+     "claims": [
+      "banquet",
+      "salome"
+     ],
+     "factual": true
+    },
+    {
+     "text": "Almost everything Jesus did in his ministry happened in Antipas's territory, in the lakeshore towns of Galilee. The ruler of Galilee could hardly have missed him.",
+     "claims": [],
+     "factual": false
+    },
+    {
+     "text": "And he didn't. Luke says Herod was perplexed by the reports, because some were saying John had been raised from the dead. John I beheaded, Herod says. But who is this about whom I hear such things? And Luke adds that he tried to see him.",
+     "claims": [
+      "perplexed"
+     ],
+     "factual": true
+    },
+    {
+     "text": "Some Pharisees warned Jesus to leave, saying Herod wanted to kill him. Jesus's answer, in Luke, is one of the sharpest things he says about any ruler: go and tell that fox.",
+     "claims": [
+      "fox"
+     ],
+     "factual": true
+    },
+    {
+     "text": "There is an irony here. Luke says one of the women who supported Jesus was Joanna, the wife of Chuza, Herod's steward. Acts later lists Manaen, brought up with Herod the tetrarch, among the teachers at Antioch. Believers were inside his own circle.",
+     "claims": [
+      "joanna"
+     ],
+     "factual": true
+    }
+   ]
+  },
+  {
+   "kind": "evidence",
+   "heading": "Jesus before Herod",
+   "paragraphs": [
+    {
+     "text": "Then, in Jerusalem, their paths finally crossed. Luke says that when Pilate learned that Jesus was a Galilean, he sent him to Herod, who was in the city at the time.",
+     "claims": [
+      "before_herod"
+     ],
+     "factual": true
+    },
+    {
+     "text": "Herod was very glad, Luke says. He had wanted to see Jesus for a long time and hoped to see him perform a sign. He questioned him at length. Jesus answered him nothing.",
+     "claims": [
+      "before_herod"
+     ],
+     "factual": true
+    },
+    {
+     "text": "So Herod and his soldiers treated him with contempt and mocked him, dressed him in a gorgeous robe, and sent him back to Pilate. Luke adds that Herod and Pilate became friends that very day. Acts later lists them together among those gathered against Jesus.",
+     "claims": [
+      "before_herod",
+      "friends"
+     ],
+     "factual": true
+    },
+    {
+     "text": "Why had they been enemies? Luke never says. But he mentions Galileans whose blood Pilate had mixed with their sacrifices. Galileans were Antipas's subjects, so one possible reason is that Pilate had trampled on Herod's territory. That is a guess, not a source.",
+     "claims": [
+      "galileans"
+     ],
+     "factual": true
+    },
+    {
+     "text": "The Gospel of Peter, a text outside the New Testament, goes further and puts Herod, not Pilate, in command of the crucifixion. It was condemned as heretical by about the year 200, and historians do not trust it, but it shows how large Antipas loomed in early memory.",
+     "claims": [
+      "peter"
+     ],
+     "factual": true
+    }
+   ]
+  },
+  {
+   "kind": "turning_point",
+   "heading": "The war with Aretas",
+   "paragraphs": [
+    {
+     "text": "Meanwhile the quarrel with Aretas smoldered over his rejected daughter and a border dispute. When it turned to war, Josephus says all of Herod's army was destroyed, through the treachery of some fugitives.",
+     "claims": [
+      "war"
+     ],
+     "factual": true
+    },
+    {
+     "text": "Josephus adds something striking. Some of the Jews, he says, thought the destruction of Herod's army came from God, as a punishment for what he did to John, called the Baptist. It is one of our best independent confirmations that John existed at all.",
+     "claims": [
+      "john_pun"
+     ],
+     "factual": true
+    },
+    {
+     "text": "Herod wrote to the emperor Tiberius, who ordered the governor Vitellius to make war on Aretas. But the counter-offensive was abandoned when Tiberius died in the year 37. Antipas had lost his protector.",
+     "claims": [
+      "tiberius"
+     ],
+     "factual": true
+    }
+   ]
+  },
+  {
+   "kind": "consequences",
+   "heading": "The crown and the exile",
+   "paragraphs": [
+    {
+     "text": "The new emperor, Caligula, favored Agrippa, who was Herodias's brother. Josephus says Herodias took her brother's new royal dignity in an envious manner, especially when she saw it exceeded her husband's.",
+     "claims": [
+      "envy"
+     ],
+     "factual": true
+    },
+    {
+     "text": "She urged her husband to sail to Rome and ask for honors equal to Agrippa's. He resisted, out of love of ease, Josephus says. But the more he drew back, the more she pressed, until he gave in.",
+     "claims": [
+      "envy"
+     ],
+     "factual": true
+    },
+    {
+     "text": "It was a mistake. Agrippa had already sent letters ahead accusing him of plotting with Parthia, and of having armor for seventy thousand men. When Caligula asked, Herod could not deny the armor. Caligula took that as proof.",
+     "claims": [
+      "accuse"
+     ],
+     "factual": true
+    },
+    {
+     "text": "Caligula took away his tetrarchy and banished him. The accusation, Wikipedia dates to the year 39.",
+     "claims": [
+      "exile"
+     ],
+     "factual": true
+    },
+    {
+     "text": "Josephus says Caligula offered to spare Herodias, because she was Agrippa's sister. She refused: it would not be just, she said, to forsake her husband in his misfortunes. Both went into exile, to Lyons in Gaul.",
+     "claims": [
+      "exile",
+      "loyal"
+     ],
+     "factual": true
+    },
+    {
+     "text": "We have no account of his death. The man who had ruled Galilee for about four decades fades out in a foreign province.",
+     "claims": [],
+     "factual": false
+    },
+    {
+     "text": "Yet his city outlived him by centuries. The Tiberias he built over tombs became a center of Jewish learning, where much of the Mishna and the Jerusalem Talmud were compiled.",
+     "claims": [
+      "legacy"
+     ],
+     "factual": true
+    }
+   ]
+  },
+  {
+   "kind": "conclusion",
+   "heading": "Two portraits of Antipas",
+   "paragraphs": [
+    {
+     "text": "Machaerus, where Josephus says John was held, had a palace built by Herod the Great, with a triclinium, a dining hall. That fits a banquet. It does not prove one, and nothing in the ground confirms the dance.",
+     "claims": [
+      "palace"
+     ],
+     "factual": true
+    },
+    {
+     "text": "The Gospels also mention the Herodians, supporters of the dynasty. Mark says they plotted with the Pharisees against Jesus, and later Jesus warns his disciples to beware the leaven of Herod. The family name had a long shadow.",
+     "claims": [
+      "herodians"
+     ],
+     "factual": true
+    },
+    {
+     "text": "So what kind of ruler was he? The Gospels show a man torn between fear and curiosity, trapped by his own oath. Josephus shows a politician who survived for decades, built cities, and removed a popular preacher as a precaution. Both pictures can be true.",
+     "claims": [],
+     "factual": false
+    },
+    {
+     "text": "The Gospels call him king, but he never was one. It was the one thing he finally reached for, at his wife's urging, and the one thing that cost him everything.",
+     "claims": [],
+     "factual": false
+    },
+    {
+     "text": "So who was Herod Antipas? A builder who held a province for decades, silenced a prophet he liked listening to, mocked a man who would not perform for him, and lost it all chasing a crown. The sources disagree on his motives. They agree on how it ended.",
+     "claims": [],
+     "factual": false
+    },
+    {
+     "text": "If you made it this far, subscribe. A new figure from history every week.",
+     "claims": [],
+     "factual": false
+    }
+   ]
+  }
+ ],
+ "scene_overrides": {},
+ "images": [
+  {
+   "key": "ep8_001_ha_face_portrait",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep8_long_images\\ep8_001_ha_face_portrait.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    1,
+    36
+   ]
+  },
+  {
+   "key": "ep8_002_ha_herod_herodias_hall",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep8_long_images\\ep8_002_ha_herod_herodias_hall.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    2
+   ]
+  },
+  {
+   "key": "ep8_003_ha_tiberias_lakeside_city",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep8_long_images\\ep8_003_ha_tiberias_lakeside_city.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    3
+   ]
+  },
+  {
+   "key": "ep8_004_ha_augustus_divides_kingdom",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep8_long_images\\ep8_004_ha_augustus_divides_kingdom.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    4
+   ]
+  },
+  {
+   "key": "ep8_005_ha_sepphoris_rebuilt",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep8_long_images\\ep8_005_ha_sepphoris_rebuilt.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    5
+   ]
+  },
+  {
+   "key": "ep8_006_ha_tiberias_graveyard_founding",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep8_long_images\\ep8_006_ha_tiberias_graveyard_founding.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    6
+   ]
+  },
+  {
+   "key": "ep8_007_ha_coin_palm_reed",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep8_long_images\\ep8_007_ha_coin_palm_reed.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    7
+   ]
+  },
+  {
+   "key": "ep8_008_ha_antipas_meets_herodias",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep8_long_images\\ep8_008_ha_antipas_meets_herodias.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    8
+   ]
+  },
+  {
+   "key": "ep8_009_ha_princess_flees_machaerus",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep8_long_images\\ep8_009_ha_princess_flees_machaerus.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    9
+   ]
+  },
+  {
+   "key": "ep6_019_jb_rebukes_herod",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep6_long_images\\ep6_019_jb_rebukes_herod.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    10
+   ]
+  },
+  {
+   "key": "ep8_011_ha_herod_listens_to_john",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep8_long_images\\ep8_011_ha_herod_listens_to_john.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    11
+   ]
+  },
+  {
+   "key": "ep6_030_jb_head_on_platter_request",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep6_long_images\\ep6_030_jb_head_on_platter_request.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    12
+   ]
+  },
+  {
+   "key": "ep8_013_ha_galilee_lakeshore_ministry",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep8_long_images\\ep8_013_ha_galilee_lakeshore_ministry.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    13
+   ]
+  },
+  {
+   "key": "ep8_014_ha_herod_perplexed_night",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep8_long_images\\ep8_014_ha_herod_perplexed_night.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    14
+   ]
+  },
+  {
+   "key": "ep8_015_ha_fox_warning_road",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep8_long_images\\ep8_015_ha_fox_warning_road.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    15
+   ]
+  },
+  {
+   "key": "ep8_016_ha_joanna_funds_disciples",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep8_long_images\\ep8_016_ha_joanna_funds_disciples.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    16
+   ]
+  },
+  {
+   "key": "ep7_021_cp_priests_lead_to_pilate_dawn",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep7_long_images\\ep7_021_cp_priests_lead_to_pilate_dawn.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    17
+   ]
+  },
+  {
+   "key": "ep8_018_ha_herod_questions_silent_jesus",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep8_long_images\\ep8_018_ha_herod_questions_silent_jesus.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    18
+   ]
+  },
+  {
+   "key": "ep2_041_herod_antipas_mocking",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\vox\\pool_recovered\\ep2_041_herod_antipas_mocking.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    19
+   ]
+  },
+  {
+   "key": "ep8_020_ha_pilate_galileans_temple",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep8_long_images\\ep8_020_ha_pilate_galileans_temple.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    20
+   ]
+  },
+  {
+   "key": "ep7_038_cp_scroll_and_ossuary_together",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep7_long_images\\ep7_038_cp_scroll_and_ossuary_together.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    21
+   ]
+  },
+  {
+   "key": "ep8_022_ha_aretas_army_defeated",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep8_long_images\\ep8_022_ha_aretas_army_defeated.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    22
+   ]
+  },
+  {
+   "key": "ep6_023_jb_josephus_independent_confirmation",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep6_long_images\\ep6_023_jb_josephus_independent_confirmation.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    23
+   ]
+  },
+  {
+   "key": "ep8_024_ha_legions_halted_tiberius_dies",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep8_long_images\\ep8_024_ha_legions_halted_tiberius_dies.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    24
+   ]
+  },
+  {
+   "key": "ep8_025_ha_caligula_crowns_agrippa",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep8_long_images\\ep8_025_ha_caligula_crowns_agrippa.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    25,
+    28
+   ]
+  },
+  {
+   "key": "ep8_026_ha_herodias_urges_rome",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep8_long_images\\ep8_026_ha_herodias_urges_rome.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    26
+   ]
+  },
+  {
+   "key": "ep8_027_ha_caligula_reads_accusations",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep8_long_images\\ep8_027_ha_caligula_reads_accusations.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    27
+   ]
+  },
+  {
+   "key": "ep8_030_ha_antipas_exile_hillside",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep8_long_images\\ep8_030_ha_antipas_exile_hillside.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    29,
+    30
+   ]
+  },
+  {
+   "key": "ep8_031_ha_tiberias_academy_legacy",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep8_long_images\\ep8_031_ha_tiberias_academy_legacy.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    31
+   ]
+  },
+  {
+   "key": "ep6_021_jb_arrested_machaerus",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep6_long_images\\ep6_021_jb_arrested_machaerus.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    32
+   ]
+  },
+  {
+   "key": "ep8_033_ha_herodians_pharisees_plot",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep8_long_images\\ep8_033_ha_herodians_pharisees_plot.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    33
+   ]
+  },
+  {
+   "key": "ep8_034_ha_antipas_window_tiberias",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep8_long_images\\ep8_034_ha_antipas_window_tiberias.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    34
+   ]
+  },
+  {
+   "key": "ep8_035_ha_empty_throne_crown",
+   "kind": "file",
+   "path": "C:\\Users\\hoavx\\Desktop\\AI-Marketing-Factory\\biblical-figures-prompts\\biblical_figures_ep8_long_images\\ep8_035_ha_empty_throne_crown.png",
+   "origin": "ai_manual",
+   "license": "AI-generated (gpt-image-1-mini), channel's own work",
+   "attribution": "Biblical Figures channel",
+   "paragraphs": [
+    35
+   ]
+  }
+ ]
+}

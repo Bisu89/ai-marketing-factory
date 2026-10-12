@@ -21,7 +21,12 @@ Tập 1–5 giữ bản render cũ. Đọc trước: `content-prompts/vox_docume
 - Đã bỏ khỏi bản cũ các ý **không cắt được nguyên văn**: "12 hộp xương / 6 người", mốc năm 26 và 36, câu Talmud Pesahim, nhà thờ St Peter in Gallicantu, chữ Hy Lạp "topos". Thêm mới có nguồn: hộp xương Miriam (2011), Josephus về thập phân, Gamaliel (Acts 5).
 - Ảnh trong spec dùng đường dẫn tuyệt đối của máy này (`biblical_figures_ep7_long_images/`, kho tập 2/3/4).
 
-## Tập 8 trở đi
+## Tập 8 (Herod Antipas) — spec đã viết, chưa tạo trong app
+- `vox/ep8.spec.json`: 23 nguồn nguyên văn (Kinh Thánh WEB, Josephus Whiston quyển XVIII, Wikipedia), 27 khẳng định (1 `disputed`: Phúc Âm Peter), 37 đoạn, ~1.352 từ (≈ 7 phút `edge_en`), 33 ảnh Baroque có sẵn. Đã chạy `create` trên backend tạm: kịch bản qua kiểm tra nguồn.
+- Đã bỏ khỏi bản cũ các ý không cắt được nguồn: mốc năm 20/34/36, "43 năm" (thành "khoảng bốn thập kỷ"), "ornament of all Galilee" (Josephus viết "security of all Galilee"), đày sang Tây Ban Nha (Jewish War, chưa lấy nguồn), cách giải thích Pilate xâm phạm lãnh thổ (nay ghi rõ là phỏng đoán).
+- **Ảnh tập 1–5 đã biến mất khỏi thư mục làm việc** (không do công cụ này). Các ảnh dùng lại đã cứu từ thư viện app của dự án #2/#4 vào `vox/pool_recovered/` (10 ảnh); spec tập 6/7/8 trỏ tới đó. Ảnh tập 3/2 (`ep3_034`, `ep3_036`, `ep2_007`) không cứu được nên tập 8 dùng ảnh khác thay.
+
+## Tập 9 trở đi
 Copy `ep6.spec.json` làm khuôn: đổi nguồn (`fetch` kiểu `bible`/`wikisource`/`wikipedia`), claims, kịch bản (kết bằng câu outro cố định: *If you made it this far, subscribe. A new figure from history every week.*), `scene_overrides`, ảnh. Ảnh tạo từ CSV (`_tools/bf.py prompts`/ hoặc prompt trong `vox/poster_test/STYLE.md`); chữ trên màn hình do code vẽ, không nhúng chữ vào ảnh.
 
 ## Bài học (đừng lặp lại)
