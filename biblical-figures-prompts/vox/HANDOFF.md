@@ -15,7 +15,13 @@ Tập 1–5 giữ bản render cũ. Đọc trước: `content-prompts/vox_docume
 3. `python content-prompts/vox_documentary_template/tools/episode_builder.py create biblical-figures-prompts/vox/ep6.spec.json` (xóa `ep6.spec.state.json` trước nếu muốn tạo mới).
 4. Duyệt cổng 1–2 trong app → `storyboard` → `images` → duyệt ảnh + cổng 3 → tab Giọng đọc: backend **`edge_en`**, chia đoạn, tạo, master, căn chỉnh `tts`, dựng timeline → cổng 4 → tab Render: **collage**, tắt "Ảnh đen trắng", bản cuối.
 
-## Tập 7 trở đi
+## Tập 7 (Caiaphas) — spec đã viết, chưa tạo trong app
+- `vox/ep7.spec.json`: 25 nguồn nguyên văn (Kinh Thánh bản WEB, Josephus Whiston quyển XVII/XVIII/XX, Wikipedia), 29 khẳng định (3 `disputed`: hộp xương 1990, các bản kể khác nhau ở đêm xét xử…), 38 đoạn, ~1.210 từ (≈ 6 phút giọng `edge_en`), 36 ảnh Baroque **có sẵn** (30 của tập 7 cũ + 6 ảnh dùng lại từ tập 2/3/4) — không cần tạo ảnh mới.
+- Đã chạy `create` trên backend tạm: kịch bản qua kiểm tra nguồn. **Chưa** tạo trong DB thật; chưa có `scene_overrides` (mã cảnh chỉ có sau storyboard — như tập 6: tạo dự án → duyệt cổng 1–2 → `storyboard` → thêm thẻ chữ HeadlineImpact/EvidenceBoard/MapZoom khoảng 40–50% cảnh → `images` → cổng 3…).
+- Đã bỏ khỏi bản cũ các ý **không cắt được nguyên văn**: "12 hộp xương / 6 người", mốc năm 26 và 36, câu Talmud Pesahim, nhà thờ St Peter in Gallicantu, chữ Hy Lạp "topos". Thêm mới có nguồn: hộp xương Miriam (2011), Josephus về thập phân, Gamaliel (Acts 5).
+- Ảnh trong spec dùng đường dẫn tuyệt đối của máy này (`biblical_figures_ep7_long_images/`, kho tập 2/3/4).
+
+## Tập 8 trở đi
 Copy `ep6.spec.json` làm khuôn: đổi nguồn (`fetch` kiểu `bible`/`wikisource`/`wikipedia`), claims, kịch bản (kết bằng câu outro cố định: *If you made it this far, subscribe. A new figure from history every week.*), `scene_overrides`, ảnh. Ảnh tạo từ CSV (`_tools/bf.py prompts`/ hoặc prompt trong `vox/poster_test/STYLE.md`); chữ trên màn hình do code vẽ, không nhúng chữ vào ảnh.
 
 ## Bài học (đừng lặp lại)

@@ -70,9 +70,11 @@ def wiki_text(spec: dict, cache: Path) -> str:
 def excerpt(text: str, needles: list[str]) -> str:
     """Whole sentences of the article that contain each needle -- cut, never retyped."""
     paras = [p.strip() for p in text.split("\n") if p.strip()]
+    # Some Wikisource chapters are hard-wrapped mid-sentence: also try paragraphs with their single line breaks joined.
+    joined = [re.sub(r"\s*\n\s*", " ", p).strip() for p in re.split(r"\n\s*\n", text) if p.strip()]
     out = []
     for n in needles:
-        para = next((p for p in paras if n in p), None)
+        para = next((p for p in paras if n in p), None) or next((p for p in joined if n in p), None)
         if para is None:
             raise SystemExit(f"Needle not found in the article (fix the spec, do not paraphrase): {n!r}")
         core = n.rstrip(".!?")  # sentences are split on ". ", which eats the full stop of every piece but the last
