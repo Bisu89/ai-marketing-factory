@@ -221,3 +221,4 @@ sequence, and a line added to the list above.
 178. [DQG ch 31-50 Long + 6 Short](features/178-dqg-ch31-50-long-and-shorts.md) — 2 Long (13:16, 15:53) + Short G-L from saved ep31-50 scripts, QA 100
 179. [DQG ch 51-60 + STORY.md](features/179-dqg-ch51-60-long-and-shorts.md) — Short M/N/O + 2 Long (51-55, 56-60), QA 100; running story doc STORY.md
 180. [DQG ch 61-70](features/180-dqg-ch61-70-long-and-shorts.md) — Short P/Q/R + 2 Long (61-65, 66-70), QA 100; ep68/69 panels rebuilt from raw pages
+181. [DQG ch 71-80](features/181-dqg-ch71-80-long-and-shorts.md) — Short S/T/U + 2 Long (71-75, 76-80), QA 100; page-number -> panel mapping for tall pages

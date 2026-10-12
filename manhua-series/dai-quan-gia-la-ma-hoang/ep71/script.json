@@ -1,0 +1,25 @@
+﻿{
+  "title": "Một viên đan dược, một lời xin lỗi",
+  "chapters": "71",
+  "source_dir": "manhua-recap/dqgl_ep71",
+  "written_by": "Claude (đọc tay từ panels), 2026-10-12",
+  "description": "Sau trận chiến, Ngưng Hương liên tục gọi Trác Phàm tỉnh lại. Khi hắn mở mắt, cô mừng rỡ nhưng vẫn áy náy vì trước đây đã hiểu lầm hắn. Trác Phàm cho rằng tu Ma đạo vốn không cần câu nệ thủ đoạn, rồi lấy ra một viên Tam phẩm Hộ Tâm Đan, bảo cô ăn một nửa và mang phần còn lại cho Mộc Chi nếu vẫn còn sống. Ngưng Hương không muốn nhận viên đan quý, nhưng Trác Phàm nhắc rằng đã là đồng đội thì phải cùng nhau chữa thương. Trác Thiên Dương trách Trác Phàm đã dùng Ngưng Hương làm mồi nhử; cô bênh vực hắn, tin rằng mọi việc đều nằm trong tính toán. Khi Thiên Dương định kiểm tra Mộc Chi, Trác Phàm nhắc họ rời khỏi nơi này sớm. Thiên Dương vẫn khó chịu vì tính cách lạnh lùng của hắn, nhưng thầm thừa nhận việc khiến Thất trưởng lão của Tiết gia phải cúi đầu đã đủ chứng minh Trác Phàm đáng gờm. Câu chuyện khép lại với ý nghĩ rằng sự vô tình của hắn khiến người khác oán hận, nhưng cũng dần khiến họ kính trọng.",
+  "hashtags": ["#DaiQuanGiaLaMaHoang", "#ReviewManhua", "#Manhua", "#TuTien", "#XuyenKhong", "#ReviewTruyen"],
+  "thumbnail": {
+    "text": "Tỉnh lại sau trận chiến!",
+    "prompt": "Manhua recap thumbnail, Trác Phàm áo choàng nâu trọng thương ngồi dựa tảng đá, Ngưng Hương tóc đỏ rưng rưng đưa viên đan dược cho hắn, Trác Thiên Dương tóc xanh đứng gần đó cau mày, ma vật nhỏ đỏ nằm bên cạnh, khu rừng sau trận chiến yên ắng, phong cách tiên hiệp giàu cảm xúc, chừa chỗ chữ lớn: TỈNH LẠI SAU TRẬN CHIẾN!"
+  },
+  "beats": [
+    {"panel":"p001.jpg","type":"HOOK","kind":"recap","narration":"Trong cơn mê, Trác Phàm nghe tiếng mọi người gọi mình tỉnh lại. Ngưng Hương cuống quýt lay hắn, sợ hắn không qua khỏi."},
+    {"panel":"p003.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm cuối cùng cũng mở mắt. Ngưng Hương bật khóc vì nhẹ nhõm, còn hắn vẫn chảy máu sau trận chiến."},
+    {"panel":"p005.jpg","type":"SCENE","kind":"recap","narration":"Ngưng Hương mừng rỡ báo rằng hắn đã tỉnh. Cô cũng để ý ma vật đỏ bị thương nằm cách đó không xa."},
+    {"panel":"p007.jpg","type":"SCENE","kind":"recap","narration":"Cô hỏi Trác Phàm có định để ma vật mang về không. Hắn gật đầu, rồi lại kiệt sức gục xuống."},
+    {"panel":"p009.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm tỉnh lại lần nữa và thấy ma vật nhỏ đang nằm trong tay mình. Hắn gọi tên Mộc Chi, rồi lấy ra một viên đan dược."},
+    {"panel":"p011.jpg","type":"SCENE","kind":"recap","narration":"Đó là Tam phẩm Hộ Tâm Đan. Trác Phàm bảo Ngưng Hương ăn một nửa, sau đó kiểm tra xem Mộc Chi còn sống không; nếu còn thì cho nó phần còn lại."},
+    {"panel":"p013.jpg","type":"SCENE","kind":"recap","narration":"Ngưng Hương nhắc Trác Phàm rằng hắn cũng bị thương. Hắn gạt đi, nói vết thương của mình không đáng ngại."},
+    {"panel":"p015.jpg","type":"SCENE","kind":"recap","narration":"Cô định giữ viên đan quý cho mọi người, nhưng Trác Phàm khẳng định dù đan dược quý đến đâu thì người bị thương vẫn phải uống."},
+    {"panel":"p017.jpg","type":"SCENE","kind":"recap","narration":"Trác Thiên Dương bảo Ngưng Hương cứ nhận lấy, vì U Quỷ Thất là kẻ thù của cô. Cô mới hiểu Trác Phàm đã cho mình tự quyết định chứ không ép buộc."},
+    {"panel":"p019.jpg","type":"SCENE","kind":"recap","narration":"Thiên Dương vẫn trách Trác Phàm đã biến Ngưng Hương thành mồi nhử. Trác Phàm im lặng, còn cô tin rằng mọi việc hắn làm đều đã được tính toán."},
+    {"panel":"p020.jpg","type":"ENDING","kind":"recap","narration":"Thiên Dương thừa nhận dù trận chiến kết thúc bằng thất bại, việc khiến Thất trưởng lão Tiết gia phải cúi đầu cũng đủ cho thấy Trác Phàm đáng gờm. Sự lạnh lùng của hắn khiến người ta oán hận, nhưng cũng dần khiến họ kính trọng."}
+  ]
+}

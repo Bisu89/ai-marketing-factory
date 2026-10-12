@@ -1,0 +1,35 @@
+﻿{
+  "title": "Tiến vào khu vực thứ ba",
+  "chapters": "77",
+  "source_dir": "manhua-recap/dqgl_ep77",
+  "written_by": "Claude (đọc tay từ panels), 2026-10-12",
+  "description": "Khi Trác Phàm nói phải rời đi, Trác Thiên Dương và Ngưng Nhi lập tức muốn biết lý do. Trác Phàm thú nhận Khu vực thứ ba vốn là mục tiêu của mình, còn việc đưa hai người đi cùng trước đây cũng có phần lợi dụng họ. Dù vậy, Ngưng Nhi vẫn muốn sát cánh vì Trác Phàm từng giúp cả nhóm sống sót và lấy được Kim Sa Từ tay Lý Quỷ Thất. Thiên Dương cũng quyết định đi theo, vừa muốn giúp đỡ vừa không muốn để Trác Phàm đơn độc. Sau màn trêu chọc quen thuộc, cả ba lên đường vào Khu vực thứ ba của Dãy Núi Vạn Thú. Họ nhận ra Trác Phàm đã đi trước, bèn vội đuổi theo qua đám cỏ rậm. Khi Thiên Dương đang càu nhàu vì đường xa, một linh thú cấp bốn bất ngờ lao ra tấn công. Trác Phàm cảnh báo mọi người chạy, nhưng ngay sau đó một con mãng xà cấp năm khổng lồ xuất hiện, đẩy cả nhóm vào tình thế nguy hiểm hơn. Trong bóng đêm, một sinh vật khác với đôi mắt rực sáng âm thầm quan sát.",
+  "hashtags": ["#DaiQuanGiaLaMaHoang", "#ReviewManhua", "#Manhua", "#TuTien", "#XuyenKhong", "#ReviewTruyen"],
+  "thumbnail": {
+    "text": "Mãng xà cấp năm xuất hiện!",
+    "prompt": "Manhua recap thumbnail, Trác Phàm, Trác Thiên Dương tóc xanh và Ngưng Nhi tóc đỏ đối diện mãng xà khổng lồ vảy trắng xanh trong rừng đêm, phía sau có đôi mắt bí ẩn phát sáng màu cam trong bóng tối, không khí nguy hiểm, phong cách tiên hiệp, chừa chỗ chữ lớn: MÃNG XÀ CẤP NĂM!"
+  },
+  "beats": [
+    {"panel":"p002.jpg","type":"HOOK","kind":"recap","narration":"Trác Phàm dứt khoát nói rằng mọi người đã hồi phục thì đường ai nấy đi. Nhưng anh chợt sửa lời: người phải rời đi là chính mình."},
+    {"panel":"p004.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm nhờ Thiên Dương đưa Ngưng Nhi ra ngoài thành, vì hắn không chắc mình có thể bảo vệ cô. Ngưng Nhi ngạc nhiên hỏi vì sao Trác Phàm vẫn muốn đi."},
+    {"panel":"p005.jpg","type":"SCENE","kind":"recap","narration":"Thiên Dương thắc mắc vì sao Trác Phàm cứ nhất quyết đến Khu vực thứ ba. Hắn thừa nhận nơi đó vốn là mục tiêu chuyến đi của mình, còn việc rủ hai người đi cùng ban đầu cũng có phần lợi dụng."},
+    {"panel":"p006.jpg","type":"SCENE","kind":"recap","narration":"Thiên Dương nổi giận vì bị xem như mồi nhử. Trác Phàm lạnh lùng bảo nếu không muốn chết oan thì lập tức quay về, càng cách xa hắn càng tốt."},
+    {"panel":"p007.jpg","type":"SCENE","kind":"recap","narration":"Ngưng Nhi đề nghị đi cùng Trác Phàm, dù có bị xem là mồi nhử cũng cam lòng nếu giúp được hắn. Sự chân thành ấy khiến Trác Phàm bất ngờ."},
+    {"panel":"p008.jpg","type":"SCENE","kind":"recap","narration":"Ngưng Nhi nhắc rằng cả nhóm giành được Kim Sa từ tay Lý Quỷ nhờ trận pháp và mưu lược của Trác Phàm. Cô tin họ nên tiếp tục sát cánh bên nhau."},
+    {"panel":"p009.jpg","type":"SCENE","kind":"recap","narration":"Ngưng Nhi hỏi Trác Phàm có muốn cô đi cùng không. Thiên Dương cũng bước tới, xác nhận mình sẽ tham gia, dù vẫn cố tỏ ra chẳng phải vì lo cho ai."},
+    {"panel":"p010.jpg","type":"SCENE","kind":"recap","narration":"Thiên Dương cảnh báo Trác Phàm đừng lợi dụng mình, nếu không anh sẽ bỏ về. Trác Phàm đáp rằng thiếu anh cũng chẳng ảnh hưởng, khiến Thiên Dương lại nổi nóng."},
+    {"panel":"p011.jpg","type":"SCENE","kind":"recap","narration":"Ngưng Nhi vui vẻ đứng về phía Trác Phàm. Thiên Dương hiểu ra cô chỉ sợ mình bị bỏ lại, còn Trác Phàm trêu rằng anh đã nhìn thấu tâm tư của cô."},
+    {"panel":"p012.jpg","type":"SCENE","kind":"recap","narration":"Thiên Dương tuyên bố chỉ đùa thôi, cả nhóm cùng bật cười. Trác Phàm thầm nghĩ tình nghĩa sinh tử quả thật không dễ có được."},
+    {"panel":"p013.jpg","type":"SCENE","kind":"recap","narration":"Tại Khu vực thứ ba của Dãy Núi Vạn Thú, cả nhóm men theo đám cỏ cao và rậm rạp."},
+    {"panel":"p014.jpg","type":"SCENE","kind":"recap","narration":"Thiên Dương nhận ra Trác Phàm đã đi trước, liền giục mọi người tiếp tục tiến lên."},
+    {"panel":"p015.jpg","type":"SCENE","kind":"recap","narration":"Đi mãi giữa cỏ rậm, Thiên Dương bắt đầu càu nhàu vì chưa tới nơi. Anh còn tự hỏi sao một linh thú cấp năm lại có thể phát hiện ra họ."},
+    {"panel":"p016.jpg","type":"SCENE","kind":"recap","narration":"Một tiếng gầm bất ngờ xé toạc khu rừng. Linh thú hung dữ lao khỏi đám cỏ, khiến cả nhóm giật mình."},
+    {"panel":"p017.jpg","type":"SCENE","kind":"recap","narration":"Trước mặt họ là một linh thú cấp bốn, Cường Bạo Tật Phong Hùng. Nó lập tức tấn công, buộc cả nhóm phải né tránh."},
+    {"panel":"p018.jpg","type":"SCENE","kind":"recap","narration":"Một thân hình khổng lồ khác lao tới với tốc độ kinh hoàng. Móng vuốt và hàm răng của nó quét ngang giữa rừng."},
+    {"panel":"p019.jpg","type":"SCENE","kind":"recap","narration":"Con thú cấp bốn bị hất văng, để lộ một mãng xà khổng lồ với đôi mắt đỏ rực. Thiên Dương nhận ra đó là linh thú cấp năm Kim Cương Kê Quan Mãng."},
+    {"panel":"p020.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm lập tức giục mọi người chạy. Thiên Dương vừa đuổi theo vừa cằn nhằn rằng chính Trác Phàm dẫn cả nhóm tới chốn nguy hiểm này."},
+    {"panel":"p021.jpg","type":"SCENE","kind":"recap","narration":"Thiên Dương càu nhàu rằng mình đã theo Trác Phàm đến tận đây mà hắn còn định bỏ mặc mọi người. Ngưng Nhi cũng vội chạy theo giữa rừng tối."},
+    {"panel":"p022.jpg","type":"SCENE","kind":"recap","narration":"Trong đêm, một bóng đen nặng nề bước qua khu rừng, để lại ánh lửa cam nơi dấu chân."},
+    {"panel":"p023.jpg","type":"ENDING","kind":"recap","narration":"Đôi mắt đỏ cam của sinh vật bí ẩn mở ra trong bóng tối. Nó đang theo dõi nhóm Trác Phàm từ phía sau."}
+  ]
+}

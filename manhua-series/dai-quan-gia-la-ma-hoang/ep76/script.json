@@ -1,0 +1,34 @@
+﻿{
+  "title": "Ba tháng dưỡng thương và lời tạm biệt",
+  "chapters": "76",
+  "source_dir": "manhua-recap/dqgl_ep76",
+  "written_by": "Claude (đọc tay từ panels), 2026-10-12",
+  "description": "Sau khi tỉnh lại, Trác Thiên Dương càu nhàu vì bị Trác Phàm đánh ngất, rồi kinh ngạc khi biết cả nhóm đều sống sót. Anh tò mò vì sao Trác Phàm hồi phục nhanh hơn dù thương thế nặng hơn, còn Trác Phàm chỉ đáp rằng mình vốn hơn người. Nhìn lại tình cảnh nguy hiểm vừa qua, Trác Phàm tự nhủ phải mau chóng nâng cao thực lực. Hắn chăm sóc Ngưng Nhi và để cô nghỉ ngơi, rồi dùng Thiên Ấn Trận trút cơn bực lên một mục tiêu trong rừng. Ba tháng sau, Thiên Dương đã hồi phục và luyện kiếm mạnh đến mức phá vỡ đá lớn. Ngưng Nhi khen anh lợi hại, còn Thiên Dương nhận ra Trác Phàm dường như đã đột phá lên Đoán Cốt Bát Trọng dù từng trọng thương. Anh và Trác Phàm lại châm chọc nhau chuyện Ngưng Nhi, khiến cô phải đứng ra hòa giải. Cả ba làm lành, cùng trân trọng tình nghĩa đã gắn kết qua sinh tử. Nhưng Trác Phàm chợt nhớ mình còn một việc bắt buộc phải hoàn thành. Khi vết thương mọi người đã lành, hắn nói đến lúc tạm biệt, khiến Thiên Dương và Ngưng Nhi sửng sốt.",
+  "hashtags": ["#DaiQuanGiaLaMaHoang", "#ReviewManhua", "#Manhua", "#TuTien", "#XuyenKhong", "#ReviewTruyen"],
+  "thumbnail": {
+    "text": "Ba tháng sau, chia tay?",
+    "prompt": "Manhua recap thumbnail, Trác Phàm áo choàng nâu đứng quay lưng chuẩn bị rời khu rừng sau ba tháng hồi phục, Trác Thiên Dương tóc xanh và Ngưng Nhi tóc đỏ ngỡ ngàng phía sau, ánh sáng rừng dịu, cảm xúc chia ly và tình bạn, phong cách tiên hiệp, chừa chỗ chữ lớn: BA THÁNG SAU, CHIA TAY?"
+  },
+  "beats": [
+    {"panel":"p001.jpg","type":"HOOK","kind":"recap","narration":"Tiếng hét của Trác Phàm làm hai linh thú nhỏ giật mình giữa rừng. Nhưng trước hết, hắn phải gọi cho bằng được người bạn đang nằm bất động."},
+    {"panel":"p004.jpg","type":"SCENE","kind":"recap","narration":"Trác Thiên Dương tỉnh lại trong cơn choáng váng, còn than thở rằng mình chẳng làm gì xấu mà phải chịu cực hình. Nghe Trác Phàm đáp lại, anh mới nhận ra người vừa đánh mình."},
+    {"panel":"p005.jpg","type":"SCENE","kind":"recap","narration":"Thiên Dương mừng rỡ khi biết cả hai vẫn còn sống. Anh không hiểu vì sao Trác Phàm bị thương nặng hơn mà lại hồi phục nhanh đến vậy."},
+    {"panel":"p006.jpg","type":"SCENE","kind":"recap","narration":"Thiên Dương đùa rằng Trác Phàm chắc không phải người thường. Trác Phàm tỉnh bơ nhận mình là người, chỉ có điều trời sinh đã vượt trội."},
+    {"panel":"p007.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm nhớ lại cảnh Thiên Dương chỉ ở Tụ Khí Lục Trọng mà đã vận dụng kiếm pháp đáng gờm. Hắn tự nhắc phải mau nâng cao thực lực, vì chỉ kẻ mạnh mới có thể tồn tại."},
+    {"panel":"p008.jpg","type":"SCENE","kind":"recap","narration":"Thấy Ngưng Nhi còn bất tỉnh, Trác Phàm đỡ cô dậy và quyết định để cô nghỉ ngơi. Giải Ưu Thảo có thể giảm đau, xoa dịu vết thương cho con người."},
+    {"panel":"p009.jpg","type":"SCENE","kind":"recap","narration":"Sau đó, Trác Phàm bước ra ngoài và tung Thiên Ấn Trận, những luồng sáng vàng giáng xuống khu rừng."},
+    {"panel":"p010.jpg","type":"SCENE","kind":"recap","narration":"Trận pháp đánh bật một mục tiêu lớn giữa rừng. Trác Phàm cuối cùng cũng có thể yên tâm trị thương."},
+    {"panel":"p011.jpg","type":"SCENE","kind":"recap","narration":"Ba tháng trôi qua. Trong thời gian ấy, Trác Thiên Dương đã bình phục và tiếp tục khổ luyện kiếm pháp."},
+    {"panel":"p012.jpg","type":"SCENE","kind":"recap","narration":"Một nhát kiếm của Thiên Dương bổ vỡ khối đá lớn. Anh quay sang hỏi Ngưng Nhi thấy thế nào."},
+    {"panel":"p013.jpg","type":"SCENE","kind":"recap","narration":"Ngưng Nhi khen Thiên Dương lợi hại, còn anh nhận xét Trác Phàm cũng đã mạnh lên nhiều, dường như sắp đột phá Đoán Cốt Bát Trọng."},
+    {"panel":"p014.jpg","type":"SCENE","kind":"recap","narration":"Thiên Dương ngạc nhiên vì Trác Phàm từng trọng thương mà vẫn đột phá nhanh như vậy. Trác Phàm đáp rằng anh sắp đột phá, bản thân anh tự biết rõ."},
+    {"panel":"p015.jpg","type":"SCENE","kind":"recap","narration":"Thiên Dương trách Trác Phàm vì chuyện từng đẩy Ngưng Nhi xuống đầu tiên. Trác Phàm lập tức nhắc lại chính Thiên Dương cũng từng đề nghị như thế."},
+    {"panel":"p016.jpg","type":"SCENE","kind":"recap","narration":"Hai người lại bắt đầu cãi nhau, khiến Ngưng Nhi phải nhắc họ rằng chuyện cũ đã qua và mọi người đều là bằng hữu cùng hoạn nạn."},
+    {"panel":"p017.jpg","type":"SCENE","kind":"recap","narration":"Thiên Dương vẫn cố phân bua, còn Trác Phàm tiếp tục chọc lại. Ngưng Nhi kiên nhẫn khuyên cả hai bỏ qua chuyện trước đây."},
+    {"panel":"p018.jpg","type":"SCENE","kind":"recap","narration":"Cuối cùng, Trác Phàm và Thiên Dương chịu bắt tay làm hòa. Ngưng Nhi vui vẻ nói chuyện đã qua thì nên bỏ qua."},
+    {"panel":"p019.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm nghĩ rằng gặp được tri kỷ trong đời đã là điều đáng quý. Ba người đã cùng sống chết bên nhau nên tình nghĩa này thật khó có lại."},
+    {"panel":"p020.jpg","type":"SCENE","kind":"recap","narration":"Nhưng Trác Phàm chợt nhớ mình vẫn còn một việc bắt buộc phải hoàn thành. Hắn buông tay Ngưng Nhi, gương mặt trở nên trầm tư."},
+    {"panel":"p021.jpg","type":"SCENE","kind":"recap","narration":"Thiên Dương xác nhận vết thương của mọi người đã hoàn toàn hồi phục. Trác Phàm liền nói đã đến lúc cả nhóm tạm biệt nhau."},
+    {"panel":"p022.jpg","type":"ENDING","kind":"recap","narration":"Thiên Dương sững sờ hỏi lại “Cái gì?” khi Trác Phàm quay lưng bước đi. Vì sao hắn phải rời nhóm ngay lúc này?"}
+  ]
+}

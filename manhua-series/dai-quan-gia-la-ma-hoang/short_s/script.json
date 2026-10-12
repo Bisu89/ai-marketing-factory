@@ -1,0 +1,87 @@
+{
+  "title": "Ma Hoàng bị dồn vào hang sói, cô gái yếu nhất lại đứng chắn trước Lang Vương!?",
+  "chapters": "71-74",
+  "source_dir": "manhua-recap/dqgl_ep71",
+  "written_by": "Claude tổng hợp từ script ep71-80 đã lưu, 2026-10-12",
+  "description": "Sau trận chiến, Trác Phàm và đồng đội trú mưa trong hang rồi bị bầy Lang Vương vây kín. Ngưng Nhi liều mình chắn trước, và một luồng sáng xanh bí ẩn bất ngờ bùng lên.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tóm tắt chương 71 đến 74.\n◀ Phần trước: chương 68-70\n▶ Phần sau: chương 75-77",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "NGƯNG NHI CHẮN LANG VƯƠNG!",
+    "prompt": "A red-haired young girl with a sword standing alone in front of a pack of white wolves in a stormy rainy cave entrance, two wounded young men behind her, a mysterious blue light bursting in the sky. Chinese manhua cover art style, full-colour digital illustration, bold clean linework, cel shading with dramatic glow and rim light, high contrast, vertical 9:16 composition (keep the subject inside the centre 2:3 area), leave the top 25% as darker empty background for a title overlay, NO text, NO letters, NO speech bubbles, NO watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep71/p030.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đó là Tam phẩm Hộ Tâm Đan. Trác Phàm bảo Ngưng Hương ăn một nửa, sau đó kiểm tra xem Mộc Chi còn sống không; nếu còn thì cho nó phần còn lại."
+    },
+    {
+      "panel": "dqgl_ep71/p052.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thiên Dương vẫn trách Trác Phàm đã biến Ngưng Hương thành mồi nhử. Trác Phàm im lặng, còn cô tin rằng mọi việc hắn làm đều đã được tính toán."
+    },
+    {
+      "panel": "dqgl_ep72/p047.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm nghi ngờ đây là một cái bẫy do con chuột bày ra. Theo hắn, linh thú cấp thấp thường săn mồi theo bầy và giăng bẫy kiểu này."
+    },
+    {
+      "panel": "dqgl_ep72/p063.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một con sói trắng bất ngờ gầm lên ngay ngoài hang. Ánh mắt đỏ rực của cả đàn thú hiện ra giữa màn mưa."
+    },
+    {
+      "panel": "dqgl_ep72/p067.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bầy sói trắng chạy thẳng về phía hang, bao vây lối vào. Trác Phàm và đồng đội vẫn còn trọng thương, còn trận chiến mới chỉ bắt đầu."
+    },
+    {
+      "panel": "dqgl_ep73/p019.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm gọi Thiên Dương đưa kiếm cho Ngưng Nhi. Cô có thể mở đường thoát ra ngoài mà không cần trực tiếp đối đầu với bầy sói."
+    },
+    {
+      "panel": "dqgl_ep73/p040.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngưng Nhi rút kiếm nghênh chiến. Trác Phàm kinh ngạc, không hiểu vì sao cô lại tự mình lao vào nguy hiểm."
+    },
+    {
+      "panel": "dqgl_ep73/p051.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngưng Nhi vung kiếm chém trúng Lang Vương, máu bắn xuống nền đất. Cô vẫn gắng gượng giữa cơn mưa và những vết thương."
+    },
+    {
+      "panel": "dqgl_ep74/p037.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngay trước khi bầy sói khép vòng vây, một luồng sáng xanh bùng nổ, khiến Lang Vương khựng lại."
+    },
+    {
+      "panel": "dqgl_ep74/p041.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Năng lượng xanh quét ngang bãi đất, hất văng đàn linh thú khỏi Ngưng Nhi."
+    },
+    {
+      "panel": "dqgl_ep74/p045.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sau đòn đánh, Ngưng Nhi ngã bất tỉnh. Những con sói nằm rải rác quanh cô, còn nguồn sức mạnh vừa cứu cô vẫn chưa rõ từ đâu tới."
+    }
+  ]
+}

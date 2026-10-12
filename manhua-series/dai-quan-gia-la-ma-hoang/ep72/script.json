@@ -1,0 +1,31 @@
+﻿{
+  "title": "Hang trú mưa biến thành ổ phục kích",
+  "chapters": "72",
+  "source_dir": "manhua-recap/dqgl_ep72",
+  "written_by": "Claude (đọc tay từ panels), 2026-10-12",
+  "description": "Sau trận chiến, Ngưng Hương nhìn Trác Phàm và những người đồng đội nằm bất tỉnh dưới mưa. Cô nhớ lại việc mình từng là người yếu nhất, còn Trác Phàm đã bỏ mặc cô tự sinh tự diệt; vậy mà giờ đây chính hắn lại liều mình cứu mọi người. Ngưng Hương thấy món nợ ân tình này khó lòng trả hết. Một con chuột nhỏ bất ngờ xuất hiện, dẫn cô cùng Trác Phàm và Trác Thiên Dương vào hang tránh mưa. Khi tỉnh lại, Trác Phàm nhận ra trong hang mọc đầy Giải Ưu Thảo. Loại cỏ này có thể làm dịu đau đớn nhưng cũng gây tê dại, đồng thời thu hút linh thú. Hắn đoán con chuột đã dụ họ vào một cái bẫy, và bầy thú sắp tìm đến. Quả nhiên, một đàn sói trắng lao về phía hang; cả nhóm phải chuẩn bị đương đầu khi vẫn còn trọng thương.",
+  "hashtags": ["#DaiQuanGiaLaMaHoang", "#ReviewManhua", "#Manhua", "#TuTien", "#XuyenKhong", "#ReviewTruyen"],
+  "thumbnail": {
+    "text": "Hang trú mưa thành bẫy thú!",
+    "prompt": "Manhua recap thumbnail, Trác Phàm áo choàng nâu và Trác Thiên Dương tóc xanh bị thương trong một hang đá tối, Ngưng Hương tóc đỏ ôm con chuột trắng nhỏ, bên ngoài mưa giông và đàn sói trắng mắt đỏ đang kéo tới cửa hang, các bụi Giải Ưu Thảo phát sáng tím dưới đất, phong cách tiên hiệp hồi hộp, chừa chỗ chữ lớn: HANG TRÚ MƯA THÀNH BẪY THÚ!"
+  },
+  "beats": [
+    {"panel":"p001.jpg","type":"HOOK","kind":"recap","narration":"Mưa giông trút xuống khu rừng sau trận chiến. Ngưng Hương đứng cạnh những người đồng đội bất tỉnh, còn bản thân cô cũng kiệt sức."},
+    {"panel":"p009.jpg","type":"SCENE","kind":"recap","narration":"Nhìn Trác Phàm nằm bất động, Ngưng Hương nhớ lại quãng thời gian mình yếu nhất và từng bị hắn bỏ mặc tự lo cho bản thân."},
+    {"panel":"p013.jpg","type":"SCENE","kind":"recap","narration":"Cô hiểu rằng Trác Phàm có thể lạnh lùng đến mức dùng mình làm mồi nhử, nhưng lần này hắn đã không bỏ rơi mọi người."},
+    {"panel":"p017.jpg","type":"SCENE","kind":"recap","narration":"Ngưng Hương tự hỏi vì sao Trác Phàm không mặc kệ họ. Cô cảm thấy món nợ ân tình này lớn đến mức cả đời cũng khó trả hết."},
+    {"panel":"p023.jpg","type":"SCENE","kind":"recap","narration":"Đúng lúc cô đang đi trong mưa, một con chuột trắng nhỏ xuất hiện trước mặt."},
+    {"panel":"p027.jpg","type":"SCENE","kind":"recap","narration":"Con vật như muốn dẫn đường cho Ngưng Hương. Cô hỏi liệu nó muốn đi cùng mình không."},
+    {"panel":"p031.jpg","type":"SCENE","kind":"recap","narration":"Con chuột dẫn họ tới một hang đá để tránh mưa. Cả nhóm vừa vào trong thì sấm chớp vang lên bên ngoài."},
+    {"panel":"p035.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm tỉnh lại trong hang, lập tức nhận ra có điều bất thường và giục mọi người mau rời đi."},
+    {"panel":"p039.jpg","type":"SCENE","kind":"recap","narration":"Dưới chân họ mọc đầy Giải Ưu Thảo phát sáng. Trác Phàm giải thích loại cỏ này có thể giúp giảm đau."},
+    {"panel":"p043.jpg","type":"SCENE","kind":"recap","narration":"Nhưng với linh thú, Giải Ưu Thảo gây tê dại và có mùi hấp dẫn. Nó sẽ lôi kéo rất nhiều con thú tới đây."},
+    {"panel":"p047.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm nghi ngờ đây là một cái bẫy do con chuột bày ra. Theo hắn, linh thú cấp thấp thường săn mồi theo bầy và giăng bẫy kiểu này."},
+    {"panel":"p051.jpg","type":"SCENE","kind":"recap","narration":"Trác Thiên Dương tức giận vì con chuột lại bỏ chạy đúng lúc nguy cấp. Ngưng Hương thì ôm lấy nó, hỏi cả nhóm nên làm gì tiếp theo."},
+    {"panel":"p055.jpg","type":"SCENE","kind":"recap","narration":"Họ đã ở trong hang gần một ngày. Trác Phàm nhận ra mùi thuốc dụ thú sắp hết tác dụng, nên bầy linh thú có thể lần theo mùi của họ."},
+    {"panel":"p059.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm nói lúc này chỉ còn cách chống đỡ từng đợt tấn công. Thiên Dương ngỡ ngàng khi nghe họ phải đánh theo từng đợt."},
+    {"panel":"p063.jpg","type":"SCENE","kind":"recap","narration":"Một con sói trắng bất ngờ gầm lên ngay ngoài hang. Ánh mắt đỏ rực của cả đàn thú hiện ra giữa màn mưa."},
+    {"panel":"p067.jpg","type":"SCENE","kind":"recap","narration":"Bầy sói trắng chạy thẳng về phía hang, bao vây lối vào. Trác Phàm và đồng đội vẫn còn trọng thương, còn trận chiến mới chỉ bắt đầu."},
+    {"panel":"p070.jpg","type":"ENDING","kind":"recap","narration":"Tiếng gầm của đàn sói vang vọng quanh hang đá. Cả nhóm bị dồn vào thế hiểm khi không còn đường lui dễ dàng."}
+  ]
+}

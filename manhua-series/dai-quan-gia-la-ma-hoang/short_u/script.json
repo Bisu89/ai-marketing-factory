@@ -1,0 +1,87 @@
+{
+  "title": "Hai linh thú cấp sáu đại chiến, Ma Hoàng lao vào giữa biển lửa vì đàn trứng!?",
+  "chapters": "78-80",
+  "source_dir": "manhua-recap/dqgl_ep71",
+  "written_by": "Claude tổng hợp từ script ep71-80 đã lưu, 2026-10-12",
+  "description": "Trác Phàm dẫn đồng đội tới hang ổ Lôi Vân Tước, nơi chim mẹ đang liều mạng chống Xích Viêm Sư Vương. Ngưng Nhi lao vào trước, kéo cả hắn vào biển lửa.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tóm tắt chương 78 đến 80.\n◀ Phần trước: chương 75-77",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "BIỂN LỬA LINH THÚ!",
+    "prompt": "A giant blue-purple thunder bird shielding eggs in a cave from a giant flaming lion king, a young butler cultivator with glowing red eyes running through the fire with a red-haired girl and a blue-haired swordsman. Chinese manhua cover art style, full-colour digital illustration, bold clean linework, cel shading with dramatic glow and rim light, high contrast, vertical 9:16 composition (keep the subject inside the centre 2:3 area), leave the top 25% as darker empty background for a title overlay, NO text, NO letters, NO speech bubbles, NO watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep78/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm thừa nhận gặp được linh thú cấp sáu quả thật nguy hiểm. Thiên Dương không hiểu hắn còn muốn tìm nó để làm gì."
+    },
+    {
+      "panel": "dqgl_ep78/p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trong suy tính của Trác Phàm, chỉ cần cho Lôi Vân Tước ăn Huyết Tâm là có thể thu phục nó. Nhưng hắn vẫn phải tìm cách tiếp cận mục tiêu."
+    },
+    {
+      "panel": "dqgl_ep78/p044.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đó chính là Lôi Vân Tước. Đối thủ của nó là Xích Viêm Sư Vương, linh thú cấp sáu có sức mạnh sánh với linh thú cấp bảy."
+    },
+    {
+      "panel": "dqgl_ep78/p061.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngưng Nhi nhận ra Lôi Vân Tước đang liều mạng bảo vệ đàn con. Cô xin Trác Phàm nghĩ cách giúp chúng."
+    },
+    {
+      "panel": "dqgl_ep79/p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thiên Dương lập tức đoán ra mục đích thật sự của Trác Phàm chính là Lôi Vân Tước. Hắn không hề định cứu linh thú chỉ vì lòng tốt."
+    },
+    {
+      "panel": "dqgl_ep79/p023.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm thừa nhận mục tiêu của hắn chính là nơi này. Việc rủ hai người đi cùng từ đầu cũng có phần lợi dụng, khiến Thiên Dương tức tối."
+    },
+    {
+      "panel": "dqgl_ep79/p028.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm nói chỉ cần cho Lôi Vân Tước ăn Huyết Tâm. Thiên Dương vẫn không tin kế hoạch ấy đơn giản đến vậy."
+    },
+    {
+      "panel": "dqgl_ep80/p041.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm và Thiên Dương đồng loạt gọi Ngưng Nhi, nhưng cô đã xông vào giữa trận chiến."
+    },
+    {
+      "panel": "dqgl_ep80/p045.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm tự hỏi mình đang làm gì: đường đường là Ma Hoàng mà lại hết lần này đến lần khác bị tình cảm chi phối."
+    },
+    {
+      "panel": "dqgl_ep80/p057.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm đứng chắn trước Ngưng Nhi và Thiên Dương, quyết không để họ phải đối mặt với nguy hiểm một mình."
+    },
+    {
+      "panel": "dqgl_ep80/p060.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Một luồng sáng xanh lóe lên giữa biển lửa. Liệu Trác Phàm có kịp cứu Ngưng Nhi và Lôi Vân Tước?"
+    }
+  ]
+}

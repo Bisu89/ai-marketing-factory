@@ -1,0 +1,506 @@
+{
+  "template": "manhua_recap_long_vi",
+  "title": "Ma Hoàng thành quản gia | Tóm tắt chương 71-75",
+  "chapters": "71-75",
+  "source_dir": "manhua-recap/dqgl_ep71",
+  "written_by": "Claude tổng hợp từ script ep71-80 đã lưu, 2026-10-12",
+  "description": "Tóm tắt truyện Đại Quản Gia Là Ma Hoàng, chương 71 đến 75, kèm bình luận.\nMục lục thời gian: xem bình luận ghim.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#TomTatTruyen"
+  ],
+  "thumbnail": {
+    "text": "MA HOÀNG VÀO KHU VỰC THỨ BA",
+    "prompt": "A young man with glowing red eyes in a dark cloak before a giant blue-purple thunder bird and a giant flaming lion, a red-haired girl and a blue-haired swordsman beside him, a stormy jungle. Chinese manhua cover art style, full-colour digital illustration, bold clean linework, cel shading with dramatic glow and rim light, high contrast, vertical 9:16 composition (keep the subject inside the centre 2:3 area), leave the top 25% as darker empty background for a title overlay, NO text, NO letters, NO speech bubbles, NO watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep71/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Trong cơn mê, Trác Phàm nghe tiếng mọi người gọi mình tỉnh lại. Ngưng Hương cuống quýt lay hắn, sợ hắn không qua khỏi.",
+      "section": "Tập 71: Một viên đan dược, một lời xin lỗi"
+    },
+    {
+      "panel": "dqgl_ep71/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm cuối cùng cũng mở mắt. Ngưng Hương bật khóc vì nhẹ nhõm, còn hắn vẫn chảy máu sau trận chiến."
+    },
+    {
+      "panel": "dqgl_ep71/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngưng Hương mừng rỡ báo rằng hắn đã tỉnh. Cô cũng để ý ma vật đỏ bị thương nằm cách đó không xa."
+    },
+    {
+      "panel": "dqgl_ep71/p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô hỏi Trác Phàm có định để ma vật mang về không. Hắn gật đầu, rồi lại kiệt sức gục xuống."
+    },
+    {
+      "panel": "dqgl_ep71/p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm tỉnh lại lần nữa và thấy ma vật nhỏ đang nằm trong tay mình. Hắn gọi tên Mộc Chi, rồi lấy ra một viên đan dược."
+    },
+    {
+      "panel": "dqgl_ep71/p030.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đó là Tam phẩm Hộ Tâm Đan. Trác Phàm bảo Ngưng Hương ăn một nửa, sau đó kiểm tra xem Mộc Chi còn sống không; nếu còn thì cho nó phần còn lại."
+    },
+    {
+      "panel": "dqgl_ep71/p036.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngưng Hương nhắc Trác Phàm rằng hắn cũng bị thương. Hắn gạt đi, nói vết thương của mình không đáng ngại."
+    },
+    {
+      "panel": "dqgl_ep71/p042.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô định giữ viên đan quý cho mọi người, nhưng Trác Phàm khẳng định dù đan dược quý đến đâu thì người bị thương vẫn phải uống."
+    },
+    {
+      "panel": "dqgl_ep71/p048.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Thiên Dương bảo Ngưng Hương cứ nhận lấy, vì U Quỷ Thất là kẻ thù của cô. Cô mới hiểu Trác Phàm đã cho mình tự quyết định chứ không ép buộc."
+    },
+    {
+      "panel": "dqgl_ep71/p052.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thiên Dương vẫn trách Trác Phàm đã biến Ngưng Hương thành mồi nhử. Trác Phàm im lặng, còn cô tin rằng mọi việc hắn làm đều đã được tính toán."
+    },
+    {
+      "panel": "dqgl_ep71/p054.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Thiên Dương thừa nhận dù trận chiến kết thúc bằng thất bại, việc khiến Thất trưởng lão Tiết gia phải cúi đầu cũng đủ cho thấy Trác Phàm đáng gờm. Sự lạnh lùng của hắn khiến người ta oán hận, nhưng cũng dần khiến họ kính trọng."
+    },
+    {
+      "panel": "dqgl_ep72/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Mưa giông trút xuống khu rừng sau trận chiến. Ngưng Hương đứng cạnh những người đồng đội bất tỉnh, còn bản thân cô cũng kiệt sức.",
+      "section": "Tập 72: Hang trú mưa biến thành ổ phục kích"
+    },
+    {
+      "panel": "dqgl_ep72/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhìn Trác Phàm nằm bất động, Ngưng Hương nhớ lại quãng thời gian mình yếu nhất và từng bị hắn bỏ mặc tự lo cho bản thân."
+    },
+    {
+      "panel": "dqgl_ep72/p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô hiểu rằng Trác Phàm có thể lạnh lùng đến mức dùng mình làm mồi nhử, nhưng lần này hắn đã không bỏ rơi mọi người."
+    },
+    {
+      "panel": "dqgl_ep72/p017.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngưng Hương tự hỏi vì sao Trác Phàm không mặc kệ họ. Cô cảm thấy món nợ ân tình này lớn đến mức cả đời cũng khó trả hết."
+    },
+    {
+      "panel": "dqgl_ep72/p023.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đúng lúc cô đang đi trong mưa, một con chuột trắng nhỏ xuất hiện trước mặt."
+    },
+    {
+      "panel": "dqgl_ep72/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Con vật như muốn dẫn đường cho Ngưng Hương. Cô hỏi liệu nó muốn đi cùng mình không."
+    },
+    {
+      "panel": "dqgl_ep72/p031.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Con chuột dẫn họ tới một hang đá để tránh mưa. Cả nhóm vừa vào trong thì sấm chớp vang lên bên ngoài."
+    },
+    {
+      "panel": "dqgl_ep72/p035.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm tỉnh lại trong hang, lập tức nhận ra có điều bất thường và giục mọi người mau rời đi."
+    },
+    {
+      "panel": "dqgl_ep72/p039.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Dưới chân họ mọc đầy Giải Ưu Thảo phát sáng. Trác Phàm giải thích loại cỏ này có thể giúp giảm đau."
+    },
+    {
+      "panel": "dqgl_ep72/p043.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng với linh thú, Giải Ưu Thảo gây tê dại và có mùi hấp dẫn. Nó sẽ lôi kéo rất nhiều con thú tới đây."
+    },
+    {
+      "panel": "dqgl_ep72/p047.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm nghi ngờ đây là một cái bẫy do con chuột bày ra. Theo hắn, linh thú cấp thấp thường săn mồi theo bầy và giăng bẫy kiểu này."
+    },
+    {
+      "panel": "dqgl_ep72/p051.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Thiên Dương tức giận vì con chuột lại bỏ chạy đúng lúc nguy cấp. Ngưng Hương thì ôm lấy nó, hỏi cả nhóm nên làm gì tiếp theo."
+    },
+    {
+      "panel": "dqgl_ep72/p055.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Họ đã ở trong hang gần một ngày. Trác Phàm nhận ra mùi thuốc dụ thú sắp hết tác dụng, nên bầy linh thú có thể lần theo mùi của họ."
+    },
+    {
+      "panel": "dqgl_ep72/p059.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm nói lúc này chỉ còn cách chống đỡ từng đợt tấn công. Thiên Dương ngỡ ngàng khi nghe họ phải đánh theo từng đợt."
+    },
+    {
+      "panel": "dqgl_ep72/p063.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một con sói trắng bất ngờ gầm lên ngay ngoài hang. Ánh mắt đỏ rực của cả đàn thú hiện ra giữa màn mưa."
+    },
+    {
+      "panel": "dqgl_ep72/p067.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bầy sói trắng chạy thẳng về phía hang, bao vây lối vào. Trác Phàm và đồng đội vẫn còn trọng thương, còn trận chiến mới chỉ bắt đầu."
+    },
+    {
+      "panel": "dqgl_ep72/p070.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Tiếng gầm của đàn sói vang vọng quanh hang đá. Cả nhóm bị dồn vào thế hiểm khi không còn đường lui dễ dàng."
+    },
+    {
+      "panel": "dqgl_ep73/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Đàn sói trắng gầm vang quanh hang. Trác Phàm và đồng đội bị thương nặng, trong khi bầy linh thú đã áp sát cửa.",
+      "section": "Tập 73: Ngưng Nhi đứng chắn trước bầy Lang Vương"
+    },
+    {
+      "panel": "dqgl_ep73/p010.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm nhận ra chúng là Lang Vương. Dù thuộc linh thú bậc ba, số lượng đông khiến cả nhóm không thể xem thường."
+    },
+    {
+      "panel": "dqgl_ep73/p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngay cả linh thú bậc bốn cũng không nên tùy tiện khiêu khích cả đàn. Trác Thiên Dương than số mình đen đủi, lại sắp bỏ mạng ở nơi này."
+    },
+    {
+      "panel": "dqgl_ep73/p019.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm gọi Thiên Dương đưa kiếm cho Ngưng Nhi. Cô có thể mở đường thoát ra ngoài mà không cần trực tiếp đối đầu với bầy sói."
+    },
+    {
+      "panel": "dqgl_ep73/p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn trao cho Ngưng Nhi viên đan dược cuối cùng, dặn cô giữ sức và rời khỏi Vạn Thú Sơn sau khi thoát được vòng vây."
+    },
+    {
+      "panel": "dqgl_ep73/p030.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngưng Nhi không muốn bỏ lại họ. Thiên Dương cũng chấp nhận rằng dù chết ở đây, ít nhất anh có thể trả phần nào món nợ ân tình."
+    },
+    {
+      "panel": "dqgl_ep73/p036.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm chỉ muốn Ngưng Nhi đừng vì họ mà gặp thêm nguy hiểm. Đúng lúc ấy, một con Lang Vương bất ngờ lao vào hang."
+    },
+    {
+      "panel": "dqgl_ep73/p040.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngưng Nhi rút kiếm nghênh chiến. Trác Phàm kinh ngạc, không hiểu vì sao cô lại tự mình lao vào nguy hiểm."
+    },
+    {
+      "panel": "dqgl_ep73/p045.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô nói Lang Vương chỉ là dã thú, không thể hiểu được tình cảm của những người quan trọng nhất trong đời mình."
+    },
+    {
+      "panel": "dqgl_ep73/p049.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngưng Nhi khẳng định Trác Phàm và Thiên Dương là những người bạn quan trọng nhất của cô. Cô nhất định không bỏ họ lại."
+    },
+    {
+      "panel": "dqgl_ep73/p051.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngưng Nhi vung kiếm chém trúng Lang Vương, máu bắn xuống nền đất. Cô vẫn gắng gượng giữa cơn mưa và những vết thương."
+    },
+    {
+      "panel": "dqgl_ep73/p058.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm nhìn cô chiến đấu rồi nhận ra cả hai người đang hành động liều lĩnh. Trác Thiên Dương cũng hiểu tình thế đã vượt khỏi dự tính."
+    },
+    {
+      "panel": "dqgl_ep73/p065.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Một con Lang Vương lại bổ nhào về phía Ngưng Nhi. Cô vẫn cầm kiếm đối mặt với nó, còn Trác Phàm và Thiên Dương chưa thể thoát khỏi hang."
+    },
+    {
+      "panel": "dqgl_ep74/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Ngưng Nhi thở dốc giữa vòng vây. Lang Vương lại gầm lên, chuẩn bị lao vào cô đang bị thương.",
+      "section": "Tập 74: Luồng sáng bí ẩn và vị khách trong ý thức"
+    },
+    {
+      "panel": "dqgl_ep74/p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bầy sói áp sát từ nhiều phía, còn Ngưng Nhi chỉ có một mình chắn trước cửa hang."
+    },
+    {
+      "panel": "dqgl_ep74/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một con Lang Vương chồm tới. Ngưng Nhi nghiến răng chống đỡ, nhưng sức lực của cô đã gần cạn."
+    },
+    {
+      "panel": "dqgl_ep74/p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô bị đàn sói dồn ép giữa trời mưa. Trác Phàm và Trác Thiên Dương ở trong hang chỉ có thể lo lắng nhìn ra."
+    },
+    {
+      "panel": "dqgl_ep74/p017.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngưng Nhi vẫn cố đứng vững giữa những con sói đang vây kín. Máu và nước mưa hòa lẫn trên người cô."
+    },
+    {
+      "panel": "dqgl_ep74/p021.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một Lang Vương áp sát, Ngưng Nhi gần như không còn sức né tránh. Tình thế trước mắt trở nên tuyệt vọng."
+    },
+    {
+      "panel": "dqgl_ep74/p029.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm và Thiên Dương cùng căng thẳng dõi theo. Tiếng gầm dữ dội vang lên giữa cơn mưa."
+    },
+    {
+      "panel": "dqgl_ep74/p037.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngay trước khi bầy sói khép vòng vây, một luồng sáng xanh bùng nổ, khiến Lang Vương khựng lại."
+    },
+    {
+      "panel": "dqgl_ep74/p041.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Năng lượng xanh quét ngang bãi đất, hất văng đàn linh thú khỏi Ngưng Nhi."
+    },
+    {
+      "panel": "dqgl_ep74/p045.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sau đòn đánh, Ngưng Nhi ngã bất tỉnh. Những con sói nằm rải rác quanh cô, còn nguồn sức mạnh vừa cứu cô vẫn chưa rõ từ đâu tới."
+    },
+    {
+      "panel": "dqgl_ep74/p052.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm mở mắt trong một không gian xanh huyền ảo. Hắn nhận ra cơ thể mình không còn bị thương như trước."
+    },
+    {
+      "panel": "dqgl_ep74/p055.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn tự hỏi đây là nơi nào và vì sao mình có thể cử động tự do. Một linh thể phát sáng đang đứng trước mặt hắn."
+    },
+    {
+      "panel": "dqgl_ep74/p059.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Linh thể nói nó nghe thấy hai thiếu gia nhà họ Hỏa gọi Trác Phàm. Hắn lập tức cảnh giác, không hiểu mình đang ở đâu."
+    },
+    {
+      "panel": "dqgl_ep74/p063.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Khi Trác Phàm hỏi đối phương là ai, linh thể đáp rằng đây là địa bàn của nó và hắn không cần biết danh tính."
+    },
+    {
+      "panel": "dqgl_ep74/p067.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Linh thể hỏi Trác Phàm đến Vạn Thú Sơn Mạch để làm gì. Hắn thẳng thắn nói mình muốn bắt linh thú để luyện ma vật."
+    },
+    {
+      "panel": "dqgl_ep74/p071.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mục tiêu của Trác Phàm là Lôi Vân Tước, một linh thú bậc sáu. Hắn muốn dùng nó để nâng cao thực lực."
+    },
+    {
+      "panel": "dqgl_ep74/p075.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Linh thể hài lòng với câu trả lời và nhận ra Trác Phàm có thể xâm nhập vào không gian ý thức của người khác."
+    },
+    {
+      "panel": "dqgl_ep74/p079.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nó cho rằng cảnh giới ý thức của Trác Phàm đã vượt giới hạn Thần Chiếu, thậm chí vượt qua Siêu Việt phẩm giai."
+    },
+    {
+      "panel": "dqgl_ep74/p082.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Linh thể gọi Trác Phàm là Thánh Vực. Hắn sững sờ nhắc lại danh xưng ấy, mở ra bí ẩn mới về sức mạnh tinh thần của mình."
+    },
+    {
+      "panel": "dqgl_ep75/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Linh thể xanh nhìn Trác Phàm đầy hứng thú. Nó nhận ra hắn không phải người bình thường, còn biết cả danh xưng Thánh Vực.",
+      "section": "Tập 75: Linh thể chỉ đường tới Lôi Vân Tước"
+    },
+    {
+      "panel": "dqgl_ep75/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm thắc mắc vì sao linh thể biết về Huyết Anh. Đối phương nói chuyện luyện Huyết Anh đã xảy ra từ lâu và rất ít người biết."
+    },
+    {
+      "panel": "dqgl_ep75/p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm hỏi linh thể rốt cuộc là ai, nhưng nó không muốn trả lời câu hỏi đó."
+    },
+    {
+      "panel": "dqgl_ep75/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Linh thể yêu cầu Trác Phàm nói thật lý do tìm Lôi Vân Tước. Hắn cho biết mình muốn dùng linh thú ấy để ngăn chặn Tử Lôi."
+    },
+    {
+      "panel": "dqgl_ep75/p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Linh thể tỏ vẻ hài lòng và thừa nhận không gian ý thức của Trác Phàm rất đặc biệt."
+    },
+    {
+      "panel": "dqgl_ep75/p017.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nó nói sẽ tặng Trác Phàm một món quà nhỏ. Linh thể chạm tay lên trán hắn, để lại một dấu ấn kỳ lạ."
+    },
+    {
+      "panel": "dqgl_ep75/p021.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Linh thể chỉ cho hắn đường tới khu vực thứ ba, cách đó ba nghìn dặm, nơi có Lôi Vân Tước. Còn thuần phục được nó hay không phải xem bản lĩnh của Trác Phàm."
+    },
+    {
+      "panel": "dqgl_ep75/p029.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm chợt tỉnh lại trong hang. Sau một đêm, thương thế của hắn đã hồi phục đáng kể."
+    },
+    {
+      "panel": "dqgl_ep75/p033.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn thử cử động và nhận ra cơ thể đã khỏe hơn, dù vẫn còn hơi suy nhược."
+    },
+    {
+      "panel": "dqgl_ep75/p037.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Huyết Anh cũng trở lại hình dạng ban đầu. Trác Phàm đoán nó sẽ sớm tỉnh lại."
+    },
+    {
+      "panel": "dqgl_ep75/p041.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm tự hỏi linh thể đã cứu mình với mục đích gì, rồi nhận ra dấu ấn trên trán vẫn còn lưu lại."
+    },
+    {
+      "panel": "dqgl_ep75/p045.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn tạm gác câu hỏi về linh thể. Dù sao đối phương đã cứu mạng mình, còn hiện tại hắn cần tập trung nâng cao thực lực."
+    },
+    {
+      "panel": "dqgl_ep75/p049.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm tự nhắc rằng sức mạnh hiện tại vẫn còn quá yếu. Muốn sống sót trong thế giới này, hắn phải tiếp tục tu luyện."
+    },
+    {
+      "panel": "dqgl_ep75/p053.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngưng Nhi vẫn nằm bất tỉnh trong hang. Trác Phàm gọi cô nhưng chưa thấy phản ứng."
+    },
+    {
+      "panel": "dqgl_ep75/p061.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm đỡ Ngưng Nhi dậy và cho cô uống Hộ Tâm Hoàn. Cô dần tỉnh lại sau khi kiệt sức vì chiến đấu với bầy Huyết Lang."
+    },
+    {
+      "panel": "dqgl_ep75/p067.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngưng Nhi hỏi liệu cả nhóm đã chết chưa. Trác Phàm trấn an rằng mọi người vẫn sống, dù cô vẫn bán tín bán nghi."
+    },
+    {
+      "panel": "dqgl_ep75/p071.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngưng Nhi ngạc nhiên vì Trác Phàm bị thương nặng mà vẫn cử động được. Hắn bảo cô nghỉ ngơi trước, vì vết thương của cô chỉ ở ngoài da."
+    },
+    {
+      "panel": "dqgl_ep75/p077.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm nói cả nhóm đã cùng trải qua sinh tử. Ngưng Nhi thiếp đi trong vòng tay hắn, còn hắn chỉ biết thở dài trước tính cách của cô."
+    },
+    {
+      "panel": "dqgl_ep75/p083.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm quay sang lay Trác Thiên Dương, giục anh tỉnh dậy. Thiên Dương vẫn chưa chịu mở mắt."
+    },
+    {
+      "panel": "dqgl_ep75/p089.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Khi Trác Phàm thúc giục Thiên Dương lần nữa, hai linh thú nhỏ bất ngờ xuất hiện giữa rừng, mở ra một tình huống mới."
+    }
+  ]
+}
