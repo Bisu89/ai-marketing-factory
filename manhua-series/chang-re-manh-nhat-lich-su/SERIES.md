@@ -151,6 +151,8 @@ lớn hơn xoay quanh phủ Bá tước Huyền Vũ (gia tộc Kim Mộc Lan —
 - Chương 21 xác nhận: "Gia Huấn Kim Thị" là bài kiểm tra ngầm để phủ Bá tước đánh giá con rể mới — vượt qua giúp Thẩm Lãng được dỡ bỏ cấm túc, chính thức có tự do đi lại ngoài phủ (giải thích vì sao từ đây anh tự do hành động, không còn bị giám sát như hồi mới cưới).
 - Chương 25–28 xác nhận rõ: Điền Hoành chỉ là quân cờ/vỏ bọc, chủ mưu thật đứng sau toàn bộ vụ việc là liên minh Trương Tấn (con trai Thái thú Nộ Giang) và thành chủ Liễu Vô Nham — mục tiêu cuối cùng không phải cá nhân Thẩm Lãng mà là hạ bệ chính trị phủ Bá tước Huyền Vũ, âm mưu leo thang từ đòi nợ cờ bạc thành kế hoạch giẫm đạp chết người hàng loạt ở chương 28.
 
+> Tài liệu cốt truyện các tập (để viết truyện sau này): [STORY.md](STORY.md). Mỗi khi xong một Long, thêm mục mới vào đó.
+
 ## Video đã dựng
 
 | Video | Nội dung | Script | Trạng thái |
