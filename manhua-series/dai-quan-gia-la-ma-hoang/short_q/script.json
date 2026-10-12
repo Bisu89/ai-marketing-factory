@@ -1,0 +1,87 @@
+{
+  "title": "U Quỷ Thất đuổi tới, Ma Hoàng giả vờ hòa giải rồi trở mặt!?",
+  "chapters": "64-67",
+  "source_dir": "manhua-recap/dqgl_ep61",
+  "written_by": "Claude tổng hợp từ script ep61-70 đã lưu, 2026-10-12",
+  "description": "Trác Phàm bị trưởng lão U Minh Cốc U Quỷ Thất truy đuổi, bày đại trận quyết chiến, giả vờ chấp nhận hòa giải rồi bất ngờ ra tay cùng hai đồng đội.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tóm tắt chương 64 đến 67.\n◀ Phần trước: chương 61-63\n▶ Phần sau: chương 68-70",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "HÒA GIẢI GIẢ, SÁT CHIÊU THẬT!",
+    "prompt": "A young butler cultivator with glowing red eyes inside a glowing formation, a fire dragon and a green demon dragon clashing above, a sinister old elder with a giant purple scorpion facing them. Chinese manhua cover art style, full-colour digital illustration, bold clean linework, cel shading with dramatic glow and rim light, high contrast, vertical 9:16 composition (keep the subject inside the centre 2:3 area), leave the top 25% as darker empty background for a title overlay, NO text, NO letters, NO speech bubbles, NO watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep64/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thiên Dương hỏi đó là đan gì. Trác Phàm giải thích đây là Ẩn Tức Đan nhất phẩm, có thể che giấu khí tức của họ trong một ngày."
+    },
+    {
+      "panel": "dqgl_ep64/p030.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh ta tiết lộ Thất trưởng lão chính là U Quỷ Thất, kẻ tà ác khét tiếng nhất U Minh Cốc. Trác Phàm sững người khi nghe danh hiệu ấy."
+    },
+    {
+      "panel": "dqgl_ep65/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đặc biệt, Cửu trưởng lão Tiềm Long Các từng bị U Quỷ Thất hạ sát. Thiên Dương cũng tiết lộ Tử Lôi Kim Nhân của mình bị hủy là do ông ta sắp đặt."
+    },
+    {
+      "panel": "dqgl_ep65/p012.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm khẳng định mình không bỏ lại ai, kể cả Thất trưởng lão. Ánh mắt hắn đỏ lên khi quyết định tự giải quyết mối nguy này."
+    },
+    {
+      "panel": "dqgl_ep65/p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn tuyên bố sẽ bố trí đại trận tại đây để quyết một trận với U Quỷ Thất."
+    },
+    {
+      "panel": "dqgl_ep65/p032.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Trác Phàm ngẩng lên, đôi mắt đỏ rực, rồi đáp gọn: “Vậy thì tới đi!”"
+    },
+    {
+      "panel": "dqgl_ep66/p006.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông kinh ngạc hỏi đây là trận pháp gì. Trác Phàm đã dùng trận thức tạo ra một đòn hỏa công có sức mạnh đáng kể."
+    },
+    {
+      "panel": "dqgl_ep66/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "U Quỷ Thất thừa nhận nếu tiếp tục đánh thì hai bên khó phân thắng bại và đều có thể bị thương. Ông đề nghị nhóm Trác Phàm chia một phần Kim Cương Lưu Sa, đổi lại ông sẽ không truy cứu."
+    },
+    {
+      "panel": "dqgl_ep66/p029.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Trác Phàm mỉm cười, đồng ý hòa giải với U Quỷ Thất. Liệu lời thỏa thuận này có thật sự chấm dứt cuộc truy đuổi?"
+    },
+    {
+      "panel": "dqgl_ep67/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng nụ cười của Trác Phàm nhanh chóng biến thành ánh mắt lạnh lẽo. Hắn trở mặt, quát U Quỷ Thất là kẻ nói lời không giữ lời."
+    },
+    {
+      "panel": "dqgl_ep67/p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngưng Hương triệu hồi một mãnh thú khổng lồ và dứt khoát tuyên bố U Quỷ Thất nhất định phải chết."
+    }
+  ]
+}

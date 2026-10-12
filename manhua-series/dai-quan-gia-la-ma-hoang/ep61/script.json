@@ -1,0 +1,39 @@
+﻿{
+  "title": "Kế hoạch đào hầm dưới mắt U Minh Cốc!",
+  "chapters": "61",
+  "source_dir": "manhua-recap/dqgl_ep61",
+  "written_by": "Claude (đọc tay từ panels), 2026-10-12",
+  "description": "Trác Phàm và Trác Thiên Dương tiếp tục bàn cách lấy Kim Cương Lưu Sa. Trác Phàm đề nghị dùng một phù trận cổ, nhưng phải bố trí trận thức quanh Lưu Kim Tuyền Đàm với 3.221 viên linh thạch. Chuột chũi của Thiên Dương sẽ đào đường hầm tới hồ; vì nó chỉ ngậm được một viên mỗi lần nên phải đi đi lại lại hàng nghìn lượt. Ngưng Hương phản đối vì con vật sẽ kiệt sức, còn Trác Phàm thì cho rằng phải ép nó làm việc, khiến Thiên Dương và hắn bị cô mắng là quá đáng. Cả nhóm thống nhất chỉ còn cách bày trận trong vòng ba ngày, trước khi Kim Cương Lưu Sa bất ngờ xuất thế. Thiên Dương chấp nhận để chuột chũi đào hầm và bắt đầu triển khai trận pháp. Ở một nơi khác, Thất trưởng lão U Minh Cốc đang tu luyện thì bất chợt cảm thấy bất an. Trác Phàm tin mọi thứ đã sẵn sàng, chỉ còn chờ cơ hội khiến trưởng lão kinh ngạc.",
+  "hashtags": ["#DaiQuanGiaLaMaHoang", "#ReviewManhua", "#Manhua", "#TuTien", "#XuyenKhong", "#ReviewTruyen"],
+  "thumbnail": {
+    "text": "3.221 linh thạch để cướp lưu sa!",
+    "prompt": "Manhua recap thumbnail, Trác Phàm áo choàng nâu đỏ trải bản đồ trận pháp cổ bên hồ phát sáng, Trác Thiên Dương tóc xanh và Ngưng Hương tóc đỏ nhìn kinh ngạc, chuột chũi linh thú nhỏ mệt lả ở tiền cảnh, xa xa Thất trưởng lão U Minh Cốc tóc xanh lá đang tu luyện trên tảng đá, khung cảnh Vạn Thú Sơn Mạch, phong cách tu tiên hài hước và căng thẳng, chừa chỗ chữ lớn: 3.221 linh thạch!"
+  },
+  "beats": [
+    {"panel":"p001.jpg","type":"HOOK","kind":"recap","narration":"Trác Thiên Dương hỏi Trác Phàm có cách nào hay hơn để lấy Kim Cương Lưu Sa không. Trác Phàm khẳng định mình có thể lấy hết, không để U Minh Cốc được một hạt nào."},
+    {"panel":"p002.jpg","type":"SCENE","kind":"recap","narration":"Vạn Thú Sơn Mạch được chia thành ba khu vực vì linh thú tụ tập đông và rất nguy hiểm. Khu thứ nhất tương đối an toàn, chủ yếu có linh thú nhất, nhị cấp, thích hợp cho tu giả Tụ Khí và Trúc Cơ săn bắt."},
+    {"panel":"p003.jpg","type":"SCENE","kind":"recap","narration":"Khu thứ hai là nơi săn bảo, có nhiều linh thú tam, tứ cấp. Tu giả không đạt Luyện Cốt Cảnh bước vào rất dễ mất mạng, nhưng đây cũng là nơi các cường giả tìm linh sủng."},
+    {"panel":"p004.jpg","type":"SCENE","kind":"recap","narration":"Khu vực thứ ba còn nguy hiểm hơn: linh thú ở đó đều từ ngũ cấp trở lên. Ngay cả cường giả Thần Chiếu Cảnh cũng có thể gặp nguy hiểm tính mạng."},
+    {"panel":"p006.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm đưa cả nhóm tới một hồ nước và nói đã đến nơi. Trác Thiên Dương ngạc nhiên khi hắn chọn khu vực này."},
+    {"panel":"p008.jpg","type":"SCENE","kind":"recap","narration":"Thiên Dương nhắc đây là khu thứ hai, nơi ngay cả cao thủ Huyền Thiên cũng không dám tùy tiện lưu lại. Trác Phàm chỉ gọi hắn là Thiên Dương huynh đệ."},
+    {"panel":"p009.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm nói sẽ nhờ chuột chũi đào hầm từ vị trí này tới Lưu Kim Tuyền Đàm, rồi đưa bản đồ cho mọi người xem."},
+    {"panel":"p010.jpg","type":"SCENE","kind":"recap","narration":"Trên bản đồ, Trác Phàm chỉ rõ Lưu Kim Tuyền Đàm và yêu cầu bố trí trận pháp theo sơ đồ đó."},
+    {"panel":"p011.jpg","type":"SCENE","kind":"recap","narration":"Thiên Dương đồng ý để chuột chũi đào hầm, nhưng lo rằng việc đặt linh thạch và dựng trận pháp sẽ cần tới hơn một nghìn viên."},
+    {"panel":"p013.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm xác nhận con số chính xác là 3.221 viên. Chuột chũi nhỏ bé mỗi lần chỉ ngậm được một viên, nên nó sẽ phải đi đi lại lại hàng nghìn lượt để hoàn thành trận pháp quanh hồ."},
+    {"panel":"p014.jpg","type":"SCENE","kind":"recap","narration":"Ngưng Hương nổi giận, hỏi Trác Phàm có định làm chuột chũi mệt chết hay không. Con vật nghe đến khối lượng công việc đã ngất xỉu."},
+    {"panel":"p016.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm nhấn mạnh họ không còn nhiều thời gian vì Kim Cương Lưu Sa có thể xuất hiện bất cứ lúc nào. Thiên Dương hỏi liệu nhất định phải bắt chuột chũi làm việc như vậy."},
+    {"panel":"p018.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm nói nếu có thể bày trận dưới sự canh chừng của U Minh Cốc thì kế hoạch sẽ thành công. Hắn cho rằng không còn lựa chọn nào khác."},
+    {"panel":"p019.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm trấn an Thiên Dương rằng chuột chũi chỉ là linh sủng nhất cấp, sau này còn có thể tìm con khác. Kim Cương Lưu Sa thì hiếm có, nên chỉ cần làm theo lời hắn, Thiên Dương sẽ thu được rất nhiều."},
+    {"panel":"p020.jpg","type":"SCENE","kind":"recap","narration":"Thiên Dương đồng ý, nói rằng chuột chũi chỉ là linh sủng nhất cấp và mình không cần nó nữa. Con vật lập tức tỉnh lại, nghe rõ từng lời."},
+    {"panel":"p021.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm và Thiên Dương nhìn chuột chũi với vẻ đáng ngờ, khiến nó hoảng hốt rồi lăn ra bất tỉnh lần nữa."},
+    {"panel":"p022.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm bảo Thiên Dương nhìn xem, chuột chũi vẫn ổn. Thiên Dương đồng ý, còn Ngưng Hương trách hai người quá đáng với con vật đáng thương."},
+    {"panel":"p023.jpg","type":"SCENE","kind":"recap","narration":"Thiên Dương nói chỉ còn cách bày xong trận pháp trong vòng ba ngày. Nếu không thúc ép chuột chũi, nó sẽ lười biếng mãi."},
+    {"panel":"p025.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm ra hiệu bắt đầu dựng trận pháp và vận công tạo ra các đường nứt trên mặt đất."},
+    {"panel":"p027.jpg","type":"SCENE","kind":"recap","narration":"Năng lượng bừng sáng quanh ba người khi họ bắt tay triển khai trận pháp theo sơ đồ."},
+    {"panel":"p028.jpg","type":"SCENE","kind":"recap","narration":"Linh thạch được bố trí dọc theo trận thức, từng viên nối thành một đường năng lượng dưới lòng đất."},
+    {"panel":"p029.jpg","type":"SCENE","kind":"recap","narration":"Ở gần hồ, Thất trưởng lão U Minh Cốc đang ngồi tu luyện thì bất chợt mở mắt, cảm thấy có điều gì đó không ổn."},
+    {"panel":"p030.jpg","type":"SCENE","kind":"recap","narration":"Ông tự hỏi vì sao trong lòng bỗng dâng lên cảm giác bất an."},
+    {"panel":"p031.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm cho rằng mọi việc đã sắp xếp xong, chỉ còn chờ cơ hội. Hắn tin khi Kim Cương Lưu Sa xuất thế, trưởng lão U Minh Cốc nhất định sẽ kinh ngạc."},
+    {"panel":"p033.jpg","type":"ENDING","kind":"recap","narration":"Trong khi Trác Phàm âm thầm chờ thời cơ, một tiếng cười bí hiểm vang lên, báo hiệu kế hoạch cướp bảo sắp bắt đầu."}
+  ]
+}

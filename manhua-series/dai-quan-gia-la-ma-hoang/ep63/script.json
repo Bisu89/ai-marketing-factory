@@ -1,0 +1,38 @@
+﻿{
+  "title": "Hiện trường phân tang vật của mọi người!",
+  "chapters": "63",
+  "source_dir": "manhua-recap/dqgl_ep63",
+  "written_by": "Claude (đọc tay từ panels), 2026-10-12",
+  "description": "Trác Phàm vừa thi triển trận pháp Na Di để dẫn Kim Cương Lưu Sa tới chỗ nhóm mình. Trác Thiên Dương nhận ra loại thần thông này thường phải cần trận pháp lục cấp, vậy mà Trác Phàm chỉ dùng một trận thức nhất cấp đã làm được. Thiên Dương mời hắn đến Kiếm Hầu phủ làm cung phụng, nhưng Trác Phàm từ chối vì đã từ chối Tiềm Long Các; thay vào đó, hắn hứa sau khi xong việc sẽ gửi Lạc gia ở Phong Lâm Thành một hiệp ước kết minh cá nhân. Ngưng Hương ngạc nhiên vì người của Thất Thế Gia lại tùy tiện kết minh với người ngoài. Kim Cương Lưu Sa đang dâng lên, Trác Phàm bảo mọi người mau thu lưới, rồi nhắc Thiên Dương đừng nóng vội vì lưu sa chưa chìm hết. Hắn sợ cả nhóm sẽ gặp nguy hiểm nếu Thất trưởng lão U Minh Cốc đuổi tới, nên chuyển sang khu vực thứ ba của Vạn Thú Sơn Mạch. Thiên Dương và Ngưng Hương cho rằng nơi đó quá nguy hiểm, nhưng Trác Phàm triệu hồi linh thú lục cấp Lôi Vân Tước để hộ tống. Cả nhóm gom được nhiều lưu sa hơn dự tính, chia phần cho nhau, song vẫn phải tìm cách thoát khỏi tình thế bị truy đuổi. Trác Phàm cầm một chiếc bình nhỏ và nói cách giải quyết rất đơn giản, kết thúc tập bằng lời thúc giục: “Ăn nó!”",
+  "hashtags": ["#DaiQuanGiaLaMaHoang", "#ReviewManhua", "#Manhua", "#TuTien", "#XuyenKhong", "#ReviewTruyen"],
+  "thumbnail": {
+    "text": "Chia lưu sa rồi chạy!",
+    "prompt": "Manhua recap thumbnail, Trác Phàm áo choàng nâu mỉm cười cầm một chiếc bình nhỏ, bên cạnh Trác Thiên Dương tóc xanh và Ngưng Hương tóc đỏ đứng trước đống Kim Cương Lưu Sa vàng rực, phía sau Lôi Vân Tước linh thú chim lớn tím xanh dang cánh, ánh sáng trận pháp rực rỡ ở hồ đá, cảm giác vừa cướp được bảo vật vừa sắp gặp nguy hiểm, chừa chỗ chữ lớn: CHIA BẢO VẬT!"
+  },
+  "beats": [
+    {"panel":"p001.jpg","type":"HOOK","kind":"recap","narration":"Trận pháp Càn Khôn Na Di bừng sáng, đảo chuyển dòng chảy và đưa Kim Cương Lưu Sa tới trước mặt nhóm Trác Phàm."},
+    {"panel":"p002.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm chỉ khởi động một trận thức nhất cấp, dù thần thông đảo chuyển địa thế như vậy thường phải cần trận pháp lục cấp mới làm được."},
+    {"panel":"p003.jpg","type":"SCENE","kind":"recap","narration":"Trác Thiên Dương khen Trác Phàm có chí hướng, ngỏ ý mời hắn đến Kiếm Hầu phủ làm cung phụng."},
+    {"panel":"p004.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm từ chối, nói Tiềm Long Các từng đề nghị tương tự nhưng hắn đã không nhận. Ngưng Hương nghe vậy liền trách hắn khoác lác."},
+    {"panel":"p005.jpg","type":"SCENE","kind":"recap","narration":"Thiên Dương đề nghị gửi một hiệp ước liên minh cho Trác Phàm. Hắn hỏi gửi tới đâu, và Trác Phàm đáp hãy gửi cho Lạc gia ở Phong Lâm Thành sau khi mình làm xong việc."},
+    {"panel":"p006.jpg","type":"SCENE","kind":"recap","narration":"Thiên Dương đồng ý kết minh cá nhân, tin rằng với bản lĩnh của Trác Phàm thì Lạc gia sẽ còn tiến xa. Trác Phàm lại thắc mắc sao người của Thất Thế Gia ai cũng thích kéo hắn về phe mình."},
+    {"panel":"p008.jpg","type":"SCENE","kind":"recap","narration":"Kim Cương Lưu Sa bắt đầu trào lên từ khe đá. Trác Phàm lập tức giục mọi người thu lưới."},
+    {"panel":"p009.jpg","type":"SCENE","kind":"recap","narration":"Thiên Dương vội thúc giục, nhưng Trác Phàm bảo không cần hấp tấp vì Kim Cương Lưu Sa vẫn đang dâng lên."},
+    {"panel":"p010.jpg","type":"SCENE","kind":"recap","narration":"Hắn nhắc rằng lưu sa có thể chờ lắng xuống rồi vẫn vớt được, còn lúc này điều đáng lo là họ có thể gặp nguy hiểm."},
+    {"panel":"p011.jpg","type":"SCENE","kind":"recap","narration":"Thiên Dương hỏi Trác Phàm định để cả nhóm đắc tội U Minh Cốc sao. Hắn đáp rằng trận quang sáng rực thế này mà đối phương không nhận ra mới là chuyện lạ."},
+    {"panel":"p012.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm đoán cường giả Thiên Huyền của U Minh Cốc sẽ sớm đuổi tới. Thiên Dương lập tức giục hắn nghĩ cách."},
+    {"panel":"p013.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm chỉ sang khu vực săn bảo thứ hai, nhưng nhận ra mình tính nhầm: cả nhóm cần rời đến khu vực thứ ba, nơi cực kỳ nguy hiểm."},
+    {"panel":"p015.jpg","type":"SCENE","kind":"recap","narration":"Không chần chừ, Trác Phàm vận công chuẩn bị lên đường. Thiên Dương và Ngưng Hương hoảng hốt khi biết hắn định đưa mọi người vào khu nguy hiểm."},
+    {"panel":"p016.jpg","type":"SCENE","kind":"recap","narration":"Thiên Dương cảnh báo với thực lực hiện tại, vào khu thứ ba chẳng khác nào tự tìm đường chết. Trác Phàm hỏi họ hiểu gì về mục đích của mình."},
+    {"panel":"p017.jpg","type":"SCENE","kind":"recap","narration":"Hắn triệu hồi linh thú lục cấp Lôi Vân Tước, định dùng nó làm chỗ dựa khi tiến vào vùng nguy hiểm."},
+    {"panel":"p018.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm bảo cả nhóm chia Kim Cương Lưu Sa trước, rồi trên đường bỏ chạy hãy nói chuyện sau. Thiên Dương và Ngưng Hương đành theo kế hoạch."},
+    {"panel":"p019.jpg","type":"SCENE","kind":"recap","narration":"Ngưng Hương nhận ra từ khi gặp Trác Phàm, hai người họ cứ liên tục bị hắn dẫn dắt vào những tình huống khó lường."},
+    {"panel":"p020.jpg","type":"SCENE","kind":"recap","narration":"Dẫu vậy, cả hai vẫn tin Trác Phàm sẽ có đối sách. Một luồng gió lướt qua báo hiệu Lôi Vân Tước đã sẵn sàng."},
+    {"panel":"p021.jpg","type":"SCENE","kind":"recap","narration":"Trước mặt họ là một thùng lớn cùng nhiều túi Kim Cương Lưu Sa đã thu gom được."},
+    {"panel":"p022.jpg","type":"SCENE","kind":"recap","narration":"Thiên Dương vui mừng vì thu hoạch vượt dự tính; hắn còn đoán nơi này vẫn có thể cho thêm hàng trăm cân lưu sa."},
+    {"panel":"p024.jpg","type":"SCENE","kind":"recap","narration":"Theo giao ước, Trác Phàm lấy phần của mình, còn lại để Thiên Dương và Ngưng Hương chia. Thiên Dương hào sảng bảo hắn lấy thêm cũng không sao."},
+    {"panel":"p025.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm chỉ lấy đúng phần đã định. Thiên Dương khen hắn có nghĩa khí, rồi hỏi cả nhóm sẽ thoát khỏi nơi này thế nào."},
+    {"panel":"p026.jpg","type":"ENDING","kind":"recap","narration":"Trác Phàm lấy ra một chiếc bình nhỏ, mỉm cười nói cách giải quyết rất đơn giản."},
+    {"panel":"p027.jpg","type":"ENDING","kind":"recap","narration":"Hắn chìa chiếc bình ra và ra lệnh: “Ăn nó!” Cả nhóm chưa kịp hiểu hắn định làm gì."}
+  ]
+}

@@ -1,0 +1,686 @@
+{
+  "template": "manhua_recap_long_vi",
+  "title": "Ma Hoàng thành quản gia | Tóm tắt chương 66-70",
+  "chapters": "66-70",
+  "source_dir": "manhua-recap/dqgl_ep66",
+  "written_by": "Claude tổng hợp từ script ep61-70 đã lưu, 2026-10-12",
+  "description": "Tóm tắt truyện Đại Quản Gia Là Ma Hoàng, chương 66 đến 70, kèm bình luận.\\nMục lục thời gian: xem bình luận ghim.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#TomTatTruyen"
+  ],
+  "thumbnail": {
+    "text": "MA HOÀNG ĐẠI CHIẾN U QUỶ THẤT",
+    "prompt": "A young man with dark messy hair and glowing red eyes in a dark cloak, a fire dragon over his head, a sinister old elder with a giant purple scorpion in front of him, a red-haired girl and a green-haired swordsman at his side. Chinese manhua cover art style, full-colour digital illustration, bold clean linework, cel shading with dramatic glow and rim light, high contrast, vertical 9:16 composition (keep the subject inside the centre 2:3 area), leave the top 25% as darker empty background for a title overlay, NO text, NO letters, NO speech bubbles, NO watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep66/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "U Quỷ Thất khinh miệt gọi Trác Phàm là tiểu quỷ, cho rằng một kẻ như hắn không có tư cách ra điều kiện với mình.",
+      "section": "Tập 66: Một trận chiến, một lời hòa giải"
+    },
+    {
+      "panel": "dqgl_ep66/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trưởng lão bất ngờ áp sát, quyết trừng phạt Trác Phàm vì dám thách thức ông."
+    },
+    {
+      "panel": "dqgl_ep66/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm không hề né tránh. Hắn ngồi ngay trong trận pháp, bình thản kích hoạt hỏa trận để phản công."
+    },
+    {
+      "panel": "dqgl_ep66/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn quát “Giết!”, hỏa long bùng lên dữ dội và lao thẳng về phía U Quỷ Thất."
+    },
+    {
+      "panel": "dqgl_ep66/p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngọn lửa va chạm với trưởng lão, nhưng U Quỷ Thất vẫn chống đỡ được và nhận ra đây là uy lực của trận pháp."
+    },
+    {
+      "panel": "dqgl_ep66/p006.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông kinh ngạc hỏi đây là trận pháp gì. Trác Phàm đã dùng trận thức tạo ra một đòn hỏa công có sức mạnh đáng kể."
+    },
+    {
+      "panel": "dqgl_ep66/p007.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "U Quỷ Thất thừa nhận mình đã đánh giá thấp Trác Phàm: hắn không chỉ là thiếu niên Tụ Khí lục trọng mà còn là trận sư ngũ cấp."
+    },
+    {
+      "panel": "dqgl_ep66/p008.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Dù vậy, trưởng lão tin Trác Phàm vẫn không thể thắng mình, rồi vận ma công phản kích."
+    },
+    {
+      "panel": "dqgl_ep66/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ma khí xanh cuộn lên, biến thành hình thể khổng lồ bao trùm U Quỷ Thất."
+    },
+    {
+      "panel": "dqgl_ep66/p010.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một ma long xanh hiện ra, há miệng gầm vang và chặn đường hỏa long."
+    },
+    {
+      "panel": "dqgl_ep66/p011.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm nhận ra đối thủ còn tu luyện ma công lợi hại của U Minh Cốc. U Quỷ Thất cười lớn, cho rằng hắn sắp chết đến nơi mà còn hỏi nhiều."
+    },
+    {
+      "panel": "dqgl_ep66/p012.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ma long há miệng tấn công, sức mạnh của nó áp đảo cả khu rừng."
+    },
+    {
+      "panel": "dqgl_ep66/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hỏa long của Trác Phàm va chạm trực diện với ma long. Hai luồng năng lượng đối chọi dữ dội, chưa bên nào chịu lùi."
+    },
+    {
+      "panel": "dqgl_ep66/p015.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm gọi Ngưng Hương ra tay hỗ trợ. Cô lập tức kết ấn, tung thủy công vào trận chiến."
+    },
+    {
+      "panel": "dqgl_ep66/p016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thủy lực của Ngưng Hương cuốn vào trận địa, khiến màn đối đầu giữa hỏa long và ma long càng thêm hỗn loạn."
+    },
+    {
+      "panel": "dqgl_ep66/p018.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thủy công va vào hỏa trận, tạo nên vụ nổ lớn giữa hai luồng sức mạnh."
+    },
+    {
+      "panel": "dqgl_ep66/p019.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "U Quỷ Thất sửng sốt khi phát hiện trận pháp của Trác Phàm còn có thể phối hợp nhiều lớp công kích."
+    },
+    {
+      "panel": "dqgl_ep66/p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm bảo Thiên Dương lướt qua hỗ trợ. U Quỷ Thất bị đánh bất ngờ, còn Thiên Dương lập tức tung chiêu từ bên cạnh."
+    },
+    {
+      "panel": "dqgl_ep66/p021.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thiên Dương hét lên rằng trưởng lão sắp biết thế nào là cao thủ thật sự rồi lao vào trận."
+    },
+    {
+      "panel": "dqgl_ep66/p022.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hỏa trận bùng nổ, Trác Phàm cũng bị đẩy khỏi vị trí khi sức mạnh hai bên tiếp tục va đập."
+    },
+    {
+      "panel": "dqgl_ep66/p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "U Quỷ Thất gọi ra một con bò cạp tím khổng lồ, khiến Trác Phàm nhận ra đó là ma bảo ngũ phẩm."
+    },
+    {
+      "panel": "dqgl_ep66/p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm ngạc nhiên trước bảo vật của đối thủ. U Quỷ Thất khen cả nhóm khá lắm, nhưng vẫn quyết giữ thế thượng phong."
+    },
+    {
+      "panel": "dqgl_ep66/p026.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Con bò cạp tím vây quanh trưởng lão. Ông ta than rằng hôm nay bị ba tiểu quỷ ép đến mức phải dùng bảo vật."
+    },
+    {
+      "panel": "dqgl_ep66/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "U Quỷ Thất thừa nhận nếu tiếp tục đánh thì hai bên khó phân thắng bại và đều có thể bị thương. Ông đề nghị nhóm Trác Phàm chia một phần Kim Cương Lưu Sa, đổi lại ông sẽ không truy cứu."
+    },
+    {
+      "panel": "dqgl_ep66/p028.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Thiên Dương và Ngưng Hương nhìn Trác Phàm chờ quyết định. Sau cuộc giao chiến căng thẳng, không ai vội lên tiếng."
+    },
+    {
+      "panel": "dqgl_ep66/p029.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Trác Phàm mỉm cười, đồng ý hòa giải với U Quỷ Thất. Liệu lời thỏa thuận này có thật sự chấm dứt cuộc truy đuổi?"
+    },
+    {
+      "panel": "dqgl_ep67/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Trác Phàm chìa Kim Cương Lưu Sa ra, giả vờ chấp nhận lời hòa giải của U Quỷ Thất. Trưởng lão lập tức mừng rỡ, tin rằng con mồi đã mắc bẫy.",
+      "section": "Tập 67: Hòa giải giả, sát chiêu thật"
+    },
+    {
+      "panel": "dqgl_ep67/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng nụ cười của Trác Phàm nhanh chóng biến thành ánh mắt lạnh lẽo. Hắn trở mặt, quát U Quỷ Thất là kẻ nói lời không giữ lời."
+    },
+    {
+      "panel": "dqgl_ep67/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "U Quỷ Thất cũng chẳng buồn che giấu ý định, gầm lên đòi giết Trác Phàm rồi điều khiển bò cạp tím tấn công."
+    },
+    {
+      "panel": "dqgl_ep67/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bò cạp lao tới giữa biển lửa. Trác Phàm lập tức phản kích, còn Ngưng Hương và Trác Thiên Dương bị cuốn vào đợt va chạm dữ dội."
+    },
+    {
+      "panel": "dqgl_ep67/p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đòn đánh của U Quỷ Thất khiến cả nhóm bất ngờ, nhưng họ vẫn kịp chống đỡ và giữ đội hình."
+    },
+    {
+      "panel": "dqgl_ep67/p007.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "U Quỷ Thất cười nhạo rằng cả bọn đều là người Ma đạo, ai cũng có thể trở mặt vì lợi ích. Trác Phàm đã đoán trước lão chẳng hề định hòa giải thật."
+    },
+    {
+      "panel": "dqgl_ep67/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thấy ba người phối hợp và vận chuyển trận pháp, U Quỷ Thất bắt đầu cân nhắc tình thế. Đúng lúc ấy, lão chú ý đến Ngưng Hương."
+    },
+    {
+      "panel": "dqgl_ep67/p011.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "U Quỷ Thất hỏi có phải cô là tiểu thư Tiết gia. Ngưng Hương giật mình khi lão nhận ra thân phận của mình."
+    },
+    {
+      "panel": "dqgl_ep67/p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lão nói lần cuối gặp Ngưng Hương là năm năm trước, khi cô vẫn còn là một đứa trẻ; giờ cô đã trưởng thành."
+    },
+    {
+      "panel": "dqgl_ep67/p015.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngưng Hương chất vấn vì sao U Quỷ Thất lại đối đầu với họ, nhắc rằng Tiết gia vẫn dựa vào U Minh Cốc và chưa từng bạc đãi lão."
+    },
+    {
+      "panel": "dqgl_ep67/p017.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "U Quỷ Thất nổi giận, cho rằng Tiết gia phản bội mình và còn muốn hại chết cả nhà họ. Hắn lập tức tung chưởng về phía nhóm Trác Phàm."
+    },
+    {
+      "panel": "dqgl_ep67/p019.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sau màn giao đấu, U Quỷ Thất thừa nhận Trác Phàm có bản lĩnh, nhưng vẫn đòi Tiết gia phải trả giá và không chịu bỏ qua dễ dàng."
+    },
+    {
+      "panel": "dqgl_ep67/p021.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm ngăn Ngưng Hương dao động: U Quỷ Thất đã nhận ra cô, nếu trở về thì Tiết gia chắc chắn bị diệt. Cách duy nhất bảo vệ họ là hạ lão ngay tại đây."
+    },
+    {
+      "panel": "dqgl_ep67/p022.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngưng Hương hiểu rằng không thể để U Quỷ Thất chạy thoát. Cô nói chỉ cần ba người hợp lực, ngay cả cao thủ Thiên Huyền vào trận cũng khó thoát thân."
+    },
+    {
+      "panel": "dqgl_ep67/p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngưng Hương triệu hồi một mãnh thú khổng lồ và dứt khoát tuyên bố U Quỷ Thất nhất định phải chết."
+    },
+    {
+      "panel": "dqgl_ep67/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "U Quỷ Thất kinh hãi, không hiểu vì sao Ngưng Hương trước đó chưa dùng hết sức. Trác Phàm và Trác Thiên Dương lập tức xông lên phối hợp."
+    },
+    {
+      "panel": "dqgl_ep67/p028.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Thiên Dương vận Phong trận, Ngưng Hương khởi động Viêm trận, còn Trác Phàm điều phối sức mạnh để ba người liên kết thành trận."
+    },
+    {
+      "panel": "dqgl_ep67/p029.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "U Quỷ Thất bị cuốn vào trận pháp. Ba nguồn sức mạnh đồng loạt bùng nổ, đánh thẳng vào lão."
+    },
+    {
+      "panel": "dqgl_ep67/p030.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Phong, lôi và viêm hợp thành đòn công kích khổng lồ, biến khu rừng thành biển lửa và sấm chớp."
+    },
+    {
+      "panel": "dqgl_ep67/p031.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Vụ nổ bao trùm cả khu rừng. Liệu U Quỷ Thất có thể sống sót sau trận hợp kích ngũ cấp này?"
+    },
+    {
+      "panel": "dqgl_ep68/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Vụ nổ Phong Lôi Bạo Viêm Trận nhấn chìm U Quỷ Thất. Lão gào lên khi bị đòn hợp kích đánh trúng.",
+      "section": "Tập 68: U Quỷ Thất trúng kế"
+    },
+    {
+      "panel": "dqgl_ep68/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Vụ nổ dội khắp khu rừng, nhưng Trác Phàm và đồng đội lập tức đề phòng, biết U Quỷ Thất chưa chắc đã bị hạ."
+    },
+    {
+      "panel": "dqgl_ep68/p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Quả nhiên, lão vẫn sống. Bò cạp tím bao quanh cơ thể, còn U Quỷ Thất bị thương và phun máu."
+    },
+    {
+      "panel": "dqgl_ep68/p007.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lão kinh ngạc vì đòn viêm có thể làm phổi mình bị thương. Nếu hứng thêm một chiêu như vậy, lão có thể mất mạng."
+    },
+    {
+      "panel": "dqgl_ep68/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "U Quỷ Thất không ngờ một cô gái trẻ lại có thể khuếch đại uy lực trận pháp đến mức ấy. Ngưng Hương đã dốc sức, cơ thể bắt đầu không chịu nổi."
+    },
+    {
+      "panel": "dqgl_ep68/p011.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm nhận ra U Quỷ Thất sắp gục, liền gọi Ngưng Hương và Thiên Dương chuẩn bị bồi thêm một đòn."
+    },
+    {
+      "panel": "dqgl_ep68/p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngưng Hương vẫn căm hận, quyết lão phải chết. Nhưng ngay sau khoảnh khắc cô vừa dốc hết sức, tình thế bất ngờ đảo chiều."
+    },
+    {
+      "panel": "dqgl_ep68/p015.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "U Quỷ Thất bất ngờ phản công. Trác Phàm nhận ra Ngưng Hương vừa kiệt sức sau khi kích động trận pháp."
+    },
+    {
+      "panel": "dqgl_ep68/p017.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trưởng lão lao thẳng vào nhóm, buộc Trác Phàm phải hét lên bảo đồng đội cứu Ngưng Hương."
+    },
+    {
+      "panel": "dqgl_ep68/p019.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đòn đánh bùng nổ ngay trước mắt mọi người. Trác Thiên Dương sững sờ trước sức mạnh của U Quỷ Thất."
+    },
+    {
+      "panel": "dqgl_ep68/p021.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Khi khói lửa tan đi, Thiên Dương lo lắng nhìn quanh. U Quỷ Thất đã khống chế được Ngưng Hương."
+    },
+    {
+      "panel": "dqgl_ep68/p023.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lão siết chặt cô làm con tin, chế giễu Trác Phàm và Thiên Dương, bảo họ cứ chờ đến lượt mình."
+    },
+    {
+      "panel": "dqgl_ep68/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm và Thiên Dương gọi tên Ngưng Hương. U Quỷ Thất lạnh lùng đáp rằng xử lý hai người họ chỉ là chuyện sớm muộn."
+    },
+    {
+      "panel": "dqgl_ep68/p029.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngưng Hương nghẹn ngào cầu xin hãy giết U Quỷ Thất, đừng để lão trở về làm hại cha và Tiết gia."
+    },
+    {
+      "panel": "dqgl_ep68/p031.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "U Quỷ Thất cười nhạo lời cầu xin của cô, tin chắc hai thiếu niên không đủ sức giết được mình."
+    },
+    {
+      "panel": "dqgl_ep68/p033.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lão còn thề sẽ khiến Tiết gia phải trả giá. Trác Thiên Dương tức giận siết chặt nắm đấm."
+    },
+    {
+      "panel": "dqgl_ep68/p037.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thiên Dương mắng U Quỷ Thất là trưởng lão U Minh Cốc mà lại bắt nạt một cô gái, hỏi lão không thấy nhục sao."
+    },
+    {
+      "panel": "dqgl_ep68/p041.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "U Quỷ Thất chẳng coi trọng danh dự. Lão nói nếu hôm nay họ không phải kẻ địch, lão đã thu Trác Phàm làm đệ tử vì ý chí chiến đấu của hắn."
+    },
+    {
+      "panel": "dqgl_ep68/p045.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngưng Hương bật khóc, vẫn cầu xin Trác Phàm giết lão. Trác Phàm đau lòng nhưng hiểu đó là kết cục cô lựa chọn để bảo vệ gia đình."
+    },
+    {
+      "panel": "dqgl_ep68/p047.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm ra lệnh cho Thiên Dương chuẩn bị ra tay. Thiên Dương chần chừ vì Ngưng Hương vẫn đang trong tay đối thủ."
+    },
+    {
+      "panel": "dqgl_ep68/p049.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thiên Dương tung Lôi Trận Minh Long, hóa linh lực thành một con rồng sấm sét lao tới."
+    },
+    {
+      "panel": "dqgl_ep68/p052.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm đồng thời phát động Viêm Trận Viêm Vân Thứ, phối hợp hỏa lực với đòn lôi của Thiên Dương."
+    },
+    {
+      "panel": "dqgl_ep68/p055.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hai luồng sức mạnh khổng lồ dồn thẳng vào U Quỷ Thất. Lão nhận ra uy lực trận pháp đã đạt mức cao nhất."
+    },
+    {
+      "panel": "dqgl_ep68/p058.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "U Quỷ Thất cho rằng thiếu gió hỗ trợ thì dù hai loại nguyên tố viêm có mạnh đến đâu cũng không thể đánh bại mình."
+    },
+    {
+      "panel": "dqgl_ep68/p060.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm nở nụ cười bí hiểm, hỏi ai nói hắn không có Phong lực."
+    },
+    {
+      "panel": "dqgl_ep68/p064.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Thiên Dương kinh ngạc trước điều Trác Phàm vừa tiết lộ: hóa ra vẫn còn một yếu tố chưa được tung ra."
+    },
+    {
+      "panel": "dqgl_ep68/p068.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Trong ánh lửa, Trác Phàm tuyên bố mình đã lừa tất cả. Kế hoạch thật sự của hắn là gì, và U Quỷ Thất có thoát khỏi trận này không?"
+    },
+    {
+      "panel": "dqgl_ep69/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Trác Phàm thú nhận chuyện hắn không thể điều khiển trận thức ngũ cấp chỉ là lời nói dối. Hắn cố tình che giấu năng lực thật để đánh lừa U Quỷ Thất.",
+      "section": "Tập 69: Lá bài cuối của U Quỷ Thất"
+    },
+    {
+      "panel": "dqgl_ep69/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Thiên Dương sững sờ, không tin Trác Phàm lại lừa cả đồng đội. Nhưng hắn giải thích U Quỷ Thất quá tinh anh, càng ít để lão biết càng tốt."
+    },
+    {
+      "panel": "dqgl_ep69/p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm cho biết trận pháp ba người tuy mạnh nhưng tiêu hao sức lực, lại có một nhược điểm chí mạng."
+    },
+    {
+      "panel": "dqgl_ep69/p007.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Muốn phát huy tối đa uy lực, cả ba phải hợp sức. U Quỷ Thất chắc chắn sẽ nhắm vào mắt xích yếu nhất."
+    },
+    {
+      "panel": "dqgl_ep69/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngưng Hương là người yếu nhất trong nhóm, nên U Quỷ Thất đã lợi dụng cô làm con tin để phá thế trận."
+    },
+    {
+      "panel": "dqgl_ep69/p011.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm nói lão đã tự bước vào bẫy khi tưởng Ngưng Hương là điểm yếu có thể khống chế."
+    },
+    {
+      "panel": "dqgl_ep69/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thiên Dương hỏi có phải Trác Phàm đã sớm định bỏ mặc Ngưng Hương. Hắn đáp rằng mình chỉ cho cô một cơ hội lựa chọn."
+    },
+    {
+      "panel": "dqgl_ep69/p018.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm gọi việc hy sinh bản thân để cứu người thân là hành động vĩ đại, nhưng thừa nhận mình cũng đang lợi dụng tình thế."
+    },
+    {
+      "panel": "dqgl_ep69/p021.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thiên Dương chất vấn lời hứa của Trác Phàm với Ngưng Hương. Trác Phàm xác nhận sẽ đưa cô ra khỏi thành, dù cách nói lạnh lùng khiến Thiên Dương khó chịu."
+    },
+    {
+      "panel": "dqgl_ep69/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thiên Dương cảm thấy Trác Phàm còn đáng sợ hơn cả cao thủ Thần Chiếu Cảnh. Trác Phàm chỉ cười, không bận tâm ánh nhìn của đồng đội."
+    },
+    {
+      "panel": "dqgl_ep69/p031.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một vụ nổ khác bùng lên. U Quỷ Thất mỉa mai Trác Phàm lạnh lùng đến mức lợi dụng cả người phe mình."
+    },
+    {
+      "panel": "dqgl_ep69/p035.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm và Thiên Dương vẫn đứng vững sau đòn đánh. U Quỷ Thất nhận ra mình đã đánh giá sai đối thủ."
+    },
+    {
+      "panel": "dqgl_ep69/p039.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm khen U Quỷ Thất tinh quái, nhưng cũng chỉ ra lão đã chịu ba người tấn công mà vẫn chưa tung lá bài cuối."
+    },
+    {
+      "panel": "dqgl_ep69/p043.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "U Quỷ Thất thừa nhận mình còn át chủ bài. Lão quyết định sử dụng nó vì đối thủ lần này là ngoại lệ."
+    },
+    {
+      "panel": "dqgl_ep69/p047.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lão triệu hồi hai con bò cạp ma khí đỏ tím, khiến Trác Phàm nhận ra đây là một pháp bảo ngũ phẩm."
+    },
+    {
+      "panel": "dqgl_ep69/p053.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "U Quỷ Thất giải thích Âm Tòa và Dương Tòa vốn là một thể. Bình thường lão chỉ dùng Dương Tòa để đối địch, còn Âm Tòa chỉ xuất hiện khi tung sát chiêu."
+    },
+    {
+      "panel": "dqgl_ep69/p057.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trưởng lão tuyên bố hôm nay sẽ cho cả nhóm thấy sự lợi hại của Âm Tòa. Đôi bò cạp khổng lồ siết vòng vây quanh lão."
+    },
+    {
+      "panel": "dqgl_ep69/p061.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "U Quỷ Thất tin rằng nhóm Trác Phàm đã dùng hết mọi chiêu thức và không còn cách đối phó với mình."
+    },
+    {
+      "panel": "dqgl_ep69/p063.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm bình thản hỏi ai nói vậy, rồi giơ tay ra hiệu khởi động một đòn đánh khác."
+    },
+    {
+      "panel": "dqgl_ep69/p066.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một ma vật đỏ bất ngờ xuất hiện, lao thẳng vào U Quỷ Thất. Lão giật mình nhận ra đó mới là đòn phục kích thật sự."
+    },
+    {
+      "panel": "dqgl_ep69/p068.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm tuyên bố trận đấu sắp kết thúc. U Quỷ Thất vẫn khăng khăng rằng kẻ chiến thắng cuối cùng sẽ là mình."
+    },
+    {
+      "panel": "dqgl_ep69/p072.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Khói lửa bao trùm chiến trường. U Quỷ Thất kinh ngạc trước điều vừa xảy ra — Trác Phàm đã tính trước đến bước nào?"
+    },
+    {
+      "panel": "dqgl_ep70/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Ma vật đỏ của Trác Phàm bất ngờ lao vào U Quỷ Thất. Trưởng lão bị đánh trúng, còn Trác Phàm cũng sững sờ trước diễn biến.",
+      "section": "Tập 70: Trác Phàm bị dồn vào đường cùng"
+    },
+    {
+      "panel": "dqgl_ep70/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "U Quỷ Thất nhận ra đối thủ còn giữ một ma bảo tam phẩm. Ma vật đỏ lập tức bắn ra luồng công kích, nhắm thẳng vào lão."
+    },
+    {
+      "panel": "dqgl_ep70/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm dồn sức phối hợp với ma vật, nhưng đòn đánh chưa thể hạ gục U Quỷ Thất."
+    },
+    {
+      "panel": "dqgl_ep70/p006.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm bị phản chấn, loạng choạng ngã xuống. U Quỷ Thất vẫn đứng vững giữa vòng vây của ma bảo."
+    },
+    {
+      "panel": "dqgl_ep70/p008.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trưởng lão mỉa mai rằng không ai có thể đoán được suy nghĩ của lão. Dù bị thương, lão vẫn đủ sức khống chế tình hình."
+    },
+    {
+      "panel": "dqgl_ep70/p010.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "U Quỷ Thất khen Trác Phàm có đầu óc sắc bén, nói rằng nếu thêm mười, hai mươi năm nữa, hắn có thể trở thành trí giả kiệt xuất của Ma đạo."
+    },
+    {
+      "panel": "dqgl_ep70/p012.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lão cho rằng ngay cả Gia Cát Trường Phong cũng chưa chắc là đối thủ của Trác Phàm trong tương lai. Nhưng đáng tiếc, hắn sẽ không có cơ hội trưởng thành."
+    },
+    {
+      "panel": "dqgl_ep70/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "U Quỷ Thất thừa nhận Trác Phàm là người đầu tiên khiến lão nảy sinh cảm giác e dè. Lão tuyên bố hôm nay sẽ tự tay giết hắn."
+    },
+    {
+      "panel": "dqgl_ep70/p016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "U Quỷ Thất nói mình chỉ cho Ngưng Hương một cơ hội lựa chọn, còn Trác Phàm thì lạnh lùng lợi dụng cơ hội ấy cho kế hoạch của mình."
+    },
+    {
+      "panel": "dqgl_ep70/p018.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lão tiếp tục châm chọc Trác Phàm vì từng định bỏ mặc Ngưng Hương. Trác Phàm không phủ nhận mình đã đặt cược vào lựa chọn của cô."
+    },
+    {
+      "panel": "dqgl_ep70/p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm cố gắng đứng dậy sau đòn đánh, nhưng thương tích khiến cơ thể hắn run lên."
+    },
+    {
+      "panel": "dqgl_ep70/p022.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "U Quỷ Thất kinh ngạc khi ma vật của Trác Phàm có thể đuổi kịp Âm Tòa. Lão nhanh chóng áp chế nó và tiếp tục áp sát."
+    },
+    {
+      "panel": "dqgl_ep70/p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trưởng lão giáng đòn khiến Trác Phàm gục xuống. U Quỷ Thất cho rằng cuối cùng mình vẫn thắng."
+    },
+    {
+      "panel": "dqgl_ep70/p026.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm bị thương nặng nhưng vẫn gắng chống tay, không cam lòng chấp nhận thất bại."
+    },
+    {
+      "panel": "dqgl_ep70/p028.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "U Quỷ Thất chuẩn bị tung chưởng kết liễu. Trác Phàm vẫn khẳng định kẻ thua cuộc không có quyền làm bất cứ điều gì — liệu hắn còn giấu lá bài nào không?"
+    }
+  ]
+}

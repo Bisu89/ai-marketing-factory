@@ -1,0 +1,41 @@
+﻿{
+  "title": "Tới đi!",
+  "chapters": "65",
+  "source_dir": "manhua-recap/dqgl_ep65",
+  "written_by": "Claude (đọc tay từ panels), 2026-10-12",
+  "description": "Trác Thiên Dương giải thích U Quỷ Thất là trưởng lão có địa vị cao, được tôn sùng trong U Minh Cốc và từng hạ sát nhiều trưởng lão của các thế gia, kể cả Cửu trưởng lão Tiềm Long Các. Chính ông ta đứng sau việc hủy Tử Lôi Kim Nhân của Thiên Dương. Biết đối phương không dễ bị đánh lừa, Trác Phàm quyết định ở lại bố trí đại trận để chặn đường, còn Thiên Dương và Ngưng Hương tìm cách thoát thân. Thiên Dương không muốn bỏ lại Trác Phàm, nhưng hắn khẳng định sẽ không bỏ ai lại, kể cả Thất trưởng lão. Một linh thú to lớn bất ngờ tấn công U Quỷ Thất, song lão nhanh chóng hạ sát nó và tìm thấy dấu vết Lôi Vân Tước. Ông đoán nhóm Trác Phàm đã kiệt sức sau cuộc truy đuổi kéo dài, lại bị linh thú tứ cấp quấy nhiễu. Trác Phàm đề nghị chia một phần lưu sa để đổi lấy đường sống, nhưng U Quỷ Thất bật cười, khẳng định Kim Cương Lưu Sa vốn thuộc về mình và đòi lấy cả mạng ba người. Trác Phàm thôi thương lượng, bước ra thách thức trưởng lão.",
+  "hashtags": ["#DaiQuanGiaLaMaHoang", "#ReviewManhua", "#Manhua", "#TuTien", "#XuyenKhong", "#ReviewTruyen"],
+  "thumbnail": {
+    "text": "Trác Phàm chặn U Quỷ Thất!",
+    "prompt": "Manhua recap thumbnail, Trác Phàm áo choàng nâu mắt đỏ bước ra giữa làn khói, đối diện U Quỷ Thất trưởng lão U Minh Cốc tóc xanh lá tỏa sát khí, bóng linh thú lớn nằm gục phía sau, Trác Thiên Dương tóc xanh và Ngưng Hương tóc đỏ ở xa, không khí đối đầu căng thẳng trong rừng Vạn Thú Sơn Mạch, phong cách tiên hiệp hành động, chừa chỗ chữ lớn: TỚI ĐI!"
+  },
+  "beats": [
+    {"panel":"p001.jpg","type":"HOOK","kind":"recap","narration":"U Quỷ Thất được xem là nhân vật quyền thế và khó lường của U Minh Cốc; ngay cả các cốc chủ cũng phải bàn bạc với ông ta."},
+    {"panel":"p002.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm hỏi liệu trưởng lão có thật sự mạnh đến thế. Thiên Dương đáp rằng trong Thất Thế Gia, rất nhiều trưởng lão từng chết dưới tay ông."},
+    {"panel":"p003.jpg","type":"SCENE","kind":"recap","narration":"Đặc biệt, Cửu trưởng lão Tiềm Long Các từng bị U Quỷ Thất hạ sát. Thiên Dương cũng tiết lộ Tử Lôi Kim Nhân của mình bị hủy là do ông ta sắp đặt."},
+    {"panel":"p004.jpg","type":"SCENE","kind":"recap","narration":"Nghe vậy, Trác Phàm hiểu rằng đối thủ chuyên bày mưu và những mánh khóe thông thường sẽ không dễ đánh lừa được ông ta."},
+    {"panel":"p005.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm biết tình thế đã đến nước này thì khó cứu vãn, nên quyết định phải dùng kế khác."},
+    {"panel":"p007.jpg","type":"SCENE","kind":"recap","narration":"Thiên Dương cho rằng cách duy nhất là để Ngưng Hương lại cản chân trưởng lão, còn hắn và Trác Phàm dùng tốc độ thoát đi."},
+    {"panel":"p009.jpg","type":"SCENE","kind":"recap","narration":"Thiên Dương lập tức đổi ý: hắn không thể bỏ Ngưng Hương lại. Hắn đề nghị cô ở lại giữ chân Thất trưởng lão để hai người kia thoát thân."},
+    {"panel":"p010.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm trêu Thiên Dương rằng nếu không có Ẩn Tức Đan, chắc hẳn hắn cũng sẽ bị bỏ lại."},
+    {"panel":"p012.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm khẳng định mình không bỏ lại ai, kể cả Thất trưởng lão. Ánh mắt hắn đỏ lên khi quyết định tự giải quyết mối nguy này."},
+    {"panel":"p013.jpg","type":"SCENE","kind":"recap","narration":"Hắn tuyên bố sẽ bố trí đại trận tại đây để quyết một trận với U Quỷ Thất."},
+    {"panel":"p014.jpg","type":"SCENE","kind":"recap","narration":"Thiên Dương đồng ý, nói nếu là Trác Phàm thì hắn sẽ tin tưởng kế hoạch."},
+    {"panel":"p015.jpg","type":"SCENE","kind":"recap","narration":"Ngưng Hương lo lắng nhìn Trác Phàm. Cả nhóm tiếp tục tiến sâu vào rừng, nơi một mối nguy khác đang chờ."},
+    {"panel":"p016.jpg","type":"SCENE","kind":"recap","narration":"Một linh thú khổng lồ bất ngờ lao ra tấn công U Quỷ Thất. Trưởng lão lập tức phản kích, nhưng nhóm Trác Phàm đã tranh thủ chạy tiếp."},
+    {"panel":"p018.jpg","type":"SCENE","kind":"recap","narration":"U Quỷ Thất hạ gục linh thú, còn Trác Thiên Dương lướt qua khu rừng cùng đồng bọn."},
+    {"panel":"p020.jpg","type":"SCENE","kind":"recap","narration":"Trưởng lão nhặt được một chiếc lông rơi trên đường. Ông cười lạnh, nhận ra dấu vết có thể giúp truy tìm nhóm người."},
+    {"panel":"p021.jpg","type":"SCENE","kind":"recap","narration":"U Quỷ Thất gọi ba kẻ đang trốn ra mặt, tin rằng họ không thể chạy thoát."},
+    {"panel":"p022.jpg","type":"SCENE","kind":"recap","narration":"Ông gầm lên, đòi tự tay bắt cả nhóm. Trác Phàm lại cười, mỉa mai danh tiếng Thất trưởng lão quả nhiên chẳng phải hư danh."},
+    {"panel":"p023.jpg","type":"SCENE","kind":"recap","narration":"U Quỷ Thất lần theo dấu vết họ để lại và biết chính xác nhóm có ba người. Ông còn tự đắc tuyên bố đối phương phải bái phục."},
+    {"panel":"p024.jpg","type":"SCENE","kind":"recap","narration":"Trưởng lão nhận ra Trác Phàm vừa đột phá Tụ Khí lục trọng. Hắn cũng hiểu U Quỷ Thất tinh anh hơn mình dự đoán."},
+    {"panel":"p025.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm thầm đánh giá đối thủ thật khó đối phó."},
+    {"panel":"p026.jpg","type":"SCENE","kind":"recap","narration":"Hắn đoán U Quỷ Thất đã đuổi đến đây vì chuyện Kim Cương Lưu Sa. Sau quãng đường dài, ngay cả cường giả như ông cũng phải mệt; nếu còn bị linh thú tứ cấp quấy nhiễu thì càng phiền phức."},
+    {"panel":"p027.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm thử thương lượng: nhóm hắn chia một phần lưu sa cho trưởng lão, đổi lại được rời đi."},
+    {"panel":"p028.jpg","type":"SCENE","kind":"recap","narration":"U Quỷ Thất bật cười, khẳng định Kim Cương Lưu Sa vốn thuộc về mình và đòi trừng phạt những kẻ trộm đồ."},
+    {"panel":"p029.jpg","type":"SCENE","kind":"recap","narration":"Ông lập tức ra tay, vận công đánh thẳng về phía Trác Phàm."},
+    {"panel":"p030.jpg","type":"SCENE","kind":"recap","narration":"U Quỷ Thất tuyên bố hôm nay không chỉ lấy lại lưu sa mà còn sẽ lấy mạng cả ba người."},
+    {"panel":"p031.jpg","type":"SCENE","kind":"recap","narration":"Trác Phàm hiện ra giữa làn khói, còn trưởng lão đứng đối diện hắn, quyết không để con mồi chạy thoát."},
+    {"panel":"p032.jpg","type":"ENDING","kind":"recap","narration":"Trác Phàm ngẩng lên, đôi mắt đỏ rực, rồi đáp gọn: “Vậy thì tới đi!”"}
+  ]
+}
