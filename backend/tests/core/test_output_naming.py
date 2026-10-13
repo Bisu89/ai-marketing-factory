@@ -69,5 +69,24 @@ class ResolveLabeledDirTests(unittest.TestCase):
         self.assertIsNone(find_labeled_dir(self.root, "", 55))
 
 
+
+
+class PlainVideoFilenameTests(unittest.TestCase):
+    def test_title_only_no_job_id(self):
+        from app.core.output_naming import plain_video_filename
+
+        self.assertEqual(
+            plain_video_filename("Đại Quản Gia Là Ma Hoàng - Short S1 (ch 1-2)"),
+            "Đại Quản Gia Là Ma Hoàng - Short S1 (ch 1-2).mp4",
+        )
+
+    def test_strips_windows_unsafe_chars_and_empty_is_none(self):
+        from app.core.output_naming import plain_video_filename
+
+        self.assertEqual(plain_video_filename('Tập 1: "Ma Hoàng"?'), "Tập 1 Ma Hoàng.mp4")
+        self.assertIsNone(plain_video_filename("???"))
+        self.assertIsNone(plain_video_filename(None))
+
+
 if __name__ == "__main__":
     unittest.main()

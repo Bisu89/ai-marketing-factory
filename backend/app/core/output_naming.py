@@ -25,14 +25,14 @@ _WINDOWS_RESERVED_NAMES = {"CON", "PRN", "AUX", "NUL"} | {f"{p}{i}" for p in ("C
 MAX_LABEL_LEN = 50
 
 
-def safe_label(text: str | None) -> str | None:
+def safe_label(text: str | None, max_len: int = MAX_LABEL_LEN) -> str | None:
     """`text` stripped of characters Windows forbids in a filename, whitespace
     collapsed, truncated to MAX_LABEL_LEN. None when nothing usable is left.
     Unicode (Vietnamese diacritics etc.) is kept -- NTFS and ffmpeg both
     handle it, and a stripped-accent title is harder to recognize.
     """
     safe = _WINDOWS_UNSAFE_CHARS.sub("", text or "")
-    safe = re.sub(r"\s+", " ", safe).strip(" .")[:MAX_LABEL_LEN].rstrip(" .")
+    safe = re.sub(r"\s+", " ", safe).strip(" .")[:max_len].rstrip(" .")
     if not safe or safe.upper() in _WINDOWS_RESERVED_NAMES:
         return None
     return safe
@@ -67,3 +67,17 @@ def resolve_labeled_dir(parent: Path, prefix: str, item_id: int, label: str | No
 
 def labeled_video_filename(prefix: str, item_id: int, label: str | None) -> str:
     return f"{labeled_name(prefix, item_id, label)}.mp4"
+
+
+# A finished video's own filename is allowed to be longer than a folder label
+# (it appears once in the path, inside a folder that already carries the id).
+MAX_VIDEO_NAME_LEN = 80
+
+
+def plain_video_filename(label: str | None) -> str | None:
+    """`<title>.mp4` -- the bare series/story name plus whatever suffix the
+    title carries (e.g. "Đại Quản Gia Là Ma Hoàng - Short S1 (ch 1-2)"), with
+    no job id, so the file can be uploaded as-is. None when `label` has
+    nothing usable. Only unique inside its own job folder."""
+    safe = safe_label(label, MAX_VIDEO_NAME_LEN)
+    return f"{safe}.mp4" if safe else None

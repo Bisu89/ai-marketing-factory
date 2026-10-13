@@ -16,7 +16,7 @@ from app.core import render_errors
 from app.core.config import get_settings
 from app.core.events import EventBus
 from app.core.exceptions import NotFoundError, RenderCancelled, ValidationError
-from app.core.output_naming import labeled_video_filename, resolve_labeled_dir
+from app.core.output_naming import labeled_video_filename, plain_video_filename, resolve_labeled_dir
 from app.core.render_profile import get_render_profile
 from app.db.session import SessionLocal
 from app.modules.video_composer import audio_mix, ffmpeg_ops, narration, subtitles
@@ -436,10 +436,25 @@ class VideoComposerService:
         return None if title == DUB_PLACEHOLDER_TITLE else title
 
     def final_video_path(self, job_id: int, output_dir: Path) -> Path:
-        """`<output_dir>/job_<id>_<title>.mp4` -- also unique inside a
-        user-chosen output folder shared by several jobs, where the old fixed
-        `video_hoan_chinh.mp4` made every job overwrite the previous one."""
-        return output_dir / labeled_video_filename("job", job_id, self._output_label(job_id))
+        """In the job's own `output` folder (already unique per job) the video
+        is just `<title>.mp4` -- the series/story name plus suffix, no job id,
+        ready to upload. In a user-chosen folder that may be shared by several
+        jobs it stays `job_<id>_<title>.mp4`, otherwise every job there would
+        overwrite the previous one (the old fixed `video_hoan_chinh.mp4`)."""
+        label = self._output_label(job_id)
+        if output_dir == self.job_dir(job_id) / "output":
+            plain = plain_video_filename(label)
+            if plain:
+                return output_dir / plain
+        return output_dir / labeled_video_filename("job", job_id, label)
+
+    def _remove_job_scenes(self, job_id: int) -> None:
+        """The per-beat motion clips are scratch space: the final video has
+        already been composed from them, and they are as big as the video
+        again (or more). Removed once a job completes (kept in debug mode,
+        like the tmp dir, and kept on failure so a retry/diagnosis can use them)."""
+        if not get_settings().debug:
+            shutil.rmtree(self.job_dir(job_id) / "scenes", ignore_errors=True)
 
     def save_input_clips(self, job_id: int, uploads: list[tuple[str, BinaryIO]]) -> None:
         fallback_label = Path(uploads[0][0]).stem if uploads else None
@@ -953,6 +968,7 @@ class VideoComposerService:
             db.commit()
         finally:
             db.close()
+        self._remove_job_scenes(job_id)
         self._log(job_id, f"job completed ({render_seconds:.2f}s)")
         self._publish("render.job.completed", {"job_id": job_id, "output_path": str(final_video)})
 
@@ -1158,6 +1174,7 @@ class VideoComposerService:
             db.commit()
         finally:
             db.close()
+        self._remove_job_scenes(job_id)
         self._log(job_id, f"job completed ({render_seconds:.2f}s)")
         self._publish("render.job.completed", {"job_id": job_id, "output_path": str(final_video)})
 

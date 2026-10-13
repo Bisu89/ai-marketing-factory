@@ -1,0 +1,99 @@
+{
+  "title": "Vạch trần ngọc giả giữa chợ, rồi bỏ tiền mua chính viên ngọc đó!?",
+  "chapters": "5-6",
+  "source_dir": "manhua-recap/dqgl_ep1",
+  "written_by": "Claude, best-of Short, 2026-10-13",
+  "description": "Giữa chợ Phong Lâm Thành, gã gia nô vạch trần một viên ngọc giả, rồi tìm gặp lão bán ngọc để mua lại chính nó. Lớp vỏ ngọc vỡ ra, lộ một viên Huyết Tinh Linh.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tóm tắt chương 5-6.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "MUA LẠI VIÊN NGỌC GIẢ!?",
+    "prompt": "A young servant in a brown robe holding a glowing red blood-spirit gem between his fingers in a dim inn room, a cracked jade shell on the table, red light reflecting in his eyes, a smirk on his face. Chinese manhua cover art style, full-colour digital illustration, bold clean linework, cel shading with dramatic glow and rim light, high contrast, vertical 9:16 composition (keep the subject inside the centre 2:3 area), leave the top 25% as darker empty background for a title overlay, NO text, NO letters, NO speech bubbles, NO watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep6/p039.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Hắn vạch trần viên ngọc giả giữa chợ, rồi bỏ mười viên linh thạch mua lại chính viên ngọc đó. Chỉ có một lý do."
+    },
+    {
+      "panel": "dqgl_ep5/p102.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Giữa chợ, một lão bán hàng quả quyết viên mặc ngọc của mình là hàng thật, còn một cô gái lại bảo nó giả."
+    },
+    {
+      "panel": "dqgl_ep5/p112.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cả chợ cười nhạo cô, nhưng gã gia nô đứng gần đó chen vào: ta có cách chứng minh đây là đồ giả."
+    },
+    {
+      "panel": "dqgl_ep6/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn bày ra một bát nước pha thuốc, bảo cứ thả viên ngọc vào là phân rõ thật giả."
+    },
+    {
+      "panel": "dqgl_ep6/p018.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nước đổi sang đỏ sẫm, sủi bọt, và lão hoảng hốt hỏi sao lại thế này."
+    },
+    {
+      "panel": "dqgl_ep6/p021.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Viên mặc ngọc chỉ đáng ba đồng, và cả khu chợ ùa tới đòi lại tiền."
+    },
+    {
+      "panel": "dqgl_ep6/p032.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Rồi hắn quay sang mượn Bàng thống lĩnh đúng mười viên linh thạch."
+    },
+    {
+      "panel": "dqgl_ep6/p037.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn một mình chặn lão bán ngọc trong con hẻm vắng: cuối cùng cũng tìm được ông."
+    },
+    {
+      "panel": "dqgl_ep6/p047.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Lão chê quá ít, rồi đòi luôn cái mạng của hắn."
+    },
+    {
+      "panel": "dqgl_ep6/p053.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đám tay sai rút đao xông lên, còn gã gia nô chỉ nhẹ giọng: ta không thích chém giết."
+    },
+    {
+      "panel": "dqgl_ep6/p057.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng có người cứ đòi tìm cái chết, và ma khí xanh quét qua cả con hẻm."
+    },
+    {
+      "panel": "dqgl_ep6/p063.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Về khách điếm, hắn đặt viên ngọc lên bàn, rồi dùng ma lực đốt lớp vỏ bên ngoài."
+    },
+    {
+      "panel": "dqgl_ep6/p070.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Lớp vỏ vỡ ra, để lộ một viên đá đỏ rực: đúng là Huyết Tinh Linh."
+    }
+  ]
+}

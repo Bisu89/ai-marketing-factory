@@ -1,0 +1,111 @@
+{
+  "title": "Hắn hứa một chiêu, và hắn làm thật: Ma Hoàng hạ U Quỷ Thất!?",
+  "chapters": "99-100",
+  "source_dir": "manhua-recap/dqgl_ep1",
+  "written_by": "Claude, best-of Short, 2026-10-13",
+  "description": "Trác Phàm trả nguyên xi câu nói cũ của U Quỷ Thất rồi hạ lão bằng một chiêu. Hắn bế Ngưng Nhi bay ra ngoài thành, thực hiện lời hứa rồi nói lời tạm biệt.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tóm tắt chương 99-100.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "MỘT CHIÊU HẠ THIÊN HUYỀN!",
+    "prompt": "A young man with purple wings carrying a girl in a red wedding dress bridal style, flying away from a ruined plaza, a defeated green-haired elder lying behind, soft golden light. Chinese manhua cover art style, full-colour digital illustration, bold clean linework, cel shading with dramatic glow and rim light, high contrast, vertical 9:16 composition (keep the subject inside the centre 2:3 area), leave the top 25% as darker empty background for a title overlay, NO text, NO letters, NO speech bubbles, NO watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep99/p017.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Hắn giơ một ngón tay lên và hứa với trưởng lão Thiên Huyền: chỉ một chiêu, ta sẽ hái đầu ngươi."
+    },
+    {
+      "panel": "dqgl_ep99/p012.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm cười: Thất trưởng lão này, không biết ngươi có còn nhớ không? Những lời mà ngươi đã nói với ta trên dãy núi Vạn Thú mấy tháng trước."
+    },
+    {
+      "panel": "dqgl_ep99/p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trước mặt thực lực tuyệt đối, bất cứ tính toán và thủ đoạn nào đều chỉ là vô nghĩa mà thôi."
+    },
+    {
+      "panel": "dqgl_ep99/p016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hôm nay, ta trả lại nguyên xi không sót tí gì những lời này cho ngươi đấy!"
+    },
+    {
+      "panel": "dqgl_ep99/p018.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chỉ cần một chiêu thôi, lão tử sẽ hái ngay cái đầu của lão xuống."
+    },
+    {
+      "panel": "dqgl_ep99/p029.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Một người chọc chọc đối thủ bằng chính lời nói cũ của đối thủ, cái miệng còn sắc hơn cả kiếm. Chẳng trách ngay cả Bát trưởng lão cũng phải lạnh sống lưng."
+    },
+    {
+      "panel": "dqgl_ep99/p057.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nắm đấm của hắn đập vào lưỡi kiếm xanh, kiếm vỡ tan thành từng mảnh."
+    },
+    {
+      "panel": "dqgl_ep99/p069.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cường độ thân thể hiện giờ của lão tử có thể so với Ma Bảo ngũ phẩm. Một Ma Bảo tam phẩm như ngươi, vốn dĩ không thể làm ta bị thương nổi đâu."
+    },
+    {
+      "panel": "dqgl_ep99/p074.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm nhìn lão, mắt đỏ rực, mỉm cười: chẳng phải do ngươi ban tặng sao?"
+    },
+    {
+      "panel": "dqgl_ep100/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn nhếch môi khẽ cười, rồi bất ngờ bế bổng cô lên."
+    },
+    {
+      "panel": "dqgl_ep100/p018.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn dang cánh bay vút lên, tan vào ánh sáng cùng cô."
+    },
+    {
+      "panel": "dqgl_ep100/p037.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bây giờ, ta đã thực hiện được lời hứa của mình rồi. Đây là bên ngoài thành!"
+    },
+    {
+      "panel": "dqgl_ep100/p052.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn quay lưng bước đi giữa rừng cây: ta đi đây, lấp lánh ánh sáng một lần nữa."
+    },
+    {
+      "panel": "dqgl_ep100/p054.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn không quay đầu, giơ tay vẫy: khi nhẫn Lôi Linh..."
+    },
+    {
+      "panel": "dqgl_ep100/p057.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "...cũng chính là lúc chúng ta gặp lại!"
+    }
+  ]
+}

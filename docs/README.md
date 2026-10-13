@@ -227,3 +227,4 @@ sequence, and a line added to the list above.
 183. [Lão Hạc literature ep02](features/183-lao-hac-literature-ep2.md) — second standalone work on literature_vi channel, 14:05 verified via scratch backend + independent edge-tts measurement; excerpt() sentence-split bug found and documented
 184. [Chí Phèo ep01 final review](features/184-chi-pheo-final-review.md) — hook de-spoiled, factions trimmed, conclusion de-duplicated, excerpt() needle bug fixed in 6 sources, re-verified 14:06
 183. [DQG ch 81-100 build](features/183-dqg-ch81-100-long-and-shorts.md) — 5 Long + 6 Short, QA 100; ep99-100 scripts written; STORY.md updated
+184. [Render output gọn + best-of Shorts](features/184-render-output-cleanup-and-best-of-shorts.md) — scenes xóa sau render, video tên theo series, file .txt title/desc/hashtag/tags; 10 Short best-of

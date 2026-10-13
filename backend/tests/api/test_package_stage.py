@@ -577,3 +577,14 @@ class AIMetadataTests(_PackageStageTestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class PublishTextTests(unittest.TestCase):
+    def test_sheet_has_title_description_hashtags_and_bare_tags(self):
+        from app.api.v1.endpoints.package_generate import format_publish_text
+
+        text = format_publish_text("Tiêu đề?!", "Mô tả\nhai dòng", ["#DaiQuanGia", "#Manhua", "#"])
+        self.assertIn("TITLE\nTiêu đề?!", text)
+        self.assertIn("DESCRIPTION\nMô tả\nhai dòng", text)
+        self.assertIn("HASHTAGS\n#DaiQuanGia #Manhua #", text)
+        self.assertTrue(text.rstrip().endswith("TAGS (YouTube)\nDaiQuanGia, Manhua"))

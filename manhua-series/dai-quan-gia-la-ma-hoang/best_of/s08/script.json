@@ -1,0 +1,87 @@
+{
+  "title": "Cô gái yếu nhất nhóm kề dao vào cổ, rồi tự nguyện làm lô đỉnh!?",
+  "chapters": "85-87",
+  "source_dir": "manhua-recap/dqgl_ep1",
+  "written_by": "Claude, best-of Short, 2026-10-13",
+  "description": "Ngưng Nhi kề dao vào cổ để cứu hai người bạn khỏi ông nội, rồi biết Hòa Thần của U Minh Cốc thực chất là lấy cô làm lô đỉnh. Cô tự nguyện quay về, hứa sẽ hận họ cả đời để họ không đuổi theo.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tóm tắt chương 85-87.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "NGƯNG NHI TỰ NGUYỆN!",
+    "prompt": "A red-haired girl with a dagger at her own neck standing between two wounded young men and a furious white-haired old master, dark forest, dramatic rim light. Chinese manhua cover art style, full-colour digital illustration, bold clean linework, cel shading with dramatic glow and rim light, high contrast, vertical 9:16 composition (keep the subject inside the centre 2:3 area), leave the top 25% as darker empty background for a title overlay, NO text, NO letters, NO speech bubbles, NO watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep85/p032.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Cô gái yếu nhất nhóm bất ngờ hét lên: dừng tay! Hai người bạn của cô đã bị đánh gục, còn ông nội cô đang bước tới."
+    },
+    {
+      "panel": "dqgl_ep85/p034.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô quỳ xin ông tha cho họ, nói rằng Trác Phàm và Thiên Dương đều là bằng hữu của mình."
+    },
+    {
+      "panel": "dqgl_ep85/p036.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "...thì Tiết gia sẽ vạn kiếp bất phục! Ông bước tới, khí thế nặng nề."
+    },
+    {
+      "panel": "dqgl_ep85/p040.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "...Ngưng Nhi sẽ tự vẫn ngay trước mặt người! Lưỡi dao kề sát cổ, máu rỉ ra, Trác Phàm hét lên bảo cô đừng."
+    },
+    {
+      "panel": "dqgl_ep85/p040.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Cô bé luôn bị coi là yếu nhất nhóm lại là người dùng cách quyết liệt nhất để đổi lấy mạng hai người bạn. Xem đoạn này mà thót cả tim."
+    },
+    {
+      "panel": "dqgl_ep85/p041.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tiết Định Thiên run rẩy, thì thầm: xin lỗi Ngưng Nhi, Thất Thế Gia... quả thực không thể đắc tội."
+    },
+    {
+      "panel": "dqgl_ep87/p047.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngưng Nhi nói: muội biết lời phân tích của huynh luôn có đạo lý. Huynh hãy nói thật, nếu muội trở về, dùng thân phận lô đỉnh ra điều kiện với Thất trưởng lão, có bảo vệ được tính mạng cả nhà muội không?"
+    },
+    {
+      "panel": "dqgl_ep87/p057.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô mỉm cười: Trác đại ca, Thiên Dương đại ca, cảm ơn hai huynh đã chăm sóc muội mấy tháng qua, chúng ta chia tay ở đây thôi. Muội từ nhỏ đến giờ chưa từng được rời khỏi thành."
+    },
+    {
+      "panel": "dqgl_ep87/p065.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô nói thêm: cả đời này muội sẽ không bao giờ quan tâm đến hai huynh nữa. Rồi bước vào làn ánh sáng, xa dần."
+    },
+    {
+      "panel": "dqgl_ep87/p072.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nếu như còn có kiếp sau... tạm biệt, Trác Phàm ca ca."
+    },
+    {
+      "panel": "dqgl_ep87/p072.jpg",
+      "type": "ENDING",
+      "kind": "commentary",
+      "narration": "Lời chia tay đau nhất truyện lại là một lời nói dối: cô hứa sẽ hận họ cả đời để họ không đuổi theo. Hiếm nhân vật phụ nào khiến mình mềm lòng đến vậy."
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "title": "Ma Hoàng bị đệ tử đâm lén, tỉnh dậy thành gia nô bảo vệ người lạ!?",
+  "chapters": "1-2",
+  "source_dir": "manhua-recap/dqgl_ep1",
+  "written_by": "Claude, best-of Short, 2026-10-13",
+  "description": "Ma Hoàng mạnh nhất Thánh Vực bị chính đệ tử ruột đâm lén, tự bạo rồi tỉnh dậy trong thân xác một gia nô. Cái tâm ma của gia nô cũ buộc hắn phải bảo vệ Lạc gia, dù hắn chỉ muốn thoát thân.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tóm tắt chương 1-2.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "MA HOÀNG THÀNH GIA NÔ!?",
+    "prompt": "A powerful demon emperor with long dark hair and glowing red eyes in tattered armor, his shadow falling over a young servant in a plain brown cloak who clutches his chest in pain, a young noble lady and a small boy behind him. Chinese manhua cover art style, full-colour digital illustration, bold clean linework, cel shading with dramatic glow and rim light, high contrast, vertical 9:16 composition (keep the subject inside the centre 2:3 area), leave the top 25% as darker empty background for a title overlay, NO text, NO letters, NO speech bubbles, NO watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep1/p008.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Ma Hoàng này vừa chết xong đã phải đi làm osin: cả đại lục kéo đến vây hắn, nắm trong tay bí kíp của Ma Đế."
+    },
+    {
+      "panel": "dqgl_ep1/p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn chỉ cười khinh: một đám tạp binh mà cũng dám hống hách với ta?"
+    },
+    {
+      "panel": "dqgl_ep1/p029.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng đệ tử ruột Triệu Thành đã đứng về phía kẻ thù, và hắn bị đâm lén ngay từ phía sau."
+    },
+    {
+      "panel": "dqgl_ep1/p084.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn tự bạo để hủy bí kíp, rồi tỉnh dậy trong thân xác một gia nô: ta là Ma Hoàng, Trác Nhất Phàm!"
+    },
+    {
+      "panel": "dqgl_ep1/p090.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn dùng Thiên Ma Đại Hóa Quyết hút tu vi của kẻ khác, mạnh dần chỉ sau một đêm."
+    },
+    {
+      "panel": "dqgl_ep1/p099.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Vừa sống lại đã thề trả thù cả Kiếm Hoàng lẫn đệ tử phản bội. Đúng kiểu ma đầu không biết bỏ cuộc."
+    },
+    {
+      "panel": "dqgl_ep1/p109.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Rồi hắn thấy hai chị em Lạc gia bị bao vây, thà chết chứ không chịu giao báu vật."
+    },
+    {
+      "panel": "dqgl_ep1/p114.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn chưa kịp quay đi thì tim đã đau thắt lại."
+    },
+    {
+      "panel": "dqgl_ep2/p011.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Càng rời xa cô tiểu thư ấy, ngực hắn càng đau đớn vô cùng: đó là tâm ma của gia nô cũ."
+    },
+    {
+      "panel": "dqgl_ep2/p026.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm cũ chết đi với một chấp niệm duy nhất: bảo vệ Lạc gia."
+    },
+    {
+      "panel": "dqgl_ep2/p035.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tôn quản gia đòi cuốn mật tịch của Lạc gia, nói đó chỉ là bí kíp tầm thường."
+    },
+    {
+      "panel": "dqgl_ep2/p050.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn mới Trúc Cơ tầng bảy, trong khi đối thủ cao hơn hắn hai cấp."
+    },
+    {
+      "panel": "dqgl_ep2/p066.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn vác cả hai chị em lên vai, bỏ chạy khỏi vòng vây."
+    },
+    {
+      "panel": "dqgl_ep2/p012.jpg",
+      "type": "ENDING",
+      "kind": "commentary",
+      "narration": "Ma Hoàng mà phải làm nô tài vì cái tâm ma này, nghe mà vừa thương vừa buồn cười."
+    }
+  ]
+}

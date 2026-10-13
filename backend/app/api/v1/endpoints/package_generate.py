@@ -452,7 +452,42 @@ def _generate_metadata(
     tmp_path = out_path.with_suffix(".tmp.json")
     tmp_path.write_text(json.dumps(metadata.to_dict(), indent=2, ensure_ascii=False), encoding="utf-8")
     tmp_path.replace(out_path)
+    _write_publish_text(job, draft, metadata)
     return metadata
+
+
+def publish_text_path(job: VideoComposeJob) -> Path:
+    """`<video name>.txt` next to the final video -- the copy-paste sheet for
+    uploading it (title, description, hashtags, YouTube tag-box line)."""
+    return Path(job.output_path).with_suffix(".txt")
+
+
+def format_publish_text(title: str, description: str, hashtags: list[str]) -> str:
+    """Plain-text upload sheet. The last block is the hashtags without the
+    leading `#`, comma-separated, ready to paste into YouTube's Tags box."""
+    tags = [h.lstrip("#").strip() for h in hashtags]
+    tags = [t for t in tags if t]
+    return (
+        f"TITLE\n{title}\n\n"
+        f"DESCRIPTION\n{description}\n\n"
+        f"HASHTAGS\n{' '.join(hashtags)}\n\n"
+        f"TAGS (YouTube)\n{', '.join(tags)}\n"
+    )
+
+
+def _write_publish_text(job: VideoComposeJob, draft: ProjectOut, metadata: PackageMetadata) -> None:
+    # The metadata title has been through derive_title(), which strips
+    # characters Windows forbids in a filename (`?`, `|`, ...) -- wrong for a
+    # YouTube title, so a hand-written title is used verbatim.
+    title = draft.manual_title.strip() if draft.manual_title and draft.manual_title.strip() else metadata.title
+    description = (
+        draft.manual_description.strip()
+        if draft.manual_description and draft.manual_description.strip()
+        else metadata.description
+    )
+    text = format_publish_text(title, description, metadata.hashtags)
+    path = publish_text_path(job)
+    path.write_text(text, encoding="utf-8")
 
 
 # -- The stage itself (section 37/40/41/43) --------------------------------

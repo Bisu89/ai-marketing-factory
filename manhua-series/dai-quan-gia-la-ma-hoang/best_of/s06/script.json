@@ -1,0 +1,81 @@
+{
+  "title": "Gia tộc yếu nhất đòi làm chủ liên minh, hoàng tử phải kết bái!?",
+  "chapters": "45-46",
+  "source_dir": "manhua-recap/dqgl_ep1",
+  "written_by": "Claude, best-of Short, 2026-10-13",
+  "description": "Trong buổi hội đàm ba gia tộc, Lạc gia yếu nhất lại đòi làm chủ liên minh. Trác Phàm lôi minh ước Tiềm Long Các ra, khiến cả Hoàng tử đổi ý, rồi bị chính Hoàng tử xin kết bái.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tóm tắt chương 45-46.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "HOÀNG TỬ KẾT BÁI!",
+    "prompt": "A young butler cultivator and a young prince in imperial robes swearing brotherhood with raised hands in a palace hall, a defeated rival family head bowing in the background. Chinese manhua cover art style, full-colour digital illustration, bold clean linework, cel shading with dramatic glow and rim light, high contrast, vertical 9:16 composition (keep the subject inside the centre 2:3 area), leave the top 25% as darker empty background for a title overlay, NO text, NO letters, NO speech bubbles, NO watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep45/p003.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Lạc gia yếu nhất trong ba nhà mà cũng đòi làm gia chủ liên minh? Người Thái gia cười nhạo cậu bé, cho rằng nhà họ chẳng có tư cách."
+    },
+    {
+      "panel": "dqgl_ep45/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cậu bé đáp lại: Lạc gia hiện chỉ còn bốn người nương tựa nhau, nhưng họ có Trác Phàm — vị quản gia mà cả cậu cũng đặt trọn niềm tin."
+    },
+    {
+      "panel": "dqgl_ep45/p008.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm bình tĩnh lấy ra minh ước giữa Lạc gia và Tiềm Long các. Tờ giấy khiến phía Thái gia cùng Hoàng tử bất ngờ."
+    },
+    {
+      "panel": "dqgl_ep45/p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm tuyên bố: chẳng cần Minh Châu Mật Lệnh, chỉ cần có hắn thì Lạc gia sớm muộn cũng bước vào hàng ngũ thế gia hàng đầu."
+    },
+    {
+      "panel": "dqgl_ep45/p016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hoàng tử ngỏ ý nhờ Trác Phàm giúp mình. Trác Phàm đáp rằng ở lại gia tộc thế tục thật thiệt thòi cho Hoàng tử, rồi mời người suy nghĩ lại."
+    },
+    {
+      "panel": "dqgl_ep45/p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hoàng tử bình thản rút lại lời mời, quyết định để Thái gia làm chủ liên minh và cùng Lôi gia phò tá Lạc gia hoàn thành mật lệnh."
+    },
+    {
+      "panel": "dqgl_ep45/p022.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trước khí thế của Hoàng tử, Thái gia chủ đành cúi đầu nhận thua, tuyên bố Thái gia nguyện quy thuận Lạc gia."
+    },
+    {
+      "panel": "dqgl_ep45/p022.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Một quản gia vừa khiến một hoàng tử đổi ý, một gia chủ cúi đầu, rồi còn bị hoàng tử xin kết bái huynh đệ. Cái miệng này đúng là vũ khí đắt giá nhất Lạc gia."
+    },
+    {
+      "panel": "dqgl_ep46/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tự xưng Tam Hoàng tử Thiên Vũ Đế quốc Vũ Văn Thông, Hoàng tử giơ tay xin thề với trời, muốn kết bái huynh đệ với quản gia Lạc gia."
+    },
+    {
+      "panel": "dqgl_ep46/p007.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Trác Phàm cũng xin thề kết bái, nhưng cảnh báo nếu Hoàng tử phản bội mình, hắn sẽ trả đũa — lời thề nghe chẳng giống nghi thức huynh đệ bình thường."
+    }
+  ]
+}
