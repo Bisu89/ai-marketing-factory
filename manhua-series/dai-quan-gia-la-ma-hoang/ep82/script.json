@@ -1,0 +1,225 @@
+{
+  "title": "Ma Hoàng xẻ xác linh thú cấp sáu thành tám phần để cứu một quả trứng!?",
+  "chapters": "82",
+  "source_dir": "manhua-recap/dqgl_ep82",
+  "written_by": "Claude, đối chiếu từng trang ảnh và sửa lại, 2026-10-13",
+  "description": "Ngưng Nhi khóc bên xác Lôi Vân Tước vì nhớ cha, còn Trác Phàm lặng lẽ mang thi thể chim mẹ đi luyện hóa để cứu quả trứng bị thương. Quay lại, hắn bảo đã chia nó làm tám phần, rồi hỏi Thiên Dương có đoán ra hắn luyện được gì không.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tập 82 (chương 82).\n◀ Tập 81: Chim mẹ giấu một quả trứng, Ma Hoàng nhận nuôi con của nó!?",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Thi thể linh thú hóa thành bảo vật?",
+    "prompt": "Manhua recap thumbnail, Trác Phàm tóc đen áo choàng nâu đứng giữa ngọn lửa vàng rực đang luyện hóa thi thể linh thú chim khổng lồ màu xanh tím, một quả trứng trắng tím nằm cạnh phát sáng, Trác Thiên Dương kinh ngạc nhìn theo, bầu trời đêm tiên hiệp, tương phản lửa vàng và xanh đêm, chừa chỗ chữ lớn: LUYỆN HÓA LINH THÚ!"
+  },
+  "beats": [
+    {
+      "panel": "p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Nửa canh giờ sau, Ngưng Nhi vẫn quỳ bên thi thể Lôi Vân Tước, còn Trác Phàm và Thiên Dương đứng lặng phía sau."
+    },
+    {
+      "panel": "p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm ngạc nhiên khi thấy Ngưng Nhi đau lòng đến vậy vì một linh thú cô chỉ mới gặp lần đầu."
+    },
+    {
+      "panel": "p003.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Ngưng Nhi thú nhận cảnh chim mẹ liều mạng bảo vệ con khiến cô nhớ đến gia đình mình."
+    },
+    {
+      "panel": "p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm khuyên cô đừng quá buồn. Dù Lôi Vân Tước đã chết, ít nhất nó vẫn kịp phó thác quả trứng cho họ."
+    },
+    {
+      "panel": "p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngưng Nhi nhớ lại người cha từng hết lòng bảo vệ và chăm sóc mình."
+    },
+    {
+      "panel": "p006.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô thừa nhận mình khóc vì nhớ cha, người đã bất chấp tất cả để che chở cho con gái."
+    },
+    {
+      "panel": "p007.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Thiên Dương hiểu ra lý do Ngưng Nhi đồng cảm với chim mẹ. Trác Phàm nói sẽ mang thi thể Lôi Vân Tước đi."
+    },
+    {
+      "panel": "p008.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thiên Dương phản đối: linh thú cấp sáu là chiến lợi phẩm quý giá, sao Trác Phàm có thể lấy hết một mình?"
+    },
+    {
+      "panel": "p009.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trác Phàm nhắc rằng Lôi Vân Tước đã giao quả trứng cho hắn, nên thi thể của nó cũng thuộc về hắn."
+    },
+    {
+      "panel": "p010.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn bảo Thiên Dương ở lại chăm sóc Ngưng Nhi, còn mình sẽ đi xử lý thi thể linh thú."
+    },
+    {
+      "panel": "p011.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Thiên Dương bực vì Trác Phàm hành động khó hiểu, nhưng nhìn Ngưng Nhi lẻ loi, anh vẫn ở lại: để một tiểu cô nương một mình thế này thì không yên tâm."
+    },
+    {
+      "panel": "p010.jpg",
+      "narration": "Người ta khóc thương chim mẹ, còn Ma Hoàng thì lo xẻ xác nó cho kịp lúc còn tươi. Hai kiểu đau lòng khác nhau, nhưng đều có tính toán.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p012.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm nhanh chóng mang quả trứng đến gần thi thể Lôi Vân Tước."
+    },
+    {
+      "panel": "p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn lấy ra một chiếc nhẫn rồi vận công, khiến linh lực bùng lên quanh thi thể chim mẹ."
+    },
+    {
+      "panel": "p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Quả trứng vẫn nguyên vẹn bên cạnh trong khi Trác Phàm chuẩn bị luyện hóa phần thi thể còn lại."
+    },
+    {
+      "panel": "p015.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngọn lửa vàng cuộn quanh bàn tay hắn, báo hiệu một bí thuật đang được thi triển."
+    },
+    {
+      "panel": "p016.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trác Phàm định thu lấy những tinh hoa quý giá từ thi thể linh thú cấp sáu."
+    },
+    {
+      "panel": "p017.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ánh mắt hắn chuyển đỏ khi ngọn lửa bùng lên dữ dội dưới bàn tay."
+    },
+    {
+      "panel": "p018.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Hắn có thể luyện ra vật chứa linh khí, và giờ đây đang dùng năng lực ấy để xử lý thi thể Lôi Vân Tước."
+    },
+    {
+      "panel": "p019.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm nhận ra quả trứng bị thương nặng. Nếu không có linh khí của chim mẹ xoa dịu, thai nhi bên trong sẽ chết trước khi nở."
+    },
+    {
+      "panel": "p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chim mẹ đã chết nên hắn càng phải ấp cho được quả trứng này, biến nó thành ma vật của mình để giúp hắn tiến vào Lạc Lôi Hiệp. Muốn vậy phải có thứ chứa được linh khí để rót vào trứng."
+    },
+    {
+      "panel": "p021.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngọn lửa tiếp tục luyện hóa thi thể, tách những phần tinh hoa ra khỏi đống đá vụn."
+    },
+    {
+      "panel": "p022.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trác Phàm tự nhủ hắn đã nói rõ với Lôi Vân Tước từ lúc nó còn sống: cơ thể tàn tật của nó có thể giúp những đứa con sống sót, và nó đã vui vẻ đồng ý."
+    },
+    {
+      "panel": "p023.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Dù Lôi Vân Tước có đồng ý hay không, Trác Phàm vẫn quyết làm đến cùng."
+    },
+    {
+      "panel": "p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngọn lửa bao trùm lấy hắn, còn ánh mắt đỏ rực cho thấy quyết tâm không gì lay chuyển."
+    },
+    {
+      "panel": "p025.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Quá trình luyện hóa bùng nổ trong biển lửa. Trác Phàm tin mục tiêu của mình sắp thành hiện thực."
+    },
+    {
+      "panel": "p026.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đêm buông xuống, cuộc luyện hóa cũng hoàn tất."
+    },
+    {
+      "panel": "p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Dưới bầu trời đầy sao, Ngưng Nhi và Thiên Dương vẫn chờ Trác Phàm quay lại."
+    },
+    {
+      "panel": "p028.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngưng Nhi ngồi cạnh Thiên Dương, dõi mắt về phía con đường Trác Phàm đã đi."
+    },
+    {
+      "panel": "p029.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Trác Phàm bất ngờ xuất hiện trở lại. Ngưng Nhi vui mừng gọi hắn."
+    },
+    {
+      "panel": "p030.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Thiên Dương hỏi thi thể Lôi Vân Tước đã được xử lý ra sao. Trác Phàm bình thản đáp rằng hắn chia nó thành tám phần."
+    },
+    {
+      "panel": "p031.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Ngưng Nhi sửng sốt, còn Thiên Dương giải thích phần lớn thi thể linh thú đều được xử lý như vậy — chỉ không biết Trác Phàm đã luyện ra thứ bảo vật gì."
+    },
+    {
+      "panel": "p030.jpg",
+      "narration": "Chia xác linh thú cấp sáu thành tám phần mà nói nhẹ như chia bánh. Đúng chất Ma Hoàng: ngoài miệng cứng, trong lòng mềm, nhưng tính toán đến từng khúc xương.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p032.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Trác Phàm hỏi Thiên Dương có muốn nhận món đồ ấy không, rồi hứa sẽ tặng nếu đoán đúng. Rốt cuộc hắn đã luyện được thứ gì?"
+    }
+  ]
+}
