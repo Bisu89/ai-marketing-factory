@@ -1,0 +1,686 @@
+{
+ "title": "Lão Hạc: khi lương thiện phải trả bằng một cái chết",
+ "topic": "Vì sao một người gần như chẳng còn gì để mất vẫn chọn cách chết đau đớn nhất, thay vì sống nhờ, sống gian, hay chỉ cần tiêu bớt số tiền mình đã dành sẵn cho con? Đọc lại truyện ngắn Lão Hạc của Nam Cao (1943).",
+ "language": "vi",
+ "budget_usd": null,
+ "accessed": "2026-10-13",
+ "sources": [
+  {
+   "key": "confess",
+   "title": "Lão Hạc: câu nói đầu truyện",
+   "fetch": {
+    "kind": "wikisource",
+    "lang": "vi",
+    "page": "Lão Hạc",
+    "needles": [
+     "trong lòng tôi rất dửng dưng",
+     "chẳng bao giờ lão bán đâu",
+     "Có lẽ tôi bán con chó đấy, ông giáo ạ!"
+    ],
+    "author": "Nam Cao",
+    "publisher": "Wikisource tiếng Việt (văn bản miền công cộng; Nam Cao mất năm 1951)"
+   },
+   "notes": "Văn bản tác phẩm trên Wikisource tiếng Việt. Cần đối chiếu bản in trước khi đăng."
+  },
+  {
+   "key": "pub",
+   "title": "Lão Hạc: thông tin xuất bản (Wikisource)",
+   "fetch": {
+    "kind": "wikisource",
+    "lang": "vi",
+    "page": "Lão Hạc",
+    "needles": [
+     "Lão Hạc là một truyện ngắn của nhà văn Nam Cao được viết năm 1943"
+    ],
+    "author": "Nam Cao",
+    "publisher": "Wikisource tiếng Việt (văn bản miền công cộng; Nam Cao mất năm 1951)"
+   },
+   "notes": "Dòng mô tả ở đầu trang Wikisource (trích lại từ Wikipedia), không phải văn bản truyện; đối chiếu thêm nguồn xuất bản khác nếu cần dùng cho khẳng định quan trọng."
+  },
+  {
+   "key": "lonely",
+   "title": "Lão Hạc: vợ chết, con đi xa, chỉ còn một con chó",
+   "fetch": {
+    "kind": "wikisource",
+    "lang": "vi",
+    "page": "Lão Hạc",
+    "needles": [
+     "Vợ lão chết rồi.",
+     "Con lão đi bằn bặt.",
+     "Lão chỉ còn một mình nó để làm khuây."
+    ],
+    "author": "Nam Cao",
+    "publisher": "Wikisource tiếng Việt (văn bản miền công cộng; Nam Cao mất năm 1951)"
+   },
+   "notes": "Văn bản tác phẩm trên Wikisource tiếng Việt. Cần đối chiếu bản in trước khi đăng."
+  },
+  {
+   "key": "books",
+   "title": "Lão Hạc: ông giáo bán sách lúc con ốm",
+   "fetch": {
+    "kind": "wikisource",
+    "lang": "vi",
+    "page": "Lão Hạc",
+    "needles": [
+     "Hồi bị ốm nặng ở Sài Gòn tôi bán gần hết cả áo quần, nhưng vẫn không chịu bán cho ai một quyển.",
+     "Sau cùng chỉ còn có năm quyển, tôi nhất định, dù có phải chết cũng không chịu bán.",
+     "Ấy thế mà tôi cũng bán!",
+     "Lão quý con chó vàng của lão đã thấm vào đâu với tôi quý năm quyển sách của tôi"
+    ],
+    "author": "Nam Cao",
+    "publisher": "Wikisource tiếng Việt (văn bản miền công cộng; Nam Cao mất năm 1951)"
+   },
+   "notes": "Đoạn độc thoại nội tâm của ông giáo, song song với chuyện Lão Hạc quý con chó. Văn bản chính tả cũ; đối chiếu bản in trước khi đăng."
+  },
+  {
+   "key": "son_backstory",
+   "title": "Lão Hạc: chuyện cưới hỏi hụt của con trai",
+   "fetch": {
+    "kind": "wikisource",
+    "lang": "vi",
+    "page": "Lão Hạc",
+    "needles": [
+     "Hai đứa mê nhau lắm",
+     "nguyên tiền mặt phải một trăm đồng bạc, lại còn cau, còn rượu",
+     "Ai lại bán vườn đi mà lấy vợ?",
+     "nó lấy con trai một ông phó lý, nhà có của",
+     "nó ra tỉnh đến sở mộ phu, đưa thẻ, ký giấy xin đi làm đồn điền cao su"
+    ],
+    "author": "Nam Cao",
+    "publisher": "Wikisource tiếng Việt (văn bản miền công cộng; Nam Cao mất năm 1951)"
+   },
+   "notes": "Văn bản tác phẩm trên Wikisource tiếng Việt. Cần đối chiếu bản in trước khi đăng."
+  },
+  {
+   "key": "threedong",
+   "title": "Lão Hạc: ba đồng bạc trước khi con đi",
+   "fetch": {
+    "kind": "wikisource",
+    "lang": "vi",
+    "page": "Lão Hạc",
+    "needles": [
+     "Trước khi đi, nó còn cho tôi ba đồng bạc, ông giáo ạ!",
+     "Con biếu thầy ba đồng để thỉnh thoảng thầy ăn quà",
+     "Tôi chỉ còn biết khóc, chứ còn biết làm sao được nữa?",
+     "Nó là người của người ta rồi, chứ đâu còn là con tôi?"
+    ],
+    "author": "Nam Cao",
+    "publisher": "Wikisource tiếng Việt (văn bản miền công cộng; Nam Cao mất năm 1951)"
+   },
+   "notes": "Văn bản tác phẩm trên Wikisource tiếng Việt. Cần đối chiếu bản in trước khi đăng."
+  },
+  {
+   "key": "dogname",
+   "title": "Lão Hạc: cậu Vàng",
+   "fetch": {
+    "kind": "wikisource",
+    "lang": "vi",
+    "page": "Lão Hạc",
+    "needles": [
+     "Lão gọi nó là cậu Vàng như một bà hiếm hoi gọi đứa con cầu tự",
+     "Lão cho nó ăn cơm trong một cái bát như một nhà giàu",
+     "Cậu có nhớ bố cậu không? Hả cậu Vàng?"
+    ],
+    "author": "Nam Cao",
+    "publisher": "Wikisource tiếng Việt (văn bản miền công cộng; Nam Cao mất năm 1951)"
+   },
+   "notes": "Văn bản tác phẩm trên Wikisource tiếng Việt. Cần đối chiếu bản in trước khi đăng."
+  },
+  {
+   "key": "illness",
+   "title": "Lão Hạc: ốm, bão, và ba hào gạo mỗi ngày",
+   "fetch": {
+    "kind": "wikisource",
+    "lang": "vi",
+    "page": "Lão Hạc",
+    "needles": [
+     "Tôi chỉ ốm có một trận đấy thôi",
+     "Một trận đúng hai tháng, mười tám ngày, ông giáo ạ!",
+     "Hoa mầu bị phá sạch sành sanh",
+     "mỗi ngày ba hào gạo, mà gia sự vẫn còn đói deo đói dắt"
+    ],
+    "author": "Nam Cao",
+    "publisher": "Wikisource tiếng Việt (văn bản miền công cộng; Nam Cao mất năm 1951)"
+   },
+   "notes": "Văn bản tác phẩm trên Wikisource tiếng Việt. Cần đối chiếu bản in trước khi đăng."
+  },
+  {
+   "key": "decide_sell",
+   "title": "Lão Hạc: quyết định bán chó",
+   "fetch": {
+    "kind": "wikisource",
+    "lang": "vi",
+    "page": "Lão Hạc",
+    "needles": [
+     "Thì ra cậu Vàng cậu ấy ăn khỏe hơn cả tôi ông giáo ạ",
+     "Thôi thì bán phắt đi! Đỡ được đồng nào, hay đồng ấy.",
+     "Bây giờ tiêu một xu cũng là tiêu vào tiền của cháu."
+    ],
+    "author": "Nam Cao",
+    "publisher": "Wikisource tiếng Việt (văn bản miền công cộng; Nam Cao mất năm 1951)"
+   },
+   "notes": "Văn bản tác phẩm trên Wikisource tiếng Việt. Cần đối chiếu bản in trước khi đăng."
+  },
+  {
+   "key": "sold",
+   "title": "Lão Hạc: bán chó",
+   "fetch": {
+    "kind": "wikisource",
+    "lang": "vi",
+    "page": "Lão Hạc",
+    "needles": [
+     "Cậu Vàng đi đời rồi, ông giáo ạ!",
+     "Bán rồi! Họ vừa bắt xong.",
+     "Nó thấy tôi gọi về thì chạy ngay về, vẫy đuôi mừng.",
+     "thằng Mục nấp trong nhà, ngay đằng sau nó, tóm lấy hai cẳng sau nó dốc ngược nó lên",
+     "đã trói chặt cả bốn chân nó lại"
+    ],
+    "author": "Nam Cao",
+    "publisher": "Wikisource tiếng Việt (văn bản miền công cộng; Nam Cao mất năm 1951)"
+   },
+   "notes": "Văn bản tác phẩm trên Wikisource tiếng Việt. Cần đối chiếu bản in trước khi đăng."
+  },
+  {
+   "key": "betrayed",
+   "title": "Lão Hạc: tự trách vì lừa con chó",
+   "fetch": {
+    "kind": "wikisource",
+    "lang": "vi",
+    "page": "Lão Hạc",
+    "needles": [
+     "tôi già bằng này tuổi đầu rồi còn đánh lừa một con chó"
+    ],
+    "author": "Nam Cao",
+    "publisher": "Wikisource tiếng Việt (văn bản miền công cộng; Nam Cao mất năm 1951)"
+   },
+   "notes": "Văn bản tác phẩm trên Wikisource tiếng Việt. Cần đối chiếu bản in trước khi đăng."
+  },
+  {
+   "key": "books_callback",
+   "title": "Lão Hạc: ông giáo không còn xót sách nữa",
+   "fetch": {
+    "kind": "wikisource",
+    "lang": "vi",
+    "page": "Lão Hạc",
+    "needles": [
+     "Bây giờ thì tôi không xót năm quyển sách của tôi quá như trước nữa.",
+     "Tôi chỉ ái ngại cho lão Hạc."
+    ],
+    "author": "Nam Cao",
+    "publisher": "Wikisource tiếng Việt (văn bản miền công cộng; Nam Cao mất năm 1951)"
+   },
+   "notes": "Văn bản tác phẩm trên Wikisource tiếng Việt. Cần đối chiếu bản in trước khi đăng."
+  },
+  {
+   "key": "hoakiep",
+   "title": "Lão Hạc: hóa kiếp cho con chó",
+   "fetch": {
+    "kind": "wikisource",
+    "lang": "vi",
+    "page": "Lão Hạc",
+    "needles": [
+     "Ta giết nó chính là hóa kiếp cho nó đấy, hóa kiếp để cho nó làm kiếp khác",
+     "Kiếp con chó là kiếp khổ thì ta hóa kiếp cho nó để nó làm kiếp người",
+     "Không bao giờ nên hoãn sự sung sướng lại"
+    ],
+    "author": "Nam Cao",
+    "publisher": "Wikisource tiếng Việt (văn bản miền công cộng; Nam Cao mất năm 1951)"
+   },
+   "notes": "Văn bản tác phẩm trên Wikisource tiếng Việt. Cần đối chiếu bản in trước khi đăng."
+  },
+  {
+   "key": "entrust",
+   "title": "Lão Hạc: gửi vườn và gửi tiền",
+   "fetch": {
+    "kind": "wikisource",
+    "lang": "vi",
+    "page": "Lão Hạc",
+    "needles": [
+     "lão muốn nhờ tôi cho lão gửi ba sào vườn của thằng con lão",
+     "lão còn được hăm nhăm đồng bạc với năm đồng vừa bán chó là ba mươi đồng bạc"
+    ],
+    "author": "Nam Cao",
+    "publisher": "Wikisource tiếng Việt (văn bản miền công cộng; Nam Cao mất năm 1951)"
+   },
+   "notes": "Hai việc lão nhờ ông giáo (giữ văn tự vườn; giữ tiền phòng khi chết). Văn bản chính tả cũ; đối chiếu bản in trước khi đăng."
+  },
+  {
+   "key": "whynow",
+   "title": "Lão Hạc: vì sao phải lo trước",
+   "fetch": {
+    "kind": "wikisource",
+    "lang": "vi",
+    "page": "Lão Hạc",
+    "needles": [
+     "Ăn mãi hết đi thì đến lúc chết lấy gì mà lo liệu?",
+     "Tôi cắn rơm, cắn cỏ tôi lạy ông giáo!"
+    ],
+    "author": "Nam Cao",
+    "publisher": "Wikisource tiếng Việt (văn bản miền công cộng; Nam Cao mất năm 1951)"
+   },
+   "notes": "Văn bản tác phẩm trên Wikisource tiếng Việt. Cần đối chiếu bản in trước khi đăng."
+  },
+  {
+   "key": "starve",
+   "title": "Lão Hạc: ăn khoai, củ chuối, sung luộc",
+   "fetch": {
+    "kind": "wikisource",
+    "lang": "vi",
+    "page": "Lão Hạc",
+    "needles": [
+     "lão Hạc chỉ ăn khoai.",
+     "Rồi thì khoai cũng hết.",
+     "Hôm thì lão ăn củ chuối, hôm thì lão ăn sung luộc, hôm thì ăn rau má"
+    ],
+    "author": "Nam Cao",
+    "publisher": "Wikisource tiếng Việt (văn bản miền công cộng; Nam Cao mất năm 1951)"
+   },
+   "notes": "Văn bản tác phẩm trên Wikisource tiếng Việt. Cần đối chiếu bản in trước khi đăng."
+  },
+  {
+   "key": "wife_reject",
+   "title": "Lão Hạc: vợ ông giáo từ chối giúp",
+   "fetch": {
+    "kind": "wikisource",
+    "lang": "vi",
+    "page": "Lão Hạc",
+    "needles": [
+     "Cho lão chết! Ai bảo lão có tiền mà chịu khổ!"
+    ],
+    "author": "Nam Cao",
+    "publisher": "Wikisource tiếng Việt (văn bản miền công cộng; Nam Cao mất năm 1951)"
+   },
+   "notes": "Văn bản tác phẩm trên Wikisource tiếng Việt. Cần đối chiếu bản in trước khi đăng."
+  },
+  {
+   "key": "chaooi",
+   "title": "Lão Hạc: đoạn triết lý 'Chao ôi!'",
+   "fetch": {
+    "kind": "wikisource",
+    "lang": "vi",
+    "page": "Lão Hạc",
+    "needles": [
+     "Chao ôi! Đối với những người ở quanh ta, nếu ta không cố tìm mà hiểu họ",
+     "Vợ tôi không ác, nhưng thị khổ quá rồi",
+     "Cái bản tính tốt của người ta bị những nỗi lo lắng, buồn đau ích kỷ che lấp mất",
+     "Một người đau chân có lúc nào quên được cái chân đau của mình để nghĩ đến một cái gì khác đâu?"
+    ],
+    "author": "Nam Cao",
+    "publisher": "Wikisource tiếng Việt (văn bản miền công cộng; Nam Cao mất năm 1951)"
+   },
+   "notes": "Đoạn bình luận trực tiếp của người kể (ông giáo), thường được trích dẫn như một tuyên ngôn của Nam Cao về cách nhìn người nghèo. Văn bản chính tả cũ; đối chiếu bản in trước khi đăng."
+  },
+  {
+   "key": "refuse_help",
+   "title": "Lão Hạc: từ chối giúp đỡ",
+   "fetch": {
+    "kind": "wikisource",
+    "lang": "vi",
+    "page": "Lão Hạc",
+    "needles": [
+     "Lão từ chối tất cả những cái gì tôi cho lão",
+     "Lão từ chối một cách gần như là hách dịch",
+     "lão cứ xa tôi dần dần"
+    ],
+    "author": "Nam Cao",
+    "publisher": "Wikisource tiếng Việt (văn bản miền công cộng; Nam Cao mất năm 1951)"
+   },
+   "notes": "Văn bản tác phẩm trên Wikisource tiếng Việt. Cần đối chiếu bản in trước khi đăng."
+  },
+  {
+   "key": "binhtu_intro",
+   "title": "Lão Hạc: giới thiệu Binh Tư",
+   "fetch": {
+    "kind": "wikisource",
+    "lang": "vi",
+    "page": "Lão Hạc",
+    "needles": [
+     "Binh Tư là một người láng giềng khác của tôi"
+    ],
+    "author": "Nam Cao",
+    "publisher": "Wikisource tiếng Việt (văn bản miền công cộng; Nam Cao mất năm 1951)"
+   },
+   "notes": "Văn bản tác phẩm trên Wikisource tiếng Việt. Cần đối chiếu bản in trước khi đăng."
+  },
+  {
+   "key": "poison_ask",
+   "title": "Lão Hạc: xin bả chó",
+   "fetch": {
+    "kind": "wikisource",
+    "lang": "vi",
+    "page": "Lão Hạc",
+    "needles": [
+     "Lão vừa xin tôi một ít bả chó",
+     "Lão bảo có con chó nhà nào cứ đến vườn nhà lão",
+     "Lão định cho nó xơi một bữa.",
+     "Nếu trúng, lão với tôi uống rượu"
+    ],
+    "author": "Nam Cao",
+    "publisher": "Wikisource tiếng Việt (văn bản miền công cộng; Nam Cao mất năm 1951)"
+   },
+   "notes": "Lời Binh Tư kể lại cho ông giáo. Văn bản chính tả cũ; đối chiếu bản in trước khi đăng."
+  },
+  {
+   "key": "despair_react",
+   "title": "Lão Hạc: ông giáo thất vọng",
+   "fetch": {
+    "kind": "wikisource",
+    "lang": "vi",
+    "page": "Lão Hạc",
+    "needles": [
+     "Thì ra đến lúc cùng lão cũng có thể làm liều như ai hết",
+     "Một người đã khóc vì trót lừa một con chó!",
+     "Cuộc đời quả thật cứ một ngày một thêm đáng buồn"
+    ],
+    "author": "Nam Cao",
+    "publisher": "Wikisource tiếng Việt (văn bản miền công cộng; Nam Cao mất năm 1951)"
+   },
+   "notes": "Văn bản tác phẩm trên Wikisource tiếng Việt. Cần đối chiếu bản in trước khi đăng."
+  },
+  {
+   "key": "death",
+   "title": "Lão Hạc: cái chết",
+   "fetch": {
+    "kind": "wikisource",
+    "lang": "vi",
+    "page": "Lão Hạc",
+    "needles": [
+     "Không! Cuộc đời chưa hẳn đã đáng buồn, hay vẫn đáng buồn nhưng lại đáng buồn theo một nghĩa khác",
+     "Lão Hạc đang vật vã ở trên giường, đầu tóc rũ rượi, quần áo xộc xệch, hai mắt long sòng sọc",
+     "Lão tru tréo, bọt mép sùi ra, khắp người chốc chốc lại bị giật mạnh một cái, nẩy lên",
+     "Lão vật vã đến hai giờ đồng hồ rồi mới chết",
+     "Chẳng ai hiểu lão chết vì bệnh gì mà đau đớn và bất thình lình như vậy.",
+     "Chỉ có tôi với binh Tư hiểu."
+    ],
+    "author": "Nam Cao",
+    "publisher": "Wikisource tiếng Việt (văn bản miền công cộng; Nam Cao mất năm 1951)"
+   },
+   "notes": "Văn bản tác phẩm trên Wikisource tiếng Việt. Cần đối chiếu bản in trước khi đăng."
+  },
+  {
+   "key": "vow",
+   "title": "Lão Hạc: lời hứa của ông giáo",
+   "fetch": {
+    "kind": "wikisource",
+    "lang": "vi",
+    "page": "Lão Hạc",
+    "needles": [
+     "Lão đừng lo gì cho cái vườn của lão",
+     "Tôi sẽ cố giữ gìn cho lão",
+     "Đến khi con trai lão về, tôi sẽ trao lại cho hắn"
+    ],
+    "author": "Nam Cao",
+    "publisher": "Wikisource tiếng Việt (văn bản miền công cộng; Nam Cao mất năm 1951)"
+   },
+   "notes": "Câu kết truyện. Văn bản chính tả cũ; đối chiếu bản in trước khi đăng."
+  },
+  {
+   "key": "garden_origin",
+   "title": "Lão Hạc: nguồn gốc khu vườn",
+   "fetch": {
+    "kind": "wikisource",
+    "lang": "vi",
+    "page": "Lão Hạc",
+    "needles": [
+     "Cái vườn là của con ta.",
+     "mẹ nó cố thắt lưng buộc bụng, dè sẻn mãi, mới để ra được năm mươi đồng bạc tậu",
+     "Của mẹ nó tậu, thì nó hưởng."
+    ],
+    "author": "Nam Cao",
+    "publisher": "Wikisource tiếng Việt (văn bản miền công cộng; Nam Cao mất năm 1951)"
+   },
+   "notes": "Lão tự nhủ trong lòng sau khi con trai đi. Văn bản chính tả cũ; đối chiếu bản in trước khi đăng."
+  },
+  {
+   "key": "saving_plan",
+   "title": "Lão Hạc: kế hoạch dành dụm cho con",
+   "fetch": {
+    "kind": "wikisource",
+    "lang": "vi",
+    "page": "Lão Hạc",
+    "needles": [
+     "Lão làm thuê kiếm ăn.",
+     "Hoa lợi của khu vườn được bao nhiêu, lão để riêng ra.",
+     "Lão chắc mẩm thế nào đến lúc con lão về, lão cũng có được một trăm đồng bạc"
+    ],
+    "author": "Nam Cao",
+    "publisher": "Wikisource tiếng Việt (văn bản miền công cộng; Nam Cao mất năm 1951)"
+   },
+   "notes": "Văn bản tác phẩm trên Wikisource tiếng Việt. Cần đối chiếu bản in trước khi đăng."
+  },
+  {
+   "key": "village_econ",
+   "title": "Lão Hạc: kinh tế làng sau trận ốm",
+   "fetch": {
+    "kind": "wikisource",
+    "lang": "vi",
+    "page": "Lão Hạc",
+    "needles": [
+     "Làng mất vè sợi, nghề vải đảnh phải bỏ.",
+     "Đàn bà rỗi rãi nhiều.",
+     "Còn tí việc nhẹ nào, họ tranh nhau làm mất cả."
+    ],
+    "author": "Nam Cao",
+    "publisher": "Wikisource tiếng Việt (văn bản miền công cộng; Nam Cao mất năm 1951)"
+   },
+   "notes": "Văn bản tác phẩm trên Wikisource tiếng Việt. Cần đối chiếu bản in trước khi đăng."
+  },
+  {
+   "key": "appearance",
+   "title": "Lão Hạc: khóc khi báo tin bán chó",
+   "fetch": {
+    "kind": "wikisource",
+    "lang": "vi",
+    "page": "Lão Hạc",
+    "needles": [
+     "Mặt lão đột nhiên co dúm lại.",
+     "Những vết nhăn xô lại với nhau, ép cho nước mắt chảy ra.",
+     "Cái đầu lão ngoẹo về một bên và cái miệng móm mém của lão mếu như con nít."
+    ],
+    "author": "Nam Cao",
+    "publisher": "Wikisource tiếng Việt (văn bản miền công cộng; Nam Cao mất năm 1951)"
+   },
+   "notes": "Một trong rất ít đoạn tả ngoại hình trực tiếp của Lão Hạc trong truyện; dùng cho cả lời đọc và characters.md. Văn bản chính tả cũ; đối chiếu bản in trước khi đăng."
+  },
+  {
+   "key": "comfort_scene",
+   "title": "Lão Hạc: khoai lang và nước chè",
+   "fetch": {
+    "kind": "wikisource",
+    "lang": "vi",
+    "page": "Lão Hạc",
+    "needles": [
+     "Bây giờ cụ ngồi xuống phản này chơi, tôi đi luộc mấy củ khoai lang, nấu một ấm nước chè tươi thật đặc",
+     "Lão nói xong lại cười đưa đà.",
+     "Tiếng cười gượng nhưng nghe đã hiền hậu lại."
+    ],
+    "author": "Nam Cao",
+    "publisher": "Wikisource tiếng Việt (văn bản miền công cộng; Nam Cao mất năm 1951)"
+   },
+   "notes": "Khoảnh khắc ấm nhất giữa hai người trong truyện. Văn bản chính tả cũ; đối chiếu bản in trước khi đăng."
+  }
+ ],
+ "claims": [
+  {"key": "confess", "status": "verified", "sources": ["confess"],
+   "text": "Lão Hạc nói với ông giáo rằng có lẽ lão sẽ bán con chó; ông giáo lúc đó dửng dưng, tin lão chỉ nói vậy, chẳng bao giờ bán thật."},
+  {"key": "pub", "status": "verified", "sources": ["pub"],
+   "text": "Truyện Lão Hạc do Nam Cao viết năm 1943."},
+  {"key": "teacher", "status": "verified", "sources": ["entrust"],
+   "text": "Người kể chuyện là một ông giáo — người có chữ nghĩa, nhiều lý luận, được người làng kiêng nể."},
+  {"key": "lonely", "status": "verified", "sources": ["lonely"],
+   "text": "Vợ Lão Hạc đã chết, con trai đi biền biệt; lão chỉ còn một con chó để làm khuây."},
+  {"key": "books", "status": "verified", "sources": ["books"],
+   "text": "Ông giáo từng bán gần hết áo quần khi ốm nặng ở Sài Gòn nhưng nhất quyết giữ năm quyển sách quý; hơn một tháng trước, con ông ốm nặng, ông cũng phải bán chúng, và tự nhận lão Hạc quý con chó cũng chỉ thấm vào đâu so với ông quý sách."},
+  {"key": "son_cheo", "status": "verified", "sources": ["son_backstory"],
+   "text": "Con trai Lão Hạc yêu một cô gái trong làng, nhưng nhà gái thách cưới nặng (khoảng một trăm đồng tiền mặt, cộng cau, rượu, tiệc cưới thì gần hai trăm); Lão Hạc không cho bán vườn để lo khoản đó."},
+  {"key": "son_leave", "status": "verified", "sources": ["son_backstory"],
+   "text": "Cô gái sau đó lấy con trai một ông phó lý có của; con trai Lão Hạc phẫn chí, ra tỉnh ký giấy xin đi làm đồn điền cao su."},
+  {"key": "threedong", "status": "verified", "sources": ["threedong"],
+   "text": "Trước khi đi, người con đưa cha ba đồng bạc, dặn cha cứ bòn vườn, làm thuê làm mướn mà sống, còn mình đi làm cố chí, có bạc trăm mới về; Lão Hạc chỉ còn biết khóc."},
+  {"key": "dogname", "status": "verified", "sources": ["dogname"],
+   "text": "Lão gọi con chó là cậu Vàng như một người hiếm con gọi đứa con cầu tự, cho nó ăn trong bát riêng như nhà giàu, và hay nói chuyện với nó về người con trai đi xa."},
+  {"key": "illness", "status": "verified", "sources": ["illness"],
+   "text": "Lão Hạc ốm một trận đúng hai tháng mười tám ngày, không làm ra tiền, còn tốn thêm tiền thuốc, tiền ăn."},
+  {"key": "storm", "status": "verified", "sources": ["illness"],
+   "text": "Sau trận ốm, một trận bão phá sạch hoa màu trong vườn; lão với con chó mỗi ngày tốn ba hào gạo mà vẫn đói."},
+  {"key": "decide_sell", "status": "verified", "sources": ["decide_sell"],
+   "text": "Lão tính ra con chó ăn còn khỏe hơn cả mình, nên quyết bán phắt đi, đỡ được đồng nào hay đồng ấy, vì từ nay tiêu một xu cũng là tiêu vào tiền của con."},
+  {"key": "sold", "status": "verified", "sources": ["sold"],
+   "text": "Lão báo tin đã bán chó: hai người tên Mục và Xiên đã nấp sẵn, bắt trói con chó ngay lúc nó mừng rỡ chạy về với lão."},
+  {"key": "betrayed", "status": "verified", "sources": ["betrayed"],
+   "text": "Lão khóc và tự trách mình già bằng tuổi này rồi còn đánh lừa một con chó, nó không ngờ lão nỡ tâm lừa nó."},
+  {"key": "books_callback", "status": "verified", "sources": ["books_callback"],
+   "text": "Nhìn lão khóc, ông giáo thấy mình không còn xót năm quyển sách như trước nữa, chỉ còn ái ngại cho Lão Hạc."},
+  {"key": "hoakiep", "status": "verified", "sources": ["hoakiep"],
+   "text": "Ông giáo an ủi rằng giết con chó là hóa kiếp cho nó; Lão Hạc đáp chua chát: kiếp chó là kiếp khổ, hóa kiếp cho nó làm kiếp người may ra sướng hơn một chút, như kiếp người của chính lão."},
+  {"key": "entrust_garden", "status": "verified", "sources": ["entrust"],
+   "text": "Lão nhờ ông giáo giữ giúp việc thứ nhất: viết văn tự nhận ba sào vườn của con trai lão đứng tên ông giáo, để không ai dòm ngó, đợi con về sẽ trả lại."},
+  {"key": "entrust_money", "status": "verified", "sources": ["entrust"],
+   "text": "Việc thứ hai: lão còn ba mươi đồng (hăm nhăm đồng dành dụm cộng năm đồng vừa bán chó), muốn gửi ông giáo để lỡ có chết thì lấy ra lo việc, không phải phiền hàng xóm."},
+  {"key": "whynow", "status": "verified", "sources": ["whynow"],
+   "text": "Khi ông giáo hỏi sao phải lo xa, lão đáp ăn mãi hết số tiền đó thì đến lúc chết lấy gì mà lo liệu, rồi xin ông giáo thương tình cho gửi."},
+  {"key": "starve", "status": "verified", "sources": ["starve"],
+   "text": "Sau khi gửi hết tiền, Lão Hạc chỉ còn ăn khoai; hết khoai thì ăn củ chuối, sung luộc, rau má, có bữa chỉ trai, chỉ ốc."},
+  {"key": "wife_reject", "status": "verified", "sources": ["wife_reject"],
+   "text": "Vợ ông giáo gạt phắt chuyện giúp Lão Hạc, nói lão có tiền mà chịu khổ thì ráng chịu, nhà mình cũng đói."},
+  {"key": "chaooi", "status": "verified", "sources": ["chaooi"],
+   "text": "Ông giáo tự nhận ra: với những người quanh ta, nếu không cố tìm mà hiểu, ta chỉ thấy họ gàn dở, xấu xa — toàn những cớ để mình tàn nhẫn."},
+  {"key": "chaooi_wife", "status": "verified", "sources": ["chaooi"],
+   "text": "Ông nghĩ vợ mình không ác, chỉ vì thị khổ quá rồi, và cái tốt của một người có thể bị nỗi lo, nỗi đau ích kỷ che lấp mất."},
+  {"key": "chaooi_foot", "status": "verified", "sources": ["chaooi"],
+   "text": "Nam Cao viết thêm: một người đau chân khó mà quên được cái chân đau của mình để nghĩ đến điều gì khác; khi người ta khổ quá thì người ta chẳng còn nghĩ được gì đến ai nữa."},
+  {"key": "refuse_help", "status": "verified", "sources": ["refuse_help"],
+   "text": "Lão từ chối mọi thứ ông giáo ngấm ngầm giúp, gần như hách dịch, rồi cứ xa ông giáo dần."},
+  {"key": "binhtu_intro", "status": "verified", "sources": ["binhtu_intro"],
+   "text": "Binh Tư, một láng giềng khác, làm nghề ăn trộm, không ưa Lão Hạc vì lão lương thiện quá."},
+  {"key": "poison_ask", "status": "verified", "sources": ["poison_ask"],
+   "text": "Binh Tư kể Lão Hạc vừa xin ông ta một ít bả chó, nói có con chó nhà ai hay vào vườn mình, định cho nó ăn một bữa; nếu trúng, hai người sẽ có rượu uống."},
+  {"key": "despair_react", "status": "verified", "sources": ["despair_react"],
+   "text": "Ông giáo nghe xong thất vọng: người từng khóc vì lừa một con chó, đến lúc cùng cũng có thể làm liều như Binh Tư; ông nghĩ cuộc đời ngày càng đáng buồn."},
+  {"key": "death", "status": "verified", "sources": ["death"],
+   "text": "Lão Hạc chết dữ dội: vật vã trên giường, sùi bọt mép, giật mạnh liên tục, phải hai người đàn ông khỏe đè lên, vật vã hai giờ đồng hồ mới chết; cả làng không ai hiểu vì sao, chỉ ông giáo và Binh Tư hiểu."},
+  {"key": "cause_interpretation", "status": "disputed", "sources": ["poison_ask", "death"],
+   "note": "Nam Cao không viết thẳng câu 'lão tự ăn bả chó mà chết'. Truyện chỉ đặt hai chi tiết sát nhau (lão vừa xin bả chó; chỉ ông giáo và Binh Tư hiểu nguyên nhân cái chết) để người đọc tự ráp lại. Đây là cách hiểu được chấp nhận rộng rãi, không phải câu chữ trực tiếp.",
+   "text": "Suy ra Lão Hạc đã dùng chính bả chó vừa xin để tự kết liễu, không phải để bắt chó nhà khác."},
+  {"key": "vow", "status": "verified", "sources": ["vow"],
+   "text": "Ông giáo thầm hứa giữ nguyên vẹn khu vườn, đợi con trai Lão Hạc về sẽ trao lại, nói rằng cha anh đã thà chết chứ không bán đi một sào."},
+  {"key": "garden_origin", "status": "verified", "sources": ["garden_origin"],
+   "text": "Lão tự nhắc mình: khu vườn ba sào là của con, vì hồi còn mẹ nó, mẹ nó đã thắt lưng buộc bụng, dè sẻn mãi mới để ra được năm mươi đồng bạc tậu; của mẹ nó tậu thì phải để con hưởng, lão chỉ giữ hộ."},
+  {"key": "saving_plan", "status": "verified", "sources": ["saving_plan"],
+   "text": "Lão đi làm thuê kiếm ăn, còn hoa lợi của vườn thì để riêng ra, chắc mẩm đến lúc con về sẽ có được một trăm đồng bạc làm vốn."},
+  {"key": "village_econ", "status": "verified", "sources": ["village_econ"],
+   "text": "Đúng lúc ấy, làng cũng mất nghề vè sợi, nghề vải phải bỏ; đàn bà trong làng rỗi rãi, hễ có việc nhẹ nào là tranh nhau làm hết, lão không còn chỗ chen vào."},
+  {"key": "appearance", "status": "verified", "sources": ["appearance"],
+   "text": "Mặt lão đột nhiên co dúm lại, những vết nhăn xô vào nhau ép cho nước mắt chảy ra, đầu ngoẹo sang một bên, miệng móm mém mếu như con nít."},
+  {"key": "comfort_scene", "status": "verified", "sources": ["comfort_scene"],
+   "text": "Thấy lão buồn, ông giáo rủ cùng ăn khoai lang luộc, uống chè tươi, hút thuốc lào; lão cười, tiếng cười gượng nhưng nghe đã hiền hậu lại."}
+ ],
+ "script": [
+  {
+   "kind": "hook",
+   "heading": "Phần 1 — Một câu nói không ai tin",
+   "paragraphs": [
+    {"text": "Lão Hạc thổi mồi rơm, châm đóm, mời ông giáo hút thuốc lào trước. Rít một hơi xong, lão đặt xe điếu xuống, quay ra ngoài thở khói, rồi bảo: \"Có lẽ tôi bán con chó đấy, ông giáo ạ!\"", "claims": ["confess"], "factual": true},
+    {"text": "Ông giáo nghe câu ấy đã nhàm, trong lòng rất dửng dưng, tin chắc lão chỉ nói cho có; đời nào lão bán con chó thật.", "claims": ["confess"], "factual": true},
+    {"text": "Câu nói nhỏ đó hóa ra là bước đầu của một chuỗi việc dẫn thẳng tới một cái chết mà đến cuối truyện, chính người kể cũng chỉ dám nói: chỉ có tôi với Binh Tư hiểu. Hôm nay mình kể lại Lão Hạc của Nam Cao — tập thứ hai của kênh, sau Chí Phèo — không phải để nhắc chuyện bán chó cho xong, mà để hỏi: một người gần như chẳng còn gì để mất, vì sao vẫn chọn cách chết đau đớn nhất, chứ không chịu sống nhờ, sống gian, hay chỉ cần tiêu bớt số tiền mình đã dành sẵn?", "claims": [], "factual": false}
+   ]
+  },
+  {
+   "kind": "context",
+   "heading": "Phần 2 — Hai người nghèo, một con chó, một đồn điền cao su",
+   "paragraphs": [
+    {"text": "Truyện Lão Hạc do Nam Cao viết năm 1943. Người kể chuyện là một ông giáo làng — người có chữ nghĩa, có lý luận, được hàng xóm kiêng nể — sống cạnh một ông lão nông dân nghèo tên Hạc.", "claims": ["pub", "teacher"], "factual": true},
+    {"text": "Vợ Lão Hạc đã chết, con trai đi biền biệt, lão chỉ còn một mình một con chó để làm khuây những lúc buồn.", "claims": ["lonely"], "factual": true},
+    {"text": "Ông giáo cũng không khá hơn là mấy. Hồi ốm nặng ở Sài Gòn, ông bán gần hết áo quần nhưng nhất định không bán một quyển nào trong số năm quyển sách quý nhất; thế mà hơn một tháng trước, đứa con nhỏ ốm nặng, ông cũng phải bán.", "claims": ["books"], "factual": true},
+    {"text": "Ông giáo tự so sánh: lão quý con chó vàng của lão thì cũng chỉ thấm được bằng ông quý năm quyển sách ấy. Hai người nghèo, hai thứ quý khác nhau — sách và một con chó — nhưng cùng một kiểu mất: nghèo đến mức phải tự tay bán đi thứ mình coi là một phần của chính mình.", "claims": ["books"], "factual": false},
+    {"text": "Con trai Lão Hạc yêu một cô gái trong làng, hai đứa mê nhau lắm; nhưng nhà gái thách cưới nặng — tiền mặt một trăm đồng, cộng cau, rượu và tiệc cưới thì mất đến gần hai trăm. Lão Hạc không cho bán vườn để lo món đó.", "claims": ["son_cheo"], "factual": true},
+    {"text": "Tháng mười năm ấy, cô gái đi lấy con trai một ông phó lý có của. Con trai Lão Hạc phẫn chí, ra tỉnh, ký giấy xin đi làm đồn điền cao su.", "claims": ["son_leave"], "factual": true},
+    {"text": "Mộ phu đi đồn điền cao su là một chi tiết thời đại — lao động xa xứ thời Pháp thuộc. Truyện không nói thêm gì về đời sống của người con ở đó; đây là bối cảnh lịch sử ngoài tác phẩm, cần dẫn nguồn riêng nếu muốn khẳng định chi tiết hơn, nên mình chỉ nêu ra như một câu hỏi để ngỏ: con trai Lão Hạc đã đi vào một hình thức lao động mà chính truyện cũng không cho biết gì thêm, kể cả có còn sống hay không.", "claims": ["son_leave"], "factual": false},
+    {"text": "Nhìn vào con số cho dễ thấy quy mô: nhà gái đòi gần hai trăm đồng để gả con, món tiền khiến con trai Lão Hạc phải bỏ làng đi làm phu đồn điền. Về sau, khi lão tính đến chuyện phòng lúc mình chết, tất cả những gì lão gom được, dành dụm cả đời, chỉ là ba mươi đồng — chưa bằng một phần sáu số tiền đã đẩy con lão ra đi. Khoảng cách giữa hai con số đó là một cách đo cái nghèo trong truyện này.", "claims": ["son_cheo", "entrust_money"], "factual": false},
+    {"text": "Trước khi đi, người con đưa cha ba đồng bạc, dặn: con biếu thầy để thỉnh thoảng ăn quà; thầy bòn vườn đất, làm thuê làm mướn thêm cũng đủ ăn; con đi chuyến này cố chí làm ăn, bao giờ có bạc trăm mới về. Lão chỉ còn biết khóc.", "claims": ["threedong"], "factual": true},
+    {"text": "Đoạn này mình tưởng tượng thêm, không phải lời Nam Cao: với lão, ba đồng bạc đó không phải là tiền. Nó là một lời hứa còn treo lại, và có lẽ từ ngày ấy, mỗi lần nhìn con chó, lão thấy như đang nhìn thấy đứa con chưa về.", "claims": [], "factual": false},
+    {"text": "Lão gọi con chó là cậu Vàng, như một người hiếm con gọi đứa con cầu tự; cho nó ăn cơm trong bát riêng như nhà giàu; những tối uống rượu, lão hay nói chuyện với nó về bố cậu đi xa đã mấy năm chưa về.", "claims": ["dogname"], "factual": true},
+    {"text": "Lão tự nhắc mình: khu vườn ba sào là của con, vì hồi còn mẹ nó, mẹ nó đã thắt lưng buộc bụng, dè sẻn mãi mới để ra được năm mươi đồng bạc tậu; của mẹ nó tậu thì phải để con hưởng, lão chỉ giữ hộ.", "claims": ["garden_origin"], "factual": true},
+    {"text": "Đoạn này mình tưởng tượng thêm: có thể mỗi lần nhắc đến khu vườn, lão không chỉ nghĩ đến con, mà còn nhớ đến người vợ đã mất — phần duy nhất của bà còn sờ được chỉ còn lại ba sào đất đó.", "claims": [], "factual": false},
+    {"text": "Lão đi làm thuê kiếm ăn, còn hoa lợi của vườn thì để riêng ra, chắc mẩm đến lúc con về sẽ có được một trăm đồng bạc làm vốn.", "claims": ["saving_plan"], "factual": true}
+   ]
+  },
+  {
+   "kind": "timeline",
+   "heading": "Phần 3 (I) — Một đồng cũng là tiền của con",
+   "paragraphs": [
+    {"text": "Rồi lão ốm một trận đúng hai tháng mười tám ngày, không làm ra một xu nào, lại còn tiền thuốc, tiền ăn.", "claims": ["illness"], "factual": true},
+    {"text": "Sau trận ốm, một trận bão phá sạch hoa màu trong vườn. Lão với con chó, mỗi ngày tốn ba hào gạo, mà vẫn đói deo đói dắt.", "claims": ["storm"], "factual": true},
+    {"text": "Đúng lúc ấy, làng cũng mất nghề vè sợi, nghề vải phải bỏ; đàn bà trong làng rỗi rãi, hễ có việc nhẹ nào là tranh nhau làm hết, lão không còn chỗ chen vào.", "claims": ["village_econ"], "factual": true},
+    {"text": "Lão tính ra: cậu Vàng ăn còn khỏe hơn cả lão. Nuôi ít thì nó gầy, bán hụt tiền; nuôi đủ thì lão lấy đâu ra. Thôi thì bán phắt đi, đỡ được đồng nào hay đồng ấy — từ nay tiêu một xu cũng là tiêu vào tiền của con.", "claims": ["decide_sell"], "factual": true},
+    {"text": "Đoạn này mình tưởng tượng thêm: có thể đêm trước khi quyết, lão đã ngồi nhìn con chó rất lâu, cố tìm một lý do để không phải bán, mà không tìm ra lý do nào đủ mạnh hơn cái đói.", "claims": [], "factual": false},
+    {"text": "Hôm sau lão báo tin: cậu Vàng đi đời rồi. Nó vừa chạy về mừng rỡ, đang ăn thì bị một người tên Mục nấp sẵn tóm hai chân sau dốc ngược lên; người tên Xiên xông ra, hai người chỉ loay hoay một lúc đã trói chặt cả bốn chân nó.", "claims": ["sold"], "factual": true},
+    {"text": "Mặt lão đột nhiên co dúm lại, những vết nhăn xô vào nhau ép cho nước mắt chảy ra, đầu ngoẹo sang một bên, miệng móm mém mếu như con nít. Lão khóc hu hu, tự trách: già bằng tuổi này rồi còn đánh lừa một con chó, nó có ngờ đâu lão nỡ tâm lừa nó.", "claims": ["appearance", "betrayed"], "factual": true},
+    {"text": "Nhớ lại thì con chó này chính tay con trai lão mua về, định nuôi để giết thịt ngày cưới — cưới không thành, chó ở lại, còn người thì đi. Lão nuôi nó, gọi nó bằng tiếng gọi vốn dành cho con, nói với nó những câu vốn để nói với con. Bán nó đi, lão không chỉ mất một con vật; lão mất luôn vật cuối cùng còn nối lão với đứa con chưa biết ngày nào về.", "claims": [], "factual": false},
+    {"text": "Ông giáo nhìn lão khóc, thấy mình không còn xót năm quyển sách như trước nữa; ông chỉ còn ái ngại cho Lão Hạc.", "claims": ["books_callback"], "factual": true}
+   ]
+  },
+  {
+   "kind": "evidence",
+   "heading": "Phần 3 (II) — Một người già lo xong việc của mình trước khi chết",
+   "paragraphs": [
+    {"text": "Ông giáo an ủi: ta giết nó chính là hóa kiếp cho nó, để nó làm kiếp khác. Lão đáp chua chát: kiếp con chó là kiếp khổ, hóa kiếp cho nó làm kiếp người, may ra có sướng hơn một chút — kiếp người như kiếp lão chẳng hạn.", "claims": ["hoakiep"], "factual": true},
+    {"text": "Câu đùa đó cay hơn nó nghe. Mỗi người hiểu \"sung sướng\" theo một cách khác nhau trong câu chuyện này — với ông giáo lúc ấy, đó là khoai nóng với nước chè tươi; với Lão Hạc, có lẽ chỉ là một ngày không còn phải tính xem con chó ăn hết bao nhiêu hào gạo của con mình.", "claims": ["hoakiep"], "factual": false},
+    {"text": "Thấy lão buồn, ông giáo rủ: chẳng kiếp gì sướng thật, nhưng có cái này là sướng — cụ ngồi xuống phản chơi, để ông đi luộc khoai lang, nấu một ấm chè tươi thật đặc, hai người ăn khoai uống nước rồi hút thuốc lào. Lão cười, tiếng cười gượng nhưng nghe đã hiền hậu lại.", "claims": ["comfort_scene"], "factual": true},
+    {"text": "Đây có lẽ là khoảnh khắc ấm nhất của cả truyện. Không ai cho ai thứ gì lớn, chỉ vài củ khoai và một ấm chè, nhưng đó là chỗ duy nhất Lão Hạc còn được đối xử như một người bạn ngồi cùng mâm, không phải như một gánh nặng hay một ông già đáng thương cần giúp đỡ.", "claims": [], "factual": false},
+    {"text": "Vài hôm sau, lão nhờ ông giáo hai việc. Việc thứ nhất: giữ giúp ba sào vườn của con trai, viết văn tự để tên ông giáo cho không ai dòm ngó, đợi con về sẽ trả lại nguyên vẹn.", "claims": ["entrust_garden"], "factual": true},
+    {"text": "Việc thứ hai: lão còn ba mươi đồng — hăm nhăm đồng dành dụm cộng năm đồng vừa bán chó — muốn gửi ông giáo, để lỡ có chết thì lấy ra lo, không phải phiền đến hàng xóm.", "claims": ["entrust_money"], "factual": true},
+    {"text": "Đoạn này mình tưởng tượng: có thể lúc đếm ba mươi đồng bạc cũ nhăn nhúm đưa cho ông giáo, tay lão run không phải vì tiếc tiền, mà vì đó là lần đầu tiên lão cầm đúng con số lão từng mơ để lại cho con — chỉ khác, giờ lão đưa nó đi mà đã biết mình sẽ không chứng kiến ngày con cầm lại.", "claims": [], "factual": false},
+    {"text": "Đáng để ý: lão không chỉ nhờ vả bằng miệng. Lão biết phải có văn tự, phải đứng tên đúng người để không ai dòm ngó, phải tính trước cả việc hàng xóm sẽ nghĩ gì khi mình chết không ai lo liệu. Đây không phải một ông già lẩn cẩn, gàn dở như Binh Tư hay vợ ông giáo vẫn nghĩ; đây là một người tính rất tỉnh, chỉ tính cho người khác, không tính cho mình.", "claims": [], "factual": false},
+    {"text": "Ông giáo ngạc nhiên, bảo lão còn khỏe, cứ để tiền đó mà ăn, lúc chết hãy hay. Lão đáp: ăn mãi hết đi thì đến lúc chết lấy gì mà lo liệu; rồi lão cắn rơm cắn cỏ, xin ông giáo thương tình mà cho gửi.", "claims": ["whynow"], "factual": true},
+    {"text": "Đoạn này mình đọc thêm vào giữa hai dòng chữ, không chắc Nam Cao định vậy: có thể lúc nói câu ấy, lão đã biết trước, rõ hơn ông giáo tưởng, rằng mình sẽ không sống đến lúc cần dùng số tiền đó cho việc gì khác, ngoài cái chết của chính mình.", "claims": [], "factual": false},
+    {"text": "Từ đó lão chỉ ăn khoai; hết khoai, lão ăn củ chuối, sung luộc, rau má, có bữa chỉ có trai, có ốc.", "claims": ["starve"], "factual": true},
+    {"text": "Ông giáo kể chuyện với vợ. Vợ ông gạt phắt: cho lão chết, ai bảo lão có tiền mà chịu khổ, nhà mình cũng chẳng sung sướng gì mà giúp, chính con mình cũng đói.", "claims": ["wife_reject"], "factual": true},
+    {"text": "Ông giáo tự nhận ra một điều: với những người quanh ta, nếu không cố tìm mà hiểu họ, ta chỉ thấy họ gàn dở, xấu xa, bỉ ổi — toàn những cớ để mình tàn nhẫn.", "claims": ["chaooi"], "factual": true},
+    {"text": "Ông nghĩ: vợ ông không ác, chỉ vì thị khổ quá rồi; cái tốt trong một người cũng có thể bị nỗi lo và nỗi đau ích kỷ che lấp mất.", "claims": ["chaooi_wife"], "factual": true},
+    {"text": "Nam Cao viết thêm một câu rất cụ thể: một người đau chân khó mà quên được cái chân đau của mình để nghĩ đến điều gì khác; khi người ta khổ quá thì người ta chẳng còn nghĩ được gì đến ai nữa.", "claims": ["chaooi_foot"], "factual": true},
+    {"text": "Đây có lẽ là câu được trích nhiều nhất của truyện, và mình nghĩ nó không chỉ nói về vợ ông giáo. Nó đang nói thẳng với người đang xem video này: muốn hiểu Lão Hạc, phải nhìn từ trong hoàn cảnh của ông, không phải đứng ngoài rồi gọi ông là gàn, dại, hay quá cố chấp.", "claims": [], "factual": false},
+    {"text": "Nhìn lại, việc lão từ chối giúp đỡ và việc lão nhất quyết gửi tiền trước khi chết, thật ra là cùng một phép tính. Với lão, đồng tiền ông giáo âm thầm cho và đồng tiền lão đã cất riêng cho con không khác nhau: cả hai đều là của con, không phải của lão. Ăn vào đồng nào, kể cả đồng đi vay mượn lòng tốt người khác, cũng là ăn vào phần của con.", "claims": [], "factual": false},
+    {"text": "Lão từ chối mọi thứ ông giáo ngấm ngầm giúp, gần như hách dịch, rồi lão cứ xa ông giáo dần.", "claims": ["refuse_help"], "factual": true},
+    {"text": "Binh Tư, một người láng giềng khác, làm nghề ăn trộm, vốn không ưa Lão Hạc vì lão lương thiện quá.", "claims": ["binhtu_intro"], "factual": true}
+   ]
+  },
+  {
+   "kind": "turning_point",
+   "heading": "Phần 4 — Một tin không ai ngờ",
+   "paragraphs": [
+    {"text": "Một hôm, Binh Tư thì thầm với ông giáo: Lão Hạc vừa xin hắn một ít bả chó.", "claims": ["poison_ask"], "factual": true},
+    {"text": "Lão bảo có con chó nhà ai hay cứ đến vườn mình, định cho nó ăn một bữa; nếu trúng, lão với Binh Tư sẽ có rượu uống.", "claims": ["poison_ask"], "factual": true},
+    {"text": "Ông giáo nghe mà chết lặng: hóa ra đến lúc cùng, lão cũng có thể làm liều như ai hết; một người từng khóc vì lừa một con chó, giờ lại tính chuyện như Binh Tư. Ông nghĩ cuộc đời quả thật cứ một ngày một thêm đáng buồn.", "claims": ["despair_react"], "factual": true},
+    {"text": "Đoạn này mình tưởng tượng, không phải lời Nam Cao: rất có thể ngay lúc nghe tin ấy, trong đầu ông giáo đã thoáng nghĩ — mình lại vừa làm đúng điều mình tự trách mình vài hôm trước, lại nhìn một người quen mà không cố hiểu, chỉ thấy phần xấu nhất có thể nghĩ ra.", "claims": [], "factual": false},
+    {"text": "Đến đây, Nam Cao gài một cái bẫy tâm lý cho chính người đọc, không chỉ cho ông giáo. Suốt bao nhiêu trang, mình tin lão sẽ giữ lương thiện đến cùng; nghe tin xin bả chó, mình cũng ngờ lão như ông giáo ngờ — và đúng lúc cả người đọc với ông giáo cùng ngờ, truyện mới cho biết sự thật.", "claims": [], "factual": false},
+    {"text": "Có một chi tiết kỹ thuật đáng chú ý: vài hôm trước, chính ông giáo vừa tự trách mình và vợ vì không cố tìm mà hiểu người khác. Ngay sau đó, nghe tin bả chó, ông lập tức làm đúng điều ông vừa phê phán — nhìn thấy phần tệ nhất có thể nghĩ về Lão Hạc, mà không hỏi lại một câu nào. Nam Cao không để ông giáo nói ra bài học rồi cứ thế làm đúng theo; ông để chính người kể chuyện phạm lại lỗi đó ngay trước mắt người đọc.", "claims": [], "factual": false}
+   ]
+  },
+  {
+   "kind": "consequences",
+   "heading": "Phần 5 (I) — Cái chết chỉ hai người hiểu",
+   "paragraphs": [
+    {"text": "Ông giáo vừa ở nhà Binh Tư về được một lúc thì nghe tiếng nhốn nháo bên nhà Lão Hạc. Ông chạy sang.", "claims": ["death"], "factual": true},
+    {"text": "Lão đang vật vã trên giường, đầu tóc rũ rượi, quần áo xộc xệch, hai mắt long sòng sọc, miệng sùi bọt mép, khắp người chốc chốc lại giật mạnh một cái. Hai người đàn ông lực lưỡng phải ngồi đè lên người lão.", "claims": ["death"], "factual": true},
+    {"text": "Lão vật vã đến hai giờ đồng hồ rồi mới chết. Chẳng ai trong làng hiểu lão chết vì bệnh gì mà đau đớn, bất thình lình như vậy. Chỉ ông giáo với Binh Tư hiểu.", "claims": ["death"], "factual": true},
+    {"text": "Nam Cao không viết thẳng ra lão đã tự mình ăn chính bả chó mình vừa xin; truyện chỉ đặt hai chi tiết sát cạnh nhau — bả chó lão xin, và một cái chết mà chỉ hai người \"hiểu\" — để người đọc tự ráp lại. Đây là cách hiểu được chấp nhận rộng rãi, nhưng không phải câu chữ trực tiếp của tác phẩm.", "claims": ["cause_interpretation"], "factual": false},
+    {"text": "Đoạn này không một dòng nào trong truyện viết ra, nên mình chỉ đoán: có thể cái đêm cuối, lão không nghĩ mình đang chết, mà nghĩ mình đang trả nốt một món nợ. Bả chó không phải để dành cho con chó nhà ai khác; nó là cách lão tự tay đóng lại câu chuyện của chính mình, theo điều duy nhất lão còn giữ được: không ăn vào phần của con, không làm liều với ai, không phiền đến hàng xóm.", "claims": [], "factual": false}
+   ]
+  },
+  {
+   "kind": "conclusion",
+   "heading": "Phần 5 (II) — Góc nhìn riêng và câu hỏi mở",
+   "paragraphs": [
+    {"text": "Ông giáo thầm hứa: lão cứ yên lòng nhắm mắt, đừng lo gì cho vườn; ông sẽ giữ gìn, đến khi con trai lão về sẽ trao lại, và nói với anh: đây là vườn mà cha anh đã cố để lại trọn vẹn, cụ thà chết chứ không chịu bán đi một sào.", "claims": ["vow"], "factual": true},
+    {"text": "Theo mình, bi kịch của Lão Hạc không nằm ở việc lão nghèo. Nó nằm ở việc mọi con đường để lão tiếp tục sống — nhận tiền ông giáo ngấm ngầm giúp, làm liều kiểu Binh Tư, hay chỉ đơn giản là ăn vào số tiền để lại cho con — đều phải đổi bằng đúng cái lão không chịu mất: tay mình sạch, không nợ, không lừa ai thêm lần nào nữa. Lão có thể sống thêm một thời gian theo bất cứ cách nào trong ba cách đó; lão chọn không sống, để không phải chọn cách nào cả.", "claims": [], "factual": false},
+    {"text": "Khác với Chí Phèo — người bị người khác chặn đường trở lại làm người lương thiện — Lão Hạc tự khóa đường của chính mình, không ai ép ông cả. Có một cách đọc khác, và mình nghĩ nó cũng đáng cân nhắc: đó không hẳn là sự cao thượng đơn thuần, mà là dấu hiệu một hoàn cảnh đã hẹp đến mức người tốt nhất trong truyện chỉ còn đúng một cửa để đi, và cửa đó là cái chết.", "claims": [], "factual": false},
+    {"text": "Có một khác biệt đáng để ngẫm giữa hai tập này: Chí Phèo chết giữa phố, máu đổ ngay trước mắt cả làng, ai cũng biết ngay có chuyện gì xảy ra. Lão Hạc chết ngay trong nhà mình, giữa những người biết lão nhiều năm, mà gần như không ai hiểu nổi vì sao. Một cái chết ồn ào nhưng dễ đọc; một cái chết âm thầm nhưng gần như không ai đọc được, trừ đúng hai người.", "claims": [], "factual": false},
+    {"text": "Hai cách đọc này không cần loại nhau. Có thể Nam Cao muốn người đọc giữ cả hai, như ông giáo giữ cả nỗi ân hận lẫn lời hứa cạnh nhau, không chọn hẳn về bên nào.", "claims": [], "factual": false},
+    {"text": "Nếu một ngày bạn ở gần một người giống Lão Hạc — nghèo, tự trọng, từ chối mọi giúp đỡ, và có thể đang giấu một quyết định bạn không hề biết — bạn sẽ chọn tôn trọng sự từ chối đó, hay cố tìm cách giúp cho bằng được, kể cả khi người ta không muốn? Bạn nghĩ sao?", "claims": [], "factual": false}
+   ]
+  }
+ ],
+ "scene_overrides": {},
+ "images": []
+}

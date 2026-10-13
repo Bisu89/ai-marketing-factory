@@ -52,3 +52,19 @@ và ví dụ `biblical-figures-prompts/vox/ep6.spec.json`), đưa vào app bằn
 3. (Tùy chọn, vẫn chưa làm) trường `mode` cho đoạn kịch bản nếu muốn lưu chế độ lời đọc trong DB thay vì chỉ ghi
    trong `heading`/`script.md`.
 4. Preset đặc thù văn học (thẻ trích dẫn có nguồn) — hiện dùng `EvidenceBoard`, vẫn chưa có preset riêng.
+
+## Đã xác nhận khi chạy tập thứ hai — Lão Hạc (2026-10-13)
+5. **Bẫy của hàm `excerpt()`:** chỉ kiểm `needle in text` (chuỗi con thô) là **chưa đủ** để đảm bảo trích đoạn sạch.
+   Hàm chia câu bằng `para.split(". ")` (chấm + dấu cách, kể cả chấm cuối của "..."), rồi tìm đoạn chứa
+   `core = needle.rstrip(".!?")`. Nếu một needle tự gộp **hai câu** (có dấu `". "` nằm giữa chính needle đó), hàm
+   không tìm được mảnh nào chứa trọn needle và **rơi về nguyên cả đoạn văn dài** (biến `para` gốc) — gây trích đoạn
+   bị lặp/lẫn khi nhiều needle cùng rơi vào một đoạn. Quy tắc: mỗi needle chỉ nên là **một câu** (không chứa dấu
+   `". "` ở giữa); nếu cần nhiều câu liên tiếp, tách thành nhiều needle riêng. Trước khi ghi needle vào spec, chạy
+   thật `eb.excerpt(text, needles)` (không chỉ `in` thô) và đọc lại kết quả để phát hiện lặp.
+6. Tốc độ đọc đo được bằng `edge-tts`/`vi-VN-NamMinhNeural` cho giọng nam: **≈ 221,6 từ/phút** ở tập Lão Hạc (tập Chí
+   Phèo đo được ≈ 205,7 từ/phút) — tốc độ thật dao động theo nội dung câu, không dùng một hằng số cố định để ước
+   lượng thời lượng; luôn đo lại bằng audio thật trước khi chốt kịch bản đạt chuẩn 14–16 phút.
+7. Truyện ngắn hơn (ít nhân vật/mốc thời gian hơn Chí Phèo) dễ ra bản kịch bản đầu tiên **ngắn hơn chuẩn 14–16
+   phút** dù đã dùng hết các đoạn nổi bật nhất; cách bù hợp lệ là khai thác thêm các đoạn **ít được trích** của
+   chính văn bản (chi tiết phụ, miêu tả ngắn) và mở rộng lớp BÌNH LUẬN bằng phân tích thật (số liệu, kỹ thuật tự
+   sự, so sánh có căn cứ) — không lặp ý, không thêm triết lý sáo rỗng, không kéo dài bằng đọc chậm.
