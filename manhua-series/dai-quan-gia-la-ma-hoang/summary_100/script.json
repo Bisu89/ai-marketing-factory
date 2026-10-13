@@ -1,0 +1,612 @@
+{
+  "template": "manhua_recap_long_vi",
+  "title": "Đại Quản Gia Là Ma Hoàng | Tóm tắt 100 chương trong 10 phút",
+  "chapters": "1-100",
+  "source_dir": "manhua-recap/dqgl_ep1",
+  "written_by": "Claude, bản tóm tắt 100 chương (đã duyệt), 2026-10-13",
+  "description": "Tóm tắt 100 chương truyện Đại Quản Gia Là Ma Hoàng trong 10 phút: từ gia nô bị tâm ma trói buộc tới Ma Hoàng giết U Quỷ Thất chỉ một chiêu, kèm bình luận.\nMục lục thời gian: xem bình luận ghim.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#TomTatTruyen"
+  ],
+  "thumbnail": {
+    "text": "TÓM TẮT 100 CHƯƠNG",
+    "prompt": "A young man with long dark hair and purple wings carrying a girl in a red wedding dress, a defeated green-haired elder behind them, ruined stone plaza. Chinese manhua cover art style, full-colour digital illustration, bold clean linework, cel shading, high contrast, 9:16, NO text"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep100/p002.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Ma Hoàng này đã chết một lần. Kẻ giết hắn không phải kẻ thù, mà là đệ tử ruột.",
+      "section": "Mở đầu: Ma Hoàng bị phản bội"
+    },
+    {
+      "panel": "dqgl_ep96/p040.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn tự bạo để hủy bí kíp, tỉnh dậy trong thân xác một gia nô vô danh, và bị một cái tâm ma trói chặt: phải bảo vệ cái nhà này, bằng mọi giá."
+    },
+    {
+      "panel": "dqgl_ep92/p008.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Từ đó, một gia nô Tụ Khí cảnh lần lượt hạ trưởng lão, chơi đùa cao thủ Thiên Huyền, và khiến cả Ngự Hạ Thất Thế Gia phải dè chừng."
+    },
+    {
+      "panel": "dqgl_ep97/p042.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một trăm chương, một mạch kể. Bắt đầu thôi."
+    },
+    {
+      "panel": "dqgl_ep1/p008.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ma Hoàng mạnh nhất Thánh Vực vừa có trong tay Cửu U Mật Lục thì cả đại lục kéo đến vây.",
+      "section": "Phần 1: Gia nô bị tâm ma trói buộc"
+    },
+    {
+      "panel": "dqgl_ep1/p029.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đệ tử ruột Triệu Thành đâm lén từ sau lưng."
+    },
+    {
+      "panel": "dqgl_ep3/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn tự bạo, tỉnh lại làm gia nô Trác Phàm của Lạc gia, đúng lúc hai chị em Lạc Vân Thường và Lạc Vân Hải bị Tôn quản gia truy sát."
+    },
+    {
+      "panel": "dqgl_ep2/p011.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tâm ma của gia nô cũ buộc hắn không thể bỏ họ: càng rời xa cô tiểu thư, ngực hắn càng đau."
+    },
+    {
+      "panel": "dqgl_ep3/p051.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chạy vào Rừng Sương Mù, tiểu thư giận dữ ném cho hắn chiếc nhẫn chứa toàn bộ gia tài của Lạc gia."
+    },
+    {
+      "panel": "dqgl_ep3/p068.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn nhận ra một trận đồ thiên nhiên, mở Cửu Âm Minh Phủ gọi tà sát từ bốn phương nhập vào trận, rồi giả vờ bán chủ cầu vinh, dẫn cả toán Tôn quản gia vào trận và diệt gọn."
+    },
+    {
+      "panel": "dqgl_ep5/p047.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn hút âm sát, một mạch phá lên Tụ Khí cảnh, rồi nhường hết công cho tiểu thư, nói là nhờ cô bày trận."
+    },
+    {
+      "panel": "dqgl_ep6/p039.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tới Phong Lâm Thành, hắn vạch trần một viên ngọc giả ở chợ, rồi bỏ mười viên linh thạch mua chính viên đó: bên trong là Huyết Tinh Linh, thứ sinh ra Bổn Mệnh Huyết Anh."
+    },
+    {
+      "panel": "dqgl_ep7/p102.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhà Thái, nơi có hôn ước với tiểu thư, trở mặt hủy hôn, vì trong mắt Thái Hiếu Đình giờ chỉ có Tôn Vũ Phi, tiểu thư Tôn gia thuộc Thất Thế Gia."
+    },
+    {
+      "panel": "dqgl_ep8/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn tát hai kẻ phản bội ngay giữa Thái phủ, rồi đỡ trọn một chưởng của gia chủ Thái gia."
+    },
+    {
+      "panel": "dqgl_ep8/p083.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn đáp một câu gọn lỏn: ta có thể lấy mạng con trai ông bất cứ lúc nào."
+    },
+    {
+      "panel": "dqgl_ep10/p085.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Biết Tôn gia thuộc Ngự Hạ Thất Thế Gia, hắn tìm đến Tiềm Long Các, và bán một bức trận thức đồ thượng cổ với giá một ngàn vạn."
+    },
+    {
+      "panel": "dqgl_ep10/p004.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Gia nô vừa bị đuổi đã đem một bức tranh bán cho thế lực lớn nhất thành."
+    },
+    {
+      "panel": "dqgl_ep10/p078.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Từ đây, Lạc gia có chỗ dựa đầu tiên."
+    },
+    {
+      "panel": "dqgl_ep11/p078.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "U Minh Cốc tìm tới Lạc gia. Đệ tử U Tuyền liều mình tự bạo tâm mạch phản đòn, và Trác Phàm gục giữa cơn mưa.",
+      "section": "Phần 2: Ván cờ giữa U Minh Cốc và Tiềm Long Các"
+    },
+    {
+      "panel": "dqgl_ep12/p061.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Rồi hắn mượn tay Long Kiệt của Tiềm Long Các, tự tay kết liễu U Tuyền, đẩy hai bên vào thế nghi kỵ nhau."
+    },
+    {
+      "panel": "dqgl_ep12/p072.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn tự nhận trận đó mình thực chất đã thua, nên liều mạng đột phá, và Bổn Mệnh Huyết Anh ra đời: một mạng sống thứ hai giúp hắn phá cảnh giới liên tục."
+    },
+    {
+      "panel": "dqgl_ep13/p048.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Huyết Anh vừa luyện thành đã bay đi nghe lén Tôn gia và trưởng lão U Minh Cốc ngay trong Thái phủ, và biết U Minh Cốc cài gián điệp trong Tiềm Long Các: Giản trưởng lão, kẻ từng hủy một mắt của Long Cửu."
+    },
+    {
+      "panel": "dqgl_ep14/p085.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn tới xin chỗ ở, Long Quỳ tiểu thư gây sự ngay từ cửa, nhưng tặng tin này, Lạc gia đổi được một biệt viện."
+    },
+    {
+      "panel": "dqgl_ep15/p057.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Rồi hắn nâng cấp Bàn Long Trận của Long Cửu lên ngũ cấp, chấn động cả đế quốc."
+    },
+    {
+      "panel": "dqgl_ep16/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Long Cửu mời làm cung phụng, hắn từ chối, tuyên bố mười năm nữa Lạc gia sẽ vượt mặt Thất Thế Gia."
+    },
+    {
+      "panel": "dqgl_ep17/p001.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắc Phong Sơn định bắt cóc tiểu thư."
+    },
+    {
+      "panel": "dqgl_ep19/p056.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn bắt sống nữ tiểu trại chủ Lôi Vũ Đình, vạch ra kẻ chủ mưu thật sự là hôn phu của cô, Dương Minh, kẻ thản nhiên thú nhận chẳng quan tâm cha nuôi sống chết ra sao."
+    },
+    {
+      "panel": "dqgl_ep20/p046.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn giả làm thầy lang, bị nhốt dưới hầm, rồi tự phá ngục và cứu sơn chủ bị côn trùng Hàn Đàm Tuyết Tàm ký sinh."
+    },
+    {
+      "panel": "dqgl_ep20/p059.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trên đường về, họ gặp một sơn trại ba bốn trăm người bị diệt sạch."
+    },
+    {
+      "panel": "dqgl_ep18/p025.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Ma Hoàng cứu người chưa bao giờ vô điều kiện: ai cũng là một quân cờ trong ván cờ của hắn."
+    },
+    {
+      "panel": "dqgl_ep21/p039.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Biết U Minh Cốc sắp tấn công, hắn tự tìm Tiềm Long Các báo trước.",
+      "section": "Phần 3: Đại chiến Tiềm Long Các và U Minh Cốc"
+    },
+    {
+      "panel": "dqgl_ep24/p028.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Giản Phàm, kẻ nắm Tử Lôi Kim Nhãn, triệu Thôn Phệ Quỷ Nha đối đầu Long Cửu; Long Cửu hóa thân thành rồng vàng phản kích, còn hắn tương kế tựu kế, giơ tay triệu một ma vật đỏ rực đánh úp ngay giữa chiến trường."
+    },
+    {
+      "panel": "dqgl_ep25/p008.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đêm sau, thích khách U Minh Cốc đột nhập Lạc gia nhưng bị Tiềm Long Các mai phục, và một chiêu của hắn đủ khiến cao thủ cầm đầu quỵ xuống."
+    },
+    {
+      "panel": "dqgl_ep27/p051.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trưởng lão U Minh Cốc dẫn người tới, hắn kích hoạt Cửu Thiên Bàn Long Trận: một tu khí cảnh gọi Kim Long đè trưởng lão Thiên Huyền."
+    },
+    {
+      "panel": "dqgl_ep27/p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Khi lão tung Tà Nguyệt Luân, một tiếng nổ vang lên giữa trận rồi cục diện đổi chiều: ông lão phe Lạc gia nhờ hắn không chỉ hồi phục mà còn đột phá tới Thiên Huyền Cảnh, và cùng hắn tung đòn quyết định."
+    },
+    {
+      "panel": "dqgl_ep24/p020.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Người ngoài chỉ thấy rồng vàng."
+    },
+    {
+      "panel": "dqgl_ep27/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Người trong cuộc biết hắn đã tính cả việc dùng chính ma bảo của đối thủ để dụ lão tung hết át chủ bài."
+    },
+    {
+      "panel": "dqgl_ep30/p001.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trận xong, hắn nhặt Tà Nguyệt Luân, cứu Lôi Vũ Đình và hạ nốt trưởng lão Giản, rồi bảo cô lột sạch đồ trên người lão: sau trận, chiến lợi phẩm mới là thứ hắn quan tâm."
+    },
+    {
+      "panel": "dqgl_ep30/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Món lớn nhất là một chiếc túi chứa được sinh vật sống. Lạc gia từ đó có thêm đồng minh mạnh nhất thành."
+    },
+    {
+      "panel": "dqgl_ep31/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lôi Vân Thiên xem hắn như huynh đệ ruột.",
+      "section": "Phần 4: Từ minh ước Tiềm Long Các tới liên minh ba nhà"
+    },
+    {
+      "panel": "dqgl_ep32/p015.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn tặng ông con ma vật Tử Lôi, và nghe ông kể về Vách Lạc Lôi, nơi sấm sét đánh chết biết bao cao thủ và để lại cho ông con mắt Tử Lôi, về di tích Thiên Đế."
+    },
+    {
+      "panel": "dqgl_ep34/p030.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hoàng đế dập tắt cuộc tranh cãi giữa U Minh Cốc và Tiềm Long Các, ra lệnh cả hai rút khỏi Phong Lâm Thành."
+    },
+    {
+      "panel": "dqgl_ep35/p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Rồi cuộc sống yên bình một lúc: hai mỹ nữ tranh nhau đút đồ ăn, và Long Quỷ bị một công tử mập cầu hôn suốt mười năm, còn Trác Phàm vô tình bị hiểu lầm là tình địch, bị đánh lén và đá lật kèo."
+    },
+    {
+      "panel": "dqgl_ep38/p011.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn ra tay cứu chính tình địch khỏi một cuộc phục kích bằng Ma Bảo Tam Phẩm."
+    },
+    {
+      "panel": "dqgl_ep39/p023.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Phương Thu Bạch của hoàng thất ngỏ ý nhận làm đồ đệ, hắn từ chối: người làm sư phụ phải là cao thủ hơn Ma Hoàng."
+    },
+    {
+      "panel": "dqgl_ep40/p017.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn ký minh ước Lạc gia với Tiềm Long Các, và tối đó đại tiểu thư say ngủ trong bếp chỉ để nấu cho hắn."
+    },
+    {
+      "panel": "dqgl_ep41/p011.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hoàng thất triệu kiến, hắn khất lời."
+    },
+    {
+      "panel": "dqgl_ep43/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tới buổi hội đàm ba gia tộc, hắn nghe bí mật hiệp ước nghìn năm: Tứ Trụ nắm quân đội, kinh tế và vận mệnh Thiên Vũ Đế Quốc, và hoàng thất còn giữ một bí thuật dung hợp võ công Huyền giai của cả ba nhà."
+    },
+    {
+      "panel": "dqgl_ep44/p007.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn lấy lại bí kíp thất lạc cho cả ba nhà."
+    },
+    {
+      "panel": "dqgl_ep45/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Khi Lạc gia, yếu nhất, đòi làm chủ liên minh, hắn lôi minh ước Tiềm Long Các ra, khiến Hoàng tử đổi ý."
+    },
+    {
+      "panel": "dqgl_ep47/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hoàng tử còn xin kết bái với hắn. U Minh Cốc chủ trở về trong cơn thịnh nộ, chất vấn vì sao Minh Châu Mật Lệnh lại bị bại lộ."
+    },
+    {
+      "panel": "dqgl_ep48/p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng hắn chọn rời Lạc gia, đi chiêu mộ cường giả."
+    },
+    {
+      "panel": "dqgl_ep49/p021.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trước khi đi, hắn trao Tứ Đại Trận cho đại tiểu thư, truyền Ma Sát Quyết cho Lão Bàng, và nhận sáu trăm đứa trẻ làm hộ vệ."
+    },
+    {
+      "panel": "dqgl_ep50/p023.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Người ta rời nhà vì một lý do."
+    },
+    {
+      "panel": "dqgl_ep46/p019.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ma Hoàng rời nhà vì mười lý do, và không nói cho ai biết lý do nào là thật."
+    },
+    {
+      "panel": "dqgl_ep55/p015.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cải trang vào thành, hắn bị một cô bé tóc đỏ bám theo: Ngưng Nhi, tiểu thư Tiết gia.",
+      "section": "Phần 5: Cô bé tóc đỏ và Kim Cương Lưu Sa"
+    },
+    {
+      "panel": "dqgl_ep59/p012.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn nhận ra cô mới mười lăm mười sáu tuổi mà đã có tu vi Tụ Khí, còn mạnh hơn hộ vệ Tiết gia."
+    },
+    {
+      "panel": "dqgl_ep68/p045.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn diệt cả toán Tiết gia đuổi theo, Ngưng Nhi bật khóc khi hắn kết liễu Tiết đại thiếu gia."
+    },
+    {
+      "panel": "dqgl_ep55/p008.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Rồi hắn đối đầu Tiết Vạn Long, cao thủ Đoạn Cốt đỉnh phong: đứng yên chịu mười chiêu để đổi tự do cho cô, rồi dùng Tà Nguyệt Luân và Mê Tung Huyễn Ảnh Bộ hạ ông."
+    },
+    {
+      "panel": "dqgl_ep57/p001.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tiết Vạn Long giao luôn con gái cho hắn. Họ cùng đi Vạn Thú Sơn Mạch lấy Kim Cương Lưu Sa, báu vật U Minh Cốc đang canh giữ."
+    },
+    {
+      "panel": "dqgl_ep60/p011.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn đụng độ một thiên tài Kiếm Hầu Phủ, Trác Thiên Dương, rồi hai bên bắt tay hợp tác."
+    },
+    {
+      "panel": "dqgl_ep63/p001.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn đào hầm bằng chuột chũi, dùng Càn Khôn Na Di Trận dẫn dòng Lưu Sa thẳng về phía mình ngay dưới mắt Thất trưởng lão U Minh Cốc."
+    },
+    {
+      "panel": "dqgl_ep63/p006.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thiên Dương mời hắn tới Kiếm Hầu Phủ, hắn từ chối, nhưng hai người đồng ý kết minh cá nhân."
+    },
+    {
+      "panel": "dqgl_ep64/p030.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn phát cho cả nhóm Ẩn Tức Đan để lẻn qua linh thú, và Thiên Dương cho biết Thất trưởng lão chính là U Quỷ Thất, kẻ tà ác khét tiếng nhất U Minh Cốc."
+    },
+    {
+      "panel": "dqgl_ep67/p001.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "U Quỷ Thất đuổi tới. Hắn giả vờ hòa giải rồi trở mặt, ba người hợp Phong, Lôi, Viêm đánh trọng thương lão."
+    },
+    {
+      "panel": "dqgl_ep69/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng U Quỷ Thất bắt Ngưng Nhi làm con tin. Hắn thú nhận cả trận chiến là một cái bẫy, và hắn đã tính cả việc để cô làm mồi."
+    },
+    {
+      "panel": "dqgl_ep69/p039.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lão tung lá bài cuối là Âm Tòa và dồn hắn vào đường cùng."
+    },
+    {
+      "panel": "dqgl_ep69/p003.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Cú lật kèo hay nhất không phải trận đánh, mà là khoảnh khắc hắn thừa nhận mình đã lừa cả đồng đội."
+    },
+    {
+      "panel": "dqgl_ep72/p043.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thoát chết, cả nhóm trú trong một hang đá mọc đầy Giải Ưu Thảo, nghi là bẫy của con chuột trắng đã dẫn họ tới, và mùi thuốc dụ thú làm bầy Lang Vương kéo đến vây kín.",
+      "section": "Phần 6: Vạn Thú Sơn Mạch, quả trứng và lời chia tay"
+    },
+    {
+      "panel": "dqgl_ep80/p032.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngưng Nhi, người yếu nhất, đứng chắn phía trước, và một luồng sáng xanh bí ẩn cứu họ."
+    },
+    {
+      "panel": "dqgl_ep75/p021.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm gặp một linh thể trong ý thức, nó gọi hắn là Thánh Vực và chỉ đường tới Lôi Vân Tước."
+    },
+    {
+      "panel": "dqgl_ep78/p001.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ba tháng dưỡng thương, rồi cả nhóm vào khu vực thứ ba, tới hang ổ Lôi Vân Tước, con chim cấp sáu hắn muốn thu phục."
+    },
+    {
+      "panel": "dqgl_ep78/p066.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hai linh thú cấp sáu giao chiến: Lôi Vân Tước bảo vệ ổ trứng trước Xích Viêm Sư Vương."
+    },
+    {
+      "panel": "dqgl_ep81/p044.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn dọa sư tử bỏ chạy, nhưng chim mẹ đã kiệt sức; nó giấu một quả trứng cuối cùng và giao cho hắn."
+    },
+    {
+      "panel": "dqgl_ep81/p023.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Khi Thiên Dương đòi hắn thành thật vì là huynh đệ, hắn chỉ đáp: ta cũng đâu phải đệ của ngươi."
+    },
+    {
+      "panel": "dqgl_ep82/p011.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn mang xác chim đi luyện thành chiếc Lôi Linh Giới, tặng Ngưng Nhi nhân sinh nhật."
+    },
+    {
+      "panel": "dqgl_ep84/p036.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông nội Ngưng Nhi, Tiết Định Thiên, chặn đường định đưa cô về."
+    },
+    {
+      "panel": "dqgl_ep84/p048.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông vừa nghe tên U Quỷ Thất đã tái mặt rồi bất ngờ ra tay với chính những người từng chăm sóc cháu mình."
+    },
+    {
+      "panel": "dqgl_ep90/p052.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngưng Nhi kề dao vào cổ để cứu bạn, rồi biết Hòa Thần của U Minh Cốc thực chất là lấy cô làm lô đỉnh."
+    },
+    {
+      "panel": "dqgl_ep86/p036.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn hỏi thẳng: đã có cô gái nào được gả qua đó mà sống sót trở về chưa?"
+    },
+    {
+      "panel": "dqgl_ep87/p072.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô tự nguyện quay về để cứu cả nhà, hứa sẽ hận hai người bạn cả đời để họ không đuổi theo."
+    },
+    {
+      "panel": "dqgl_ep86/p023.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thiên Dương đấm hắn vì tưởng hắn bỏ mặc cô."
+    },
+    {
+      "panel": "dqgl_ep89/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn quay lại, mắt đỏ rực, bước vào hang luyện Thiên Ma Đại Hóa Quyết: ba tầng thân thể, tầng cuối là nguyên thần."
+    },
+    {
+      "panel": "dqgl_ep90/p043.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cùng lúc, U Quỷ Thất kéo tới Tiết phủ, gọi cả gia tộc là chó canh cửa."
+    },
+    {
+      "panel": "dqgl_ep90/p032.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Cái giá của một thân thể kim cương là đau hơn cả cái chết, và hắn chọn nó chỉ vì một cô bé từng bám theo hắn."
+    },
+    {
+      "panel": "dqgl_ep93/p032.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngưng Nhi kề dao ép U Quỷ Thất, nhưng vẫn bị bắt về U Minh Cốc.",
+      "section": "Phần 7: Một chiêu"
+    },
+    {
+      "panel": "dqgl_ep94/p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô lên kiệu hoa, chiếc nhẫn Lôi Linh sáng lên; Thiên Dương lao vào cứu rồi bị đánh gục, Bát trưởng lão Kiếm Hầu Phủ, người từng thua U Quỷ Thất năm mươi năm trước, xuất hiện chặn đòn."
+    },
+    {
+      "panel": "dqgl_ep94/p076.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "U Quỷ Thất lôi cả Tiết gia bị trói ra ép cô tuyệt vọng. Đúng lúc cô cầu trời cứu mình, một chiếc lông vũ tím rơi xuống."
+    },
+    {
+      "panel": "dqgl_ep96/p007.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm sải cánh xuất hiện: hiệp hai bắt đầu. U Quỷ Thất bắt đệ tử sợ hãi tự ra tay, khóa hắn trong pháp trận Ma Bảo tứ phẩm."
+    },
+    {
+      "panel": "dqgl_ep97/p011.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn vẫn cười, xé xích, dùng Mê Tung Huyễn Ảnh Bộ vờn lão trước hàng nghìn người, rồi đỡ Quỷ Diện Ấn đánh vào nguyên thần: một ngọn lửa xanh bùng lên trên trán hắn, và chiêu của lão không còn tác dụng."
+    },
+    {
+      "panel": "dqgl_ep99/p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn trả nguyên xi câu lão từng nói ở Vạn Thú Sơn Mạch: trước thực lực tuyệt đối, mọi mưu kế đều vô nghĩa."
+    },
+    {
+      "panel": "dqgl_ep99/p057.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một nắm đấm làm vỡ kiếm xanh, một chiêu hạ gục U Quỷ Thất. Cơ thể kim cương hắn đang dùng chính là món quà lão vô tình ban tặng."
+    },
+    {
+      "panel": "dqgl_ep100/p037.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn bế Ngưng Nhi bay ra ngoài thành, thực hiện lời hứa đưa cô rời thành, rồi dặn cô theo Kiếm Hầu Phủ và hẹn gặp lại khi hai chiếc nhẫn cảm ứng nhau."
+    },
+    {
+      "panel": "dqgl_ep99/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một gia nô, một Ma Hoàng, một trăm chương.",
+      "section": "Kết"
+    },
+    {
+      "panel": "dqgl_ep100/p029.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn bắt đầu bằng việc bị phản bội và kết thúc phần này bằng việc đưa một cô bé ra khỏi thành."
+    },
+    {
+      "panel": "dqgl_ep100/p048.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng U Minh Cốc chưa hết, Thất Thế Gia chưa hết, và bí mật Minh Châu Mật Lệnh còn nguyên."
+    },
+    {
+      "panel": "dqgl_ep100/p023.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Nếu bạn thích kiểu nhân vật chính lạnh miệng mà mềm lòng, hãy bấm theo dõi để xem tiếp những chương sau."
+    }
+  ]
+}
