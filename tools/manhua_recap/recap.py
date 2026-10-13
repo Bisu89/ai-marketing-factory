@@ -339,6 +339,13 @@ def cmd_build(
             sys.exit(f"Beat {i}: panel file {b['panel']} not found ({path})")
         asset = known.get(str(path).lower())
         if asset is None:
+            # the bulk listing above is capped (3000), so an asset registered by an
+            # earlier build may be missing from it -- look it up by filename instead
+            for a in call("GET", f"/assets?q={beat_tag}_{path.stem}&asset_type=image"):
+                if str(Path(a["path"])).lower() == str(path).lower():
+                    asset = known[str(path).lower()] = a
+                    break
+        if asset is None:
             with Image.open(path) as img:
                 w, h = img.size
             asset = call("POST", "/assets", {"filename": f"{beat_tag}_{path.name}", "path": str(path), "type": "image",

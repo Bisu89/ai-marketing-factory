@@ -1,0 +1,315 @@
+{
+  "title": "Ngưng Nhi lên kiệu hoa, chiếc nhẫn sáng, thiếu gia lao vào cứu!?",
+  "chapters": "93",
+  "source_dir": "manhua-recap/dqgl_ep93",
+  "written_by": "Claude, đối chiếu từng trang ảnh và sửa lại, 2026-10-13",
+  "description": "Ngưng Nhi mặc áo cưới rời Tiết phủ để đổi mạng cho gia đình, còn U Quỷ Thất nói hộ tống nhưng thực ra là giám sát và đã phong tỏa dãy núi Vạn Thú. Khi cô tuyệt vọng, chiếc nhẫn Lôi Linh bỗng sáng lên và Thiên Dương lao tới cứu, nhưng không địch nổi cao thủ Thiên Huyền. Ngay lúc U Quỷ Thất ra đòn kết liễu, một luồng kiếm khí chặn lại.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tập 93 (chương 93).\n◀ Tập 92: Ma Hoàng thay da đổi thịt, luyện hóa Thanh Viêm rồi tìm U Quỷ Thất!?",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Trác Phàm trở lại, Bát trưởng lão ra tay!?",
+    "prompt": "Vertical manhua recap thumbnail, Trác Phàm in black and red robes arriving through glowing purple feathers as an elder from Sword Marquis Residence attacks green-haired U Quỷ Thất, red bridal-robed Ngưng Nhi caught between them, dramatic xianxia action, clear top space for Vietnamese title, no text"
+  },
+  "beats": [
+    {
+      "panel": "p001.jpg",
+      "narration": "Tại Tiết phủ, phố xá đông nghịt người: ế, phía trước đang làm gì thế, đông dữ vậy?",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p002.jpg",
+      "narration": "Một người cười: vậy là ngươi chưa biết gì sao? Hôm nay chính là ngày đại hôn của tiểu thư Tiết gia đó! Ôi nhìn xem, tới rồi, tới rồi kìa!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p003.jpg",
+      "narration": "Là đội đón dâu của U Minh Cốc đó! Dưới lá cờ vàng, người dẫn đầu cưỡi ngựa chính là U Quỷ Thất.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p005.jpg",
+      "narration": "Dân chúng xì xào: đội đón dâu này của U Minh Cốc đúng là rình rang, nghe nói Tân Lang Cung là một môn phái lớn, lại còn có cả Thất trưởng lão đích thân hộ tống nữa đó!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p008.jpg",
+      "narration": "Xem ra lần này Tiết gia trèo cao rồi!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p010.jpg",
+      "narration": "Trong Tiết phủ, Ngưng Nhi ngồi trước gương, mặc áo cưới đỏ, bên cạnh là con chuột trắng nhỏ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p013.jpg",
+      "narration": "Cô thì thầm: sau này ngươi không thể theo ta được nữa rồi...",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p014.jpg",
+      "narration": "Hôm nay bước ra khỏi cánh cửa này, ta cũng sẽ không thể trở lại nơi này được nữa.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p015.jpg",
+      "narration": "Vốn định làm cho ngươi một ngôi nhà, đáng tiếc lại không thể nào thực hiện được.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p016.jpg",
+      "narration": "Xin lỗi nha, nhóc con...",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p018.jpg",
+      "narration": "Cho dù là như thế nào, ta vẫn sẽ cứu người nhà của ta!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p019.jpg",
+      "narration": "Ngoài cửa pháo nổ vang rền.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p021.jpg",
+      "narration": "Tiểu thư xuất giá!! Hai tỳ nữ áo đỏ bước vào đón cô.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p023.jpg",
+      "narration": "Cô thầm nghĩ: xin hãy yên tâm... cha, ông nội, những người vẫn luôn bảo vệ ta...",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p025.jpg",
+      "narration": "Các người nhất định phải sống sót...",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p030.jpg",
+      "narration": "Bên ngoài, tỳ nữ xì xào: tân nương tử tới rồi! Dung mạo xinh đẹp của tiểu thư Tiết gia quả nhiên là danh bất hư truyền! Cũng chỉ có mỹ nhân như vậy mới có tư cách gả vào Thất Thế Gia.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p032.jpg",
+      "narration": "U Quỷ Thất hỏi: Thất trưởng lão cũng muốn đi theo sao? Hắn cười: ha ha ha, điều đó là đương nhiên rồi. Ngưng Nhi cô nương hòa thần với đệ tử U Minh Cốc, hiển nhiên lão phu phải bảo vệ mọi lúc, đưa ngươi đến U Minh Cốc an toàn.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p034.jpg",
+      "narration": "Ngưng Nhi thầm nghĩ: hộ tống cái con khỉ, là giám sát thì có!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p036.jpg",
+      "narration": "Nhưng chỉ cần U Quỷ Thất rời khỏi thành Thanh Minh... Trác đại ca bọn họ cũng có cơ hội chạy trốn!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p037.jpg",
+      "narration": "U Quỷ Thất như đọc được ý nghĩ cô: đúng rồi, Ngưng Nhi tiểu thư, khi rời khỏi thành Thanh Minh, lão phu đã cho người phong tỏa dãy núi Vạn Thú.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p038.jpg",
+      "narration": "Cho dù là đường hầm bí mật đó của ngươi, lão phu cũng đã cho người coi chừng, thẳng cho đến khi lão phu trở về mới thôi.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p039.jpg",
+      "narration": "Hai con chuột nhắt đó không thể chạy thoát khỏi lòng bàn tay của lão phu được đâu!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p040.jpg",
+      "narration": "Không cần nhiều lời nữa. Mạng của ngươi đã dùng để đổi cho cha ngươi và huynh đệ ngươi, không thể đổi thêm cho người khác được nữa đâu.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p040.jpg",
+      "narration": "Cô gái hiểu rõ mình không còn gì để mặc cả. Điều đau nhất của cô là biết người mình muốn cứu nhất lại là người không thể bảo vệ.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p042.jpg",
+      "narration": "Ngưng Nhi tiểu thư, mời! Cô bước lên kiệu hoa, hai hàng người áo đỏ cúi chào.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p044.jpg",
+      "narration": "Cô khóc, thầm nghĩ: không... ta phải làm thế nào mới tốt đây?! Ta đã không còn lợi thế trong tay nữa, phải làm thế nào mới có thể cứu được Trác đại ca bọn họ?!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p049.jpg",
+      "narration": "Bất chợt, chiếc nhẫn tím trên tay cô sáng lên, tia điện lóe giữa không trung. Đây, đây là...!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p050.jpg",
+      "narration": "Nhẫn Lôi Linh có phản ứng?! Lẽ nào là Trác đại ca bọn họ...",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p051.jpg",
+      "narration": "Cô hét lên: đừng qua đây! Còn U Quỷ Thất thì nheo mắt, ánh nhìn xanh lục lóe lên.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p052.jpg",
+      "narration": "Nhưng một giọng quen vang lên: Ngưng Nhi! Ta tới cứu ngươi đây!!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p053.jpg",
+      "narration": "Thiên Dương lao tới, kiếm trong tay.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p055.jpg",
+      "narration": "U Quỷ Thất cười lạnh: hừ, thì ra ngươi cũng chưa chết à.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p057.jpg",
+      "narration": "Hắn quát: lại dám tìm lão phu khiêu chiến sao! Rồi tung chưởng xanh lục.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p061.jpg",
+      "narration": "Thiên Dương không lùi, rút kiếm chém trả, một đường kiếm đỏ lóe lên giữa không trung.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p067.jpg",
+      "narration": "Anh quát: võ kỹ Huyền cấp độc môn của Kiếm Hầu Phủ!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p070.jpg",
+      "narration": "U Quỷ Thất sững lại: ngươi là ai ở Kiếm Hầu Phủ? Vì sao tuổi tác còn trẻ mà đã có thể nhận được chân truyền độc môn?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p073.jpg",
+      "narration": "Rồi hắn khinh bỉ: ngươi khỏi xen vào đi! Hừ, không biết tự lượng sức mình!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p075.jpg",
+      "narration": "Đoạn Cốt cảnh và Thiên Huyền cảnh, là khoảng cách vĩnh viễn không thể vượt qua nổi.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p079.jpg",
+      "narration": "Thiên Dương bị đánh bay ra, nằm gục giữa vết nứt đá.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p081.jpg",
+      "narration": "Hừ, tiểu quỷ, nếu không nể mặt Kiếm Hầu Phủ, thì một chưởng vừa rồi của lão phu đã giết chết ngươi rồi!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p084.jpg",
+      "narration": "Thiên Dương gào lên: có giỏi thì giết tiểu gia đi! Nhưng đến lúc đó, U Minh Cốc chắc chắn sẽ phải đánh một trận với Kiếm Hầu Phủ. Người có gánh nổi trách nhiệm không?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p086.jpg",
+      "narration": "U Quỷ Thất cười hê hê, mắt đỏ rực: tiểu tử thối, ngươi thật sự tưởng rằng lão phu sẽ sợ Kiếm Hầu Phủ các ngươi sao?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p087.jpg",
+      "narration": "Cho dù giết chết ngươi, hôm nay là do ngươi gây rối ở địa bàn của lão phu trước, thì Kiếm Hầu Phủ cũng chẳng có lời nào để nói.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p088.jpg",
+      "narration": "Hắn giơ bàn tay lên để ra đòn cuối.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p089.jpg",
+      "narration": "Ngưng Nhi hoảng hốt hét: đừng mà!!!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p092.jpg",
+      "narration": "Ánh vàng bùng lên ngay lúc đó, một luồng kiếm khí xé ngang trời chặn đòn của U Quỷ Thất.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p094.jpg",
+      "narration": "Giữa làn khói bụi, một giọng vang lên: khách ít khi đến, 50 năm không gặp rồi, gần đây vẫn ổn chứ?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p096.jpg",
+      "narration": "Rồi tiếng hô xé gió: Kiếm. Tùy. Phong!!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p097.jpg",
+      "narration": "Từ làn khói trắng, một lão nhân tóc bạc mặc áo trắng viền vàng bước ra, ngay bên cạnh Thiên Dương. Bát trưởng lão đã đến.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

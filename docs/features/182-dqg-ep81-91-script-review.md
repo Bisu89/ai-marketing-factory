@@ -11,3 +11,7 @@ Cần biết khi build:
 - Ch 89-91: số `pNNN` là **khung của `cut`** (đã cắt lại cả 11 chương, `_recap/panels` mới).
 - Tên công pháp thống nhất "Thiên Ma Đại Hóa Quyết" (ep88 trong ảnh dịch là "Thiên Quỷ").
 - Chưa build/render ch 81-91.
+
+## Bổ sung: ep92-94 (2026-10-13)
+Review tương tự: ep92 (khung cut, 69 khung) và ep93/94 (97/82 khung) đều viết lại. Lỗi nặng nhất ở **ep93**: script cũ cho Trác Phàm xuất hiện và mở "hiệp hai" ngay trong tập này, nhưng thực tế ep93 là Ngưng Nhi lên kiệu hoa, chiếc nhẫn Lôi Linh sáng, **Thiên Dương** lao vào cứu rồi bị U Quỷ Thất đánh gục, kết bằng Bát trưởng lão xuất hiện; Trác Phàm chỉ xuất hiện ở cuối **ep94**. Ep94 cũng bỏ qua cảnh U Quỷ Thất lôi cả Tiết gia bị trói ra và cảnh Bát trưởng lão bỏ đi. Ep92: tên tập có "luyện hóa Thanh Viêm", lão nhân tặng Thanh Viêm là mạch phụ nên được giữ lại như một đoạn riêng.
+Số `pNNN` của ep92-94 là khung của `cut` như ep89-91.
