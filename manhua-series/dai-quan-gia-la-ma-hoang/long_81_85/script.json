@@ -1,0 +1,1022 @@
+{
+  "template": "manhua_recap_long_vi",
+  "title": "Ma Hoàng thành quản gia | Tóm tắt chương 81-85",
+  "chapters": "81-85",
+  "source_dir": "manhua-recap/dqgl_ep81",
+  "written_by": "Claude tổng hợp từ script ep81-90 đã lưu, 2026-10-12",
+  "description": "Tóm tắt truyện Đại Quản Gia Là Ma Hoàng, chương 81 đến 85, kèm bình luận.\nMục lục thời gian: xem bình luận ghim.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#TomTatTruyen"
+  ],
+  "thumbnail": {
+    "text": "NGƯNG NHI VỀ U MINH CỐC",
+    "prompt": "A young man with glowing red eyes in a dark cloak before a glowing golden formation, a red-haired girl with a dagger, a sinister green-haired old elder in the shadows. Chinese manhua cover art style, full-colour digital illustration, bold clean linework, cel shading with dramatic glow and rim light, high contrast, vertical 9:16 composition (keep the subject inside the centre 2:3 area), leave the top 25% as darker empty background for a title overlay, NO text, NO letters, NO speech bubbles, NO watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep81/p004.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Đôi mắt Trác Phàm lóe lên ánh đỏ, khí thế đáng sợ khiến cả khu rừng như chấn động.",
+      "section": "Tập 81: Chim mẹ giấu một quả trứng, Ma Hoàng nhận nuôi con của nó"
+    },
+    {
+      "panel": "dqgl_ep81/p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Băng nhọn bất ngờ trồi lên khắp nơi, làm đàn linh thú nhỏ hoảng loạn tháo chạy."
+    },
+    {
+      "panel": "dqgl_ep81/p007.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Những linh thú nhỏ hoảng loạn bỏ chạy, ngay cả hai con linh thú khổng lồ cũng há hốc miệng kinh hãi trước màn phô diễn này."
+    },
+    {
+      "panel": "dqgl_ep81/p008.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Xích Viêm Sư Vương vốn hung hãn giờ đây lại lộ vẻ sợ hãi trước Trác Phàm."
+    },
+    {
+      "panel": "dqgl_ep81/p010.jpg",
+      "narration": "Trác Phàm chậm rãi nhìn thẳng vào con sư tử, đôi mắt sáng rực như thể chỉ một ánh nhìn là đủ lấy mạng nó.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep81/p013.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Con sư tử cấp sáu không dám tiếp tục giao chiến, đành bỏ chạy khỏi nơi này."
+    },
+    {
+      "panel": "dqgl_ep81/p016.jpg",
+      "narration": "Trác Phàm bỗng ôm đầu, mồ hôi lạnh túa ra: nhiệt độ này là sao? Lẽ nào là người trong giấc mộng hôm nọ?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep81/p020.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Trác Thiên Dương vỗ vai hắn, hỏi thẳng: rốt cuộc ngươi có phải con người không? Chỉ một ánh nhìn mà dọa linh thú cấp sáu chạy mất mật!"
+    },
+    {
+      "panel": "dqgl_ep81/p023.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Trác Phàm quay lưng, lạnh nhạt đáp: phí lời. Thiên Dương gắt lên bảo nếu là huynh đệ thì thành thật đi. Hắn chỉ nói: ta cũng đâu phải đệ của ngươi."
+    },
+    {
+      "panel": "dqgl_ep81/p021.jpg",
+      "narration": "Bị hỏi có phải con người không mà hắn trả lời bằng một câu đùa. Ma Hoàng giấu bí mật như giấu cơm riêng, hỏi kiểu gì cũng không khai.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep81/p026.jpg",
+      "narration": "Nhưng Ngưng Nhi chẳng còn tâm trí đùa. Cô ngồi bên Lôi Vân Tước hấp hối, hỏi Trác Phàm còn cách nào nữa không. Hắn nhìn chim mẹ rồi khẽ đáp: không sống được nữa đâu.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep81/p030.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nghe xong, Ngưng Nhi nước mắt cứ thế trào ra."
+    },
+    {
+      "panel": "dqgl_ep81/p032.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nước mắt cô rơi xuống bên cạnh Lôi Vân Tước, còn chim mẹ chỉ khẽ gọi con trong hơi thở yếu ớt."
+    },
+    {
+      "panel": "dqgl_ep81/p033.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Ngưng Nhi phát hiện Lôi Vân Tước đang che chở những quả trứng của mình đến tận phút cuối."
+    },
+    {
+      "panel": "dqgl_ep81/p036.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô đếm lại những quả trứng đều đã cháy đen, không còn dấu hiệu sự sống, rồi chợt nhận ra: lẽ ra phải có năm quả, vậy còn một quả nữa đâu?"
+    },
+    {
+      "panel": "dqgl_ep81/p037.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Cô cố tự trấn an rằng biết đâu vẫn còn hy vọng, nhưng ánh mắt dần cụp xuống."
+    },
+    {
+      "panel": "dqgl_ep81/p039.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cuối cùng, Ngưng Nhi quỳ xuống xin lỗi vì không thể cứu được chim mẹ. Cô bật khóc nức nở."
+    },
+    {
+      "panel": "dqgl_ep81/p040.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lôi Vân Tước nằm bất động bên những quả trứng. Nỗi đau của Ngưng Nhi càng lớn khi thấy chim mẹ đã kiệt sức."
+    },
+    {
+      "panel": "dqgl_ep81/p042.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trác Phàm quan sát kỹ những quả trứng và chợt hiểu vì sao Lôi Vân Tước đã liều mạng đến thế."
+    },
+    {
+      "panel": "dqgl_ep81/p044.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trác Phàm hiểu ra: chim mẹ biết không bảo vệ nổi cả ổ trứng, nên âm thầm giấu một quả. Dù Sư Vương có giết nó, quả trứng này cũng sẽ không bị phát hiện."
+    },
+    {
+      "panel": "dqgl_ep81/p046.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Khi Trác Phàm lại gần, Lôi Vân Tước bất ngờ cất tiếng kêu, khiến mọi người giật mình."
+    },
+    {
+      "panel": "dqgl_ep81/p047.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Trác Phàm hỏi liệu chim mẹ có muốn giao quả trứng ấy cho mình. Lôi Vân Tước khẽ gật đầu."
+    },
+    {
+      "panel": "dqgl_ep81/p049.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng hắn nhận ra quả trứng này đã bị lửa làm tổn thương. Dù ấp ra được cũng không sống lâu, trừ phi..."
+    },
+    {
+      "panel": "dqgl_ep81/p052.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lôi Vân Tước gật đầu lần nữa, như thể đã chấp nhận số phận của con mình và nhờ họ chăm sóc nó."
+    },
+    {
+      "panel": "dqgl_ep81/p054.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm ôm quả trứng lên. Chim mẹ vẫn cố gượng dậy, muốn nhìn con thêm một lần."
+    },
+    {
+      "panel": "dqgl_ep81/p054.jpg",
+      "narration": "Từng giết người không chớp mắt, vậy mà lúc ôm quả trứng sắp tàn này hắn im lặng lạ thường. Cái người cứng miệng ấy hóa ra mềm lòng hơn hắn tự nhận.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep81/p056.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Ngưng Nhi được Thiên Dương đỡ lấy khi Lôi Vân Tước trút hơi thở cuối cùng. Trác Phàm giờ mang theo hy vọng sống sót duy nhất của nó."
+    },
+    {
+      "panel": "dqgl_ep81/p058.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Quả trứng trong tay Trác Phàm bất chợt phát sáng. Liệu sinh linh nhỏ bé bên trong có thể vượt qua thương tích để chào đời?"
+    },
+    {
+      "panel": "dqgl_ep82/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Nửa canh giờ sau, Ngưng Nhi vẫn quỳ bên thi thể Lôi Vân Tước, còn Trác Phàm và Thiên Dương đứng lặng phía sau.",
+      "section": "Tập 82: Ma Hoàng xẻ xác linh thú cấp sáu thành tám phần để cứu một quả trứng"
+    },
+    {
+      "panel": "dqgl_ep82/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm ngạc nhiên khi thấy Ngưng Nhi đau lòng đến vậy vì một linh thú cô chỉ mới gặp lần đầu."
+    },
+    {
+      "panel": "dqgl_ep82/p005.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Ngưng Nhi thú nhận cảnh chim mẹ liều mạng bảo vệ con khiến cô nhớ đến gia đình mình."
+    },
+    {
+      "panel": "dqgl_ep82/p007.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm khuyên cô đừng quá buồn. Dù Lôi Vân Tước đã chết, ít nhất nó vẫn kịp phó thác quả trứng cho họ."
+    },
+    {
+      "panel": "dqgl_ep82/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngưng Nhi nhớ lại người cha từng hết lòng bảo vệ và chăm sóc mình."
+    },
+    {
+      "panel": "dqgl_ep82/p010.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô thừa nhận mình khóc vì nhớ cha, người đã bất chấp tất cả để che chở cho con gái."
+    },
+    {
+      "panel": "dqgl_ep82/p011.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Thiên Dương hiểu ra lý do Ngưng Nhi đồng cảm với chim mẹ. Trác Phàm nói sẽ mang thi thể Lôi Vân Tước đi."
+    },
+    {
+      "panel": "dqgl_ep82/p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thiên Dương phản đối: linh thú cấp sáu là chiến lợi phẩm quý giá, sao Trác Phàm có thể lấy hết một mình?"
+    },
+    {
+      "panel": "dqgl_ep82/p014.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trác Phàm nhắc rằng Lôi Vân Tước đã giao quả trứng cho hắn, nên thi thể của nó cũng thuộc về hắn."
+    },
+    {
+      "panel": "dqgl_ep82/p016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn bảo Thiên Dương ở lại chăm sóc Ngưng Nhi, còn mình sẽ đi xử lý thi thể linh thú."
+    },
+    {
+      "panel": "dqgl_ep82/p018.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Thiên Dương bực vì Trác Phàm hành động khó hiểu, nhưng nhìn Ngưng Nhi lẻ loi, anh vẫn ở lại: để một tiểu cô nương một mình thế này thì không yên tâm."
+    },
+    {
+      "panel": "dqgl_ep82/p016.jpg",
+      "narration": "Người ta khóc thương chim mẹ, còn Ma Hoàng thì lo xẻ xác nó cho kịp lúc còn tươi. Hai kiểu đau lòng khác nhau, nhưng đều có tính toán.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep82/p019.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm nhanh chóng mang quả trứng đến gần thi thể Lôi Vân Tước."
+    },
+    {
+      "panel": "dqgl_ep82/p021.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn lấy ra một chiếc nhẫn rồi vận công, khiến linh lực bùng lên quanh thi thể chim mẹ."
+    },
+    {
+      "panel": "dqgl_ep82/p023.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Quả trứng vẫn nguyên vẹn bên cạnh trong khi Trác Phàm chuẩn bị luyện hóa phần thi thể còn lại."
+    },
+    {
+      "panel": "dqgl_ep82/p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngọn lửa vàng cuộn quanh bàn tay hắn, báo hiệu một bí thuật đang được thi triển."
+    },
+    {
+      "panel": "dqgl_ep82/p026.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trác Phàm định thu lấy những tinh hoa quý giá từ thi thể linh thú cấp sáu."
+    },
+    {
+      "panel": "dqgl_ep82/p028.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ánh mắt hắn chuyển đỏ khi ngọn lửa bùng lên dữ dội dưới bàn tay."
+    },
+    {
+      "panel": "dqgl_ep82/p030.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Hắn có thể luyện ra vật chứa linh khí, và giờ đây đang dùng năng lực ấy để xử lý thi thể Lôi Vân Tước."
+    },
+    {
+      "panel": "dqgl_ep82/p031.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm nhận ra quả trứng bị thương nặng. Nếu không có linh khí của chim mẹ xoa dịu, thai nhi bên trong sẽ chết trước khi nở."
+    },
+    {
+      "panel": "dqgl_ep82/p034.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chim mẹ đã chết nên hắn càng phải ấp cho được quả trứng này, biến nó thành ma vật của mình để giúp hắn tiến vào Lạc Lôi Hiệp. Muốn vậy phải có thứ chứa được linh khí để rót vào trứng."
+    },
+    {
+      "panel": "dqgl_ep82/p036.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngọn lửa tiếp tục luyện hóa thi thể, tách những phần tinh hoa ra khỏi đống đá vụn."
+    },
+    {
+      "panel": "dqgl_ep82/p037.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trác Phàm tự nhủ hắn đã nói rõ với Lôi Vân Tước từ lúc nó còn sống: cơ thể tàn tật của nó có thể giúp những đứa con sống sót, và nó đã vui vẻ đồng ý."
+    },
+    {
+      "panel": "dqgl_ep82/p039.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Dù Lôi Vân Tước có đồng ý hay không, Trác Phàm vẫn quyết làm đến cùng."
+    },
+    {
+      "panel": "dqgl_ep82/p040.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngọn lửa bao trùm lấy hắn, còn ánh mắt đỏ rực cho thấy quyết tâm không gì lay chuyển."
+    },
+    {
+      "panel": "dqgl_ep82/p041.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Quá trình luyện hóa bùng nổ trong biển lửa. Trác Phàm tin mục tiêu của mình sắp thành hiện thực."
+    },
+    {
+      "panel": "dqgl_ep82/p044.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đêm buông xuống, cuộc luyện hóa cũng hoàn tất."
+    },
+    {
+      "panel": "dqgl_ep82/p045.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Dưới bầu trời đầy sao, Ngưng Nhi và Thiên Dương vẫn chờ Trác Phàm quay lại."
+    },
+    {
+      "panel": "dqgl_ep82/p046.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngưng Nhi ngồi cạnh Thiên Dương, dõi mắt về phía con đường Trác Phàm đã đi."
+    },
+    {
+      "panel": "dqgl_ep82/p049.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Trác Phàm bất ngờ xuất hiện trở lại. Ngưng Nhi vui mừng gọi hắn."
+    },
+    {
+      "panel": "dqgl_ep82/p050.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Thiên Dương hỏi thi thể Lôi Vân Tước đã được xử lý ra sao. Trác Phàm bình thản đáp rằng hắn chia nó thành tám phần."
+    },
+    {
+      "panel": "dqgl_ep82/p052.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Ngưng Nhi sửng sốt, còn Thiên Dương giải thích phần lớn thi thể linh thú đều được xử lý như vậy — chỉ không biết Trác Phàm đã luyện ra thứ bảo vật gì."
+    },
+    {
+      "panel": "dqgl_ep82/p050.jpg",
+      "narration": "Chia xác linh thú cấp sáu thành tám phần mà nói nhẹ như chia bánh. Đúng chất Ma Hoàng: ngoài miệng cứng, trong lòng mềm, nhưng tính toán đến từng khúc xương.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep82/p054.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Trác Phàm hỏi Thiên Dương có muốn nhận món đồ ấy không, rồi hứa sẽ tặng nếu đoán đúng. Rốt cuộc hắn đã luyện được thứ gì?"
+    },
+    {
+      "panel": "dqgl_ep83/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Trác Thiên Dương sốt ruột đòi Trác Phàm tặng món đồ mình vừa luyện, nhưng vẫn khăng khăng rằng mình chẳng hề ham muốn gì.",
+      "section": "Tập 83: Thiếu gia Kiếm Hầu phủ thề không nhận nhẫn, rồi quay xe đòi cướp"
+    },
+    {
+      "panel": "dqgl_ep83/p003.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Vị thiếu gia Kiếm Hầu phủ còn thề dù có chết cũng không nhận đồ của Trác Phàm."
+    },
+    {
+      "panel": "dqgl_ep83/p005.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Thiên Dương chợt nhớ hôm nay là sinh nhật mười sáu tuổi của Ngưng Nhi. Hóa ra cô xúc động vì nghĩ đến gia đình và cảnh Lôi Vân Tước bảo vệ trứng."
+    },
+    {
+      "panel": "dqgl_ep83/p007.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngưng Nhi ngượng ngùng khi Trác Phàm nhận ra đây là sinh nhật cô."
+    },
+    {
+      "panel": "dqgl_ep83/p009.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trác Phàm nắm tay Ngưng Nhi và nói cô xứng đáng nhận một món quà thật đặc biệt."
+    },
+    {
+      "panel": "dqgl_ep83/p010.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Hắn trao cô một chiếc nhẫn tím vừa luyện xong."
+    },
+    {
+      "panel": "dqgl_ep83/p011.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chiếc nhẫn được chế tác từ thi thể Lôi Vân Tước, có tên là Lôi Linh Giới và có thể cất giữ vật còn sống."
+    },
+    {
+      "panel": "dqgl_ep83/p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lôi Linh Giới còn là vật chứa linh khí. Trác Phàm giải thích bí pháp luyện chế này rất phức tạp và hiếm khi được truyền ra ngoài."
+    },
+    {
+      "panel": "dqgl_ep83/p015.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Hai chiếc nhẫn vốn là một cặp. Chúng có thể cảm ứng với nhau, giúp chủ nhân biết người kia đang ở gần."
+    },
+    {
+      "panel": "dqgl_ep83/p016.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Thiên Dương lập tức hiểu ý, liền đòi Trác Phàm phải cho mình một chiếc nữa."
+    },
+    {
+      "panel": "dqgl_ep83/p018.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Trác Phàm lạnh lùng từ chối: hôm nay là sinh nhật Ngưng Nhi, chứ đâu phải của Thiên Dương."
+    },
+    {
+      "panel": "dqgl_ep83/p019.jpg",
+      "narration": "Thiên Dương tức tối đòi cướp nhẫn, nhưng Trác Phàm đã nhanh tay thu nó lại.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep83/p018.jpg",
+      "narration": "Người vừa thề chết cũng không nhận đồ của Trác Phàm, vậy mà chưa đầy một trang sau đã đòi cướp nhẫn. Lời thề của thiếu gia Kiếm Hầu phủ đúng là có hạn sử dụng rất ngắn.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep83/p020.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trác Phàm nói ba người đã cùng trải qua sinh tử, nên hắn có thể luyện riêng một chiếc cho Thiên Dương."
+    },
+    {
+      "panel": "dqgl_ep83/p023.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Thiên Dương lập tức đổi giọng, vui vẻ nhận lời và bảo Ngưng Nhi thử nhẫn trước."
+    },
+    {
+      "panel": "dqgl_ep83/p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm chọc rằng Thiên Dương vừa tuyên bố không cần đồ của mình. Thiếu gia Kiếm Hầu phủ đỏ mặt cãi lại, còn Ngưng Nhi chỉ mỉm cười."
+    },
+    {
+      "panel": "dqgl_ep83/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngưng Nhi đeo chiếc nhẫn, lòng thầm mong ba người có thể mãi ở bên nhau."
+    },
+    {
+      "panel": "dqgl_ep83/p028.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nửa tháng trôi qua, cả nhóm tiếp tục lên đường."
+    },
+    {
+      "panel": "dqgl_ep83/p028.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm đi trước, còn Thiên Dương và Ngưng Nhi theo sau qua khu rừng yên tĩnh."
+    },
+    {
+      "panel": "dqgl_ep83/p029.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng họ không hề biết trên đỉnh núi xa, một người tóc trắng đang lặng lẽ nhìn xuống khu rừng, khóe môi nhếch lên nụ cười khó đoán."
+    },
+    {
+      "panel": "dqgl_ep83/p032.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một luồng sáng xanh lục bất ngờ bùng lên giữa màn đêm, như báo trước chuyến đi chung này sắp bị cắt ngang."
+    },
+    {
+      "panel": "dqgl_ep83/p034.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nửa tháng sau cuộc chiến với linh thú, cả nhóm chuẩn bị tạm biệt nhau."
+    },
+    {
+      "panel": "dqgl_ep83/p035.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm xác nhận cuối cùng họ cũng trở về được thành thứ nhất."
+    },
+    {
+      "panel": "dqgl_ep83/p036.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn nghĩ chuyến đi tuy không thu phục được Lôi Vân Tước, nhưng đã cứu được trứng và kết giao với hai người bạn sinh tử."
+    },
+    {
+      "panel": "dqgl_ep83/p037.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngưng Nhi bỗng lo lắng: họ đã đắc tội với Thất trưởng lão, liệu ông ta có giăng bẫy trả thù không?"
+    },
+    {
+      "panel": "dqgl_ep83/p038.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trác Phàm tin rằng Thất trưởng lão không dám ra tay. Nếu ông ta muốn giết cả nhóm, đã có cơ hội làm điều đó từ trước."
+    },
+    {
+      "panel": "dqgl_ep83/p040.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Có lẽ họ đã gặp phải chuyện nguy hiểm đến mức ngay cả Thất trưởng lão cũng phải bỏ chạy."
+    },
+    {
+      "panel": "dqgl_ep83/p042.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm cho rằng kẻ kia hẳn cũng tưởng họ đã chết, nên sẽ không quay lại tìm nữa."
+    },
+    {
+      "panel": "dqgl_ep83/p043.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Thiên Dương hỏi: thứ... thứ gì cơ? Trác Phàm nhún vai đáp: sao ta biết được chứ. Anh chàng chợt nhận ra, hóa ra hắn nói chắc nịch vậy mà cũng chẳng biết gì."
+    },
+    {
+      "panel": "dqgl_ep83/p043.jpg",
+      "narration": "Nói như đúng rồi, hóa ra chỉ là đoán. Nhưng nghe ba người cười nói yên ả thế này, mình lại thấy bất an: yên bình quá thường là dấu hiệu sắp có chuyện.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep83/p046.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Trác Phàm quay sang hỏi Ngưng Nhi dự định đi đâu sau khi rời thành."
+    },
+    {
+      "panel": "dqgl_ep83/p047.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Ngưng Nhi đáp: Trác Phàm ca đi đâu thì muội đi đó. Thiên Dương nghe vậy thì giật nảy mình."
+    },
+    {
+      "panel": "dqgl_ep83/p048.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thiên Dương nhắc Ngưng Nhi chẳng phải sẽ cùng anh tới Kiếm Hầu phủ sao: ở đó dù người nhà hay cả người U Minh Cốc tìm tới cũng không làm gì được cô."
+    },
+    {
+      "panel": "dqgl_ep83/p051.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngưng Nhi mắt sáng lên, quay sang rủ: Trác Phàm ca, huynh cũng đến Kiếm Hầu phủ xem thử đi!"
+    },
+    {
+      "panel": "dqgl_ep83/p053.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Cô kể từ trước tới giờ chưa được thấy gia tộc mạnh nhất Ngự Hạ Thất Thế Gia ra sao, còn Thiên Dương thì cười toe, hùa theo mời cả Trác Phàm."
+    },
+    {
+      "panel": "dqgl_ep83/p054.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thiên Dương mời Trác Phàm về nhà làm khách, nể mặt Ngưng Nhi. Trác Phàm từ chối: hắn còn việc khác, nếu có dịp ba người sẽ còn gặp lại."
+    },
+    {
+      "panel": "dqgl_ep83/p056.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Ngưng Nhi và Thiên Dương đành nhìn theo khi Trác Phàm quay lưng bước đi."
+    },
+    {
+      "panel": "dqgl_ep83/p057.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Thiên Dương vẫn cố giữ thể diện, nhắc rằng họ là huynh đệ nên phải nể mặt nhau."
+    },
+    {
+      "panel": "dqgl_ep83/p058.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm nhắc lại mình đã nói từ lâu rằng không phải đệ đệ của Thiên Dương, khiến anh chàng tức điên."
+    },
+    {
+      "panel": "dqgl_ep83/p060.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bỗng một giọng lạ vang lên giữa rừng: ba người các ngươi, ai cũng đừng hòng rời đi!"
+    },
+    {
+      "panel": "dqgl_ep83/p062.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một luồng sáng chói lòa nổ tung ngay trước mặt ba người, cuốn cả nhóm vào làn khói dày đặc."
+    },
+    {
+      "panel": "dqgl_ep83/p065.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Trác Phàm mở to mắt nhìn bóng người vừa xuất hiện. Kẻ bí ẩn đó là ai, và vì sao lại chặn đường họ?"
+    },
+    {
+      "panel": "dqgl_ep84/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Làn khói tan dần, một ông lão tóc bạc bước ra và quát cả nhóm đứng yên.",
+      "section": "Tập 84: Ông nội tái mặt nghe tên U Quỷ Thất, quay sang bắt cả nhóm giao nộp"
+    },
+    {
+      "panel": "dqgl_ep84/p003.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Thiên Dương thốt lên: Thiên Huyền cường giả! Anh đoán ông lão là trưởng lão của U Minh Cốc."
+    },
+    {
+      "panel": "dqgl_ep84/p005.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Trác Phàm chưa từng nghe tên ông ta, nhưng chắc chắn một điều."
+    },
+    {
+      "panel": "dqgl_ep84/p007.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ánh mắt lão nhìn cả nhóm như muốn ăn tươi nuốt sống: chắc chắn là kẻ địch!"
+    },
+    {
+      "panel": "dqgl_ep84/p009.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Ngưng Nhi và Thiên Dương đồng loạt nhận ra người vừa tới: ông nội của Ngưng Nhi."
+    },
+    {
+      "panel": "dqgl_ep84/p010.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trác Phàm nhớ ra Tiết Định Thiên là cường giả duy nhất của Tiết gia, còn Thiên Dương gọi ông là lão tổ."
+    },
+    {
+      "panel": "dqgl_ep84/p012.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tiết Định Thiên ôm cháu gái, hỏi mấy tháng qua cô đã đi đâu. Ông đã lặn lội khắp nơi để tìm cô."
+    },
+    {
+      "panel": "dqgl_ep84/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông hỏi Trác Phàm và Thiên Dương có phải đã làm gì Ngưng Nhi không. Cô vội can ngăn, bảo ông đừng hiểu lầm."
+    },
+    {
+      "panel": "dqgl_ep84/p016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tiết Định Thiên nói mình đang tìm kẻ đã đánh cháu trai Tiết Cường trọng thương."
+    },
+    {
+      "panel": "dqgl_ep84/p017.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Thiên Dương chỉ thẳng vào Trác Phàm. Ông nội Ngưng Nhi lập tức hiểu ai là người đã ra tay với Tiết Cường."
+    },
+    {
+      "panel": "dqgl_ep84/p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm chắp tay xin lỗi, giải thích rằng khi ấy không biết Tiết Cường là anh của Ngưng Nhi."
+    },
+    {
+      "panel": "dqgl_ep84/p021.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Thiên Dương không tin nổi Trác Phàm chính là kẻ khiến Ngưng Nhi bỏ nhà đi theo trai."
+    },
+    {
+      "panel": "dqgl_ep84/p022.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh túm lấy Trác Phàm, đòi nói rõ từ khi nào hắn và Ngưng Nhi có quan hệ đó. Ông nội cũng thắc mắc sao cậu nhóc này còn xốn xang hơn cả lão phu."
+    },
+    {
+      "panel": "dqgl_ep84/p025.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Ngưng Nhi đỏ mặt, trách ông nội sao có thể hỏi chuyện riêng tư như thế."
+    },
+    {
+      "panel": "dqgl_ep84/p026.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thiên Dương vội thanh minh rằng mình chỉ dẫn đường cho Trác Phàm, hoàn toàn không có chuyện gì khác."
+    },
+    {
+      "panel": "dqgl_ep84/p022.jpg",
+      "narration": "Một lão tổ Thiên Huyền còn bình tĩnh hơn thiếu gia Kiếm Hầu phủ. Người ghen nhiều nhất cảnh này hóa ra không phải ông nội.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep84/p027.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Tiết Định Thiên nói vì cả nhóm đã chăm sóc cháu gái nhiều ngày nên ông sẽ không làm khó họ. Ông bảo Ngưng Nhi về nhà với mình."
+    },
+    {
+      "panel": "dqgl_ep84/p030.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngưng Nhi không muốn rời đi, còn ông nội nắm tay kéo cô trở về."
+    },
+    {
+      "panel": "dqgl_ep84/p031.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm gọi ông lão dừng lại, nhắc rằng Ngưng Nhi không thể cứ thế bị đưa về."
+    },
+    {
+      "panel": "dqgl_ep84/p033.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn khuyên Tiết Định Thiên đừng quay về Tiết gia lúc này."
+    },
+    {
+      "panel": "dqgl_ep84/p034.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trác Phàm nói thẳng: ba người họ đã đắc tội với U Quỷ Thất, Ngưng Nhi cũng bị hắn nhìn thấy, phỏng chừng hắn đang ghé qua Tiết gia rồi."
+    },
+    {
+      "panel": "dqgl_ep84/p035.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm kết luận nếu cứ trở về, có lẽ cả nhóm chỉ còn một con đường chết."
+    },
+    {
+      "panel": "dqgl_ep84/p036.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Tiết Định Thiên nghe vậy thì sững sờ, còn Ngưng Nhi lo lắng nhìn ông nội."
+    },
+    {
+      "panel": "dqgl_ep84/p038.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sắc mặt Tiết Định Thiên đổi hẳn, mồ hôi túa ra khi nghe nhắc đến U Quỷ Thất."
+    },
+    {
+      "panel": "dqgl_ep84/p039.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Ngưng Nhi hoảng hốt gọi ông nội khi thấy ông có vẻ không ổn."
+    },
+    {
+      "panel": "dqgl_ep84/p040.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô bật khóc xin lỗi vì đã khiến ông phải lo lắng suốt thời gian qua."
+    },
+    {
+      "panel": "dqgl_ep84/p042.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Ông nghiến răng: tất cả là do các ngươi mang tai họa ngập đầu đến Tiết gia."
+    },
+    {
+      "panel": "dqgl_ep84/p044.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông gằn giọng: chỉ cần giao các ngươi ra, thì Thất trưởng lão sẽ... Rồi bất ngờ lao thẳng tới Trác Phàm."
+    },
+    {
+      "panel": "dqgl_ep84/p046.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Trác Phàm mở to mắt nhìn bàn tay đang vươn tới, hơi lạnh phả vào mặt."
+    },
+    {
+      "panel": "dqgl_ep84/p048.jpg",
+      "narration": "Chỗ nể tình vì cả nhóm đã chăm sóc cháu gái kéo dài đúng ba trang: nghe tên U Quỷ Thất xong, ông quay lưng định bán luôn ân nhân. Nhưng nhìn ông run lên, mình thấy khó trách nổi.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep84/p048.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Tiết Định Thiên chỉ kịp nói: tha thứ cho tội lỗi của chúng ta. Một biến cố lớn đã bắt đầu."
+    },
+    {
+      "panel": "dqgl_ep85/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Tiết Định Thiên ra tay nhanh như chớp, đánh bật Trác Phàm và khiến cậu hiểu rõ khoảng cách giữa hai người.",
+      "section": "Tập 85: Ngưng Nhi kề dao vào cổ cứu bạn, Ma Hoàng cười rồi dọa diệt môn"
+    },
+    {
+      "panel": "dqgl_ep85/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông lão áp sát tấn công, còn Trác Phàm gắng né đòn và tìm cơ hội phản kích."
+    },
+    {
+      "panel": "dqgl_ep85/p005.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Tiết Định Thiên thoáng bất ngờ trước sự gan lì của đối thủ trẻ tuổi."
+    },
+    {
+      "panel": "dqgl_ep85/p006.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm tung cánh tay bốc lửa, nhưng Tiết Định Thiên vẫn bình thản nhận xét cậu có khí phách."
+    },
+    {
+      "panel": "dqgl_ep85/p007.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông lão nhắc rằng đám con cháu Tiết gia đều từng thua dưới tay Trác Phàm, nhưng lần này đối thủ của cậu là ông."
+    },
+    {
+      "panel": "dqgl_ep85/p008.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Tiết Định Thiên chỉ ra chênh lệch cảnh giới: ông đã là cường giả Huyền Thiên, còn Trác Phàm kém xa."
+    },
+    {
+      "panel": "dqgl_ep85/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một đòn nặng nề đánh Trác Phàm văng khỏi vị trí, khiến thế trận nghiêng hẳn về phía Tiết gia."
+    },
+    {
+      "panel": "dqgl_ep85/p015.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Ông áp sát Trác Phàm, trầm giọng nói: kết thúc rồi."
+    },
+    {
+      "panel": "dqgl_ep85/p018.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Thiên Dương lao vào ngăn cản, buộc ông lão phải chú ý đến người thanh niên tóc xanh."
+    },
+    {
+      "panel": "dqgl_ep85/p019.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Tiết Định Thiên nhận ra Thiên Dương đang thi triển một võ kỹ Huyền giai."
+    },
+    {
+      "panel": "dqgl_ep85/p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thiên Dương rút kiếm vàng, dốc sức đánh trả để bảo vệ Trác Phàm."
+    },
+    {
+      "panel": "dqgl_ep85/p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng sức mạnh của Tiết Định Thiên quá lớn; Thiên Dương cũng bị đánh văng vào vách đá."
+    },
+    {
+      "panel": "dqgl_ep85/p024.jpg",
+      "narration": "Thiếu gia Kiếm Hầu phủ xông lên đầu tiên và bay ra xa cũng đầu tiên. Dũng khí thì đủ, nhưng chênh lệch một cảnh giới Thiên Huyền thì dũng khí không đền nổi.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep85/p028.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm nghiến răng: lần trước nếu không nhờ uy lực trận pháp, hắn căn bản không phải đối thủ của cường giả Thiên Huyền. Làm sao đây?"
+    },
+    {
+      "panel": "dqgl_ep85/p029.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tiết Định Thiên tiến lại gần, chuẩn bị tung đòn kết liễu khi cả hai chàng trai đều đã trọng thương."
+    },
+    {
+      "panel": "dqgl_ep85/p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông bảo họ đừng trách mình, mà hãy tự trách vì đã chọc nhầm người."
+    },
+    {
+      "panel": "dqgl_ep85/p032.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Ngưng Nhi bất ngờ hét lên: dừng tay! Ông nội sững người hỏi cô làm gì vậy."
+    },
+    {
+      "panel": "dqgl_ep85/p034.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô quỳ xin ông tha cho họ, nói rằng Trác Phàm và Thiên Dương đều là bằng hữu của mình."
+    },
+    {
+      "panel": "dqgl_ep85/p034.jpg",
+      "narration": "Tiết Định Thiên đau khổ cúi đầu, rồi nói: nếu lão phu tha cho bọn chúng...",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep85/p036.jpg",
+      "narration": "...thì Tiết gia sẽ vạn kiếp bất phục! Ông bước tới, khí thế nặng nề.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep85/p038.jpg",
+      "narration": "Thiên Dương và Trác Phàm miệng đầy máu chỉ biết nhìn. Ngưng Nhi bỗng nói: gia gia, người tiến thêm một bước nữa...",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep85/p040.jpg",
+      "narration": "...Ngưng Nhi sẽ tự vẫn ngay trước mặt người! Lưỡi dao kề sát cổ, máu rỉ ra, Trác Phàm hét lên bảo cô đừng.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep85/p040.jpg",
+      "narration": "Cô bé luôn bị coi là yếu nhất nhóm lại là người dùng cách quyết liệt nhất để đổi lấy mạng hai người bạn. Xem đoạn này mà thót cả tim.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep85/p041.jpg",
+      "narration": "Tiết Định Thiên run rẩy, thì thầm: xin lỗi Ngưng Nhi, Thất Thế Gia... quả thực không thể đắc tội.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep85/p044.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đúng lúc đó Trác Phàm bật cười: Tiết Định Thiên, ông đúng là lão hồ đồ. Ông nghĩ bắt bọn ta là cứu được Tiết gia sao? Chẳng qua chỉ khiến Tiết gia bị diệt nhanh hơn thôi!"
+    },
+    {
+      "panel": "dqgl_ep85/p045.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tiết Định Thiên hỏi Trác Phàm có ý gì. Cậu vẫn bình tĩnh dù máu còn vương nơi khóe miệng."
+    },
+    {
+      "panel": "dqgl_ep85/p047.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trác Phàm chỉ sang Thiên Dương: ông biết hắn là ai không? Người của Kiếm Hầu phủ, một trong Ngự Hạ Thất Thế Gia. Dựa vào gia tộc hạng hai như ông mà dám bắt người của Thất Thế Gia?"
+    },
+    {
+      "panel": "dqgl_ep85/p048.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tiết Định Thiên không tin, cho rằng mình đã biết rõ người của Kiếm Hầu phủ ở Thanh Minh Thành."
+    },
+    {
+      "panel": "dqgl_ep85/p050.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm nhắc ông hãy nhìn cho kỹ và nói rằng nếu Tiết gia tiếp tục ra tay, Kiếm Hầu phủ nhất định sẽ đáp trả."
+    },
+    {
+      "panel": "dqgl_ep85/p052.jpg",
+      "narration": "Máu miệng còn rỉ mà đã đi dọa diệt môn người ta. Ma Hoàng nào cũng vậy: thua trận được, nhưng không chịu thua miệng.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep85/p052.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Ánh mắt Trác Phàm đỏ rực khi cậu buông lời cảnh cáo: “Diệt toàn môn của lão!”"
+    }
+  ]
+}

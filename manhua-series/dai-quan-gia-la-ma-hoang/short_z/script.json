@@ -1,0 +1,105 @@
+{
+  "title": "Ma Hoàng bị khóa pháp trận vẫn cười, rồi vờn U Quỷ Thất như mèo vờn chuột!?",
+  "chapters": "95-97",
+  "source_dir": "manhua-recap/dqgl_ep91",
+  "written_by": "Claude tổng hợp từ script ep91-100 đã lưu, 2026-10-12",
+  "description": "U Quỷ Thất ép đệ tử sợ hãi tự ra tay rồi giăng pháp trận Ma Bảo tứ phẩm khóa Trác Phàm. Hắn vạch trần mưu kế, xé xích, sải cánh dùng Mê Tung Huyễn Ảnh Bộ vờn lão trước mặt hàng nghìn người.@@Review truyện Đại Quản Gia Là Ma Hoàng – Tóm tắt chương 95 đến 97.@@◀ Phần trước: chương 91-94@@▶ Phần sau: chương 98-100",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "VỜN CAO THỦ THIÊN HUYỀN!",
+    "prompt": "A young man with purple wings dodging a green-haired elder who swings a green sword, afterimages of the young man trailing behind, a crowd of onlookers in a stone plaza. Chinese manhua cover art style, full-colour digital illustration, bold clean linework, cel shading with dramatic glow and rim light, high contrast, vertical 9:16 composition (keep the subject inside the centre 2:3 area), leave the top 25% as darker empty background for a title overlay, NO text, NO letters, NO speech bubbles, NO watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep95/p001.jpg",
+      "narration": "Trác Phàm sải cánh tím hạ xuống giữa phố. U Quỷ Thất cười lớn: ha ha ha, đạo cụ phi hành à!",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep95/p018.jpg",
+      "narration": "U Quỷ Thất quát: cái thứ không có tiền đồ! Có sư phụ ở đây che chở, mà ngươi còn có thể bị dọa sợ thành cái bộ dạng này sao?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep95/p041.jpg",
+      "narration": "Bát trưởng lão nhíu mày: U Quỷ Thất đó quả nhiên là Thất Khiếu Quỷ Linh Lung, vậy mà đã nghĩ ngay ra phương pháp này để giải trừ tâm ma cho đồ đệ lão.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep95/p059.jpg",
+      "narration": "Hắn mỉm cười, hỏi: thế cơ à? Sau cú đánh dữ dội, hắn vẫn bình thản đến khó hiểu. Còn U Quỷ Thất có thật sự nắm thế chủ động?",
+      "kind": "recap",
+      "type": "ENDING"
+    },
+    {
+      "panel": "dqgl_ep96/p001.jpg",
+      "narration": "Giữa quảng trường đông nghịt người, Trác Phàm hạ cánh. U Quỷ Thất gầm lên: đồ quái vật!",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep96/p022.jpg",
+      "narration": "Trác Phàm hỏi lại: lẽ nào không phải sao?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep96/p039.jpg",
+      "narration": "U Quỷ Thất sững sờ: Ma Bảo phi hành lục phẩm!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep96/p060.jpg",
+      "narration": "Trác Phàm nhếch môi cười, mắt lóe đỏ: đây chính là... sự linh hoạt của cao thủ Thiên Huyền?",
+      "kind": "recap",
+      "type": "ENDING"
+    },
+    {
+      "panel": "dqgl_ep97/p001.jpg",
+      "narration": "Trác Phàm dang cánh tím giữa không trung. Thiên Dương và Bát trưởng lão sững sờ nhìn lên.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep97/p014.jpg",
+      "narration": "U Quỷ Thất trợn mắt: tàn ảnh!?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep97/p029.jpg",
+      "narration": "Con mẹ nó, ngươi đừng có mà hí hửng đắc ý!!! Lão bùng lên luồng sức mạnh xanh, đánh bật hắn ra xa.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep97/p050.jpg",
+      "narration": "Giữa vô số vệt sáng đan chéo nhau, cả hai gần như biến mất khỏi tầm mắt.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep97/p059.jpg",
+      "narration": "...làm thịt đám thuộc hạ đó của lão.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep97/p071.jpg",
+      "narration": "...chẳng qua cũng chỉ thế mà thôi.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

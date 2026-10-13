@@ -1,0 +1,774 @@
+{
+  "template": "manhua_recap_long_vi",
+  "title": "Ma Hoàng thành quản gia | Tóm tắt chương 95-97",
+  "chapters": "95-97",
+  "source_dir": "manhua-recap/dqgl_ep95",
+  "written_by": "Claude tổng hợp từ script ep91-100 đã lưu, 2026-10-12",
+  "description": "Tóm tắt truyện Đại Quản Gia Là Ma Hoàng, chương 95 đến 97, kèm bình luận.\nMục lục thời gian: xem bình luận ghim.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#TomTatTruyen"
+  ],
+  "thumbnail": {
+    "text": "MA HOÀNG GIẾT U QUỶ THẤT",
+    "prompt": "A young man with long dark hair and purple wings carrying a girl in a red wedding dress, a defeated green-haired elder behind them, ruined stone plaza. Chinese manhua cover art style, full-colour digital illustration, bold clean linework, cel shading with dramatic glow and rim light, high contrast, vertical 9:16 composition (keep the subject inside the centre 2:3 area), leave the top 25% as darker empty background for a title overlay, NO text, NO letters, NO speech bubbles, NO watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep95/p001.jpg",
+      "narration": "Trác Phàm sải cánh tím hạ xuống giữa phố. U Quỷ Thất cười lớn: ha ha ha, đạo cụ phi hành à!",
+      "kind": "recap",
+      "type": "HOOK",
+      "section": "Tập 95: Ma Hoàng gặp lại kẻ chạy thoát, U Quỷ Thất bắt đệ tử tự tay giết hắn"
+    },
+    {
+      "panel": "dqgl_ep95/p002.jpg",
+      "narration": "Quả nhiên ngươi vẫn chưa chết. Hắn nhìn đôi mắt tím của Trác Phàm mà nghiến răng: lại còn đột phá đến Đoạn Cốt cảnh nữa chứ!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep95/p005.jpg",
+      "narration": "Lão thầm hỏi: lợi dụng đạo cụ phi hành để ép buộc gia tăng tốc độ, rõ ràng chỉ là một tiểu quỷ vừa mới đột phá Đoạn Cốt cảnh. Tại sao khí thế mà hắn tản ra...",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep95/p006.jpg",
+      "narration": "...lại có thể khiến một Thiên Huyền cảnh như ta cảm thấy áp bức trực quan như vậy! Bát trưởng lão cũng hỏi: ngươi là ai?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep95/p007.jpg",
+      "narration": "Thiên Dương cười đáp: là bạn của ta. Là người ta không tin nhiệm nhất, cũng là người bạn mà ta tin nhiệm nhất!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep95/p008.jpg",
+      "narration": "Bát trưởng lão giật mình: người có thể khiến Thiên Dương đánh giá như vậy... Ta ngược lại rất muốn nhìn cho rõ ràng, rốt cuộc hắn là người như thế nào!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep95/p009.jpg",
+      "narration": "Một người bị gọi là kẻ tin tưởng nhất lại cũng là người không tin nhiệm nhất. Hai nửa câu mâu thuẫn mà Thiên Dương nói rất đúng với Trác Phàm.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep95/p010.jpg",
+      "narration": "Trác Phàm đứng giữa làn khí đỏ, mắt rực lên.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep95/p011.jpg",
+      "narration": "U Quỷ Thất lạnh lùng: hừ, khí thế gì đây, chẳng qua chỉ là phô trương thế mà thôi. Nhưng tốc độ tu luyện khủng khiếp như vậy...",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep95/p012.jpg",
+      "narration": "Quả nhiên là tên quái thai này, tuyệt đối không thể để hắn sống sót được. Minh Nhi, thay vi sư ra tay đi, đi giết chết hắn.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep95/p013.jpg",
+      "narration": "Trác Phàm nhìn người đệ tử rồi nhếch môi: thì ra là ngươi à, cũng tốt. Lần trước để ngươi chạy mất tiêu, ta vẫn đang rất hối hận đây.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep95/p014.jpg",
+      "narration": "Lần này thì để hai người chúng ta cùng kết thúc ân oán trước đây đi!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep95/p015.jpg",
+      "narration": "U Quỷ Thất ngạc nhiên hỏi: Minh Nhi? Sao thế, các ngươi biết nhau sao? Người đệ tử run lẩy bẩy, môi cắn chặt.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep95/p016.jpg",
+      "narration": "Bát trưởng lão cười: ha ha ha, quả nhiên là danh sư xuất cao đồ. Hôm nay lão hủ xem như được hiểu hơn về đệ tử của U Minh Cốc lại là anh hùng như vậy đấy.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep95/p018.jpg",
+      "narration": "U Quỷ Thất quát: cái thứ không có tiền đồ! Có sư phụ ở đây che chở, mà ngươi còn có thể bị dọa sợ thành cái bộ dạng này sao?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep95/p019.jpg",
+      "narration": "Đồ hèn hạ! Chẳng qua hắn chỉ mới đột phá Đoạn Cốt cảnh mà thôi, có cái gì mà phải sợ hãi hả? Minh Nhi lắp bắp: hắn chỉ là tu luyện giả Đoạn Cốt cảnh tầng hai. Hắn...",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep95/p023.jpg",
+      "narration": "Sư phụ, hắn... hắn chính là tên quản gia Trác Phàm của Lạc gia đó! Vân trưởng lão và Giản trưởng lão, đều đã chết trong tay hắn!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep95/p025.jpg",
+      "narration": "U Quỷ Thất sững sờ: cái...!? Tiểu tử này chính là quản gia của Lạc gia!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep95/p027.jpg",
+      "narration": "Chẳng trách Minh Nhi nhìn thấy hắn lại sợ hãi như vậy. Xem ra Minh Nhi đã sinh ra nỗi sợ đối với hắn, cho nên mới tạo ra tâm ma.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep95/p028.jpg",
+      "narration": "Tên Trác Phàm này biết bố trí pháp trận cấp năm, lòng dạ lại hiểm sâu. Ngay cả ta cũng suýt chút nữa thì mắc mưu hắn, cũng chẳng có gì lạ khi Vân trưởng lão và Giản trưởng lão bị hắn giết.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep95/p031.jpg",
+      "narration": "Muốn để đồ đệ này thoát khỏi tâm ma, nhất định phải để nó tự mình giết hắn.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep95/p032.jpg",
+      "narration": "Hắn quát: người đâu, ai tình nguyện bắt tên đó vì lão phu, nhất định có trọng thưởng!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep95/p034.jpg",
+      "narration": "Một thuộc hạ mặt cười toe bước lên: trưởng lão, để thuộc hạ đi cho. Người xung quanh thì thầm: Đoạn Cốt cảnh tầng sáu? Đáng giận, bị hắn đoạt mất rồi!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep95/p036.jpg",
+      "narration": "U Quỷ Thất gật đầu: Minh Nhi, ngươi xem cho kỹ đi, tiểu tử này chỉ có pháp trận lợi hại thôi.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep95/p038.jpg",
+      "narration": "Trong tình huống hắn không có cách nào bày trận thì chẳng có gì đáng quan ngại hết. Đợi lát nữa thủ vệ đó bắt hắn lại...",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep95/p039.jpg",
+      "narration": "...ngươi tự mình giết hắn đi, tâm ma sẽ được giải trừ!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep95/p041.jpg",
+      "narration": "Bát trưởng lão nhíu mày: U Quỷ Thất đó quả nhiên là Thất Khiếu Quỷ Linh Lung, vậy mà đã nghĩ ngay ra phương pháp này để giải trừ tâm ma cho đồ đệ lão.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep95/p042.jpg",
+      "narration": "Ông quay sang: Thiên Dương, người bạn đó của ngươi sẽ gặp nguy hiểm đó.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep95/p043.jpg",
+      "narration": "Thiên Dương đáp: tiểu tử đó có bộ dáng khí định thần nhàn, nhất định không có việc gì đâu.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep95/p044.jpg",
+      "narration": "Thuộc hạ khổng lồ cười khùng khục, tản ra khí xanh quanh người, nhìn xuống Trác Phàm: người thật đúng là món quà mà ông trời thưởng cho lão tử.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep95/p045.jpg",
+      "narration": "Bắt được tiểu quỷ ngươi thì có lập được đại công vì Thất trưởng lão, đúng là kế hoạch tuyệt vời.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep95/p046.jpg",
+      "narration": "Trác Phàm nhắm mắt cười, thản nhiên đáp: người chết vì tiền, chim chết vì mồi. Người muốn chết, thì ta thành toàn cho người vậy.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep95/p048.jpg",
+      "narration": "Gã khổng lồ nổi giận: sắp chết đến nơi rồi còn mạnh miệng! Một quyền của lão tử sẽ khiến ngươi phải im mồm mãi mãi! Rồi tung một quyền.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep95/p050.jpg",
+      "narration": "Tiếng nổ vang lên, bụi đá bắn tung tóe.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep95/p051.jpg",
+      "narration": "Bát trưởng lão và Thiên Dương sững người. Ngưng Nhi hét lên: Trác đại ca!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep95/p053.jpg",
+      "narration": "U Quỷ Thất trợn tròn mắt.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep95/p055.jpg",
+      "narration": "Gã khổng lồ gào thét, ôm bàn tay nát bét máu me.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep95/p056.jpg",
+      "narration": "Trác Phàm ngẩng lên, mắt đỏ rực, vài đốm máu bắn lên mặt hắn.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep95/p058.jpg",
+      "narration": "Hắn đứng giữa làn khí đỏ, bước lên một bước, nụ cười ma quái nở ra.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep95/p059.jpg",
+      "narration": "Hắn mỉm cười, hỏi: thế cơ à? Sau cú đánh dữ dội, hắn vẫn bình thản đến khó hiểu. Còn U Quỷ Thất có thật sự nắm thế chủ động?",
+      "kind": "recap",
+      "type": "ENDING"
+    },
+    {
+      "panel": "dqgl_ep96/p001.jpg",
+      "narration": "Giữa quảng trường đông nghịt người, Trác Phàm hạ cánh. U Quỷ Thất gầm lên: đồ quái vật!",
+      "kind": "recap",
+      "type": "HOOK",
+      "section": "Tập 96: Bị pháp trận Ma Bảo khóa chặt, Ma Hoàng vẫn cười rồi xé xích"
+    },
+    {
+      "panel": "dqgl_ep96/p003.jpg",
+      "narration": "Trác Phàm chỉ đưa ngón tay lên môi, bình thản ra hiệu im lặng.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep96/p004.jpg",
+      "narration": "Bỗng một vòng pháp trận đỏ tím bật sáng ngay dưới chân hắn.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep96/p005.jpg",
+      "narration": "Dây xích đỏ tím quấn chặt người Trác Phàm. U Quỷ Thất cười đắc ý: ta đã sớm đoán ra được ngươi sẽ xuất hiện, nên cố tình chuẩn bị một phần đại lễ ngay dưới chân ngươi!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep96/p007.jpg",
+      "narration": "Bát trưởng lão biến sắc: không ổn rồi! Bị Ma Bảo tứ phẩm khóa chặt lại rồi, cho dù tiểu tử này có bản lĩnh thông thiên, cũng chết chắc thôi.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep96/p008.jpg",
+      "narration": "Thiên Dương tức giận: không ngờ U Quỷ Thất lại vô sỉ như vậy! Thân là cao thủ Thiên Huyền mà lại đi đánh lén một tay mơ mới bước vào Đoạn Cốt cảnh trước mắt bao người!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep96/p009.jpg",
+      "narration": "Trác Phàm vẫn cười: Thất trưởng lão, vừa bắt đầu đã giở thủ đoạn ra với vãn bối như ta, không sợ mất uy danh của U Minh Cốc sao?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep96/p012.jpg",
+      "narration": "U Quỷ Thất gằn: thông minh đấy, có thể nhìn ra tâm tư của lão hủ trong nháy mắt, trong cả Đế quốc Thiên Vũ này cũng chẳng có mấy người đâu.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep96/p013.jpg",
+      "narration": "Hắn nói thêm: tiểu quỷ nhà ngươi thật sự rất giỏi, lão phu vẫn không thể đắc ý được.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep96/p014.jpg",
+      "narration": "Trác Phàm cười: ta thật sự khâm phục sự cẩn thận dè dặt của Thất trưởng lão ngài.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep96/p015.jpg",
+      "narration": "Ta chỉ muốn quyết định thắng bại một lần với lão nhân gia ngài thôi. Dù sao lần này vãn bối tới đây, cũng chẳng nghĩ đến việc giở âm mưu quỷ kế gì cả.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep96/p018.jpg",
+      "narration": "Không ngờ ngài vẫn còn cẩn-thận-như-vậy đó~",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep96/p021.jpg",
+      "narration": "U Quỷ Thất nổi điên: tiểu quỷ, ngươi dám lão xược với ta, lão phu lập tức cho ngươi chết không toàn thây!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep96/p022.jpg",
+      "narration": "Trác Phàm hỏi lại: lẽ nào không phải sao?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep96/p023.jpg",
+      "narration": "Với tính cách của ngươi, tiêu diệt kẻ địch trước mắt càng sớm thì càng tốt. Nhưng ta vừa tới nơi này, ngươi lại không hề vội vã ra tay.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep96/p025.jpg",
+      "narration": "Ngược lại kêu đồ đệ của mình tới thử trước.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep96/p026.jpg",
+      "narration": "Kết quả từ đó ta dọa đến vỡ mật, ngay cả mệnh lệnh của ngươi cũng không chịu nghe. Ngươi chỉ mượn danh nghĩa giải trừ tâm ma thay hắn, để thằng đần kia tới chịu chết.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep96/p027.jpg",
+      "narration": "Hắn thắng thì tốt, nhưng nếu thua rồi, cũng chính là thời điểm ngươi nhân lúc ta xả hơi mà đánh lên ta, giống như hiện tại nè!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep96/p027.jpg",
+      "narration": "Hắn nhìn thấu cả chuyện lão dùng chính nỗi sợ của đồ đệ làm mồi nhử, mà vẫn bước vào bẫy với nụ cười. Hai cáo già đấu nhau, ai cũng muốn đối phương tưởng mình thua.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep96/p029.jpg",
+      "narration": "Bát trưởng lão thầm nghĩ: U Quỷ Thất này thật âm hiểm, lại có thể nghĩ ra độc kế này trong nháy mắt. Cho dù là đối phó với một tiểu bối, cũng trăm tính ngàn kế như thế, không hổ là Thất Khiếu Quỷ Linh Lung.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep96/p030.jpg",
+      "narration": "Nhưng mà lại có thể liếc mắt đã nhìn thấu quỷ kế của U Quỷ Thất...",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep96/p031.jpg",
+      "narration": "...người này lòng dạ hiểm sâu, cũng chẳng thua gì Thất Khiếu Quỷ Linh Lung.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep96/p032.jpg",
+      "narration": "U Quỷ Thất cười ke ke: ngươi nhìn thấu dụ tình của lão phu thì đã sao, bây giờ còn không phải bị lão phu nắm trong tay sao? Chỉ cần ta thắt chặt thứ trong tay, thì ngươi sẽ tan thây thành vạn mảnh, chết không có đất chôn thân!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep96/p033.jpg",
+      "narration": "Trác Phàm cười hê hê: còn nói lão già ngươi âm hiểm, sao lại biến thành ngu ngốc như vậy nhỉ?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep96/p034.jpg",
+      "narration": "Nếu lão tử đã nhìn thấu trò vượt của lão, thì sao lại có thể trúng kế dễ dàng được?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep96/p035.jpg",
+      "narration": "Một luồng sáng tím nổ tung, sấm điện quấn quanh pháp trận.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep96/p038.jpg",
+      "narration": "Trác Phàm xé dây xích, sải cánh bay vút lên giữa vầng sáng tím.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep96/p039.jpg",
+      "narration": "U Quỷ Thất sững sờ: Ma Bảo phi hành lục phẩm!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep96/p040.jpg",
+      "narration": "Thì ra cái trước cũng không phải đạo cụ phi hành duy nhất của ngươi. Ngươi chỉ là một tiểu bối vô danh mà lại có thể tỉ mỉ như vậy sao?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep96/p041.jpg",
+      "narration": "Trác Phàm đáp: mượn Ma Bảo phi hành quả thực có thể tăng tốc độ lên ngang hàng với cao thủ Thiên Huyền. Nhưng mà...",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep96/p043.jpg",
+      "narration": "Cao thủ Thiên Huyền mạnh hơn Đoạn Cốt cảnh, không phải chỉ về tốc độ thôi đâu.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep96/p044.jpg",
+      "narration": "Hắn khép mắt cười: cái này ấy hả, đương nhiên là ta biết rồi!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep96/p045.jpg",
+      "narration": "Sự đáng sợ của Thiên Huyền còn nằm ở sự linh hoạt của cận chiến. Đây chính là điểm mà cho dù Ma Bảo phi hành nào cũng không thể bổ sung được sự thiếu sót.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep96/p048.jpg",
+      "narration": "Hai bên lao vào nhau, hai con rết đỏ tím cuộn lên giữa vầng sáng.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep96/p049.jpg",
+      "narration": "Bát trưởng lão trợn mắt: cái gì?! Sao có thể!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep96/p052.jpg",
+      "narration": "U Quỷ Thất gào: Ma Bảo là vật chết, làm sao có thể tùy ý biến hình được!?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep96/p053.jpg",
+      "narration": "Trác Phàm cười, đôi mắt đỏ rực, hỏi lại: ai nói... nó là Ma Bảo hả?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep96/p054.jpg",
+      "narration": "U Quỷ Thất nghiến răng: tiểu thử thối...",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep96/p055.jpg",
+      "narration": "Hắn gào lên: thằng quái vật đáng chết!!! Rồi bị đôi cánh đỏ tím cuốn lấy.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep96/p058.jpg",
+      "narration": "Các luồng sáng đỏ tím xuyên qua nhau, xé toạc mặt đất.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep96/p060.jpg",
+      "narration": "Trác Phàm nhếch môi cười, mắt lóe đỏ: đây chính là... sự linh hoạt của cao thủ Thiên Huyền?",
+      "kind": "recap",
+      "type": "ENDING"
+    },
+    {
+      "panel": "dqgl_ep97/p001.jpg",
+      "narration": "Trác Phàm dang cánh tím giữa không trung. Thiên Dương và Bát trưởng lão sững sờ nhìn lên.",
+      "kind": "recap",
+      "type": "HOOK",
+      "section": "Tập 97: Ma Hoàng dùng Mê Tung Huyễn Ảnh Bộ vờn U Quỷ Thất như mèo vờn chuột"
+    },
+    {
+      "panel": "dqgl_ep97/p003.jpg",
+      "narration": "Đôi cánh khổng lồ bung rộng, lông vũ tím bay tán loạn, hắn đứng giữa quảng trường như một thiên thần bóng tối.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep97/p005.jpg",
+      "narration": "Hai con rết đỏ tím lao tới, hắn lách người né, gạt phăng bằng cánh.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep97/p007.jpg",
+      "narration": "U Quỷ Thất cầm vũ khí xanh lao thẳng tới, quyết không cho hắn thở.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep97/p009.jpg",
+      "narration": "Lão cười hê hê hê: tiểu tử thối!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep97/p010.jpg",
+      "narration": "Xem ngươi còn trò bịp bợm nào nữa đây!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep97/p011.jpg",
+      "narration": "Trác Phàm khẽ cười, thì thầm: Mê Tung Huyễn Ảnh Bộ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep97/p013.jpg",
+      "narration": "Lưỡi kiếm xanh chém xuống, nhưng thân ảnh hắn chỉ là một vệt tàn ảnh.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep97/p014.jpg",
+      "narration": "U Quỷ Thất trợn mắt: tàn ảnh!?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep97/p016.jpg",
+      "narration": "Trác Phàm đã vòng ra phía sau lão từ lúc nào.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep97/p017.jpg",
+      "narration": "Hắn lao tới nhanh như tia chớp, vung kiếm đâm thẳng.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep97/p020.jpg",
+      "narration": "U Quỷ Thất bị đánh trúng, vết sáng xẹt ngang mắt lão, ánh nhìn thất thần.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep97/p021.jpg",
+      "narration": "Hai con rết đỏ tím quấn chặt lấy lão. Trác Phàm nói: Thất trưởng lão, cảm giác bị người khác đánh lên phía sau không dễ chịu gì đâu nhỉ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep97/p023.jpg",
+      "narration": "Và nếu như bây giờ thứ trong tay ta là một Ma Bảo tam phẩm, thì ngươi đã là người chết rồi.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep97/p025.jpg",
+      "narration": "Thế nhưng khi ngươi có cơ hội đó, thì ta lại vẫn còn sống.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep97/p027.jpg",
+      "narration": "U Quỷ Thất trừng mắt, nghiến răng: ngươi...",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep97/p029.jpg",
+      "narration": "Con mẹ nó, ngươi đừng có mà hí hửng đắc ý!!! Lão bùng lên luồng sức mạnh xanh, đánh bật hắn ra xa.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep97/p033.jpg",
+      "narration": "Lão cầm kiếm xanh, mắt đỏ rực: Trác Phàm...",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep97/p035.jpg",
+      "narration": "Ta phải làm thịt ngươi! Nhưng Trác Phàm chỉ nhếch môi cười.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep97/p036.jpg",
+      "narration": "Hắn lướt lên cao giữa luồng sáng xanh, nhẹ nhàng né đòn.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep97/p038.jpg",
+      "narration": "U Quỷ Thất nghiến răng: lại là bộ pháp này nữa à.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep97/p039.jpg",
+      "narration": "Ngươi chỉ biết trốn tới trốn lui thôi sao?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep97/p041.jpg",
+      "narration": "Trác Phàm hỏi ngược: ngươi gấp cái gì chứ?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep97/p042.jpg",
+      "narration": "Không phải trò vui chỉ vừa mới bắt đầu thôi sao?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep97/p042.jpg",
+      "narration": "Hắn chẳng cần đánh thắng ngay. Hắn dùng tốc độ làm chủ nhịp trận đấu, để lão cứ sốt ruột mãi rồi tự lộ sơ hở.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep97/p044.jpg",
+      "narration": "Hai bên va chạm liên hồi giữa các luồng khí đỏ, tím, xanh lục, mặt đất nứt toác.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep97/p050.jpg",
+      "narration": "Giữa vô số vệt sáng đan chéo nhau, cả hai gần như biến mất khỏi tầm mắt.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep97/p051.jpg",
+      "narration": "Thiên Dương kinh ngạc kêu lên: sao có thể nhanh được như vậy được nhỉ! Hoàn toàn không thể bắt được động tác của bọn họ!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep97/p052.jpg",
+      "narration": "Anh hỏi: Bát trưởng lão, tình hình hiện giờ thế nào rồi?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep97/p053.jpg",
+      "narration": "Bát trưởng lão đáp: Thiên Dương, người bạn này của ngươi thật đáng sợ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep97/p054.jpg",
+      "narration": "Cả đời lão phu vẫn chưa bao giờ nhìn thấy U Quỷ Thất từng bị ai đó áp chế đến mức độ này. Rõ ràng U Quỷ Thất đã xuất toàn lực.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep97/p055.jpg",
+      "narration": "Thế nhưng hắn chỉ đơn giản dựa vào tốc độ lại vẫn có thể vững vàng áp chế được lão ta như cũ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep97/p057.jpg",
+      "narration": "Cơ mà hắn cũng không dựa vào tốc độ để quyết chiến với U Quỷ Thất, mà là...",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep97/p058.jpg",
+      "narration": "...vừa du đấu với U Quỷ Thất, vừa ở dưới mí mắt lão ta...",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep97/p059.jpg",
+      "narration": "...làm thịt đám thuộc hạ đó của lão.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep97/p061.jpg",
+      "narration": "Thiên Dương hỏi: tại sao? Bát trưởng lão cười ha ha ha: đây mới là chỗ đáng sợ của tiểu tử đó.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep97/p062.jpg",
+      "narration": "Hắn làm như vậy chính là đánh vào mặt lão quỷ kia một cách tàn độc. U Quỷ Thất có danh xưng là Thất Khiếu Quỷ Linh Lung, hôm nay lại bị một tiểu tử Đoạn Cốt cảnh...",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep97/p063.jpg",
+      "narration": "...chơi đùa như mèo vờn chuột giữa những tiếng vỗ tay. Hết lần này đến lần khác không làm được gì đối phương, vậy mặt mũi của lão ta biết ném đi đâu đây?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep97/p063.jpg",
+      "narration": "Chém người đã là chuyện thường. Giết ngay trước mắt chủ, trước hàng ngàn người xem, mới là cách khiến một kẻ kiêu ngạo muốn chết đi sống lại.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep97/p064.jpg",
+      "narration": "Trác Phàm lại cùng một dạng với U Quỷ Thất. Đắc tội với loại người này, chính là phiền phức lớn.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep97/p065.jpg",
+      "narration": "Sự trả thù của bọn họ, không chỉ muốn người phải chết, mà còn muốn cướp đoạt tất cả những gì quý giá nhất của ngươi.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep97/p066.jpg",
+      "narration": "Trác Phàm nhếch môi, mắt đỏ lóe: khiến ngươi chết, cũng phải chết đến mất mầu.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep97/p070.jpg",
+      "narration": "Hắn cầm kiếm xanh, mắt đỏ rực: cái mà ngươi gọi là cao thủ Thiên Huyền...",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep97/p071.jpg",
+      "narration": "...chẳng qua cũng chỉ thế mà thôi.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

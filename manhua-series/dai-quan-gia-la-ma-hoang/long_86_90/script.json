@@ -1,0 +1,1022 @@
+{
+  "template": "manhua_recap_long_vi",
+  "title": "Ma Hoàng thành quản gia | Tóm tắt chương 86-90",
+  "chapters": "86-90",
+  "source_dir": "manhua-recap/dqgl_ep86",
+  "written_by": "Claude tổng hợp từ script ep81-90 đã lưu, 2026-10-12",
+  "description": "Tóm tắt truyện Đại Quản Gia Là Ma Hoàng, chương 86 đến 90, kèm bình luận.\nMục lục thời gian: xem bình luận ghim.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#TomTatTruyen"
+  ],
+  "thumbnail": {
+    "text": "NGƯNG NHI VỀ U MINH CỐC",
+    "prompt": "A young man with glowing red eyes in a dark cloak before a glowing golden formation, a red-haired girl with a dagger, a sinister green-haired old elder in the shadows. Chinese manhua cover art style, full-colour digital illustration, bold clean linework, cel shading with dramatic glow and rim light, high contrast, vertical 9:16 composition (keep the subject inside the centre 2:3 area), leave the top 25% as darker empty background for a title overlay, NO text, NO letters, NO speech bubbles, NO watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep86/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Trác Phàm cảnh cáo rằng nếu Tiết gia bắt họ giao cho U Minh Cốc, Kiếm Hầu phủ sẽ tìm đến đòi người.",
+      "section": "Tập 86: Hòa Thần với U Minh Cốc: những cô gái được gả qua đó đều chết hết"
+    },
+    {
+      "panel": "dqgl_ep86/p003.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Tiết Định Thiên sững sờ trước lời đe dọa, chưa kịp phản ứng thì Trác Phàm đã ra tay."
+    },
+    {
+      "panel": "dqgl_ep86/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông lão bị ép quỳ xuống đất, vội nhận mình có mắt như mù vì không biết thân phận hai vị thiếu gia."
+    },
+    {
+      "panel": "dqgl_ep86/p006.jpg",
+      "narration": "Trác Phàm lạnh lùng nhìn ông lão nhận tội, trong lòng nhắn Thiên Dương: muốn cứu Ngưng Nhi thì mau diễn cho ra dáng thiếu gia phóng túng đi.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep86/p009.jpg",
+      "narration": "Thiên Dương gật đầu hiểu ý, còn Ngưng Nhi hoảng hốt gọi ông nội.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep86/p012.jpg",
+      "narration": "Trác Phàm đóng vai tùy tùng: ngươi có biết địa vị công tử nhà ta trong phủ không? Hôm nay bị một lão già như ngươi đánh bị thương, Kiếm Hầu phủ sẽ không để yên đâu.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep86/p012.jpg",
+      "narration": "Ma Hoàng đóng vai tùy tùng nhà người ta, vừa dọa vừa diễn mà lão tổ Thiên Huyền tin sái cổ. Cái miệng này có khi còn lợi hại hơn cả ma công.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep86/p014.jpg",
+      "narration": "Tiết Định Thiên cúi đầu: lão hủ không biết, mong ngài lượng thứ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep86/p016.jpg",
+      "narration": "Trác Phàm nhếch môi: vậy chúng ta sẽ đưa Ngưng Nhi đi. Muốn đòi người, dù là Tiết gia hay U Minh Cốc, đều phải tới Kiếm Hầu phủ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep86/p017.jpg",
+      "narration": "Tiết Định Thiên bất ngờ ngăn lại: đợi đã! Ngưng Nhi đắc tội Thất trưởng lão thì không sao, nhưng tuyệt đối không thể mang con bé đi.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep86/p019.jpg",
+      "narration": "Ông gào lên: bằng không Tiết gia xong rồi, cho dù phải đắc tội Kiếm Hầu phủ cũng không thể đồng ý. Trác Phàm khựng lại: đắc tội U Quỷ Thất thì không sao? Chẳng lẽ U Minh Cốc còn ý đồ khác với Ngưng Nhi?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep86/p021.jpg",
+      "narration": "Trác Phàm bất ngờ giật thanh kiếm vàng của Thiên Dương, kề thẳng vào cổ ông lão.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep86/p022.jpg",
+      "narration": "Thiên Dương hét lên: tiểu tử này, ngươi điên rồi sao! Ngưng Nhi cũng vội kêu ngăn lại.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep86/p023.jpg",
+      "narration": "Thiên Dương thì thào: ta tưởng ngươi chỉ hù dọa một chút, không ngờ làm thật, lão ta chính là ông nội Ngưng Nhi đó! Trác Phàm quát: câm miệng!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep86/p025.jpg",
+      "narration": "Trác Phàm hạ giọng, nhìn thẳng vào ông lão: ngươi muốn Ngưng Nhi đi làm gì?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep86/p026.jpg",
+      "narration": "Tiết Định Thiên thở dài: ta biết hai vị thiếu gia đều thích cháu gái ta, nhưng con bé đã có hôn ước với thiếu gia U Minh Cốc. Sinh nhật mười sáu tuổi phải đưa tới đó Hòa Thần, vì chuyện này nó đã bỏ chạy không biết bao nhiêu lần.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep86/p029.jpg",
+      "narration": "Trác Phàm lặp lại: Hòa Thần? Ông nói đã đến kỳ hạn, nếu cô còn không đi thì cả nhà gặp tai ương. Thiên Dương hỏi Ngưng Nhi có phải vì thế mà bỏ trốn không, còn ông lão cầu xin hai người buông tha, con bé thực sự không thể đi cùng họ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep86/p031.jpg",
+      "narration": "Trác Phàm thầm nghĩ ông không giống nói dối. Hắn nói: có vẻ ông cũng không hiểu; nếu chỉ là Hòa Thần thì còn tốt.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep86/p033.jpg",
+      "narration": "Thiên Dương hỏi: đáng tiếc cái gì? Ngưng Nhi sao có thể tùy tiện đi Hòa Thần với người U Minh Cốc được chứ!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep86/p034.jpg",
+      "narration": "Trác Phàm nói thẳng: Hòa Thần là giả! Chuyện Hòa Thần của U Minh Cốc chắc chắn đã tồn tại từ lâu rồi.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep86/p036.jpg",
+      "narration": "Ông lão đáp: U Minh Cốc là một trong Thất gia, quy tắc nhiều, gia tộc thấp kém như ta không dám đòi hỏi, con gái đã là người của họ thì không thể hỏi. Trác Phàm hỏi lại: ngươi đã từng thấy cô nương nào được gả qua đó sống sót trở về chưa? Ha ha, các ngươi không dám hỏi, chính là theo đúng ý của bọn họ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep86/p036.jpg",
+      "narration": "Tiết gia bị bóp nghẹt ở chỗ không dám hỏi. Im lặng chính là cách U Minh Cốc giết người mà không cần động thủ.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep86/p038.jpg",
+      "narration": "Đôi mắt Trác Phàm đỏ rực. Hắn nói: nếu ta nói, những cô gái gả qua đó đều chết hết cả rồi...",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep86/p039.jpg",
+      "narration": "...thì ngươi sẽ làm thế nào đây, vẫn đưa Ngưng Nhi đến đó sao?",
+      "kind": "recap",
+      "type": "ENDING"
+    },
+    {
+      "panel": "dqgl_ep87/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Tiết Định Thiên không thể tin U Minh Cốc lại đối xử với gia tộc trung thành như vậy.",
+      "section": "Tập 87: Ngưng Nhi tự nguyện làm lô đỉnh cứu cả nhà, hứa hận hai bạn cả đời"
+    },
+    {
+      "panel": "dqgl_ep87/p003.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trác Phàm giải thích Tiết gia được chọn làm lô đỉnh, nên U Minh Cốc mới giữ họ bên cạnh để nuôi dưỡng."
+    },
+    {
+      "panel": "dqgl_ep87/p004.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Nghe đến chuyện lô đỉnh, cả Tiết Định Thiên, Ngưng Nhi lẫn Thiên Dương đều kinh ngạc."
+    },
+    {
+      "panel": "dqgl_ep87/p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm nói trong ma đạo có thủ đoạn thu thập oán hồn lệ quỷ để luyện thành công pháp tấn công."
+    },
+    {
+      "panel": "dqgl_ep87/p008.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thứ tà công ấy tạo ra âm khí và oán khí nặng nề, khiến người luyện rất dễ bị phản phệ."
+    },
+    {
+      "panel": "dqgl_ep87/p009.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Vì thế, kẻ tu luyện cần linh hồn thuần khiết để bù đắp; thiếu nữ 16 tuổi như Ngưng Nhi là lựa chọn phù hợp."
+    },
+    {
+      "panel": "dqgl_ep87/p010.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Thiên Dương không thể chấp nhận việc U Minh Cốc định dùng Ngưng Nhi làm nguyên liệu luyện công."
+    },
+    {
+      "panel": "dqgl_ep87/p012.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm nhắc: bộ võ kỹ Huyền cấp mà Thất trưởng lão đã dùng vẫn chưa luyện thành hoàn toàn, uy lực chưa lớn lắm. Có lẽ do lô đỉnh không đủ dùng nên hắn chưa thành công."
+    },
+    {
+      "panel": "dqgl_ep87/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thiên Dương bàng hoàng khi nhận ra U Minh Cốc độc ác đến mức lấy người sống làm vật liệu tu luyện."
+    },
+    {
+      "panel": "dqgl_ep87/p015.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bóng người lạ xuất hiện giữa rừng, còn Trác Phàm vẫn tiếp tục phân tích tình thế."
+    },
+    {
+      "panel": "dqgl_ep87/p018.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tiết Định Thiên trầm mặc rồi nói với Ngưng Nhi: nếu lời vị thiếu gia này là thật, thì con vẫn nên rời khỏi đây đi."
+    },
+    {
+      "panel": "dqgl_ep87/p019.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngưng Nhi bật khóc gọi ông nội. Ông trấn an cô: yên tâm đi."
+    },
+    {
+      "panel": "dqgl_ep87/p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông xoa đầu cháu gái: lão phu sẽ về điều tra cho rõ ràng. Nếu chuyện không như lời vị thiếu gia này nói, ông nội nhất định sẽ lại tới tìm con, đến lúc đó đừng trách ông ép con đi Hòa Thần."
+    },
+    {
+      "panel": "dqgl_ep87/p022.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tiết Định Thiên xoay người chuẩn bị rời đi, khiến Ngưng Nhi hoảng hốt gọi ông ở lại."
+    },
+    {
+      "panel": "dqgl_ep87/p023.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô nức nở van ông nội đừng đi, bởi cô biết chuyến trở về này có thể rất nguy hiểm."
+    },
+    {
+      "panel": "dqgl_ep87/p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngưng Nhi hỏi Trác Phàm liệu ông nội mình có gặp nguy hiểm hay không."
+    },
+    {
+      "panel": "dqgl_ep87/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm nói nếu Tiết Định Thiên không trở về, những người khác trong Tiết gia có thể còn sống thêm một thời gian."
+    },
+    {
+      "panel": "dqgl_ep87/p029.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng một khi ông trở về, U Minh Cốc sẽ chẳng còn để ai trong gia tộc sống sót."
+    },
+    {
+      "panel": "dqgl_ep87/p030.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thiên Dương cãi: ngươi là giun đũa trong bụng U Quỷ Thất sao, dựa vào đâu nói ông nội cô ấy về là cả nhà chết hết? Nếu ta nói ông ấy là cao thủ Thiên Huyền, còn khiến U Quỷ Thất kiêng dè thì sao?"
+    },
+    {
+      "panel": "dqgl_ep87/p033.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm đáp: tuy ta không phải giun đũa trong bụng U Quỷ Thất, nhưng chúng ta là người cùng một đường, nên ta phỏng đoán được một hai phần ý nghĩ của hắn."
+    },
+    {
+      "panel": "dqgl_ep87/p034.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Hắn đã nhận định Tiết gia phản bội U Minh Cốc, nên nhất định sẽ trở về giết sạch, nhổ cỏ tận gốc. Nhưng lúc đó Tiết lão gia tử lại đi tìm Ngưng Nhi."
+    },
+    {
+      "panel": "dqgl_ep87/p035.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn không tìm được tung tích của cao thủ Thiên Huyền ấy, nên vẫn sẽ giữ lại mạng những người khác để dụ ông nội cô tới."
+    },
+    {
+      "panel": "dqgl_ep87/p038.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng một khi ông nội cô trở về, hắn sẽ chẳng còn băn khoăn gì nữa."
+    },
+    {
+      "panel": "dqgl_ep87/p039.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thiên Dương gắt: thúi lắm! Dù sao cao thủ Thiên Huyền cũng là cấp trưởng lão trong Thất Thế Gia, ta không tin U Quỷ Thất có gan diệt môn một gia tộc có Thiên Huyền tọa trấn."
+    },
+    {
+      "panel": "dqgl_ep87/p040.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trác Phàm đáp: chính vì Tiết gia có một cao thủ Thiên Huyền nên hắn mới phải đợi ông trở về rồi diệt tận gốc."
+    },
+    {
+      "panel": "dqgl_ep87/p042.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn nói thêm: cao thủ Thiên Huyền không đáng sợ, cao thủ Thiên Huyền không có liên lụy mới đáng sợ. Bằng không, vì sao Tiết Định Thiên phải sợ bọn ta?"
+    },
+    {
+      "panel": "dqgl_ep87/p044.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Ông ta không sợ ta và ngươi, mà sợ Kiếm Hầu phủ đứng sau ngươi. Nếu ông chỉ là một tu sĩ tự do không sợ liên lụy, thì dù vừa rồi có giết bọn ta cũng chẳng có gì lạ."
+    },
+    {
+      "panel": "dqgl_ep87/p045.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thiên Dương định tiếp tục tranh luận, nhưng Ngưng Nhi hét lên yêu cầu cả hai đừng cãi nhau nữa."
+    },
+    {
+      "panel": "dqgl_ep87/p047.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngưng Nhi nói: muội biết lời phân tích của huynh luôn có đạo lý. Huynh hãy nói thật, nếu muội trở về, dùng thân phận lô đỉnh ra điều kiện với Thất trưởng lão, có bảo vệ được tính mạng cả nhà muội không?"
+    },
+    {
+      "panel": "dqgl_ep87/p050.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Thiên Dương hoảng hốt hét lên: Ngưng Nhi, không được!"
+    },
+    {
+      "panel": "dqgl_ep87/p055.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm im lặng một lúc rồi nói: U Quỷ Thất đường đường là trưởng lão mà vẫn không luyện thành môn võ kỹ ấy, chứng tỏ lô đỉnh ở U Minh Cốc không đủ."
+    },
+    {
+      "panel": "dqgl_ep87/p056.jpg",
+      "narration": "Hắn chậm rãi nói: cách này của muội cũng được, chỉ là... Ngưng Nhi cắt lời: không có chỉ là gì hết, chỉ cần được là được rồi!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep87/p045.jpg",
+      "narration": "Cô bé bị coi là yếu nhất nhóm lại là người dám biến chính mình thành quân cờ để cứu cả nhà. Trác Phàm phân tích đúng hết, nhưng người bước đi lại là cô.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep87/p057.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô mỉm cười: Trác đại ca, Thiên Dương đại ca, cảm ơn hai huynh đã chăm sóc muội mấy tháng qua, chúng ta chia tay ở đây thôi. Muội từ nhỏ đến giờ chưa từng được rời khỏi thành."
+    },
+    {
+      "panel": "dqgl_ep87/p059.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô nói thêm: chưa được đến nhìn Kiếm Hầu phủ một lần, thật đáng tiếc."
+    },
+    {
+      "panel": "dqgl_ep87/p060.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô quay lưng, nói khẽ: tạm biệt."
+    },
+    {
+      "panel": "dqgl_ep87/p062.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thiên Dương hét: không được! Nhưng Ngưng Nhi nói: hai huynh đừng ép muội. Muội biết không đánh lại hai huynh, nhưng nếu hai huynh ngăn muội, muội sẽ hận cả đời."
+    },
+    {
+      "panel": "dqgl_ep87/p065.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô nói thêm: cả đời này muội sẽ không bao giờ quan tâm đến hai huynh nữa. Rồi bước vào làn ánh sáng, xa dần."
+    },
+    {
+      "panel": "dqgl_ep87/p066.jpg",
+      "narration": "Trong lòng cô thì thầm: xin lỗi, là do muội quá tùy hứng.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep87/p068.jpg",
+      "narration": "Không có cơ hội báo đáp ân tình của các huynh, vậy để kiếp sau muội sẽ báo đáp.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep87/p072.jpg",
+      "narration": "Nếu như còn có kiếp sau... tạm biệt, Trác Phàm ca ca.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep87/p072.jpg",
+      "narration": "Lời chia tay đau nhất truyện lại là một lời nói dối: cô hứa sẽ hận họ cả đời để họ không đuổi theo. Hiếm nhân vật phụ nào khiến mình mềm lòng đến vậy.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep87/p074.jpg",
+      "narration": "Cuộc chia tay khép lại, để lại câu hỏi liệu Ngưng Nhi có thoát khỏi số phận nghiệt ngã ở U Minh Cốc hay không.",
+      "kind": "recap",
+      "type": "ENDING"
+    },
+    {
+      "panel": "dqgl_ep88/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Trác Phàm quay lưng bước đi, để Thiên Dương đứng lại với cơn giận chưa nguôi.",
+      "section": "Tập 88: Ngưng Nhi đi chịu chết, Ma Hoàng ép mình luyện công pháp nguy hiểm"
+    },
+    {
+      "panel": "dqgl_ep88/p004.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Thiên Dương hỏi liệu Tiết gia có thật sự bảo vệ được Ngưng Nhi sau khi cô trở về hay không."
+    },
+    {
+      "panel": "dqgl_ep88/p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm đáp rằng hiện tại cậu chỉ có thể tạm thời làm vậy."
+    },
+    {
+      "panel": "dqgl_ep88/p007.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cậu nói nếu Ngưng Nhi trở thành lô đỉnh rồi chết, cả Tiết gia sẽ bị U Minh Cốc giết sạch."
+    },
+    {
+      "panel": "dqgl_ep88/p008.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thiên Dương chất vấn tại sao Trác Phàm vẫn để cô đi, trong khi biết rõ kết cục ấy."
+    },
+    {
+      "panel": "dqgl_ep88/p011.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm nói ít nhất cậu có thể bảo đảm người nhà Ngưng Nhi còn sống đến khi cô gặp nạn, rồi bị Thiên Dương mắng là đồ khốn."
+    },
+    {
+      "panel": "dqgl_ep88/p012.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thiên Dương tức giận đánh Trác Phàm ngã xuống đất và trách cậu lại bán đứng Ngưng Nhi."
+    },
+    {
+      "panel": "dqgl_ep88/p014.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Anh gằn giọng hỏi Trác Phàm định làm gì, còn Trác Phàm chống tay ngồi dậy."
+    },
+    {
+      "panel": "dqgl_ep88/p016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thiên Dương hét rằng mình muốn đi cứu Ngưng Nhi ngay lập tức."
+    },
+    {
+      "panel": "dqgl_ep88/p017.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trác Phàm nhắc Thiên Dương chỉ mới ở Đoàn Cốt cảnh, lấy gì đấu với cao thủ Thiên Huyền."
+    },
+    {
+      "panel": "dqgl_ep88/p019.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cậu nói tốc độ của cao thủ Thiên Huyền vượt xa Đoàn Cốt cảnh; Thiên Dương vẫn hỏi vậy thì phải làm sao."
+    },
+    {
+      "panel": "dqgl_ep88/p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm nhớ lại lần trước họ từng có cơ hội đánh bại U Quỷ Thất nhờ chuẩn bị từ trước."
+    },
+    {
+      "panel": "dqgl_ep88/p022.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thiên Dương cãi lại: nhưng bây giờ bày trận thế nào đây? Bố trí ngay dưới mí mắt hắn, rồi lại mời hắn bước vào trận chắc?"
+    },
+    {
+      "panel": "dqgl_ep88/p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thiên Dương nghiến răng, nhìn Trác Phàm đầy bất mãn. Trác Phàm im lặng, máu còn vương nơi khóe miệng."
+    },
+    {
+      "panel": "dqgl_ep88/p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trong lòng Thiên Dương, những lời Trác Phàm nói anh đều hiểu rõ. Nhưng thái độ không quan tâm của hắn khiến anh thực sự không chịu đựng nổi."
+    },
+    {
+      "panel": "dqgl_ep88/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh thầm nghĩ: Ngưng Nhi sắp đi chịu chết rồi, mà hắn lại như người không có chuyện gì, cái gì cũng không làm. Anh vẫn biết Trác Phàm là tên tiểu tử không đáng tin tưởng."
+    },
+    {
+      "panel": "dqgl_ep88/p030.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thiên Dương nhắc rằng ba người đã cùng trải qua sinh tử, nên phải giữ lời hứa với nhau."
+    },
+    {
+      "panel": "dqgl_ep88/p031.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh khẳng định dù tốt hay xấu, họ cũng phải thực hiện lời hứa đưa Ngưng Nhi rời khỏi thành."
+    },
+    {
+      "panel": "dqgl_ep88/p032.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm nói dù có đuổi theo đến nơi, họ cũng chỉ có thể đứng nhìn vì không đủ sức làm gì."
+    },
+    {
+      "panel": "dqgl_ep88/p035.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thiên Dương tuyên bố thà chết còn hơn làm kẻ hèn nhát. Trác Phàm quay lại, ánh mắt lóe lên sát khí."
+    },
+    {
+      "panel": "dqgl_ep88/p032.jpg",
+      "narration": "Cả tập này Thiên Dương mắng Trác Phàm máu lạnh, nhưng người kiên trì giữ lời hứa lại chính là anh. Ngoài mặt Ma Hoàng thờ ơ, trong đầu chắc đã tính xong từ lúc Ngưng Nhi quay lưng.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep88/p036.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm quay lại, đôi mắt đỏ rực: ai nói lão tử không làm gì chứ?"
+    },
+    {
+      "panel": "dqgl_ep88/p037.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cậu bước vào một hang động, nơi trận pháp cổ xưa đã được chuẩn bị sẵn."
+    },
+    {
+      "panel": "dqgl_ep88/p038.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Những viên linh thạch quanh trận đồ lần lượt phát sáng, đánh thức nguồn năng lượng bên trong."
+    },
+    {
+      "panel": "dqgl_ep88/p040.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm thi triển thuật pháp, để luồng năng lượng đỏ tím quấn lấy cơ thể."
+    },
+    {
+      "panel": "dqgl_ep88/p042.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cậu thừa nhận có ngày mình cũng sẽ bị ép phải tu luyện loại công pháp nguy hiểm này."
+    },
+    {
+      "panel": "dqgl_ep88/p044.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm cho rằng đây là cách duy nhất để nhanh chóng nâng cao thực lực trong thời gian ngắn."
+    },
+    {
+      "panel": "dqgl_ep88/p045.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cậu hiểu rằng dù mưu kế có thể giúp đối phó U Quỷ Thất, lần này họ cần sức mạnh áp đảo để chắc thắng."
+    },
+    {
+      "panel": "dqgl_ep88/p046.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Năng lượng trong trận pháp dồn lại thành một luồng sáng vàng khổng lồ."
+    },
+    {
+      "panel": "dqgl_ep88/p050.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trác Phàm lao vào trung tâm trận đồ, để ánh sáng vàng và khí đỏ đen bao phủ toàn thân."
+    },
+    {
+      "panel": "dqgl_ep88/p051.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Cậu ngẩng đầu giữa dòng năng lượng đang cuộn xoáy quanh mình."
+    },
+    {
+      "panel": "dqgl_ep88/p052.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Trác Phàm gọi tên bí pháp: Thiên Ma Đại Hóa Quyết."
+    },
+    {
+      "panel": "dqgl_ep88/p055.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Trận pháp bùng sáng và Trác Phàm hô lên: “Bắt đầu!”"
+    },
+    {
+      "panel": "dqgl_ep89/p002.jpg",
+      "narration": "Thiên Ma Đại Hóa Quyết có thể luyện hóa vật liệu thành linh khí, đưa vào cơ thể để rèn thành thân thể kim cương bất hoại.",
+      "kind": "recap",
+      "type": "HOOK",
+      "section": "Tập 89: Ma Hoàng qua ba tầng luyện thể, tầng cuối lại là nguyên thần"
+    },
+    {
+      "panel": "dqgl_ep89/p003.jpg",
+      "narration": "Luyện thành rồi, xương cốt sắt thép tự nhiên, đánh đâu thắng đó, không gì cản nổi.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep89/p004.jpg",
+      "narration": "Nhưng luyện chế quá độ thì đau đớn đến cùng cực.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep89/p005.jpg",
+      "narration": "Vật liệu luyện chế được đưa thẳng vào cơ thể, như ngàn vạn thanh kiếm khắc vào từng tấc da thịt, còn đau gấp vạn lần so với lăng trì.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep89/p006.jpg",
+      "narration": "Nếu luyện không thành, cả thân hình lẫn tinh thần đều bị hủy diệt, vạn kiếp bất phục.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep89/p011.jpg",
+      "narration": "Tầng thứ nhất: Luyện Cơ. Ngay khi công pháp bắt đầu xâm nhập vào cơ bắp, Trác Phàm đã hét lên một tiếng xé lòng.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep89/p017.jpg",
+      "narration": "Phương pháp luyện thể này muốn phá hủy toàn bộ cơ thể từ trên xuống dưới, từ trong ra ngoài, rồi thay thế bằng kim cương và lưu sa.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep89/p019.jpg",
+      "narration": "Luyện thành thì nội ngoại kiêm tu, kim cương bất phá. Nhưng nỗi đau thì vẫn khiến hắn khó mà chịu đựng nổi.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep89/p020.jpg",
+      "narration": "Nếu không phải vì cứu Ngưng Nhi, dù phương pháp này có tốt đến đâu hắn cũng không đời nào đi luyện: thật quá tự ngược!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep89/p021.jpg",
+      "narration": "Hắn tự mắng mình một câu rồi vẫn nghiến răng chịu đựng.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep89/p024.jpg",
+      "narration": "Tầng thứ hai: Luyện Cốt. Xương cốt vỡ ra rồi bị công pháp nhào nặn lại.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep89/p027.jpg",
+      "narration": "Hắn máu me đầy người, chỉ biết gồng mình chịu trận.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep89/p029.jpg",
+      "narration": "Hắn tự nhủ không được kêu: nếu bây giờ kêu thành tiếng, đến lúc cường hóa phủ tạng nhất định sẽ lại đau đớn không chịu nổi như vậy mất.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep89/p033.jpg",
+      "narration": "Hắn lết bò trên trận đồ, chửi thầm: thật không biết Cửu U Ma Đế đã tự mình thử qua chưa, mà lại nghĩ ra cái phương pháp luyện thể khốn nạn thế này!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep89/p038.jpg",
+      "narration": "Chỉ còn một bước cuối cùng nữa là có thể sắp xếp lại cơ thể suy tàn này. Hắn vẫn không thể bỏ cuộc.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep89/p041.jpg",
+      "narration": "Tầng thứ ba: Luyện Ngũ Tạng. Các dải năng lượng vàng quấn lấy tạng phủ, siết lại từng chút một.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep89/p045.jpg",
+      "narration": "Cuối cùng hắn cũng vượt qua được. Tiếp theo chỉ còn sắp xếp lại cơ thể suy tàn này nữa thôi.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep89/p048.jpg",
+      "narration": "Rồi một tiếng thét vang lên: những dải vàng bất ngờ đâm thẳng vào bộ não phát sáng xanh, nơi nguyên thần của hắn.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep89/p051.jpg",
+      "narration": "Hắn không thể tin nổi: bước tu luyện cuối cùng của công pháp luyện thể này lại chính là nguyên thần sao?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep89/p052.jpg",
+      "narration": "Một khi nguyên thần bị hủy diệt, cả thân hình lẫn tinh thần đều bị hủy diệt theo, chết không có chỗ chôn.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep89/p053.jpg",
+      "narration": "Càng luyện, trước mắt càng mơ hồ. Đây là nguyên thần đang bị bào mòn đến tận cùng.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep89/p054.jpg",
+      "narration": "Hắn cười chua chát: lão tử đường đường là Ma Hoàng, vậy mà lại tự mình đi tìm đường chết.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep89/p055.jpg",
+      "narration": "Ba tầng đã qua, tầng cuối lại là thứ có thể giết hắn thật. Cửu U Ma Đế để lại một công pháp, nhưng đòi một cái giá còn hơn cả mạng.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep89/p059.jpg",
+      "narration": "Giữa cơn đau, ký ức ùa về: từ lúc bước vào ma đạo, hắn một đường vượt mọi chông gai để lên đỉnh Bát Hoàng Thánh Vực.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep89/p061.jpg",
+      "narration": "Sau đó hắn đạt được Cửu U Bí Lục, lòng mừng rỡ khôn xiết.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep89/p062.jpg",
+      "narration": "Rồi lại bị đồ đệ bán đứng, trọng sinh vào Lạc gia.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep89/p064.jpg",
+      "narration": "Từ một gia nô, hắn trở thành quản gia, và bị bao mối duyên ở thế giới này níu chân.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep89/p066.jpg",
+      "narration": "Hình bóng Thiên Dương hiện lên, cười hỏi: Trác Phàm, ngươi còn lề mề làm gì đó?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep89/p068.jpg",
+      "narration": "Rồi nụ cười của một cô gái: Trác đại ca! Tiết Ngưng Hương...",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep89/p072.jpg",
+      "narration": "Hắn chợt nhận ra: sở dĩ mình muốn tu luyện thứ công pháp khốn nạn này...",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep89/p073.jpg",
+      "narration": "...chính là vì muốn cứu cô ấy! Hắn gào lên tên cô: Ngưng Nhi!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep89/p076.jpg",
+      "narration": "Đúng lúc đó, một luồng khí xanh bùng lên giữa trận đồ, át cả ánh sáng đỏ vàng.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep89/p078.jpg",
+      "narration": "Ánh sáng xanh phủ kín căn phòng. Đây là dấu hiệu Trác Phàm đột phá thành công, hay nguyên thần của hắn sắp tan biến?",
+      "kind": "recap",
+      "type": "ENDING"
+    },
+    {
+      "panel": "dqgl_ep90/p001.jpg",
+      "narration": "Tiết Định Thiên trở về Tiết phủ, nhưng cổng nhà yên ắng lạ thường.",
+      "kind": "recap",
+      "type": "HOOK",
+      "section": "Tập 90: U Quỷ Thất gọi Tiết gia là chó canh cửa, ông nội Ngưng Nhi liều mạng"
+    },
+    {
+      "panel": "dqgl_ep90/p003.jpg",
+      "narration": "Ông thầm nghĩ: tình trạng không đúng. Môn đình Tiết gia hôm nay sao lại quạnh quẽ như vậy?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep90/p007.jpg",
+      "narration": "Ngay cả hộ vệ canh gác ngày thường cũng chẳng thấy đâu.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep90/p010.jpg",
+      "narration": "Bước vào đại sảnh, ông thấy bóng người đứng đen kịt, chẳng lẽ...",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep90/p011.jpg",
+      "narration": "...là U Quỷ Thất!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep90/p014.jpg",
+      "narration": "Ông vội quỳ rạp xuống: không biết Thất trưởng lão đại giá quang lâm, lão phu không thể nghênh đón từ xa, thứ lỗi thứ lỗi!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep90/p015.jpg",
+      "narration": "U Quỷ Thất cười nhạt: Tiết gia các ngươi được U Minh Cốc che chở cả trăm năm rồi nhỉ, chúng ta cũng chưa từng đối xử tệ bạc với các ngươi.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep90/p017.jpg",
+      "narration": "Định Thiên vội đáp: đúng vậy, đúng vậy! Nếu không có sự nâng đỡ của U Minh Cốc và Thất trưởng lão, Tiết gia sao có được vinh quang như hôm nay?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep90/p021.jpg",
+      "narration": "U Quỷ Thất bước tới, khen: ngươi nghĩ được như vậy tất nhiên là rất tốt.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep90/p022.jpg",
+      "narration": "Rồi hắn đột ngột đổi giọng: nhưng...!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep90/p023.jpg",
+      "narration": "Vì sao các ngươi còn muốn cấu kết với người ngoài, đoạt Kim Cương Lưu Sa của U Minh Cốc ta hả?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep90/p025.jpg",
+      "narration": "Định Thiên hốt hoảng: Thất trưởng lão nhất định có hiểu lầm, Tiết gia luôn trung thành tận tâm, chúng ta làm gì có cái gan đó!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep90/p026.jpg",
+      "narration": "Hắn cười lạnh: các ngươi ăn cây táo rào cây sung, lúc trước ta không tin, nhưng hiện tại lão phu không thể không tin.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep90/p027.jpg",
+      "narration": "Rồi hắn quát: ta hỏi ngươi, cháu gái Tiết Ngưng Hương của ngươi đâu rồi?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep90/p030.jpg",
+      "narration": "Hắn nói cô cùng hai tiểu tử thối đã trộm Kim Cương Lưu Sa của lão phu, và đã chết ở dãy núi Vạn Thú rồi.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep90/p032.jpg",
+      "narration": "Hắn nghĩ ba đứa trẻ bị trọng thương thì không thể thoát khỏi tay tên quái vật kia. Vốn dĩ Ngưng Hương còn nhiều chỗ hữu dụng, nhưng giờ mất hết cả Kim Cương Lưu Sa lẫn lô đỉnh.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep90/p033.jpg",
+      "narration": "Tổn thất của lão phu, sẽ do mạng của già trẻ Tiết gia các ngươi bù đắp lại!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep90/p037.jpg",
+      "narration": "Người của Tiết gia bị xích tay, máu me đầy mình, bị kéo lên quỳ giữa sảnh.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep90/p039.jpg",
+      "narration": "Định Thiên gào lên: Tiết gia bán mạng vì U Minh Cốc cả trăm năm, đóng giữ Thành Thanh Dương luôn tận trung, không có công lao cũng có khổ lao.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep90/p040.jpg",
+      "narration": "Lẽ nào U Minh Cốc đối xử với mọi gia tộc phụ thuộc như vậy cả sao?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep90/p041.jpg",
+      "narration": "U Quỷ Thất cười khà khà: các ngươi là gia tộc thấp kém, món hàng như các ngươi, chỉ cần U Minh Cốc bằng lòng thì bồi dưỡng bao nhiêu mà chẳng được.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep90/p043.jpg",
+      "narration": "Hắn nói: lão phu nhìn ra rồi, Tiết gia các ngươi từ trước tới nay chẳng phải gia tộc lệ thuộc gì, chỉ là một đám chó canh cửa có chút hữu dụng mà thôi.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep90/p044.jpg",
+      "narration": "Chúng ta cho các ngươi một khúc xương, khen thưởng một chút thì các ngươi cũng phải mang ơn chứ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep90/p045.jpg",
+      "narration": "Nhưng bây giờ một con chó già lại dám khoe công lao, ra giá tiền với chủ của nó.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep90/p046.jpg",
+      "narration": "Vậy loại chó này, không cần cũng được!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep90/p046.jpg",
+      "narration": "Bao năm cúi đầu giữ nhà cho người ta, cuối cùng chỉ được gọi là chó canh cửa. Nghe mà đắng, và cũng cho thấy U Minh Cốc đối xử với thuộc hạ thế nào.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep90/p047.jpg",
+      "narration": "Sắc mặt Tiết Định Thiên tối sầm, cơn giận bị ghìm lâu nay bùng lên như lửa.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep90/p052.jpg",
+      "narration": "Ông gầm lên hỏi: ta hỏi ngươi, chuyện Hòa Thần của Ngưng Nhi, có phải các ngươi che giấu việc dùng con bé làm lô đỉnh để luyện công không?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep90/p054.jpg",
+      "narration": "U Quỷ Thất cười ha hả: sao ngày thường lão phu không nhìn ra nhỉ, lão tiểu tử ngươi vẫn thật tinh mắt đấy.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep90/p056.jpg",
+      "narration": "Hắn cười ghê rợn: chẳng trách các ngươi phản bội, thì ra là vì chuyện này. Tiện nha đầu!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep90/p057.jpg",
+      "narration": "Tiết Định Thiên không thể giữ im lặng thêm nữa. Ông gào: đồ khốn nạn!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep90/p058.jpg",
+      "narration": "Lão tử liều mạng với ngươi! Ông lao thẳng vào U Quỷ Thất giữa làn khí đỏ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep90/p059.jpg",
+      "narration": "U Quỷ Thất vẫn thản nhiên như thể đã chờ ông nổi giận. Liệu ông có chống lại nổi, hay cả Tiết gia sẽ bị xóa sổ?",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

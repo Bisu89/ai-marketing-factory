@@ -225,3 +225,4 @@ sequence, and a line added to the list above.
 182. [Chí Phèo ep01 refactor to ~15 min](features/182-chi-pheo-15min-refactor.md) — literature_vi standard now 14–16 min; added Năm Thọ/binh Chức succession, village factions, riverbank meeting; verified against scratch backend + independent edge-tts measurement
 182. [DQG ep81-91 review](features/182-dqg-ep81-91-script-review.md) — rewrote 11 episode scripts after checking every page/panel; build notes (page vs panel numbering)
 183. [Lão Hạc literature ep02](features/183-lao-hac-literature-ep2.md) — second standalone work on literature_vi channel, 14:05 verified via scratch backend + independent edge-tts measurement; excerpt() sentence-split bug found and documented
+183. [DQG ch 81-100 build](features/183-dqg-ch81-100-long-and-shorts.md) — 5 Long + 6 Short, QA 100; ep99-100 scripts written; STORY.md updated

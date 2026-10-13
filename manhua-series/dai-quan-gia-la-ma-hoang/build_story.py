@@ -9,7 +9,7 @@ import json
 from pathlib import Path
 
 HERE = Path(__file__).parent
-LONGS = ["long_1_10", "long02", "long03", "long_21_30", "long_31_40", "long_41_50", "long_51_55", "long_56_60", "long_61_65", "long_66_70", "long_71_75", "long_76_80"]
+LONGS = ["long_1_10", "long02", "long03", "long_21_30", "long_31_40", "long_41_50", "long_51_55", "long_56_60", "long_61_65", "long_66_70", "long_71_75", "long_76_80", "long_81_85", "long_86_90", "long_91_94", "long_95_97", "long_98_100"]
 
 out = ["# Đại Quản Gia Là Ma Hoàng — cốt truyện đã làm video",
        "",
