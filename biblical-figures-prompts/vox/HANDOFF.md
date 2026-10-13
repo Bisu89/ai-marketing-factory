@@ -15,19 +15,20 @@ Tập 1–5 giữ bản render cũ. Đọc trước: `content-prompts/vox_docume
 3. `python content-prompts/vox_documentary_template/tools/episode_builder.py create biblical-figures-prompts/vox/ep6.spec.json` (xóa `ep6.spec.state.json` trước nếu muốn tạo mới).
 4. Duyệt cổng 1–2 trong app → `storyboard` → `images` → duyệt ảnh + cổng 3 → tab Giọng đọc: backend **`edge_en`**, chia đoạn, tạo, master, căn chỉnh `tts`, dựng timeline → cổng 4 → tab Render: **collage**, tắt "Ảnh đen trắng", bản cuối.
 
-## Tập 7 (Caiaphas) — spec đã viết, chưa tạo trong app
-- `vox/ep7.spec.json`: 25 nguồn nguyên văn (Kinh Thánh bản WEB, Josephus Whiston quyển XVII/XVIII/XX, Wikipedia), 29 khẳng định (3 `disputed`: hộp xương 1990, các bản kể khác nhau ở đêm xét xử…), 38 đoạn, ~1.210 từ (≈ 6 phút giọng `edge_en`), 36 ảnh Baroque **có sẵn** (30 của tập 7 cũ + 6 ảnh dùng lại từ tập 2/3/4) — không cần tạo ảnh mới.
-- Đã chạy `create` trên backend tạm: kịch bản qua kiểm tra nguồn. **Chưa** tạo trong DB thật; chưa có `scene_overrides` (mã cảnh chỉ có sau storyboard — như tập 6: tạo dự án → duyệt cổng 1–2 → `storyboard` → thêm thẻ chữ HeadlineImpact/EvidenceBoard/MapZoom khoảng 40–50% cảnh → `images` → cổng 3…).
-- Đã bỏ khỏi bản cũ các ý **không cắt được nguyên văn**: "12 hộp xương / 6 người", mốc năm 26 và 36, câu Talmud Pesahim, nhà thờ St Peter in Gallicantu, chữ Hy Lạp "topos". Thêm mới có nguồn: hộp xương Miriam (2011), Josephus về thập phân, Gamaliel (Acts 5).
-- Ảnh trong spec dùng đường dẫn tuyệt đối của máy này (`biblical_figures_ep7_long_images/`, kho tập 2/3/4).
+## Tập 7 (Caiaphas) — dự án #4, đã làm lại bằng ảnh poster
+- `vox/ep7.spec.json`: 25 nguồn nguyên văn, 29 khẳng định (3 `disputed`), 38 đoạn ~1.210 từ (6 phút 51 giây `edge_en`), thẻ chữ ~37% cảnh. **28 ảnh poster** do chủ kênh tạo từ `vox/ep7_poster_prompts.csv` (thư mục `vox/ep7_posters/`), bản Baroque cũ vẫn nằm trong spec làm dự phòng (poster đứng sau nên thắng).
+- Bản render cuối: collage, ảnh màu (job #24). Cổng 1–4 đã duyệt (cổng 1–3 do AI duyệt thay theo cho phép của chủ kênh); **cổng 5 là của chủ kênh**.
+- Đã bỏ khỏi bản cũ các ý không cắt được nguyên văn ("12 hộp xương / 6 người", mốc năm 26 và 36, câu Talmud, nhà thờ St Peter in Gallicantu, chữ Hy Lạp "topos").
 
-## Tập 8 (Herod Antipas) — spec đã viết, chưa tạo trong app
-- `vox/ep8.spec.json`: 23 nguồn nguyên văn (Kinh Thánh WEB, Josephus Whiston quyển XVIII, Wikipedia), 27 khẳng định (1 `disputed`: Phúc Âm Peter), 37 đoạn, ~1.352 từ (≈ 7 phút `edge_en`), 33 ảnh Baroque có sẵn. Đã chạy `create` trên backend tạm: kịch bản qua kiểm tra nguồn.
-- Đã bỏ khỏi bản cũ các ý không cắt được nguồn: mốc năm 20/34/36, "43 năm" (thành "khoảng bốn thập kỷ"), "ornament of all Galilee" (Josephus viết "security of all Galilee"), đày sang Tây Ban Nha (Jewish War, chưa lấy nguồn), cách giải thích Pilate xâm phạm lãnh thổ (nay ghi rõ là phỏng đoán).
-- **Ảnh tập 1–5 đã biến mất khỏi thư mục làm việc** (không do công cụ này). Các ảnh dùng lại đã cứu từ thư viện app của dự án #2/#4 vào `vox/pool_recovered/` (10 ảnh); spec tập 6/7/8 trỏ tới đó. Ảnh tập 3/2 (`ep3_034`, `ep3_036`, `ep2_007`) không cứu được nên tập 8 dùng ảnh khác thay.
+## Tập 8 (Herod Antipas) — dự án #5, đã làm lại bằng ảnh poster
+- `vox/ep8.spec.json`: 23 nguồn, 27 khẳng định (1 `disputed`), 37 đoạn ~1.352 từ (7 phút 29 giây), 58 cảnh (16 thẻ chữ). **34 ảnh poster** từ `vox/ep8_poster_prompts.csv` (thư mục `vox/ep8_posters/`; S045 dùng lại S043, S056 dùng lại S001). Render collage ảnh màu (job #25 hoặc mới hơn). Bản trước từng được chủ kênh duyệt cổng 5 và xuất gói; đổi ảnh đã thu hồi duyệt ⇒ cổng 5 cần duyệt lại.
+- Đã bỏ các ý không có nguồn: mốc năm 20/34/36, "43 năm" (thành "khoảng bốn thập kỷ"), "ornament of all Galilee" (Josephus: "security of all Galilee"), đày sang Tây Ban Nha, lý do Pilate xâm phạm lãnh thổ (nay ghi là phỏng đoán).
 
-## Tập 9 trở đi
-Copy `ep6.spec.json` làm khuôn: đổi nguồn (`fetch` kiểu `bible`/`wikisource`/`wikipedia`), claims, kịch bản (kết bằng câu outro cố định: *If you made it this far, subscribe. A new figure from history every week.*), `scene_overrides`, ảnh. Ảnh tạo từ CSV (`_tools/bf.py prompts`/ hoặc prompt trong `vox/poster_test/STYLE.md`); chữ trên màn hình do code vẽ, không nhúng chữ vào ảnh.
+## Ảnh dùng lại (đã biến mất khỏi thư mục làm việc → cứu vào `vox/pool_recovered/`)
+10 ảnh dùng lại từ tập 2/3/4/5 (spec tập 6/7 trỏ tới đó). Ảnh `ep3_034`, `ep3_036`, `ep2_007` không cứu được.
+
+## Tập 9 trở đi (Thomas "Doubting Thomas" — chưa có ảnh nào)
+Copy `ep7.spec.json` hoặc `ep8.spec.json` làm khuôn (chúng dùng `scene_overrides` theo mã cảnh sau khi lập storyboard; hoặc dùng `cards_by_phrase` như Chí Phèo để khỏi phụ thuộc mã cảnh): đổi nguồn (`fetch` kiểu `bible`/`wikisource`/`wikipedia`), claims, kịch bản (kết bằng câu outro cố định: *If you made it this far, subscribe. A new figure from history every week.*), `scene_overrides`, ảnh. Ảnh tạo từ CSV (`_tools/bf.py prompts`/ hoặc prompt trong `vox/poster_test/STYLE.md`); chữ trên màn hình do code vẽ, không nhúng chữ vào ảnh.
 
 ## Bài học (đừng lặp lại)
 - Không tự đổi phong cách chốt (collage). `cinematic`/`poster` đã bỏ khỏi UI.

@@ -1,6 +1,6 @@
 # VOX DOCUMENTARY FACTORY — HANDOFF (đọc file này đầu tiên khi mở session/máy mới)
 
-Cập nhật: 2026-10-09. Mọi thứ dưới đây đã được **chạy thật** trên repo này (không phải kế hoạch), trừ mục
+Cập nhật: 2026-10-13. Mọi thứ dưới đây đã được **chạy thật** trên repo này (không phải kế hoạch), trừ mục
 "Chưa làm". Tài liệu ngắn hơn cho từng tính năng nằm ở `docs/features/163…172-*.md`.
 
 ## 1. Đây là gì
@@ -36,7 +36,9 @@ kết hợp ảnh tư liệu)  4. `README.md` (làm một tập mới từng bư
 | Test | `pytest tests/modules/documentary` ≈ 170+ test pass (~3 phút); `npx tsc -b --noEmit` (frontend) và `npx tsc --noEmit` (remotion) sạch |
 | Export (Phase 6, xong) | Tab **Xuất**: gói 9 file (video, SRT, credits, sources, script, timeline, description, manifest+SHA-256); ghi công/nhãn "Minh họa AI" tự động trên hình; chú thích ngữ cảnh cho năm trong cảnh timeline (feature 173) |
 | Nhạc nền + tài liệu (xong) | Nhạc tùy chọn do người dùng cung cấp (lặp, ducking, ghi công khi xuất) và bộ tài liệu `docs/documentary/` (feature 174) |
-| **Chưa làm** | SFX, đóng gói PyInstaller (`remotion/` + faster-whisper), prompt ảnh AI tự động theo từng cảnh, tập thứ hai, người dùng xem/nghe/duyệt dự án #1 |
+| Tập thật đã làm bằng quy trình này | **Biblical Figures tập 6 (John the Baptist, dự án #2), 7 (Caiaphas, #4), 8 (Herod Antipas, #5)** — tiếng Anh, giọng `edge_en`, collage + ảnh poster; spec ở `biblical-figures-prompts/vox/ep{6,7,8}.spec.json`, hướng dẫn tiếp ở `biblical-figures-prompts/vox/HANDOFF.md`. Kênh văn học Việt: `content-prompts/literature_vi/` (Chí Phèo tập 1 và Lão Hạc tập 2 làm ở session khác) |
+| Ảnh chuẩn | **Ảnh kiểu poster collage** (nền màu phẳng, nhân vật cắt viền, mảnh báo, băng keo, tiêu đề cắt dán trong ảnh) đặt trong khung collage; khuôn prompt `biblical-figures-prompts/vox/ep7_poster_prompts.csv` + `poster_test/STYLE.md`. Ảnh poster đã có tiêu đề thì cảnh đó không thêm thẻ chữ |
+| **Chưa làm** | SFX, đóng gói PyInstaller (`remotion/` + faster-whisper), prompt ảnh AI tự động theo từng cảnh (hiện viết bằng script ngoài repo rồi xuất CSV), thẻ bản đồ còn trống (không có dữ liệu địa lý), người dùng xem/nghe/duyệt cổng 5 các tập |
 
 ## 4. Kiến trúc (file map)
 
@@ -111,6 +113,15 @@ cd frontend && npm run dev                              # tsc kiểm tra: npx ts
 - **Chromium của Playwright không giải mã H.264** ⇒ khung `<video>` đen trong test headless; kiểm tra hình ảnh trực tiếp từ file MP4 bằng ffmpeg.
 - Starlette 0.38 chưa có Range ⇒ endpoint video tự xử lý Range.
 - Hash render gồm `PIPELINE_VERSION` + mã nguồn Remotion + chủ đề: đổi cách ghép/giao diện ⇒ render lại (không dùng cache cũ).
+
+### Bẫy bổ sung (2026-10-13)
+- **Backend chạy `--reload`: sửa file trong `backend/` khi đang render ⇒ backend khởi động lại và job render bị ngắt** ("Bị gián đoạn (ứng dụng đã khởi động lại)"). Sửa code xong mới bấm render.
+- **Sửa nguồn/kịch bản đã duyệt thu hồi cổng 1–2 (và các cổng sau)**: phải `advance` → duyệt lại từng cổng theo thứ tự (cổng 1 → advance → cổng 2 → advance …). `advance` hai lần liền có thể vượt qua `render_preview` sang `final_review`.
+- **`excerpt()` của `episode_builder.py`**: cụm cần cắt phải nằm trong **một câu**; cụm trải hai câu làm hàm trả về cả đoạn dài (vượt 5000 ký tự). Luôn chạy hàm thật để kiểm tra.
+- **Wikisource**: có chương ngắt dòng cứng giữa câu (Josephus quyển XVII) — công cụ đã nối dòng; ký tự ẩn (zero-width) trong truyện tiếng Việt làm cụm cần cắt không khớp ⇒ cắt cụm ngắn hơn.
+- **Gán thẻ chữ theo cụm** (`cards_by_phrase` trong spec) thay vì mã cảnh S### (mã đổi khi kịch bản đổi); ảnh gán theo `use` (danh sách mã cảnh của nhóm ảnh) hoặc `paragraphs`.
+- Nhãn hộp bằng chứng theo ngôn ngữ dự án (`language` trong manifest): tiếng Anh "DISPUTED/VERIFIED", tiếng Việt "CÒN TRANH CÃI/ĐÃ XÁC MINH".
+- **Ảnh tập 1–5 của Biblical Figures đã biến mất khỏi thư mục làm việc**; ảnh dùng lại được cứu vào `biblical-figures-prompts/vox/pool_recovered/`.
 
 ## 7. Chủ đề hình ảnh
 - **Chốt: dùng `collage`** (xem bảng trạng thái). Mô tả `cinematic` dưới đây chỉ để tham khảo lịch sử.
