@@ -1,6 +1,9 @@
 """Dựng thử một tập (video dài) trong app qua API: đăng ký ảnh -> tạo project -> beat plan (mỗi shot = 1 beat, đã gán ảnh) -> Factory run.
 
-Dùng:  python render_episode.py 1 [ko|vi] [force] [short]   (short = video SHORT 9:16 từ ngay_tan_epN_short_*)
+Dùng:  python render_episode.py 1 [ko|vi] [force] [short|shortA|shortB|...]
+       (short/shortX = video SHORT 9:16 từ ngay_tan_epN_short*_*; "short" trơn giữ nguyên cho Tập 1-2,
+        "shortA".."shortE" (tuỳ đặt tên) dùng khi một tập có NHIỀU short riêng biệt, mỗi cái một bộ
+        file ngay_tan_epN_shortX_scenes.csv / _shotlist.md / _images/ / scripts/ko_epN_shortX_check.txt)
        python render_episode.py 1 [ko|vi] [force]   (force = tự chấp nhận cảnh báo Quality Gate để render; Tập 1; ko = template ngay_tan_ko, vi = template ngay_tan; mặc định ko)
 Cần: backend đang chạy ở 127.0.0.1:8000; ảnh đã nằm trong ngay_tan_epN_images/ đúng tên file theo CSV;
      scripts/ko_epN_check.txt (câu Hàn đánh số), scripts/ko_bookends_check.txt (E{N}_INTRO/OUTRO), ngay_tan_epN_shotlist.md (cột Đoạn).
@@ -56,7 +59,9 @@ def read_pairs(name):
 
 
 def sfx(kind):
-    return '_short' if kind == 'short' else ''
+    # 'long' -> '' ; 'short' (Tập 1-2, tương thích ngược) -> '_short' ; 'shortA'..'shortE'
+    # (nhiều short/tập, Tập 3+, mỗi biến thể một bộ file riêng) -> '_shortA' v.v.
+    return '' if kind == 'long' else f'_{kind}'
 
 
 def parse_shotlist(ep, kind='long'):
@@ -69,7 +74,7 @@ def parse_shotlist(ep, kind='long'):
 
 
 def csv_tags(ep, kind='long'):
-    fname = f'ngay_tan_ep{ep}_short_scenes.csv' if kind == 'short' else f'ngay_tan_ep{ep}_scenes_v3.csv'
+    fname = f'ngay_tan_ep{ep}_scenes_v3.csv' if kind == 'long' else f'ngay_tan_ep{ep}{sfx(kind)}_scenes.csv'
     rows = list(csv.reader(open(D / fname, encoding='utf-8-sig')))[1:]
     return {r[1]: [t.strip() for t in r[2].split(',') if t.strip()] for r in rows}
 
@@ -100,8 +105,8 @@ def register_assets(ep, shots, tags, kind='long'):
 def vi_sections(ep, kind='long'):
     """Đọc scripts/epN_audiobook_v*.txt (bản Việt, bản mới nhất) -> (đoạn phần truyện, giới thiệu, kết).
     Bản Việt có đúng cùng số đoạn với bản Hàn (P01..PNN theo thứ tự) nên dùng chung shot list."""
-    if kind == 'short':
-        path = D / 'scripts' / f'ep{ep}_short_vi.txt'
+    if kind != 'long':
+        path = D / 'scripts' / f'ep{ep}{sfx(kind)}_vi.txt'
     else:
         path = sorted((D / 'scripts').glob(f'ep{ep}_audiobook_v*.txt'))[-1]
     text = path.read_text(encoding='utf-8')
@@ -201,7 +206,7 @@ def ensure_clean_voice(pid, max_tries=6, max_gap=3.0):
 
 def main(ep, lang='ko', force=False, kind='long'):
     cfg = LANGS[lang]
-    short = kind == 'short'
+    short = kind != 'long'
     shots = parse_shotlist(ep, kind)
     tags = csv_tags(ep, kind)
     ids = register_assets(ep, shots, tags, kind)
@@ -215,7 +220,7 @@ def main(ep, lang='ko', force=False, kind='long'):
 
     if lang == 'ko' and short:
         book = {'INTRO': [], 'OUTRO': []}
-        for k, t in read_pairs(f'ko_ep{ep}_short_check.txt'):
+        for k, t in read_pairs(f'ko_ep{ep}{sfx(kind)}_check.txt'):
             if k.rsplit('-', 1)[0] in book:
                 book[k.rsplit('-', 1)[0]].append(t)
         intro, outro = ' '.join(book['INTRO']), ' '.join(book['OUTRO'])
@@ -244,7 +249,7 @@ def main(ep, lang='ko', force=False, kind='long'):
         add(text, ids[fn], 'BODY', re.sub(r'^S?\d+_|\.png$', '', fn).replace('_', ' '))
     add(outro, ids[(outro_shot if short else shots[-1])[0]], 'ENDING', 'outro', cfg['bookend_voice'])
 
-    name = f'Ngày Tàn T{ep} ({cfg["label"]}) ' + ('SHORT ' if short else '') + '[test render]'
+    name = f'Ngày Tàn T{ep} ({cfg["label"]}) ' + (f'{kind.upper()} ' if short else '') + '[test render]'
     proj = call('POST', '/projects', {
         'name': name, 'script_text': script_body, 'template_id': cfg['template'], 'visual_generation_mode': 'library',
         'content_language': lang, 'ai_metadata_enabled': False,
@@ -287,5 +292,8 @@ def main(ep, lang='ko', force=False, kind='long'):
             break
 
 if __name__ == '__main__':
+    # argv[3:] = ['force']? ['short']? ['shortA']? bất kỳ thứ tự nào; chữ đầu tiên không phải 'force'
+    # và khớp /^short[A-Za-z0-9]*$/ (không phân biệt hoa thường) được coi là kind (mặc định 'short' thuần cho Tập 1-2).
+    kind_arg = next((a for a in sys.argv[3:] if a != 'force' and re.match(r'(?i)^short', a)), None)
     main(int(sys.argv[1]) if len(sys.argv) > 1 else 1, sys.argv[2] if len(sys.argv) > 2 else 'ko', 'force' in sys.argv[3:],
-         'short' if 'short' in sys.argv[3:] else 'long')
+         kind_arg if kind_arg else 'long')

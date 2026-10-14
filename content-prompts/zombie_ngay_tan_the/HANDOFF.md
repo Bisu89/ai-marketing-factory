@@ -58,6 +58,21 @@ Kết quả Tập 1 (long, KO): project 163, render job 222, 11:47, 1080p, QA PA
 - **Siết số ảnh phụ (ưu tiên C):** chỉ thêm khi đổi góc nhìn có ý nghĩa thật, không thêm cho đủ nhịp ~6 giây/ảnh. Tập 3 có 207 ảnh (91 A/88 B/28 C) cho ~24 phút — tỷ lệ ảnh/từ ngang Tập 2 nhưng tổng số nhiều vì tập dài, nên càng cần lọc bớt ảnh ít giá trị.
 - **Short không cần vẽ ảnh dọc riêng nữa:** tái dùng thẳng ảnh ngang 16:9 của video dài, app tự cover-crop sang 9:16 (không cần sửa code). Ảnh ngang ép dọc còn dư nhiều chiều ngang → Ken Burns pan mượt hơn ảnh dọc vẽ khít sẵn. Lưu ý: ưu tiên chọn ảnh cận/trung cảnh 1-2 nhân vật cho short, tránh ảnh toàn cảnh nhiều người dàn ngang (dễ bị cắt mất người ở rìa khi crop dọc).
 
+## Tập 3: 5 short riêng biệt (thay vì 1 short/tập như trước)
+Theo yêu cầu chủ series: thay vì 1 short tóm tắt cả tập, cắt 5 đoạn kịch tính độc lập từ Tập 3, mỗi đoạn tái dùng thẳng ảnh 16:9 của video dài (không vẽ ảnh dọc mới). `render_episode.py` đã tổng quát hoá: tham số `kind` giờ nhận `'long'`, `'short'` (giữ nguyên cho Tập 1-2) hoặc bất kỳ chuỗi `shortX` nào (`shortA`..`shortE`), mỗi biến thể có bộ file riêng `ngay_tan_ep{N}_shortX_scenes.csv` / `_shotlist.md` / `_images/` / `scripts/ko_ep{N}_shortX_check.txt`. Dòng lệnh: `python render_episode.py 3 ko force shortA` (lặp lại cho shortB..shortE).
+
+5 short Tập 3: mỗi ảnh là file copy nguyên vẹn từ `ngay_tan_ep3_images/` (đặt tên lại `S01_..`, `S00_intro_shortX.png`/`S99_outro_shortX.png` dùng lại ảnh đầu/cuối cho beat giới thiệu/kết), không tạo ảnh mới. Lời Hàn viết theo lối ngôi thứ ba (giống quy ước short Tập 1-2: 그는/그녀는, 습니다체), là bản rút gọn/diễn giải lại câu gốc ngôi thứ nhất của Tập 3.
+
+| Key | Tên | Đoạn nguồn (P của video dài) | Số ảnh |
+|---|---|---|---|
+| shortA | Đặt Dao Xuống | P001–P019 | 12 (+intro/outro) |
+| shortB | Kẻ Hú | P059–P085 | 13 (+intro/outro) |
+| shortC | Mồi Nhử Thể Phình | P094–P132 | 14 (+intro/outro) |
+| shortD | Vết Cắn Giấu Trong Tay Áo | P133–P176 | 15 (+intro/outro) |
+| shortE | Không Có Cứu Hộ (teaser chính thức, giữ vai trò short bắt buộc của tập) | P177–P224 | 12 (+intro/outro) |
+
+Script tạo 5 bộ file trên: `C:\Users\hoavx\AppData\Local\Temp\build_shorts.py` + `fix_shorts.py` (script tạm trong Temp, chưa đưa vào repo — nếu làm thêm short kiểu này cho tập khác thì viết lại thành `_tools/build_shortsN.py` chính thức, và nhớ cả 2 dòng INTRO/OUTUT trong shotlist ngay từ đầu, không phải vá thêm như lần này).
+
 ## Tập 3 — "Mũi Tên Và Lời Hứa" (화살과 약속)
 **Bản Hàn chính thức = bản refactor của chủ series (2026-10-09), đã nạp vào quy trình:** `scripts/ep3_ko_final_raw.txt` (văn bản gốc, mỗi dòng 1 đoạn, có `@@INTRO/@@BODY/@@OUTRO`) → `scripts/ko_ep3_check.txt` (224 đoạn P001..P224, 337 câu, ~2.500 từ Hàn ≈ 24 phút) → `scripts/ep3_ko.md`; giới thiệu/kết `E3_*` trong `ko_bookends_check.txt`. Chủ series KHÔNG muốn cắt độ dài. Tiêu đề chốt: "화살과 약속" (bản refactor còn ghi "화살과 메스" nhưng chủ series giao Claude đặt lại cho khớp nội dung). Giọng đọc GIỮ NHƯ CŨ (KO: chính nữ SunHi, giới thiệu/kết nam InJoon) — dòng "본문: 남성 / 소개·결말: 여성" ở đầu bản refactor chỉ là ghi chú, bỏ qua (chủ series xác nhận 2026-10-09). Nguồn cốt truyện VI: `scripts/ep3_audiobook_v2.txt`; `ep3_review_vi.txt` là bản dịch Việt CŨ (trước refactor); chủ series không cần dịch lại.
 **Ảnh:** `_tools/build_ep3_csv.py` → `ngay_tan_ep3_scenes_v3.csv` (207 ảnh: A 91, B 88, C 28; tag `ko`, không còn tag `vi`) + `ngay_tan_ep3_shotlist.md` (cột Đoạn = P001..) + thư mục `ngay_tan_ep3_images/` (`_DANH_SACH_TEN_FILE.txt`). Nhân vật mới chỉ mô tả trong prompt (không có trong bảng nhân vật): ông Oh (dược sĩ), nữ thực tập sinh, người giao hàng áo đỏ; Kẻ Hú = số 3, Thể Phình = số 4 trong bảng quái vật. **Template negative đã bỏ "lộ ngực hoặc vùng nhạy cảm, tư thế gợi dục"** (theo chủ series, `ngay_tan_blocks.py` + IMAGE_SYSTEM.md); CSV Tập 1–2 đã xuất trước đó vẫn còn câu cũ. Chưa làm: tạo ảnh, short Tập 3, dựng.
