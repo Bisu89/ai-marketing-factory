@@ -1,13 +1,18 @@
 # Chàng Rể Mạnh Nhất Lịch Sử
 
-- **Nguồn:** chưa ghi lại link gốc — ảnh các chương (`manhua-recap/crmn_epN`) đã có sẵn trong repo từ trước khi phiên
-  này bắt đầu đọc truyện. Cần bổ sung link nguồn khi tải thêm chương mới.
-- **Thư mục ảnh:** `manhua-recap/crmn_ep1` .. `crmn_ep10`. Có thêm `manhua-recap/crmn_ep2v5` nội dung khác hẳn ep2
-  (bối cảnh cổ đại, nhân vật đã xưng hô "Thẩm Lãng") — theo yêu cầu của chủ dự án, **bỏ qua thư mục này**, chưa rõ nó
-  khớp vào đâu trong trình tự, không dùng khi viết script.
+- **Nguồn:** https://www.zettruyen2.com/truyen-tranh/chang-re-manh-nhat-lich-su/chuong-N — `recap.py fetch <link> <thư
+  mục>` tải thẳng được (site này cần headless browser cho trang HTML, xem docs/features/158; CDN ảnh occasionally
+  403/404/reset, retry là qua).
+- **Thư mục ảnh:** `manhua-recap/crmn_ep1` .. `crmn_ep151` (chương 1–150 đã tải đủ, 2026-10-13). Có thêm
+  `manhua-recap/crmn_ep2v5` nội dung khác hẳn ep2 (bối cảnh cổ đại, nhân vật đã xưng hô "Thẩm Lãng") — theo yêu cầu
+  của chủ dự án, **bỏ qua thư mục này**, chưa rõ nó khớp vào đâu trong trình tự, không dùng khi viết script.
 - **Tập 1 không phải chương truyện thật** mà là 14 trang giới thiệu/teaser chính thức của bộ truyện (trước khi vào
-  nội dung chương 1). Từ tập 2 trở đi, mỗi tập = đúng 1 chương truyện (ep2 = chương 1, ep3 = chương 2, ... ep10 =
-  chương 9).
+  nội dung chương 1) — và đúng là `chuong-1` trên site (site tính cả trang teaser là chương 1 của họ). Từ tập 2 trở
+  đi, mỗi tập = site's `chuong-(tập-1)`: ep2 = chuong-1 (chương 1 trong truyện), ep10 = chuong-9, ..., ep151 =
+  chuong-150. **Xác minh bằng nội dung thực tế (không chỉ đếm số)** khi tải tiếp — lần tải chương 101–150 (2026-10-13)
+  ban đầu lưu nhầm `chuong-101..150` vào `crmn_ep101..150` (bỏ qua offset -1), phát hiện nhờ so khớp lời thoại
+  `crmn_ep100` với `chuong-99` tải thử lại; đã sửa bằng cách dồn tên thư mục lên 1 (`crmn_ep150→151` … `crmn_ep101→102`)
+  rồi tải `chuong-100` vào `crmn_ep101`.
 
 ## Tiền đề
 

@@ -1,0 +1,83 @@
+{
+  "title": "Quan lớn tưởng Quốc quân không dám giết, chàng rể báo: mai chết!?",
+  "chapters": "80",
+  "source_dir": "manhua-recap/crmn_ep81",
+  "description": "Thẩm Lãng báo trước Hắc Thủy Đài sắp đến bắt Lý Văn Chính, rồi hé lộ ván cờ nửa tháng trước bằng hoa khôi và búp bê yểm thái tử.\nReview Chàng Rể Mạnh Nhất Lịch Sử – Short best-of.",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "thumbnail": {
+    "text": "QUỐC QUÂN RA LỆNH LĂNG TRÌ!",
+    "prompt": "Vertical 9:16 anime-style: a night square before a palace, a sinister official in a black hat terrified as masked soldiers surround him, a calm long-haired young man smiling in the foreground. No text, leave top 25% empty."
+  },
+  "beats": [
+    {
+      "panel": "crmn_ep81/p002.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Chàng rể này chỉ ở nhà bầu bạn với vợ, vậy mà nửa tháng sau, một quan lớn bị Quốc quân ra lệnh lăng trì."
+    },
+    {
+      "panel": "crmn_ep81/p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng bình thản đáp: sáu tiếng trước, người của Hắc Thủy Đài đã bước vào Nộ Giang quân thành tìm hắn, giờ họ đang trên đường tới Huyền Vũ."
+    },
+    {
+      "panel": "crmn_ep81/p008.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lý Văn Chính cười lớn: ai dám giết ta? Quốc quân chỉ phạt ta lương bổng một năm thôi, ngài xem trọng ta như thế!"
+    },
+    {
+      "panel": "crmn_ep81/p010.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bỗng cả đội cao thủ Hắc Thủy Đài kéo tới, hô vang: mời Kim Mộc Lan tiểu thư theo chúng ta một chuyến."
+    },
+    {
+      "panel": "crmn_ep81/p018.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một lúc sau, ba người Thẩm Lãng đứng giữa đội Hắc Thủy Đài, im lặng đến mức nghe rõ cả tiếng gió."
+    },
+    {
+      "panel": "crmn_ep81/p023.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn chỉ tay mắng: Thẩm Lãng, tên vô sỉ nhà ngươi, ngươi dùng mưu kế gì mà khiến Quốc quân thay đổi ý chỉ?"
+    },
+    {
+      "panel": "crmn_ep81/p026.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh tìm tới hoa khôi Hà Vân Vân, người Lý Văn Chính ái mộ nhiều năm."
+    },
+    {
+      "panel": "crmn_ep81/p034.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hà Vân Vân là danh kỹ, dễ dàng chiếm được cảm tình của Quốc quân, và bài thơ của Lý Văn Chính từ xưa đã truyền khắp cung, nên nàng thành khách quen."
+    },
+    {
+      "panel": "crmn_ep81/p036.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Búp bê yểm đó ghi tên thái tử, nên Lý Văn Chính trở thành kẻ trù ếm thái tử, không bao giờ thoát tội."
+    },
+    {
+      "panel": "crmn_ep81/p040.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng ôm tai giả điếc, cười rằng mình chỉ ở nhà bầu bạn với nương tử, có thời gian đâu mà hại hắn."
+    },
+    {
+      "panel": "crmn_ep81/p043.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Quốc quân căm ghét hắn thấu xương, nên bắt hắn chết cực kỳ đau khổ, một tiếng thét vang vọng giữa đêm."
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "title": "Chàng rể trộn bạch lân vào kén tằm, đốt sạch tác phường vợ cũ!?",
+  "chapters": "84,85",
+  "source_dir": "manhua-recap/crmn_ep85",
+  "description": "Thẩm Lãng đốt ngàn cuốn sách trước mặt Từ Thiên Thiên, bán kén tằm trộn phốt pho trắng, và cả đại tác phường nhà họ Từ cháy rụi trong đêm.\nReview Chàng Rể Mạnh Nhất Lịch Sử – Short best-of.",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "thumbnail": {
+    "text": "KÉN TẰM TỰ BỐC CHÁY!",
+    "prompt": "Vertical 9:16 anime-style: a huge silk workshop engulfed in strange green flames at night, a calm young man watching from a distant tower, panicked workers below. No text, leave top 25% empty."
+  },
+  "beats": [
+    {
+      "panel": "crmn_ep85/p002.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Chàng rể cúi đầu dâng ba đơn thuốc, nhưng trong đống kén tằm hắn bán đi có một thứ sẽ tự bốc cháy."
+    },
+    {
+      "panel": "crmn_ep85/p016.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Mộc Lan hừ một tiếng: nương tử đều do cô ta chủ động trêu chọc ta, nàng biết bản thân ta giữ mình trong sạch mà."
+    },
+    {
+      "panel": "crmn_ep85/p034.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mộc Lan hỏi: phu quân, người đang đổ thuốc phấn gì vào kén tằm vậy? Anh đáp: bạch lân, tức phốt pho trắng."
+    },
+    {
+      "panel": "crmn_ep85/p052.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh nói: đây là ba tờ đơn thuốc, một tờ màu kim hoàng bản nâng cấp, một tờ màu tím, và một tờ màu cầu vồng."
+    },
+    {
+      "panel": "crmn_ep86/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Từng đợt làn nóng phân tán khắp mọi ngóc ngách của công phường, trong đó còn có cả phòng dự trữ kén tằm."
+    },
+    {
+      "panel": "crmn_ep86/p014.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Anh định ngâm thơ một khúc nhưng nghĩ mãi không ra: thôi, ngâm không ra."
+    },
+    {
+      "panel": "crmn_ep86/p021.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Từ Quang Doãn không tin: tác phường toàn là lưu nước, khắp nơi đều là hơi nước, sao có thể xảy ra hỏa hoạn chứ?"
+    },
+    {
+      "panel": "crmn_ep86/p036.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nếu không giao hàng đúng kỳ hạn thì phải bồi thường gấp đôi, và Từ gia sẽ mất cả danh tiếng lẫn tín dụng."
+    },
+    {
+      "panel": "crmn_ep86/p042.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Từ Thiên Thiên đành nói: phụ thân, tiếp theo con sẽ đi xin Thẩm Lãng, xin hắn bán ba vạn cân kén tằm kia cho chúng ta."
+    },
+    {
+      "panel": "crmn_ep86/p048.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Một người tóc bạc gật đầu: người cứ yên tâm, không cần phải sợ khơi chiến, nếu có thể gây nên đại chiến, thì chúng ta sẽ là nhân vật chính trong thịnh yến này."
+    }
+  ]
+}

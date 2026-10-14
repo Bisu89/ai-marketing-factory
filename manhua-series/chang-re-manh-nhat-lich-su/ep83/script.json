@@ -1,0 +1,191 @@
+{
+  "title": "Phó thiên hộ tỉnh dậy cùng giường với tên chó dại, mất mặt ngay trước mặt huynh trưởng nhà Tịnh An Bá!?",
+  "chapters": "82",
+  "source_dir": "manhua-recap/crmn_ep83",
+  "description": "Đêm đó Vương Liên mời Lâm Chước uống rượu say, báo thù theo đúng kế của Thẩm Lãng. Sáng hôm sau Lâm Chước tỉnh dậy cùng giường với Vương Liên, và Ngũ Chiêu Ấn, huynh trưởng nhà Tịnh An Bá, bắt gặp cảnh đó.\nReview Chàng Rể Mạnh Nhất Lịch Sử – Tập 83.",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "thumbnail": {
+    "text": "MẤT MẶT TRƯỚC HUYNH TRƯỞNG!",
+    "prompt": "Vertical 9:16 anime-style: a dark hall at night with two men drinking at a round table, one man leaning drunk on the other, a long-haired scholar smiling cunningly, dim warm lantern light. No text, leave top 25% empty."
+  },
+  "beats": [
+    {
+      "panel": "p002.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Thẩm Lãng dặn Vương Liên: gặp Lâm Chước ngươi đương nhiên có thể trốn thoát, nhưng nhất định phải sau khi gặp mặt Lâm Chước."
+    },
+    {
+      "panel": "p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Vương Liên nghiến răng, mắt đỏ rực: ta đã đắc tội Liễu Vô Nham, ở Huyền Vũ này như chó mất nhà, còn đâu con đường sống."
+    },
+    {
+      "panel": "p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đêm buông xuống, trong đại doanh thiên hộ sở Diêm Sơn, Lâm Chước ngồi bên cha vợ nói chuyện."
+    },
+    {
+      "panel": "p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lâm Chước hỏi cha không lo gì sao: nhạc phụ ta là bình bắc tướng quân, trong tay có hơn ba vạn đại quân, Thẩm Lãng bắt gặp ta cả cái rắm cũng không dám đánh."
+    },
+    {
+      "panel": "p008.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bỗng bên ngoài có người la lớn đòi gặp đại nhân, tự xưng là bằng hữu chí cốt của Lâm Chước, bị lính đuổi ra ngoài bằng gậy."
+    },
+    {
+      "panel": "p010.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lâm Chước nhận ra giọng quen, hô lớn: Vương Liên, Vương Liên!"
+    },
+    {
+      "panel": "p011.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn mừng rỡ vì người bạn cũ cuối cùng cũng trở mặt thành người hầu, nói đừng cản hắn, để hắn vào đây!"
+    },
+    {
+      "panel": "p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Vương Liên cầu cứu giữa đám đông, ôm lấy chân Lâm Chước: Lâm Chước huynh, cứu ta, cứu ta với!"
+    },
+    {
+      "panel": "p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lâm Chước cười lớn: sảng khoái, thật sự quá sảng khoái! Ngươi xưa kia ngày nào cũng khoe khoang với ta, giờ lại quỳ trước mặt ta, hahaha!"
+    },
+    {
+      "panel": "p016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Vương Liên khóc lóc kể rằng hắn đã đắc tội Liễu Vô Nham thành chủ, nên bị gài tội chết, chỉ còn cách tìm nơi nương tựa."
+    },
+    {
+      "panel": "p018.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn dập đầu: Lâm đại nhân, tiểu nhân đã không còn đường lui, chỉ cần đại nhân chịu thu nhận, tiểu nhân nguyện làm trâu làm ngựa."
+    },
+    {
+      "panel": "p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lâm Chước nhếch mép, đưa ra lời đề nghị: Vương huynh có thể làm tiểu văn thư bên cạnh ta, giúp ta chỉnh đốn thư sách."
+    },
+    {
+      "panel": "p022.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Rồi hắn gọi người đi mời Xuân Hoa và bày tiệc rượu để rửa phong trần cho Vương huynh, cho cả hai cùng uống cho đã."
+    },
+    {
+      "panel": "p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lâm Chước hả hê khoe: Thẩm Lãng sớm muộn cũng phải chết, Huyền Vũ Bá tước phủ sớm thành xương khô trong mộ, còn Kim Mộc Lan thì sau đó chỉ xứng làm giáo phường tư."
+    },
+    {
+      "panel": "p026.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lâm Chước uống cạn một hơi, cười ha hả: sảng khoái!"
+    },
+    {
+      "panel": "p028.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng rồi mặt hắn đỏ bừng, người lảo đảo, hắn không nhận ra mình đang uống cùng một kẻ đã chuốc thuốc."
+    },
+    {
+      "panel": "p030.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Vương Liên hỏi: đại nhân uống say rồi sao?"
+    },
+    {
+      "panel": "p031.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chỉ trong chớp mắt, hai người đã ngả nhào lên bàn tiệc, đồ ăn đổ lênh láng."
+    },
+    {
+      "panel": "p032.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ánh mắt Vương Liên trong bóng tối lóe lên vẻ độc ác, và hắn cắn một nhát vào cổ Lâm Chước."
+    },
+    {
+      "panel": "p036.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sáng hôm sau, Lâm Chước tỉnh dậy đau đầu: tối qua đã xảy ra chuyện gì mà ta không nhớ gì hết?"
+    },
+    {
+      "panel": "p039.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Dưới chăn, Vương Liên cười, ôm hắn: Lâm đại nhân, người tỉnh rồi à, khiến Lâm Chước hét lên kinh hoàng."
+    },
+    {
+      "panel": "p041.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Điều Lâm Chước không biết là Thẩm Lãng đã lấy danh nghĩa thiên hộ sở Diêm Sơn, phái người đến Lâm phủ báo tin."
+    },
+    {
+      "panel": "p042.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Huynh trưởng của Tịnh An Bá Ngũ Chiêu Ấn, người bàn hôn sự ở Lâm gia, cũng đã tới thiên hộ sở nghe tin."
+    },
+    {
+      "panel": "p043.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Khi Ngũ Chiêu Ấn đến, đúng lúc Lâm Chước phát giác mình đã ngủ cả đêm với Vương Liên, hét to: ngươi mau buông ta ra!"
+    },
+    {
+      "panel": "p044.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngũ Chiêu Ấn sững sờ, thốt ra: nam nhân..."
+    },
+    {
+      "panel": "p045.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lâm Chước hốt hoảng: tộc bá, đây là hiểu lầm... trong khi vết răng còn đỏ trên cổ hắn."
+    },
+    {
+      "panel": "p046.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng đứng ngoài cửa che mắt kêu: ta chỉ là một đứa trẻ thôi mà, sao lại cho ta nhìn thấy cảnh này!"
+    },
+    {
+      "panel": "p047.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lâm Chước nhìn thấy Thẩm Lãng, mặt tái xanh hét lên: Thẩm Lãng!?"
+    },
+    {
+      "panel": "p047.jpg",
+      "type": "ENDING",
+      "kind": "commentary",
+      "narration": "Một đêm rượu, một vết cắn, một cái tát vào danh dự: chàng rể này đánh người không cần đụng tay."
+    }
+  ]
+}

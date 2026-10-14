@@ -1,0 +1,89 @@
+{
+  "title": "Bị cướp biển bắt, tiểu thư dẫn chúng vào kho axit rồi sống sót!?",
+  "chapters": "96",
+  "source_dir": "manhua-recap/crmn_ep97",
+  "description": "Từ Thiên Thiên dẫn đám hải tặc vào hầm chứa axit sunfuric của nhà mình, thoát khỏi vụ nổ và lê bước đi tìm Thẩm Lãng.\nReview Chàng Rể Mạnh Nhất Lịch Sử – Short best-of.",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "thumbnail": {
+    "text": "KHO BÁU LÀ BẪY!",
+    "prompt": "Vertical 9:16 anime-style: a dark underground vault with green toxic fumes, a bloodied young woman in a torn pink dress crawling up stairs while a stone urn explodes behind her. No text, leave top 25% empty."
+  },
+  "beats": [
+    {
+      "panel": "crmn_ep97/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Cô gái bị cướp biển bắt đưa vào kho báu, và cô đã biết trước nó sẽ nổ."
+    },
+    {
+      "panel": "crmn_ep97/p006.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tên đầu sỏ nghiến răng nghĩ: chết tiệt! Lần trước thuyền trưởng trấn cướp được một mỹ nhân không dâng cho thiếu chủ, kết quả hắn bị lột sạch da."
+    },
+    {
+      "panel": "crmn_ep97/p011.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn đạp ngã cô: điên à! Các ngươi có muốn sống nữa hay không đấy? Mau đưa hàng cho thiếu chủ đi!"
+    },
+    {
+      "panel": "crmn_ep97/p015.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn dí dao vào cổ: khuê nữ nhà bình thường sẽ mang theo nhiều tiền thế sao? Sẽ chạy linh tinh khắp nơi lúc nửa đêm sao? Tối hôm nay bị giới nghiêm đấy!"
+    },
+    {
+      "panel": "crmn_ep97/p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn gầm lên: hahaha, tốt! Từ Thiên Thiên, nửa đêm nửa hôm như này, ngươi muốn đi đâu?"
+    },
+    {
+      "panel": "crmn_ep97/p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn cười lớn: haha, các huynh đệ, phát tài rồi, chúng ta có được số tiền này, không cần lo ăn uống nữa, sau này lên bờ mua đất làm địa chủ thôi!"
+    },
+    {
+      "panel": "crmn_ep97/p030.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bọn cướp reo: rương báu! Ánh đuốc soi lên những đồng vàng."
+    },
+    {
+      "panel": "crmn_ep97/p035.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn bực: chặc, không chém được. Ra, tìm xem có thứ gì nặng đập được không!"
+    },
+    {
+      "panel": "crmn_ep97/p040.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tiếng thét thảm thiết: aaaa! Đau quá! Đó là cái gì vậy?"
+    },
+    {
+      "panel": "crmn_ep97/p041.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Từ Thiên Thiên bò lên cầu thang: sao da của ta lại rát như thế?"
+    },
+    {
+      "panel": "crmn_ep97/p044.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Rồi một tiếng nổ lớn vang lên, ánh sáng xanh lục bùng lên khắp hầm."
+    },
+    {
+      "panel": "crmn_ep97/p052.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Cô thốt lên với một bóng người mơ hồ: Thẩm Lãng, ta đến rồi."
+    }
+  ]
+}

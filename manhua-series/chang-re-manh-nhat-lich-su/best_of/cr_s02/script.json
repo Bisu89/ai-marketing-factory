@@ -1,0 +1,83 @@
+{
+  "title": "Chàng rể dùng thuốc chó dại gài phó thiên hộ mất mặt trước tộc bá!?",
+  "chapters": "81,82",
+  "source_dir": "manhua-recap/crmn_ep82",
+  "description": "Lâm Chước giam kỵ binh phủ Bá tước, còn Thẩm Lãng dùng Vương Liên đang bị bệnh dại bày một tiệc rượu khiến Lâm Chước mất mặt trước huynh trưởng nhà Tịnh An Bá.\nReview Chàng Rể Mạnh Nhất Lịch Sử – Short best-of.",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "thumbnail": {
+    "text": "TIỆC RƯỢU GÀI BẪY!",
+    "prompt": "Vertical 9:16 anime-style: a dim hall where a smug official drinks with a sly scholar, a long-haired young man in dark blue robes watching from the shadows with a smirk. No text, leave top 25% empty."
+  },
+  "beats": [
+    {
+      "panel": "crmn_ep82/p002.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Phó thiên hộ ép chàng rể quỳ xin lỗi, nhưng hắn không biết chàng rể đã chuẩn bị sẵn một bàn tiệc rượu."
+    },
+    {
+      "panel": "crmn_ep82/p010.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng nghiến răng: thì ra là hắn, thật là oan gia ngõ hẹp!"
+    },
+    {
+      "panel": "crmn_ep82/p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lâm Chước cười lạnh: các ngươi muốn nói gì cũng vô ích, người của Huyền Vũ đạp chết dân ở Diêm Sơn là chuyện thiên hộ sở ta quản."
+    },
+    {
+      "panel": "crmn_ep82/p030.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Con đường thứ hai: chính là ngươi cầu xin ta tha, thỉnh tội với phụ thân ta, chỉ cần quỳ xuống dập đầu trước đám đông là được."
+    },
+    {
+      "panel": "crmn_ep82/p039.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng chưa thật sự để chó điên cắn chết hắn, chỉ là bệnh chó dại phát tác khiến người đau khổ khó chịu, chỉ có thể dựa vào thuốc đỡ đau của anh để sống sót."
+    },
+    {
+      "panel": "crmn_ep82/p047.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Biến một tên chó dại thành mồi nhử để gài bẫy kẻ thù, nụ cười của Thẩm Lãng còn đáng sợ hơn bệnh chó dại."
+    },
+    {
+      "panel": "crmn_ep83/p010.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lâm Chước nhận ra giọng quen, hô lớn: Vương Liên, Vương Liên!"
+    },
+    {
+      "panel": "crmn_ep83/p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lâm Chước nhếch mép, đưa ra lời đề nghị: Vương huynh có thể làm tiểu văn thư bên cạnh ta, giúp ta chỉnh đốn thư sách."
+    },
+    {
+      "panel": "crmn_ep83/p030.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Vương Liên hỏi: đại nhân uống say rồi sao?"
+    },
+    {
+      "panel": "crmn_ep83/p042.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Huynh trưởng của Tịnh An Bá Ngũ Chiêu Ấn, người bàn hôn sự ở Lâm gia, cũng đã tới thiên hộ sở nghe tin."
+    },
+    {
+      "panel": "crmn_ep83/p047.jpg",
+      "type": "ENDING",
+      "kind": "commentary",
+      "narration": "Một đêm rượu, một vết cắn, một cái tát vào danh dự: chàng rể này đánh người không cần đụng tay."
+    }
+  ]
+}

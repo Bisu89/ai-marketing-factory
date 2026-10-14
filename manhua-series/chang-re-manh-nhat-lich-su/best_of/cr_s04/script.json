@@ -1,0 +1,83 @@
+{
+  "title": "Vợ cũ xin mua kén, chàng rể ra giá gấp ba để vắt cạn nhà họ Từ!?",
+  "chapters": "86",
+  "source_dir": "manhua-recap/crmn_ep87",
+  "description": "Kho kén của Từ gia đã cháy sạch, Từ Thiên Thiên phải cúi đầu cầu Thẩm Lãng, và anh ra giá gấp ba rồi nhìn cô xé nát cả cuốn sách trong tay.\nReview Chàng Rể Mạnh Nhất Lịch Sử – Short best-of.",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "thumbnail": {
+    "text": "RA GIÁ GẤP BA!",
+    "prompt": "Vertical 9:16 anime-style: a luxurious sitting room, a long-haired young man leaning back with a calm smile while a young woman in purple tears papers in fury, scattered pages in the air. No text, leave top 25% empty."
+  },
+  "beats": [
+    {
+      "panel": "crmn_ep87/p003.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Vợ cũ đến xin mua kén bằng giá gấp rưỡi, chàng rể chỉ nói một câu: ba lần."
+    },
+    {
+      "panel": "crmn_ep87/p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng trêu: ngươi đang cosplay theo Phong Nguyệt Vô Biên à? Từ Thiên Thiên, ngươi cũng biết chơi thật đó."
+    },
+    {
+      "panel": "crmn_ep87/p022.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng không mắc bẫy: ta biết ngươi không hề hối hận, chỉ muốn tạm thời vượt qua ải khó, bảo toàn chiêu bài của Từ gia. Đây là chuyện trên thương trường, nói đi, ngươi muốn gì?"
+    },
+    {
+      "panel": "crmn_ep87/p026.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô giật mình: giá gấp ba lần, ngươi muốn ép sạch gia sản còn lại của Từ gia sao, như vậy không được."
+    },
+    {
+      "panel": "crmn_ep87/p031.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô gằn giọng: Thẩm Lãng, ngươi thật sự không chừa đường lùi nào sao? Trận chiến vây đánh Bá tước phủ sắp bắt đầu, ngươi chấp nhận giá của ta thì ta có thể bảo vệ cha mẹ và em trai ngươi."
+    },
+    {
+      "panel": "crmn_ep87/p037.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một cân kén tằm tươi giá hai mươi đồng, một đồng vàng mua được khoảng một trăm cân."
+    },
+    {
+      "panel": "crmn_ep87/p040.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Cô đập mạnh lên bàn, rồi giận dữ bước ra."
+    },
+    {
+      "panel": "crmn_ep87/p041.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hôm sau, từng xe kén tằm lên đường giao cho Từ gia."
+    },
+    {
+      "panel": "crmn_ep87/p044.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cùng lúc đó, Lâm Chước hóa thành chó điên, dẫn quân tấn công dữ dội, gây đủ mọi ma sát, còn công nhiên dịch chuyển bia giới, xâm phạm lãnh địa của Bá tước phủ."
+    },
+    {
+      "panel": "crmn_ep87/p050.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tô Nan có phong địa ba ngàn dặm, năm ngàn tư quân, lại là anh ruột của phu nhân Bá tước phủ."
+    },
+    {
+      "panel": "crmn_ep87/p056.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Sứ giả Tổng đốc đề nghị để thế tử của Trấn Bắc hầu dẫn một đội quân tiến vào nước Nam Âu bình loạn, đảm nhiệm tiên phong."
+    }
+  ]
+}

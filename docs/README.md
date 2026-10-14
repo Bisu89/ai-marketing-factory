@@ -230,3 +230,4 @@ sequence, and a line added to the list above.
 184. [Render output gọn + best-of Shorts](features/184-render-output-cleanup-and-best-of-shorts.md) — scenes xóa sau render, video tên theo series, file .txt title/desc/hashtag/tags; 10 Short best-of
 185. [DQG tóm tắt 100 chương + S04](features/185-dqg-summary-100-and-s04.md) — Long 7:57 từ lời kể đã duyệt; Short S04 sau khi tải lại ảnh ch 11-20
 186. [CRMN tóm tắt 100 tập](features/186-crmn-summary-100.md) — Long 9:31 (job 316), tập 81-100 đọc từ ảnh; ghi chú lỗi 403 edge-tts do tiến trình backend cũ
+187. [CRMN ep81-100](features/187-crmn-ep81-100-scripts-long-and-shorts.md) — scripts written from images, Long 09-10 + Short B01-B08, QA 100

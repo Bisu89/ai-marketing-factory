@@ -1,0 +1,101 @@
+{
+  "title": "Rể hiền đút thuốc cho cha vợ, rồi phóng hỏa thiêu cả nhà họ Từ!?",
+  "chapters": "91,92",
+  "source_dir": "manhua-recap/crmn_ep92",
+  "description": "Từ Quang Doãn hộc máu vì thuốc độc, Trương Tấn phóng hỏa thiêu Từ gia rồi khóc lóc đóng vai hiếu tử trước cả thành.\nReview Chàng Rể Mạnh Nhất Lịch Sử – Short best-of.",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "thumbnail": {
+    "text": "HIẾU TỬ PHÓNG HỎA!",
+    "prompt": "Vertical 9:16 anime-style: a burning mansion at night, a man in green robes standing calmly in front of the flames with a hidden smirk, villagers shouting in the distance. No text, leave top 25% empty."
+  },
+  "beats": [
+    {
+      "panel": "crmn_ep92/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Trương Tấn dịu dàng đút thuốc cho nhạc phụ, rồi đêm đó hắn tự tay phóng hỏa thiêu cả nhà vợ."
+    },
+    {
+      "panel": "crmn_ep92/p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nàng đỏ mặt thầm nghĩ: đồ khốn, lại có thể đem ngoại tình nói thành thanh tao thoát tục như vậy!"
+    },
+    {
+      "panel": "crmn_ep92/p021.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Anh cười: đi tắm, để tránh bị chàng ghét bỏ, tô tô."
+    },
+    {
+      "panel": "crmn_ep92/p026.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trương Xung bác bỏ: hôn ước của chúng tôi và Từ gia vẫn còn, không thể hủy bỏ tùy ý."
+    },
+    {
+      "panel": "crmn_ep92/p040.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trong phòng khách, Từ Quang Doãn ngồi đó, mặt tái mét."
+    },
+    {
+      "panel": "crmn_ep92/p048.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông ngã gục xuống đất, Trương Tấn đứng chết lặng."
+    },
+    {
+      "panel": "crmn_ep93/p002.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Hắn sở dĩ có ngày hôm nay, không chỉ bởi vì đắc tội với kẻ địch như Thẩm Lãng, mà là bởi hắn lòng tham không đáy, lựa chọn kết thân với con sói như Trương Xung."
+    },
+    {
+      "panel": "crmn_ep93/p011.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một ngọn nến cháy dần, giọt sáp đổ xuống."
+    },
+    {
+      "panel": "crmn_ep93/p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngày hôm sau, tin tức Từ gia bị thiêu rụi lan truyền rộng khắp thành Huyền Vũ."
+    },
+    {
+      "panel": "crmn_ep93/p031.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Có khách đến: hành lễ! Hiếu tử hành lễ! Người ta trầm trồ: Trương công tử nén đau thương."
+    },
+    {
+      "panel": "crmn_ep93/p034.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Không chỉ có Từ gia đang ồn ào ở thành Huyền Vũ, lúc đó một nhóm khách không mời mà đến cũng đã đến phủ Bá tước Huyền Vũ."
+    },
+    {
+      "panel": "crmn_ep93/p050.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một người khác chặn trước: chỉ cần ta ở đây, các ngươi đừng hòng động đến con dân của Bá tước Huyền Vũ."
+    },
+    {
+      "panel": "crmn_ep93/p063.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Kim Sĩ Anh lạnh lùng: Cửu Kiều, thời gian chưa đến, người đến làm gì?"
+    },
+    {
+      "panel": "crmn_ep93/p072.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Hắn chỉ vào ngực: xem ngực của ta, tại sao vẫn còn hình xăm? Đây là vị trí đặc biệt dành riêng cho Mộc Lan!"
+    }
+  ]
+}

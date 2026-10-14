@@ -195,3 +195,51 @@ Trạng thái dựng: ✅ project 191 / job_249, Final QA PASS 100 (18:17, 1920�
 **Tập 79** (chương 78): Thánh chỉ ban thân phận giám sinh Thái học; Thẩm Lãng cãi vợ chuyện rình tắm rồi đòi luyện võ.
 
 **Tập 80** (chương 79): Luyện võ nửa canh giờ đã đòi bỏ cuộc; Lý Văn Chính được tha nhẹ, quay lại kéo binh vu kỵ binh của Mộc Lan giẫm chết dân, bắt Kim Kiếm Nương.
+
+## Long 09 — tập 81–90
+
+Trạng thái dựng: ✅ project 263 / job 325, Final QA PASS 100 (15:38, 1920×1080). Script từng tập do Claude tự viết từ ảnh (chưa có script trước đó).
+
+**Tập 81** (chương 80): Thẩm Lãng đứng giữa đêm trước đội quân Lý Văn Chính và báo tin Hắc Thủy Đài sắp tới. Hóa ra từ nửa tháng trước anh đã bày xong một ván cờ bằng mỹ nhân kế và búp bê yểm thái tử, khiến Quốc quân ra lệnh lăng trì Lý Văn Chính.
+
+**Tập 82** (chương 81): Kỵ binh của phủ Bá tước bị phó thiên hộ Lâm Chước giam vô cớ. Thẩm Lãng không đến xin người, mà đi tìm Vương Liên đã nhiễm chó dại, dùng thuốc điều khiển hắn bày tiệc rượu gài bẫy.
+
+**Tập 83** (chương 82): Đêm đó Vương Liên mời Lâm Chước uống rượu say, báo thù theo đúng kế của Thẩm Lãng. Sáng hôm sau Lâm Chước tỉnh dậy cùng giường với Vương Liên, và Ngũ Chiêu Ấn, huynh trưởng nhà Tịnh An Bá, bắt gặp cảnh đó.
+
+**Tập 84** (chương 83): Ngũ Chiêu Ấn bắt gặp Lâm Chước nằm cùng Vương Liên, Thẩm Lãng đòi lại mười mấy kỵ binh bị giam. Trở về phủ Bá tước, anh thấy dân nuôi tằm quỳ khóc vì Từ gia và Lâm gia ngừng thu mua kén, rồi đích thân tới Từ phủ.
+
+**Tập 85** (chương 84): Từ Thiên Thiên ép Thẩm Lãng giao nộp đơn thuốc nhuộm mới chịu mua kén tằm của phong địa, hẹn ba ngày. Anh về nhà chơi cờ, bí mật trộn bạch lân vào kén, rồi nhún nhường dâng cả ba đơn thuốc trước mặt dân chúng.
+
+**Tập 86** (chương 85): Để giữ lời, Thẩm Lãng đốt sạch ngàn cuốn Phong Nguyệt Vô Biên trước mặt Từ Thiên Thiên, đổi lấy việc Từ gia chịu mua ba mươi vạn cân kén. Nhưng kén chứa bạch lân bốc cháy khi vào xưởng, thiêu rụi cả đại tác phường của Từ gia.
+
+**Tập 87** (chương 86): Kho kén của Từ gia đã cháy sạch, Từ Thiên Thiên phải cúi đầu đến xin Thẩm Lãng bán kén. Anh ra giá gấp ba, ép Từ gia thế chấp cả cửa tiệm lẫn căn nhà. Trong khi đó, Lâm Chước và quý tộc cũ Trấn Viễn hầu cùng ép Bá tước phủ từ nhiều phía.
+
+**Tập 88** (chương 87): Cả tác phường Từ gia cháy rụi, Lâm Chước tiếp tục gây sức ép, quý tộc cũ vây hãm phủ Bá tước. Giữa lúc đó, biểu ca Tô Kiếm Đình của Mộc Lan đến thăm, giao đấu với nàng rồi khiến Thẩm Lãng quyết tâm giúp vợ luyện thành cao thủ số một.
+
+**Tập 89** (chương 88): Kể lại mối thù 180 năm giữa Tấn Hải Bá tước phủ và Huyền Vũ Bá tước phủ quanh đảo Kim Sơn. Trương Tấn thử sức với Đường Viêm và thua thảm bằng chiêu Thiên Ngoại Lưu Tinh, trong khi Tịnh An Bá phủ phát hiện bệnh dại lan trong nhà và Lâm Chước đã lên cơn.
+
+**Tập 90** (chương 89): Lâm Chước chết, Từ gia nhờ công thức nhuộm của Thẩm Lãng mà phát đạt. Còn anh dùng mắt thần phát hiện mạch máu tím của Mộc Lan và mạch máu vàng của Đại Ngốc, rồi cùng vợ tới Thiên Nhai Hải Các tìm cách phá chiêu Thiên Ngoại Lưu Tinh.
+
+## Long 10 — tập 91–100
+
+Trạng thái dựng: ✅ project 264 / job 326, Final QA PASS 100 (17:15, 1920×1080). Script từng tập do Claude tự viết từ ảnh (chưa có script trước đó).
+
+**Tập 91** (chương 90): Thẩm Lãng tính ra khoảng cách và đường kính mặt trời chỉ bằng thước và hình học, rồi được học sĩ Trương Ngọc Âm mời vào thư viện Thiên Nhai Hải Các. Bên ngoài, đại tác phường Từ gia vừa giao hàng đã phát hiện vải có độc, và Từ Thiên Thiên rơi vào đường cùng.
+
+**Tập 92** (chương 91): Trên đường về phủ Bá tước, Thẩm Lãng và Mộc Lan cưỡi ngựa trêu nhau vì mùi nước hoa. Ở Từ gia, Trương Tấn ôm Từ Thiên Thiên đang suy sụp, thề không từ hôn, rồi Từ Quang Doãn uống thuốc xong đột ngột hộc máu.
+
+**Tập 93** (chương 92): Từ Quang Doãn chết vì thuốc độc, Trương Tấn ra tay phóng hỏa thiêu Từ gia rồi tuyên bố Thẩm Lãng là kẻ gây ra. Cùng lúc đó, con trai vua hải tặc Cửu Thiên Nguy dẫn quân đến phong địa Huyền Vũ cướp bóc, đòi Bá tước phủ trả nợ.
+
+**Tập 94** (chương 93): Cửu Kiều đánh bại Kim Sĩ Anh, đòi Bá tước phủ trả nợ rồi lớn tiếng nhận Mộc Lan là vợ của hắn. Trong khi đó Thẩm Lãng và Mộc Lan bên đống lửa phân tích Thiên Ngoại Lưu Tinh, còn đám tang nhà họ Từ khiến Trương Tấn đóng vai hiếu tử hoàn hảo.
+
+**Tập 95** (chương 94): Đêm đó có người đào mộ Từ Quang Doãn, và người bới mộ là Từ Thiên Thiên còn sống, thề trả thù. Cùng lúc, sứ giả Quốc vương đến phủ Bá tước, triệu tập Huyền Vũ và Tấn Hải vào phiên xử đảo Kim Sơn, nơi Thẩm Lãng đến đối chất một mình.
+
+**Tập 96** (chương 95): Quốc vương quyết định tranh đảo Kim Sơn bằng ba trận: chiến văn, chiến võ, chiến quân, ai thắng hai trận giữ đảo mãi mãi. Hai bên đóng dấu hiệp ước. Song song, hồi tưởng cho thấy Từ Thiên Thiên đã tìm lối thoát bí mật trong căn phòng cháy.
+
+**Tập 97** (chương 96): Từ Thiên Thiên bị hải tặc bắt, dùng chuyện kho bạc bí mật để câu giờ. Cô dẫn chúng vào hầm chứa axit sunfuric của Từ gia, và cái kho báu thành cái bẫy hủy diệt bọn chúng. Cô thoát ra, bê bết máu, lê bước tới tìm Thẩm Lãng.
+
+**Tập 98** (chương 97): Thẩm Lãng chuẩn bị đủ cho ba trận giành đảo Kim Sơn: văn, võ, quân. Rồi Từ Thiên Thiên bê bết máu đến Bá tước phủ, báo tin hải tặc đang đầu độc giếng, và xin anh giúp cô báo thù Trương Xung, Trương Tấn. Anh đồng ý, đổi lấy một cái giá.
+
+**Tập 99** (chương 98): Từ Thiên Thiên bỏ đi, Mộc Lan trở về hỏi tình hình giết hải tặc, còn Thẩm Lãng nhận được thiệp mời yến tiệc của Trương Xung. Trên đường tới tiệc, Trương Xuân Hoa, con gái thái thú, đã chờ sẵn trên xe ngựa để dò la anh bằng mỹ nhân kế, nhưng người bị dò hóa ra lại là cô.
+
+**Tập 100** (chương 99): Thẩm Lãng từ chối mỹ nhân kế của Trương Xuân Hoa khiến cô tức giận bỏ đi, rồi bước vào yến tiệc ở phủ thành chủ. Anh gặp thống đốc Chúc Nhung, thế tử Tấn Hải, Ngũ Nguyên Hóa, nhưng cả bàn tiệc lần lượt nhắm vào anh, đỉnh điểm là Chúc Văn Hoa đọc thơ khen Xuân Hoa để làm khó.

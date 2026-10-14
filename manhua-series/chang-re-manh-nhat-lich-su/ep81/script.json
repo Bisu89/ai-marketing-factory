@@ -1,0 +1,167 @@
+{
+  "title": "Lý Văn Chính tuyên bố Quốc quân không dám giết hắn, nhưng chính Quốc quân đã ra lệnh lăng trì!?",
+  "chapters": "80",
+  "source_dir": "manhua-recap/crmn_ep81",
+  "description": "Thẩm Lãng đứng giữa đêm trước đội quân Lý Văn Chính và báo tin Hắc Thủy Đài sắp tới. Hóa ra từ nửa tháng trước anh đã bày xong một ván cờ bằng mỹ nhân kế và búp bê yểm thái tử, khiến Quốc quân ra lệnh lăng trì Lý Văn Chính.\nReview Chàng Rể Mạnh Nhất Lịch Sử – Tập 81.",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "thumbnail": {
+    "text": "QUỐC QUÂN RA LỆNH LĂNG TRÌ!",
+    "prompt": "Vertical 9:16 anime-style: a night square before a palace, a sinister official in a black hat shaking with terror as masked soldiers on horseback surround him, a calm long-haired young man in a dark blue collar robe smiling in the foreground. No text, leave top 25% empty."
+  },
+  "beats": [
+    {
+      "panel": "p002.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Giữa đêm, Thẩm Lãng đứng trước Lý Văn Chính và đám binh sĩ, bảo hắn đừng diễn xiếc như một tên vô dụng nữa."
+    },
+    {
+      "panel": "p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lý Văn Chính cười nhạt: sức mạnh tuyệt đối sẽ áp đảo mọi âm mưu, mưu kế của ngươi chẳng qua chỉ là trò tưởng tượng."
+    },
+    {
+      "panel": "p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng bình thản đáp: sáu tiếng trước, người của Hắc Thủy Đài đã bước vào Nộ Giang quân thành tìm hắn, giờ họ đang trên đường tới Huyền Vũ."
+    },
+    {
+      "panel": "p006.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lý Văn Chính nhìn anh như nhìn người điên: ngươi đang nói cái gì vậy?"
+    },
+    {
+      "panel": "p007.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng chỉ lắc đầu: ngươi sắp chết rồi, ngay cả mặt trời ngày mai ngươi cũng không nhìn thấy nữa."
+    },
+    {
+      "panel": "p008.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lý Văn Chính cười lớn: ai dám giết ta? Quốc quân chỉ phạt ta lương bổng một năm thôi, ngài xem trọng ta như thế!"
+    },
+    {
+      "panel": "p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng đáp: nửa tháng trước, kết cục của ngươi đã được định sẵn, ta chỉ cách quốc đô ngàn dặm mà vẫn thực hiện được mưu kế này."
+    },
+    {
+      "panel": "p010.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bỗng cả đội cao thủ Hắc Thủy Đài kéo tới, hô vang: mời Kim Mộc Lan tiểu thư theo chúng ta một chuyến."
+    },
+    {
+      "panel": "p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cao thủ Hắc Thủy Đài, móng vuốt của Quốc quân, chỉ nghe lệnh Quốc quân, không thuộc bộ môn nào, hô to: Lý Văn Chính ở đâu!"
+    },
+    {
+      "panel": "p016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sứ giả Hắc Thủy Đài buộc tội kỵ binh của Huyền Vũ Bá tước phủ gây thương vong cho bách tính, và Lý Văn Chính vội ra lệnh giam người lại."
+    },
+    {
+      "panel": "p018.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một lúc sau, ba người Thẩm Lãng đứng giữa đội Hắc Thủy Đài, im lặng đến mức nghe rõ cả tiếng gió."
+    },
+    {
+      "panel": "p022.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lý Văn Chính hoảng hốt: Quốc quân không thể nào muốn giết ta, chư vị chắc chắn có sự nhầm lẫn!"
+    },
+    {
+      "panel": "p023.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn chỉ tay mắng: Thẩm Lãng, tên vô sỉ nhà ngươi, ngươi dùng mưu kế gì mà khiến Quốc quân thay đổi ý chỉ?"
+    },
+    {
+      "panel": "p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thật ra từ nửa tháng trước, Thẩm Lãng đã bố trí xong, nhưng Quốc quân vốn không muốn xử Lý Văn Chính."
+    },
+    {
+      "panel": "p026.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh tìm tới hoa khôi Hà Vân Vân, người Lý Văn Chính ái mộ nhiều năm."
+    },
+    {
+      "panel": "p031.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng giấu tên bài thơ Minh Nguyệt Kỳ Thời Hữu cho Vân Vân giúp nàng đoạt hoa khôi, rồi thiết kế bộ trang phục biểu diễn."
+    },
+    {
+      "panel": "p032.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Khi biểu diễn cho Vương thái hậu, nàng làm cả cung kinh diễm, khiến Quốc quân nhớ mãi ánh mắt nàng và gọi vào cung."
+    },
+    {
+      "panel": "p034.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hà Vân Vân là danh kỹ, dễ dàng chiếm được cảm tình của Quốc quân, và bài thơ của Lý Văn Chính từ xưa đã truyền khắp cung, nên nàng thành khách quen."
+    },
+    {
+      "panel": "p035.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Quốc quân bạo nộ khi phát hiện mình bị lừa gạt, liền phái người điều tra, và tìm thấy ngay một con búp bê yểm dưới giường của Lý Văn Chính."
+    },
+    {
+      "panel": "p036.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Búp bê yểm đó ghi tên thái tử, nên Lý Văn Chính trở thành kẻ trù ếm thái tử, không bao giờ thoát tội."
+    },
+    {
+      "panel": "p037.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Để tránh tranh đấu giữa các phe, Quốc quân giấu kín việc này, chỉ phái người đi xử Lý Văn Chính một cách lặng lẽ."
+    },
+    {
+      "panel": "p039.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lý Văn Chính gào lên: Thẩm Lãng, rốt cuộc ngươi đã làm gì? Nói cho ta biết, để ta chết cho rõ ràng!"
+    },
+    {
+      "panel": "p040.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng ôm tai giả điếc, cười rằng mình chỉ ở nhà bầu bạn với nương tử, có thời gian đâu mà hại hắn."
+    },
+    {
+      "panel": "p042.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Theo chỉ ý Quốc quân, Lý Văn Chính một bên bị lăng trì, một bên uống thuốc sâm giữ mạng, cho tới khi vào quốc đô mới được chết."
+    },
+    {
+      "panel": "p043.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Quốc quân căm ghét hắn thấu xương, nên bắt hắn chết cực kỳ đau khổ, một tiếng thét vang vọng giữa đêm."
+    }
+  ]
+}

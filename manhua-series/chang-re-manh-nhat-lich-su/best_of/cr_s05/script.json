@@ -1,0 +1,83 @@
+{
+  "title": "Chàng rể đo đường kính mặt trời bằng một cây thước, đại sư nghẹn lời!?",
+  "chapters": "90",
+  "source_dir": "manhua-recap/crmn_ep91",
+  "description": "Thẩm Lãng tính khoảng cách và đường kính mặt trời bằng hình học để vào Thiên Nhai Hải Các, trong khi nhà họ Từ phát hiện vải có độc.\nReview Chàng Rể Mạnh Nhất Lịch Sử – Short best-of.",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "thumbnail": {
+    "text": "ĐO MẶT TRỜI BẰNG THƯỚC!",
+    "prompt": "Vertical 9:16 anime-style: a bright courtyard, a young man in dark blue kneeling to measure a shadow with a long ruler while an old bald scholar watches in shock, lightning behind them. No text, leave top 25% empty."
+  },
+  "beats": [
+    {
+      "panel": "crmn_ep91/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Chàng rể này không đánh nhau, cũng chẳng làm thơ, hắn chỉ ngồi xuống và đo mặt trời bằng một cây thước."
+    },
+    {
+      "panel": "crmn_ep91/p006.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đại sư sững sờ, tia chớp xanh bùng lên quanh người ông: đại sư, ta có cần tiếp tục không?"
+    },
+    {
+      "panel": "crmn_ep91/p012.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Mộc Lan thầm nghĩ: vừa nãy ta còn cảm thấy tiểu tử yếu đuối này không xứng với ta, bây giờ ta cảm thấy tiểu tử này không xứng với hắn."
+    },
+    {
+      "panel": "crmn_ep91/p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đại sư bảo: đi, theo ta vào Thiên Nhai Hải Các!"
+    },
+    {
+      "panel": "crmn_ep91/p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trong đại trạch Từ gia, thương nhân Tây Vực thốt lên: đẹp quá! Những tấm lụa này đẹp quá, đây quả thực chính là kiệt tác của thiên thần đó!"
+    },
+    {
+      "panel": "crmn_ep91/p033.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tiếng la: aaa! Có độc! Y phục này có độc!"
+    },
+    {
+      "panel": "crmn_ep91/p040.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Từ Thiên Thiên chết lặng, nước mắt rơi giữa tiếng la hét: aaaa, chết người rồi!"
+    },
+    {
+      "panel": "crmn_ep91/p050.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cùng lúc đó trong thư viện Thiên Nhai Hải Các, Thẩm Lãng ngồi đọc bí tịch."
+    },
+    {
+      "panel": "crmn_ep91/p056.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Các học sĩ già bên cạnh ho khan: ngày càng bại hoại! Mười tám năm trước Trương Ngọc Âm cũng nói mình mười tám tuổi, bây giờ vẫn còn mười tám."
+    },
+    {
+      "panel": "crmn_ep91/p058.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngọc Âm hỏi: đệ đệ, thực ra đệ không nói đến muốn mượn kiếm pháp này, người đến mượn sách của Nam Hải rất nhiều, những cuốn sách này của đệ khiến ta không hiểu nổi."
+    },
+    {
+      "panel": "crmn_ep91/p064.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Nửa giờ sau, Thẩm Lãng đã đọc xong, thở ra: phù, xong rồi. Giống như Kim Trụ nói, bí tịch này có hai phần, một âm một dương, đồng sinh đồng khắc."
+    }
+  ]
+}

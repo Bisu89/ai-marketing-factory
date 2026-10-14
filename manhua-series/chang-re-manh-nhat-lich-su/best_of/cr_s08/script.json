@@ -1,0 +1,77 @@
+{
+  "title": "Chàng rể giải mã kiếm pháp vô địch bằng từ trường, nhờ vợ phá chiêu!?",
+  "chapters": "93",
+  "source_dir": "manhua-recap/crmn_ep94",
+  "description": "Bên đống lửa, Thẩm Lãng phân tích kiếm pháp Thiên Ngoại Lưu Tinh của Đường Viêm, tìm ra phong nhãn để phá chiêu.\nReview Chàng Rể Mạnh Nhất Lịch Sử – Short best-of.",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "thumbnail": {
+    "text": "KIẾM PHÁP LÀ TỪ TRƯỜNG!",
+    "prompt": "Vertical 9:16 anime-style: a campfire clearing at dusk, a red-haired woman in white sitting with a long-haired young man beside her, sparks rising, a full moon above. No text, leave top 25% empty."
+  },
+  "beats": [
+    {
+      "panel": "crmn_ep94/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Kiếm pháp vô địch thiên hạ, và chàng rể giải thích nó chỉ bằng một chữ: nam châm."
+    },
+    {
+      "panel": "crmn_ep94/p006.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Kim Sĩ Anh ra tay đi: Sĩ Anh, ra tay đi!"
+    },
+    {
+      "panel": "crmn_ep94/p017.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn hô to: Huyền Vũ Bá, vợ ta nếu đã không ở đây, vậy ngươi nhanh chóng đưa tiền đi!"
+    },
+    {
+      "panel": "crmn_ep94/p022.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thuộc hạ Cửu Kiều ôm hòm vàng: đại ca, tiền lấy về rồi."
+    },
+    {
+      "panel": "crmn_ep94/p029.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Anh nhún vai: không, bởi vì hắn tên là Vô Cương, cương không nổi, cho nên hằng nga rất an toàn."
+    },
+    {
+      "panel": "crmn_ep94/p034.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mộc Lan ngồi ngay ngắn: phu quân, xin hãy chỉ bảo."
+    },
+    {
+      "panel": "crmn_ep94/p040.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Anh nói tiếp: mật tích Thiên Ngoại Lưu Tinh phân thành chính phản âm dương, mật chính về kiếm pháp, mật phản về kiếm pháp phá giải, và phong pháp rất đơn giản, gió lốc vô cùng mạnh, nhưng trong phong nhãn mắt gió lại cũng an toàn."
+    },
+    {
+      "panel": "crmn_ep94/p046.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nàng hôn lên má anh, khiến anh đỏ mặt."
+    },
+    {
+      "panel": "crmn_ep94/p053.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sau khi đợi cốt của Từ Quang Doãn và Từ Thiên Thiên xuống mộ, Trương Tấn đau lòng khóc lóc đến ngất xỉu, rồi nói với tổ mẫu của Từ gia muốn trả lại sinh lễ, hủy bỏ hôn ước."
+    },
+    {
+      "panel": "crmn_ep94/p061.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Trương gia diễn một trận như này, trong thành Huyền Vũ không ai là không tán thưởng, hình như Trương Tấn đã thực sự trở thành một người đàn ông coi trọng tình nghĩa trong miệng mọi người."
+    }
+  ]
+}

@@ -1,0 +1,233 @@
+{
+  "title": "Chàng rể phi ngựa về phủ ôm vợ ghen, còn cha Từ Thiên Thiên uống thuốc xong thì hộc máu gục xuống!?",
+  "chapters": "91",
+  "source_dir": "manhua-recap/crmn_ep92",
+  "description": "Trên đường về phủ Bá tước, Thẩm Lãng và Mộc Lan cưỡi ngựa trêu nhau vì mùi nước hoa. Ở Từ gia, Trương Tấn ôm Từ Thiên Thiên đang suy sụp, thề không từ hôn, rồi Từ Quang Doãn uống thuốc xong đột ngột hộc máu.\nReview Chàng Rể Mạnh Nhất Lịch Sử – Tập 92.",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "thumbnail": {
+    "text": "THUỐC CÓ ĐỘC?",
+    "prompt": "Vertical 9:16 anime-style: a lantern-lit room, a man with a purple headband spitting blood and collapsing beside a stunned young man in green robes holding a bowl, shattered cup on the floor, dramatic shadows. No text, leave top 25% empty."
+  },
+  "beats": [
+    {
+      "panel": "p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Trên đường hai người trở về Bá tước phủ, ngựa phi như bay giữa rừng."
+    },
+    {
+      "panel": "p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mộc Lan hỏi: phu quân, trên người chàng có mùi của nữ nhân. Anh luống cuống: không, không có, nương tử nàng sai rồi, đấy là mùi của Ngọc Chuyên."
+    },
+    {
+      "panel": "p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nàng cười: chàng lớn như vậy, nên tự mình cười ngứa đi."
+    },
+    {
+      "panel": "p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh vội giải thích: nương tử, chuyện này không liên quan đến ta, là nữ nhân quyết ngồi cạnh ta, ta chính nghĩa lại ngàn có ý tứ bằng lời nói, nếu không đẩy nàng ra thì không còn hậu quả nào khó lường."
+    },
+    {
+      "panel": "p006.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mộc Lan nghiêm túc nhắc: lúc đó ta nghiêm túc nói, ta là người đã có nương tử, nương tử của ta có đáng yêu, hy vọng Ngọc Âm tự trọng."
+    },
+    {
+      "panel": "p007.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh đồng ý: được thôi, ngay cả tên cô ta cũng không biết."
+    },
+    {
+      "panel": "p008.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nàng nheo mắt: ơ... nương tử, một mình ta cười ngứa đó, rồi nàng bất ngờ đạp anh làm anh ngã."
+    },
+    {
+      "panel": "p011.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh vội túm lấy nàng, ôm vào lòng giữa lúc ngựa phi nước đại."
+    },
+    {
+      "panel": "p012.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh nói: nương tử, nàng thật tốt, nàng mãi mãi là duy nhất, nữ nhân khác chỉ là hoa dại bên đường, trong tim ta không thể nhét thêm ai khác, nhiều nhất cũng chỉ cho thêm chút mùi."
+    },
+    {
+      "panel": "p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nàng đỏ mặt thầm nghĩ: đồ khốn, lại có thể đem ngoại tình nói thành thanh tao thoát tục như vậy!"
+    },
+    {
+      "panel": "p015.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh nói: Thẩm Lang, sắp có thể rồi. Nàng hỏi: nương tử, hôm nay nàng tắm chưa?"
+    },
+    {
+      "panel": "p016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nàng đáp: hôm qua tắm rồi, hôm nay lên đường gấp như vậy thì nào có cơ hội tắm."
+    },
+    {
+      "panel": "p018.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nàng chợt nghĩ: ta, ta không phải chỉ một ngày chưa tắm sao? Điều kiện này còn không cho phép sao? Chiếm tiện nghi xong, chàng còn ghét bỏ ta?"
+    },
+    {
+      "panel": "p021.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Anh cười: đi tắm, để tránh bị chàng ghét bỏ, tô tô."
+    },
+    {
+      "panel": "p023.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một lúc sau, Trương Tấn vội vã đến thành Tấn Hải không ngừng, đem tất cả những chuyện xảy ra ở Từ gia nói với phụ thân Trương Xung."
+    },
+    {
+      "panel": "p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Công thức của Thẩm Lãng có vấn đề, một người đã ra đi, bí mật thư của Ân Nguyên hội đến bái kiến."
+    },
+    {
+      "panel": "p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một người béo cười hỏi: Trương công tử, nếu có thể thành hôn với biểu muội của ta, hồi môn của thư gia là mười vạn tiền vàng, không biết Trương thái thú nghĩ thế nào?"
+    },
+    {
+      "panel": "p026.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trương Xung bác bỏ: hôn ước của chúng tôi và Từ gia vẫn còn, không thể hủy bỏ tùy ý."
+    },
+    {
+      "panel": "p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông bảo con: Từ gia bây giờ xảy ra tai họa lớn như vậy, con đi trấn an phụ nữ Từ gia một chút, để bọn họ yên tâm, phải tranh thủ, đừng để Từ gia sụp đổ, thời gian tự sát là trong vòng hai mươi bốn tiếng."
+    },
+    {
+      "panel": "p030.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ban đêm, thành Huyền Vũ, Từ gia."
+    },
+    {
+      "panel": "p033.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Từ Thiên Thiên khóc nức nở: Trương Lang... đều trách em quá sốt ruột, Xuân Hoa muội muội từng nhắc em, bảo em nhất định phải cẩn thận, nhưng em vì lợi ích tiền tài làm mê muội tâm can..."
+    },
+    {
+      "panel": "p034.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trương Tấn dịu dàng: được rồi, sự việc đã xảy ra, hối hận cũng không có tác dụng, đừng nghĩ nhiều quá, ngoan ngoãn nghỉ ngơi đi."
+    },
+    {
+      "panel": "p035.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô nói: Trương Lang, nếu anh muốn từ hôn, em có thể hiểu, em sẽ công khai tuyên bố tất cả lỗi là của em."
+    },
+    {
+      "panel": "p036.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh trừng mắt: đừng ngốc, ta sao có thể từ hôn?"
+    },
+    {
+      "panel": "p037.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh vuốt tóc cô: Thiên Thiên, đừng nghĩ ngợi lung tung nữa, chuyện lớn như thế nào ngủ một giấc sẽ qua thôi."
+    },
+    {
+      "panel": "p038.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô gật đầu: ừm. Anh đắp chăn cho cô: ta đi xem nhạc phụ một chút."
+    },
+    {
+      "panel": "p040.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trong phòng khách, Từ Quang Doãn ngồi đó, mặt tái mét."
+    },
+    {
+      "panel": "p041.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Từ Quang Doãn gào: Tấn Nhi, chúng ta vẫn chưa thua, chúng ta vẫn chưa sụp đổ! Những thương nhân ở Tây Thánh, chúng ta chỉ cần đem tiền cọc trả cho bọn họ, bọn họ đừng mơ mộng được bồi thường nữa, ở đây là địa bàn của chúng ta!"
+    },
+    {
+      "panel": "p042.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trương Tấn đáp: phụ thân người không phải Huyền Vũ Bá tước phủ đã sụp đổ rồi, chúng ta nhận được phần ba vạn mẫu ruộng đâu, chúng ta bán đi tất cả, tất cả cho phụ thân con cầm để mưu cầu chức quan."
+    },
+    {
+      "panel": "p043.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh dâng bát thuốc: nhạc phụ đại nhân, bình tĩnh, uống thuốc trước đi."
+    },
+    {
+      "panel": "p044.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Từ Quang Doãn nắm tay con rể dặn: con rể, ngươi nhất định phải đồng ý với ta, sau khi Kim gia tộc kim thị diệt vong, nhất định phải đem Thẩm Lãng giao cho ta, ta sẽ lột hắn, rút gân, nghiền xương cốt thành bụi, ta nhất định phải đem cả nhà hắn chết không toàn thây!"
+    },
+    {
+      "panel": "p044.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trương Tấn gật đầu: được, uống thuốc trước đã."
+    },
+    {
+      "panel": "p046.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Từ Quang Doãn nốc cạn bát thuốc, rồi hét lên: tiểu súc vật Thẩm Lãng, ta và hắn chết không ngừng, ta sẽ xé xác hắn thành vạn mảnh!"
+    },
+    {
+      "panel": "p047.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bỗng ông trợn mắt, máu mũi trào ra, và khụ khụ ho ra máu."
+    },
+    {
+      "panel": "p048.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông ngã gục xuống đất, Trương Tấn đứng chết lặng."
+    },
+    {
+      "panel": "p049.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Từ Quang Doãn nằm sóng soài giữa vũng máu, thều thào: thuốc... trong thuốc có độc?"
+    }
+  ]
+}

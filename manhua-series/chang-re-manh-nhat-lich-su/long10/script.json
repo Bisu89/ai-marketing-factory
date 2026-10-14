@@ -1,0 +1,1186 @@
+{
+  "template": "manhua_recap_long_vi",
+  "title": "Chàng Rể Mạnh Nhất Lịch Sử | Tóm tắt tập 91-100",
+  "chapters": "90-99",
+  "source_dir": "manhua-recap/crmn_ep91",
+  "description": "Tóm tắt tập 91-100 Chàng Rể Mạnh Nhất Lịch Sử: đo mặt trời bằng thước, Từ gia sụp đổ vì thuốc độc và lửa, vua hải tặc đòi nợ, ba trận giành đảo Kim Sơn, và yến tiệc đầy cạm bẫy của thái thú.",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "thumbnail": {
+    "text": "BA TRẬN GIÀNH ĐẢO KIM SƠN!",
+    "prompt": "Vertical 9:16 anime-style: a grand hall where a long-haired young man in white stands before a haughty prince and many officials, a scroll with three red labels on the table, a pirate prince in the background. No text, leave top 25% empty."
+  },
+  "beats": [
+    {
+      "panel": "crmn_ep91/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Đại sư nhắc: không giải ra được thì đừng lãng phí thời gian nữa, đến từ đâu thì đi về đó, tiền cũng sẽ không trả lại cho các ngươi.",
+      "section": "Tập 91: Đo mặt trời bằng thước"
+    },
+    {
+      "panel": "crmn_ep91/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tiếp theo anh dùng thước thép đo bóng ở hai nơi, rồi đúng mười hai giờ trưa đo độ dài của bóng cái thước."
+    },
+    {
+      "panel": "crmn_ep91/p006.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đại sư sững sờ, tia chớp xanh bùng lên quanh người ông: đại sư, ta có cần tiếp tục không?"
+    },
+    {
+      "panel": "crmn_ep91/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Rồi anh nói một con số: hai trăm chín mươi tám vạn dặm!"
+    },
+    {
+      "panel": "crmn_ep91/p012.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Mộc Lan thầm nghĩ: vừa nãy ta còn cảm thấy tiểu tử yếu đuối này không xứng với ta, bây giờ ta cảm thấy tiểu tử này không xứng với hắn."
+    },
+    {
+      "panel": "crmn_ep91/p015.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngọc Nương cuống quýt: lão nương không rảnh, cho ta thời gian đi tìm, bỏ đi, ấy, muốn mượn sách gì thì nói mau! Tỷ rất bận...ể!"
+    },
+    {
+      "panel": "crmn_ep91/p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng đáp: ta muốn mượn Thiên Ngoại Lưu Tinh. Ngọc Âm cười: có, tỷ đi lấy cho đệ!"
+    },
+    {
+      "panel": "crmn_ep91/p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Từ Thiên Thiên cười nói: nếu cứ như thế này, không chỉ thị trường của Việt Quốc mà thị trường của cả bốn phương Từ gia ta cũng có thể chiếm lĩnh rồi."
+    },
+    {
+      "panel": "crmn_ep91/p031.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô nghiến răng nghĩ: Thẩm Lãng, tên ngu ngốc có mắt như mù nhà ngươi, thế mà lại đưa phương pháp trị giá liên thành cho ta, bây giờ Từ gia sụp đổ, mà kẻ ngã xuống ngược lại chính là ngươi!"
+    },
+    {
+      "panel": "crmn_ep91/p035.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Từ Thiên Thiên tưởng rằng bản thân đã lấy được hai công thức nhuộm của Thẩm Lãng, nhưng lại không ngờ chất nhuộm đó là quả bom hẹn giờ."
+    },
+    {
+      "panel": "crmn_ep91/p038.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Từ Quang Doãn tái mặt: Thẩm Lãng, nhất định là Thẩm Lãng, ta làm ma cũng không tha cho ngươi!"
+    },
+    {
+      "panel": "crmn_ep91/p040.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Từ Thiên Thiên chết lặng, nước mắt rơi giữa tiếng la hét: aaaa, chết người rồi!"
+    },
+    {
+      "panel": "crmn_ep91/p042.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh còn nhắc khéo: ai ya, lần này Từ gia xong đời hoàn toàn rồi, thẩm lãng ta chỉ cần chút mưu kế là đã hạ được các ngươi rồi."
+    },
+    {
+      "panel": "crmn_ep91/p048.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Từ Thiên Thiên nằm trong lòng hắn khóc nức nở, còn hắn nghiến răng nhìn đám thương nhân ngã gục."
+    },
+    {
+      "panel": "crmn_ep91/p051.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh giơ tấm ngọc xanh lên soi: đây là bí tịch Thiên Ngoại Lưu Tinh? Là bảo vật trấn các của Thiên Nhai Hải Các?"
+    },
+    {
+      "panel": "crmn_ep91/p054.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh dùng mắt thần nhìn: hai mươi ba rưỡi tuổi."
+    },
+    {
+      "panel": "crmn_ep91/p056.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Các học sĩ già bên cạnh ho khan: ngày càng bại hoại! Mười tám năm trước Trương Ngọc Âm cũng nói mình mười tám tuổi, bây giờ vẫn còn mười tám."
+    },
+    {
+      "panel": "crmn_ep91/p058.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngọc Âm hỏi: đệ đệ, thực ra đệ không nói đến muốn mượn kiếm pháp này, người đến mượn sách của Nam Hải rất nhiều, những cuốn sách này của đệ khiến ta không hiểu nổi."
+    },
+    {
+      "panel": "crmn_ep91/p061.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mắt thần của anh quét qua viên ngọc: nhân cầu hợp kim titan! Đã nhập toàn bộ nội dung vào trong não."
+    },
+    {
+      "panel": "crmn_ep91/p064.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nửa giờ sau, Thẩm Lãng đã đọc xong, thở ra: phù, xong rồi. Giống như Kim Trụ nói, bí tịch này có hai phần, một âm một dương, đồng sinh đồng khắc."
+    },
+    {
+      "panel": "crmn_ep92/p001.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trên đường hai người trở về Bá tước phủ, ngựa phi như bay giữa rừng.",
+      "section": "Tập 92: Từ Quang Doãn hộc máu"
+    },
+    {
+      "panel": "crmn_ep92/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nàng cười: chàng lớn như vậy, nên tự mình cười ngứa đi."
+    },
+    {
+      "panel": "crmn_ep92/p006.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mộc Lan nghiêm túc nhắc: lúc đó ta nghiêm túc nói, ta là người đã có nương tử, nương tử của ta có đáng yêu, hy vọng Ngọc Âm tự trọng."
+    },
+    {
+      "panel": "crmn_ep92/p008.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nàng nheo mắt: ơ... nương tử, một mình ta cười ngứa đó, rồi nàng bất ngờ đạp anh làm anh ngã."
+    },
+    {
+      "panel": "crmn_ep92/p012.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh nói: nương tử, nàng thật tốt, nàng mãi mãi là duy nhất, nữ nhân khác chỉ là hoa dại bên đường, trong tim ta không thể nhét thêm ai khác, nhiều nhất cũng chỉ cho thêm chút mùi."
+    },
+    {
+      "panel": "crmn_ep92/p015.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh nói: Thẩm Lang, sắp có thể rồi. Nàng hỏi: nương tử, hôm nay nàng tắm chưa?"
+    },
+    {
+      "panel": "crmn_ep92/p018.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nàng chợt nghĩ: ta, ta không phải chỉ một ngày chưa tắm sao? Điều kiện này còn không cho phép sao? Chiếm tiện nghi xong, chàng còn ghét bỏ ta?"
+    },
+    {
+      "panel": "crmn_ep92/p021.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Anh cười: đi tắm, để tránh bị chàng ghét bỏ, tô tô."
+    },
+    {
+      "panel": "crmn_ep92/p023.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một lúc sau, Trương Tấn vội vã đến thành Tấn Hải không ngừng, đem tất cả những chuyện xảy ra ở Từ gia nói với phụ thân Trương Xung."
+    },
+    {
+      "panel": "crmn_ep92/p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một người béo cười hỏi: Trương công tử, nếu có thể thành hôn với biểu muội của ta, hồi môn của thư gia là mười vạn tiền vàng, không biết Trương thái thú nghĩ thế nào?"
+    },
+    {
+      "panel": "crmn_ep92/p030.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ban đêm, thành Huyền Vũ, Từ gia."
+    },
+    {
+      "panel": "crmn_ep92/p034.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trương Tấn dịu dàng: được rồi, sự việc đã xảy ra, hối hận cũng không có tác dụng, đừng nghĩ nhiều quá, ngoan ngoãn nghỉ ngơi đi."
+    },
+    {
+      "panel": "crmn_ep92/p036.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh trừng mắt: đừng ngốc, ta sao có thể từ hôn?"
+    },
+    {
+      "panel": "crmn_ep92/p038.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô gật đầu: ừm. Anh đắp chăn cho cô: ta đi xem nhạc phụ một chút."
+    },
+    {
+      "panel": "crmn_ep92/p041.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Từ Quang Doãn gào: Tấn Nhi, chúng ta vẫn chưa thua, chúng ta vẫn chưa sụp đổ! Những thương nhân ở Tây Thánh, chúng ta chỉ cần đem tiền cọc trả cho bọn họ, bọn họ đừng mơ mộng được bồi thường nữa, ở đây là địa bàn của chúng ta!"
+    },
+    {
+      "panel": "crmn_ep92/p043.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh dâng bát thuốc: nhạc phụ đại nhân, bình tĩnh, uống thuốc trước đi."
+    },
+    {
+      "panel": "crmn_ep92/p044.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trương Tấn gật đầu: được, uống thuốc trước đã."
+    },
+    {
+      "panel": "crmn_ep92/p047.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bỗng ông trợn mắt, máu mũi trào ra, và khụ khụ ho ra máu."
+    },
+    {
+      "panel": "crmn_ep92/p049.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Từ Quang Doãn nằm sóng soài giữa vũng máu, thều thào: thuốc... trong thuốc có độc?"
+    },
+    {
+      "panel": "crmn_ep93/p001.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Từ Quang Doãn thì thào: tại sao... người có thể từ hôn, tại sao lại muốn giết ta? Trương Tấn đáp: nhạc phụ đại nhân, ta có thể mất vợ nhưng không thể hủy hôn, nhà ta là muốn nhân phẩm.",
+      "section": "Tập 93: Hỏa hoạn Từ gia, vua hải tặc đòi nợ"
+    },
+    {
+      "panel": "crmn_ep93/p002.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Hắn sở dĩ có ngày hôm nay, không chỉ bởi vì đắc tội với kẻ địch như Thẩm Lãng, mà là bởi hắn lòng tham không đáy, lựa chọn kết thân với con sói như Trương Xung."
+    },
+    {
+      "panel": "crmn_ep93/p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Từ Quang Doãn nằm sóng soài trên nền nhà, còn Trương Tấn đứng dậy, chậm rãi lau tay."
+    },
+    {
+      "panel": "crmn_ep93/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Rồi hắn khẽ nói: Trương Tấn ta không có sự lựa chọn, xin lỗi."
+    },
+    {
+      "panel": "crmn_ep93/p015.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Họ hắt dầu lên khắp nơi."
+    },
+    {
+      "panel": "crmn_ep93/p021.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô gào: Trương Tấn mau cứu ta... không, là ngươi phóng hỏa, Trương Tấn ngươi sao lại làm như vậy?"
+    },
+    {
+      "panel": "crmn_ep93/p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn bắt đầu hô to: hỏa hoạn rồi, hỏa hoạn rồi! Mau cứu người! Từ gia cháy rồi, cháy rồi!"
+    },
+    {
+      "panel": "crmn_ep93/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trên mảnh giấy ghi: Thẩm Lãng, ta và ngươi không đội trời chung, để lại bởi người sắp chết."
+    },
+    {
+      "panel": "crmn_ep93/p031.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Có khách đến: hành lễ! Hiếu tử hành lễ! Người ta trầm trồ: Trương công tử nén đau thương."
+    },
+    {
+      "panel": "crmn_ep93/p034.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Không chỉ có Từ gia đang ồn ào ở thành Huyền Vũ, lúc đó một nhóm khách không mời mà đến cũng đã đến phủ Bá tước Huyền Vũ."
+    },
+    {
+      "panel": "crmn_ep93/p037.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Dân làng kêu lên: có giặc đến! Nhanh chạy đi!"
+    },
+    {
+      "panel": "crmn_ep93/p041.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Dân làng vỡ òa: được, được cứu rồi!"
+    },
+    {
+      "panel": "crmn_ep93/p049.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh ho ra máu, nói: đây... thực lực chênh lệch quá lớn rồi."
+    },
+    {
+      "panel": "crmn_ep93/p053.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đội trưởng nhân sĩ quát: giết!"
+    },
+    {
+      "panel": "crmn_ep93/p059.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một người trong đội hô: Cửu Kiều! Ngưng gió thổi ngang ngược đi! Quân đội riêng của phủ Bá tước Huyền Vũ, Kim Sĩ Anh phó tư lệnh, người cao thủ đứng đầu."
+    },
+    {
+      "panel": "crmn_ep93/p063.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Kim Sĩ Anh lạnh lùng: Cửu Kiều, thời gian chưa đến, người đến làm gì?"
+    },
+    {
+      "panel": "crmn_ep93/p066.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hiệp ước đình chiến là Bá tước Huyền Vũ ký trước Kim Vũ Kỳ."
+    },
+    {
+      "panel": "crmn_ep93/p068.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Không có sự lựa chọn, Kim Vũ để Cửu Thiên Nguy hạ cố ký hiệp ước, bồi thường phương nào mười vạn tiền vàng, thanh toán trong ba mươi năm, cộng lãi chín ngàn tiền vàng mỗi năm."
+    },
+    {
+      "panel": "crmn_ep93/p072.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn chỉ vào ngực: xem ngực của ta, tại sao vẫn còn hình xăm? Đây là vị trí đặc biệt dành riêng cho Mộc Lan!"
+    },
+    {
+      "panel": "crmn_ep94/p001.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mấy năm trước, Cửu Kiều khi nhìn thấy Mộc Lan đã hứng thú, trực tiếp đến phủ Bá tước cầu hôn và đồng thời đòi tất cả nợ cũ, còn sáng lấy ra ba vạn kim tệ làm sính lễ.",
+      "section": "Tập 94: Giải mã Thiên Ngoại Lưu Tinh"
+    },
+    {
+      "panel": "crmn_ep94/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cửu Kiều cười: ai cũng biết, phủ Bá tước Huyền Vũ sắp bị hủy diệt, nếu ta hơn hai tháng sau mới đến, phủ Bá tước chỉ còn lại một cái xác chết thôi!"
+    },
+    {
+      "panel": "crmn_ep94/p007.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hai bên giao chiến, Kim Sĩ Anh bị Cửu Kiều chém văng khỏi ngựa."
+    },
+    {
+      "panel": "crmn_ep94/p015.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thủ hạ khen: Cửu công tử quả nhiên đao thể độc ác. Cửu Kiều hỏi: ngươi cũng cảm thấy ta đao thể độc ác sao?"
+    },
+    {
+      "panel": "crmn_ep94/p018.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bên cạnh, Kim Sĩ Anh nghiến răng: không thể giết hắn, phải giữ hắn lại... Lang nhi đã nói, người này bắt buộc phải giữ lại!"
+    },
+    {
+      "panel": "crmn_ep94/p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cho nên chúng ta nhất định phải giữ lại hắn, chỉ có thời gian thích hợp mới có thể giết hắn."
+    },
+    {
+      "panel": "crmn_ep94/p023.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cửu Kiều nói: không tệ, Kim gia các ngươi sớm đã chuẩn bị xong rồi, cắt đi."
+    },
+    {
+      "panel": "crmn_ep94/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trong rừng đêm, Thẩm Lãng nằm trong lòng Mộc Lan bên đống lửa. Nàng hỏi: nương tử, bây giờ trên mặt trăng chỉ có hai người lớn sống đó là Ngô Cương và Hằng Nga, chắc chắn sẽ không đi dụ dỗ cô ấy?"
+    },
+    {
+      "panel": "crmn_ep94/p029.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Anh nhún vai: không, bởi vì hắn tên là Vô Cương, cương không nổi, cho nên hằng nga rất an toàn."
+    },
+    {
+      "panel": "crmn_ep94/p030.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mộc Lan nhéo tai anh: phu quân, mỗi ngày trong đầu chàng đều là những thứ gì vậy? Anh kêu: nương tử đau đau, nhẹ chút!"
+    },
+    {
+      "panel": "crmn_ep94/p033.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh nói: nương tử, đến nay kiếm pháp Thiên Ngoại Lưu Tinh vẫn không có giải pháp, cho dù là ai đi khiêu chiến Đường Viêm, đều sẽ bị một chiêu khiêu chiến chém chết, nàng muốn biết nguyên lý của chiêu kiếm pháp này không?"
+    },
+    {
+      "panel": "crmn_ep94/p036.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh kể: người luyện tập bộ kiếm pháp này mỗi ngày đều phải uống một loại bột kim loại đặc thù, loại kim loại này đến từ thiên ngoại viên thiết."
+    },
+    {
+      "panel": "crmn_ep94/p038.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mộc Lan hỏi: vậy phu quân có giải pháp không? Tranh đoạt đảo Kim Sơn sắp bắt đầu rồi. Anh đáp: thời gian không đợi người, ta phải nhanh chóng tu luyện!"
+    },
+    {
+      "panel": "crmn_ep94/p040.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Anh nói tiếp: mật tích Thiên Ngoại Lưu Tinh phân thành chính phản âm dương, mật chính về kiếm pháp, mật phản về kiếm pháp phá giải, và phong pháp rất đơn giản, gió lốc vô cùng mạnh, nhưng trong phong nhãn mắt gió lại cũng an toàn."
+    },
+    {
+      "panel": "crmn_ep94/p043.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh bảo: phương pháp của phu quân hẳn là có hiệu quả, hẳn chỉ khi kiếm vương Lý Thiên Thu muốn giết vợ mình, bởi vì khi lộ kiếm đề phá giải này, sự nghiệp của đảo kiếm Nam Hải sẽ tan ra."
+    },
+    {
+      "panel": "crmn_ep94/p045.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nàng cười: phu quân ta là lợi hại nhất, cho dù không tìm thấy sách quý, cũng có thể nghĩ ra phương pháp phá giải kiếm thuật mạnh nhất thiên hạ trong hai ba ngày!"
+    },
+    {
+      "panel": "crmn_ep94/p049.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ba ngày sau, Từ gia chính thức đưa tang."
+    },
+    {
+      "panel": "crmn_ep94/p052.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Dân trong thành xì xào: Trương công tử có tình có nghĩa thật! Nhà Trương thái thú tận tình tận nghĩa."
+    },
+    {
+      "panel": "crmn_ep94/p055.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trương Tấn quỳ xuống: tổ mẫu, đừng nhắc ta như vậy, như vậy ta vẫn còn một tưởng niệm, nếu ngài hủy hôn, ta ngay cả tưởng niệm cũng không có!"
+    },
+    {
+      "panel": "crmn_ep94/p061.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trương gia diễn một trận như này, trong thành Huyền Vũ không ai là không tán thưởng, hình như Trương Tấn đã thực sự trở thành một người đàn ông coi trọng tình nghĩa trong miệng mọi người."
+    },
+    {
+      "panel": "crmn_ep95/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ban đêm, nghĩa địa, trên bia mộ khắc tên Từ Quang Doãn.",
+      "section": "Tập 95: Từ Thiên Thiên bới mộ, hoàng tử xử đảo"
+    },
+    {
+      "panel": "crmn_ep95/p008.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một người khác chỉ: trong quan tài kia có một đống tro cốt, người đẹp đã bị thiêu thành tro bụi, thật đáng tiếc."
+    },
+    {
+      "panel": "crmn_ep95/p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Người mặc áo choàng ngồi xuống, bới đống đất trên mộ."
+    },
+    {
+      "panel": "crmn_ep95/p015.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Cô thề: cho dù phải trả bất cứ giá nào!"
+    },
+    {
+      "panel": "crmn_ep95/p016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Gió thổi bão giông sắp đến trong thành Huyền Vũ: Trương Xung thái thú xử lý xong công việc của Từ gia, lại sắp phải bắt đầu trận chiến thứ hai."
+    },
+    {
+      "panel": "crmn_ep95/p018.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bá tước Huyền Vũ hỏi: trận ở đảo Kim Sơn vốn dĩ là bọn họ dùng võ khí sắc bén để tấn công phủ Bá tước, nhưng vẫn phải bỏ đến hòa giải sao? Sứ giả truyền chỉ của Quốc vương đã đến phủ thống đốc tỉnh Thiên Nam rồi?"
+    },
+    {
+      "panel": "crmn_ep95/p022.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ban đêm, thành Huyền Vũ, kỵ binh phi ngựa dưới ánh đuốc, tiếng vó ngựa vang dội: tiêu cấm! Tiêu cấm!"
+    },
+    {
+      "panel": "crmn_ep95/p028.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Người bước ra là con trai thứ tư của Quốc vương Việt Quốc, Ninh Trấn, mặc áo vàng cam, đứng giữa quan chức Thiên Nam."
+    },
+    {
+      "panel": "crmn_ep95/p033.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tất cả quỳ rạp, bên trên chỉ có Ninh Trấn ngồi thẳng."
+    },
+    {
+      "panel": "crmn_ep95/p036.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cả đoàn người lũ lượt rút đi trên đường dài, ánh đuốc kéo dài tận chân trời."
+    },
+    {
+      "panel": "crmn_ep95/p038.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ninh Trấn cầm cuộn chiếu chỉ hô: bệ hạ có chỉ, Bá tước Huyền Vũ quỳ xuống tiếp chỉ!"
+    },
+    {
+      "panel": "crmn_ep95/p042.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tấn Hải Bá tước hỏi: Kim Mộc Lan... Bá tước Huyền Vũ, Thẩm Lãng ở đâu rồi? Hắn không phải cố vấn của Bá tước Huyền Vũ sao? Tại sao không có ở đây?"
+    },
+    {
+      "panel": "crmn_ep95/p045.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ninh Trấn nhếch môi: bị bệnh không ra được? Hừ... Ta và thống đốc lần này chỉ mang tai đến, không mang theo miệng, các ngươi có thể nói gì cũng được."
+    },
+    {
+      "panel": "crmn_ep95/p048.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông đòi: Quốc vương nhất định sẽ chủ trì công đạo cho bọn ta!"
+    },
+    {
+      "panel": "crmn_ep95/p051.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ninh Trấn không cung cấp công văn gì, chỉ trực tiếp nói: phủ Bá tước Huyền Vũ không hiểu quy tắc như vậy sao?"
+    },
+    {
+      "panel": "crmn_ep95/p053.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Dựa theo pháp luật của tổ tông, còn không nên có chính sách mới sao!"
+    },
+    {
+      "panel": "crmn_ep95/p058.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trong thư phòng, Bá tước Tấn Hải Đường Luân nhìn thấy Thẩm Lãng đã không xuất hiện trong toàn bộ quá trình trước."
+    },
+    {
+      "panel": "crmn_ep95/p061.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đường Luân giận dữ: Thẩm Lãng, ngươi đừng tự dụng chuyện nữa! Một trăm năm trước nhà ta mang đảo Kim Sơn cho gia tộc Kim thị? Có khế ước không? Có bằng chứng không?"
+    },
+    {
+      "panel": "crmn_ep95/p064.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tuy nhiên phần đó của phủ Bá tước Huyền Vũ đã mất tích sau cái chết đột ngột của Kim Trụ."
+    },
+    {
+      "panel": "crmn_ep96/p001.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trong phủ Bá tước, một người thầm nói: không phải nói Thẩm Lãng trí tuệ vô song sao, sao lại kinh khủng như vậy? Người thấp kém có chút thông minh, thì cũng chỉ là thằng hề mà thôi!",
+      "section": "Tập 96: Ba trận giành đảo Kim Sơn"
+    },
+    {
+      "panel": "crmn_ep96/p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ninh Trấn thầm nghĩ: đây chính là Thẩm Lãng? Rất có tinh thần mà!"
+    },
+    {
+      "panel": "crmn_ep96/p007.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng nghiến răng nghĩ: tất cả quặng sắt trên đảo Kim Sơn đều ở phía bắc, còn phía nam chỉ có rừng cây và cát, có rảnh để dùng."
+    },
+    {
+      "panel": "crmn_ep96/p010.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ninh Trấn tuyên bố: quả nhân trăm công nghìn việc, không có thời gian để ngày ngày quan tâm chuyện tào lao của các người, lần này dùng một trận để quyết định mọi thứ."
+    },
+    {
+      "panel": "crmn_ep96/p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Người thắng sẽ giành được quyền sở hữu đảo Kim Sơn mãi mãi, còn người thua sẽ phải từ bỏ vĩnh viễn. Chỉ có điều lần này, một trận quyết định mọi thứ, một bên thua thì phải buông bỏ quyền sở hữu."
+    },
+    {
+      "panel": "crmn_ep96/p016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chiến võ: đấu võ thuật tay đôi."
+    },
+    {
+      "panel": "crmn_ep96/p019.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Trong mắt người ngoài cuộc, Kim gia chiến văn và chiến võ nhất định sẽ thua! Kim Mộc Thông? Kim Mộc Lan? Sao có thể là đối thủ của Đường Luân và Đường Viêm được! Tranh giành đảo Kim Sơn, phủ Bá tước Huyền Vũ chết chắc rồi!"
+    },
+    {
+      "panel": "crmn_ep96/p022.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ninh Trấn nói: vậy hai vị Bá tước, chuẩn bị tốt cho ba trận theo đi!"
+    },
+    {
+      "panel": "crmn_ep96/p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Năm ngày sau, ba trận chiến quyết định số mệnh của phủ Bá tước Huyền Vũ sẽ chính thức bắt đầu!"
+    },
+    {
+      "panel": "crmn_ep96/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Từ Thiên Thiên thề trong bóng tối: phụ thân, đợi con báo thù cho người!"
+    },
+    {
+      "panel": "crmn_ep96/p030.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô bước xuống hầm: những thương nhân Tây Vực đó mặc tơ lụa vào thì liền bị bệnh, chắc chắn Thẩm Lãng đã động chân vào phương pháp bào chế thuốc nhuộm."
+    },
+    {
+      "panel": "crmn_ep96/p034.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô thầm nghĩ: lúc trước không nhìn thấy mấy chữ này... sao... lẽ nào đây cũng là thủ đoạn của Thẩm Lãng?"
+    },
+    {
+      "panel": "crmn_ep96/p037.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Từ Thiên Thiên ngâm quần áo trong nước ao trong mật thất, sau đó chạy lăn khỏi đám cháy theo lối thông gió, rồi chạy trốn khỏi khu vực tìm nơi trú ẩn, sống sót qua đêm."
+    },
+    {
+      "panel": "crmn_ep96/p040.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhìn Trương Tấn khóc lóc giả dối, mắt cô run lên: Trương Tấn...!!!"
+    },
+    {
+      "panel": "crmn_ep96/p043.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Từ Thiên Thiên không biết, bởi vì thống đốc và tứ hoàng tử đến, phủ Bá tước phái phản lớn binh lực đến xung quanh phủ Bá tước, tất cả khu vực thành Huyền Vũ, bao gồm trấn, thôn đều cấm đi lại ban đêm."
+    },
+    {
+      "panel": "crmn_ep96/p048.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bên giếng, đám cướp biển đầu quấn dây xanh ném xác vào: hải tặc của Thánh Nộ trào!?"
+    },
+    {
+      "panel": "crmn_ep96/p050.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Từ Thiên Thiên nấp sau tường thì thầm: lầm ra loạn chuyện này, đã phải hai chết biết bao nhiêu người, nhưng hải tặc này thật sự không bằng loài thú. Rút lui là thượng sách..."
+    },
+    {
+      "panel": "crmn_ep96/p053.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đám cướp quay phắt lại: đó! Xem chúng ta phát hiện ra gì nè!"
+    },
+    {
+      "panel": "crmn_ep97/p001.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tên cướp trợn mắt cười: sao ở đây lại có một cô nương xinh đẹp như này chứ? Chà...",
+      "section": "Tập 97: Axit trong kho báu"
+    },
+    {
+      "panel": "crmn_ep97/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô nói tiếp: bọn ta có thể không báo cho thiếu chủ, lát nữa giết chết cô là được?"
+    },
+    {
+      "panel": "crmn_ep97/p007.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn ra lệnh: mẹ kiếp, đi thôi, để lại mười người tiếp tục vứt thi thể xuống giếng, ta cùng bốn tên nữa đưa dân bà này đến Huyền Vũ thành dâng cho thiếu chủ."
+    },
+    {
+      "panel": "crmn_ep97/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô nghĩ: nghĩ đến Thẩm Lãng, nghĩ đến hoàn cảnh Thẩm Lãng phải đối mặt đi."
+    },
+    {
+      "panel": "crmn_ep97/p012.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô ngã, vàng rơi lả tả khỏi người."
+    },
+    {
+      "panel": "crmn_ep97/p015.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn dí dao vào cổ: khuê nữ nhà bình thường sẽ mang theo nhiều tiền thế sao? Sẽ chạy linh tinh khắp nơi lúc nửa đêm sao? Tối hôm nay bị giới nghiêm đấy!"
+    },
+    {
+      "panel": "crmn_ep97/p018.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn giận dữ: còn lừa ta?! Từ Thiên Thiên đã bị thiêu chết rồi! Một tên khác nói: hình như cô ta đúng là Từ Thiên Thiên."
+    },
+    {
+      "panel": "crmn_ep97/p021.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô đáp: Trương Tấn muốn giết ta, ta chạy ra thôi, ta chỉ muốn đi lấy một ít tiền..."
+    },
+    {
+      "panel": "crmn_ep97/p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tên cướp kinh ngạc: ba vạn tiền vàng? Có số tiền này cũng không cần phải lăn lộn cùng tên tiểu hải nữa sao? Có thể chạy xa bay luôn rồi!"
+    },
+    {
+      "panel": "crmn_ep97/p026.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn đẩy cô: Từ Thiên Thiên, đưa bọn ta đến kho bạc, nếu không bọn ta sẽ giết cô!"
+    },
+    {
+      "panel": "crmn_ep97/p029.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trong phòng, hải tặc đứng đầy phía sau, cô run run bước xuống cầu thang dẫn vào kho bí mật."
+    },
+    {
+      "panel": "crmn_ep97/p032.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tên đầu sỏ giật tóc cô: số vàng còn lại đâu? Không phải cô nói có ba vạn sao?"
+    },
+    {
+      "panel": "crmn_ep97/p035.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn bực: chặc, không chém được. Ra, tìm xem có thứ gì nặng đập được không!"
+    },
+    {
+      "panel": "crmn_ep97/p038.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cái vại vỡ tung, chất lỏng xanh lục trào ra và khói độc bốc lên."
+    },
+    {
+      "panel": "crmn_ep97/p041.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Từ Thiên Thiên bò lên cầu thang: sao da của ta lại rát như thế?"
+    },
+    {
+      "panel": "crmn_ep97/p043.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô đẩy tấm ván nặng nề, mồ hôi và máu trộn lẫn."
+    },
+    {
+      "panel": "crmn_ep97/p047.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô cười điên dại: mình giết người rồi, hahaha!"
+    },
+    {
+      "panel": "crmn_ep97/p052.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô thốt lên với một bóng người mơ hồ: Thẩm Lãng, ta đến rồi."
+    },
+    {
+      "panel": "crmn_ep98/p001.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lúc này, Thẩm Lãng đã chuẩn bị đầy đủ cho trận chiến đảo Kim Sơn.",
+      "section": "Tập 98: Cái giá của Từ Thiên Thiên"
+    },
+    {
+      "panel": "crmn_ep98/p006.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mộc Thông gào lên: Ơi tỷ phu, chuẩn bị nhiều thế, nếu như còn không thắng thì đừng có đề nói nữa rồi!"
+    },
+    {
+      "panel": "crmn_ep98/p010.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh nhìn lò rèn: hàm lượng nguyên tố trong quặng sắt ở đảo Kim Sơn cực cao, vượt xa đảo Vọng Nhai, cộng thêm kỹ thuật luyện sắt cao siêu của Tấn Hải Bá tước phủ, vũ khí họ cực kỳ sắc bén, ta nghĩ đảo Vọng Nhai không bằng."
+    },
+    {
+      "panel": "crmn_ep98/p015.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chủ nhân, đây là thanh kiếm của Tấn Hải Bá tước, ngài nhìn thử xem."
+    },
+    {
+      "panel": "crmn_ep98/p019.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Kiếm bổ xuống, bộ giáp tóe lửa."
+    },
+    {
+      "panel": "crmn_ep98/p023.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bá tước chém thử: không tồi không tồi! Cho dù chém sâu vào trong cũng chỉ để lại vết rất nhạt! Thẩm Lãng haha: cũng không nhìn xem áo giáp này do ai làm!"
+    },
+    {
+      "panel": "crmn_ep98/p024.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Anh ngồi tĩnh tọa: vì để bảo vệ Kim gia yêu dân như con, sự tu dưỡng của người ở rể thật sự phải tốn rất nhiều công sức."
+    },
+    {
+      "panel": "crmn_ep98/p026.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bước ba: chiến lược đô tế, biến đảo Vọng Nhai trở thành mồi nhử và cạm bẫy, dụ kẻ địch lên đảo của Kim thị rồi giết chết."
+    },
+    {
+      "panel": "crmn_ep98/p031.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trong phòng sách Huyền Vũ Bá tước phủ, Mộc Lan bước vào nhìn thấy Từ Thiên Thiên ngồi đó người đầy thương tích."
+    },
+    {
+      "panel": "crmn_ep98/p033.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Bọn chúng chính là muốn làm nơi này biến thành một ổ dịch, đến lúc đó không biết sẽ có bao nhiêu người phải chết."
+    },
+    {
+      "panel": "crmn_ep98/p034.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng quay sang Kim Sĩ Anh: Cửu Kiều? Gây ổ dịch? Quả nhiên mất nhân tính rồi! Kim Hồi, lập tức đưa thủ hạ theo cao thủ đối phó đám hải tặc này, không được để sót bất kỳ ai!"
+    },
+    {
+      "panel": "crmn_ep98/p039.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh nhận xét: khóe miệng cô có vết thương, vết thương mới, nhưng cô lại hưng phấn thế này, dường như là chịu đả kích không nhỏ."
+    },
+    {
+      "panel": "crmn_ep98/p043.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô thốt: cái giá gì cũng được."
+    },
+    {
+      "panel": "crmn_ep98/p046.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Anh nói đùa: vậy thì người muốn thế nào? Đã mấy ngày cô chưa tắm rồi? Nếu như cô còn có lòng thì sớm đã tắm rửa sạch sẽ thơm tho rồi."
+    },
+    {
+      "panel": "crmn_ep98/p048.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh phẩy tay: bỏ đi bỏ đi, ta không cần cô đối xử như vậy với ta cả, ta chỉ muốn cô đến một nơi, làm một chuyện, giúp ta câu dẫn một người."
+    },
+    {
+      "panel": "crmn_ep98/p052.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô nói: không phải cô nói đề báo thù chuyện gì cũng làm sao? Ta muốn báo thù cũng phải giữ mạng, lần này Thánh Nộ triều chắc hắn cũng sẽ tham gia vào việc đánh Huyền Vũ Bá tước phủ, lưu ý."
+    },
+    {
+      "panel": "crmn_ep98/p053.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Mà sau lưng ngươi, người thật sự muốn hủy diệt Kim gia chính là vua, cho dù ngươi thông minh hơn nữa, thì cũng chỉ là lấy trứng chọi đá."
+    },
+    {
+      "panel": "crmn_ep98/p054.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng đáp: ngươi sai rồi, ta thích nhất là đánh bài với vua."
+    },
+    {
+      "panel": "crmn_ep98/p057.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng đẩy cô ra: Thiên Thiên, mùi trên người cô nặng quá rồi, ta không chịu nổi."
+    },
+    {
+      "panel": "crmn_ep98/p062.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Từ Thiên Thiên mỉa mai: hoang đường, người như người cũng có tình cảm sao?"
+    },
+    {
+      "panel": "crmn_ep98/p066.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô nghiến răng: hạ! Người quan tâm sống chết của ta sao? Đúng cô bậy về mặt không nở như thế!"
+    },
+    {
+      "panel": "crmn_ep98/p070.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô nói: Thiên Thiên, cũng từng là phu thê với nhau, không phải đến một chút tin tưởng dành cho ta cô cũng không có đấy chứ? Cô hỏi lại: tin tưởng hắn một lần?"
+    },
+    {
+      "panel": "crmn_ep99/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Từ Thiên Thiên không vội trả lời, cô lập tức rời khỏi phủ Bá tước. Không bao lâu sau, Kim Mộc Lan cũng quay về phủ, sau khi tắm rửa xong liền đến thư phòng của Thẩm Lãng.",
+      "section": "Tập 99: Thiệp mời của thái thú"
+    },
+    {
+      "panel": "crmn_ep99/p008.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nàng hỏi thẳng: Kim Mộc Lan, nàng không tin tưởng ta chút nào sao? Anh cười, và nàng nhượng bộ: được, coi như chàng ngoan."
+    },
+    {
+      "panel": "crmn_ep99/p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hoàng hôn buông xuống, ánh nắng đỏ rực phủ lên tòa phủ."
+    },
+    {
+      "panel": "crmn_ep99/p016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh nheo mắt: thú vị."
+    },
+    {
+      "panel": "crmn_ep99/p019.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trương Tấn hỏi: phụ thân, tại sao phải mời Thẩm Lãng? Lão đáp: thăm dò thực hư một chút."
+    },
+    {
+      "panel": "crmn_ep99/p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đó là Trương Xuân Hoa, mặc váy hồng thướt tha, ngồi gác chân, cười hỏi: tối hôm nay con giữ lấy Thẩm Lãng, có thể làm được không?"
+    },
+    {
+      "panel": "crmn_ep99/p028.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngoài cửa, hai cha con quan Tổng đốc đều đến."
+    },
+    {
+      "panel": "crmn_ep99/p032.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông phân tích: trong mắt con đừng chỉ có mỗi mỹ nhân, lần này để con và Trương Xuân Hoa thành hôn, hoàn toàn là vì lợi ích của gia tộc."
+    },
+    {
+      "panel": "crmn_ep99/p034.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lão đáp: vậy thì con thắng hắn. Rồi nhắc: một dao đó, đoàn chúng ta cũng không đến lượt con."
+    },
+    {
+      "panel": "crmn_ep99/p037.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trong xe, anh ngồi suy nghĩ: tối nay nhất định phải cẩn thận, không thể lộ ra sơ hở, để lão cáo già Trương Xung quyết trương thăm dò thực hư."
+    },
+    {
+      "panel": "crmn_ep99/p040.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô nũng nịu: tối hôm nay có người muốn hủy hạnh phúc cả đời của ta, chàng mang ta bỏ trốn đi, chúng ta đem gạo nấu thành cơm!"
+    },
+    {
+      "panel": "crmn_ep99/p043.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh hỏi mình: Thẩm Lãng, người rốt cuộc sẽ phản ứng như thế nào? Người hùng thù đáng trào, lan sóng mạnh hơn ta, chứng tỏ người rất có tự tin với trận chiến đảo Kim Sơn."
+    },
+    {
+      "panel": "crmn_ep99/p046.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh kêu phu xe: người đi tiếp tục đánh xe đi! Trương tiểu thư, cô vừa nói cái gì?"
+    },
+    {
+      "panel": "crmn_ep99/p055.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô tò mò hỏi: Thẩm công tử sao vậy? Lần trước ta còn gửi cho chàng một bức thư tình mời hẹn hò, lúc đó ta muốn ra ngoài nhưng bị nhà bắt giữ không được."
+    },
+    {
+      "panel": "crmn_ep99/p058.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô hỏi: Thẩm Lãng, vậy chàng thích ta không? Anh đáp: thích. Cô hỏi: vậy chàng muốn ta và chàng không tách rời nhau sao? Anh đáp: bây giờ ta muốn."
+    },
+    {
+      "panel": "crmn_ep99/p062.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh nhìn cô: ta không thể có lỗi với nương tử của ta! Cô hỏi: vậy người bây giờ đang làm cái gì?"
+    },
+    {
+      "panel": "crmn_ep99/p065.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô nghiến răng: Thẩm Lãng, ta đã gặp qua nhiều tra nam rồi, nhưng tra nam trắng trợn tài năng như này, là lần đầu thấy!"
+    },
+    {
+      "panel": "crmn_ep99/p065.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Cô nghe thấy bao nhiêu câu nói của anh rồi: một người vừa ve vãn vừa cho cô lời hứa hẹn vô tận, nhưng thực chất không hứa gì, chỉ khiến cô nghĩ mình đã thắng."
+    },
+    {
+      "panel": "crmn_ep99/p067.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh còn cười nói: đừng quan tâm sau này có chuyện gì, cứ để mai tính, rồi bất ngờ đổi chủ đề sang yến hội."
+    },
+    {
+      "panel": "crmn_ep100/p001.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng thở dài: lẽ nào cơ hội chỉ có thể của ta thôi sao? Nếu như ta và Kim Mộc Lan, huynh chỉ có thể chọn một thôi.",
+      "section": "Tập 100: Yến tiệc của thái thú"
+    },
+    {
+      "panel": "crmn_ep100/p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô hét: Thẩm Lãng, ngươi đúng là tên bạc tình bạc nghĩa! Ta không ngờ ngươi lại là nam nhân như này, đúng là mắt ta mù rồi!"
+    },
+    {
+      "panel": "crmn_ep100/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh bình thản cười: không sao, cô ấy cũng không phải tốt lắm, giờ ta sẽ cho nàng nếm mùi lợi hại."
+    },
+    {
+      "panel": "crmn_ep100/p012.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trương Xuân Hoa giận dữ: tồi tệ, khốn khiếp! Tên quỷ háo sắc đáng bị băm vằn trăm mảnh! Đúng là tai nghe không bằng mắt thấy, hắn chính là kẻ háo sắc hạ lưu thiên hạ này!"
+    },
+    {
+      "panel": "crmn_ep100/p016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông gọi: yến hội sắp bắt đầu rồi, con đi đâu thế? Cô đáp: tắm! Ông ngạc nhiên: tắm? Không phải vừa mới tắm rồi sao?"
+    },
+    {
+      "panel": "crmn_ep100/p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Rồi anh nhìn mảnh giấy nhỏ trong tay, đọc thầm: Thẩm công tử của ta, Chúc Văn Hoa sẽ đến..."
+    },
+    {
+      "panel": "crmn_ep100/p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Người ta giới thiệu: giới thiệu một chút, vị này là Ngũ Nguyên Hóa, Tịnh An Bá tước phủ, vị này là cô gia Thẩm Lãng của Huyền Thiên Bá tước phủ."
+    },
+    {
+      "panel": "crmn_ep100/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một người áo vàng mỉm cười bước vào, bên cạnh là quan lại chắp tay: điện hạ giá lâm chính là vinh hạnh của phủ chúng thần!"
+    },
+    {
+      "panel": "crmn_ep100/p031.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một lúc sau, yến hội bắt đầu."
+    },
+    {
+      "panel": "crmn_ep100/p035.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một người cười: nếu như Huyền Vũ Bá tước phủ sụp đổ rồi, vậy thì Thẩm Lãng huynh phải đi đâu về đâu chứ?"
+    },
+    {
+      "panel": "crmn_ep100/p039.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Người ta nói: thống đốc đại nhân, tại hạ kính ngài một ly."
+    },
+    {
+      "panel": "crmn_ep100/p041.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chúc Văn Hoa đứng dậy: nghe nói Trương Xuân Hoa có tài, không nhân cơ hội này nghe thơ góp vui cho mọi người? Vâng, bá phụ."
+    },
+    {
+      "panel": "crmn_ep100/p044.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Chúc Văn Hoa đọc thơ: nhẹ nhàng như ngọc, mày ngài như nét vẽ, tựa như mặt trăng xuyên mây, dung mạo ấy thật nổi bật."
+    },
+    {
+      "panel": "crmn_ep100/p045.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô gái áo vàng reo lên: thơ hay!"
+    },
+    {
+      "panel": "crmn_ep100/p049.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Không ai trong số những người có mặt ở bữa tiệc có thể ngăn cản Chúc Nhung mai mối một mối cầu hôn công khai như thế. Cô gái không thể đứng ra từ chối trước đông người, nên cô chỉ có thể nhắm vào Thẩm Lãng."
+    },
+    {
+      "panel": "crmn_ep100/p053.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn đáp: Thẩm Lãng, ngươi có ý gì? Anh đáp: ta chính là không quen cách làm thơ khoa trương như của ngươi, chính là không ưa kẻ thối phồng như ngươi."
+    },
+    {
+      "panel": "crmn_ep100/p055.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Anh nói thêm: lúc ma tất cả nam nhân đều không vừa ý, mà ngươi một chút thiếu cầu nào cũng không đâu!"
+    },
+    {
+      "panel": "crmn_ep100/p060.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn cũng không muốn Chúc Nhung cầu thân cho ngươi, thế nên mới cố ý thêm dầu vào lửa, trong điểm chính là bốn chữ thập hèn cực độ này."
+    },
+    {
+      "panel": "crmn_ep100/p064.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Anh nói: nhưng mà bài thơ này không phải dành cho Trương Xuân Hoa tiểu thư, mà là dành tặng trí dũ tiểu thư. Nói ra thì ta có một bài thơ."
+    }
+  ]
+}
