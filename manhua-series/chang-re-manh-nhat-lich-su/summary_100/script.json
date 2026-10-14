@@ -1,0 +1,723 @@
+{
+  "template": "manhua_recap_long_vi",
+  "title": "Chàng Rể Mạnh Nhất Lịch Sử | Tóm tắt 100 tập trong 10 phút",
+  "chapters": "1-100",
+  "source_dir": "manhua-recap/crmn_ep2",
+  "written_by": "Claude, bản tóm tắt tập 1-100, 2026-10-14",
+  "description": "Tóm tắt 100 tập truyện Chàng Rể Mạnh Nhất Lịch Sử trong 10 phút: từ chàng rể ở rể bị đuổi khỏi nhà họ Từ tới cuộc chiến đảo Kim Sơn, kèm bình luận.\nMục lục thời gian: xem bình luận ghim.",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#Manhua",
+    "#XuyenKhong",
+    "#TomTatTruyen"
+  ],
+  "thumbnail": {
+    "text": "TÓM TẮT 100 TẬP",
+    "prompt": "A handsome young man in dark blue robes with glowing green eyes smiling confidently in an ancient Chinese courtyard, a beautiful red-haired female general in white armor beside him, a crowd of scheming rivals in the background. Chinese manhua cover art style, full-colour digital illustration, bold clean linework, cel shading, high contrast, 9:16, NO text, NO letters, NO watermark"
+  },
+  "beats": [
+    {
+      "panel": "crmn_ep2/p003.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Một bác sĩ chiến trường bị hủy dung, chết dưới bom đạn, tỉnh dậy lại thành một mỹ nam tuyệt thế, nhưng là chàng rể ở rể bị cả nhà vợ khinh thường.",
+      "section": "Mở đầu: Bác sĩ chiến trường thành chàng rể vô dụng"
+    },
+    {
+      "panel": "crmn_ep2/p092.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh có thêm một khả năng kỳ lạ: mắt nhìn xuyên thấu, đọc được cả giá trị lẫn bí mật của người khác."
+    },
+    {
+      "panel": "crmn_ep77/p016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một trăm tập, một chàng rể vô dụng đã làm cả thành Huyền Vũ phải đổi cách gọi tên anh."
+    },
+    {
+      "panel": "crmn_ep79/p034.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Xem tiếp là biết."
+    },
+    {
+      "panel": "crmn_ep10/p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng vừa mở mắt đã thấy mình nằm trong thân xác chàng rể ở rể vừa bị đầu độc chết.",
+      "section": "Phần 1: Bị đuổi khỏi nhà họ Từ"
+    },
+    {
+      "panel": "crmn_ep10/p059.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh nhận ra nhà họ Từ đang tính đuổi mình đi để gả vợ cho Trương Tấn, một cuộc hôn nhân chính trị."
+    },
+    {
+      "panel": "crmn_ep9/p059.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Họ vu cáo anh rồi tống anh về nhà cha mẹ ruột."
+    },
+    {
+      "panel": "crmn_ep9/p051.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhà anh nghèo, nợ nần, và bang Hắc Y đã gài sẵn một khoản nợ ngàn vàng để nô dịch cả gia đình."
+    },
+    {
+      "panel": "crmn_ep7/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh dùng y thuật hiện đại chữa vết thương cho cha và em trai, rồi liều mạng xoay đủ tiền: bán công thức nhuộm vàng kim cho Cẩm Tú Các được hai ngàn vàng."
+    },
+    {
+      "panel": "crmn_ep7/p004.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Gia đình nghèo nhất thành lại có người con duy nhất biết làm hóa học."
+    },
+    {
+      "panel": "crmn_ep3/p001.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trên đường về làng, anh gặp bang chủ Điền Hoành, và nhớ lại những ngày cả nhà bị đuổi đánh khi cầu xin họ Từ giúp đỡ."
+    },
+    {
+      "panel": "crmn_ep5/p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Về tới nơi, anh phát hiện cha bị nội thương từ trận đòn cũ, tiến hành chỉnh xương và dẫn lưu máu phổi bằng y thuật hiện đại."
+    },
+    {
+      "panel": "crmn_ep6/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đến khi Thập Tam đòi nợ, anh tuyên bố sẽ kiếm đủ một ngàn vàng trong ba canh giờ, và đã bắt đầu từ bí mật nhuộm vải."
+    },
+    {
+      "panel": "crmn_ep8/p046.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đỉnh điểm là phiên xử ở nhà họ Từ, khi anh thắng áp đảo bằng vải tím đẹp hơn rồi tung thêm màu cầu vồng."
+    },
+    {
+      "panel": "crmn_ep8/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bị nhà họ Từ tố cáo trộm công thức, anh đứng giữa phiên xử thách đấu nhuộm màu tím cực hiếm, rồi trình diễn cả tấm lụa bảy màu cầu vồng khiến quan Chủ bộ phán anh vô tội."
+    },
+    {
+      "panel": "crmn_ep8/p055.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hóa ra vụ nợ ngay từ đầu là âm mưu nô dịch cả nhà anh."
+    },
+    {
+      "panel": "crmn_ep10/p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Giữa lúc đó, Kim Mộc Lan, nữ tướng khải hoàn của phủ Bá tước, tình cờ gặp lại chàng trai từng cứu cô ba năm trước, và đưa anh về phủ chữa trị."
+    },
+    {
+      "panel": "crmn_ep11/p035.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhà họ Chúc đưa quân ép cầu hôn Mộc Lan. Cô định tự hủy dung, còn cha cô mở cuộc chọn rể khẩn cấp.",
+      "section": "Phần 2: Cưới con gái Bá tước"
+    },
+    {
+      "panel": "crmn_ep12/p022.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng liều mình xin tham gia và được nhận vào danh sách. Năm ứng viên đều hứa công danh cơ nghiệp, riêng anh chỉ đáp một chữ: tự do."
+    },
+    {
+      "panel": "crmn_ep12/p065.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô chọn ngay anh, coi tiếng xấu của anh là vũ khí chọc tức nhà họ Chúc."
+    },
+    {
+      "panel": "crmn_ep14/p069.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hôn lễ diễn ra long trọng, tân lang đeo mặt nạ bí ẩn, đến khi bị ép tháo xuống giữa tiệc thì chính là chàng rể vô dụng ai cũng biết."
+    },
+    {
+      "panel": "crmn_ep15/p080.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trương Tấn thách anh viết chữ, thách đố điển tích; anh dùng kho kiến thức trong đầu đáp trả khiến cả học giả lẫn thầy cũ câm nín."
+    },
+    {
+      "panel": "crmn_ep15/p083.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Người ta bảo anh là kẻ ngốc."
+    },
+    {
+      "panel": "crmn_ep15/p053.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh chỉ cần mở một cái laptop trong đầu. Nhà họ Từ vẫn chưa buông tha."
+    },
+    {
+      "panel": "crmn_ep15/p033.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trương Tấn và học sinh giỏi nhất trường, Nhan Hùng, lại thách đố bằng văn bia thượng cổ, và Thẩm Lãng đọc trôi chảy rồi viết lại chính xác, đánh sập hẳn danh tiếng vô dụng."
+    },
+    {
+      "panel": "crmn_ep16/p066.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sáng hôm sau, cha mẹ nghèo của anh rụt rè không dám nhận lễ trà từ con dâu."
+    },
+    {
+      "panel": "crmn_ep17/p048.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mộc Lan cho nha hoàn Tiểu Băng thay mình, nhưng anh từ chối thẳng để giữ lòng tự trọng cho cô gái, và thú nhận mục tiêu lớn nhất đời mình: bắt nhà họ Từ quỳ tạ lỗi."
+    },
+    {
+      "panel": "crmn_ep18/p049.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mộc Lan tuyên bố hôn nhân chỉ trên danh nghĩa, còn anh thì xông vào bang Hắc Y, đốt giấy nợ máu, trả dư cả trăm vàng và bắt Điền Hoành phạt kẻ từng dọa đánh gãy chân em trai anh: từ con nợ thành chủ nợ chỉ sau một đêm."
+    },
+    {
+      "panel": "crmn_ep19/p046.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Về thăm nhà, anh còn cứu người bạn chất phác Đại Ngốc bị cha ruột bỏ mặc chờ chết trong rừng."
+    },
+    {
+      "panel": "crmn_ep21/p055.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bá tước Kim Trác thử anh bằng cuốn Gia Huấn Kim Thị, thứ người nhà học mất hơn hai mươi ngày, anh thuộc lòng chỉ trong một đêm.",
+      "section": "Phần 3: Thần Bài đánh sập Điền Hoành"
+    },
+    {
+      "panel": "crmn_ep22/p054.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh muốn báo thù Điền Hoành, nhưng hắn đã là quan chức bảo vệ thành nên không thể đánh thẳng."
+    },
+    {
+      "panel": "crmn_ep23/p064.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh đi một đường khác: vào sòng bạc lớn nhất của hắn và thắng liên tục, từ một ngàn lên bốn ngàn vàng, rồi chơi cả bài Cửu, đẩy cược lên mười ba ngàn khiến Điền Thập Cửu, cao thủ cờ bạc chưa từng thua, phá sản."
+    },
+    {
+      "panel": "crmn_ep23/p018.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Điền Hoành mừng rỡ khi nghe anh thua mười sáu ngàn, đem giấy nợ đến đòi, thì Bá tước bình thản vạch trần rằng người thua là Thập Cửu."
+    },
+    {
+      "panel": "crmn_ep28/p059.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh tiếp tục thắng, chia tiền cho dân nghèo khiến cả phố tung hô, ép Điền Hoành phải đích thân đánh gãy chân thủ hạ từng hành hung gia đình anh và đuổi họ khỏi bang."
+    },
+    {
+      "panel": "crmn_ep28/p017.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Chiêu hay nhất không phải thắng bạc, mà là biến cả phố thành khán giả của một cuộc xử án công khai."
+    },
+    {
+      "panel": "crmn_ep30/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sau trận thắng, Bá tước chỉ giả vờ trách phạt, thực chất hài lòng."
+    },
+    {
+      "panel": "crmn_ep26/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Điền Hoành phải mang hai mươi sáu ngàn vàng đi trả, mượn cả đám con bạc làm lá chắn vì không dám tự vệ."
+    },
+    {
+      "panel": "crmn_ep27/p040.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Các sòng bạc khác của hắn đóng cửa hàng loạt, mất quá nửa doanh thu, uy tín sụp đổ trong mắt các đại ca."
+    },
+    {
+      "panel": "crmn_ep26/p038.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Dân nghèo theo anh cổ vũ, còn khi thủ hạ của Điền Hoành dám hành hung anh, lính phủ Bá tước đánh bại họ và Mộc Lan cảnh cáo ai đụng tới chồng mình."
+    },
+    {
+      "panel": "crmn_ep30/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thành chủ và Trương Tấn cài võ sĩ giả dạng dân vào đám đông nhận tiền để tạo cảnh giẫm đạp."
+    },
+    {
+      "panel": "crmn_ep30/p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh nhận ra từng gương mặt, hô mọi người đứng yên, tuyên bố đã phát hết tiền và mang giấy nợ mười bảy ngàn vàng thẳng tới sòng bạc đòi hắn."
+    },
+    {
+      "panel": "crmn_ep32/p053.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh bị cha vợ chặn cửa, phạt cấm túc lần hai, còn Mộc Lan khoác giáp đỏ ra đón, chàng đỏ mặt khi cởi giáp giúp vợ.",
+      "section": "Phần 4: Chàng rể đi học và vạch tội tham ô"
+    },
+    {
+      "panel": "crmn_ep34/p012.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thế tử bị cha mẹ đánh thay chàng rể, nổi giận kéo người đi tính sổ, nhưng thấy bức tường ghi tên kẻ thù với gạch đỏ của anh thì sợ mất mật bỏ chạy."
+    },
+    {
+      "panel": "crmn_ep35/p032.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh được cử đi học cùng Thế tử, bị cả lớp ghen tị."
+    },
+    {
+      "panel": "crmn_ep35/p045.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh giải xong Dịch Kinh khiến thầy Lâm sững sờ, rồi đứng giữa giờ toán cá cược với thầy Hứa Văn Chiêu: đúng ba câu thì khỏi bị phạt."
+    },
+    {
+      "panel": "crmn_ep38/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh giải sạch cả mười câu bằng kiến thức hiện đại, câu cuối ra tới hai mươi ba hàng, vượt xa con số mười sáu hàng của thầy."
+    },
+    {
+      "panel": "crmn_ep35/p030.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng cậu Thế tử lại khác. Cậu bị thầy Hứa xúi giục đi tính sổ chàng rể, rồi bị phu nhân bắt quả tang."
+    },
+    {
+      "panel": "crmn_ep39/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thầy Hứa vừa thua cược xong đã đem lễ nịnh Trương Tấn, bắt tay Điền Hoành lập kế hạ bệ chàng rể."
+    },
+    {
+      "panel": "crmn_ep40/p012.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Còn Thẩm Lãng xông vào phòng cha mẹ vợ xin tra sổ sách, và chỉ có đúng một đêm trước khi ông ta về."
+    },
+    {
+      "panel": "crmn_ep40/p039.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hai mươi năm sổ sách, một đêm để lật ra sự thật."
+    },
+    {
+      "panel": "crmn_ep39/p040.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thua cược, thầy Hứa đêm đó đi nịnh Trương Tấn rồi bắt tay Điền Hoành lập kế hạ bệ chàng rể."
+    },
+    {
+      "panel": "crmn_ep40/p008.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh phản đòn bằng cách xin tra sổ sách phủ Bá tước, nghi ông ta tham ô."
+    },
+    {
+      "panel": "crmn_ep41/p066.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hứa Văn Chiêu chạy tới kêu oan trước Bá tước, nhưng anh đã thức suốt đêm làm bản báo cáo bóc trần khoản tham ô gần ba chục ngàn vàng qua lương thực, sắt và muối.",
+      "section": "Phần 5: Vụ án tham ô và đảo Kim Sơn"
+    },
+    {
+      "panel": "crmn_ep43/p042.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh dẫn kỵ binh tới hẻm núi hoang, bắt được con trai ông ta mai phục, rồi dùng mắt thần phát hiện cửa hầm ngầm: mười một ngàn vàng, năm mươi hai bức tranh và năm rương châu báu."
+    },
+    {
+      "panel": "crmn_ep44/p028.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tộc trưởng họ Hứa đưa hắn về từ đường xử theo gia quy."
+    },
+    {
+      "panel": "crmn_ep46/p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh còn có Mộc Lan đòi tập thể lực, khiến anh chảy máu mũi, và xoa vai vợ rồi xoa vai cả mẹ vợ để được gỡ cấm túc."
+    },
+    {
+      "panel": "crmn_ep49/p057.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Điền Hoành cho khiêng quan tài tới tiệc, nhưng bà vợ của Tống Nghị khai ngược đúng như lời bóng ma dặn, kể con trai bị chính chồng đá khi nhìn trộm người khác tắm."
+    },
+    {
+      "panel": "crmn_ep50/p071.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thái thú ngầm ra lệnh diệt khẩu Điền Thập Tam, và Điền Hoành hoảng hốt cử người đi giết trước."
+    },
+    {
+      "panel": "crmn_ep47/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Giữa chừng, anh cải trang thành ma, dọa bà mẹ kế Đại Ngốc bằng lửa xanh phốt pho trắng, ép bà khai ngược lời."
+    },
+    {
+      "panel": "crmn_ep48/p042.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sứ giả tổng đốc tới bàn chia đảo Kim Sơn, mà khoáng sản lại nằm phía bắc, là một cái bẫy."
+    },
+    {
+      "panel": "crmn_ep48/p067.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Điền Hoành cho khiêng quan tài đến đòi mạng anh giữa tiệc, nhưng màn vu oan vỡ ngay trước quan lớn, và Điền Hoành cùng Tống Nghị bị bắt."
+    },
+    {
+      "panel": "crmn_ep45/p003.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Chàng rể này đánh nhau bằng hóa học, và thắng bằng một cái bẫy tâm lý."
+    },
+    {
+      "panel": "crmn_ep53/p044.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng cùng Mộc Lan phi ngựa đêm cứu Điền Thập Tam khỏi lệnh diệt khẩu của chính nghĩa phụ.",
+      "section": "Phần 6: Điền Hoành thất bại và bị hủy hoại"
+    },
+    {
+      "panel": "crmn_ep53/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thập Tam tâm phục, đổi tên thành Thẩm Thập Tam, cha mẹ hắn được đón vào phủ."
+    },
+    {
+      "panel": "crmn_ep55/p038.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Điền Hoành tuyệt vọng vì bị đồng minh bỏ rơi, đâm đầu vào cột đá chết giữa phiên xử, nhưng anh linh cảm hắn chưa chết: người chết là em song sinh."
+    },
+    {
+      "panel": "crmn_ep56/p050.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn đeo mặt nạ axit đột nhập nhà anh, rồi bị Mộc Lan hạ trong một chiêu và chết thật."
+    },
+    {
+      "panel": "crmn_ep53/p017.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thành chủ và Trương Tấn cân nhắc có nên giết Điền Hoành, tay sai nộp họ hai mươi đến ba mươi lăm phần trăm lợi nhuận, rồi thái thú ra lệnh giết hắn thật."
+    },
+    {
+      "panel": "crmn_ep53/p061.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn bước vào lối đi bí mật để chạy, nhưng chính cái bẫy anh sắp sẵn đã chờ ở nhà: nạn nhân bị chém hóa ra là vợ con ruột của Điền Hoành."
+    },
+    {
+      "panel": "crmn_ep57/p048.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sau khi dọn sạch kho vàng thành chủ, anh để lại một mảnh giấy khiêu khích."
+    },
+    {
+      "panel": "crmn_ep58/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cha mẹ anh từ chối dọn gần phủ Bá tước, còn anh thú nhận đã đốt váy của vợ."
+    },
+    {
+      "panel": "crmn_ep57/p028.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh lấy lời khai cuối của Điền Hoành, gửi đầu hắn cho thành chủ rồi dọn sạch kho vàng mười ba ngàn của thành chủ."
+    },
+    {
+      "panel": "crmn_ep59/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Rồi anh lập kế trả thù nhà họ Từ: dụ Thế tử viết tiểu thuyết bôi nhọ họ, hoàn thành Phong Nguyệt Vô Biên dưới bút danh Lãng Lãng Tiếu Tiếu Sinh."
+    },
+    {
+      "panel": "crmn_ep59/p052.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bá tước bắt quả tang, đánh anh một trận nhưng khen sách hay."
+    },
+    {
+      "panel": "crmn_ep64/p022.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đến thành sách Lan Sơn, Chúc Văn Hoa chặn đường mọi nhà sách, nhưng Thẩm Lãng đã có kế hoạch A, B, C.",
+      "section": "Phần 7: Cuốn sách làm rung chuyển Lan Sơn"
+    },
+    {
+      "panel": "crmn_ep62/p008.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đặng Tiên nhận in, sách bán sạch hơn ba ngàn cuốn trong một ngày, và Chúc Văn Hoa nhận ra mình bị bôi nhọ trong truyện."
+    },
+    {
+      "panel": "crmn_ep63/p041.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh ta kéo đám thư sinh tới đốt sách, nhưng đốt nhầm chiếu thư chính sách mới của nhà vua bọc bìa Phong Nguyệt Vô Biên."
+    },
+    {
+      "panel": "crmn_ep65/p038.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng lộ diện buộc tội mưu phản và đòi Tử tước tát con trai ruột, bắt Chúc Văn Hoa tự đốt năm ngàn cuốn Mộng Uyên Ương phần hai."
+    },
+    {
+      "panel": "crmn_ep65/p047.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Chỉ một cuốn sách, anh biến kẻ thù thành người tự đốt sách của mình."
+    },
+    {
+      "panel": "crmn_ep66/p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Kết quả cuối cùng là Thẩm Lãng về Huyền Vũ an toàn, sách bán sạch cả thành."
+    },
+    {
+      "panel": "crmn_ep65/p012.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chúc Văn Hoa đã bị phạt đốt chính sách của mình trước hàng ngàn người, danh tiếng sụp đổ."
+    },
+    {
+      "panel": "crmn_ep68/p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Từ Thiên Thiên tức tới ngất, Trương Tấn đánh cô, còn thái thú Trương Xung nhắc con rằng mọi trò chỉ là tiền đề để hạ phủ Bá tước."
+    },
+    {
+      "panel": "crmn_ep68/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh phân tích cho Bá tước: mấu chốt thắng thua là đảo Kim Sơn, và chủ nợ sẽ đòi đảo Vọng Nhai nếu mất đảo."
+    },
+    {
+      "panel": "crmn_ep67/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Từ Thiên Thiên nhận ra mình bị viết thành nhân vật ngay giữa lễ đính hôn và ngất xỉu, Trương Tấn tát cô, còn thái thú Trương Xung dạy con rằng mục tiêu thật chỉ là phủ Bá tước."
+    },
+    {
+      "panel": "crmn_ep68/p031.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tiệc đính hôn kéo theo đủ nhân vật quyền lực: thế tử Tấn Hải, công tử Trấn Bắc Hầu, sứ giả Hội Ẩn Nguyên, và Thẩm Lãng bị xếp ngồi hàng chót."
+    },
+    {
+      "panel": "crmn_ep71/p017.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Giữa tiệc, Vương Liên say rượu chặn bàn đòi lại lời thề với Mộc Lan, và một vị khách tố anh ăn cắp thơ.",
+      "section": "Phần 8: Tiệc đính hôn và Thánh chỉ"
+    },
+    {
+      "panel": "crmn_ep72/p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh bày mắt thần lật tẩy bài thi cắt ghép chữ, rồi mắng cả bàn quan khách đến tiệc là để làm chó."
+    },
+    {
+      "panel": "crmn_ep77/p067.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lý Văn Chính tung chiêu hiểm: bài thơ ẩn đọc ngược ra bốn chữ đại nghịch."
+    },
+    {
+      "panel": "crmn_ep75/p035.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh vạch trần Sa Cần mưu phản, thư báo khẩn tới đúng lúc khiến Lý Văn Chính gục ngã."
+    },
+    {
+      "panel": "crmn_ep75/p038.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ở bữa tiệc ấy, Sa Cần, người Nam Âu, bị anh vạch trần là mưu phản, và Lý Văn Chính, tuần giám sứ của Quốc quân, ngã quỵ khi thư báo khẩn tới."
+    },
+    {
+      "panel": "crmn_ep75/p051.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh tặng Trương Tấn bản sách màu rồi rời tiệc."
+    },
+    {
+      "panel": "crmn_ep76/p038.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Vương Liên bị thả cho hai con chó dữ cắn, thái thú nhận ra Thẩm Lãng là kẻ địch ghê gớm nhất."
+    },
+    {
+      "panel": "crmn_ep77/p069.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bá tước quyết dâng tấu chương thứ hai, còn Trương Xuân Hoa đọc bài thơ ẩn hẹn anh tới cầu mái che giờ sửu, dưới mắt Mộc Lan."
+    },
+    {
+      "panel": "crmn_ep77/p031.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thái thú sai con gái Trương Xuân Hoa đi dụ anh, Mộc Lan ngồi cạnh xem diễn."
+    },
+    {
+      "panel": "crmn_ep80/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đại Ngốc tỉnh lại, có thiên phú võ đạo; anh trèo tường rình tắm, máu mũi phun lên sách, bị Mộc Lan nhìn thấy."
+    },
+    {
+      "panel": "crmn_ep80/p043.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thánh chỉ ban thân phận giám sinh Thái học, rồi Lý Văn Chính được tha nhẹ, quay lại kéo binh vu kỵ binh của Mộc Lan giẫm chết dân và bắt Kim Kiếm Nương."
+    },
+    {
+      "panel": "crmn_ep81/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắc Thủy Đài, cơ quan trực thuộc Quốc quân, bắt Lý Văn Chính ngay tại chỗ, vì Thẩm Lãng đã tặng hoa khôi Hà Vân Vân bài thơ để nàng vào cung gài bẫy: búp bê yểm thái tử tìm thấy dưới giường hắn.",
+      "section": "Phần 9: Hắc Thủy Đài và Hà Vân Vân"
+    },
+    {
+      "panel": "crmn_ep81/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lý Văn Chính bị lăng trì nhưng được uống sâm giữ mạng đến khi vào quốc đô."
+    },
+    {
+      "panel": "crmn_ep83/p016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lâm Chước lấy chức phó thiên hộ giam kỵ binh Bá tước phủ vô cớ, nhưng Thẩm Lãng dùng thuốc điều khiển Vương Liên khiến Lâm Chước tỉnh dậy cùng giường với hắn, mất hết thể diện."
+    },
+    {
+      "panel": "crmn_ep86/p023.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Từ Thiên Thiên cùng cha ép anh hiến đơn thuốc nhuộm mới chịu mua kén tằm, nên anh tự tay đốt hết ngàn cuốn Phong Nguyệt Vô Biên rồi bày kế thiêu cháy tác phường Từ gia, khiến cả nhà họ mất sạch kho kén."
+    },
+    {
+      "panel": "crmn_ep87/p030.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Rồi anh ra giá gấp ba để vắt cạn họ."
+    },
+    {
+      "panel": "crmn_ep86/p037.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Chàng rể từng bị đuổi khỏi Từ gia giờ ngồi ra giá cho Từ gia từng bị anh phá sản."
+    },
+    {
+      "panel": "crmn_ep87/p044.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thiên Thiên đắc ý khi nghĩ anh phải quỳ xin, nhưng anh chỉ cười lạnh rồi bày màn lửa."
+    },
+    {
+      "panel": "crmn_ep84/p051.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lâm Chước chính thức làm đại lý thiên hộ, đem binh gây sự ở biên giới Huyền Vũ, còn Ngũ Chiêu Ấn bắt gặp cảnh xấu hổ của hắn và bắt hắn quỳ."
+    },
+    {
+      "panel": "crmn_ep87/p058.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cùng lúc, Trấn Bắc hầu Nam Cung Ngạo được giao dẫn quân vào Nam Âu bình loạn, mở thêm một mặt trận."
+    },
+    {
+      "panel": "crmn_ep88/p012.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tô Kiếm Đình, biểu ca của Mộc Lan, đến phủ, và Thẩm Lãng nhận ra Mộc Lan mạnh hơn hẳn, tới Thiên Nhai Hải Các để học bí tịch Thiên Ngoại Lưu Tinh bằng mắt thần."
+    },
+    {
+      "panel": "crmn_ep97/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Từ gia sập tiệm, Từ Thiên Thiên bị thương nặng sau khi bị bọn cướp bắt cóc, cầu xin Thẩm Lãng giúp báo thù, và anh đồng ý với cái giá của riêng cô.",
+      "section": "Phần 10: Kim Sơn và lời thề của Từ Thiên Thiên"
+    },
+    {
+      "panel": "crmn_ep94/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hải tặc tấn công ven biển, đòi Bá tước phủ trả tiền, còn Thẩm Lãng cùng Mộc Lan bên đống lửa tìm cách phá Thiên Ngoại Lưu Tinh."
+    },
+    {
+      "panel": "crmn_ep96/p016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Quốc vương chia đảo Kim Sơn thành ba trận: văn, võ và quân, ai thắng hai trận sẽ giữ đảo mãi mãi."
+    },
+    {
+      "panel": "crmn_ep100/p023.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chúc Văn Hoa lại thổi phồng thơ ngay giữa tiệc, và Thẩm Lãng chuẩn bị tung đòn mới."
+    },
+    {
+      "panel": "crmn_ep91/p030.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trong thư viện Thiên Nhai Hải Các, học sĩ Trương Ngọc Âm cho anh mượn bí tịch trấn các Thiên Ngoại Lưu Tinh, và anh đọc nó bằng mắt thần."
+    },
+    {
+      "panel": "crmn_ep91/p037.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Từ gia bị dị ứng thuốc nhuộm do chính anh cài sẵn, khiến thợ nhuộm ngứa ngáy nổi mẩn, hôn ước Thiên Thiên và Trương Tấn lung lay."
+    },
+    {
+      "panel": "crmn_ep95/p044.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Từ Quang Doãn không qua khỏi, và Từ Thiên Thiên đêm đó quỳ bên mộ cha thề trả thù."
+    },
+    {
+      "panel": "crmn_ep60/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một chàng rể ở rể bị đuổi khỏi nhà, thành công tử phủ Bá tước, người làm sập bang Hắc Y, xô ngã thái thú, phá sản nhà họ Từ.",
+      "section": "Kết"
+    },
+    {
+      "panel": "crmn_ep67/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng cuộc chiến đảo Kim Sơn mới chỉ bắt đầu."
+    },
+    {
+      "panel": "crmn_ep74/p016.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Nếu bạn thích kiểu nhân vật chính dùng đầu óc thay vì nắm đấm, hãy bấm theo dõi để xem phần tiếp theo."
+    }
+  ]
+}
