@@ -2,6 +2,7 @@ import { AbsoluteFill, Sequence, interpolate, useCurrentFrame } from "remotion";
 import { CINE_COMPONENTS, CineSubtitles } from "./cinematic";
 import { POSTER_COMPONENTS, PosterSubtitles } from "./poster";
 import { PRESET_COMPONENTS } from "./presets";
+import { AmbientOverlay } from "./weather";
 import { LanguageContext } from "./lang";
 import { COLORS, FONTS } from "./theme";
 import type { DocumentaryProps, Scene } from "./schema";
@@ -15,6 +16,10 @@ function SceneView({ scene, fade, first, grayscale, theme }: { scene: Scene; fad
   return (
     <AbsoluteFill style={{ opacity }}>
       <Preset scene={scene} grayscale={grayscale} />
+      {/* Optional particle overlay (snow/rain/wind/embers), same across every theme/preset -- see
+          docs/documentary/PORTING_NOTES.md part C. Renders nothing when unset: no behaviour change
+          for any scene that doesn't set it. */}
+      {scene.ambient && <AmbientOverlay kind={scene.ambient} seed={scene.key} />}
     </AbsoluteFill>
   );
 }

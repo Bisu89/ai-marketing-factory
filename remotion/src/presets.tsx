@@ -381,6 +381,83 @@ export function SplitComparison({ scene, grayscale }: PresetProps) {
   );
 }
 
+// ---- 10. TacticalMap --------------------------------------------------------------------------------------------
+// A deliberately abstract troop-movement / sequence-of-places diagram: labelled unit blocks at a
+// seeded layout, connected by drawn-on arrows. Not a real map -- MapZoom's own fallback already
+// covers "no geographic data" (see HANDOFF.md); this is for when the script names a *sequence* of
+// places/moves and a schematic diagram reads clearer than a photo. See PORTING_NOTES.md part B for
+// why the "unit" is a plain two-tone block, not a figure.
+const UNIT_COLORS = [COLORS.red, COLORS.blue] as const;
+
+function arrowPath(x1: number, y1: number, x2: number, y2: number, bow: number): string {
+  const mx = (x1 + x2) / 2 - (y2 - y1) * bow;
+  const my = (y1 + y2) / 2 + (x2 - x1) * bow;
+  return `M${x1},${y1} Q${mx},${my} ${x2},${y2}`;
+}
+
+function UnitMarker({ x, y, color, at }: { x: number; y: number; color: string; at: number }) {
+  const grow = useEnter(at, 14);
+  return (
+    <g transform={`translate(${x} ${y}) scale(${grow})`} opacity={grow}>
+      <rect x={-27} y={-19} width={54} height={38} fill={color} stroke={COLORS.ink} strokeWidth={3} />
+      <line x1={-27} y1={-19} x2={27} y2={19} stroke={COLORS.ink} strokeWidth={2} />
+      <line x1={27} y1={-19} x2={-27} y2={19} stroke={COLORS.ink} strokeWidth={2} />
+    </g>
+  );
+}
+
+export function TacticalMap({ scene }: PresetProps) {
+  const points = byRole(scene, "label", "headline", "caption").slice(0, 5);
+  const shown = points.length > 0 ? points : [{ text: "", role: "label" as const, sub: null, cueFrame: 0 }];
+  const r = rng(scene.key);
+  const pos = shown.map((_, i) => {
+    const n = Math.max(shown.length - 1, 1);
+    const up = i % 2 === 0;
+    return { x: 260 + (i * 1400) / n, y: 500 + (up ? -1 : 1) * (90 + r() * 70) };
+  });
+  // all arrows draw together, same shared-progress technique EvidenceBoard already uses for its pins.
+  const drawn = useEnter(30, 26);
+  return (
+    <AbsoluteFill>
+      <PaperBackground tint={COLORS.paperDark} />
+      <Halftone opacity={0.08} size={16} />
+      <svg width="100%" height="100%" viewBox="0 0 1920 1080" style={{ position: "absolute", inset: 0 }}>
+        <defs>
+          <marker id="tm-arrowhead" markerWidth="10" markerHeight="10" refX="7" refY="5" orient="auto">
+            <path d="M0,0 L10,5 L0,10 Z" fill={COLORS.ink} />
+          </marker>
+        </defs>
+        {pos.slice(1).map((p, i) => {
+          const a = pos[i];
+          const ex = a.x + (p.x - a.x) * drawn;
+          const ey = a.y + (p.y - a.y) * drawn;
+          return (
+            <path
+              key={i}
+              d={arrowPath(a.x, a.y, ex, ey, i % 2 === 0 ? 0.16 : -0.16)}
+              fill="none"
+              stroke={COLORS.ink}
+              strokeWidth={5}
+              opacity={drawn}
+              markerEnd="url(#tm-arrowhead)"
+            />
+          );
+        })}
+        {shown.map((t, i) => (
+          <UnitMarker key={i} x={pos[i].x} y={pos[i].y} color={UNIT_COLORS[i % 2]} at={Math.max(t.cueFrame, i * MOTION.stagger)} />
+        ))}
+      </svg>
+      {shown.map((t, i) =>
+        t.text ? (
+          <Label key={`l${i}`} at={Math.max(t.cueFrame, i * MOTION.stagger) + 6} style={{ left: pos[i].x - 110, top: pos[i].y + (i % 2 === 0 ? -98 : 44) }}>
+            {t.text}
+          </Label>
+        ) : null,
+      )}
+    </AbsoluteFill>
+  );
+}
+
 export const PRESET_COMPONENTS = {
   PhotoKenBurns,
   ArchivalPortrait,
@@ -391,5 +468,6 @@ export const PRESET_COMPONENTS = {
   EvidenceBoard,
   HeadlineImpact,
   SplitComparison,
+  TacticalMap,
 } as const;
 

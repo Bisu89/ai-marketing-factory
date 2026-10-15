@@ -231,3 +231,4 @@ sequence, and a line added to the list above.
 185. [DQG tóm tắt 100 chương + S04](features/185-dqg-summary-100-and-s04.md) — Long 7:57 từ lời kể đã duyệt; Short S04 sau khi tải lại ảnh ch 11-20
 186. [CRMN tóm tắt 100 tập](features/186-crmn-summary-100.md) — Long 9:31 (job 316), tập 81-100 đọc từ ảnh; ghi chú lỗi 403 edge-tts do tiến trình backend cũ
 187. [CRMN ep81-100](features/187-crmn-ep81-100-scripts-long-and-shorts.md) — scripts written from images, Long 09-10 + Short B01-B08, QA 100
+188. [Documentary: synthesized SFX, TacticalMap preset, ambient overlay](features/188-documentary-sfx-tacticalmap-ambient.md) — 3 capabilities ported from `stickman-video`: $0 synthesized scene-cut SFX (wires up the long-dead `sfx_cues` hint field), a 10th `TacticalMap` diagram preset, and an optional rain/snow/wind/embers particle overlay — all off/unset by default

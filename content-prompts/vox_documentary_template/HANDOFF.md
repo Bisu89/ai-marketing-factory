@@ -1,6 +1,6 @@
 # VOX DOCUMENTARY FACTORY — HANDOFF (đọc file này đầu tiên khi mở session/máy mới)
 
-Cập nhật: 2026-10-13. Mọi thứ dưới đây đã được **chạy thật** trên repo này (không phải kế hoạch), trừ mục
+Cập nhật: 2026-10-15. Mọi thứ dưới đây đã được **chạy thật** trên repo này (không phải kế hoạch), trừ mục
 "Chưa làm". Tài liệu ngắn hơn cho từng tính năng nằm ở `docs/features/163…172-*.md`.
 
 ## 1. Đây là gì
@@ -38,7 +38,8 @@ kết hợp ảnh tư liệu)  4. `README.md` (làm một tập mới từng bư
 | Nhạc nền + tài liệu (xong) | Nhạc tùy chọn do người dùng cung cấp (lặp, ducking, ghi công khi xuất) và bộ tài liệu `docs/documentary/` (feature 174) |
 | Tập thật đã làm bằng quy trình này | **Biblical Figures tập 6 (John the Baptist, dự án #2), 7 (Caiaphas, #4), 8 (Herod Antipas, #5)** — tiếng Anh, giọng `edge_en`, collage + ảnh poster; spec ở `biblical-figures-prompts/vox/ep{6,7,8}.spec.json`, hướng dẫn tiếp ở `biblical-figures-prompts/vox/HANDOFF.md`. Kênh văn học Việt: `content-prompts/literature_vi/` (Chí Phèo tập 1 và Lão Hạc tập 2 làm ở session khác) |
 | Ảnh chuẩn | **Ảnh kiểu poster collage** (nền màu phẳng, nhân vật cắt viền, mảnh báo, băng keo, tiêu đề cắt dán trong ảnh) đặt trong khung collage; khuôn prompt `biblical-figures-prompts/vox/ep7_poster_prompts.csv` + `poster_test/STYLE.md`. Ảnh poster đã có tiêu đề thì cảnh đó không thêm thẻ chữ |
-| **Chưa làm** | SFX, đóng gói PyInstaller (`remotion/` + faster-whisper), prompt ảnh AI tự động theo từng cảnh (hiện viết bằng script ngoài repo rồi xuất CSV), thẻ bản đồ còn trống (không có dữ liệu địa lý), người dùng xem/nghe/duyệt cổng 5 các tập |
+| **Chưa làm** | đóng gói PyInstaller (`remotion/` + faster-whisper), prompt ảnh AI tự động theo từng cảnh (hiện viết bằng script ngoài repo rồi xuất CSV), người dùng xem/nghe/duyệt cổng 5 các tập |
+| **Mới (feature 188)** | SFX tổng hợp $0 theo cảnh (tắt mặc định, bật ở tab Render — dùng chính `sfx_cues` đã gõ ở Storyboard); preset `TacticalMap` (sơ đồ vị trí/di chuyển bằng khối + mũi tên, không phải bản đồ thật — dùng khi `MapZoom` không đủ vì cần nhiều điểm/chuỗi, xem mục 7); hiệu ứng hạt tùy chọn mưa/tuyết/gió/tàn lửa (`Scene.ambient`, gán tay ở Storyboard) |
 
 ## 4. Kiến trúc (file map)
 
@@ -128,9 +129,10 @@ cd frontend && npm run dev                              # tsc kiểm tra: npx ts
 - `collage` (**chuẩn**): nền kraft có chấm, ảnh dán giấy rách + băng keo, dải chữ cắt dán đổi màu, số lớn, timeline, hộp bằng chứng + dấu "CÒN TRANH CÃI", phụ đề nền xám. Chi tiết quy ước: `RULES.md` mục 8. (Trước đây từng bị hiểu nhầm là "lởm" và bị thay bằng cinematic; đó là sai ý chủ kênh.)
 - `cinematic` (đã bỏ khỏi UI, chỉ để tham khảo): ảnh tràn khung + trôi chậm (hướng theo seed của cảnh), vignette, hạt phim; ảnh dọc → nền mờ + ảnh giữa;
   cảnh dữ liệu (năm, số lớn, bằng chứng, tiêu đề) trên nền da tối viền vàng, chữ serif vàng/kem. Phụ đề không hộp, bóng chữ.
-- 9 preset (đều có ở cả hai chủ đề): PhotoKenBurns, ArchivalPortrait, NewspaperStack, MapZoom, TimelineBuild, BigNumber,
-  EvidenceBoard, HeadlineImpact, SplitComparison. Preset dữ liệu mà không suy ra được chữ ⇒ tự chuyển HeadlineImpact.
-- MapZoom không có dữ liệu địa lý ⇒ chỉ nền đường đồng mức trang trí + ghim + nhãn.
+- 10 preset (đều có ở cả hai chủ đề): PhotoKenBurns, ArchivalPortrait, NewspaperStack, MapZoom, TimelineBuild, BigNumber,
+  EvidenceBoard, HeadlineImpact, SplitComparison, TacticalMap (feature 188). Preset dữ liệu mà không suy ra được chữ ⇒ tự chuyển HeadlineImpact.
+- MapZoom không có dữ liệu địa lý ⇒ chỉ nền đường đồng mức trang trí + ghim + nhãn. `TacticalMap` là lựa chọn khác khi
+  cảnh cần thể hiện chuỗi nhiều địa điểm/hướng di chuyển bằng sơ đồ (khối + mũi tên), không cố giả vờ chính xác địa lý.
 
 ## 8. Quyết định đã chốt với người dùng
 - Làm **trong repo này** (Python/React), không Next.js/pnpm; **giữ Remotion**; Whisper chạy máy, model `small`.

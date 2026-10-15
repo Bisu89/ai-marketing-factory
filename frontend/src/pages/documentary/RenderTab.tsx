@@ -71,6 +71,8 @@ export function RenderTab({ project, reloadProject }: TabProps) {
   const [musicPath, setMusicPath] = useState("");
   const [musicDb, setMusicDb] = useState("-24");
   const [musicCredit, setMusicCredit] = useState("");
+  const [sfxEnabled, setSfxEnabled] = useState(false);
+  const [sfxDb, setSfxDb] = useState("-14");
   const [burn, setBurn] = useState(true);
   const [gray, setGray] = useState(false);
   const [normalize, setNormalize] = useState(true);
@@ -103,10 +105,11 @@ export function RenderTab({ project, reloadProject }: TabProps) {
     const music = musicPath.trim()
       ? { music_path: musicPath.trim(), music_db: Number(musicDb), music_credit: musicCredit.trim() || null }
       : {};
+    const sfxParams = sfxEnabled ? { sfx_enabled: true, sfx_db: Number(sfxDb) } : {};
     const body =
       kind === "final"
-        ? { kind, theme, grayscale: gray, burn_subtitles: burn, normalize_audio: normalize, ...music }
-        : { kind, theme, grayscale: gray, scale: Number(scale), seconds: seconds === "" ? null : Number(seconds), burn_subtitles: burn, normalize_audio: normalize, ...music };
+        ? { kind, theme, grayscale: gray, burn_subtitles: burn, normalize_audio: normalize, ...music, ...sfxParams }
+        : { kind, theme, grayscale: gray, scale: Number(scale), seconds: seconds === "" ? null : Number(seconds), burn_subtitles: burn, normalize_audio: normalize, ...music, ...sfxParams };
     const job = await run("start", () => startRender(id, body));
     if (!job) return;
     if (job.reused) notify("Đầu vào không đổi so với lần render trước — dùng lại kết quả, không render lại.");
@@ -180,6 +183,28 @@ export function RenderTab({ project, reloadProject }: TabProps) {
         <Field label="Giấy phép / ghi công của bản nhạc" hint="Sẽ ghi vào mô tả và credits khi xuất. Bắt buộc nên điền nếu dùng nhạc.">
           <input value={musicCredit} onChange={(e) => setMusicCredit(e.target.value)} placeholder="VD: 'Tên bài' — Tác giả, CC0, nguồn" />
         </Field>
+      </div>
+
+      <div className="doc-card">
+        <h3>Hiệu ứng âm thanh theo cảnh (tùy chọn, thử nghiệm)</h3>
+        <p className="doc-muted">
+          Tổng hợp sẵn (whoosh/impact/stinger/wind — không dùng mẫu âm thanh có bản quyền), chèn một lần tại mỗi cảnh có điền "Gợi ý hiệu ứng âm
+          thanh" ở tab Storyboard. Luôn nhỏ hơn giọng đọc. Tắt = không có gì thay đổi so với trước.
+        </p>
+        <div className="doc-row">
+          <label className="doc-check">
+            <input type="checkbox" checked={sfxEnabled} onChange={(e) => setSfxEnabled(e.target.checked)} /> Bật hiệu ứng âm thanh theo cảnh
+          </label>
+          {sfxEnabled && (
+            <Field label="Mức SFX (dB)">
+              <select value={sfxDb} onChange={(e) => setSfxDb(e.target.value)}>
+                <option value="-20">-20 (rất nhỏ)</option>
+                <option value="-14">-14 (mặc định)</option>
+                <option value="-9">-9 (rõ hơn)</option>
+              </select>
+            </Field>
+          )}
+        </div>
       </div>
 
       <div className="doc-card">

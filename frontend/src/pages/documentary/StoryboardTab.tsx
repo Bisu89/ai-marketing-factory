@@ -1,7 +1,7 @@
 import { Fragment, useState } from "react";
 import { ChevronDown, ChevronRight, LayoutList, Plus, Trash2 } from "lucide-react";
-import { listScenes, planStoryboard, PRESETS, SECTION_LABELS, updateScene } from "../../api/documentary";
-import type { AssetState, OnScreenText, Scene } from "../../api/documentary";
+import { AMBIENT_EFFECTS, listScenes, planStoryboard, PRESETS, SECTION_LABELS, updateScene } from "../../api/documentary";
+import type { AmbientEffect, AssetState, OnScreenText, Scene } from "../../api/documentary";
 import { ActionFeedback, Badge, Busy, Field, Loading, Notice, useAction, useLoader } from "./shared";
 import type { TabProps } from "./shared";
 
@@ -25,6 +25,14 @@ const PRESET_HINT: Record<string, string> = {
   PhotoKenBurns: "Ảnh chuyển động nhẹ",
   HeadlineImpact: "Tiêu đề nhấn mạnh (đồ họa)",
   SplitComparison: "So sánh chia đôi",
+  TacticalMap: "Sơ đồ di chuyển/vị trí (đồ họa, không phải bản đồ thật)",
+};
+
+const AMBIENT_LABEL: Record<AmbientEffect, string> = {
+  rain: "Mưa",
+  snow: "Tuyết rơi",
+  wind: "Gió/bụi",
+  embers: "Tàn lửa bay lên",
 };
 
 function SceneEditor({ scene, onSaved, projectId }: { scene: Scene; onSaved: () => void; projectId: number }) {
@@ -34,6 +42,7 @@ function SceneEditor({ scene, onSaved, projectId }: { scene: Scene; onSaved: () 
   const [texts, setTexts] = useState<OnScreenText[]>(scene.on_screen_text);
   const [motion, setMotion] = useState(scene.motion_notes ?? "");
   const [sfx, setSfx] = useState(scene.sfx_cues.join(", "));
+  const [ambient, setAmbient] = useState<AmbientEffect | "">(scene.ambient ?? "");
 
   async function save() {
     const r = await run("save", () =>
@@ -43,6 +52,7 @@ function SceneEditor({ scene, onSaved, projectId }: { scene: Scene; onSaved: () 
         on_screen_text: texts.filter((t) => t.text.trim()),
         motion_notes: motion,
         sfx_cues: sfx.split(",").map((x) => x.trim()).filter(Boolean),
+        ambient: ambient || null,
       }),
     );
     if (r) onSaved();
@@ -100,8 +110,18 @@ function SceneEditor({ scene, onSaved, projectId }: { scene: Scene; onSaved: () 
         <Field label="Ghi chú chuyển động">
           <input value={motion} onChange={(e) => setMotion(e.target.value)} />
         </Field>
-        <Field label="Gợi ý hiệu ứng âm thanh (cách nhau bằng dấu phẩy)">
+        <Field label="Gợi ý hiệu ứng âm thanh (cách nhau bằng dấu phẩy)" hint="Chỉ có tác dụng khi bật SFX ở tab Render -- xem gợi ý này để chọn 1 trong 4 hiệu ứng tổng hợp sẵn (whoosh/impact/stinger/wind).">
           <input value={sfx} onChange={(e) => setSfx(e.target.value)} />
+        </Field>
+        <Field label="Hiệu ứng thời tiết (tùy chọn)" hint="Lớp hạt chuyển động phủ lên hình, không ảnh hưởng tới preset đã chọn.">
+          <select value={ambient} onChange={(e) => setAmbient(e.target.value as AmbientEffect | "")}>
+            <option value="">Không có</option>
+            {AMBIENT_EFFECTS.map((a) => (
+              <option key={a} value={a}>
+                {AMBIENT_LABEL[a]}
+              </option>
+            ))}
+          </select>
         </Field>
       </div>
       <div className="doc-actions">

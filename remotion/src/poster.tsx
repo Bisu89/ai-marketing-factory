@@ -165,6 +165,7 @@ export const POSTER_COMPONENTS = {
   BigNumber: PosterScene,
   EvidenceBoard: PosterScene,
   HeadlineImpact: PosterScene,
+  TacticalMap: PosterScene,
 } as const;
 
 export function PosterSubtitles({ text }: { text: string }) {

@@ -33,9 +33,15 @@ from app.modules.documentary.script import SYLLABLES_PER_SECOND, ScriptService
 PRESETS = (
     "NewspaperStack", "ArchivalPortrait", "MapZoom", "TimelineBuild", "BigNumber",
     "EvidenceBoard", "PhotoKenBurns", "HeadlineImpact", "SplitComparison",
+    # Schematic troop-movement/sequence-of-places diagram -- ported capability, see
+    # docs/documentary/PORTING_NOTES.md part B. Draws from texts[] + a seeded layout, no image.
+    "TacticalMap",
 )
 # Presets drawn entirely by code (Remotion): no image file needed.
-PROGRAMMATIC_PRESETS = frozenset({"MapZoom", "TimelineBuild", "BigNumber", "EvidenceBoard", "HeadlineImpact"})
+PROGRAMMATIC_PRESETS = frozenset({"MapZoom", "TimelineBuild", "BigNumber", "EvidenceBoard", "HeadlineImpact", "TacticalMap"})
+# Optional continuous particle overlay a scene can request, drawn over whatever preset it uses.
+# Manually set only -- never guessed from narration. See PORTING_NOTES.md part C.
+AMBIENT_EFFECTS = ("rain", "snow", "wind", "embers")
 
 
 @dataclass(frozen=True)
@@ -244,6 +250,7 @@ class StoryboardService:
             expected_duration=round(words(u.text) / SYLLABLES_PER_SECOND, 2),
             on_screen_text=[],
             sfx_cues=[],
+            ambient=None,
         )
 
     def _assign_image_groups(self, groups: dict[str, list[DocumentaryScene]]) -> None:
@@ -282,6 +289,10 @@ class StoryboardService:
             s.motion_notes = changes["motion_notes"]
         if "sfx_cues" in changes:
             s.sfx_cues = changes["sfx_cues"]
+        if "ambient" in changes:
+            if changes["ambient"] is not None and changes["ambient"] not in AMBIENT_EFFECTS:
+                raise ValidationError(f"Hiệu ứng ambient không hợp lệ: {changes['ambient']!r}")
+            s.ambient = changes["ambient"]
         s.user_edited = True
         if s.asset_strategy == "image":
             s.input_hash = input_hash(s.visual_objective)

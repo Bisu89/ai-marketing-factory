@@ -166,6 +166,9 @@ class DocumentaryScene(Base):
     on_screen_text: Mapped[list] = mapped_column(JSON, nullable=False, default=list)
     motion_notes: Mapped[str | None] = mapped_column(Text, nullable=True)
     sfx_cues: Mapped[list] = mapped_column(JSON, nullable=False, default=list)
+    # Optional continuous particle overlay ("rain"|"snow"|"wind"|"embers") drawn over this scene's
+    # preset at render time. Manually set, never derived. See docs/documentary/PORTING_NOTES.md part C.
+    ambient: Mapped[str | None] = mapped_column(String, nullable=True)
     expected_duration: Mapped[float] = mapped_column(Float, nullable=False)
     actual_duration: Mapped[float | None] = mapped_column(Float, nullable=True)
     render_status: Mapped[str] = mapped_column(String, nullable=False, default="pending")

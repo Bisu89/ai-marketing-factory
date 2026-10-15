@@ -33,6 +33,7 @@ from app.modules.documentary.models import (
     DocumentarySceneTiming,
     DocumentarySubtitle,
 )
+from app.modules.documentary import sfx
 from app.modules.documentary.narration import NarrationService
 from app.modules.documentary.schemas import ReviewIssue
 from app.modules.documentary.storyboard import PRESETS, StoryboardPolicy
@@ -70,12 +71,18 @@ class RenderParams:
     music_path: str | None = None  # optional background track the user supplies (looped, ducked under the voice)
     music_db: float = -24.0  # level of the music before ducking
     music_credit: str | None = None  # licence/credit line for the track, shown in the export
+    # Optional synthesized SFX at scene-cut cues (see docs/documentary/PORTING_NOTES.md part A).
+    # Off by default, mirroring how music_path is optional; reuses each scene's own (pre-existing,
+    # previously unused) `sfx_cues` hint text, never invents a cue for a scene with no hint.
+    sfx_enabled: bool = False
+    sfx_db: float = -14.0  # level of each one-shot cue, before it's mixed under the narration
 
     def to_json(self) -> dict:
         return {
             "kind": self.kind, "scale": self.scale, "seconds": self.seconds, "theme": self.theme,
             "music_path": self.music_path, "music_db": self.music_db, "music_credit": self.music_credit,
             "burn_subtitles": self.burn_subtitles, "grayscale": self.grayscale, "normalize_audio": self.normalize_audio,
+            "sfx_enabled": self.sfx_enabled, "sfx_db": self.sfx_db,
         }
 
 
@@ -178,10 +185,10 @@ def derive_texts(preset: str, narration: str, policy: StoryboardPolicy | None = 
     elif preset == "SplitComparison":
         for s in sents[:2]:
             out.append({"text": _clip(s, 50), "role": "label", "anchor": s.split()[0]})
-    elif preset in ("MapZoom", "ArchivalPortrait"):
+    elif preset in ("MapZoom", "ArchivalPortrait", "TacticalMap"):
         name = proper_noun(narration)
         if name:
-            out.append({"text": name, "role": "label" if preset == "MapZoom" else "headline", "anchor": name.split()[0]})
+            out.append({"text": name, "role": "label" if preset in ("MapZoom", "TacticalMap") else "headline", "anchor": name.split()[0]})
     return [o for o in out if o["text"]]
 
 
@@ -294,6 +301,7 @@ def build_manifest(db: Session, root: Path, project_id: int, params: RenderParam
                 "key": sc.scene_key, "preset": preset,
                 "startFrame": start, "durationFrames": dur, "imageSrc": image, "imageAspect": aspect, "texts": rows,
                 "claimStatus": claim_status_for(sc.claim_ids or [], statuses),
+                "ambient": sc.ambient,
             }
         )
     manifest = {
@@ -310,13 +318,41 @@ def build_manifest(db: Session, root: Path, project_id: int, params: RenderParam
         from app.modules.documentary.assets import sha256_file
 
         music_sha = sha256_file(Path(params.music_path))  # a different track (or an edit) is a different video
+    # Only when SFX is on: a hash of every scene's own `sfx_cues` hint text, so toggling the feature
+    # on (or editing a hint while it's on) is a cache miss, but leaving it off never invalidates a
+    # cached render just because someone typed an unused hint. See PORTING_NOTES.md part A.
+    sfx_hash = None
+    if params.sfx_enabled:
+        hints = sorted((key, tuple(s.sfx_cues)) for key, s in scenes.items() if s.sfx_cues)
+        sfx_hash = hashlib.sha256(json.dumps(hints, ensure_ascii=False).encode()).hexdigest()[:16] if hints else "none"
     digest_src = json.dumps(
         {"m": manifest, "audio": narr.master_digest(segments), "remotion": remotion_source_hash(), "pipeline": PIPELINE_VERSION,
          "music": [music_sha, params.music_db] if music_sha else None,
+         "sfx": [sfx_hash, params.sfx_db] if sfx_hash else None,
          "normalize": params.normalize_audio, "seconds": params.seconds, "scale": params.scale},
         sort_keys=True, ensure_ascii=False,
     )
     return manifest, public, hashlib.sha256(digest_src.encode("utf-8")).hexdigest()[:16]
+
+
+# -- optional scene-cut SFX (see docs/documentary/PORTING_NOTES.md part A) ----------------------------
+def build_sfx_cues(db: Session, project_id: int, sfx_db: float) -> list[dict]:
+    """One cue per scene that has a non-empty `sfx_cues` hint, timed to that scene's real cut-in
+    moment on the narration timeline (the same `DocumentarySceneTiming` everything else renders
+    from). -> [{"scene", "style", "start_sec", "db"}]. Needs a built timeline, same prerequisite as
+    `build_manifest`; called separately from it (only when `RenderParams.sfx_enabled`) so building a
+    manifest never has to synthesize audio."""
+    timings = list(
+        db.scalars(select(DocumentarySceneTiming).where(DocumentarySceneTiming.project_id == project_id).order_by(DocumentarySceneTiming.order_index))
+    )
+    scenes = {s.scene_key: s for s in db.scalars(select(DocumentaryScene).where(DocumentaryScene.project_id == project_id))}
+    cues: list[dict] = []
+    for t in timings:
+        sc = scenes.get(t.scene_key)
+        if sc is None or not sc.sfx_cues:
+            continue
+        cues.append({"scene": t.scene_key, "style": sfx.match_style(", ".join(sc.sfx_cues)), "start_sec": t.start, "db": sfx_db})
+    return cues
 
 
 # -- preflight -------------------------------------------------------------------------------------------

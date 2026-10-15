@@ -193,7 +193,12 @@ export const PRESETS = [
   "PhotoKenBurns",
   "HeadlineImpact",
   "SplitComparison",
+  "TacticalMap",
 ] as const;
+
+// Optional continuous particle overlay a scene can request (see docs/documentary/PORTING_NOTES.md part C).
+export const AMBIENT_EFFECTS = ["rain", "snow", "wind", "embers"] as const;
+export type AmbientEffect = (typeof AMBIENT_EFFECTS)[number];
 
 export type AssetState =
   | "programmatic"
@@ -224,6 +229,7 @@ export interface Scene {
   on_screen_text: OnScreenText[];
   motion_notes: string | null;
   sfx_cues: string[];
+  ambient: AmbientEffect | null;
   expected_duration: number;
   actual_duration: number | null;
   render_status: string;
@@ -235,6 +241,7 @@ export interface SceneUpdate {
   on_screen_text?: OnScreenText[];
   motion_notes?: string;
   sfx_cues?: string[];
+  ambient?: AmbientEffect | null;
 }
 export interface Asset {
   id: number;
@@ -385,7 +392,11 @@ export interface RenderJob {
   status: "queued" | "running" | "succeeded" | "failed" | "cancelled";
   phase: string | null;
   progress: number;
-  params: { scale: number; seconds: number | null; burn_subtitles: boolean; grayscale: boolean; normalize_audio: boolean; theme?: "collage" | "cinematic" | "poster"; music_path?: string | null; music_db?: number; music_credit?: string | null };
+  params: {
+    scale: number; seconds: number | null; burn_subtitles: boolean; grayscale: boolean; normalize_audio: boolean;
+    theme?: "collage" | "cinematic" | "poster"; music_path?: string | null; music_db?: number; music_credit?: string | null;
+    sfx_enabled?: boolean; sfx_db?: number;
+  };
   error: string | null;
   duration_sec: number | null;
   qc: { ok: boolean; issues: QcItem[]; warnings: QcItem[]; width: number | null; height: number | null; has_audio: boolean; black_intervals: number } | null;
@@ -405,6 +416,8 @@ export interface RenderRequest {
   music_path?: string | null;
   music_db?: number;
   music_credit?: string | null;
+  sfx_enabled?: boolean;
+  sfx_db?: number;
 }
 export const renderPreflight = (id: number) => apiGet<Review>(`${P(id)}/render/preflight`);
 export const renderTools = () => apiGet<Record<string, boolean>>(`${B}/render-tools`);

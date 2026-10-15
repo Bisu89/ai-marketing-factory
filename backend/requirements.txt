@@ -34,6 +34,10 @@ playwright==1.62.0
 # aligning the known narration script to audio (CPU, int8; model downloaded on first use).
 # NOT yet added to AIContentLibrary.spec -- a packaged build would need its hidden imports.
 faster-whisper==1.2.1
+# documentary/sfx.py (docs/documentary/PORTING_NOTES.md part A): synthesizes scene-cut SFX from
+# scratch. Pinned explicitly even though faster-whisper/ctranslate2 already pull it in transitively,
+# since this module now imports it directly.
+numpy==2.4.6
 # ctranslate2 4.8.2 hard-crashes (access violation) while loading ANY model on this Windows
 # machine; 4.6.0 works but still imports pkg_resources, which needs setuptools<81.
 ctranslate2==4.6.0

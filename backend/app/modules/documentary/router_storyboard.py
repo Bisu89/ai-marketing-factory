@@ -50,6 +50,7 @@ def _scene_out(scene, assets_by_id) -> SceneOut:
         on_screen_text=scene.on_screen_text,
         motion_notes=scene.motion_notes,
         sfx_cues=scene.sfx_cues,
+        ambient=scene.ambient,
         expected_duration=scene.expected_duration,
         actual_duration=scene.actual_duration,
         render_status=scene.render_status,
@@ -80,7 +81,11 @@ def update_scene(
 ):
     svc = DocumentaryService(db)
     svc.get(project_id)
-    scene = StoryboardService(db).update(project_id, scene_id, body.model_dump(exclude_none=True))
+    # exclude_unset (not exclude_none): `ambient` is nullable and "clear it back to none" is a real,
+    # legitimate edit -- it must survive as an explicit `None` in `changes`, not be dropped because
+    # its value happens to be None. Every existing caller already sends all other fields explicitly
+    # non-None, so this is a no-op change for them.
+    scene = StoryboardService(db).update(project_id, scene_id, body.model_dump(exclude_unset=True))
     svc.storyboard_changed(project_id)
     return _scene_out(scene, _by_id(db, settings, project_id))
 

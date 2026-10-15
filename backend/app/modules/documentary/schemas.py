@@ -197,8 +197,11 @@ class ReviewOut(BaseModel):
 # -- storyboard & assets ------------------------------------------------------
 VisualPreset = Literal[
     "NewspaperStack", "ArchivalPortrait", "MapZoom", "TimelineBuild", "BigNumber",
-    "EvidenceBoard", "PhotoKenBurns", "HeadlineImpact", "SplitComparison",
+    "EvidenceBoard", "PhotoKenBurns", "HeadlineImpact", "SplitComparison", "TacticalMap",
 ]
+
+# Optional continuous particle overlay a scene can request (see PORTING_NOTES.md part C).
+AmbientEffect = Literal["rain", "snow", "wind", "embers"]
 
 
 class OnScreenText(BaseModel):
@@ -222,6 +225,7 @@ class SceneOut(BaseModel):
     on_screen_text: list[OnScreenText]
     motion_notes: str | None
     sfx_cues: list[str]
+    ambient: AmbientEffect | None
     expected_duration: float
     actual_duration: float | None
     render_status: str
@@ -234,6 +238,7 @@ class SceneUpdate(BaseModel):
     on_screen_text: list[OnScreenText] | None = None
     motion_notes: str | None = Field(default=None, max_length=1000)
     sfx_cues: list[str] | None = None
+    ambient: AmbientEffect | None = None
 
 
 class PlanOut(BaseModel):

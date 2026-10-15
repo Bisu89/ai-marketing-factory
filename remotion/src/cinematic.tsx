@@ -326,6 +326,9 @@ export const CINE_COMPONENTS = {
   BigNumber: CineNumber,
   EvidenceBoard: CineEvidence,
   HeadlineImpact: CineHeadline,
+  // No bespoke cinematic diagram built for this (out of scope) -- reuses the existing pin-and-line
+  // evidence board, the closest visual match already in this file. See PORTING_NOTES.md part B.
+  TacticalMap: CineEvidence,
 } as const;
 
 export function CineSubtitles({ text }: { text: string }) {

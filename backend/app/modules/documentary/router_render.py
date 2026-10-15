@@ -32,6 +32,9 @@ class RenderIn(BaseModel):
     music_path: str | None = Field(default=None, max_length=1000)
     music_db: float = Field(default=-24.0, ge=-40, le=-6)
     music_credit: str | None = Field(default=None, max_length=300)
+    # Optional synthesized SFX at scene-cut cues (see docs/documentary/PORTING_NOTES.md part A).
+    sfx_enabled: bool = False
+    sfx_db: float = Field(default=-14.0, ge=-40, le=-3)
 
 
 class RenderJobOut(BaseModel):
@@ -88,6 +91,7 @@ def start_render(project_id: int, body: RenderIn, db: Session = Depends(get_db),
         kind=body.kind, scale=scale, seconds=body.seconds, burn_subtitles=body.burn_subtitles,
         grayscale=body.grayscale, normalize_audio=body.normalize_audio, theme=body.theme,
         music_path=body.music_path, music_db=body.music_db, music_credit=body.music_credit,
+        sfx_enabled=body.sfx_enabled, sfx_db=body.sfx_db,
     )
     job, reused = svc.start_render(project_id, params)
     return _out(job, reused)

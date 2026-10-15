@@ -13,7 +13,15 @@ export const PRESET_NAMES = [
   "PhotoKenBurns",
   "HeadlineImpact",
   "SplitComparison",
+  // A schematic troop-movement/sequence-of-places diagram (unit blocks + drawn-on arrows between
+  // named points) -- not real geography, same spirit as MapZoom's own decorative fallback. See
+  // docs/documentary/PORTING_NOTES.md.
+  "TacticalMap",
 ] as const;
+
+// Optional continuous particle overlay drawn over whatever preset is showing (snow/rain/wind/rising
+// embers). Manually set per scene, never guessed from narration. See PORTING_NOTES.md part C.
+export const AMBIENT_KINDS = ["rain", "snow", "wind", "embers"] as const;
 
 export const textSchema = z.object({
   text: z.string().min(1),
@@ -35,6 +43,7 @@ export const sceneSchema = z.object({
   imageAspect: z.number().positive().nullable(),
   texts: z.array(textSchema),
   claimStatus: z.enum(["verified", "disputed", "unverified"]).nullable(),
+  ambient: z.enum(AMBIENT_KINDS).nullable().optional(),
 });
 
 export const subtitleSchema = z.object({
