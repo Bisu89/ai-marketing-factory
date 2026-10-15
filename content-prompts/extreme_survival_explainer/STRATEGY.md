@@ -1,5 +1,11 @@
 # STRATEGY — reverse-engineer kênh tham khảo & kế hoạch series "sinh tồn khắc nghiệt"
 
+> **Mục 8.2 (preset Remotion cần build) đã bị thay thế một phần bởi [`TEMPLATE.md`](TEMPLATE.md)
+> (2026-10-15)**: `TacticalMap`, `ambient` (rain/snow/wind/embers) và SFX tổng hợp đã có sẵn trong
+> Documentary (feature 188) — đọc `TEMPLATE.md` trước khi quyết định có cần build thêm
+> `MechanismCutaway`/`HubDiagram` không. Phần còn lại của tài liệu này (phân tích kênh, công thức kịch bản,
+> danh sách chủ đề, style guide §7) vẫn đúng, không đổi.
+
 > Dựa trên [`CHANNEL.md`](CHANNEL.md) (phân tích 3 video thật: transcript đầy đủ qua faster-whisper, đếm từ
 > thật, xem 39 khung hình thật) + audit trực tiếp mã nguồn repo này (không suy đoán tính năng). Nhãn
 > **FACT** (có bằng chứng trực tiếp) / **INFERENCE** (suy luận hợp lý từ FACT) / **HYPOTHESIS** (cần kiểm

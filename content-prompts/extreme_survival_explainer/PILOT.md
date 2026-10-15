@@ -1,5 +1,12 @@
 # PILOT — "Why Did Some Inuit Hunters Build Shelters Out of Snow?" (45-60s test segment)
 
+> **§6 và §8/§10 (kế hoạch build code) đã bị thay thế bởi [`TEMPLATE.md`](TEMPLATE.md) (2026-10-15)** —
+> quyết định dùng thẳng theme `collage` có sẵn + `TacticalMap`/`ambient`/SFX vừa thêm vào Documentary
+> (feature 188) thay vì build theme `flatvector` + `MechanismCutaway`/`HubDiagram` riêng. §1-5 (nghiên cứu,
+> kịch bản, storyboard 6 cảnh) **vẫn đúng, không đổi** — đọc `TEMPLATE.md` để biết cảnh S06 giờ dùng preset
+> nào. Giữ nguyên §6-10 dưới đây làm tài liệu lịch sử/tham khảo (spec `MechanismCutaway`/`HubDiagram` vẫn
+> dùng được nếu sau này thấy preset thay thế không đủ — xem `TEMPLATE.md` §1).
+
 > Tiếp nối [`STRATEGY.md`](STRATEGY.md). Tài liệu này KHÔNG lặp lại phân tích kênh tham khảo hay đánh giá
 > chiến lược — chỉ là kế hoạch triển khai cụ thể cho đoạn pilot 45-60 giây đầu tiên. Mọi chi tiết code dưới
 > đây đã được **đọc trực tiếp từ source thật** trong phiên làm việc này (không phải suy đoán từ báo cáo
