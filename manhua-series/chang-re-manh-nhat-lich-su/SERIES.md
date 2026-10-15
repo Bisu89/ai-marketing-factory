@@ -147,6 +147,36 @@ lớn hơn xoay quanh phủ Bá tước Huyền Vũ (gia tộc Kim Mộc Lan —
 | 78 | 77 | `manhua-recap/crmn_ep78` | Đại Ngốc tỉnh lại, có thiên phú võ đạo; Thẩm Lãng trèo tường rình tắm, máu mũi phun lên sách, bị Mộc Lan nhìn thấy. | ✅ script (Claude viết) |
 | 79 | 78 | `manhua-recap/crmn_ep79` | Thánh chỉ ban thân phận giám sinh Thái học; Thẩm Lãng cãi vợ chuyện rình tắm rồi đòi luyện võ. | ✅ script (Claude viết) |
 | 80 | 79 | `manhua-recap/crmn_ep80` | Luyện võ nửa canh giờ đã đòi bỏ cuộc; Lý Văn Chính được tha nhẹ, quay lại kéo binh vu kỵ binh của Mộc Lan giẫm chết dân, bắt Kim Kiếm Nương. | ✅ script (Claude viết) |
+| 81 | 80 | `manhua-recap/crmn_ep81` | Thẩm Lãng báo tin Hắc Thủy Đài sắp tới; hóa ra từ nửa tháng trước anh đã bày xong ván cờ mỹ nhân kế + búp bê yểm thái tử, khiến Quốc quân ra lệnh lăng trì Lý Văn Chính. | ✅ script (Claude viết), Long 09 |
+| 82 | 81 | `manhua-recap/crmn_ep82` | Kỵ binh phủ Bá tước bị phó thiên hộ Lâm Chước giam vô cớ; Thẩm Lãng dùng thuốc điều khiển Vương Liên (đã nhiễm chó dại) bày tiệc rượu gài bẫy. | ✅ script (Claude viết), Long 09 |
+| 83 | 82 | `manhua-recap/crmn_ep83` | Vương Liên mời Lâm Chước uống say theo kế; sáng hôm sau Lâm Chước tỉnh dậy cùng giường với Vương Liên, bị huynh trưởng Tịnh An Bá bắt gặp. | ✅ script (Claude viết), Long 09 |
+| 84 | 83 | `manhua-recap/crmn_ep84` | Thẩm Lãng đòi lại kỵ binh bị giam; về phủ thấy dân nuôi tằm quỳ khóc vì Từ gia và Lâm gia ngừng thu mua kén, liền tới thẳng Từ phủ. | ✅ script (Claude viết), Long 09 |
+| 85 | 84 | `manhua-recap/crmn_ep85` | Từ Thiên Thiên ép Thẩm Lãng giao đơn thuốc nhuộm mới chịu mua kén; anh bí mật trộn bạch lân vào kén rồi nhún nhường dâng cả ba đơn thuốc. | ✅ script (Claude viết), Long 09 |
+| 86 | 85 | `manhua-recap/crmn_ep86` | Thẩm Lãng đốt sạch ngàn cuốn Phong Nguyệt Vô Biên đổi lấy việc Từ gia mua ba mươi vạn cân kén; kén chứa bạch lân bốc cháy thiêu rụi đại tác phường Từ gia. | ✅ script (Claude viết), Long 09 |
+| 87 | 86 | `manhua-recap/crmn_ep87` | Từ Thiên Thiên cúi đầu xin mua kén, Thẩm Lãng ra giá gấp ba ép Từ gia thế chấp cửa tiệm; Lâm Chước và Trấn Viễn hầu cùng ép phủ Bá tước từ nhiều phía. | ✅ script (Claude viết), Long 09 |
+| 88 | 87 | `manhua-recap/crmn_ep88` | Tác phường Từ gia cháy rụi, quý tộc cũ vây hãm phủ Bá tước; biểu ca Tô Kiếm Đình của Mộc Lan đến giao đấu, khiến Thẩm Lãng quyết tâm giúp vợ luyện thành cao thủ số một. | ✅ script (Claude viết), Long 09 |
+| 89 | 88 | `manhua-recap/crmn_ep89` | Hồi tưởng mối thù 180 năm giữa Tấn Hải và Huyền Vũ quanh đảo Kim Sơn; Trương Tấn thua thảm trước Đường Viêm, bệnh dại lan trong nhà Tịnh An Bá khiến Lâm Chước lên cơn. | ✅ script (Claude viết), Long 09 |
+| 90 | 89 | `manhua-recap/crmn_ep90` | Lâm Chước chết, Từ gia phát đạt nhờ công thức nhuộm; Thẩm Lãng phát hiện mạch máu tím của Mộc Lan và mạch vàng của Đại Ngốc, cùng vợ tìm cách phá Thiên Ngoại Lưu Tinh. | ✅ script (Claude viết), Long 09 |
+| 91 | 90 | `manhua-recap/crmn_ep91` | Thẩm Lãng đo đường kính mặt trời bằng hình học, được học sĩ Trương Ngọc Âm mời vào thư viện Thiên Nhai Hải Các; vải Từ gia bị phát hiện có độc, đẩy Từ Thiên Thiên vào đường cùng. | ✅ script (Claude viết), Long 10 |
+| 92 | 91 | `manhua-recap/crmn_ep92` | Thẩm Lãng và Mộc Lan cưỡi ngựa trêu nhau vì mùi nước hoa; ở Từ gia, Trương Tấn thề không từ hôn Từ Thiên Thiên, rồi cha cô uống thuốc xong hộc máu. | ✅ script (Claude viết), Long 10 |
+| 93 | 92 | `manhua-recap/crmn_ep93` | Từ Quang Doãn chết vì thuốc độc, Trương Tấn phóng hỏa thiêu Từ gia rồi đổ tội Thẩm Lãng; con trai vua hải tặc Cửu Thiên Nguy kéo quân đến phong địa đòi nợ. | ✅ script (Claude viết), Long 10 |
+| 94 | 93 | `manhua-recap/crmn_ep94` | Cửu Kiều đánh bại Kim Sĩ Anh, đòi trả nợ rồi nhận ngang Mộc Lan là vợ hắn; Thẩm Lãng và Mộc Lan bên đống lửa phân tích Thiên Ngoại Lưu Tinh. | ✅ script (Claude viết), Long 10 |
+| 95 | 94 | `manhua-recap/crmn_ep95` | Người đào mộ Từ Quang Doãn hóa ra chính là Từ Thiên Thiên còn sống, thề trả thù; sứ giả Quốc vương triệu tập Huyền Vũ và Tấn Hải vào phiên xử đảo Kim Sơn. | ✅ script (Claude viết), Long 10 |
+| 96 | 95 | `manhua-recap/crmn_ep96` | Quốc vương quyết định tranh đảo Kim Sơn bằng ba trận văn - võ - quân, hai bên đóng dấu hiệp ước; hồi tưởng cho thấy Từ Thiên Thiên đã tìm được lối thoát bí mật trong căn phòng cháy. | ✅ script (Claude viết), Long 10 |
+| 97 | 96 | `manhua-recap/crmn_ep97` | Từ Thiên Thiên bị hải tặc bắt, dẫn chúng vào hầm axit sunfuric của Từ gia biến kho báu thành bẫy hủy diệt, rồi lê bước bê bết máu đi tìm Thẩm Lãng. | ✅ script (Claude viết), Long 10 |
+| 98 | 97 | `manhua-recap/crmn_ep98` | Thẩm Lãng chuẩn bị cho ba trận giành đảo Kim Sơn; Từ Thiên Thiên báo tin hải tặc đầu độc giếng, xin anh giúp báo thù Trương Xung/Trương Tấn, đổi lấy một cái giá. | ✅ script (Claude viết), Long 10 |
+| 99 | 98 | `manhua-recap/crmn_ep99` | Mộc Lan hỏi tình hình diệt hải tặc; Thẩm Lãng nhận thiệp mời yến tiệc của Trương Xung, trên xe bị Trương Xuân Hoa gài mỹ nhân kế nhưng người bị dò hóa ra lại là cô. | ✅ script (Claude viết), Long 10 |
+| 100 | 99 | `manhua-recap/crmn_ep100` | Thẩm Lãng từ chối mỹ nhân kế của Xuân Hoa, bước vào yến tiệc phủ thành chủ; cả bàn tiệc lần lượt nhắm vào anh, đỉnh điểm Chúc Văn Hoa đọc thơ khen Xuân Hoa để làm khó. | ✅ script (Claude viết), Long 10 |
+| 101 | 100 | `manhua-recap/crmn_ep101` | Tứ vương tử ép Thẩm Lãng làm thơ cứu mạng người in sách Phong Nguyệt Vô Biên; anh giấu khéo tên Đặng Tiên vào thơ rồi lạnh lùng hẹn bốn ngày sau gặp trên chiến trường. Tiệc tan, lộ bí mật: chính quốc vương không ưa Thẩm Lãng. | ✅ script (Claude viết) |
+| 102 | 101 | `manhua-recap/crmn_ep102` | Trương Xung tiếp tục nghi ngờ biểu hiện của Thẩm Lãng; cả triều đình họp chia chác tài sản phủ Bá tước trước. Thẩm Lãng trấn an em vợ Kim Mộc Thông đang học thi phát bệnh, rồi hứa với Mộc Lan: mình ta bất bại! | ✅ script (Claude viết) |
+| 103 | 102 | `manhua-recap/crmn_ep103` | Trận tranh chấp đảo Kim Sơn khai màn tại bãi săn Nọ Giang với ba lão thần làm trọng tài và giấy sinh tử. Phía Tấn Hải âm mưu bắt sống Mộc Lan không để lại vết thương vì một nhân vật bí ẩn có hứng thú với cô. | ✅ script (Claude viết) |
+| 104 | 103 | `manhua-recap/crmn_ep104` | Mộc Lan hạ gục huyền thoại bất bại Đường Viêm chỉ trong một chiêu nhờ Thẩm Lãng chỉ ra kẽ hở Thiên Ngoại Lưu Tinh; một thế lực bí ẩn đứng sau rèm tức giận vì kế hoạch làm "cứu tinh" của cô đổ bể. | ✅ script (Claude viết) |
+| 105 | 104 | `manhua-recap/crmn_ep105` | Tấn Hải Bá bí mật thuê cao thủ trà trộn vào quân đội để gian lận trận ba; buộc phải cho Huyền Vũ cũng được mượn người, và phe Tô gia bí ẩn nhanh chân trà trộn vào ngay quân đội đối phương. | ✅ script (Claude viết) |
+| 106 | 105 | `manhua-recap/crmn_ep106` | Trọng tài đổi lịch quân chiến sang buổi sáng; không một quý tộc nào dám cho Huyền Vũ mượn cao thủ, Thẩm Lãng âm thầm nâng cấp vũ khí giáp trụ giấu kín quân mình trước trận quân chiến. | ✅ script (Claude viết) |
+| 107 | 106 | `manhua-recap/crmn_ep107` | Quân chiến bùng nổ, trang bị bí mật của Huyền Vũ áp đảo Tấn Hải; Tô Thiên Ân trở mặt tấn công thẳng Mộc Lan, buộc Kim Trác phải đích thân cam đoan không giết kẻ đầu hàng để kết thúc trận hòa. | ✅ script (Claude viết) |
+| 108 | 107 | `manhua-recap/crmn_ep108` | Trương Sung nghi Thẩm Lãng biết trước đề thi, mượn cớ kiểm tra niêm phong rồi cố tình làm vỡ hộp đựng đề để đổi sang đề thi dự phòng — và phải quỳ chịu phạt giữa mưa khi âm mưu bị phát hiện. | ✅ script (Claude viết) |
+| 109 | 108 | `manhua-recap/crmn_ep109` | Đề thi dự phòng khác hẳn hai đề Thẩm Lãng đã chuẩn bị cho Kim Mộc Thông, nhưng hóa ra anh đã cấy cả kho tri thức vào đầu em vợ, giúp cậu tự tay viết nên bài văn khiến chính mình kinh ngạc. | ✅ script (Claude viết) |
+| 110 | 109 | `manhua-recap/crmn_ep110` | Ba trọng tài chấm bài ẩn danh, ngỡ ngàng khi bài văn hay nhất không phải của thám hoa Đường Duẫn mà của "tên béo ngu dốt" Kim Mộc Thông; Ninh Khởi vương thúc công bố Huyền Vũ thắng trận văn chiến. | ✅ script (Claude viết) |
 
 ## Nhân vật mới (tập 21–29)
 
@@ -178,6 +208,11 @@ lớn hơn xoay quanh phủ Bá tước Huyền Vũ (gia tộc Kim Mộc Lan —
 | Short tóm tắt 7 (9:16) | 12 beat, tổng hợp tình tiết hay nhất tập 61–70 | `short_summary7_script.json` | ✅ project 175 / job_233, Final QA PASS 100 |
 | Long 08 (16:9) | Tóm tắt tập 71–80, 180 beat, 10 phần | `long08_script.json` | ✅ project 191 / job_249, Final QA PASS 100 (18:17, 1920×1080) |
 | Short tóm tắt 8 (9:16) | 12 beat, tổng hợp tình tiết hay nhất tập 71–80 | `short_summary8_script.json` | ✅ project 192 / job_248, Final QA PASS 100 (45s) |
+| Long 09 (16:9) | Tóm tắt tập 81–90, ~18 beat/tập chọn đều từ script tập | — | ✅ project 263 / job_325 (15:38) |
+| Long 10 (16:9) | Tóm tắt tập 91–100, ~18 beat/tập chọn đều từ script tập | — | ✅ project 264 / job_326 (17:15) |
+| Short B01–B08 (9:16) | 1–2 tập mỗi bản (81 / 82-83 / 85-86 / 87 / 91 / 92-93 / 97 / 94), hook viết mới, 38–47s | `best_of/cr_s01`..`cr_s08/script.json` | ✅ project 265–272 |
+
+Nguồn: `docs/features/187-crmn-ep81-100-scripts-long-and-shorts.md`. Khung ảnh Long 09–10/Short B01–08 chưa đối chiếu lại bằng mắt sau khi chọn beat.
 
 Mục lục thời gian Long 01: 0:00 Tập 1 / 0:29 Tập 2 / 1:15 Tập 3 / 1:58 Tập 4 / 2:40 Tập 5 / 3:24 Tập 6 / 4:14 Tập 7 / 4:57 Tập 8 / 5:42 Tập 9 / 6:37 Tập 10.
 Mục lục thời gian Long 02: 0:00 Tập 11 / 0:47 Tập 12 / 1:29 Tập 13 / 2:09 Tập 14 / 2:54 Tập 15 / 3:37 Tập 16 / 4:19 Tập 17 / 5:06 Tập 18 / 5:47 Tập 19 / 6:34 Tập 20.
@@ -231,3 +266,7 @@ Dựng từ chính các script long (bỏ `template` để dùng template Short 
 - 2026-10-07: render bản dọc 9:16 cho Long 01–07 (7 project, qua ngay lần đầu). Lưu ý: luồng nền bị dừng khi hết giờ nên phải chạy lại luồng chờ + force-continue NEEDS_REVIEW.
 
 - 2026-10-08: viết `ep71..ep80/script.json` (10 tập), dựng Long 08 + Short tóm tắt 8. Mạch lớn: lật mặt thành chủ bằng thuốc nói thật, thoát tội mưu phản nhờ vụ Sa Cần (Nam Âu), thái thú Trương Xung tung mỹ nhân kế (Trương Xuân Hoa), quốc quân ban thân phận giám sinh Thái học, Lý Văn Chính được tha nhẹ rồi vu kỵ binh của Mộc Lan giẫm chết dân. Long 08 chọn 18 beat/tập cách đều; chưa dựng bản dọc 9:16.
+
+- 2026-10-14: viết `ep81..ep100/script.json` (20 tập), dựng Long 09–10 + 8 Short (xem `docs/features/187-crmn-ep81-100-scripts-long-and-shorts.md`). Mạch lớn: Thẩm Lãng hạ Lý Văn Chính bằng mỹ nhân kế, bẫy phó thiên hộ Lâm Chước bằng Vương Liên nhiễm chó dại, ép Từ gia phá sản qua vụ kén tằm nhiễm độc, Từ Quang Doãn chết và Từ Thiên Thiên giả chết trả thù, vua hải tặc Cửu Thiên Nguy đòi nợ, rồi quốc vương chính thức mở trận tranh chấp đảo Kim Sơn ba trận văn-võ-quân. Bảng kế hoạch tập 81–100 trong SERIES.md này được bổ sung lại ở phiên 2026-10-15 (dựa trên `script.json` đã có, không đọc lại ảnh gốc) vì bị bỏ sót khi viết script.
+
+- 2026-10-15: đọc sheets và viết `ep101..ep110/script.json` (10 tập, chương 100–109), tiếp tục trận tranh chấp đảo Kim Sơn. Mạch lớn: Thẩm Lãng cứu Đặng Tiên bằng một bài thơ giấu chữ, lộ tin quốc vương không ưa anh; Mộc Lan hạ gục huyền thoại bất bại Đường Viêm nhờ chỉ điểm trước; Tấn Hải Bá gian lận thuê cao thủ còn Tô gia bí ẩn trà trộn theo phe riêng; quân chiến thắng nhờ trang bị nâng cấp bí mật; Trương Sung phá niêm phong đề thi định chặn Thẩm Lãng nhưng Kim Mộc Thông vẫn thắng văn chiến nhờ "kho tri thức" được cấy sẵn. Chưa dựng Long 11 / Short cho đợt này.
