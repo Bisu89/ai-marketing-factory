@@ -1,6 +1,6 @@
 # Handoff: render Long 100-110 + 3 Short (Đại Quản Gia Là Ma Hoàng)
 
-Kịch bản đã viết xong và đã push (commit `194c886`). Việc còn lại là **build + render + QA**, rồi ghi kết quả vào `SERIES.md`.
+Scripts are ready. Render completed 2026-10-19: Long and Short AB/AC/AD all passed Final QA at 100/100. Projects/jobs: 278/332, 279/333, 280/334, 281/335. Durations and Long timestamps are recorded in SERIES.md.
 
 ## 4 video cần render
 
