@@ -283,3 +283,5 @@ Việc xóa không đổi tên các khung còn lại.
   6:39 Luyện Huyết Anh / 7:07 Thái phủ trở mặt / 7:34 Ma Hoàng nổi giận / 8:15 Ngự Hạ Thất Thế Gia / 9:05 Thượng Cổ Trận Thức Đồ
 - 2026-09-28: tắt nhạc nền cho template manhua, render lại tập 1–2 (project 117/118, jobs 179/180).
 - 2026-09-28: phân tích truyện, viết tay kịch bản tập 1–2 (Claude đọc 31 ảnh đọc, 180 khung).
+- 2026-10-19: render Long 100–110 (project 278, job 332, 20:17, 1920×1080, Final QA PASS 100) và 3 Short: AB 101–103 (project 279, job 333, 42.93s), AC 104–107 (project 280, job 334, 43.40s), AD 108–110 (project 281, job 335, 49.23s); cả ba 1080×1920, Final QA PASS 100. Output nằm trong `backend/data/library/_video_composer/`.
+  Mục lục Long: 0:00 ch100 Ma Hoàng giết U Quỷ Thất / 2:31 ch101 tin dữ chấn động triều đình / 4:14 ch102 U Minh Cốc truy sát / 5:29 ch103 Ma Sát Tam Quyết / 6:52 ch104 cứu chị em Tống gia / 8:27 ch105 tới Lan Lăng Thành / 9:51 ch106 tiệc Tề gia / 11:32 ch107 phá bẫy và hút độc / 13:11 ch108 phá chuông vàng / 15:38 ch109 giả danh vào Hoa Vũ Thành / 17:54 ch110 Đồng tiểu thư bị bắt nạt.
