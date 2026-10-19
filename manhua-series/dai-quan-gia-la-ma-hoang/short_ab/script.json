@@ -1,0 +1,105 @@
+{
+  "title": "Ma Hoàng giết U Quỷ Thất, hoàng đế lẫn U Minh Cốc đều nín thở!?",
+  "chapters": "101-103",
+  "source_dir": "manhua-recap/dqgl_ep101",
+  "written_by": "Claude tổng hợp từ ảnh thật chương, 2026-10-19",
+  "description": "Tin U Quỷ Thất chết làm hoàng đế và Tiềm Long Các cùng chấn động, còn U Minh Cốc phát lệnh truy sát Trác Phàm khắp đế quốc. Hắn lên núi luyện Ma Sát Tam Quyết, rồi bị một nhóm người lạ chặn đường đòi đan luyện thể.@@Review truyện Đại Quản Gia Là Ma Hoàng – Tóm tắt chương 101 đến 103.@@◀ Phần trước: chương 98-100@@▶ Phần sau: chương 104-107",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "LỆNH TRUY SÁT MA HOÀNG",
+    "prompt": "A young man in a brown cloak holding a glowing phoenix egg in a dark mountain gorge, red-black energy swirling around his arm, faint wanted-poster silhouettes in the dark sky. Chinese manhua cover art style, full-colour digital illustration, bold clean linework, cel shading with dramatic glow and rim light, high contrast, vertical 9:16 composition (keep the subject inside the centre 2:3 area), leave the top 25% as darker empty background for a title overlay, NO text, NO letters, NO speech bubbles, NO watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep101/p001.jpg",
+      "narration": "Trác Phàm này vừa giết một trưởng lão U Minh Cốc, mà ngay cả hoàng đế cũng phải ngồi tính xem nên giữ hắn thế nào.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep101/p018.jpg",
+      "narration": "Một tiểu quỷ giết liền ba đại trưởng lão. Tin ấy làm cả triều đình chấn động.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep101/p021.jpg",
+      "narration": "Quốc đế quyết định mặc kệ U Minh Cốc, nhưng dặn phải bảo vệ Lạc gia cho thật ổn thỏa.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep101/p055.jpg",
+      "narration": "Tiềm Long Các cười lớn: tiểu tử này đúng là nhân trung long phượng. Lập tức tăng viện trợ cho Lạc gia.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep102/p002.jpg",
+      "narration": "Còn ở U Minh Cốc, tin dữ khiến Cốc chủ nổi trận lôi đình.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep102/p014.jpg",
+      "narration": "Hoàng đế cấm họ vào Phong Lâm Thành, họ không dám đánh thẳng.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep102/p022.jpg",
+      "narration": "Một đệ tử đề nghị phát lệnh U Minh truy sát, săn hắn khắp đế quốc.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep102/p049.jpg",
+      "narration": "Lệnh truy sát được ban xuống. Từ nay Trác Phàm không biết kẻ thù sẽ ra tay lúc nào.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep103/p025.jpg",
+      "narration": "Trác Phàm lên núi khổ luyện, thi triển Ma Sát Tam Quyết. Luồng khí đen đỏ phủ kín khe núi.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep103/p035.jpg",
+      "narration": "Ba chiêu tung ra, nguyên khí trong người hắn cũng bị rút cạn.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep103/p044.jpg",
+      "narration": "Hắn hiểu: dùng liên tiếp thì người gục trước có khi chính là mình.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep103/p052.jpg",
+      "narration": "Quả trứng phượng hoàng trong tay hắn cần linh dược hiếm mới nở được.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep103/p059.jpg",
+      "narration": "Đúng lúc đó, một nhóm người cầm đao vây một cỗ xe, đòi bí pháp đan luyện thể.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep103/p063.jpg",
+      "narration": "Trác Phàm nằm trên cây nhếch môi cười: đan luyện thể? Chính các ngươi tự mang tới tận cửa đấy.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

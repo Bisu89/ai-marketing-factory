@@ -1,0 +1,1472 @@
+{
+  "template": "manhua_recap_long_vi",
+  "title": "Ma Hoàng thành quản gia | Tóm tắt chương 100-110",
+  "chapters": "100-110",
+  "source_dir": "manhua-recap/dqgl_ep100",
+  "written_by": "Claude, đọc lại ảnh thật chương 101-110 (bản ep101-110 của OpenAI lệch truyện ở nhiều chỗ), 2026-10-19",
+  "description": "Trác Phàm giết U Quỷ Thất, tiễn Ngưng Nhi, bị U Minh Cốc truy sát, cứu chị em Tống gia, thoát bẫy Tề gia rồi giả danh vào Hoa Vũ Thành dự hội Bách Đan. Tóm tắt truyện Đại Quản Gia Là Ma Hoàng, chương 100 đến 110, kèm bình luận.\nMục lục thời gian: xem bình luận ghim.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#TomTatTruyen"
+  ],
+  "thumbnail": {
+    "text": "MA HOÀNG GIẢ DANH VÀO HOA VŨ THÀNH",
+    "prompt": "A young man in a brown hooded cloak and a straw hat, glowing red eye beneath the brim, standing in a crowded ancient city gate with a crumpled wanted poster in his hand, purple wings faintly visible behind him. Chinese manhua cover art style, full-colour digital illustration, bold clean linework, cel shading with dramatic glow and rim light, high contrast, vertical 9:16 composition (keep the subject inside the centre 2:3 area), leave the top 25% as darker empty background for a title overlay, NO text, NO letters, NO speech bubbles, NO watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep100/p002.jpg",
+      "narration": "Giữa quảng trường đổ nát, Bát trưởng lão thốt lên: một chiêu... thật sự chỉ có một chiêu! Đã giết chết đệ nhất trí giả U Minh Cốc khiến tất cả các gia tộc phải kiêng kị.",
+      "kind": "recap",
+      "type": "HOOK",
+      "section": "Tập 100: Ma Hoàng giết U Quỷ Thất một chiêu, bế Ngưng Nhi bay khỏi thành"
+    },
+    {
+      "panel": "dqgl_ep100/p003.jpg",
+      "narration": "Một đệ tử nhìn xác chủ: Thất Khiếu Quỷ Linh Lung, U Quỷ Thất...",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep100/p005.jpg",
+      "narration": "Trác Phàm quay lại, nhìn đám đệ tử U Minh Cốc đang run rẩy.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep100/p006.jpg",
+      "narration": "Đám đệ tử hét: quái vật đó! Mau chạy thôi!! Rồi bỏ chạy tán loạn.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep100/p007.jpg",
+      "narration": "Trác Phàm nhún vai: đám tiểu tử U Minh này đúng là chuyên gia chạy trốn. Cơ mà, lại để hắn chạy thoát mất rồi.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep100/p013.jpg",
+      "narration": "Trác Phàm quay sang Ngưng Nhi, cánh tím vẫn phủ sau lưng. Nàng đứng đó trong bộ áo cưới đỏ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep100/p014.jpg",
+      "narration": "Hắn nhếch môi khẽ cười, rồi bất ngờ bế bổng cô lên.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep100/p016.jpg",
+      "narration": "Ngưng Nhi kinh ngạc nhìn hắn, hai tay vòng qua cổ hắn giữa làn khói hồng.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep100/p018.jpg",
+      "narration": "Hắn dang cánh bay vút lên, tan vào ánh sáng cùng cô.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep100/p019.jpg",
+      "narration": "Thiên Dương đứng nghẹn lời: ......",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep100/p023.jpg",
+      "narration": "Bát trưởng lão thở dài: không ngờ lại rơi vào kết cục như vậy, thật đáng tiếc, thật thảm thương làm sao! Ngươi cũng xem như một nhân vật tiếng tăm ở Đế quốc Thiên Vũ này.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep100/p025.jpg",
+      "narration": "Thiên Dương cau mày: thằng khốn nạn Trác Phàm đó, giết U Quỷ Thất là được rồi, mắc gì phải đưa Ngưng Nhi đi mất vậy ba?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep100/p026.jpg",
+      "narration": "Bát trưởng lão nói: Thiên Dương, cứu bọn họ xuống đi, chúng ta phải lập tức đưa họ trở về Hầu phủ để chữa trị. Sau này, Tiết gia chính là gia tộc phụ thuộc của Kiếm Hầu Phủ ta.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep100/p029.jpg",
+      "narration": "Nếu hắn đã tới đây vì muốn cứu mấy người này, thì không bằng chúng ta thuận nước đẩy thuyền, sau này cũng kết thân một phen. Bằng không, nếu như sau này trở thành kẻ địch...",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep100/p030.jpg",
+      "narration": "...chúng ta cũng có thể giữ bọn họ làm con tin, đối phó với tiểu tử đó.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep100/p030.jpg",
+      "narration": "Câu cuối của Bát trưởng lão mới là lời thật: kết thân thì dễ nghe, giữ con tin mới là tính toán. Ngưng Nhi vừa thoát miệng cọp, đã suýt thành quân cờ của bên khác.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep100/p035.jpg",
+      "narration": "Giữa khu rừng xa thành, Trác Phàm hạ cánh, hai tay vẫn bế Ngưng Nhi. Cánh rách nát khép lại sau lưng.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep100/p036.jpg",
+      "narration": "Hắn nói: lúc trước, chúng ta đã đồng ý với nhau, ta sẽ đưa ngươi đi, đưa ngươi rời khỏi thành.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep100/p037.jpg",
+      "narration": "Bây giờ, ta đã thực hiện được lời hứa của mình rồi. Đây là bên ngoài thành!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep100/p039.jpg",
+      "narration": "Lần đầu tiên ta ra ngoài đó. Cuối cùng cũng được rời thành rồi!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep100/p040.jpg",
+      "narration": "Cô nắm tay Trác Phàm, mắt long lanh: cảm ơn ngươi, Trác đại ca!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep100/p041.jpg",
+      "narration": "Trác Phàm khép mắt: không có gì, đây vốn dĩ chính là lời hứa của chúng ta. Ngưng Nhi, có lẽ bây giờ, cũng là lúc chúng ta phải chính thức nói lời tạm biệt.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep100/p042.jpg",
+      "narration": "Ngưng Nhi nghệt mặt: ngươi phải đi sao? Ngươi muốn đi đâu?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep100/p044.jpg",
+      "narration": "Ngưng Nhi nắm lấy tay áo hắn: Trác đại ca, vậy... ngươi có thể đưa ta đi cùng được không?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep100/p045.jpg",
+      "narration": "Không được! Với thực lực của ngươi, đi cùng ta sẽ rất nguy hiểm.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep100/p047.jpg",
+      "narration": "Trác Phàm xoa đầu cô, mỉm cười: đứa ngốc, người nhà của ngươi còn cần phải chăm sóc nữa. Tiểu tử họ Thiên Dương đó khẩu khí không nhỏ, xem ra hắn có địa vị khá cao ở Kiếm Hầu Phủ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep100/p048.jpg",
+      "narration": "Tiết gia đã đắc tội với U Minh Cốc, đang cần một chỗ dựa. Nếu hắn giúp các ngươi thưa chuyện, che chở cho các ngươi dưới đôi cánh của Kiếm Hầu Phủ, nhất định sẽ không thành vấn đề.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep100/p052.jpg",
+      "narration": "Hắn quay lưng bước đi giữa rừng cây: ta đi đây, lấp lánh ánh sáng một lần nữa.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep100/p054.jpg",
+      "narration": "Hắn không quay đầu, giơ tay vẫy: khi nhẫn Lôi Linh...",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep100/p056.jpg",
+      "narration": "Cô đứng giữa rừng, nước mắt rơi, tay ôm chiếc nhẫn sáng nhẹ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep100/p057.jpg",
+      "narration": "...cũng chính là lúc chúng ta gặp lại!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep101/p001.jpg",
+      "narration": "Một tháng sau trận chiến ở Thanh Minh, Trác Phàm đã biến mất khỏi cuộc chiến, nhưng cái chết của U Quỷ Thất thì không thể giấu thêm nữa.",
+      "kind": "recap",
+      "type": "BUILD",
+      "section": "Tập 101: Tin U Quỷ Thất chết làm chấn động triều đình và Tiềm Long Các"
+    },
+    {
+      "panel": "dqgl_ep101/p004.jpg",
+      "narration": "Trong hoa viên hoàng cung, Thông Nhi hớt hải chạy tới gọi Phụ hoàng, còn Quốc đế vẫn ung dung ngồi đánh cờ với Tư Mã tiên sinh.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep101/p010.jpg",
+      "narration": "Thông Nhi vội nhận lỗi rồi báo tin: Thất trưởng lão U Minh Cốc, U Quỷ Thất, đã chết.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep101/p013.jpg",
+      "narration": "Tin truyền về cho biết ông ta bị Trác Phàm giết ở Thanh Minh chỉ trong một tháng qua.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep101/p015.jpg",
+      "narration": "Thông Nhi nhận ra Trác Phàm chính là quản gia Lạc gia mà cậu từng nhắc với Quốc đế.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep101/p017.jpg",
+      "narration": "Hai trưởng lão U Minh Cốc chết ở Phong Lâm trước đó cũng do hắn ra tay, còn Tiềm Long Các chỉ đang gánh tiếng thay.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep101/p018.jpg",
+      "narration": "Một tiểu quỷ giết liền ba đại trưởng lão. Nghe thôi cũng đủ lạnh gáy.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep101/p020.jpg",
+      "narration": "Quốc đế nhận xét: nếu là ân oán giữa các thế gia thì còn đáng đau đầu, nhưng U Vạn Sơn không có mặt để cáo trạng.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep101/p021.jpg",
+      "narration": "Ông quyết định tạm mặc kệ U Minh Cốc, nhưng dặn phải thu xếp ổn thỏa để họ không động tới Lạc gia.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep101/p024.jpg",
+      "narration": "Quốc đế xem Trác Phàm như viên minh châu cần sớm tỏa sáng.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep101/p024.jpg",
+      "narration": "Hoàng đế bảo vệ Lạc gia không phải vì tình nghĩa mà vì Trác Phàm đã thành một quân cờ đáng giữ. Nhưng được hoàng đế để mắt tới thì hắn cũng đỡ phải lo bị làm khó.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep101/p028.jpg",
+      "narration": "Ở một nơi khác, một nhân vật quyền thế cũng vừa nghe tin U Quỷ Thất bỏ mạng, và nhận ra các thế gia sắp phải đối mặt với biến động lớn.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep101/p034.jpg",
+      "narration": "Trên Quan Tinh Đài, người ta lại thấy sao Hỏa, điềm báo chiến tranh và cái chết. Ngọn lửa từ một ngôi sao có thể cháy lan khắp đồng cỏ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep101/p036.jpg",
+      "narration": "Câu chuyện chuyển tới tổng bộ Tiềm Long Các, nơi một trưởng lão đang nhận xét hai hậu bối của mình.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep101/p039.jpg",
+      "narration": "Hai người được khen tiến bộ, nhưng vẫn bị chê kém xa thiên tài Lạc gia.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep101/p043.jpg",
+      "narration": "Vị trưởng lão mong hai hậu bối có được dù chỉ một nửa tài năng của Trác Phàm.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep101/p045.jpg",
+      "narration": "Có người nghe mãi không chịu nổi, chê Trác Phàm kiêu ngạo vì không chịu gia nhập Tiềm Long Các.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep101/p046.jpg",
+      "narration": "Đúng lúc đó, một thuộc hạ hớt hải chạy vào báo tin khẩn.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep101/p053.jpg",
+      "narration": "Bản tin xác nhận: U Quỷ Thất của U Minh Cốc đã bị Trác Phàm giết tại Thanh Minh.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep101/p055.jpg",
+      "narration": "Người đứng đầu Tiềm Long Các cười lớn: lựa chọn ban đầu của các chủ là đúng, tiểu tử này đúng là nhân trung long phượng.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep101/p056.jpg",
+      "narration": "Ông ra lệnh tăng viện trợ cho Lạc gia và phái người bảo vệ họ, rồi hỏi có ai phản đối không. Chẳng ai dám.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep101/p061.jpg",
+      "narration": "Tiềm Long Các tin chắc Trác Phàm sẽ danh chấn thiên hạ. Nhưng U Minh Cốc chắc chắn sẽ không để cái chết của U Quỷ Thất trôi qua dễ dàng.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep102/p002.jpg",
+      "narration": "Ở U Minh Cốc, tin dữ vừa truyền về: ba vị trưởng lão đều đã chết dưới tay Trác Phàm, quản gia của Lạc gia.",
+      "kind": "recap",
+      "type": "BUILD",
+      "section": "Tập 102: U Minh Cốc phát lệnh truy sát Trác Phàm"
+    },
+    {
+      "panel": "dqgl_ep102/p006.jpg",
+      "narration": "Kẻ đưa tin run rẩy xin Cốc chủ tha mạng, nhưng vẫn bị quật ngã trước mặt các trưởng lão.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep102/p008.jpg",
+      "narration": "Hắn phân trần rằng chính sư phụ không cho báo, còn dặn đây là chuyện kỳ lạ, tốt nhất đừng nói ra.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep102/p011.jpg",
+      "narration": "Muộn màng biết sự tình, các cao tầng U Minh Cốc bắt đầu bàn cách đối phó Trác Phàm.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep102/p014.jpg",
+      "narration": "Đại trưởng lão nhắc mọi người: hoàng đế đã cấm U Minh Cốc tiến vào Phong Lâm Thành gần một năm nay.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep102/p016.jpg",
+      "narration": "Nếu công khai đánh Lạc gia, họ sẽ tự trao cớ cho hoàng thất và Tiềm Long Các ra tay.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep102/p018.jpg",
+      "narration": "Nhưng ai cũng hiểu Lạc gia mạnh lên nhờ Trác Phàm. Chỉ cần trừ khử hắn, Lạc gia chẳng còn đáng sợ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep102/p022.jpg",
+      "narration": "Một đệ tử đề nghị: đừng đánh vào thành, hãy phát lệnh U Minh truy sát, săn hắn khắp đế quốc.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep102/p026.jpg",
+      "narration": "Đại trưởng lão lắc đầu: hắn giết được cả Thất trưởng lão, nên lệnh truy sát bình thường chưa chắc đủ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep102/p035.jpg",
+      "narration": "Người đủ sức là Lão Ngũ, kẻ luyện thể Xích Viêm Ma Kim Cương Bất Hoại, nhưng ông ta đang được Hoa Vũ Lâu mời đi dự hội Bách Đan.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep102/p040.jpg",
+      "narration": "Cốc chủ muốn nhận một đệ tử U Minh thay vào chỗ Thất trưởng lão đã mất.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep102/p049.jpg",
+      "narration": "Cuối buổi họp, một tiếng cười âm hiểm vang lên. Lệnh truy sát Trác Phàm được ban xuống khắp đế quốc.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep102/p049.jpg",
+      "narration": "U Minh Cốc không dám đánh thẳng nên chuyển sang bóng tối. Với Trác Phàm, đó mới là loại kẻ thù khó chịu nhất: không biết là ai, không biết lúc nào.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep102/p050.jpg",
+      "narration": "Cùng lúc đó, ở hậu sơn Lạc gia, một người đang khổ luyện Ma Sát Quyết, khí đen quấn quanh thân.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep102/p054.jpg",
+      "narration": "Một cô gái tóc tím bước tới, nghi hoặc hỏi: rốt cuộc ngươi đang luyện tà công gì vậy?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep102/p056.jpg",
+      "narration": "Một giọng đáp bất ngờ vang lên: bằng Thông Linh! Cuộc gặp này xem ra còn nhiều chuyện chưa rõ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep103/p003.jpg",
+      "narration": "Trên núi sâu, cô gái tóc tím và người đồng hành nói về cách luyện Ma Sát Quyết khắc nghiệt: hai mươi đứa trẻ đưa tới, chỉ một đứa vượt qua.",
+      "kind": "recap",
+      "type": "BUILD",
+      "section": "Tập 103: Trác Phàm luyện Ma Sát Tam Quyết, kẻ lạ đòi đan luyện thể"
+    },
+    {
+      "panel": "dqgl_ep103/p007.jpg",
+      "narration": "Ban đầu năm mươi người tập thì chết gần hết, nhưng vì Lạc gia, ai còn sống cũng cắn răng chịu đựng.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep103/p009.jpg",
+      "narration": "Cô báo tin: U Minh Cốc đã treo thưởng lấy mạng Trác Phàm.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep103/p013.jpg",
+      "narration": "Người đàn ông chẳng bất ngờ. Hắn đi đến đâu cũng làm trời đất rung chuyển, bị truy sát là chuyện thường.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep103/p016.jpg",
+      "narration": "Cô thắc mắc: vì một cô gái mà dám đại náo U Minh Cốc, từ lúc nào hắn chính nghĩa như vậy?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep103/p020.jpg",
+      "narration": "Trong khe núi, Trác Phàm vẫn đang khổ luyện. Hắn biết cơ thể gần chạm giới hạn, nhưng phải mạnh thêm trước khi U Minh Cốc tìm tới.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep103/p025.jpg",
+      "narration": "Hắn vận công thi triển Ma Sát Tam Quyết. Chiêu thứ nhất bùng ra, luồng khí đen đỏ phủ kín khe núi.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep103/p028.jpg",
+      "narration": "Chiêu thứ hai ép cơ thể gánh thêm một đợt sức mạnh dữ dội.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep103/p035.jpg",
+      "narration": "Chiêu thứ ba nổ tung, nhưng nguyên khí trong người hắn cũng bị rút cạn.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep103/p039.jpg",
+      "narration": "Mới ba chiêu mà hắn đã kiệt sức, phải ngồi xuống điều tức.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep103/p044.jpg",
+      "narration": "Hắn nhận ra: ba chiêu này chỉ dùng được khi liều mạng. Nguyên lực có hạn, dùng liên tiếp thì người gục trước có khi chính là hắn.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep103/p046.jpg",
+      "narration": "Sức mạnh càng lớn càng phải biết giới hạn. Ma Hoàng thích tung hết chiêu, nhưng lần này hắn tự tính đường lui. Mình thấy đó mới là chỗ đáng sợ nhất.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep103/p047.jpg",
+      "narration": "Hoàng hôn xuống, hắn lấy quả trứng phượng hoàng ra xem tình trạng của nó.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep103/p052.jpg",
+      "narration": "Linh khí trong Lôi Linh Giới chỉ giúp trứng không chết, chứ chưa thể hồi phục. Muốn nó nở, hắn cần thiên tài địa bảo.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep103/p056.jpg",
+      "narration": "Hắn đang tính chuyện đi tìm thuốc thì một tiếng quát vang lên: Tống Ngọc, biết điều thì mau giao đan luyện thể ra đây!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep103/p059.jpg",
+      "narration": "Một nhóm người cầm đao vây quanh cỗ xe. Họ đòi bí pháp của Tống gia, thứ mà gia tộc này còn định đem đi dự hội Bách Đan.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep103/p063.jpg",
+      "narration": "Trác Phàm nằm trên cây, nhếch môi cười: đan luyện thể? Hội Bách Đan? Chính các ngươi tự mang tới tận cửa đấy.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep104/p001.jpg",
+      "narration": "Hai chị em Tống gia bị một nhóm người lạ vây chặt, đòi họ giao bí phương đan luyện thể.",
+      "kind": "recap",
+      "type": "BUILD",
+      "section": "Tập 104: Trác Phàm cứu chị em Tống gia khỏi nhóm người lạ"
+    },
+    {
+      "panel": "dqgl_ep104/p003.jpg",
+      "narration": "Lão già cầm đầu chê Tống gia chỉ là gia tộc hạng ba mà giữ bí phương tứ phẩm, đúng là phí của trời. Ngoan ngoãn giao ra đi.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep104/p005.jpg",
+      "narration": "Cậu em rút kiếm thề chết không giao, nhưng chênh lệch thực lực quá lớn, cậu bị đánh bay.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep104/p009.jpg",
+      "narration": "Cô chị hỏi: đệ có sợ không? Cậu em đáp: tỷ, đệ không sợ! Hai chị em quyết không để bí phương gia tộc rơi vào tay lão.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep104/p013.jpg",
+      "narration": "Đúng lúc đó, một chiếc lá xanh bay tới, chặn nhát kiếm giữa không trung.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep104/p015.jpg",
+      "narration": "Trác Phàm bước ra, thổi nhẹ lòng bàn tay, thờ ơ nói: chỉ là chút đan dược tứ phẩm, hà tất phải đòi mạng người như vậy?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep104/p019.jpg",
+      "narration": "Lão già cười khẩy: tưởng ai to gan, hóa ra chỉ là tên tiểu tử mới vào Đoán Cốt cảnh.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep104/p021.jpg",
+      "narration": "Hắn đáp gọn: ta không nói chuyện nhân từ, ta nói chuyện thực lực. Ta muốn họ sống thì các ngươi không giết nổi.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep104/p025.jpg",
+      "narration": "Cậu em vội khuyên hắn chạy đi, vì hắn không phải đối thủ của lão.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep104/p031.jpg",
+      "narration": "Mắt Trác Phàm đỏ rực, hắn chém một nhát ra ngay trước mặt cả nhóm.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep104/p033.jpg",
+      "narration": "Đám người hoảng sợ hét lên: quái vật! rồi bỏ chạy tán loạn.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep104/p036.jpg",
+      "narration": "Trác Phàm quay đi thì chị em Tống gia gọi lại, nói ơn cứu mạng hôm nay Tống gia nhất định báo đáp.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep104/p044.jpg",
+      "narration": "Cô chị còn tự nhận mình là đại mỹ nhân nổi danh trong gia tộc, chưa nam nhân nào gặp mà không hồn xiêu phách lạc.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep104/p044.jpg",
+      "narration": "Cô chị tự tin về nhan sắc đến mức bị làm lơ là tự ái ngay. Cái hài của truyện nằm ở đây: Ma Hoàng sống mấy đời người, mắt hắn chỉ nhìn thực lực.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep104/p050.jpg",
+      "narration": "Cô hỏi hắn định đi đâu. Hắn đáp: không liên quan đến ngươi. Cô nói họ đang muốn tới Hoa Vũ Thành dự Bách Đan Thịnh Hội, hỏi có thuận đường không.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep104/p053.jpg",
+      "narration": "Trác Phàm hỏi lại: Hoa Vũ Lâu thuộc Ngự Hạ Thất Thế Gia phải không? Cậu em đáp: đúng vậy, hội này mười năm tổ chức một lần.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep104/p055.jpg",
+      "narration": "Gia tộc có thuật luyện đan cao minh mà được Hoa Vũ Lâu xem trọng sẽ được thu nhận làm gia tộc phụ thuộc, nhận sự che chở của Thất Thế Gia.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep104/p056.jpg",
+      "narration": "Trác Phàm nghĩ ngay: hội này sẽ tập hợp lượng lớn dược liệu hiếm, biết đâu có thứ cứu được quả trứng phượng hoàng. Hắn gật đầu: vậy ta cũng muốn chứng kiến một chút.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep105/p001.jpg",
+      "narration": "Trên đường tới Lan Lăng Thành, cậu em Tống gia cứ gọi Trác Phàm là Lạc Phàm huynh đệ mãi, khiến hắn chỉ muốn bịt tai.",
+      "kind": "recap",
+      "type": "BUILD",
+      "section": "Tập 105: Trác Phàm tới Lan Lăng Thành, một câu trêu chọc châm ngòi trận đòn"
+    },
+    {
+      "panel": "dqgl_ep105/p004.jpg",
+      "narration": "Mục tiêu chuyến đi là mua vài linh dược trân quý ở thành, rồi đi dự Bách Đan Thịnh Hội để giành cơ hội được Hoa Vũ Lâu ưu ái.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep105/p009.jpg",
+      "narration": "Trác Phàm nhìn hai chị em mà thở dài: một người mê trai, một người mê gái, hắn phải mau chuồn đi kẻo bị lây.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep105/p017.jpg",
+      "narration": "Cậu em nghe nói Hoa Vũ Lâu có mười lăm vị lâu chủ, ai cũng đẹp như tiên nữ. Đứng đầu là Sở Khuynh Thành, được xưng là Thiên Vũ đệ nhất mỹ nhân.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep105/p019.jpg",
+      "narration": "Cậu ta lập tức hai mắt sáng rực: được liếc nhìn nàng một cái, chết cũng đáng.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep105/p021.jpg",
+      "narration": "Vừa nãy còn khen chị mình xinh, giờ đã quay sang mê người khác. Đúng là em ruột của một nhà họ Tống. Trác Phàm nhìn mà chỉ biết lắc đầu.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep105/p023.jpg",
+      "narration": "Xe vừa vào Lan Lăng Thành thì có tiếng gọi từ xa. Một công tử tóc vàng áo trắng xanh bước tới.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep105/p025.jpg",
+      "narration": "Đó là Tề Thiên Lôi, thiếu gia Tề gia, đệ nhất thế gia của Lan Lăng Thành. Tề gia và Tống gia là thế giao, nhưng Tề gia luôn coi thường Tống gia.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep105/p027.jpg",
+      "narration": "Trác Phàm nhìn cảnh ấy mà thấy Tống gia giống hệt Lạc gia. Chỉ khác là Lạc gia có hắn chống lưng.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep105/p031.jpg",
+      "narration": "Tề Thiên Lôi hỏi thẳng: hắn là ai? Quan hệ của ngươi với hắn là gì?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep105/p034.jpg",
+      "narration": "Cậu em chen vào nhận hắn là bằng hữu, nhưng lập tức bị đánh bay: lão tử không hỏi ngươi!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep105/p038.jpg",
+      "narration": "Trác Phàm cố tình chọc: dọc đường ta cùng cô ấy ăn chung, ngủ chung cho tới khi ra khỏi cỗ xe ngựa kia. Ngươi đoán xem là quan hệ gì?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep105/p041.jpg",
+      "narration": "Cậu em kêu lên: rõ ràng là khiêu khích! Nhưng Tề Thiên Lôi đã mắc bẫy, hét lên đòi giết hắn tại chỗ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep105/p046.jpg",
+      "narration": "Trác Phàm chỉ tung một quyền, nhanh đến mức không ai kịp phản ứng.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep105/p050.jpg",
+      "narration": "Tề Thiên Lôi bị đánh bật, nằm lăn ra đất, còn chưa hiểu chuyện gì vừa xảy ra.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep105/p053.jpg",
+      "narration": "Trác Phàm đứng trước mặt, áo rách, mắt đỏ rực.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep105/p056.jpg",
+      "narration": "Tề Thiên Lôi run rẩy hỏi: nguyên thần mạnh như vậy, ngươi có phải là cao thủ Thần Chiếu Cảnh không?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep106/p003.jpg",
+      "narration": "Sau trận thua, Tề Thiên Lôi run lẩy bẩy. Gia chủ Tề gia là Tề Cường Liệt xuất hiện, hỏi ai đã ra tay.",
+      "kind": "recap",
+      "type": "BUILD",
+      "section": "Tập 106: Tiệc Tề gia, kẻ nào cũng nhắm vào Trác Phàm"
+    },
+    {
+      "panel": "dqgl_ep106/p009.jpg",
+      "narration": "Tề Thiên Lôi nhận lỗi: ba phụ, chuyện này đều do con mà ra, xin ngài đừng trách người khác.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep106/p013.jpg",
+      "narration": "Tề Cường Liệt giật mình rồi bật cười lớn: hóa ra là khách quý đến thăm, hiểu lầm, tất cả chỉ là hiểu lầm!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep106/p016.jpg",
+      "narration": "Ông mắng con trai rồi nói sẽ đích thân làm chủ nhà tiếp đón khách chu đáo.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep106/p019.jpg",
+      "narration": "Trác Phàm hỏi hai chị em: ai bảo Tề gia coi thường các ngươi? Cậu em đáp: lão bình thường chưa bao giờ dễ chịu với chúng ta, hôm nay như biến thành người khác.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep106/p022.jpg",
+      "narration": "Cậu em chắc chắn: trong chuyện này nhất định có quỷ. Trác Phàm mỉm cười: phải đấy, nhất định có quỷ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep106/p024.jpg",
+      "narration": "Gia chủ cứng đầu với Tống gia bao năm, hôm nay bỗng cười như hoa, con trai bị đánh cũng không truy cứu. Ai nghĩ kỹ cũng biết bữa tiệc này không phải để mời cơm.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep106/p026.jpg",
+      "narration": "Hai chị em mời Trác Phàm dự tiệc, nhưng hắn từ chối. Cậu em nài: chủ nhà mời tiệc mà không đi thì mất mặt lắm.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep106/p030.jpg",
+      "narration": "Hắn đành nhượng bộ: Hồng Môn Yến thì vẫn phải đi. Rồi để họ đi trước dẫn đường.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep106/p032.jpg",
+      "narration": "Trong sảnh tiệc, Tề Cường Liệt cùng một lão già tóc bạc nâng chén mời mọi người ngồi xuống.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep106/p035.jpg",
+      "narration": "Trác Phàm liếc thấy ba bóng người lấp ló ngoài cửa, thầm nghĩ: định vây ta giữa tiệc để tiện ra tay sao?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep106/p040.jpg",
+      "narration": "Hắn thản nhiên từ chối ly rượu: rượu là độc dược, ta bỏ rượu nhiều năm rồi. Ta còn khuyên Tề gia chủ cũng bớt uống đi.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep106/p044.jpg",
+      "narration": "Trác Phàm đặt ly rượu xuống bàn, khói độc bốc lên. Hắn nói chắc nịch: đây là Bạch Tiên Đan luyện từ nọc độc Xích Luyện Độc Mãng, ta nói không sai.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep106/p046.jpg",
+      "narration": "Tề Cường Liệt gằn mặt: ngươi lại đắc tội U Minh Cốc? Giờ Cốc chủ đã ra lệnh truy sát ngươi khắp đế quốc.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep106/p048.jpg",
+      "narration": "Ông ta hô: thà để lão phu mang đầu ngươi tới U Minh Cốc lãnh thưởng! Các trưởng lão, nghe lệnh!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep106/p050.jpg",
+      "narration": "Sát thủ U Minh Cốc lao qua cửa sổ, cả nhóm người Tề gia cũng ập vào.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep106/p052.jpg",
+      "narration": "Trác Phàm quát lên một tiếng, ánh vàng vỡ tung giữa đại sảnh, khói bụi mù mịt.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep106/p058.jpg",
+      "narration": "Một tên sát thủ còn tưởng mình đang nắm thế chủ động thì nghe tiếng Trác Phàm ngay sau lưng: ta đang ở đây này!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep106/p060.jpg",
+      "narration": "Nụ cười của Trác Phàm khiến cả đám sát thủ lạnh sống lưng. Cuộc phục kích này sẽ kết thúc hoàn toàn khác dự tính.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep107/p002.jpg",
+      "narration": "Sau khi hạ sát thủ U Minh Cốc, Tề Cường Liệt cùng hai trưởng lão đứng trước Trác Phàm, xác sát thủ nằm la liệt dưới đất.",
+      "kind": "recap",
+      "type": "BUILD",
+      "section": "Tập 107: Ma Hoàng nổi giận ở Tề gia, rồi lại phải hút độc cứu người"
+    },
+    {
+      "panel": "dqgl_ep107/p003.jpg",
+      "narration": "Ông thừa nhận: tin đồn là thật, ngay cả Thất trưởng lão U Minh Cốc cũng chết trong tay ngươi.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep107/p004.jpg",
+      "narration": "Trác Phàm nhếch mép: biết lợi hại rồi mà vẫn dám ra tay với ta? Cường Liệt đáp: theo đuổi phú quý là chuyện nguy hiểm, nhưng báo đáp cũng càng lớn.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep107/p006.jpg",
+      "narration": "Ông ta tung Hổ Tiếu Quyền, vũ kỹ Linh giai trung cấp, dốc hết sức đánh vào Trác Phàm.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep107/p013.jpg",
+      "narration": "Trác Phàm đỡ được, rồi phản lại một quyền. Cường Liệt bay vào tường, phun máu.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep107/p014.jpg",
+      "narration": "Hai trưởng lão kinh hãi: đây không phải người! Trác Phàm đáp: lão tử có phải người hay không, chẳng liên quan gì đến các ngươi.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep107/p019.jpg",
+      "narration": "Hắn bóp cổ Cường Liệt, ghim ông ta vào vách đá. Cường Liệt xin tha, mong hắn nể mặt hai chị em Tống gia.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep107/p021.jpg",
+      "narration": "Trác Phàm lạnh lùng: ta đã nhắc ngươi đừng quyết định sai lầm lúc hồ đồ. Đã làm thì phải chấp nhận hậu quả.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep107/p023.jpg",
+      "narration": "Hai chị em Tống gia cầu xin, nói họ cũng chỉ bị ép buộc. Nhưng Trác Phàm quát: câm miệng! Đã làm thì đừng giải thích nữa!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep107/p025.jpg",
+      "narration": "Cường Liệt hô tất cả trưởng lão cùng xông lên, đồng quy vu tận. Trác Phàm cười: e là ta lại đang mong vậy.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep107/p037.jpg",
+      "narration": "Cánh tím bung ra sau lưng, tia sét tím nổ vang: hừ, không chịu nổi một kích.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep107/p039.jpg",
+      "narration": "Nhưng Cường Liệt còn một chiêu. Ông ta rút phi đao tẩm độc phóng thẳng về phía Trác Phàm: ngươi mắc mưu rồi!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep107/p042.jpg",
+      "narration": "Tống Thiến lao ra đỡ, bị lưỡi dao cứa vào vai.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep107/p047.jpg",
+      "narration": "Mắt Trác Phàm đỏ rực. Hắn chém một nhát hạ Cường Liệt: ngươi coi lão tử là không khí sao?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep107/p051.jpg",
+      "narration": "Cậu em hô lên: đây nhất định là độc dược bí chế của Tề gia, phải chạy tới dược phòng ngay!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep107/p057.jpg",
+      "narration": "Trác Phàm lắc đầu, thử dùng nguyên lực ép độc ra ngoài. Nhưng chất độc này không chịu ra.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep107/p061.jpg",
+      "narration": "Hắn nói: nguyên lực không ép được, chỉ còn cách ngu ngốc nhất. Hắn bảo cô ngồi yên, hút độc ra ngoài.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep107/p061.jpg",
+      "narration": "Cứu người bằng cách nhanh nhất mà cũng gây hiểu lầm nhất. Truyện cứ thích đặt nam chính vào mấy tình huống như vậy, mình xem mà chỉ biết lắc đầu.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep107/p068.jpg",
+      "narration": "Qua khe cửa, một lão già tóc bạc ria trắng nhìn trộm, bật cười ẩn ý: hê hê.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep108/p005.jpg",
+      "narration": "Trác Phàm xác nhận phần lớn chất độc đã được hút ra. Tống Thiến cảm ơn rồi lặng lẽ lui đi.",
+      "kind": "recap",
+      "type": "BUILD",
+      "section": "Tập 108: Cái bẫy Tề gia, Trác Phàm phá chuông vàng"
+    },
+    {
+      "panel": "dqgl_ep108/p007.jpg",
+      "narration": "Nhưng hắn thấy lạ: máu độc của Tống Thiến ngoài màu sắc giống hệt máu bình thường. Càng lúc càng đáng nghi.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep108/p009.jpg",
+      "narration": "Rồi hắn bỗng cảm thấy cơ thể không thể kiểm soát được: trúng độc rồi?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep108/p011.jpg",
+      "narration": "Một kết giới vàng bật lên quanh hắn, giam hắn lại như một chiếc chuông khổng lồ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep108/p015.jpg",
+      "narration": "Từ ngoài cửa, tiếng cười vang lên: ngươi chẳng qua cũng chỉ như vậy! Đây là Linh Binh Tứ Phẩm Tử Kim Lưu Ly Trận của Tề gia, vừa phòng thủ vừa bắt người!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep108/p017.jpg",
+      "narration": "Thái Thượng trưởng lão Tề gia cùng bốn người nữa bước vào, mỉm cười đắc thắng.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep108/p019.jpg",
+      "narration": "Lão quay sang Tống Thiến khen: hai tỷ đệ các ngươi biểu hiện rất tốt.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep108/p022.jpg",
+      "narration": "Hóa ra lưỡi dao bắn về phía Tống Thiến vốn không có độc, chỉ bôi chút thuốc làm máu đổi màu. Độc thật nằm trên cánh tay cô, và chính Trác Phàm đã tự hút vào người.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep108/p024.jpg",
+      "narration": "Tề Thiên Lôi gào lên: chính là ngươi đã giết cha ta, ta nhất định phải ngũ mã phanh thây ngươi!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep108/p026.jpg",
+      "narration": "Trác Phàm bình thản: Tề Cường Liệt ngay từ đầu chỉ là bia đỡ đạn dụ ta mắc câu. Các ngươi đã liệu trước cái chết của hắn, nên đừng nói là ta giết.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep108/p028.jpg",
+      "narration": "Lão thái thượng thản nhiên: lão phu bỏ con trai thì vẫn còn cháu trai. Chỉ cần lấy được đầu ngươi, Tề gia sẽ thành gia tộc phụ thuộc số một của U Minh Cốc.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep108/p030.jpg",
+      "narration": "Trác Phàm ngồi thiền trong chuông vàng, cười nhạt: đủ vô tình đấy, nhưng ánh mắt của lão cũng hẹp quá. Tốn sức nửa ngày chỉ để làm con chó giữ nhà số một của U Minh Cốc.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep108/p032.jpg",
+      "narration": "Lão cười nhạo: đúng là con nít mồm còn hôi sữa, thống nhất đại lục đâu phải chuyện người thường làm được.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep108/p033.jpg",
+      "narration": "Lão già nói đúng một điều: người bình thường không thể thống nhất đại lục. Nhưng người ngồi trong chiếc chuông mà lão tự hào lại là Ma Hoàng. Mình đoán lão sắp hối hận.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep108/p035.jpg",
+      "narration": "Trác Phàm mở mắt, ngọn lửa xanh bùng lên giữa trán: khi giết U Quỷ Thất, ta đã tặng lão một câu, giờ có thể tặng lại cho ngươi.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep108/p037.jpg",
+      "narration": "Đối diện với thực lực tuyệt đối, bất kỳ thủ đoạn nào cũng chẳng làm nên cơm cháo gì!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep108/p039.jpg",
+      "narration": "Lão trưởng lão kinh hãi: đây là Phế Thần Tán gia truyền của Tề gia, ngay cả cao thủ Thần Chiếu Cảnh cũng khó giải, sao lại bị hắn phá như vậy?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep108/p044.jpg",
+      "narration": "Chiếc chuông vàng vỡ vụn thành từng mảnh.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep108/p047.jpg",
+      "narration": "Một tiếng quái vật! thét lên. Thái Thượng trưởng lão bị hạ ngay tại chỗ, Tề Thiên Lôi hét lên: ông nội!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep108/p049.jpg",
+      "narration": "Hai trưởng lão còn lại quát: thiếu gia chạy đi, hai chúng ta chặn hắn! Ngài là hy vọng cuối cùng của Tề gia!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep108/p053.jpg",
+      "narration": "Trác Phàm bung cánh tím giữa phòng tiệc, nhẹ nhàng nói: vẫn còn ba con chuột nhắt cần xử lý nữa.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep108/p055.jpg",
+      "narration": "Hắn lạnh lùng thêm một câu: một người cũng đừng hòng chạy thoát!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep108/p058.jpg",
+      "narration": "Tề Thiên Lôi chạy trong rừng đêm cùng hai chị em Tống gia, vừa chạy vừa lẩm bẩm: ta không thể chết được.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep108/p061.jpg",
+      "narration": "Trác Phàm hạ xuống giữa rừng, cánh tím xòe sau lưng: chạy cũng nhanh ghê đấy.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep108/p065.jpg",
+      "narration": "Hai chị em quỳ xuống van xin: chúng ta làm vậy cũng là bất đắc dĩ. Tống gia chỉ là gia tộc nhỏ, không chọc nổi Tề gia, lại càng không dám chọc U Minh Cốc.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep108/p066.jpg",
+      "narration": "Trác Phàm nhìn họ, nói chậm rãi: tình thế ép buộc giống nhau, gia tộc khó xử cũng giống nhau. Các ngươi thật giống với bọn họ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep108/p069.jpg",
+      "narration": "Hắn khẽ ngước nhìn trời: đáng tiếc, các ngươi giống họ quá, khiến ta không nhẫn tâm ra tay.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep108/p074.jpg",
+      "narration": "Chỉ có một điểm không giống: hai người các ngươi nhanh trí hơn bọn họ rất nhiều.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep108/p078.jpg",
+      "narration": "Hắn tha cho hai chị em, phất tay: phải lên đường thôi.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep109/p002.jpg",
+      "narration": "Gió xuân thổi nhẹ bên bờ liễu. Trác Phàm đánh xe ngựa tới Hoa Vũ Thành tìm linh đan.",
+      "kind": "recap",
+      "type": "BUILD",
+      "section": "Tập 109: Hoa Vũ Thành, lệnh truy sát và vai diễn mượn thân phận"
+    },
+    {
+      "panel": "dqgl_ep109/p008.jpg",
+      "narration": "Tới cổng thành, hắn mong tìm được chút thuốc hay cải tử hoàn sinh, cũng không uổng công vất vả tới đây.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep109/p009.jpg",
+      "narration": "Nhưng một tiếng dừng lại! vang lên. Năm tên đệ tử U Minh Cốc chặn kín cả đường.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep109/p012.jpg",
+      "narration": "Chúng gằn giọng: nhìn bộ dáng chắc cũng là công tử thế gia, nói tên họ ra đi.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep109/p013.jpg",
+      "narration": "Trác Phàm đội nón lá, cười nhạt: nơi này là Hoa Vũ Thành, muốn tra hỏi thì cũng phải do người của Hoa Vũ Lâu tới chứ?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep109/p015.jpg",
+      "narration": "Mắt hắn lóe đỏ dưới vành nón: nếu đây không phải địa bàn Hoa Vũ Lâu, lão tử đã lấy mạng ngươi từ lâu.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep109/p016.jpg",
+      "narration": "Rồi hắn đổi giọng, xưng tên là Tống Ngọc, nhà Tống ở thành Dạ Vũ, phụng mệnh cha tới dự Bách Đan Thành Hội.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep109/p017.jpg",
+      "narration": "Hắn đưa ra ấn gia tộc. Tên cầm đầu xem xong, vuốt cằm suy nghĩ rồi miễn cưỡng cho qua.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep109/p020.jpg",
+      "narration": "Chúng dặn: nếu thấy người này thì phải lập tức thông báo. Rồi đưa ra tờ lệnh U Minh truy sát có chân dung Trác Phàm.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep109/p022.jpg",
+      "narration": "Trác Phàm cười: quả nhiên là một đám mắt chó khinh người. Lão tử ở ngay trước mặt mà chúng chẳng nhận ra.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep109/p023.jpg",
+      "narration": "Truy sát lệnh dán khắp nơi mà kẻ bị truy sát vẫn bình thản đi qua từng chốt, thậm chí còn cầm cả tờ lệnh trong tay. Có lẽ chỉ Ma Hoàng mới làm được kiểu thoải mái như vậy.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep109/p024.jpg",
+      "narration": "Hắn vò nát tờ lệnh rồi bước vào thành, giữa đám đông đang đổ về dự Thành Hội Bách Đan mười năm mới có một lần.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep109/p026.jpg",
+      "narration": "Hắn dừng xe trước khách điếm, đòi một phòng thượng hạng, nhưng ông chủ chỉ liếc nhìn rồi lắc đầu.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep109/p029.jpg",
+      "narration": "Ông ta nói: Tống gia chỉ là gia tộc hạng ba, tới đây làm gì cho nhiệt?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep109/p030.jpg",
+      "narration": "Thế gia hạng ba chỉ được ở một ngôi nhà ngói tồi tàn cách đây ba cây số, khỏi cần đưa linh thạch.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep109/p031.jpg",
+      "narration": "Trác Phàm còn đang nén giận thì một giọng cười vang lên từ cầu thang: ha ha ha, Tống Ngọc!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep109/p033.jpg",
+      "narration": "Một thanh niên tóc nâu hồng cùng bốn lão già và một cô gái bước xuống: tiểu tử ngươi đúng là con báo đất! Ngay quy tắc Hoa Vũ Thành cũng không hiểu mà còn chạy tới dự hội!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep109/p034.jpg",
+      "narration": "Trác Phàm thầm mắng: ở chung với lão tử nửa tháng mà không nói cho lão tử biết hắn có người quen ở đây.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep109/p040.jpg",
+      "narration": "Hắn nghĩ: toang, sắp bị vạch trần rồi. Thân phận mà bại lộ thì người U Minh Cốc đuổi tới ngay.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep109/p041.jpg",
+      "narration": "Thậm chí hắn đã tính xem có nên thủ tiêu người này luôn bây giờ hay không.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep109/p042.jpg",
+      "narration": "Nhưng người kia lại tự đưa cho hắn cái cớ: có phải ngươi giận chuyện Uyển Nhi từ hôn ngươi ngày đó, khiến ngươi mất mặt đúng không?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep109/p045.jpg",
+      "narration": "Trác Phàm mắt sáng lên: có rồi! Rồi hùng hổ quát: biết rồi còn nói ra! Từ hôm nay chúng ta tuyệt giao!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep109/p047.jpg",
+      "narration": "Người kia kêu lên: ui giời, chuyện của ngươi với em gái ta mắc gì liên lụy đến ta? Đừng quên chúng ta là anh em cây khế đấy!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep109/p050.jpg",
+      "narration": "Hắn còn nhắc lại ba ngày ba đêm vui chơi năm nào, khiến cô gái tóc hồng bên cạnh mặt mày xám xịt: ghê tởm!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep109/p053.jpg",
+      "narration": "Trác Phàm thầm nghĩ: tạm thời xem ra che giấu được. Cứ để ta lợi dụng tên đại ca này trước.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep109/p056.jpg",
+      "narration": "Hắn cười toe, giơ tay: đại ca, lâu như vậy không gặp, hay là đêm nay huynh đệ ta làm chủ, cùng nhau tán gẫu một phen?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep109/p057.jpg",
+      "narration": "Dưới nụ cười ấy là một ý nghĩ lạnh lùng: đưa hết tin tình báo ra đây!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep110/p003.jpg",
+      "narration": "Trong tửu lâu, Đồng Thiên Bá nâng chén: Đồng đại ca, đi thôi nào! Tống hiền đệ, cạn ly! Hai người cụng ly cười lớn.",
+      "kind": "recap",
+      "type": "BUILD",
+      "section": "Tập 110: Tiệc rượu với Đồng gia, Đồng tiểu thư bị bắt nạt giữa phố"
+    },
+    {
+      "panel": "dqgl_ep110/p005.jpg",
+      "narration": "Trác Phàm hiểu ra: Đồng Thiên Bá là con cả của gia tộc đệ nhất một thành trì hạng trung, xếp hạng hai toàn Thiên Vũ Đế Quốc, và là tri kỷ rượu thịt của Tống Ngọc thật.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep110/p007.jpg",
+      "narration": "Thậm chí hắn còn định gả em gái là Đồng Hiểu Uyển cho vị huynh đệ tốt này.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep110/p010.jpg",
+      "narration": "Kết quả năm đó, Tống Ngọc bị Đồng lão thái gia đuổi đi, còn Đồng Thiên Bá bị quở trách một trận.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep110/p011.jpg",
+      "narration": "Hiểu Uyển thì luôn trách anh: muội là muội muội ruột của huynh, vậy mà huynh định gả muội cho loại người này sao? Đăng đồ lãng tử!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep110/p013.jpg",
+      "narration": "Trong mắt cả nhà họ Đồng, Tống Ngọc chỉ là đống phân thú. Nhưng trong mắt Đồng Thiên Bá, hắn lại là tri âm chí cốt.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep110/p016.jpg",
+      "narration": "Cái ông anh này đúng là có tâm: người ta chỉ mời uống hoa tửu vài lần mà đã định giao cả em gái ra. Đến Trác Phàm còn nghĩ nếu là lão gia nhà họ Đồng, ông sẽ đánh nát mông hắn.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep110/p020.jpg",
+      "narration": "Đồng Thiên Bá hỏi: Tống hiền đệ, tỷ của ngươi không tới cùng ngươi sao?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep110/p021.jpg",
+      "narration": "Trác Phàm đáp: tỷ ấy tiễn ta một đường rồi về nhà rồi. Mỹ nhân trong thiên hạ nhiều như mây, Đồng huynh hà tất phải treo cổ trên một cái cây.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep110/p024.jpg",
+      "narration": "Đồng Thiên Bá nói: ngươi không biết đấy thôi, Hoa Vũ Lâu là gia tộc duy nhất có nữ nhân làm chủ trong Thất Thế Gia, nên địa vị của nữ nhân ở đây rất cao.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep110/p027.jpg",
+      "narration": "Trác Phàm hỏi thử: lẽ nào nữ nhân theo đuổi tâm ý của mình cũng không được sao? Đồng Thiên Bá nhìn hắn lạ lẫm: sao ta càng lúc càng không quen ngươi thế nhỉ?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep110/p030.jpg",
+      "narration": "Trác Phàm khéo đổi chủ đề, hỏi sang chuyện nhà trọ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep110/p031.jpg",
+      "narration": "Đồng Thiên Bá giải thích: trong thời gian Thành Hội Bách Đan, thế gia hạng ba chỉ được ở khu vực xa xôi, hạng hai ở nhà trọ, còn hạng nhất do mười lăm Lâu chủ Hoa Vũ Lâu tiếp đãi.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep110/p033.jpg",
+      "narration": "Hắn hỏi: người của Thất Thế Gia cũng đang ở đây sao? Đồng Thiên Bá đáp: hiển nhiên, ít nhất người của U Minh Cốc đã tới sớm rồi.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep110/p036.jpg",
+      "narration": "Trác Phàm sực hiểu: đệ tử U Minh Cốc tra hỏi ngoài cổng thành vốn không đi tìm riêng hắn, mà đi theo một đại nhân vật tới dự hội.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep110/p037.jpg",
+      "narration": "Mà người có thể thay mặt U Minh Cốc tới dự thì ít nhất cũng phải là cấp trưởng lão.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep110/p039.jpg",
+      "narration": "Đúng lúc đó, một gia nhân lao lên lầu hô lớn: Đồng công tử, không hay rồi, Đồng tiểu thư đã xảy ra chuyện!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep110/p041.jpg",
+      "narration": "Trác Phàm để lại mấy viên linh thạch trên bàn rồi chạy theo.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep110/p044.jpg",
+      "narration": "Giữa phố đông người, Đồng Hiểu Uyển quỳ khóc, mặt sưng đỏ, còn một thiếu nữ áo hồng đứng nhìn từ trên xuống.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep110/p047.jpg",
+      "narration": "Thiếu nữ áo hồng quát: ai cho ngươi đi? Ta bảo ngươi tự vả mình một trăm cái, mới có ba mươi mà đã muốn đi rồi sao?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep110/p050.jpg",
+      "narration": "Cô ta thêm một câu: mặc kệ ngươi là ai, chỉ cần bị ta tìm ra, ta sẽ khiến cả nhà ngươi không được chết tử tế!",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep110/p054.jpg",
+      "narration": "Hiểu Uyển nức nở: ca, đều do muội không tốt. Muội nhìn trúng món trang sức kia nên muốn mua nó, nhưng cô ấy cũng...",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep110/p055.jpg",
+      "narration": "Đồng Thiên Bá giận dữ: thứ này rõ ràng muội muội ta nhìn thấy trước! Cướp từ tay muội ấy cũng thôi đi, dựa vào cái gì còn hành hạ muội ấy như vậy?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep110/p056.jpg",
+      "narration": "Thiếu nữ áo hồng cười: ta hỏi cô ta, cô ta không đưa, khăng khăng muốn ta đánh mới chịu giao ra. Khiến ta chẳng còn tâm tình nào, khiển trách nàng ta một phen, lẽ nào cũng không được sao?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep110/p060.jpg",
+      "narration": "Dưới vành nón lá, mắt Trác Phàm lóe đỏ. Chuyện này khó mà kết thúc bằng vài câu giải thích.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

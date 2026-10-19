@@ -1,0 +1,105 @@
+{
+  "title": "Ma Hoàng cứu chị em Tống gia, rồi bước vào Hồng Môn Yến của Tề gia!?",
+  "chapters": "104-107",
+  "source_dir": "manhua-recap/dqgl_ep104",
+  "written_by": "Claude tổng hợp từ ảnh thật chương, 2026-10-19",
+  "description": "Trác Phàm cứu chị em Tống gia khỏi nhóm người lạ rồi cùng họ tới Lan Lăng Thành, nơi hắn đánh bay thiếu gia Tề gia chỉ bằng một câu trêu chọc. Bữa tiệc ở Tề gia hóa ra là Hồng Môn Yến, sát thủ U Minh Cốc ập tới, và Ma Hoàng giải quyết tất cả.@@Review truyện Đại Quản Gia Là Ma Hoàng – Tóm tắt chương 104 đến 107.@@◀ Phần trước: chương 101-103@@▶ Phần sau: chương 108-110",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "HỒNG MÔN YẾN TỀ GIA",
+    "prompt": "A young man in a brown cloak with glowing red eyes standing alone at a banquet table while assassins in dark robes burst through the paper windows, golden light shattering around him, an old man in white robes smiling behind a pillar. Chinese manhua cover art style, full-colour digital illustration, bold clean linework, cel shading with dramatic glow and rim light, high contrast, vertical 9:16 composition (keep the subject inside the centre 2:3 area), leave the top 25% as darker empty background for a title overlay, NO text, NO letters, NO speech bubbles, NO watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep104/p013.jpg",
+      "narration": "Trác Phàm này nằm không cũng dính chuyện: chị em Tống gia sắp bị đoạt bí phương thì một chiếc lá xanh bay tới chặn nhát kiếm.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep104/p021.jpg",
+      "narration": "Hắn đáp gọn: ta không nói chuyện nhân từ, ta nói chuyện thực lực.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep104/p033.jpg",
+      "narration": "Mắt hắn đỏ rực, một nhát chém khiến cả đám hét lên quái vật rồi bỏ chạy.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep104/p055.jpg",
+      "narration": "Nghe nói Bách Đan Thịnh Hội có nhiều dược liệu hiếm, hắn quyết định đi cùng hai chị em.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep105/p038.jpg",
+      "narration": "Ở Lan Lăng Thành, Trác Phàm cố tình trêu thiếu gia Tề gia bằng một câu mập mờ về chuyện ăn chung ngủ chung.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep105/p050.jpg",
+      "narration": "Thiếu gia nổi điên lao tới, và bị một quyền đánh nằm lăn ra đất.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep106/p013.jpg",
+      "narration": "Gia chủ Tề gia bỗng cười như hoa mời tiệc, dù con trai vừa bị đánh.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep106/p030.jpg",
+      "narration": "Trác Phàm nhận lời: Hồng Môn Yến thì vẫn phải đi.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep106/p044.jpg",
+      "narration": "Hắn đặt ly rượu xuống, khói độc bốc lên. Đây là Bạch Tiên Đan luyện từ nọc độc Xích Luyện Độc Mãng.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep106/p048.jpg",
+      "narration": "Tề Cường Liệt hô lớn: mang đầu hắn tới U Minh Cốc lãnh thưởng! Sát thủ lao qua cửa sổ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep107/p013.jpg",
+      "narration": "Trác Phàm đỡ chiêu, phản một quyền, đánh Cường Liệt văng vào tường.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep107/p037.jpg",
+      "narration": "Cánh tím bung ra sau lưng, tia sét tím nổ vang: hừ, không chịu nổi một kích.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep107/p042.jpg",
+      "narration": "Nhưng phi đao tẩm độc vẫn bay tới, Tống Thiến lao ra đỡ và bị thương.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep107/p068.jpg",
+      "narration": "Giữa lúc hắn ra tay hút độc, một lão già tóc bạc lén nhìn qua khe cửa rồi bật cười: hê hê.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

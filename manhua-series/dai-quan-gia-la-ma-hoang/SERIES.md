@@ -5,6 +5,9 @@
 - **Quy mô:** 915 chương, còn đang ra. **Chương 1–283 miễn phí**, từ 284 trở đi là VIP.
 - **Nguồn thứ 2 (tải tự động được):** https://cotruyenday.com/truyen-tranh/dai-quan-gia-la-ma-hoang-6986/chapter-0
   Chương 0–10 tải thẳng bằng `recap.py fetch <link> <thư mục> --count N`. Từ chương 11 trở đi phải đăng nhập, không có ảnh.
+- **Nguồn thứ 3 (dùng từ chương 11 trở đi):** https://truyenqq.com.vn/dai-quan-gia-la-ma-hoang/chapter-N — chương N
+  trên site này khớp trực tiếp 1:1 với `dqgl_epN` (không lệch số như bên Chàng Rể Mạnh Nhất Lịch Sử), xác minh bằng
+  hash ảnh trang 1 chương 21. Chương 101–150 tải bằng nguồn này 2026-10-13.
 - **Tải ảnh (manhuavn2):**
   - Chương 1–2 nằm trên `img2.truyensieuhay.com` và chương 200 trên blogspot: `recap.py fetch` tải được.
   - **Chương 3–100+ nằm trên `img02.g5img.top`, bị chặn tải (403).** Phải tải tay bằng extension trình duyệt vào `manhua-recap/dqg_epN/`, đặt tên `c03_001.jpg`…
@@ -65,7 +68,7 @@ Tên tiểu thư Lạc Vân Thường là tên theo truyện gốc, chưa thấy
 | 17 | 17 | `manhua-recap/dqgl_ep17` | Chưa kịp bắt cóc, thủ lĩnh Hắc Phong Sơn đã bị Ma Hoàng bắt sống!? | ✅ project 136 / job_195, Final QA PASS 100 (40.36s, 1080×1920) |
 | 18 | 18 | `manhua-recap/dqgl_ep18` | Kẻ chủ mưu thật sự không phải nữ trại chủ, mà là vị hôn phu của cô!? | ✅ project 137 / job_196, Final QA PASS 100 (38.98s, 1080×1920) |
 | 19 | 19 | `manhua-recap/dqgl_ep19` | Dương Minh bày cả vở kịch, đến cha nuôi cũng chỉ là quân cờ!? | ✅ project 138 / job_198, Final QA PASS 100 (44.98s, 1080×1920) |
-| 20+ | theo arc | | | Chưa làm tiếp sau tập 19. Ảnh chương 3–10 tải lại từ truyenqq.com.vn 2026-10-08 (zettruyen2.com bị Cloudflare chặn, xem docs/features/158); chương 21–100 cũng đã tải, chưa cắt/viết script. Script 3–10 giờ là Short riêng từng chương (không gộp Long01 nữa). Từ chương 15, thư mục ảnh đổi tên thành `dqgl_epNN` (gõ nhầm của phiên khác, không phải `dqg_epNN`) |
+| 20+ | theo arc | | | Chưa làm tiếp sau tập 19. Ảnh chương 3–10 tải lại từ truyenqq.com.vn 2026-10-08 (zettruyen2.com bị Cloudflare chặn, xem docs/features/158); chương 21–150 cũng đã tải (101–150 tải thêm 2026-10-13), chưa cắt/viết script. Script 3–10 giờ là Short riêng từng chương (không gộp Long01 nữa). Từ chương 15, thư mục ảnh đổi tên thành `dqgl_epNN` (gõ nhầm của phiên khác, không phải `dqg_epNN`) |
 
 ## Bản mới: 3 Short + 1 Long cho chương 1-10 (2026-10-08)
 
@@ -178,6 +181,7 @@ Việc xóa không đổi tên các khung còn lại.
 
 ## Nhật ký
 
+- 2026-10-19: Long 100-110 (`long_100_110/script.json`, 240 beat, 11 phần, ~5600 từ) + 3 Short (`short_ab` ch101-103, `short_ac` ch104-107, `short_ad` ch108-110, mỗi cái 14 beat). Chưa build/render. Viết lại sau khi đọc ảnh thật từng chương, vì `ep102`, `ep104`-`ep110` (bản OpenAI) lệch truyện: ch104 chép nhầm cảnh Tề Thiên Lôi của ch105, ch106-108 bỏ mất việc Tề gia bày bẫy (chị em Tống gia làm mồi, chuông vàng Tử Kim Lưu Ly Trận), ch109-110 bỏ mất việc Trác Phàm giả danh Tống Ngọc và cảnh Đồng Hiểu Uyển bị bắt nạt. Long dùng lại ch100 từ `ep100` (đã đối chiếu ảnh 2026-10-13). Tên: chị Tống Thiến, em Tống Ngọc (Tiểu Ngọc), Đồng Thiên Bá và em gái Đồng Hiểu Uyển.
 - 2026-09-30: Long 02 + Long 03 (chương 11–20, tách đôi) — thay vì tải lại/cắt lại ảnh vào một thư mục gộp như
   Long01, tổng hợp trực tiếp 174 beat từ 10 kịch bản Short ep11-ep20 đã viết tay (bớt "Ma Hoàng này..." lặp lại đầu
   mỗi tập, đổi `type` HOOK/ENDING giữa các tập thành BUILD, thêm `section` mỗi tập). **`recap.py build` không hỗ
