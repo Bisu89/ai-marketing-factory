@@ -1,0 +1,90 @@
+{
+  "title": "Ngô quốc mời Kim gia ra trận đổi tước Hầu, Thẩm Lãng hỏi họ muốn lấy gì!?",
+  "source_dir": "manhua-recap/crmn_ep181",
+  "description": "Triều đình quyết định số phận Trương Xung, một sứ giả đeo mặt nạ tới Huyền Vũ phủ, Ngô quốc mời Kim gia ra trận đổi tước Hầu, còn Kim Mộc Thông nhất quyết không chịu vào kinh.\nReview truyện Chàng Rể Mạnh Nhất Lịch Sử – Tóm tắt tập 181 đến 185.",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "beats": [
+    {
+      "panel": "crmn_ep184/p016.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Ngô quốc hứa phong cho Kim gia tước Huyền Vũ Hầu, chỉ cần họ ra trận diệt hải tặc."
+    },
+    {
+      "panel": "crmn_ep181/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhà vua phải quyết định sẽ dùng Trường Xung thế nào sau biến cố Nộ Triều."
+    },
+    {
+      "panel": "crmn_ep181/p029.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trong lúc triều đình còn chưa yên, Huyền Vũ phủ bắt đầu đón Tết."
+    },
+    {
+      "panel": "crmn_ep182/p016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhà vua cho rằng ông có công trấn áp kẻ ác, nên không thể chỉ nhìn vào sai lầm."
+    },
+    {
+      "panel": "crmn_ep182/p029.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cuối cùng, Trương Xung thoát án nặng nhưng vẫn phải chịu trách nhiệm trước triều đình."
+    },
+    {
+      "panel": "crmn_ep182/p043.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trong lúc đó, một sứ giả đeo mặt nạ đến Huyền Vũ phủ tìm người."
+    },
+    {
+      "panel": "crmn_ep183/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trương Xung được bổ nhiệm lại, khiến phủ họ Trương lập tức mở tiệc ăn mừng."
+    },
+    {
+      "panel": "crmn_ep184/p029.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Kim Trác chờ tin sắc phong, còn Thẩm Lãng chưa vội tin thiện ý của đối phương."
+    },
+    {
+      "panel": "crmn_ep184/p043.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Khi một lời đề nghị đi kèm phần thưởng lớn, điều cần hỏi là bên kia muốn lấy gì."
+    },
+    {
+      "panel": "crmn_ep184/p056.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sứ giả thúc giục chuẩn bị xuất quân, buộc Kim gia phải sớm đưa ra câu trả lời."
+    },
+    {
+      "panel": "crmn_ep185/p001.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sau khi Thái giám rời đi, Kim Mộc Thông và người bên cạnh cùng phản đối chuyện vào kinh."
+    },
+    {
+      "panel": "crmn_ep185/p012.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cậu lo cho Lâm Nương Tử và sợ cô sẽ gặp chuyện nếu mình đi xa."
+    },
+    {
+      "panel": "crmn_ep185/p055.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Kim Mộc Thông nhất quyết không chịu vào kinh, còn Thẩm Lãng đành thử thuyết phục cậu bằng chuyện tu luyện."
+    }
+  ]
+}

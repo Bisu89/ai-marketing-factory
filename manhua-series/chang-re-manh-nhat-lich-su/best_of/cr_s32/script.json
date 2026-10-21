@@ -1,0 +1,90 @@
+{
+  "title": "Thẩm Lãng cứu Kim Mộc Thông khỏi lời vu cáo bằng cách ít ai nghĩ tới!?",
+  "source_dir": "manhua-recap/crmn_ep191",
+  "description": "Thẩm Lãng chữa khỏi bệnh cho Ninh Điềm rồi nhờ cô giúp một việc, tìm cách kéo sự chú ý khỏi lời vu cáo nhắm vào Kim Mộc Thông, và đứng ra bảo vệ hai đứa trẻ làm nhân chứng ngay giữa công đường.\nReview truyện Chàng Rể Mạnh Nhất Lịch Sử – Tóm tắt tập 191 đến 195.",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "beats": [
+    {
+      "panel": "crmn_ep194/p002.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Một người phụ nữ khóc lóc tố Kim Mộc Thông làm nhục mình, và Thẩm Lãng chọn cách đáp trả khiến cả công đường bối rối."
+    },
+    {
+      "panel": "crmn_ep191/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh xác nhận toàn bộ sỏi đã vỡ, tránh được cuộc phẫu thuật nguy hiểm."
+    },
+    {
+      "panel": "crmn_ep191/p040.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng nhờ cô giúp một việc, đổi lại anh sẽ chữa khỏi bệnh cho cô."
+    },
+    {
+      "panel": "crmn_ep192/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng nói muốn rửa sạch tiếng xấu cho Kim Mộc Thông, nhưng cách làm gần như bất khả thi."
+    },
+    {
+      "panel": "crmn_ep192/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thay vào đó, anh muốn tạo một chuyện đủ lớn để cả nước chuyển hướng chú ý."
+    },
+    {
+      "panel": "crmn_ep192/p039.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Một vụ việc càng gây chấn động thì càng dễ che khuất câu chuyện đang bị điều tra."
+    },
+    {
+      "panel": "crmn_ep193/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng không chịu quỳ, còn nhắc lại phẩm hàm của mình để phản bác."
+    },
+    {
+      "panel": "crmn_ep193/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh biến chính thứ bậc quan trường thành lý lẽ khiến đối phương khó xử."
+    },
+    {
+      "panel": "crmn_ep194/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô ta nói toàn thân bầm tím, nhưng những dấu vết lại không giống bằng chứng bị cưỡng ép."
+    },
+    {
+      "panel": "crmn_ep194/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng chỉ ra rằng người phụ nữ kia cũng nằm đè lên Mộc Thông."
+    },
+    {
+      "panel": "crmn_ep195/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh nói hai đứa trẻ có thể được sinh ra nhờ cách thụ tinh nhân tạo."
+    },
+    {
+      "panel": "crmn_ep195/p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Khi đám đông xông vào, Thẩm Lãng đứng ra che chắn cho hai nhân chứng."
+    },
+    {
+      "panel": "crmn_ep195/p051.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Lời vu cáo này còn có thể kéo theo rắc rối lớn hơn, và Thẩm Lãng hiểu rõ điều đó."
+    }
+  ]
+}

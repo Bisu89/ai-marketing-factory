@@ -1,0 +1,90 @@
+{
+  "title": "Thẩm Lãng bị nhốt vẫn trêu cai ngục, rồi công khai chỉ mặt sứ giả Khương quốc!?",
+  "source_dir": "manhua-recap/crmn_ep196",
+  "description": "Sứ đoàn Khương quốc gây loạn, Thẩm Lãng bị nhốt nhưng vẫn khiến cai ngục tự lộ sơ hở. Thánh miếu sứ quán Đại Viêm bốc cháy, vụ án nhắm vào Kim Mộc Thông lan rộng, và Thẩm Lãng tìm đến đối chất với sứ giả Khương quốc.\nReview truyện Chàng Rể Mạnh Nhất Lịch Sử – Tóm tắt tập 196 đến 200.",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "beats": [
+    {
+      "panel": "crmn_ep197/p027.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Bị nhốt trong lao, Thẩm Lãng vẫn bình thản đến mức cai ngục tức điên và tự kể ra những chuyện đáng lẽ phải giấu."
+    },
+    {
+      "panel": "crmn_ep196/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Khương quốc là nước nhỏ nhưng có quan hệ giao thương quan trọng với Việt Quốc."
+    },
+    {
+      "panel": "crmn_ep196/p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng nhìn ra một cơ hội chính trị từ sự việc tưởng như chỉ là một vụ say rượu."
+    },
+    {
+      "panel": "crmn_ep197/p040.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Thẩm Lãng càng bình tĩnh, đối phương càng dễ tự nói hớ."
+    },
+    {
+      "panel": "crmn_ep198/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thánh miếu trong sứ quán Đại Viêm bất ngờ bốc cháy."
+    },
+    {
+      "panel": "crmn_ep198/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Người của Đại Viêm nghi Thẩm Lãng đứng sau vụ việc để phá hoại buổi lễ hôm sau."
+    },
+    {
+      "panel": "crmn_ep198/p052.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng vẫn đang ở trong lao, nên lời buộc tội mới càng khiến mọi chuyện khó hiểu."
+    },
+    {
+      "panel": "crmn_ep199/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trương Tuân ngày nào cũng quỳ trước cửa vì Trường Xung đang bị giam."
+    },
+    {
+      "panel": "crmn_ep199/p040.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng nhìn thấy vụ án có thể biến thành cái cớ để tấn công Kim gia."
+    },
+    {
+      "panel": "crmn_ep199/p053.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một mồi lửa bất ngờ bùng lên ở thánh miếu, đẩy cả thành vào hỗn loạn."
+    },
+    {
+      "panel": "crmn_ep200/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng phân tích nếu chính sách mới bị bác bỏ, Khương quốc có thể nhờ Tô Nan Tử cầm quân."
+    },
+    {
+      "panel": "crmn_ep200/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh đến gặp sứ giả Khương quốc và tự nhận mình là Thẩm Lãng của phủ Huyền Vũ Bá."
+    },
+    {
+      "panel": "crmn_ep200/p058.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Thẩm Lãng công khai chỉ mặt sứ giả Khương quốc, và không ai hiểu anh đang tính nước cờ nào."
+    }
+  ]
+}

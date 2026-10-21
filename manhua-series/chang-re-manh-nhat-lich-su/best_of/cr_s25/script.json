@@ -1,0 +1,90 @@
+{
+  "title": "500 cung thủ giữ Vọng Nhai, mỏ vàng hóa bẫy nước nhấn chìm hải tặc!?",
+  "source_dir": "manhua-recap/crmn_ep156",
+  "description": "Hải tặc đổ bộ Vọng Nhai nhưng bị 500 cung thủ chặn lại, rồi lòng tham dẫn chúng xuống mỏ vàng, nơi Thẩm Lãng đã chuẩn bị sẵn đường nước.\nReview truyện Chàng Rể Mạnh Nhất Lịch Sử – Tóm tắt tập 156 đến 160.",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "beats": [
+    {
+      "panel": "crmn_ep156/p018.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Hải tặc đổ bộ đông như kiến vào Vọng Nhai, nhưng ở khu mỏ đã có 500 cung thủ của Kim gia nằm chờ sẵn."
+    },
+    {
+      "panel": "crmn_ep156/p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Loạt tên đầu tiên xé gió, khiến đội tiên phong của hải tặc ngã xuống trước khi kịp áp sát."
+    },
+    {
+      "panel": "crmn_ep157/p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một toán hải tặc xông sâu vào đường hầm rồi bất ngờ phát hiện bên trong có mạch vàng lớn."
+    },
+    {
+      "panel": "crmn_ep157/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tin vàng lan ra khiến những kẻ vốn đang giao chiến lập tức bỏ vị trí, chen nhau lao vào mỏ."
+    },
+    {
+      "panel": "crmn_ep157/p035.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Mỏ vàng vừa là chiến lợi phẩm, vừa trở thành cái bẫy tâm lý: lòng tham khiến quân đông mất đi ưu thế kỷ luật."
+    },
+    {
+      "panel": "crmn_ep158/p016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đến tối, phe Cửu Thiên Nguy dựng một màn diễn nhắm vào Tô Bộ Bộ, Mộc Lan và Thẩm Lãng."
+    },
+    {
+      "panel": "crmn_ep158/p042.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng Thẩm Lãng đã tính trước đường đi của chúng và bắt đầu triển khai kế hoạch trong đường hầm."
+    },
+    {
+      "panel": "crmn_ep159/p008.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Dưới lòng đất có một đường dẫn nước nối ra biển, nằm cách bờ một quãng không xa."
+    },
+    {
+      "panel": "crmn_ep159/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một khối đá chắn đường hầm bị phá, nước biển lập tức dội vào khu mỏ."
+    },
+    {
+      "panel": "crmn_ep159/p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mực nước dâng nhanh, nhốt những kẻ đang chen nhau gom vàng trong các lối hẹp."
+    },
+    {
+      "panel": "crmn_ep160/p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Khi tìm được vàng, chúng mới nhận ra phần lớn chỉ là cát và quặng lẫn, không nhiều như vẻ ngoài."
+    },
+    {
+      "panel": "crmn_ep160/p050.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Quân tinh nhuệ của Kim gia chớp thời cơ, đồng loạt đánh vào đội hình đang rối loạn."
+    },
+    {
+      "panel": "crmn_ep160/p057.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Cửu Thiên Nguy đứng nhìn đội quân đông gấp bội của mình tự tan vỡ trong chính cái mỏ vàng mà chúng đã đổ xô vào."
+    }
+  ]
+}

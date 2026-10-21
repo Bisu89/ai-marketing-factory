@@ -1,0 +1,90 @@
+{
+  "title": "Nhà vua bắt Thẩm Lãng chờ cả ngày, anh vẫn bình thản như không!?",
+  "source_dir": "manhua-recap/crmn_ep186",
+  "description": "Thẩm Lãng bị gọi vào cung và bị nhà vua cố tình bắt chờ cả ngày, anh đáp trả bằng sự bình thản. Sau đó Ninh Điềm phát hiện Kim Mộc Thông là tác giả cuốn sách nổi tiếng rồi mắc sỏi thận, Thẩm Lãng nhận chữa.\nReview truyện Chàng Rể Mạnh Nhất Lịch Sử – Tóm tắt tập 186 đến 190.",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "beats": [
+    {
+      "panel": "crmn_ep187/p002.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Nhà vua cố tình bắt Thẩm Lãng chờ trong ngự thư phòng từ sáng đến tối, vừa đói vừa rét."
+    },
+    {
+      "panel": "crmn_ep186/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng nhận ra Mộc Thông đang buồn vì chuyện cưới hỏi và những lời hứa cũ."
+    },
+    {
+      "panel": "crmn_ep186/p051.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cuộc trò chuyện còn dang dở thì tin gọi vào cung khiến Thẩm Lãng phải lên đường."
+    },
+    {
+      "panel": "crmn_ep187/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh đoán nhà vua muốn dùng sự chờ đợi để làm mình mất kiên nhẫn."
+    },
+    {
+      "panel": "crmn_ep187/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng Thẩm Lãng bình thản đến mức người hầu không biết anh đang ngủ hay giả vờ."
+    },
+    {
+      "panel": "crmn_ep187/p041.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Đôi khi người bị bắt chờ lại có thể khiến đối phương sốt ruột trước."
+    },
+    {
+      "panel": "crmn_ep188/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Quốc vương hỏi vì sao Thẩm Lãng dám để mình đợi lâu như vậy."
+    },
+    {
+      "panel": "crmn_ep188/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng không vội nhận lỗi, mà bình tĩnh đáp lại từng câu hỏi."
+    },
+    {
+      "panel": "crmn_ep189/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ninh Điềm phát hiện Kim Mộc Thông mới là người đứng sau cuốn sách mình yêu thích."
+    },
+    {
+      "panel": "crmn_ep189/p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ninh Điềm đọc đi đọc lại cuốn sách, càng lúc càng tức vì biết tác giả là Mộc Thông."
+    },
+    {
+      "panel": "crmn_ep190/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sỏi thận nghiêm trọng thường cần phẫu thuật, nhưng cách đó quá nguy hiểm ở thời đại này."
+    },
+    {
+      "panel": "crmn_ep190/p041.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh quyết định dùng kim châm dẫn chân khí thật chính xác để xử lý từng viên sỏi."
+    },
+    {
+      "panel": "crmn_ep190/p055.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Ninh Điềm nằm yên chịu đau, còn Thẩm Lãng bắt đầu ca chữa bệnh mà chỉ cần lệch một chút là hỏng."
+    }
+  ]
+}

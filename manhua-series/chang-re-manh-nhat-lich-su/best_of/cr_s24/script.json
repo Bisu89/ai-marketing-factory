@@ -1,0 +1,90 @@
+{
+  "title": "Thẩm Lãng dùng một nén nhang ép con trai vua hải tặc làm mồi nhử!?",
+  "source_dir": "manhua-recap/crmn_ep151",
+  "description": "Thẩm Lãng đưa gương cho con trai vua hải tặc nhìn, thắp nén nhang buộc hắn chọn giữa hợp tác và cái chết, gửi đầu hắn về cho vua hải tặc rồi giăng Thiên La Địa Võng ở Vọng Nhai.\nReview truyện Chàng Rể Mạnh Nhất Lịch Sử – Tóm tắt tập 151 đến 155.",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "beats": [
+    {
+      "panel": "crmn_ep151/p020.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Con trai vua hải tặc này vừa tỉnh dậy đã đòi lột da Thẩm Lãng, cho tới khi anh đưa cho hắn một chiếc gương."
+    },
+    {
+      "panel": "crmn_ep151/p007.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng cơ thể không chịu nghe lời. Cửu Kiêu hoảng hốt vì ngay cả đứng dậy cũng không làm nổi."
+    },
+    {
+      "panel": "crmn_ep151/p016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng nhắc rằng hai ngàn hải tặc hắn dẫn tới đều đã bị giữ ở đây, không thiếu một ai."
+    },
+    {
+      "panel": "crmn_ep151/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng nói hắn có thể giữ Cửu Kiêu sống, rồi dùng chính hắn làm mồi nhử những kẻ còn lại."
+    },
+    {
+      "panel": "crmn_ep151/p039.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng thắp một nén nhang và đặt ra thời hạn: nếu hắn không giết người, Thẩm Lãng sẽ để hắn sống."
+    },
+    {
+      "panel": "crmn_ep151/p043.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng còn trêu rằng hắn vẫn có thể dùng răng. Cửu Kiêu lập tức bị ép phải làm theo."
+    },
+    {
+      "panel": "crmn_ep152/p001.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng gửi cho vua hải tặc một món quà: đầu Cửu Kiêu cùng hơn hai ngàn hải tặc đã chết."
+    },
+    {
+      "panel": "crmn_ep152/p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nửa năm chuẩn bị, công trình Thiên La Địa Võng trên đảo Vọng Nhai cuối cùng đã phát huy tác dụng."
+    },
+    {
+      "panel": "crmn_ep153/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Vua hải tặc siết chặt nắm tay, nỗi đau nhanh chóng biến thành cơn giận dữ."
+    },
+    {
+      "panel": "crmn_ep153/p011.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mệnh lệnh được truyền đi: tập hợp toàn bộ hải tặc và các đồng minh."
+    },
+    {
+      "panel": "crmn_ep155/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hạm đội của Cửu Thiên Nguy rời bến, hướng thẳng tới Vọng Nhai."
+    },
+    {
+      "panel": "crmn_ep155/p017.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng một thuộc hạ nhận thấy kỳ kinh của nàng đã trễ, liền nhắc đến khả năng nàng đang mang thai."
+    },
+    {
+      "panel": "crmn_ep155/p046.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Hạm đội báo thù vẫn tiến thẳng tới Vọng Nhai, nhưng chuyện vừa phát hiện trong người nàng có thể làm đổi cả cuộc chiến."
+    }
+  ]
+}

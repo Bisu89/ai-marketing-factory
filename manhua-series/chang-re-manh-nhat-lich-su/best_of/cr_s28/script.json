@@ -1,0 +1,90 @@
+{
+  "title": "Kẻ lạ mặt bắt con tin đòi bảo vật, Kim Trác lạnh lùng đốt thư mật!?",
+  "source_dir": "manhua-recap/crmn_ep171",
+  "description": "Kẻ đột nhập bắt con tin để đổi lấy thứ hắn cần, Kim Trác chọn đốt thư mật, Cửu Yêu Nhi xông trận một mình, và Từ Thiên Thiên buông bỏ thù hận khi Trương Tấn chết.\nReview truyện Chàng Rể Mạnh Nhất Lịch Sử – Tóm tắt tập 171 đến 175.",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "beats": [
+    {
+      "panel": "crmn_ep171/p003.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Kẻ bịt mặt lục khắp mật khố không thấy gì, liền bắt luôn một cô gái làm con tin."
+    },
+    {
+      "panel": "crmn_ep171/p010.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng nhìn tình thế căng thẳng, còn người nhà Kim thị không dám manh động vì con tin."
+    },
+    {
+      "panel": "crmn_ep171/p018.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Kẻ lạ mặt đưa ra chiếc hộp, biến cuộc giải cứu thành một vụ trao đổi."
+    },
+    {
+      "panel": "crmn_ep172/p012.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Kim Trác hiểu rõ đối phương đã tính sai khi dám uy hiếp người của Kim gia."
+    },
+    {
+      "panel": "crmn_ep172/p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông đốt lá thư mật, chấp nhận từ bỏ quân cờ từng định dùng để khống chế Tô gia."
+    },
+    {
+      "panel": "crmn_ep173/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cửu Yêu Nhi không muốn tiếp tục đứng sau trận tuyến và quyết định tự mình ra ngoài."
+    },
+    {
+      "panel": "crmn_ep173/p021.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đối diện đội quân đông đảo, cô rút song đao và mở đường bằng sức mạnh áp đảo."
+    },
+    {
+      "panel": "crmn_ep173/p035.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Một người có thể chặn mũi nhọn, nhưng không thể bảo vệ hàng nghìn binh sĩ cùng lúc."
+    },
+    {
+      "panel": "crmn_ep174/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Từ Thiên Thiên hỏi Trương Tấn vì sao lại đẩy cả gia đình cô vào tai họa."
+    },
+    {
+      "panel": "crmn_ep174/p026.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô không còn muốn kéo dài thù hận, nhưng sự hối hận đến quá muộn."
+    },
+    {
+      "panel": "crmn_ep175/p012.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Từ Thiên Thiên nghĩ về cái chết của cha và những gì cuộc báo thù đã cướp đi."
+    },
+    {
+      "panel": "crmn_ep175/p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô quyết định không để thù hận điều khiển phần đời còn lại."
+    },
+    {
+      "panel": "crmn_ep175/p053.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Hạm đội rút đi, Từ Thiên Thiên buông được thù hận, còn Thẩm Lãng vẫn chưa nhận được tin gì từ nội thành."
+    }
+  ]
+}

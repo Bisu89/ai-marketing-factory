@@ -1,0 +1,90 @@
+{
+  "title": "Kim gia thắng lớn chiếm Nộ Triều, nhưng Thẩm Lãng lại thấy nguy!?",
+  "source_dir": "manhua-recap/crmn_ep176",
+  "description": "Kim gia chiếm Nộ Triều và Lôi Châu, nhưng Thẩm Lãng nhận ra lực lượng không đủ để giữ hết. Trường Xung trở về, cả triều đình bắt đầu tính lại thế cờ.\nReview truyện Chàng Rể Mạnh Nhất Lịch Sử – Tóm tắt tập 176 đến 180.",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "beats": [
+    {
+      "panel": "crmn_ep177/p015.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Kim gia vừa chiếm được cả Nộ Triều lẫn Lôi Châu, nhưng Thẩm Lãng lại là người đầu tiên thấy bất an."
+    },
+    {
+      "panel": "crmn_ep176/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng chuẩn bị một loạt quà cho Cửu Yêu Nhi trước lúc cô rời đi."
+    },
+    {
+      "panel": "crmn_ep176/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ký ức của Cửu Yêu Nhi chỉ còn mơ hồ, nhưng giọng nói ấy vẫn có ý nghĩa đặc biệt."
+    },
+    {
+      "panel": "crmn_ep177/p026.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng các hòn đảo còn lại rơi vào tay những thế lực khác, khiến cục diện chưa hề ổn định."
+    },
+    {
+      "panel": "crmn_ep177/p039.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trường Xung trở về và gặp lại Thẩm Lãng sau những biến cố ở tiền tuyến."
+    },
+    {
+      "panel": "crmn_ep178/p015.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng nhận ra vùng đất mới vẫn rối ren, trong khi quân đội đã hao hụt đáng kể."
+    },
+    {
+      "panel": "crmn_ep178/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nếu tiếp tục bành trướng, Kim gia có thể khiến cả hai chiến trường Bắc Nam cùng sụp đổ."
+    },
+    {
+      "panel": "crmn_ep178/p041.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Chiếm được thành trì chỉ là lợi thế trên bản đồ; giữ nổi nó mới quyết định kết cục."
+    },
+    {
+      "panel": "crmn_ep178/p052.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng cho rằng một bước lùi đúng lúc có thể biến thế bất lợi thành thắng lợi chính trị."
+    },
+    {
+      "panel": "crmn_ep179/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trường Xung thẳng thắn hỏi Thẩm Lãng liệu có nên giết mình hay không."
+    },
+    {
+      "panel": "crmn_ep179/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Dù từng là đối thủ, hai người vẫn có thể ngồi uống rượu và nói chuyện thẳng thắn."
+    },
+    {
+      "panel": "crmn_ep180/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông lập tức nghĩ đến Thẩm Lãng và quyết định vào kinh gặp nhà vua."
+    },
+    {
+      "panel": "crmn_ep180/p051.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Một chiến thắng trên biển đã đủ khiến cả triều đình phải tính lại thế cờ, còn Kim gia thì chưa dừng lại."
+    }
+  ]
+}

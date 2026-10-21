@@ -1,0 +1,90 @@
+{
+  "title": "Thẩm Lãng ra lệnh khai pháo, Cầu Đao Nhi đứng giữa vòng vây!?",
+  "source_dir": "manhua-recap/crmn_ep161",
+  "description": "Trận Vọng Nhai khép lại trong đường hầm ngập nước, rồi Thẩm Lãng đứng trước dàn pháo nhắm vào Cầu Đao Nhi, người sống sót nhưng mang theo bí mật trong cơ thể.\nReview truyện Chàng Rể Mạnh Nhất Lịch Sử – Tóm tắt tập 161 đến 165.",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "beats": [
+    {
+      "panel": "crmn_ep164/p002.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Dàn pháo đã nạp đạn, và Thẩm Lãng sắp ra lệnh bắn thẳng vào Cầu Đao Nhi."
+    },
+    {
+      "panel": "crmn_ep161/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Kim gia cho lăn đá và đóng lối hầm, khiến những tên còn dưới mỏ không thể rút lui theo đường cũ."
+    },
+    {
+      "panel": "crmn_ep161/p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Từng người bám vào đá tìm đường thoát, nhưng cung thủ trên cao đã chờ sẵn."
+    },
+    {
+      "panel": "crmn_ep162/p016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một số hải tặc cầu xin đầu hàng, nhưng Kim Mộc Lan nhớ tới những gia đình vô tội bị chúng sát hại."
+    },
+    {
+      "panel": "crmn_ep162/p024.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Sự tàn khốc của trận đánh có nguyên nhân từ những cuộc cướp bóc trước đó; quân phòng thủ xem đây là lúc đòi món nợ máu."
+    },
+    {
+      "panel": "crmn_ep162/p058.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng nhắc tới những người thân của Mộc Lan và Tô Bộ Bộ. Trận Vọng Nhai có thể đã xong, nhưng món nợ với Đường Luân còn đó."
+    },
+    {
+      "panel": "crmn_ep163/p052.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cửu Thiên Nguy nhìn thấy Trường Xung, người đáng lẽ đang dưỡng thương ở nhà."
+    },
+    {
+      "panel": "crmn_ep163/p062.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hai người đối mặt trên thuyền. Cửu Thiên Nguy hỏi thẳng liệu hắn tới đây để giết nàng hay không."
+    },
+    {
+      "panel": "crmn_ep164/p012.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cầu Đao Nhi đứng giữa vòng vây, không lùi bước dù biết pháo có thể nổ bất cứ lúc nào."
+    },
+    {
+      "panel": "crmn_ep164/p028.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn đếm ngược, buộc mọi người phải nhìn thẳng vào lựa chọn của mình."
+    },
+    {
+      "panel": "crmn_ep164/p039.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Pháo được châm ngòi, khói bụi bùng lên trước mắt những người đang nín thở."
+    },
+    {
+      "panel": "crmn_ep165/p008.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng nhận ra cơ thể nàng vẫn có dấu hiệu của những mảnh kim loại từng được cấy vào."
+    },
+    {
+      "panel": "crmn_ep165/p053.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Cầu Đao Nhi sống sót, nhưng những hạt kim loại nằm trong cơ thể nàng mới là thứ khiến Thẩm Lãng lo nhất."
+    }
+  ]
+}
