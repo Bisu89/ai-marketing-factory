@@ -7,7 +7,7 @@
   Chương 0–10 tải thẳng bằng `recap.py fetch <link> <thư mục> --count N`. Từ chương 11 trở đi phải đăng nhập, không có ảnh.
 - **Nguồn thứ 3 (dùng từ chương 11 trở đi):** https://truyenqq.com.vn/dai-quan-gia-la-ma-hoang/chapter-N — chương N
   trên site này khớp trực tiếp 1:1 với `dqgl_epN` (không lệch số như bên Chàng Rể Mạnh Nhất Lịch Sử), xác minh bằng
-  hash ảnh trang 1 chương 21. Chương 101–150 tải bằng nguồn này 2026-10-13.
+  hash ảnh trang 1 chương 21. Chương 101–150 tải bằng nguồn này 2026-10-13, chương 151–200 tải 2026-10-21 (`dqgl_ep151`..`dqgl_ep200`, chưa cắt/viết script; `dqgl_ep200` chỉ 19 trang, có thể là chương cuối hiện có hoặc chương ngắn).
 - **Tải ảnh (manhuavn2):**
   - Chương 1–2 nằm trên `img2.truyensieuhay.com` và chương 200 trên blogspot: `recap.py fetch` tải được.
   - **Chương 3–100+ nằm trên `img02.g5img.top`, bị chặn tải (403).** Phải tải tay bằng extension trình duyệt vào `manhua-recap/dqg_epN/`, đặt tên `c03_001.jpg`…
@@ -180,6 +180,8 @@ Việc xóa không đổi tên các khung còn lại.
 - `dqg_ep2`: p001, p002, p071, p072, p073
 
 ## Nhật ký
+- 2026-10-20: Rendered Long 121-130 (project 286, job 340, 3:12, 1920x1080, 32.86 MB, Final QA PASS 100) and Shorts AH 121-123 (project 287, job 341, 30.75s, 7.70 MB), AI 124-126 (project 288, job 342, 30.10s, 6.26 MB), AJ 127-130 (project 289, job 343, 31.09s, 5.68 MB); each Short 1080x1920, Final QA PASS 100. Files are under `backend/data/library/_video_composer/`. Long timestamps: 0:00 ch121; 0:17 ch122; 0:37 ch123; 0:57 ch124; 1:15 ch125; 1:34 ch126; 1:54 ch127; 2:13 ch128; 2:32 ch129; 2:51 ch130. Compiled from existing ep121-ep130 scripts (7 beats each); narration should be checked against source images before reuse.
+- 2026-10-19: Rendered Long 111-120 (project 282, job 336, 9:14, 1920x1080, 89.8 MB, Final QA PASS 100) and Shorts AE 111-113 (project 283, job 337, 43.44s, 8.82 MB), AF 114-117 (project 284, job 338, 45.17s, 8.45 MB), AG 118-120 (project 285, job 339, 44.17s, 7.90 MB); each Short is 1080x1920 and Final QA PASS 100. Files are in `backend/data/library/_video_composer/`. Timestamps: 0:00 ch111; 0:56 ch112; 1:49 ch113; 2:36 ch114; 3:30 ch115; 4:23 ch116; 5:15 ch117; 6:16 ch118; 7:15 ch119; 8:09 ch120. Compiled from existing ep111-ep120 scripts; verify narration against source images before reuse.
 
 - 2026-10-19: Long 100-110 (`long_100_110/script.json`, 240 beat, 11 phần, ~5600 từ) + 3 Short (`short_ab` ch101-103, `short_ac` ch104-107, `short_ad` ch108-110, mỗi cái 14 beat). Chưa build/render. Viết lại sau khi đọc ảnh thật từng chương, vì `ep102`, `ep104`-`ep110` (bản OpenAI) lệch truyện: ch104 chép nhầm cảnh Tề Thiên Lôi của ch105, ch106-108 bỏ mất việc Tề gia bày bẫy (chị em Tống gia làm mồi, chuông vàng Tử Kim Lưu Ly Trận), ch109-110 bỏ mất việc Trác Phàm giả danh Tống Ngọc và cảnh Đồng Hiểu Uyển bị bắt nạt. Long dùng lại ch100 từ `ep100` (đã đối chiếu ảnh 2026-10-13). Tên: chị Tống Thiến, em Tống Ngọc (Tiểu Ngọc), Đồng Thiên Bá và em gái Đồng Hiểu Uyển.
 - 2026-09-30: Long 02 + Long 03 (chương 11–20, tách đôi) — thay vì tải lại/cắt lại ảnh vào một thư mục gộp như
@@ -283,5 +285,5 @@ Việc xóa không đổi tên các khung còn lại.
   6:39 Luyện Huyết Anh / 7:07 Thái phủ trở mặt / 7:34 Ma Hoàng nổi giận / 8:15 Ngự Hạ Thất Thế Gia / 9:05 Thượng Cổ Trận Thức Đồ
 - 2026-09-28: tắt nhạc nền cho template manhua, render lại tập 1–2 (project 117/118, jobs 179/180).
 - 2026-09-28: phân tích truyện, viết tay kịch bản tập 1–2 (Claude đọc 31 ảnh đọc, 180 khung).
-- 2026-10-19: render Long 100–110 (project 278, job 332, 20:17, 1920×1080, Final QA PASS 100) và 3 Short: AB 101–103 (project 279, job 333, 42.93s), AC 104–107 (project 280, job 334, 43.40s), AD 108–110 (project 281, job 335, 49.23s); cả ba 1080×1920, Final QA PASS 100. Output nằm trong `backend/data/library/_video_composer/`.
+- 2026-10-19: Long 100-110 and Shorts AB/AC/AD have scripts only; not built or rendered. Projects 278-281 have no MP4 outputs.
   Mục lục Long: 0:00 ch100 Ma Hoàng giết U Quỷ Thất / 2:31 ch101 tin dữ chấn động triều đình / 4:14 ch102 U Minh Cốc truy sát / 5:29 ch103 Ma Sát Tam Quyết / 6:52 ch104 cứu chị em Tống gia / 8:27 ch105 tới Lan Lăng Thành / 9:51 ch106 tiệc Tề gia / 11:32 ch107 phá bẫy và hút độc / 13:11 ch108 phá chuông vàng / 15:38 ch109 giả danh vào Hoa Vũ Thành / 17:54 ch110 Đồng tiểu thư bị bắt nạt.
