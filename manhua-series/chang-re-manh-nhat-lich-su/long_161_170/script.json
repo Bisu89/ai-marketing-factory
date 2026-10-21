@@ -1,0 +1,504 @@
+{
+  "template": "manhua_recap_long_vi",
+  "title": "Chàng Rể Mạnh Nhất Lịch Sử | Tập 161–170",
+  "source_dir": "manhua-recap/crmn_ep161",
+  "chapters": "160-169",
+  "description": "Dọn chiến trường Vọng Nhai, Cầu Đao Nhi sống sót sau pháo kích với bí mật trong cơ thể, Cửu Thiên Nguy mang thai được tha mạng, Đường Luân âm mưu mới còn Thẩm Lãng đột nhập mật khố thành chủ, tập 161–170.",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "beats": [
+    {
+      "panel": "crmn_ep161/p002.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Cửu Thiên Nguy thề sẽ tự tay giết Thẩm Lãng sau khi thấy quân mình mắc bẫy.",
+      "section": "Tập 161"
+    },
+    {
+      "panel": "crmn_ep161/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Kim gia cho lăn đá và đóng lối hầm, khiến những tên còn dưới mỏ không thể rút lui theo đường cũ."
+    },
+    {
+      "panel": "crmn_ep161/p016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nước lạnh tiếp tục dâng. Đám hải tặc phát hiện vách núi là con đường duy nhất để trèo lên."
+    },
+    {
+      "panel": "crmn_ep161/p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Từng người bám vào đá tìm đường thoát, nhưng cung thủ trên cao đã chờ sẵn."
+    },
+    {
+      "panel": "crmn_ep161/p032.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Khi lối thoát bị thu hẹp, ưu thế số đông không còn giúp ích nhiều; mỗi kẻ leo lên đều trở thành mục tiêu riêng."
+    },
+    {
+      "panel": "crmn_ep161/p040.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tên bắn xuống liên tiếp, buộc những kẻ đang trèo phải buông tay hoặc rơi trở lại dòng nước."
+    },
+    {
+      "panel": "crmn_ep161/p050.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cửu Thiên Nguy cuối cùng cũng phải xuống tận chiến trường, không thể đứng ngoài nhìn quân mình bị tiêu diệt."
+    },
+    {
+      "panel": "crmn_ep161/p062.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Dưới làn nước lạnh, trận chiến biến thành cuộc giằng co sinh tử giữa những người cố sống sót."
+    },
+    {
+      "panel": "crmn_ep162/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Những tên hải tặc mắc kẹt cố trèo khỏi mỏ, nhưng quân Kim gia vẫn giữ chặt các lối lên.",
+      "section": "Tập 162"
+    },
+    {
+      "panel": "crmn_ep162/p008.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lưu huỳnh và các vật liệu ăn mòn được dùng để chặn những kẻ cố bám vào vách đá."
+    },
+    {
+      "panel": "crmn_ep162/p016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một số hải tặc cầu xin đầu hàng, nhưng Kim Mộc Lan nhớ tới những gia đình vô tội bị chúng sát hại."
+    },
+    {
+      "panel": "crmn_ep162/p024.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Sự tàn khốc của trận đánh có nguyên nhân từ những cuộc cướp bóc trước đó; quân phòng thủ xem đây là lúc đòi món nợ máu."
+    },
+    {
+      "panel": "crmn_ep162/p032.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng tiếp tục điều quân, không để những toán hải tặc còn lại thoát khỏi vòng vây."
+    },
+    {
+      "panel": "crmn_ep162/p041.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Khi tin thất bại truyền tới, Đường Luân mới hiểu lực lượng của mình đã bị đánh tan."
+    },
+    {
+      "panel": "crmn_ep162/p050.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông ta hỏi liệu Nộ Triều Thành cũng đã thất thủ hay chưa, nhưng câu trả lời vẫn chưa rõ."
+    },
+    {
+      "panel": "crmn_ep162/p058.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng nhắc tới những người thân của Mộc Lan và Tô Bộ Bộ. Trận Vọng Nhai có thể đã xong, nhưng món nợ với Đường Luân còn đó."
+    },
+    {
+      "panel": "crmn_ep163/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trận chiến Vọng Nhai đã kết thúc, nhưng các phe lập tức quay sang tranh tính lợi ích sau chiến thắng.",
+      "section": "Tập 163"
+    },
+    {
+      "panel": "crmn_ep163/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cửu Thiên Nguy bàn chuyện mạch vàng và tìm cách giữ những cao thủ bên cạnh mình."
+    },
+    {
+      "panel": "crmn_ep163/p017.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nàng đề nghị một nhóm võ sĩ tham gia huấn luyện, đồng thời mở đường cho liên minh mới."
+    },
+    {
+      "panel": "crmn_ep163/p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tin báo cho biết lực lượng tinh nhuệ của Cửu Thiên Nguy đã chịu tổn thất nặng trong trận vừa qua."
+    },
+    {
+      "panel": "crmn_ep163/p033.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Sau một trận thua lớn, liên minh nào cũng phải tính lại cái giá phải trả và xem ai còn đáng để đặt niềm tin."
+    },
+    {
+      "panel": "crmn_ep163/p041.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đoàn người chuẩn bị rời đi, nhưng một nhân vật không ngờ lại xuất hiện trên đường."
+    },
+    {
+      "panel": "crmn_ep163/p052.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cửu Thiên Nguy nhìn thấy Trường Xung, người đáng lẽ đang dưỡng thương ở nhà."
+    },
+    {
+      "panel": "crmn_ep163/p062.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hai người đối mặt trên thuyền. Cửu Thiên Nguy hỏi thẳng liệu hắn tới đây để giết nàng hay không."
+    },
+    {
+      "panel": "crmn_ep164/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng đứng trước dàn pháo, chuẩn bị ra lệnh bắn vào Cầu Đao Nhi.",
+      "section": "Tập 164"
+    },
+    {
+      "panel": "crmn_ep164/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn hiểu loại đạn này chưa chắc giết được nàng, nhưng vẫn có thể gây thương tích nặng."
+    },
+    {
+      "panel": "crmn_ep164/p006.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Từ trên thành, có người liên tục kêu gọi Thẩm Lãng đừng xuống tay."
+    },
+    {
+      "panel": "crmn_ep164/p012.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cầu Đao Nhi đứng giữa vòng vây, không lùi bước dù biết pháo có thể nổ bất cứ lúc nào."
+    },
+    {
+      "panel": "crmn_ep164/p020.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Đây không còn là cuộc đấu sức đơn thuần: quyết định của Thẩm Lãng sẽ ảnh hưởng tới lòng tin và quan hệ giữa các phe."
+    },
+    {
+      "panel": "crmn_ep164/p028.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn đếm ngược, buộc mọi người phải nhìn thẳng vào lựa chọn của mình."
+    },
+    {
+      "panel": "crmn_ep164/p039.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Pháo được châm ngòi, khói bụi bùng lên trước mắt những người đang nín thở."
+    },
+    {
+      "panel": "crmn_ep164/p058.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Khi bụi tan, không ai biết Cầu Đao Nhi còn đứng vững hay không."
+    },
+    {
+      "panel": "crmn_ep165/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cầu Đao Nhi sống sót, nhưng cuộc đối đầu vừa rồi khiến nàng bị thương và suy kiệt.",
+      "section": "Tập 165"
+    },
+    {
+      "panel": "crmn_ep165/p008.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng nhận ra cơ thể nàng vẫn có dấu hiệu của những mảnh kim loại từng được cấy vào."
+    },
+    {
+      "panel": "crmn_ep165/p016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cầu Đao Nhi thừa nhận nàng không hề sợ chết, nhưng không muốn người khác quyết định thay mình."
+    },
+    {
+      "panel": "crmn_ep165/p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nàng nói khoảng cách với đại quân của Trường Tân và Vạn Nghìn không xa, nếu cần vẫn có thể gọi họ tới."
+    },
+    {
+      "panel": "crmn_ep165/p033.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Cầu Đao Nhi dùng chính sự cứng rắn của mình để thương lượng: nàng yếu thế về tình trạng cơ thể, nhưng vẫn có quân đội làm chỗ dựa."
+    },
+    {
+      "panel": "crmn_ep165/p041.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng nói hắn có thể thả nàng và con trai, nếu nàng chịu bàn chuyện hợp tác."
+    },
+    {
+      "panel": "crmn_ep165/p050.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nàng không dễ dàng tin lời hứa, còn những người xung quanh vẫn căng thẳng quan sát."
+    },
+    {
+      "panel": "crmn_ep165/p053.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng nhớ tới những hạt nhỏ đã được đưa vào cơ thể nàng. Nếu chúng vỡ ra, Cầu Đao Nhi sẽ gặp nguy hiểm."
+    },
+    {
+      "panel": "crmn_ep166/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cửu Thiên Nguy trở về với vết thương khắp người, nhưng điều khiến nàng bối rối hơn là mình đang mang thai.",
+      "section": "Tập 166"
+    },
+    {
+      "panel": "crmn_ep166/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nàng hỏi Thẩm Lãng liệu có thể trách hắn vì chuyện này hay không, còn hắn nhận mình cũng là người bị hại."
+    },
+    {
+      "panel": "crmn_ep166/p017.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng bảo nàng nghỉ ngơi, không muốn biến chuyện vừa xảy ra thành một cuộc báo thù mới."
+    },
+    {
+      "panel": "crmn_ep166/p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cửu Thiên Nguy nói mình từng bị đánh trọng thương, vậy mà đứa trẻ vẫn sống sót."
+    },
+    {
+      "panel": "crmn_ep166/p033.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Việc tha cho nàng mở ra một rủi ro chính trị, nhưng cũng cho thấy Thẩm Lãng đang tính đến những hệ quả dài hạn."
+    },
+    {
+      "panel": "crmn_ep166/p041.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng đưa nàng và người đi cùng xuống thuyền, dặn họ rời khỏi Nộ Triều."
+    },
+    {
+      "panel": "crmn_ep166/p050.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trong lúc đó, Đường Luân tỉnh lại sau cơn biến cố và lập tức hỏi tình hình các toán hải tặc."
+    },
+    {
+      "panel": "crmn_ep166/p058.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông ta biết trên biển vẫn còn một lực lượng khác cần xử lý. Ván cờ mới vừa mở ra."
+    },
+    {
+      "panel": "crmn_ep167/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đường Luân tỉnh dậy sau nhiều ngày, nghe thuộc hạ báo cáo về tình hình Nộ Triều.",
+      "section": "Tập 167"
+    },
+    {
+      "panel": "crmn_ep167/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông ta vẫn muốn diệt Thẩm Lãng, nhưng hiểu rằng lúc này cần giữ lại một số quân cờ."
+    },
+    {
+      "panel": "crmn_ep167/p017.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Các toán hải tặc còn lại được lệnh tập hợp, chuẩn bị đổ bộ lên bờ."
+    },
+    {
+      "panel": "crmn_ep167/p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một nhóm 300 kỵ binh tập hợp, còn Cửu Thiên Nguy quyết định dẫn họ đi cùng."
+    },
+    {
+      "panel": "crmn_ep167/p033.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Cửu Thiên Nguy không muốn đứng ngoài khi đồng đội bị đe dọa. Quyết tâm ấy có thể cứu người, nhưng cũng khiến nàng bước vào nguy hiểm."
+    },
+    {
+      "panel": "crmn_ep167/p041.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Dù đang bị thương, nàng vẫn lên ngựa, khẳng định mình có thể tiếp tục chiến đấu."
+    },
+    {
+      "panel": "crmn_ep167/p050.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trường Xung và những người khác định can ngăn, nhưng nàng không chịu quay về."
+    },
+    {
+      "panel": "crmn_ep167/p052.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cửu Thiên Nguy thúc ngựa lên đường, tiến thẳng về phía nơi quân địch đang tập kết."
+    },
+    {
+      "panel": "crmn_ep168/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cửu Thiên Nguy bị phục kích trên đường, ngựa và tùy tùng liên tiếp trúng đòn.",
+      "section": "Tập 168"
+    },
+    {
+      "panel": "crmn_ep168/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nàng cố chống trả dù đang mang thai và cơ thể vẫn chưa hồi phục sau trận chiến."
+    },
+    {
+      "panel": "crmn_ep168/p017.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Kẻ ra tay không muốn giết nàng ngay, vì phía sau còn có thể lợi dụng nàng."
+    },
+    {
+      "panel": "crmn_ep168/p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tin Cửu Thiên Nguy sống sót khiến Thẩm Lãng nghi ngờ có người đang âm thầm sắp đặt mọi việc."
+    },
+    {
+      "panel": "crmn_ep168/p033.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Các phe đều dùng tin tức và con tin như quân cờ; một cuộc giải cứu cũng có thể là bước mở đầu cho âm mưu khác."
+    },
+    {
+      "panel": "crmn_ep168/p041.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ở một nơi khác, Mộc Lan dẫn quân truy đuổi toán địch đang tìm cách rút lui."
+    },
+    {
+      "panel": "crmn_ep168/p049.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nàng tung kiếm pháp áp đảo, buộc đối thủ phải tản ra để tránh bị bao vây."
+    },
+    {
+      "panel": "crmn_ep168/p055.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cửu Thiên Nguy vẫn chưa rõ ai đứng sau vụ tập kích, còn Thẩm Lãng bắt đầu hướng sự chú ý về Nộ Triều Thành."
+    },
+    {
+      "panel": "crmn_ep169/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cửu Thiên Nguy vừa về đến thành thì chạm mặt một kẻ đeo mặt nạ, tự xưng Khổ Đầu Hoan.",
+      "section": "Tập 169"
+    },
+    {
+      "panel": "crmn_ep169/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn cười nhạo nàng vì dám mang danh cao thủ mà vẫn để bản thân bị thương."
+    },
+    {
+      "panel": "crmn_ep169/p017.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cửu Thiên Nguy không lùi bước, cảnh cáo đối phương đừng xem thường Huyền Vũ Bá phủ."
+    },
+    {
+      "panel": "crmn_ep169/p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ở cửa thành, lính gác phát hiện Thẩm Lãng đã đột nhập và ném những quả cầu sắt vào bên trong."
+    },
+    {
+      "panel": "crmn_ep169/p033.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Đòn đánh bất ngờ khiến quân phòng thủ tưởng thành đã bị công phá, tạo ra khoảng trống cho Thẩm Lãng hành động."
+    },
+    {
+      "panel": "crmn_ep169/p041.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tướng lĩnh lập tức tập hợp quân, còn người trong phủ thành chủ báo tin có nội ứng."
+    },
+    {
+      "panel": "crmn_ep169/p049.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng đã vào được trong thành trước khi quân cứu viện kịp khép vòng vây."
+    },
+    {
+      "panel": "crmn_ep169/p052.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nếu nội ứng thật sự tồn tại, Thẩm Lãng có thể đã tiến sâu vào phủ thành chủ."
+    },
+    {
+      "panel": "crmn_ep170/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng lẻn vào tầng đầu của mật khố, nơi cất giữ tài vật và bí mật của phủ thành chủ.",
+      "section": "Tập 170"
+    },
+    {
+      "panel": "crmn_ep170/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn nghe thấy tiếng thở và nhịp tim phía sau cánh cửa, biết nơi này có người canh giữ."
+    },
+    {
+      "panel": "crmn_ep170/p017.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng ra tay trước, đánh ngã đối thủ trong một đòn bất ngờ."
+    },
+    {
+      "panel": "crmn_ep170/p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Khi bước vào trong, hắn thấy căn phòng chất đầy rương và giấy tờ."
+    },
+    {
+      "panel": "crmn_ep170/p033.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Đột nhập thành công mới chỉ là bước đầu: nếu nơi này chứa bí mật của thành chủ, mỗi phút ở lại đều tăng nguy cơ bị phát hiện."
+    },
+    {
+      "panel": "crmn_ep170/p041.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng tiếp tục lục tìm, nhưng thứ hắn cần dường như không nằm ở tầng đầu."
+    },
+    {
+      "panel": "crmn_ep170/p049.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn phát hiện người vừa bị đánh gục vẫn còn thở, trái với suy đoán ban đầu."
+    },
+    {
+      "panel": "crmn_ep170/p053.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Kẻ canh giữ chưa chết và có thể báo động bất cứ lúc nào. Thẩm Lãng phải tìm ra mục tiêu trước khi bị bao vây."
+    }
+  ]
+}

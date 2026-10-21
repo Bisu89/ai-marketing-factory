@@ -1,0 +1,324 @@
+{
+  "template": "manhua_recap_long_vi",
+  "title": "Chàng Rể Mạnh Nhất Lịch Sử | Tập 191–200",
+  "source_dir": "manhua-recap/crmn_ep191",
+  "chapters": "190-199",
+  "description": "Thẩm Lãng biến ca chữa bệnh thành lợi thế chính trị, dựng màn vu oan để cứu Kim Mộc Thông khỏi vụ vu cáo, rồi đối đầu sứ giả Khương quốc qua vụ sứ quán Đại Viêm bị đốt và vụ bắt giữ con trai Trương Xung, tập 191–200.",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "beats": [
+    {
+      "panel": "crmn_ep191/p002.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Thẩm Lãng tập trung dẫn chân khí, còn Ninh Điềm cố chịu đựng trong lúc sỏi được xử lý.",
+      "section": "Tập 191"
+    },
+    {
+      "panel": "crmn_ep191/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh xác nhận toàn bộ sỏi đã vỡ, tránh được cuộc phẫu thuật nguy hiểm."
+    },
+    {
+      "panel": "crmn_ep191/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ninh Điềm ngạc nhiên vì quá trình kết thúc nhanh hơn cô tưởng."
+    },
+    {
+      "panel": "crmn_ep191/p040.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng nhờ cô giúp một việc, đổi lại anh sẽ chữa khỏi bệnh cho cô."
+    },
+    {
+      "panel": "crmn_ep191/p059.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sau đó, Kim Mộc Thông tỉnh lại trong tình huống khiến chính cậu cũng hoảng hốt."
+    },
+    {
+      "panel": "crmn_ep192/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng nói muốn rửa sạch tiếng xấu cho Kim Mộc Thông, nhưng cách làm gần như bất khả thi.",
+      "section": "Tập 192"
+    },
+    {
+      "panel": "crmn_ep192/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh không định đi tìm chứng cứ để minh oan theo cách thông thường."
+    },
+    {
+      "panel": "crmn_ep192/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thay vào đó, anh muốn tạo một chuyện đủ lớn để cả nước chuyển hướng chú ý."
+    },
+    {
+      "panel": "crmn_ep192/p039.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Một vụ việc càng gây chấn động thì càng dễ che khuất câu chuyện đang bị điều tra."
+    },
+    {
+      "panel": "crmn_ep192/p054.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng còn định khiến kẻ thù phải nhận lấy hậu quả ngay giữa lúc hỗn loạn."
+    },
+    {
+      "panel": "crmn_ep193/p001.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Vương Khởi Khoa nổi giận vì cho rằng Thẩm Lãng đã xúc phạm mình trước mặt quan lại.",
+      "section": "Tập 193"
+    },
+    {
+      "panel": "crmn_ep193/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng không chịu quỳ, còn nhắc lại phẩm hàm của mình để phản bác."
+    },
+    {
+      "panel": "crmn_ep193/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh biến chính thứ bậc quan trường thành lý lẽ khiến đối phương khó xử."
+    },
+    {
+      "panel": "crmn_ep193/p040.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Vương Khởi Khoa càng lớn tiếng thì càng để lộ mình đang mất bình tĩnh."
+    },
+    {
+      "panel": "crmn_ep193/p054.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng bình thản hỏi quan lớn muốn xử trí chuyện này thế nào."
+    },
+    {
+      "panel": "crmn_ep194/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một người phụ nữ khóc lóc tố Kim Mộc Thông đã làm nhục mình.",
+      "section": "Tập 194"
+    },
+    {
+      "panel": "crmn_ep194/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô ta nói toàn thân bầm tím, nhưng những dấu vết lại không giống bằng chứng bị cưỡng ép."
+    },
+    {
+      "panel": "crmn_ep194/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng chỉ ra rằng người phụ nữ kia cũng nằm đè lên Mộc Thông."
+    },
+    {
+      "panel": "crmn_ep194/p040.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cách giải thích của anh khiến viên quan xử án không biết nên tin bên nào."
+    },
+    {
+      "panel": "crmn_ep194/p052.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lời vu cáo càng lúc càng lộ sơ hở, nhưng người đứng sau vẫn chưa lộ diện."
+    },
+    {
+      "panel": "crmn_ep195/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng nhận ra mọi người đều nghĩ Mộc Thông không thể làm người phụ nữ kia mang thai.",
+      "section": "Tập 195"
+    },
+    {
+      "panel": "crmn_ep195/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh nói hai đứa trẻ có thể được sinh ra nhờ cách thụ tinh nhân tạo."
+    },
+    {
+      "panel": "crmn_ep195/p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Khi đám đông xông vào, Thẩm Lãng đứng ra che chắn cho hai nhân chứng."
+    },
+    {
+      "panel": "crmn_ep195/p039.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh xoa dịu chúng trước rồi mới lấy mẫu máu để kiểm tra."
+    },
+    {
+      "panel": "crmn_ep195/p051.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng hiểu rằng lời vu cáo này còn có thể kéo theo rắc rối lớn hơn."
+    },
+    {
+      "panel": "crmn_ep196/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sứ đoàn Khương quốc xuất hiện ở kinh đô trong lúc một người của họ gây chuyện.",
+      "section": "Tập 196"
+    },
+    {
+      "panel": "crmn_ep196/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Khương quốc là nước nhỏ nhưng có quan hệ giao thương quan trọng với Việt Quốc."
+    },
+    {
+      "panel": "crmn_ep196/p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng nhìn ra một cơ hội chính trị từ sự việc tưởng như chỉ là một vụ say rượu."
+    },
+    {
+      "panel": "crmn_ep196/p039.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ninh Điềm tìm cách trả đũa những kẻ đã làm mình bực tức."
+    },
+    {
+      "panel": "crmn_ep196/p055.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng vẫn bị nhốt, còn Ninh Điềm chuẩn bị một cách xử lý rất riêng."
+    },
+    {
+      "panel": "crmn_ep197/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng bị nhốt trong lao, còn cai ngục khăng khăng cho rằng mình không làm sai.",
+      "section": "Tập 197"
+    },
+    {
+      "panel": "crmn_ep197/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh hỏi vì sao một nha dịch nhỏ lại có thể ba lần đẩy mình vào nhà lao."
+    },
+    {
+      "panel": "crmn_ep197/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cai ngục tức tối và tự kể ra những chuyện đáng lẽ phải giấu kín."
+    },
+    {
+      "panel": "crmn_ep197/p040.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Thẩm Lãng càng bình tĩnh, đối phương càng dễ tự nói hớ."
+    },
+    {
+      "panel": "crmn_ep197/p054.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngoài kia, người ta đã bắt đầu bàn về vụ bê bối liên quan đến Kim Mộc Thông."
+    },
+    {
+      "panel": "crmn_ep198/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ninh Điềm kéo Thẩm Lãng dậy vì có tin khẩn cấp xảy ra trong thành.",
+      "section": "Tập 198"
+    },
+    {
+      "panel": "crmn_ep198/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thánh miếu trong sứ quán Đại Viêm bất ngờ bốc cháy."
+    },
+    {
+      "panel": "crmn_ep198/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Người của Đại Viêm nghi Thẩm Lãng đứng sau vụ việc để phá hoại buổi lễ hôm sau."
+    },
+    {
+      "panel": "crmn_ep198/p040.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lệnh truy bắt được ban ra, khiến tình hình ngoại giao căng thẳng hơn."
+    },
+    {
+      "panel": "crmn_ep198/p052.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng vẫn đang ở trong lao, nên lời buộc tội mới càng khiến mọi chuyện khó hiểu."
+    },
+    {
+      "panel": "crmn_ep199/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trương Tuân ngày nào cũng quỳ trước cửa vì Trường Xung đang bị giam.",
+      "section": "Tập 199"
+    },
+    {
+      "panel": "crmn_ep199/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh nghe tin Kim Mộc Thông bị tố làm nhục một phụ nữ và lập tức nổi giận."
+    },
+    {
+      "panel": "crmn_ep199/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trương Tuân muốn báo thù, dù cha anh cảnh báo không được động vào nhân chứng."
+    },
+    {
+      "panel": "crmn_ep199/p040.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng nhìn thấy vụ án có thể biến thành cái cớ để tấn công Kim gia."
+    },
+    {
+      "panel": "crmn_ep199/p053.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một mồi lửa bất ngờ bùng lên ở thánh miếu, đẩy cả thành vào hỗn loạn."
+    },
+    {
+      "panel": "crmn_ep200/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Kim gia và Tô thị đang cùng ủng hộ triều đình, nhưng Khương quốc lại bắt đầu đổi hướng ngoại giao.",
+      "section": "Tập 200"
+    },
+    {
+      "panel": "crmn_ep200/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng phân tích nếu chính sách mới bị bác bỏ, Khương quốc có thể nhờ Tô Nan Tử cầm quân."
+    },
+    {
+      "panel": "crmn_ep200/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh đến gặp sứ giả Khương quốc và tự nhận mình là Thẩm Lãng của phủ Huyền Vũ Bá."
+    },
+    {
+      "panel": "crmn_ep200/p041.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sứ giả chất vấn anh vì sao dám xuất hiện, còn Thẩm Lãng nói mình đến để trả đũa."
+    },
+    {
+      "panel": "crmn_ep200/p058.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Thẩm Lãng công khai đòi bắt sứ giả, khiến người trong phủ không hiểu anh đang tính nước cờ nào."
+    }
+  ]
+}

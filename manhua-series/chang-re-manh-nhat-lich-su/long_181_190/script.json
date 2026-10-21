@@ -1,0 +1,324 @@
+{
+  "template": "manhua_recap_long_vi",
+  "title": "Chàng Rể Mạnh Nhất Lịch Sử | Tập 181–190",
+  "source_dir": "manhua-recap/crmn_ep181",
+  "chapters": "180-189",
+  "description": "Về triều: Trương Xung thoát tội rồi được phục chức, Ngô quốc mời Kim gia tham chiến đổi tước Hầu, Kim Mộc Thông bị gọi vào kinh nhưng không chịu rời Nộ Triều Thành, Thẩm Lãng đấu trí với quốc vương rồi chữa sỏi thận cho Ninh Điềm, tập 181–190.",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "beats": [
+    {
+      "panel": "crmn_ep181/p003.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Nhà vua phải quyết định sẽ dùng Trường Xung thế nào sau biến cố Nộ Triều.",
+      "section": "Tập 181"
+    },
+    {
+      "panel": "crmn_ep181/p016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Các đại thần tranh luận về trách nhiệm và công lao của ông."
+    },
+    {
+      "panel": "crmn_ep181/p029.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trong lúc triều đình còn chưa yên, Huyền Vũ phủ bắt đầu đón Tết."
+    },
+    {
+      "panel": "crmn_ep181/p043.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng tham gia không khí năm mới, còn Mộc Lan vẫn khiến anh lúng túng."
+    },
+    {
+      "panel": "crmn_ep181/p056.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tiếng pháo hoa vang lên, nhưng những chuyện trong kinh thành vẫn chưa có lời giải."
+    },
+    {
+      "panel": "crmn_ep182/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một phe trong triều đòi xử Trương Xung thật nặng sau những chuyện vừa xảy ra.",
+      "section": "Tập 182"
+    },
+    {
+      "panel": "crmn_ep182/p016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhà vua cho rằng ông có công trấn áp kẻ ác, nên không thể chỉ nhìn vào sai lầm."
+    },
+    {
+      "panel": "crmn_ep182/p029.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cuối cùng, Trương Xung thoát án nặng nhưng vẫn phải chịu trách nhiệm trước triều đình."
+    },
+    {
+      "panel": "crmn_ep182/p043.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trong lúc đó, một sứ giả đeo mặt nạ đến Huyền Vũ phủ tìm người."
+    },
+    {
+      "panel": "crmn_ep182/p056.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sự xuất hiện của vị khách khiến Thẩm Lãng phải đề phòng một biến cố mới."
+    },
+    {
+      "panel": "crmn_ep183/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trương Xung được bổ nhiệm lại, khiến phủ họ Trương lập tức mở tiệc ăn mừng.",
+      "section": "Tập 183"
+    },
+    {
+      "panel": "crmn_ep183/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Người thân và thuộc hạ kéo đến chúc mừng, ai cũng muốn tranh thủ cơ hội."
+    },
+    {
+      "panel": "crmn_ep183/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng biết chuyện này chưa khép lại và vẫn còn nhiều người muốn lợi dụng nó."
+    },
+    {
+      "panel": "crmn_ep183/p040.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh trở về phủ, nơi Mộc Lan đã nghỉ ngơi sau những ngày căng thẳng."
+    },
+    {
+      "panel": "crmn_ep183/p052.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng nghĩ đến cuộc sống phía trước, nhưng những toan tính triều đình vẫn bám theo anh."
+    },
+    {
+      "panel": "crmn_ep184/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sứ giả Ngô quốc đến xin Kim gia giúp tiêu diệt hải tặc và chiếm quần đảo Lôi Châu.",
+      "section": "Tập 184"
+    },
+    {
+      "panel": "crmn_ep184/p016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đổi lại, họ hứa phong cho Kim gia tước Huyền Vũ Hầu."
+    },
+    {
+      "panel": "crmn_ep184/p029.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Kim Trác chờ tin sắc phong, còn Thẩm Lãng chưa vội tin thiện ý của đối phương."
+    },
+    {
+      "panel": "crmn_ep184/p043.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Khi một lời đề nghị đi kèm phần thưởng lớn, điều cần hỏi là bên kia muốn lấy gì."
+    },
+    {
+      "panel": "crmn_ep184/p056.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sứ giả thúc giục chuẩn bị xuất quân, buộc Kim gia phải sớm đưa ra câu trả lời."
+    },
+    {
+      "panel": "crmn_ep185/p001.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sau khi Thái giám rời đi, Kim Mộc Thông và người bên cạnh cùng phản đối chuyện vào kinh.",
+      "section": "Tập 185"
+    },
+    {
+      "panel": "crmn_ep185/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Dù đã là thành chủ Nộ Triều, Mộc Thông vẫn ở lại Huyền Vũ Bá phủ."
+    },
+    {
+      "panel": "crmn_ep185/p012.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cậu lo cho Lâm Nương Tử và sợ cô sẽ gặp chuyện nếu mình đi xa."
+    },
+    {
+      "panel": "crmn_ep185/p026.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng trêu cậu về lời hứa với Quả Phụ Lưu, khiến Mộc Thông đỏ mặt."
+    },
+    {
+      "panel": "crmn_ep185/p055.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mộc Thông vẫn chưa chịu đi, còn Thẩm Lãng tìm cách thuyết phục cậu bằng chuyện tu luyện."
+    },
+    {
+      "panel": "crmn_ep186/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng nhận ra Mộc Thông đang buồn vì chuyện cưới hỏi và những lời hứa cũ.",
+      "section": "Tập 186"
+    },
+    {
+      "panel": "crmn_ep186/p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh khuyên cậu đừng tự xem mình thấp kém trước một cô gái xuất thân danh giá."
+    },
+    {
+      "panel": "crmn_ep186/p026.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mộc Thông vẫn muốn tìm cách khiến Quả Phụ Lưu đổi ý."
+    },
+    {
+      "panel": "crmn_ep186/p039.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng cố kéo câu chuyện sang công pháp tu luyện để cậu bớt suy nghĩ."
+    },
+    {
+      "panel": "crmn_ep186/p051.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cuộc trò chuyện còn dang dở thì tin gọi vào cung khiến Thẩm Lãng phải lên đường."
+    },
+    {
+      "panel": "crmn_ep187/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng bị giữ lại trong ngự thư phòng từ sáng đến tối, vừa đói vừa rét.",
+      "section": "Tập 187"
+    },
+    {
+      "panel": "crmn_ep187/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh đoán nhà vua muốn dùng sự chờ đợi để làm mình mất kiên nhẫn."
+    },
+    {
+      "panel": "crmn_ep187/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng Thẩm Lãng bình thản đến mức người hầu không biết anh đang ngủ hay giả vờ."
+    },
+    {
+      "panel": "crmn_ep187/p041.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Đôi khi người bị bắt chờ lại có thể khiến đối phương sốt ruột trước."
+    },
+    {
+      "panel": "crmn_ep187/p059.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đến khi nhà vua xuất hiện, Thẩm Lãng vẫn ung dung như thể chẳng có chuyện gì."
+    },
+    {
+      "panel": "crmn_ep188/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Quốc vương hỏi vì sao Thẩm Lãng dám để mình đợi lâu như vậy.",
+      "section": "Tập 188"
+    },
+    {
+      "panel": "crmn_ep188/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng không vội nhận lỗi, mà bình tĩnh đáp lại từng câu hỏi."
+    },
+    {
+      "panel": "crmn_ep188/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhà vua muốn thử giới hạn của anh, nhưng cuộc nói chuyện nhanh chóng đổi chiều."
+    },
+    {
+      "panel": "crmn_ep188/p041.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng nhắc đến chuyện triều chính và khiến đối phương phải suy nghĩ."
+    },
+    {
+      "panel": "crmn_ep188/p053.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cuộc gặp kết thúc mà cả hai vẫn chưa nói hết những gì đang tính toán."
+    },
+    {
+      "panel": "crmn_ep189/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ninh Điềm phát hiện Kim Mộc Thông mới là người đứng sau cuốn sách mình yêu thích.",
+      "section": "Tập 189"
+    },
+    {
+      "panel": "crmn_ep189/p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô lập tức đến Quốc Tử Giám, vừa tò mò vừa không tin nổi."
+    },
+    {
+      "panel": "crmn_ep189/p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ninh Điềm đọc đi đọc lại cuốn sách, càng lúc càng tức vì biết tác giả là Mộc Thông."
+    },
+    {
+      "panel": "crmn_ep189/p039.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô còn dọa nếu không có tập tiếp theo thì sẽ tìm đến hiệu sách tính sổ."
+    },
+    {
+      "panel": "crmn_ep189/p053.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ninh Điềm nhất quyết muốn gặp Mộc Thông, mở ra cuộc chạm mặt đầy bất ngờ."
+    },
+    {
+      "panel": "crmn_ep190/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ninh Điềm đau đến mức thúc Thẩm Lãng mau chữa bệnh cho mình.",
+      "section": "Tập 190"
+    },
+    {
+      "panel": "crmn_ep190/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sỏi thận nghiêm trọng thường cần phẫu thuật, nhưng cách đó quá nguy hiểm ở thời đại này."
+    },
+    {
+      "panel": "crmn_ep190/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng cân nhắc dùng nội lực để làm vỡ sỏi, nhưng chỉ cần lệch một chút là có thể tổn thương thận."
+    },
+    {
+      "panel": "crmn_ep190/p041.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh quyết định dùng kim châm dẫn chân khí thật chính xác để xử lý từng viên sỏi."
+    },
+    {
+      "panel": "crmn_ep190/p055.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Ninh Điềm nằm yên chờ kết quả, còn Thẩm Lãng bắt đầu ca chữa trị đầy rủi ro."
+    }
+  ]
+}

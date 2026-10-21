@@ -1,0 +1,324 @@
+{
+  "template": "manhua_recap_long_vi",
+  "title": "Chàng Rể Mạnh Nhất Lịch Sử | Tập 171–180",
+  "source_dir": "manhua-recap/crmn_ep171",
+  "chapters": "170-179",
+  "description": "Kẻ đột nhập bắt con tin đòi bảo vật, Cửu Yêu Nhi một mình xông trận, Trương Tấn trả giá và Từ Thiên Thiên buông bỏ thù hận, Kim gia chiếm được Nộ Triều Thành đúng lúc Trương Xung bất ngờ trở về, tập 171–180.",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "beats": [
+    {
+      "panel": "crmn_ep171/p002.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Kẻ bịt mặt lục tìm thứ mình cần, nhưng tầng đầu của mật khố vẫn không có dấu vết.",
+      "section": "Tập 171"
+    },
+    {
+      "panel": "crmn_ep171/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn lập tức khống chế một cô gái bị thương, buộc mọi người trong phủ phải lùi lại."
+    },
+    {
+      "panel": "crmn_ep171/p010.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng nhìn tình thế căng thẳng, còn người nhà Kim thị không dám manh động vì con tin."
+    },
+    {
+      "panel": "crmn_ep171/p018.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Kẻ lạ mặt đưa ra chiếc hộp, biến cuộc giải cứu thành một vụ trao đổi."
+    },
+    {
+      "panel": "crmn_ep171/p030.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn khẳng định món đồ bên trong là thật, khiến cả phủ phải cân nhắc lời hứa của hắn."
+    },
+    {
+      "panel": "crmn_ep172/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Kẻ đột nhập tuyên bố sẽ không để Tô Bộ Bộ và Tiểu Băng thoát khỏi tay mình.",
+      "section": "Tập 172"
+    },
+    {
+      "panel": "crmn_ep172/p012.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Kim Trác hiểu rõ đối phương đã tính sai khi dám uy hiếp người của Kim gia."
+    },
+    {
+      "panel": "crmn_ep172/p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông đốt lá thư mật, chấp nhận từ bỏ quân cờ từng định dùng để khống chế Tô gia."
+    },
+    {
+      "panel": "crmn_ep172/p039.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trên đảo Kim Sơn, Thẩm Lãng bắt đầu tính toán chuyện tiền bạc và thế lực."
+    },
+    {
+      "panel": "crmn_ep172/p057.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tin báo động dồn về thành, buộc các tướng lĩnh phải chuẩn bị cho biến cố tiếp theo."
+    },
+    {
+      "panel": "crmn_ep173/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cửu Yêu Nhi không muốn tiếp tục đứng sau trận tuyến và quyết định tự mình ra ngoài.",
+      "section": "Tập 173"
+    },
+    {
+      "panel": "crmn_ep173/p010.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng hiểu cô đủ sức chống đỡ vài đòn, nhưng người bên cạnh sẽ phải trả giá."
+    },
+    {
+      "panel": "crmn_ep173/p021.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đối diện đội quân đông đảo, cô rút song đao và mở đường bằng sức mạnh áp đảo."
+    },
+    {
+      "panel": "crmn_ep173/p035.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Một người có thể chặn mũi nhọn, nhưng không thể bảo vệ hàng nghìn binh sĩ cùng lúc."
+    },
+    {
+      "panel": "crmn_ep173/p052.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trận chiến ở Nộ Triều vẫn chưa ngã ngũ, còn cái giá của quyết định này đang hiện rõ."
+    },
+    {
+      "panel": "crmn_ep174/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Từ Thiên Thiên hỏi Trương Tấn vì sao lại đẩy cả gia đình cô vào tai họa.",
+      "section": "Tập 174"
+    },
+    {
+      "panel": "crmn_ep174/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trương Tấn thừa nhận hình phạt trước đó quá nhẹ, nên hắn chẳng hề biết sợ."
+    },
+    {
+      "panel": "crmn_ep174/p026.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô không còn muốn kéo dài thù hận, nhưng sự hối hận đến quá muộn."
+    },
+    {
+      "panel": "crmn_ep174/p039.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tin Trương Tấn chết truyền đến, để lại Trương Xung chìm trong đau đớn."
+    },
+    {
+      "panel": "crmn_ep174/p050.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Quân đội tiến về Nộ Triều, mở ra một giai đoạn mới sau trận chiến."
+    },
+    {
+      "panel": "crmn_ep175/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trương Tấn đã chết, còn Trương Xung vẫn phải gánh nỗi đau mất con.",
+      "section": "Tập 175"
+    },
+    {
+      "panel": "crmn_ep175/p012.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Từ Thiên Thiên nghĩ về cái chết của cha và những gì cuộc báo thù đã cướp đi."
+    },
+    {
+      "panel": "crmn_ep175/p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô quyết định không để thù hận điều khiển phần đời còn lại."
+    },
+    {
+      "panel": "crmn_ep175/p038.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hạm đội bắt đầu rút lui, để lại Nộ Triều sau những ngày binh đao."
+    },
+    {
+      "panel": "crmn_ep175/p053.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ở một nơi khác, Thẩm Lãng vẫn chưa nhận được tin tức từ nội thành."
+    },
+    {
+      "panel": "crmn_ep176/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng chuẩn bị một loạt quà cho Cửu Yêu Nhi trước lúc cô rời đi.",
+      "section": "Tập 176"
+    },
+    {
+      "panel": "crmn_ep176/p016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Câu chuyện chuyển sang người mà cô gọi là chủ nhân của giọng nói đỏ."
+    },
+    {
+      "panel": "crmn_ep176/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ký ức của Cửu Yêu Nhi chỉ còn mơ hồ, nhưng giọng nói ấy vẫn có ý nghĩa đặc biệt."
+    },
+    {
+      "panel": "crmn_ep176/p041.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Một manh mối nhỏ đôi khi đủ để giữ người ta theo đuổi câu trả lời suốt nhiều năm."
+    },
+    {
+      "panel": "crmn_ep176/p056.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô hướng về bến Nộ Triều, nơi có thể đang chờ thêm một dấu vết về quá khứ."
+    },
+    {
+      "panel": "crmn_ep177/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mộc Lan hỏi liệu Kim gia thật sự đã chiếm được Nộ Triều hay chưa.",
+      "section": "Tập 177"
+    },
+    {
+      "panel": "crmn_ep177/p015.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bản đồ chiến sự cho thấy Kim gia đã nắm Nộ Triều và Lôi Châu."
+    },
+    {
+      "panel": "crmn_ep177/p026.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng các hòn đảo còn lại rơi vào tay những thế lực khác, khiến cục diện chưa hề ổn định."
+    },
+    {
+      "panel": "crmn_ep177/p039.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trường Xung trở về và gặp lại Thẩm Lãng sau những biến cố ở tiền tuyến."
+    },
+    {
+      "panel": "crmn_ep177/p054.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mộc Lan chứng kiến cảnh đoàn tụ thân mật, vừa vui mừng vừa ngượng ngùng."
+    },
+    {
+      "panel": "crmn_ep178/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Kim gia vừa chiếm Nộ Triều và Lôi Châu, nhưng lực lượng còn lại không đủ để kiểm soát mọi nơi.",
+      "section": "Tập 178"
+    },
+    {
+      "panel": "crmn_ep178/p015.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng nhận ra vùng đất mới vẫn rối ren, trong khi quân đội đã hao hụt đáng kể."
+    },
+    {
+      "panel": "crmn_ep178/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nếu tiếp tục bành trướng, Kim gia có thể khiến cả hai chiến trường Bắc Nam cùng sụp đổ."
+    },
+    {
+      "panel": "crmn_ep178/p041.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Chiếm được thành trì chỉ là lợi thế trên bản đồ; giữ nổi nó mới quyết định kết cục."
+    },
+    {
+      "panel": "crmn_ep178/p052.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng cho rằng một bước lùi đúng lúc có thể biến thế bất lợi thành thắng lợi chính trị."
+    },
+    {
+      "panel": "crmn_ep179/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trường Xung thẳng thắn hỏi Thẩm Lãng liệu có nên giết mình hay không.",
+      "section": "Tập 179"
+    },
+    {
+      "panel": "crmn_ep179/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng nhớ lại những người trung thành đã chết và không thể xem chuyện cũ như chưa từng xảy ra."
+    },
+    {
+      "panel": "crmn_ep179/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Dù từng là đối thủ, hai người vẫn có thể ngồi uống rượu và nói chuyện thẳng thắn."
+    },
+    {
+      "panel": "crmn_ep179/p040.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng tìm đến Mộc Lan, nhưng cô lại bối rối trước sự thân mật của chồng."
+    },
+    {
+      "panel": "crmn_ep179/p053.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thấy Mộc Lan đã ngủ, anh chợt nghĩ đến người khác rồi tự dừng ý định ấy."
+    },
+    {
+      "panel": "crmn_ep180/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tấn Hải Bá phát hiện Kim gia đã chiếm Nộ Triều, một chiến thắng khó tin.",
+      "section": "Tập 180"
+    },
+    {
+      "panel": "crmn_ep180/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông lập tức nghĩ đến Thẩm Lãng và quyết định vào kinh gặp nhà vua."
+    },
+    {
+      "panel": "crmn_ep180/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ở Việt Quốc, quan trấn thủ cũng nhận được tin báo và lo cuộc chiến sẽ lan rộng."
+    },
+    {
+      "panel": "crmn_ep180/p039.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Một chiến thắng trên biển đang khiến cả triều đình phải tính lại tương quan quyền lực."
+    },
+    {
+      "panel": "crmn_ep180/p051.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Các quan bắt đầu tìm cách ứng phó trước khi Kim gia tiếp tục thay đổi cục diện."
+    }
+  ]
+}

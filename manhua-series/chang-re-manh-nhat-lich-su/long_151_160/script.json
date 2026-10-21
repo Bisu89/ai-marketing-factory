@@ -1,0 +1,618 @@
+{
+  "template": "manhua_recap_long_vi",
+  "title": "Chàng Rể Mạnh Nhất Lịch Sử | Tập 151–160",
+  "source_dir": "manhua-recap/crmn_ep151",
+  "chapters": "150-159",
+  "description": "Trận Vọng Nhai: Cửu Thiên Nguy kéo đại quân hải tặc báo thù cho Cửu Hiếu, Kim gia dùng 500 cung thủ cùng cái bẫy mỏ vàng ngập nước nhấn chìm cả đội quân, tập 151–160.",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "beats": [
+    {
+      "panel": "crmn_ep151/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Giữa chiến trường ngổn ngang, Cửu Kiêu vẫn gào lên đòi giết sạch người của Nộ Triều Thành.",
+      "section": "Tập 151"
+    },
+    {
+      "panel": "crmn_ep151/p006.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn vừa mở miệng đã đòi người hầu hạ, tưởng mình vẫn đang ở vị trí ra lệnh."
+    },
+    {
+      "panel": "crmn_ep151/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cửu Kiêu lập tức sửa lời: tên hắn không phải Cửu Mộc. Hắn không hiểu vì sao Thẩm Lãng lại gọi trúng cái tên ấy."
+    },
+    {
+      "panel": "crmn_ep151/p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn gào hỏi Thẩm Lãng đã làm gì mình, rồi cuống cuồng gọi người tới cứu."
+    },
+    {
+      "panel": "crmn_ep151/p018.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng không tranh cãi, chỉ nói mình có hai chuyện muốn hỏi."
+    },
+    {
+      "panel": "crmn_ep151/p021.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Kẻ từng tự hào về vẻ ngoài giờ mới hiểu vì sao người khác nhìn mình bằng ánh mắt khác lạ."
+    },
+    {
+      "panel": "crmn_ep151/p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng thấy độc trong người Cửu Kiêu sắp phát tác. Lúc này đối phương không còn sức chống trả."
+    },
+    {
+      "panel": "crmn_ep151/p028.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Kế hoạch là giăng lưới ở đảo Vọng Nhai, chờ những người của Nộ Triều Thành kéo tới rồi bắt gọn."
+    },
+    {
+      "panel": "crmn_ep151/p032.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cửu Kiêu cuống lên, khẳng định Thẩm Lãng không thể giết mình."
+    },
+    {
+      "panel": "crmn_ep151/p037.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Kim Kiếm Nương xuất hiện. Cửu Kiêu lập tức nhận ra người trước mặt chính là mỹ nhân mà hắn từng nhắc tới."
+    },
+    {
+      "panel": "crmn_ep151/p043.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng còn trêu rằng hắn vẫn có thể dùng răng. Cửu Kiêu lập tức bị ép phải làm theo."
+    },
+    {
+      "panel": "crmn_ep151/p048.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Thẩm Lãng đang biến lời hứa tha mạng thành một phép thử. Cửu Kiêu càng vùng vẫy, hắn càng nắm chắc thế chủ động."
+    },
+    {
+      "panel": "crmn_ep151/p052.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn cuống quýt chứng minh mình vẫn còn sống, còn Thẩm Lãng nhắc lại rằng hắn đã hứa không giết người."
+    },
+    {
+      "panel": "crmn_ep151/p057.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một bóng người vung đòn xuống chiến trường. Cửu Kiêu thoát chết lần này, nhưng liệu hắn có thực sự trở thành quân cờ của Thẩm Lãng?"
+    },
+    {
+      "panel": "crmn_ep152/p001.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng gửi cho vua hải tặc một món quà: đầu Cửu Hiếu cùng hơn hai ngàn hải tặc đã chết.",
+      "section": "Tập 152"
+    },
+    {
+      "panel": "crmn_ep152/p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng nói mình mới là người nên cảm ơn vì đã có cớ trừ khử đám ác tặc."
+    },
+    {
+      "panel": "crmn_ep152/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một người khác nóng lòng tìm Kiếm Nương, khiến bầu không khí giữa hai người thoáng chốc trở nên khó xử."
+    },
+    {
+      "panel": "crmn_ep152/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng cùng nhạc phụ kiểm tra trận địa rộng lớn và những chiếc bẫy đã được bố trí."
+    },
+    {
+      "panel": "crmn_ep152/p017.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Công trình phòng thủ đã hoàn thành, nhưng phía bên kia cũng đang kéo thêm đồng minh. Tết năm nay có thể trở thành thời điểm các phe cùng ra tay."
+    },
+    {
+      "panel": "crmn_ep152/p022.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một người trong phủ xác nhận Cửu Hiếu đã phát hiện lượng vàng khổng lồ dưới mộ ở Nộ Triều Thành."
+    },
+    {
+      "panel": "crmn_ep152/p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Kim Mạch Thương Cổ được nhắc tới như một phần trong kế hoạch liên minh."
+    },
+    {
+      "panel": "crmn_ep152/p029.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Kế hoạch còn tính đến hôn sự giữa con trai Kim Mộc Thông và Cửu Yêu Nhi, nhằm buộc hai nhà vào cùng một phe."
+    },
+    {
+      "panel": "crmn_ep152/p032.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cửu Yêu Nhi đưa ra con số ba vạn quân, dù tổng binh lực hai nhà còn chưa bằng một nửa quân của Huyền Vũ bá."
+    },
+    {
+      "panel": "crmn_ep152/p038.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cửu Yêu Nhi vẫn không quên mối quan hệ cũ với Mộc Lan, dù cả hai đã chọn những con đường khác nhau."
+    },
+    {
+      "panel": "crmn_ep152/p043.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một thế lực mới cũng đang lớn mạnh, sở hữu thành trì kiên cố và hàng chục vạn quân."
+    },
+    {
+      "panel": "crmn_ep152/p047.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cửu Thiên Nguy là người ông tin có thể làm nên chuyện lớn."
+    },
+    {
+      "panel": "crmn_ep152/p051.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tiếng chuông dồn dập từ bến tàu khiến mọi người quay lại nhìn."
+    },
+    {
+      "panel": "crmn_ep152/p055.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cả thành bàng hoàng, không hiểu vì sao thiếu chủ lại chết."
+    },
+    {
+      "panel": "crmn_ep152/p059.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng xác người đã trở về tận nơi. Giờ đây, vua hải tặc sẽ phản ứng thế nào trước đòn khiêu chiến của Thẩm Lãng?"
+    },
+    {
+      "panel": "crmn_ep153/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đầu Cửu Hiếu được đưa về bến Nộ Triều Thành. Vua hải tặc cuối cùng cũng nhận được tin dữ.",
+      "section": "Tập 153"
+    },
+    {
+      "panel": "crmn_ep153/p006.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sau trận chiến hai mươi năm trước, Cửu Kiêu là người con trai duy nhất của ông và cũng là người thừa kế."
+    },
+    {
+      "panel": "crmn_ep153/p010.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông thề những kẻ đứng sau vụ này sẽ phải trả giá."
+    },
+    {
+      "panel": "crmn_ep153/p017.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tin mời được gửi tới các thế lực từng có liên hệ với cuộc chiến năm xưa."
+    },
+    {
+      "panel": "crmn_ep153/p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một đêm, phủ An Định bá bốc cháy. Con cháu Trác thị bị cấm túc, không còn đường tiến thân."
+    },
+    {
+      "panel": "crmn_ep153/p023.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Những gì xảy ra với Trác thị có liên quan tới Đại Yên Đế Quốc, nhưng một gia tộc nhỏ khó thể hiểu hết nguyên nhân."
+    },
+    {
+      "panel": "crmn_ep153/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Viên quan đành cáo lui, nhưng vẫn cho rằng một nữ tướng như Mộc Lan không hiểu được cục diện triều đình."
+    },
+    {
+      "panel": "crmn_ep153/p031.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một nhóm tướng lĩnh cùng cười nói, cố giữ bầu không khí vui vẻ trước ngày xuất quân."
+    },
+    {
+      "panel": "crmn_ep153/p034.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng nói nếu tướng quân chấp nhận một người hơi khó tính thì có thể cân nhắc Kim Hối."
+    },
+    {
+      "panel": "crmn_ep153/p038.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng giải thích Kim Hối đã trải qua nhiều chuyện, nhưng vẫn đủ bản lĩnh để tự quyết định cuộc đời mình."
+    },
+    {
+      "panel": "crmn_ep153/p043.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng trêu rằng đôi khi người có tính khí mạnh lại sống tình nghĩa hơn vẻ ngoài."
+    },
+    {
+      "panel": "crmn_ep153/p050.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh gọi Kim Hối lại hỏi liệu cô có nghe thấy những lời mình vừa nói không."
+    },
+    {
+      "panel": "crmn_ep153/p056.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trong lúc họ còn đang bối rối, tin mới báo rằng hai người nắm tình hình của Thẩm Lãng đã bị Cửu Yêu Nhi diệt trừ."
+    },
+    {
+      "panel": "crmn_ep154/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cửu Thiên Nguy liên kết với Đường thị, gom quân chuẩn bị đánh đảo Vọng Nhai.",
+      "section": "Tập 154"
+    },
+    {
+      "panel": "crmn_ep154/p006.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bề ngoài, mọi dấu hiệu đều cho thấy mục tiêu của họ là mỏ vàng và quân Kim gia trên đảo."
+    },
+    {
+      "panel": "crmn_ep154/p010.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng Thẩm Lãng hiểu đây có thể chỉ là nghi binh. Đòn thật sự có khả năng nhắm vào Nộ Triều Thành."
+    },
+    {
+      "panel": "crmn_ep154/p014.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Kế nghi binh nguy hiểm ở chỗ nó buộc đối phương chia quân: chỉ cần đoán sai mục tiêu, thành trì sẽ trống phòng thủ."
+    },
+    {
+      "panel": "crmn_ep154/p019.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng rời đảo, mang lực lượng và vật tư về phía thành để chuẩn bị ứng chiến."
+    },
+    {
+      "panel": "crmn_ep154/p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một bộ phận tinh nhuệ được bố trí kín trong thành, còn Kim Trác ở lại giữ Vọng Nhai."
+    },
+    {
+      "panel": "crmn_ep154/p031.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nộ Triều Thành chỉ còn vài nghìn quân trấn thủ, trong khi liên quân đông gấp nhiều lần."
+    },
+    {
+      "panel": "crmn_ep154/p039.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Phía đối diện hứa thưởng vàng bạc, thúc quân sĩ hăng hái tiến công."
+    },
+    {
+      "panel": "crmn_ep154/p047.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đội thuyền của liên quân bắt đầu xuất phát. Mũi tiến công kế tiếp sẽ đổ vào đâu?"
+    },
+    {
+      "panel": "crmn_ep155/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hạm đội của Cửu Thiên Nguy rời bến, hướng thẳng tới Vọng Nhai.",
+      "section": "Tập 155"
+    },
+    {
+      "panel": "crmn_ep155/p006.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nàng cho phát vàng thưởng quân, dùng lợi lộc khích lệ đám thuộc hạ đang nóng lòng báo thù."
+    },
+    {
+      "panel": "crmn_ep155/p011.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cửu Thiên Nguy ra lệnh khi chiếm được đảo phải cướp sạch, không để Kim gia có cơ hội gượng dậy."
+    },
+    {
+      "panel": "crmn_ep155/p017.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng một thuộc hạ nhận thấy kỳ kinh của nàng đã trễ, liền nhắc đến khả năng nàng đang mang thai."
+    },
+    {
+      "panel": "crmn_ep155/p022.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Giữa cuộc viễn chinh, dấu hiệu này có thể làm thay đổi mọi quyết định của Cửu Thiên Nguy, nhất là khi nàng vốn đang đánh cược tất cả cho báo thù."
+    },
+    {
+      "panel": "crmn_ep155/p029.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nàng gọi thầy thuốc đến bắt mạch, muốn biết chuyện gì đang xảy ra trong cơ thể mình."
+    },
+    {
+      "panel": "crmn_ep155/p037.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thầy thuốc dè dặt kiểm tra, còn nàng vẫn giữ vẻ lạnh lùng trước thuộc hạ."
+    },
+    {
+      "panel": "crmn_ep155/p046.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đội thuyền vẫn tiếp tục tiến về Vọng Nhai, trong khi kết quả bắt mạch chưa thể làm sáng tỏ mọi chuyện."
+    },
+    {
+      "panel": "crmn_ep156/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sáng hôm sau, hạm đội của Cửu Thiên Nguy và quân Đường thị đã xuất hiện ngoài khơi Vọng Nhai.",
+      "section": "Tập 156"
+    },
+    {
+      "panel": "crmn_ep156/p006.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lính canh trên đảo chờ mãi chưa thấy địch, nhưng rồi những chiếc thuyền bắt đầu đổ quân lên bờ."
+    },
+    {
+      "panel": "crmn_ep156/p010.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hải tặc vừa đặt chân lên đảo đã gào thét đốt phá, cướp bóc và giết chóc."
+    },
+    {
+      "panel": "crmn_ep156/p018.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tại khu mỏ, 500 cung thủ tinh nhuệ của Huyền Vũ Bá đã chờ sẵn trên địa hình thuận lợi."
+    },
+    {
+      "panel": "crmn_ep156/p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Loạt tên đầu tiên xé gió, khiến đội tiên phong của hải tặc ngã xuống trước khi kịp áp sát."
+    },
+    {
+      "panel": "crmn_ep156/p031.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Quân ít vẫn có thể giữ được thế trận nếu tận dụng địa hình và phối hợp tốt. Nhưng đối thủ đông hơn gấp bội, nên đây mới chỉ là màn mở đầu."
+    },
+    {
+      "panel": "crmn_ep156/p039.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hải tặc bắt đầu nhận ra những người trấn giữ mỏ không phải đám lính yếu ớt như chúng tưởng."
+    },
+    {
+      "panel": "crmn_ep156/p051.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cửu Thiên Nguy quan sát trận tuyến, nhận ra lực lượng trước mặt khó đối phó hơn dự tính."
+    },
+    {
+      "panel": "crmn_ep157/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Dù hải tặc liên tục tràn lên, 500 quân Kim gia vẫn dựa vào địa thế để chặn bước tiến của chúng.",
+      "section": "Tập 157"
+    },
+    {
+      "panel": "crmn_ep157/p008.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đám hải tặc ngạc nhiên vì giáp trụ và kỷ luật của quân phòng thủ, không giống dân binh thông thường."
+    },
+    {
+      "panel": "crmn_ep157/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Kim Trác cho quân giữ chặt cửa mỏ, lấy ít người cầm chân lực lượng đông hơn nhiều lần."
+    },
+    {
+      "panel": "crmn_ep157/p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một toán hải tặc xông sâu vào đường hầm rồi bất ngờ phát hiện bên trong có mạch vàng lớn."
+    },
+    {
+      "panel": "crmn_ep157/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tin vàng lan ra khiến những kẻ vốn đang giao chiến lập tức bỏ vị trí, chen nhau lao vào mỏ."
+    },
+    {
+      "panel": "crmn_ep157/p035.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Mỏ vàng vừa là chiến lợi phẩm, vừa trở thành cái bẫy tâm lý: lòng tham khiến quân đông mất đi ưu thế kỷ luật."
+    },
+    {
+      "panel": "crmn_ep157/p046.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cửu Thiên Nguy quan sát cảnh hỗn loạn, nhận ra quân của mình đang bị sức hút của vàng kéo khỏi kế hoạch."
+    },
+    {
+      "panel": "crmn_ep157/p057.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đám người vẫn tiếp tục tràn sâu vào mỏ. Thẩm Lãng dường như đã chờ đúng khoảnh khắc này."
+    },
+    {
+      "panel": "crmn_ep158/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hải tặc phát hiện vàng liền chen nhau vào mỏ, còn Cửu Thiên Nguy vẫn chưa tung toàn bộ quân.",
+      "section": "Tập 158"
+    },
+    {
+      "panel": "crmn_ep158/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nàng hiểu quân mình đang có lợi thế về số lượng, khí thế và sức mạnh cá nhân."
+    },
+    {
+      "panel": "crmn_ep158/p016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đến tối, phe Cửu Thiên Nguy dựng một màn diễn nhắm vào Tô Bộ Bộ, Mộc Lan và Thẩm Lãng."
+    },
+    {
+      "panel": "crmn_ep158/p021.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lời lẽ và hình ảnh trong màn diễn cố tình xúc phạm người nhà Kim gia, khiến những người chứng kiến nổi giận."
+    },
+    {
+      "panel": "crmn_ep158/p027.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Đòn khích tướng này không nhằm thắng ngay trên chiến trường; nó muốn buộc đối thủ hành động theo cảm xúc."
+    },
+    {
+      "panel": "crmn_ep158/p034.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sáng hôm sau, hải tặc tiếp tục tiến sâu vào mỏ, tin rằng họ có thể lấy vàng mà không gặp trở ngại."
+    },
+    {
+      "panel": "crmn_ep158/p042.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng Thẩm Lãng đã tính trước đường đi của chúng và bắt đầu triển khai kế hoạch trong đường hầm."
+    },
+    {
+      "panel": "crmn_ep158/p054.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một tiếng động vang lên dưới lòng đất. Cánh cửa bẫy sắp khép lại quanh đám hải tặc."
+    },
+    {
+      "panel": "crmn_ep159/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Vua hải tặc cho quân tràn xuống mỏ, quyết lấy hết vàng trước khi Kim gia kịp phản công.",
+      "section": "Tập 159"
+    },
+    {
+      "panel": "crmn_ep159/p008.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Dưới lòng đất có một đường dẫn nước nối ra biển, nằm cách bờ một quãng không xa."
+    },
+    {
+      "panel": "crmn_ep159/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một khối đá chắn đường hầm bị phá, nước biển lập tức dội vào khu mỏ."
+    },
+    {
+      "panel": "crmn_ep159/p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mực nước dâng nhanh, nhốt những kẻ đang chen nhau gom vàng trong các lối hẹp."
+    },
+    {
+      "panel": "crmn_ep159/p028.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hải tặc nhận ra mình bị lừa, nhưng đường thoát đã bị nước và đá chắn ngang."
+    },
+    {
+      "panel": "crmn_ep159/p036.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Thẩm Lãng biến lòng tham của đối phương thành điểm yếu, rồi dùng chính địa hình của mỏ để khép bẫy."
+    },
+    {
+      "panel": "crmn_ep159/p045.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một số tên cố trèo lên vách để thoát thân, lập tức bị cung thủ trên cao nhắm bắn."
+    },
+    {
+      "panel": "crmn_ep159/p059.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trong làn nước lạnh tối om, đám hải tặc vùng vẫy tìm đường sống, còn trận chiến vẫn chưa dừng lại."
+    },
+    {
+      "panel": "crmn_ep160/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cửu Thiên Nguy nhìn quân số áp đảo, tin rằng chỉ cần đánh thẳng là có thể hạ Vọng Nhai.",
+      "section": "Tập 160"
+    },
+    {
+      "panel": "crmn_ep160/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng đám hải tặc đã bị vàng dụ xuống sâu trong mỏ, nơi nước biển đang dâng lên."
+    },
+    {
+      "panel": "crmn_ep160/p016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng cho người phá đường hầm, khiến nước tràn vào và chia cắt từng toán quân."
+    },
+    {
+      "panel": "crmn_ep160/p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Khi tìm được vàng, chúng mới nhận ra phần lớn chỉ là cát và quặng lẫn, không nhiều như vẻ ngoài."
+    },
+    {
+      "panel": "crmn_ep160/p033.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Cái bẫy vận hành bằng hai thứ: con đường đã bị chuẩn bị trước và lòng tham khiến đối thủ tự dồn vào đó."
+    },
+    {
+      "panel": "crmn_ep160/p041.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngay cả những thuộc hạ vốn nghe lệnh cũng bắt đầu chen lấn để tranh lấy phần vàng còn sót lại."
+    },
+    {
+      "panel": "crmn_ep160/p050.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Quân tinh nhuệ của Kim gia chớp thời cơ, đồng loạt đánh vào đội hình đang rối loạn."
+    },
+    {
+      "panel": "crmn_ep160/p057.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Cục diện trong mỏ đảo chiều. Cửu Thiên Nguy phải nhìn đội quân của mình tự tan vỡ trước mắt."
+    }
+  ]
+}
