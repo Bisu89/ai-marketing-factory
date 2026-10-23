@@ -235,3 +235,4 @@ sequence, and a line added to the list above.
 
 189. [Stickman engine + Packed Light scene 7 test](features/189-stickman-engine-packed-light-scene7.md) — vector stickman engine forked from `stickman-video` into `remotion/src/stickman/`; `PkScene7` test of two seated figures handing a knife and carving a feather stick (IK hands), Spider-Man mask removed from the fork
 190. [Packed Light ep1 opening test cut](features/190-packed-light-ep1-opening-test-cut.md) — `PkOpen` in `remotion/`: 12 AI pictures + camera moves, 3 edge-tts voices, synthesized SFX, ~61s; timeline generated from real voice durations; generators in `tools/packed_light/`
+191. [Packed Light code-only animation test](features/191-packed-light-code-only-animation-test.md) — `PkCode` in `remotion/`: SVG scenery + cartoon puppets on the stickman skeleton, walk/carry/bend/tie/kneel/strike-a-match via keyed poses + IK, ~42s, no pictures
