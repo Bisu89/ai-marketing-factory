@@ -6,6 +6,8 @@ Commit: `feat(remotion): Packed Light ep1 opening test cut (PkOpen) + generators
 
 Key files: `content-prompts/packed_light/ep01_open_test.csv` (shot list + image prompts; pictures themselves are not committed), `remotion/src/pk-ep01/{Open,PkKenBurns}.tsx`, `remotion/src/pk-ep01/data.ts` (generated), `tools/packed_light/{prep_images,gen_voice_timeline,gen_sfx}.py`.
 
+What actually moves (honest scope): camera zoom/pan, hand-held sway, fog/wind/leaves/glow, plus per-region `breath`/`sway` warps and a `talk` mouth that opens with the voice loudness (dad/son in shots 5 and 11). Characters do not walk or use their hands: that needs image-to-video clips. `ep01_open_test.csv` has a "Prompt animation (image-to-video, 5s)" column per shot; any `remotion/public/pk-ep01/clips/sceneNN.mp4` found by `gen_voice_timeline.py` replaces that shot's still (warps and mouth are skipped for clips).
+
 Decisions:
 - Timeline is generated from the real voice-line durations, so shot lengths follow the audio, not the CSV's word-count estimate (CSV said ~52s, real cut is 61s).
 - `PkKenBurns` is a trimmed port of stickman-video's `zs-ep01/KenBurns.tsx` (zoom/pan, sway, fog, dust, wind, glow) rather than a copy of it plus `Fx.tsx`, to avoid dragging the zombie series' HUD/cards along.

@@ -56,9 +56,9 @@ const FadeOut: React.FC = () => {
   return <AbsoluteFill style={{ background: "#07090c", opacity: interpolate(f, [DURATION - 24, DURATION], [0, 1], clampX), pointerEvents: "none" }} />;
 };
 
-export type VideoProps ={ music: number; sfx: number; voice: number; captions: boolean };
+export type VideoProps = { music: number; sfx: number; voice: number; captions: boolean; debug?: boolean };
 
-export const Video: React.FC<VideoProps> = ({ music, sfx, voice, captions }) => (
+export const Video: React.FC<VideoProps> = ({ music, sfx, voice, captions, debug }) => (
   <AbsoluteFill style={{ background: "#07090c" }}>
     <Audio
       src={staticFile(`${ASSETS}/music.wav`)}
@@ -75,7 +75,20 @@ export const Video: React.FC<VideoProps> = ({ music, sfx, voice, captions }) => 
       const dur = endOf(i) - from;
       return (
         <Sequence key={s.n} from={from} durationInFrames={dur}>
-          <PkKenBurns src={s.image} dur={dur} motion={s.motion} fx={s.fx} fade={i === 0 ? 1 : OVERLAP} seed={s.image} n={s.n} overlay={s.n === 2 ? <Sign /> : undefined} />
+          <PkKenBurns
+            src={s.image}
+            clip={s.clip || undefined}
+            dur={dur}
+            motion={s.motion}
+            fx={s.fx}
+            fade={i === 0 ? 1 : OVERLAP}
+            seed={s.image}
+            n={s.n}
+            from={from}
+            lines={LINES.filter((l) => l.shot === s.n)}
+            debug={debug}
+            overlay={s.n === 2 ? <Sign /> : undefined}
+          />
         </Sequence>
       );
     })}
