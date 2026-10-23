@@ -5,6 +5,7 @@ import { documentarySchema } from "./schema";
 import type { DocumentaryProps } from "./schema";
 import { Smoke, smokeSchema } from "./Smoke";
 import { Video as PkScene7, DURATION as PkScene7_DURATION } from "./pk-ep01/Scene7";
+import { Video as PkOpen, DURATION as PkOpen_DURATION } from "./pk-ep01/Open";
 
 // 1920x1080 @ 30fps is the documentary's output format. Size/length really come from the
 // manifest (calculateMetadata), so a preview at another scale is just a different manifest.
@@ -51,5 +52,12 @@ export const Root = () => (
       {...VIDEO}
     />
     <Composition id="PkScene7" component={PkScene7} durationInFrames={PkScene7_DURATION} {...VIDEO} />
+    <Composition
+      id="PkOpen"
+      component={PkOpen}
+      durationInFrames={PkOpen_DURATION}
+      {...VIDEO}
+      defaultProps={{ music: 0.14, sfx: 1, voice: 1, captions: true }}
+    />
   </>
 );
