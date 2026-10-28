@@ -15,6 +15,7 @@ import {
   ImageDown,
   AudioLines,
   Landmark,
+  Tv2,
 } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import "./Sidebar.css";
@@ -26,6 +27,7 @@ const NAV_ITEMS = [
   { to: "/library", label: "Library", icon: Library },
   { to: "/history", label: "History", icon: History },
   { to: "/studio", label: "Storytelling Studio", icon: NotebookPen },
+  { to: "/channels", label: "Kênh & Lịch đăng", icon: Tv2 },
   { to: "/ai-costs", label: "AI Cost Tracking", icon: DollarSign },
   { to: "/video-composer", label: "Video Composer", icon: Clapperboard },
   { to: "/video-factory", label: "Video Factory", icon: Wand2 },

@@ -8,6 +8,7 @@ import { HistoryPage } from "./pages/HistoryPage";
 import { StudioPage } from "./pages/StudioPage";
 import { StudioStoryPage } from "./pages/StudioStoryPage";
 import { AICostPage } from "./pages/AICostPage";
+import { ChannelsPage } from "./pages/ChannelsPage";
 import { VideoComposerPage } from "./pages/VideoComposerPage";
 import { VideoFactoryPage } from "./pages/VideoFactoryPage";
 import { VideosPage } from "./pages/VideosPage";
@@ -30,6 +31,7 @@ function App() {
         <Route path="history" element={<HistoryPage />} />
         <Route path="studio" element={<StudioPage />} />
         <Route path="studio/:storyId" element={<StudioStoryPage />} />
+        <Route path="channels" element={<ChannelsPage />} />
         <Route path="ai-costs" element={<AICostPage />} />
         <Route path="video-composer" element={<VideoComposerPage />} />
         <Route path="video-factory" element={<VideoFactoryPage />} />

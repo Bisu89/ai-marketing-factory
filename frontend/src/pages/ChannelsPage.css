@@ -1,0 +1,147 @@
+.ch-alert {
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  margin-bottom: 16px;
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--danger);
+}
+
+.ch-loading {
+  display: flex;
+  justify-content: center;
+  padding: 60px 0;
+  color: var(--text-muted);
+}
+
+.ch-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.ch-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.ch-form input,
+.ch-form select {
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface-alt);
+  color: var(--text);
+  font: inherit;
+}
+
+.ch-form-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.ch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 16px;
+}
+
+.ch-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.ch-card-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.ch-card-name {
+  font-weight: 600;
+  color: var(--text-heading);
+}
+
+.ch-card-sub {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+  font-size: 12px;
+}
+
+.ch-badge {
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.ch-badge-youtube {
+  background: rgba(239, 68, 68, 0.12);
+  color: var(--danger);
+}
+
+.ch-badge-facebook {
+  background: var(--accent-bg);
+  color: var(--accent);
+}
+
+.ch-muted {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.ch-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.ch-stat-label {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.ch-stat-value {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-heading);
+}
+
+.ch-stat-delta {
+  font-size: 11px;
+  color: var(--success);
+}
+
+.ch-error {
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--danger);
+  font-size: 12px;
+  word-break: break-word;
+}
+
+.ch-card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}

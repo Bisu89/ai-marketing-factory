@@ -43,6 +43,7 @@ from app.modules.ai.hook.router import router as hook_router
 from app.modules.ai.story.router import router as story_router
 from app.modules.asset.router import router as asset_router
 from app.modules.beat.router import router as beat_router
+from app.modules.channels.router import router as channels_router
 from app.modules.documentary.router import router as documentary_router
 from app.modules.storyteller.router import router as storyteller_router
 from app.modules.story.router import router as story_planning_router
@@ -88,3 +89,4 @@ api_router.include_router(audio_generate.router, tags=["audio-generate"])
 api_router.include_router(caption_generate.router, tags=["caption-generate"])
 api_router.include_router(package_generate.router, tags=["package-generate"])
 api_router.include_router(final_qa.router, tags=["final-qa"])
+api_router.include_router(channels_router, tags=["channels"])
