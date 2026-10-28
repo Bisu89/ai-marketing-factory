@@ -1,0 +1,25 @@
+{
+  "title": "Các lâu chủ Hoa Vũ Lâu tranh cãi vì Trác Phàm!?",
+  "chapters": "116",
+  "source_dir": "manhua-recap/dqgl_ep116",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-19",
+  "description": "Tại tổng bộ Hoa Vũ Lâu, các lâu chủ bàn về hội Bạch Đan và những thế lực sắp tham dự. Người của U Minh Cốc vẫn ôm mối hận với Trác Phàm, còn các trưởng lão liên tục châm chọc nhau. Những lời bàn về thực lực và thương tích của Trác Phàm khiến cuộc họp càng thêm chú ý đến hắn.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tập 116 (chương 116).",
+  "hashtags": ["#DaiQuanGiaLaMaHoang", "#ReviewManhua", "#Manhua", "#TuTien", "#XuyenKhong", "#ReviewTruyen"],
+  "thumbnail": {"text":"U Minh Cốc vẫn muốn tính sổ với Trác Phàm!?","prompt":"Vertical 9:16 Chinese manhua style, gathering of powerful elders in an ornate pavilion, stern red-haired man confronting a composed masked female leader, tense expressions and traditional interior, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"},
+  "beats": [
+    {"panel":"p001.jpg","narration":"Tại tổng bộ Hoa Vũ Lâu, các lâu chủ đang chuẩn bị đón những khách mời đến dự hội Bạch Đan.","kind":"recap","type":"HOOK"},
+    {"panel":"p006.jpg","narration":"Một vị khách tóc đỏ khẳng định mình đến vì việc chính, không phải để ngắm mỹ nhân.","kind":"recap","type":"BUILD"},
+    {"panel":"p010.jpg","narration":"Nhưng câu chuyện nhanh chóng chuyển sang U Minh Cốc và mối thù với Trác Phàm.","kind":"recap","type":"BUILD"},
+    {"panel":"p014.jpg","narration":"Người của U Minh Cốc tuyên bố sẽ tự tay giết Trác Phàm để trả thù cho các trưởng lão đã chết.","kind":"recap","type":"BUILD"},
+    {"panel":"p019.jpg","narration":"Các trưởng lão khác không chịu đứng ngoài, biến lời đe dọa thành màn khẩu chiến ngay trong đại sảnh.","kind":"recap","type":"BUILD"},
+    {"panel":"p024.jpg","narration":"Một vị trưởng lão mới xuất hiện, lập tức khiến bầu không khí giữa các phe thêm căng thẳng.","kind":"recap","type":"BUILD"},
+    {"panel":"p029.jpg","narration":"Mẫu Đan Lâu chủ nhắc mọi người nhớ rằng buổi hội còn chưa chính thức bắt đầu.","kind":"recap","type":"BUILD"},
+    {"panel":"p034.jpg","narration":"Dù vậy, các vị tiền bối vẫn tiếp tục đấu khẩu và trêu chọc nhau như thể đang ở buổi gặp mặt thân quen.","kind":"commentary","type":"BUILD"},
+    {"panel":"p040.jpg","narration":"Mẫu Đan Lâu chủ đành nhắc họ giữ chừng mực, vì còn nhiều khách quý đang có mặt.","kind":"recap","type":"BUILD"},
+    {"panel":"p046.jpg","narration":"Cuộc trò chuyện chuyển sang chuyện Trác Phàm từng khiến một cao thủ U Minh Cốc trọng thương.","kind":"recap","type":"BUILD"},
+    {"panel":"p052.jpg","narration":"Mọi người muốn biết rốt cuộc ai có thể gây ra thương thế nghiêm trọng như vậy.","kind":"recap","type":"BUILD"},
+    {"panel":"p059.jpg","narration":"Các trưởng lão bắt đầu đánh giá lại thực lực và lai lịch của Trác Phàm.","kind":"recap","type":"BUILD"},
+    {"panel":"p066.jpg","narration":"Những lời bàn cho thấy sự xuất hiện của hắn đã khiến nhiều thế lực dè chừng.","kind":"recap","type":"BUILD"},
+    {"panel":"p074.jpg","narration":"Mẫu Đan Lâu chủ quay sang người vừa trở về, muốn nghe chính cô kể lại chuyện đã xảy ra với Trác Phàm.","kind":"recap","type":"ENDING"}
+  ]
+}

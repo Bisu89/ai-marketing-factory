@@ -1,0 +1,105 @@
+{
+  "title": "Đế Vương Môn gây sức ép, Trác Phàm ra tay!?",
+  "chapters": "138-140",
+  "source_dir": "manhua-recap/dqgl_ep138",
+  "written_by": "Biên tập từ ep131-ep140, 2026-10-20",
+  "description": "Trác Phàm và những biến cố quanh Hoa Vũ Lâu, chương 138 đến 140.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Đế Vương Môn gây sức ép, Trác Phàm ra tay!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep138/p001.jpg",
+      "narration": "Trác Phàm hiểu Mẫu Đơn nhờ mình trộm món đồ giả để tránh bị đổ tội.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep138/p018.jpg",
+      "narration": "Mẫu Đơn mời Trác Phàm đến Hoa Vũ Lâu, nơi nàng cần thêm người đáng tin cậy.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep138/p026.jpg",
+      "narration": "Trác Phàm nhận ra trong số các thế lực sắp tới có Đế Vương Môn.",
+      "kind": "recap",
+      "type": "REVEAL"
+    },
+    {
+      "panel": "dqgl_ep138/p034.jpg",
+      "narration": "Tin Đế Vương Môn xuất hiện khiến các cô gái lo ngại: họ được xem là thế gia mạnh nhất.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep138/p046.jpg",
+      "narration": "Trác Phàm quyết định đi cùng Mẫu Đơn, dù biết chuyến này có thể kéo theo rắc rối.",
+      "kind": "recap",
+      "type": "ENDING"
+    },
+    {
+      "panel": "dqgl_ep139/p001.jpg",
+      "narration": "Trác Phàm tự nhắc mình rằng cướp đoạt cũng chẳng có gì phải tiếc nuối.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep139/p012.jpg",
+      "narration": "Đan Đan bất ngờ lao tới; Trác Phàm đỡ nàng trước khi cô ngã xuống.",
+      "kind": "recap",
+      "type": "REACTION"
+    },
+    {
+      "panel": "dqgl_ep139/p021.jpg",
+      "narration": "Đan Đan nói Hoàng Phủ Thanh Vân đã đến, khiến Trác Phàm lập tức chú ý.",
+      "kind": "recap",
+      "type": "REVEAL"
+    },
+    {
+      "panel": "dqgl_ep139/p024.jpg",
+      "narration": "Nàng nhắc đến Thanh Mai Trúc Mã và chuyện Độc Thủ Dược Vương cũng không dám làm càn.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep139/p062.jpg",
+      "narration": "Hoàng Phủ Thanh Vân đến cùng các cao thủ; khí thế của đoàn khách khiến Trác Phàm cảnh giác.",
+      "kind": "recap",
+      "type": "ENDING"
+    },
+    {
+      "panel": "dqgl_ep140/p001.jpg",
+      "narration": "Hoàng Phủ Thanh Vân tự nhận là con rể của Hoa Vũ Lâu, khiến Mẫu Đơn ngạc nhiên.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep140/p013.jpg",
+      "narration": "Thiên Dương bị nhắc nhở vì tính cách quá thẳng, còn Trác Phàm vẫn bình thản.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep140/p036.jpg",
+      "narration": "Đan Đan hỏi chuyện Trác Phàm; hắn chỉ đáp ngắn gọn rồi bước đi.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep140/p063.jpg",
+      "narration": "Khi Hoàng Phủ Thanh Vân bị áp chế, cả hội trường sững sờ trước khí thế của Trác Phàm.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

@@ -1,0 +1,225 @@
+{
+  "project_id": 319,
+  "factory_run_id": 369,
+  "render_job_id": 375,
+  "range": "151-154",
+  "script": "manhua-series/dai-quan-gia-la-ma-hoang/short_aq/script.json",
+  "package": {
+    "title": "Đại Quản Gia Là Ma Hoàng Tập 151–154 Trác Phàm nghịch chuyển!",
+    "description": "Tóm tắt tập 151 đến 154 Đại Quản Gia Là Ma Hoàng. Trác Phàm đối đầu cao thủ và tìm cách xoay chuyển cục diện.",
+    "hashtags": [
+      "#DaiQuanGiaLaMaHoang",
+      "#ReviewManhua",
+      "#Manhua",
+      "#TuTien",
+      "#XuyenKhong",
+      "#ReviewTruyen"
+    ],
+    "language": "vi",
+    "category": "general",
+    "platform_profile": "general",
+    "duration": 39.58,
+    "width": 1080,
+    "height": 1920,
+    "aspect_ratio": "9:16",
+    "thumbnail_path": "data\\library\\_video_composer\\job_375_Short AQ (151-154)\\output\\thumbnail.jpg",
+    "video_path": "data\\library\\_video_composer\\job_375_Short AQ (151-154)\\output\\Short AQ (151-154).mp4",
+    "thumbnail_media_url": "/media/_video_composer/job_375_Short AQ (151-154)/output/thumbnail.jpg",
+    "video_media_url": "/media/_video_composer/job_375_Short AQ (151-154)/output/Short AQ (151-154).mp4",
+    "manual_title": "Đại Quản Gia Là Ma Hoàng | Tập 151–154: Trác Phàm nghịch chuyển!?",
+    "manual_description": "Tóm tắt tập 151 đến 154 Đại Quản Gia Là Ma Hoàng. Trác Phàm đối đầu cao thủ và tìm cách xoay chuyển cục diện.",
+    "manual_hashtags": [
+      "#DaiQuanGiaLaMaHoang",
+      "#ReviewManhua",
+      "#Manhua",
+      "#TuTien",
+      "#XuyenKhong",
+      "#ReviewTruyen"
+    ],
+    "is_complete": true
+  },
+  "final_qa": {
+    "project_id": 319,
+    "report": {
+      "status": "PASS",
+      "score": 100,
+      "checks": [
+        {
+          "name": "package_complete",
+          "code": "PACKAGE_INCOMPLETE",
+          "status": "PASS",
+          "severity": "info",
+          "message": "Package is complete.",
+          "actual": null,
+          "expected": null,
+          "repair_stage": null
+        },
+        {
+          "name": "final_video_exists",
+          "code": "FINAL_VIDEO_MISSING",
+          "status": "PASS",
+          "severity": "info",
+          "message": "final.mp4 exists and is non-empty.",
+          "actual": null,
+          "expected": null,
+          "repair_stage": null
+        },
+        {
+          "name": "stream_counts",
+          "code": "FINAL_STREAM_INVALID",
+          "status": "PASS",
+          "severity": "info",
+          "message": "Exactly 1 video + 1 audio stream.",
+          "actual": null,
+          "expected": null,
+          "repair_stage": null
+        },
+        {
+          "name": "resolution",
+          "code": "FINAL_RESOLUTION_MISMATCH",
+          "status": "PASS",
+          "severity": "info",
+          "message": "Resolution matches configuration.",
+          "actual": null,
+          "expected": null,
+          "repair_stage": null
+        },
+        {
+          "name": "fps",
+          "code": "FINAL_FPS_MISMATCH",
+          "status": "PASS",
+          "severity": "info",
+          "message": "FPS matches configuration.",
+          "actual": null,
+          "expected": null,
+          "repair_stage": null
+        },
+        {
+          "name": "duration",
+          "code": "FINAL_DURATION_MISMATCH",
+          "status": "PASS",
+          "severity": "info",
+          "message": "Duration matches the expected source.",
+          "actual": null,
+          "expected": null,
+          "repair_stage": null
+        },
+        {
+          "name": "audio_silence",
+          "code": "AUDIO_SILENT",
+          "status": "PASS",
+          "severity": "info",
+          "message": "Final audio is not silent.",
+          "actual": null,
+          "expected": null,
+          "repair_stage": null
+        },
+        {
+          "name": "audio_clipping",
+          "code": "AUDIO_CLIPPING",
+          "status": "PASS",
+          "severity": "info",
+          "message": "Final audio peak is within the configured ceiling.",
+          "actual": null,
+          "expected": null,
+          "repair_stage": null
+        },
+        {
+          "name": "thumbnail_valid",
+          "code": "THUMBNAIL_INVALID",
+          "status": "PASS",
+          "severity": "info",
+          "message": "Thumbnail exists with the correct dimensions.",
+          "actual": null,
+          "expected": null,
+          "repair_stage": null
+        },
+        {
+          "name": "thumbnail_quality",
+          "code": "THUMBNAIL_LOW_QUALITY",
+          "status": "PASS",
+          "severity": "info",
+          "message": "Thumbnail passes technical quality checks.",
+          "actual": null,
+          "expected": null,
+          "repair_stage": null
+        },
+        {
+          "name": "metadata_valid",
+          "code": "METADATA_INVALID",
+          "status": "PASS",
+          "severity": "info",
+          "message": "metadata.json is present, parses, and has required fields.",
+          "actual": null,
+          "expected": null,
+          "repair_stage": null
+        },
+        {
+          "name": "captions_valid",
+          "code": "CAPTIONS_INVALID",
+          "status": "PASS",
+          "severity": "info",
+          "message": "258 caption lines, valid ASS.",
+          "actual": null,
+          "expected": null,
+          "repair_stage": null
+        },
+        {
+          "name": "captions_timing",
+          "code": "CAPTIONS_TIMING_INVALID",
+          "status": "PASS",
+          "severity": "info",
+          "message": "All captions end within the video's duration.",
+          "actual": null,
+          "expected": null,
+          "repair_stage": null
+        },
+        {
+          "name": "beat_completeness",
+          "code": "BEAT_ARTIFACT_MISSING",
+          "status": "PASS",
+          "severity": "info",
+          "message": "Every beat has a valid, complete artifact.",
+          "actual": null,
+          "expected": null,
+          "repair_stage": null
+        },
+        {
+          "name": "dependency_freshness_audio",
+          "code": "STALE_DEPENDENCY",
+          "status": "PASS",
+          "severity": "info",
+          "message": "final.mp4 is at least as new as Audio Master.",
+          "actual": null,
+          "expected": null,
+          "repair_stage": null
+        },
+        {
+          "name": "dependency_freshness_captions",
+          "code": "STALE_DEPENDENCY",
+          "status": "PASS",
+          "severity": "info",
+          "message": "final.mp4 is at least as new as Captions.",
+          "actual": null,
+          "expected": null,
+          "repair_stage": null
+        },
+        {
+          "name": "package_version",
+          "code": "STALE_PACKAGE_VERSION",
+          "status": "PASS",
+          "severity": "info",
+          "message": "Package engine version is current.",
+          "actual": null,
+          "expected": null,
+          "repair_stage": null
+        }
+      ],
+      "project_id": 319,
+      "pipeline_version": "final-qa-v1",
+      "started_at": "2026-10-21T06:54:25.807043+00:00",
+      "completed_at": "2026-10-21T06:54:25.807043+00:00"
+    }
+  },
+  "video": "renders_151_200/151-154/short_aq.mp4"
+}

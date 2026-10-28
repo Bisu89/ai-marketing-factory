@@ -1,0 +1,63 @@
+{
+  "title": "Trác Phàm thách Nghiêm Tông so tài luyện đan!?",
+  "chapters": "146",
+  "source_dir": "manhua-recap/dqgl_ep146",
+  "written_by": "OpenAI, ??i chi?u ?nh ngu?n, 2026-10-20",
+  "description": "Trác Phàm thách Nghiêm Tông so tài luyện đan. Tóm tắt chương 146 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Trác Phàm thách Nghiêm Tông so tài luyện đan!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Cuộc phân xử ở Hoa Vũ Lâu vẫn chưa ngã ngũ, vì Kiếm Hầu Phủ chất vấn kết quả mà Hoàng Phủ Thanh Vân đưa ra.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p009",
+      "narration": "Thiên Dương tỏ vẻ thân thiện với Trác Phàm, nhưng những lời hỏi han nhanh chóng biến thành dò xét.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p020",
+      "narration": "Trác Phàm cố tình làm trò thân mật với một cô gái ngay giữa buổi họp, khiến Thiên Dương mất bình tĩnh.",
+      "kind": "recap",
+      "type": "REACTION"
+    },
+    {
+      "panel": "p029",
+      "narration": "Kiếm Hầu Phủ tuyên bố không công nhận phán quyết; Thanh Vân đáp rằng những người bất mãn có thể bỏ phiếu.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p036",
+      "narration": "Trác Phàm chỉ ra Đế Vương Môn vốn đã không bỏ phiếu từ đầu, khiến cách đếm phiếu của Thanh Vân bị đặt dấu hỏi.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "p045",
+      "narration": "Khi cuộc họp sắp tan, Trác Phàm đề nghị chuyển sang một cuộc so tài tại hội Bách Đan.",
+      "kind": "recap",
+      "type": "REVEAL"
+    },
+    {
+      "panel": "p056",
+      "narration": "Nghiêm Tông chấp nhận lời thách thức luyện đan, còn Trác Phàm có vẻ đã tìm được cách kéo trận đấu sang sân mình.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

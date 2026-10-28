@@ -1,0 +1,25 @@
+{
+  "title": "Trác Phàm biến trận đấu thành màn làm nhục đối thủ!?",
+  "chapters": "112",
+  "source_dir": "manhua-recap/dqgl_ep112",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-19",
+  "description": "Cuộc đối đầu ở Hoa Vũ Thành tiếp tục khi Trác Phàm nhận lời so tài với kẻ đang nhắm vào Mẫu Đan. Hắn tận dụng tốc độ và sự chênh lệch trong cách ra đòn để ép đối phương mất bình tĩnh, rồi biến lời thách đấu thành một màn bẽ mặt trước đám đông.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tập 112 (chương 112).",
+  "hashtags": ["#DaiQuanGiaLaMaHoang", "#ReviewManhua", "#Manhua", "#TuTien", "#XuyenKhong", "#ReviewTruyen"],
+  "thumbnail": {"text":"Đụng vào Mẫu Đan, hắn phải trả giá!?","prompt":"Vertical 9:16 Chinese manhua style, black-haired blue-robed cultivator looming over a defeated red-haired rival in a public courtyard, elegant woman and shocked spectators behind, dynamic motion and sunset light, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"},
+  "beats": [
+    {"panel":"p001.jpg","narration":"Trác Phàm nhìn đối thủ trước mặt, nhận ra vẻ hung hăng của hắn không đi cùng khả năng ra đòn.","kind":"recap","type":"HOOK"},
+    {"panel":"p004.jpg","narration":"Kẻ tóc đỏ cố tỏ ra áp đảo, nhưng Trác Phàm vẫn bình thản quan sát từng động tác.","kind":"recap","type":"BUILD"},
+    {"panel":"p008.jpg","narration":"Mấy đòn đầu tiên khiến hai bên nhanh chóng hiểu rằng đây không còn là cuộc cãi vã suông.","kind":"recap","type":"BUILD"},
+    {"panel":"p012.jpg","narration":"Trác Phàm đáp trả bằng nhịp đánh gọn và chính xác, không để đối phương lấy lại thế chủ động.","kind":"recap","type":"BUILD"},
+    {"panel":"p017.jpg","narration":"Hắn còn nhắc tới mục đích thật sự của trận đấu: đối phương đang muốn giành Mẫu Đan về phía mình.","kind":"recap","type":"BUILD"},
+    {"panel":"p021.jpg","narration":"Lời thách thức bị đẩy thành một cuộc cược, khiến đám đông bắt đầu chăm chú theo dõi.","kind":"recap","type":"BUILD"},
+    {"panel":"p025.jpg","narration":"Trác Phàm tự tin đến mức xem nhẹ lời khoe khoang về gia thế và tu vi của đối thủ.","kind":"commentary","type":"BUILD"},
+    {"panel":"p030.jpg","narration":"Kẻ tóc đỏ nổi giận, còn Trác Phàm vẫn tiếp tục khích hắn ra tay trước.","kind":"recap","type":"BUILD"},
+    {"panel":"p034.jpg","narration":"Khi đối thủ lao tới, Trác Phàm né đòn rồi lập tức áp sát phản công.","kind":"recap","type":"BUILD"},
+    {"panel":"p039.jpg","narration":"Trận đấu biến thành màn áp đảo, khiến đối phương không thể thực hiện lời đe dọa ban đầu.","kind":"recap","type":"BUILD"},
+    {"panel":"p044.jpg","narration":"Trác Phàm dồn hắn xuống đất và tiếp tục chế giễu sự chênh lệch giữa lời nói với thực lực.","kind":"recap","type":"BUILD"},
+    {"panel":"p050.jpg","narration":"Mẫu Đan cùng những người chứng kiến đều theo dõi xem màn so tài sẽ đi xa đến đâu.","kind":"recap","type":"BUILD"},
+    {"panel":"p056.jpg","narration":"Đối thủ cố vùng lên, nhưng Trác Phàm vẫn khống chế được thế trận.","kind":"recap","type":"BUILD"},
+    {"panel":"p062.jpg","narration":"Hắn tung thêm một đòn và lạnh lùng bảo đối phương còn kém xa. Trận đấu vẫn chưa khép lại ở đây.","kind":"recap","type":"ENDING"}
+  ]
+}

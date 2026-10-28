@@ -1,0 +1,17 @@
+{
+  "title": "Hải tặc đổ bộ Vọng Nhai, 500 cung thủ chặn cả đội quân!?",
+  "chapters": "155",
+  "source_dir": "manhua-recap/crmn_ep156",
+  "description": "Liên quân bất ngờ áp sát Vọng Nhai. Đám hải tặc tưởng có thể tràn qua phòng tuyến, nhưng 500 cung thủ tinh nhuệ của Kim gia lập tức phản kích.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "beats": [
+    {"panel":"p002.jpg","type":"HOOK","kind":"recap","narration":"Sáng hôm sau, hạm đội của Cửu Thiên Nguy và quân Đường thị đã xuất hiện ngoài khơi Vọng Nhai."},
+    {"panel":"p006.jpg","type":"BUILD","kind":"recap","narration":"Lính canh trên đảo chờ mãi chưa thấy địch, nhưng rồi những chiếc thuyền bắt đầu đổ quân lên bờ."},
+    {"panel":"p010.jpg","type":"BUILD","kind":"recap","narration":"Hải tặc vừa đặt chân lên đảo đã gào thét đốt phá, cướp bóc và giết chóc."},
+    {"panel":"p018.jpg","type":"BUILD","kind":"recap","narration":"Tại khu mỏ, 500 cung thủ tinh nhuệ của Huyền Vũ Bá đã chờ sẵn trên địa hình thuận lợi."},
+    {"panel":"p024.jpg","type":"BUILD","kind":"recap","narration":"Loạt tên đầu tiên xé gió, khiến đội tiên phong của hải tặc ngã xuống trước khi kịp áp sát."},
+    {"panel":"p031.jpg","type":"BUILD","kind":"commentary","narration":"Quân ít vẫn có thể giữ được thế trận nếu tận dụng địa hình và phối hợp tốt. Nhưng đối thủ đông hơn gấp bội, nên đây mới chỉ là màn mở đầu."},
+    {"panel":"p039.jpg","type":"BUILD","kind":"recap","narration":"Hải tặc bắt đầu nhận ra những người trấn giữ mỏ không phải đám lính yếu ớt như chúng tưởng."},
+    {"panel":"p051.jpg","type":"ENDING","kind":"recap","narration":"Cửu Thiên Nguy quan sát trận tuyến, nhận ra lực lượng trước mặt khó đối phó hơn dự tính."}
+  ]
+}

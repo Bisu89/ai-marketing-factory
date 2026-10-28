@@ -1,0 +1,63 @@
+{
+  "title": "Long Cửu đối đầu Độc Thủ Dược Vương!?",
+  "chapters": "136",
+  "source_dir": "manhua-recap/dqgl_ep136",
+  "written_by": "OpenAI, ??i chi?u ?nh ngu?n, 2026-10-20",
+  "description": "Long Cửu đối đầu Độc Thủ Dược Vương. Tóm tắt chương 136 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Long Cửu đối đầu Độc Thủ Dược Vương!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Người mới đến là Thần Nhãn Long Cửu, đối thủ cũ của Độc Thủ Dược Vương.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p010",
+      "narration": "Long Cửu nhắc lại danh hiệu năm xưa, khẳng định mình chẳng cần sợ đối thủ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p023",
+      "narration": "Ông yêu cầu Độc Thủ Dược Vương đừng gây chuyện tại Hoa Vũ Lâu.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p031",
+      "narration": "Sở Khuynh Thành lên tiếng bảo vệ Trác Phàm vì hắn đã cứu người của nàng.",
+      "kind": "recap",
+      "type": "REACTION"
+    },
+    {
+      "panel": "p040",
+      "narration": "Mọi chuyện tạm lắng, nhưng dấu vết lạ trên vật phẩm vẫn khiến Trác Phàm lưu tâm.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p052",
+      "narration": "Các cô gái bàn về sức mạnh và sự quyết đoán khác thường của Trác Phàm.",
+      "kind": "commentary",
+      "type": "REVEAL"
+    },
+    {
+      "panel": "p075",
+      "narration": "Họ nhất quyết kéo hắn về Hoa Vũ Lâu; Trác Phàm đành miễn cưỡng đi theo.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

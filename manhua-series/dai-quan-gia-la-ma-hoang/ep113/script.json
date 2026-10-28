@@ -1,0 +1,25 @@
+﻿{
+  "title": "Trác Phàm chịu đòn rồi bất ngờ phản kích!?",
+  "chapters": "113",
+  "source_dir": "manhua-recap/dqgl_ep113",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-19",
+  "description": "Trận so tài với kẻ tóc đỏ chưa kết thúc. Trác Phàm cố tình đón đòn để dò xét đối thủ, khiến người xem tưởng hắn đang rơi vào thế yếu, rồi bất ngờ đổi nhịp và tung ra đòn phản kích. Mẫu Đan cũng bắt đầu nhận ra màn đấu này không đơn giản như vẻ ngoài.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tập 113 (chương 113).",
+  "hashtags": ["#DaiQuanGiaLaMaHoang", "#ReviewManhua", "#Manhua", "#TuTien", "#XuyenKhong", "#ReviewTruyen"],
+  "thumbnail": {"text":"Trác Phàm đang thử đối thủ!?","prompt":"Vertical 9:16 Chinese manhua style, battered but smiling black-haired cultivator facing a furious red-haired opponent, blurred spectators and pink blossoms, impending counterattack, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"},
+  "beats": [
+    {"panel":"p001.jpg","narration":"Đòn đánh vừa trúng, nhưng Trác Phàm vẫn đứng vững khiến đối thủ sững sờ.","kind":"recap","type":"HOOK"},
+    {"panel":"p004.jpg","narration":"Kẻ tóc đỏ không hiểu vì sao một người bị đánh trực diện lại có thể bình thản đến vậy.","kind":"recap","type":"BUILD"},
+    {"panel":"p008.jpg","narration":"Trác Phàm tiếp tục quan sát phản ứng của hắn, như thể đang chờ đối thủ tự để lộ sơ hở.","kind":"recap","type":"BUILD"},
+    {"panel":"p012.jpg","narration":"Mẫu Đan và những người đứng xem cũng bắt đầu nghi ngờ rằng Trác Phàm đang tính toán điều gì đó.","kind":"recap","type":"BUILD"},
+    {"panel":"p017.jpg","narration":"Hắn vẫn nói năng bông đùa, khiến đối thủ càng thêm mất kiên nhẫn.","kind":"recap","type":"BUILD"},
+    {"panel":"p021.jpg","narration":"Mẫu Đan đỏ mặt trước những lời trêu chọc, nhưng ánh mắt vẫn dõi theo diễn biến trận đấu.","kind":"recap","type":"BUILD"},
+    {"panel":"p025.jpg","narration":"Kẻ tóc đỏ lại lao vào, quyết chứng minh rằng mình không hề bị Trác Phàm xem thường.","kind":"recap","type":"BUILD"},
+    {"panel":"p029.jpg","narration":"Trác Phàm né đòn ở thời điểm cuối, làm đối thủ đánh hụt và lộ khoảng trống.","kind":"recap","type":"BUILD"},
+    {"panel":"p033.jpg","narration":"Đến lúc này, nụ cười của Trác Phàm cho thấy hắn đã nắm được nhịp ra đòn của đối phương.","kind":"commentary","type":"BUILD"},
+    {"panel":"p037.jpg","narration":"Hai bên tiếp tục giằng co, nhưng những cú đánh của Trác Phàm ngày càng có chủ đích.","kind":"recap","type":"BUILD"},
+    {"panel":"p041.jpg","narration":"Mẫu Đan hỏi liệu đây đã là chiêu cuối của hắn chưa, khi trận đấu vẫn chưa ngã ngũ.","kind":"recap","type":"BUILD"},
+    {"panel":"p046.jpg","narration":"Đối thủ bất ngờ nhận ra Trác Phàm có thể nhìn thấu chuyển động của mình.","kind":"recap","type":"BUILD"},
+    {"panel":"p051.jpg","narration":"Trác Phàm tăng tốc và tung ra một đòn phản kích, khiến cục diện đổi chiều trong chớp mắt.","kind":"recap","type":"ENDING"}
+  ]
+}
+

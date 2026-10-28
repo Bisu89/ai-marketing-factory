@@ -1,0 +1,26 @@
+{
+  "title": "Trác Phàm một mình bước vào khu phố quỷ!?",
+  "chapters": "117",
+  "source_dir": "manhua-recap/dqgl_ep117",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-19",
+  "description": "Sau khi rời Hoa Vũ Lâu, Trác Phàm đi vào một khu phố đổ nát, nơi người dân xua đuổi khách lạ và không khí ngày càng kỳ quái. Hắn vẫn bình tĩnh tìm chỗ nghỉ, rồi phát hiện một tòa nhà bị đặt pháp trận và một nữ nhân bí ẩn đang ở gần đó.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tập 117 (chương 117).",
+  "hashtags": ["#DaiQuanGiaLaMaHoang", "#ReviewManhua", "#Manhua", "#TuTien", "#XuyenKhong", "#ReviewTruyen"],
+  "thumbnail": {"text":"Khu phố này ban đêm có chuyện gì!?","prompt":"Vertical 9:16 Chinese manhua style, lone black-haired traveler in blue robe and straw hat entering a deserted ancient street at dusk, ruined houses and eerie shadows, mysterious masked woman silhouette in distance, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"},
+  "beats": [
+    {"panel":"p001.jpg","narration":"Một vị trưởng lão Hoa Vũ Lâu rời đi, vẫn tự tin rằng cuối cùng nữ nhân cũng sẽ phải tìm đến nam nhân.","kind":"recap","type":"HOOK"},
+    {"panel":"p004.jpg","narration":"Trong lúc đó, Trác Phàm tiếp tục hành trình một mình, không còn bận tâm đến lời bàn tán phía sau.","kind":"recap","type":"BUILD"},
+    {"panel":"p008.jpg","narration":"Mẫu Đan nghe nhắc đến tên hắn thì giật mình, còn người bên cạnh chỉ có thể phỏng đoán về thân phận thật.","kind":"recap","type":"BUILD"},
+    {"panel":"p012.jpg","narration":"Một người nhận xét Trác Phàm khác thường, nhưng chưa chắc đã đủ sức đối đầu với cao thủ Thiên Huyền.","kind":"recap","type":"BUILD"},
+    {"panel":"p016.jpg","narration":"Nữ nhân đeo mặt nạ cũng tự hỏi liệu Trác Phàm có thể đánh bại những kẻ nguy hiểm hơn U Quỷ Thất hay không.","kind":"recap","type":"BUILD"},
+    {"panel":"p019.jpg","narration":"Ở một nơi xa, Trác Phàm đặt chân vào khu phố hoang vắng và nhận ra đã lâu mình không phải chạy trốn như thế này.","kind":"recap","type":"BUILD"},
+    {"panel":"p022.jpg","narration":"Người dân địa phương lớn tiếng đuổi hắn đi, tuyên bố khu này đã có chủ.","kind":"recap","type":"BUILD"},
+    {"panel":"p026.jpg","narration":"Trác Phàm vẫn điềm nhiên bước tiếp, xem những lời đe dọa như chuyện nhỏ.","kind":"commentary","type":"BUILD"},
+    {"panel":"p030.jpg","narration":"Một người mới đến định chỉ đường cho hắn, nhưng cũng cảnh báo rằng nơi sâu bên trong rất nguy hiểm.","kind":"recap","type":"BUILD"},
+    {"panel":"p035.jpg","narration":"Trác Phàm nhắc người kia rằng ban ngày rồi, không cần phải lén lút như buổi tối.","kind":"recap","type":"BUILD"},
+    {"panel":"p040.jpg","narration":"Người dẫn đường giải thích rằng những ai tiến sâu vào khu này thường không trở ra.","kind":"recap","type":"BUILD"},
+    {"panel":"p045.jpg","narration":"Trác Phàm nhận lời chỉ đường, nhưng yêu cầu đối phương đừng dẫn mình vào nơi nguy hiểm nhất.","kind":"recap","type":"BUILD"},
+    {"panel":"p050.jpg","narration":"Hắn tiến về căn nhà được nhắc tới, nơi một nữ nhân bị che kín đang đứng chờ.","kind":"recap","type":"BUILD"},
+    {"panel":"p055.jpg","narration":"Trác Phàm khẳng định sẽ không tự tiện đi lung tung, nhưng ánh mắt đã nhận ra có điều bất thường.","kind":"recap","type":"BUILD"},
+    {"panel":"p061.jpg","narration":"Khi màn đêm buông xuống, hắn bắt đầu dò xét nội tình nơi này. Có vẻ khu phố này còn giấu một bí mật.","kind":"recap","type":"ENDING"}
+  ]
+}

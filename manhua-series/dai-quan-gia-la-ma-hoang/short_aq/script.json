@@ -1,0 +1,94 @@
+{
+  "template": "manhua_recap_vi",
+  "title": "Đại Quản Gia Là Ma Hoàng | Tập 151–154: Trác Phàm nghịch chuyển!?",
+  "chapters": "151-154",
+  "source_dir": "manhua-recap/dqgl_ep151",
+  "written_by": "OpenAI, biên tập từ script từng tập, 2026-10-21",
+  "description": "Tóm tắt tập 151 đến 154 Đại Quản Gia Là Ma Hoàng. Trác Phàm đối đầu cao thủ và tìm cách xoay chuyển cục diện.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Trác Phàm tìm ra hy vọng cứu Hoa Vũ Lâu!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep151/p001.jpg",
+      "narration": "Sau biến cố ở Hoa Vũ Lâu, Trác Phàm cùng Sở Khuynh Thành tìm đến vị trưởng lão bị phong băng để xem tình trạng của ông.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep151/p012.jpg",
+      "narration": "Khuynh Thành cố đánh thức người đang bị đóng băng; Trác Phàm quan sát và nhận ra cơ thể vẫn còn dấu hiệu sống.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep151/p027.jpg",
+      "narration": "Cuộc gặp bất ngờ khiến Trác Phàm hiểu rằng Hoa Vũ Lâu vẫn còn một cơ hội xoay chuyển tình thế.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep152/p001.jpg",
+      "narration": "Khuynh Thành giải thích vì sao trưởng lão phải tự phong ấn trong băng để kìm hãm độc tính đang ăn mòn cơ thể.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep152/p018.jpg",
+      "narration": "Muốn cứu ông, họ cần tìm đúng phương thuốc và hiểu cách các luồng âm dương đang xung đột bên trong.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep152/p045.jpg",
+      "narration": "Trác Phàm bắt đầu lần theo dấu vết của chất độc, nhưng phương thuốc tưởng đơn giản lại ẩn một vấn đề lớn hơn.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep153/p001.jpg",
+      "narration": "Hoàng Phủ Thanh Vân tìm đến chất vấn Trác Phàm, biến cuộc gặp ở Hoa Vũ Lâu thành màn đối đầu căng thẳng.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep153/p022.jpg",
+      "narration": "Khuynh Thành lên tiếng bảo vệ Trác Phàm, còn Thanh Vân không tin lời giải thích của hai người.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep153/p058.jpg",
+      "narration": "Hai bên chưa ai chịu nhượng bộ; chỉ một bước sai cũng có thể khiến cuộc thương lượng biến thành giao đấu.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep154/p001.jpg",
+      "narration": "Mâu thuẫn giữa Thanh Vân và Trác Phàm nhanh chóng vượt khỏi lời qua tiếng lại.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep154/p030.jpg",
+      "narration": "Khuynh Thành bị cuốn vào đòn tấn công, khiến Trác Phàm lập tức phản ứng.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep154/p068.jpg",
+      "narration": "Sát khí của Trác Phàm bùng lên sau khi người bên cạnh bị thương; cuộc đối đầu giờ không còn đường lui.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

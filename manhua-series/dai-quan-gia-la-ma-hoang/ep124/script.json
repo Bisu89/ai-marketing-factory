@@ -1,0 +1,63 @@
+﻿{
+    "title":  "Trác Phàm trúng độc nặng, ai mới cứu được hắn!?",
+    "chapters":  "124",
+    "source_dir":  "manhua-recap/dqgl_ep124",
+    "written_by":  "OpenAI, đối chiếu ảnh nguồn, 2026-10-19",
+    "description":  "Trác Phàm tiếp tục đối mặt với biến cố mới cùng những người đồng hành.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tập 124 (chương 124).",
+    "hashtags":  [
+                     "#DaiQuanGiaLaMaHoang",
+                     "#ReviewManhua",
+                     "#Manhua",
+                     "#TuTien",
+                     "#XuyenKhong",
+                     "#ReviewTruyen"
+                 ],
+    "thumbnail":  {
+                      "text":  "Trác Phàm trúng độc nặng, ai mới cứu được hắn!?",
+                      "prompt":  "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+                  },
+    "beats":  [
+                  {
+                      "panel":  "p001.jpg",
+                      "narration":  "Cuộc đối đầu vừa lắng xuống thì Trác Phàm đã không còn đứng vững.",
+                      "kind":  "recap",
+                      "type":  "HOOK"
+                  },
+                  {
+                      "panel":  "p008.jpg",
+                      "narration":  "Bạt Trường Lão nói người trúng độc khó sống lâu.",
+                      "kind":  "recap",
+                      "type":  "BUILD"
+                  },
+                  {
+                      "panel":  "p012.jpg",
+                      "narration":  "Ngưng Nhi hỏi liệu còn cách nào cứu hắn hay không.",
+                      "kind":  "recap",
+                      "type":  "BUILD"
+                  },
+                  {
+                      "panel":  "p020.jpg",
+                      "narration":  "Nữ nhân bí ẩn khẳng định mình có thể thử giải độc.",
+                      "kind":  "commentary",
+                      "type":  "BUILD"
+                  },
+                  {
+                      "panel":  "p031.jpg",
+                      "narration":  "Trong cơn mê, Trác Phàm vẫn cảm nhận độc tố bị khuấy động.",
+                      "kind":  "recap",
+                      "type":  "BUILD"
+                  },
+                  {
+                      "panel":  "p043.jpg",
+                      "narration":  "Người chữa trị tiếp tục rút độc, nhưng chưa chắc đã sạch.",
+                      "kind":  "recap",
+                      "type":  "BUILD"
+                  },
+                  {
+                      "panel":  "p068.jpg",
+                      "narration":  "Hắn đã qua cơn nguy kịch, nhưng vẫn chưa tỉnh lại.",
+                      "kind":  "recap",
+                      "type":  "ENDING"
+                  }
+              ]
+}

@@ -1,0 +1,105 @@
+{
+  "title": "Bí mật Thanh Hoa Lâu và trận pháp!?",
+  "chapters": "127-130",
+  "source_dir": "manhua-recap/dqgl_ep127",
+  "written_by": "Selected from ep121-ep130, 2026-10-20",
+  "description": "Trác Phàm chương 127-130.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Trác Phàm đến Thanh Hoa Lâu, nữ chủ bí ẩn xuất hiện!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep127/p001.jpg",
+      "narration": "Nhóm Trác Phàm đến Thanh Hoa Lâu và được người trong lâu ra đón.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep127/p012.jpg",
+      "narration": "Nữ chủ Thanh Hoa Lâu xuất hiện, khiến cuộc trò chuyện đổi hướng.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep127/p030.jpg",
+      "narration": "Nữ chủ tiết lộ mình vướng vào hoàn cảnh khó thoát.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep127/p056.jpg",
+      "narration": "Hắn quyết định tiến thêm bước, dù biết có thể gặp rắc rối.",
+      "kind": "recap",
+      "type": "ENDING"
+    },
+    {
+      "panel": "dqgl_ep128/p001.jpg",
+      "narration": "Nữ chủ bật cười khi nghe Trác Phàm nói về chuyện trong Thanh Hoa Lâu.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep128/p013.jpg",
+      "narration": "Tông Hiến Đế nhận món quà từ chủ lâu.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep128/p018.jpg",
+      "narration": "Trác Phàm hỏi chuyện nữ chủ và những việc cô đang đối mặt.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep128/p048.jpg",
+      "narration": "Cô đồng ý để hắn tìm hiểu thêm, nhưng vẫn giữ bí mật.",
+      "kind": "recap",
+      "type": "ENDING"
+    },
+    {
+      "panel": "dqgl_ep129/p001.jpg",
+      "narration": "Nữ chủ kể rằng mình không thể tự quyết định vận mệnh.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep129/p016.jpg",
+      "narration": "Dấu hiệu bất thường xuất hiện, khiến hắn cảnh giác.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep129/p021.jpg",
+      "narration": "Kẻ đứng sau lộ diện, khiến nữ chủ không dám phản kháng.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep130/p001.jpg",
+      "narration": "Màn đêm buông xuống, một bóng người lướt qua mái nhà Thanh Hoa Lâu.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep130/p024.jpg",
+      "narration": "Linh thú đỏ nhỏ dò xét và tìm thấy căn phòng có người trò chuyện.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep130/p055.jpg",
+      "narration": "Kẻ sửa trận pháp chưa lộ diện, Trác Phàm sắp bị cuốn vào chuyện lớn.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

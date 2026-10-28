@@ -1,0 +1,39 @@
+{
+  "title": "Trận đấu luyện đan biến thành cuộc chiến sinh tử!?",
+  "chapters": "186",
+  "source_dir": "manhua-recap/dqgl_ep186",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-21",
+  "description": "Trận đấu luyện đan biến thành cuộc chiến sinh tử. Tóm tắt chương 186 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Trận đấu luyện đan biến thành cuộc chiến sinh tử!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Kết quả luyện đan làm dấy lên tranh cãi, rồi sự chú ý chuyển sang cuộc đối đầu giữa Trác Phàm và đối thủ.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p025",
+      "narration": "Trận pháp và sức mạnh của Trác Phàm áp đảo đối phương, khiến những người xung quanh không kịp can thiệp.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p062",
+      "narration": "Một kẻ trong nhóm bị đánh trọng thương; cuộc thi đã hoàn toàn biến thành xung đột trực diện.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

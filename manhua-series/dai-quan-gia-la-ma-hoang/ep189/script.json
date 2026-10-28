@@ -1,0 +1,39 @@
+{
+  "title": "Trác Phàm khiến các trưởng lão nổi giận!?",
+  "chapters": "189",
+  "source_dir": "manhua-recap/dqgl_ep189",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-21",
+  "description": "Trác Phàm khiến các trưởng lão nổi giận. Tóm tắt chương 189 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Trác Phàm khiến các trưởng lão nổi giận!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Trác Phàm công khai coi thường những kẻ đuổi theo mình, khiến các trưởng lão càng thêm phẫn nộ.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p022",
+      "narration": "Lâm Tử Thiên và các cao thủ tranh nhau ra tay, nhưng Trác Phàm chỉ xem họ như chướng ngại.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p059",
+      "narration": "Khi đối thủ hỏi hắn đang nhắm đến ai, Trác Phàm đã có câu trả lời bằng hành động.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

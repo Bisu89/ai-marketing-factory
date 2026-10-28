@@ -1,0 +1,39 @@
+{
+  "title": "Trác Phàm nhận ra bí mật trong Huyết Bức Chấn Thiên!?",
+  "chapters": "198",
+  "source_dir": "manhua-recap/dqgl_ep198",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-21",
+  "description": "Trác Phàm nhận ra bí mật trong Huyết Bức Chấn Thiên. Tóm tắt chương 198 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Trác Phàm nhận ra bí mật trong Huyết Bức Chấn Thiên!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Giữa lúc giao chiến, Trác Phàm nhận ra Huyết Bức Chấn Thiên dùng linh thú để tấn công trực tiếp vào linh hồn.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p023",
+      "narration": "Lâm trưởng lão giải thích huyết bức có thể bám vào cổ đối thủ và hút máu, khiến người trúng chiêu khó thoát.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p078",
+      "narration": "Trác Phàm phát hiện điểm sai trong cách vận dụng trận pháp và chuẩn bị nói rõ điều đó với đối thủ.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

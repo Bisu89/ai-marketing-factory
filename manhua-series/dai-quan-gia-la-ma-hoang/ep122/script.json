@@ -1,0 +1,63 @@
+﻿{
+    "title":  "Trác Phàm một mình áp đảo cả nhóm cường địch!?",
+    "chapters":  "122",
+    "source_dir":  "manhua-recap/dqgl_ep122",
+    "written_by":  "OpenAI, đối chiếu ảnh nguồn, 2026-10-19",
+    "description":  "Trác Phàm tiếp tục đối mặt với biến cố mới cùng những người đồng hành.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tập 122 (chương 122).",
+    "hashtags":  [
+                     "#DaiQuanGiaLaMaHoang",
+                     "#ReviewManhua",
+                     "#Manhua",
+                     "#TuTien",
+                     "#XuyenKhong",
+                     "#ReviewTruyen"
+                 ],
+    "thumbnail":  {
+                      "text":  "Trác Phàm một mình áp đảo cả nhóm cường địch!?",
+                      "prompt":  "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+                  },
+    "beats":  [
+                  {
+                      "panel":  "p001.jpg",
+                      "narration":  "Ngưng Nhi sững sờ khi Trác Phàm bước tới giữa đống khói.",
+                      "kind":  "recap",
+                      "type":  "HOOK"
+                  },
+                  {
+                      "panel":  "p010.jpg",
+                      "narration":  "U Minh Cốc trưởng lão cười nhạo Trác Phàm, nhưng hắn lập tức đáp trả.",
+                      "kind":  "recap",
+                      "type":  "BUILD"
+                  },
+                  {
+                      "panel":  "p020.jpg",
+                      "narration":  "Trác Phàm né đòn rồi phản công, buộc đối phương nghiêm túc hơn.",
+                      "kind":  "recap",
+                      "type":  "BUILD"
+                  },
+                  {
+                      "panel":  "p036.jpg",
+                      "narration":  "Đòn đánh liên tiếp làm mặt đất rung chuyển.",
+                      "kind":  "commentary",
+                      "type":  "BUILD"
+                  },
+                  {
+                      "panel":  "p048.jpg",
+                      "narration":  "Một cú đánh bất ngờ khiến cục diện nghiêng về phía hắn.",
+                      "kind":  "recap",
+                      "type":  "BUILD"
+                  },
+                  {
+                      "panel":  "p060.jpg",
+                      "narration":  "Trác Phàm thừa cơ lao lên, buộc đối thủ chống đỡ.",
+                      "kind":  "recap",
+                      "type":  "BUILD"
+                  },
+                  {
+                      "panel":  "p073.jpg",
+                      "narration":  "Cuộc giao chiến tạm khựng lại, nhưng mối nguy vẫn còn nguyên.",
+                      "kind":  "recap",
+                      "type":  "ENDING"
+                  }
+              ]
+}

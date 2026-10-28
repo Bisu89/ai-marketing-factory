@@ -1,0 +1,25 @@
+{
+  "title": "Trác Phàm áp sát Mẫu Đan, đối thủ nổi điên!?",
+  "chapters": "114",
+  "source_dir": "manhua-recap/dqgl_ep114",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-19",
+  "description": "Trác Phàm dùng tốc độ vượt trội để áp sát đối thủ, đồng thời tiếp tục chọc tức hắn bằng những lời tán tỉnh Mẫu Đan. Đám đông chứng kiến màn đấu tay đôi ngày càng căng thẳng, còn kẻ tóc đỏ chuẩn bị tung ra võ kỹ mạnh hơn để lật ngược tình thế.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tập 114 (chương 114).",
+  "hashtags": ["#DaiQuanGiaLaMaHoang", "#ReviewManhua", "#Manhua", "#TuTien", "#XuyenKhong", "#ReviewTruyen"],
+  "thumbnail": {"text":"Một câu trêu chọc khiến hắn phát cuồng!?","prompt":"Vertical 9:16 Chinese manhua style, fast black-haired cultivator teasing an embarrassed elegant woman while a red-haired rival charges angrily, motion streaks in courtyard, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"},
+  "beats": [
+    {"panel":"p001.jpg","narration":"Đối thủ không tin Trác Phàm có thể nhanh đến vậy, dù vừa tận mắt thấy hắn né đòn.","kind":"recap","type":"HOOK"},
+    {"panel":"p005.jpg","narration":"Những người đứng xem cũng kinh ngạc khi Trác Phàm liên tục chiếm vị trí thuận lợi.","kind":"recap","type":"BUILD"},
+    {"panel":"p009.jpg","narration":"Hắn áp sát Mẫu Đan, khiến kẻ tóc đỏ nổi giận vì cho rằng Trác Phàm đang cố ý trêu ghẹo nàng.","kind":"recap","type":"BUILD"},
+    {"panel":"p013.jpg","narration":"Trác Phàm đáp lại bằng vẻ tự tin, còn Mẫu Đan không biết nên phản ứng thế nào trước màn tán tỉnh công khai.","kind":"recap","type":"BUILD"},
+    {"panel":"p018.jpg","narration":"Người lớn tuổi trong nhóm đối thủ yêu cầu hắn buông tay, nhưng lời can ngăn chỉ làm bầu không khí căng hơn.","kind":"recap","type":"BUILD"},
+    {"panel":"p022.jpg","narration":"Kẻ tóc đỏ lao tới, còn Trác Phàm né tránh rồi tiếp tục chọc tức hắn ngay giữa trận đấu.","kind":"recap","type":"BUILD"},
+    {"panel":"p027.jpg","narration":"Mẫu Đan lên tiếng bảo Trác Phàm đừng quá đáng, nhưng hắn vẫn giữ vẻ ung dung.","kind":"recap","type":"BUILD"},
+    {"panel":"p032.jpg","narration":"Đối thủ bị đánh bật thêm lần nữa, trong khi Trác Phàm vẫn chưa cho thấy mình đã dốc hết sức.","kind":"recap","type":"BUILD"},
+    {"panel":"p037.jpg","narration":"Đám đông bắt đầu quy kết Trác Phàm dùng thủ đoạn mê hoặc phụ nữ, còn hắn không buồn tranh cãi.","kind":"commentary","type":"BUILD"},
+    {"panel":"p042.jpg","narration":"Mẫu Đan đứng giữa hai bên, cố ngăn trận đấu vượt khỏi giới hạn.","kind":"recap","type":"BUILD"},
+    {"panel":"p047.jpg","narration":"Kẻ tóc đỏ vẫn không chịu nhận thua và tiếp tục dồn khí thế vào đòn kế tiếp.","kind":"recap","type":"BUILD"},
+    {"panel":"p052.jpg","narration":"Hắn tuyên bố sẽ dùng một võ kỹ Linh giai để kết thúc trận đấu.","kind":"recap","type":"BUILD"},
+    {"panel":"p058.jpg","narration":"Trác Phàm nhìn đối thủ vận chiêu, chờ xem lời khoe khoang ấy có tạo ra khác biệt hay không.","kind":"recap","type":"BUILD"},
+    {"panel":"p064.jpg","narration":"Đòn quyết định sắp được tung ra, và Trác Phàm vẫn giữ nụ cười khó đoán.","kind":"recap","type":"ENDING"}
+  ]
+}

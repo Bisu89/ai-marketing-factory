@@ -1,0 +1,90 @@
+{
+  "title": "Một chiếc gương đổi cả vận mệnh Kim gia!?",
+  "source_dir": "manhua-recap/crmn_ep128",
+  "description": "Một chiếc gương đổi cả vận mệnh Kim gia!?",
+  "beats": [
+    {
+      "panel": "crmn_ep128/p024.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Thẩm Lãng mang một chiếc gương ra và đòi thương lượng tới một trăm vạn kim tệ."
+    },
+    {
+      "panel": "crmn_ep124/p064.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn cần trả món nợ bảy mươi vạn để giữ đảo Vọng Nhai cho Kim gia."
+    },
+    {
+      "panel": "crmn_ep128/p019.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thiên Đạo Hội ban đầu muốn mua ruộng cùng tòa thành với hai mươi chín vạn."
+    },
+    {
+      "panel": "crmn_ep128/p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng hắn quyết giữ thành, vì đó là gốc rễ quân sự của cả gia tộc."
+    },
+    {
+      "panel": "crmn_ep128/p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thứ được đem ra thay thế khiến các vị khách kinh ngạc: gương phản chiếu rõ chưa từng thấy."
+    },
+    {
+      "panel": "crmn_ep128/p032.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn nói giá thành còn chưa tới một lượng bạc, sản xuất nhiều lại càng rẻ."
+    },
+    {
+      "panel": "crmn_ep128/p033.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Còn giá bán có thể lên tới một trăm kim tệ một chiếc."
+    },
+    {
+      "panel": "crmn_ep128/p035.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thiên Đạo Hội lập tức muốn nhập hàng, nhưng số sẵn có chỉ một nghìn chiếc."
+    },
+    {
+      "panel": "crmn_ep128/p044.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Khi hắn yêu cầu một trăm vạn, họ ép xuống bốn mươi vạn."
+    },
+    {
+      "panel": "crmn_ep128/p045.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Họ biết thời hạn trả nợ đã gần, tưởng hắn nhất định phải nhượng bộ."
+    },
+    {
+      "panel": "crmn_ep128/p047.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng nhắc cơ hội dùng gương vượt qua đối thủ Ẩn Nguyên Hội."
+    },
+    {
+      "panel": "crmn_ep128/p047.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Hắn khiến người mua nhìn thấy lợi ích dài hạn, nhờ vậy bớt bị mắc kẹt trong áp lực trả nợ trước mắt."
+    },
+    {
+      "panel": "crmn_ep129/p001.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Đúng lúc ấy Hoàng Đồng đích thân tới. Cuộc mặc cả sắp bước sang một hướng hoàn toàn khác."
+    }
+  ],
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ]
+}

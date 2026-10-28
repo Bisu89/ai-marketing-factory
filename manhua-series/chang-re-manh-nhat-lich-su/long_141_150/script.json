@@ -1,0 +1,876 @@
+{
+  "template": "manhua_recap_long_vi",
+  "title": "Chàng Rể Mạnh Nhất Lịch Sử | Tập 141–150",
+  "source_dir": "manhua-recap/crmn_ep141",
+  "chapters": "140-149",
+  "description": "Thẩm Lãng và những bước ngoặt trong cuộc đối đầu bảo vệ Kim gia, tập 141–150.",
+  "beats": [
+    {
+      "panel": "crmn_ep141/p008.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Cừu Yêu Nhi cố giữ tỉnh táo trước tác dụng của thuốc rồi thúc ngựa ra bờ biển. Nàng biết mình phải kết thúc trận đấu thật nhanh để trở về.",
+      "section": "Tập 141"
+    },
+    {
+      "panel": "crmn_ep141/p012.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Người đợi nàng là Chúc Hồng Tuyết, cao thủ số một thế hệ trẻ. Cuộc gặp dưới ánh trăng sắp biến bãi biển thành đấu trường của hai người."
+    },
+    {
+      "panel": "crmn_ep141/p016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn nhắc chuyện sư phụ muốn biết khi nào nàng có thể rời Nộ Triều thành. Nhưng Cừu Yêu Nhi vẫn đang chờ một cơ hội bước ra thế giới ngoài biển."
+    },
+    {
+      "panel": "crmn_ep141/p017.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nàng còn hỏi tới Ninh Hàn, người đáng lẽ cùng giao đấu. Chúc Hồng Tuyết cho biết công chúa đang theo sư tổ khai quật cổ văn trên một hòn đảo khác."
+    },
+    {
+      "panel": "crmn_ep141/p032.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cuộc giao phong bùng nổ, sức mạnh hai bên làm mặt đất và cây cối quanh bãi biển tan tác. Cả hai dồn lực vào những đòn đánh quyết định."
+    },
+    {
+      "panel": "crmn_ep141/p036.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Khi bụi lắng xuống, hai người đứng hai bên một hố lớn. Cừu Yêu Nhi đã có thương tích, nhưng kết quả không đơn giản như vẻ ngoài."
+    },
+    {
+      "panel": "crmn_ep141/p037.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chúc Hồng Tuyết nhận thua. Nàng lại gắt lên rằng chính mình thua và thúc hắn rời đi, vì không còn thời gian giải thích."
+    },
+    {
+      "panel": "crmn_ep141/p039.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn nói sau đòn vừa rồi sức lực của mình gần chạm giới hạn, còn nàng vẫn chưa tới mức ấy và lại mang thương sẵn. Nói xong hắn cáo biệt."
+    },
+    {
+      "panel": "crmn_ep141/p051.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trong phủ, Thẩm Lãng cũng bị hương thuốc làm ý thức mơ hồ. Hắn không còn đủ sức đứng dậy dập lò hương rồi ngã xuống sàn."
+    },
+    {
+      "panel": "crmn_ep141/p055.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cừu Kiêu xông tới phòng nhưng bị các nữ võ sĩ chặn lại. Họ giữ đúng lệnh chủ nhân, bất cứ ai cũng không được tự tiện bước vào."
+    },
+    {
+      "panel": "crmn_ep141/p059.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thấy phòng phải tăng hộ vệ, hắn tưởng Cừu Yêu Nhi đã hoàn toàn bị khống chế bởi thuốc. Kẻ mang ý đồ xấu bắt đầu cười đắc thắng quá sớm."
+    },
+    {
+      "panel": "crmn_ep142/p001.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cừu Kiêu không chấp nhận bị nữ võ sĩ ngăn cản. Hắn vừa mắng vừa rút kiếm, muốn dùng thân phận thiếu chủ để ép tất cả nhường đường.",
+      "section": "Tập 142"
+    },
+    {
+      "panel": "crmn_ep142/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đội trưởng trả lời chỉ nghe lệnh chủ nhân. Trong mắt Cừu Kiêu, sự trung thành ấy trở thành cái cớ để hắn nổi giận và ra tay với cả đội."
+    },
+    {
+      "panel": "crmn_ep142/p006.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn gào rằng thành trì lẫn đất đai đều thuộc nhà mình. Nhưng những lời đe dọa không khiến các nữ võ sĩ từ bỏ nhiệm vụ bảo vệ căn phòng."
+    },
+    {
+      "panel": "crmn_ep142/p031.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cuộc giao chiến làm nhiều người bị thương. Đội trưởng vẫn chắn trước hắn dù yếu thế, quyết không để kẻ đang nổi điên tiến vào trong."
+    },
+    {
+      "panel": "crmn_ep142/p033.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một đòn bất ngờ cắt ngang cuộc tấn công. Cừu Kiêu quay lại và chết lặng khi thấy Cừu Yêu Nhi đã đứng ngay phía sau."
+    },
+    {
+      "panel": "crmn_ep142/p037.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nàng nói mình vừa đi quyết đấu. Hắn hoảng hốt vì kế hoạch dựa trên việc nàng mắc kẹt trong phòng đã hoàn toàn sai lệch."
+    },
+    {
+      "panel": "crmn_ep142/p038.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nữ tướng lập tức yêu cầu đưa các chị em bị thương đi chữa trị bằng mọi giá. Cơn giận của nàng hướng vào kẻ vừa tấn công người của mình."
+    },
+    {
+      "panel": "crmn_ep142/p040.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trước đây nàng nhường vì coi hắn là em, lần này thì không. Một đòn trừng phạt khiến Cừu Kiêu bị đánh văng, chẳng còn vẻ hung hăng ban đầu."
+    },
+    {
+      "panel": "crmn_ep142/p042.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Dù phải bỏ đi, hắn vẫn ôm hận và mơ giành trọn Nộ Triều thành. Thất bại chưa khiến kẻ này từ bỏ tham vọng lẫn ý đồ hãm hại."
+    },
+    {
+      "panel": "crmn_ep142/p046.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trở về phòng, Cừu Yêu Nhi cũng gần mất kiểm soát bởi thuốc. Nàng tìm nữ đại phu vì tin người vừa cứu mình có thể giải được chuyện này."
+    },
+    {
+      "panel": "crmn_ep142/p048.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng người nàng bế dậy lại là Thẩm Lãng đang mê man. Lớp cải trang bị đẩy vào một tình huống mà chính hắn cũng không thể lường trước."
+    },
+    {
+      "panel": "crmn_ep142/p059.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bên ngoài, các nữ võ sĩ tiếp tục tập luyện theo lệnh đội trưởng để che tiếng động trong phòng. Biến cố đêm ấy được giữ kín sau những bức tường thành."
+    },
+    {
+      "panel": "crmn_ep143/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mộc Lan làm việc trong quân nhiều ngày mới về tới phủ. Nàng muốn gặp chồng nhưng chỉ biết Thẩm Lãng đã ra ngoài mà không nói rõ mình đi đâu.",
+      "section": "Tập 143"
+    },
+    {
+      "panel": "crmn_ep143/p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Khi nghe hắn tới Nộ Triều thành cứu Cừu Yêu Nhi, nàng cố gạt những ý nghĩ ghen tuông. Điều nàng lo nhất vẫn là chồng gặp nguy hiểm nơi đất địch."
+    },
+    {
+      "panel": "crmn_ep143/p016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ở thành chủ phủ, Cừu Kiêu đòi cha xử lý Cừu Yêu Nhi. Hắn nhấn mạnh nàng chỉ là con nuôi và đã có cả một vạn người dưới trướng."
+    },
+    {
+      "panel": "crmn_ep143/p018.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cừu Thiên Nguy nói nàng chỉ mê chiến đấu và thám hiểm, không ham quyền lực. Ông ta không xem sức mạnh của con gái nuôi là lý do phải loại bỏ nàng lúc này."
+    },
+    {
+      "panel": "crmn_ep143/p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông biết rõ những ý nghĩ đê tiện của con trai và cảnh cáo nếu không nể tình cha, Cừu Kiêu đã sớm bị nàng giết. Hắn không được tiếp tục chọc giận nàng."
+    },
+    {
+      "panel": "crmn_ep143/p022.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Khi ông dẫn quân đánh Vọng Nhai, Nộ Triều thành vẫn cần Cừu Yêu Nhi trấn thủ. Chỉ thực lực của nàng mới bảo đảm hậu phương không xảy ra biến cố."
+    },
+    {
+      "panel": "crmn_ep143/p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cừu Kiêu được lệnh ra đảo tận mắt xác nhận mỏ vàng. Cha hắn muốn bằng chứng thật trước khi điều đại quân vào cuộc tranh đoạt."
+    },
+    {
+      "panel": "crmn_ep143/p034.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sáng hôm sau, Thẩm Lãng tỉnh dậy với ký ức đứt quãng về đêm bị bỏ thuốc. Hắn vừa hoảng hốt về những gì xảy ra, vừa nghĩ tới Mộc Lan đang ở nhà."
+    },
+    {
+      "panel": "crmn_ep143/p043.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thiên Thiên gặp lại hắn và nổi giận trước cách trêu chọc vô duyên. Cả hai vẫn phải che giấu chuyện trong phòng, trong khi âm mưu ngoài kia còn chưa dừng lại."
+    },
+    {
+      "panel": "crmn_ep143/p048.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nàng báo Cừu Thiên Nguy đang gặp nữ tướng và đã biết có nữ đại phu tới phủ. Vỏ bọc giúp Thẩm Lãng lẻn vào nay lại khiến thành chủ chú ý."
+    },
+    {
+      "panel": "crmn_ep143/p054.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hải tặc vương muốn đưa người có y thuật cao về thành chủ phủ chữa nội thương cho mình. Cừu Yêu Nhi lập tức hỏi làm sao nghĩa phụ biết tới vị khách ấy."
+    },
+    {
+      "panel": "crmn_ep143/p057.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lục Y nhận đã bẩm báo tất cả, lấy cớ phải điều tra vụ đầu bếp bị diệt khẩu. Nàng ta tiếp tục mượn lòng lo cho chủ nhân để giải thích hành động đáng ngờ."
+    },
+    {
+      "panel": "crmn_ep144/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lục Y còn nhắc thân phận con dâu Trương Xung của Thiên Thiên để gieo nghi ngờ. Cừu Yêu Nhi vẫn bình thản, không để nàng ta kéo câu chuyện sang hướng khác.",
+      "section": "Tập 144"
+    },
+    {
+      "panel": "crmn_ep144/p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cừu Thiên Nguy nói rõ muốn đưa nữ đại phu về phủ mình. Cừu Yêu Nhi từ chối theo cách thẳng thắn khiến cả nghĩa phụ và Lục Y đều sững sờ."
+    },
+    {
+      "panel": "crmn_ep144/p019.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sau cuộc gặp, nàng gọi Lục Y theo mình về phòng. Thẩm Lãng cùng Thiên Thiên đều hiểu chuyện cần giải quyết cuối cùng cũng tới."
+    },
+    {
+      "panel": "crmn_ep144/p023.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cừu Yêu Nhi nói mê hương đêm qua bị hạ độc và có người cấu kết Cừu Kiêu. Lục Y lập tức làm ra vẻ kinh ngạc trước điều mình vừa nghe."
+    },
+    {
+      "panel": "crmn_ep144/p031.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nàng ta đòi bằng chứng rồi quay sang tố Thiên Thiên. Theo lời nàng, nữ đại phu và người dẫn tới mới là những kẻ đã bày kế hại chủ nhân."
+    },
+    {
+      "panel": "crmn_ep144/p034.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lục Y thậm chí đề nghị giết cả hai để giữ kín chuyện. Cách đổ lỗi ấy khiến lời biện hộ càng trở thành một sự phản bội rõ ràng."
+    },
+    {
+      "panel": "crmn_ep144/p035.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng chỉ thẳng người cấu kết Cừu Kiêu chính là Lục Y. Hắn không để kẻ đứng bên cạnh nữ tướng tiếp tục mượn danh trung thành để thao túng."
+    },
+    {
+      "panel": "crmn_ep144/p044.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Các hộ vệ khống chế Lục Y theo lệnh chủ nhân. Bằng chứng quan hệ giữa nàng và Cừu Kiêu bị phát hiện, khiến nàng không thể tiếp tục chối quanh."
+    },
+    {
+      "panel": "crmn_ep144/p051.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nàng khóc rằng mình bị thiếu chủ ép buộc, vừa kể công hầu hạ vừa xin được tha. Nhưng Cừu Yêu Nhi không còn tin những lời đó."
+    },
+    {
+      "panel": "crmn_ep144/p061.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lục Y vẫn mặc cả: nếu được nhận làm nghĩa muội, nàng sẽ khai mọi âm mưu trước thành chủ. Ngay lúc lộ chuyện, nàng còn muốn đổi lời khai lấy địa vị."
+    },
+    {
+      "panel": "crmn_ep144/p063.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nữ tướng đặt tay lên đầu khiến Lục Y tưởng mình được chấp nhận. Khoảnh khắc hy vọng ngắn ngủi kết thúc bằng một đòn trừng phạt dứt khoát."
+    },
+    {
+      "panel": "crmn_ep144/p067.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Kẻ phản chủ gục xuống giữa phòng. Thẩm Lãng chứng kiến và hiểu Cừu Yêu Nhi có thể cưu mang người gặp nạn, nhưng sẽ không dung thứ sự phản bội."
+    },
+    {
+      "panel": "crmn_ep144/p067.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Lục Y muốn dùng lời khai để mua địa vị ngay cả khi đã bị lộ. Chi tiết ấy khiến lời hứa trung thành mất hết sức nặng, bởi điều nàng còn tính vẫn là lợi ích của riêng mình."
+    },
+    {
+      "panel": "crmn_ep145/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Giải quyết Lục Y xong, Cừu Yêu Nhi không muốn nghe giải thích về thân phận khách tới. Nàng nói mình chẳng có hứng thú truy hỏi họ là ai hay tới đây vì mục đích gì.",
+      "section": "Tập 145"
+    },
+    {
+      "panel": "crmn_ep145/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nàng chỉ hỏi câu chuyện Thiên Thiên kể có phải do Thẩm Lãng viết. Khi hắn nhận, nàng khen trong đầu hắn dường như có cả một thế giới khác."
+    },
+    {
+      "panel": "crmn_ep145/p006.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nữ tướng đưa một rương vàng rồi bảo hắn rời đi. Chuyến cứu người mang lại ân tình, nhưng chưa giúp hắn đạt điều mình thật sự muốn ở Nộ Triều thành."
+    },
+    {
+      "panel": "crmn_ep145/p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thiên Thiên quỳ xin ở lại, thú nhận mình đã phối hợp với Thẩm Lãng để trả thù Trương gia. Nàng kể cả quá khứ tan cửa nát nhà và sự ngưỡng mộ dành cho nữ tướng."
+    },
+    {
+      "panel": "crmn_ep145/p017.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cừu Yêu Nhi đẩy nàng ra nhưng vẫn không giết. Thiên Thiên tiếp tục bám lấy chủ nhân, còn Thẩm Lãng chỉ biết lo nàng nói thêm những điều bất lợi."
+    },
+    {
+      "panel": "crmn_ep145/p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn bị yêu cầu hóa trang lại và đưa khỏi Lôi Châu đảo. Nữ tướng còn cấm hắn quay lại, dù vẫn công nhận món nợ cứu mạng."
+    },
+    {
+      "panel": "crmn_ep145/p028.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cừu Yêu Nhi nói rương vàng là bồi thường thương tích. Ân tình chữa bệnh nàng vẫn ghi nhớ và sẽ trả nếu hắn cần trong tương lai."
+    },
+    {
+      "panel": "crmn_ep145/p029.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng nàng không thể phản bội nghĩa phụ, người từng cứu mạng khi nàng trôi dạt trên biển. Đó là giới hạn Thẩm Lãng chưa thể vượt qua bằng vài lời thuyết phục."
+    },
+    {
+      "panel": "crmn_ep145/p033.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sau cuộc gặp, hắn cho rằng chuyến đi vẫn đạt nhiều kết quả vì Thiên Thiên được ở lại. Hắn cũng đã chuẩn bị thêm quân bài cho thời khắc quyết định."
+    },
+    {
+      "panel": "crmn_ep145/p036.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Điều làm hắn bối rối nhất lúc này lại là Mộc Lan. Cuộc đối đầu với hải tặc còn có thể tính toán, còn chuyện phải nói với vợ thì chẳng dễ chút nào."
+    },
+    {
+      "panel": "crmn_ep145/p039.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ở Kim gia, Kim Trác bận điều quân, dân phu và vật tư ra Vọng Nhai. Có Hoàng Đồng phối hợp, những hạng mục Thẩm Lãng yêu cầu dần hoàn tất."
+    },
+    {
+      "panel": "crmn_ep145/p043.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông tin chỉ cần kẻ địch tới là sẽ rơi vào lưới đã giăng. Sau khi trấn an phu nhân, ông dẫn một nghìn tinh nhuệ cùng ba nghìn dân phu lên thuyền ra đảo."
+    },
+    {
+      "panel": "crmn_ep146/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ở phủ Huyền Vũ, phu nhân nhớ lại việc từng gác võ đạo để chăm lo gia đình.",
+      "section": "Tập 146"
+    },
+    {
+      "panel": "crmn_ep146/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trong khi đó, Thẩm Lãng đã tới bến đò Dương Vũ Quận trên đường trở về."
+    },
+    {
+      "panel": "crmn_ep146/p007.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn còn tính dưỡng thêm vài ngày cho những vết cắn biến mất, rồi tiếp tục cuộc sống với nương tử."
+    },
+    {
+      "panel": "crmn_ep146/p010.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng vừa nhìn lên, hắn đã thấy Mộc Lan đứng ngay trước mặt."
+    },
+    {
+      "panel": "crmn_ep146/p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thấy phu quân ăn mặc như nữ nhân, cô ngỡ ngàng, nhưng nghĩ hắn bình an là đủ."
+    },
+    {
+      "panel": "crmn_ep146/p018.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ở phủ Bá tước, một đoàn sứ giả của quốc quân bất ngờ tới truyền chỉ."
+    },
+    {
+      "panel": "crmn_ep146/p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Phu nhân đã mặc kình trang, còn Kim Mộc Thông vẫn ngẩn ngơ, miệng dính mực vì mải viết truyện."
+    },
+    {
+      "panel": "crmn_ep146/p023.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Phu nhân đáp chồng không ở nhà, ông đã tới đảo Vọng Nhai."
+    },
+    {
+      "panel": "crmn_ep146/p026.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng Mộc Thông vẫn chìm trong ý tưởng viết truyện, nghĩ tới việc trở thành tác giả nổi tiếng."
+    },
+    {
+      "panel": "crmn_ep146/p030.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Phu nhân phải nghiêm giọng nhắc quỳ xuống, Mộc Thông mới vội vàng làm theo."
+    },
+    {
+      "panel": "crmn_ep146/p033.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cậu hoảng hốt vì tỷ phu còn chưa về, không biết phải xử trí thế nào."
+    },
+    {
+      "panel": "crmn_ep146/p037.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trước khi rời đi, Vương công công nói sẽ chờ ở phủ thành chủ Huyền Vũ."
+    },
+    {
+      "panel": "crmn_ep146/p039.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trên xe từ bến đò về phủ, Thẩm Lãng vẫn liên tục xin lỗi Mộc Lan."
+    },
+    {
+      "panel": "crmn_ep146/p045.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô hỏi người con gái ấy là ai, có phải Từ Thiên Thiên hay không."
+    },
+    {
+      "panel": "crmn_ep146/p048.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô vừa khóc vừa giận dữ nói sẽ tìm Cửu Yêu Nhi tính sổ."
+    },
+    {
+      "panel": "crmn_ep146/p052.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chiếc xe tiếp tục chạy về phủ, còn người đánh xe ngoài rèm chỉ biết kinh ngạc trước cuộc náo loạn bên trong."
+    },
+    {
+      "panel": "crmn_ep147/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sau một đêm, Thẩm Lãng và Mộc Lan cùng trở về phủ Huyền Vũ.",
+      "section": "Tập 147"
+    },
+    {
+      "panel": "crmn_ep147/p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Phu nhân lập tức phản đối. Bà sợ con quá thật thà, tới nơi phức tạp như quốc đô sẽ bị ức hiếp."
+    },
+    {
+      "panel": "crmn_ep147/p008.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Biết kế hoạch của tỷ phu đã sắp đặt xong, cậu không muốn mình trở thành sơ suất vào thời khắc quan trọng này."
+    },
+    {
+      "panel": "crmn_ep147/p010.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mộc Thông thừa nhận ban đầu rất sợ, nhưng đã nghĩ suốt hai ngày và quyết định phải đi."
+    },
+    {
+      "panel": "crmn_ep147/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng nhận ra cậu viết rất giỏi kéo căng thù hận, các tình tiết đan xen đầy kịch tính."
+    },
+    {
+      "panel": "crmn_ep147/p017.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cậu định dùng cuốn Hầu Đầu Thủ Kinh Ký để mở đường ở Quốc Tử Giám. Thẩm Lãng cho rằng văn phong quá kịch liệt của cậu hợp một câu chuyện khác hơn."
+    },
+    {
+      "panel": "crmn_ep147/p023.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đấu Phá Thương Khung được Thẩm Lãng kể lại, khiến Mộc Thông nghe tới tròn mắt."
+    },
+    {
+      "panel": "crmn_ep147/p028.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mộc Thông thấy câu chuyện quá hay, nghe xong toàn thân sảng khoái."
+    },
+    {
+      "panel": "crmn_ep147/p030.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng báo trước người học ở đó có thể vừa mê đọc vừa chê truyện khoa trương, thiếu giá trị văn học."
+    },
+    {
+      "panel": "crmn_ep147/p033.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cậu vẫn vui vẻ nhận, xin tỷ phu viết dàn ý để vào học là bắt tay ngay."
+    },
+    {
+      "panel": "crmn_ep147/p037.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Vừa nhận bản thảo, Mộc Thông đã đề nghị gắn truyện với tên Phong Nguyệt Vô Biên để tăng độ nổi tiếng."
+    },
+    {
+      "panel": "crmn_ep147/p045.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Phu nhân nhìn con vui vẻ bên tỷ phu, đành lặng lẽ thu dọn hành lý cho cậu."
+    },
+    {
+      "panel": "crmn_ep147/p049.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cừu Kiêu bật cười, chê chiến thuyền của Kim gia chỉ đáng làm đồ chơi trẻ con."
+    },
+    {
+      "panel": "crmn_ep147/p053.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đám hải tặc lập tức kéo vũ khí, chuẩn bị giao chiến."
+    },
+    {
+      "panel": "crmn_ep147/p058.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn ngạo nghễ gọi Kim Trác, Thẩm Lãng và Mộc Lan ra bái kiến tiểu Hải Tặc Vương."
+    },
+    {
+      "panel": "crmn_ep147/p062.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nếu diễn biến tiếp theo vẫn đúng lời Thẩm Lãng, Kim Trác sẽ chặt đầu cả toán hải tặc này rồi trả về Nộ Triều thành."
+    },
+    {
+      "panel": "crmn_ep147/p062.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Mộc Thông lựa chọn rời nhà đúng lúc mọi người lo sợ nhất. Sự trưởng thành của cậu khiến cuộc chia tay có ý nghĩa hơn một mệnh lệnh từ triều đình."
+    },
+    {
+      "panel": "crmn_ep148/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hôm sau, một thái giám của Ngũ vương tử tới phủ Huyền Vũ đón Kim Mộc Thông.",
+      "section": "Tập 148"
+    },
+    {
+      "panel": "crmn_ep148/p006.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngoài tơ lụa và bảo kiếm, lần này quà còn có xà phòng, dầu gội, nước hoa và mặt nạ."
+    },
+    {
+      "panel": "crmn_ep148/p010.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Quốc quân giận dữ trút lên Ninh Chính, nhiều lần trách phạt và nghi ngờ chàng cấu kết với Kim gia. Dù vậy, chàng vẫn hứa bảo vệ Mộc Thông."
+    },
+    {
+      "panel": "crmn_ep148/p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông cho biết nhiều thế lực đã phái người vào kinh truyền tin, tất cả đều nhìn chằm chằm mỏ vàng trên đảo."
+    },
+    {
+      "panel": "crmn_ep148/p015.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đến ngày rời nhà, Mộc Thông trấn an mẹ rằng chuyến này mình sẽ làm nên sự nghiệp."
+    },
+    {
+      "panel": "crmn_ep148/p018.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Vương công công quát hắn chỉ là kẻ ở rể nhỏ bé, không có tư cách lên tiếng."
+    },
+    {
+      "panel": "crmn_ep148/p021.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Vương công công toát mồ hôi. Ông biết nếu lời này truyền tới tai quốc quân, mình khó thoát trách phạt và mất tín nhiệm."
+    },
+    {
+      "panel": "crmn_ep148/p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chiếc xe rời phủ giữa tiếng gọi con của phu nhân. Mộc Lan nói có Ngũ vương tử chăm sóc, đệ đệ sẽ ổn."
+    },
+    {
+      "panel": "crmn_ep148/p030.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Để thực hiện kế hoạch Vọng Nhai, Thẩm Lãng lên đường dưới sự bảo vệ của Hoàng Phượng. Mộc Lan ở lại giữ phủ và phong địa."
+    },
+    {
+      "panel": "crmn_ep148/p035.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn tự nhận doanh trại phía trước là chỗ Kim gia đặc biệt dựng để tiếp đón đoàn hải tặc, rồi ngang nhiên chiếm lấy."
+    },
+    {
+      "panel": "crmn_ep148/p041.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cùng lúc, Cừu Kiêu quan sát việc khai thác, dò la thực hư chuyện mỏ vàng."
+    },
+    {
+      "panel": "crmn_ep148/p048.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhìn công trình khổng lồ bên trong, Cừu Kiêu choáng váng vì quy mô vượt xa tưởng tượng."
+    },
+    {
+      "panel": "crmn_ep148/p050.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bước vào phòng đúc cát, hắn nhìn thấy những đống vàng sáng rực chất trong kho."
+    },
+    {
+      "panel": "crmn_ep148/p056.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn mừng thầm Cừu thị sắp phát tài, tự coi toàn bộ mỏ vàng đã thuộc về gia tộc mình."
+    },
+    {
+      "panel": "crmn_ep148/p059.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Kim Trác báo hắn đã tác oai tác quái, khiến mọi người vô cùng phẫn nộ."
+    },
+    {
+      "panel": "crmn_ep148/p062.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Kim Trác nhìn con rể, hỏi chỉ giết một mình Cừu Kiêu, hay là cả đám còn lại..."
+    },
+    {
+      "panel": "crmn_ep149/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng trả lời cha vợ: xử lý cả hai nghìn hải tặc, không để lại ai, rồi gửi đầu chúng về cho Cừu Thiên Nguy.",
+      "section": "Tập 149"
+    },
+    {
+      "panel": "crmn_ep149/p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông so với những mỏ thường chỉ cho khoảng năm vạn đồng vàng mỗi năm, còn Kim gia lại có thể lấy tới hơn một trăm vạn."
+    },
+    {
+      "panel": "crmn_ep149/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trương đạo trưởng chúc mừng ông, kết luận đây còn là một thượng cổ kim mạch."
+    },
+    {
+      "panel": "crmn_ep149/p011.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Vàng bị nung chảy rồi hòa vào đất bùn, lâu dần trở thành mạch quặng đặc biệt giàu vàng."
+    },
+    {
+      "panel": "crmn_ep149/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông chỉ dẫn ví dụ một thượng cổ kim mạch của Đại Tấn từng khai thác suốt ba mươi năm, góp phần tạo nên sức mạnh đế quốc."
+    },
+    {
+      "panel": "crmn_ep149/p019.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sau khi suy nghĩ, ông ra yêu sách: muốn sống, Kim gia phải giao tám phần sản lượng vàng hằng năm và cho quân Nộ Triều vào đảo cùng khai thác."
+    },
+    {
+      "panel": "crmn_ep149/p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chúng chế giễu Bá tước nhu nhược, còn lớn tiếng lôi kéo binh sĩ của ông bỏ sang làm hải tặc."
+    },
+    {
+      "panel": "crmn_ep149/p029.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng nhận ra kẻ này rất đa nghi: hắn tự mang đồ ăn, không dùng thức ăn được chuẩn bị sẵn, còn khống chế tửu lượng để luôn đủ sức bỏ chạy."
+    },
+    {
+      "panel": "crmn_ep149/p031.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng bèn để hắn thấy những vết thương trên người, giải thích mình phải dưỡng thương nên mới tới muộn."
+    },
+    {
+      "panel": "crmn_ep149/p034.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nghe được gọi là tiểu hầu gia, Cừu Kiêu tưởng Kim gia đã biết cha mình sắp thành Nộ Triều Hầu."
+    },
+    {
+      "panel": "crmn_ep149/p038.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn còn khoe lực lượng Cừu thị giờ lớn gấp nhiều lần, trong khi quân Kim gia đã suy giảm."
+    },
+    {
+      "panel": "crmn_ep149/p042.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cừu Kiêu nổi giận vung vũ khí. Hoàng Phượng lập tức chặn đòn ngay trước mặt Thẩm Lãng."
+    },
+    {
+      "panel": "crmn_ep149/p046.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng hiểu ngay cả cha vợ và Thập Tam Kim hợp sức cũng khó giữ hắn, bên ngoài còn hơn trăm võ sĩ hộ vệ."
+    },
+    {
+      "panel": "crmn_ep149/p048.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cừu Kiêu từ chối. Hắn đã mang đủ đồ dùng, tiếp tục không nhận rượu và thức ăn của chủ tiệc."
+    },
+    {
+      "panel": "crmn_ep149/p051.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cừu Kiêu lúc này nói thẳng mình đã biết mỏ vàng trên đảo, đừng mong giấu được hắn."
+    },
+    {
+      "panel": "crmn_ep149/p054.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng hiểu rõ: Cừu Kiêu đang nói thay cho Cừu Thiên Nguy. Đối thủ thật sự phía sau bàn tiệc đã lộ mặt."
+    },
+    {
+      "panel": "crmn_ep149/p054.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Cừu Kiêu cẩn thận với đồ ăn nhưng vẫn tin thân phận đủ bảo vệ mình. Thẩm Lãng đang chờ sơ hở trong sự kiêu ngạo đó để biến cuộc thương lượng thành một cái bẫy."
+    },
+    {
+      "panel": "crmn_ep150/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trước yêu sách tám phần mỏ vàng, Thẩm Lãng phản đối, nói Cừu thị đã cướp đoạt quá trắng trợn.",
+      "section": "Tập 150"
+    },
+    {
+      "panel": "crmn_ep150/p006.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cừu Kiêu bỗng thấy nóng, nhưng vẫn chưa nhận ra sự bất thường trong cơ thể."
+    },
+    {
+      "panel": "crmn_ep150/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn cho đối phương một nén hương suy nghĩ, nếu không sẽ về báo cha tập hợp quân đánh Vọng Nhai."
+    },
+    {
+      "panel": "crmn_ep150/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cừu Kiêu lập tức ra tay xâm phạm người hầu ngay trước mặt chủ tiệc, vẫn không quên đe dọa Thẩm Lãng phải quyết định trong một nén hương."
+    },
+    {
+      "panel": "crmn_ep150/p017.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Kim Trác thừa nhận đã nghĩ nhiều cách, không ngờ chính kế dụ đối thủ buông cảnh giác này lại có tác dụng."
+    },
+    {
+      "panel": "crmn_ep150/p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trong cơn mất kiểm soát, hắn còn buông lời đe dọa cả Mộc Lan, không nhận ra Kim Trác đã áp tới phía sau."
+    },
+    {
+      "panel": "crmn_ep150/p023.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cừu Kiêu gục xuống sàn, người hầu được giải thoát."
+    },
+    {
+      "panel": "crmn_ep150/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng kề dao vào cổ Cừu Kiêu, cảnh cáo ai bước thêm một bước, thiếu chủ của chúng sẽ mất đầu."
+    },
+    {
+      "panel": "crmn_ep150/p030.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hải tặc vẫn lớn tiếng dọa Hải Tặc Vương sẽ trả thù nếu thiếu chủ gặp nạn."
+    },
+    {
+      "panel": "crmn_ep150/p035.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bên ngoài, quân Kim gia đã mai phục sẵn trên cao và đồng loạt chuẩn bị cung tên."
+    },
+    {
+      "panel": "crmn_ep150/p039.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhiều tên trúng tên ngã xuống, tiếng kêu cứu vang giữa màn đêm."
+    },
+    {
+      "panel": "crmn_ep150/p045.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhận ra đánh nhau thật, chúng lập tức cầm vũ khí lao lên cứu thiếu chủ."
+    },
+    {
+      "panel": "crmn_ep150/p050.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tướng Kim gia nhận ra đây là quân chủ lực của Cừu Kiêu, thiện chiến và leo vách dốc gần như đất bằng, bình thường rất khó đối phó."
+    },
+    {
+      "panel": "crmn_ep150/p054.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Dù vậy, vẫn có những tên vượt qua được, leo tới vị trí phòng thủ và vung đao đánh lính canh."
+    },
+    {
+      "panel": "crmn_ep150/p057.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đoạn này cho thấy phục kích có thể tạo lợi thế mà vẫn chưa đủ kết thúc trận đánh. Quân Kim gia còn phải giữ đội hình trước những đối thủ thực sự thiện chiến."
+    },
+    {
+      "panel": "crmn_ep150/p061.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Thẩm Lãng thầm cười. Sau nhiều ngày được ăn uống no nê, đám hải tặc đã buông lỏng cảnh giác; giờ thuốc xổ hắn chuẩn bị cuối cùng cũng phát tác."
+    }
+  ],
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ]
+}

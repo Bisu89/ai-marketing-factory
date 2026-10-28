@@ -1,0 +1,63 @@
+{
+  "title": "Hoàng Phủ Thanh Vân kéo cao thủ đến Hoa Vũ Lâu!?",
+  "chapters": "139",
+  "source_dir": "manhua-recap/dqgl_ep139",
+  "written_by": "OpenAI, ??i chi?u ?nh ngu?n, 2026-10-20",
+  "description": "Hoàng Phủ Thanh Vân kéo cao thủ đến Hoa Vũ Lâu. Tóm tắt chương 139 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Hoàng Phủ Thanh Vân kéo cao thủ đến Hoa Vũ Lâu!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Trác Phàm tự nhắc mình rằng cướp đoạt cũng chẳng có gì phải tiếc nuối.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p005",
+      "narration": "Trên đường đến Hoa Vũ Lâu, hắn nhận thấy hôm nay nơi này yên ắng bất thường.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p012",
+      "narration": "Đan Đan bất ngờ lao tới; Trác Phàm đỡ nàng trước khi cô ngã xuống.",
+      "kind": "recap",
+      "type": "REACTION"
+    },
+    {
+      "panel": "p021",
+      "narration": "Đan Đan nói Hoàng Phủ Thanh Vân đã đến, khiến Trác Phàm lập tức chú ý.",
+      "kind": "recap",
+      "type": "REVEAL"
+    },
+    {
+      "panel": "p024",
+      "narration": "Nàng nhắc đến Thanh Mai Trúc Mã và chuyện Độc Thủ Dược Vương cũng không dám làm càn.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p039",
+      "narration": "Trác Phàm cho rằng còn có thế lực khác đứng sau nên không thể lơ là.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p062",
+      "narration": "Hoàng Phủ Thanh Vân đến cùng các cao thủ; khí thế của đoàn khách khiến Trác Phàm cảnh giác.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

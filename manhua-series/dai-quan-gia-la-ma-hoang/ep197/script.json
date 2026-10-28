@@ -1,0 +1,39 @@
+{
+  "title": "Trác Phàm đánh bật cao thủ Thần Chiếu!?",
+  "chapters": "197",
+  "source_dir": "manhua-recap/dqgl_ep197",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-21",
+  "description": "Trác Phàm đánh bật cao thủ Thần Chiếu. Tóm tắt chương 197 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Trác Phàm đánh bật cao thủ Thần Chiếu!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Trác Phàm vừa chống đỡ thế công vừa khiến các đối thủ nhận ra tốc độ của mình đã bị nhìn thấu.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p023",
+      "narration": "Lão phu tu luyện khổ cực cả đời để đạt cảnh giới Thần Chiếu, nhưng Trác Phàm vẫn đủ sức đẩy lùi đòn tấn công.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p075",
+      "narration": "Đối thủ bắt đầu nghi ngờ thực lực thật sự của Trác Phàm, còn hắn vẫn chưa chịu dừng tay.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

@@ -1,0 +1,283 @@
+{
+  "title": "Thẩm Lãng may đồ lót, rồi ép đại cao thủ đi đánh trận",
+  "chapters": "122",
+  "source_dir": "manhua-recap/crmn_ep123",
+  "description": "T?p 123 c?a Ch?ng R? M?nh Nh?t L?ch S?: Thẩm Lãng may đồ lót, rồi ép đại cao thủ đi đánh trận",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "beats": [
+    {
+      "panel": "p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Thẩm Lãng bỏ tiền khủng để may quà cho Tiết Lê."
+    },
+    {
+      "panel": "p002.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Hắn còn tẩm tinh chất hoa hồng để át mùi."
+    },
+    {
+      "panel": "p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Vừa về quán trọ, hắn lập tức đòi Kiếm Vương trả nợ."
+    },
+    {
+      "panel": "p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Món nợ ấy chính là một bộ đồ lót."
+    },
+    {
+      "panel": "p005.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Kiếm Vương sốc nặng vì bị xem nhẹ lời hứa."
+    },
+    {
+      "panel": "p006.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Mình thích kiểu mặc cả này: cao thủ cũng thua một món quà lạ."
+    },
+    {
+      "panel": "p007.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng còn hứa cứu phu nhân để tăng sức thuyết phục."
+    },
+    {
+      "panel": "p008.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Rõ ràng hắn không thiếu sức mạnh, chỉ thiếu chút ngại ngùng."
+    },
+    {
+      "panel": "p009.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Kiếm Vương đành nhận lời giúp hắn lẻn vào Tiết gia."
+    },
+    {
+      "panel": "p012.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sau nửa giờ, bộ đồ rơi xuống bàn đúng lúc."
+    },
+    {
+      "panel": "p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng còn tính phơi khô rồi tặng Kim Mộc Thông."
+    },
+    {
+      "panel": "p014.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Ông lão bên cạnh cuối cùng cũng ngủ ngon."
+    },
+    {
+      "panel": "p015.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Nhưng Lý Thiên Thu bất ngờ xuất hiện, đòi kết hôn."
+    },
+    {
+      "panel": "p018.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Ngoài biển, Cửu Thiên Nguy dẫn năm nghìn quân tới Kim Sơn."
+    },
+    {
+      "panel": "p019.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lý Thiên Thu áp tải Thẩm Lãng về phủ Huyền Vũ."
+    },
+    {
+      "panel": "p021.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đúng đường, đội Tiết Lê phi ngựa vượt mặt họ."
+    },
+    {
+      "panel": "p024.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Thẩm Lãng nhận ra con đường này Tiết Lê từng đi."
+    },
+    {
+      "panel": "p026.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chưa kịp yên, cả đoàn lại bị chặn giữa đường."
+    },
+    {
+      "panel": "p027.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Đám kỵ binh quát họ tránh đường như tránh chó."
+    },
+    {
+      "panel": "p028.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Tiết Lê quay lại, tạm tha cho kẻ hỗn láo."
+    },
+    {
+      "panel": "p030.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Ba ngày sau, cô mặc đồ Thẩm Lãng rồi ngủ say."
+    },
+    {
+      "panel": "p032.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Trong mơ, cô bất ngờ bị kích thích đến tỉnh hẳn."
+    },
+    {
+      "panel": "p034.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Mình nghi bộ đồ này sẽ thành vũ khí phá phòng tuyến."
+    },
+    {
+      "panel": "p035.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tiếng động khiến cả phủ tưởng tiểu thư gặp chuyện."
+    },
+    {
+      "panel": "p036.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Tiết Lê vội nói đó chỉ là ác mộng."
+    },
+    {
+      "panel": "p039.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Nhưng bên trong, cô đang soi ảnh mỹ nhân bằng nến."
+    },
+    {
+      "panel": "p040.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Cô hoảng hốt vì căn bệnh kỳ quặc bị lộ."
+    },
+    {
+      "panel": "p041.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tiết Lê quyết về thành tìm nữ y sĩ chữa bệnh."
+    },
+    {
+      "panel": "p042.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Màn ngụy trang này buồn cười vì cô càng chối càng đáng ngờ."
+    },
+    {
+      "panel": "p043.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Suốt đường đi, cô đau ngứa đến mức ngồi ngựa cũng khổ."
+    },
+    {
+      "panel": "p045.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Tới phủ Huyền Vũ, Thẩm Lãng lập tức được chia tay."
+    },
+    {
+      "panel": "p046.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Mình thấy Thẩm Lãng diễn rất đạt: bị bỏ rơi mà vẫn cười."
+    },
+    {
+      "panel": "p047.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trong thư phòng, hắn nghe Cửu Thiên Nguy đã xuất binh."
+    },
+    {
+      "panel": "p048.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Kế hoạch giả vờ chiếm Kim Sơn cuối cùng cũng hoàn tất."
+    },
+    {
+      "panel": "p050.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng đưa bộ đồ cho Kim Mộc Thông chép sách."
+    },
+    {
+      "panel": "p051.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Chi tiết buồn cười nhất: món quà nhạy cảm lại dùng làm mực mẫu."
+    },
+    {
+      "panel": "p052.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mười bảy tiếng sau, thuốc của Tiết Lê đã hoàn thành."
+    },
+    {
+      "panel": "p053.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Thẩm Lãng còn làm bộ thần bí, khiến trợ thủ tin sái cổ."
+    },
+    {
+      "panel": "p054.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Kim Mộc Thông nghi ngờ, nhưng vẫn bị hắn lừa tiếp."
+    },
+    {
+      "panel": "p055.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Mình đoán cậu mập này sắp bị ép học hành tới sáng."
+    },
+    {
+      "panel": "p056.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Quả nhiên Thẩm Lãng bắt hắn chép sách và học thơ."
+    },
+    {
+      "panel": "p057.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Kim Mộc Thông lập tức mơ đỗ Trạng Nguyên để cưới vợ."
+    },
+    {
+      "panel": "p058.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Mình chốt: Thẩm Lãng vừa mưu sâu vừa có tài dạy người."
+    },
+    {
+      "panel": "p059.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Nhưng kế hoạch học hành này liệu có thành công không?"
+    },
+    {
+      "panel": "p060.jpg",
+      "type": "ENDING",
+      "kind": "commentary",
+      "narration": "Hay Kim Mộc Thông sẽ bỏ cuộc ngay bài thơ đầu?"
+    }
+  ]
+}

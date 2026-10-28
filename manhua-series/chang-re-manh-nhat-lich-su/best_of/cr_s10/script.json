@@ -1,0 +1,91 @@
+{
+  "title": "Nữ chiến binh hạ gục huyền thoại bất bại chỉ trong một chiêu!?",
+  "chapters": "103,104,105,106",
+  "source_dir": "manhua-recap/crmn_ep104",
+  "description": "Trận đấu võ đầu tiên giành đảo Kim Sơn nổ ra: Đường Viêm tung chiêu kiếm bất bại Thiên Ngoại Lưu Tinh suốt mười bốn năm chưa từng thua, nhưng Mộc Lan đã sớm được chỉ ra kẽ hở và hạ gục anh ta chỉ trong một chiêu. Tấn Hải Bá liền âm thầm thuê cao thủ trà trộn vào quân đội để gian lận trận ba, còn Huyền Vũ không mượn được một cao thủ nào, buộc phải tự nâng cấp vũ khí trong bí mật. Quân chiến bùng nổ, một kẻ trong hàng ngũ thuê mượn bất ngờ trở mặt nhắm thẳng vào Mộc Lan.\nReview Chàng Rể Mạnh Nhất Lịch Sử – Short best-of.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "thumbnail": {
+    "text": "HUYỀN THOẠI BẤT BẠI SỤP ĐỔ!",
+    "prompt": "Vertical 9:16 anime-style: a red-armored swordswoman delivering a single decisive strike against a teal-robed swordsman mid-air, shattered blue energy shards flying, a dueling hall full of stunned nobles below. No text, leave top 25% empty."
+  },
+  "beats": [
+    {
+      "panel": "crmn_ep104/p009.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Đường Viêm mất mười bốn năm luyện thành một kiếm bất bại — Thiên Ngoại Lưu Tinh, chưa ai từng đỡ được."
+    },
+    {
+      "panel": "crmn_ep104/p010.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng Mộc Lan đã sớm nhìn ra phong nhãn của kiếm pháp này — kẽ hở duy nhất, cũng là nơi mỏng manh nhất."
+    },
+    {
+      "panel": "crmn_ep104/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mũi kiếm của nàng xuyên thẳng vào tâm điểm luồng kiếm khí, thanh kiếm của Đường Viêm khựng lại, rạn vỡ trong tiếng kêu răng rắc."
+    },
+    {
+      "panel": "crmn_ep104/p017.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đường Viêm bị đánh bay ngược lên không trung, cả đại sảnh chìm trong im lặng tuyệt đối."
+    },
+    {
+      "panel": "crmn_ep104/p021.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Khán đài phía Tấn Hải Bá chấn động: không đúng, sao người thua lại là Đường Viêm? Bất khả chiến bại vậy mà bị một thanh mộc kiếm đánh gục?"
+    },
+    {
+      "panel": "crmn_ep105/p040.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngay sau đó, Tấn Hải Bá âm thầm đem tài sản ra thuê cao thủ, trà trộn vào quân đội để gian lận trận chiến thứ ba."
+    },
+    {
+      "panel": "crmn_ep105/p062.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Và giữa lúc đó, một thế lực bí ẩn của Tô gia cũng lặng lẽ trà trộn vào ngay quân đội đối phương — mục đích thật sự vẫn còn là một ẩn số."
+    },
+    {
+      "panel": "crmn_ep106/p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Không một quý tộc nào dám cho Huyền Vũ mượn cao thủ. Thẩm Lãng chỉ lạnh lùng: chờ sau khi chúng ta thắng lớn, ngọn lửa sẽ cháy trên đầu bọn họ."
+    },
+    {
+      "panel": "crmn_ep106/p035.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh âm thầm nâng cấp toàn bộ vũ khí giáp trụ, giấu kín đến tận giờ chót — cả đội quân đồng loạt khoác lên bộ trang bị mới, khí thế bừng bừng."
+    },
+    {
+      "panel": "crmn_ep107/p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Quân chiến bùng nổ. Ba vị trọng tài kinh ngạc: không phải bên xanh bị phá hủy, mà là bên đỏ! Phủ Bá tước Huyền Vũ đã giấu giếm chiêu này!"
+    },
+    {
+      "panel": "crmn_ep107/p036.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Giữa trận hỗn loạn, một cao thủ thuê mượn nhắm thẳng vào Mộc Lan — nàng sững sờ nhận ra: Tô Thiên Ân!?"
+    },
+    {
+      "panel": "crmn_ep107/p057.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Giữa lúc nguy cấp, Kim Trác vung kiếm hô vang: ta, Kim Trác, cam đoan những binh lính Huyền Vũ sẽ không bao giờ tấn công các ngươi!"
+    },
+    {
+      "panel": "crmn_ep107/p064.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Hàng loạt cao thủ thuê mượn đồng loạt giơ kiếm đầu hàng. Trương Xung đứng giữa bãi đấu, hô vang quyết định cuối cùng: trận chiến này quyết định hòa!"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "title": "Trác Phàm biến trận vây công thành màn phản đòn!?",
+  "chapters": "196",
+  "source_dir": "manhua-recap/dqgl_ep196",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-21",
+  "description": "Trác Phàm biến trận vây công thành màn phản đòn. Tóm tắt chương 196 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Trác Phàm biến trận vây công thành màn phản đòn!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Các cao thủ đồng loạt áp sát, tin rằng chỉ cần giữ Trác Phàm trong tầm đánh là đủ.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p023",
+      "narration": "Trác Phàm đọc được hướng ra đòn của từng người và liên tục né tránh trong gang tấc.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p076",
+      "narration": "Khi đối thủ dồn sức tấn công, Trác Phàm vẫn đứng vững, khiến Lâm trưởng lão không khỏi kinh ngạc.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

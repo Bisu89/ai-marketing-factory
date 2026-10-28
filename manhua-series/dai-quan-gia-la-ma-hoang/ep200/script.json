@@ -1,0 +1,39 @@
+{
+  "title": "Trác Phàm chịu đòn để phá giải Huyết Bức Chấn Thiên!?",
+  "chapters": "200",
+  "source_dir": "manhua-recap/dqgl_ep200",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-21",
+  "description": "Trác Phàm chịu đòn để phá giải Huyết Bức Chấn Thiên. Tóm tắt chương 200 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Trác Phàm chịu đòn để phá giải Huyết Bức Chấn Thiên!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Lâm trưởng lão tiếp tục thúc giục mọi người vây công, tin rằng Trác Phàm sẽ sớm gục ngã.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p018",
+      "narration": "Trác Phàm bảo đối thủ uống đan để tăng nguyên lực; bản thân hắn lại tự mình chống chịu đòn đánh trong trận pháp.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p036",
+      "narration": "Lâm trưởng lão nhận ra Trác Phàm đang thử một cách phá giải khó tin, còn trận chiến vẫn chưa phân thắng bại.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

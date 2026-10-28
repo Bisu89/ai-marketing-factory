@@ -1,0 +1,17 @@
+{
+  "title": "Thẩm Lãng đột nhập mật khố, kẻ canh giữ vẫn chưa chết!?",
+  "chapters": "169",
+  "source_dir": "manhua-recap/crmn_ep170",
+  "description": "Thẩm Lãng lẻn vào mật khố trong phủ thành chủ để tìm thứ mình cần. Hắn đánh gục người canh cửa, nhưng đối phương bất ngờ vẫn còn sống.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "beats": [
+    {"panel":"p002.jpg","type":"HOOK","kind":"recap","narration":"Thẩm Lãng lẻn vào tầng đầu của mật khố, nơi cất giữ tài vật và bí mật của phủ thành chủ."},
+    {"panel":"p009.jpg","type":"BUILD","kind":"recap","narration":"Hắn nghe thấy tiếng thở và nhịp tim phía sau cánh cửa, biết nơi này có người canh giữ."},
+    {"panel":"p017.jpg","type":"BUILD","kind":"recap","narration":"Thẩm Lãng ra tay trước, đánh ngã đối thủ trong một đòn bất ngờ."},
+    {"panel":"p025.jpg","type":"BUILD","kind":"recap","narration":"Khi bước vào trong, hắn thấy căn phòng chất đầy rương và giấy tờ."},
+    {"panel":"p033.jpg","type":"BUILD","kind":"commentary","narration":"Đột nhập thành công mới chỉ là bước đầu: nếu nơi này chứa bí mật của thành chủ, mỗi phút ở lại đều tăng nguy cơ bị phát hiện."},
+    {"panel":"p041.jpg","type":"BUILD","kind":"recap","narration":"Thẩm Lãng tiếp tục lục tìm, nhưng thứ hắn cần dường như không nằm ở tầng đầu."},
+    {"panel":"p049.jpg","type":"BUILD","kind":"recap","narration":"Hắn phát hiện người vừa bị đánh gục vẫn còn thở, trái với suy đoán ban đầu."},
+    {"panel":"p053.jpg","type":"ENDING","kind":"recap","narration":"Kẻ canh giữ chưa chết và có thể báo động bất cứ lúc nào. Thẩm Lãng phải tìm ra mục tiêu trước khi bị bao vây."}
+  ]
+}

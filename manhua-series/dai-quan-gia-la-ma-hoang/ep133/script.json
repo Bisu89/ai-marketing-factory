@@ -1,0 +1,63 @@
+{
+  "title": "Trác Phàm bị gài bẫy vì Bích Độc Ngọc Dịch!?",
+  "chapters": "133",
+  "source_dir": "manhua-recap/dqgl_ep133",
+  "written_by": "OpenAI, ??i chi?u ?nh ngu?n, 2026-10-20",
+  "description": "Trác Phàm bị gài bẫy vì Bích Độc Ngọc Dịch. Tóm tắt chương 133 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Trác Phàm bị gài bẫy vì Bích Độc Ngọc Dịch!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p003",
+      "narration": "Nữ cao thủ tóc trắng lập tức tấn công kẻ đột nhập, nhưng Trác Phàm né được.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p016",
+      "narration": "Hắn nhận ra đối phương không phải người có thể xem thường, liền tìm cách rút lui.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p032",
+      "narration": "Bích Độc Tụ Cầm được giấu trong hộp, nhưng Trác Phàm vẫn chưa tin vật này là thật.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p050",
+      "narration": "Khi bị chặn lại, hắn giả vờ trộm món đồ để nói mình chỉ đến xem thử.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p066",
+      "narration": "Trưởng lão Nghiêm Tông nhận ra bảo vật là đồ giả rồi quay sang nghi ngờ Trác Phàm.",
+      "kind": "recap",
+      "type": "REVEAL"
+    },
+    {
+      "panel": "p074",
+      "narration": "Trác Phàm hiểu đây là cái bẫy: kẻ đứng sau muốn ép hắn lộ Bích Độc Ngọc Dịch thật.",
+      "kind": "commentary",
+      "type": "REVEAL"
+    },
+    {
+      "panel": "p083",
+      "narration": "Hai bên giao thủ dữ dội. Nghiêm Tông đã đổ máu, nhưng trận chiến chưa ngã ngũ.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

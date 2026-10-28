@@ -1,0 +1,17 @@
+{
+  "title": "Hải tặc phát hiện mỏ vàng, đội hình lập tức tan rã!?",
+  "chapters": "156",
+  "source_dir": "manhua-recap/crmn_ep157",
+  "description": "Quân Kim gia dùng địa hình giữ chân hải tặc tại Vọng Nhai. Nhưng khi phát hiện mạch vàng trong mỏ, lòng tham khiến đội hình đối phương bắt đầu rối loạn.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "beats": [
+    {"panel":"p002.jpg","type":"HOOK","kind":"recap","narration":"Dù hải tặc liên tục tràn lên, 500 quân Kim gia vẫn dựa vào địa thế để chặn bước tiến của chúng."},
+    {"panel":"p008.jpg","type":"BUILD","kind":"recap","narration":"Đám hải tặc ngạc nhiên vì giáp trụ và kỷ luật của quân phòng thủ, không giống dân binh thông thường."},
+    {"panel":"p014.jpg","type":"BUILD","kind":"recap","narration":"Kim Trác cho quân giữ chặt cửa mỏ, lấy ít người cầm chân lực lượng đông hơn nhiều lần."},
+    {"panel":"p020.jpg","type":"BUILD","kind":"recap","narration":"Một toán hải tặc xông sâu vào đường hầm rồi bất ngờ phát hiện bên trong có mạch vàng lớn."},
+    {"panel":"p027.jpg","type":"BUILD","kind":"recap","narration":"Tin vàng lan ra khiến những kẻ vốn đang giao chiến lập tức bỏ vị trí, chen nhau lao vào mỏ."},
+    {"panel":"p035.jpg","type":"BUILD","kind":"commentary","narration":"Mỏ vàng vừa là chiến lợi phẩm, vừa trở thành cái bẫy tâm lý: lòng tham khiến quân đông mất đi ưu thế kỷ luật."},
+    {"panel":"p046.jpg","type":"BUILD","kind":"recap","narration":"Cửu Thiên Nguy quan sát cảnh hỗn loạn, nhận ra quân của mình đang bị sức hút của vàng kéo khỏi kế hoạch."},
+    {"panel":"p057.jpg","type":"ENDING","kind":"recap","narration":"Đám người vẫn tiếp tục tràn sâu vào mỏ. Thẩm Lãng dường như đã chờ đúng khoảnh khắc này."}
+  ]
+}

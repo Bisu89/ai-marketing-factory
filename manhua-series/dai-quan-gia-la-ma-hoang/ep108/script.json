@@ -1,0 +1,32 @@
+{
+  "title": "Trên đường dự hội Bạch Đan, Trác Phàm lại bị U Minh Cốc chặn!?",
+  "chapters": "108",
+  "source_dir": "manhua-recap/dqgl_ep108",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-19",
+  "description": "Sau khi giúp Thiên Nhi xử lý phần lớn chất độc, Trác Phàm cùng nhóm Tống gia tiếp tục lên đường dự hội Bạch Đan. Người của U Minh Cốc vẫn bám theo, nhưng Trác Phàm phát hiện cuộc phục kích và phản công. Đoàn người cuối cùng tiến vào Hoa Vũ Thành, nơi các gia tộc lớn bắt đầu tụ hội.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tập 108 (chương 108).",
+  "hashtags": ["#DaiQuanGiaLaMaHoang", "#ReviewManhua", "#Manhua", "#TuTien", "#XuyenKhong", "#ReviewTruyen"],
+  "thumbnail": {"text":"U Minh Cốc phục kích giữa đường, Trác Phàm phản đòn!?","prompt":"Vertical 9:16 Chinese manhua style, Trac Pham in a travel cloak facing a group of ambushers on a forest road, golden spirit barrier and purple-red power flaring around him, carriage behind, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"},
+  "beats": [
+    {"panel":"p002.jpg","narration":"Trên đường tới hội Bạch Đan, đoàn người rời khỏi Tề gia sau chuyện độc của Thiên Nhi.","kind":"recap","type":"HOOK"},
+    {"panel":"p005.jpg","narration":"Trác Phàm xác nhận phần lớn độc đã được hút ra; Thiên Nhi tạm thời không còn nguy hiểm.","kind":"recap","type":"BUILD"},
+    {"panel":"p008.jpg","narration":"Hắn vẫn băn khoăn vì độc trong máu cô trông gần như máu bình thường, dấu hiệu này khiến hắn thấy lạ.","kind":"recap","type":"BUILD"},
+    {"panel":"p010.jpg","narration":"Đột nhiên Trác Phàm cảm thấy cơ thể có gì đó không ổn, như thể chính hắn cũng vừa bị trúng độc.","kind":"recap","type":"BUILD"},
+    {"panel":"p012.jpg","narration":"Một kết giới vàng hiện ra quanh hắn, chặn đòn đánh bất ngờ từ phía trước.","kind":"recap","type":"BUILD"},
+    {"panel":"p015.jpg","narration":"Những kẻ phục kích ngỡ ngàng khi thấy Trác Phàm bình an trong Linh Bình Ngũ Cấp.","kind":"recap","type":"BUILD"},
+    {"panel":"p018.jpg","narration":"Kẻ cầm đầu nhận ra người trước mặt không phải khách đi đường bình thường, nhưng vẫn ra lệnh cho thuộc hạ tấn công.","kind":"recap","type":"BUILD"},
+    {"panel":"p021.jpg","narration":"Trác Phàm nghe đối phương nhắc tới U Minh Cốc và hiểu rằng lệnh truy sát đã đuổi kịp mình.","kind":"recap","type":"BUILD"},
+    {"panel":"p024.jpg","narration":"Đám phục kích đòi hắn khai danh tính, còn Trác Phàm chỉ lạnh lùng hỏi họ có biết mình đang gây sự với ai không.","kind":"recap","type":"BUILD"},
+    {"panel":"p027.jpg","narration":"Một tên lớn tiếng đe dọa sẽ lấy mạng hắn, nhưng Trác Phàm chẳng hề có ý định lùi bước.","kind":"recap","type":"BUILD"},
+    {"panel":"p030.jpg","narration":"Hắn tung đòn phản công, phá vỡ thế vây và khiến nhóm người kia phải tản ra.","kind":"recap","type":"BUILD"},
+    {"panel":"p033.jpg","narration":"Trác Phàm không cần tốn nhiều lời với đám sát thủ; hắn chỉ muốn tiếp tục hành trình.","kind":"commentary","type":"BUILD"},
+    {"panel":"p036.jpg","narration":"Khi cuộc đụng độ lắng xuống, nhóm đồng hành hỏi chuyện gì vừa xảy ra và vì sao hắn bị nhắm tới.","kind":"recap","type":"BUILD"},
+    {"panel":"p039.jpg","narration":"Trác Phàm nhắc họ đừng quá lo; U Minh Cốc đã muốn truy sát hắn thì sớm muộn cũng sẽ tìm đến.","kind":"recap","type":"BUILD"},
+    {"panel":"p042.jpg","narration":"Cả nhóm lại lên đường, hướng về Hoa Vũ Thành để kịp hội Bạch Đan.","kind":"recap","type":"BUILD"},
+    {"panel":"p045.jpg","narration":"Tới nơi, họ gặp một nhóm người quen đang chờ ở gần cổng thành.","kind":"recap","type":"BUILD"},
+    {"panel":"p048.jpg","narration":"Người bạn đồng hành nhận ra Trác Phàm và tỏ vẻ bất ngờ khi thấy hắn đi cùng Tống gia.","kind":"recap","type":"BUILD"},
+    {"panel":"p051.jpg","narration":"Hắn giải thích mình đến để tham gia hội Bạch Đan, còn những người kia vẫn chưa hiểu vì sao hắn lại chọn đi cùng đoàn này.","kind":"recap","type":"BUILD"},
+    {"panel":"p054.jpg","narration":"Trác Phàm không muốn mất thời gian giải thích thêm, chỉ giục mọi người tiếp tục đi.","kind":"recap","type":"BUILD"},
+    {"panel":"p057.jpg","narration":"Nhóm người rời cổng thành trong lúc các gia tộc đang đổ về dự hội; phía trước còn nhiều chuyện chờ họ.","kind":"recap","type":"BUILD"},
+    {"panel":"p078.jpg","narration":"Trác Phàm nhận ra nhóm người trước mặt có điểm khác thường, rồi quyết định: phải lên đường thôi.","kind":"recap","type":"ENDING"}
+  ]
+}

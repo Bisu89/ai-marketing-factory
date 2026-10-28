@@ -1,0 +1,105 @@
+{
+  "title": "Tr?c Ph?m g?y n?o ??ng h?i B?ch ?an!?",
+  "chapters": "114-117",
+  "source_dir": "manhua-recap/dqgl_ep114",
+  "written_by": "Tuy?n ch?n v? bi?n t?p t? ep111-ep120, 2026-10-19",
+  "description": "T?m t?t ??i Qu?n Gia L? Ma Ho?ng ch??ng 114-117, k?m b?nh lu?n.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Một câu trêu chọc khiến hắn phát cuồng!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, fast black-haired cultivator teasing an embarrassed elegant woman while a red-haired rival charges angrily, motion streaks in courtyard, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep114/p001.jpg",
+      "narration": "Đối thủ không tin Trác Phàm có thể nhanh đến vậy, dù vừa tận mắt thấy hắn né đòn.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep114/p009.jpg",
+      "narration": "Hắn áp sát Mẫu Đan, khiến kẻ tóc đỏ nổi giận vì cho rằng Trác Phàm đang cố ý trêu ghẹo nàng.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep114/p027.jpg",
+      "narration": "Mẫu Đan lên tiếng bảo Trác Phàm đừng quá đáng, nhưng hắn vẫn giữ vẻ ung dung.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep114/p042.jpg",
+      "narration": "Mẫu Đan đứng giữa hai bên, cố ngăn trận đấu vượt khỏi giới hạn.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep115/p001.jpg",
+      "narration": "Sau đòn vừa rồi, kẻ tóc đỏ nhận ra Trác Phàm không chỉ mạnh mà còn di chuyển nhanh hơn dự đoán.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep115/p005.jpg",
+      "narration": "Hắn hỏi Trác Phàm đã dùng thân pháp gì, còn Trác Phàm chỉ đáp rằng mình không bị cấm luyện kỹ năng di chuyển.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep115/p015.jpg",
+      "narration": "Hắn quay sang hỏi Mẫu Đan đã thấy màn thể hiện của mình chưa, như thể trận đấu cũng là dịp để tán tỉnh nàng.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep115/p030.jpg",
+      "narration": "Mẫu Đan bất ngờ tự hỏi vì sao mình lại để tâm đến từng lời nói và động tác của Trác Phàm.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep116/p001.jpg",
+      "narration": "Tại tổng bộ Hoa Vũ Lâu, các lâu chủ đang chuẩn bị đón những khách mời đến dự hội Bạch Đan.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep116/p014.jpg",
+      "narration": "Người của U Minh Cốc tuyên bố sẽ tự tay giết Trác Phàm để trả thù cho các trưởng lão đã chết.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep116/p029.jpg",
+      "narration": "Mẫu Đan Lâu chủ nhắc mọi người nhớ rằng buổi hội còn chưa chính thức bắt đầu.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep117/p019.jpg",
+      "narration": "Ở một nơi xa, Trác Phàm đặt chân vào khu phố hoang vắng và nhận ra đã lâu mình không phải chạy trốn như thế này.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep117/p035.jpg",
+      "narration": "Trác Phàm nhắc người kia rằng ban ngày rồi, không cần phải lén lút như buổi tối.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep117/p061.jpg",
+      "narration": "Khi màn đêm buông xuống, hắn bắt đầu dò xét nội tình nơi này. Có vẻ khu phố này còn giấu một bí mật.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

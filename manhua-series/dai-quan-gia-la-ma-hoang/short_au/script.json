@@ -1,0 +1,76 @@
+{
+  "template": "manhua_recap_vi",
+  "title": "Đại Quản Gia Là Ma Hoàng | Tập 165–167: Trác Phàm nghịch chuyển!?",
+  "chapters": "165-167",
+  "source_dir": "manhua-recap/dqgl_ep165",
+  "written_by": "OpenAI, biên tập từ script từng tập, 2026-10-21",
+  "description": "Tóm tắt tập 165 đến 167 Đại Quản Gia Là Ma Hoàng. Trác Phàm đối đầu cao thủ và tìm cách xoay chuyển cục diện.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Lưu Đại Sư nhận lời thách đấu của Trác Phàm!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep165/p001.jpg",
+      "narration": "Trác Phàm tiếp tục ép Lưu Đại Sư chứng minh thực lực thay vì chỉ dựa vào danh tiếng.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep165/p022.jpg",
+      "narration": "Hắn đưa ra điều kiện: nếu đánh ngã được mình thì Lưu sẽ được xem là đứng đầu.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep165/p058.jpg",
+      "narration": "Lưu Đại Sư chấp nhận lời thách, mở màn cho cuộc đối đầu mà cả hội trường mong chờ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep166/p001.jpg",
+      "narration": "Sau màn khẩu chiến, cuộc thi chuyển sang phần thử luyện đan với nguyên liệu cấp cao hơn.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep166/p024.jpg",
+      "narration": "Nhiều thí sinh bắt đầu xử lý nguyên liệu tam phẩm, trong khi ban giám khảo theo dõi từng thao tác.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep166/p060.jpg",
+      "narration": "Kết quả của vòng thử thách vẫn chưa ngã ngũ, và Trác Phàm còn chưa tung hết bài.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep167/p001.jpg",
+      "narration": "Một nguyên liệu độc tính cao được đưa ra, khiến các thí sinh phải tính toán kỹ trước khi phối dược.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep167/p026.jpg",
+      "narration": "Thanh Mãng Lân Dịch trở thành tâm điểm khi được đặt cạnh Ôn Dương Đan, tạo ra phép thử đầy rủi ro.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep167/p062.jpg",
+      "narration": "Cách xử lý nguyên liệu này có thể quyết định ai đủ sức bước tiếp trong cuộc thi.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

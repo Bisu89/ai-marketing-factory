@@ -1,0 +1,212 @@
+{
+  "template": "manhua_recap_long_vi",
+  "title": "Đại Quản Gia Là Ma Hoàng | Tập 151–160",
+  "chapters": "151-160",
+  "source_dir": "manhua-recap/dqgl_ep151",
+  "written_by": "OpenAI, biên tập từ script từng tập, 2026-10-21",
+  "description": "Tóm tắt Đại Quản Gia Là Ma Hoàng từ tập 151 đến 160, nối tiếp cuộc chiến và những bước đột phá của Trác Phàm.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Trác Phàm tìm ra hy vọng cứu Hoa Vũ Lâu!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep151/p001.jpg",
+      "narration": "Sau biến cố ở Hoa Vũ Lâu, Trác Phàm cùng Sở Khuynh Thành tìm đến vị trưởng lão bị phong băng để xem tình trạng của ông.",
+      "kind": "recap",
+      "type": "HOOK",
+      "section": "Tập 151: Trác Phàm tìm ra hy vọng cứu Hoa Vũ Lâu!?"
+    },
+    {
+      "panel": "dqgl_ep151/p012.jpg",
+      "narration": "Khuynh Thành cố đánh thức người đang bị đóng băng; Trác Phàm quan sát và nhận ra cơ thể vẫn còn dấu hiệu sống.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep151/p027.jpg",
+      "narration": "Cuộc gặp bất ngờ khiến Trác Phàm hiểu rằng Hoa Vũ Lâu vẫn còn một cơ hội xoay chuyển tình thế.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep152/p001.jpg",
+      "narration": "Khuynh Thành giải thích vì sao trưởng lão phải tự phong ấn trong băng để kìm hãm độc tính đang ăn mòn cơ thể.",
+      "kind": "recap",
+      "type": "BUILD",
+      "section": "Tập 152: Bí mật chất độc trong cơ thể trưởng lão!?"
+    },
+    {
+      "panel": "dqgl_ep152/p018.jpg",
+      "narration": "Muốn cứu ông, họ cần tìm đúng phương thuốc và hiểu cách các luồng âm dương đang xung đột bên trong.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep152/p045.jpg",
+      "narration": "Trác Phàm bắt đầu lần theo dấu vết của chất độc, nhưng phương thuốc tưởng đơn giản lại ẩn một vấn đề lớn hơn.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep153/p001.jpg",
+      "narration": "Hoàng Phủ Thanh Vân tìm đến chất vấn Trác Phàm, biến cuộc gặp ở Hoa Vũ Lâu thành màn đối đầu căng thẳng.",
+      "kind": "recap",
+      "type": "BUILD",
+      "section": "Tập 153: Hoàng Phủ Thanh Vân đối đầu Trác Phàm!?"
+    },
+    {
+      "panel": "dqgl_ep153/p022.jpg",
+      "narration": "Khuynh Thành lên tiếng bảo vệ Trác Phàm, còn Thanh Vân không tin lời giải thích của hai người.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep153/p058.jpg",
+      "narration": "Hai bên chưa ai chịu nhượng bộ; chỉ một bước sai cũng có thể khiến cuộc thương lượng biến thành giao đấu.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep154/p001.jpg",
+      "narration": "Mâu thuẫn giữa Thanh Vân và Trác Phàm nhanh chóng vượt khỏi lời qua tiếng lại.",
+      "kind": "recap",
+      "type": "BUILD",
+      "section": "Tập 154: Khuynh Thành bị đánh, Trác Phàm nổi giận!?"
+    },
+    {
+      "panel": "dqgl_ep154/p030.jpg",
+      "narration": "Khuynh Thành bị cuốn vào đòn tấn công, khiến Trác Phàm lập tức phản ứng.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep154/p068.jpg",
+      "narration": "Sát khí của Trác Phàm bùng lên sau khi người bên cạnh bị thương; cuộc đối đầu giờ không còn đường lui.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep155/p001.jpg",
+      "narration": "Sau màn va chạm, Hoàng Phủ Thanh Vân bắt đầu cân nhắc hậu quả nếu các thế lực lớn cùng nhúng tay.",
+      "kind": "recap",
+      "type": "BUILD",
+      "section": "Tập 155: Bốn gia tộc đứng trước thế cờ mới!?"
+    },
+    {
+      "panel": "dqgl_ep155/p024.jpg",
+      "narration": "Chuyện ở Hoa Vũ Lâu không chỉ liên quan đến một cá nhân; nó có thể làm thay đổi cán cân giữa các gia tộc.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep155/p061.jpg",
+      "narration": "Thanh Vân vẫn chưa biết nên tiến hay lùi, trong khi Trác Phàm giữ kín tính toán của mình.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep156/p001.jpg",
+      "narration": "Khuynh Thành dịu giọng xin lỗi sau cuộc tranh cãi, nhưng Trác Phàm không xem chuyện vừa rồi là lý do để bỏ cuộc.",
+      "kind": "recap",
+      "type": "BUILD",
+      "section": "Tập 156: Trác Phàm tuyên bố Đông gia chưa diệt vong!?"
+    },
+    {
+      "panel": "dqgl_ep156/p020.jpg",
+      "narration": "Hắn khẳng định Đông gia vẫn còn cơ hội, khiến những người có mặt phải nhìn lại tình thế.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep156/p055.jpg",
+      "narration": "Nhóm của Trác Phàm rời khỏi Hoa Vũ Lâu với một hướng đi mới và những mối nghi ngờ chưa được giải đáp.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep157/p001.jpg",
+      "narration": "Trác Phàm cùng mọi người rời Hoa Vũ Lâu trên xe, khép lại cuộc gặp đầy căng thẳng với Khuynh Thành.",
+      "kind": "recap",
+      "type": "BUILD",
+      "section": "Tập 157: Rời Hoa Vũ Lâu, Trác Phàm lên đường!?"
+    },
+    {
+      "panel": "dqgl_ep157/p020.jpg",
+      "narration": "Chuyến đi tạo khoảng lặng để cả nhóm suy tính bước tiếp theo sau những chuyện vừa xảy ra.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep157/p047.jpg",
+      "narration": "Nhưng ở phía sau, một âm mưu khác đang được chuẩn bị và có thể sớm đuổi kịp họ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep158/p001.jpg",
+      "narration": "Trong lúc nhóm Trác Phàm đã rời đi, một đệ tử Hoa Vũ Lâu có biểu hiện bất thường khiến mọi người cảnh giác.",
+      "kind": "recap",
+      "type": "BUILD",
+      "section": "Tập 158: Độc thủ trong Hoa Vũ Lâu lộ diện!?"
+    },
+    {
+      "panel": "dqgl_ep158/p020.jpg",
+      "narration": "Khuynh Thành phát hiện dấu hiệu bị hạ độc và lập tức tìm cách khống chế tình hình.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep158/p049.jpg",
+      "narration": "Kẻ đứng sau vụ việc vẫn chưa lộ mặt, còn Hoa Vũ Lâu phải tự đối diện nguy cơ từ bên trong.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep159/p001.jpg",
+      "narration": "Tại Bạch Đan Thành, cuộc thi luyện đan quy tụ nhiều cao thủ, trong đó có Lưu Đại Sư nổi tiếng ngạo mạn.",
+      "kind": "recap",
+      "type": "BUILD",
+      "section": "Tập 159: Lưu Đại Sư gây náo loạn cuộc thi luyện đan!?"
+    },
+    {
+      "panel": "dqgl_ep159/p025.jpg",
+      "narration": "Lưu Đại Sư dùng uy thế ép người khác tránh đường, khiến không khí trước cuộc thi thêm căng thẳng.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep159/p066.jpg",
+      "narration": "Khi các thí sinh chuẩn bị vào vòng đấu, Trác Phàm đã có mặt và sẵn sàng khiến cuộc thi đổi hướng.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep160/p001.jpg",
+      "narration": "Cuộc thi luyện đan ở Bạch Đan Thành chính thức khai màn, thu hút sự chú ý của các thế lực quanh vùng.",
+      "kind": "recap",
+      "type": "BUILD",
+      "section": "Tập 160: Cuộc thi luyện đan Bạch Đan Thành bắt đầu!?"
+    },
+    {
+      "panel": "dqgl_ep160/p022.jpg",
+      "narration": "Ban tổ chức công bố luật thi và yêu cầu các thí sinh thể hiện thực lực ngay từ vòng đầu.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep160/p060.jpg",
+      "narration": "Giữa những ánh mắt dò xét, Tổng Ngọc chuẩn bị bước vào phần thi đầu tiên.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "title": "Trác Phàm giành chỗ ngồi của Kiếm Hầu Phủ!?",
+  "chapters": "141",
+  "source_dir": "manhua-recap/dqgl_ep141",
+  "written_by": "OpenAI, ??i chi?u ?nh ngu?n, 2026-10-20",
+  "description": "Trác Phàm giành chỗ ngồi của Kiếm Hầu Phủ. Tóm tắt chương 141 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Trác Phàm giành chỗ ngồi của Kiếm Hầu Phủ!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Buổi hội tại Hoa Vũ Lâu chưa kịp bắt đầu, Hoàng Phủ Thanh Vân đã tự nhận mình là con rể tương lai của nơi này.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p006",
+      "narration": "Mẫu Đơn bất ngờ trước màn tự xưng ấy, còn Trác Phàm thừa nhận đây là cách Thanh Vân khuấy động buổi tiệc.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "p014",
+      "narration": "Khi các thế gia chọn chỗ theo thứ bậc, Trác Phàm ngang nhiên ngồi vào vị trí vốn dành cho Kiếm Hầu Phủ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p025",
+      "narration": "Thiên Dương cùng người của Kiếm Hầu Phủ lập tức phản đối, nhưng Trác Phàm nhắc rằng chỗ ngồi đã phân thì ai cũng phải theo quy củ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p039",
+      "narration": "Thanh Vân không ngăn Trác Phàm; thái độ bình thản của hắn khiến người khác khó đoán các phe đang tính toán điều gì.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "p052",
+      "narration": "Mẫu Đơn lo việc này sẽ đẩy Hoa Vũ Lâu vào thế khó, nhưng Trác Phàm vẫn giữ nguyên lựa chọn của mình.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p063",
+      "narration": "Một chỗ ngồi đã biến thành màn thử phản ứng giữa các thế gia, còn buổi hội nghị vẫn chưa thật sự vào việc.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

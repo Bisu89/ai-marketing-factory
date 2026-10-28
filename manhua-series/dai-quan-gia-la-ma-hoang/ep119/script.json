@@ -1,0 +1,25 @@
+{
+  "title": "Bảy loại độc trong người nữ nhân bí ẩn!?",
+  "chapters": "119",
+  "source_dir": "manhua-recap/dqgl_ep119",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-19",
+  "description": "Trác Phàm phát hiện trong cơ thể nữ nhân bị thương có nhiều loại độc cùng tồn tại. Chúng nguy hiểm đến mức có thể giết chết người luyện đan, còn cách chữa thông thường chỉ khiến tình trạng tệ hơn. Hắn bắt đầu tính toán một phương án khác để cứu cô.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tập 119 (chương 119).",
+  "hashtags": ["#DaiQuanGiaLaMaHoang", "#ReviewManhua", "#Manhua", "#TuTien", "#XuyenKhong", "#ReviewTruyen"],
+  "thumbnail": {"text":"Bảy loại độc cùng tồn tại trong một cơ thể!?","prompt":"Vertical 9:16 Chinese manhua style, serious black-haired alchemist examining a mysterious bandaged woman as seven colorful poisonous spirits coil around her, dark mystical background, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"},
+  "beats": [
+    {"panel":"p001.jpg","narration":"Trác Phàm phát hiện trong người nữ nhân kia có tới bảy loại độc đang quấn lấy nhau.","kind":"recap","type":"HOOK"},
+    {"panel":"p004.jpg","narration":"Mỗi loại độc đều nguy hiểm, thậm chí có thể đoạt mạng một cao thủ chỉ trong chốc lát.","kind":"recap","type":"BUILD"},
+    {"panel":"p008.jpg","narration":"Chúng kết hợp với nhau thành một thế độc phức tạp, không thể giải bằng một phương thuốc đơn giản.","kind":"recap","type":"BUILD"},
+    {"panel":"p012.jpg","narration":"Trác Phàm nhận ra đối phương đã sống cùng độc tố suốt thời gian dài, nhưng cơ thể vẫn gắng gượng được.","kind":"recap","type":"BUILD"},
+    {"panel":"p016.jpg","narration":"Hắn suy luận rằng những người từng đến đây có lẽ đều chết vì không chịu nổi tình trạng ấy.","kind":"recap","type":"BUILD"},
+    {"panel":"p020.jpg","narration":"Nữ nhân vẫn cố tỏ ra cứng rắn, dù tình trạng của cô khiến người ngoài không khỏi dè chừng.","kind":"recap","type":"BUILD"},
+    {"panel":"p024.jpg","narration":"Trác Phàm bảo cô uống viên thuốc, nhưng cô lập tức hỏi liệu đó có phải thuốc độc hay không.","kind":"recap","type":"BUILD"},
+    {"panel":"p028.jpg","narration":"Cô hỏi vì sao hắn lại cứu mình, trong khi hai người chỉ mới gặp nhau vài lần.","kind":"recap","type":"BUILD"},
+    {"panel":"p032.jpg","narration":"Trác Phàm trả lời bằng giọng đùa cợt, khiến cô càng khó biết nên tin hắn đến mức nào.","kind":"commentary","type":"BUILD"},
+    {"panel":"p036.jpg","narration":"Hắn nói không thể làm ngơ khi thấy cô bị thương, dù lời giải thích ấy nghe chẳng mấy thuyết phục.","kind":"recap","type":"BUILD"},
+    {"panel":"p040.jpg","narration":"Cô tiếp tục nghi ngờ ý định của hắn, còn Trác Phàm khẳng định mình không có ý hại cô.","kind":"recap","type":"BUILD"},
+    {"panel":"p045.jpg","narration":"Nữ nhân cuối cùng cũng chịu tiếp nhận phương thuốc, nhưng vẫn giữ khoảng cách với người cứu mình.","kind":"recap","type":"BUILD"},
+    {"panel":"p050.jpg","narration":"Trác Phàm quan sát phản ứng của cô sau khi uống thuốc, chờ xem cơ thể sẽ thay đổi ra sao.","kind":"recap","type":"BUILD"},
+    {"panel":"p055.jpg","narration":"Ánh mắt hắn chợt đổi sắc khi nhận ra trong cơ thể cô còn có một thứ khác chưa được phát hiện.","kind":"recap","type":"ENDING"}
+  ]
+}

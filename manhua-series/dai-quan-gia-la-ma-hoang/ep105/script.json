@@ -1,0 +1,37 @@
+{
+  "title": "Trác Phàm đến Lan Lăng Thành, một câu trêu chọc châm ngòi ẩu đả!?",
+  "chapters": "105",
+  "source_dir": "manhua-recap/dqgl_ep105",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-19",
+  "description": "Trên đường tới Lan Lăng Thành tìm linh dược và dự Bạch Đan Thịnh Hội, Trác Phàm phải nghe người bạn đồng hành trêu chọc không ngừng. Tại thành, một công tử nhà Tế tra hỏi quan hệ giữa hắn và Thiên Nhi. Trác Phàm cố ý nói lời khiêu khích, rồi nhanh chóng khiến đối phương phải nhìn lại thực lực của mình.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tập 105 (chương 105).",
+  "hashtags": ["#DaiQuanGiaLaMaHoang", "#ReviewManhua", "#Manhua", "#TuTien", "#XuyenKhong", "#ReviewTruyen"],
+  "thumbnail": {
+    "text": "Công tử nhà Tế hỏi nhầm người, bị Trác Phàm dạy dỗ!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, Trac Pham standing calm as a wealthy young noble is knocked back in a city street, startled companions and Lanling City gate behind them, dramatic action lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {"panel":"p001.jpg","narration":"Trên đường đến Lan Lăng Thành, người bạn đồng hành gọi Trác Phàm liên tục đến mức hắn chỉ muốn bịt tai.","kind":"recap","type":"HOOK"},
+    {"panel":"p004.jpg","narration":"Trác Phàm cáu kỉnh bảo đối phương bớt ồn, nhưng lời nhắc nhở chỉ khiến cậu ta tiếp tục trêu.","kind":"recap","type":"BUILD"},
+    {"panel":"p006.jpg","narration":"Mục tiêu của chuyến đi là tìm linh dược quý, sau đó tham dự Bạch Đan Thịnh Hội.","kind":"recap","type":"BUILD"},
+    {"panel":"p009.jpg","narration":"Trác Phàm nghĩ người bạn này cứ nhắc đến chị gái, xem ra đang để ý nàng quá mức.","kind":"recap","type":"BUILD"},
+    {"panel":"p012.jpg","narration":"Thiên Nhi cũng nhận xét nàng chưa từng gặp ai lạnh lùng với mọi người như Trác Phàm.","kind":"recap","type":"BUILD"},
+    {"panel":"p015.jpg","narration":"Cô nói mình cũng muốn sớm tới Hoa Vũ Thành, nơi có những nhân vật nổi tiếng đang tụ hội.","kind":"recap","type":"BUILD"},
+    {"panel":"p017.jpg","narration":"Trong số đó có một nữ nhân được nhắc đến như mỹ nhân hàng đầu Thiên Vũ.","kind":"recap","type":"BUILD"},
+    {"panel":"p019.jpg","narration":"Người bạn đồng hành vừa thừa nhận Thiên Nhi xinh đẹp, đã lập tức để mắt tới mỹ nhân khác.","kind":"recap","type":"BUILD"},
+    {"panel":"p021.jpg","narration":"Cảnh ấy khiến người ngoài phải bật cười: tình cảm của cậu ta dành cho chị gái xem ra chẳng ngăn được thói trăng hoa.","kind":"commentary","type":"BUILD"},
+    {"panel":"p023.jpg","narration":"Khi đoàn người vào thành, một công tử nhà Tế xuất hiện và gọi người bạn đồng hành bằng tên Lan Lăng.","kind":"recap","type":"BUILD"},
+    {"panel":"p025.jpg","narration":"Tế gia và Tống gia vốn có giao tình, nên công tử kia cho rằng mình có quyền hỏi chuyện Thiên Nhi.","kind":"recap","type":"BUILD"},
+    {"panel":"p027.jpg","narration":"Trác Phàm thầm so sánh hoàn cảnh hai nhà: Tống gia và Lạc gia đều là gia tộc không quá lớn, nhưng mỗi bên có chỗ dựa riêng.","kind":"recap","type":"BUILD"},
+    {"panel":"p029.jpg","narration":"Công tử nhà Tế hỏi thẳng mối quan hệ giữa Trác Phàm và Thiên Nhi.","kind":"recap","type":"BUILD"},
+    {"panel":"p031.jpg","narration":"Hắn nói mình đã nhận tin từ Tống gia, rồi gặng hỏi để xác nhận điều mình nghi ngờ.","kind":"recap","type":"BUILD"},
+    {"panel":"p033.jpg","narration":"Người bạn của Trác Phàm chen ngang, nhưng câu hỏi cứ bị nhắm vào Trác Phàm hết lần này đến lần khác.","kind":"recap","type":"BUILD"},
+    {"panel":"p036.jpg","narration":"Công tử nhà Tế nổi nóng, yêu cầu hắn trả lời ngay trước mặt mọi người.","kind":"recap","type":"BUILD"},
+    {"panel":"p038.jpg","narration":"Trác Phàm đáp bằng một câu cố ý gây hiểu lầm: hắn và Thiên Nhi từng ăn uống rồi ngủ chung trên đường đi.","kind":"recap","type":"BUILD"},
+    {"panel":"p041.jpg","narration":"Thiên Nhi hiểu hắn đang chọc giận đối thủ, còn công tử nhà Tế thì hoàn toàn mắc bẫy.","kind":"recap","type":"BUILD"},
+    {"panel":"p044.jpg","narration":"Hắn mắng Trác Phàm rồi tuyên bố sẽ khiến hắn chết ngay tại đây.","kind":"recap","type":"BUILD"},
+    {"panel":"p046.jpg","narration":"Trác Phàm chủ động lao tới, tung đòn nhanh đến mức đám người xung quanh chưa kịp can ngăn.","kind":"recap","type":"BUILD"},
+    {"panel":"p049.jpg","narration":"Chỉ trong khoảnh khắc, đối phương đã bị đánh bật liên tiếp; những kẻ đi cùng đứng sững nhìn theo.","kind":"recap","type":"BUILD"},
+    {"panel":"p052.jpg","narration":"Trác Phàm dừng lại, còn công tử nhà Tế vẫn chưa tin mình vừa bị áp đảo dễ dàng như vậy.","kind":"recap","type":"BUILD"},
+    {"panel":"p056.jpg","narration":"Hắn lắp bắp hỏi: Trác Phàm, ngươi có phải là cao thủ Thần Chiếu Cảnh không?","kind":"recap","type":"ENDING"}
+  ]
+}

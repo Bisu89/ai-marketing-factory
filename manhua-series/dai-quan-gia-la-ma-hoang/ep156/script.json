@@ -1,0 +1,39 @@
+{
+  "title": "Trác Phàm tuyên bố Đông gia chưa diệt vong!?",
+  "chapters": "156",
+  "source_dir": "manhua-recap/dqgl_ep156",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-21",
+  "description": "Trác Phàm tuyên bố Đông gia chưa diệt vong. Tóm tắt chương 156 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Trác Phàm tuyên bố Đông gia chưa diệt vong!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Khuynh Thành dịu giọng xin lỗi sau cuộc tranh cãi, nhưng Trác Phàm không xem chuyện vừa rồi là lý do để bỏ cuộc.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p020",
+      "narration": "Hắn khẳng định Đông gia vẫn còn cơ hội, khiến những người có mặt phải nhìn lại tình thế.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p055",
+      "narration": "Nhóm của Trác Phàm rời khỏi Hoa Vũ Lâu với một hướng đi mới và những mối nghi ngờ chưa được giải đáp.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

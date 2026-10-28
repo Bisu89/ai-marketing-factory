@@ -1,0 +1,105 @@
+{
+  "title": "Trác Phàm biến buổi tiệc thành màn đấu trí!?",
+  "chapters": "141-143",
+  "source_dir": "manhua-recap/dqgl_ep141",
+  "written_by": "Biên tập từ ep141-ep150, 2026-10-20",
+  "description": "Trác Phàm đối đầu âm mưu quanh Hoa Vũ Lâu, chương 141 đến 143.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Trác Phàm biến buổi tiệc thành màn đấu trí!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep141/p001.jpg",
+      "narration": "Buổi hội tại Hoa Vũ Lâu chưa kịp bắt đầu, Hoàng Phủ Thanh Vân đã tự nhận mình là con rể tương lai của nơi này.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep141/p014.jpg",
+      "narration": "Khi các thế gia chọn chỗ theo thứ bậc, Trác Phàm ngang nhiên ngồi vào vị trí vốn dành cho Kiếm Hầu Phủ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep141/p025.jpg",
+      "narration": "Thiên Dương cùng người của Kiếm Hầu Phủ lập tức phản đối, nhưng Trác Phàm nhắc rằng chỗ ngồi đã phân thì ai cũng phải theo quy củ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep141/p039.jpg",
+      "narration": "Thanh Vân không ngăn Trác Phàm; thái độ bình thản của hắn khiến người khác khó đoán các phe đang tính toán điều gì.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "dqgl_ep141/p063.jpg",
+      "narration": "Một chỗ ngồi đã biến thành màn thử phản ứng giữa các thế gia, còn buổi hội nghị vẫn chưa thật sự vào việc.",
+      "kind": "recap",
+      "type": "ENDING"
+    },
+    {
+      "panel": "dqgl_ep142/p001.jpg",
+      "narration": "Tranh cãi quanh vị trí của Trác Phàm tiếp tục ngay giữa buổi tiệc.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep142/p024.jpg",
+      "narration": "Trác Phàm nhận ra Thanh Vân đang dùng chuyện nhỏ để thử thái độ của từng nhà.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "dqgl_ep142/p033.jpg",
+      "narration": "Mẫu Đơn nhắc hắn đừng chọc thêm các thế lực khi Hoa Vũ Lâu đang cần đồng minh.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep142/p046.jpg",
+      "narration": "Những người còn lại bàn về liên minh bảy nhà và mối đe dọa từ Đế Vương Môn.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep142/p076.jpg",
+      "narration": "Thế nhưng hắn vẫn ngang nhiên ngồi cùng Thanh Vân, để lại các trưởng lão với thêm một lý do mà nổi giận.",
+      "kind": "recap",
+      "type": "ENDING"
+    },
+    {
+      "panel": "dqgl_ep143/p001.jpg",
+      "narration": "Sau cuộc đối đầu ở bàn tiệc, Hoàng Phủ Thanh Vân đề nghị đứng ra giải quyết bất đồng giữa Hoa Vũ Lâu và các thế gia.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep143/p024.jpg",
+      "narration": "Các phe đều có toan tính riêng; lời đề nghị làm trọng tài cũng có thể là cách nắm quyền điều khiển cuộc họp.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "dqgl_ep143/p047.jpg",
+      "narration": "Thanh Vân yêu cầu các gia chủ đưa ra ý kiến, rồi tuyên bố Hoa Vũ Lâu phải chịu trách nhiệm nhưng được quyền chọn cách bồi thường.",
+      "kind": "recap",
+      "type": "REVEAL"
+    },
+    {
+      "panel": "dqgl_ep143/p070.jpg",
+      "narration": "Khi các bên còn tranh cãi về quyền phân xử, Trác Phàm lặng lẽ quan sát nước cờ của Thanh Vân.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

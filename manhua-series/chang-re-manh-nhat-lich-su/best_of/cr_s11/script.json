@@ -1,0 +1,91 @@
+{
+  "title": "Đề thi bị đánh tráo giữa trận, nhưng 'tên béo ngu dốt' viết nên kỳ tích!?",
+  "chapters": "107,108,109",
+  "source_dir": "manhua-recap/crmn_ep108",
+  "description": "Trương Sung nghi Thẩm Lãng đã biết trước đề thi, nên mượn cớ kiểm tra niêm phong rồi cố tình làm vỡ hộp đựng đề, buộc đổi sang đề thi dự phòng chưa ai từng thấy — và phải quỳ chịu phạt giữa mưa khi âm mưu bị phát hiện. Đề mới hoàn toàn khác với những gì Thẩm Lãng đã chuẩn bị, nhưng hóa ra anh đã cấy cả một kho tri thức vào đầu em vợ Kim Mộc Thông. Ba trọng tài chấm bài ẩn danh, sững sờ khi bài văn hay nhất không phải của thám hoa Đường Duẫn, mà của 'tên béo ngu dốt' ấy.\nReview Chàng Rể Mạnh Nhất Lịch Sử – Short best-of.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "thumbnail": {
+    "text": "KẺ NGỐC VIẾT RA KIỆT TÁC!",
+    "prompt": "Vertical 9:16 anime-style: three elderly judges in the rain holding umbrellas, stunned expressions, a glowing scroll of calligraphy floating between them, dramatic lightning in the background. No text, leave top 25% empty."
+  },
+  "beats": [
+    {
+      "panel": "crmn_ep108/p054.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Một chiếc hộp niêm phong đề thi bất ngờ rơi xuống đất, dấu sáp vỡ tan — chỉ một cú \"lỡ tay\" đã đổi luôn vận mệnh của cả một gia tộc."
+    },
+    {
+      "panel": "crmn_ep108/p055.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một trọng tài giận dữ chỉ mặt: ngươi cố ý, ngươi chính là cố ý! Nhất định là Trương Sung xúi giục ngươi làm thế này!"
+    },
+    {
+      "panel": "crmn_ep108/p066.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Âm mưu bị phát hiện, Trương Sung quỳ rạp chịu một cú đánh không thương tiếc, máu rỉ ra vẫn cúi đầu nhận tội."
+    },
+    {
+      "panel": "crmn_ep109/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mưa trút xối xả xuống mái hiên, Trương Sung vẫn quỳ giữa trời mưa tầm tã, không hề lay chuyển."
+    },
+    {
+      "panel": "crmn_ep109/p021.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đề thi dự phòng được mở ra: câu một luận về hình phạt, phần thưởng và lòng trung thành; câu hai, lấy chủ đề Huyền Vũ làm một bài thơ."
+    },
+    {
+      "panel": "crmn_ep109/p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Kim Mộc Thông hoảng loạn: không đúng, đây không phải hai đề mà tối qua tỷ phu nhắc mình! Xong rồi, mình chắc chắn sẽ bị Đường Duẫn nghiền nát thành cặn bã!"
+    },
+    {
+      "panel": "crmn_ep109/p029.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Nhưng hóa ra đây chính là đề bài mà Thẩm Lãng từng đem đi \"thế chấp\" — anh đã cấy cả một kho tri thức của chính quốc vương vào trong trí não Mộc Thông từ trước."
+    },
+    {
+      "panel": "crmn_ep109/p032.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mộc Thông mừng rỡ nhảy cẫng lên: tỷ phu huynh đáng ghét quá, lại chơi đệ, suýt nữa thì dọa chết đệ rồi! Ta sống rồi!"
+    },
+    {
+      "panel": "crmn_ep109/p045.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Giữa làn khói hồng rực rỡ, cậu khoái chí giơ cao tập giấy: hoàn mỹ! Quá hoàn mỹ! Mình của quá khứ, mình của sau này, đều không viết ra được bài văn hoàn mỹ thế này!"
+    },
+    {
+      "panel": "crmn_ep110/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ba vị trọng tài chấm bài ẩn danh, một người thốt lên sửng sốt: tốt! Viết quá tốt! Chữ viết, dàn ý, không có gì là không tốt!"
+    },
+    {
+      "panel": "crmn_ep110/p016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Khi so sánh với bài còn lại, Ninh Khải vương thúc lạnh lùng nhận xét: dung tục cực kỳ, đúng là dung tục mà."
+    },
+    {
+      "panel": "crmn_ep110/p033.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hai phong bì niêm phong được mở ra — trọng tài xác nhận: bài văn thiên cổ xuất sắc nhất này... không phải của Đường Duẫn, mà chính là của Kim Mộc Thông."
+    },
+    {
+      "panel": "crmn_ep110/p050.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Tiếng tuyên bố vang lên chấn động cả quảng trường giữa màn mưa: Huyền Vũ Bá tước phủ — Kim Mộc Thông thắng trận văn chiến!"
+    }
+  ]
+}

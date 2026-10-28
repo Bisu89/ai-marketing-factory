@@ -1,0 +1,63 @@
+﻿{
+    "title":  "Trác Phàm gặp lại người quen sau nhiều năm!?",
+    "chapters":  "126",
+    "source_dir":  "manhua-recap/dqgl_ep126",
+    "written_by":  "OpenAI, đối chiếu ảnh nguồn, 2026-10-19",
+    "description":  "Trác Phàm tiếp tục đối mặt với biến cố mới cùng những người đồng hành.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tập 126 (chương 126).",
+    "hashtags":  [
+                     "#DaiQuanGiaLaMaHoang",
+                     "#ReviewManhua",
+                     "#Manhua",
+                     "#TuTien",
+                     "#XuyenKhong",
+                     "#ReviewTruyen"
+                 ],
+    "thumbnail":  {
+                      "text":  "Trác Phàm gặp lại người quen sau nhiều năm!?",
+                      "prompt":  "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+                  },
+    "beats":  [
+                  {
+                      "panel":  "p001.jpg",
+                      "narration":  "Trác Phàm còn nghĩ về cuộc chia tay thì người quen bất ngờ xuất hiện.",
+                      "kind":  "recap",
+                      "type":  "HOOK"
+                  },
+                  {
+                      "panel":  "p007.jpg",
+                      "narration":  "Hắn giật mình khi thấy Tông Hiến Đế và Hồng Nhi trước mặt.",
+                      "kind":  "recap",
+                      "type":  "BUILD"
+                  },
+                  {
+                      "panel":  "p021.jpg",
+                      "narration":  "Trác Phàm trêu người bạn cũ vì lâu ngày không gặp.",
+                      "kind":  "recap",
+                      "type":  "BUILD"
+                  },
+                  {
+                      "panel":  "p035.jpg",
+                      "narration":  "Mọi người nhắc tới người chị mà Trác Phàm từng để tâm.",
+                      "kind":  "commentary",
+                      "type":  "BUILD"
+                  },
+                  {
+                      "panel":  "p049.jpg",
+                      "narration":  "Hắn nói mình đến vì lời hứa và muốn giúp họ an toàn.",
+                      "kind":  "recap",
+                      "type":  "BUILD"
+                  },
+                  {
+                      "panel":  "p063.jpg",
+                      "narration":  "Tông Hiến Đế còn do dự, nhưng Trác Phàm kéo mọi người lên đường.",
+                      "kind":  "recap",
+                      "type":  "BUILD"
+                  },
+                  {
+                      "panel":  "p075.jpg",
+                      "narration":  "Chuyến đi mới bắt đầu, mục đích điểm đến chưa được tiết lộ.",
+                      "kind":  "recap",
+                      "type":  "ENDING"
+                  }
+              ]
+}

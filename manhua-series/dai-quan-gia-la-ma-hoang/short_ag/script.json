@@ -1,0 +1,105 @@
+{
+  "title": "B?y lo?i ??c trong ng??i n?ng, Tr?c Ph?m c?u n?i kh?ng!?",
+  "chapters": "118-120",
+  "source_dir": "manhua-recap/dqgl_ep118",
+  "written_by": "Tuy?n ch?n v? bi?n t?p t? ep111-ep120, 2026-10-19",
+  "description": "T?m t?t ??i Qu?n Gia L? Ma Ho?ng ch??ng 118-120, k?m b?nh lu?n.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Trong căn nhà hoang có pháp trận!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in blue discovering a glowing formation inside a dark abandoned house, mysterious bandaged woman in the shadows, moonlight through wooden windows, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep118/p002.jpg",
+      "narration": "Đêm xuống, Trác Phàm chợt tỉnh giấc giữa khu phố vắng lặng.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep118/p004.jpg",
+      "narration": "Hắn nhanh chóng nhận ra trong căn nhà có bố trí pháp trận, chứ không phải một nơi trú chân bình thường.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep118/p017.jpg",
+      "narration": "Trác Phàm nhận ra cô vẫn sống, nhưng tình trạng cơ thể không hề ổn định.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep118/p027.jpg",
+      "narration": "Hắn không vội tin những gì nhìn thấy, bởi pháp trận và căn bệnh của cô có thể liên quan đến nhau.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep118/p066.jpg",
+      "narration": "Cô bất ngờ hỏi vì sao hắn lại phá hủy hết dược liệu. Trác Phàm phải giải thích lựa chọn của mình.",
+      "kind": "recap",
+      "type": "ENDING"
+    },
+    {
+      "panel": "dqgl_ep119/p001.jpg",
+      "narration": "Trác Phàm phát hiện trong người nữ nhân kia có tới bảy loại độc đang quấn lấy nhau.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep119/p004.jpg",
+      "narration": "Mỗi loại độc đều nguy hiểm, thậm chí có thể đoạt mạng một cao thủ chỉ trong chốc lát.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep119/p032.jpg",
+      "narration": "Trác Phàm trả lời bằng giọng đùa cợt, khiến cô càng khó biết nên tin hắn đến mức nào.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep119/p055.jpg",
+      "narration": "Ánh mắt hắn chợt đổi sắc khi nhận ra trong cơ thể cô còn có một thứ khác chưa được phát hiện.",
+      "kind": "recap",
+      "type": "ENDING"
+    },
+    {
+      "panel": "dqgl_ep120/p001.jpg",
+      "narration": "Trác Phàm nhìn thấy bảy loại độc đang quấn quanh nữ nhân, mỗi loại đều có thể gây chết người.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep120/p008.jpg",
+      "narration": "Hắn nhớ đến Bồ Đề Ngọc Dịch, thứ có thể giúp người bị thương hồi phục mạnh mẽ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep120/p028.jpg",
+      "narration": "Cô hỏi ngược lại vì sao hắn đã cứu mình, khiến Trác Phàm phải trả lời bằng một câu bông đùa.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep120/p052.jpg",
+      "narration": "Bên ngoài, một nhóm người lại gây sự với khách qua đường và đòi chia phần chiến lợi phẩm.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep120/p061.jpg",
+      "narration": "Sau khi đám gây sự bị đánh lui, Trác Phàm lại đối mặt với câu hỏi về thứ thuốc mình dùng. Cách giải độc của hắn còn khiến mọi người kinh ngạc.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

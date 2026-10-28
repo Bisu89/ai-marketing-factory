@@ -1,0 +1,39 @@
+{
+  "title": "Trác Phàm tìm ra hy vọng cứu Hoa Vũ Lâu!?",
+  "chapters": "151",
+  "source_dir": "manhua-recap/dqgl_ep151",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-21",
+  "description": "Trác Phàm tìm ra hy vọng cứu Hoa Vũ Lâu. Tóm tắt chương 151 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Trác Phàm tìm ra hy vọng cứu Hoa Vũ Lâu!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Sau biến cố ở Hoa Vũ Lâu, Trác Phàm cùng Sở Khuynh Thành tìm đến vị trưởng lão bị phong băng để xem tình trạng của ông.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p012",
+      "narration": "Khuynh Thành cố đánh thức người đang bị đóng băng; Trác Phàm quan sát và nhận ra cơ thể vẫn còn dấu hiệu sống.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p027",
+      "narration": "Cuộc gặp bất ngờ khiến Trác Phàm hiểu rằng Hoa Vũ Lâu vẫn còn một cơ hội xoay chuyển tình thế.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

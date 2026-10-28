@@ -1,0 +1,28 @@
+﻿{
+  "title": "Trác Phàm giải độc cho nữ nhân bí ẩn, bạn cũ xuất hiện!?",
+  "chapters": "120",
+  "source_dir": "manhua-recap/dqgl_ep120",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-19",
+  "description": "Trác Phàm tìm ra cách khống chế những loại độc đang hành hạ nữ nhân bí ẩn và dùng Bồ Đề Ngọc Dịch để cứu cô. Sau đó, hắn gặp lại nhóm người quen giữa một vụ xô xát trong khu phố, trước khi cả đoàn tiếp tục lên đường.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tập 120 (chương 120).",
+  "hashtags": ["#DaiQuanGiaLaMaHoang", "#ReviewManhua", "#Manhua", "#TuTien", "#XuyenKhong", "#ReviewTruyen"],
+  "thumbnail": {"text":"Bồ Đề Ngọc Dịch cứu được cô ấy không!?","prompt":"Vertical 9:16 Chinese manhua style, black-haired cultivator administering a glowing jade remedy to a bandaged woman, colorful poison wisps fading around her, dramatic magical light, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"},
+  "beats": [
+    {"panel":"p001.jpg","narration":"Trác Phàm nhìn thấy bảy loại độc đang quấn quanh nữ nhân, mỗi loại đều có thể gây chết người.","kind":"recap","type":"HOOK"},
+    {"panel":"p004.jpg","narration":"Ngay cả sức mạnh của cô cũng chỉ đủ áp chế chúng tạm thời, chứ chưa thể chữa khỏi hoàn toàn.","kind":"recap","type":"BUILD"},
+    {"panel":"p008.jpg","narration":"Hắn nhớ đến Bồ Đề Ngọc Dịch, thứ có thể giúp người bị thương hồi phục mạnh mẽ.","kind":"recap","type":"BUILD"},
+    {"panel":"p012.jpg","narration":"Trác Phàm giải thích rằng cô cần một phương pháp đủ mạnh để khống chế độc tố, nếu không tình trạng sẽ ngày càng nguy hiểm.","kind":"recap","type":"BUILD"},
+    {"panel":"p016.jpg","narration":"Nữ nhân ngập ngừng trước lời đề nghị, vẫn chưa rõ Trác Phàm muốn gì ở mình.","kind":"recap","type":"BUILD"},
+    {"panel":"p020.jpg","narration":"Hắn thúc giục cô tin mình và dùng thuốc, còn cô vẫn cố giữ vẻ bình tĩnh.","kind":"recap","type":"BUILD"},
+    {"panel":"p024.jpg","narration":"Trác Phàm hỏi vì sao cô không sợ hắn, trong khi người khác đều dè chừng gia thế của hắn.","kind":"recap","type":"BUILD"},
+    {"panel":"p028.jpg","narration":"Cô hỏi ngược lại vì sao hắn đã cứu mình, khiến Trác Phàm phải trả lời bằng một câu bông đùa.","kind":"recap","type":"BUILD"},
+    {"panel":"p032.jpg","narration":"Hắn thản nhiên nhận mình là người quen của cô, dù cả hai mới gặp nhau chẳng bao nhiêu lần.","kind":"commentary","type":"BUILD"},
+    {"panel":"p037.jpg","narration":"Nữ nhân cảm ơn hắn đã cho mình ở lại, rồi cầm lấy trái cây Trác Phàm mang về.","kind":"recap","type":"BUILD"},
+    {"panel":"p042.jpg","narration":"Trong lúc cô ăn, Trác Phàm tiếp tục quan sát phản ứng của cơ thể để tìm manh mối về độc tố.","kind":"recap","type":"BUILD"},
+    {"panel":"p047.jpg","narration":"Hắn nhận ra việc cô tiếp nhận thức ăn và phương thuốc có thể giúp cô dần tin tưởng mình.","kind":"recap","type":"BUILD"},
+    {"panel":"p052.jpg","narration":"Bên ngoài, một nhóm người lại gây sự với khách qua đường và đòi chia phần chiến lợi phẩm.","kind":"recap","type":"BUILD"},
+    {"panel":"p056.jpg","narration":"Trác Phàm không đứng nhìn khi họ định bắt nạt người khác, lập tức bước vào can thiệp.","kind":"recap","type":"BUILD"},
+    {"panel":"p060.jpg","narration":"Hắn nhắc rằng những người này đã chiếm chỗ của nữ nhân trước, rồi còn đổ lỗi cho cô khi có chuyện xảy ra.","kind":"recap","type":"BUILD"},
+    {"panel":"p061.jpg","narration":"Sau khi đám gây sự bị đánh lui, Trác Phàm lại đối mặt với câu hỏi về thứ thuốc mình dùng. Cách giải độc của hắn còn khiến mọi người kinh ngạc.","kind":"recap","type":"ENDING"}
+  ]
+}
+

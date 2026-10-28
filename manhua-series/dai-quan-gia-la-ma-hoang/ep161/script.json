@@ -1,0 +1,39 @@
+{
+  "title": "Tổng Ngọc áp đảo ngay vòng đầu luyện đan!?",
+  "chapters": "161",
+  "source_dir": "manhua-recap/dqgl_ep161",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-21",
+  "description": "Tổng Ngọc áp đảo ngay vòng đầu luyện đan. Tóm tắt chương 161 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Tổng Ngọc áp đảo ngay vòng đầu luyện đan!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Vòng đầu yêu cầu luyện ra đan dược nhất phẩm. Tổng Ngọc vừa ra tay đã khiến các giám khảo chú ý.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p020",
+      "narration": "Những người xung quanh không ngờ một thí sinh trẻ lại dùng thủ pháp luyện đan thuần thục đến vậy.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p051",
+      "narration": "Màn thể hiện của Tổng Ngọc khiến cuộc thi bắt đầu nóng lên, nhưng kết quả vẫn còn chờ công bố.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

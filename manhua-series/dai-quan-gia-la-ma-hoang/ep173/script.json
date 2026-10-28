@@ -1,0 +1,39 @@
+{
+  "title": "Lưu Đại Sư luyện thành đan dược bằng dị hỏa!?",
+  "chapters": "173",
+  "source_dir": "manhua-recap/dqgl_ep173",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-21",
+  "description": "Lưu Đại Sư luyện thành đan dược bằng dị hỏa. Tóm tắt chương 173 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Lưu Đại Sư luyện thành đan dược bằng dị hỏa!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Lưu Đại Sư vận dụng ngọn lửa xanh để luyện đan, khiến khán giả tin rằng ông sắp giành lại thế chủ động.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p027",
+      "narration": "Trác Phàm quan sát quá trình, trong khi đối thủ tuyên bố đại công đã thành.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p063",
+      "narration": "Viên đan vừa ra lò nhưng cuộc so tài chưa kết thúc; Trác Phàm chuẩn bị đáp trả.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

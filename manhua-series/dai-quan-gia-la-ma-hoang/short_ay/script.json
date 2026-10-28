@@ -1,0 +1,76 @@
+{
+  "template": "manhua_recap_vi",
+  "title": "Đại Quản Gia Là Ma Hoàng | Tập 178–180: Trác Phàm nghịch chuyển!?",
+  "chapters": "178-180",
+  "source_dir": "manhua-recap/dqgl_ep178",
+  "written_by": "OpenAI, biên tập từ script từng tập, 2026-10-21",
+  "description": "Tóm tắt tập 178 đến 180 Đại Quản Gia Là Ma Hoàng. Trác Phàm đối đầu cao thủ và tìm cách xoay chuyển cục diện.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Lưu Đại Sư bị khích tướng bằng linh thú lục giai!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep178/p001.jpg",
+      "narration": "Trác Phàm nhắc đến linh thú lục giai và ngọn lửa truyền thừa, đánh trúng lòng tự cao của Lưu Đại Sư.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep178/p025.jpg",
+      "narration": "Đối thủ của Trác Phàm càng lúc càng nóng nảy khi nghe những lời khiêu khích trước đám đông.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep178/p062.jpg",
+      "narration": "Màn phô diễn tiếp theo sắp bắt đầu, và Lưu Đại Sư quyết chứng minh mình không hề kém cạnh.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep179/p001.jpg",
+      "narration": "Sau màn khích bác, Lưu Đại Sư chấp nhận Trác Phàm là đối thủ đáng gờm.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep179/p022.jpg",
+      "narration": "Hai người thống nhất so tài công khai; Trác Phàm nhường đối thủ chọn lượt ra tay trước.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep179/p056.jpg",
+      "narration": "Lưu Đại Sư bước lên, tin rằng ngọn lửa của mình sẽ khiến Trác Phàm không thể coi thường.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep180/p001.jpg",
+      "narration": "Lưu Đại Sư bắt đầu màn so tài bằng cách vận dụng ngọn lửa luyện đan của mình.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep180/p024.jpg",
+      "narration": "Ông yêu cầu Trác Phàm cũng phải dùng hỏa diễm để cuộc thi được công bằng.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep180/p058.jpg",
+      "narration": "Trác Phàm vẫn bình thản nhường đối thủ thể hiện trước, khiến khán giả chờ đợi màn đáp trả.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

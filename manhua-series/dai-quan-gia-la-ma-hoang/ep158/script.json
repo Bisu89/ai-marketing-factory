@@ -1,0 +1,39 @@
+{
+  "title": "Độc thủ trong Hoa Vũ Lâu lộ diện!?",
+  "chapters": "158",
+  "source_dir": "manhua-recap/dqgl_ep158",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-21",
+  "description": "Độc thủ trong Hoa Vũ Lâu lộ diện. Tóm tắt chương 158 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Độc thủ trong Hoa Vũ Lâu lộ diện!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Trong lúc nhóm Trác Phàm đã rời đi, một đệ tử Hoa Vũ Lâu có biểu hiện bất thường khiến mọi người cảnh giác.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p020",
+      "narration": "Khuynh Thành phát hiện dấu hiệu bị hạ độc và lập tức tìm cách khống chế tình hình.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p049",
+      "narration": "Kẻ đứng sau vụ việc vẫn chưa lộ mặt, còn Hoa Vũ Lâu phải tự đối diện nguy cơ từ bên trong.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "title": "Long Cửu đứng về phía Trác Phàm, Nghiêm Tông nhận lời!?",
+  "chapters": "144-146",
+  "source_dir": "manhua-recap/dqgl_ep144",
+  "written_by": "Biên tập từ ep141-ep150, 2026-10-20",
+  "description": "Trác Phàm đối đầu âm mưu quanh Hoa Vũ Lâu, chương 144 đến 146.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Long Cửu đứng về phía Trác Phàm, Nghiêm Tông nhận lời!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep144/p001.jpg",
+      "narration": "Nghiêm Tông tiếp tục đòi Hoa Vũ Lâu bồi thường, muốn biến cuộc họp thành phiên đòi bồi thường.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep144/p023.jpg",
+      "narration": "Nhưng khi một phe được tự chọn phần thắng, lối phân xử ấy cũng bắt đầu lộ giới hạn.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "dqgl_ep144/p034.jpg",
+      "narration": "Mẫu Đơn phản đối vì các trưởng lão Hoa Vũ Lâu chưa hề thống nhất với kết quả đó.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep144/p046.jpg",
+      "narration": "Trác Phàm không vội cãi lại; hắn để các phe tự bộc lộ thái độ trước mặt mọi người.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "dqgl_ep144/p072.jpg",
+      "narration": "Nụ cười của Trác Phàm cho thấy hắn đã nhận ra nước cờ phía sau, nhưng chưa định lật bài ngay lúc này.",
+      "kind": "recap",
+      "type": "ENDING"
+    },
+    {
+      "panel": "dqgl_ep145/p001.jpg",
+      "narration": "Sau phán quyết gây tranh cãi, Trác Phàm quay lại đối diện các trưởng lão Hoa Vũ Lâu.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep145/p024.jpg",
+      "narration": "Mẫu Đơn chỉ ra sự giả dối trong thái độ của những người vừa đòi công bằng nhưng lại không muốn nghe phía Hoa Vũ Lâu.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "dqgl_ep145/p035.jpg",
+      "narration": "Trác Phàm không níu cuộc tranh luận; hắn nói rõ mình sẽ nhớ thái độ của từng người rồi quay đi.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep145/p046.jpg",
+      "narration": "Các trưởng lão nhận ra vụ việc không chỉ là chuyện bồi thường mà còn liên quan đến người của Đế Vương Môn cài vào các thế lực.",
+      "kind": "recap",
+      "type": "REVEAL"
+    },
+    {
+      "panel": "dqgl_ep145/p063.jpg",
+      "narration": "Một lời tin tưởng giữa lúc các phe rạn nứt có thể đổi hướng cuộc chơi, nhưng Hoa Vũ Lâu vẫn chưa thoát hiểm.",
+      "kind": "recap",
+      "type": "ENDING"
+    },
+    {
+      "panel": "dqgl_ep146/p001.jpg",
+      "narration": "Cuộc phân xử ở Hoa Vũ Lâu vẫn chưa ngã ngũ, vì Kiếm Hầu Phủ chất vấn kết quả mà Hoàng Phủ Thanh Vân đưa ra.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep146/p020.jpg",
+      "narration": "Trác Phàm cố tình làm trò thân mật với một cô gái ngay giữa buổi họp, khiến Thiên Dương mất bình tĩnh.",
+      "kind": "recap",
+      "type": "REACTION"
+    },
+    {
+      "panel": "dqgl_ep146/p036.jpg",
+      "narration": "Trác Phàm chỉ ra Đế Vương Môn vốn đã không bỏ phiếu từ đầu, khiến cách đếm phiếu của Thanh Vân bị đặt dấu hỏi.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "dqgl_ep146/p056.jpg",
+      "narration": "Nghiêm Tông chấp nhận lời thách thức luyện đan, còn Trác Phàm có vẻ đã tìm được cách kéo trận đấu sang sân mình.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Hải tặc trèo vách thoát thân, cung thủ Kim gia chờ sẵn!?",
+  "chapters": "160",
+  "source_dir": "manhua-recap/crmn_ep161",
+  "description": "Bị nhốt giữa nước lạnh trong mỏ, hải tặc tìm mọi cách trèo lên vách đá. Thẩm Lãng ra lệnh cho cung thủ chặn mọi đường thoát.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "beats": [
+    {"panel":"p002.jpg","type":"HOOK","kind":"recap","narration":"Cửu Thiên Nguy thề sẽ tự tay giết Thẩm Lãng sau khi thấy quân mình mắc bẫy."},
+    {"panel":"p009.jpg","type":"BUILD","kind":"recap","narration":"Kim gia cho lăn đá và đóng lối hầm, khiến những tên còn dưới mỏ không thể rút lui theo đường cũ."},
+    {"panel":"p016.jpg","type":"BUILD","kind":"recap","narration":"Nước lạnh tiếp tục dâng. Đám hải tặc phát hiện vách núi là con đường duy nhất để trèo lên."},
+    {"panel":"p024.jpg","type":"BUILD","kind":"recap","narration":"Từng người bám vào đá tìm đường thoát, nhưng cung thủ trên cao đã chờ sẵn."},
+    {"panel":"p032.jpg","type":"BUILD","kind":"commentary","narration":"Khi lối thoát bị thu hẹp, ưu thế số đông không còn giúp ích nhiều; mỗi kẻ leo lên đều trở thành mục tiêu riêng."},
+    {"panel":"p040.jpg","type":"BUILD","kind":"recap","narration":"Tên bắn xuống liên tiếp, buộc những kẻ đang trèo phải buông tay hoặc rơi trở lại dòng nước."},
+    {"panel":"p050.jpg","type":"BUILD","kind":"recap","narration":"Cửu Thiên Nguy cuối cùng cũng phải xuống tận chiến trường, không thể đứng ngoài nhìn quân mình bị tiêu diệt."},
+    {"panel":"p062.jpg","type":"ENDING","kind":"recap","narration":"Dưới làn nước lạnh, trận chiến biến thành cuộc giằng co sinh tử giữa những người cố sống sót."}
+  ]
+}

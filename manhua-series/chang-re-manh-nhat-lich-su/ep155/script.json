@@ -1,0 +1,17 @@
+{
+  "title": "Cửu Thiên Nguy kéo quân báo thù, bí mật cơ thể lộ ra!?",
+  "chapters": "154",
+  "source_dir": "manhua-recap/crmn_ep155",
+  "description": "Hạm đội của Cửu Thiên Nguy lên đường đánh Vọng Nhai. Giữa lúc thưởng quân và thúc chiến, nàng phát hiện cơ thể mình có dấu hiệu khác thường.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "beats": [
+    {"panel":"p002.jpg","type":"HOOK","kind":"recap","narration":"Hạm đội của Cửu Thiên Nguy rời bến, hướng thẳng tới Vọng Nhai."},
+    {"panel":"p006.jpg","type":"BUILD","kind":"recap","narration":"Nàng cho phát vàng thưởng quân, dùng lợi lộc khích lệ đám thuộc hạ đang nóng lòng báo thù."},
+    {"panel":"p011.jpg","type":"BUILD","kind":"recap","narration":"Cửu Thiên Nguy ra lệnh khi chiếm được đảo phải cướp sạch, không để Kim gia có cơ hội gượng dậy."},
+    {"panel":"p017.jpg","type":"BUILD","kind":"recap","narration":"Nhưng một thuộc hạ nhận thấy kỳ kinh của nàng đã trễ, liền nhắc đến khả năng nàng đang mang thai."},
+    {"panel":"p022.jpg","type":"BUILD","kind":"commentary","narration":"Giữa cuộc viễn chinh, dấu hiệu này có thể làm thay đổi mọi quyết định của Cửu Thiên Nguy, nhất là khi nàng vốn đang đánh cược tất cả cho báo thù."},
+    {"panel":"p029.jpg","type":"BUILD","kind":"recap","narration":"Nàng gọi thầy thuốc đến bắt mạch, muốn biết chuyện gì đang xảy ra trong cơ thể mình."},
+    {"panel":"p037.jpg","type":"BUILD","kind":"recap","narration":"Thầy thuốc dè dặt kiểm tra, còn nàng vẫn giữ vẻ lạnh lùng trước thuộc hạ."},
+    {"panel":"p046.jpg","type":"ENDING","kind":"recap","narration":"Đội thuyền vẫn tiếp tục tiến về Vọng Nhai, trong khi kết quả bắt mạch chưa thể làm sáng tỏ mọi chuyện."}
+  ]
+}

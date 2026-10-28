@@ -1,0 +1,219 @@
+{
+  "project_id": 299,
+  "factory_run_id": 349,
+  "render_job_id": 352,
+  "range": "101-110",
+  "script": "manhua-series/chang-re-manh-nhat-lich-su/best_of/cr_s09/script.json",
+  "package": {
+    "title": "Một bài thơ cứu mạng, rồi hẹn thẳng chiến trường ngay giữa yến tiệc!",
+    "description": "Tứ vương tử ép Thẩm Lãng làm thơ trong chớp mắt để cứu mạng một thương nhân vô tội, anh giấu khéo tên người ấy vào thơ rồi lạnh lùng hẹn bốn ngày sau gặp trên chiến trường — ngay sau đó lộ ra bí mật chính quốc vương ghét anh. Cả triều đình họp nhau chia chác tài sản phủ Bá tước trước khi trận đấu bắt đầu, còn Thẩm Lãng hứa với vợ: mình ta bất bại! Trận tranh chấp đảo Kim Sơn khai màn với giấy sinh tử đã ký, và một âm mưu nhắm vào Mộc Lan.\nReview Chàng Rể Mạnh Nhất Lịch Sử – Short best-of.",
+    "hashtags": [
+      "#ChangReManhNhatLichSu",
+      "#ReviewManhua",
+      "#XuyenKhong"
+    ],
+    "language": "vi",
+    "category": "general",
+    "platform_profile": "general",
+    "duration": 58.46,
+    "width": 1080,
+    "height": 1920,
+    "aspect_ratio": "9:16",
+    "thumbnail_path": "data\\library\\_video_composer\\job_352_Chàng Rể - Short B09 (101-110)\\output\\thumbnail.jpg",
+    "video_path": "data\\library\\_video_composer\\job_352_Chàng Rể - Short B09 (101-110)\\output\\Chàng Rể - Short B09 (101-110).mp4",
+    "thumbnail_media_url": "/media/_video_composer/job_352_Chàng Rể - Short B09 (101-110)/output/thumbnail.jpg",
+    "video_media_url": "/media/_video_composer/job_352_Chàng Rể - Short B09 (101-110)/output/Chàng Rể - Short B09 (101-110).mp4",
+    "manual_title": "Một bài thơ cứu mạng, rồi hẹn thẳng chiến trường ngay giữa yến tiệc!?",
+    "manual_description": "Tứ vương tử ép Thẩm Lãng làm thơ trong chớp mắt để cứu mạng một thương nhân vô tội, anh giấu khéo tên người ấy vào thơ rồi lạnh lùng hẹn bốn ngày sau gặp trên chiến trường — ngay sau đó lộ ra bí mật chính quốc vương ghét anh. Cả triều đình họp nhau chia chác tài sản phủ Bá tước trước khi trận đấu bắt đầu, còn Thẩm Lãng hứa với vợ: mình ta bất bại! Trận tranh chấp đảo Kim Sơn khai màn với giấy sinh tử đã ký, và một âm mưu nhắm vào Mộc Lan.\nReview Chàng Rể Mạnh Nhất Lịch Sử – Short best-of.",
+    "manual_hashtags": [
+      "#ChangReManhNhatLichSu",
+      "#ReviewManhua",
+      "#XuyenKhong"
+    ],
+    "is_complete": true
+  },
+  "final_qa": {
+    "project_id": 299,
+    "report": {
+      "status": "PASS",
+      "score": 100,
+      "checks": [
+        {
+          "name": "package_complete",
+          "code": "PACKAGE_INCOMPLETE",
+          "status": "PASS",
+          "severity": "info",
+          "message": "Package is complete.",
+          "actual": null,
+          "expected": null,
+          "repair_stage": null
+        },
+        {
+          "name": "final_video_exists",
+          "code": "FINAL_VIDEO_MISSING",
+          "status": "PASS",
+          "severity": "info",
+          "message": "final.mp4 exists and is non-empty.",
+          "actual": null,
+          "expected": null,
+          "repair_stage": null
+        },
+        {
+          "name": "stream_counts",
+          "code": "FINAL_STREAM_INVALID",
+          "status": "PASS",
+          "severity": "info",
+          "message": "Exactly 1 video + 1 audio stream.",
+          "actual": null,
+          "expected": null,
+          "repair_stage": null
+        },
+        {
+          "name": "resolution",
+          "code": "FINAL_RESOLUTION_MISMATCH",
+          "status": "PASS",
+          "severity": "info",
+          "message": "Resolution matches configuration.",
+          "actual": null,
+          "expected": null,
+          "repair_stage": null
+        },
+        {
+          "name": "fps",
+          "code": "FINAL_FPS_MISMATCH",
+          "status": "PASS",
+          "severity": "info",
+          "message": "FPS matches configuration.",
+          "actual": null,
+          "expected": null,
+          "repair_stage": null
+        },
+        {
+          "name": "duration",
+          "code": "FINAL_DURATION_MISMATCH",
+          "status": "PASS",
+          "severity": "info",
+          "message": "Duration matches the expected source.",
+          "actual": null,
+          "expected": null,
+          "repair_stage": null
+        },
+        {
+          "name": "audio_silence",
+          "code": "AUDIO_SILENT",
+          "status": "PASS",
+          "severity": "info",
+          "message": "Final audio is not silent.",
+          "actual": null,
+          "expected": null,
+          "repair_stage": null
+        },
+        {
+          "name": "audio_clipping",
+          "code": "AUDIO_CLIPPING",
+          "status": "PASS",
+          "severity": "info",
+          "message": "Final audio peak is within the configured ceiling.",
+          "actual": null,
+          "expected": null,
+          "repair_stage": null
+        },
+        {
+          "name": "thumbnail_valid",
+          "code": "THUMBNAIL_INVALID",
+          "status": "PASS",
+          "severity": "info",
+          "message": "Thumbnail exists with the correct dimensions.",
+          "actual": null,
+          "expected": null,
+          "repair_stage": null
+        },
+        {
+          "name": "thumbnail_quality",
+          "code": "THUMBNAIL_LOW_QUALITY",
+          "status": "PASS",
+          "severity": "info",
+          "message": "Thumbnail passes technical quality checks.",
+          "actual": null,
+          "expected": null,
+          "repair_stage": null
+        },
+        {
+          "name": "metadata_valid",
+          "code": "METADATA_INVALID",
+          "status": "PASS",
+          "severity": "info",
+          "message": "metadata.json is present, parses, and has required fields.",
+          "actual": null,
+          "expected": null,
+          "repair_stage": null
+        },
+        {
+          "name": "captions_valid",
+          "code": "CAPTIONS_INVALID",
+          "status": "PASS",
+          "severity": "info",
+          "message": "356 caption lines, valid ASS.",
+          "actual": null,
+          "expected": null,
+          "repair_stage": null
+        },
+        {
+          "name": "captions_timing",
+          "code": "CAPTIONS_TIMING_INVALID",
+          "status": "PASS",
+          "severity": "info",
+          "message": "All captions end within the video's duration.",
+          "actual": null,
+          "expected": null,
+          "repair_stage": null
+        },
+        {
+          "name": "beat_completeness",
+          "code": "BEAT_ARTIFACT_MISSING",
+          "status": "PASS",
+          "severity": "info",
+          "message": "Every beat has a valid, complete artifact.",
+          "actual": null,
+          "expected": null,
+          "repair_stage": null
+        },
+        {
+          "name": "dependency_freshness_audio",
+          "code": "STALE_DEPENDENCY",
+          "status": "PASS",
+          "severity": "info",
+          "message": "final.mp4 is at least as new as Audio Master.",
+          "actual": null,
+          "expected": null,
+          "repair_stage": null
+        },
+        {
+          "name": "dependency_freshness_captions",
+          "code": "STALE_DEPENDENCY",
+          "status": "PASS",
+          "severity": "info",
+          "message": "final.mp4 is at least as new as Captions.",
+          "actual": null,
+          "expected": null,
+          "repair_stage": null
+        },
+        {
+          "name": "package_version",
+          "code": "STALE_PACKAGE_VERSION",
+          "status": "PASS",
+          "severity": "info",
+          "message": "Package engine version is current.",
+          "actual": null,
+          "expected": null,
+          "repair_stage": null
+        }
+      ],
+      "project_id": 299,
+      "pipeline_version": "final-qa-v1",
+      "started_at": "2026-10-20T09:15:29.055754+00:00",
+      "completed_at": "2026-10-20T09:15:29.055754+00:00"
+    }
+  },
+  "video": "renders_101_150/101-110/short_cr_s09.mp4"
+}

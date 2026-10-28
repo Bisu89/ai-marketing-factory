@@ -1,0 +1,63 @@
+{
+  "title": "Mẫu Đơn nhờ Trác Phàm tìm kẻ trộm bảo vật!?",
+  "chapters": "137",
+  "source_dir": "manhua-recap/dqgl_ep137",
+  "written_by": "OpenAI, ??i chi?u ?nh ngu?n, 2026-10-20",
+  "description": "Mẫu Đơn nhờ Trác Phàm tìm kẻ trộm bảo vật. Tóm tắt chương 137 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Mẫu Đơn nhờ Trác Phàm tìm kẻ trộm bảo vật!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Vừa đến Hoa Vũ Lâu, Trác Phàm đã thấy các cô gái nhấn mạnh chuyện ẩn tình.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p010",
+      "narration": "Mẫu Đơn trách hắn xuất hiện ở đây, còn Đan Đan thì chẳng giấu nổi vẻ vui mừng.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p018",
+      "narration": "Trác Phàm trêu Mẫu Đơn, khiến cuộc trò chuyện nhanh chóng thành màn đấu khẩu.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "p027",
+      "narration": "Mẫu Đơn nói hắn là người đầu tiên dám liều mạng cứu một cô gái.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p038",
+      "narration": "Sở Khuynh Thành nhắc Hộ Bảo Các vừa bị trộm, món đồ mất tích là bảo vật quý.",
+      "kind": "recap",
+      "type": "REVEAL"
+    },
+    {
+      "panel": "p052",
+      "narration": "Trác Phàm nhận ra Mẫu Đơn từng nghi ngờ hắn, nhưng vẫn nhờ hắn tìm món đồ.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p063",
+      "narration": "Cô ấy giả vờ dùng vụ trộm để lần ra kẻ chủ mưu; Trác Phàm chỉ mỉm cười trước kế hoạch ấy.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

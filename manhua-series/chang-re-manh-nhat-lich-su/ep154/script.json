@@ -1,0 +1,18 @@
+{
+  "title": "Đại quân hải tặc áp sát, Nộ Triều Thành thành mục tiêu!?",
+  "chapters": "153",
+  "source_dir": "manhua-recap/crmn_ep154",
+  "description": "Trong lúc các phe chuẩn bị đánh Vọng Nhai, Thẩm Lãng nhận ra đòn nhử của đối thủ và âm thầm bố trí phòng thủ Nộ Triều Thành.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "beats": [
+    {"panel":"p002.jpg","type":"HOOK","kind":"recap","narration":"Cửu Thiên Nguy liên kết với Đường thị, gom quân chuẩn bị đánh đảo Vọng Nhai."},
+    {"panel":"p006.jpg","type":"BUILD","kind":"recap","narration":"Bề ngoài, mọi dấu hiệu đều cho thấy mục tiêu của họ là mỏ vàng và quân Kim gia trên đảo."},
+    {"panel":"p010.jpg","type":"BUILD","kind":"recap","narration":"Nhưng Thẩm Lãng hiểu đây có thể chỉ là nghi binh. Đòn thật sự có khả năng nhắm vào Nộ Triều Thành."},
+    {"panel":"p014.jpg","type":"BUILD","kind":"commentary","narration":"Kế nghi binh nguy hiểm ở chỗ nó buộc đối phương chia quân: chỉ cần đoán sai mục tiêu, thành trì sẽ trống phòng thủ."},
+    {"panel":"p019.jpg","type":"BUILD","kind":"recap","narration":"Thẩm Lãng rời đảo, mang lực lượng và vật tư về phía thành để chuẩn bị ứng chiến."},
+    {"panel":"p024.jpg","type":"BUILD","kind":"recap","narration":"Một bộ phận tinh nhuệ được bố trí kín trong thành, còn Kim Trác ở lại giữ Vọng Nhai."},
+    {"panel":"p031.jpg","type":"BUILD","kind":"recap","narration":"Nộ Triều Thành chỉ còn vài nghìn quân trấn thủ, trong khi liên quân đông gấp nhiều lần."},
+    {"panel":"p039.jpg","type":"BUILD","kind":"recap","narration":"Phía đối diện hứa thưởng vàng bạc, thúc quân sĩ hăng hái tiến công."},
+    {"panel":"p047.jpg","type":"ENDING","kind":"recap","narration":"Đội thuyền của liên quân bắt đầu xuất phát. Mũi tiến công kế tiếp sẽ đổ vào đâu?"}
+  ]
+}

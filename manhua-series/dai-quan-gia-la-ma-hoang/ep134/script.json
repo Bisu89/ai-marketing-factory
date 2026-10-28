@@ -1,0 +1,63 @@
+{
+  "title": "Sở Khuynh Thành quyết chiến Nghiêm Tông!?",
+  "chapters": "134",
+  "source_dir": "manhua-recap/dqgl_ep134",
+  "written_by": "OpenAI, ??i chi?u ?nh ngu?n, 2026-10-20",
+  "description": "Sở Khuynh Thành quyết chiến Nghiêm Tông. Tóm tắt chương 134 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Sở Khuynh Thành quyết chiến Nghiêm Tông!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p002",
+      "narration": "Sau đòn vừa rồi, Nghiêm Tông vẫn ngang nhiên thách thức Trác Phàm.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p010",
+      "narration": "Trác Phàm không nhận mình là lâu chủ Thanh Hoa Lâu, còn cho rằng đối phương nói nhầm.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p018",
+      "narration": "Nghiêm Tông chuyển sang uy hiếp Sở Khuynh Thành bằng tính mạng người thân của nàng.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p027",
+      "narration": "Sở Khuynh Thành nhớ lời dặn và quyết không để Hoa Vũ Lâu bị ép buộc.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "p038",
+      "narration": "Nàng trực tiếp giao chiến với Nghiêm Tông, liên tiếp chiếm thế thượng phong.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p063",
+      "narration": "Nghiêm Tông bị đánh trọng thương nhưng vẫn cố khuyên nàng đầu hàng.",
+      "kind": "recap",
+      "type": "REVEAL"
+    },
+    {
+      "panel": "p071",
+      "narration": "Một lão nhân bất ngờ xuất hiện trước khi cuộc đối đầu kết thúc.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

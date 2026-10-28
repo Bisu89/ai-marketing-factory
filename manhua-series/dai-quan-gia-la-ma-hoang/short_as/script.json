@@ -1,0 +1,76 @@
+{
+  "template": "manhua_recap_vi",
+  "title": "Đại Quản Gia Là Ma Hoàng | Tập 158–160: Trác Phàm nghịch chuyển!?",
+  "chapters": "158-160",
+  "source_dir": "manhua-recap/dqgl_ep158",
+  "written_by": "OpenAI, biên tập từ script từng tập, 2026-10-21",
+  "description": "Tóm tắt tập 158 đến 160 Đại Quản Gia Là Ma Hoàng. Trác Phàm đối đầu cao thủ và tìm cách xoay chuyển cục diện.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Độc thủ trong Hoa Vũ Lâu lộ diện!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep158/p001.jpg",
+      "narration": "Trong lúc nhóm Trác Phàm đã rời đi, một đệ tử Hoa Vũ Lâu có biểu hiện bất thường khiến mọi người cảnh giác.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep158/p020.jpg",
+      "narration": "Khuynh Thành phát hiện dấu hiệu bị hạ độc và lập tức tìm cách khống chế tình hình.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep158/p049.jpg",
+      "narration": "Kẻ đứng sau vụ việc vẫn chưa lộ mặt, còn Hoa Vũ Lâu phải tự đối diện nguy cơ từ bên trong.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep159/p001.jpg",
+      "narration": "Tại Bạch Đan Thành, cuộc thi luyện đan quy tụ nhiều cao thủ, trong đó có Lưu Đại Sư nổi tiếng ngạo mạn.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep159/p025.jpg",
+      "narration": "Lưu Đại Sư dùng uy thế ép người khác tránh đường, khiến không khí trước cuộc thi thêm căng thẳng.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep159/p066.jpg",
+      "narration": "Khi các thí sinh chuẩn bị vào vòng đấu, Trác Phàm đã có mặt và sẵn sàng khiến cuộc thi đổi hướng.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep160/p001.jpg",
+      "narration": "Cuộc thi luyện đan ở Bạch Đan Thành chính thức khai màn, thu hút sự chú ý của các thế lực quanh vùng.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep160/p022.jpg",
+      "narration": "Ban tổ chức công bố luật thi và yêu cầu các thí sinh thể hiện thực lực ngay từ vòng đầu.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep160/p060.jpg",
+      "narration": "Giữa những ánh mắt dò xét, Tổng Ngọc chuẩn bị bước vào phần thi đầu tiên.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

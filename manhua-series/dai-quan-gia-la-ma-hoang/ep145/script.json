@@ -1,0 +1,63 @@
+{
+  "title": "Long Cửu công khai đứng về phía Trác Phàm!?",
+  "chapters": "145",
+  "source_dir": "manhua-recap/dqgl_ep145",
+  "written_by": "OpenAI, ??i chi?u ?nh ngu?n, 2026-10-20",
+  "description": "Long Cửu công khai đứng về phía Trác Phàm. Tóm tắt chương 145 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Long Cửu công khai đứng về phía Trác Phàm!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Sau phán quyết gây tranh cãi, Trác Phàm quay lại đối diện các trưởng lão Hoa Vũ Lâu.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p012",
+      "narration": "Nghiêm Tông vẫn đòi bồi thường, còn các trưởng lão bắt đầu chất vấn cách xử lý của Thanh Vân.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p024",
+      "narration": "Mẫu Đơn chỉ ra sự giả dối trong thái độ của những người vừa đòi công bằng nhưng lại không muốn nghe phía Hoa Vũ Lâu.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "p035",
+      "narration": "Trác Phàm không níu cuộc tranh luận; hắn nói rõ mình sẽ nhớ thái độ của từng người rồi quay đi.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p046",
+      "narration": "Các trưởng lão nhận ra vụ việc không chỉ là chuyện bồi thường mà còn liên quan đến người của Đế Vương Môn cài vào các thế lực.",
+      "kind": "recap",
+      "type": "REVEAL"
+    },
+    {
+      "panel": "p057",
+      "narration": "Trong lúc mọi người còn dè chừng, Long Cửu tuyên bố ông tin Trác Phàm.",
+      "kind": "recap",
+      "type": "REACTION"
+    },
+    {
+      "panel": "p063",
+      "narration": "Một lời tin tưởng giữa lúc các phe rạn nứt có thể đổi hướng cuộc chơi, nhưng Hoa Vũ Lâu vẫn chưa thoát hiểm.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

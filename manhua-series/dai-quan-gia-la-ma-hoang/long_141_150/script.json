@@ -1,0 +1,452 @@
+{
+  "template": "manhua_recap_long_vi",
+  "title": "Trác Phàm phá thế cô lập, cứu lão nhân bí ẩn!?",
+  "chapters": "141-150",
+  "source_dir": "manhua-recap/dqgl_ep141",
+  "written_by": "Biên tập từ ep141-ep150, 2026-10-20",
+  "description": "Từ tranh cãi tại Hoa Vũ Lâu đến cuộc đấu luyện đan với Đế Vương Môn, Trác Phàm tìm cách phá thế cô lập và phát hiện một lão nhân bị phong ấn trong hang băng. Tóm tắt chương 141 đến 150, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Trác Phàm giành chỗ ngồi của Kiếm Hầu Phủ!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep141/p001.jpg",
+      "narration": "Buổi hội tại Hoa Vũ Lâu chưa kịp bắt đầu, Hoàng Phủ Thanh Vân đã tự nhận mình là con rể tương lai của nơi này.",
+      "kind": "recap",
+      "type": "HOOK",
+      "section": "Tập 141: Trác Phàm giành chỗ ngồi của Kiếm Hầu Phủ!?"
+    },
+    {
+      "panel": "dqgl_ep141/p006.jpg",
+      "narration": "Mẫu Đơn bất ngờ trước màn tự xưng ấy, còn Trác Phàm thừa nhận đây là cách Thanh Vân khuấy động buổi tiệc.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "dqgl_ep141/p014.jpg",
+      "narration": "Khi các thế gia chọn chỗ theo thứ bậc, Trác Phàm ngang nhiên ngồi vào vị trí vốn dành cho Kiếm Hầu Phủ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep141/p025.jpg",
+      "narration": "Thiên Dương cùng người của Kiếm Hầu Phủ lập tức phản đối, nhưng Trác Phàm nhắc rằng chỗ ngồi đã phân thì ai cũng phải theo quy củ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep141/p039.jpg",
+      "narration": "Thanh Vân không ngăn Trác Phàm; thái độ bình thản của hắn khiến người khác khó đoán các phe đang tính toán điều gì.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "dqgl_ep141/p052.jpg",
+      "narration": "Mẫu Đơn lo việc này sẽ đẩy Hoa Vũ Lâu vào thế khó, nhưng Trác Phàm vẫn giữ nguyên lựa chọn của mình.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep141/p063.jpg",
+      "narration": "Một chỗ ngồi đã biến thành màn thử phản ứng giữa các thế gia, còn buổi hội nghị vẫn chưa thật sự vào việc.",
+      "kind": "recap",
+      "type": "ENDING"
+    },
+    {
+      "panel": "dqgl_ep142/p001.jpg",
+      "narration": "Tranh cãi quanh vị trí của Trác Phàm tiếp tục ngay giữa buổi tiệc.",
+      "kind": "recap",
+      "type": "HOOK",
+      "section": "Tập 142: Thanh Vân đẩy Hoa Vũ Lâu vào thế cô lập!?"
+    },
+    {
+      "panel": "dqgl_ep142/p012.jpg",
+      "narration": "Hoàng Phủ Thanh Vân bảo Trác Phàm ngồi lại, khiến Thiên Dương và các trưởng lão Kiếm Hầu Phủ tức tối bỏ đi.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep142/p024.jpg",
+      "narration": "Trác Phàm nhận ra Thanh Vân đang dùng chuyện nhỏ để thử thái độ của từng nhà.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "dqgl_ep142/p033.jpg",
+      "narration": "Mẫu Đơn nhắc hắn đừng chọc thêm các thế lực khi Hoa Vũ Lâu đang cần đồng minh.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep142/p046.jpg",
+      "narration": "Những người còn lại bàn về liên minh bảy nhà và mối đe dọa từ Đế Vương Môn.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep142/p061.jpg",
+      "narration": "Trác Phàm cho rằng Thanh Vân muốn cô lập Hoa Vũ Lâu; một khi các nhà quay lưng, liên minh sẽ khó thành.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "dqgl_ep142/p076.jpg",
+      "narration": "Thế nhưng hắn vẫn ngang nhiên ngồi cùng Thanh Vân, để lại các trưởng lão với thêm một lý do mà nổi giận.",
+      "kind": "recap",
+      "type": "ENDING"
+    },
+    {
+      "panel": "dqgl_ep143/p001.jpg",
+      "narration": "Sau cuộc đối đầu ở bàn tiệc, Hoàng Phủ Thanh Vân đề nghị đứng ra giải quyết bất đồng giữa Hoa Vũ Lâu và các thế gia.",
+      "kind": "recap",
+      "type": "HOOK",
+      "section": "Tập 143: Ai sẽ quyết định số phận Hoa Vũ Lâu!?"
+    },
+    {
+      "panel": "dqgl_ep143/p013.jpg",
+      "narration": "Hắn nói chuyện của Hoa Vũ Lâu liên quan đến lợi ích chung, nên muốn các gia chủ cùng chứng kiến một phán quyết công bằng.",
+      "kind": "recap",
+      "type": "SETUP"
+    },
+    {
+      "panel": "dqgl_ep143/p024.jpg",
+      "narration": "Các phe đều có toan tính riêng; lời đề nghị làm trọng tài cũng có thể là cách nắm quyền điều khiển cuộc họp.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "dqgl_ep143/p035.jpg",
+      "narration": "Nghiêm Tông cáo buộc Hoa Vũ Lâu khiến các trưởng lão trọng thương và đòi bồi thường.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep143/p047.jpg",
+      "narration": "Thanh Vân yêu cầu các gia chủ đưa ra ý kiến, rồi tuyên bố Hoa Vũ Lâu phải chịu trách nhiệm nhưng được quyền chọn cách bồi thường.",
+      "kind": "recap",
+      "type": "REVEAL"
+    },
+    {
+      "panel": "dqgl_ep143/p059.jpg",
+      "narration": "Mẫu Đơn không chấp nhận việc một người tự quyết thay tất cả; phản ứng ấy cho thấy phán quyết chưa thể xem là đồng thuận.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "dqgl_ep143/p070.jpg",
+      "narration": "Khi các bên còn tranh cãi về quyền phân xử, Trác Phàm lặng lẽ quan sát nước cờ của Thanh Vân.",
+      "kind": "recap",
+      "type": "ENDING"
+    },
+    {
+      "panel": "dqgl_ep144/p001.jpg",
+      "narration": "Nghiêm Tông tiếp tục đòi Hoa Vũ Lâu bồi thường, muốn biến cuộc họp thành phiên đòi bồi thường.",
+      "kind": "recap",
+      "type": "HOOK",
+      "section": "Tập 144: Phán quyết của Thanh Vân công bằng hay là bẫy!?"
+    },
+    {
+      "panel": "dqgl_ep144/p012.jpg",
+      "narration": "Hoàng Phủ Thanh Vân đưa ra cách xử lý có vẻ công bằng: Hoa Vũ Lâu nhận lỗi, còn Nghiêm Tông được quyền chọn khoản bồi thường.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep144/p023.jpg",
+      "narration": "Nhưng khi một phe được tự chọn phần thắng, lối phân xử ấy cũng bắt đầu lộ giới hạn.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "dqgl_ep144/p034.jpg",
+      "narration": "Mẫu Đơn phản đối vì các trưởng lão Hoa Vũ Lâu chưa hề thống nhất với kết quả đó.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep144/p046.jpg",
+      "narration": "Trác Phàm không vội cãi lại; hắn để các phe tự bộc lộ thái độ trước mặt mọi người.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "dqgl_ep144/p058.jpg",
+      "narration": "Rời khỏi cuộc họp, những người đứng sau các thế lực tiếp tục bàn cách dùng liên minh và gián điệp để xoay chuyển cục diện.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep144/p072.jpg",
+      "narration": "Nụ cười của Trác Phàm cho thấy hắn đã nhận ra nước cờ phía sau, nhưng chưa định lật bài ngay lúc này.",
+      "kind": "recap",
+      "type": "ENDING"
+    },
+    {
+      "panel": "dqgl_ep145/p001.jpg",
+      "narration": "Sau phán quyết gây tranh cãi, Trác Phàm quay lại đối diện các trưởng lão Hoa Vũ Lâu.",
+      "kind": "recap",
+      "type": "HOOK",
+      "section": "Tập 145: Long Cửu công khai đứng về phía Trác Phàm!?"
+    },
+    {
+      "panel": "dqgl_ep145/p012.jpg",
+      "narration": "Nghiêm Tông vẫn đòi bồi thường, còn các trưởng lão bắt đầu chất vấn cách xử lý của Thanh Vân.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep145/p024.jpg",
+      "narration": "Mẫu Đơn chỉ ra sự giả dối trong thái độ của những người vừa đòi công bằng nhưng lại không muốn nghe phía Hoa Vũ Lâu.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "dqgl_ep145/p035.jpg",
+      "narration": "Trác Phàm không níu cuộc tranh luận; hắn nói rõ mình sẽ nhớ thái độ của từng người rồi quay đi.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep145/p046.jpg",
+      "narration": "Các trưởng lão nhận ra vụ việc không chỉ là chuyện bồi thường mà còn liên quan đến người của Đế Vương Môn cài vào các thế lực.",
+      "kind": "recap",
+      "type": "REVEAL"
+    },
+    {
+      "panel": "dqgl_ep145/p057.jpg",
+      "narration": "Trong lúc mọi người còn dè chừng, Long Cửu tuyên bố ông tin Trác Phàm.",
+      "kind": "recap",
+      "type": "REACTION"
+    },
+    {
+      "panel": "dqgl_ep145/p063.jpg",
+      "narration": "Một lời tin tưởng giữa lúc các phe rạn nứt có thể đổi hướng cuộc chơi, nhưng Hoa Vũ Lâu vẫn chưa thoát hiểm.",
+      "kind": "recap",
+      "type": "ENDING"
+    },
+    {
+      "panel": "dqgl_ep146/p001.jpg",
+      "narration": "Cuộc phân xử ở Hoa Vũ Lâu vẫn chưa ngã ngũ, vì Kiếm Hầu Phủ chất vấn kết quả mà Hoàng Phủ Thanh Vân đưa ra.",
+      "kind": "recap",
+      "type": "HOOK",
+      "section": "Tập 146: Trác Phàm thách Nghiêm Tông so tài luyện đan!?"
+    },
+    {
+      "panel": "dqgl_ep146/p009.jpg",
+      "narration": "Thiên Dương tỏ vẻ thân thiện với Trác Phàm, nhưng những lời hỏi han nhanh chóng biến thành dò xét.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep146/p020.jpg",
+      "narration": "Trác Phàm cố tình làm trò thân mật với một cô gái ngay giữa buổi họp, khiến Thiên Dương mất bình tĩnh.",
+      "kind": "recap",
+      "type": "REACTION"
+    },
+    {
+      "panel": "dqgl_ep146/p029.jpg",
+      "narration": "Kiếm Hầu Phủ tuyên bố không công nhận phán quyết; Thanh Vân đáp rằng những người bất mãn có thể bỏ phiếu.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep146/p036.jpg",
+      "narration": "Trác Phàm chỉ ra Đế Vương Môn vốn đã không bỏ phiếu từ đầu, khiến cách đếm phiếu của Thanh Vân bị đặt dấu hỏi.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "dqgl_ep146/p045.jpg",
+      "narration": "Khi cuộc họp sắp tan, Trác Phàm đề nghị chuyển sang một cuộc so tài tại hội Bách Đan.",
+      "kind": "recap",
+      "type": "REVEAL"
+    },
+    {
+      "panel": "dqgl_ep146/p056.jpg",
+      "narration": "Nghiêm Tông chấp nhận lời thách thức luyện đan, còn Trác Phàm có vẻ đã tìm được cách kéo trận đấu sang sân mình.",
+      "kind": "recap",
+      "type": "ENDING"
+    },
+    {
+      "panel": "dqgl_ep147/p001.jpg",
+      "narration": "Nghiêm Tông mỉa mai Trác Phàm vì dám dựa vào Đế Vương Môn, rồi khẳng định mình chẳng ngại nói thẳng.",
+      "kind": "recap",
+      "type": "HOOK",
+      "section": "Tập 147: Trác Phàm chọn đứng về phía chống Đế Vương Môn!?"
+    },
+    {
+      "panel": "dqgl_ep147/p010.jpg",
+      "narration": "Ông ta thừa nhận Hoa Vũ Lâu từng dựa vào thế lực bên ngoài và dùng chuyện ấy để dồn ép Mẫu Đơn.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep147/p014.jpg",
+      "narration": "Nghiêm Tông nói mượn danh Đế Vương Môn khiến các nhà khác cúi đầu chẳng khác nào tự dẫn sói vào nhà.",
+      "kind": "recap",
+      "type": "REVEAL"
+    },
+    {
+      "panel": "dqgl_ep147/p026.jpg",
+      "narration": "Trác Phàm và Mẫu Đơn rời đi; cô nhắc hắn đừng biến mọi chuyện thành cuộc đấu vì sĩ diện.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep147/p038.jpg",
+      "narration": "Thanh Vân hỏi vì sao Trác Phàm lại gây chuyện, nhưng hắn đáp rằng mình đang buộc các thế gia phải nhìn rõ tình thế.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "dqgl_ep147/p051.jpg",
+      "narration": "Hắn suy luận Đế Vương Môn muốn thống nhất bảy nhà, còn những người phản đối sẽ bị đưa vào danh sách phải trừ khử.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep147/p062.jpg",
+      "narration": "Thay vì chờ bị loại từng người, Trác Phàm quyết định đứng về phía chống lại Đế Vương Môn.",
+      "kind": "recap",
+      "type": "ENDING"
+    },
+    {
+      "panel": "dqgl_ep148/p001.jpg",
+      "narration": "Trác Phàm nói thẳng các thế gia đều bị Đế Vương Môn nhắm đến; ai chống đối cũng sẽ thành mục tiêu.",
+      "kind": "recap",
+      "type": "HOOK",
+      "section": "Tập 148: Trác Phàm dùng trận luyện đan để cứu Hoa Vũ Lâu!?"
+    },
+    {
+      "panel": "dqgl_ep148/p010.jpg",
+      "narration": "Các trưởng lão kinh ngạc khi nhận ra những hành động ngang ngược của Thanh Vân có thể là một phần kế hoạch thống nhất bảy nhà.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep148/p021.jpg",
+      "narration": "Thiên Dương lo Hoa Vũ Lâu đã đứng hẳn về phía đối đầu, còn Trác Phàm nói họ không thể tiếp tục giả vờ trung lập.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "dqgl_ep148/p028.jpg",
+      "narration": "Trác Phàm cho rằng Hoa Vũ Lâu là cánh cửa để Đế Vương Môn lần lượt nuốt chửng các thế gia.",
+      "kind": "recap",
+      "type": "REVEAL"
+    },
+    {
+      "panel": "dqgl_ep148/p039.jpg",
+      "narration": "Hắn thừa nhận mục tiêu kế tiếp của Đế Vương Môn chưa thể đoán chắc, nhưng chờ đợi chỉ khiến các nhà mất thế chủ động.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep148/p050.jpg",
+      "narration": "Trác Phàm đề nghị dùng trận đấu luyện đan để giữ cho Hoa Vũ Lâu một cơ hội sống; Thanh Vân lập tức nhận lời.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep148/p074.jpg",
+      "narration": "Hắn chủ động biến mình thành tâm điểm, khiến ba nhà đối địch phải bố trí người đối phó với hắn trước.",
+      "kind": "recap",
+      "type": "ENDING"
+    },
+    {
+      "panel": "dqgl_ep149/p001.jpg",
+      "narration": "Sau khi chấp nhận trận đấu, Trác Phàm và Thanh Vân vẫn lời qua tiếng lại trước mặt các trưởng lão.",
+      "kind": "recap",
+      "type": "HOOK",
+      "section": "Tập 149: Khuynh Thành đặt niềm tin vào Trác Phàm!?"
+    },
+    {
+      "panel": "dqgl_ep149/p009.jpg",
+      "narration": "Long Cửu nhắc Trác Phàm cẩn thận; lần này ông tin hắn đã giữ được mạng, nhưng lần sau chưa chắc may mắn như vậy.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep149/p018.jpg",
+      "narration": "Mẫu Đơn quở trách Trác Phàm vì cách hành xử thiếu đứng đắn, còn hắn vẫn thản nhiên đáp trả.",
+      "kind": "recap",
+      "type": "REACTION"
+    },
+    {
+      "panel": "dqgl_ep149/p027.jpg",
+      "narration": "Hắn nói nếu không có người của Hoa Vũ Lâu đến báo tin, những kẻ vừa đắc tội hắn có thể đã phải trả giá.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "dqgl_ep149/p036.jpg",
+      "narration": "Sở Khuynh Thành chủ động tìm Trác Phàm, nói chuyện này liên quan đến sự tồn vong của Hoa Vũ Lâu.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep149/p047.jpg",
+      "narration": "Cô thừa nhận mình từng nghi ngờ hắn, rồi hứa sẽ nghe cách cứu Hoa Vũ Lâu mà không làm cô thất vọng.",
+      "kind": "recap",
+      "type": "REVEAL"
+    },
+    {
+      "panel": "dqgl_ep149/p069.jpg",
+      "narration": "Trác Phàm còn chưa kịp đáp lời, Khuynh Thành đã hỏi liệu mình có thể nói với hắn một câu không.",
+      "kind": "recap",
+      "type": "ENDING"
+    },
+    {
+      "panel": "dqgl_ep150/p001.jpg",
+      "narration": "Sở Khuynh Thành dẫn Trác Phàm đến hang núi phía sau Hoa Vũ Lâu để gặp một người đặc biệt.",
+      "kind": "recap",
+      "type": "HOOK",
+      "section": "Tập 150: Trác Phàm phát hiện lão nhân trúng Thất Thải Vân La Chưởng!?"
+    },
+    {
+      "panel": "dqgl_ep150/p006.jpg",
+      "narration": "Trong hang băng, họ tìm thấy một lão nhân bị phong ấn; Khuynh Thành giải thích ông là chủ nhân nơi này.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep150/p014.jpg",
+      "narration": "Trác Phàm nhận ra người trong băng vẫn còn sống, dù gần như không thể nói hay cử động.",
+      "kind": "recap",
+      "type": "REVEAL"
+    },
+    {
+      "panel": "dqgl_ep150/p027.jpg",
+      "narration": "Lão nhân tỉnh lại và bất ngờ gọi ra Thất Thải Vân La Chưởng; Trác Phàm hiểu ông đang chịu một loại độc kỳ lạ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep150/p039.jpg",
+      "narration": "Khuynh Thành giải thích bảy loại nguyên liệu trong phương thuốc đều là thiên tài địa bảo, nhưng công thức vẫn có điểm đáng ngờ.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "dqgl_ep150/p050.jpg",
+      "narration": "Trác Phàm suy ra cơ thể lão nhân đã bị nhiều loại độc khống chế; nếu không có Huyền Băng Vạn Niên, ông đã không thể sống đến hôm nay.",
+      "kind": "recap",
+      "type": "REVEAL"
+    },
+    {
+      "panel": "dqgl_ep150/p067.jpg",
+      "narration": "Khuynh Thành hỏi hắn định làm gì để cứu Hoa Vũ Lâu, còn Trác Phàm chuẩn bị mời một người có thể giúp.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+﻿{
+    "title":  "Trưởng lão xuất hiện, trận chiến đổi chiều!?",
+    "chapters":  "123",
+    "source_dir":  "manhua-recap/dqgl_ep123",
+    "written_by":  "OpenAI, đối chiếu ảnh nguồn, 2026-10-19",
+    "description":  "Trác Phàm tiếp tục đối mặt với biến cố mới cùng những người đồng hành.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tập 123 (chương 123).",
+    "hashtags":  [
+                     "#DaiQuanGiaLaMaHoang",
+                     "#ReviewManhua",
+                     "#Manhua",
+                     "#TuTien",
+                     "#XuyenKhong",
+                     "#ReviewTruyen"
+                 ],
+    "thumbnail":  {
+                      "text":  "Trưởng lão xuất hiện, trận chiến đổi chiều!?",
+                      "prompt":  "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+                  },
+    "beats":  [
+                  {
+                      "panel":  "p001.jpg",
+                      "narration":  "Trác Phàm vẫn không lùi bước dù đối thủ liên tục ép sát.",
+                      "kind":  "recap",
+                      "type":  "HOOK"
+                  },
+                  {
+                      "panel":  "p012.jpg",
+                      "narration":  "U Minh Cốc trưởng lão tiếp tục ra đòn, còn Trác Phàm tìm sơ hở.",
+                      "kind":  "recap",
+                      "type":  "BUILD"
+                  },
+                  {
+                      "panel":  "p024.jpg",
+                      "narration":  "Người đứng xem không tin kẻ giao đấu với trưởng lão lại là Trác Phàm.",
+                      "kind":  "recap",
+                      "type":  "BUILD"
+                  },
+                  {
+                      "panel":  "p030.jpg",
+                      "narration":  "Một nhóm cường giả tiến đến, khiến trận chiến tạm ngừng.",
+                      "kind":  "commentary",
+                      "type":  "BUILD"
+                  },
+                  {
+                      "panel":  "p042.jpg",
+                      "narration":  "Tên Trác Phàm được nhắc đến, thu hút chú ý của người vừa tới.",
+                      "kind":  "recap",
+                      "type":  "BUILD"
+                  },
+                  {
+                      "panel":  "p060.jpg",
+                      "narration":  "Những người có mặt bắt đầu tranh luận về hậu quả.",
+                      "kind":  "recap",
+                      "type":  "BUILD"
+                  },
+                  {
+                      "panel":  "p072.jpg",
+                      "narration":  "Một người có địa vị cao vẫn quan sát Trác Phàm từ phía sau.",
+                      "kind":  "recap",
+                      "type":  "ENDING"
+                  }
+              ]
+}

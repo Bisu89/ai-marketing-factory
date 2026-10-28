@@ -1,0 +1,39 @@
+{
+  "title": "Lưu Đại Sư bị khích tướng bằng linh thú lục giai!?",
+  "chapters": "178",
+  "source_dir": "manhua-recap/dqgl_ep178",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-21",
+  "description": "Lưu Đại Sư bị khích tướng bằng linh thú lục giai. Tóm tắt chương 178 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Lưu Đại Sư bị khích tướng bằng linh thú lục giai!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Trác Phàm nhắc đến linh thú lục giai và ngọn lửa truyền thừa, đánh trúng lòng tự cao của Lưu Đại Sư.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p025",
+      "narration": "Đối thủ của Trác Phàm càng lúc càng nóng nảy khi nghe những lời khiêu khích trước đám đông.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p062",
+      "narration": "Màn phô diễn tiếp theo sắp bắt đầu, và Lưu Đại Sư quyết chứng minh mình không hề kém cạnh.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

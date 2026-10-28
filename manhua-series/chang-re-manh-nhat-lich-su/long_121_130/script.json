@@ -1,0 +1,600 @@
+{
+  "template": "manhua_recap_long_vi",
+  "title": "Chàng Rể Mạnh Nhất Lịch Sử | Tập 121–130",
+  "source_dir": "manhua-recap/crmn_ep121",
+  "chapters": "120-129",
+  "description": "Thẩm Lãng và những bước ngoặt trong cuộc đối đầu bảo vệ Kim gia, tập 121–130.",
+  "beats": [
+    {
+      "panel": "crmn_ep121/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Thẩm Lãng nhờ Kiếm Vương chờ thêm để thu xếp hậu quả vụ ám sát. Lý Thiên Thu nhận xét câu chuyện đổ cho các phe giang hồ chẳng thể đánh lừa người khác.",
+      "section": "Tập 121"
+    },
+    {
+      "panel": "crmn_ep121/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng vốn chỉ cần một lời giải thích để những người có quyền dễ bề che đậy. Hắn không trông mong tất cả sẽ tin vào câu chuyện đó."
+    },
+    {
+      "panel": "crmn_ep121/p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trên đường đi, nghe Kiếm Vương nhắc chuyện mất con, Thẩm Lãng lập tức xin lỗi vì vô tình chạm vào nỗi đau của ông."
+    },
+    {
+      "panel": "crmn_ep121/p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trong khi ấy, Tiết Lệ tới Huyền Vũ Bá tước phủ. Dù Kim gia từng giúp gia đình thoát nạn hải tặc, nàng lại xem thường mối hôn ước giữa hai nhà."
+    },
+    {
+      "panel": "crmn_ep121/p016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nàng muốn hủy hôn với Kim Mộc Thông, còn yêu cầu chính Huyền Vũ Bá phải đứng ra mở lời để nhà mình giữ được thể diện."
+    },
+    {
+      "panel": "crmn_ep121/p032.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ở phía bên kia, người dân bàn tán trái ngược về Cừu Yêu Nhi. Có thương nhân bênh vực nàng vì những kẻ bị nàng tiêu diệt vốn là hải tặc đe dọa việc buôn bán."
+    },
+    {
+      "panel": "crmn_ep121/p049.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Từ Thiên Thiên dùng thân phận Trương Xuân Hoa để tìm đường tiếp cận Cừu Yêu Nhi. Bức thư giới thiệu trở thành tấm vé bước vào cuộc gặp."
+    },
+    {
+      "panel": "crmn_ep121/p054.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thiên Thiên đề nghị giúp Cừu Yêu Nhi đối phó Cừu Kiêu. Nàng muốn dùng sự thông minh để đổi lấy một chỗ đứng bên cạnh nữ tướng."
+    },
+    {
+      "panel": "crmn_ep121/p061.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sau đó nàng nói thật mình là con gái Từ Quang Doãn, kể chuyện gia đình tan nát và những người thân bị Trương Tấn sát hại để cầu xin che chở."
+    },
+    {
+      "panel": "crmn_ep121/p063.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng cách lấy lòng của Thiên Thiên không có tác dụng. Cừu Yêu Nhi thẳng thừng nói mình không thích phụ nữ rồi cho người đưa nàng ra ngoài."
+    },
+    {
+      "panel": "crmn_ep122/p001.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Từ Thiên Thiên chưa chịu bỏ cuộc. Nàng thoát khỏi những người đưa mình đi rồi quay lại cầu xin Cừu Yêu Nhi cho nương nhờ.",
+      "section": "Tập 122"
+    },
+    {
+      "panel": "crmn_ep122/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cừu Yêu Nhi đã nghe chuyện nhà nàng, cũng bất ngờ vì nàng còn sống. Nữ tướng có thể thu nhận người gặp nạn, nhưng không cần thêm một kẻ bày mưu bên cạnh."
+    },
+    {
+      "panel": "crmn_ep122/p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Được hỏi biết làm việc gì, Thiên Thiên lúng túng trước những công việc hầu hạ thông thường. Muốn ở lại, nàng phải tìm đúng thứ chủ nhân thật sự cần."
+    },
+    {
+      "panel": "crmn_ep122/p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ở một nơi khác, Cừu Thiên Nguy tính chuyện giành chỗ đứng trên đất liền. Muốn thế lực hải tặc tồn tại lâu dài, hắn cần một cơ nghiệp vượt ra ngoài biển."
+    },
+    {
+      "panel": "crmn_ep122/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đường Luân cho biết trên đảo Kim Sơn có năm nghìn quân. Ông ta cũng không muốn tiếp tục để Kim gia kiếm lợi trong khi bản thân chỉ ngồi chờ thất thế."
+    },
+    {
+      "panel": "crmn_ep122/p029.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cừu Thiên Nguy lại đòi bảy phần lợi ích. Đường Luân phải lo cả thợ mỏ lẫn việc luyện kim nhưng vẫn bị ép nhận phần chia ít hơn."
+    },
+    {
+      "panel": "crmn_ep122/p030.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lời đe dọa rất rõ: nếu không đồng ý, hải tặc cứ đợi đảo trở về tay Kim gia rồi chiếm trọn. Đường Luân chẳng có nhiều quyền lựa chọn."
+    },
+    {
+      "panel": "crmn_ep122/p043.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tại quán trọ, Tiết Lệ muốn giành phòng tốt nhất. Biết người đang ở là Thẩm Lãng, nàng càng khinh thường vì hắn chỉ là một chàng rể ở nhờ."
+    },
+    {
+      "panel": "crmn_ep122/p046.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng nhận ra đây chính là người từng đính hôn với Mộc Thông. Tiết Lệ vẫn tiếp tục xúc phạm, thậm chí còn bắt hắn phải cúi mắt khi nói chuyện."
+    },
+    {
+      "panel": "crmn_ep122/p058.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn âm thầm chuẩn bị một trò trả đũa bằng thứ gây kích ứng ngoài da. Trong đầu Thẩm Lãng, vị tiểu thư kiêu ngạo sắp phải nếm một bài học khó chịu."
+    },
+    {
+      "panel": "crmn_ep123/p001.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng cho làm lại y phục của Tiết Lệ để thực hiện trò trả đũa. Hắn còn chuẩn bị mùi hương nhằm che giấu những dấu vết đáng ngờ.",
+      "section": "Tập 123"
+    },
+    {
+      "panel": "crmn_ep123/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Việc đánh tráo giữa vòng hộ vệ đòi hỏi một cao thủ. Vì thế hắn đem cả ân tình Kiếm Vương còn nợ mình ra để nhờ Lý Thiên Thu giúp sức."
+    },
+    {
+      "panel": "crmn_ep123/p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lý Thiên Thu không ngờ một lần mang ơn cứu mạng lại được dùng vào chuyện như thế. Nhưng Thẩm Lãng biết không phải ai cũng vượt qua được hộ vệ của Tiết Lệ."
+    },
+    {
+      "panel": "crmn_ep123/p043.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sau đó Tiết Lệ phải chịu cảm giác ngứa ngáy đau rát suốt chuyến đi. Nàng chưa hiểu nguyên nhân, trong khi trò trả đũa đã đạt được mục đích."
+    },
+    {
+      "panel": "crmn_ep123/p045.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trở về gần Huyền Vũ thành, Thẩm Lãng chia tay Lý Thiên Thu. Hắn còn ngờ rằng vị Kiếm Vương vẫn đang giận vì chuyện mình vừa nhờ vả."
+    },
+    {
+      "panel": "crmn_ep123/p047.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tin Cừu Thiên Nguy đã điều quân tới khiến Thẩm Lãng chú ý ngay. Một bước then chốt trong kế hoạch của hắn cuối cùng đã chuyển động."
+    },
+    {
+      "panel": "crmn_ep123/p048.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn đề nghị nhạc phụ dẫn hai nghìn quân ra Kim Sơn. Điều quan trọng là phải diễn như đang giành đảo, còn thực tế tránh giao chiến với hải tặc."
+    },
+    {
+      "panel": "crmn_ep123/p055.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trong phủ, Kim Mộc Thông lại đang cặm cụi học hành. Sau chuyện hôn ước, chàng muốn thi đỗ tiến sĩ để tự tìm một người vợ tốt."
+    },
+    {
+      "panel": "crmn_ep123/p058.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng nhắc em vợ rằng thân phận người nối nghiệp quý tộc vốn không bắt buộc phải theo con đường khoa cử. Nhưng Mộc Thông vẫn muốn có thành tích của riêng mình."
+    },
+    {
+      "panel": "crmn_ep123/p059.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đến lúc nghe em vợ xin hàng trăm bài văn và cả nghìn bài thơ để học, Thẩm Lãng chỉ còn biết hỏi vì sao cậu không tự viết lấy."
+    },
+    {
+      "panel": "crmn_ep124/p001.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đường Luân tới thăm Huyền Vũ Bá tước phủ, làm ra vẻ giữ chữ tín khi tuyên bố giao trả đảo Kim Sơn. Phía sau lễ nghi ấy vẫn là cuộc tính toán giữa các thế lực.",
+      "section": "Tập 124"
+    },
+    {
+      "panel": "crmn_ep124/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hai ngày sau, Kim gia đưa hai nghìn quân, hai trăm thợ luyện kim và tám trăm thợ mỏ xuống thuyền. Đường Duẫn cũng đi cùng đoàn ra đảo."
+    },
+    {
+      "panel": "crmn_ep124/p006.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trên đường, hai bên nói chuyện hòa giải và đoàn kết quý tộc cũ. Những lời đẹp đẽ không khiến Thẩm Lãng quên mục đích thật của chuyến đi."
+    },
+    {
+      "panel": "crmn_ep124/p032.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hải tặc đã chiếm Kim Sơn, khiến Kim Trác nổi giận. Đúng như kế hoạch đã bàn, ông không lao vào một trận đánh mà ra lệnh cho quân quay về."
+    },
+    {
+      "panel": "crmn_ep124/p034.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng lấy lý do thuyền quá nặng để bỏ lại những thứ không cần thiết. Lương thực cùng vật tư trở thành món quà mà đối phương vui vẻ nhận lấy."
+    },
+    {
+      "panel": "crmn_ep124/p036.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cừu Hào cười đắc ý vì vừa có đảo, vừa được người và đồ tiếp tế. Hắn không biết việc rút quân vốn nằm trong dự tính của Thẩm Lãng."
+    },
+    {
+      "panel": "crmn_ep124/p061.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng món nợ cũ vẫn đang treo trên đầu Kim gia. Họ đã trả một trăm vạn trong nhiều năm, giờ tiền mặt còn chưa đầy hai vạn mà vẫn thiếu bảy mươi vạn."
+    },
+    {
+      "panel": "crmn_ep124/p062.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Kim gia xin Thư Đình Ngọc của Ẩn Nguyên Hội gia hạn một năm. Đối phương lập tức từ chối, không cho họ thêm thời gian xoay xở."
+    },
+    {
+      "panel": "crmn_ep124/p064.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hạn cuối chỉ còn một tháng. Nếu không trả đủ bảy mươi vạn kim tệ, đảo Vọng Nhai đem thế chấp sẽ bị lấy đi theo giấy nợ."
+    },
+    {
+      "panel": "crmn_ep124/p065.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng nổi giận ngay trước mặt chủ nợ. Khi người của Ẩn Nguyên Hội rời phủ, áp lực tài chính đã trở thành mặt trận mới của cuộc tranh đoạt."
+    },
+    {
+      "panel": "crmn_ep124/p065.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Việc bỏ đảo và để lại tiếp tế khiến hải tặc tưởng mình thắng quá dễ. Cách Thẩm Lãng chấp nhận thiệt trước mắt báo hiệu hắn đang nhắm tới một kết quả xa hơn."
+    },
+    {
+      "panel": "crmn_ep125/p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng hiểu Từ Thiên Thiên là một mắt xích quan trọng. Nếu nàng không thể đứng vững bên cạnh Cừu Yêu Nhi, kế hoạch phía sau cũng sẽ gặp nguy hiểm.",
+      "section": "Tập 125"
+    },
+    {
+      "panel": "crmn_ep125/p016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lại có người tới đòi tiền. Lâm Mặc của Cẩm Tú Các đưa khoản một nghìn kim tệ ra tính lãi thành một nghìn ba trăm, ép Thẩm Lãng phải hoàn trả."
+    },
+    {
+      "panel": "crmn_ep125/p018.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn còn nói công thức nhuộm đã bị lấy cắp để biện minh cho yêu cầu của mình. Từng người một đang tranh thủ thời điểm Kim gia khó khăn để dồn ép."
+    },
+    {
+      "panel": "crmn_ep125/p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Không chỉ chủ nợ, người của Đại Lý Tự cũng xuất hiện. Họ điều tra cái chết Chúc Lan Đình và nhắm vào việc Thẩm Lãng từng có mặt gần Nam Hoa."
+    },
+    {
+      "panel": "crmn_ep125/p026.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng nhận ra một quan viên bình thường không tự nhiên dám làm chuyện này. Đằng sau cuộc điều tra hẳn còn có một chỗ dựa đủ lớn."
+    },
+    {
+      "panel": "crmn_ep125/p028.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trước khoản đòi tiền, hắn lại nhận rất nhanh. Chính sự bình thản ấy khiến cuộc gây sức ép diễn ra khác với điều những người kia mong đợi."
+    },
+    {
+      "panel": "crmn_ep125/p029.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn ra lệnh mang đủ một nghìn ba trăm kim tệ ra trả. Bề ngoài đó là cách thanh toán món nợ, nhưng trong lòng hắn đã ghi nhớ người đang ép mình."
+    },
+    {
+      "panel": "crmn_ep125/p043.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sau khi những kẻ đòi nợ hả hê, Thẩm Lãng cho rằng Lâm Mặc đã đi quá giới hạn. Việc chèn ép lần này sẽ có một cái giá khác."
+    },
+    {
+      "panel": "crmn_ep125/p044.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn giao cho Thập Tam chuẩn bị một cái bẫy nguy hiểm ở nhà xí. Trò trả đũa được ngụy trang thành tai nạn để nhắm vào đám người đang ăn mừng."
+    },
+    {
+      "panel": "crmn_ep126/p019.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lâm Mặc thúc người của Đại Lý Tự bắt Thẩm Lãng về giam. Mộc Lan lập tức rút kiếm chắn trước chồng, không chịu để họ tùy tiện dẫn người đi.",
+      "section": "Tập 126"
+    },
+    {
+      "panel": "crmn_ep126/p023.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng lại trấn an vợ rồi chủ động giơ tay. Những vết nổi trên cánh tay khiến đám quan sai đang hung hăng bỗng chùn bước."
+    },
+    {
+      "panel": "crmn_ep126/p026.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Họ nghi hắn mắc đậu mùa. Thẩm Lãng còn nhắc chuyện đi khám ở Phong Hoa Cốc, khiến ai nấy càng sợ hãi, tránh xa hắn ngay lập tức."
+    },
+    {
+      "panel": "crmn_ep126/p029.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cảnh bắt người biến thành cảnh tháo chạy. Hắn còn gọi với theo, giục họ cứ đưa mình về nha môn như vừa tuyên bố ban đầu."
+    },
+    {
+      "panel": "crmn_ep126/p044.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ở phía bên kia, Lâm Mặc cùng những người đứng về phe mình mở tiệc. Họ tưởng Kim gia đã tới đường cùng nên chẳng còn kiêng dè."
+    },
+    {
+      "panel": "crmn_ep126/p045.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bữa tiệc chưa kết thúc, một người đột nhiên đau bụng. Rồi những người khác cũng lần lượt ôm bụng, cuống cuồng tìm chỗ giải quyết."
+    },
+    {
+      "panel": "crmn_ep126/p048.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cả nhóm chạy vào nhà xí, còn Thập Tam đã chờ bên ngoài. Cái bẫy Thẩm Lãng chuẩn bị từ trước bắt đầu khép lại."
+    },
+    {
+      "panel": "crmn_ep126/p049.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Kết cấu trong nhà xí sập xuống khiến những người ở bên trong không thoát kịp. Sự hoảng loạn lập tức thay thế tiếng cười đắc ý ban nãy."
+    },
+    {
+      "panel": "crmn_ep126/p052.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lửa bùng lên, biến cuộc trả đũa thành một vụ chết người. Ba người con của Lâm Mặc cùng một vị quan khách bị chôn vùi trong biển lửa."
+    },
+    {
+      "panel": "crmn_ep127/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Giữa lúc những người khác tránh xa Kim gia, Ngũ vương tử Ninh Chính lại tới thăm. Thân phận hoàng tử không khiến cuộc đời chàng được thuận lợi.",
+      "section": "Tập 127"
+    },
+    {
+      "panel": "crmn_ep127/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mẹ của chàng từng là người hầu bên cạnh Tô Bội Bội. Khi chàng ra đời, ngoại hình khác thường cùng một tai họa trùng lúc đã khiến người ta gán cho chàng điềm xấu."
+    },
+    {
+      "panel": "crmn_ep127/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chính Tô Bội Bội đã cầu xin quốc quân giữ mạng đứa trẻ. Ân tình năm ấy là lý do Ninh Chính vẫn nhớ tới nhà họ Kim trong lúc khó khăn."
+    },
+    {
+      "panel": "crmn_ep127/p006.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chàng mang gần hai vạn kim tệ tới giúp. Số tiền ấy gần như toàn bộ tài sản của chàng, dù vẫn còn cách rất xa khoản nợ bảy mươi vạn."
+    },
+    {
+      "panel": "crmn_ep127/p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trương Tấn thì đếm từng ngày chờ hạn trả nợ. Hắn tin chỉ còn mười ba ngày nữa là có thể nhìn Kim gia sụp đổ."
+    },
+    {
+      "panel": "crmn_ep127/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mộc Lan tìm đến chín nhà quý tộc nhưng chỉ vay được tổng cộng một nghìn kim tệ. Những quan hệ cũ bộc lộ sự lạnh nhạt khi gia đình cần giúp đỡ nhất."
+    },
+    {
+      "panel": "crmn_ep127/p028.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng vẫn trấn an rằng mình có kế hoạch. Hắn không đặt hy vọng cứu cả gia tộc vào những khoản vay nhỏ mà mọi người miễn cưỡng đưa ra."
+    },
+    {
+      "panel": "crmn_ep127/p029.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hồng Tuyến, vợ Kim Hối, muốn gặp Mộc Lan. Mộc Lan phải tạm rời cuộc bàn bạc trong lúc Thẩm Lãng tiếp tục lo những mắt xích khác."
+    },
+    {
+      "panel": "crmn_ep127/p061.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thư của Từ Thiên Thiên báo tin Cừu Yêu Nhi thích nghe chuyện anh hùng. Nàng cần một câu chuyện thật dài để giữ được vị trí bên cạnh nữ tướng."
+    },
+    {
+      "panel": "crmn_ep127/p064.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng nhanh chóng nghĩ tới những truyện mình biết. Một câu chuyện đủ hấp dẫn có thể giúp Thiên Thiên ở lại lâu hơn bất kỳ lời lấy lòng nào."
+    },
+    {
+      "panel": "crmn_ep127/p064.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Khoản giúp đỡ của Ninh Chính nhỏ hơn món nợ rất nhiều, nhưng gần như là tất cả những gì chàng có. Đặt cạnh chín nhà quý tộc, hành động ấy cho thấy ai thật sự coi trọng tình nghĩa."
+    },
+    {
+      "panel": "crmn_ep128/p019.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Người của Thiên Đạo Hội đề nghị mua ruộng và cả tòa thành với tổng giá hai mươi chín vạn. Đổi tài sản lấy tiền sẽ giúp Kim gia tạm thời thoát hiểm.",
+      "section": "Tập 128"
+    },
+    {
+      "panel": "crmn_ep128/p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng từ chối bán thành. Đó là gốc rễ quân sự của gia tộc, và một khi mất đi thì dù có tiền cũng rất khó dựng lại cơ nghiệp."
+    },
+    {
+      "panel": "crmn_ep128/p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thứ hắn đem ra thương lượng là một chiếc gương trong veo. Những vị khách lập tức sững sờ trước hình ảnh phản chiếu rõ ràng chưa từng thấy."
+    },
+    {
+      "panel": "crmn_ep128/p032.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng nói chi phí làm ra thấp hơn một lượng bạc, sản xuất nhiều còn có thể rẻ hơn. Trong khi ấy, giá bán một chiếc có thể tới một trăm kim tệ."
+    },
+    {
+      "panel": "crmn_ep128/p035.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thiên Đạo Hội muốn mua vào với giá mười kim tệ mỗi chiếc. Nhưng Thẩm Lãng cho biết hiện chỉ có một nghìn chiếc sẵn hàng."
+    },
+    {
+      "panel": "crmn_ep128/p043.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Giá trị không nằm riêng ở số hàng có sẵn mà còn ở khả năng tạo ra chúng. Phần nguyên liệu chỉ chiếm một phần rất nhỏ so với giá gương bán ra."
+    },
+    {
+      "panel": "crmn_ep128/p044.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hai bên tranh luận gay gắt về số tiền hợp tác. Phía Thiên Đạo Hội cho rằng một trăm vạn quá cao và chỉ muốn trả bốn mươi vạn."
+    },
+    {
+      "panel": "crmn_ep128/p045.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Họ biết hạn trả nợ đã cận kề nên dùng thời gian để ép giá. Thẩm Lãng vẫn giữ thái độ cứng rắn, không chịu đổi cơ hội lớn lấy một khoản cứu nguy nhỏ."
+    },
+    {
+      "panel": "crmn_ep128/p047.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn đưa ra viễn cảnh Thiên Đạo Hội vượt qua Ẩn Nguyên Hội. Đây là cơ hội đổi tương quan giữa hai thế lực thương mại, đủ lớn để họ phải tính lại."
+    },
+    {
+      "panel": "crmn_ep128/p048.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng nhấn mạnh mình cần một trăm vạn kim tệ. Cuộc mặc cả đã chuyển từ chuyện mua vài chiếc gương sang một vụ hợp tác quyết định tương lai."
+    },
+    {
+      "panel": "crmn_ep128/p048.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Thẩm Lãng giữ lại tòa thành vì hiểu tiền có thể kiếm lại, còn căn cứ quân sự mất đi sẽ kéo theo cả quyền tự chủ. Chính sự cứng rắn đó giúp hắn giữ thế khi đàm phán."
+    },
+    {
+      "panel": "crmn_ep129/p001.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hoàng Đồng đích thân tới và nhìn ra ý nghĩa của cơ hội này. Ông không muốn để một vụ mặc cả làm Thiên Đạo Hội bỏ lỡ món lợi về sau.",
+      "section": "Tập 129"
+    },
+    {
+      "panel": "crmn_ep129/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Dù vậy, ông vẫn cần tận mắt xác nhận một nghìn chiếc gương. Chỉ khi hàng hóa thật sự tồn tại thì mọi lời hứa mới có trọng lượng."
+    },
+    {
+      "panel": "crmn_ep129/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Kim Hối mở cửa dẫn người vào kiểm tra. Thẩm Lãng đã chuẩn bị thứ khiến cuộc thương lượng không còn dừng ở những lời mô tả."
+    },
+    {
+      "panel": "crmn_ep129/p006.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cảnh trước mắt làm khách tới xem kinh ngạc. Sản phẩm mà họ tưởng hiếm có đã xuất hiện đủ nhiều để chứng minh khả năng cung ứng của Kim gia."
+    },
+    {
+      "panel": "crmn_ep129/p061.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trong lúc chuyện gương tiến triển, Từ Thiên Thiên bắt đầu kể Tây Du Ký cho Cừu Yêu Nhi. Những lời mở đầu đưa người nghe vào một thế giới hoàn toàn khác."
+    },
+    {
+      "panel": "crmn_ep129/p062.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thiên Thiên vẫn lo không biết nữ tướng có hiểu và thích câu chuyện hay không. Nàng đang đánh cược chỗ dung thân của mình vào những trang truyện ấy."
+    },
+    {
+      "panel": "crmn_ep130/p001.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Từ Thiên Thiên cố tình kể thật chậm, hai canh giờ chỉ đi được một phần câu chuyện. Nếu kể hết quá nhanh, nàng sẽ mất thứ giúp mình ở lại.",
+      "section": "Tập 130"
+    },
+    {
+      "panel": "crmn_ep130/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đến đoạn con khỉ tìm học đạo với Bồ Đề Tổ Sư, Cừu Yêu Nhi đã chăm chú lắng nghe. Thế giới thần tiên khiến nàng không muốn câu chuyện dừng lại."
+    },
+    {
+      "panel": "crmn_ep130/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Những điều kỳ lạ trong Tây Du Ký vượt xa cuộc sống hiện tại. Với Cừu Yêu Nhi, chuyện kể mở ra một khoảng tự do mà nàng khó tìm được ngoài đời."
+    },
+    {
+      "panel": "crmn_ep130/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Khi Thiên Thiên ngừng kể, nàng nơm nớp chờ phản ứng. Kế hoạch này chỉ thành công nếu người nghe thật sự muốn nghe tiếp."
+    },
+    {
+      "panel": "crmn_ep130/p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lời khen của Cừu Yêu Nhi cuối cùng cũng tới. Thiên Thiên vui mừng vì đã tìm được cách giữ mình bên cạnh nữ tướng mà không cần dùng những lời hứa suông."
+    },
+    {
+      "panel": "crmn_ep130/p055.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trở lại phía Thẩm Lãng, hắn nghe chuyện Tiết Lệ mắc một chứng bệnh kỳ lạ. Nguồn cơn của lời đồn ấy vốn nằm trong trò trả đũa mà hắn đã sắp đặt."
+    },
+    {
+      "panel": "crmn_ep130/p057.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tại Huyền Vũ Bá tước phủ, Tô Bội Bội nhận được thư của Châu Thần. Lá thư kéo những quan hệ cũ trở lại giữa lúc gia đình còn nhiều biến động."
+    },
+    {
+      "panel": "crmn_ep130/p058.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bà không giữ thư lại mà đưa thẳng vào lửa. Những lời trong thư không thể khiến vị phu nhân chấp nhận khuất phục."
+    },
+    {
+      "panel": "crmn_ep130/p059.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Tô Bội Bội lạnh lùng nói Tô gia rồi sẽ hối hận. Sóng gió trước mắt chưa kết thúc, một cuộc đối đầu khác đã bắt đầu hiện hình."
+    }
+  ],
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ]
+}

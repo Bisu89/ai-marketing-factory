@@ -1,0 +1,26 @@
+{
+  "title": "Trác Phàm phát hiện pháp trận quanh căn nhà!?",
+  "chapters": "118",
+  "source_dir": "manhua-recap/dqgl_ep118",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-19",
+  "description": "Trong đêm ở khu phố hoang, Trác Phàm phát hiện căn nhà mình chọn có bố trí pháp trận. Khi dò xét xung quanh, hắn gặp một nữ nhân bí ẩn đang bị thương và bắt đầu tìm hiểu chuyện gì đã xảy ra với cô.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tập 118 (chương 118).",
+  "hashtags": ["#DaiQuanGiaLaMaHoang", "#ReviewManhua", "#Manhua", "#TuTien", "#XuyenKhong", "#ReviewTruyen"],
+  "thumbnail": {"text":"Trong căn nhà hoang có pháp trận!?","prompt":"Vertical 9:16 Chinese manhua style, black-haired cultivator in blue discovering a glowing formation inside a dark abandoned house, mysterious bandaged woman in the shadows, moonlight through wooden windows, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"},
+  "beats": [
+    {"panel":"p002.jpg","narration":"Đêm xuống, Trác Phàm chợt tỉnh giấc giữa khu phố vắng lặng.","kind":"recap","type":"HOOK"},
+    {"panel":"p004.jpg","narration":"Hắn nhanh chóng nhận ra trong căn nhà có bố trí pháp trận, chứ không phải một nơi trú chân bình thường.","kind":"recap","type":"BUILD"},
+    {"panel":"p007.jpg","narration":"Trác Phàm dùng một giọt máu để gọi ra linh vật nhỏ, sai nó đi dò xét tình hình bên ngoài.","kind":"recap","type":"BUILD"},
+    {"panel":"p010.jpg","narration":"Linh vật bay qua những mái nhà tối om, trong khi Trác Phàm giữ mình ở lại quan sát.","kind":"recap","type":"BUILD"},
+    {"panel":"p013.jpg","narration":"Nó phát hiện một nữ nhân bị thương, người đang cố gắng vận công giữa màn đêm.","kind":"recap","type":"BUILD"},
+    {"panel":"p017.jpg","narration":"Trác Phàm nhận ra cô vẫn sống, nhưng tình trạng cơ thể không hề ổn định.","kind":"recap","type":"BUILD"},
+    {"panel":"p022.jpg","narration":"Cô gái cố tự chống đỡ, còn Trác Phàm đánh giá khả năng chữa trị và nguy cơ từ thứ đang hành hạ cô.","kind":"recap","type":"BUILD"},
+    {"panel":"p027.jpg","narration":"Hắn không vội tin những gì nhìn thấy, bởi pháp trận và căn bệnh của cô có thể liên quan đến nhau.","kind":"commentary","type":"BUILD"},
+    {"panel":"p033.jpg","narration":"Trác Phàm tìm được nơi trú tạm trong khu nhà, nhưng vẫn dặn cô không được tùy tiện đi sâu vào bên trong.","kind":"recap","type":"BUILD"},
+    {"panel":"p038.jpg","narration":"Sáng hôm sau, hắn mang trái cây đã hái về và đưa cho nữ nhân đang nghỉ trong căn nhà.","kind":"recap","type":"BUILD"},
+    {"panel":"p043.jpg","narration":"Cô nhận lấy thức ăn, còn Trác Phàm quan sát phản ứng của mình để tìm manh mối về tình trạng của cô.","kind":"recap","type":"BUILD"},
+    {"panel":"p048.jpg","narration":"Hắn cho rằng việc cô có thể ăn uống bình thường chứng tỏ mình đã dần tạo được lòng tin.","kind":"recap","type":"BUILD"},
+    {"panel":"p054.jpg","narration":"Nữ nhân vẫn cảnh giác trước sự thân thiện bất ngờ của hắn.","kind":"recap","type":"BUILD"},
+    {"panel":"p060.jpg","narration":"Trác Phàm nhìn cô với vẻ tính toán, như thể đang chờ một cơ hội để tìm hiểu sâu hơn về độc trong cơ thể.","kind":"recap","type":"BUILD"},
+    {"panel":"p066.jpg","narration":"Cô bất ngờ hỏi vì sao hắn lại phá hủy hết dược liệu. Trác Phàm phải giải thích lựa chọn của mình.","kind":"recap","type":"ENDING"}
+  ]
+}

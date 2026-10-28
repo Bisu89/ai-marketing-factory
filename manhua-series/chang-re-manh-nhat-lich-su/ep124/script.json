@@ -1,0 +1,397 @@
+{
+  "title": "Cú lừa hải tặc và món nợ 70 vạn kim tệ",
+  "chapters": "123",
+  "source_dir": "manhua-recap/crmn_ep124",
+  "description": "T?p 124 c?a Ch?ng R? M?nh Nh?t L?ch S?: Cú lừa hải tặc và món nợ 70 vạn kim tệ",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "beats": [
+    {
+      "panel": "p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Tần Hải Bá tước Đường Luận bất ngờ đến cầu kiến."
+    },
+    {
+      "panel": "p002.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Huyền Vũ Bá nhận lễ vật, còn Tần Hải được khen đáng tin."
+    },
+    {
+      "panel": "p004.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Hai ngày sau, đoàn thợ hùng hậu kéo thẳng đến đảo Kim Sơn."
+    },
+    {
+      "panel": "p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đường Luận chủ động giảng hòa, muốn hai nhà bắt tay."
+    },
+    {
+      "panel": "p006.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn còn đề nghị các quý tộc đoàn kết như dầu sôi lửa bỏng."
+    },
+    {
+      "panel": "p007.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Rồi hắn lôi chuyện hôn nhân hai nhà ra bàn."
+    },
+    {
+      "panel": "p008.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Đường Huynh lập tức cáo lui, để phụ thân quyết định."
+    },
+    {
+      "panel": "p010.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Đoàn thuyền cập đảo Kim Sơn, mở màn kế hoạch lớn."
+    },
+    {
+      "panel": "p012.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thợ mỏ và thợ luyện kim lần lượt lên bờ."
+    },
+    {
+      "panel": "p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đường Huynh nhìn quanh, hồi hộp chờ thời cơ."
+    },
+    {
+      "panel": "p014.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Mình thấy Đường Luận cười rất tự tin, vì hắn tưởng đây là chuyến làm ăn bình thường."
+    },
+    {
+      "panel": "p015.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Nhưng trên đảo, một đám người lạ đang xông tới."
+    },
+    {
+      "panel": "p016.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Thủ lĩnh Cửu Hào xuất hiện, tự xưng hải tặc thành Nộ Triều."
+    },
+    {
+      "panel": "p017.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Binh lính Kim thị hoảng hốt báo động có hải tặc."
+    },
+    {
+      "panel": "p018.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cửu Hào vung đao, chém gục lính canh trong chớp mắt."
+    },
+    {
+      "panel": "p019.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Đường Huynh không hiểu vì sao đảo lại có hải tặc."
+    },
+    {
+      "panel": "p020.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Đường Luận thú nhận họ đã rút hết người từ ba ngày trước."
+    },
+    {
+      "panel": "p021.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đường Huynh tuyên bố đảo đã giao cho Kim thị."
+    },
+    {
+      "panel": "p022.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Mình phải công nhận cú chiếm đảo này rất thâm: Cửu Hào đánh đúng lúc chủ cũ vừa rút quân."
+    },
+    {
+      "panel": "p023.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một tướng hải tặc khinh thường Huyền Vũ Bá, đòi Cửu Hào tự ra mặt."
+    },
+    {
+      "panel": "p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cửu Hào lập tức nhắm Thẩm Lãng, dụ hắn về phe mình."
+    },
+    {
+      "panel": "p025.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Thẩm Lãng nổi giận, mắng bọn hải tặc là phản quốc."
+    },
+    {
+      "panel": "p026.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cửu Hào cười lớn, thách quân Huyền Vũ Bá đánh thử."
+    },
+    {
+      "panel": "p027.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Thẩm Lãng chỉ biết than trận này quá vô sỉ."
+    },
+    {
+      "panel": "p028.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cửu Hào cảm ơn Kim thị vì đã đem cả đám thợ tới."
+    },
+    {
+      "panel": "p029.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Đường Luận run rẩy, nhận ra mình vừa dâng quà cho địch."
+    },
+    {
+      "panel": "p030.jpg",
+      "type": "REVEAL",
+      "kind": "commentary",
+      "narration": "Mình thích nhất đoạn này: kế hoạch ngoại giao biến thành màn tự tay giao người cho hải tặc."
+    },
+    {
+      "panel": "p032.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Đường Luận tái mặt, lập tức ra lệnh quay thuyền."
+    },
+    {
+      "panel": "p033.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn còn cuống cuồng giục mọi người kéo buồm bỏ chạy."
+    },
+    {
+      "panel": "p034.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đường Huynh ra lệnh vứt hàng, giảm trọng lượng con thuyền."
+    },
+    {
+      "panel": "p035.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Nhưng dưới nước, băng nhọn bất ngờ đâm nát thuyền."
+    },
+    {
+      "panel": "p036.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Cửu Hào cười nhạo, bảo họ đang tự vứt hết lương thực."
+    },
+    {
+      "panel": "p037.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Đường Luận gào tên Cửu Hào, vừa hận vừa tuyệt vọng."
+    },
+    {
+      "panel": "p038.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn định lên Quốc Quân tố cáo, nhưng bị đánh văng sang bên."
+    },
+    {
+      "panel": "p040.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Đường Luận bị kéo lên thuyền, còn cả đoàn nhanh chóng tháo chạy."
+    },
+    {
+      "panel": "p041.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hạm đội hải tặc rời đảo trong tiếng cười khoái chí."
+    },
+    {
+      "panel": "p042.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cửu Hào tuyên bố phải tận hưởng vẻ mặt tháo chạy ấy."
+    },
+    {
+      "panel": "p044.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trên đảo, hắn ngồi chễm chệ giữa chiến lợi phẩm và mỹ nhân."
+    },
+    {
+      "panel": "p045.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Cửu Hào hỏi Đường Luận, sao Huyền Vũ Bá gục nhanh vậy."
+    },
+    {
+      "panel": "p046.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mỹ nhân bên cạnh chỉ im lặng, lạnh lùng quan sát."
+    },
+    {
+      "panel": "p047.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trong thuyền, Đường Luận bất ngờ phun máu ngã xuống."
+    },
+    {
+      "panel": "p048.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Hóa ra hắn đang diễn bệnh, còn Tần Hải giả vờ bị thương."
+    },
+    {
+      "panel": "p049.jpg",
+      "type": "REVEAL",
+      "kind": "commentary",
+      "narration": "Mình khá bất ngờ: Đường Luận không ngu, hắn chấp nhận bị thương để giữ trọn màn kịch."
+    },
+    {
+      "panel": "p050.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tần Hải tiết lộ họ cần mượn Quốc Quân tiêu diệt Nộ Triều."
+    },
+    {
+      "panel": "p051.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Tin Huyền Vũ Bá thất thủ nhanh chóng lan khắp quán trà."
+    },
+    {
+      "panel": "p052.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Mình thấy kế này cao tay ở chỗ tin đồn đã làm Kim thị suy yếu trước cả khi quân triều đình tới."
+    },
+    {
+      "panel": "p053.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Ai cũng tưởng Kim thị sắp mất trắng sau trận thua."
+    },
+    {
+      "panel": "p054.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Huyền Vũ Bá trở về liền giả bệnh, dâng tấu xin viện binh."
+    },
+    {
+      "panel": "p055.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Quốc Quân nổi giận, đuổi Cửu Thiên Nguy khỏi đảo."
+    },
+    {
+      "panel": "p056.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sau đó, Quốc Quân ban thuốc bổ, khiến hắn chẳng làm được gì."
+    },
+    {
+      "panel": "p057.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Nhưng Thái thú lại cười, tin Kim thị sắp diệt vong."
+    },
+    {
+      "panel": "p059.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Đúng lúc ấy, Ân Nguyên Hội đến đòi món nợ mười hai năm."
+    },
+    {
+      "panel": "p060.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Một trăm vạn tiền gốc cộng lãi thành một trăm bảy mươi vạn."
+    },
+    {
+      "panel": "p061.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Kim thị than đã trả hết một trăm vạn, nhưng vẫn thiếu bảy mươi."
+    },
+    {
+      "panel": "p062.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Họ xin gia hạn thêm một năm, nhưng Ân Nguyên Hội từ chối."
+    },
+    {
+      "panel": "p063.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Mình thấy cảnh này rất đúng kiểu ép nợ: Ân Nguyên Hội còn cố tình chọc vào sĩ diện Kim thị."
+    },
+    {
+      "panel": "p064.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn chỉ cho họ đúng một tháng để trả đủ bảy mươi vạn."
+    },
+    {
+      "panel": "p065.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nếu không, đảo Vọng Nhai sẽ bị thu hồi theo khế ước."
+    },
+    {
+      "panel": "p066.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Mình đoán món nợ này chính là cái giá Tần Hải phải trả cho cú lừa vừa rồi."
+    },
+    {
+      "panel": "p068.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Căn phòng im phăng phắc, ai cũng mắc kẹt trong bài toán tiền bạc."
+    },
+    {
+      "panel": "p069.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nương Tử thở phào vì màn diễn cuối cùng cũng kết thúc."
+    },
+    {
+      "panel": "p070.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Cô lập tức hôn Phủ Quân, khiến người bệnh phía sau ho sặc sụa."
+    },
+    {
+      "panel": "p071.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nương Tử hỏi làm sao kiếm bảy mươi vạn trong một tháng."
+    },
+    {
+      "panel": "p072.jpg",
+      "type": "ENDING",
+      "kind": "commentary",
+      "narration": "Mình nghi Phủ Quân sắp biến món nợ bảy mươi vạn thành một vụ cược cực lớn—mọi người đoán anh sẽ kiếm tiền bằng cách nào?"
+    }
+  ]
+}

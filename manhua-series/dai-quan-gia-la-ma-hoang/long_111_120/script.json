@@ -1,0 +1,884 @@
+{
+  "template": "manhua_recap_long_vi",
+  "title": "Tr?c Ph?m n?o ??ng Hoa V? Th?nh, b? ?n b?y lo?i ??c!?",
+  "chapters": "111-120",
+  "source_dir": "manhua-recap/dqgl_ep111",
+  "written_by": "Bi?n t?p t? ep111-ep120, 2026-10-19",
+  "description": "Tr?c Ph?m can thi?p v?o cu?c xung ??t ? Hoa V? Th?nh, g?y n?o ??ng t?i h?i B?ch ?an r?i b??c v?o khu ph? b? ?n. T?i ??, h?n ph?t hi?n m?t n? nh?n ?ang b? b?y lo?i ??c gi?y v? v? t?m c?ch c?u c?. T?m t?t ch??ng 111 ??n 120, k?m b?nh lu?n.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "B?Y LO?I ??C C?NG L?C!?",
+    "prompt": "A black-haired cultivator studying seven colorful poison streams around a mysterious veiled woman in a dim old courtyard, Chinese manhua cover style, dramatic glow, vertical 9:16 composition, leave upper quarter dark and clear for title, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep111/p001.jpg",
+      "narration": "Giữa phố Hoa Vũ Thành, Trác Phàm vừa xuất hiện đã thấy đám đông đang vây quanh một vụ gây gổ.",
+      "kind": "recap",
+      "type": "HOOK",
+      "section": "T?p 111: Trác Phàm đứng ra bảo vệ Mẫu Đan giữa phố!?"
+    },
+    {
+      "panel": "dqgl_ep111/p005.jpg",
+      "narration": "Một kẻ cậy thế lớn tiếng đe dọa người của Mẫu Đan Lâu, khiến những người xung quanh không dám xen vào.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep111/p008.jpg",
+      "narration": "Trác Phàm hỏi rõ chuyện gì đang xảy ra, rồi lập tức chặn kẻ định tiếp tục ra tay.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep111/p011.jpg",
+      "narration": "Đối phương không chỉ tức vì bị cản đường; hắn còn cho rằng người của Hoa Vũ Lâu làm mất thể diện các gia tộc.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep111/p015.jpg",
+      "narration": "Khi nghe nhắc đến Mẫu Đan Lâu, kẻ gây sự mới nhận ra mình đã đụng vào người không nên đụng.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep111/p019.jpg",
+      "narration": "Mẫu Đan nhìn Trác Phàm và hỏi thẳng hắn có phải người đã can thiệp vào chuyện này không.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep111/p024.jpg",
+      "narration": "Trác Phàm trả lời tỉnh bơ, còn khiến cuộc đối đáp giữa hai người chuyển sang chuyện quan hệ của họ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep111/p028.jpg",
+      "narration": "Hắn tự nhận mình là tướng công của nàng, dù Mẫu Đan lập tức nhắc rằng nàng chưa từng đồng ý.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep111/p033.jpg",
+      "narration": "Trác Phàm đổi cách gọi thành ‘tiền phu’, biến lời từ chối thành một câu đùa trước mặt mọi người.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep111/p038.jpg",
+      "narration": "Màn đấu khẩu khiến đám đông vừa ngạc nhiên vừa khó biết hai người đang nghiêm túc đến đâu.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep111/p043.jpg",
+      "narration": "Trong lúc họ còn trêu nhau, kẻ gây sự đã bị Trác Phàm đánh cho không còn khí thế ban đầu.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep111/p048.jpg",
+      "narration": "Hắn xin tha, nhưng Trác Phàm để Mẫu Đan tự quyết định chuyện xử lý người này.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep111/p052.jpg",
+      "narration": "Kẻ kia rời đi trong tức tối, vẫn không quên buông lời rằng sẽ ghi nhớ món nợ hôm nay.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep111/p055.jpg",
+      "narration": "Mẫu Đan lại nhắc tới cơ hội cuối cùng giữa hai người, còn Trác Phàm lập tức hưởng ứng lời thách thức ấy.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep112/p001.jpg",
+      "narration": "Trác Phàm nhìn đối thủ trước mặt, nhận ra vẻ hung hăng của hắn không đi cùng khả năng ra đòn.",
+      "kind": "recap",
+      "type": "HOOK",
+      "section": "T?p 112: Trác Phàm biến trận đấu thành màn làm nhục đối thủ!?"
+    },
+    {
+      "panel": "dqgl_ep112/p004.jpg",
+      "narration": "Kẻ tóc đỏ cố tỏ ra áp đảo, nhưng Trác Phàm vẫn bình thản quan sát từng động tác.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep112/p008.jpg",
+      "narration": "Mấy đòn đầu tiên khiến hai bên nhanh chóng hiểu rằng đây không còn là cuộc cãi vã suông.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep112/p012.jpg",
+      "narration": "Trác Phàm đáp trả bằng nhịp đánh gọn và chính xác, không để đối phương lấy lại thế chủ động.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep112/p017.jpg",
+      "narration": "Hắn còn nhắc tới mục đích thật sự của trận đấu: đối phương đang muốn giành Mẫu Đan về phía mình.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep112/p021.jpg",
+      "narration": "Lời thách thức bị đẩy thành một cuộc cược, khiến đám đông bắt đầu chăm chú theo dõi.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep112/p025.jpg",
+      "narration": "Trác Phàm tự tin đến mức xem nhẹ lời khoe khoang về gia thế và tu vi của đối thủ.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep112/p030.jpg",
+      "narration": "Kẻ tóc đỏ nổi giận, còn Trác Phàm vẫn tiếp tục khích hắn ra tay trước.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep112/p034.jpg",
+      "narration": "Khi đối thủ lao tới, Trác Phàm né đòn rồi lập tức áp sát phản công.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep112/p039.jpg",
+      "narration": "Trận đấu biến thành màn áp đảo, khiến đối phương không thể thực hiện lời đe dọa ban đầu.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep112/p044.jpg",
+      "narration": "Trác Phàm dồn hắn xuống đất và tiếp tục chế giễu sự chênh lệch giữa lời nói với thực lực.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep112/p050.jpg",
+      "narration": "Mẫu Đan cùng những người chứng kiến đều theo dõi xem màn so tài sẽ đi xa đến đâu.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep112/p056.jpg",
+      "narration": "Đối thủ cố vùng lên, nhưng Trác Phàm vẫn khống chế được thế trận.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep112/p062.jpg",
+      "narration": "Hắn tung thêm một đòn và lạnh lùng bảo đối phương còn kém xa. Trận đấu vẫn chưa khép lại ở đây.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep113/p001.jpg",
+      "narration": "Đòn đánh vừa trúng, nhưng Trác Phàm vẫn đứng vững khiến đối thủ sững sờ.",
+      "kind": "recap",
+      "type": "HOOK",
+      "section": "T?p 113: Trác Phàm chịu đòn rồi bất ngờ phản kích!?"
+    },
+    {
+      "panel": "dqgl_ep113/p004.jpg",
+      "narration": "Kẻ tóc đỏ không hiểu vì sao một người bị đánh trực diện lại có thể bình thản đến vậy.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep113/p008.jpg",
+      "narration": "Trác Phàm tiếp tục quan sát phản ứng của hắn, như thể đang chờ đối thủ tự để lộ sơ hở.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep113/p012.jpg",
+      "narration": "Mẫu Đan và những người đứng xem cũng bắt đầu nghi ngờ rằng Trác Phàm đang tính toán điều gì đó.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep113/p017.jpg",
+      "narration": "Hắn vẫn nói năng bông đùa, khiến đối thủ càng thêm mất kiên nhẫn.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep113/p021.jpg",
+      "narration": "Mẫu Đan đỏ mặt trước những lời trêu chọc, nhưng ánh mắt vẫn dõi theo diễn biến trận đấu.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep113/p025.jpg",
+      "narration": "Kẻ tóc đỏ lại lao vào, quyết chứng minh rằng mình không hề bị Trác Phàm xem thường.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep113/p029.jpg",
+      "narration": "Trác Phàm né đòn ở thời điểm cuối, làm đối thủ đánh hụt và lộ khoảng trống.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep113/p033.jpg",
+      "narration": "Đến lúc này, nụ cười của Trác Phàm cho thấy hắn đã nắm được nhịp ra đòn của đối phương.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep113/p037.jpg",
+      "narration": "Hai bên tiếp tục giằng co, nhưng những cú đánh của Trác Phàm ngày càng có chủ đích.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep113/p041.jpg",
+      "narration": "Mẫu Đan hỏi liệu đây đã là chiêu cuối của hắn chưa, khi trận đấu vẫn chưa ngã ngũ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep113/p046.jpg",
+      "narration": "Đối thủ bất ngờ nhận ra Trác Phàm có thể nhìn thấu chuyển động của mình.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep113/p051.jpg",
+      "narration": "Trác Phàm tăng tốc và tung ra một đòn phản kích, khiến cục diện đổi chiều trong chớp mắt.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep114/p001.jpg",
+      "narration": "Đối thủ không tin Trác Phàm có thể nhanh đến vậy, dù vừa tận mắt thấy hắn né đòn.",
+      "kind": "recap",
+      "type": "HOOK",
+      "section": "T?p 114: Trác Phàm áp sát Mẫu Đan, đối thủ nổi điên!?"
+    },
+    {
+      "panel": "dqgl_ep114/p005.jpg",
+      "narration": "Những người đứng xem cũng kinh ngạc khi Trác Phàm liên tục chiếm vị trí thuận lợi.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep114/p009.jpg",
+      "narration": "Hắn áp sát Mẫu Đan, khiến kẻ tóc đỏ nổi giận vì cho rằng Trác Phàm đang cố ý trêu ghẹo nàng.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep114/p013.jpg",
+      "narration": "Trác Phàm đáp lại bằng vẻ tự tin, còn Mẫu Đan không biết nên phản ứng thế nào trước màn tán tỉnh công khai.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep114/p018.jpg",
+      "narration": "Người lớn tuổi trong nhóm đối thủ yêu cầu hắn buông tay, nhưng lời can ngăn chỉ làm bầu không khí căng hơn.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep114/p022.jpg",
+      "narration": "Kẻ tóc đỏ lao tới, còn Trác Phàm né tránh rồi tiếp tục chọc tức hắn ngay giữa trận đấu.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep114/p027.jpg",
+      "narration": "Mẫu Đan lên tiếng bảo Trác Phàm đừng quá đáng, nhưng hắn vẫn giữ vẻ ung dung.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep114/p032.jpg",
+      "narration": "Đối thủ bị đánh bật thêm lần nữa, trong khi Trác Phàm vẫn chưa cho thấy mình đã dốc hết sức.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep114/p037.jpg",
+      "narration": "Đám đông bắt đầu quy kết Trác Phàm dùng thủ đoạn mê hoặc phụ nữ, còn hắn không buồn tranh cãi.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep114/p042.jpg",
+      "narration": "Mẫu Đan đứng giữa hai bên, cố ngăn trận đấu vượt khỏi giới hạn.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep114/p047.jpg",
+      "narration": "Kẻ tóc đỏ vẫn không chịu nhận thua và tiếp tục dồn khí thế vào đòn kế tiếp.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep114/p052.jpg",
+      "narration": "Hắn tuyên bố sẽ dùng một võ kỹ Linh giai để kết thúc trận đấu.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep114/p058.jpg",
+      "narration": "Trác Phàm nhìn đối thủ vận chiêu, chờ xem lời khoe khoang ấy có tạo ra khác biệt hay không.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep114/p064.jpg",
+      "narration": "Đòn quyết định sắp được tung ra, và Trác Phàm vẫn giữ nụ cười khó đoán.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep115/p001.jpg",
+      "narration": "Sau đòn vừa rồi, kẻ tóc đỏ nhận ra Trác Phàm không chỉ mạnh mà còn di chuyển nhanh hơn dự đoán.",
+      "kind": "recap",
+      "type": "HOOK",
+      "section": "T?p 115: Trác Phàm khiến Mẫu Đan rung động rồi rời đi!?"
+    },
+    {
+      "panel": "dqgl_ep115/p005.jpg",
+      "narration": "Hắn hỏi Trác Phàm đã dùng thân pháp gì, còn Trác Phàm chỉ đáp rằng mình không bị cấm luyện kỹ năng di chuyển.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep115/p010.jpg",
+      "narration": "Trác Phàm tiếp tục đánh bật đối thủ, khiến lời khoe khoang trước đó càng trở nên khó coi.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep115/p015.jpg",
+      "narration": "Hắn quay sang hỏi Mẫu Đan đã thấy màn thể hiện của mình chưa, như thể trận đấu cũng là dịp để tán tỉnh nàng.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep115/p020.jpg",
+      "narration": "Mẫu Đan không giấu được vẻ ngưỡng mộ, còn Trác Phàm lập tức biến phản ứng ấy thành một câu đùa.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep115/p025.jpg",
+      "narration": "Kẻ tóc đỏ vẫn tìm cách phản công, nhưng Trác Phàm liên tục giữ được lợi thế.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep115/p030.jpg",
+      "narration": "Mẫu Đan bất ngờ tự hỏi vì sao mình lại để tâm đến từng lời nói và động tác của Trác Phàm.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep115/p035.jpg",
+      "narration": "Cảm xúc ấy khiến nàng bối rối, bởi nàng vốn không định để cuộc gặp này ảnh hưởng đến mình.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep115/p041.jpg",
+      "narration": "Trác Phàm nhìn ra sự thay đổi trên gương mặt nàng, nhưng chưa vội nói rõ điều mình đang nghĩ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep115/p046.jpg",
+      "narration": "Ở nơi khác, một nhân vật bí ẩn cũng đang quan sát diễn biến và nhắc đến Trác Phàm.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep115/p052.jpg",
+      "narration": "Người này tỏ ra muốn hiểu thêm về chàng trai vừa làm náo động Hoa Vũ Thành.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep115/p057.jpg",
+      "narration": "Ánh mắt của kẻ bí ẩn dừng lại trên Trác Phàm; xem ra cuộc gặp hôm nay đã khiến hắn được chú ý.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep115/p061.jpg",
+      "narration": "Trác Phàm nhận ra sau lưng mình còn có cao thủ khó dò. Một mối quan tâm mới vừa xuất hiện.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep116/p001.jpg",
+      "narration": "Tại tổng bộ Hoa Vũ Lâu, các lâu chủ đang chuẩn bị đón những khách mời đến dự hội Bạch Đan.",
+      "kind": "recap",
+      "type": "HOOK",
+      "section": "T?p 116: Các lâu chủ Hoa Vũ Lâu tranh cãi vì Trác Phàm!?"
+    },
+    {
+      "panel": "dqgl_ep116/p006.jpg",
+      "narration": "Một vị khách tóc đỏ khẳng định mình đến vì việc chính, không phải để ngắm mỹ nhân.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep116/p010.jpg",
+      "narration": "Nhưng câu chuyện nhanh chóng chuyển sang U Minh Cốc và mối thù với Trác Phàm.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep116/p014.jpg",
+      "narration": "Người của U Minh Cốc tuyên bố sẽ tự tay giết Trác Phàm để trả thù cho các trưởng lão đã chết.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep116/p019.jpg",
+      "narration": "Các trưởng lão khác không chịu đứng ngoài, biến lời đe dọa thành màn khẩu chiến ngay trong đại sảnh.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep116/p024.jpg",
+      "narration": "Một vị trưởng lão mới xuất hiện, lập tức khiến bầu không khí giữa các phe thêm căng thẳng.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep116/p029.jpg",
+      "narration": "Mẫu Đan Lâu chủ nhắc mọi người nhớ rằng buổi hội còn chưa chính thức bắt đầu.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep116/p034.jpg",
+      "narration": "Dù vậy, các vị tiền bối vẫn tiếp tục đấu khẩu và trêu chọc nhau như thể đang ở buổi gặp mặt thân quen.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep116/p040.jpg",
+      "narration": "Mẫu Đan Lâu chủ đành nhắc họ giữ chừng mực, vì còn nhiều khách quý đang có mặt.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep116/p046.jpg",
+      "narration": "Cuộc trò chuyện chuyển sang chuyện Trác Phàm từng khiến một cao thủ U Minh Cốc trọng thương.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep116/p052.jpg",
+      "narration": "Mọi người muốn biết rốt cuộc ai có thể gây ra thương thế nghiêm trọng như vậy.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep116/p059.jpg",
+      "narration": "Các trưởng lão bắt đầu đánh giá lại thực lực và lai lịch của Trác Phàm.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep116/p066.jpg",
+      "narration": "Những lời bàn cho thấy sự xuất hiện của hắn đã khiến nhiều thế lực dè chừng.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep116/p074.jpg",
+      "narration": "Mẫu Đan Lâu chủ quay sang người vừa trở về, muốn nghe chính cô kể lại chuyện đã xảy ra với Trác Phàm.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep117/p001.jpg",
+      "narration": "Một vị trưởng lão Hoa Vũ Lâu rời đi, vẫn tự tin rằng cuối cùng nữ nhân cũng sẽ phải tìm đến nam nhân.",
+      "kind": "recap",
+      "type": "HOOK",
+      "section": "T?p 117: Trác Phàm một mình bước vào khu phố quỷ!?"
+    },
+    {
+      "panel": "dqgl_ep117/p004.jpg",
+      "narration": "Trong lúc đó, Trác Phàm tiếp tục hành trình một mình, không còn bận tâm đến lời bàn tán phía sau.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep117/p008.jpg",
+      "narration": "Mẫu Đan nghe nhắc đến tên hắn thì giật mình, còn người bên cạnh chỉ có thể phỏng đoán về thân phận thật.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep117/p012.jpg",
+      "narration": "Một người nhận xét Trác Phàm khác thường, nhưng chưa chắc đã đủ sức đối đầu với cao thủ Thiên Huyền.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep117/p016.jpg",
+      "narration": "Nữ nhân đeo mặt nạ cũng tự hỏi liệu Trác Phàm có thể đánh bại những kẻ nguy hiểm hơn U Quỷ Thất hay không.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep117/p019.jpg",
+      "narration": "Ở một nơi xa, Trác Phàm đặt chân vào khu phố hoang vắng và nhận ra đã lâu mình không phải chạy trốn như thế này.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep117/p022.jpg",
+      "narration": "Người dân địa phương lớn tiếng đuổi hắn đi, tuyên bố khu này đã có chủ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep117/p026.jpg",
+      "narration": "Trác Phàm vẫn điềm nhiên bước tiếp, xem những lời đe dọa như chuyện nhỏ.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep117/p030.jpg",
+      "narration": "Một người mới đến định chỉ đường cho hắn, nhưng cũng cảnh báo rằng nơi sâu bên trong rất nguy hiểm.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep117/p035.jpg",
+      "narration": "Trác Phàm nhắc người kia rằng ban ngày rồi, không cần phải lén lút như buổi tối.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep117/p040.jpg",
+      "narration": "Người dẫn đường giải thích rằng những ai tiến sâu vào khu này thường không trở ra.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep117/p045.jpg",
+      "narration": "Trác Phàm nhận lời chỉ đường, nhưng yêu cầu đối phương đừng dẫn mình vào nơi nguy hiểm nhất.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep117/p050.jpg",
+      "narration": "Hắn tiến về căn nhà được nhắc tới, nơi một nữ nhân bị che kín đang đứng chờ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep117/p055.jpg",
+      "narration": "Trác Phàm khẳng định sẽ không tự tiện đi lung tung, nhưng ánh mắt đã nhận ra có điều bất thường.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep117/p061.jpg",
+      "narration": "Khi màn đêm buông xuống, hắn bắt đầu dò xét nội tình nơi này. Có vẻ khu phố này còn giấu một bí mật.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep118/p002.jpg",
+      "narration": "Đêm xuống, Trác Phàm chợt tỉnh giấc giữa khu phố vắng lặng.",
+      "kind": "recap",
+      "type": "HOOK",
+      "section": "T?p 118: Trác Phàm phát hiện pháp trận quanh căn nhà!?"
+    },
+    {
+      "panel": "dqgl_ep118/p004.jpg",
+      "narration": "Hắn nhanh chóng nhận ra trong căn nhà có bố trí pháp trận, chứ không phải một nơi trú chân bình thường.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep118/p007.jpg",
+      "narration": "Trác Phàm dùng một giọt máu để gọi ra linh vật nhỏ, sai nó đi dò xét tình hình bên ngoài.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep118/p010.jpg",
+      "narration": "Linh vật bay qua những mái nhà tối om, trong khi Trác Phàm giữ mình ở lại quan sát.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep118/p013.jpg",
+      "narration": "Nó phát hiện một nữ nhân bị thương, người đang cố gắng vận công giữa màn đêm.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep118/p017.jpg",
+      "narration": "Trác Phàm nhận ra cô vẫn sống, nhưng tình trạng cơ thể không hề ổn định.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep118/p022.jpg",
+      "narration": "Cô gái cố tự chống đỡ, còn Trác Phàm đánh giá khả năng chữa trị và nguy cơ từ thứ đang hành hạ cô.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep118/p027.jpg",
+      "narration": "Hắn không vội tin những gì nhìn thấy, bởi pháp trận và căn bệnh của cô có thể liên quan đến nhau.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep118/p033.jpg",
+      "narration": "Trác Phàm tìm được nơi trú tạm trong khu nhà, nhưng vẫn dặn cô không được tùy tiện đi sâu vào bên trong.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep118/p038.jpg",
+      "narration": "Sáng hôm sau, hắn mang trái cây đã hái về và đưa cho nữ nhân đang nghỉ trong căn nhà.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep118/p043.jpg",
+      "narration": "Cô nhận lấy thức ăn, còn Trác Phàm quan sát phản ứng của mình để tìm manh mối về tình trạng của cô.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep118/p048.jpg",
+      "narration": "Hắn cho rằng việc cô có thể ăn uống bình thường chứng tỏ mình đã dần tạo được lòng tin.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep118/p054.jpg",
+      "narration": "Nữ nhân vẫn cảnh giác trước sự thân thiện bất ngờ của hắn.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep118/p060.jpg",
+      "narration": "Trác Phàm nhìn cô với vẻ tính toán, như thể đang chờ một cơ hội để tìm hiểu sâu hơn về độc trong cơ thể.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep118/p066.jpg",
+      "narration": "Cô bất ngờ hỏi vì sao hắn lại phá hủy hết dược liệu. Trác Phàm phải giải thích lựa chọn của mình.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep119/p001.jpg",
+      "narration": "Trác Phàm phát hiện trong người nữ nhân kia có tới bảy loại độc đang quấn lấy nhau.",
+      "kind": "recap",
+      "type": "HOOK",
+      "section": "T?p 119: Bảy loại độc trong người nữ nhân bí ẩn!?"
+    },
+    {
+      "panel": "dqgl_ep119/p004.jpg",
+      "narration": "Mỗi loại độc đều nguy hiểm, thậm chí có thể đoạt mạng một cao thủ chỉ trong chốc lát.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep119/p008.jpg",
+      "narration": "Chúng kết hợp với nhau thành một thế độc phức tạp, không thể giải bằng một phương thuốc đơn giản.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep119/p012.jpg",
+      "narration": "Trác Phàm nhận ra đối phương đã sống cùng độc tố suốt thời gian dài, nhưng cơ thể vẫn gắng gượng được.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep119/p016.jpg",
+      "narration": "Hắn suy luận rằng những người từng đến đây có lẽ đều chết vì không chịu nổi tình trạng ấy.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep119/p020.jpg",
+      "narration": "Nữ nhân vẫn cố tỏ ra cứng rắn, dù tình trạng của cô khiến người ngoài không khỏi dè chừng.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep119/p024.jpg",
+      "narration": "Trác Phàm bảo cô uống viên thuốc, nhưng cô lập tức hỏi liệu đó có phải thuốc độc hay không.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep119/p028.jpg",
+      "narration": "Cô hỏi vì sao hắn lại cứu mình, trong khi hai người chỉ mới gặp nhau vài lần.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep119/p032.jpg",
+      "narration": "Trác Phàm trả lời bằng giọng đùa cợt, khiến cô càng khó biết nên tin hắn đến mức nào.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep119/p036.jpg",
+      "narration": "Hắn nói không thể làm ngơ khi thấy cô bị thương, dù lời giải thích ấy nghe chẳng mấy thuyết phục.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep119/p040.jpg",
+      "narration": "Cô tiếp tục nghi ngờ ý định của hắn, còn Trác Phàm khẳng định mình không có ý hại cô.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep119/p045.jpg",
+      "narration": "Nữ nhân cuối cùng cũng chịu tiếp nhận phương thuốc, nhưng vẫn giữ khoảng cách với người cứu mình.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep119/p050.jpg",
+      "narration": "Trác Phàm quan sát phản ứng của cô sau khi uống thuốc, chờ xem cơ thể sẽ thay đổi ra sao.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep119/p055.jpg",
+      "narration": "Ánh mắt hắn chợt đổi sắc khi nhận ra trong cơ thể cô còn có một thứ khác chưa được phát hiện.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep120/p001.jpg",
+      "narration": "Trác Phàm nhìn thấy bảy loại độc đang quấn quanh nữ nhân, mỗi loại đều có thể gây chết người.",
+      "kind": "recap",
+      "type": "HOOK",
+      "section": "T?p 120: Trác Phàm giải độc cho nữ nhân bí ẩn, bạn cũ xuất hiện!?"
+    },
+    {
+      "panel": "dqgl_ep120/p004.jpg",
+      "narration": "Ngay cả sức mạnh của cô cũng chỉ đủ áp chế chúng tạm thời, chứ chưa thể chữa khỏi hoàn toàn.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep120/p008.jpg",
+      "narration": "Hắn nhớ đến Bồ Đề Ngọc Dịch, thứ có thể giúp người bị thương hồi phục mạnh mẽ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep120/p012.jpg",
+      "narration": "Trác Phàm giải thích rằng cô cần một phương pháp đủ mạnh để khống chế độc tố, nếu không tình trạng sẽ ngày càng nguy hiểm.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep120/p016.jpg",
+      "narration": "Nữ nhân ngập ngừng trước lời đề nghị, vẫn chưa rõ Trác Phàm muốn gì ở mình.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep120/p020.jpg",
+      "narration": "Hắn thúc giục cô tin mình và dùng thuốc, còn cô vẫn cố giữ vẻ bình tĩnh.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep120/p024.jpg",
+      "narration": "Trác Phàm hỏi vì sao cô không sợ hắn, trong khi người khác đều dè chừng gia thế của hắn.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep120/p028.jpg",
+      "narration": "Cô hỏi ngược lại vì sao hắn đã cứu mình, khiến Trác Phàm phải trả lời bằng một câu bông đùa.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep120/p032.jpg",
+      "narration": "Hắn thản nhiên nhận mình là người quen của cô, dù cả hai mới gặp nhau chẳng bao nhiêu lần.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep120/p037.jpg",
+      "narration": "Nữ nhân cảm ơn hắn đã cho mình ở lại, rồi cầm lấy trái cây Trác Phàm mang về.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep120/p042.jpg",
+      "narration": "Trong lúc cô ăn, Trác Phàm tiếp tục quan sát phản ứng của cơ thể để tìm manh mối về độc tố.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep120/p047.jpg",
+      "narration": "Hắn nhận ra việc cô tiếp nhận thức ăn và phương thuốc có thể giúp cô dần tin tưởng mình.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep120/p052.jpg",
+      "narration": "Bên ngoài, một nhóm người lại gây sự với khách qua đường và đòi chia phần chiến lợi phẩm.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep120/p056.jpg",
+      "narration": "Trác Phàm không đứng nhìn khi họ định bắt nạt người khác, lập tức bước vào can thiệp.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep120/p060.jpg",
+      "narration": "Hắn nhắc rằng những người này đã chiếm chỗ của nữ nhân trước, rồi còn đổ lỗi cho cô khi có chuyện xảy ra.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep120/p061.jpg",
+      "narration": "Sau khi đám gây sự bị đánh lui, Trác Phàm lại đối mặt với câu hỏi về thứ thuốc mình dùng. Cách giải độc của hắn còn khiến mọi người kinh ngạc.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

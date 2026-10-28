@@ -1,0 +1,40 @@
+{
+  "title": "Trác Phàm luyện Ma Sát Tam Quyết, sát thủ tìm tới đòi bí pháp!?",
+  "chapters": "103",
+  "source_dir": "manhua-recap/dqgl_ep103",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-19",
+  "description": "Trong thời gian ẩn tu, Trác Phàm luyện Ma Sát Tam Quyết để chuẩn bị đối phó U Minh Cốc. Ba thức có uy lực lớn nhưng tiêu hao nguyên khí đến mức hắn có thể tự đẩy mình vào nguy hiểm. Khi nghỉ ngơi bên quả trứng phượng hoàng, một nhóm người tìm đến và đòi bí pháp luyện thể.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tập 103 (chương 103).",
+  "hashtags": ["#DaiQuanGiaLaMaHoang", "#ReviewManhua", "#Manhua", "#TuTien", "#XuyenKhong", "#ReviewTruyen"],
+  "thumbnail": {
+    "text": "Ma Sát Tam Quyết mạnh đến mức tự hại chủ!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, Trac Pham practicing three dark red martial arts forms in a rocky mountain gorge, energy swirling around him, exhausted but determined, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {"panel":"p001.jpg","narration":"Trên núi sâu, Trác Phàm đang khổ luyện Ma Sát Quyết; chỉ trong một năm, cảnh giới luyện thể của hắn đã tiến bộ rõ rệt.","kind":"recap","type":"HOOK"},
+    {"panel":"p003.jpg","narration":"Một cô gái tóc tím cùng người đồng hành bàn về những người từng tham gia quá trình rèn luyện khắc nghiệt này.","kind":"recap","type":"BUILD"},
+    {"panel":"p005.jpg","narration":"Người đàn ông kể rằng nhiều người bình thường đã không chịu nổi, nhưng những người còn trụ lại vẫn tiếp tục vì mục tiêu của Lạc gia.","kind":"recap","type":"BUILD"},
+    {"panel":"p007.jpg","narration":"Cô gái nhận ra đối phương thật sự quyết tâm, dù phương pháp huấn luyện khiến người ngoài khó mà yên tâm.","kind":"recap","type":"BUILD"},
+    {"panel":"p009.jpg","narration":"Cô báo tin U Minh Cốc đã treo thưởng lấy mạng Trác Phàm.","kind":"recap","type":"BUILD"},
+    {"panel":"p011.jpg","narration":"Người đàn ông không tỏ vẻ bất ngờ. Trác Phàm đi đến đâu cũng gây chuyện lớn, nên bị truy sát cũng chẳng nằm ngoài dự liệu.","kind":"recap","type":"BUILD"},
+    {"panel":"p013.jpg","narration":"Cô gái hỏi vì sao hắn vẫn bênh vực Trác Phàm; câu chuyện dần chuyển từ chuyện truy sát sang cách nhìn về đúng sai.","kind":"recap","type":"BUILD"},
+    {"panel":"p016.jpg","narration":"Dù người khác hành xử tệ, điều đó cũng không có nghĩa họ phải làm điều bất nghĩa để trả đũa.","kind":"recap","type":"BUILD"},
+    {"panel":"p018.jpg","narration":"Sau cuộc trò chuyện, Trác Phàm xuất hiện ở khe núi, tiếp tục phần tu luyện của mình.","kind":"recap","type":"BUILD"},
+    {"panel":"p020.jpg","narration":"Hắn tự nhủ cơ thể gần như đã chạm giới hạn, nhưng vẫn phải tăng sức mạnh trước khi U Minh Cốc tìm đến.","kind":"recap","type":"BUILD"},
+    {"panel":"p022.jpg","narration":"Trác Phàm bắt đầu vận công, chuẩn bị thi triển thức đầu tiên của Ma Sát Tam Quyết.","kind":"recap","type":"BUILD"},
+    {"panel":"p025.jpg","narration":"Thức thứ nhất bùng ra, kéo theo luồng khí đen đỏ phủ kín khe núi.","kind":"recap","type":"BUILD"},
+    {"panel":"p028.jpg","narration":"Hắn nối tiếp bằng thức thứ hai, ép thân thể phải gánh thêm một đợt sức mạnh dữ dội.","kind":"recap","type":"BUILD"},
+    {"panel":"p032.jpg","narration":"Thức thứ ba hoàn tất chuỗi công kích, nhưng nguyên khí trong người hắn cũng bị rút đi đáng kể.","kind":"recap","type":"BUILD"},
+    {"panel":"p035.jpg","narration":"Trác Phàm nhận ra Ma Sát Tam Quyết vừa nâng sức bền vừa bào mòn thể lực; dùng liên tiếp trong giao chiến sẽ rất nguy hiểm.","kind":"recap","type":"BUILD"},
+    {"panel":"p038.jpg","narration":"Nếu không kiểm soát được lượng nguyên khí còn lại, chính hắn có thể gục trước khi đánh bại đối thủ.","kind":"recap","type":"BUILD"},
+    {"panel":"p041.jpg","narration":"Bởi vậy, hắn phải luyện cho tới khi hiểu rõ giới hạn của từng thức, thay vì chỉ trông cậy vào uy lực.","kind":"commentary","type":"BUILD"},
+    {"panel":"p044.jpg","narration":"Kiệt sức, Trác Phàm ngồi xuống điều tức. Quãng đường chuẩn bị cho cuộc trả thù của U Minh Cốc vẫn còn dài.","kind":"recap","type":"BUILD"},
+    {"panel":"p047.jpg","narration":"Khi bình tâm lại, hắn lấy quả trứng phượng hoàng ra xem tình trạng của nó.","kind":"recap","type":"BUILD"},
+    {"panel":"p050.jpg","narration":"Linh khí trong Lôi Linh Giới chỉ giúp quả trứng duy trì sự sống, chứ chưa thể khiến nó hồi phục.","kind":"recap","type":"BUILD"},
+    {"panel":"p052.jpg","narration":"Muốn cứu nó, Trác Phàm cần linh dược hiếm có thể khôi phục sinh lực.","kind":"recap","type":"BUILD"},
+    {"panel":"p055.jpg","narration":"Hắn đang tính chuyện tìm thuốc thì một nhóm người bất ngờ xuất hiện, đòi hắn giao bí pháp luyện thể.","kind":"recap","type":"BUILD"},
+    {"panel":"p057.jpg","narration":"Đám người kia không chờ hắn đồng ý, lập tức buông lời đe dọa.","kind":"recap","type":"BUILD"},
+    {"panel":"p059.jpg","narration":"Trác Phàm né đòn, rồi nhận ra những kẻ trước mặt có liên quan đến Bạch Đan Hội.","kind":"recap","type":"BUILD"},
+    {"panel":"p061.jpg","narration":"Hắn bật cười: đan luyện thể à? Chính các ngươi tự mang tới tận cửa đấy.","kind":"recap","type":"BUILD"},
+    {"panel":"p063.jpg","narration":"Nụ cười của Trác Phàm khiến nhóm người vừa gây sự chững lại; xem ra họ đã chọn nhầm đối thủ.","kind":"recap","type":"ENDING"}
+  ]
+}

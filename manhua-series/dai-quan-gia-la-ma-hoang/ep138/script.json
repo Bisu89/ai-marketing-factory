@@ -1,0 +1,63 @@
+{
+  "title": "Bích Độc Tụ Cầm phát sáng, bí mật sắp lộ!?",
+  "chapters": "138",
+  "source_dir": "manhua-recap/dqgl_ep138",
+  "written_by": "OpenAI, ??i chi?u ?nh ngu?n, 2026-10-20",
+  "description": "Bích Độc Tụ Cầm phát sáng, bí mật sắp lộ. Tóm tắt chương 138 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Bích Độc Tụ Cầm phát sáng, bí mật sắp lộ!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Trác Phàm hiểu Mẫu Đơn nhờ mình trộm món đồ giả để tránh bị đổ tội.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p010",
+      "narration": "Hắn còn đùa rằng mình suýt nghĩ đến chuyện giết người cướp bảo vật thật.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "p018",
+      "narration": "Mẫu Đơn mời Trác Phàm đến Hoa Vũ Lâu, nơi nàng cần thêm người đáng tin cậy.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p026",
+      "narration": "Trác Phàm nhận ra trong số các thế lực sắp tới có Đế Vương Môn.",
+      "kind": "recap",
+      "type": "REVEAL"
+    },
+    {
+      "panel": "p034",
+      "narration": "Tin Đế Vương Môn xuất hiện khiến các cô gái lo ngại: họ được xem là thế gia mạnh nhất.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p039",
+      "narration": "Bích Độc Tụ Cầm phát sáng, như thể món đồ ấy còn giấu một bí mật sống động.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p046",
+      "narration": "Trác Phàm quyết định đi cùng Mẫu Đơn, dù biết chuyến này có thể kéo theo rắc rối.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

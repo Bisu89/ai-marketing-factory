@@ -1,0 +1,105 @@
+{
+  "title": "Trác Phàm liên thủ cứu Hoa Vũ Lâu, tìm thấy lão nhân bí ẩn!?",
+  "chapters": "147-150",
+  "source_dir": "manhua-recap/dqgl_ep147",
+  "written_by": "Biên tập từ ep141-ep150, 2026-10-20",
+  "description": "Trác Phàm đối đầu âm mưu quanh Hoa Vũ Lâu, chương 147 đến 150.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Trác Phàm liên thủ cứu Hoa Vũ Lâu, tìm thấy lão nhân bí ẩn!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep147/p001.jpg",
+      "narration": "Nghiêm Tông mỉa mai Trác Phàm vì dám dựa vào Đế Vương Môn, rồi khẳng định mình chẳng ngại nói thẳng.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep147/p014.jpg",
+      "narration": "Nghiêm Tông nói mượn danh Đế Vương Môn khiến các nhà khác cúi đầu chẳng khác nào tự dẫn sói vào nhà.",
+      "kind": "recap",
+      "type": "REVEAL"
+    },
+    {
+      "panel": "dqgl_ep147/p038.jpg",
+      "narration": "Thanh Vân hỏi vì sao Trác Phàm lại gây chuyện, nhưng hắn đáp rằng mình đang buộc các thế gia phải nhìn rõ tình thế.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "dqgl_ep147/p062.jpg",
+      "narration": "Thay vì chờ bị loại từng người, Trác Phàm quyết định đứng về phía chống lại Đế Vương Môn.",
+      "kind": "recap",
+      "type": "ENDING"
+    },
+    {
+      "panel": "dqgl_ep148/p001.jpg",
+      "narration": "Trác Phàm nói thẳng các thế gia đều bị Đế Vương Môn nhắm đến; ai chống đối cũng sẽ thành mục tiêu.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep148/p021.jpg",
+      "narration": "Thiên Dương lo Hoa Vũ Lâu đã đứng hẳn về phía đối đầu, còn Trác Phàm nói họ không thể tiếp tục giả vờ trung lập.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "dqgl_ep148/p039.jpg",
+      "narration": "Hắn thừa nhận mục tiêu kế tiếp của Đế Vương Môn chưa thể đoán chắc, nhưng chờ đợi chỉ khiến các nhà mất thế chủ động.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep148/p074.jpg",
+      "narration": "Hắn chủ động biến mình thành tâm điểm, khiến ba nhà đối địch phải bố trí người đối phó với hắn trước.",
+      "kind": "recap",
+      "type": "ENDING"
+    },
+    {
+      "panel": "dqgl_ep149/p001.jpg",
+      "narration": "Sau khi chấp nhận trận đấu, Trác Phàm và Thanh Vân vẫn lời qua tiếng lại trước mặt các trưởng lão.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep149/p027.jpg",
+      "narration": "Hắn nói nếu không có người của Hoa Vũ Lâu đến báo tin, những kẻ vừa đắc tội hắn có thể đã phải trả giá.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "dqgl_ep149/p069.jpg",
+      "narration": "Trác Phàm còn chưa kịp đáp lời, Khuynh Thành đã hỏi liệu mình có thể nói với hắn một câu không.",
+      "kind": "recap",
+      "type": "ENDING"
+    },
+    {
+      "panel": "dqgl_ep150/p001.jpg",
+      "narration": "Sở Khuynh Thành dẫn Trác Phàm đến hang núi phía sau Hoa Vũ Lâu để gặp một người đặc biệt.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep150/p027.jpg",
+      "narration": "Lão nhân tỉnh lại và bất ngờ gọi ra Thất Thải Vân La Chưởng; Trác Phàm hiểu ông đang chịu một loại độc kỳ lạ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep150/p067.jpg",
+      "narration": "Khuynh Thành hỏi hắn định làm gì để cứu Hoa Vũ Lâu, còn Trác Phàm chuẩn bị mời một người có thể giúp.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

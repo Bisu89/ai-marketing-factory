@@ -1,0 +1,39 @@
+{
+  "title": "Trác Phàm cứu người, một đấm khiến đối thủ nghi hắn là cao thủ!?",
+  "chapters": "104",
+  "source_dir": "manhua-recap/dqgl_ep104",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-19",
+  "description": "Một nhóm người của Bạch Đan Hội ép Tống gia giao bí phương đan luyện thể. Khi hai người trẻ bị dồn vào thế nguy hiểm, Trác Phàm xuất hiện và cản đòn. Hắn đối chất với đám tu ma, rồi nhanh chóng áp đảo kẻ thách thức mình.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tập 104 (chương 104).",
+  "hashtags": ["#DaiQuanGiaLaMaHoang", "#ReviewManhua", "#Manhua", "#TuTien", "#XuyenKhong", "#ReviewTruyen"],
+  "thumbnail": {
+    "text": "Một đấm của Trác Phàm làm đối thủ khiếp vía!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, Trac Pham landing a powerful punch before a shocked white-haired demonic cultivator, two young members of the Song family behind him, explosive motion and stone debris, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {"panel":"p001.jpg","narration":"Hai người trẻ của Tống gia bị nhóm tu sĩ vây chặt, còn đối phương khăng khăng đòi bí phương luyện thể.","kind":"recap","type":"HOOK"},
+    {"panel":"p003.jpg","narration":"Tên cầm đầu cho rằng Tống gia không xứng giữ công thức quý như vậy, rồi ép họ giao ra ngay.","kind":"recap","type":"BUILD"},
+    {"panel":"p005.jpg","narration":"Người thanh niên từ chối, dù biết chênh lệch thực lực trước mắt rất lớn.","kind":"recap","type":"BUILD"},
+    {"panel":"p007.jpg","narration":"Đòn đánh lập tức trút xuống. Cả hai bị đánh bật, gần như không còn sức chống đỡ.","kind":"recap","type":"BUILD"},
+    {"panel":"p009.jpg","narration":"Kẻ cầm đầu quay sang cô gái Tống gia, cười nhạo nàng vì vẫn chưa chịu khuất phục.","kind":"recap","type":"BUILD"},
+    {"panel":"p011.jpg","narration":"Nàng chọn ở lại cùng người thân, chấp nhận nguy hiểm thay vì bỏ mặc họ.","kind":"recap","type":"BUILD"},
+    {"panel":"p013.jpg","narration":"Một vật nhỏ bay tới giữa lúc đám người chuẩn bị ra tay, khiến tên cầm đầu lập tức nhìn quanh tìm kẻ can thiệp.","kind":"recap","type":"BUILD"},
+    {"panel":"p015.jpg","narration":"Trác Phàm bước ra, bình thản hỏi đám người kia có phải Bạch Đan Hội không.","kind":"recap","type":"BUILD"},
+    {"panel":"p017.jpg","narration":"Hắn xem nhẹ món đan dược mà họ đang tranh giành, khiến đối phương càng thêm tức tối.","kind":"recap","type":"BUILD"},
+    {"panel":"p019.jpg","narration":"Tên tóc bạc cười khẩy, cho rằng một người mới đến cảnh Đoán Cốt như Trác Phàm chẳng có tư cách xen vào.","kind":"recap","type":"BUILD"},
+    {"panel":"p021.jpg","narration":"Trác Phàm đáp lại rằng nói đến độc ác thì đám ma tu trước mặt mới là những kẻ đứng đầu.","kind":"recap","type":"BUILD"},
+    {"panel":"p023.jpg","narration":"Hắn chưa vội kết liễu ai; trước hết muốn biết chuyện gì đã xảy ra với người của Tống gia.","kind":"commentary","type":"BUILD"},
+    {"panel":"p025.jpg","narration":"Một công tử nhà Tế xuất hiện, tự nhận có quan hệ thân thiết với Tống gia và để ý cô gái tên Thiên Nhi.","kind":"recap","type":"BUILD"},
+    {"panel":"p027.jpg","narration":"Hắn tuyên bố mình đã ngưỡng mộ nàng từ lâu, nhưng lời tỏ tình giữa lúc hỗn loạn chẳng giúp tình hình bớt căng thẳng.","kind":"recap","type":"BUILD"},
+    {"panel":"p029.jpg","narration":"Người kia quay sang chất vấn Trác Phàm về quan hệ giữa hắn và Thiên Nhi.","kind":"recap","type":"BUILD"},
+    {"panel":"p031.jpg","narration":"Trác Phàm chưa kịp trả lời thì người bạn bên cạnh đã chen vào, nhận mình mới là bạn của hắn.","kind":"recap","type":"BUILD"},
+    {"panel":"p033.jpg","narration":"Cuộc trò chuyện biến thành màn tranh cãi, còn câu hỏi về Thiên Nhi cứ bị nhắc đi nhắc lại.","kind":"recap","type":"BUILD"},
+    {"panel":"p036.jpg","narration":"Đối phương gằn giọng bắt Trác Phàm trả lời cho rõ quan hệ của hai người.","kind":"recap","type":"BUILD"},
+    {"panel":"p038.jpg","narration":"Trác Phàm cố tình chọc tức hắn, nói hai người từng ăn uống rồi ngủ chung suốt quãng đường đi xe ngựa.","kind":"recap","type":"BUILD"},
+    {"panel":"p041.jpg","narration":"Thiên Nhi nhận ra lời ấy chỉ nhằm khiêu khích, nhưng đối phương đã nổi giận thật sự.","kind":"recap","type":"BUILD"},
+    {"panel":"p044.jpg","narration":"Hắn mắng Trác Phàm là súc sinh rồi tuyên bố sẽ giết hắn ngay tại chỗ.","kind":"recap","type":"BUILD"},
+    {"panel":"p047.jpg","narration":"Trác Phàm lao lên trước, không để đối thủ kịp biến lời đe dọa thành đòn đánh.","kind":"recap","type":"BUILD"},
+    {"panel":"p050.jpg","narration":"Những cú đánh nối tiếp khiến đám người kia choáng váng, chẳng kịp phản ứng trước tốc độ của hắn.","kind":"recap","type":"BUILD"},
+    {"panel":"p052.jpg","narration":"Khi Trác Phàm dừng tay, đối thủ vẫn chưa hiểu chuyện gì vừa xảy ra.","kind":"recap","type":"BUILD"},
+    {"panel":"p056.jpg","narration":"Hắn cảm nhận được sức mạnh áp đảo, liền lắp bắp hỏi Trác Phàm có phải cao thủ Thần Chiếu Cảnh không.","kind":"recap","type":"ENDING"}
+  ]
+}

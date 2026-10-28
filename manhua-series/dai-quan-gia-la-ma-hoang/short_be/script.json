@@ -1,0 +1,76 @@
+{
+  "template": "manhua_recap_vi",
+  "title": "Đại Quản Gia Là Ma Hoàng | Tập 198–200: Trác Phàm nghịch chuyển!?",
+  "chapters": "198-200",
+  "source_dir": "manhua-recap/dqgl_ep198",
+  "written_by": "OpenAI, biên tập từ script từng tập, 2026-10-21",
+  "description": "Tóm tắt tập 198 đến 200 Đại Quản Gia Là Ma Hoàng. Trác Phàm đối đầu cao thủ và tìm cách xoay chuyển cục diện.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Trác Phàm nhận ra bí mật trong Huyết Bức Chấn Thiên!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep198/p001.jpg",
+      "narration": "Giữa lúc giao chiến, Trác Phàm nhận ra Huyết Bức Chấn Thiên dùng linh thú để tấn công trực tiếp vào linh hồn.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep198/p023.jpg",
+      "narration": "Lâm trưởng lão giải thích huyết bức có thể bám vào cổ đối thủ và hút máu, khiến người trúng chiêu khó thoát.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep198/p078.jpg",
+      "narration": "Trác Phàm phát hiện điểm sai trong cách vận dụng trận pháp và chuẩn bị nói rõ điều đó với đối thủ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep199/p001.jpg",
+      "narration": "Trác Phàm nhận ra Lâm trưởng lão đang cố khống chế chiến trường bằng trận pháp và đàn linh thú.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep199/p024.jpg",
+      "narration": "Hắn cho đối thủ thấy mình có thể uống liền năm viên đan mà cơ thể vẫn chịu được, khiến mọi người không thể tin nổi.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep199/p075.jpg",
+      "narration": "Trác Phàm tuyên bố đối phương đã hiểu sai một điểm then chốt, rồi chuẩn bị chứng minh bằng hành động.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep200/p001.jpg",
+      "narration": "Lâm trưởng lão tiếp tục thúc giục mọi người vây công, tin rằng Trác Phàm sẽ sớm gục ngã.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep200/p018.jpg",
+      "narration": "Trác Phàm bảo đối thủ uống đan để tăng nguyên lực; bản thân hắn lại tự mình chống chịu đòn đánh trong trận pháp.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep200/p036.jpg",
+      "narration": "Lâm trưởng lão nhận ra Trác Phàm đang thử một cách phá giải khó tin, còn trận chiến vẫn chưa phân thắng bại.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "title": "Ai sẽ quyết định số phận Hoa Vũ Lâu!?",
+  "chapters": "143",
+  "source_dir": "manhua-recap/dqgl_ep143",
+  "written_by": "OpenAI, ??i chi?u ?nh ngu?n, 2026-10-20",
+  "description": "Ai sẽ quyết định số phận Hoa Vũ Lâu. Tóm tắt chương 143 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Ai sẽ quyết định số phận Hoa Vũ Lâu!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Sau cuộc đối đầu ở bàn tiệc, Hoàng Phủ Thanh Vân đề nghị đứng ra giải quyết bất đồng giữa Hoa Vũ Lâu và các thế gia.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p013",
+      "narration": "Hắn nói chuyện của Hoa Vũ Lâu liên quan đến lợi ích chung, nên muốn các gia chủ cùng chứng kiến một phán quyết công bằng.",
+      "kind": "recap",
+      "type": "SETUP"
+    },
+    {
+      "panel": "p024",
+      "narration": "Các phe đều có toan tính riêng; lời đề nghị làm trọng tài cũng có thể là cách nắm quyền điều khiển cuộc họp.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "p035",
+      "narration": "Nghiêm Tông cáo buộc Hoa Vũ Lâu khiến các trưởng lão trọng thương và đòi bồi thường.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p047",
+      "narration": "Thanh Vân yêu cầu các gia chủ đưa ra ý kiến, rồi tuyên bố Hoa Vũ Lâu phải chịu trách nhiệm nhưng được quyền chọn cách bồi thường.",
+      "kind": "recap",
+      "type": "REVEAL"
+    },
+    {
+      "panel": "p059",
+      "narration": "Mẫu Đơn không chấp nhận việc một người tự quyết thay tất cả; phản ứng ấy cho thấy phán quyết chưa thể xem là đồng thuận.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "p070",
+      "narration": "Khi các bên còn tranh cãi về quyền phân xử, Trác Phàm lặng lẽ quan sát nước cờ của Thanh Vân.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

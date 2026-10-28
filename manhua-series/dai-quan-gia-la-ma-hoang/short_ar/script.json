@@ -1,0 +1,76 @@
+{
+  "template": "manhua_recap_vi",
+  "title": "Đại Quản Gia Là Ma Hoàng | Tập 155–157: Trác Phàm nghịch chuyển!?",
+  "chapters": "155-157",
+  "source_dir": "manhua-recap/dqgl_ep155",
+  "written_by": "OpenAI, biên tập từ script từng tập, 2026-10-21",
+  "description": "Tóm tắt tập 155 đến 157 Đại Quản Gia Là Ma Hoàng. Trác Phàm đối đầu cao thủ và tìm cách xoay chuyển cục diện.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Bốn gia tộc đứng trước thế cờ mới!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep155/p001.jpg",
+      "narration": "Sau màn va chạm, Hoàng Phủ Thanh Vân bắt đầu cân nhắc hậu quả nếu các thế lực lớn cùng nhúng tay.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep155/p024.jpg",
+      "narration": "Chuyện ở Hoa Vũ Lâu không chỉ liên quan đến một cá nhân; nó có thể làm thay đổi cán cân giữa các gia tộc.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep155/p061.jpg",
+      "narration": "Thanh Vân vẫn chưa biết nên tiến hay lùi, trong khi Trác Phàm giữ kín tính toán của mình.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep156/p001.jpg",
+      "narration": "Khuynh Thành dịu giọng xin lỗi sau cuộc tranh cãi, nhưng Trác Phàm không xem chuyện vừa rồi là lý do để bỏ cuộc.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep156/p020.jpg",
+      "narration": "Hắn khẳng định Đông gia vẫn còn cơ hội, khiến những người có mặt phải nhìn lại tình thế.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep156/p055.jpg",
+      "narration": "Nhóm của Trác Phàm rời khỏi Hoa Vũ Lâu với một hướng đi mới và những mối nghi ngờ chưa được giải đáp.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep157/p001.jpg",
+      "narration": "Trác Phàm cùng mọi người rời Hoa Vũ Lâu trên xe, khép lại cuộc gặp đầy căng thẳng với Khuynh Thành.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep157/p020.jpg",
+      "narration": "Chuyến đi tạo khoảng lặng để cả nhóm suy tính bước tiếp theo sau những chuyện vừa xảy ra.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep157/p047.jpg",
+      "narration": "Nhưng ở phía sau, một âm mưu khác đang được chuẩn bị và có thể sớm đuổi kịp họ.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

@@ -1,0 +1,1182 @@
+{
+  "template": "manhua_recap_long_vi",
+  "title": "Chàng Rể Mạnh Nhất Lịch Sử | Tập 101–110",
+  "source_dir": "manhua-recap/crmn_ep101",
+  "chapters": "100-109",
+  "description": "Từ bài thơ cứu người đến ba trận tranh đảo Kim Sơn: Mộc Lan đấu Đường Viêm, quân chiến và màn đổi đề thi của Trương Xung.",
+  "beats": [
+    {
+      "panel": "crmn_ep101/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Trì tiểu thư ngồi lặng, nghĩ thầm: nhưng ta và Thẩm công tử chưa từng quên biết nhau.",
+      "section": "Tập 101"
+    },
+    {
+      "panel": "crmn_ep101/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Có người xác nhận: bài thơ này có tên là Tặng Trì Dữ."
+    },
+    {
+      "panel": "crmn_ep101/p008.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một người gằn giọng: Thẩm Lãng, ngươi đoán ra chuyện này thì thôi vậy, nhưng ngươi lại dám nói thẳng ra trước mặt mọi người!"
+    },
+    {
+      "panel": "crmn_ep101/p011.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một cô gái tóc xanh thẫm lạnh giọng: Trương Tấn sao? Nhìn xem ngươi đã để mặc cho thảm kịch của Từ Thiên Thiên xảy ra."
+    },
+    {
+      "panel": "crmn_ep101/p015.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chúc Lan Đình trình bày: Thẩm Lãng đã từng viết một cuốn sách Phong Nguyệt Vô Biên. Trong đó, Tây Môn Khánh có một tiểu thiếp tên Lý Bình Nhi, mà thần vừa hay biết được tứ điện hạ ngài cũng có một tiểu thiếp, nhũ danh ở nhà mẹ đẻ gọi là Bình Nhi."
+    },
+    {
+      "panel": "crmn_ep101/p018.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Việt Quốc vốn rất ít khi vì lời nói, vì văn chương mà kết tội ai."
+    },
+    {
+      "panel": "crmn_ep101/p022.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tuy Lan Sơn và Trương Xung không quen nhau, nhưng cả hai đều có quan hệ với thái tử, tứ vương tử lại là trợ thủ đắc lực của thái tử nên không thể đắc tội. Đặng Tiên vô tình thành họa trời giáng, đúng là cá trong ao bị vạ lây."
+    },
+    {
+      "panel": "crmn_ep101/p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tứ vương tử trầm ngâm tính toán: nếu Thẩm Lãng chết, Bá tước Huyền Vũ sẽ mượn cớ nói trận đảo Kim Sơn không công bằng để tấn công, vậy thì phiền phức. Nhưng Đặng Tiên này không quan trọng, chết cũng không sao... thôi vậy, nhẹ nhàng khiển trách, phạt hai mươi gậy đi."
+    },
+    {
+      "panel": "crmn_ep101/p029.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một người thầm nghĩ: tại sao Trương Xung lại làm như vậy?"
+    },
+    {
+      "panel": "crmn_ep101/p032.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng khẽ nhếch môi nghĩ thầm: hóa ra là như vậy... được, đây là một chuyện tao nhã."
+    },
+    {
+      "panel": "crmn_ep101/p035.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lời đe dọa vang lên tiếp: nếu Thẩm Lãng làm bài thơ này không hay, tội của Đặng Tiên sẽ thêm một bậc, phạt năm mươi gậy."
+    },
+    {
+      "panel": "crmn_ep101/p039.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng nhắm mắt, hít một hơi thật sâu, chuẩn bị xuất khẩu thành thơ."
+    },
+    {
+      "panel": "crmn_ep101/p042.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trương Xung sững người: lại có thể thật sự làm được... tài hoa thơ ca của Thẩm Lãng thật sự khiến người ta kinh ngạc tột cùng."
+    },
+    {
+      "panel": "crmn_ep101/p046.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh buông một tiếng cáo từ lạnh lùng rồi quay lưng bước đi, bỏ lại Đặng Tiên vừa thoát chết đang run rẩy phía sau."
+    },
+    {
+      "panel": "crmn_ep101/p049.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lan Sơn lo xa: phủ Bá tước Huyền Vũ sắp bị hủy diệt, đến lúc đó Thẩm Lãng sẽ như quạ mất tổ, tứ điện hạ có thể thu nạp hắn dưới trướng ngài."
+    },
+    {
+      "panel": "crmn_ep101/p053.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trương Tấn đứng cạnh nghĩ thầm: chút thủ đoạn của Chúc Lan Đình thế này đủ chặn đứt con đường của Thẩm Lãng rồi. Nói đi nói lại, tiểu nhân vật sao có thể chạy thoát, khó mà đối phó nổi đại thế."
+    },
+    {
+      "panel": "crmn_ep101/p056.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trương Xung trầm ngâm: tình hình lúc đó và bây giờ không giống nhau. Lúc đó chính sách mới vừa khó khăn chồng chất, mà thế lực quý tộc lâu đời, sau khi Chúc Lan Đình dâng thái ấp và binh quyền, đã hoàn toàn trở thành một quân cờ trong tay quốc vương."
+    },
+    {
+      "panel": "crmn_ep101/p060.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô dồn tiếp: phụ thân, Thẩm Lãng thật sự nhất định phải chết sao? Ông đáp: trừ khi quốc vương đổi cách nhìn về hắn, không ai dám dùng cả, phụ thân dù sao cũng là con chó trung thành nhất của quốc vương, càng không thể dùng. Con yên tâm, phụ thân nhất định sẽ tìm cho con một nam nhân tốt hơn!"
+    },
+    {
+      "panel": "crmn_ep101/p062.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Rồi đột nhiên Trương Xung sững người, ánh mắt lóe lên nghi hoặc: biểu hiện tối nay của Thẩm Lãng có vấn đề!"
+    },
+    {
+      "panel": "crmn_ep101/p062.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Một bài thơ vừa cứu người vừa gửi lời thách thức. Thẩm Lãng vẫn phải giữ tỉnh táo khi người cầm quyền có thể tùy ý biến lời nói thành án phạt."
+    },
+    {
+      "panel": "crmn_ep102/p001.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trương Xung vẫn trăn trở: biểu hiện của Thẩm Lãng tối nay có vấn đề.",
+      "section": "Tập 102"
+    },
+    {
+      "panel": "crmn_ep102/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trương Xuân Hoa cúi đầu thở dài: cha nói rất đúng, nếu như cha cũng rơi vào đường chết, chắc chắn mình cũng không còn tâm trạng thông đồng với Thẩm Lãng nữa."
+    },
+    {
+      "panel": "crmn_ep102/p007.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông kết luận lạnh lùng: đến lúc đó rồi nói, ta chỉ là tay sai của vương quân, vương quân bảo ta giết thì ta sẽ giết."
+    },
+    {
+      "panel": "crmn_ep102/p011.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mộc Lan liếc mắt châm chọc: phu quân, nếu như chàng muốn che giấu chuyện phóng đãng của chàng và Trương Xuân Hoa thì không cần lộ ra cái biểu cảm đấy nữa."
+    },
+    {
+      "panel": "crmn_ep102/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh nói tiếp: phu quân thỉnh thoảng ra ngoài gặp dịp thì chơi, ta cũng có thể hiểu được, chỉ cần lòng còn ở nhà, chỉ cần suy nghĩ không xuất quỹ thì không coi như xuất quỹ."
+    },
+    {
+      "panel": "crmn_ep102/p017.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nàng nhướng mày: cái gì?"
+    },
+    {
+      "panel": "crmn_ep102/p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nàng gằn giọng: đến bản thân mình còn không cứu được, sao lại đi quản chuyện sống chết của người khác."
+    },
+    {
+      "panel": "crmn_ep102/p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mộc Lan xúc động, kéo anh lại gần."
+    },
+    {
+      "panel": "crmn_ep102/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh trấn an: nhưng vì để phòng vạn nhất, vẫn cần phải sắp xếp tương quan, hi vọng không có ai bị ta vạch trần."
+    },
+    {
+      "panel": "crmn_ep102/p030.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trong nhà cũ Trương gia, các thế lực tụ họp quanh tấm bản đồ."
+    },
+    {
+      "panel": "crmn_ep102/p033.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một thanh niên áo xanh hùng hổ chen vào: lần này tiêu diệt Huyền Vũ Bá tước phủ, theo lý ta phải chia phần nhiều nhất, tất cả quặng mỏ của Huyền Vũ Bá tước phủ, nếu ai dám tranh với ta, thì ta sẽ trở mặt với kẻ đó!"
+    },
+    {
+      "panel": "crmn_ep102/p036.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông ta đe dọa: nếu như có người muốn ta không nhận được gì, ta sẽ ghi nhớ kỹ các ngươi."
+    },
+    {
+      "panel": "crmn_ep102/p040.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trương Xung tự nhủ: mà Trương Sung ta không cần tiền bạc châu báu, không cần sản nghiệp, chỉ cần tiền đồ, chỉ cần chức vị Đô đốc Diễm Châu."
+    },
+    {
+      "panel": "crmn_ep102/p043.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đêm, trong Huyền Vũ Bá tước phủ, phòng của Kim Mộc Thông chi chít giấy bút bay tứ tung."
+    },
+    {
+      "panel": "crmn_ep102/p046.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mộc Thông nghẹn ngào: tỷ phu, đệ sợ."
+    },
+    {
+      "panel": "crmn_ep102/p049.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mộc Thông nhìn chồng giấy bài ôn luyện ngổn ngang trên bàn."
+    },
+    {
+      "panel": "crmn_ep102/p053.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nàng lo lắng tiếp: ngộ nhỡ thiên ngoại lưu tình của Đường Viêm không giống trong tưởng tượng của chúng ta thì phải làm sao? Ngộ nhỡ trong lúc quyết đấu tự dưng ta có sai sót, thua Đường Viêm thì phải làm sao? Nếu như ta thua rồi, tranh đấu giành đảo Kim Sơn sẽ thua hoàn toàn, nhà chúng ta sẽ tiêu mất."
+    },
+    {
+      "panel": "crmn_ep102/p056.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh ôm chặt lấy nàng, không buông tay."
+    },
+    {
+      "panel": "crmn_ep102/p059.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mộc Lan bật khóc, siết chặt tay anh, hô lên đầy quyết tâm: diệt bọn chúng!"
+    },
+    {
+      "panel": "crmn_ep103/p001.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngày hôm sau!",
+      "section": "Tập 103"
+    },
+    {
+      "panel": "crmn_ep103/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trên khán đài, một người chào hỏi: ái chà, tử tước Chu Hạo, ngài cũng đến sao? Hứa đã thành chủ, không phải là ngài cũng không muốn bỏ lỡ vở kịch lớn này sao?"
+    },
+    {
+      "panel": "crmn_ep103/p007.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trên khán đài, người ta xì xào: tinh thần binh sĩ của phủ Bá tước Huyền Vũ thật dồi dào a. Vô dụng, không xử lý được phủ Bá tước Tấn Hải Bá. Dô, phủ Bá tước Huyền Vũ cũng không dễ dàng, đây là lấy dao chống mìn vì mọi người thôi..."
+    },
+    {
+      "panel": "crmn_ep103/p011.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Có người reo lên: đến rồi đến rồi, trọng tài vào rồi. Hô hố, đây cũng thật sự là đại nhân vật."
+    },
+    {
+      "panel": "crmn_ep103/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Người thứ ba từng làm thừa tướng của Thượng thư đài, từng làm thái phó của thái tử: Biện Tiêu, cao thủ võ đạo hàng đầu, thái bảo của thái tử, Công tước Uy Vũ, trùm đầu tiên của binh bộ Việt Quốc."
+    },
+    {
+      "panel": "crmn_ep103/p017.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ninh Kỳ nói tiếp: cả ba chúng ta cộng lại, đã hơn ba trăm tuổi. Công tước Uy Vũ vẫn còn giữ chức, ta và Sách Huyền đại nhân sớm đã rút khỏi việc nước nhiều năm, vốn là ở nhà bảo dưỡng tuổi thọ."
+    },
+    {
+      "panel": "crmn_ep103/p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Biện Tiêu giơ cao một tờ giấy: cho dù là võ chiến, hay là quân chiến, đao kiếm không có mắt, khó tránh sẽ bị thương vong! Nếu không phản đối, thì hai bên ký giấy sinh tử này đi!"
+    },
+    {
+      "panel": "crmn_ep103/p023.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Phủ Bá tước Huyền Vũ và phủ Bá tước Tấn Hải Bá đánh nhau nhiều lần, thương vong vô số. Trận tranh chấp đảo Kim Sơn đầy máu tanh, không chỉ có quân đội tham chiến bị thương vong nặng nề, ngay cả hai người thừa kế của hai đại gia tộc cũng không rõ sống chết."
+    },
+    {
+      "panel": "crmn_ep103/p026.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Vốn dĩ sự tồn tại của hắn chỉ là vì trận tranh chấp đảo Kim Sơn. Nhưng bây giờ hắn võ nghệ vượt trội, còn sẽ trở thành Kiếm Vương Nam Hải đời tiếp theo, nhất đại tông sư của Việt Quốc. Tranh chấp đảo Kim Sơn đã trong còn trong mắt hắn nữa rồi."
+    },
+    {
+      "panel": "crmn_ep103/p029.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đã xác nhận? Đã xác nhận!"
+    },
+    {
+      "panel": "crmn_ep103/p033.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trong một không gian kỳ lạ phủ ánh sáng xanh lục, Thẩm Lãng đứng lặng, dùng khả năng đặc biệt dò xét nội dung đề thi bí mật."
+    },
+    {
+      "panel": "crmn_ep103/p036.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đêm đó, Mộc Thông hớn hở: đây chính là đề bài do quân vương viết, anh rể của em rất nhanh sẽ giúp em sao chép giúp một bài sách luận lừng vẫy nhất, sau đó sao chép một bài thơ ngàn năm chấn động khóc quỷ thần, giúp em đánh bại Đường Duẫn, khiến cho mọi người kinh ngạc đến tròn mắt!"
+    },
+    {
+      "panel": "crmn_ep103/p039.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mộc Thông hắt xì, mặt mày phờ phạc, tự hỏi sao lại có dự cảm chẳng lành như vậy..."
+    },
+    {
+      "panel": "crmn_ep103/p042.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đường Viêm đang chuẩn bị thì bị một con muỗi quấy rầy không dứt."
+    },
+    {
+      "panel": "crmn_ep103/p045.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông dặn dò nghiêm giọng: Viêm nhi, ngươi nhớ kỹ cho ta, nhanh chóng hạ gục Kim Mộc Lan, nhưng đừng giết cô ta, biết chưa? Đường Viêm đáp cộc lốc: được, không giết."
+    },
+    {
+      "panel": "crmn_ep103/p049.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh vẫn còn bận tâm chuyện con muỗi: trong thời gian một hơi thở, lại có thể đập cánh được hai nghìn lần? Con muỗi này thật lợi hại."
+    },
+    {
+      "panel": "crmn_ep103/p052.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trên khán đài, chỗ ngồi của phủ Bá tước Huyền Vũ: với tư cách là thông gia của Kim thị gia tộc, Tô Kiếm Đình đóng vai trò một người hiền hậu bên cạnh Kim thị gia tộc."
+    },
+    {
+      "panel": "crmn_ep103/p055.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Dưới khán đài, có người bàn tán: trận chiến này không có chút hồi hộp, trình độ kiếm thuật của Kim Mộc Lan kém Đường Viêm hai bậc, kết quả duy nhất chính là hạ gục đối thủ nhanh chóng."
+    },
+    {
+      "panel": "crmn_ep103/p057.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Giữa những lời xì xào ấy, một giọng nói vang lên quyết liệt từ phía Thẩm Lãng: Mộc Lan, hãy để những người này thấy được thực lực của em đi!"
+    },
+    {
+      "panel": "crmn_ep104/p001.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Giáp trụ va chạm, tiếng đao kiếm vang lên dồn dập.",
+      "section": "Tập 104"
+    },
+    {
+      "panel": "crmn_ep104/p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh ta tự nhủ: vậy được, lát nữa ta sẽ phế đi võ công của cô, tranh thủ đâm một vết thương nhỏ nhất, so với sợi tóc còn nhỏ hơn."
+    },
+    {
+      "panel": "crmn_ep104/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Kiếm khí bùng lên dữ dội: Thiên Ngoại Lưu Tinh!"
+    },
+    {
+      "panel": "crmn_ep104/p012.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mũi kiếm của nàng xuyên thẳng vào tâm điểm của luồng kiếm khí."
+    },
+    {
+      "panel": "crmn_ep104/p016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một tiếng nổ lớn vang lên, luồng kiếm khí của Mộc Lan áp đảo hoàn toàn."
+    },
+    {
+      "panel": "crmn_ep104/p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đường Duẫn lắp bắp: vậy mà... vậy mà bại rồi?"
+    },
+    {
+      "panel": "crmn_ep104/p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nàng hạ kiếm, buông tha: bỏ đi, sau này hắn ta chưa chắc đã là kẻ địch."
+    },
+    {
+      "panel": "crmn_ep104/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Giữa làn khói ma mị, một bóng người giáp trụ đỏ xanh với đôi mắt đỏ rực xuất hiện, gằn giọng: chàng, trong lúc quan trọng, vẫn còn câu dẫn nữ nhân?"
+    },
+    {
+      "panel": "crmn_ep104/p031.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô gái bất giác đỏ mặt, phát ra một tiếng ngỡ ngàng."
+    },
+    {
+      "panel": "crmn_ep104/p035.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mộc Lan vỗ tay khen, cố che đậy sự chột dạ của chồng: hay! Nương tử lợi hại!"
+    },
+    {
+      "panel": "crmn_ep104/p039.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông tự trấn an rồi lại hoài nghi: lẽ nào con trai thấy đẹp nên động lòng, thế nên mới thủ hạ lưu tình với Kim Mộc Lan? Không thể nào, trong mắt Đường Viêm không hề có hai chữ nữ nhân này!"
+    },
+    {
+      "panel": "crmn_ep104/p043.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một bóng người giấu mặt trong bóng tối nghiến răng: sơ suất rồi, tên Thẩm Lãng này, vậy mà còn ẩn giấu cách xoay xở."
+    },
+    {
+      "panel": "crmn_ep104/p046.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn tức tối: Kim Mộc Lan thắng rồi? Rõ ràng cô ta thua mình một cách dễ dàng như thế, nhưng lại đánh thắng Đường Viêm đã hạ gục mình trong chớp mắt ư? Đáng ghét, Huyền Vũ Bá tước phủ không bị tiêu diệt, sao ta có thể lấy thân phận chúa cứu thế xuất hiện trước mặt Kim Mộc Lan cô chủ?"
+    },
+    {
+      "panel": "crmn_ep104/p050.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cậu reo lên hớn hở: tỷ tỷ lợi hại quá! Tỷ tỷ thật mạnh! Một người khác tấm tắc: vậy mà hạ gục được Đường Viêm trong chớp mắt! Quả thực ngầu quá đi!"
+    },
+    {
+      "panel": "crmn_ep104/p054.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trong khi đó, Đường Viêm đứng một mình, lặng lẽ nhìn lại chính mình: vậy mà mình lại thua..."
+    },
+    {
+      "panel": "crmn_ep104/p058.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đường Viêm bật cười sảng khoái giữa đại sảnh, không hề giấu giếm: hahaha... mình bại rồi, vậy mà lại thất bại rồi... Bại hay lắm, bại hay lắm..."
+    },
+    {
+      "panel": "crmn_ep104/p061.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mộc Lan khẽ suy ngẫm: một đời tông sư sắp vùng dậy rồi, thất bại ngày hôm nay sẽ làm hắn ta càng mạnh mẽ hơn. Trước kia là chiêu thức kiếm pháp Thiên Ngoại Lưu Tinh cường đại, sau này thứ vô địch, có lẽ chính là bản thân hắn."
+    },
+    {
+      "panel": "crmn_ep104/p065.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Người kia khẳng định: đương nhiên là nói thật, trên thế giới này có còn ai có thể khiến cho Uy Vũ công tước nói dối chứ?"
+    },
+    {
+      "panel": "crmn_ep104/p067.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đường Duẫn tuyên bố lạnh lùng trước mặt hai phủ: Huyền Vũ Bá tước phủ, Tấn Hải Bá tước phủ đã chuẩn bị xong, ngày mai tiến hành trận đấu thứ hai, thứ ba!"
+    },
+    {
+      "panel": "crmn_ep104/p067.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Chiến thắng của Mộc Lan cho thấy lời đồn bất bại có thể che đi một kẽ hở chưa ai khai thác. Phần chuẩn bị trước trận đã quyết định khoảnh khắc ra đòn."
+    },
+    {
+      "panel": "crmn_ep105/p001.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sau khi trận chiến đầu tiên kết thúc, nơi ở của vợ chồng phủ Bá tước Huyền Vũ.",
+      "section": "Tập 105"
+    },
+    {
+      "panel": "crmn_ep105/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mộc Lan nhả tay, nhăn mặt đe dọa: nếu không thì đừng đánh ở đây, chúng ta quay về nhà rồi đánh có được không?"
+    },
+    {
+      "panel": "crmn_ep105/p008.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nàng áp môi lên anh không chút do dự."
+    },
+    {
+      "panel": "crmn_ep105/p011.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tiếp theo, Thẩm Tra Nam kiểm tra cơ sở dữ liệu trí não, từ trong rất nhiều tác phẩm văn hào, lựa chọn và đạo văn ra một bài luận, một bài thơ."
+    },
+    {
+      "panel": "crmn_ep105/p015.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cậu quay sang chị gái khoe: bị chị em cắn, thế nào?"
+    },
+    {
+      "panel": "crmn_ep105/p018.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mộc Thông gật gù như đúng rồi: đây là đại diện cho cảnh giới cao nhất của tình yêu, giải thích tình yêu của chị gái em đối với ta đã đến trình độ cao nhất!"
+    },
+    {
+      "panel": "crmn_ep105/p022.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mộc Thông gào lên quyết tâm, lửa và băng bùng cháy trong mắt cậu: biến đau thương thành sức mạnh, biến đau thương thành sức mạnh! Mình sẽ biến đau thương thành sức mạnh! Phỉ Trạch, người đợi đó cho ta, người không phải chính là thám hoa đứng thứ ba của thí đình sao? Văn chiến ngày mai, ta nhất định sẽ đánh bại ngươi. Ta nhất định sẽ để các ngươi biết, phì trạch cũng không dễ bắt nạt đâu, phì trạch cũng sẽ nghịch thiên."
+    },
+    {
+      "panel": "crmn_ep105/p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trương Xung dò hỏi thẳng: cho nên mấu chốt là trận chiến ngày mai, Tấn Hải Bá, trận chiến ngày mai người có chắc chắn sẽ thắng không?"
+    },
+    {
+      "panel": "crmn_ep105/p029.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trương Xung chỉ im lặng quan sát."
+    },
+    {
+      "panel": "crmn_ep105/p032.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thuộc hạ mời xem: thái thú đại nhân mời xem, đây là kiếm tốt nhất của phủ Bá tước Huyền Vũ. Ông lắc đầu chê: độ tinh khiết kém quá, chất lượng sắt không tinh khiết, màu sắc cũng khác nhau."
+    },
+    {
+      "panel": "crmn_ep105/p035.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đường Duẫn hài lòng: lợi hại! Mời Trương thái thú dùng đao nhà ta, chém áo giáp của phủ Bá tước Huyền Vũ."
+    },
+    {
+      "panel": "crmn_ep105/p039.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đường Duẫn cười đắc ý: tranh chấp đảo Kim Sơn trước đây, người đấu võ của nhà thua có thắng có, nhưng ở trận chiến này, nhà ta chưa bao giờ thua. Đường Viêm trước đây cũng chưa từng thua."
+    },
+    {
+      "panel": "crmn_ep105/p042.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đường Duẫn gạt phắt: có thể lớn như nào? So sánh với việc thắng thua của đảo Kim Sơn, thì chút chi phí này tính là cái gì?"
+    },
+    {
+      "panel": "crmn_ep105/p046.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trương Xung cân nhắc: được, vậy đành dựa vào thái thú đại nhân vậy. Ta cần đi bẩm báo chuyện này lên vương thúc Ninh Khởi."
+    },
+    {
+      "panel": "crmn_ep105/p049.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Khu vực săn bắn Nọ Giang, nơi ở của hai vị trọng tài. Một người nói: ta năm nay bảy mươi tám tuổi, ta không muốn vãn tiết bất bảo."
+    },
+    {
+      "panel": "crmn_ep105/p053.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông tuyên bố: Trương Nộ Giang, vẫn cần công bằng chính trực, nếu Bá tước Tấn Hải Bá có thể mượn người, vậy Bá tước Huyền Vũ cũng có thể mượn người."
+    },
+    {
+      "panel": "crmn_ep105/p056.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tuy không bằng lòng, nhưng Tấn Hải Bá vẫn hoàn thành giao dịch mượn người: Tấn Hải Bá phải trả ba chiếc tàu biển, cho việc mượn hai mươi cao thủ đạt trình độ cao nhất trong quân đội của Trấn Bắc Hầu, lại phải trả ba nghìn mẫu đất cho việc mượn mười cao thủ đạt trình độ cao nhất trong quân đội của Tịnh An Bá."
+    },
+    {
+      "panel": "crmn_ep105/p060.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đường Luân hỏi dò: điều kiện? Người khách đáp gọn: không, chỉ đơn thuần là muốn rèn luyện một chút! Đường Luân sững người."
+    },
+    {
+      "panel": "crmn_ep105/p062.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Vị khách bí ẩn khẽ cười nhạt, hé lộ sự thật: gia tộc Tô thị ta làm việc như ngựa thần lướt gió tung bay, sao phải giải thích với ai? Mục đích thật sự của Tô gia... vẫn còn là một ẩn số."
+    },
+    {
+      "panel": "crmn_ep106/p001.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sáng hôm sau.",
+      "section": "Tập 106"
+    },
+    {
+      "panel": "crmn_ep106/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Vị trọng tài gật đầu: nghe theo vương thúc phân phó. Vậy cứ quyết định như vậy, buổi sáng quân chiến, buổi chiều văn chiến, hai vị đi chuẩn bị đi."
+    },
+    {
+      "panel": "crmn_ep106/p007.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng chỉ im lặng."
+    },
+    {
+      "panel": "crmn_ep106/p010.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trong nơi đóng quân của phủ Bá tước Huyền Vũ."
+    },
+    {
+      "panel": "crmn_ep106/p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nàng ném khăn về phía anh."
+    },
+    {
+      "panel": "crmn_ep106/p015.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nàng ôm lấy anh: phu quân, dựa theo quy củ, ta từng tham gia tỷ võ trận thứ nhất, cũng không thể lên được nữa."
+    },
+    {
+      "panel": "crmn_ep106/p018.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng vội vàng: được rồi, chàng ra ngoài đi, ta sẽ thay cái này. Trên giá treo áo da chiến đấu màu tím và đen."
+    },
+    {
+      "panel": "crmn_ep106/p021.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nàng cười xòa: hóa ra là như vậy, có vẻ như là ta quá mạnh rồi. Nương tử nàng mặc trước, phu quân phải đi rồi."
+    },
+    {
+      "panel": "crmn_ep106/p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng điềm tĩnh: bọn họ đương nhiên hiểu, bọn họ không phải không thông minh, mà là... quá thông minh. Các nhà tự quét tuyết trước cửa, người chỉ có thể dựa vào mình. Nhạc phụ đại nhân, chờ sau khi chúng ta thắng lớn, ngọn lửa sẽ cháy trên đầu bọn họ. Đến lúc đó, ta nhất định sẽ bỏ đá xuống giếng, thuận tiện cắt mấy miếng thịt từ trên người hắn!"
+    },
+    {
+      "panel": "crmn_ep106/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Kỵ binh đối đầu, binh lính bị thương ngã khỏi ngựa cũng sẽ bị chiến mã giẫm thành thịt nát, cho nên mỗi lần binh lính chiến đấu cùng chiến mà tỷ lệ tổn thất đều rất cao. Cuối cùng quốc quân đều nhìn không nổi nữa, hạ chỉ quân chiến chỉ có thể bộ binh đối xung, không cho phép dùng kỵ binh. Nhưng dù là như thế, mức độ tàn nhẫn đẫm máu của chiến đấu vẫn không giảm xuống, bình thường đều phải chảy hết giọt máu cuối cùng."
+    },
+    {
+      "panel": "crmn_ep106/p030.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Kho tạm thời phủ Bá tước Huyền Vũ. Mộc Lan dẫn đoàn quân bước vào: mọi người đến bên này để nhận trang bị."
+    },
+    {
+      "panel": "crmn_ep106/p033.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một người khác thử khiên chắn: khiên chắn mới? Nhẹ hơn trước, không biết hiệu quả ngăn chặn như thế nào?"
+    },
+    {
+      "panel": "crmn_ep106/p036.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng dặn dò vợ: bảo bối, nàng phải nhớ một điều. Dù sao, đừng để bị tổn thương, cổ không có một chút vết sẹo."
+    },
+    {
+      "panel": "crmn_ep106/p039.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bên phía phủ Bá tước Tấn Hải."
+    },
+    {
+      "panel": "crmn_ep106/p041.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hàng ngũ binh sĩ Tấn Hải Bá chỉnh tề xếp hàng, khí thế hùng hậu."
+    },
+    {
+      "panel": "crmn_ep106/p044.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Toàn quân Tấn Hải Bá đồng thanh gầm lên man rợ: chết, khóc! Chết, khóc!"
+    },
+    {
+      "panel": "crmn_ep106/p047.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đoàn quân Tấn Hải Bá tiến vào bãi đấu, giáp trụ sáng loáng, khí thế áp đảo."
+    },
+    {
+      "panel": "crmn_ep106/p050.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đường Tung trông thấy trang bị mới của đối phương, giật mình: phủ Huyền Vũ Bá tước đổi trang bị rồi?"
+    },
+    {
+      "panel": "crmn_ep106/p053.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Giữa bầu không khí căng thẳng tột độ, một tiếng hô vang dội từ phía Tấn Hải Bá cắt ngang: trận chiến này, vẫn sẽ là đại thắng, là nghiền ép!"
+    },
+    {
+      "panel": "crmn_ep107/p001.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tiếng trống trận vang lên dồn dập giữa bãi đấu.",
+      "section": "Tập 107"
+    },
+    {
+      "panel": "crmn_ep107/p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đoàn quân Tấn Hải cũng hét lớn đáp trả: giết!"
+    },
+    {
+      "panel": "crmn_ep107/p008.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trương Xung lo lắng: điều đó không nhất thiết phải như vậy, chiến trường đang biến hóa khôn lường và có nhiều điều khó lường."
+    },
+    {
+      "panel": "crmn_ep107/p011.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Giữa đám đông hỗn loạn, một thanh gươm vung lên dứt khoát."
+    },
+    {
+      "panel": "crmn_ep107/p015.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chỉ huy Tấn Hải hô lớn: tấn công! Tấn công! Phá trận! Phá trận!"
+    },
+    {
+      "panel": "crmn_ep107/p019.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Binh lính Huyền Vũ kinh ngạc: làm sao có thể? Thanh đao mới được sản xuất phủ Bá tước Huyền Vũ sắc bén đến vậy? Áo giáp cũng kiên cố như vậy?"
+    },
+    {
+      "panel": "crmn_ep107/p022.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một binh lính Tấn Hải bị đâm trúng, máu bắn tung tóe."
+    },
+    {
+      "panel": "crmn_ep107/p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một tướng Tấn Hải toát mồ hôi lạnh: kỹ thuật luyện sắt chỉ có thể từ từ tích lũy, không thể một sớm một chiều mà đạt được, Kim gia đã dùng phương pháp thần kỳ gì để thăng cấp trang bị lên trình độ này!?"
+    },
+    {
+      "panel": "crmn_ep107/p029.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đội hình Tấn Hải tái tổ chức, xông lên phản công dữ dội."
+    },
+    {
+      "panel": "crmn_ep107/p033.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Gần như ngay lập tức, thế tấn công và phòng thủ bị đảo ngược, đội hình của phủ Bá tước Huyền Vũ trực tiếp bị phá vỡ, và đội ba người của Tấn Hải bắt đầu tấn công theo hướng ngược lại."
+    },
+    {
+      "panel": "crmn_ep107/p036.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mộc Lan sững sờ nhận ra giọng nói và thân hình quen thuộc: giọng nói này... thân hình này... Tô Thiên Ân!?"
+    },
+    {
+      "panel": "crmn_ep107/p039.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mộc Lan gầm lên phẫn nộ: thật sự là người! Tô gia các ngươi rốt cuộc muốn gì!"
+    },
+    {
+      "panel": "crmn_ep107/p043.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tô Kiếm Đình đáp, vẻ mặt khó hiểu: cô phụ, ta cũng không biết chuyện gì xảy ra, ta nhất định sẽ trừng trị nghiêm khắc việc này."
+    },
+    {
+      "panel": "crmn_ep107/p047.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thanh đao của Tô Thiên Ân vung lên nhắm thẳng Mộc Lan."
+    },
+    {
+      "panel": "crmn_ep107/p050.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một tướng Huyền Vũ hô lớn: giữ chân chúng! Đừng để chúng phá vỡ đội hình của chúng ta! Thuộc hạ đáp: vâng!"
+    },
+    {
+      "panel": "crmn_ep107/p053.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trương Xung đáp trả cứng rắn: ta có thua không? Chưa hẳn! Chúng ta vẫn còn hơn bảy mươi người, các ngươi chỉ có hơn hai mươi người. Nếu bọn ta thực sự muốn chiến đấu đến cùng thì thắng thua khó nói, phía ta có khả năng cao sẽ thắng, nhưng ta không thể chịu thêm thương vong!"
+    },
+    {
+      "panel": "crmn_ep107/p057.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Kim Trác, Bá tước Huyền Vũ, vung kiếm hô vang đanh thép: các vị, nếu không muốn tiếp tục chiến đấu, hãy giơ kiếm lên. Ta, Kim Trác, cam đoan rằng những binh lính của phủ Bá tước Huyền Vũ sẽ không bao giờ tấn công các ngươi!"
+    },
+    {
+      "panel": "crmn_ep107/p061.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mộc Lan, người đầy máu me, đứng cạnh một chiến binh Huyền Vũ cũng bê bết máu, thở dốc sau trận chiến khốc liệt."
+    },
+    {
+      "panel": "crmn_ep107/p064.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trương Xung đứng giữa bãi đấu, hô vang quyết định cuối cùng: trận chiến này quyết định hòa, người nghĩ gì, Huyền Vũ và Tấn Hải?"
+    },
+    {
+      "panel": "crmn_ep108/p001.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đường Luân nghiến răng tức tối: ta bỏ ra cái giá lớn để mượn người như thế, vậy mà chỉ đổi được một thế hòa?!",
+      "section": "Tập 108"
+    },
+    {
+      "panel": "crmn_ep108/p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tại đại sảnh bãi đấu, ba vị trọng tài hỏi: Huyền Vũ, Tấn Hải, hai người có đồng ý thế hòa không?"
+    },
+    {
+      "panel": "crmn_ep108/p008.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một quan khách nhận định: điều đó không nhất thiết phải như vậy, chiến trường đang biến hóa khôn lường và có nhiều điều khó lường."
+    },
+    {
+      "panel": "crmn_ep108/p012.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bên trong một đại sảnh khác, một vị khác thì thầm: Đường Luân cảm tạ Thái thú đại nhân, nếu như không phải Thái thú đại nhân bày mưu tính kế, chúng ta đã phải chịu mất mát lớn từ Kim gia rồi."
+    },
+    {
+      "panel": "crmn_ep108/p016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông tự nhủ: mình rốt cuộc đã sơ xuất gì."
+    },
+    {
+      "panel": "crmn_ep108/p019.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Con trai đáp: đây là chênh lệch thực lực thật sự, không có khả năng giở trò khôn lỏi được đâu. Huống hồ gì câu hỏi của đấu văn bị niêm phong trong rương, chỉ có một mình quốc quân biết, Kim Mộc Thông bọn họ giở trò kiểu gì được?"
+    },
+    {
+      "panel": "crmn_ep108/p023.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Con trai sửng sốt: chuyện này, chuyện này sao có thể chứ?"
+    },
+    {
+      "panel": "crmn_ep108/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trương Sung hỏi: Xuân Hoa, lúc quân chiến buổi sáng kết thúc, con có quan sát sắc mặt của Thẩm Lãng không?"
+    },
+    {
+      "panel": "crmn_ep108/p030.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông gằn giọng: Kim Mộc Lan là người sợ chết sao?"
+    },
+    {
+      "panel": "crmn_ep108/p034.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô hỏi tiếp: Thẩm Lãng có đường lui trong văn chiến?"
+    },
+    {
+      "panel": "crmn_ep108/p038.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nơi ở của ba vị trọng tài, một góc sân vắng lặng bên tàng cây xanh mát."
+    },
+    {
+      "panel": "crmn_ep108/p041.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một trọng tài gắt lên: Trương Sung, ngươi đây là không tin tưởng bọn ta sao?"
+    },
+    {
+      "panel": "crmn_ep108/p045.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trương Sung thầm nghĩ: mặc dù là cách làm ngang ngược, nhưng lại là cách tốt nhất rồi, Trương Sung này, làm việc đúng là táo bạo, không hề khô cứng."
+    },
+    {
+      "panel": "crmn_ep108/p049.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trương Sung đề nghị thẳng: đại đô đốc, văn chiến lần này, quốc quân chắc chắn có chuẩn bị câu hỏi dự bị, hơn nữa cũng dùng một chiếc hộp giống như thế để niêm phong đề thi."
+    },
+    {
+      "panel": "crmn_ep108/p052.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trương Sung đích thân dặn dò bên hồ nước: được, nghe theo ngươi!"
+    },
+    {
+      "panel": "crmn_ep108/p056.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Không gian im lặng căng thẳng bao trùm."
+    },
+    {
+      "panel": "crmn_ep108/p060.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ninh Khởi công tước xuất hiện, uy nghiêm lạnh lùng."
+    },
+    {
+      "panel": "crmn_ep108/p063.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ninh Khởi đứng sừng sững trước Trương Sung đang quỳ rạp dưới đất: tâm tư của ngươi sâu thật đấy."
+    },
+    {
+      "panel": "crmn_ep108/p067.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ninh Khởi quay lưng bước đi, buông một câu lạnh lùng: ngươi muốn quỳ, vậy thì quỳ đi."
+    },
+    {
+      "panel": "crmn_ep108/p067.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Tráo đề chỉ có tác dụng khi đối phương hoàn toàn dựa vào một đáp án học thuộc. Trương Xung đang đánh cược vào điều mình chưa kiểm chứng ở Kim Mộc Thông."
+    },
+    {
+      "panel": "crmn_ep109/p001.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sấm sét rền vang giữa bầu trời đen kịt: sắp mưa rồi, sai người đưa ô cho Trương Thái thú đi.",
+      "section": "Tập 109"
+    },
+    {
+      "panel": "crmn_ep109/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trương Sung hoảng sợ, không dám nhận lời khen."
+    },
+    {
+      "panel": "crmn_ep109/p007.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sấm chớp xé toạc màn mưa."
+    },
+    {
+      "panel": "crmn_ep109/p010.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Con trai ông cầm ô chạy tới che cho cha."
+    },
+    {
+      "panel": "crmn_ep109/p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cậu bực bội: trận chiến giành đảo Kim Sơn, Tấn Hải Bá tước phủ, Tịnh An Bá tước phủ, Lan Sơn tử tước phủ bọn họ mới là người được lợi, vì sao bọn họ ở bên kia uống rượu mừng, cha lại phải ở đây chịu tội?"
+    },
+    {
+      "panel": "crmn_ep109/p017.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ba vị trọng tài tuyên bố: Huyền Vũ, Tấn Hải, hai người các ngươi kiểm tra xem, dấu sáp và giấy niêm phong chiếc hộp có dấu vết bị tổn hại không?"
+    },
+    {
+      "panel": "crmn_ep109/p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông giơ cao tờ đề: hai vị, mời đọc đề."
+    },
+    {
+      "panel": "crmn_ep109/p023.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trong khi đó, Kim Mộc Thông sững sờ hét lên: đây, sao lại không giống như câu hỏi của tỷ phu?!"
+    },
+    {
+      "panel": "crmn_ep109/p026.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một giọng nói lạnh lùng vang lên trong đầu cậu: tên ngốc này bị câu hỏi dọa sợ rồi sao."
+    },
+    {
+      "panel": "crmn_ep109/p029.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hóa ra để thế chấp đề thi, Thẩm Lãng đã truyền hết những cuốn sách, những câu nói mà quốc quân Ninh Nguyên hiến thích, thói quen, tính cách... vào trong trí não Mộc Thông. Anh thành công tạo ra một hình mẫu nhân vật thông minh, cực đoạn lại hà khắc vô tình ở trong trí não cậu."
+    },
+    {
+      "panel": "crmn_ep109/p032.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mộc Thông mừng rỡ nhảy cẫng lên: tỷ phu huynh đáng ghét quá, lại chơi đệ, suýt nữa thì dọa chết đệ rồi. Hahaha! Ta sống rồi! Ta sống rồi!"
+    },
+    {
+      "panel": "crmn_ep109/p035.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đường Duẫn ngồi vào bàn, bắt đầu viết nhanh thoăn thoắt."
+    },
+    {
+      "panel": "crmn_ep109/p038.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chỉ một lát sau, Đường Duẫn đã viết xong một trang đầy chữ."
+    },
+    {
+      "panel": "crmn_ep109/p041.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Giữa dòng tri thức tuôn trào trong đầu, giọng nói trong trí não thách thức: Kim Mộc Thông, tên phế vật không bằng rác rưởi nhà ngươi, vậy mà còn có thể thi đấu với ta sao? Ngươi dựa vào Thẩm Lãng, viết cái gì mà Phong Nguyệt Vô Biên, không phải chỉ là con ruồi nhặng ăn rác rưởi thôi sao? Ta phải để ngươi và Thẩm Lãng nhận thức được, thế nào mới là tài hoa thật sự!"
+    },
+    {
+      "panel": "crmn_ep109/p045.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Giữa làn khói hồng rực rỡ, cậu khoái chí: hoàn mỹ! Quá hoàn mỹ! Mình của quá khứ, mình của sau này, đều không viết ra được bài văn hoàn mỹ thế này!"
+    },
+    {
+      "panel": "crmn_ep109/p048.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mộc Thông thầm nghĩ: tỷ phu nói rồi, không được nộp bài sớm. Nhưng mà chạm trổ từng chữ thế này, mỗi dấu câu, dấu cách đều chú ý, đúng là thú vị mà..."
+    },
+    {
+      "panel": "crmn_ep109/p051.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mộc Thông bước ra, hai tay chắp sau lưng đầy tự hào: Kim Mộc Thông nộp bài."
+    },
+    {
+      "panel": "crmn_ep109/p054.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thái giám phụ trách sao chép trong triều đình được mời vào."
+    },
+    {
+      "panel": "crmn_ep109/p057.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trương Xung đứng từ xa thầm lo lắng: Huyền Vũ Bá, bài của con trai người sẽ tệ thế nào chứ? Có phải là hoàn toàn không nhìn nổi không? Đúng là làm khó vị công công này rồi, bài văn nát như thế còn phải cặm cụi chép, đúng là chỉ có thể nhắm mắt chịu trận."
+    },
+    {
+      "panel": "crmn_ep110/p001.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sau khi sao chép xong, bài làm của Kim Mộc Thông và Đường Duẫn sẽ bị niêm phong, đợi sau khi chấm bài xong sẽ mở ra so sánh, xác nhận chính xác.",
+      "section": "Tập 110"
+    },
+    {
+      "panel": "crmn_ep110/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một trọng tài đọc xong, thốt lên sửng sốt: tốt! Viết quá tốt! Xác định đề, chữ viết, dàn ý, không có gì là không tốt!"
+    },
+    {
+      "panel": "crmn_ep110/p007.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mắt ông trợn tròn kinh ngạc: !!"
+    },
+    {
+      "panel": "crmn_ep110/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một người khác thầm nghĩ: quay lại bài thơ này..."
+    },
+    {
+      "panel": "crmn_ep110/p012.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hơi thở hào hùng, lại dẫn dụ thâm ý, vậy mà lại có thể làm cho lão già hơn bảy mươi tuổi như mình, nảy sinh đồng cảm, đúng là không thể tin được."
+    },
+    {
+      "panel": "crmn_ep110/p015.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Vương thúc Ninh Khải nhận xét: dung tục cực kỳ, đúng là dung tục mà."
+    },
+    {
+      "panel": "crmn_ep110/p018.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Người đọc bài thơ reo lên: thơ hay! Đúng là thơ hay, vô cùng hay."
+    },
+    {
+      "panel": "crmn_ep110/p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông cau mày hỏi: vậy bài này là Thẩm Lãng làm sao?"
+    },
+    {
+      "panel": "crmn_ep110/p023.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một người hỏi: nếu như thế, Thẩm Lãng đã cá cược đề trước sao? Người kia đáp: chắc là thế."
+    },
+    {
+      "panel": "crmn_ep110/p026.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một người lo lắng: nếu như Kim Mộc Thông thắng như thế, không chỉ sẽ kinh động Việt Quốc, còn để Huyền Vũ Bá tước phủ trực tiếp thắng cuộc chiến đảo Kim Sơn. Nhưng nếu như thế, chắc chắn sẽ ngược lại với ý của quốc quân..."
+    },
+    {
+      "panel": "crmn_ep110/p029.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trọng tài đáp: tất cả do vương thúc làm chủ."
+    },
+    {
+      "panel": "crmn_ep110/p032.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hai phong bì niêm phong được mở ra, một ghi tên Đường Duẫn, một ghi tên Kim Mộc Thông."
+    },
+    {
+      "panel": "crmn_ep110/p034.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông thêm: chữ cũng tôi, mười mấy hai mươi năm sau, nói không chừng sẽ trở thành một đại gia thư pháp."
+    },
+    {
+      "panel": "crmn_ep110/p037.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ninh Khải trầm ngâm: hừm—"
+    },
+    {
+      "panel": "crmn_ep110/p040.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cửa nơi thi đấu chìm trong màn mưa tầm tã."
+    },
+    {
+      "panel": "crmn_ep110/p043.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Giữa đám đông, một cậu bé mập mạp tức giận gào lên: Kim Mộc Thông ta không thể, nhưng tỷ phu ta rất lợi hại!"
+    },
+    {
+      "panel": "crmn_ep110/p045.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một kẻ khác an ủi: Vũ Bá người cũng đừng nản chí, cho dù mất đi đảo Kim Sơn cũng không sao cả, dù sao mấy chục năm nay đảo Kim Sơn đã không nằm trong tay các ngươi nữa rồi."
+    },
+    {
+      "panel": "crmn_ep110/p048.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ba vị trọng tài bước ra giữa màn mưa: bây giờ tuyên bố kết quả!"
+    },
+    {
+      "panel": "crmn_ep110/p050.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Tiếng tuyên bố vang lên chấn động cả quảng trường: Huyền Vũ Bá tước phủ — Kim Mộc Thông!"
+    }
+  ],
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ]
+}

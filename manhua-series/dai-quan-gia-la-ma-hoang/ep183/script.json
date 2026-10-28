@@ -1,0 +1,39 @@
+{
+  "title": "Trác Phàm triệu hồi Cửu Long Quy Huyết!?",
+  "chapters": "183",
+  "source_dir": "manhua-recap/dqgl_ep183",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-21",
+  "description": "Trác Phàm triệu hồi Cửu Long Quy Huyết. Tóm tắt chương 183 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Trác Phàm triệu hồi Cửu Long Quy Huyết!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Trác Phàm bắt đầu phô diễn hỏa diễm của mình, khiến Lưu Đại Sư và khán giả bất ngờ.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p026",
+      "narration": "Một trận đồ hình rồng hiện ra quanh ngọn lửa, tạo nên khí thế áp đảo cả đấu trường.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p062",
+      "narration": "Cửu Long Quy Huyết xuất hiện trước mắt mọi người, nhưng mục tiêu thật sự của Trác Phàm còn lớn hơn một trận thắng.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

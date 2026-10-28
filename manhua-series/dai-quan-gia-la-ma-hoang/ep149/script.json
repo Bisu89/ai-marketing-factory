@@ -1,0 +1,63 @@
+{
+  "title": "Khuynh Thành đặt niềm tin vào Trác Phàm!?",
+  "chapters": "149",
+  "source_dir": "manhua-recap/dqgl_ep149",
+  "written_by": "OpenAI, ??i chi?u ?nh ngu?n, 2026-10-20",
+  "description": "Khuynh Thành đặt niềm tin vào Trác Phàm. Tóm tắt chương 149 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Khuynh Thành đặt niềm tin vào Trác Phàm!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Sau khi chấp nhận trận đấu, Trác Phàm và Thanh Vân vẫn lời qua tiếng lại trước mặt các trưởng lão.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p009",
+      "narration": "Long Cửu nhắc Trác Phàm cẩn thận; lần này ông tin hắn đã giữ được mạng, nhưng lần sau chưa chắc may mắn như vậy.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p018",
+      "narration": "Mẫu Đơn quở trách Trác Phàm vì cách hành xử thiếu đứng đắn, còn hắn vẫn thản nhiên đáp trả.",
+      "kind": "recap",
+      "type": "REACTION"
+    },
+    {
+      "panel": "p027",
+      "narration": "Hắn nói nếu không có người của Hoa Vũ Lâu đến báo tin, những kẻ vừa đắc tội hắn có thể đã phải trả giá.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "p036",
+      "narration": "Sở Khuynh Thành chủ động tìm Trác Phàm, nói chuyện này liên quan đến sự tồn vong của Hoa Vũ Lâu.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p047",
+      "narration": "Cô thừa nhận mình từng nghi ngờ hắn, rồi hứa sẽ nghe cách cứu Hoa Vũ Lâu mà không làm cô thất vọng.",
+      "kind": "recap",
+      "type": "REVEAL"
+    },
+    {
+      "panel": "p069",
+      "narration": "Trác Phàm còn chưa kịp đáp lời, Khuynh Thành đã hỏi liệu mình có thể nói với hắn một câu không.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

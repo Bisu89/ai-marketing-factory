@@ -1,0 +1,39 @@
+{
+  "title": "Trác Phàm dùng độc thử tài Lưu Đại Sư!?",
+  "chapters": "171",
+  "source_dir": "manhua-recap/dqgl_ep171",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-21",
+  "description": "Trác Phàm dùng độc thử tài Lưu Đại Sư. Tóm tắt chương 171 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Trác Phàm dùng độc thử tài Lưu Đại Sư!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Trác Phàm hỏi Lưu Đại Sư về mối liên hệ giữa nguyên liệu và linh thú, buộc đối thủ phải giải thích kiến thức luyện đan.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p027",
+      "narration": "Hắn tiết lộ đã dùng Thanh Mãng Lân Dịch để thử phản ứng trong viên đan của Lưu.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p060",
+      "narration": "Lưu Đại Sư nhận ra mình bị dẫn dắt vào thế khó, còn Trác Phàm vẫn chưa tung ra toàn bộ kế hoạch.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

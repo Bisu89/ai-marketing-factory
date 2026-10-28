@@ -1,0 +1,91 @@
+{
+  "title": "Một bài thơ cứu mạng, rồi hẹn thẳng chiến trường ngay giữa yến tiệc!?",
+  "chapters": "100,101,102",
+  "source_dir": "manhua-recap/crmn_ep101",
+  "description": "Tứ vương tử ép Thẩm Lãng làm thơ trong chớp mắt để cứu mạng một thương nhân vô tội, anh giấu khéo tên người ấy vào thơ rồi lạnh lùng hẹn bốn ngày sau gặp trên chiến trường — ngay sau đó lộ ra bí mật chính quốc vương ghét anh. Cả triều đình họp nhau chia chác tài sản phủ Bá tước trước khi trận đấu bắt đầu, còn Thẩm Lãng hứa với vợ: mình ta bất bại! Trận tranh chấp đảo Kim Sơn khai màn với giấy sinh tử đã ký, và một âm mưu nhắm vào Mộc Lan.\nReview Chàng Rể Mạnh Nhất Lịch Sử – Short best-of.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "thumbnail": {
+    "text": "MỘT BÀI THƠ, MỘT MẠNG NGƯỜI!",
+    "prompt": "Vertical 9:16 anime-style: a calm long-haired young man in dark robes standing alone in a grand banquet hall under dramatic lantern light, reciting a poem with glowing calligraphy swirling around him, a terrified bound man kneeling nearby, nobles watching in shock. No text, leave top 25% empty."
+  },
+  "beats": [
+    {
+      "panel": "crmn_ep101/p023.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Giữa yến tiệc của tứ vương tử, một thương nhân bị lôi ra giữa sảnh, mặt mày bê bết máu, chỉ vì cái tên của hắn tình cờ giống ái thiếp của điện hạ."
+    },
+    {
+      "panel": "crmn_ep101/p034.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lính canh hét lớn: Thẩm công tử cứu tôi! Năm mươi gậy sẽ đánh chết người đó, nếu bài thơ không hay, tội sẽ thêm một bậc!"
+    },
+    {
+      "panel": "crmn_ep101/p040.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng nhắm mắt, hít một hơi thật sâu, cất giọng ngâm: Bán văn Đăng bất lượng, cô thân Hiện Hồng Yến..."
+    },
+    {
+      "panel": "crmn_ep101/p041.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Bốn chữ Đăng, Hiện, Vô, Trụy giấu khéo bốn từ đồng âm Đặng Tiên Vô Biên vào trong bài thơ, cứu sống người ngay tại chỗ."
+    },
+    {
+      "panel": "crmn_ep101/p045.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng rưng rưng: Lãng cảm thấy khó chịu, xin cáo từ ở đây, hẹn bốn ngày sau gặp lại trên chiến trường đấu võ."
+    },
+    {
+      "panel": "crmn_ep101/p052.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Rồi một bí mật chấn động bị tiết lộ: Thẩm Lãng chết chắc rồi, bởi vì chính quốc vương không thích hắn!"
+    },
+    {
+      "panel": "crmn_ep102/p038.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cả triều đình đã họp nhau chia chác tài sản phủ Bá tước Huyền Vũ như thể phần thắng đã nằm trong tay."
+    },
+    {
+      "panel": "crmn_ep102/p047.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ở nhà, Kim Mộc Thông bật khóc nghẹn ngào: tỷ phu, đệ sợ thua, hủy hoại vận mệnh của cả gia tộc."
+    },
+    {
+      "panel": "crmn_ep102/p058.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng ôm vợ, cất giọng chắc nịch: trên trời dưới đất, tứ hải bát hoang, mình ta bất bại! Ngày mai chúng ta sẽ đi xử bọn chúng!"
+    },
+    {
+      "panel": "crmn_ep103/p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Giấy sinh tử được đóng dấu niêm phong từ cả hai phủ — đã cùng ký, phân thắng bại, sống chết!"
+    },
+    {
+      "panel": "crmn_ep103/p046.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Phía Tấn Hải Bá âm mưu bắt sống Mộc Lan, phế võ công, nhưng tuyệt đối không được để lại vết thương — vì một đại nhân vật bí ẩn có hứng thú với cô."
+    },
+    {
+      "panel": "crmn_ep103/p034.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng đã dùng khả năng đặc biệt dò ra trước cả đề thi bí mật của trận văn chiến — nhưng chỉ trúng được một bài, phần còn lại phải nhờ Kim Mộc Thông tự xoay sở."
+    },
+    {
+      "panel": "crmn_ep103/p057.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Giữa những lời xì xào chê bai, một giọng nói vang lên quyết liệt từ phía Thẩm Lãng: Mộc Lan, hãy để những người này thấy được thực lực của em đi!"
+    }
+  ]
+}

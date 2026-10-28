@@ -1,0 +1,39 @@
+{
+  "title": "Cuộc so tài dị hỏa khiến ban giám khảo choáng ngợp!?",
+  "chapters": "181",
+  "source_dir": "manhua-recap/dqgl_ep181",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-21",
+  "description": "Cuộc so tài dị hỏa khiến ban giám khảo choáng ngợp. Tóm tắt chương 181 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Cuộc so tài dị hỏa khiến ban giám khảo choáng ngợp!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Màn tranh tài về hỏa diễm bắt đầu, và các giám khảo lần lượt đánh giá năng lực của từng người.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p025",
+      "narration": "Mỗi bên dùng thế mạnh riêng để kiểm soát ngọn lửa, khiến cuộc thi trở nên khó đoán.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p059",
+      "narration": "Khuynh Thành theo dõi sát sao, chờ xem Trác Phàm sẽ dùng cách nào để vượt lên.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

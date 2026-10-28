@@ -1,0 +1,21 @@
+{
+  "project_id": 306,
+  "edits": [
+    {
+      "beat_id": "b45",
+      "before": "Không chỉ chủ nợ, người của Đại Lý Tự cũng xuất hiện. Vương Lương Khôn điều tra cái chết Chúc Lan Đình và nhắm vào việc Thẩm Lãng từng có mặt gần Nam Hoa.",
+      "after": "Không chỉ chủ nợ, người của Đại Lý Tự cũng xuất hiện. Họ điều tra cái chết Chúc Lan Đình và nhắm vào việc Thẩm Lãng từng có mặt gần Nam Hoa.",
+      "duration": 7.101124999999968,
+      "tempo_ratio": 0.8820902791224435
+    },
+    {
+      "beat_id": "b59",
+      "before": "Lửa bùng lên, biến cuộc trả đũa thành một vụ chết người. Lâm Mặc mất các con, còn Vương Lương Khôn cũng không sống sót sau cái bẫy ấy.",
+      "after": "Lửa bùng lên, biến cuộc trả đũa thành một vụ chết người. Ba người con của Lâm Mặc cùng một vị quan khách bị chôn vùi trong biển lửa.",
+      "duration": 6.572291000000007,
+      "tempo_ratio": 0.8930802566918182
+    }
+  ],
+  "voice": "edge_tts",
+  "timing": "Existing beat windows preserved; whole track, beat audio, plan and word timing updated together."
+}

@@ -1,0 +1,63 @@
+{
+  "title": "Mẫu Đơn lỡ miệng nói thích Trác Phàm!?",
+  "chapters": "131",
+  "source_dir": "manhua-recap/dqgl_ep131",
+  "written_by": "OpenAI, ??i chi?u ?nh ngu?n, 2026-10-20",
+  "description": "Mẫu Đơn lỡ miệng nói thích Trác Phàm. Tóm tắt chương 131 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Mẫu Đơn lỡ miệng nói thích Trác Phàm!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Trác Phàm vừa ra tay đã khiến kẻ gây sự với Đan Đan phải gục xuống.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p008",
+      "narration": "Tiểu Tử Thời trách hắn gây náo động, nhưng Trác Phàm vẫn quay lại lo việc đang làm.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p018",
+      "narration": "Mẫu Đơn xuất hiện. Lâm trưởng lão lập tức bị vẻ ngoài của nàng làm cho mất bình tĩnh.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p028",
+      "narration": "Nàng không tin những lời đường mật; với nàng, phải nhìn vào hành động.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "p041",
+      "narration": "Đan Đan thú nhận nàng muốn gặp một người thật lòng, dám liều mạng vì mình.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p054",
+      "narration": "Mẫu Đơn nói Trác Phàm có lẽ là ngoại lệ, dù chính nàng cũng chưa từng gặp hắn.",
+      "kind": "commentary",
+      "type": "REVEAL"
+    },
+    {
+      "panel": "p066",
+      "narration": "Khi bị hỏi có thích Trác Phàm không, Mẫu Đơn vừa đáp “thích” thì hắn nghe thấy.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

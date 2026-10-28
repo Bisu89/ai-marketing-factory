@@ -1,0 +1,105 @@
+{
+  "title": "Tr?c Ph?m khi?n M?u ?an ?? m?t, ??i th? nh?n ??!?",
+  "chapters": "111-113",
+  "source_dir": "manhua-recap/dqgl_ep111",
+  "written_by": "Tuy?n ch?n v? bi?n t?p t? ep111-ep120, 2026-10-19",
+  "description": "T?m t?t ??i Qu?n Gia L? Ma Ho?ng ch??ng 111-113, k?m b?nh lu?n.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Trác Phàm ra tay, Mẫu Đan đỏ mặt!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, confident black-haired cultivator in blue stopping a fight in a traditional Chinese street, elegant pink-dressed woman watching with surprise, fallen bully and gathered crowd, dramatic sunset, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep111/p001.jpg",
+      "narration": "Giữa phố Hoa Vũ Thành, Trác Phàm vừa xuất hiện đã thấy đám đông đang vây quanh một vụ gây gổ.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep111/p008.jpg",
+      "narration": "Trác Phàm hỏi rõ chuyện gì đang xảy ra, rồi lập tức chặn kẻ định tiếp tục ra tay.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep111/p024.jpg",
+      "narration": "Trác Phàm trả lời tỉnh bơ, còn khiến cuộc đối đáp giữa hai người chuyển sang chuyện quan hệ của họ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep111/p043.jpg",
+      "narration": "Trong lúc họ còn trêu nhau, kẻ gây sự đã bị Trác Phàm đánh cho không còn khí thế ban đầu.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep111/p055.jpg",
+      "narration": "Mẫu Đan lại nhắc tới cơ hội cuối cùng giữa hai người, còn Trác Phàm lập tức hưởng ứng lời thách thức ấy.",
+      "kind": "recap",
+      "type": "ENDING"
+    },
+    {
+      "panel": "dqgl_ep112/p001.jpg",
+      "narration": "Trác Phàm nhìn đối thủ trước mặt, nhận ra vẻ hung hăng của hắn không đi cùng khả năng ra đòn.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep112/p012.jpg",
+      "narration": "Trác Phàm đáp trả bằng nhịp đánh gọn và chính xác, không để đối phương lấy lại thế chủ động.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep112/p021.jpg",
+      "narration": "Lời thách thức bị đẩy thành một cuộc cược, khiến đám đông bắt đầu chăm chú theo dõi.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep112/p034.jpg",
+      "narration": "Khi đối thủ lao tới, Trác Phàm né đòn rồi lập tức áp sát phản công.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep112/p062.jpg",
+      "narration": "Hắn tung thêm một đòn và lạnh lùng bảo đối phương còn kém xa. Trận đấu vẫn chưa khép lại ở đây.",
+      "kind": "recap",
+      "type": "ENDING"
+    },
+    {
+      "panel": "dqgl_ep113/p001.jpg",
+      "narration": "Đòn đánh vừa trúng, nhưng Trác Phàm vẫn đứng vững khiến đối thủ sững sờ.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep113/p012.jpg",
+      "narration": "Mẫu Đan và những người đứng xem cũng bắt đầu nghi ngờ rằng Trác Phàm đang tính toán điều gì đó.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep113/p029.jpg",
+      "narration": "Trác Phàm né đòn ở thời điểm cuối, làm đối thủ đánh hụt và lộ khoảng trống.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep113/p041.jpg",
+      "narration": "Mẫu Đan hỏi liệu đây đã là chiêu cuối của hắn chưa, khi trận đấu vẫn chưa ngã ngũ.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

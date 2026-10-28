@@ -1,0 +1,1000 @@
+{
+  "template": "manhua_recap_long_vi",
+  "title": "Chàng Rể Mạnh Nhất Lịch Sử | Tập 111–120",
+  "chapters": "110-119",
+  "source_dir": "manhua-recap/crmn_ep111",
+  "description": "Tóm tắt tập 111-120 Chàng Rể Mạnh Nhất Lịch Sử: Đường Duẫn thua văn chiến, cuộc chiến phá đê trả thù giữa hai phe, mưu kế nuốt trọn vua hải tặc, Nam Hải Kiếm Vương bắt Thẩm Lãng đi giải mã kiếm phổ, và trận chiến một mình quét sạch sát thủ mạnh nhất Việt Quốc.",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "thumbnail": {
+    "text": "SÁT THỦ SỐ MỘT VIỆT QUỐC GỤC NGÃ!",
+    "prompt": "Vertical 9:16 anime-style: an old disguised swordsman revealing a glowing wooden blade against a dozen red-masked assassins in a rainy forest clearing, a massive dam exploding in the background distance. No text, leave top 25% empty."
+  },
+  "beats": [
+    {
+      "panel": "crmn_ep111/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Sách Huyền đại nhân, chuyện này... chuyện này là thật sao? Một trọng tài đáp: hừ, đương nhiên là thật rồi, lẽ nào ngươi tưởng mấy lão già bọn ta lẩm cẩm hoa mắt sao?",
+      "section": "Tập 111: Đường Duẫn chết lặng khi thua trận"
+    },
+    {
+      "panel": "crmn_ep111/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn quay sang Ninh Khải vương thúc: Ninh Khải đại nhân, tài hoa của con trai Đường Duẫn nhà ta ai cũng biết, là thám hoa lang của Việt Quốc. Mà Kim Mộc Thông là cái thá gì chứ? Nói hắn thắng con trai ta, quả thực là truyện cười khôi hài nhất thiên hạ."
+    },
+    {
+      "panel": "crmn_ep111/p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đám người gào lên giữa mưa: có nội tình, có nội tình! Gian lận, trong chuyện này có gian lận! Thiên đạo bất công, thiên đạo bất công! Tìm chết!"
+    },
+    {
+      "panel": "crmn_ep111/p012.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông tuyên bố dứt khoát: đã dán lên trên tường rồi, rõ rõ ràng ràng, minh minh bạch bạch. Văn chương của Huyền Vũ Bá tước phủ, về lập ý, quy cách, phẩm hạnh, vượt xa so với Đường Duẫn của Tấn Hải Bá tước phủ, thế nhân vừa nhìn là biết ngay! Người nào không phục phán quyết của ta, có thể vào kinh cáo trạng với quốc quân."
+    },
+    {
+      "panel": "crmn_ep111/p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông cảnh cáo thêm: nhưng mà bây giờ, nếu như có người nào dám gây chuyện, thì đừng trách đao kiếm của ta quá sắc bén, Ninh Khải ta tuy là lão già quá thời, nhưng cũng không phải một kẻ không biết giết người! Người đâu, nếu có kẻ nào dám làm ầm ĩ, lập tức lôi xuống cho ta!"
+    },
+    {
+      "panel": "crmn_ep111/p016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn ta bề ngoài là đang đọc sách, nhưng lại tốn hơn nửa canh giờ để nhớ lại sách luận và thơ ca mà mình viết, rồi lại mất nửa canh giờ để tưởng tượng ra thần sắc kinh ngạc của giám khảo."
+    },
+    {
+      "panel": "crmn_ep111/p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thuộc hạ run giọng: thế tử, ngài... ngài thua rồi."
+    },
+    {
+      "panel": "crmn_ep111/p023.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đường Duẫn gào lên không tin nổi: ta thua Kim Mộc Thông ư? Hoang đường, chuyện hoang đường nhất thiên hạ."
+    },
+    {
+      "panel": "crmn_ep111/p031.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Giữa dòng ký ức, tiếng chế giễu vang vọng: thua tên phế vật Kim Mộc Thông mà cả Việt Quốc công nhận, vậy thám hoa lang như này chẳng phải sẽ trở thành trò cười của thiên hạ sao? Kim Mộc Thông, đó không phải là tên phế vật béo múp sao? Thế nên Đường Duẫn cũng thế thôi, còn rác rưởi hơn, haha!"
+    },
+    {
+      "panel": "crmn_ep111/p035.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đường Viêm đứng một mình giữa mưa, trầm giọng: không, đây không phải là Kim Mộc Thông viết, nhất định không phải Kim Mộc Thông. Chắc chắn là Thẩm Lãng! Nhất định là Thẩm Lãng!"
+    },
+    {
+      "panel": "crmn_ep111/p037.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đường Viêm nghiến răng thề độc: Thẩm Lãng, ta với ngươi không đội trời chung, ta nhất định sẽ băm ngươi thành trăm mảnh, băm ngươi thành trăm mảnh!"
+    },
+    {
+      "panel": "crmn_ep111/p039.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng tự giễu: haizz, vốn dĩ Thẩm Lãng ta chỉ muốn nằm yên mặc sự đời, núi không hiện nước không lộ, chỉ muốn làm một tên ở rể nhà giàu bám váy đàn bà. Nhưng chính là có người ép ta làm mẫu, ép ta viết ra thứ chấn kinh thiên hạ kia!"
+    },
+    {
+      "panel": "crmn_ep111/p042.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mộc Thông thắc mắc: tỷ phu, huynh lại chơi đệ rồi. Hai câu hỏi của văn chiến ngày hôm nay, căn bản không phải là hai câu mà tối qua huynh đưa cho đệ."
+    },
+    {
+      "panel": "crmn_ep111/p047.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng nhếch mép thừa nhận: Trương Sung, cao thâm đấy!"
+    },
+    {
+      "panel": "crmn_ep111/p048.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh ngẫm lại toàn bộ: trận quân chiến người phát giác ra điểm không đúng, liền quyết đoán để Tấn Hải Bá tước phủ mượn cao thủ, thế nên mới có thể hòa. Trận văn chiến người phát giác ra có sơ hở, liền lập tức đề phòng khiến Ninh Khải đổi đề."
+    },
+    {
+      "panel": "crmn_ep111/p051.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng quay lưng, ánh mắt lạnh lại: tiếp theo tuyệt đối không thể lơ là cảnh giác, trận chiến đảo Kim Sơn mới vừa bắt đầu... thủ đoạn tiếp theo, bắt đầu từ Lan Sơn tử tước phủ đi!"
+    },
+    {
+      "panel": "crmn_ep112/p001.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tròn mấy canh giờ, Trương Sung vẫn quỳ dưới mưa như cũ. Trương Tấn không khuyên được phụ thân, liền quỳ xuống bên cạnh, rồi Trương Xuân Hoa biết được tình hình cũng quỳ xuống dưới mưa cùng hai người họ.",
+      "section": "Tập 112: Thẩm Lãng đoán trúng âm mưu phá đê"
+    },
+    {
+      "panel": "crmn_ep112/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Xuân Hoa cự tuyệt: không, con quỳ cùng với cha, con cũng là người của Trương gia, phụ thân đang chịu tội, sao con có thể yên ổn hưởng thụ được chứ? Trương Tấn gắt: con là một nữ nhi, quần áo cũng không dày, bị mưa xối ướt hết còn ra thể thống gì nữa?"
+    },
+    {
+      "panel": "crmn_ep112/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ba vị trọng tài Ninh Khải, Sách Huyền, Biện Tiêu cùng bước tới dưới ô, nhìn cảnh tượng trước mắt."
+    },
+    {
+      "panel": "crmn_ep112/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sách Huyền bổ sung: nhưng người tính không bằng trời tính, đề dự bị của chúng ta vẫn bị hắn đoán trúng rồi, Kim Mộc Thông thắng rồi, Huyền Vũ Bá tước phủ ba trận thắng hai, thắng rồi!"
+    },
+    {
+      "panel": "crmn_ep112/p016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cơ thể ông đột ngột gục xuống vì kiệt sức, khiến Trương Tấn và Xuân Hoa hoảng hốt."
+    },
+    {
+      "panel": "crmn_ep112/p021.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ba vị trọng tài nhìn theo, thán phục: trên thế giới vậy mà vẫn còn người kiên nghị như vậy sao? Chịu đả kích như thế, trong chốc lát đã có thể khôi phục lại như thường, hơn nữa lại tràn đầy ý chí chiến đấu?"
+    },
+    {
+      "panel": "crmn_ep112/p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đám quý tộc phẫn nộ gào lên: văn chiến nhất định là do Thẩm Lãng gian lận, không thể tính như thế được, bọn ta phải gặp được Trương Sung đại nhân! Đúng thế đúng thế! Để cho bọn ta gặp Trương Sung đại nhân!"
+    },
+    {
+      "panel": "crmn_ep112/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lời nhắn được đọc lại: ván cờ này thua rồi, không cần hiếu chiến, lập tức tiếp tục ván cờ tiếp theo. Tuyệt đối không được manh động, đợi ta suy nghĩ cẩn thận, rồi sẽ sắp xếp bước tiếp theo."
+    },
+    {
+      "panel": "crmn_ep112/p033.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng trong thư phòng của Huyền Vũ Bá tước phủ, một hội nghị bí mật đang âm thầm diễn ra."
+    },
+    {
+      "panel": "crmn_ep112/p037.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng báo cáo với nhạc phụ Kim Trác và vợ: nhạc phụ đại nhân, nương tử! Trận đấu kết thúc, chúng ta thắng rồi. Nhưng mà, trận chiến người chết ta sống mới vừa bắt đầu. Chúng ta dành được thắng lợi bước đầu, sau này phải biến thế bị động thành chủ động, biến thủ thành công!"
+    },
+    {
+      "panel": "crmn_ep112/p039.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mộc Lan góp ý: chúng ta thắng trận chiến giành đảo Kim Sơn, rất nhiều người đều hi vọng chúng ta dồn hết tất cả chiến lược tài nguyên vào đó, duy trì tất cả quyền hành. Thẩm Lãng gạt phắt: tuyệt đối không! Chúng ta một không khai phá, hai không đóng quân, đảo Kim Sơn sẽ không trở thành nơi lấy máu của Kim gia. Kim Trác tiếp lời: mà sẽ trở thành vùng đất hút máu kẻ thù!"
+    },
+    {
+      "panel": "crmn_ep112/p041.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh đóng vai kẻ thù để suy luận: ta có một kế độc này! Bây giờ mưa như trút nước, đê đập sụp đổ cũng là điều rất bình thường nhỉ? Nếu như đê đập phía Bắc của Huyền Vũ Bá tước phủ bị vỡ, vậy thì nước lũ cuồn cuộn sẽ chạy vào trang viên của Kim thị, còn có phong địa."
+    },
+    {
+      "panel": "crmn_ep112/p042.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cùng lúc đó, tại hội nghị phản công bí mật của Tấn Hải Bá tước phủ, một kẻ chủ mưu đang nói y hệt lời Thẩm Lãng vừa suy luận: sau đó vô số đồng ruộng, thị xã, thành trì của Kim thị đều sẽ bị nước lũ chôn vùi, thương vong vô số. Vậy thì đối với Huyền Vũ Bá tước phủ, sẽ là đòn tấn công hủy diệt như thế nào chứ?"
+    },
+    {
+      "panel": "crmn_ep112/p053.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Về phía Huyền Vũ, một người báo tin khẩn, sững sờ: bọn chúng sẽ đào đê điều ở vùng thượng du phong địa của Kim thị, để vô số phong địa của Kim thị biến thành bãi nước mênh mông! Nước lũ sẽ chôn vùi vô số nhà cửa, cư dân, là đòn tấn công mang tính hủy diệt đối với chúng ta!"
+    },
+    {
+      "panel": "crmn_ep112/p055.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mộc Lan tính toán binh lực trên bản đồ: lần này chúng ta đi, đem theo 800 binh sĩ, chỉ có 2000 tư quân bảo vệ phủ Bá tước. Quan trọng là toàn bộ võ tướng của Kim thị đều đến rồi, trong nhà chỉ còn lại phu nhân, Lâm lão phu tử, Kim Kiếm Nương, chư quân không có thủ lĩnh..."
+    },
+    {
+      "panel": "crmn_ep112/p057.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng chỉ vào bản đồ, giọng lạnh lùng quyết đoán: nhạc phụ đại nhân, trong sơn cốc này đều là trang viên của Lan Sơn tử tước phủ. Chuyện chúng ta phải làm là phá vỡ đê điều ở phía trên trang viên của Lan Sơn tử tước phủ, để nước lũ chảy vào trong trang viên và thành trì của bọn họ, chôn lấp tất cả!"
+    },
+    {
+      "panel": "crmn_ep113/p001.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng chỉ vào bản đồ: chúng ta đào đê trước, hạ thấp mực nước, địa bàn của Huyền Vũ Bá tước phủ ta sẽ được an toàn! Mộc Lan phản đối: Lãng nhi, làm việc như thế, không phải là tác phong của Huyền Vũ Bá tước phủ ta.",
+      "section": "Tập 113: Huy động trăm võ sĩ phá đê giữa đêm"
+    },
+    {
+      "panel": "crmn_ep113/p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh ra lệnh: ngươi dùng tốc độ nhanh nhất quay về nhà, dẫn người đi phá hủy đê điều phía trên trang viên của Lan Sơn tử tước phủ! Để nước lũ chảy vào trong thành trì và trang viên của bọn họ, chôn vùi tất cả!"
+    },
+    {
+      "panel": "crmn_ep113/p008.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng đã có sẵn kế: đi tìm Tiểu Băng lấy chìa khóa của mật thất, nói với cô ấy ngươi phải đi đến mật thất số 3, cô ấy sẽ nói cho ngươi biết mật thất ở đâu. Ngươi cầm chiếc rương ở trong đó ra ngoài, chỉ cần mở một lỗ nhỏ ở trong đê, nhét chiếc rương vào đấy, châm ngòi nổ, sau đó con đê sẽ nổ ra một cái hồ."
+    },
+    {
+      "panel": "crmn_ep113/p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chúc Lan Đình tử tước tuyên bố trước đám quý tộc: nếu như ai không phải người, thì hôm nay không cần bước qua cánh cửa này nữa."
+    },
+    {
+      "panel": "crmn_ep113/p017.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chúc Lan Đình mặc cả: bảo ta làm, có thể, nhưng ta không thể làm vô ích được. Cho người phân ngạch của hai tàu biển, tàu tự ngươi mua, nhưng có thể gia nhập vào tuyến đường biển giao nhập với các nước của bọn ta."
+    },
+    {
+      "panel": "crmn_ep113/p018.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cửu Kiêu, tiểu hải tặc vương, bất bình: gia nhập đường biển?! Không phải chỉ là chuyện của hai chiếc tàu thôi sao! Chỉ làm ăn một chút, lãi kiếm lại được rồi! Quyền giao dịch tuyến đường biển vốn là thứ đáng tiền nhất của thương mại hàng hải, phần lớn nằm trong tay cựu gia nô triều thành."
+    },
+    {
+      "panel": "crmn_ep113/p021.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cửu Kiêu ôm chặt một nữ nhân bị bắt, gằn giọng thù hận: được thôi! Được thôi! Thẩm Lãng cướp nữ nhân của ta, hơn nữa còn giết người của ta, ta cũng phải giết hết nghìn người, vạn người của bọn chúng!"
+    },
+    {
+      "panel": "crmn_ep113/p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Các gia tộc quyền quý có mặt ở đó, ngoại trừ Trấn Bắc Hầu phủ, mỗi nhà đều phái đi mấy chục võ sĩ tinh nhuệ. Sau đó Chúc Lan Đình tử tước và tiểu hải tặc vương Cửu Kiêu dẫn đầu mấy trăm võ sĩ, bất chấp mưa to, nhân lúc nửa đêm ra roi thúc ngựa vội vã tiến đến thành Huyền Vũ làm đại sự."
+    },
+    {
+      "panel": "crmn_ep113/p029.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh chuyển giọng trêu đùa: nương tử, trên cơ thể con người có ba chỗ là thần kinh mẫn cảm nhất, nàng biết là chỗ nào không?"
+    },
+    {
+      "panel": "crmn_ep113/p032.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Kim Hối trở về Huyền Vũ Bá tước phủ, tìm được Kim Kiếm Nương, nói ra kết quả của trận chiến đảo Kim Sơn, rồi lại hạ lệnh tăng cường tuần tra: Kiếm Nương muội hạ lệnh, phái ra 300 người, tiến về ba con đê ở phía Bắc, canh giữ tuần tra."
+    },
+    {
+      "panel": "crmn_ep113/p037.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Kiếm Nương đỏ mặt quát: ca dừng dừng dừng! Không cho huynh nói xấu cô gia, nếu không muội sẽ không để ý đến huynh ba ngày."
+    },
+    {
+      "panel": "crmn_ep113/p039.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tại phòng của Thẩm Thập Tam, anh ngồi một mình thầm nghĩ: đã mấy tháng rồi, mấy đến nơi này mấy tháng rồi, Thẩm cô gia ngươi chiêu mộ ta đến đây, chính là để ghẻ lạnh như này sao?"
+    },
+    {
+      "panel": "crmn_ep113/p042.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ba người phụ nữ ấy hợp nhau một giuộc, âm mưu mai mối tìm đối tượng cho Thập Tam. Người mẹ hỏi: ta đã tìm một cô nương cho Thập Tam, có muốn nhìn qua hay không? Người khác chen vào: là kiểu nào thế? Ngực to mông to sao? Con trai ta thích kiểu như thế, dễ sinh đẻ! Thập Tam kêu lên: mẹ!"
+    },
+    {
+      "panel": "crmn_ep113/p049.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô giơ cao chiếc chìa khóa reo lên: tìm thấy rồi!"
+    },
+    {
+      "panel": "crmn_ep113/p054.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một người tiếp lời quyết liệt: nếu như không đánh lại, thì liều mạng chạy. Nếu như thật sự không chạy được, thì đốt ngòi kích nổ đồng quy vô tận, chiếc hộp trong tay ngươi nhất định không được để rơi vào tay bất kì người nào khác, hiểu chưa? Được. Lập tức giết."
+    },
+    {
+      "panel": "crmn_ep113/p055.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hai bóng người phi ngựa lao đi giữa màn mưa đêm, tiếng hô vang lên dứt khoát: xuất phát!"
+    },
+    {
+      "panel": "crmn_ep113/p055.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Cuộc tranh chấp đã chuyển từ đấu trường sang sinh kế của người dân. Một kế phá đê có thể gây thiệt hại vượt xa hai gia tộc đang trả thù nhau."
+    },
+    {
+      "panel": "crmn_ep114/p001.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sáng sớm hôm sau!",
+      "section": "Tập 114: Lễ trao đảo, hai con đê cùng một đêm"
+    },
+    {
+      "panel": "crmn_ep114/p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng thầm đắc ý: hehe, có nhiều thiên kim quý nữ ở đây thế này, không có ai so được với Kim Mộc Lan bảo bối!"
+    },
+    {
+      "panel": "crmn_ep114/p007.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh nhếch mép: đối phó với đám người vô sỉ thế này, thì phải ăn miếng trả miếng, dùng máu trả máu. Không biết Chúc Lan Đình có biết cơ nghiệp mấy trăm năm của gia tộc mình bị nước lũ nhấn chìm toàn bộ sẽ có biểu cảm gì đây?"
+    },
+    {
+      "panel": "crmn_ep114/p010.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Vị quan tuyên bố: ta tuyên bố, trận chiến đảo Kim Sơn, chính thức kết thúc! Trong quá trình tỉ thí, công bằng công chính. Kết quả tỉ thí, công chính hữu hiệu!"
+    },
+    {
+      "panel": "crmn_ep114/p011.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông tuyên bố tiếp: người giành thắng lợi cuối cùng trong trận chiến Kim Sơn chính là Huyền Vũ Bá tước phủ, gia tộc Kim thị. Từ hôm nay trở đi, quyền sở hữu của đảo Kim Sơn, vĩnh viễn thuộc về gia tộc Kim thị."
+    },
+    {
+      "panel": "crmn_ep114/p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Phía Tấn Hải Bá phẫn nộ không phục: hù, chuyện này sao có thể chứ... Gian lận! Nhất định là gian lận! Kim gia bỉ ổi."
+    },
+    {
+      "panel": "crmn_ep114/p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng nhìn Đường Luân, thầm nghĩ: Tấn Hải Bá, nếu như ngươi không cam tâm, thì cứ tiếp tục động thủ đi."
+    },
+    {
+      "panel": "crmn_ep114/p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Giữa đám đông, một tiếng vỗ tay vang lên đột ngột: Mộc Lan giơ tay tát khẽ Thẩm Lãng vì tội trêu chọc cô gái khác ngay giữa buổi lễ."
+    },
+    {
+      "panel": "crmn_ep114/p033.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Kim Trác đứng gần đó nhăn mặt bực bội: trong tình huống nghiêm túc thế này, vậy mà người lại cợt nhả thê tử của mình, thế phong nhật hạ rồi! Người như ngươi sao có thể sống được đến lúc vào ở rể nhà Huyền Vũ Bá chủ, lẽ ra phải bị đánh chết từ lâu rồi mới phải."
+    },
+    {
+      "panel": "crmn_ep114/p038.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ninh Khải nói riêng với anh: Huyền Vũ, ta phải về kinh bẩm báo chuyện ở đây cho quốc quân. Nhưng có một câu ta không biết nên nói hay không. Thẩm Lãng đáp: vương thúc, mời nói."
+    },
+    {
+      "panel": "crmn_ep114/p040.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng chắp tay đáp dứt khoát: cơ nghiệp của gia tộc là do tổ tiên truyền lại, không thể bị hủy hoại trong tay ta, thà làm ngọc vỡ, còn hơn ngói lành."
+    },
+    {
+      "panel": "crmn_ep114/p043.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một kẻ thù hằn học thách thức: Huyền Vũ Bá, đợi tin tốt mà đất phong của ông truyền đến đi!"
+    },
+    {
+      "panel": "crmn_ep114/p045.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đập Kim Tự là đê điều lớn nhất dài nhất hồ chứa Nộ Giang, nằm giữa hai sơn cốc, dài tổng cộng 30 trượng, cao hơn 5 trượng. Năm đó tộc trưởng Kim thị là Kim Tự, dùng vốn vẹn 30 năm, điều động mấy vạn lần nhân lực mới có thể xây dựng được."
+    },
+    {
+      "panel": "crmn_ep114/p049.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn nhìn về phía lãnh địa Huyền Vũ, lạnh lùng: còn về dân đen trong phong địa của các ngươi, muốn trách thì phải trách bọn chúng đầu thai nhầm chỗ, làm tử dân của Kim thị các ngươi! Đến lúc đó, phong địa của Huyền Vũ Bá tước phủ ngươi, sẽ trở thành vùng nước mênh mông! Gia tộc Kim thị các ngươi cũng sẽ hoàn toàn tiêu đời!"
+    },
+    {
+      "panel": "crmn_ep114/p057.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một cảnh tượng tàn bạo hiện ra: một tên lính đang ghì chặt một nữ nhân bị trói, bê bết máu, gào lên hoảng loạn: ai!!"
+    },
+    {
+      "panel": "crmn_ep114/p062.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô ngẩng mặt, máu me đầy mình, gào lên đầy căm phẫn: ta phải giết người!"
+    },
+    {
+      "panel": "crmn_ep115/p001.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Người phụ nữ bị giam giữ vung tảng đá giáng xuống kẻ đã hành hạ mình, Kim Hối chứng kiến chỉ biết thốt lên kinh ngạc.",
+      "section": "Tập 115: Đê vỡ trước, kế hoạch nuốt trọn vua hải tặc"
+    },
+    {
+      "panel": "crmn_ep115/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô đứng dậy, cười điên loạn giữa xác chết: hahaha, chết rồi là tốt, chết rồi là tốt!"
+    },
+    {
+      "panel": "crmn_ep115/p007.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh thầm nghĩ khi bế cô đi: đúng là một người đáng thương... cũng không thể bỏ mặc cô ta ở đây được..."
+    },
+    {
+      "panel": "crmn_ep115/p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Vụ nổ bùng lên rực sáng cả một góc trời giữa cơn mưa."
+    },
+    {
+      "panel": "crmn_ep115/p015.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Thập Tam sửng sốt: đây chính là vũ khí bí mật mà cô gia làm ra sao? Uy mãnh sao lại lớn như thế? Đó là đê điều xếp chồng từng lớp đá lên nhau đó, vô cùng kiên cố, dùng cả trăm ngàn năm cũng không có vấn đề gì. Vậy mà chỉ là một cái hộp của cô gia, đã phá hủy hoàn toàn rồi?"
+    },
+    {
+      "panel": "crmn_ep115/p019.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh lội giữa đống đổ nát, gào thét kinh hoàng: ngọa tào nước lũ đến rồi! Ngọa tào! Ngọa tào!"
+    },
+    {
+      "panel": "crmn_ep115/p021.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chúc Văn Đài gào lên tuyệt vọng: ông trời ơi, sao người lại đối xử với Chúc thị chúng ta như thế. Một người khác hét: phu nhân ngất xỉu rồi! Người đâu! Kẻ khác hờ hững: đâu cái rắm, mau chạy đi, còn không mau lên, ở đây cũng sẽ bị chôn vùi đấy!"
+    },
+    {
+      "panel": "crmn_ep115/p025.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chúc Lan Đình kinh ngạc: cái gì? Đồn gác của Huyền Vũ Bá tước phủ không có người? Sao có thể chứ? Mưa bão như thế này, Kim thị không thể không cử người trông chừng được!"
+    },
+    {
+      "panel": "crmn_ep115/p040.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng rồi ông chợt hoảng: không thể nào đâu! Có người đào đê thoát nước ở nơi thấp nhất, tiếp theo mực nước sẽ còn hạ xuống thấp hơn cả con đê! Chỉ dựa vào sơn cốc là có thể cản được, không còn tác dụng nữa rồi, không chôn vùi được Huyền Vũ Bá tước phủ đâu!"
+    },
+    {
+      "panel": "crmn_ep115/p043.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chúc Lan Đình mắt đỏ ngầu, cố tự trấn an: mình nhất định là tự dọa bản thân rồi. Nhất định là vì đê khổ thủy đổ nát rồi, địa thế ở nơi đó thấp nhất, thế nên mực nước mới hạ nhanh như thế! Cơ nghiệp trăm năm của gia tộc ta nhất định không sao cả, nhất định!"
+    },
+    {
+      "panel": "crmn_ep115/p046.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng giải thích: bởi vì Trương Sung thì hết mực khuyên can Đường Luân từ bỏ đảo Kim Sơn, đồng thời sẽ tặng đảo Kim Sơn cho Cửu Thiên Nguy! Đảo Lôi Châu của Cửu Thiên Nguy thiếu sắt, trước giờ hắn vẫn luôn có được vũ khí nhờ làm ăn với Đường thị, bây giờ có cơ hội tranh giành đảo Kim Sơn, hắn tham lam thành thói chắc chắn sẽ không bỏ qua."
+    },
+    {
+      "panel": "crmn_ep115/p048.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh kết luận: đợi đến khi thất bại thảm hại, mất đi các loại tài nguyên và sức mạnh, lại mất đi cả đảo Kim Sơn, Ẩn Nguyên Hội sẽ đòi nợ chúng ta. Đến lúc đó quốc quân sẽ phán đảo Vọng Nhai cho Ẩn Nguyên Hội, vậy thì chúng ta không có gì cả."
+    },
+    {
+      "panel": "crmn_ep115/p051.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng cười, tay đặt quân cờ: bởi vì thứ chúng ta muốn, chính là thu hút Cửu Thiên Nguy! Sau đó ăn sạch Cửu Thiên Nguy!"
+    },
+    {
+      "panel": "crmn_ep115/p055.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh tiếp tục: đến lúc đó, thành Nộ Giang đã trống không rồi, chúng ta hoạt động bí mật, trực tiếp cướp lấy thành Nộ Giang, đoạt được đảo Lôi Châu! Vương ở phía bên kia biển, Việt Quốc không có thủy quân quy mô lớn, thế nào cũng không thể làm gì Kim gia chúng ta được!"
+    },
+    {
+      "panel": "crmn_ep115/p057.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Kim Trác sững sờ trước viễn cảnh huy hoàng: sắc phong ta làm Hầu tước, sau đó giảng hòa, giao dịch mới cũng sẽ không rơi vào đầu chúng ta, cơ nghiệp trăm năm của gia tộc Kim thị ta, ngày càng hưng thịnh phát đạt!"
+    },
+    {
+      "panel": "crmn_ep115/p058.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng sải bước đầy tự tin, tuyên bố: đúng! Đây chính là kế hoạch hoàn chỉnh của con, một lần và mãi mãi, giải quyết nguy cơ của gia tộc ta!"
+    },
+    {
+      "panel": "crmn_ep116/p001.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Kim Trác kinh ngạc: cách Lãng nhi giải quyết nguy cơ của gia tộc, vậy mà lại táo bạo như thế?",
+      "section": "Tập 116: Trương Sung ép giao đảo, Chúc Lan Đình gục ngã"
+    },
+    {
+      "panel": "crmn_ep116/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mộc Lan hỏi: phu quân, chàng vì chiếm đoạt thành Nộ Giang, nên mới để Từ Thiên Thiên ẩn nấp bên cạnh Cửu yêu sao? Anh đáp: không sai, bây giờ trận chiến đảo Kim Sơn Kim gia ta đã toàn thắng, cô ta sẽ làm theo ước định của chúng ta, đi nương nhờ con gái của Cửu Thiên Nguy."
+    },
+    {
+      "panel": "crmn_ep116/p006.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Khi tham vọng khó mà đạt được, ông ở lại Nộ Giang, lặng lẽ nhìn dòng nước chảy xiết."
+    },
+    {
+      "panel": "crmn_ep116/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Con gái ông rót trà, ân cần: phụ thân, bên cửa sổ gió to, cơ thể của cha vẫn chưa khỏe lại, cha vẫn nên về trong phòng nghỉ ngơi đi."
+    },
+    {
+      "panel": "crmn_ep116/p012.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô hỏi cha: phụ thân, Thẩm Lãng thắng trận chiến đảo Kim Sơn, cục diện của chúng ta sẽ rất tệ sao?"
+    },
+    {
+      "panel": "crmn_ep116/p015.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Xuân Hoa phân tích sắc sảo: chỉ cần chính sách mới của quốc quân không đổi, nguy cơ của gia tộc Kim thị sẽ vĩnh viễn không được giải trừ. Khi con đấu với một kẻ khổng lồ, thua ít thực ra là kết cục tốt nhất, kết quả thắng rồi, vậy thì hậu quả sẽ càng thê thảm hơn."
+    },
+    {
+      "panel": "crmn_ep116/p019.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một gia nô thì thầm run rẩy: bá tước tức giận quá, đáng sợ quá... Suỵt, muốn giữ mạng thì nói nhỏ thôi, bá tước đã giết bốn tên để trút giận rồi!"
+    },
+    {
+      "panel": "crmn_ep116/p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đường Luân khinh thường: còn có thể có dự định gì chứ? Đương nhiên là không đưa rồi, khế ước là do ta kí, nhưng muốn ta giao đảo Kim Sơn ra thì chính là chuyện viển vông! Mời."
+    },
+    {
+      "panel": "crmn_ep116/p032.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trương Sung đe dọa lạnh lùng: bởi vì ta sẽ tấu lên quốc quân, ép ngươi giao ra. Nếu ngươi không giao, vậy ta cũng không cần đánh Huyền Vũ Bá tước phủ nữa, trực tiếp nhắm vào ngươi là được, hủy diệt Đường thị của ngươi trước, dù sao ngươi cũng là lão quý tộc."
+    },
+    {
+      "panel": "crmn_ep116/p035.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trương Sung ánh mắt sắc lạnh: ta đã gửi bản tấu vào quốc đô rồi, ý chỉ của quốc quân rất nhanh sẽ được hạ xuống. Nếu ngươi có gan kháng chỉ thì cứ không giao đảo ra thử xem. Ngược lại ta cũng muốn xem xương ngươi có cứng như Kim Trác Bá tước không?"
+    },
+    {
+      "panel": "crmn_ep116/p037.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông rên rỉ: Trương Sung, ngươi độc ác thật đấy..."
+    },
+    {
+      "panel": "crmn_ep116/p039.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đường Luân nghiến răng cam chịu: ta giao, ta giao, ta giao..."
+    },
+    {
+      "panel": "crmn_ep116/p041.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông hoảng loạn: tiêu rồi tiêu rồi tiêu rồi! Đường gia Kim gia đều có đất phong, có thành trì, nhưng Lan Sơn tử tước phủ ta chỉ có trang viên mà gia tộc để lại thôi! Nếu như bị nước nhấn chìm, vậy Chúc gia chúng ta phải làm thế nào... đó là cơ nghiệp chúng ta xây dựng mấy trăm năm đó..."
+    },
+    {
+      "panel": "crmn_ep116/p047.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông gào lên tuyệt vọng giữa trời: a!!!! a!!!! a!!!!! Thẩm Lãng, con mẹ nhà ngươi! Thẩm Lãng, ta nhất định sẽ chém ngươi thành trăm mảnh, chém thành trăm mảnh..."
+    },
+    {
+      "panel": "crmn_ep116/p049.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thân thể ông ngã nhào khỏi mỏm đá, rơi xuống vực sâu giữa vệt máu loang lổ."
+    },
+    {
+      "panel": "crmn_ep116/p050.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông rơi tự do giữa vách núi dựng đứng, bóng người khuất dần trong màn bụi trắng xóa phía dưới."
+    },
+    {
+      "panel": "crmn_ep117/p001.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một ngày sau khi trận chiến đảo Kim Sơn kết thúc, tại Huyền Vũ Bá tước phủ, Thẩm Lãng hào hứng báo tin: phu nhân, trận chiến đảo Kim Sơn, Kim gia chúng ta đại thắng rồi!",
+      "section": "Tập 117: Từ Thiên Thiên lên đường làm gián điệp"
+    },
+    {
+      "panel": "crmn_ep117/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cả nhà vây quanh tự hào: ây ya! Con trai lớn của ta ơi, Lãng nhi ngoan của nương! Con ta đúng là tài ba, con ta đúng là lợi hại mà!"
+    },
+    {
+      "panel": "crmn_ep117/p007.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trong khi đó Kim Mộc Thông ấm ức: huhu, rõ ràng mình cũng có công lao mà, rõ ràng mình mới là người cần được khen nhất mà! Một tháng qua mình liều mạng chép sách, mình có dễ dàng không chứ? Tỷ phu không những không thiếu người quan tâm, còn suýt chút nữa thông đồng với nữ nhân nhà khác ở trường săn Nộ Giang đó chủ!"
+    },
+    {
+      "panel": "crmn_ep117/p012.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một lúc sau nghe xong, Thẩm Lãng phán xét: võ sĩ của Chúc gia không những bắt cóc nữ tử, còn dám làm việc xấu ở trong trạm gác, đúng là ngạo mạn đến cực điểm. Đúng là thượng bất chính, hạ tắc loạn, đổi lại là trong tư quân của Huyền Vũ Bá tước phủ, Bá tước đại nhân đã chém đầu đám người đó từ lâu rồi."
+    },
+    {
+      "panel": "crmn_ep117/p015.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nữ nhân bị trói quỳ gối van xin trong câm lặng: cô gia, cầu... cầu ngài khai ân. Hóa ra cô không nói được, nhưng vô cùng hận Lan Sơn tử tước phủ, tuyệt đối sẽ không nói ra ngoài."
+    },
+    {
+      "panel": "crmn_ep117/p019.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Dùng khả năng đặc biệt, anh chẩn đoán: nhịp tim của nữ nhân này không đều, tim không tốt, môi thâm, nhìn thì yêu diễm nhưng thực ra là vấn đề về tim."
+    },
+    {
+      "panel": "crmn_ep117/p021.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Kim Hối bật khóc kiên quyết: Kim Hối ta lớn lên ở Huyền Vũ Bá tước phủ từ nhỏ, đây là nhà của ta, nhưng trước giờ ta chưa từng cầu xin ai điều gì, ngay cả Bá tước đại nhân ta cũng chưa từng cầu xin. Bây giờ, cầu cô gia khai ân, cho dù Kim Hối làm trâu làm ngựa, cũng sẽ báo đáp lại ân tình này."
+    },
+    {
+      "panel": "crmn_ep117/p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nữ nhân kia viết ra lời: như này không phải là thừa nước đục thả câu sao? Hơn nữa ta chỉ là một hạ nhân, không xứng với vị tiểu thư này, không xứng... Thẩm Lãng gằn: vậy thì giết đi! Kim Hối vội khẩn cầu: cô gia, tiểu nhân nguyện dùng tính mạng để bảo đảm cho vị tiểu thư này, nếu như cô ấy tiết lộ bí mật của chúng ta, ta sẽ tự sát chuộc tội."
+    },
+    {
+      "panel": "crmn_ep117/p035.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lời giải thích hiện ra: thực ra Thông nhi đã có hôn ước rồi, với nữ nhi của gia tộc Tiết thị, Vũ An Bá tước phủ."
+    },
+    {
+      "panel": "crmn_ep117/p038.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Kim Trác đáp: hừ, đồng minh trăm năm này, từ hai năm trước đã đột nhiên lạnh nhạt với chúng ta, chuyện hôn sự của Tiết Lê và Thông nhi cũng không đề cập đến nữa, vừa không hủy hôn, cũng không thành hôn, vẫn luôn dây dưa đến bây giờ."
+    },
+    {
+      "panel": "crmn_ep117/p039.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng bực bội: chán ghét loại người này nhất, rút cũng không rút, cứ cư xử lạnh nhạt kéo dài đến này. Nửa tháng trước ta đã phái sứ giả, để Tiết thị cho chúng ta một câu trả lời, rốt cuộc kết thúc hôn ước, hay là tiếp tục."
+    },
+    {
+      "panel": "crmn_ep117/p041.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một gia nhân vào báo: cô gia, Từ Thiên Thiên tiểu thư bí mật đến, cầu kiến ngài."
+    },
+    {
+      "panel": "crmn_ep117/p045.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô hỏi thẳng: giao hẹn trước kia của chúng ta vẫn tính chứ? Anh xác nhận: đương nhiên tính, cơ thể này thay vì bị nam nhân chà đạp, chi bằng ngủ với nữ nhân, ngày mai ta có thể xuất phát đi thành Nộ Giang, ẩn nấp ở bên cạnh Cửu yêu nhi."
+    },
+    {
+      "panel": "crmn_ep117/p049.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô tự tin: cô mang thai tiếp cận Cửu yêu nhi, quả thực có thể lấy được sự đồng tình của cô ta. Anh đáp: đến đi, hôm nay, cơ thể của ta cho cô hưởng dụng đấy."
+    },
+    {
+      "panel": "crmn_ep117/p052.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô ngoái lại hỏi: Thẩm Lãng, ngươi không nói gì sao? Không dạy ta làm sao để đứng vững gót chân ở bên cạnh Cửu yêu nhi sao? Hoặc là nói lời gì đó khiến ta cảm động đi? Trong tay ngươi không có điểm yếu gì của ta cả, sao ngươi biết ta sẽ an tâm phục vụ ngươi? Ta sẽ không phản bội ngươi?"
+    },
+    {
+      "panel": "crmn_ep117/p057.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông gọi con gái, tuyên bố dứt khoát: Xuân Hoa, cha muốn con đi đến Nộ Triều thành một chuyến!"
+    },
+    {
+      "panel": "crmn_ep118/p001.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một bóng người lặng lẽ theo dõi đoàn kỵ sĩ, thầm nghĩ: rõ ràng cô gia không biết chuyện này, phải mau chóng quay về báo cáo với Bá tước!",
+      "section": "Tập 118: Nam Hải Kiếm Vương bắt Thẩm Lãng đi"
+    },
+    {
+      "panel": "crmn_ep118/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nghe nói võ công cô ta cao đến mức dọa người, chưa đến ba mươi tuổi đã đột phá cảnh giới tông sư rồi. Cửu yêu nhi, vị tướng mạnh nhất của Cửu gia, thật sự đúng là một nữ sát thần vừa nguy hiểm vừa mạnh mẽ."
+    },
+    {
+      "panel": "crmn_ep118/p010.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trương Sung bị xúc phạm: con coi cha con là cái gì thế! Trương Sung ta có dã tâm, nhưng không phải là súc sinh, sao có thể vì tiền đồ của bản thân mà đẩy con gái mình vào chỗ chết chứ? Ta muốn con đi gặp con gái của Cửu Thiên Nguy, Cửu yêu nhi!"
+    },
+    {
+      "panel": "crmn_ep118/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cùng lúc đó, Từ Thiên Thiên đối mặt Cửu Yêu Nhi lần đầu: Cửu yêu nhi, ta đến đây! Cửu Yêu Nhi thầm nghĩ: ta lại muốn xem xem, ngươi rốt cuộc là nữ ma đầu thế nào, là nữ sát thần thế nào."
+    },
+    {
+      "panel": "crmn_ep118/p019.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Mộc Lan chợt nhớ ra, giận dữ: à, hai tuần trước là nguyệt sự, hai ngày nay vừa hay là kỳ rụng trứng... Tra nam nhà ngươi, tưởng rằng ta không nghe sao?"
+    },
+    {
+      "panel": "crmn_ep118/p021.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng vội thanh minh: nam nhân không xấu nữ nhân không yêu mà! Đợi đợi đợi đợi đợi đã! Nương tử, không phải nàng vẫn luôn lo Kim Hối không tìm được đối tượng sao, phu quân lần này giúp được việc lớn rồi!"
+    },
+    {
+      "panel": "crmn_ep118/p032.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Em gái thì thầm với nữ nhân câm: huhu, Hồng Tuyến tỷ tỷ, ngày mai muội sẽ đi tìm cô gia, bảo ngài ấy giết sạch đám người gia tộc Chúc thị."
+    },
+    {
+      "panel": "crmn_ep118/p034.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một thuộc hạ báo tin: cô gia, Vương Liên chết rồi."
+    },
+    {
+      "panel": "crmn_ep118/p036.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng khó hiểu: Vương Liên này ham sống sợ chết, vậy mà lần này lại quyết tuyệt chết thế sao? Thuộc hạ đưa ra một vật: đây là thứ mà hắn để lại."
+    },
+    {
+      "panel": "crmn_ep118/p040.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đứng trước mộ, anh thầm nghĩ: cho dù thế nào, Vương Liên ngươi giúp ta diệt trừ Lâm Trác, còn cho ta một đòn chí mạng vào Tĩnh An Bá tước phủ, cắt đứt tập kích và quấy nhiễu mà Diêm Sơn thiên hộ đối với bọn ta. Công quy công, chuyện đã qua coi như đã qua!"
+    },
+    {
+      "panel": "crmn_ep118/p045.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng vã mồ hôi đáp lễ: tại hạ chính là Thẩm Lãng! Sát khí mạnh quá!"
+    },
+    {
+      "panel": "crmn_ep118/p046.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Kẻ lạ mặt hỏi thẳng: chính là ngươi đã phá giải kiếm pháp Thiên Ngoại Lưu Tinh của ta?"
+    },
+    {
+      "panel": "crmn_ep118/p047.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Danh tính hắn lộ ra: hắn là Nam Hải Kiếm Vương Lý Thiên Thu, một trong lục đại tông sư của Việt Quốc!"
+    },
+    {
+      "panel": "crmn_ep118/p050.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chung Sở Khách và Yến Nam Phi đều từng đấu với Lý Thiên Thu, Chung Sở Khách bại thê thảm, hoàn toàn không thể phá giải Thiên Ngoại Lưu Tinh. Mà Yến Nam Phi tự phụ ngang ngược lại không nói một câu gì sau khi bại. Thế nên ở trong mắt mọi người, Lý Thiên Thu chỉ có bốn chữ —"
+    },
+    {
+      "panel": "crmn_ep118/p053.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng Lý Thiên Thu chỉ bình thản nói: đi theo ta đi."
+    },
+    {
+      "panel": "crmn_ep118/p057.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Kim Hối phi ngựa như bay trở về, lòng như lửa đốt: rõ ràng cô gia không biết chuyện này, phải mau chóng quay về báo cáo với Bá tước!"
+    },
+    {
+      "panel": "crmn_ep119/p001.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Người đánh xe ra hiệu: mời.",
+      "section": "Tập 119: Kiếm phổ phục hồi, sát thủ số một ra tay"
+    },
+    {
+      "panel": "crmn_ep119/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lúc Lý Thiên Thu đánh xe đang thiền, lúc đi đường cũng thiền, lúc ăn trưa cũng thiền. Thẩm Lãng chỉ biết thầm than: ngoạ tào, ông thành tiên rồi? Cơm cũng không ăn sao?"
+    },
+    {
+      "panel": "crmn_ep119/p011.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Họ đến trước một cửa hang: vào đi."
+    },
+    {
+      "panel": "crmn_ep119/p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một giọng nói vang lên trong bóng tối: nương tử... Thẩm Lãng nhận ra: đây... đây là giọng của Lý Thiên Thu? Khiếp... khiếp quá! Còn ghê hơn cả mình!"
+    },
+    {
+      "panel": "crmn_ep119/p015.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Giọng nói gào lên đầy oán hận: cút! Nếu không phải người cứu tiện nhân kia, đưa cô ta về thu nhận làm dưỡng nữ, Thiên Ngoại Lưu Tinh lưu truyền của nhà ta sao lại bị trộm mất chứ! Rõ ràng ta đối tốt với cô ta như thế, coi cô ta như con gái ruột, vậy mà cô ta lại hạ độc với ta, khiến ta không thể nhớ nổi nội dung của kiếm phổ! Lý Thiên Thu! Ông còn muốn hứa hôn cô ta cho Đường Viêm! Mắt chó của ông đúng là mù rồi!"
+    },
+    {
+      "panel": "crmn_ep119/p016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng chết lặng: quỷ gì thế, hoá ra Nam Hải Kiếm Vương giết ân nhân kiếm sư tôn của mình trong lời đồn, hoá ra là tin giả sao? Thiên Ngoại Lưu Tinh phân thành âm dương, nam luyện âm, nữ luyện dương, nếu như phu nhân mất kí ức, vậy thì kiếm pháp đó quả thực cũng gần như là thất truyền rồi..."
+    },
+    {
+      "panel": "crmn_ep119/p021.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trong một căn nhà kho ở sơn động, Thẩm Lãng phải cặm cụi sao chép lại toàn bộ bộ kiếm phổ."
+    },
+    {
+      "panel": "crmn_ep119/p023.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hai ngày hai đêm sau, anh giao lại thành quả: kiếm vương, ở đây hết rồi. Lý Thiên Thu xúc động: cuối cùng... cuối cùng..."
+    },
+    {
+      "panel": "crmn_ep119/p030.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một lão quý tộc của gia tộc Chúc thị nằm trên giường gào thét: cơ nghiệp trăm năm của Chúc thị ta... bị huỷ hoại hết rồi... nhất định là do ngươi làm, Thẩm Lãng, nhất định là ngươi..."
+    },
+    {
+      "panel": "crmn_ep119/p032.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lão quý tộc gào lên điên cuồng: Thẩm Lãng, ngươi khiến ta mất đi tất cả, ép ta đến bước đường cùng, vậy thì đừng trách ta vượt quá giới hạn!"
+    },
+    {
+      "panel": "crmn_ep119/p037.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đại diện Thu Phong Lâu từ chối thẳng: không nhận!"
+    },
+    {
+      "panel": "crmn_ep119/p040.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lão quý tộc đáp: không, lúc này Thẩm Lãng không ở trong phủ Bá tước, mà ở bên ngoài mấy trăm dặm, một thân một mình không có bất cứ cao thủ nào bảo vệ, bên cạnh cũng chỉ có một lão phu xe già."
+    },
+    {
+      "panel": "crmn_ep119/p046.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông hằn học thêm: nhưng ngươi phải đưa xác của hắn cho ta, ta nhất định sẽ lọc da rút gân hắn, nghiền xương thành bụi, sau đó ném thịt của hắn cho chó ăn, như thế mới trút được nỗi hận của ta. Đại diện đáp: như ngươi mong ước."
+    },
+    {
+      "panel": "crmn_ep119/p050.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lý Thiên Thu đáp: nữ nhi của Yến Nam Phi, Tiết Tuyết!"
+    },
+    {
+      "panel": "crmn_ep119/p057.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn tuyên bố đầy sát khí: trời có đường ngươi không đi, địa ngục không cửa ngươi lại tự mò tới. Thẩm Lãng, ta sẽ khiến ngươi xuống địa ngục, hối hận vì đã đắc tội với ta! Các ngươi chuẩn bị xong chưa?"
+    },
+    {
+      "panel": "crmn_ep119/p062.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thủ lĩnh sát thủ gằn giọng đầy ám ảnh: ta đổi ý rồi, ta phải đích thân nhìn thấy Thẩm Lãng quỳ xuống dưới đất cầu xin ta, ta phải tự chặt đầu hắn, huyết hải thâm thù giữa bọn ta, chỉ có làm như thế mới có thể gột sạch nỗi hận trong lòng ta! Lão quý tộc vội xuống nước: thêm tiền, ta có thể thêm tiền! Một ngàn tiền vàng có đủ không!"
+    },
+    {
+      "panel": "crmn_ep119/p062.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Người phục kích chỉ tính toán dựa trên vẻ ngoài của phu xe. Cách Lý Thiên Thu giấu thân phận khiến toàn bộ lợi thế mà sát thủ tưởng có trở thành sai lầm."
+    },
+    {
+      "panel": "crmn_ep120/p001.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng thầm nghĩ: khó mà gặp được một đại tông sư võ đạo, lần này phải thể hiện cho hắn xem thiên phú võ đạo của mình mới được! Kiếm vương tiền bối, ngài có thể giúp ta nhìn xem tĩnh mạch của ta thế nào không? Có thích hợp để luyện võ không?",
+      "section": "Tập 120: Một mình Kiếm Vương quét sạch sát thủ"
+    },
+    {
+      "panel": "crmn_ep120/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lý Thiên Thu đáp cộc lốc: không thích hợp. Thẩm Lãng khóc dở mếu dở: vẫn là Chung Sở Khách nói dễ nghe..."
+    },
+    {
+      "panel": "crmn_ep120/p007.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lý Thiên Thu đáp, ánh mắt trầm xuống: Cửu Yêu Nhi!"
+    },
+    {
+      "panel": "crmn_ep120/p012.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bỗng một toán kỵ sĩ xông ra chặn đường, tiếng cười man rợ vang lên: hahahaha..."
+    },
+    {
+      "panel": "crmn_ep120/p017.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thủ lĩnh sát thủ túm lấy Thẩm Lãng, gằn giọng: Thẩm Lãng, ngươi đừng diễn nữa! Thiên đường có đường ngươi không đi, địa ngục không cửa ngươi lại xông vào, ngươi không chết thì ai chết đây! Hôm nay, ta phải giết chết ngươi!"
+    },
+    {
+      "panel": "crmn_ep120/p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lão phu xe hỏi thẳng: Thu Phong Lâu? Yến Nam Phi của Nam Hải Kiếm phái? Gia tộc Tiết thị? Chủ tử của ngươi muốn giết ta?"
+    },
+    {
+      "panel": "crmn_ep120/p023.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lão phu xe rút kiếm, giọng lạnh như băng: được rồi Thẩm Lãng, đừng kéo dài thời gian nữa, ta sẽ đích thân chặt đầu ngươi, lột da rút xương ngươi, vứt xác của ngươi cho chó ăn! Lên!"
+    },
+    {
+      "panel": "crmn_ep120/p026.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thủ lĩnh sát thủ sững sờ: kiếm gỗ...!"
+    },
+    {
+      "panel": "crmn_ep120/p030.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn đe dọa: Lý Thiên Thu! Bọn ta là người của Yến Nam Phi đại tông sư, phía sau bọn ta còn có Vũ An Bá tước phủ, có tam vương tử điện hạ, ngươi không thể giết bọn ta được!"
+    },
+    {
+      "panel": "crmn_ep120/p033.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thủ lĩnh sát thủ, máu me đầy mặt, quyết liều mạng: vậy... thì liều..."
+    },
+    {
+      "panel": "crmn_ep120/p037.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lý Thiên Thu vung kiếm gỗ liên tiếp, từng tên sát thủ ngã rạp giữa những tia sáng chớp nhoáng."
+    },
+    {
+      "panel": "crmn_ep120/p048.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hai người bước qua xác những kẻ vừa ngã xuống, một người lẩm bẩm không tin nổi: sao có thể... sao có thể... sao có thể..."
+    },
+    {
+      "panel": "crmn_ep120/p057.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chúc Lan Đình kowtow máu me, van xin: Thẩm công tử, Thẩm công tử, ta sai rồi! Cầu xin người đừng giết ta! Ta bảo đảm sau này sẽ không đối nghịch với cậu nữa! Trước kia đều là mắt ta mù, sao ta lại có thể đắc tội với cậu chứ?"
+    },
+    {
+      "panel": "crmn_ep120/p059.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một lưỡi dao ấn chặt vào miệng ông cùng thứ gì đó màu xanh rợn người: đừng phản kháng nữa, kiếm vương sẽ giúp ta. Ông chỉ còn ú ớ: ư..."
+    },
+    {
+      "panel": "crmn_ep120/p061.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tiếng thét cuối cùng vang vọng khắp khu rừng: AAAAA! AAAAA!"
+    },
+    {
+      "panel": "crmn_ep120/p062.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Chúc Lan Đình than khóc trong một khắc, cuối cùng chết đi, kết thúc cho tất cả những gì hắn đã gây ra."
+    }
+  ]
+}

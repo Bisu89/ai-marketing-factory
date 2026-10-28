@@ -1,0 +1,452 @@
+{
+  "template": "manhua_recap_long_vi",
+  "title": "Trác Phàm vào Thanh Hoa Lâu, bí mật Thiên Dương lộ diện!?",
+  "chapters": "121-130",
+  "source_dir": "manhua-recap/dqgl_ep121",
+  "written_by": "Compiled from ep121-ep130, 2026-10-20",
+  "description": "Trác Phàm giúp nữ nhân bí ẩn giải độc, gặp lại người quen rồi đến Thanh Hoa Lâu. Tại đây, hắn phát hiện nhiều dấu hiệu bất thường quanh nữ chủ và trận pháp, trong khi bí mật về Thiên Dương dần lộ ra. Tóm tắt chương 121 đến 130, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "BÍ MẬT THANH HOA LÂU!?",
+    "prompt": "Black-haired cultivator stealthily exploring an ancient Chinese tower at night, faint red spirit beast and glowing formation marks, mysterious elder silhouette in a distant room, colorful Chinese manhua cover art, vertical 9:16 composition, leave dark clear upper quarter for title, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep121/p001.jpg",
+      "narration": "Nữ nhân bí ẩn hỏi Trác Phàm có chữa được độc cho mình không.",
+      "kind": "recap",
+      "type": "HOOK",
+      "section": "Tập 121: Trác Phàm luyện thuốc cứu người, kẻ địch kéo tới!?"
+    },
+    {
+      "panel": "dqgl_ep121/p012.jpg",
+      "narration": "Cô cảm nhận dược lực bắt đầu tác động lên cơ thể.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep121/p024.jpg",
+      "narration": "Cô cắn răng làm theo, quyết không bỏ qua cơ hội sống sót.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep121/p039.jpg",
+      "narration": "Những người mới xuất hiện khiến cả nhóm dừng trò chuyện.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep121/p051.jpg",
+      "narration": "Không khí chuyển từ chữa trị sang đối đầu.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep121/p066.jpg",
+      "narration": "Đòn đánh đầu tiên nổ ra giữa hai bên.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep121/p082.jpg",
+      "narration": "Cuộc đụng độ chưa dứt, đối thủ vẫn chưa lộ hết thực lực.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep122/p001.jpg",
+      "narration": "Ngưng Nhi sững sờ khi Trác Phàm bước tới giữa đống khói.",
+      "kind": "recap",
+      "type": "HOOK",
+      "section": "Tập 122: Trác Phàm một mình áp đảo cả nhóm cường địch!?"
+    },
+    {
+      "panel": "dqgl_ep122/p010.jpg",
+      "narration": "U Minh Cốc trưởng lão cười nhạo Trác Phàm, nhưng hắn lập tức đáp trả.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep122/p020.jpg",
+      "narration": "Trác Phàm né đòn rồi phản công, buộc đối phương nghiêm túc hơn.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep122/p036.jpg",
+      "narration": "Đòn đánh liên tiếp làm mặt đất rung chuyển.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep122/p048.jpg",
+      "narration": "Một cú đánh bất ngờ khiến cục diện nghiêng về phía hắn.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep122/p060.jpg",
+      "narration": "Trác Phàm thừa cơ lao lên, buộc đối thủ chống đỡ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep122/p073.jpg",
+      "narration": "Cuộc giao chiến tạm khựng lại, nhưng mối nguy vẫn còn nguyên.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep123/p001.jpg",
+      "narration": "Trác Phàm vẫn không lùi bước dù đối thủ liên tục ép sát.",
+      "kind": "recap",
+      "type": "HOOK",
+      "section": "Tập 123: Trưởng lão xuất hiện, trận chiến đổi chiều!?"
+    },
+    {
+      "panel": "dqgl_ep123/p012.jpg",
+      "narration": "U Minh Cốc trưởng lão tiếp tục ra đòn, còn Trác Phàm tìm sơ hở.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep123/p024.jpg",
+      "narration": "Người đứng xem không tin kẻ giao đấu với trưởng lão lại là Trác Phàm.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep123/p030.jpg",
+      "narration": "Một nhóm cường giả tiến đến, khiến trận chiến tạm ngừng.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep123/p042.jpg",
+      "narration": "Tên Trác Phàm được nhắc đến, thu hút chú ý của người vừa tới.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep123/p060.jpg",
+      "narration": "Những người có mặt bắt đầu tranh luận về hậu quả.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep123/p072.jpg",
+      "narration": "Một người có địa vị cao vẫn quan sát Trác Phàm từ phía sau.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep124/p001.jpg",
+      "narration": "Cuộc đối đầu vừa lắng xuống thì Trác Phàm đã không còn đứng vững.",
+      "kind": "recap",
+      "type": "HOOK",
+      "section": "Tập 124: Trác Phàm trúng độc nặng, ai mới cứu được hắn!?"
+    },
+    {
+      "panel": "dqgl_ep124/p008.jpg",
+      "narration": "Bạt Trường Lão nói người trúng độc khó sống lâu.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep124/p012.jpg",
+      "narration": "Ngưng Nhi hỏi liệu còn cách nào cứu hắn hay không.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep124/p020.jpg",
+      "narration": "Nữ nhân bí ẩn khẳng định mình có thể thử giải độc.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep124/p031.jpg",
+      "narration": "Trong cơn mê, Trác Phàm vẫn cảm nhận độc tố bị khuấy động.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep124/p043.jpg",
+      "narration": "Người chữa trị tiếp tục rút độc, nhưng chưa chắc đã sạch.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep124/p068.jpg",
+      "narration": "Hắn đã qua cơn nguy kịch, nhưng vẫn chưa tỉnh lại.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep125/p001.jpg",
+      "narration": "Trác Phàm tỉnh dậy sau cơn hôn mê, bên cạnh vẫn có người chăm sóc.",
+      "kind": "recap",
+      "type": "HOOK",
+      "section": "Tập 125: Trác Phàm tỉnh lại, nữ nhân bí ẩn sắp rời đi!?"
+    },
+    {
+      "panel": "dqgl_ep125/p012.jpg",
+      "narration": "Hắn thử vận khí và nhận ra cơ thể đã dễ chịu hơn.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep125/p024.jpg",
+      "narration": "Câu chuyện chuyển sang những lời trêu chọc giữa hai người.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep125/p036.jpg",
+      "narration": "Nữ nhân nhắc mình phải rời đi, khiến hắn nhận ra cô sắp biến mất.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep125/p048.jpg",
+      "narration": "Cô yêu cầu Trác Phàm trả lại Bồ Đề Ngọc Dịch.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep125/p060.jpg",
+      "narration": "Hai người tạm biệt với lời hẹn có thể còn gặp lại.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep125/p077.jpg",
+      "narration": "Trác Phàm còn chưa sắp xếp cảm xúc thì người quen tìm đến.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep126/p001.jpg",
+      "narration": "Trác Phàm còn nghĩ về cuộc chia tay thì người quen bất ngờ xuất hiện.",
+      "kind": "recap",
+      "type": "HOOK",
+      "section": "Tập 126: Trác Phàm gặp lại người quen sau nhiều năm!?"
+    },
+    {
+      "panel": "dqgl_ep126/p007.jpg",
+      "narration": "Hắn giật mình khi thấy Tông Hiến Đế và Hồng Nhi trước mặt.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep126/p021.jpg",
+      "narration": "Trác Phàm trêu người bạn cũ vì lâu ngày không gặp.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep126/p035.jpg",
+      "narration": "Mọi người nhắc tới người chị mà Trác Phàm từng để tâm.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep126/p049.jpg",
+      "narration": "Hắn nói mình đến vì lời hứa và muốn giúp họ an toàn.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep126/p063.jpg",
+      "narration": "Tông Hiến Đế còn do dự, nhưng Trác Phàm kéo mọi người lên đường.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep126/p075.jpg",
+      "narration": "Chuyến đi mới bắt đầu, mục đích điểm đến chưa được tiết lộ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep127/p001.jpg",
+      "narration": "Nhóm Trác Phàm đến Thanh Hoa Lâu và được người trong lâu ra đón.",
+      "kind": "recap",
+      "type": "HOOK",
+      "section": "Tập 127: Trác Phàm đến Thanh Hoa Lâu, nữ chủ bí ẩn xuất hiện!?"
+    },
+    {
+      "panel": "dqgl_ep127/p012.jpg",
+      "narration": "Nữ chủ Thanh Hoa Lâu xuất hiện, khiến cuộc trò chuyện đổi hướng.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep127/p024.jpg",
+      "narration": "Hắn nhận xét vẻ ngoài của cô, còn cô nhắc hắn đừng lấn tới.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep127/p030.jpg",
+      "narration": "Nữ chủ tiết lộ mình vướng vào hoàn cảnh khó thoát.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep127/p036.jpg",
+      "narration": "Cô hỏi vì sao Trác Phàm quan tâm chuyện của mình.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep127/p048.jpg",
+      "narration": "Cô bắt đầu nghi ngờ Trác Phàm có thể giúp mình.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep127/p056.jpg",
+      "narration": "Hắn quyết định tiến thêm bước, dù biết có thể gặp rắc rối.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep128/p001.jpg",
+      "narration": "Nữ chủ bật cười khi nghe Trác Phàm nói về chuyện trong Thanh Hoa Lâu.",
+      "kind": "recap",
+      "type": "HOOK",
+      "section": "Tập 128: Trác Phàm buông lời trêu chọc, nữ chủ mắc bẫy!?"
+    },
+    {
+      "panel": "dqgl_ep128/p009.jpg",
+      "narration": "Nữ chủ gọi hắn là lâu chủ, nhưng hắn phủ nhận mình chỉ là khách.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep128/p013.jpg",
+      "narration": "Tông Hiến Đế nhận món quà từ chủ lâu.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep128/p018.jpg",
+      "narration": "Trác Phàm hỏi chuyện nữ chủ và những việc cô đang đối mặt.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep128/p028.jpg",
+      "narration": "Hắn nhận ra trong Thanh Hoa Lâu có thứ gì đó bị che giấu.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep128/p038.jpg",
+      "narration": "Một lời của Trác Phàm khiến nữ chủ sững người.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep128/p048.jpg",
+      "narration": "Cô đồng ý để hắn tìm hiểu thêm, nhưng vẫn giữ bí mật.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep129/p001.jpg",
+      "narration": "Nữ chủ kể rằng mình không thể tự quyết định vận mệnh.",
+      "kind": "recap",
+      "type": "HOOK",
+      "section": "Tập 129: Nữ chủ Thanh Hoa Lâu bị khống chế bởi ai!?"
+    },
+    {
+      "panel": "dqgl_ep129/p006.jpg",
+      "narration": "Trác Phàm hỏi ai mới là người kiểm soát Thanh Hoa Lâu.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep129/p016.jpg",
+      "narration": "Dấu hiệu bất thường xuất hiện, khiến hắn cảnh giác.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep129/p021.jpg",
+      "narration": "Kẻ đứng sau lộ diện, khiến nữ chủ không dám phản kháng.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep129/p031.jpg",
+      "narration": "Trác Phàm không nhượng bộ, nữ chủ cố ngăn tình hình xấu đi.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep129/p041.jpg",
+      "narration": "Kẻ kia khẳng định cô phải làm theo ý mình.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep129/p051.jpg",
+      "narration": "Ánh mắt Trác Phàm lạnh đi khi nhận ra xung đột tới gần.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep130/p001.jpg",
+      "narration": "Màn đêm buông xuống, một bóng người lướt qua mái nhà Thanh Hoa Lâu.",
+      "kind": "recap",
+      "type": "HOOK",
+      "section": "Tập 130: Trác Phàm lẻn vào trận pháp, phát hiện bí mật Thiên Dương!?"
+    },
+    {
+      "panel": "dqgl_ep130/p006.jpg",
+      "narration": "Trác Phàm nhận ra trận pháp quanh nơi này có dấu hiệu bị thay đổi.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep130/p018.jpg",
+      "narration": "Hắn kiểm tra từng khu vực, tránh để người canh gác phát hiện.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep130/p024.jpg",
+      "narration": "Linh thú đỏ nhỏ dò xét và tìm thấy căn phòng có người trò chuyện.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep130/p030.jpg",
+      "narration": "Một vị trưởng lão hỏi thăm tiến triển tu luyện của Thiên Dương.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep130/p042.jpg",
+      "narration": "Trưởng lão nhắc Trác Phàm có thể sớm đột phá sau vết thương.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep130/p055.jpg",
+      "narration": "Kẻ sửa trận pháp chưa lộ diện, Trác Phàm sắp bị cuốn vào chuyện lớn.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

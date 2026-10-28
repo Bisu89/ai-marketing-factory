@@ -1,0 +1,25 @@
+{
+  "title": "Trác Phàm đứng ra bảo vệ Mẫu Đan giữa phố!?",
+  "chapters": "111",
+  "source_dir": "manhua-recap/dqgl_ep111",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-19",
+  "description": "Trác Phàm bắt gặp một cuộc xung đột ở Hoa Vũ Thành và ra tay khi thấy người của Mẫu Đan Lâu bị gây khó dễ. Từ một màn can thiệp, câu chuyện nhanh chóng biến thành màn trêu chọc giữa hắn và Mẫu Đan, còn kẻ gây sự phải trả giá trước đám đông.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tập 111 (chương 111).",
+  "hashtags": ["#DaiQuanGiaLaMaHoang", "#ReviewManhua", "#Manhua", "#TuTien", "#XuyenKhong", "#ReviewTruyen"],
+  "thumbnail": {"text":"Trác Phàm ra tay, Mẫu Đan đỏ mặt!?","prompt":"Vertical 9:16 Chinese manhua style, confident black-haired cultivator in blue stopping a fight in a traditional Chinese street, elegant pink-dressed woman watching with surprise, fallen bully and gathered crowd, dramatic sunset, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"},
+  "beats": [
+    {"panel":"p001.jpg","narration":"Giữa phố Hoa Vũ Thành, Trác Phàm vừa xuất hiện đã thấy đám đông đang vây quanh một vụ gây gổ.","kind":"recap","type":"HOOK"},
+    {"panel":"p005.jpg","narration":"Một kẻ cậy thế lớn tiếng đe dọa người của Mẫu Đan Lâu, khiến những người xung quanh không dám xen vào.","kind":"recap","type":"BUILD"},
+    {"panel":"p008.jpg","narration":"Trác Phàm hỏi rõ chuyện gì đang xảy ra, rồi lập tức chặn kẻ định tiếp tục ra tay.","kind":"recap","type":"BUILD"},
+    {"panel":"p011.jpg","narration":"Đối phương không chỉ tức vì bị cản đường; hắn còn cho rằng người của Hoa Vũ Lâu làm mất thể diện các gia tộc.","kind":"recap","type":"BUILD"},
+    {"panel":"p015.jpg","narration":"Khi nghe nhắc đến Mẫu Đan Lâu, kẻ gây sự mới nhận ra mình đã đụng vào người không nên đụng.","kind":"recap","type":"BUILD"},
+    {"panel":"p019.jpg","narration":"Mẫu Đan nhìn Trác Phàm và hỏi thẳng hắn có phải người đã can thiệp vào chuyện này không.","kind":"recap","type":"BUILD"},
+    {"panel":"p024.jpg","narration":"Trác Phàm trả lời tỉnh bơ, còn khiến cuộc đối đáp giữa hai người chuyển sang chuyện quan hệ của họ.","kind":"recap","type":"BUILD"},
+    {"panel":"p028.jpg","narration":"Hắn tự nhận mình là tướng công của nàng, dù Mẫu Đan lập tức nhắc rằng nàng chưa từng đồng ý.","kind":"recap","type":"BUILD"},
+    {"panel":"p033.jpg","narration":"Trác Phàm đổi cách gọi thành ‘tiền phu’, biến lời từ chối thành một câu đùa trước mặt mọi người.","kind":"commentary","type":"BUILD"},
+    {"panel":"p038.jpg","narration":"Màn đấu khẩu khiến đám đông vừa ngạc nhiên vừa khó biết hai người đang nghiêm túc đến đâu.","kind":"recap","type":"BUILD"},
+    {"panel":"p043.jpg","narration":"Trong lúc họ còn trêu nhau, kẻ gây sự đã bị Trác Phàm đánh cho không còn khí thế ban đầu.","kind":"recap","type":"BUILD"},
+    {"panel":"p048.jpg","narration":"Hắn xin tha, nhưng Trác Phàm để Mẫu Đan tự quyết định chuyện xử lý người này.","kind":"recap","type":"BUILD"},
+    {"panel":"p052.jpg","narration":"Kẻ kia rời đi trong tức tối, vẫn không quên buông lời rằng sẽ ghi nhớ món nợ hôm nay.","kind":"recap","type":"BUILD"},
+    {"panel":"p055.jpg","narration":"Mẫu Đan lại nhắc tới cơ hội cuối cùng giữa hai người, còn Trác Phàm lập tức hưởng ứng lời thách thức ấy.","kind":"recap","type":"ENDING"}
+  ]
+}

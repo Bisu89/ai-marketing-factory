@@ -1,0 +1,17 @@
+{
+  "title": "Kim gia trả thù trong mỏ, Đường Luân vẫn chưa chịu dừng!?",
+  "chapters": "161",
+  "source_dir": "manhua-recap/crmn_ep162",
+  "description": "Trận Vọng Nhai khép lại bằng cuộc tàn sát trong đường hầm ngập nước. Thẩm Lãng và Kim Mộc Lan không quên những gì hải tặc từng gây ra cho dân thường.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "beats": [
+    {"panel":"p002.jpg","type":"HOOK","kind":"recap","narration":"Những tên hải tặc mắc kẹt cố trèo khỏi mỏ, nhưng quân Kim gia vẫn giữ chặt các lối lên."},
+    {"panel":"p008.jpg","type":"BUILD","kind":"recap","narration":"Lưu huỳnh và các vật liệu ăn mòn được dùng để chặn những kẻ cố bám vào vách đá."},
+    {"panel":"p016.jpg","type":"BUILD","kind":"recap","narration":"Một số hải tặc cầu xin đầu hàng, nhưng Kim Mộc Lan nhớ tới những gia đình vô tội bị chúng sát hại."},
+    {"panel":"p024.jpg","type":"BUILD","kind":"commentary","narration":"Sự tàn khốc của trận đánh có nguyên nhân từ những cuộc cướp bóc trước đó; quân phòng thủ xem đây là lúc đòi món nợ máu."},
+    {"panel":"p032.jpg","type":"BUILD","kind":"recap","narration":"Thẩm Lãng tiếp tục điều quân, không để những toán hải tặc còn lại thoát khỏi vòng vây."},
+    {"panel":"p041.jpg","type":"BUILD","kind":"recap","narration":"Khi tin thất bại truyền tới, Đường Luân mới hiểu lực lượng của mình đã bị đánh tan."},
+    {"panel":"p050.jpg","type":"BUILD","kind":"recap","narration":"Ông ta hỏi liệu Nộ Triều Thành cũng đã thất thủ hay chưa, nhưng câu trả lời vẫn chưa rõ."},
+    {"panel":"p058.jpg","type":"ENDING","kind":"recap","narration":"Thẩm Lãng nhắc tới những người thân của Mộc Lan và Tô Bộ Bộ. Trận Vọng Nhai có thể đã xong, nhưng món nợ với Đường Luân còn đó."}
+  ]
+}

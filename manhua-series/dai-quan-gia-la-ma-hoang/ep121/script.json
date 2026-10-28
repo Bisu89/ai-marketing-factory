@@ -1,0 +1,63 @@
+﻿{
+    "title":  "Trác Phàm luyện thuốc cứu người, kẻ địch kéo tới!?",
+    "chapters":  "121",
+    "source_dir":  "manhua-recap/dqgl_ep121",
+    "written_by":  "OpenAI, đối chiếu ảnh nguồn, 2026-10-19",
+    "description":  "Trác Phàm tiếp tục đối mặt với biến cố mới cùng những người đồng hành.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tập 121 (chương 121).",
+    "hashtags":  [
+                     "#DaiQuanGiaLaMaHoang",
+                     "#ReviewManhua",
+                     "#Manhua",
+                     "#TuTien",
+                     "#XuyenKhong",
+                     "#ReviewTruyen"
+                 ],
+    "thumbnail":  {
+                      "text":  "Trác Phàm luyện thuốc cứu người, kẻ địch kéo tới!?",
+                      "prompt":  "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+                  },
+    "beats":  [
+                  {
+                      "panel":  "p001.jpg",
+                      "narration":  "Nữ nhân bí ẩn hỏi Trác Phàm có chữa được độc cho mình không.",
+                      "kind":  "recap",
+                      "type":  "HOOK"
+                  },
+                  {
+                      "panel":  "p012.jpg",
+                      "narration":  "Cô cảm nhận dược lực bắt đầu tác động lên cơ thể.",
+                      "kind":  "recap",
+                      "type":  "BUILD"
+                  },
+                  {
+                      "panel":  "p024.jpg",
+                      "narration":  "Cô cắn răng làm theo, quyết không bỏ qua cơ hội sống sót.",
+                      "kind":  "recap",
+                      "type":  "BUILD"
+                  },
+                  {
+                      "panel":  "p039.jpg",
+                      "narration":  "Những người mới xuất hiện khiến cả nhóm dừng trò chuyện.",
+                      "kind":  "commentary",
+                      "type":  "BUILD"
+                  },
+                  {
+                      "panel":  "p051.jpg",
+                      "narration":  "Không khí chuyển từ chữa trị sang đối đầu.",
+                      "kind":  "recap",
+                      "type":  "BUILD"
+                  },
+                  {
+                      "panel":  "p066.jpg",
+                      "narration":  "Đòn đánh đầu tiên nổ ra giữa hai bên.",
+                      "kind":  "recap",
+                      "type":  "BUILD"
+                  },
+                  {
+                      "panel":  "p082.jpg",
+                      "narration":  "Cuộc đụng độ chưa dứt, đối thủ vẫn chưa lộ hết thực lực.",
+                      "kind":  "recap",
+                      "type":  "ENDING"
+                  }
+              ]
+}

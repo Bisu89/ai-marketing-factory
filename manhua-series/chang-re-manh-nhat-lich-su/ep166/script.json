@@ -1,0 +1,17 @@
+{
+  "title": "Cửu Thiên Nguy mang thai, Thẩm Lãng chọn tha mạng!?",
+  "chapters": "165",
+  "source_dir": "manhua-recap/crmn_ep166",
+  "description": "Cửu Thiên Nguy trở về sau trận chiến và xác nhận mình đang mang thai. Thẩm Lãng để nàng rời đi, còn Đường Luân bắt đầu tính một ván cờ khác.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "beats": [
+    {"panel":"p002.jpg","type":"HOOK","kind":"recap","narration":"Cửu Thiên Nguy trở về với vết thương khắp người, nhưng điều khiến nàng bối rối hơn là mình đang mang thai."},
+    {"panel":"p009.jpg","type":"BUILD","kind":"recap","narration":"Nàng hỏi Thẩm Lãng liệu có thể trách hắn vì chuyện này hay không, còn hắn nhận mình cũng là người bị hại."},
+    {"panel":"p017.jpg","type":"BUILD","kind":"recap","narration":"Thẩm Lãng bảo nàng nghỉ ngơi, không muốn biến chuyện vừa xảy ra thành một cuộc báo thù mới."},
+    {"panel":"p025.jpg","type":"BUILD","kind":"recap","narration":"Cửu Thiên Nguy nói mình từng bị đánh trọng thương, vậy mà đứa trẻ vẫn sống sót."},
+    {"panel":"p033.jpg","type":"BUILD","kind":"commentary","narration":"Việc tha cho nàng mở ra một rủi ro chính trị, nhưng cũng cho thấy Thẩm Lãng đang tính đến những hệ quả dài hạn."},
+    {"panel":"p041.jpg","type":"BUILD","kind":"recap","narration":"Thẩm Lãng đưa nàng và người đi cùng xuống thuyền, dặn họ rời khỏi Nộ Triều."},
+    {"panel":"p050.jpg","type":"BUILD","kind":"recap","narration":"Trong lúc đó, Đường Luân tỉnh lại sau cơn biến cố và lập tức hỏi tình hình các toán hải tặc."},
+    {"panel":"p058.jpg","type":"ENDING","kind":"recap","narration":"Ông ta biết trên biển vẫn còn một lực lượng khác cần xử lý. Ván cờ mới vừa mở ra."}
+  ]
+}

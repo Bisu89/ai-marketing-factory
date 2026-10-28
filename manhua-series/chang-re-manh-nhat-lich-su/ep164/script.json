@@ -1,0 +1,17 @@
+{
+  "title": "Thẩm Lãng ra lệnh khai pháo, Cầu Đao Nhi bị dồn vào đường cùng!?",
+  "chapters": "163",
+  "source_dir": "manhua-recap/crmn_ep164",
+  "description": "Cầu Đao Nhi trở thành mục tiêu của Thẩm Lãng trong một cuộc đối đầu căng thẳng. Nàng chấp nhận đối mặt với pháo kích, còn người đứng trên thành lại do dự.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "beats": [
+    {"panel":"p002.jpg","type":"HOOK","kind":"recap","narration":"Thẩm Lãng đứng trước dàn pháo, chuẩn bị ra lệnh bắn vào Cầu Đao Nhi."},
+    {"panel":"p003.jpg","type":"BUILD","kind":"recap","narration":"Hắn hiểu loại đạn này chưa chắc giết được nàng, nhưng vẫn có thể gây thương tích nặng."},
+    {"panel":"p006.jpg","type":"BUILD","kind":"recap","narration":"Từ trên thành, có người liên tục kêu gọi Thẩm Lãng đừng xuống tay."},
+    {"panel":"p012.jpg","type":"BUILD","kind":"recap","narration":"Cầu Đao Nhi đứng giữa vòng vây, không lùi bước dù biết pháo có thể nổ bất cứ lúc nào."},
+    {"panel":"p020.jpg","type":"BUILD","kind":"commentary","narration":"Đây không còn là cuộc đấu sức đơn thuần: quyết định của Thẩm Lãng sẽ ảnh hưởng tới lòng tin và quan hệ giữa các phe."},
+    {"panel":"p028.jpg","type":"BUILD","kind":"recap","narration":"Hắn đếm ngược, buộc mọi người phải nhìn thẳng vào lựa chọn của mình."},
+    {"panel":"p039.jpg","type":"BUILD","kind":"recap","narration":"Pháo được châm ngòi, khói bụi bùng lên trước mắt những người đang nín thở."},
+    {"panel":"p058.jpg","type":"ENDING","kind":"recap","narration":"Khi bụi tan, không ai biết Cầu Đao Nhi còn đứng vững hay không."}
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "title": "Thanh Mãng Lân Dịch đối đầu Ôn Dương Đan!?",
+  "chapters": "167",
+  "source_dir": "manhua-recap/dqgl_ep167",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-21",
+  "description": "Thanh Mãng Lân Dịch đối đầu Ôn Dương Đan. Tóm tắt chương 167 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Thanh Mãng Lân Dịch đối đầu Ôn Dương Đan!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Một nguyên liệu độc tính cao được đưa ra, khiến các thí sinh phải tính toán kỹ trước khi phối dược.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p026",
+      "narration": "Thanh Mãng Lân Dịch trở thành tâm điểm khi được đặt cạnh Ôn Dương Đan, tạo ra phép thử đầy rủi ro.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p062",
+      "narration": "Cách xử lý nguyên liệu này có thể quyết định ai đủ sức bước tiếp trong cuộc thi.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

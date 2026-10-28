@@ -1,0 +1,76 @@
+{
+  "template": "manhua_recap_vi",
+  "title": "Đại Quản Gia Là Ma Hoàng | Tập 185–187: Trác Phàm nghịch chuyển!?",
+  "chapters": "185-187",
+  "source_dir": "manhua-recap/dqgl_ep185",
+  "written_by": "OpenAI, biên tập từ script từng tập, 2026-10-21",
+  "description": "Tóm tắt tập 185 đến 187 Đại Quản Gia Là Ma Hoàng. Trác Phàm đối đầu cao thủ và tìm cách xoay chuyển cục diện.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Lưu Đại Sư thừa nhận mình thua Trác Phàm!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep185/p001.jpg",
+      "narration": "Sau trận đồ rồng của Trác Phàm, Lưu Đại Sư buộc phải nhìn nhận khoảng cách giữa hai người.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep185/p025.jpg",
+      "narration": "Khuynh Thành và những người chứng kiến hiểu rằng màn so tài đã vượt xa một cuộc thi luyện đan bình thường.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep185/p061.jpg",
+      "narration": "Trác Phàm đã giành thế chủ động, nhưng những kẻ có mặt ở đây vẫn chưa định để hắn rời đi yên ổn.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep186/p001.jpg",
+      "narration": "Kết quả luyện đan làm dấy lên tranh cãi, rồi sự chú ý chuyển sang cuộc đối đầu giữa Trác Phàm và đối thủ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep186/p025.jpg",
+      "narration": "Trận pháp và sức mạnh của Trác Phàm áp đảo đối phương, khiến những người xung quanh không kịp can thiệp.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep186/p062.jpg",
+      "narration": "Một kẻ trong nhóm bị đánh trọng thương; cuộc thi đã hoàn toàn biến thành xung đột trực diện.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep187/p001.jpg",
+      "narration": "Sau khi chứng kiến đồng bọn thất thế, Lâm Tử Thiên không muốn người khác thay mình giải quyết Trác Phàm.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep187/p023.jpg",
+      "narration": "Hắn bước lên nhận phần đối đầu, xem đây là cơ hội khẳng định vị thế của mình.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep187/p059.jpg",
+      "narration": "Trác Phàm vẫn chưa coi Lâm Tử Thiên là đối thủ xứng tầm, khiến cuộc chạm trán càng thêm căng thẳng.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

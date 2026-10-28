@@ -1,0 +1,39 @@
+{
+  "title": "Bí mật chất độc trong cơ thể trưởng lão!?",
+  "chapters": "152",
+  "source_dir": "manhua-recap/dqgl_ep152",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-21",
+  "description": "Bí mật chất độc trong cơ thể trưởng lão. Tóm tắt chương 152 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Bí mật chất độc trong cơ thể trưởng lão!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Khuynh Thành giải thích vì sao trưởng lão phải tự phong ấn trong băng để kìm hãm độc tính đang ăn mòn cơ thể.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p018",
+      "narration": "Muốn cứu ông, họ cần tìm đúng phương thuốc và hiểu cách các luồng âm dương đang xung đột bên trong.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p045",
+      "narration": "Trác Phàm bắt đầu lần theo dấu vết của chất độc, nhưng phương thuốc tưởng đơn giản lại ẩn một vấn đề lớn hơn.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Cửu Thiên Nguy dùng trò nhục mạ, Thẩm Lãng mắc bẫy!?",
+  "chapters": "157",
+  "source_dir": "manhua-recap/crmn_ep158",
+  "description": "Cửu Thiên Nguy tìm cách kích động quân Kim gia bằng một màn sỉ nhục. Khi hải tặc bị dụ vào mỏ vàng, Thẩm Lãng chuẩn bị lật ngược tình thế.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "beats": [
+    {"panel":"p002.jpg","type":"HOOK","kind":"recap","narration":"Hải tặc phát hiện vàng liền chen nhau vào mỏ, còn Cửu Thiên Nguy vẫn chưa tung toàn bộ quân."},
+    {"panel":"p009.jpg","type":"BUILD","kind":"recap","narration":"Nàng hiểu quân mình đang có lợi thế về số lượng, khí thế và sức mạnh cá nhân."},
+    {"panel":"p016.jpg","type":"BUILD","kind":"recap","narration":"Đến tối, phe Cửu Thiên Nguy dựng một màn diễn nhắm vào Tô Bộ Bộ, Mộc Lan và Thẩm Lãng."},
+    {"panel":"p021.jpg","type":"BUILD","kind":"recap","narration":"Lời lẽ và hình ảnh trong màn diễn cố tình xúc phạm người nhà Kim gia, khiến những người chứng kiến nổi giận."},
+    {"panel":"p027.jpg","type":"BUILD","kind":"commentary","narration":"Đòn khích tướng này không nhằm thắng ngay trên chiến trường; nó muốn buộc đối thủ hành động theo cảm xúc."},
+    {"panel":"p034.jpg","type":"BUILD","kind":"recap","narration":"Sáng hôm sau, hải tặc tiếp tục tiến sâu vào mỏ, tin rằng họ có thể lấy vàng mà không gặp trở ngại."},
+    {"panel":"p042.jpg","type":"BUILD","kind":"recap","narration":"Nhưng Thẩm Lãng đã tính trước đường đi của chúng và bắt đầu triển khai kế hoạch trong đường hầm."},
+    {"panel":"p054.jpg","type":"ENDING","kind":"recap","narration":"Một tiếng động vang lên dưới lòng đất. Cánh cửa bẫy sắp khép lại quanh đám hải tặc."}
+  ]
+}

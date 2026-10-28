@@ -1,0 +1,39 @@
+{
+  "title": "Lưu Đại Sư nhận lời thách đấu của Trác Phàm!?",
+  "chapters": "165",
+  "source_dir": "manhua-recap/dqgl_ep165",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-21",
+  "description": "Lưu Đại Sư nhận lời thách đấu của Trác Phàm. Tóm tắt chương 165 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Lưu Đại Sư nhận lời thách đấu của Trác Phàm!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Trác Phàm tiếp tục ép Lưu Đại Sư chứng minh thực lực thay vì chỉ dựa vào danh tiếng.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p022",
+      "narration": "Hắn đưa ra điều kiện: nếu đánh ngã được mình thì Lưu sẽ được xem là đứng đầu.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p058",
+      "narration": "Lưu Đại Sư chấp nhận lời thách, mở màn cho cuộc đối đầu mà cả hội trường mong chờ.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

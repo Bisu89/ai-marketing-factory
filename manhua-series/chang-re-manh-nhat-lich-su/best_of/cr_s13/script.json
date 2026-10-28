@@ -1,0 +1,95 @@
+{
+  "title": "Đê vỡ trước khi kẻ thù kịp ra tay, Chúc Lan Đình ngã nhào khỏi vực vì mất tất cả!?",
+  "chapters": "113,114,115",
+  "source_dir": "manhua-recap/crmn_ep114",
+  "description": "Ngay sau lễ trao đảo Kim Sơn, Chúc Lan Đình và hải tặc Cửu Kiêu kéo quân đi phá đê trả thù, nhưng toán người của Thẩm Lãng đã âm thầm phá đê Lan Sơn trước, nhấn chìm toàn bộ cơ nghiệp trăm năm của hắn. Trên đường về, Thẩm Lãng hé lộ kế hoạch nuốt trọn vua hải tặc, còn Trương Sung độc lập nghĩ ra gần như đúng mưu kế ấy. Chúc Lan Đình, sau khi chứng kiến tất cả chìm trong biển nước, gục ngã bên bờ vực trong tuyệt vọng.\nReview Chàng Rể Mạnh Nhất Lịch Sử – Short best-of.",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "thumbnail": {
+    "text": "CƠ NGHIỆP TRĂM NĂM CHÌM TRONG NƯỚC!",
+    "prompt": "Vertical 9:16 anime-style: a devastated white-robed old noble standing at a cliff edge screaming over a flooded valley at night, floodwater glowing under lightning. No text, leave top 25% empty."
+  },
+  "beats": [
+    {
+      "panel": "crmn_ep114/p011.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Một tổ chức hàng trăm võ sĩ âm thầm kéo đến phá đê nhấn chìm cả một lãnh địa để trả thù — nhưng chúng không biết đối thủ đã ra tay trước."
+    },
+    {
+      "panel": "crmn_ep114/p011.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông tuyên bố tiếp: người giành thắng lợi cuối cùng trong trận chiến Kim Sơn chính là Huyền Vũ Bá tước phủ, gia tộc Kim thị. Từ hôm nay trở đi, quyền sở hữu của đảo Kim Sơn, vĩnh viễn thuộc về gia tộc Kim thị."
+    },
+    {
+      "panel": "crmn_ep114/p039.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ninh Khải cảnh báo: chiều hướng tất yếu, thuận xương diệt vong. Mặc dù nhà ngươi thắng lần này, nhưng e cũng không thể thay đổi được đại cục. Bây giờ khom lưng vẫn còn kịp, còn có thể bảo vệ người nhà. Nếu thật sự đợi đến ngày người chết ta sống, sẽ rách mặt nạ của nhau, chỉ e là đại họa sẽ ập xuống."
+    },
+    {
+      "panel": "crmn_ep114/p040.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng chắp tay đáp dứt khoát: cơ nghiệp của gia tộc là do tổ tiên truyền lại, không thể bị hủy hoại trong tay ta, thà làm ngọc vỡ, còn hơn ngói lành."
+    },
+    {
+      "panel": "crmn_ep114/p057.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một cảnh tượng tàn bạo hiện ra: một tên lính đang ghì chặt một nữ nhân bị trói, bê bết máu, gào lên hoảng loạn: ai!!"
+    },
+    {
+      "panel": "crmn_ep115/p013.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Vụ nổ bùng lên rực sáng cả một góc trời giữa cơn mưa."
+    },
+    {
+      "panel": "crmn_ep115/p021.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chúc Văn Đài gào lên tuyệt vọng: ông trời ơi, sao người lại đối xử với Chúc thị chúng ta như thế. Một người khác hét: phu nhân ngất xỉu rồi! Người đâu! Kẻ khác hờ hững: đâu cái rắm, mau chạy đi, còn không mau lên, ở đây cũng sẽ bị chôn vùi đấy!"
+    },
+    {
+      "panel": "crmn_ep115/p046.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng giải thích: bởi vì Trương Sung thì hết mực khuyên can Đường Luân từ bỏ đảo Kim Sơn, đồng thời sẽ tặng đảo Kim Sơn cho Cửu Thiên Nguy! Đảo Lôi Châu của Cửu Thiên Nguy thiếu sắt, trước giờ hắn vẫn luôn có được vũ khí nhờ làm ăn với Đường thị, bây giờ có cơ hội tranh giành đảo Kim Sơn, hắn tham lam thành thói chắc chắn sẽ không bỏ qua."
+    },
+    {
+      "panel": "crmn_ep115/p058.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng sải bước đầy tự tin, tuyên bố: đúng! Đây chính là kế hoạch hoàn chỉnh của con, một lần và mãi mãi, giải quyết nguy cơ của gia tộc ta!"
+    },
+    {
+      "panel": "crmn_ep116/p008.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Ông tự ví mình: nhưng Trương Sung ta chính là nước của sông Nộ, Huyền Vũ Bá tước phủ chỉ là một tảng đá trong nước mà thôi!"
+    },
+    {
+      "panel": "crmn_ep116/p028.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Hóa ra Trương Sung đã bí mật kí khế ước với vua hải tặc Cửu Thiên Nguy, tặng bảy phần của đảo Kim Sơn cho hắn, nhưng cần hắn phái binh cướp đảo Kim Sơn. Kim gia có được đảo Kim Sơn toàn vẹn, chắc chắn sẽ dồn lượng lớn nhân lực đóng giữ, đến lúc Cửu Thiên Nguy xâm chiếm, đại chiến với hắn chắc chắn sẽ khiến cả hai phải đổ giọt máu cuối cùng!"
+    },
+    {
+      "panel": "crmn_ep116/p047.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông gào lên tuyệt vọng giữa trời: a!!!! a!!!! a!!!!! Thẩm Lãng, con mẹ nhà ngươi! Thẩm Lãng, ta nhất định sẽ chém ngươi thành trăm mảnh, chém thành trăm mảnh..."
+    },
+    {
+      "panel": "crmn_ep116/p047.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Chúc Lan Đình gào lên tuyệt vọng trước cơ nghiệp trăm năm chìm trong biển nước, rồi ngã nhào khỏi vách núi, biến mất trong màn bụi trắng xóa phía dưới."
+    }
+  ]
+}

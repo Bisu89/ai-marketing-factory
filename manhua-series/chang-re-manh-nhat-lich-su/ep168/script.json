@@ -1,0 +1,17 @@
+{
+  "title": "Cửu Thiên Nguy bị phục kích, thân phận kẻ ra tay lộ diện!?",
+  "chapters": "167",
+  "source_dir": "manhua-recap/crmn_ep168",
+  "description": "Cửu Thiên Nguy cùng đoàn tùy tùng rơi vào một cuộc tập kích. Trong lúc nàng bị thương, những chuyện xảy ra ở Vọng Nhai khiến các phe tiếp tục nghi kỵ nhau.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "beats": [
+    {"panel":"p002.jpg","type":"HOOK","kind":"recap","narration":"Cửu Thiên Nguy bị phục kích trên đường, ngựa và tùy tùng liên tiếp trúng đòn."},
+    {"panel":"p009.jpg","type":"BUILD","kind":"recap","narration":"Nàng cố chống trả dù đang mang thai và cơ thể vẫn chưa hồi phục sau trận chiến."},
+    {"panel":"p017.jpg","type":"BUILD","kind":"recap","narration":"Kẻ ra tay không muốn giết nàng ngay, vì phía sau còn có thể lợi dụng nàng."},
+    {"panel":"p025.jpg","type":"BUILD","kind":"recap","narration":"Tin Cửu Thiên Nguy sống sót khiến Thẩm Lãng nghi ngờ có người đang âm thầm sắp đặt mọi việc."},
+    {"panel":"p033.jpg","type":"BUILD","kind":"commentary","narration":"Các phe đều dùng tin tức và con tin như quân cờ; một cuộc giải cứu cũng có thể là bước mở đầu cho âm mưu khác."},
+    {"panel":"p041.jpg","type":"BUILD","kind":"recap","narration":"Ở một nơi khác, Mộc Lan dẫn quân truy đuổi toán địch đang tìm cách rút lui."},
+    {"panel":"p049.jpg","type":"BUILD","kind":"recap","narration":"Nàng tung kiếm pháp áp đảo, buộc đối thủ phải tản ra để tránh bị bao vây."},
+    {"panel":"p055.jpg","type":"ENDING","kind":"recap","narration":"Cửu Thiên Nguy vẫn chưa rõ ai đứng sau vụ tập kích, còn Thẩm Lãng bắt đầu hướng sự chú ý về Nộ Triều Thành."}
+  ]
+}

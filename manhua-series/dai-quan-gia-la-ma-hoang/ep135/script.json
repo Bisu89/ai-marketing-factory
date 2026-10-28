@@ -1,0 +1,63 @@
+{
+  "title": "Độc Thủ Dược Vương xuất hiện, thế trận đảo chiều!?",
+  "chapters": "135",
+  "source_dir": "manhua-recap/dqgl_ep135",
+  "written_by": "OpenAI, ??i chi?u ?nh ngu?n, 2026-10-20",
+  "description": "Độc Thủ Dược Vương xuất hiện, thế trận đảo chiều. Tóm tắt chương 135 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Độc Thủ Dược Vương xuất hiện, thế trận đảo chiều!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p002",
+      "narration": "Lão nhân vừa xuất hiện đã được nhận ra là Độc Thủ Dược Vương.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p014",
+      "narration": "Sự có mặt của ông khiến cuộc đối đầu giữa Hoa Vũ Lâu và Nghiêm Tông đổi chiều.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p024",
+      "narration": "Trác Phàm nhận thấy cơ hội, nhưng vẫn dè chừng thực lực của các cao thủ quanh mình.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "p035",
+      "narration": "Bích Độc Ngọc Dịch trở thành món đồ khiến mọi người phải tính toán lại lợi ích.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p047",
+      "narration": "Sở Khuynh Thành cân nhắc liên thủ với Trác Phàm để bảo vệ Hoa Vũ Lâu.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p062",
+      "narration": "Độc Thủ Dược Vương hỏi thẳng liệu Trác Phàm có thể đối phó kẻ thù hay không.",
+      "kind": "commentary",
+      "type": "REVEAL"
+    },
+    {
+      "panel": "p075",
+      "narration": "Một cao thủ khác bước ra chào Độc Thủ Dược Vương; cuộc tụ hội càng lúc càng căng.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

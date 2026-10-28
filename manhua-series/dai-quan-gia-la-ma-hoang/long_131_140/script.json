@@ -1,0 +1,452 @@
+{
+  "template": "manhua_recap_long_vi",
+  "title": "Trác Phàm khuấy động Hoa Vũ Lâu, Đế Vương Môn kéo đến!?",
+  "chapters": "131-140",
+  "source_dir": "manhua-recap/dqgl_ep131",
+  "written_by": "Biên tập từ ep131-ep140, 2026-10-20",
+  "description": "Từ cuộc đột nhập Hộ Bảo Các đến màn chạm trán Đế Vương Môn, Trác Phàm liên tiếp bị cuốn vào những âm mưu quanh Hoa Vũ Lâu. Tóm tắt chương 131 đến 140, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Mẫu Đơn lỡ miệng nói thích Trác Phàm!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep131/p001.jpg",
+      "narration": "Trác Phàm vừa ra tay đã khiến kẻ gây sự với Đan Đan phải gục xuống.",
+      "kind": "recap",
+      "type": "HOOK",
+      "section": "Tập 131: Mẫu Đơn lỡ miệng nói thích Trác Phàm!?"
+    },
+    {
+      "panel": "dqgl_ep131/p008.jpg",
+      "narration": "Tiểu Tử Thời trách hắn gây náo động, nhưng Trác Phàm vẫn quay lại lo việc đang làm.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep131/p018.jpg",
+      "narration": "Mẫu Đơn xuất hiện. Lâm trưởng lão lập tức bị vẻ ngoài của nàng làm cho mất bình tĩnh.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep131/p028.jpg",
+      "narration": "Nàng không tin những lời đường mật; với nàng, phải nhìn vào hành động.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "dqgl_ep131/p041.jpg",
+      "narration": "Đan Đan thú nhận nàng muốn gặp một người thật lòng, dám liều mạng vì mình.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep131/p054.jpg",
+      "narration": "Mẫu Đơn nói Trác Phàm có lẽ là ngoại lệ, dù chính nàng cũng chưa từng gặp hắn.",
+      "kind": "commentary",
+      "type": "REVEAL"
+    },
+    {
+      "panel": "dqgl_ep131/p066.jpg",
+      "narration": "Khi bị hỏi có thích Trác Phàm không, Mẫu Đơn vừa đáp “thích” thì hắn nghe thấy.",
+      "kind": "recap",
+      "type": "ENDING"
+    },
+    {
+      "panel": "dqgl_ep132/p001.jpg",
+      "narration": "Sau cuộc náo loạn, Trác Phàm chuyển mục tiêu sang Hộ Bảo Các của Hoa Vũ Lâu.",
+      "kind": "recap",
+      "type": "HOOK",
+      "section": "Tập 132: Trác Phàm đột nhập Hộ Bảo Các, gặp cao thủ tóc trắng!?"
+    },
+    {
+      "panel": "dqgl_ep132/p012.jpg",
+      "narration": "Mẫu Đơn dặn Đan Đan đừng đánh đồng tất cả đàn ông với kẻ xấu.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "dqgl_ep132/p019.jpg",
+      "narration": "Trác Phàm phát hiện một trận phong ấn bí mật không có trên bản đồ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep132/p026.jpg",
+      "narration": "Hắn đoán bên trong đang giấu thứ quan trọng nên tìm cách vượt qua cấm chế.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep132/p034.jpg",
+      "narration": "Trong hộp là Bích Độc Tụ Cầm, nhưng nó khiến Trác Phàm nhớ đến một vật khác.",
+      "kind": "recap",
+      "type": "REVEAL"
+    },
+    {
+      "panel": "dqgl_ep132/p044.jpg",
+      "narration": "Hắn nghi món đồ trước mắt chỉ là mồi nhử, còn kẻ trộm đang nhắm vào bảo vật thật.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep132/p055.jpg",
+      "narration": "Động tĩnh báo động vang lên, một cao thủ tóc trắng xuất hiện chặn đường hắn.",
+      "kind": "recap",
+      "type": "ENDING"
+    },
+    {
+      "panel": "dqgl_ep133/p003.jpg",
+      "narration": "Nữ cao thủ tóc trắng lập tức tấn công kẻ đột nhập, nhưng Trác Phàm né được.",
+      "kind": "recap",
+      "type": "HOOK",
+      "section": "Tập 133: Trác Phàm bị gài bẫy vì Bích Độc Ngọc Dịch!?"
+    },
+    {
+      "panel": "dqgl_ep133/p016.jpg",
+      "narration": "Hắn nhận ra đối phương không phải người có thể xem thường, liền tìm cách rút lui.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep133/p032.jpg",
+      "narration": "Bích Độc Tụ Cầm được giấu trong hộp, nhưng Trác Phàm vẫn chưa tin vật này là thật.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep133/p050.jpg",
+      "narration": "Khi bị chặn lại, hắn giả vờ trộm món đồ để nói mình chỉ đến xem thử.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep133/p066.jpg",
+      "narration": "Trưởng lão Nghiêm Tông nhận ra bảo vật là đồ giả rồi quay sang nghi ngờ Trác Phàm.",
+      "kind": "recap",
+      "type": "REVEAL"
+    },
+    {
+      "panel": "dqgl_ep133/p074.jpg",
+      "narration": "Trác Phàm hiểu đây là cái bẫy: kẻ đứng sau muốn ép hắn lộ Bích Độc Ngọc Dịch thật.",
+      "kind": "commentary",
+      "type": "REVEAL"
+    },
+    {
+      "panel": "dqgl_ep133/p083.jpg",
+      "narration": "Hai bên giao thủ dữ dội. Nghiêm Tông đã đổ máu, nhưng trận chiến chưa ngã ngũ.",
+      "kind": "recap",
+      "type": "ENDING"
+    },
+    {
+      "panel": "dqgl_ep134/p002.jpg",
+      "narration": "Sau đòn vừa rồi, Nghiêm Tông vẫn ngang nhiên thách thức Trác Phàm.",
+      "kind": "recap",
+      "type": "HOOK",
+      "section": "Tập 134: Sở Khuynh Thành quyết chiến Nghiêm Tông!?"
+    },
+    {
+      "panel": "dqgl_ep134/p010.jpg",
+      "narration": "Trác Phàm không nhận mình là lâu chủ Thanh Hoa Lâu, còn cho rằng đối phương nói nhầm.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep134/p018.jpg",
+      "narration": "Nghiêm Tông chuyển sang uy hiếp Sở Khuynh Thành bằng tính mạng người thân của nàng.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep134/p027.jpg",
+      "narration": "Sở Khuynh Thành nhớ lời dặn và quyết không để Hoa Vũ Lâu bị ép buộc.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "dqgl_ep134/p038.jpg",
+      "narration": "Nàng trực tiếp giao chiến với Nghiêm Tông, liên tiếp chiếm thế thượng phong.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep134/p063.jpg",
+      "narration": "Nghiêm Tông bị đánh trọng thương nhưng vẫn cố khuyên nàng đầu hàng.",
+      "kind": "recap",
+      "type": "REVEAL"
+    },
+    {
+      "panel": "dqgl_ep134/p071.jpg",
+      "narration": "Một lão nhân bất ngờ xuất hiện trước khi cuộc đối đầu kết thúc.",
+      "kind": "recap",
+      "type": "ENDING"
+    },
+    {
+      "panel": "dqgl_ep135/p002.jpg",
+      "narration": "Lão nhân vừa xuất hiện đã được nhận ra là Độc Thủ Dược Vương.",
+      "kind": "recap",
+      "type": "HOOK",
+      "section": "Tập 135: Độc Thủ Dược Vương xuất hiện, thế trận đảo chiều!?"
+    },
+    {
+      "panel": "dqgl_ep135/p014.jpg",
+      "narration": "Sự có mặt của ông khiến cuộc đối đầu giữa Hoa Vũ Lâu và Nghiêm Tông đổi chiều.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep135/p024.jpg",
+      "narration": "Trác Phàm nhận thấy cơ hội, nhưng vẫn dè chừng thực lực của các cao thủ quanh mình.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "dqgl_ep135/p035.jpg",
+      "narration": "Bích Độc Ngọc Dịch trở thành món đồ khiến mọi người phải tính toán lại lợi ích.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep135/p047.jpg",
+      "narration": "Sở Khuynh Thành cân nhắc liên thủ với Trác Phàm để bảo vệ Hoa Vũ Lâu.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep135/p062.jpg",
+      "narration": "Độc Thủ Dược Vương hỏi thẳng liệu Trác Phàm có thể đối phó kẻ thù hay không.",
+      "kind": "commentary",
+      "type": "REVEAL"
+    },
+    {
+      "panel": "dqgl_ep135/p075.jpg",
+      "narration": "Một cao thủ khác bước ra chào Độc Thủ Dược Vương; cuộc tụ hội càng lúc càng căng.",
+      "kind": "recap",
+      "type": "ENDING"
+    },
+    {
+      "panel": "dqgl_ep136/p001.jpg",
+      "narration": "Người mới đến là Thần Nhãn Long Cửu, đối thủ cũ của Độc Thủ Dược Vương.",
+      "kind": "recap",
+      "type": "HOOK",
+      "section": "Tập 136: Long Cửu đối đầu Độc Thủ Dược Vương!?"
+    },
+    {
+      "panel": "dqgl_ep136/p010.jpg",
+      "narration": "Long Cửu nhắc lại danh hiệu năm xưa, khẳng định mình chẳng cần sợ đối thủ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep136/p023.jpg",
+      "narration": "Ông yêu cầu Độc Thủ Dược Vương đừng gây chuyện tại Hoa Vũ Lâu.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep136/p031.jpg",
+      "narration": "Sở Khuynh Thành lên tiếng bảo vệ Trác Phàm vì hắn đã cứu người của nàng.",
+      "kind": "recap",
+      "type": "REACTION"
+    },
+    {
+      "panel": "dqgl_ep136/p040.jpg",
+      "narration": "Mọi chuyện tạm lắng, nhưng dấu vết lạ trên vật phẩm vẫn khiến Trác Phàm lưu tâm.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep136/p052.jpg",
+      "narration": "Các cô gái bàn về sức mạnh và sự quyết đoán khác thường của Trác Phàm.",
+      "kind": "commentary",
+      "type": "REVEAL"
+    },
+    {
+      "panel": "dqgl_ep136/p075.jpg",
+      "narration": "Họ nhất quyết kéo hắn về Hoa Vũ Lâu; Trác Phàm đành miễn cưỡng đi theo.",
+      "kind": "recap",
+      "type": "ENDING"
+    },
+    {
+      "panel": "dqgl_ep137/p001.jpg",
+      "narration": "Vừa đến Hoa Vũ Lâu, Trác Phàm đã thấy các cô gái nhấn mạnh chuyện ẩn tình.",
+      "kind": "recap",
+      "type": "HOOK",
+      "section": "Tập 137: Mẫu Đơn nhờ Trác Phàm tìm kẻ trộm bảo vật!?"
+    },
+    {
+      "panel": "dqgl_ep137/p010.jpg",
+      "narration": "Mẫu Đơn trách hắn xuất hiện ở đây, còn Đan Đan thì chẳng giấu nổi vẻ vui mừng.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep137/p018.jpg",
+      "narration": "Trác Phàm trêu Mẫu Đơn, khiến cuộc trò chuyện nhanh chóng thành màn đấu khẩu.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "dqgl_ep137/p027.jpg",
+      "narration": "Mẫu Đơn nói hắn là người đầu tiên dám liều mạng cứu một cô gái.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep137/p038.jpg",
+      "narration": "Sở Khuynh Thành nhắc Hộ Bảo Các vừa bị trộm, món đồ mất tích là bảo vật quý.",
+      "kind": "recap",
+      "type": "REVEAL"
+    },
+    {
+      "panel": "dqgl_ep137/p052.jpg",
+      "narration": "Trác Phàm nhận ra Mẫu Đơn từng nghi ngờ hắn, nhưng vẫn nhờ hắn tìm món đồ.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep137/p063.jpg",
+      "narration": "Cô ấy giả vờ dùng vụ trộm để lần ra kẻ chủ mưu; Trác Phàm chỉ mỉm cười trước kế hoạch ấy.",
+      "kind": "recap",
+      "type": "ENDING"
+    },
+    {
+      "panel": "dqgl_ep138/p001.jpg",
+      "narration": "Trác Phàm hiểu Mẫu Đơn nhờ mình trộm món đồ giả để tránh bị đổ tội.",
+      "kind": "recap",
+      "type": "HOOK",
+      "section": "Tập 138: Bích Độc Tụ Cầm phát sáng, bí mật sắp lộ!?"
+    },
+    {
+      "panel": "dqgl_ep138/p010.jpg",
+      "narration": "Hắn còn đùa rằng mình suýt nghĩ đến chuyện giết người cướp bảo vật thật.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "dqgl_ep138/p018.jpg",
+      "narration": "Mẫu Đơn mời Trác Phàm đến Hoa Vũ Lâu, nơi nàng cần thêm người đáng tin cậy.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep138/p026.jpg",
+      "narration": "Trác Phàm nhận ra trong số các thế lực sắp tới có Đế Vương Môn.",
+      "kind": "recap",
+      "type": "REVEAL"
+    },
+    {
+      "panel": "dqgl_ep138/p034.jpg",
+      "narration": "Tin Đế Vương Môn xuất hiện khiến các cô gái lo ngại: họ được xem là thế gia mạnh nhất.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep138/p039.jpg",
+      "narration": "Bích Độc Tụ Cầm phát sáng, như thể món đồ ấy còn giấu một bí mật sống động.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep138/p046.jpg",
+      "narration": "Trác Phàm quyết định đi cùng Mẫu Đơn, dù biết chuyến này có thể kéo theo rắc rối.",
+      "kind": "recap",
+      "type": "ENDING"
+    },
+    {
+      "panel": "dqgl_ep139/p001.jpg",
+      "narration": "Trác Phàm tự nhắc mình rằng cướp đoạt cũng chẳng có gì phải tiếc nuối.",
+      "kind": "recap",
+      "type": "HOOK",
+      "section": "Tập 139: Hoàng Phủ Thanh Vân kéo cao thủ đến Hoa Vũ Lâu!?"
+    },
+    {
+      "panel": "dqgl_ep139/p005.jpg",
+      "narration": "Trên đường đến Hoa Vũ Lâu, hắn nhận thấy hôm nay nơi này yên ắng bất thường.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep139/p012.jpg",
+      "narration": "Đan Đan bất ngờ lao tới; Trác Phàm đỡ nàng trước khi cô ngã xuống.",
+      "kind": "recap",
+      "type": "REACTION"
+    },
+    {
+      "panel": "dqgl_ep139/p021.jpg",
+      "narration": "Đan Đan nói Hoàng Phủ Thanh Vân đã đến, khiến Trác Phàm lập tức chú ý.",
+      "kind": "recap",
+      "type": "REVEAL"
+    },
+    {
+      "panel": "dqgl_ep139/p024.jpg",
+      "narration": "Nàng nhắc đến Thanh Mai Trúc Mã và chuyện Độc Thủ Dược Vương cũng không dám làm càn.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep139/p039.jpg",
+      "narration": "Trác Phàm cho rằng còn có thế lực khác đứng sau nên không thể lơ là.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep139/p062.jpg",
+      "narration": "Hoàng Phủ Thanh Vân đến cùng các cao thủ; khí thế của đoàn khách khiến Trác Phàm cảnh giác.",
+      "kind": "recap",
+      "type": "ENDING"
+    },
+    {
+      "panel": "dqgl_ep140/p001.jpg",
+      "narration": "Hoàng Phủ Thanh Vân tự nhận là con rể của Hoa Vũ Lâu, khiến Mẫu Đơn ngạc nhiên.",
+      "kind": "recap",
+      "type": "HOOK",
+      "section": "Tập 140: Trác Phàm khiến Đế Vương Môn phải im lặng!?"
+    },
+    {
+      "panel": "dqgl_ep140/p006.jpg",
+      "narration": "Các trưởng lão Đế Vương Môn nhìn Trác Phàm như kẻ ngang nhiên tán tỉnh chủ lâu.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "dqgl_ep140/p013.jpg",
+      "narration": "Thiên Dương bị nhắc nhở vì tính cách quá thẳng, còn Trác Phàm vẫn bình thản.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep140/p027.jpg",
+      "narration": "Trác Phàm nhớ lại cảm giác bất lực của Ngưng Nhi, nhưng không muốn để chuyện cũ cản bước.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "dqgl_ep140/p036.jpg",
+      "narration": "Đan Đan hỏi chuyện Trác Phàm; hắn chỉ đáp ngắn gọn rồi bước đi.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep140/p050.jpg",
+      "narration": "Hoàng Phủ Thanh Vân chỉ vào bàn trống và công khai tỏ vẻ bất mãn với cách tiếp đãi.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep140/p063.jpg",
+      "narration": "Khi Hoàng Phủ Thanh Vân bị áp chế, cả hội trường sững sờ trước khí thế của Trác Phàm.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

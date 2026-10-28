@@ -1,0 +1,63 @@
+{
+  "title": "Trác Phàm khiến Đế Vương Môn phải im lặng!?",
+  "chapters": "140",
+  "source_dir": "manhua-recap/dqgl_ep140",
+  "written_by": "OpenAI, ??i chi?u ?nh ngu?n, 2026-10-20",
+  "description": "Trác Phàm khiến Đế Vương Môn phải im lặng. Tóm tắt chương 140 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Trác Phàm khiến Đế Vương Môn phải im lặng!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Hoàng Phủ Thanh Vân tự nhận là con rể của Hoa Vũ Lâu, khiến Mẫu Đơn ngạc nhiên.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p006",
+      "narration": "Các trưởng lão Đế Vương Môn nhìn Trác Phàm như kẻ ngang nhiên tán tỉnh chủ lâu.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "p013",
+      "narration": "Thiên Dương bị nhắc nhở vì tính cách quá thẳng, còn Trác Phàm vẫn bình thản.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p027",
+      "narration": "Trác Phàm nhớ lại cảm giác bất lực của Ngưng Nhi, nhưng không muốn để chuyện cũ cản bước.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "p036",
+      "narration": "Đan Đan hỏi chuyện Trác Phàm; hắn chỉ đáp ngắn gọn rồi bước đi.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p050",
+      "narration": "Hoàng Phủ Thanh Vân chỉ vào bàn trống và công khai tỏ vẻ bất mãn với cách tiếp đãi.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p063",
+      "narration": "Khi Hoàng Phủ Thanh Vân bị áp chế, cả hội trường sững sờ trước khí thế của Trác Phàm.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

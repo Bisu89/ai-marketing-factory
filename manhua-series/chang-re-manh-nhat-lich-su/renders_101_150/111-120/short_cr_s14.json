@@ -1,0 +1,219 @@
+{
+  "project_id": 305,
+  "factory_run_id": 355,
+  "render_job_id": 356,
+  "range": "111-120",
+  "script": "manhua-series/chang-re-manh-nhat-lich-su/best_of/cr_s14/script.json",
+  "package": {
+    "title": "Sát thủ mạnh nhất Việt Quốc nhận đơn một vạn vàng, không ngờ đối đầu K",
+    "description": "Từ Thiên Thiên và Trương Xuân Hoa cùng lên đường tiếp cận phe vua hải tặc, mỗi người mang một sứ mệnh riêng. Giữa lúc đó, Nam Hải Kiếm Vương Lý Thiên Thu bắt Thẩm Lãng đi để giải mã kiếm phổ bị đánh cắp. Chúc Lan Đình, kẻ sống sót sau trận lũ, đổ hết một vạn tiền vàng thuê sát thủ mạnh nhất Việt Quốc giết Thẩm Lãng — nhưng không ngờ lão phu xe già bên cạnh chính là Kiếm Vương cải trang, một mình quét sạch cả đội sát thủ.\nReview Chàng Rể Mạnh Nhất Lịch Sử – Short best-of.",
+    "hashtags": [
+      "#ChangReManhNhatLichSu",
+      "#ReviewManhua",
+      "#XuyenKhong"
+    ],
+    "language": "vi",
+    "category": "general",
+    "platform_profile": "general",
+    "duration": 77.89,
+    "width": 1080,
+    "height": 1920,
+    "aspect_ratio": "9:16",
+    "thumbnail_path": "data\\library\\_video_composer\\job_356_Chàng Rể - Short B14 (111-120)\\output\\thumbnail.jpg",
+    "video_path": "data\\library\\_video_composer\\job_356_Chàng Rể - Short B14 (111-120)\\output\\Chàng Rể - Short B14 (111-120).mp4",
+    "thumbnail_media_url": "/media/_video_composer/job_356_Chàng Rể - Short B14 (111-120)/output/thumbnail.jpg",
+    "video_media_url": "/media/_video_composer/job_356_Chàng Rể - Short B14 (111-120)/output/Chàng Rể - Short B14 (111-120).mp4",
+    "manual_title": "Sát thủ mạnh nhất Việt Quốc nhận đơn một vạn vàng, không ngờ đối đầu K",
+    "manual_description": "Từ Thiên Thiên và Trương Xuân Hoa cùng lên đường tiếp cận phe vua hải tặc, mỗi người mang một sứ mệnh riêng. Giữa lúc đó, Nam Hải Kiếm Vương Lý Thiên Thu bắt Thẩm Lãng đi để giải mã kiếm phổ bị đánh cắp. Chúc Lan Đình, kẻ sống sót sau trận lũ, đổ hết một vạn tiền vàng thuê sát thủ mạnh nhất Việt Quốc giết Thẩm Lãng — nhưng không ngờ lão phu xe già bên cạnh chính là Kiếm Vương cải trang, một mình quét sạch cả đội sát thủ.\nReview Chàng Rể Mạnh Nhất Lịch Sử – Short best-of.",
+    "manual_hashtags": [
+      "#ChangReManhNhatLichSu",
+      "#ReviewManhua",
+      "#XuyenKhong"
+    ],
+    "is_complete": true
+  },
+  "final_qa": {
+    "project_id": 305,
+    "report": {
+      "status": "PASS",
+      "score": 100,
+      "checks": [
+        {
+          "name": "package_complete",
+          "code": "PACKAGE_INCOMPLETE",
+          "status": "PASS",
+          "severity": "info",
+          "message": "Package is complete.",
+          "actual": null,
+          "expected": null,
+          "repair_stage": null
+        },
+        {
+          "name": "final_video_exists",
+          "code": "FINAL_VIDEO_MISSING",
+          "status": "PASS",
+          "severity": "info",
+          "message": "final.mp4 exists and is non-empty.",
+          "actual": null,
+          "expected": null,
+          "repair_stage": null
+        },
+        {
+          "name": "stream_counts",
+          "code": "FINAL_STREAM_INVALID",
+          "status": "PASS",
+          "severity": "info",
+          "message": "Exactly 1 video + 1 audio stream.",
+          "actual": null,
+          "expected": null,
+          "repair_stage": null
+        },
+        {
+          "name": "resolution",
+          "code": "FINAL_RESOLUTION_MISMATCH",
+          "status": "PASS",
+          "severity": "info",
+          "message": "Resolution matches configuration.",
+          "actual": null,
+          "expected": null,
+          "repair_stage": null
+        },
+        {
+          "name": "fps",
+          "code": "FINAL_FPS_MISMATCH",
+          "status": "PASS",
+          "severity": "info",
+          "message": "FPS matches configuration.",
+          "actual": null,
+          "expected": null,
+          "repair_stage": null
+        },
+        {
+          "name": "duration",
+          "code": "FINAL_DURATION_MISMATCH",
+          "status": "PASS",
+          "severity": "info",
+          "message": "Duration matches the expected source.",
+          "actual": null,
+          "expected": null,
+          "repair_stage": null
+        },
+        {
+          "name": "audio_silence",
+          "code": "AUDIO_SILENT",
+          "status": "PASS",
+          "severity": "info",
+          "message": "Final audio is not silent.",
+          "actual": null,
+          "expected": null,
+          "repair_stage": null
+        },
+        {
+          "name": "audio_clipping",
+          "code": "AUDIO_CLIPPING",
+          "status": "PASS",
+          "severity": "info",
+          "message": "Final audio peak is within the configured ceiling.",
+          "actual": null,
+          "expected": null,
+          "repair_stage": null
+        },
+        {
+          "name": "thumbnail_valid",
+          "code": "THUMBNAIL_INVALID",
+          "status": "PASS",
+          "severity": "info",
+          "message": "Thumbnail exists with the correct dimensions.",
+          "actual": null,
+          "expected": null,
+          "repair_stage": null
+        },
+        {
+          "name": "thumbnail_quality",
+          "code": "THUMBNAIL_LOW_QUALITY",
+          "status": "PASS",
+          "severity": "info",
+          "message": "Thumbnail passes technical quality checks.",
+          "actual": null,
+          "expected": null,
+          "repair_stage": null
+        },
+        {
+          "name": "metadata_valid",
+          "code": "METADATA_INVALID",
+          "status": "PASS",
+          "severity": "info",
+          "message": "metadata.json is present, parses, and has required fields.",
+          "actual": null,
+          "expected": null,
+          "repair_stage": null
+        },
+        {
+          "name": "captions_valid",
+          "code": "CAPTIONS_INVALID",
+          "status": "PASS",
+          "severity": "info",
+          "message": "470 caption lines, valid ASS.",
+          "actual": null,
+          "expected": null,
+          "repair_stage": null
+        },
+        {
+          "name": "captions_timing",
+          "code": "CAPTIONS_TIMING_INVALID",
+          "status": "PASS",
+          "severity": "info",
+          "message": "All captions end within the video's duration.",
+          "actual": null,
+          "expected": null,
+          "repair_stage": null
+        },
+        {
+          "name": "beat_completeness",
+          "code": "BEAT_ARTIFACT_MISSING",
+          "status": "PASS",
+          "severity": "info",
+          "message": "Every beat has a valid, complete artifact.",
+          "actual": null,
+          "expected": null,
+          "repair_stage": null
+        },
+        {
+          "name": "dependency_freshness_audio",
+          "code": "STALE_DEPENDENCY",
+          "status": "PASS",
+          "severity": "info",
+          "message": "final.mp4 is at least as new as Audio Master.",
+          "actual": null,
+          "expected": null,
+          "repair_stage": null
+        },
+        {
+          "name": "dependency_freshness_captions",
+          "code": "STALE_DEPENDENCY",
+          "status": "PASS",
+          "severity": "info",
+          "message": "final.mp4 is at least as new as Captions.",
+          "actual": null,
+          "expected": null,
+          "repair_stage": null
+        },
+        {
+          "name": "package_version",
+          "code": "STALE_PACKAGE_VERSION",
+          "status": "PASS",
+          "severity": "info",
+          "message": "Package engine version is current.",
+          "actual": null,
+          "expected": null,
+          "repair_stage": null
+        }
+      ],
+      "project_id": 305,
+      "pipeline_version": "final-qa-v1",
+      "started_at": "2026-10-20T09:44:59.632602+00:00",
+      "completed_at": "2026-10-20T09:44:59.633693+00:00"
+    }
+  },
+  "video": "renders_101_150/111-120/short_cr_s14.mp4"
+}

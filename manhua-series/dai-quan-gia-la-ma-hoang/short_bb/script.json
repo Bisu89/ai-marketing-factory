@@ -1,0 +1,76 @@
+{
+  "template": "manhua_recap_vi",
+  "title": "Đại Quản Gia Là Ma Hoàng | Tập 188–190: Trác Phàm nghịch chuyển!?",
+  "chapters": "188-190",
+  "source_dir": "manhua-recap/dqgl_ep188",
+  "written_by": "OpenAI, biên tập từ script từng tập, 2026-10-21",
+  "description": "Tóm tắt tập 188 đến 190 Đại Quản Gia Là Ma Hoàng. Trác Phàm đối đầu cao thủ và tìm cách xoay chuyển cục diện.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Trác Phàm đối mặt nhóm cao thủ Đế Vương Môn!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep188/p001.jpg",
+      "narration": "Những cao thủ Đế Vương Môn bao vây Trác Phàm sau màn náo loạn ở cuộc thi.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep188/p024.jpg",
+      "narration": "Trác Phàm không lùi bước, còn các đối thủ chuẩn bị tung ra đòn tấn công phối hợp.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep188/p060.jpg",
+      "narration": "Khoảng cách giữa hai bên chỉ còn một đòn mở màn, và Trác Phàm đã sẵn sàng nghênh chiến.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep189/p001.jpg",
+      "narration": "Trác Phàm công khai coi thường những kẻ đuổi theo mình, khiến các trưởng lão càng thêm phẫn nộ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep189/p022.jpg",
+      "narration": "Lâm Tử Thiên và các cao thủ tranh nhau ra tay, nhưng Trác Phàm chỉ xem họ như chướng ngại.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep189/p059.jpg",
+      "narration": "Khi đối thủ hỏi hắn đang nhắm đến ai, Trác Phàm đã có câu trả lời bằng hành động.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep190/p001.jpg",
+      "narration": "Trác Phàm thừa nhận mình đã đánh giá thấp đối thủ, nhưng vẻ mặt bình thản cho thấy hắn chưa hề nao núng.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep190/p023.jpg",
+      "narration": "Lâm trưởng lão bùng phát sức mạnh và lao vào tấn công; Trác Phàm đáp trả bằng khí thế đỏ rực.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep190/p073.jpg",
+      "narration": "Sau màn giao phong dữ dội, Trác Phàm tuyên bố sẽ khiến đối phương phải trả giá, đẩy trận chiến sang nấc mới.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

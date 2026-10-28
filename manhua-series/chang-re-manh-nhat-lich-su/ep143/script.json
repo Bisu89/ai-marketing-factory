@@ -1,0 +1,283 @@
+{
+  "title": "Cửu Yêu Nhi tỉnh dậy, còn Kim Mộc Lan mất chồng?",
+  "chapters": "142",
+  "source_dir": "manhua-recap/crmn_ep143",
+  "description": "T?p 143 c?a Ch?ng R? M?nh Nh?t L?ch S?: Cửu Yêu Nhi tỉnh dậy, còn Kim Mộc Lan mất chồng?",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "beats": [
+    {
+      "panel": "p002.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Kim Mộc Lan trở về, nhưng Kim Gia lại vắng bóng nhiều ngày."
+    },
+    {
+      "panel": "p003.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Nàng mệt mỏi đến mức còn phải lo giữ nhan sắc."
+    },
+    {
+      "panel": "p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một chiếc lá xanh trên đầu khiến nàng bắt đầu nghi ngờ."
+    },
+    {
+      "panel": "p006.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Vì trời đông, chiếc lá ấy rõ ràng không thể tự rơi xuống."
+    },
+    {
+      "panel": "p007.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Mình thích chi tiết này: Kim Mộc Lan soi dấu vết nhỏ cực nhanh."
+    },
+    {
+      "panel": "p009.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Cuối cùng nàng nghe tin Kim Gia đã đến Nộ Triều Thành."
+    },
+    {
+      "panel": "p010.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nàng lập tức lo lắng vì nơi đó vô cùng nguy hiểm."
+    },
+    {
+      "panel": "p011.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Mình đoán nàng không chỉ lo cho chồng, mà còn sắp ghen nữa."
+    },
+    {
+      "panel": "p012.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Kim Gia đi cứu Cửu Yêu Nhi đang nguy kịch."
+    },
+    {
+      "panel": "p013.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Kim Mộc Lan hoảng hốt, nhất quyết phải đuổi theo."
+    },
+    {
+      "panel": "p014.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Phản ứng này cho thấy nàng tin Kim Gia, nhưng không tin phụ nữ khác."
+    },
+    {
+      "panel": "p016.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Tại Nộ Triều Thành, phụ vương Cửu Yêu Nhi bị hỏi tội."
+    },
+    {
+      "panel": "p018.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Ông khẳng định con gái chỉ mê chiến đấu, chẳng ham quyền lực."
+    },
+    {
+      "panel": "p019.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Tên thuộc hạ vẫn muốn giết nàng để chiếm đảo."
+    },
+    {
+      "panel": "p020.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Mình thấy hắn đúng kiểu phản diện tự tin quá mức, nói gì cũng lộ."
+    },
+    {
+      "panel": "p022.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Phụ vương từ chối, vì chỉ Cửu Yêu Nhi mới giữ đảo an toàn."
+    },
+    {
+      "panel": "p023.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Đây là lý do nàng không thể chết: quyền lực nằm ở chính năng lực chữa trị."
+    },
+    {
+      "panel": "p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông sai con trai dò tìm mỏ khoáng rồi báo về."
+    },
+    {
+      "panel": "p026.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Kế hoạch là đàm phán đổi nửa mỏ lấy hòa bình."
+    },
+    {
+      "panel": "p027.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Nhưng tên thuộc hạ lại tính diệt Kim Mộc Lan để chiếm hết đảo."
+    },
+    {
+      "panel": "p028.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Mình gọi đây là màn mặc cả rất thực dụng: thắng mà không cần đánh."
+    },
+    {
+      "panel": "p030.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Trong lúc đó, phụ vương nghi ngờ Kim Gia là thần y."
+    },
+    {
+      "panel": "p033.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Sáng hôm sau, Cửu Yêu Nhi tỉnh lại với toàn thân đau nhức."
+    },
+    {
+      "panel": "p034.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Nàng chẳng nhớ tối qua rốt cuộc đã xảy ra chuyện gì."
+    },
+    {
+      "panel": "p036.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Một mảnh ký ức mơ hồ khiến nàng càng thêm hoảng loạn."
+    },
+    {
+      "panel": "p037.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Tên trai đỏ mặt nhận ra mình vừa bị Cửu Yêu Nhi cứu chữa."
+    },
+    {
+      "panel": "p038.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Mình bật cười: hắn vừa được cứu mạng, lại tưởng mình bị quyến rũ."
+    },
+    {
+      "panel": "p039.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Sợ bị phát hiện, hắn vội chạy trốn khỏi căn phòng."
+    },
+    {
+      "panel": "p041.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cửu Yêu Nhi lê bước ra ngoài, gặp một nữ thị nữ."
+    },
+    {
+      "panel": "p042.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Thị nữ nhìn nàng mà tưởng người vừa tỉnh bệnh nặng."
+    },
+    {
+      "panel": "p043.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Mình thích cú lệch tông này: người bị thương vẫn kịp khen nàng đẹp."
+    },
+    {
+      "panel": "p044.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cửu Yêu Nhi giải thích thuốc mê đã khiến nàng ngủ cả đêm."
+    },
+    {
+      "panel": "p045.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Chi tiết ngâm thuốc mê giải thích sạch sẽ mọi dấu vết đáng ngờ."
+    },
+    {
+      "panel": "p046.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hai người còn tranh cãi về chuyện ai mới là người khổ hơn."
+    },
+    {
+      "panel": "p047.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Cửu Yêu Nhi chợt hỏi tung tích Kim Gia."
+    },
+    {
+      "panel": "p048.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Nàng được báo Kim Gia đang tiếp đón Cửu Thiên Nguyệt."
+    },
+    {
+      "panel": "p049.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Nghe tin Kim Gia nhập phủ, Cửu Yêu Nhi sốc toàn tập."
+    },
+    {
+      "panel": "p050.jpg",
+      "type": "SETUP",
+      "kind": "recap",
+      "narration": "Bên kia, phụ vương triệu mọi người vào phòng khách."
+    },
+    {
+      "panel": "p051.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông tuyên bố kẻ hại người sẽ bị điều tra và xử nghiêm."
+    },
+    {
+      "panel": "p052.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Nộ Triều Thành sắp xuất quân, giao cho con trai trấn thủ."
+    },
+    {
+      "panel": "p053.jpg",
+      "type": "REACTION",
+      "kind": "recap",
+      "narration": "Tên con trai chỉ mong Cửu Yêu Nhi ở lại để mọi chuyện yên ổn."
+    },
+    {
+      "panel": "p054.jpg",
+      "type": "REVEAL",
+      "kind": "recap",
+      "narration": "Phụ vương tiết lộ một nữ thần y đang trên đường tới."
+    },
+    {
+      "panel": "p055.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Mình nghi nữ thần y này chính là chìa khóa cứu Cửu Yêu Nhi."
+    },
+    {
+      "panel": "p056.jpg",
+      "type": "REACTION",
+      "kind": "commentary",
+      "narration": "Nhưng phản ứng của thị nữ cho thấy người này chẳng hề bình thường."
+    },
+    {
+      "panel": "p057.jpg",
+      "type": "ENDING",
+      "kind": "commentary",
+      "narration": "Mình chốt chương bằng dự cảm xấu: nữ thần y có thể là sát thủ khét tiếng."
+    }
+  ]
+}

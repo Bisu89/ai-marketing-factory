@@ -1,0 +1,39 @@
+{
+  "title": "Cuộc thi luyện đan Bạch Đan Thành bắt đầu!?",
+  "chapters": "160",
+  "source_dir": "manhua-recap/dqgl_ep160",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-21",
+  "description": "Cuộc thi luyện đan Bạch Đan Thành bắt đầu. Tóm tắt chương 160 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Cuộc thi luyện đan Bạch Đan Thành bắt đầu!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Cuộc thi luyện đan ở Bạch Đan Thành chính thức khai màn, thu hút sự chú ý của các thế lực quanh vùng.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p022",
+      "narration": "Ban tổ chức công bố luật thi và yêu cầu các thí sinh thể hiện thực lực ngay từ vòng đầu.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p060",
+      "narration": "Giữa những ánh mắt dò xét, Tổng Ngọc chuẩn bị bước vào phần thi đầu tiên.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

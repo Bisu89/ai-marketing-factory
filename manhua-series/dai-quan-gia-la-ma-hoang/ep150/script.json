@@ -1,0 +1,63 @@
+{
+  "title": "Trác Phàm phát hiện lão nhân trúng Thất Thải Vân La Chưởng!?",
+  "chapters": "150",
+  "source_dir": "manhua-recap/dqgl_ep150",
+  "written_by": "OpenAI, ??i chi?u ?nh ngu?n, 2026-10-20",
+  "description": "Trác Phàm phát hiện lão nhân trúng Thất Thải Vân La Chưởng. Tóm tắt chương 150 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Trác Phàm phát hiện lão nhân trúng Thất Thải Vân La Chưởng!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Sở Khuynh Thành dẫn Trác Phàm đến hang núi phía sau Hoa Vũ Lâu để gặp một người đặc biệt.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p006",
+      "narration": "Trong hang băng, họ tìm thấy một lão nhân bị phong ấn; Khuynh Thành giải thích ông là chủ nhân nơi này.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p014",
+      "narration": "Trác Phàm nhận ra người trong băng vẫn còn sống, dù gần như không thể nói hay cử động.",
+      "kind": "recap",
+      "type": "REVEAL"
+    },
+    {
+      "panel": "p027",
+      "narration": "Lão nhân tỉnh lại và bất ngờ gọi ra Thất Thải Vân La Chưởng; Trác Phàm hiểu ông đang chịu một loại độc kỳ lạ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p039",
+      "narration": "Khuynh Thành giải thích bảy loại nguyên liệu trong phương thuốc đều là thiên tài địa bảo, nhưng công thức vẫn có điểm đáng ngờ.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "p050",
+      "narration": "Trác Phàm suy ra cơ thể lão nhân đã bị nhiều loại độc khống chế; nếu không có Huyền Băng Vạn Niên, ông đã không thể sống đến hôm nay.",
+      "kind": "recap",
+      "type": "REVEAL"
+    },
+    {
+      "panel": "p067",
+      "narration": "Khuynh Thành hỏi hắn định làm gì để cứu Hoa Vũ Lâu, còn Trác Phàm chuẩn bị mời một người có thể giúp.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

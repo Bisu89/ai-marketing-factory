@@ -1,0 +1,17 @@
+{
+  "title": "Cửu Thiên Nguy chạm mặt cao thủ, Thẩm Lãng đánh thẳng vào thành!?",
+  "chapters": "168",
+  "source_dir": "manhua-recap/crmn_ep169",
+  "description": "Cửu Thiên Nguy và một cao thủ bí ẩn thăm dò lẫn nhau. Trong khi đó, Thẩm Lãng gây náo động tại cửa thành, khiến quân phòng thủ lập tức báo động.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "beats": [
+    {"panel":"p002.jpg","type":"HOOK","kind":"recap","narration":"Cửu Thiên Nguy vừa về đến thành thì chạm mặt một kẻ đeo mặt nạ, tự xưng Khổ Đầu Hoan."},
+    {"panel":"p009.jpg","type":"BUILD","kind":"recap","narration":"Hắn cười nhạo nàng vì dám mang danh cao thủ mà vẫn để bản thân bị thương."},
+    {"panel":"p017.jpg","type":"BUILD","kind":"recap","narration":"Cửu Thiên Nguy không lùi bước, cảnh cáo đối phương đừng xem thường Huyền Vũ Bá phủ."},
+    {"panel":"p025.jpg","type":"BUILD","kind":"recap","narration":"Ở cửa thành, lính gác phát hiện Thẩm Lãng đã đột nhập và ném những quả cầu sắt vào bên trong."},
+    {"panel":"p033.jpg","type":"BUILD","kind":"commentary","narration":"Đòn đánh bất ngờ khiến quân phòng thủ tưởng thành đã bị công phá, tạo ra khoảng trống cho Thẩm Lãng hành động."},
+    {"panel":"p041.jpg","type":"BUILD","kind":"recap","narration":"Tướng lĩnh lập tức tập hợp quân, còn người trong phủ thành chủ báo tin có nội ứng."},
+    {"panel":"p049.jpg","type":"BUILD","kind":"recap","narration":"Thẩm Lãng đã vào được trong thành trước khi quân cứu viện kịp khép vòng vây."},
+    {"panel":"p052.jpg","type":"ENDING","kind":"recap","narration":"Nếu nội ứng thật sự tồn tại, Thẩm Lãng có thể đã tiến sâu vào phủ thành chủ."}
+  ]
+}

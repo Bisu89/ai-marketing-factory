@@ -1,0 +1,39 @@
+{
+  "title": "Mùi hương đan dược che giấu điều gì!?",
+  "chapters": "170",
+  "source_dir": "manhua-recap/dqgl_ep170",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-21",
+  "description": "Mùi hương đan dược che giấu điều gì!?. Tóm tắt chương 170 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Mùi hương đan dược che giấu điều gì!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Mọi người tranh luận về tác dụng của viên đan Trác Phàm vừa luyện ra.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p022",
+      "narration": "Có người xem đó là đan dược hữu ích, có người lại nghi ngờ bên trong chứa độc tính.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p058",
+      "narration": "Khi cuộc thi bước sang vòng mới, Trác Phàm và Lưu Đại Sư lại đứng trước màn so tài tiếp theo.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "title": "Phán quyết của Thanh Vân công bằng hay là bẫy!?",
+  "chapters": "144",
+  "source_dir": "manhua-recap/dqgl_ep144",
+  "written_by": "OpenAI, ??i chi?u ?nh ngu?n, 2026-10-20",
+  "description": "Phán quyết của Thanh Vân công bằng hay là bẫy. Tóm tắt chương 144 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Phán quyết của Thanh Vân công bằng hay là bẫy!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Nghiêm Tông tiếp tục đòi Hoa Vũ Lâu bồi thường, muốn biến cuộc họp thành phiên đòi bồi thường.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p012",
+      "narration": "Hoàng Phủ Thanh Vân đưa ra cách xử lý có vẻ công bằng: Hoa Vũ Lâu nhận lỗi, còn Nghiêm Tông được quyền chọn khoản bồi thường.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p023",
+      "narration": "Nhưng khi một phe được tự chọn phần thắng, lối phân xử ấy cũng bắt đầu lộ giới hạn.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "p034",
+      "narration": "Mẫu Đơn phản đối vì các trưởng lão Hoa Vũ Lâu chưa hề thống nhất với kết quả đó.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p046",
+      "narration": "Trác Phàm không vội cãi lại; hắn để các phe tự bộc lộ thái độ trước mặt mọi người.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "p058",
+      "narration": "Rời khỏi cuộc họp, những người đứng sau các thế lực tiếp tục bàn cách dùng liên minh và gián điệp để xoay chuyển cục diện.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p072",
+      "narration": "Nụ cười của Trác Phàm cho thấy hắn đã nhận ra nước cờ phía sau, nhưng chưa định lật bài ngay lúc này.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

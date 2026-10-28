@@ -1,0 +1,63 @@
+﻿{
+    "title":  "Trác Phàm lẻn vào trận pháp, phát hiện bí mật Thiên Dương!?",
+    "chapters":  "130",
+    "source_dir":  "manhua-recap/dqgl_ep130",
+    "written_by":  "OpenAI, đối chiếu ảnh nguồn, 2026-10-19",
+    "description":  "Trác Phàm tiếp tục đối mặt với biến cố mới cùng những người đồng hành.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tập 130 (chương 130).",
+    "hashtags":  [
+                     "#DaiQuanGiaLaMaHoang",
+                     "#ReviewManhua",
+                     "#Manhua",
+                     "#TuTien",
+                     "#XuyenKhong",
+                     "#ReviewTruyen"
+                 ],
+    "thumbnail":  {
+                      "text":  "Trác Phàm lẻn vào trận pháp, phát hiện bí mật Thiên Dương!?",
+                      "prompt":  "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+                  },
+    "beats":  [
+                  {
+                      "panel":  "p001.jpg",
+                      "narration":  "Màn đêm buông xuống, một bóng người lướt qua mái nhà Thanh Hoa Lâu.",
+                      "kind":  "recap",
+                      "type":  "HOOK"
+                  },
+                  {
+                      "panel":  "p006.jpg",
+                      "narration":  "Trác Phàm nhận ra trận pháp quanh nơi này có dấu hiệu bị thay đổi.",
+                      "kind":  "recap",
+                      "type":  "BUILD"
+                  },
+                  {
+                      "panel":  "p018.jpg",
+                      "narration":  "Hắn kiểm tra từng khu vực, tránh để người canh gác phát hiện.",
+                      "kind":  "recap",
+                      "type":  "BUILD"
+                  },
+                  {
+                      "panel":  "p024.jpg",
+                      "narration":  "Linh thú đỏ nhỏ dò xét và tìm thấy căn phòng có người trò chuyện.",
+                      "kind":  "commentary",
+                      "type":  "BUILD"
+                  },
+                  {
+                      "panel":  "p030.jpg",
+                      "narration":  "Một vị trưởng lão hỏi thăm tiến triển tu luyện của Thiên Dương.",
+                      "kind":  "recap",
+                      "type":  "BUILD"
+                  },
+                  {
+                      "panel":  "p042.jpg",
+                      "narration":  "Trưởng lão nhắc Trác Phàm có thể sớm đột phá sau vết thương.",
+                      "kind":  "recap",
+                      "type":  "BUILD"
+                  },
+                  {
+                      "panel":  "p055.jpg",
+                      "narration":  "Kẻ sửa trận pháp chưa lộ diện, Trác Phàm sắp bị cuốn vào chuyện lớn.",
+                      "kind":  "recap",
+                      "type":  "ENDING"
+                  }
+              ]
+}

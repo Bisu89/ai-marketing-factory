@@ -1,0 +1,31 @@
+{
+  "title": "Hoa Vũ Thành đón hội Bạch Đan, Trác Phàm bị xếp ở khách điếm!?",
+  "chapters": "109",
+  "source_dir": "manhua-recap/dqgl_ep109",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-19",
+  "description": "Đoàn Trác Phàm đến Hoa Vũ Thành đúng lúc các gia tộc tụ hội vì hội Bạch Đan. Trong khi người khác hào hứng săn tìm mỹ nhân, Trác Phàm chỉ muốn ghi danh và tìm chỗ nghỉ. Quy định tiếp đón phân theo thứ hạng gia tộc khiến nhóm Tống gia gặp rắc rối ngay từ cổng thành.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tập 109 (chương 109).",
+  "hashtags": ["#DaiQuanGiaLaMaHoang", "#ReviewManhua", "#Manhua", "#TuTien", "#XuyenKhong", "#ReviewTruyen"],
+  "thumbnail": {"text":"Hội Bạch Đan còn chưa khai mạc đã bị làm khó!?","prompt":"Vertical 9:16 Chinese manhua style, Trac Pham arriving in a lively ancient city with a horse cart, a stern inn clerk blocking the way while elegantly dressed guests pass by, colorful lanterns and spring blossoms, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"},
+  "beats": [
+    {"panel":"p002.jpg","narration":"Gió xuân thổi dọc bờ liễu, đoàn Trác Phàm đánh xe tới Hoa Vũ Thành tìm linh đan.","kind":"recap","type":"HOOK"},
+    {"panel":"p005.jpg","narration":"Người đồng hành tranh thủ chọc ghẹo trên đường, còn Trác Phàm chỉ muốn chuyến đi yên ổn.","kind":"recap","type":"BUILD"},
+    {"panel":"p008.jpg","narration":"Họ đến trước cổng thành, nơi lính gác lập tức chặn xe lại và yêu cầu nói rõ mục đích.","kind":"recap","type":"BUILD"},
+    {"panel":"p011.jpg","narration":"Trác Phàm cho biết mình tới dự hội Bạch Đan; người gác cổng nhận ra đoàn này có liên quan đến U Minh Cốc.","kind":"recap","type":"BUILD"},
+    {"panel":"p014.jpg","narration":"Một người trong đoàn giải thích họ là khách của gia tộc đang tổ chức hội, nhưng lính gác vẫn đòi kiểm tra giấy tờ.","kind":"recap","type":"BUILD"},
+    {"panel":"p017.jpg","narration":"Tống gia đưa ra thư giới thiệu và xác nhận mình tới tham gia hội Bạch Đan.","kind":"recap","type":"BUILD"},
+    {"panel":"p020.jpg","narration":"Trác Phàm thấy thủ tục rườm rà, còn người bạn đồng hành phải đứng ra nói giúp đoàn.","kind":"recap","type":"BUILD"},
+    {"panel":"p023.jpg","narration":"Hoa Vũ Lâu có quy định tiếp đãi riêng cho các gia tộc dự hội, dựa theo thứ hạng và địa vị của họ.","kind":"recap","type":"BUILD"},
+    {"panel":"p026.jpg","narration":"Các gia tộc nhỏ thường tự tìm khách điếm, còn những nhà có địa vị cao hơn sẽ được sắp xếp nơi ở tốt hơn.","kind":"recap","type":"BUILD"},
+    {"panel":"p029.jpg","narration":"Trác Phàm chẳng buồn bận tâm thứ bậc, chỉ hỏi còn phòng trống hay không.","kind":"recap","type":"BUILD"},
+    {"panel":"p032.jpg","narration":"Người tiếp đón chỉ đường tới một căn nhà cách đó vài dặm, nói nhóm có thể ở tạm mà không cần trả linh thạch.","kind":"recap","type":"BUILD"},
+    {"panel":"p035.jpg","narration":"Cách phân chia khách trọ này đủ khiến người ta hiểu rằng vị thế gia tộc chi phối cả chỗ ngủ.","kind":"commentary","type":"BUILD"},
+    {"panel":"p038.jpg","narration":"Trong lúc đó, người của Tống gia nhắc Trác Phàm đừng gây thêm chuyện ở thành mới.","kind":"recap","type":"BUILD"},
+    {"panel":"p041.jpg","narration":"Hắn đáp rằng mình chỉ muốn dự hội, nhưng vẫn để mắt tới những bóng người theo dõi họ.","kind":"recap","type":"BUILD"},
+    {"panel":"p044.jpg","narration":"Ở Hoa Vũ Thành, lời đồn về mỹ nhân và các gia tộc lớn lan nhanh hơn cả tin về cuộc thi.","kind":"recap","type":"BUILD"},
+    {"panel":"p047.jpg","narration":"Một người trong đoàn nhận ra sự chú ý đang đổ dồn về phía họ, nhất là khi có cô gái nổi bật đi cùng.","kind":"recap","type":"BUILD"},
+    {"panel":"p050.jpg","narration":"Trác Phàm không muốn bị cuốn vào chuyện thị phi, nhưng ánh mắt của người xung quanh đã bắt đầu hướng về đoàn.","kind":"recap","type":"BUILD"},
+    {"panel":"p053.jpg","narration":"Họ tiếp tục hỏi đường và chuẩn bị ổn định chỗ ở trước ngày hội.","kind":"recap","type":"BUILD"},
+    {"panel":"p055.jpg","narration":"Một người quen xuất hiện, làm gián đoạn cuộc nói chuyện và khiến cả nhóm chú ý.","kind":"recap","type":"BUILD"},
+    {"panel":"p057.jpg","narration":"Giữa đám đông, một người bất ngờ nhận ra Trác Phàm và quát lên: “Ngươi!” Cuộc gặp này xem ra chẳng êm đềm.","kind":"recap","type":"ENDING"}
+  ]
+}

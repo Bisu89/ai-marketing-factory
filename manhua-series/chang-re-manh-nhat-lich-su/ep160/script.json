@@ -1,0 +1,17 @@
+{
+  "title": "Mỏ vàng hóa bẫy nước, hải tặc quay sang cướp lẫn nhau!?",
+  "chapters": "159",
+  "source_dir": "manhua-recap/crmn_ep160",
+  "description": "Nước tràn vào mỏ khiến đội quân hải tặc tan tác. Khi lớp vàng lấp lánh hóa ra ít hơn tưởng tượng, ngay cả những kẻ trung thành cũng bắt đầu tranh giành.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "beats": [
+    {"panel":"p002.jpg","type":"HOOK","kind":"recap","narration":"Cửu Thiên Nguy nhìn quân số áp đảo, tin rằng chỉ cần đánh thẳng là có thể hạ Vọng Nhai."},
+    {"panel":"p009.jpg","type":"BUILD","kind":"recap","narration":"Nhưng đám hải tặc đã bị vàng dụ xuống sâu trong mỏ, nơi nước biển đang dâng lên."},
+    {"panel":"p016.jpg","type":"BUILD","kind":"recap","narration":"Thẩm Lãng cho người phá đường hầm, khiến nước tràn vào và chia cắt từng toán quân."},
+    {"panel":"p024.jpg","type":"BUILD","kind":"recap","narration":"Khi tìm được vàng, chúng mới nhận ra phần lớn chỉ là cát và quặng lẫn, không nhiều như vẻ ngoài."},
+    {"panel":"p033.jpg","type":"BUILD","kind":"commentary","narration":"Cái bẫy vận hành bằng hai thứ: con đường đã bị chuẩn bị trước và lòng tham khiến đối thủ tự dồn vào đó."},
+    {"panel":"p041.jpg","type":"BUILD","kind":"recap","narration":"Ngay cả những thuộc hạ vốn nghe lệnh cũng bắt đầu chen lấn để tranh lấy phần vàng còn sót lại."},
+    {"panel":"p050.jpg","type":"BUILD","kind":"recap","narration":"Quân tinh nhuệ của Kim gia chớp thời cơ, đồng loạt đánh vào đội hình đang rối loạn."},
+    {"panel":"p057.jpg","type":"ENDING","kind":"recap","narration":"Cục diện trong mỏ đảo chiều. Cửu Thiên Nguy phải nhìn đội quân của mình tự tan vỡ trước mắt."}
+  ]
+}

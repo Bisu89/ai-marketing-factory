@@ -1,0 +1,39 @@
+{
+  "title": "Trác Phàm chọc giận Lâm trưởng lão rồi phản công!?",
+  "chapters": "190",
+  "source_dir": "manhua-recap/dqgl_ep190",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-21",
+  "description": "Trác Phàm chọc giận Lâm trưởng lão rồi phản công. Tóm tắt chương 190 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Trác Phàm chọc giận Lâm trưởng lão rồi phản công!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Trác Phàm thừa nhận mình đã đánh giá thấp đối thủ, nhưng vẻ mặt bình thản cho thấy hắn chưa hề nao núng.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p023",
+      "narration": "Lâm trưởng lão bùng phát sức mạnh và lao vào tấn công; Trác Phàm đáp trả bằng khí thế đỏ rực.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p073",
+      "narration": "Sau màn giao phong dữ dội, Trác Phàm tuyên bố sẽ khiến đối phương phải trả giá, đẩy trận chiến sang nấc mới.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

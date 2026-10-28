@@ -1,0 +1,654 @@
+{
+  "template": "manhua_recap_long_vi",
+  "title": "Chàng Rể Mạnh Nhất Lịch Sử | Tập 131–140",
+  "source_dir": "manhua-recap/crmn_ep131",
+  "chapters": "130-139",
+  "description": "Thẩm Lãng và những bước ngoặt trong cuộc đối đầu bảo vệ Kim gia, tập 131–140.",
+  "beats": [
+    {
+      "panel": "crmn_ep131/p001.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Thế tử Vũ An Bá tước phủ vừa rời đi, Lục hoàng tử Ninh Cảnh đã tới. Hắn nói muốn thăm Huyền Vũ Bá đang bệnh và giúp người dì của mình vượt khó.",
+      "section": "Tập 131"
+    },
+    {
+      "panel": "crmn_ep131/p009.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng khi nhìn Mộc Lan và Thẩm Lãng, trong lòng Ninh Cảnh đầy coi thường. Việc hắn đột nhiên mang tiền tới khiến Tô Bội Bội cũng thấy khác thường."
+    },
+    {
+      "panel": "crmn_ep131/p016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Những chiếc rương được mở ra, bên trong chủ yếu là tiền đồng. Tính cả số bạc lẻ, Thẩm Lãng nhận ra giá trị còn chưa tới mấy trăm kim tệ."
+    },
+    {
+      "panel": "crmn_ep131/p021.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngay sau món quà phô trương, Ninh Cảnh nói muốn xin phụ vương phong tòa thành của Kim gia cho mình. Hắn đã coi cơ nghiệp người khác như một món đồ sắp được nhận."
+    },
+    {
+      "panel": "crmn_ep131/p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tô Bội Bội giận đến khó chịu. Thẩm Lãng lấy lý do nhạc mẫu không khỏe để tiễn khách, khép lại cuộc thăm hỏi mang đầy ý sỉ nhục."
+    },
+    {
+      "panel": "crmn_ep131/p032.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trì gia cũng muốn lợi dụng lúc này để mua ruộng dâu của Kim gia. Thẩm Lãng phải tiếp tục diễn cảnh túng quẫn, vừa giữ tài sản vừa che giấu đường lui."
+    },
+    {
+      "panel": "crmn_ep131/p051.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hai ngày sau, chủ nợ tụ tập ngay trong phủ. Ẩn Nguyên Hội nhắc lại khoản vay một trăm vạn kim tệ từ thời Kim Vũ mang quân đánh hải tặc."
+    },
+    {
+      "panel": "crmn_ep131/p053.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cả gốc và lãi là một trăm bảy mươi vạn; Kim gia đã trả một trăm vạn, còn thiếu bảy mươi vạn. Đối phương đưa giấy nợ ra để đòi lấy đảo Vọng Nhai."
+    },
+    {
+      "panel": "crmn_ep131/p063.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Họ yêu cầu ký giấy giao đảo trong ba ngày và còn định đưa quân tới hỗ trợ bàn giao. Những lời nói giữ trật tự thực chất là sức ép buộc Kim gia đầu hàng."
+    },
+    {
+      "panel": "crmn_ep131/p066.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Huyền Vũ Bá ho ra máu rồi ngất ngay giữa đại sảnh. Tô Bội Bội nổi giận tố Ẩn Nguyên Hội từng tiết lộ quân cơ cho hải tặc, nhưng đối phương đòi bà phải có bằng chứng."
+    },
+    {
+      "panel": "crmn_ep132/p001.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng bảo nhạc mẫu đưa nhạc phụ vào nghỉ, còn chuyện ngoài đại sảnh giao cho mình. Hắn ngồi xuống đối diện đám người đang chờ chia tài sản Kim gia.",
+      "section": "Tập 132"
+    },
+    {
+      "panel": "crmn_ep132/p006.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Chủ nợ không muốn bàn bạc thêm, chỉ thúc hắn ký giấy. Thẩm Lãng lại gọi tất cả những người còn đòi tiền đứng ra một lượt."
+    },
+    {
+      "panel": "crmn_ep132/p016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Khoản của Lâm Mặc được người khác tới đòi thay, hắn cũng nhận. Tiếp đó Cừu Kiêu đưa khoản bồi thường hằng năm cho hải tặc ra ép Kim gia phải trả trước."
+    },
+    {
+      "panel": "crmn_ep132/p031.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Có kẻ bảo bán ruộng, không đủ thì bán nhà. Lòng tham lộ rõ khi họ còn đem cả nữ quyến của Kim gia ra làm đối tượng mặc cả."
+    },
+    {
+      "panel": "crmn_ep132/p033.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tổng số tiền bị đòi đã lên tám mươi vạn kim tệ. Mọi người đều tin Kim gia không thể kiếm nổi, và đảo Vọng Nhai chắc chắn sẽ đổi chủ."
+    },
+    {
+      "panel": "crmn_ep132/p036.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng bỗng bật cười rồi xé bỏ lớp áo ngoài. Bộ y phục đắt tiền bên trong khiến sự khinh thường của cả phòng lập tức biến thành ngỡ ngàng."
+    },
+    {
+      "panel": "crmn_ep132/p039.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn mắng thẳng những người đang dồn ép, tuyên bố đừng mơ bắt Kim gia bán đất và giao đảo. Sau đó hắn ra hiệu thanh toán toàn bộ số tiền."
+    },
+    {
+      "panel": "crmn_ep132/p044.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Kim tệ đổ xuống từ phía trên thành một cơn mưa vàng. Món nợ mà đối phương tưởng là đòn chí mạng giờ nằm ngay trước mắt tất cả."
+    },
+    {
+      "panel": "crmn_ep132/p047.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng và Mộc Lan đứng dưới chiếc ô giữa tiếng vàng rơi. Đám chủ nợ từ thế hung hăng chỉ còn biết trố mắt nhìn đại sảnh ngập tiền."
+    },
+    {
+      "panel": "crmn_ep132/p054.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ngay cả Thư Đình Ngọc cũng không tin đây thật sự là tám mươi vạn kim tệ. Thẩm Lãng bảo họ tự nhận phần của mình rồi rời khỏi phủ."
+    },
+    {
+      "panel": "crmn_ep132/p062.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trước mặt các quan viên và hoàng thân, hắn yêu cầu xác nhận khoản bảy mươi vạn đã trả sạch. Chủ nợ không còn cớ lấy đảo Vọng Nhai."
+    },
+    {
+      "panel": "crmn_ep132/p064.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Việc xóa nợ được công nhận. Ninh Cảnh tức vì bị xem thường, còn những người chứng kiến bắt đầu hiểu mình đã đánh giá quá thấp chàng rể nhà họ Kim."
+    },
+    {
+      "panel": "crmn_ep132/p064.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Mưa vàng vừa trả nợ vừa buộc quan viên chứng kiến công khai. Cách Thẩm Lãng phô trương số tiền khiến đối thủ hết đường dùng tin đồn nghèo túng để tiếp tục ép giao đảo."
+    },
+    {
+      "panel": "crmn_ep133/p001.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng hỏi lại cho rõ: đã trả nợ thì không ai có quyền ép Kim gia giao đảo. Câu trả lời trước mặt quan viên chặn đứng âm mưu lấy Vọng Nhai bằng giấy thế chấp.",
+      "section": "Tập 133"
+    },
+    {
+      "panel": "crmn_ep133/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ninh Cảnh vẫn buông lời đe dọa rằng có tiền chưa chắc có mạng tiêu. Thẩm Lãng chẳng tiếp tục nhún nhường mà bảo từng người nhận tiền rồi đi."
+    },
+    {
+      "panel": "crmn_ep133/p006.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Những kẻ vừa còn hùa nhau dồn ép bây giờ phải tự chia tiền trong đại sảnh. Màn thanh toán công khai làm họ hết cơ hội chối bỏ kết quả."
+    },
+    {
+      "panel": "crmn_ep133/p031.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tin truyền tới Tấn Hải Bá tước phủ. Cừu Kiêu báo cho Đường Luân rằng Thẩm Lãng đã trả tới tám mươi vạn và trong nhà có thể còn tiền nữa."
+    },
+    {
+      "panel": "crmn_ep133/p033.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đường Luân sững sờ không hiểu bảy mươi vạn từ đâu mà có. Những dấu hiệu bệnh nặng, vay tiền khắp nơi trước đó hóa ra đều có thể chỉ là màn diễn."
+    },
+    {
+      "panel": "crmn_ep133/p036.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông ta đã trả giá quá lớn, thậm chí còn để Kim Sơn rơi vào tay hải tặc. Giờ Kim gia vẫn đứng vững khiến toàn bộ sự đánh đổi ấy trở thành điều nhục nhã."
+    },
+    {
+      "panel": "crmn_ep133/p049.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trương Xung nhìn ra Thẩm Lãng tính xa hơn từng bước riêng lẻ. Cuộc đối đầu này hấp dẫn ông ta vì đối thủ đang chủ động dệt một tấm lưới lớn."
+    },
+    {
+      "panel": "crmn_ep133/p050.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông đoán Cừu Kiêu có thể sẽ chết rất thảm. Điều bất thường là sau nhiều lần bị hãm hại, Thẩm Lãng vẫn chưa trả thù trực tiếp hắn."
+    },
+    {
+      "panel": "crmn_ep133/p051.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Theo Trương Xung, Thẩm Lãng còn muốn kéo nhiều thế lực vào cùng một cái bẫy. Món nợ vừa được giải quyết mới chỉ là bước mở đầu."
+    },
+    {
+      "panel": "crmn_ep133/p053.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ông bảo Trương Tấn chuẩn bị cho đại chiến. Thay vì ngăn Thẩm Lãng tiêu diệt các gia tộc cản tân chính, ông còn muốn lợi dụng và phối hợp với kế hoạch ấy."
+    },
+    {
+      "panel": "crmn_ep134/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trương Tấn biết Từ Thiên Thiên còn sống và đã trở thành người thân cận của Cừu Yêu Nhi. Trương Xung nhận định nàng đang phối hợp với Thẩm Lãng.",
+      "section": "Tập 134"
+    },
+    {
+      "panel": "crmn_ep134/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Việc điều tra đống đổ nát tìm thấy một mật thất có nước. Đó là lời giải cho chuyện Thiên Thiên thoát khỏi đám cháy mà mọi người tưởng đã giết nàng."
+    },
+    {
+      "panel": "crmn_ep134/p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trương Tấn muốn tìm cách diệt nàng, nhưng cha hắn lại ngăn. Để Thẩm Lãng tiến hành kế hoạch có thể mở đường thay đổi cục diện Nộ Triều thành."
+    },
+    {
+      "panel": "crmn_ep134/p014.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Về phía Kim gia, Thẩm Lãng đề nghị chiêu thêm hai nghìn quân. Hắn cần quân trung thành, vì cuộc chiến sắp tới sẽ dựa nhiều vào bẫy và mưu kế."
+    },
+    {
+      "panel": "crmn_ep134/p016.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Việc mở rộng phải hoàn tất trong ba ngày để nhạc phụ dẫn bốn nghìn người ra Vọng Nhai. Vũ khí và giáp trụ đã có, điều còn thiếu là binh lính."
+    },
+    {
+      "panel": "crmn_ep134/p017.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thiên Đạo Hội sẽ ứng thêm tiền, còn Kim gia dùng bốn mươi vạn để trang trí đảo. Mỏ sắt cũ được biến thành một mỏ vàng đủ khiến thiên hạ chú ý."
+    },
+    {
+      "panel": "crmn_ep134/p018.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tăng quân và xây thành trên đảo sẽ làm đối thủ tin đây là trung tâm chiến lược mới. Mọi động thái đều hướng họ tới suy nghĩ Vọng Nhai chứa rất nhiều vàng."
+    },
+    {
+      "panel": "crmn_ep134/p034.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tin đồn lan ra đúng như dự tính. Đường Luân cho kiểm tra vàng mới luyện và càng tin dưới đảo có một mỏ lớn mà nhà họ Kim vừa khai thác được."
+    },
+    {
+      "panel": "crmn_ep134/p057.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Khi gặp Trương Xung, ông ta được nhắc phải xác minh trước khi hành động. Thẩm Lãng quá gian xảo để chỉ dựa vào lời đồn rồi dốc toàn lực."
+    },
+    {
+      "panel": "crmn_ep134/p061.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cái tên được đưa ra là Cừu Kiêu. Sau lưng hắn có cả thế lực hải tặc nên Đường Luân tin Kim gia không dám giết nếu hắn vào đảo dò xét."
+    },
+    {
+      "panel": "crmn_ep134/p064.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trương Xung âm thầm nghĩ mình đã đặt Cừu Kiêu dưới mũi kiếm của Thẩm Lãng. Một lời gợi ý vừa đẩy kẻ khác tiến gần hơn tới cái bẫy."
+    },
+    {
+      "panel": "crmn_ep134/p064.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Cái bẫy này dựa vào những dấu hiệu người ngoài tự ghép lại: vàng mới, quân mới và công trình mới. Khi tin mình vừa phát hiện một bí mật, đối thủ càng khó nhận ra có người cố ý cho mình thấy nó."
+    },
+    {
+      "panel": "crmn_ep135/p001.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Ở Nộ Triều thành, Cừu Yêu Nhi vẫn say mê nghe Tây Du Ký. Câu chuyện Tề Thiên Đại Thánh chống lại quyền uy chạm đúng điều nàng khao khát.",
+      "section": "Tập 135"
+    },
+    {
+      "panel": "crmn_ep135/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Khi nghe Đại Thánh bị trấn áp dưới Ngũ Hành Sơn, nàng nói mình cũng đang bị nhốt như vậy. Tâm hồn muốn đi xa mà thân thể không thể rời nơi này."
+    },
+    {
+      "panel": "crmn_ep135/p019.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng nhận thư gấp của Thiên Thiên báo Cừu Yêu Nhi gặp nguy hiểm. Hắn phải cân nhắc vì tới thành của hải tặc chẳng khác nào bước vào sào huyệt đối phương."
+    },
+    {
+      "panel": "crmn_ep135/p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng nếu nữ tướng chết, kế hoạch dành cho Nộ Triều thành sẽ đổ vỡ. Hắn quyết định đi cứu và nhờ Thiên Đạo Hội giúp bảo đảm an toàn."
+    },
+    {
+      "panel": "crmn_ep135/p022.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lý Thiên Thu ở quá xa, Hoàng Đồng bèn tiến cử hộ vệ khác. Người sẽ đi cùng Thẩm Lãng là Hoàng Phượng, một cao thủ có thực lực vượt cả Mộc Lan."
+    },
+    {
+      "panel": "crmn_ep135/p032.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Để che thân phận, Thẩm Lãng hóa trang thành nữ đại phu. Ngay cả Hoàng Phượng cũng kinh ngạc vì diện mạo thay đổi quá kỹ, gần như không tìm ra sơ hở."
+    },
+    {
+      "panel": "crmn_ep135/p035.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trên đường, hắn hỏi nàng về giới cao thủ trẻ. Chuyến đi vừa là cuộc cứu người, vừa giúp hắn hiểu thêm những sức mạnh có thể ảnh hưởng tới ván cờ."
+    },
+    {
+      "panel": "crmn_ep135/p057.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cuối cùng hai người tới Nộ Triều thành. Vẻ phồn hoa ở đây vượt dự tính của Thẩm Lãng, hoàn toàn không giống một chỗ chỉ có đám cướp biển."
+    },
+    {
+      "panel": "crmn_ep135/p058.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhìn tòa thành chủ kiên cố, hắn hiểu không thể cường công. Các pháo đài còn hỗ trợ lẫn nhau, nên muốn giành nơi này phải đánh bằng mưu trí."
+    },
+    {
+      "panel": "crmn_ep136/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng cùng Hoàng Phượng tìm chỗ liên lạc đã hẹn. Hắn càng thấy rõ Nộ Triều thành không phải mục tiêu có thể lấy được chỉ bằng một trận tiến công.",
+      "section": "Tập 136"
+    },
+    {
+      "panel": "crmn_ep136/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trong thành bảo, Cừu Yêu Nhi đang chịu bệnh nặng. Nàng đuổi những người xung quanh ra ngoài rồi cho gọi Từ Thiên Thiên tới."
+    },
+    {
+      "panel": "crmn_ep136/p006.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thiên Thiên vội vàng tới gặp chủ nhân, trong lòng đầy lo lắng. Vị trí bên cạnh nữ tướng khiến nàng biết tình hình nguy hiểm hơn vẻ ngoài của cuộc sống trong phủ."
+    },
+    {
+      "panel": "crmn_ep136/p026.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Khi gặp Thẩm Lãng cải trang, chính nàng cũng sững sờ. Dáng vẻ nữ đại phu khác quá xa người đàn ông mà nàng từng biết."
+    },
+    {
+      "panel": "crmn_ep136/p029.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng còn tự đắc trêu nàng về tài hóa trang. Một chút đùa cợt không làm thay đổi việc hắn đang mạo hiểm bước vào giữa thế lực của kẻ địch."
+    },
+    {
+      "panel": "crmn_ep136/p049.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sau khi quan sát bệnh tình, hắn nhận ra cơ thể Cừu Yêu Nhi chịu tổn thương rất nặng. Chỉ có thể chất đặc biệt mới giúp nàng cầm cự tới lúc này."
+    },
+    {
+      "panel": "crmn_ep136/p051.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thiên Thiên đưa câu hỏi của nữ tướng: có thể trị được không. Thẩm Lãng viết trả lời thay vì cất tiếng, tiếp tục giữ vỏ bọc của mình."
+    },
+    {
+      "panel": "crmn_ep136/p054.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn cho biết có thể chữa, nhưng phải khám kỹ hơn để xác định vấn đề. Cơ hội cứu Cừu Yêu Nhi cuối cùng đã xuất hiện ngay trong căn phòng ấy."
+    },
+    {
+      "panel": "crmn_ep137/p003.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sau cuộc kiểm tra, Thẩm Lãng bắt đầu ghi lại những triệu chứng của Cừu Yêu Nhi. Hắn tiếp tục dùng giấy để trao đổi, tránh để giọng nói làm lộ thân phận.",
+      "section": "Tập 137"
+    },
+    {
+      "panel": "crmn_ep137/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nàng không thể mở mắt bình thường, đầu óc quay cuồng và buồn nôn. Những điều các đại phu trước không nhìn ra lại được hắn hỏi đúng từng điểm."
+    },
+    {
+      "panel": "crmn_ep137/p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cừu Yêu Nhi thừa nhận từng đau đến ngất, phải dùng chân khí áp chế khí huyết. Với Thẩm Lãng, cách chống đỡ ấy càng chứng tỏ tình trạng đang rất nguy hiểm."
+    },
+    {
+      "panel": "crmn_ep137/p019.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn nhận định lượng độc chất tích tụ trong cơ thể bất thường. Sự việc khác hẳn một chút nhiễm độc từ đồ dùng cổ mà trước đây hắn từng gặp."
+    },
+    {
+      "panel": "crmn_ep137/p021.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng hướng nghi ngờ vào thức ăn. Thiên Thiên phản đối vì mình và Lục Y vẫn nếm đồ ăn hằng ngày mà không thấy có triệu chứng gì."
+    },
+    {
+      "panel": "crmn_ep137/p023.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn giải thích đây là loại độc tích lũy theo thời gian. Người nếm một ít không gặp chuyện ngay, trong khi người ăn liên tục có thể bị hại rất nặng."
+    },
+    {
+      "panel": "crmn_ep137/p037.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cô gái làm bếp hiện tại khóc lóc khẳng định không phản chủ. Nàng định lấy cái chết chứng minh nhưng Cừu Yêu Nhi đã kịp ngăn lại."
+    },
+    {
+      "panel": "crmn_ep137/p041.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nữ tướng tin lời cô và chỉ nói gần đây đồ ăn nhạt hơn trước. Câu nói bình thản ấy lại khiến Thẩm Lãng thấy nàng thật đáng thương."
+    },
+    {
+      "panel": "crmn_ep137/p046.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lục Y khai người đầu bếp cũ xin nghỉ ba ngày trước vì con gái sinh con. Thời điểm ấy cũng trùng với lúc bệnh của Cừu Yêu Nhi phát tác dữ dội."
+    },
+    {
+      "panel": "crmn_ep137/p047.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cừu Yêu Nhi ra lệnh đi tìm cả nhà người đầu bếp. Thiên Thiên hiểu kẻ hạ độc có thể đã lo xóa dấu vết trước khi họ bắt đầu điều tra."
+    },
+    {
+      "panel": "crmn_ep138/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Việc điều tra bắt đầu từ lai lịch người đầu bếp cũ. Bà từng được Cừu Yêu Nhi che chở sau khi rơi vào tay hải tặc và đã làm bếp trong phủ.",
+      "section": "Tập 138"
+    },
+    {
+      "panel": "crmn_ep138/p004.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nhưng nhà của bà lẫn con cái đều không còn người. Một căn nhà còn bị thiêu sạch, khiến con đường truy tìm kẻ hạ độc bị chặn lại."
+    },
+    {
+      "panel": "crmn_ep138/p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hộ vệ nghi Cừu Kiêu vì hắn vẫn coi nữ tướng là đối thủ lớn nhất. Họ muốn tìm thành chủ đòi công đạo, nhưng Cừu Yêu Nhi còn việc khác phải lo."
+    },
+    {
+      "panel": "crmn_ep138/p019.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đối thủ nàng sắp giao đấu là Chúc Hồng Tuyết, người đứng đầu thế hệ cao thủ trẻ. Cừu Yêu Nhi khẳng định đây là quyết đấu, có thể phân cả sống chết."
+    },
+    {
+      "panel": "crmn_ep138/p022.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng thấy việc ra trận lúc này quá nguy hiểm. Hắn nhận ra bệnh tình còn kéo theo vấn đề trong đầu khiến nàng không thể đứng vững bình thường."
+    },
+    {
+      "panel": "crmn_ep138/p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Dù biết phương pháp rất mạo hiểm, hắn vẫn xác nhận có thể cứu. Một cuộc chữa trị vượt xa hiểu biết của những người trong phủ sắp diễn ra."
+    },
+    {
+      "panel": "crmn_ep138/p038.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Giữa lúc đó, chiến thuyền của Cừu Yêu Nhi xuất hiện trên biển khiến hải tặc hoảng loạn. Danh tiếng nữ sát thần vẫn đủ làm đối phương run sợ."
+    },
+    {
+      "panel": "crmn_ep138/p041.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nữ tướng cầm song đao đứng trên thuyền, khí thế chưa hề khuất phục. Người ngoài khó có thể tưởng tượng nàng vừa phải nằm chịu những cơn đau dữ dội."
+    },
+    {
+      "panel": "crmn_ep138/p055.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Lục Y lại tìm gặp Cừu Kiêu và tưởng mình có thể nói chuyện như đồng minh. Hắn lập tức đánh nàng, không chấp nhận để một người hầu thăm dò mình."
+    },
+    {
+      "panel": "crmn_ep138/p063.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nghe Lục Y báo người đầu bếp hạ độc đã biến mất và nhà bị đốt, Cừu Kiêu cũng kinh ngạc. Âm mưu quanh bệnh tình nữ tướng chưa thể giải thích đơn giản bằng một lời tố cáo."
+    },
+    {
+      "panel": "crmn_ep139/p002.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trước mặt Lục Y, Cừu Kiêu làm bộ nổi giận vì chị bị hại. Nhưng điều hắn thật sự quan tâm chỉ là liệu bệnh có làm hỏng diện mạo và cơ thể nàng hay không.",
+      "section": "Tập 139"
+    },
+    {
+      "panel": "crmn_ep139/p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn còn hỏi thứ hương mình chuẩn bị bao giờ phát tác. Lục Y báo nữ tướng vẫn đốt mỗi ngày, nhưng thể chất đặc biệt khiến nàng chưa mất kiểm soát."
+    },
+    {
+      "panel": "crmn_ep139/p006.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nghe tin thuốc đã ngấm rất mạnh, Cừu Kiêu tưởng thời cơ sắp tới. Hắn muốn lợi dụng tình trạng của Cừu Yêu Nhi để thực hiện ý đồ đê tiện."
+    },
+    {
+      "panel": "crmn_ep139/p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trong phòng chữa bệnh, Thẩm Lãng dựa vào khả năng quan sát khác thường để xác định chỗ tụ máu. Điều hắn thiếu là sức mạnh và dụng cụ phù hợp."
+    },
+    {
+      "panel": "crmn_ep139/p022.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thiên Thiên lo phương pháp này quá liều lĩnh. Với người trong thế giới ấy, những gì Thẩm Lãng đề nghị nghe gần như không thể tin nổi."
+    },
+    {
+      "panel": "crmn_ep139/p023.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cừu Yêu Nhi lại đồng ý ngay. Nàng để vị nữ đại phu lạ mặt ra tay vì hiểu mình không thể tiếp tục chịu tình trạng hiện tại."
+    },
+    {
+      "panel": "crmn_ep139/p039.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn còn đang đếm để chuẩn bị thì nữ tướng đã tự thực hiện phần cần sức mạnh. Sự quyết đoán ấy làm cả Thẩm Lãng lẫn Thiên Thiên sững người."
+    },
+    {
+      "panel": "crmn_ep139/p041.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng tập trung theo dõi để bảo đảm không đi chệch vị trí. Tài quan sát của hắn kết hợp với khả năng khống chế cơ thể của nàng tạo ra lối thoát."
+    },
+    {
+      "panel": "crmn_ep139/p047.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cừu Yêu Nhi tự vận chân khí để hoàn tất việc chữa trị. Những gì Thẩm Lãng không đủ sức thực hiện lại được nàng làm bằng võ công của chính mình."
+    },
+    {
+      "panel": "crmn_ep139/p051.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cuộc chữa trị thành công. Thẩm Lãng kinh ngạc trước cách dùng chân khí, còn nữ tướng công nhận y thuật của vị khách đã cứu mình."
+    },
+    {
+      "panel": "crmn_ep139/p054.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nàng hứa sẽ trả một ân tình, chỉ cần nằm trong khả năng của mình. Trong đầu Thẩm Lãng, mục tiêu Nộ Triều thành vẫn chưa lúc nào biến mất."
+    },
+    {
+      "panel": "crmn_ep139/p054.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Điểm hay của cảnh cứu người nằm ở sự phối hợp. Thẩm Lãng nhìn ra vấn đề, còn Cừu Yêu Nhi có sức mạnh và quyết đoán để thực hiện điều hắn không thể tự làm."
+    },
+    {
+      "panel": "crmn_ep140/p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Sau khi trị bệnh, Thẩm Lãng phải liên tục nhắc mình giữ bình tĩnh để khỏi lộ thân phận. Lớp cải trang giúp hắn vào được đây nhưng cũng đẩy hắn vào nhiều tình huống khó xử.",
+      "section": "Tập 140"
+    },
+    {
+      "panel": "crmn_ep140/p026.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn bắt đầu cảm thấy nóng bất thường dù thời tiết không nóng. Cảm giác ấy báo hiệu căn phòng vẫn còn một mối nguy mà việc chữa bệnh chưa giải quyết được."
+    },
+    {
+      "panel": "crmn_ep140/p028.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Bên phía thành chủ, Đường Luân và Cừu Thiên Nguy tiếp tục bàn chuyện mỏ vàng. Số tiền Kim gia vừa trả nợ đủ lớn để họ không thể bỏ qua lời đồn."
+    },
+    {
+      "panel": "crmn_ep140/p030.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cừu Thiên Nguy vẫn nghi số vàng có thể đến từ vay mượn hoặc một vụ giao dịch. Xuất hiện đúng hạn trả nợ khiến nó vừa hấp dẫn vừa rất đáng ngờ."
+    },
+    {
+      "panel": "crmn_ep140/p043.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Nếu dốc quân đánh đảo rồi phát hiện chẳng có mỏ vàng, hắn sẽ phải trả giá lớn. Số thế lực muốn chia phần cũng có thể ngày càng tăng."
+    },
+    {
+      "panel": "crmn_ep140/p044.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn yêu cầu phải xác định vàng có thật trước. Đường Luân lại than rằng những người mình cử đi thám thính đều đã bị giết, không thể tiếp cận tùy tiện."
+    },
+    {
+      "panel": "crmn_ep140/p047.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Cừu Kiêu chủ động xin tới đảo dò xét. Hắn tin có cha và cả Nộ Triều thành chống lưng, Kim gia dù giận cũng chẳng dám làm mình bị thương."
+    },
+    {
+      "panel": "crmn_ep140/p048.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Hắn nhắc lại những lần từng hạ nhục và hãm hại Kim gia mà chưa bị trả đũa. Chính sự tự tin ấy khiến hắn không nhận ra mình đang được dẫn tới đâu."
+    },
+    {
+      "panel": "crmn_ep140/p055.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trước khi ra đảo, hắn còn hướng ý nghĩ về Cừu Yêu Nhi. Âm mưu nhắm vào nàng vẫn đang diễn ra song song với cuộc tranh đoạt vàng."
+    },
+    {
+      "panel": "crmn_ep140/p058.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Trong phòng, nữ tướng nhận ra chiếc lò hương có vấn đề. Nàng thoáng nghi nữ đại phu nhưng lập tức gạt đi, bởi mùi hương đã bị người khác pha thêm thuốc."
+    },
+    {
+      "panel": "crmn_ep140/p059.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Nàng xác định đúng nguồn gốc cơn bất thường, nhưng thuốc đã phát tác. Bên ngoài căn phòng yên tĩnh, những kẻ chờ cơ hội vẫn chưa chịu dừng tay."
+    }
+  ],
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ]
+}

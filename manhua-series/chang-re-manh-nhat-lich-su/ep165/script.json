@@ -1,0 +1,17 @@
+{
+  "title": "Cầu Đao Nhi sống sót sau pháo kích, bí mật trong người nàng!?",
+  "chapters": "164",
+  "source_dir": "manhua-recap/crmn_ep165",
+  "description": "Sau cuộc đối đầu với Thẩm Lãng, Cầu Đao Nhi được đưa đi chữa trị. Nàng đối diện với sự thật về những hạt kim loại trong cơ thể và nguy cơ tính mạng.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "beats": [
+    {"panel":"p002.jpg","type":"HOOK","kind":"recap","narration":"Cầu Đao Nhi sống sót, nhưng cuộc đối đầu vừa rồi khiến nàng bị thương và suy kiệt."},
+    {"panel":"p008.jpg","type":"BUILD","kind":"recap","narration":"Thẩm Lãng nhận ra cơ thể nàng vẫn có dấu hiệu của những mảnh kim loại từng được cấy vào."},
+    {"panel":"p016.jpg","type":"BUILD","kind":"recap","narration":"Cầu Đao Nhi thừa nhận nàng không hề sợ chết, nhưng không muốn người khác quyết định thay mình."},
+    {"panel":"p025.jpg","type":"BUILD","kind":"recap","narration":"Nàng nói khoảng cách với đại quân của Trường Tân và Vạn Nghìn không xa, nếu cần vẫn có thể gọi họ tới."},
+    {"panel":"p033.jpg","type":"BUILD","kind":"commentary","narration":"Cầu Đao Nhi dùng chính sự cứng rắn của mình để thương lượng: nàng yếu thế về tình trạng cơ thể, nhưng vẫn có quân đội làm chỗ dựa."},
+    {"panel":"p041.jpg","type":"BUILD","kind":"recap","narration":"Thẩm Lãng nói hắn có thể thả nàng và con trai, nếu nàng chịu bàn chuyện hợp tác."},
+    {"panel":"p050.jpg","type":"BUILD","kind":"recap","narration":"Nàng không dễ dàng tin lời hứa, còn những người xung quanh vẫn căng thẳng quan sát."},
+    {"panel":"p053.jpg","type":"ENDING","kind":"recap","narration":"Thẩm Lãng nhớ tới những hạt nhỏ đã được đưa vào cơ thể nàng. Nếu chúng vỡ ra, Cầu Đao Nhi sẽ gặp nguy hiểm."}
+  ]
+}

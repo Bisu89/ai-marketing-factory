@@ -1,0 +1,63 @@
+{
+  "title": "Trác Phàm dùng trận luyện đan để cứu Hoa Vũ Lâu!?",
+  "chapters": "148",
+  "source_dir": "manhua-recap/dqgl_ep148",
+  "written_by": "OpenAI, ??i chi?u ?nh ngu?n, 2026-10-20",
+  "description": "Trác Phàm dùng trận luyện đan để cứu Hoa Vũ Lâu. Tóm tắt chương 148 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Trác Phàm dùng trận luyện đan để cứu Hoa Vũ Lâu!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Trác Phàm nói thẳng các thế gia đều bị Đế Vương Môn nhắm đến; ai chống đối cũng sẽ thành mục tiêu.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p010",
+      "narration": "Các trưởng lão kinh ngạc khi nhận ra những hành động ngang ngược của Thanh Vân có thể là một phần kế hoạch thống nhất bảy nhà.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p021",
+      "narration": "Thiên Dương lo Hoa Vũ Lâu đã đứng hẳn về phía đối đầu, còn Trác Phàm nói họ không thể tiếp tục giả vờ trung lập.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "p028",
+      "narration": "Trác Phàm cho rằng Hoa Vũ Lâu là cánh cửa để Đế Vương Môn lần lượt nuốt chửng các thế gia.",
+      "kind": "recap",
+      "type": "REVEAL"
+    },
+    {
+      "panel": "p039",
+      "narration": "Hắn thừa nhận mục tiêu kế tiếp của Đế Vương Môn chưa thể đoán chắc, nhưng chờ đợi chỉ khiến các nhà mất thế chủ động.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p050",
+      "narration": "Trác Phàm đề nghị dùng trận đấu luyện đan để giữ cho Hoa Vũ Lâu một cơ hội sống; Thanh Vân lập tức nhận lời.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p074",
+      "narration": "Hắn chủ động biến mình thành tâm điểm, khiến ba nhà đối địch phải bố trí người đối phó với hắn trước.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

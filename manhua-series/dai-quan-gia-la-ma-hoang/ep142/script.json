@@ -1,0 +1,63 @@
+{
+  "title": "Thanh Vân đẩy Hoa Vũ Lâu vào thế cô lập!?",
+  "chapters": "142",
+  "source_dir": "manhua-recap/dqgl_ep142",
+  "written_by": "OpenAI, ??i chi?u ?nh ngu?n, 2026-10-20",
+  "description": "Thanh Vân đẩy Hoa Vũ Lâu vào thế cô lập. Tóm tắt chương 142 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Thanh Vân đẩy Hoa Vũ Lâu vào thế cô lập!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Tranh cãi quanh vị trí của Trác Phàm tiếp tục ngay giữa buổi tiệc.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p012",
+      "narration": "Hoàng Phủ Thanh Vân bảo Trác Phàm ngồi lại, khiến Thiên Dương và các trưởng lão Kiếm Hầu Phủ tức tối bỏ đi.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p024",
+      "narration": "Trác Phàm nhận ra Thanh Vân đang dùng chuyện nhỏ để thử thái độ của từng nhà.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "p033",
+      "narration": "Mẫu Đơn nhắc hắn đừng chọc thêm các thế lực khi Hoa Vũ Lâu đang cần đồng minh.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p046",
+      "narration": "Những người còn lại bàn về liên minh bảy nhà và mối đe dọa từ Đế Vương Môn.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p061",
+      "narration": "Trác Phàm cho rằng Thanh Vân muốn cô lập Hoa Vũ Lâu; một khi các nhà quay lưng, liên minh sẽ khó thành.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "p076",
+      "narration": "Thế nhưng hắn vẫn ngang nhiên ngồi cùng Thanh Vân, để lại các trưởng lão với thêm một lý do mà nổi giận.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

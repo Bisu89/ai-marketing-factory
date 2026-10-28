@@ -1,0 +1,105 @@
+{
+  "title": "Trác Phàm tỉnh lại, gặp người quen!?",
+  "chapters": "124-126",
+  "source_dir": "manhua-recap/dqgl_ep124",
+  "written_by": "Selected from ep121-ep130, 2026-10-20",
+  "description": "Trác Phàm chương 124-126.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Trác Phàm trúng độc nặng, ai mới cứu được hắn!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep124/p001.jpg",
+      "narration": "Cuộc đối đầu vừa lắng xuống thì Trác Phàm đã không còn đứng vững.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep124/p008.jpg",
+      "narration": "Bạt Trường Lão nói người trúng độc khó sống lâu.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep124/p012.jpg",
+      "narration": "Ngưng Nhi hỏi liệu còn cách nào cứu hắn hay không.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep124/p031.jpg",
+      "narration": "Trong cơn mê, Trác Phàm vẫn cảm nhận độc tố bị khuấy động.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep124/p068.jpg",
+      "narration": "Hắn đã qua cơn nguy kịch, nhưng vẫn chưa tỉnh lại.",
+      "kind": "recap",
+      "type": "ENDING"
+    },
+    {
+      "panel": "dqgl_ep125/p001.jpg",
+      "narration": "Trác Phàm tỉnh dậy sau cơn hôn mê, bên cạnh vẫn có người chăm sóc.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep125/p012.jpg",
+      "narration": "Hắn thử vận khí và nhận ra cơ thể đã dễ chịu hơn.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep125/p036.jpg",
+      "narration": "Nữ nhân nhắc mình phải rời đi, khiến hắn nhận ra cô sắp biến mất.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep125/p060.jpg",
+      "narration": "Hai người tạm biệt với lời hẹn có thể còn gặp lại.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep126/p001.jpg",
+      "narration": "Trác Phàm còn nghĩ về cuộc chia tay thì người quen bất ngờ xuất hiện.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep126/p007.jpg",
+      "narration": "Hắn giật mình khi thấy Tông Hiến Đế và Hồng Nhi trước mặt.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep126/p035.jpg",
+      "narration": "Mọi người nhắc tới người chị mà Trác Phàm từng để tâm.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep126/p049.jpg",
+      "narration": "Hắn nói mình đến vì lời hứa và muốn giúp họ an toàn.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep126/p075.jpg",
+      "narration": "Chuyến đi mới bắt đầu, mục đích điểm đến chưa được tiết lộ.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

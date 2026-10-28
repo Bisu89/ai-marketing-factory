@@ -1,0 +1,105 @@
+{
+  "title": "Cao thủ kéo đến, Trác Phàm lật ngược thế cờ!?",
+  "chapters": "134-137",
+  "source_dir": "manhua-recap/dqgl_ep134",
+  "written_by": "Biên tập từ ep131-ep140, 2026-10-20",
+  "description": "Trác Phàm và những biến cố quanh Hoa Vũ Lâu, chương 134 đến 137.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Cao thủ kéo đến, Trác Phàm lật ngược thế cờ!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep134/p002.jpg",
+      "narration": "Sau đòn vừa rồi, Nghiêm Tông vẫn ngang nhiên thách thức Trác Phàm.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep134/p018.jpg",
+      "narration": "Nghiêm Tông chuyển sang uy hiếp Sở Khuynh Thành bằng tính mạng người thân của nàng.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep134/p038.jpg",
+      "narration": "Nàng trực tiếp giao chiến với Nghiêm Tông, liên tiếp chiếm thế thượng phong.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep134/p071.jpg",
+      "narration": "Một lão nhân bất ngờ xuất hiện trước khi cuộc đối đầu kết thúc.",
+      "kind": "recap",
+      "type": "ENDING"
+    },
+    {
+      "panel": "dqgl_ep135/p002.jpg",
+      "narration": "Lão nhân vừa xuất hiện đã được nhận ra là Độc Thủ Dược Vương.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep135/p024.jpg",
+      "narration": "Trác Phàm nhận thấy cơ hội, nhưng vẫn dè chừng thực lực của các cao thủ quanh mình.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "dqgl_ep135/p047.jpg",
+      "narration": "Sở Khuynh Thành cân nhắc liên thủ với Trác Phàm để bảo vệ Hoa Vũ Lâu.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep135/p075.jpg",
+      "narration": "Một cao thủ khác bước ra chào Độc Thủ Dược Vương; cuộc tụ hội càng lúc càng căng.",
+      "kind": "recap",
+      "type": "ENDING"
+    },
+    {
+      "panel": "dqgl_ep136/p001.jpg",
+      "narration": "Người mới đến là Thần Nhãn Long Cửu, đối thủ cũ của Độc Thủ Dược Vương.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep136/p031.jpg",
+      "narration": "Sở Khuynh Thành lên tiếng bảo vệ Trác Phàm vì hắn đã cứu người của nàng.",
+      "kind": "recap",
+      "type": "REACTION"
+    },
+    {
+      "panel": "dqgl_ep136/p075.jpg",
+      "narration": "Họ nhất quyết kéo hắn về Hoa Vũ Lâu; Trác Phàm đành miễn cưỡng đi theo.",
+      "kind": "recap",
+      "type": "ENDING"
+    },
+    {
+      "panel": "dqgl_ep137/p001.jpg",
+      "narration": "Vừa đến Hoa Vũ Lâu, Trác Phàm đã thấy các cô gái nhấn mạnh chuyện ẩn tình.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep137/p027.jpg",
+      "narration": "Mẫu Đơn nói hắn là người đầu tiên dám liều mạng cứu một cô gái.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep137/p063.jpg",
+      "narration": "Cô ấy giả vờ dùng vụ trộm để lần ra kẻ chủ mưu; Trác Phàm chỉ mỉm cười trước kế hoạch ấy.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "title": "Trác Phàm chọc giận Lưu Đại Sư đến cực điểm!?",
+  "chapters": "172",
+  "source_dir": "manhua-recap/dqgl_ep172",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-21",
+  "description": "Trác Phàm chọc giận Lưu Đại Sư đến cực điểm. Tóm tắt chương 172 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Trác Phàm chọc giận Lưu Đại Sư đến cực điểm!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Lưu Đại Sư ép Trác Phàm giải thích chuyện nguyên liệu và nghi hắn giở trò sau lưng.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p025",
+      "narration": "Trác Phàm lạnh lùng phủ nhận, còn nhắc rằng một Lạc gia đã đủ khiến hắn bận tâm.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p058",
+      "narration": "Cuộc đấu khẩu châm ngòi cho màn phô diễn thực lực tiếp theo của Lưu Đại Sư.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

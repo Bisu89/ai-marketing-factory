@@ -1,0 +1,14 @@
+{
+  "title": "Kẻ đột nhập dùng con tin ép Kim thị giao bảo vật!?",
+  "chapters": "170",
+  "source_dir": "manhua-recap/crmn_ep171",
+  "description": "Một kẻ lạ mặt xông vào phủ, bắt người làm con tin để đổi lấy thứ hắn đang tìm.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "beats": [
+    {"panel":"p002.jpg","type":"HOOK","kind":"recap","narration":"Kẻ bịt mặt lục tìm thứ mình cần, nhưng tầng đầu của mật khố vẫn không có dấu vết."},
+    {"panel":"p003.jpg","type":"BUILD","kind":"recap","narration":"Hắn lập tức khống chế một cô gái bị thương, buộc mọi người trong phủ phải lùi lại."},
+    {"panel":"p010.jpg","type":"BUILD","kind":"recap","narration":"Thẩm Lãng nhìn tình thế căng thẳng, còn người nhà Kim thị không dám manh động vì con tin."},
+    {"panel":"p018.jpg","type":"BUILD","kind":"recap","narration":"Kẻ lạ mặt đưa ra chiếc hộp, biến cuộc giải cứu thành một vụ trao đổi."},
+    {"panel":"p030.jpg","type":"ENDING","kind":"recap","narration":"Hắn khẳng định món đồ bên trong là thật, khiến cả phủ phải cân nhắc lời hứa của hắn."}
+  ]
+}

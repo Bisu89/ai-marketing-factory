@@ -1,0 +1,39 @@
+{
+  "title": "U Minh Cốc phát lệnh truy sát Trác Phàm, hắn vẫn vào núi luyện công!?",
+  "chapters": "102",
+  "source_dir": "manhua-recap/dqgl_ep102",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-19",
+  "description": "Tin ba trưởng lão U Minh Cốc chết dưới tay Trác Phàm khiến cả cốc chấn động. Vì lệnh cấm của hoàng đế, họ không thể công khai kéo quân vào Phong Lâm Thành, nên chuyển sang phát lệnh truy sát. Trong lúc đó, Trác Phàm lên núi rèn luyện và nghĩ cách bảo toàn mạng sống trước đòn trả thù sắp tới.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tập 102 (chương 102).",
+  "hashtags": ["#DaiQuanGiaLaMaHoang", "#ReviewManhua", "#Manhua", "#TuTien", "#XuyenKhong", "#ReviewTruyen"],
+  "thumbnail": {
+    "text": "U Minh Cốc phát lệnh truy sát Trác Phàm!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, a stern white-haired elder in a shadowy martial sect hall ordering assassins after Trac Pham, dramatic red and black lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {"panel":"p002.jpg","narration":"Tin dữ vừa truyền về U Minh Cốc: ba vị trưởng lão đều đã chết dưới tay Trác Phàm, quản gia của Lạc gia.","kind":"recap","type":"HOOK"},
+    {"panel":"p004.jpg","narration":"Kẻ đưa tin run rẩy xin Cốc chủ tha mạng, nói mình không dám giấu chuyện lớn đến vậy.","kind":"recap","type":"BUILD"},
+    {"panel":"p006.jpg","narration":"Nhưng lời giải thích chẳng làm cơn giận trong điện dịu xuống; người báo tin bị quật ngã trước mặt các trưởng lão.","kind":"recap","type":"BUILD"},
+    {"panel":"p008.jpg","narration":"Hắn phân trần rằng có người không cho phép mình báo cáo, còn dặn đây là chuyện kỳ lạ, tốt nhất đừng nói ra.","kind":"recap","type":"BUILD"},
+    {"panel":"p011.jpg","narration":"Muộn màng mới biết sự tình, các cao tầng U Minh Cốc bắt đầu bàn cách đối phó Trác Phàm.","kind":"recap","type":"BUILD"},
+    {"panel":"p014.jpg","narration":"Đại trưởng lão nhắc mọi người: hoàng đế đã cấm U Minh Cốc tiến vào Phong Lâm Thành gần một năm nay.","kind":"recap","type":"BUILD"},
+    {"panel":"p016.jpg","narration":"Nếu công khai nhắm vào Lạc gia, họ sẽ tự trao cớ cho những thế lực khác gây chiến với U Minh Cốc.","kind":"recap","type":"BUILD"},
+    {"panel":"p018.jpg","narration":"Có người vẫn muốn báo thù để giữ thể diện, nhưng ba trưởng lão đã chết, trong đó có cả người được tin cậy.","kind":"recap","type":"BUILD"},
+    {"panel":"p020.jpg","narration":"Đánh thẳng vào thành lúc này quá nguy hiểm; họ cần một cách ra tay kín đáo hơn.","kind":"recap","type":"BUILD"},
+    {"panel":"p022.jpg","narration":"Một trưởng lão đề nghị dùng sát thủ U Minh truy tìm Trác Phàm, bất kể hắn trốn ở đâu trong đế quốc.","kind":"recap","type":"BUILD"},
+    {"panel":"p024.jpg","narration":"Lệnh truy sát được thông qua. Những người trong bóng tối sẽ thay mặt U Minh Cốc tìm đến hắn.","kind":"recap","type":"BUILD"},
+    {"panel":"p026.jpg","narration":"Kẻ nhận lệnh tin rằng lần này Trác Phàm khó lòng thoát chết.","kind":"recap","type":"BUILD"},
+    {"panel":"p029.jpg","narration":"Còn Trác Phàm đã rời xa thành thị, vào núi tu luyện để chuẩn bị cho ngày đối thủ tìm tới.","kind":"recap","type":"BUILD"},
+    {"panel":"p032.jpg","narration":"Hắn hiểu rằng sau cái chết của U Quỷ Thất, U Minh Cốc nhất định sẽ trả đũa.","kind":"recap","type":"BUILD"},
+    {"panel":"p035.jpg","narration":"Trác Phàm quyết định rèn thân thể và luyện thêm võ kỹ; chỉ dựa vào một chiêu thì không đủ để giữ mạng.","kind":"recap","type":"BUILD"},
+    {"panel":"p038.jpg","narration":"Chiêu thức mạnh mà không kiểm soát nổi thì chẳng khác nào tự làm mình kiệt quệ; Trác Phàm phải tìm cách dùng chúng đúng lúc.","kind":"commentary","type":"BUILD"},
+    {"panel":"p041.jpg","narration":"Một giọng nói bên cạnh nhắc hắn về giới hạn ấy, khiến Trác Phàm càng phải tính kỹ trước khi liều mình.","kind":"recap","type":"BUILD"},
+    {"panel":"p044.jpg","narration":"Hắn tĩnh tọa giữa núi sâu, tập trung điều tức sau quãng thời gian khổ luyện.","kind":"recap","type":"BUILD"},
+    {"panel":"p047.jpg","narration":"Trong tay Trác Phàm là quả trứng phượng hoàng vẫn chưa thể nở, được hắn mang theo suốt thời gian qua.","kind":"recap","type":"BUILD"},
+    {"panel":"p049.jpg","narration":"Quả trứng đang dựa vào linh khí trong Lôi Linh Giới để duy trì chút sinh mệnh còn lại.","kind":"recap","type":"BUILD"},
+    {"panel":"p051.jpg","narration":"Muốn nó nở, hắn phải khôi phục hoàn toàn sinh lực đã mất; chỉ giữ cho nó không chết vẫn chưa đủ.","kind":"recap","type":"BUILD"},
+    {"panel":"p053.jpg","narration":"Thuốc men thông thường không giúp được. Trác Phàm cần những linh dược quý hiếm có thể nuôi lại sinh cơ.","kind":"recap","type":"BUILD"},
+    {"panel":"p054.jpg","narration":"Hắn quyết định lên đường tìm dược liệu, nhưng ngay lúc ấy một cô gái bất ngờ xuất hiện trước mặt.","kind":"recap","type":"BUILD"},
+    {"panel":"p055.jpg","narration":"Cô nhìn hắn đầy nghi hoặc rồi hỏi: rốt cuộc ngươi đang luyện tà công gì vậy?","kind":"recap","type":"BUILD"},
+    {"panel":"p056.jpg","narration":"Một tiếng đáp bất ngờ vang lên: “Bằng Thông Linh!” Cuộc gặp này xem ra còn nhiều chuyện chưa rõ.","kind":"recap","type":"ENDING"}
+  ]
+}

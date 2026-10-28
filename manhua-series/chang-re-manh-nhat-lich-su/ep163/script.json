@@ -1,0 +1,17 @@
+{
+  "title": "Cửu Thiên Nguy kết giao cao thủ, Trường Xung bất ngờ xuất hiện!?",
+  "chapters": "162",
+  "source_dir": "manhua-recap/crmn_ep163",
+  "description": "Sau trận Vọng Nhai, các phe bắt đầu tính toán lại lợi ích và lực lượng. Cửu Thiên Nguy tìm cách kết giao với những cao thủ, rồi bất ngờ chạm mặt Trường Xung.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "beats": [
+    {"panel":"p002.jpg","type":"HOOK","kind":"recap","narration":"Trận chiến Vọng Nhai đã kết thúc, nhưng các phe lập tức quay sang tranh tính lợi ích sau chiến thắng."},
+    {"panel":"p009.jpg","type":"BUILD","kind":"recap","narration":"Cửu Thiên Nguy bàn chuyện mạch vàng và tìm cách giữ những cao thủ bên cạnh mình."},
+    {"panel":"p017.jpg","type":"BUILD","kind":"recap","narration":"Nàng đề nghị một nhóm võ sĩ tham gia huấn luyện, đồng thời mở đường cho liên minh mới."},
+    {"panel":"p025.jpg","type":"BUILD","kind":"recap","narration":"Tin báo cho biết lực lượng tinh nhuệ của Cửu Thiên Nguy đã chịu tổn thất nặng trong trận vừa qua."},
+    {"panel":"p033.jpg","type":"BUILD","kind":"commentary","narration":"Sau một trận thua lớn, liên minh nào cũng phải tính lại cái giá phải trả và xem ai còn đáng để đặt niềm tin."},
+    {"panel":"p041.jpg","type":"BUILD","kind":"recap","narration":"Đoàn người chuẩn bị rời đi, nhưng một nhân vật không ngờ lại xuất hiện trên đường."},
+    {"panel":"p052.jpg","type":"BUILD","kind":"recap","narration":"Cửu Thiên Nguy nhìn thấy Trường Xung, người đáng lẽ đang dưỡng thương ở nhà."},
+    {"panel":"p062.jpg","type":"ENDING","kind":"recap","narration":"Hai người đối mặt trên thuyền. Cửu Thiên Nguy hỏi thẳng liệu hắn tới đây để giết nàng hay không."}
+  ]
+}

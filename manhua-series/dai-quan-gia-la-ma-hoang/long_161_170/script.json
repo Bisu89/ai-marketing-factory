@@ -1,0 +1,212 @@
+{
+  "template": "manhua_recap_long_vi",
+  "title": "Đại Quản Gia Là Ma Hoàng | Tập 161–170",
+  "chapters": "161-170",
+  "source_dir": "manhua-recap/dqgl_ep161",
+  "written_by": "OpenAI, biên tập từ script từng tập, 2026-10-21",
+  "description": "Tóm tắt Đại Quản Gia Là Ma Hoàng từ tập 161 đến 170, nối tiếp cuộc chiến và những bước đột phá của Trác Phàm.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Tổng Ngọc áp đảo ngay vòng đầu luyện đan!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep161/p001.jpg",
+      "narration": "Vòng đầu yêu cầu luyện ra đan dược nhất phẩm. Tổng Ngọc vừa ra tay đã khiến các giám khảo chú ý.",
+      "kind": "recap",
+      "type": "HOOK",
+      "section": "Tập 161: Tổng Ngọc áp đảo ngay vòng đầu luyện đan!?"
+    },
+    {
+      "panel": "dqgl_ep161/p020.jpg",
+      "narration": "Những người xung quanh không ngờ một thí sinh trẻ lại dùng thủ pháp luyện đan thuần thục đến vậy.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep161/p051.jpg",
+      "narration": "Màn thể hiện của Tổng Ngọc khiến cuộc thi bắt đầu nóng lên, nhưng kết quả vẫn còn chờ công bố.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep162/p001.jpg",
+      "narration": "Ban giám khảo công bố kết quả vòng đầu: Tổng Ngọc vượt qua tất cả đối thủ.",
+      "kind": "recap",
+      "type": "BUILD",
+      "section": "Tập 162: Tổng Ngọc thắng vòng đầu, đối thủ nghi gian lận!?"
+    },
+    {
+      "panel": "dqgl_ep162/p024.jpg",
+      "narration": "Những thí sinh còn lại bị loại, khiến một số người lập tức nghi ngờ kết quả có vấn đề.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep162/p056.jpg",
+      "narration": "Tổng Ngọc không bận tâm lời xì xào; anh chuẩn bị giải thích vì sao mình tự tin đến vậy.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep163/p001.jpg",
+      "narration": "Trước lời nghi ngờ, Tổng Ngọc nói rõ đan dược vừa luyện không chỉ dừng ở nhất phẩm.",
+      "kind": "recap",
+      "type": "BUILD",
+      "section": "Tập 163: Tổng Ngọc tuyên bố mình luyện được đan nhị phẩm!?"
+    },
+    {
+      "panel": "dqgl_ep163/p025.jpg",
+      "narration": "Anh nhắc đến hệ thống mười hai phẩm và khẳng định mình có thể luyện ra đan nhị phẩm.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep163/p059.jpg",
+      "narration": "Lời tuyên bố khiến cả khán đài sững sờ, còn Lưu Đại Sư không thể tiếp tục đứng ngoài cuộc.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep164/p001.jpg",
+      "narration": "Trác Phàm trực tiếp khiêu khích Lưu Đại Sư, biến cuộc thi thành màn so tài danh dự.",
+      "kind": "recap",
+      "type": "BUILD",
+      "section": "Tập 164: Trác Phàm hạ nhục đối thủ giữa cuộc thi!?"
+    },
+    {
+      "panel": "dqgl_ep164/p023.jpg",
+      "narration": "Lưu Đại Sư nổi giận ra tay, nhưng Trác Phàm đáp trả bằng một cú đánh khiến đối thủ ngã nhào.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep164/p055.jpg",
+      "narration": "Cả khán đài chứng kiến cảnh tượng khó tin; cuộc đọ sức giữa hai người vừa mới bắt đầu.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep165/p001.jpg",
+      "narration": "Trác Phàm tiếp tục ép Lưu Đại Sư chứng minh thực lực thay vì chỉ dựa vào danh tiếng.",
+      "kind": "recap",
+      "type": "BUILD",
+      "section": "Tập 165: Lưu Đại Sư nhận lời thách đấu của Trác Phàm!?"
+    },
+    {
+      "panel": "dqgl_ep165/p022.jpg",
+      "narration": "Hắn đưa ra điều kiện: nếu đánh ngã được mình thì Lưu sẽ được xem là đứng đầu.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep165/p058.jpg",
+      "narration": "Lưu Đại Sư chấp nhận lời thách, mở màn cho cuộc đối đầu mà cả hội trường mong chờ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep166/p001.jpg",
+      "narration": "Sau màn khẩu chiến, cuộc thi chuyển sang phần thử luyện đan với nguyên liệu cấp cao hơn.",
+      "kind": "recap",
+      "type": "BUILD",
+      "section": "Tập 166: Các luyện đan sư bước vào thử thách mới!?"
+    },
+    {
+      "panel": "dqgl_ep166/p024.jpg",
+      "narration": "Nhiều thí sinh bắt đầu xử lý nguyên liệu tam phẩm, trong khi ban giám khảo theo dõi từng thao tác.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep166/p060.jpg",
+      "narration": "Kết quả của vòng thử thách vẫn chưa ngã ngũ, và Trác Phàm còn chưa tung hết bài.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep167/p001.jpg",
+      "narration": "Một nguyên liệu độc tính cao được đưa ra, khiến các thí sinh phải tính toán kỹ trước khi phối dược.",
+      "kind": "recap",
+      "type": "BUILD",
+      "section": "Tập 167: Thanh Mãng Lân Dịch đối đầu Ôn Dương Đan!?"
+    },
+    {
+      "panel": "dqgl_ep167/p026.jpg",
+      "narration": "Thanh Mãng Lân Dịch trở thành tâm điểm khi được đặt cạnh Ôn Dương Đan, tạo ra phép thử đầy rủi ro.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep167/p062.jpg",
+      "narration": "Cách xử lý nguyên liệu này có thể quyết định ai đủ sức bước tiếp trong cuộc thi.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep168/p001.jpg",
+      "narration": "Trong lúc các luyện đan sư hoàn tất bài thi, Trác Phàm vẫn bình thản trước phản ứng của khán giả.",
+      "kind": "recap",
+      "type": "BUILD",
+      "section": "Tập 168: Trác Phàm khiến mọi người nghi ngờ viên đan của mình!?"
+    },
+    {
+      "panel": "dqgl_ep168/p025.jpg",
+      "narration": "Mùi hương từ viên đan khiến người xem bối rối: đó là dấu hiệu thành công hay một thứ độc dược?",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep168/p058.jpg",
+      "narration": "Khuynh Thành nhận ra viên đan có điều bất thường, nhưng Trác Phàm chưa vội giải thích.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep169/p001.jpg",
+      "narration": "Kết quả vòng thi được tổng kết, và viên đan của Trác Phàm khiến người quan sát chú ý đặc biệt.",
+      "kind": "recap",
+      "type": "BUILD",
+      "section": "Tập 169: Viên đan kỳ lạ của Trác Phàm khiến cả hội trường choáng!?"
+    },
+    {
+      "panel": "dqgl_ep169/p023.jpg",
+      "narration": "Khuynh Thành xác nhận phẩm cấp của nó, trong khi hương đan làm tinh thần mọi người tỉnh táo.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep169/p055.jpg",
+      "narration": "Không ai chắc tác dụng thật sự của viên đan là gì, còn Trác Phàm dường như đang chờ phản ứng tiếp theo.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep170/p001.jpg",
+      "narration": "Mọi người tranh luận về tác dụng của viên đan Trác Phàm vừa luyện ra.",
+      "kind": "recap",
+      "type": "BUILD",
+      "section": "Tập 170: Mùi hương đan dược che giấu điều gì!?"
+    },
+    {
+      "panel": "dqgl_ep170/p022.jpg",
+      "narration": "Có người xem đó là đan dược hữu ích, có người lại nghi ngờ bên trong chứa độc tính.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep170/p058.jpg",
+      "narration": "Khi cuộc thi bước sang vòng mới, Trác Phàm và Lưu Đại Sư lại đứng trước màn so tài tiếp theo.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

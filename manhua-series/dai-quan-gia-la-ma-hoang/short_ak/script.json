@@ -1,0 +1,105 @@
+{
+  "title": "Trác Phàm đối đầu âm mưu quanh Hoa Vũ Lâu!?",
+  "chapters": "131-133",
+  "source_dir": "manhua-recap/dqgl_ep131",
+  "written_by": "Biên tập từ ep131-ep140, 2026-10-20",
+  "description": "Trác Phàm và những biến cố quanh Hoa Vũ Lâu, chương 131 đến 133.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Trác Phàm đối đầu âm mưu quanh Hoa Vũ Lâu!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep131/p001.jpg",
+      "narration": "Trác Phàm vừa ra tay đã khiến kẻ gây sự với Đan Đan phải gục xuống.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep131/p018.jpg",
+      "narration": "Mẫu Đơn xuất hiện. Lâm trưởng lão lập tức bị vẻ ngoài của nàng làm cho mất bình tĩnh.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep131/p028.jpg",
+      "narration": "Nàng không tin những lời đường mật; với nàng, phải nhìn vào hành động.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "dqgl_ep131/p041.jpg",
+      "narration": "Đan Đan thú nhận nàng muốn gặp một người thật lòng, dám liều mạng vì mình.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep131/p066.jpg",
+      "narration": "Khi bị hỏi có thích Trác Phàm không, Mẫu Đơn vừa đáp “thích” thì hắn nghe thấy.",
+      "kind": "recap",
+      "type": "ENDING"
+    },
+    {
+      "panel": "dqgl_ep132/p001.jpg",
+      "narration": "Sau cuộc náo loạn, Trác Phàm chuyển mục tiêu sang Hộ Bảo Các của Hoa Vũ Lâu.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep132/p019.jpg",
+      "narration": "Trác Phàm phát hiện một trận phong ấn bí mật không có trên bản đồ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep132/p026.jpg",
+      "narration": "Hắn đoán bên trong đang giấu thứ quan trọng nên tìm cách vượt qua cấm chế.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep132/p034.jpg",
+      "narration": "Trong hộp là Bích Độc Tụ Cầm, nhưng nó khiến Trác Phàm nhớ đến một vật khác.",
+      "kind": "recap",
+      "type": "REVEAL"
+    },
+    {
+      "panel": "dqgl_ep132/p055.jpg",
+      "narration": "Động tĩnh báo động vang lên, một cao thủ tóc trắng xuất hiện chặn đường hắn.",
+      "kind": "recap",
+      "type": "ENDING"
+    },
+    {
+      "panel": "dqgl_ep133/p003.jpg",
+      "narration": "Nữ cao thủ tóc trắng lập tức tấn công kẻ đột nhập, nhưng Trác Phàm né được.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep133/p032.jpg",
+      "narration": "Bích Độc Tụ Cầm được giấu trong hộp, nhưng Trác Phàm vẫn chưa tin vật này là thật.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep133/p066.jpg",
+      "narration": "Trưởng lão Nghiêm Tông nhận ra bảo vật là đồ giả rồi quay sang nghi ngờ Trác Phàm.",
+      "kind": "recap",
+      "type": "REVEAL"
+    },
+    {
+      "panel": "dqgl_ep133/p083.jpg",
+      "narration": "Hai bên giao thủ dữ dội. Nghiêm Tông đã đổ máu, nhưng trận chiến chưa ngã ngũ.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

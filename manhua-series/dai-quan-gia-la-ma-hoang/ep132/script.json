@@ -1,0 +1,63 @@
+{
+  "title": "Trác Phàm đột nhập Hộ Bảo Các, gặp cao thủ tóc trắng!?",
+  "chapters": "132",
+  "source_dir": "manhua-recap/dqgl_ep132",
+  "written_by": "OpenAI, ??i chi?u ?nh ngu?n, 2026-10-20",
+  "description": "Trác Phàm đột nhập Hộ Bảo Các, gặp cao thủ tóc trắng. Tóm tắt chương 132 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Trác Phàm đột nhập Hộ Bảo Các, gặp cao thủ tóc trắng!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Sau cuộc náo loạn, Trác Phàm chuyển mục tiêu sang Hộ Bảo Các của Hoa Vũ Lâu.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p012",
+      "narration": "Mẫu Đơn dặn Đan Đan đừng đánh đồng tất cả đàn ông với kẻ xấu.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "p019",
+      "narration": "Trác Phàm phát hiện một trận phong ấn bí mật không có trên bản đồ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p026",
+      "narration": "Hắn đoán bên trong đang giấu thứ quan trọng nên tìm cách vượt qua cấm chế.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p034",
+      "narration": "Trong hộp là Bích Độc Tụ Cầm, nhưng nó khiến Trác Phàm nhớ đến một vật khác.",
+      "kind": "recap",
+      "type": "REVEAL"
+    },
+    {
+      "panel": "p044",
+      "narration": "Hắn nghi món đồ trước mắt chỉ là mồi nhử, còn kẻ trộm đang nhắm vào bảo vật thật.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p055",
+      "narration": "Động tĩnh báo động vang lên, một cao thủ tóc trắng xuất hiện chặn đường hắn.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

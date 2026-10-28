@@ -1,0 +1,17 @@
+{
+  "title": "Thẩm Lãng nhấn chìm hải tặc trong mỏ vàng!?",
+  "chapters": "158",
+  "source_dir": "manhua-recap/crmn_ep159",
+  "description": "Đám hải tặc tràn vào mỏ cướp vàng mà không biết đường hầm đã bị phá. Nước biển tràn vào biến cuộc cướp bóc thành một cái bẫy chết người.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "beats": [
+    {"panel":"p002.jpg","type":"HOOK","kind":"recap","narration":"Vua hải tặc cho quân tràn xuống mỏ, quyết lấy hết vàng trước khi Kim gia kịp phản công."},
+    {"panel":"p008.jpg","type":"BUILD","kind":"recap","narration":"Dưới lòng đất có một đường dẫn nước nối ra biển, nằm cách bờ một quãng không xa."},
+    {"panel":"p014.jpg","type":"BUILD","kind":"recap","narration":"Một khối đá chắn đường hầm bị phá, nước biển lập tức dội vào khu mỏ."},
+    {"panel":"p020.jpg","type":"BUILD","kind":"recap","narration":"Mực nước dâng nhanh, nhốt những kẻ đang chen nhau gom vàng trong các lối hẹp."},
+    {"panel":"p028.jpg","type":"BUILD","kind":"recap","narration":"Hải tặc nhận ra mình bị lừa, nhưng đường thoát đã bị nước và đá chắn ngang."},
+    {"panel":"p036.jpg","type":"BUILD","kind":"commentary","narration":"Thẩm Lãng biến lòng tham của đối phương thành điểm yếu, rồi dùng chính địa hình của mỏ để khép bẫy."},
+    {"panel":"p045.jpg","type":"BUILD","kind":"recap","narration":"Một số tên cố trèo lên vách để thoát thân, lập tức bị cung thủ trên cao nhắm bắn."},
+    {"panel":"p059.jpg","type":"ENDING","kind":"recap","narration":"Trong làn nước lạnh tối om, đám hải tặc vùng vẫy tìm đường sống, còn trận chiến vẫn chưa dừng lại."}
+  ]
+}

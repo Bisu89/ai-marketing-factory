@@ -1,0 +1,39 @@
+{
+  "title": "Trác Phàm bị Huyết Bức Chấn Thiên áp đảo!?",
+  "chapters": "194",
+  "source_dir": "manhua-recap/dqgl_ep194",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-21",
+  "description": "Trác Phàm bị Huyết Bức Chấn Thiên áp đảo. Tóm tắt chương 194 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Trác Phàm bị Huyết Bức Chấn Thiên áp đảo!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Huyết bức tiếp tục bám lấy Trác Phàm, còn Lâm trưởng lão tin rằng cơ thể hắn sắp không chịu nổi.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p022",
+      "narration": "Trác Phàm bị dồn ép giữa trận pháp, nhưng ánh mắt vẫn cho thấy hắn đang tìm cách đảo ngược thế cờ.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p078",
+      "narration": "Ngay khi đối thủ tưởng đã nắm chắc phần thắng, Trác Phàm bắt đầu phản kích bằng một luồng sức mạnh khác thường.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

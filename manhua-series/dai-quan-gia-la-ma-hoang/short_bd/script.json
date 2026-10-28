@@ -1,0 +1,76 @@
+{
+  "template": "manhua_recap_vi",
+  "title": "Đại Quản Gia Là Ma Hoàng | Tập 195–197: Trác Phàm nghịch chuyển!?",
+  "chapters": "195-197",
+  "source_dir": "manhua-recap/dqgl_ep195",
+  "written_by": "OpenAI, biên tập từ script từng tập, 2026-10-21",
+  "description": "Tóm tắt tập 195 đến 197 Đại Quản Gia Là Ma Hoàng. Trác Phàm đối đầu cao thủ và tìm cách xoay chuyển cục diện.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Trác Phàm dùng dị hỏa chống lại đàn huyết bức!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep195/p001.jpg",
+      "narration": "Trác Phàm kích hoạt ngọn lửa xanh trên trán khi đàn huyết bức vẫn bủa vây.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep195/p023.jpg",
+      "narration": "Lâm trưởng lão hô mọi người giữ hắn lại, nhưng Trác Phàm không hề tỏ ra sợ hãi.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep195/p061.jpg",
+      "narration": "Dị hỏa bùng lên quanh người Trác Phàm; những kẻ tưởng hắn đã kiệt sức lập tức nhận ra mình nhầm.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep196/p001.jpg",
+      "narration": "Các cao thủ đồng loạt áp sát, tin rằng chỉ cần giữ Trác Phàm trong tầm đánh là đủ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep196/p023.jpg",
+      "narration": "Trác Phàm đọc được hướng ra đòn của từng người và liên tục né tránh trong gang tấc.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep196/p076.jpg",
+      "narration": "Khi đối thủ dồn sức tấn công, Trác Phàm vẫn đứng vững, khiến Lâm trưởng lão không khỏi kinh ngạc.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep197/p001.jpg",
+      "narration": "Trác Phàm vừa chống đỡ thế công vừa khiến các đối thủ nhận ra tốc độ của mình đã bị nhìn thấu.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep197/p023.jpg",
+      "narration": "Lão phu tu luyện khổ cực cả đời để đạt cảnh giới Thần Chiếu, nhưng Trác Phàm vẫn đủ sức đẩy lùi đòn tấn công.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep197/p075.jpg",
+      "narration": "Đối thủ bắt đầu nghi ngờ thực lực thật sự của Trác Phàm, còn hắn vẫn chưa chịu dừng tay.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "title": "Khuynh Thành bị đánh, Trác Phàm nổi giận!?",
+  "chapters": "154",
+  "source_dir": "manhua-recap/dqgl_ep154",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-21",
+  "description": "Khuynh Thành bị đánh, Trác Phàm nổi giận. Tóm tắt chương 154 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Khuynh Thành bị đánh, Trác Phàm nổi giận!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Mâu thuẫn giữa Thanh Vân và Trác Phàm nhanh chóng vượt khỏi lời qua tiếng lại.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p030",
+      "narration": "Khuynh Thành bị cuốn vào đòn tấn công, khiến Trác Phàm lập tức phản ứng.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p068",
+      "narration": "Sát khí của Trác Phàm bùng lên sau khi người bên cạnh bị thương; cuộc đối đầu giờ không còn đường lui.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

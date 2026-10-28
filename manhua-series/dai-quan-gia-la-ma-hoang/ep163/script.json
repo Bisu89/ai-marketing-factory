@@ -1,0 +1,39 @@
+{
+  "title": "Tổng Ngọc tuyên bố mình luyện được đan nhị phẩm!?",
+  "chapters": "163",
+  "source_dir": "manhua-recap/dqgl_ep163",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-21",
+  "description": "Tổng Ngọc tuyên bố mình luyện được đan nhị phẩm. Tóm tắt chương 163 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Tổng Ngọc tuyên bố mình luyện được đan nhị phẩm!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Trước lời nghi ngờ, Tổng Ngọc nói rõ đan dược vừa luyện không chỉ dừng ở nhất phẩm.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p025",
+      "narration": "Anh nhắc đến hệ thống mười hai phẩm và khẳng định mình có thể luyện ra đan nhị phẩm.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p059",
+      "narration": "Lời tuyên bố khiến cả khán đài sững sờ, còn Lưu Đại Sư không thể tiếp tục đứng ngoài cuộc.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "title": "Lưu Đại Sư chọn nguyên liệu cho vòng kế tiếp!?",
+  "chapters": "177",
+  "source_dir": "manhua-recap/dqgl_ep177",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-21",
+  "description": "Lưu Đại Sư chọn nguyên liệu cho vòng kế tiếp. Tóm tắt chương 177 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Lưu Đại Sư chọn nguyên liệu cho vòng kế tiếp!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Sau khi trút giận, Lưu Đại Sư nhận ra các đối thủ lần này không hề tầm thường.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p024",
+      "narration": "Khuynh Thành yêu cầu các luyện đan sư chọn nguyên liệu cho vòng sau và phải sử dụng hết những gì đã lấy.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p058",
+      "narration": "Trác Phàm vẫn đứng ngoài quan sát, chờ đối thủ tự chọn cách bước vào bẫy.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

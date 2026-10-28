@@ -1,0 +1,63 @@
+﻿{
+    "title":  "Nữ chủ Thanh Hoa Lâu bị khống chế bởi ai!?",
+    "chapters":  "129",
+    "source_dir":  "manhua-recap/dqgl_ep129",
+    "written_by":  "OpenAI, đối chiếu ảnh nguồn, 2026-10-19",
+    "description":  "Trác Phàm tiếp tục đối mặt với biến cố mới cùng những người đồng hành.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tập 129 (chương 129).",
+    "hashtags":  [
+                     "#DaiQuanGiaLaMaHoang",
+                     "#ReviewManhua",
+                     "#Manhua",
+                     "#TuTien",
+                     "#XuyenKhong",
+                     "#ReviewTruyen"
+                 ],
+    "thumbnail":  {
+                      "text":  "Nữ chủ Thanh Hoa Lâu bị khống chế bởi ai!?",
+                      "prompt":  "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+                  },
+    "beats":  [
+                  {
+                      "panel":  "p001.jpg",
+                      "narration":  "Nữ chủ kể rằng mình không thể tự quyết định vận mệnh.",
+                      "kind":  "recap",
+                      "type":  "HOOK"
+                  },
+                  {
+                      "panel":  "p006.jpg",
+                      "narration":  "Trác Phàm hỏi ai mới là người kiểm soát Thanh Hoa Lâu.",
+                      "kind":  "recap",
+                      "type":  "BUILD"
+                  },
+                  {
+                      "panel":  "p016.jpg",
+                      "narration":  "Dấu hiệu bất thường xuất hiện, khiến hắn cảnh giác.",
+                      "kind":  "recap",
+                      "type":  "BUILD"
+                  },
+                  {
+                      "panel":  "p021.jpg",
+                      "narration":  "Kẻ đứng sau lộ diện, khiến nữ chủ không dám phản kháng.",
+                      "kind":  "commentary",
+                      "type":  "BUILD"
+                  },
+                  {
+                      "panel":  "p031.jpg",
+                      "narration":  "Trác Phàm không nhượng bộ, nữ chủ cố ngăn tình hình xấu đi.",
+                      "kind":  "recap",
+                      "type":  "BUILD"
+                  },
+                  {
+                      "panel":  "p041.jpg",
+                      "narration":  "Kẻ kia khẳng định cô phải làm theo ý mình.",
+                      "kind":  "recap",
+                      "type":  "BUILD"
+                  },
+                  {
+                      "panel":  "p051.jpg",
+                      "narration":  "Ánh mắt Trác Phàm lạnh đi khi nhận ra xung đột tới gần.",
+                      "kind":  "recap",
+                      "type":  "ENDING"
+                  }
+              ]
+}

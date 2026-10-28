@@ -1,0 +1,63 @@
+{
+  "title": "Trác Phàm chọn đứng về phía chống Đế Vương Môn!?",
+  "chapters": "147",
+  "source_dir": "manhua-recap/dqgl_ep147",
+  "written_by": "OpenAI, ??i chi?u ?nh ngu?n, 2026-10-20",
+  "description": "Trác Phàm chọn đứng về phía chống Đế Vương Môn. Tóm tắt chương 147 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Trác Phàm chọn đứng về phía chống Đế Vương Môn!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Nghiêm Tông mỉa mai Trác Phàm vì dám dựa vào Đế Vương Môn, rồi khẳng định mình chẳng ngại nói thẳng.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p010",
+      "narration": "Ông ta thừa nhận Hoa Vũ Lâu từng dựa vào thế lực bên ngoài và dùng chuyện ấy để dồn ép Mẫu Đơn.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p014",
+      "narration": "Nghiêm Tông nói mượn danh Đế Vương Môn khiến các nhà khác cúi đầu chẳng khác nào tự dẫn sói vào nhà.",
+      "kind": "recap",
+      "type": "REVEAL"
+    },
+    {
+      "panel": "p026",
+      "narration": "Trác Phàm và Mẫu Đơn rời đi; cô nhắc hắn đừng biến mọi chuyện thành cuộc đấu vì sĩ diện.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p038",
+      "narration": "Thanh Vân hỏi vì sao Trác Phàm lại gây chuyện, nhưng hắn đáp rằng mình đang buộc các thế gia phải nhìn rõ tình thế.",
+      "kind": "commentary",
+      "type": "REACTION"
+    },
+    {
+      "panel": "p051",
+      "narration": "Hắn suy luận Đế Vương Môn muốn thống nhất bảy nhà, còn những người phản đối sẽ bị đưa vào danh sách phải trừ khử.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p062",
+      "narration": "Thay vì chờ bị loại từng người, Trác Phàm quyết định đứng về phía chống lại Đế Vương Môn.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

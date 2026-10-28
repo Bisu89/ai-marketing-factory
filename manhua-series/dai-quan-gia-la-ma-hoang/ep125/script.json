@@ -1,0 +1,63 @@
+﻿{
+    "title":  "Trác Phàm tỉnh lại, nữ nhân bí ẩn sắp rời đi!?",
+    "chapters":  "125",
+    "source_dir":  "manhua-recap/dqgl_ep125",
+    "written_by":  "OpenAI, đối chiếu ảnh nguồn, 2026-10-19",
+    "description":  "Trác Phàm tiếp tục đối mặt với biến cố mới cùng những người đồng hành.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tập 125 (chương 125).",
+    "hashtags":  [
+                     "#DaiQuanGiaLaMaHoang",
+                     "#ReviewManhua",
+                     "#Manhua",
+                     "#TuTien",
+                     "#XuyenKhong",
+                     "#ReviewTruyen"
+                 ],
+    "thumbnail":  {
+                      "text":  "Trác Phàm tỉnh lại, nữ nhân bí ẩn sắp rời đi!?",
+                      "prompt":  "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+                  },
+    "beats":  [
+                  {
+                      "panel":  "p001.jpg",
+                      "narration":  "Trác Phàm tỉnh dậy sau cơn hôn mê, bên cạnh vẫn có người chăm sóc.",
+                      "kind":  "recap",
+                      "type":  "HOOK"
+                  },
+                  {
+                      "panel":  "p012.jpg",
+                      "narration":  "Hắn thử vận khí và nhận ra cơ thể đã dễ chịu hơn.",
+                      "kind":  "recap",
+                      "type":  "BUILD"
+                  },
+                  {
+                      "panel":  "p024.jpg",
+                      "narration":  "Câu chuyện chuyển sang những lời trêu chọc giữa hai người.",
+                      "kind":  "recap",
+                      "type":  "BUILD"
+                  },
+                  {
+                      "panel":  "p036.jpg",
+                      "narration":  "Nữ nhân nhắc mình phải rời đi, khiến hắn nhận ra cô sắp biến mất.",
+                      "kind":  "commentary",
+                      "type":  "BUILD"
+                  },
+                  {
+                      "panel":  "p048.jpg",
+                      "narration":  "Cô yêu cầu Trác Phàm trả lại Bồ Đề Ngọc Dịch.",
+                      "kind":  "recap",
+                      "type":  "BUILD"
+                  },
+                  {
+                      "panel":  "p060.jpg",
+                      "narration":  "Hai người tạm biệt với lời hẹn có thể còn gặp lại.",
+                      "kind":  "recap",
+                      "type":  "BUILD"
+                  },
+                  {
+                      "panel":  "p077.jpg",
+                      "narration":  "Trác Phàm còn chưa sắp xếp cảm xúc thì người quen tìm đến.",
+                      "kind":  "recap",
+                      "type":  "ENDING"
+                  }
+              ]
+}

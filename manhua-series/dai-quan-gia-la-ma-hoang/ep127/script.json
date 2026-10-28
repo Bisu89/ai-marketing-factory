@@ -1,0 +1,63 @@
+﻿{
+    "title":  "Trác Phàm đến Thanh Hoa Lâu, nữ chủ bí ẩn xuất hiện!?",
+    "chapters":  "127",
+    "source_dir":  "manhua-recap/dqgl_ep127",
+    "written_by":  "OpenAI, đối chiếu ảnh nguồn, 2026-10-19",
+    "description":  "Trác Phàm tiếp tục đối mặt với biến cố mới cùng những người đồng hành.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tập 127 (chương 127).",
+    "hashtags":  [
+                     "#DaiQuanGiaLaMaHoang",
+                     "#ReviewManhua",
+                     "#Manhua",
+                     "#TuTien",
+                     "#XuyenKhong",
+                     "#ReviewTruyen"
+                 ],
+    "thumbnail":  {
+                      "text":  "Trác Phàm đến Thanh Hoa Lâu, nữ chủ bí ẩn xuất hiện!?",
+                      "prompt":  "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+                  },
+    "beats":  [
+                  {
+                      "panel":  "p001.jpg",
+                      "narration":  "Nhóm Trác Phàm đến Thanh Hoa Lâu và được người trong lâu ra đón.",
+                      "kind":  "recap",
+                      "type":  "HOOK"
+                  },
+                  {
+                      "panel":  "p012.jpg",
+                      "narration":  "Nữ chủ Thanh Hoa Lâu xuất hiện, khiến cuộc trò chuyện đổi hướng.",
+                      "kind":  "recap",
+                      "type":  "BUILD"
+                  },
+                  {
+                      "panel":  "p024.jpg",
+                      "narration":  "Hắn nhận xét vẻ ngoài của cô, còn cô nhắc hắn đừng lấn tới.",
+                      "kind":  "recap",
+                      "type":  "BUILD"
+                  },
+                  {
+                      "panel":  "p030.jpg",
+                      "narration":  "Nữ chủ tiết lộ mình vướng vào hoàn cảnh khó thoát.",
+                      "kind":  "commentary",
+                      "type":  "BUILD"
+                  },
+                  {
+                      "panel":  "p036.jpg",
+                      "narration":  "Cô hỏi vì sao Trác Phàm quan tâm chuyện của mình.",
+                      "kind":  "recap",
+                      "type":  "BUILD"
+                  },
+                  {
+                      "panel":  "p048.jpg",
+                      "narration":  "Cô bắt đầu nghi ngờ Trác Phàm có thể giúp mình.",
+                      "kind":  "recap",
+                      "type":  "BUILD"
+                  },
+                  {
+                      "panel":  "p056.jpg",
+                      "narration":  "Hắn quyết định tiến thêm bước, dù biết có thể gặp rắc rối.",
+                      "kind":  "recap",
+                      "type":  "ENDING"
+                  }
+              ]
+}

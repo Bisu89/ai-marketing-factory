@@ -1,0 +1,94 @@
+{
+  "template": "manhua_recap_vi",
+  "title": "Đại Quản Gia Là Ma Hoàng | Tập 191–194: Trác Phàm nghịch chuyển!?",
+  "chapters": "191-194",
+  "source_dir": "manhua-recap/dqgl_ep191",
+  "written_by": "OpenAI, biên tập từ script từng tập, 2026-10-21",
+  "description": "Tóm tắt tập 191 đến 194 Đại Quản Gia Là Ma Hoàng. Trác Phàm đối đầu cao thủ và tìm cách xoay chuyển cục diện.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Trác Phàm không tha cho đệ tử bảo bối của Lâm trưởng lão!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep191/p001.jpg",
+      "narration": "Trác Phàm lao thẳng vào Lâm Tử Thiên, khiến Lâm trưởng lão nhận ra mình đã để đối thủ áp sát.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep191/p022.jpg",
+      "narration": "Hắn tuyên bố sẽ xử lý đệ tử cưng của lão, rồi tung đòn trước khi đối phương kịp phản ứng.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep191/p058.jpg",
+      "narration": "Cú đánh mở màn khiến cả nhóm chấn động; cuộc chiến giữa Trác Phàm và Đế Vương Môn chính thức bùng nổ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep192/p001.jpg",
+      "narration": "Trác Phàm dùng tốc độ và sức mạnh phá vỡ thế bao vây của các cao thủ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep192/p024.jpg",
+      "narration": "Những người quan sát không hiểu làm sao hắn có thể liên tục thoát khỏi các đòn hợp kích.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep192/p077.jpg",
+      "narration": "Trác Phàm bay khỏi chiến trường, để lại đám đối thủ sững sờ trước sức mạnh vượt dự đoán.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep193/p001.jpg",
+      "narration": "Lâm trưởng lão tung ra Huyết Bức Chấn Thiên, tuyệt kỹ có thể khống chế và hút sinh khí đối thủ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep193/p023.jpg",
+      "narration": "Đàn huyết bức bao phủ chiến trường, khiến Trác Phàm phải đối mặt với nguy cơ bị hút cạn máu.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep193/p075.jpg",
+      "narration": "Lâm trưởng lão tin rằng đối thủ khó lòng sống sót, nhưng Trác Phàm vẫn chưa chịu khuất phục.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep194/p001.jpg",
+      "narration": "Huyết bức tiếp tục bám lấy Trác Phàm, còn Lâm trưởng lão tin rằng cơ thể hắn sắp không chịu nổi.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep194/p022.jpg",
+      "narration": "Trác Phàm bị dồn ép giữa trận pháp, nhưng ánh mắt vẫn cho thấy hắn đang tìm cách đảo ngược thế cờ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep194/p078.jpg",
+      "narration": "Ngay khi đối thủ tưởng đã nắm chắc phần thắng, Trác Phàm bắt đầu phản kích bằng một luồng sức mạnh khác thường.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

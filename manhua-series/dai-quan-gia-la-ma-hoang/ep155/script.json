@@ -1,0 +1,39 @@
+{
+  "title": "Bốn gia tộc đứng trước thế cờ mới!?",
+  "chapters": "155",
+  "source_dir": "manhua-recap/dqgl_ep155",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-21",
+  "description": "Bốn gia tộc đứng trước thế cờ mới. Tóm tắt chương 155 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Bốn gia tộc đứng trước thế cờ mới!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Sau màn va chạm, Hoàng Phủ Thanh Vân bắt đầu cân nhắc hậu quả nếu các thế lực lớn cùng nhúng tay.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p024",
+      "narration": "Chuyện ở Hoa Vũ Lâu không chỉ liên quan đến một cá nhân; nó có thể làm thay đổi cán cân giữa các gia tộc.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p061",
+      "narration": "Thanh Vân vẫn chưa biết nên tiến hay lùi, trong khi Trác Phàm giữ kín tính toán của mình.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

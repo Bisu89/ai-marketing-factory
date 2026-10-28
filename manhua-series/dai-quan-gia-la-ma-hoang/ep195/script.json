@@ -1,0 +1,39 @@
+{
+  "title": "Trác Phàm dùng dị hỏa chống lại đàn huyết bức!?",
+  "chapters": "195",
+  "source_dir": "manhua-recap/dqgl_ep195",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-21",
+  "description": "Trác Phàm dùng dị hỏa chống lại đàn huyết bức. Tóm tắt chương 195 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Trác Phàm dùng dị hỏa chống lại đàn huyết bức!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Trác Phàm kích hoạt ngọn lửa xanh trên trán khi đàn huyết bức vẫn bủa vây.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p023",
+      "narration": "Lâm trưởng lão hô mọi người giữ hắn lại, nhưng Trác Phàm không hề tỏ ra sợ hãi.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p061",
+      "narration": "Dị hỏa bùng lên quanh người Trác Phàm; những kẻ tưởng hắn đã kiệt sức lập tức nhận ra mình nhầm.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

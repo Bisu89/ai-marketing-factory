@@ -1,0 +1,105 @@
+{
+  "title": "Trác Phàm trúng độc nặng, ai cứu được!?",
+  "chapters": "121-123",
+  "source_dir": "manhua-recap/dqgl_ep121",
+  "written_by": "Selected from ep121-ep130, 2026-10-20",
+  "description": "Trác Phàm chương 121-123.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Trác Phàm luyện thuốc cứu người, kẻ địch kéo tới!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep121/p001.jpg",
+      "narration": "Nữ nhân bí ẩn hỏi Trác Phàm có chữa được độc cho mình không.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep121/p012.jpg",
+      "narration": "Cô cảm nhận dược lực bắt đầu tác động lên cơ thể.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep121/p039.jpg",
+      "narration": "Những người mới xuất hiện khiến cả nhóm dừng trò chuyện.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep121/p066.jpg",
+      "narration": "Đòn đánh đầu tiên nổ ra giữa hai bên.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep121/p082.jpg",
+      "narration": "Cuộc đụng độ chưa dứt, đối thủ vẫn chưa lộ hết thực lực.",
+      "kind": "recap",
+      "type": "ENDING"
+    },
+    {
+      "panel": "dqgl_ep122/p001.jpg",
+      "narration": "Ngưng Nhi sững sờ khi Trác Phàm bước tới giữa đống khói.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep122/p010.jpg",
+      "narration": "U Minh Cốc trưởng lão cười nhạo Trác Phàm, nhưng hắn lập tức đáp trả.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep122/p020.jpg",
+      "narration": "Trác Phàm né đòn rồi phản công, buộc đối phương nghiêm túc hơn.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep122/p048.jpg",
+      "narration": "Một cú đánh bất ngờ khiến cục diện nghiêng về phía hắn.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep122/p073.jpg",
+      "narration": "Cuộc giao chiến tạm khựng lại, nhưng mối nguy vẫn còn nguyên.",
+      "kind": "recap",
+      "type": "ENDING"
+    },
+    {
+      "panel": "dqgl_ep123/p001.jpg",
+      "narration": "Trác Phàm vẫn không lùi bước dù đối thủ liên tục ép sát.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep123/p024.jpg",
+      "narration": "Người đứng xem không tin kẻ giao đấu với trưởng lão lại là Trác Phàm.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep123/p042.jpg",
+      "narration": "Tên Trác Phàm được nhắc đến, thu hút chú ý của người vừa tới.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep123/p072.jpg",
+      "narration": "Một người có địa vị cao vẫn quan sát Trác Phàm từ phía sau.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

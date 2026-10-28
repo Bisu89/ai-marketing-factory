@@ -1,0 +1,24 @@
+{
+  "title": "Trác Phàm khiến Mẫu Đan rung động rồi rời đi!?",
+  "chapters": "115",
+  "source_dir": "manhua-recap/dqgl_ep115",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-19",
+  "description": "Trác Phàm tiếp tục áp đảo đối thủ bằng tốc độ và cách di chuyển khác thường. Mẫu Đan nhận ra mình bị ảnh hưởng bởi hắn, trong khi một nhân vật bí ẩn của Hoa Vũ Lâu bắt đầu để mắt đến chàng trai này.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tập 115 (chương 115).",
+  "hashtags": ["#DaiQuanGiaLaMaHoang", "#ReviewManhua", "#Manhua", "#TuTien", "#XuyenKhong", "#ReviewTruyen"],
+  "thumbnail": {"text":"Mẫu Đan bối rối vì Trác Phàm!?","prompt":"Vertical 9:16 Chinese manhua style, confident black-haired cultivator in blue robe standing beside blushing masked noblewoman, defeated red-haired rival in background, gentle pink blossom atmosphere, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"},
+  "beats": [
+    {"panel":"p001.jpg","narration":"Sau đòn vừa rồi, kẻ tóc đỏ nhận ra Trác Phàm không chỉ mạnh mà còn di chuyển nhanh hơn dự đoán.","kind":"recap","type":"HOOK"},
+    {"panel":"p005.jpg","narration":"Hắn hỏi Trác Phàm đã dùng thân pháp gì, còn Trác Phàm chỉ đáp rằng mình không bị cấm luyện kỹ năng di chuyển.","kind":"recap","type":"BUILD"},
+    {"panel":"p010.jpg","narration":"Trác Phàm tiếp tục đánh bật đối thủ, khiến lời khoe khoang trước đó càng trở nên khó coi.","kind":"recap","type":"BUILD"},
+    {"panel":"p015.jpg","narration":"Hắn quay sang hỏi Mẫu Đan đã thấy màn thể hiện của mình chưa, như thể trận đấu cũng là dịp để tán tỉnh nàng.","kind":"recap","type":"BUILD"},
+    {"panel":"p020.jpg","narration":"Mẫu Đan không giấu được vẻ ngưỡng mộ, còn Trác Phàm lập tức biến phản ứng ấy thành một câu đùa.","kind":"recap","type":"BUILD"},
+    {"panel":"p025.jpg","narration":"Kẻ tóc đỏ vẫn tìm cách phản công, nhưng Trác Phàm liên tục giữ được lợi thế.","kind":"recap","type":"BUILD"},
+    {"panel":"p030.jpg","narration":"Mẫu Đan bất ngờ tự hỏi vì sao mình lại để tâm đến từng lời nói và động tác của Trác Phàm.","kind":"recap","type":"BUILD"},
+    {"panel":"p035.jpg","narration":"Cảm xúc ấy khiến nàng bối rối, bởi nàng vốn không định để cuộc gặp này ảnh hưởng đến mình.","kind":"commentary","type":"BUILD"},
+    {"panel":"p041.jpg","narration":"Trác Phàm nhìn ra sự thay đổi trên gương mặt nàng, nhưng chưa vội nói rõ điều mình đang nghĩ.","kind":"recap","type":"BUILD"},
+    {"panel":"p046.jpg","narration":"Ở nơi khác, một nhân vật bí ẩn cũng đang quan sát diễn biến và nhắc đến Trác Phàm.","kind":"recap","type":"BUILD"},
+    {"panel":"p052.jpg","narration":"Người này tỏ ra muốn hiểu thêm về chàng trai vừa làm náo động Hoa Vũ Thành.","kind":"recap","type":"BUILD"},
+    {"panel":"p057.jpg","narration":"Ánh mắt của kẻ bí ẩn dừng lại trên Trác Phàm; xem ra cuộc gặp hôm nay đã khiến hắn được chú ý.","kind":"recap","type":"BUILD"},
+    {"panel":"p061.jpg","narration":"Trác Phàm nhận ra sau lưng mình còn có cao thủ khó dò. Một mối quan tâm mới vừa xuất hiện.","kind":"recap","type":"ENDING"}
+  ]
+}

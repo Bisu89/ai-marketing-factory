@@ -1,0 +1,39 @@
+{
+  "title": "Trác Phàm hạ nhục đối thủ giữa cuộc thi!?",
+  "chapters": "164",
+  "source_dir": "manhua-recap/dqgl_ep164",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-21",
+  "description": "Trác Phàm hạ nhục đối thủ giữa cuộc thi. Tóm tắt chương 164 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Trác Phàm hạ nhục đối thủ giữa cuộc thi!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Trác Phàm trực tiếp khiêu khích Lưu Đại Sư, biến cuộc thi thành màn so tài danh dự.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p023",
+      "narration": "Lưu Đại Sư nổi giận ra tay, nhưng Trác Phàm đáp trả bằng một cú đánh khiến đối thủ ngã nhào.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p055",
+      "narration": "Cả khán đài chứng kiến cảnh tượng khó tin; cuộc đọ sức giữa hai người vừa mới bắt đầu.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

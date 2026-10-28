@@ -1,0 +1,39 @@
+{
+  "title": "Trác Phàm khiến mọi người nghi ngờ viên đan của mình!?",
+  "chapters": "168",
+  "source_dir": "manhua-recap/dqgl_ep168",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-21",
+  "description": "Trác Phàm khiến mọi người nghi ngờ viên đan của mình. Tóm tắt chương 168 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Trác Phàm khiến mọi người nghi ngờ viên đan của mình!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Trong lúc các luyện đan sư hoàn tất bài thi, Trác Phàm vẫn bình thản trước phản ứng của khán giả.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p025",
+      "narration": "Mùi hương từ viên đan khiến người xem bối rối: đó là dấu hiệu thành công hay một thứ độc dược?",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p058",
+      "narration": "Khuynh Thành nhận ra viên đan có điều bất thường, nhưng Trác Phàm chưa vội giải thích.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

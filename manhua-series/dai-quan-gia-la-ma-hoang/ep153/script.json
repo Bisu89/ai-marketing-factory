@@ -1,0 +1,39 @@
+{
+  "title": "Hoàng Phủ Thanh Vân đối đầu Trác Phàm!?",
+  "chapters": "153",
+  "source_dir": "manhua-recap/dqgl_ep153",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-21",
+  "description": "Hoàng Phủ Thanh Vân đối đầu Trác Phàm. Tóm tắt chương 153 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Hoàng Phủ Thanh Vân đối đầu Trác Phàm!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Hoàng Phủ Thanh Vân tìm đến chất vấn Trác Phàm, biến cuộc gặp ở Hoa Vũ Lâu thành màn đối đầu căng thẳng.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p022",
+      "narration": "Khuynh Thành lên tiếng bảo vệ Trác Phàm, còn Thanh Vân không tin lời giải thích của hai người.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p058",
+      "narration": "Hai bên chưa ai chịu nhượng bộ; chỉ một bước sai cũng có thể khiến cuộc thương lượng biến thành giao đấu.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

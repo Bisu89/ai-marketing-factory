@@ -1,0 +1,94 @@
+{
+  "template": "manhua_recap_vi",
+  "title": "Đại Quản Gia Là Ma Hoàng | Tập 181–184: Trác Phàm nghịch chuyển!?",
+  "chapters": "181-184",
+  "source_dir": "manhua-recap/dqgl_ep181",
+  "written_by": "OpenAI, biên tập từ script từng tập, 2026-10-21",
+  "description": "Tóm tắt tập 181 đến 184 Đại Quản Gia Là Ma Hoàng. Trác Phàm đối đầu cao thủ và tìm cách xoay chuyển cục diện.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Cuộc so tài dị hỏa khiến ban giám khảo choáng ngợp!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep181/p001.jpg",
+      "narration": "Màn tranh tài về hỏa diễm bắt đầu, và các giám khảo lần lượt đánh giá năng lực của từng người.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep181/p025.jpg",
+      "narration": "Mỗi bên dùng thế mạnh riêng để kiểm soát ngọn lửa, khiến cuộc thi trở nên khó đoán.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep181/p059.jpg",
+      "narration": "Khuynh Thành theo dõi sát sao, chờ xem Trác Phàm sẽ dùng cách nào để vượt lên.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep182/p001.jpg",
+      "narration": "Sau màn phô diễn, một vị trưởng lão nhận ra thực lực của Trác Phàm không thể xem thường.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep182/p024.jpg",
+      "narration": "Khuynh Thành vui mừng trước kết quả, còn những người có mặt bắt đầu nhìn Trác Phàm bằng con mắt khác.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep182/p058.jpg",
+      "narration": "Lời đánh giá của trưởng lão làm thay đổi không khí cuộc thi, nhưng Lưu Đại Sư vẫn chưa chịu nhận thua.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep183/p001.jpg",
+      "narration": "Trác Phàm bắt đầu phô diễn hỏa diễm của mình, khiến Lưu Đại Sư và khán giả bất ngờ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep183/p026.jpg",
+      "narration": "Một trận đồ hình rồng hiện ra quanh ngọn lửa, tạo nên khí thế áp đảo cả đấu trường.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep183/p062.jpg",
+      "narration": "Cửu Long Quy Huyết xuất hiện trước mắt mọi người, nhưng mục tiêu thật sự của Trác Phàm còn lớn hơn một trận thắng.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep184/p001.jpg",
+      "narration": "Trận đồ luyện đan của Trác Phàm khiến các cao thủ nhận ra đây không phải màn biểu diễn thông thường.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep184/p025.jpg",
+      "narration": "Hắn công khai đến đây để đối đầu Dược Vương Điện và tranh lấy danh hiệu Đan Vương.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep184/p061.jpg",
+      "narration": "Tuyên bố táo bạo khiến khán giả chấn động; không ai biết Dược Vương Điện sẽ phản ứng ra sao.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

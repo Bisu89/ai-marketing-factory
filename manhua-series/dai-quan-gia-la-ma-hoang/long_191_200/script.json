@@ -1,0 +1,212 @@
+{
+  "template": "manhua_recap_long_vi",
+  "title": "Đại Quản Gia Là Ma Hoàng | Tập 191–200",
+  "chapters": "191-200",
+  "source_dir": "manhua-recap/dqgl_ep191",
+  "written_by": "OpenAI, biên tập từ script từng tập, 2026-10-21",
+  "description": "Tóm tắt Đại Quản Gia Là Ma Hoàng từ tập 191 đến 200, nối tiếp cuộc chiến và những bước đột phá của Trác Phàm.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Trác Phàm không tha cho đệ tử bảo bối của Lâm trưởng lão!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep191/p001.jpg",
+      "narration": "Trác Phàm lao thẳng vào Lâm Tử Thiên, khiến Lâm trưởng lão nhận ra mình đã để đối thủ áp sát.",
+      "kind": "recap",
+      "type": "HOOK",
+      "section": "Tập 191: Trác Phàm không tha cho đệ tử bảo bối của Lâm trưởng lão!?"
+    },
+    {
+      "panel": "dqgl_ep191/p022.jpg",
+      "narration": "Hắn tuyên bố sẽ xử lý đệ tử cưng của lão, rồi tung đòn trước khi đối phương kịp phản ứng.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep191/p058.jpg",
+      "narration": "Cú đánh mở màn khiến cả nhóm chấn động; cuộc chiến giữa Trác Phàm và Đế Vương Môn chính thức bùng nổ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep192/p001.jpg",
+      "narration": "Trác Phàm dùng tốc độ và sức mạnh phá vỡ thế bao vây của các cao thủ.",
+      "kind": "recap",
+      "type": "BUILD",
+      "section": "Tập 192: Trác Phàm thoát khỏi vòng vây của hai thế lực!?"
+    },
+    {
+      "panel": "dqgl_ep192/p024.jpg",
+      "narration": "Những người quan sát không hiểu làm sao hắn có thể liên tục thoát khỏi các đòn hợp kích.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep192/p077.jpg",
+      "narration": "Trác Phàm bay khỏi chiến trường, để lại đám đối thủ sững sờ trước sức mạnh vượt dự đoán.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep193/p001.jpg",
+      "narration": "Lâm trưởng lão tung ra Huyết Bức Chấn Thiên, tuyệt kỹ có thể khống chế và hút sinh khí đối thủ.",
+      "kind": "recap",
+      "type": "BUILD",
+      "section": "Tập 193: Huyết Bức Chấn Thiên biến đối thủ thành mồi sống!?"
+    },
+    {
+      "panel": "dqgl_ep193/p023.jpg",
+      "narration": "Đàn huyết bức bao phủ chiến trường, khiến Trác Phàm phải đối mặt với nguy cơ bị hút cạn máu.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep193/p075.jpg",
+      "narration": "Lâm trưởng lão tin rằng đối thủ khó lòng sống sót, nhưng Trác Phàm vẫn chưa chịu khuất phục.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep194/p001.jpg",
+      "narration": "Huyết bức tiếp tục bám lấy Trác Phàm, còn Lâm trưởng lão tin rằng cơ thể hắn sắp không chịu nổi.",
+      "kind": "recap",
+      "type": "BUILD",
+      "section": "Tập 194: Trác Phàm bị Huyết Bức Chấn Thiên áp đảo!?"
+    },
+    {
+      "panel": "dqgl_ep194/p022.jpg",
+      "narration": "Trác Phàm bị dồn ép giữa trận pháp, nhưng ánh mắt vẫn cho thấy hắn đang tìm cách đảo ngược thế cờ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep194/p078.jpg",
+      "narration": "Ngay khi đối thủ tưởng đã nắm chắc phần thắng, Trác Phàm bắt đầu phản kích bằng một luồng sức mạnh khác thường.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep195/p001.jpg",
+      "narration": "Trác Phàm kích hoạt ngọn lửa xanh trên trán khi đàn huyết bức vẫn bủa vây.",
+      "kind": "recap",
+      "type": "BUILD",
+      "section": "Tập 195: Trác Phàm dùng dị hỏa chống lại đàn huyết bức!?"
+    },
+    {
+      "panel": "dqgl_ep195/p023.jpg",
+      "narration": "Lâm trưởng lão hô mọi người giữ hắn lại, nhưng Trác Phàm không hề tỏ ra sợ hãi.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep195/p061.jpg",
+      "narration": "Dị hỏa bùng lên quanh người Trác Phàm; những kẻ tưởng hắn đã kiệt sức lập tức nhận ra mình nhầm.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep196/p001.jpg",
+      "narration": "Các cao thủ đồng loạt áp sát, tin rằng chỉ cần giữ Trác Phàm trong tầm đánh là đủ.",
+      "kind": "recap",
+      "type": "BUILD",
+      "section": "Tập 196: Trác Phàm biến trận vây công thành màn phản đòn!?"
+    },
+    {
+      "panel": "dqgl_ep196/p023.jpg",
+      "narration": "Trác Phàm đọc được hướng ra đòn của từng người và liên tục né tránh trong gang tấc.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep196/p076.jpg",
+      "narration": "Khi đối thủ dồn sức tấn công, Trác Phàm vẫn đứng vững, khiến Lâm trưởng lão không khỏi kinh ngạc.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep197/p001.jpg",
+      "narration": "Trác Phàm vừa chống đỡ thế công vừa khiến các đối thủ nhận ra tốc độ của mình đã bị nhìn thấu.",
+      "kind": "recap",
+      "type": "BUILD",
+      "section": "Tập 197: Trác Phàm đánh bật cao thủ Thần Chiếu!?"
+    },
+    {
+      "panel": "dqgl_ep197/p023.jpg",
+      "narration": "Lão phu tu luyện khổ cực cả đời để đạt cảnh giới Thần Chiếu, nhưng Trác Phàm vẫn đủ sức đẩy lùi đòn tấn công.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep197/p075.jpg",
+      "narration": "Đối thủ bắt đầu nghi ngờ thực lực thật sự của Trác Phàm, còn hắn vẫn chưa chịu dừng tay.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep198/p001.jpg",
+      "narration": "Giữa lúc giao chiến, Trác Phàm nhận ra Huyết Bức Chấn Thiên dùng linh thú để tấn công trực tiếp vào linh hồn.",
+      "kind": "recap",
+      "type": "BUILD",
+      "section": "Tập 198: Trác Phàm nhận ra bí mật trong Huyết Bức Chấn Thiên!?"
+    },
+    {
+      "panel": "dqgl_ep198/p023.jpg",
+      "narration": "Lâm trưởng lão giải thích huyết bức có thể bám vào cổ đối thủ và hút máu, khiến người trúng chiêu khó thoát.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep198/p078.jpg",
+      "narration": "Trác Phàm phát hiện điểm sai trong cách vận dụng trận pháp và chuẩn bị nói rõ điều đó với đối thủ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep199/p001.jpg",
+      "narration": "Trác Phàm nhận ra Lâm trưởng lão đang cố khống chế chiến trường bằng trận pháp và đàn linh thú.",
+      "kind": "recap",
+      "type": "BUILD",
+      "section": "Tập 199: Trác Phàm thách thức đối thủ uống liên tiếp năm viên đan!?"
+    },
+    {
+      "panel": "dqgl_ep199/p024.jpg",
+      "narration": "Hắn cho đối thủ thấy mình có thể uống liền năm viên đan mà cơ thể vẫn chịu được, khiến mọi người không thể tin nổi.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep199/p075.jpg",
+      "narration": "Trác Phàm tuyên bố đối phương đã hiểu sai một điểm then chốt, rồi chuẩn bị chứng minh bằng hành động.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep200/p001.jpg",
+      "narration": "Lâm trưởng lão tiếp tục thúc giục mọi người vây công, tin rằng Trác Phàm sẽ sớm gục ngã.",
+      "kind": "recap",
+      "type": "BUILD",
+      "section": "Tập 200: Trác Phàm chịu đòn để phá giải Huyết Bức Chấn Thiên!?"
+    },
+    {
+      "panel": "dqgl_ep200/p018.jpg",
+      "narration": "Trác Phàm bảo đối thủ uống đan để tăng nguyên lực; bản thân hắn lại tự mình chống chịu đòn đánh trong trận pháp.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep200/p036.jpg",
+      "narration": "Lâm trưởng lão nhận ra Trác Phàm đang thử một cách phá giải khó tin, còn trận chiến vẫn chưa phân thắng bại.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

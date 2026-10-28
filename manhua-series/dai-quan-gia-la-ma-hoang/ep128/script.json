@@ -1,0 +1,63 @@
+﻿{
+    "title":  "Trác Phàm buông lời trêu chọc, nữ chủ mắc bẫy!?",
+    "chapters":  "128",
+    "source_dir":  "manhua-recap/dqgl_ep128",
+    "written_by":  "OpenAI, đối chiếu ảnh nguồn, 2026-10-19",
+    "description":  "Trác Phàm tiếp tục đối mặt với biến cố mới cùng những người đồng hành.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tập 128 (chương 128).",
+    "hashtags":  [
+                     "#DaiQuanGiaLaMaHoang",
+                     "#ReviewManhua",
+                     "#Manhua",
+                     "#TuTien",
+                     "#XuyenKhong",
+                     "#ReviewTruyen"
+                 ],
+    "thumbnail":  {
+                      "text":  "Trác Phàm buông lời trêu chọc, nữ chủ mắc bẫy!?",
+                      "prompt":  "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+                  },
+    "beats":  [
+                  {
+                      "panel":  "p001.jpg",
+                      "narration":  "Nữ chủ bật cười khi nghe Trác Phàm nói về chuyện trong Thanh Hoa Lâu.",
+                      "kind":  "recap",
+                      "type":  "HOOK"
+                  },
+                  {
+                      "panel":  "p009.jpg",
+                      "narration":  "Nữ chủ gọi hắn là lâu chủ, nhưng hắn phủ nhận mình chỉ là khách.",
+                      "kind":  "recap",
+                      "type":  "BUILD"
+                  },
+                  {
+                      "panel":  "p013.jpg",
+                      "narration":  "Tông Hiến Đế nhận món quà từ chủ lâu.",
+                      "kind":  "recap",
+                      "type":  "BUILD"
+                  },
+                  {
+                      "panel":  "p018.jpg",
+                      "narration":  "Trác Phàm hỏi chuyện nữ chủ và những việc cô đang đối mặt.",
+                      "kind":  "commentary",
+                      "type":  "BUILD"
+                  },
+                  {
+                      "panel":  "p028.jpg",
+                      "narration":  "Hắn nhận ra trong Thanh Hoa Lâu có thứ gì đó bị che giấu.",
+                      "kind":  "recap",
+                      "type":  "BUILD"
+                  },
+                  {
+                      "panel":  "p038.jpg",
+                      "narration":  "Một lời của Trác Phàm khiến nữ chủ sững người.",
+                      "kind":  "recap",
+                      "type":  "BUILD"
+                  },
+                  {
+                      "panel":  "p048.jpg",
+                      "narration":  "Cô đồng ý để hắn tìm hiểu thêm, nhưng vẫn giữ bí mật.",
+                      "kind":  "recap",
+                      "type":  "ENDING"
+                  }
+              ]
+}

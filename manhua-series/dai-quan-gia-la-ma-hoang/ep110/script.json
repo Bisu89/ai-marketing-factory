@@ -1,0 +1,32 @@
+{
+  "title": "Tống gia cười nói với Trác Phàm, tiểu thư lại nổi giận giữa phố!?",
+  "chapters": "110",
+  "source_dir": "manhua-recap/dqgl_ep110",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-19",
+  "description": "Tống Ngọc và Đồng Thiên Bá nâng chén kết giao, còn Trác Phàm bị kéo vào những lời đùa về tình bằng hữu và chuyện thành thân. Giữa lúc mọi người nói cười, tin về hội Bạch Đan và các gia tộc dự hội tiếp tục được nhắc tới. Một cô gái bất ngờ xuất hiện, tức giận vì cho rằng Trác Phàm làm tổn thương em mình.\nReview truyện Đại Quản Gia Là Ma Hoàng – Tập 110 (chương 110).",
+  "hashtags": ["#DaiQuanGiaLaMaHoang", "#ReviewManhua", "#Manhua", "#TuTien", "#XuyenKhong", "#ReviewTruyen"],
+  "thumbnail": {"text":"Đang nói chuyện vui, Trác Phàm bị tiểu thư chất vấn!?","prompt":"Vertical 9:16 Chinese manhua style, a furious young noblewoman confronting Trac Pham at a banquet while two male companions look surprised, crowded traditional dining hall with wine cups, expressive faces, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"},
+  "beats": [
+    {"panel":"p002.jpg","narration":"Tống Ngọc nâng chén cùng Đồng Thiên Bá, mở đầu buổi gặp bằng một lời mời uống cạn.","kind":"recap","type":"HOOK"},
+    {"panel":"p005.jpg","narration":"Trác Phàm nghe mọi người giới thiệu Đồng Thiên Bá: gia chủ một gia tộc lớn ở Thiên Vũ, nổi tiếng hào sảng.","kind":"recap","type":"BUILD"},
+    {"panel":"p008.jpg","narration":"Tống Ngọc nghĩ lại chuyện năm trước, khi Đồng gia từng bị đuổi khỏi một cuộc tụ họp và còn bị Đồng Thiên Bá trách mắng.","kind":"recap","type":"BUILD"},
+    {"panel":"p011.jpg","narration":"Bây giờ hai người lại ngồi uống rượu thân thiết, khiến Trác Phàm thấy cảnh tượng này khá thú vị.","kind":"recap","type":"BUILD"},
+    {"panel":"p014.jpg","narration":"Tống Hiền đệ bất ngờ lên tiếng, nghi ngờ Đồng Thiên Bá chỉ đang giả vờ thân tình.","kind":"recap","type":"BUILD"},
+    {"panel":"p017.jpg","narration":"Câu chuyện chuyển sang chuyện hôn nhân: Đồng gia có một cô con gái duy nhất, được nhiều gia tộc để mắt.","kind":"recap","type":"BUILD"},
+    {"panel":"p020.jpg","narration":"Tống Hiền đệ hỏi Trác Phàm liệu cô gái kia có đi cùng hắn không.","kind":"recap","type":"BUILD"},
+    {"panel":"p023.jpg","narration":"Trác Phàm đáp rằng chuyện ấy không liên quan đến thân phận hay địa vị của hắn.","kind":"recap","type":"BUILD"},
+    {"panel":"p026.jpg","narration":"Tống Hiền đệ vẫn trêu, bảo mỹ nhân trong thiên hạ nhiều vô kể, không cần phải vướng vào một người.","kind":"recap","type":"BUILD"},
+    {"panel":"p029.jpg","narration":"Trác Phàm hỏi đùa liệu ở đây có quy tắc nào cấm người ta theo đuổi người mình thích hay không.","kind":"recap","type":"BUILD"},
+    {"panel":"p032.jpg","narration":"Cậu bạn lập tức đồng tình quá nhiệt tình, còn Trác Phàm nhìn cậu bằng ánh mắt khó đoán.","kind":"commentary","type":"BUILD"},
+    {"panel":"p035.jpg","narration":"Cuộc trò chuyện khiến người trong đoàn nhớ lại chuyện Đồng Thiên Bá từng bị gia tộc Thái gia đuổi khỏi nơi này.","kind":"recap","type":"BUILD"},
+    {"panel":"p038.jpg","narration":"Có người nhắc Trác Phàm đừng gọi thân mật như vậy, nhưng hắn vẫn tỏ ra thoải mái.","kind":"recap","type":"BUILD"},
+    {"panel":"p041.jpg","narration":"Đồng Thiên Bá nói lần sau sẽ tự mình tới Hoa Vũ Lâu tiếp đón, còn U Minh Cốc đã có người đến trước.","kind":"recap","type":"BUILD"},
+    {"panel":"p044.jpg","narration":"Chuyện trò chưa xong thì một nhóm người xuất hiện, trong đó có một cô gái tiến thẳng về phía đoàn.","kind":"recap","type":"BUILD"},
+    {"panel":"p047.jpg","narration":"Cô gái lao tới ôm lấy người thân, hỏi dồn xem ai đã khiến em mình ra nông nỗi này.","kind":"recap","type":"BUILD"},
+    {"panel":"p050.jpg","narration":"Cô nhìn thấy vết thương và cho rằng Trác Phàm đã bắt nạt em gái mình.","kind":"recap","type":"BUILD"},
+    {"panel":"p053.jpg","narration":"Tống Hiền đệ định giải thích, nhưng cô gái không muốn nghe mà còn tiếp tục trách Trác Phàm.","kind":"recap","type":"BUILD"},
+    {"panel":"p056.jpg","narration":"Cô buộc tội hắn cướp thứ em gái mình đang cầm rồi còn hành hạ cô ấy.","kind":"recap","type":"BUILD"},
+    {"panel":"p058.jpg","narration":"Trác Phàm vẫn chưa kịp nói rõ chuyện gì đã xảy ra; cả nhóm đành nhìn cô gái đang nổi giận.","kind":"recap","type":"BUILD"},
+    {"panel":"p060.jpg","narration":"Trác Phàm ngẩng lên dưới vành nón, ánh mắt lạnh đi khi cô gái liên tục đổ tội cho hắn. Đám đông lập tức căng thẳng; chuyện này khó kết thúc bằng vài câu giải thích.","kind":"recap","type":"ENDING"}
+  ]
+}

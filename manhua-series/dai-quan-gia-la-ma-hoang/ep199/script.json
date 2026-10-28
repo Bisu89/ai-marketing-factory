@@ -1,0 +1,39 @@
+{
+  "title": "Trác Phàm thách thức đối thủ uống liên tiếp năm viên đan!?",
+  "chapters": "199",
+  "source_dir": "manhua-recap/dqgl_ep199",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-21",
+  "description": "Trác Phàm thách thức đối thủ uống liên tiếp năm viên đan. Tóm tắt chương 199 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Trác Phàm thách thức đối thủ uống liên tiếp năm viên đan!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Trác Phàm nhận ra Lâm trưởng lão đang cố khống chế chiến trường bằng trận pháp và đàn linh thú.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p024",
+      "narration": "Hắn cho đối thủ thấy mình có thể uống liền năm viên đan mà cơ thể vẫn chịu được, khiến mọi người không thể tin nổi.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p075",
+      "narration": "Trác Phàm tuyên bố đối phương đã hiểu sai một điểm then chốt, rồi chuẩn bị chứng minh bằng hành động.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

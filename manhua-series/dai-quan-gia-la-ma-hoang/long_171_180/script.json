@@ -1,0 +1,212 @@
+{
+  "template": "manhua_recap_long_vi",
+  "title": "Đại Quản Gia Là Ma Hoàng | Tập 171–180",
+  "chapters": "171-180",
+  "source_dir": "manhua-recap/dqgl_ep171",
+  "written_by": "OpenAI, biên tập từ script từng tập, 2026-10-21",
+  "description": "Tóm tắt Đại Quản Gia Là Ma Hoàng từ tập 171 đến 180, nối tiếp cuộc chiến và những bước đột phá của Trác Phàm.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Trác Phàm dùng độc thử tài Lưu Đại Sư!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep171/p001.jpg",
+      "narration": "Trác Phàm hỏi Lưu Đại Sư về mối liên hệ giữa nguyên liệu và linh thú, buộc đối thủ phải giải thích kiến thức luyện đan.",
+      "kind": "recap",
+      "type": "HOOK",
+      "section": "Tập 171: Trác Phàm dùng độc thử tài Lưu Đại Sư!?"
+    },
+    {
+      "panel": "dqgl_ep171/p027.jpg",
+      "narration": "Hắn tiết lộ đã dùng Thanh Mãng Lân Dịch để thử phản ứng trong viên đan của Lưu.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep171/p060.jpg",
+      "narration": "Lưu Đại Sư nhận ra mình bị dẫn dắt vào thế khó, còn Trác Phàm vẫn chưa tung ra toàn bộ kế hoạch.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep172/p001.jpg",
+      "narration": "Lưu Đại Sư ép Trác Phàm giải thích chuyện nguyên liệu và nghi hắn giở trò sau lưng.",
+      "kind": "recap",
+      "type": "BUILD",
+      "section": "Tập 172: Trác Phàm chọc giận Lưu Đại Sư đến cực điểm!?"
+    },
+    {
+      "panel": "dqgl_ep172/p025.jpg",
+      "narration": "Trác Phàm lạnh lùng phủ nhận, còn nhắc rằng một Lạc gia đã đủ khiến hắn bận tâm.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep172/p058.jpg",
+      "narration": "Cuộc đấu khẩu châm ngòi cho màn phô diễn thực lực tiếp theo của Lưu Đại Sư.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep173/p001.jpg",
+      "narration": "Lưu Đại Sư vận dụng ngọn lửa xanh để luyện đan, khiến khán giả tin rằng ông sắp giành lại thế chủ động.",
+      "kind": "recap",
+      "type": "BUILD",
+      "section": "Tập 173: Lưu Đại Sư luyện thành đan dược bằng dị hỏa!?"
+    },
+    {
+      "panel": "dqgl_ep173/p027.jpg",
+      "narration": "Trác Phàm quan sát quá trình, trong khi đối thủ tuyên bố đại công đã thành.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep173/p063.jpg",
+      "narration": "Viên đan vừa ra lò nhưng cuộc so tài chưa kết thúc; Trác Phàm chuẩn bị đáp trả.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep174/p001.jpg",
+      "narration": "Ngay khi Lưu Đại Sư tưởng đã nắm chắc chiến thắng, Trác Phàm bất ngờ chen vào cuộc so tài.",
+      "kind": "recap",
+      "type": "BUILD",
+      "section": "Tập 174: Trác Phàm phá hỏng màn luyện đan của Lưu Đại Sư!?"
+    },
+    {
+      "panel": "dqgl_ep174/p023.jpg",
+      "narration": "Một đòn của Trác Phàm làm hỏng đài luyện đan và đảo lộn kết quả mà Lưu đang chờ đợi.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep174/p059.jpg",
+      "narration": "Lưu Đại Sư bị chọc giận, còn mọi người hiểu rằng Trác Phàm đang nhắm thẳng vào danh hiệu Đan Vương.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep175/p001.jpg",
+      "narration": "Sau các vòng thi, danh sách vào chung kết Đan Vương được công bố.",
+      "kind": "recap",
+      "type": "BUILD",
+      "section": "Tập 175: Lưu Đại Sư nổi điên khi mất vị trí số một!?"
+    },
+    {
+      "panel": "dqgl_ep175/p025.jpg",
+      "narration": "Lưu Đại Sư không cam lòng khi những đối thủ mạnh hơn xuất hiện và vị trí đầu bảng bị đe dọa.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep175/p060.jpg",
+      "narration": "Trác Phàm tiếp tục khiêu khích, khiến Lưu Đại Sư càng khó giữ bình tĩnh.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep176/p001.jpg",
+      "narration": "Ban tổ chức công bố nhóm thí sinh bước tiếp, còn nhiều người vẫn tin Lưu Đại Sư sẽ đứng đầu.",
+      "kind": "recap",
+      "type": "BUILD",
+      "section": "Tập 176: Trác Phàm tuyên bố không vào top mười!?"
+    },
+    {
+      "panel": "dqgl_ep176/p027.jpg",
+      "narration": "Trác Phàm nói mình không định tranh một vị trí trong top mười, khiến khán giả bất ngờ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep176/p061.jpg",
+      "narration": "Lời nói có vẻ khiêm nhường ấy càng làm Lưu Đại Sư và những người xung quanh muốn xem hắn sẽ làm gì.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep177/p001.jpg",
+      "narration": "Sau khi trút giận, Lưu Đại Sư nhận ra các đối thủ lần này không hề tầm thường.",
+      "kind": "recap",
+      "type": "BUILD",
+      "section": "Tập 177: Lưu Đại Sư chọn nguyên liệu cho vòng kế tiếp!?"
+    },
+    {
+      "panel": "dqgl_ep177/p024.jpg",
+      "narration": "Khuynh Thành yêu cầu các luyện đan sư chọn nguyên liệu cho vòng sau và phải sử dụng hết những gì đã lấy.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep177/p058.jpg",
+      "narration": "Trác Phàm vẫn đứng ngoài quan sát, chờ đối thủ tự chọn cách bước vào bẫy.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep178/p001.jpg",
+      "narration": "Trác Phàm nhắc đến linh thú lục giai và ngọn lửa truyền thừa, đánh trúng lòng tự cao của Lưu Đại Sư.",
+      "kind": "recap",
+      "type": "BUILD",
+      "section": "Tập 178: Lưu Đại Sư bị khích tướng bằng linh thú lục giai!?"
+    },
+    {
+      "panel": "dqgl_ep178/p025.jpg",
+      "narration": "Đối thủ của Trác Phàm càng lúc càng nóng nảy khi nghe những lời khiêu khích trước đám đông.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep178/p062.jpg",
+      "narration": "Màn phô diễn tiếp theo sắp bắt đầu, và Lưu Đại Sư quyết chứng minh mình không hề kém cạnh.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep179/p001.jpg",
+      "narration": "Sau màn khích bác, Lưu Đại Sư chấp nhận Trác Phàm là đối thủ đáng gờm.",
+      "kind": "recap",
+      "type": "BUILD",
+      "section": "Tập 179: Trác Phàm nhường Lưu Đại Sư ra tay trước!?"
+    },
+    {
+      "panel": "dqgl_ep179/p022.jpg",
+      "narration": "Hai người thống nhất so tài công khai; Trác Phàm nhường đối thủ chọn lượt ra tay trước.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep179/p056.jpg",
+      "narration": "Lưu Đại Sư bước lên, tin rằng ngọn lửa của mình sẽ khiến Trác Phàm không thể coi thường.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep180/p001.jpg",
+      "narration": "Lưu Đại Sư bắt đầu màn so tài bằng cách vận dụng ngọn lửa luyện đan của mình.",
+      "kind": "recap",
+      "type": "BUILD",
+      "section": "Tập 180: Lưu Đại Sư phô diễn dị hỏa trước toàn trường!?"
+    },
+    {
+      "panel": "dqgl_ep180/p024.jpg",
+      "narration": "Ông yêu cầu Trác Phàm cũng phải dùng hỏa diễm để cuộc thi được công bằng.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep180/p058.jpg",
+      "narration": "Trác Phàm vẫn bình thản nhường đối thủ thể hiện trước, khiến khán giả chờ đợi màn đáp trả.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

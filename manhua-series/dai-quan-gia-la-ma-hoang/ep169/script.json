@@ -1,0 +1,39 @@
+{
+  "title": "Viên đan kỳ lạ của Trác Phàm khiến cả hội trường choáng!?",
+  "chapters": "169",
+  "source_dir": "manhua-recap/dqgl_ep169",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-21",
+  "description": "Viên đan kỳ lạ của Trác Phàm khiến cả hội trường choáng. Tóm tắt chương 169 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Viên đan kỳ lạ của Trác Phàm khiến cả hội trường choáng!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Kết quả vòng thi được tổng kết, và viên đan của Trác Phàm khiến người quan sát chú ý đặc biệt.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p023",
+      "narration": "Khuynh Thành xác nhận phẩm cấp của nó, trong khi hương đan làm tinh thần mọi người tỉnh táo.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p055",
+      "narration": "Không ai chắc tác dụng thật sự của viên đan là gì, còn Trác Phàm dường như đang chờ phản ứng tiếp theo.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

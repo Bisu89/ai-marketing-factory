@@ -1,0 +1,39 @@
+{
+  "title": "Lưu Đại Sư gây náo loạn cuộc thi luyện đan!?",
+  "chapters": "159",
+  "source_dir": "manhua-recap/dqgl_ep159",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-21",
+  "description": "Lưu Đại Sư gây náo loạn cuộc thi luyện đan. Tóm tắt chương 159 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Lưu Đại Sư gây náo loạn cuộc thi luyện đan!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Tại Bạch Đan Thành, cuộc thi luyện đan quy tụ nhiều cao thủ, trong đó có Lưu Đại Sư nổi tiếng ngạo mạn.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p025",
+      "narration": "Lưu Đại Sư dùng uy thế ép người khác tránh đường, khiến không khí trước cuộc thi thêm căng thẳng.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p066",
+      "narration": "Khi các thí sinh chuẩn bị vào vòng đấu, Trác Phàm đã có mặt và sẵn sàng khiến cuộc thi đổi hướng.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

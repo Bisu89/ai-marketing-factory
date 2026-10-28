@@ -1,0 +1,39 @@
+{
+  "title": "Lưu Đại Sư thừa nhận mình thua Trác Phàm!?",
+  "chapters": "185",
+  "source_dir": "manhua-recap/dqgl_ep185",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-21",
+  "description": "Lưu Đại Sư thừa nhận mình thua Trác Phàm. Tóm tắt chương 185 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Lưu Đại Sư thừa nhận mình thua Trác Phàm!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Sau trận đồ rồng của Trác Phàm, Lưu Đại Sư buộc phải nhìn nhận khoảng cách giữa hai người.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p025",
+      "narration": "Khuynh Thành và những người chứng kiến hiểu rằng màn so tài đã vượt xa một cuộc thi luyện đan bình thường.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p061",
+      "narration": "Trác Phàm đã giành thế chủ động, nhưng những kẻ có mặt ở đây vẫn chưa định để hắn rời đi yên ổn.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

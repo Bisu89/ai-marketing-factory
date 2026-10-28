@@ -1,0 +1,17 @@
+{
+  "title": "Đường Luân âm mưu đánh úp, Cửu Thiên Nguy rời thành!?",
+  "chapters": "166",
+  "source_dir": "manhua-recap/crmn_ep167",
+  "description": "Đường Luân cân nhắc lợi ích sau khi đại quân tổn thất, đồng thời mở đường cho một cuộc đổ bộ mới. Cửu Thiên Nguy quyết định tự mình ra trận.",
+  "hashtags": ["#ChangReManhNhatLichSu", "#ReviewManhua", "#XuyenKhong"],
+  "beats": [
+    {"panel":"p002.jpg","type":"HOOK","kind":"recap","narration":"Đường Luân tỉnh dậy sau nhiều ngày, nghe thuộc hạ báo cáo về tình hình Nộ Triều."},
+    {"panel":"p009.jpg","type":"BUILD","kind":"recap","narration":"Ông ta vẫn muốn diệt Thẩm Lãng, nhưng hiểu rằng lúc này cần giữ lại một số quân cờ."},
+    {"panel":"p017.jpg","type":"BUILD","kind":"recap","narration":"Các toán hải tặc còn lại được lệnh tập hợp, chuẩn bị đổ bộ lên bờ."},
+    {"panel":"p025.jpg","type":"BUILD","kind":"recap","narration":"Một nhóm 300 kỵ binh tập hợp, còn Cửu Thiên Nguy quyết định dẫn họ đi cùng."},
+    {"panel":"p033.jpg","type":"BUILD","kind":"commentary","narration":"Cửu Thiên Nguy không muốn đứng ngoài khi đồng đội bị đe dọa. Quyết tâm ấy có thể cứu người, nhưng cũng khiến nàng bước vào nguy hiểm."},
+    {"panel":"p041.jpg","type":"BUILD","kind":"recap","narration":"Dù đang bị thương, nàng vẫn lên ngựa, khẳng định mình có thể tiếp tục chiến đấu."},
+    {"panel":"p050.jpg","type":"BUILD","kind":"recap","narration":"Trường Xung và những người khác định can ngăn, nhưng nàng không chịu quay về."},
+    {"panel":"p052.jpg","type":"ENDING","kind":"recap","narration":"Cửu Thiên Nguy thúc ngựa lên đường, tiến thẳng về phía nơi quân địch đang tập kết."}
+  ]
+}

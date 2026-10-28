@@ -1,0 +1,39 @@
+{
+  "title": "Lưu Đại Sư nổi điên khi mất vị trí số một!?",
+  "chapters": "175",
+  "source_dir": "manhua-recap/dqgl_ep175",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-21",
+  "description": "Lưu Đại Sư nổi điên khi mất vị trí số một. Tóm tắt chương 175 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Lưu Đại Sư nổi điên khi mất vị trí số một!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Sau các vòng thi, danh sách vào chung kết Đan Vương được công bố.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p025",
+      "narration": "Lưu Đại Sư không cam lòng khi những đối thủ mạnh hơn xuất hiện và vị trí đầu bảng bị đe dọa.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p060",
+      "narration": "Trác Phàm tiếp tục khiêu khích, khiến Lưu Đại Sư càng khó giữ bình tĩnh.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "template": "manhua_recap_vi",
+  "title": "Đại Quản Gia Là Ma Hoàng | Tập 175–177: Trác Phàm nghịch chuyển!?",
+  "chapters": "175-177",
+  "source_dir": "manhua-recap/dqgl_ep175",
+  "written_by": "OpenAI, biên tập từ script từng tập, 2026-10-21",
+  "description": "Tóm tắt tập 175 đến 177 Đại Quản Gia Là Ma Hoàng. Trác Phàm đối đầu cao thủ và tìm cách xoay chuyển cục diện.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Lưu Đại Sư nổi điên khi mất vị trí số một!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "dqgl_ep175/p001.jpg",
+      "narration": "Sau các vòng thi, danh sách vào chung kết Đan Vương được công bố.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "dqgl_ep175/p025.jpg",
+      "narration": "Lưu Đại Sư không cam lòng khi những đối thủ mạnh hơn xuất hiện và vị trí đầu bảng bị đe dọa.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep175/p060.jpg",
+      "narration": "Trác Phàm tiếp tục khiêu khích, khiến Lưu Đại Sư càng khó giữ bình tĩnh.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep176/p001.jpg",
+      "narration": "Ban tổ chức công bố nhóm thí sinh bước tiếp, còn nhiều người vẫn tin Lưu Đại Sư sẽ đứng đầu.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep176/p027.jpg",
+      "narration": "Trác Phàm nói mình không định tranh một vị trí trong top mười, khiến khán giả bất ngờ.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep176/p061.jpg",
+      "narration": "Lời nói có vẻ khiêm nhường ấy càng làm Lưu Đại Sư và những người xung quanh muốn xem hắn sẽ làm gì.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep177/p001.jpg",
+      "narration": "Sau khi trút giận, Lưu Đại Sư nhận ra các đối thủ lần này không hề tầm thường.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep177/p024.jpg",
+      "narration": "Khuynh Thành yêu cầu các luyện đan sư chọn nguyên liệu cho vòng sau và phải sử dụng hết những gì đã lấy.",
+      "kind": "recap",
+      "type": "BUILD"
+    },
+    {
+      "panel": "dqgl_ep177/p058.jpg",
+      "narration": "Trác Phàm vẫn đứng ngoài quan sát, chờ đối thủ tự chọn cách bước vào bẫy.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

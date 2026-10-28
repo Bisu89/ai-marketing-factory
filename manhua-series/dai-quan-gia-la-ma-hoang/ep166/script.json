@@ -1,0 +1,39 @@
+{
+  "title": "Các luyện đan sư bước vào thử thách mới!?",
+  "chapters": "166",
+  "source_dir": "manhua-recap/dqgl_ep166",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-21",
+  "description": "Các luyện đan sư bước vào thử thách mới. Tóm tắt chương 166 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Các luyện đan sư bước vào thử thách mới!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Sau màn khẩu chiến, cuộc thi chuyển sang phần thử luyện đan với nguyên liệu cấp cao hơn.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p024",
+      "narration": "Nhiều thí sinh bắt đầu xử lý nguyên liệu tam phẩm, trong khi ban giám khảo theo dõi từng thao tác.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p060",
+      "narration": "Kết quả của vòng thử thách vẫn chưa ngã ngũ, và Trác Phàm còn chưa tung hết bài.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

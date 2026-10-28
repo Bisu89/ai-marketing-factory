@@ -1,0 +1,39 @@
+{
+  "title": "Trác Phàm nhắm thẳng danh hiệu Đan Vương!?",
+  "chapters": "184",
+  "source_dir": "manhua-recap/dqgl_ep184",
+  "written_by": "OpenAI, đối chiếu ảnh nguồn, 2026-10-21",
+  "description": "Trác Phàm nhắm thẳng danh hiệu Đan Vương. Tóm tắt chương 184 truyện Đại Quản Gia Là Ma Hoàng, kèm bình luận.",
+  "hashtags": [
+    "#DaiQuanGiaLaMaHoang",
+    "#ReviewManhua",
+    "#Manhua",
+    "#TuTien",
+    "#XuyenKhong",
+    "#ReviewTruyen"
+  ],
+  "thumbnail": {
+    "text": "Trác Phàm nhắm thẳng danh hiệu Đan Vương!?",
+    "prompt": "Vertical 9:16 Chinese manhua style, black-haired cultivator in a dramatic fantasy cultivation scene, cinematic lighting, leave upper quarter dark and clear for title overlay, no text, no letters, no speech bubbles, no watermark"
+  },
+  "beats": [
+    {
+      "panel": "p001",
+      "narration": "Trận đồ luyện đan của Trác Phàm khiến các cao thủ nhận ra đây không phải màn biểu diễn thông thường.",
+      "kind": "recap",
+      "type": "HOOK"
+    },
+    {
+      "panel": "p025",
+      "narration": "Hắn công khai đến đây để đối đầu Dược Vương Điện và tranh lấy danh hiệu Đan Vương.",
+      "kind": "commentary",
+      "type": "BUILD"
+    },
+    {
+      "panel": "p061",
+      "narration": "Tuyên bố táo bạo khiến khán giả chấn động; không ai biết Dược Vương Điện sẽ phản ứng ra sao.",
+      "kind": "recap",
+      "type": "ENDING"
+    }
+  ]
+}

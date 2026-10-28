@@ -1,0 +1,95 @@
+{
+  "title": "Thẩm Lãng lật tẩy đối thủ âm thầm đổi đề, lập tức cử sát thủ phá đê trước!?",
+  "chapters": "110,111,112",
+  "source_dir": "manhua-recap/crmn_ep111",
+  "description": "Đường Duẫn chết lặng khi thua trận văn chiến, còn Thẩm Lãng phát hiện chính Trương Sung đã âm thầm đổi đề thật để phòng ngừa. Trương Sung quỳ dưới mưa rồi âm thầm tính kế mới, trong khi Thẩm Lãng đóng vai kẻ thù để đoán đúng âm mưu phá đê thật và quyết định ra tay trước, cử người mang thuốc nổ đi phá đê Lan Sơn giữa đêm.\nReview Chàng Rể Mạnh Nhất Lịch Sử – Short best-of.",
+  "hashtags": [
+    "#ChangReManhNhatLichSu",
+    "#ReviewManhua",
+    "#XuyenKhong"
+  ],
+  "thumbnail": {
+    "text": "RA TAY TRƯỚC MỘT BƯỚC!",
+    "prompt": "Vertical 9:16 anime-style: a calm long-haired strategist studying a war map by candlelight while two cloaked riders gallop off into a rainy night carrying a hidden explosive box. No text, leave top 25% empty."
+  },
+  "beats": [
+    {
+      "panel": "crmn_ep111/p020.jpg",
+      "type": "HOOK",
+      "kind": "recap",
+      "narration": "Đường Duẫn tưởng mình đã thắng chắc trận văn chiến, không ngờ tin dữ ập đến: hắn đã thua một \"tên phế vật\" ngay trước mắt cả thiên hạ."
+    },
+    {
+      "panel": "crmn_ep111/p020.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thuộc hạ run giọng: thế tử, ngài... ngài thua rồi."
+    },
+    {
+      "panel": "crmn_ep111/p027.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đọc sang bài của Mộc Thông, anh run rẩy: sách luận quá lợi hại! Không có từ ngữ hoa mỹ, cũng không nịnh hót quốc quân, nhưng lập ý thâm sâu, nội dung phong phú! Bài thơ này... vì sao hắn ta lại viết ra được bài thơ như thế này? Chuyện này không thể nào!"
+    },
+    {
+      "panel": "crmn_ep111/p037.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Đường Viêm nghiến răng thề độc: Thẩm Lãng, ta với ngươi không đội trời chung, ta nhất định sẽ băm ngươi thành trăm mảnh, băm ngươi thành trăm mảnh!"
+    },
+    {
+      "panel": "crmn_ep111/p047.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng nhếch mép thừa nhận: Trương Sung, cao thâm đấy!"
+    },
+    {
+      "panel": "crmn_ep112/p001.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Tròn mấy canh giờ, Trương Sung vẫn quỳ dưới mưa như cũ. Trương Tấn không khuyên được phụ thân, liền quỳ xuống bên cạnh, rồi Trương Xuân Hoa biết được tình hình cũng quỳ xuống dưới mưa cùng hai người họ."
+    },
+    {
+      "panel": "crmn_ep112/p028.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Đám quý tộc nghe xong đứng lặng trong mưa, không ai còn lời nào để đáp."
+    },
+    {
+      "panel": "crmn_ep112/p041.jpg",
+      "type": "BUILD",
+      "kind": "commentary",
+      "narration": "Anh đóng vai kẻ thù để suy luận: ta có một kế độc này! Bây giờ mưa như trút nước, đê đập sụp đổ cũng là điều rất bình thường nhỉ? Nếu như đê đập phía Bắc của Huyền Vũ Bá tước phủ bị vỡ, vậy thì nước lũ cuồn cuộn sẽ chạy vào trang viên của Kim thị, còn có phong địa."
+    },
+    {
+      "panel": "crmn_ep112/p057.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Thẩm Lãng chỉ vào bản đồ, giọng lạnh lùng quyết đoán: nhạc phụ đại nhân, trong sơn cốc này đều là trang viên của Lan Sơn tử tước phủ. Chuyện chúng ta phải làm là phá vỡ đê điều ở phía trên trang viên của Lan Sơn tử tước phủ, để nước lũ chảy vào trong trang viên và thành trì của bọn họ, chôn lấp tất cả!"
+    },
+    {
+      "panel": "crmn_ep113/p005.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Anh ra lệnh: ngươi dùng tốc độ nhanh nhất quay về nhà, dẫn người đi phá hủy đê điều phía trên trang viên của Lan Sơn tử tước phủ! Để nước lũ chảy vào trong thành trì và trang viên của bọn họ, chôn vùi tất cả!"
+    },
+    {
+      "panel": "crmn_ep113/p024.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Các gia tộc quyền quý có mặt ở đó, ngoại trừ Trấn Bắc Hầu phủ, mỗi nhà đều phái đi mấy chục võ sĩ tinh nhuệ. Sau đó Chúc Lan Đình tử tước và tiểu hải tặc vương Cửu Kiêu dẫn đầu mấy trăm võ sĩ, bất chấp mưa to, nhân lúc nửa đêm ra roi thúc ngựa vội vã tiến đến thành Huyền Vũ làm đại sự."
+    },
+    {
+      "panel": "crmn_ep113/p054.jpg",
+      "type": "BUILD",
+      "kind": "recap",
+      "narration": "Một người tiếp lời quyết liệt: nếu như không đánh lại, thì liều mạng chạy. Nếu như thật sự không chạy được, thì đốt ngòi kích nổ đồng quy vô tận, chiếc hộp trong tay ngươi nhất định không được để rơi vào tay bất kì người nào khác, hiểu chưa? Được. Lập tức giết."
+    },
+    {
+      "panel": "crmn_ep113/p054.jpg",
+      "type": "ENDING",
+      "kind": "recap",
+      "narration": "Giữa đêm mưa, hai bóng người lặng lẽ phi ngựa mang theo thuốc nổ giấu sẵn, lao thẳng vào bóng tối để ra tay trước khi kẻ thù kịp động thủ."
+    }
+  ]
+}
